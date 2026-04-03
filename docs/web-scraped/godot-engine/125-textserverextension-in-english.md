@@ -1,11 +1,13 @@
 # TextServerExtension in English
 
 # TextServerExtension
+
 Inherits:TextServer<RefCounted<Object
 Inherited By:TextServerAdvanced,TextServerDummy,TextServerFallback
 Base class for customTextServerimplementations (plugins).
 
 ## Description
+
 ExternalTextServerimplementations should inherit from this class.
 
 ## Methods
@@ -696,6 +698,7 @@ void
 _unreference_oversampling_level(oversampling:float)virtual
 
 ## Method Descriptions
+
 void_cleanup()virtual🔗
 This method is called before text server is unregistered.
 RID_create_font()virtualrequired🔗
@@ -1186,4 +1189,5 @@ void_unreference_oversampling_level(oversampling:float)virtual🔗
 Decreases the reference count of the specified oversampling level, and frees the font cache for oversampling level when the reference count reaches zero. This method is called byViewport, and should not be used directly.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

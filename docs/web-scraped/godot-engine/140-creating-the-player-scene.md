@@ -1,6 +1,7 @@
 # Creating the player scene
 
 # Creating the player scene
+
 With the project settings in place, we can start working on the
 player-controlled character.
 The first scene will define thePlayerobject. One of the benefits of
@@ -8,6 +9,7 @@ creating a separate Player scene is that we can test it separately, even before
 we've created other parts of the game.
 
 ## Node structure
+
 To begin, we need to choose a root node for the player object. As a general
 rule, a scene's root node should reflect the object's desired functionality -
 what the objectis. In the upper-left corner, in the "Scene" tab, click the
@@ -35,6 +37,7 @@ node is clicked in 2D and 3D view."
 Save the scene asplayer.tscn. ClickScene > Save, or pressCtrl+Son Windows/Linux orCmd+Son macOS.
 Note
 For this project, we will be following the Godot naming conventions.
+
 - GDScript: Classes (nodes) use PascalCase, variables and
 functions use snake_case, and constants use ALL_CAPS (SeeGDScript style guide).
 GDScript: Classes (nodes) use PascalCase, variables and
@@ -44,11 +47,12 @@ private fields use _camelCase, local variables and parameters use
 camelCase (SeeC# style guide). Be careful to type
 the method names precisely when connecting signals.
 C#: Classes, export variables and methods use PascalCase,
-private fields use _camelCase, local variables and parameters use
+private fields use_camelCase, local variables and parameters use
 camelCase (SeeC# style guide). Be careful to type
 the method names precisely when connecting signals.
 
 ## Sprite animation
+
 Click on thePlayernode and add (Ctrl+Aon Windows/Linux orCmd+Aon macOS) a child nodeAnimatedSprite2D. TheAnimatedSprite2Dwill handle the
 appearance and animations for our player. Notice that there is a warning symbol
 next to the node. AnAnimatedSprite2Drequires aSpriteFramesresource, which is a list of the animations it can
@@ -59,6 +63,7 @@ On the left is a list of animations. Click thedefaultone and rename it towalk. T
 namedup.
 Find the player images in the FileSystem dock - they're in theartfolder
 you unzipped earlier. Drag the two images for each animation, into theAnimation Framesside of the panel for the corresponding animation:
+
 - playerGrey_walk1andplayerGrey_walk2for thewalkanimation
 playerGrey_walk1andplayerGrey_walk2for thewalkanimation
 - playerGrey_up1andplayerGrey_up2for theupanimation
@@ -80,4 +85,5 @@ Then, we'll set up collision detection to know when the player got hit by
 something.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

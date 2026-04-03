@@ -1,10 +1,12 @@
 # AudioListener3D in English
 
 # AudioListener3D
+
 Inherits:Node3D<Node<Object
 Overrides the location sounds are heard from.
 
 ## Description
+
 Once added to the scene tree and enabled usingmake_current(), this node will override the location sounds are heard from. This can be used to listen from a location different from theCamera3D.
 
 ## Properties
@@ -32,6 +34,7 @@ void
 make_current()
 
 ## Enumerations
+
 enumDopplerTracking:🔗
 DopplerTrackingDOPPLER_TRACKING_DISABLED=0
 DisablesDoppler effectsimulation (default).
@@ -41,7 +44,9 @@ DopplerTrackingDOPPLER_TRACKING_PHYSICS_STEP=2
 SimulateDoppler effectby tracking positions of objects that are changed in_physics_process. Changes in the relative velocity of this listener compared to those objects affect how audio is perceived (changing the audio'sAudioStreamPlayer3D.pitch_scale).
 
 ## Property Descriptions
+
 DopplerTrackingdoppler_tracking=0🔗
+
 - voidset_doppler_tracking(value:DopplerTracking)
 voidset_doppler_tracking(value:DopplerTracking)
 - DopplerTrackingget_doppler_tracking()
@@ -50,6 +55,7 @@ If notDOPPLER_TRACKING_DISABLED, this listener will simulate theDoppler effectfo
 Note:The Doppler effect will only be heard onAudioStreamPlayer3Ds ifAudioStreamPlayer3D.doppler_trackingis not set toAudioStreamPlayer3D.DOPPLER_TRACKING_DISABLED.
 
 ## Method Descriptions
+
 voidclear_current()🔗
 Disables the listener to use the current camera's listener instead.
 Transform3Dget_listener_transform()const🔗
@@ -61,4 +67,5 @@ voidmake_current()🔗
 Enables the listener. This will override the current camera's listener.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

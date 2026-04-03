@@ -1,10 +1,12 @@
 # RenderSceneBuffersExtension
 
 # RenderSceneBuffersExtension
+
 Inherits:RenderSceneBuffers<RefCounted<Object
 This class allows for a RenderSceneBuffer implementation to be made in GDExtension.
 
 ## Description
+
 This class allows for a RenderSceneBuffer implementation to be made in GDExtension.
 
 ## Methods
@@ -28,6 +30,7 @@ void
 _set_use_debanding(use_debanding:bool)virtual
 
 ## Method Descriptions
+
 void_configure(config:RenderSceneBuffersConfiguration)virtual🔗
 Implement this in GDExtension to handle the (re)sizing of a viewport.
 void_set_anisotropic_filtering_level(anisotropic_filtering_level:int)virtual🔗
@@ -40,4 +43,5 @@ void_set_use_debanding(use_debanding:bool)virtual🔗
 Implement this in GDExtension to react to the debanding flag changing.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

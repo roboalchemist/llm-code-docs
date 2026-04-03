@@ -1,11 +1,13 @@
 # Window in English
 
 # Window
+
 Inherits:Viewport<Node<Object
 Inherited By:AcceptDialog,Popup
 Base class for all windows, dialogs, and popups.
 
 ## Description
+
 A node that creates a window. The window can either be a native system window or embedded inside anotherWindow(seeViewport.gui_embed_subwindows).
 At runtime,Windows will not close automatically when requested. You need to handle it manually using theclose_requestedsignal (this applies both to pressing the close button and clicking outside of a popup).
 
@@ -427,6 +429,7 @@ StyleBox
 embedded_unfocused_border
 
 ## Signals
+
 about_to_popup()🔗
 Emitted right afterpopup()call, before theWindowappears or does anything.
 close_requested()🔗
@@ -437,6 +440,7 @@ Emitted when theWindow's DPI changes as a result of OS-level changes (e.g. movin
 Note:Only implemented on macOS and Linux (Wayland).
 files_dropped(files:PackedStringArray)🔗
 Emitted when files are dragged from the OS file manager and dropped in the game window. The argument is a list of file paths.
+
 ```
 func _ready():
     get_window().files_dropped.connect(on_files_dropped)
@@ -444,6 +448,7 @@ func _ready():
 func on_files_dropped(files):
     print(files)
 ```
+
 Note:This signal only works with native windows, i.e. the main window andWindow-derived nodes whenViewport.gui_embed_subwindowsis disabled in the main viewport.
 focus_entered()🔗
 Emitted when theWindowgains focus.
@@ -469,6 +474,7 @@ window_input(event:InputEvent)🔗
 Emitted when theWindowis currently focused and receives any input, passing the received event as an argument. The event's position, if present, is in the embedder's coordinate system.
 
 ## Enumerations
+
 enumMode:🔗
 ModeMODE_WINDOWED=0
 Windowed mode, i.e.Windowdoesn't occupy the whole screen (unless set to the size of the screen).
@@ -586,10 +592,12 @@ WindowInitialPositionWINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS=5
 Initial window position is the center of the screen containing the window with the keyboard focus.
 
 ## Constants
+
 NOTIFICATION_VISIBILITY_CHANGED=30🔗
 Emitted whenWindow's visibility changes, right beforevisibility_changed.
 NOTIFICATION_THEME_CHANGED=32🔗
 Sent when the node needs to refresh its theme items. This happens in one of the following cases:
+
 - Thethemeproperty is changed on this node or any of its ancestors.
 Thethemeproperty is changed on this node or any of its ancestors.
 - Thetheme_type_variationproperty is changed on this node.
@@ -599,7 +607,9 @@ The node enters the scene tree.
 Note:As an optimization, this notification won't be sent from changes that occur while this node is outside of the scene tree. Instead, all of the theme item updates can be applied at once when the node enters the scene tree.
 
 ## Property Descriptions
+
 Stringaccessibility_description=""🔗
+
 - voidset_accessibility_description(value:String)
 voidset_accessibility_description(value:String)
 - Stringget_accessibility_description()
@@ -762,6 +772,7 @@ voidset_mouse_passthrough_polygon(value:PackedVector2Array)
 PackedVector2Arrayget_mouse_passthrough_polygon()
 Sets a polygonal region of the window which accepts mouse events. Mouse events outside the region will be passed through.
 Passing an empty array will disable passthrough support (all mouse events will be intercepted by the window, which is the default behavior).
+
 ```
 # Set region, using Path2D node.
 $Window.mouse_passthrough_polygon = $Path2D.curve.get_baked_points()
@@ -772,6 +783,7 @@ $Window.mouse_passthrough_polygon = $Polygon2D.polygon
 # Reset region to default.
 $Window.mouse_passthrough_polygon = []
 ```
+
 ```
 // Set region, using Path2D node.
 GetNode<Window>("Window").MousePassthroughPolygon = GetNode<Path2D>("Path2D").Curve.GetBakedPoints();
@@ -782,11 +794,13 @@ GetNode<Window>("Window").MousePassthroughPolygon = GetNode<Polygon2D>("Polygon2
 // Reset region to default.
 GetNode<Window>("Window").MousePassthroughPolygon = [];
 ```
+
 Note:This property is ignored ifmouse_passthroughis set totrue.
 Note:On Windows, the portion of a window that lies outside the region is not drawn, while on Linux (X11) and macOS it is.
 Note:This property is implemented on Linux (X11), macOS and Windows.
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedVector2Arrayfor more details.
 Rect2inonclient_area=Rect2i(0,0,0,0)🔗
+
 - voidset_nonclient_area(value:Rect2i)
 voidset_nonclient_area(value:Rect2i)
 - Rect2iget_nonclient_area()
@@ -893,6 +907,7 @@ Iftrue, the window's size will automatically update when a child node is added o
 Iffalse, you need to callchild_controls_changed()manually.
 
 ## Method Descriptions
+
 Vector2_get_contents_minimum_size()virtualconst🔗
 Virtual method to be implemented by the user. Overrides the value returned byget_contents_minimum_size().
 voidadd_theme_color_override(name:StringName, color:Color)🔗
@@ -914,7 +929,7 @@ voidadd_theme_stylebox_override(name:StringName, stylebox:StyleBox)🔗
 Creates a local override for a themeStyleBoxwith the specifiedname. Local overrides always take precedence when fetching theme items for the control. An override can be removed withremove_theme_stylebox_override().
 See alsoget_theme_stylebox()andControl.add_theme_stylebox_override()for more details.
 voidbegin_bulk_theme_override()🔗
-Prevents*_theme_*_overridemethods from emittingNOTIFICATION_THEME_CHANGEDuntilend_bulk_theme_override()is called.
+Prevents**theme**_overridemethods from emittingNOTIFICATION_THEME_CHANGEDuntilend_bulk_theme_override()is called.
 boolcan_draw()const🔗
 Returns whether the window is being drawn to the screen.
 voidchild_controls_changed()🔗
@@ -1088,6 +1103,7 @@ voidstart_resize(edge:WindowResizeEdge)🔗
 Starts an interactive resize operation on the window, using the current mouse position. Call this method when handling a mouse button being pressed to simulate a pressed event on the window's edge.
 
 ## Theme Property Descriptions
+
 Colortitle_color=Color(0.875,0.875,0.875,1)🔗
 The color of the title's text.
 Colortitle_outline_modulate=Color(0,0,0,1)🔗
@@ -1117,4 +1133,5 @@ StyleBoxembedded_unfocused_border🔗
 The background style used when theWindowis embedded and unfocused.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

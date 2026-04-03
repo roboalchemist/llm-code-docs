@@ -1,10 +1,12 @@
 # EditorNode3DGizmo in English
 
 # EditorNode3DGizmo
+
 Inherits:Node3DGizmo<RefCounted<Object
 Gizmo for editingNode3Dobjects.
 
 ## Description
+
 Gizmo that is used for providing custom visualization and editing (handles and subgizmos) forNode3Dobjects. Can be overridden to create custom gizmos, but for simple gizmos creating anEditorNode3DGizmoPluginis usually recommended.
 
 ## Methods
@@ -87,6 +89,7 @@ void
 set_node_3d(node:Node)
 
 ## Method Descriptions
+
 void_begin_handle_action(id:int, secondary:bool)virtual🔗
 There is currently no description for this method. Please help us bycontributing one!
 void_commit_handle(id:int, secondary:bool, restore:Variant, cancel:bool)virtual🔗
@@ -148,4 +151,5 @@ voidset_node_3d(node:Node)🔗
 Sets the referenceNode3Dnode for the gizmo.nodemust inherit fromNode3D.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

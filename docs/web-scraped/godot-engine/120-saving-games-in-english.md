@@ -3,6 +3,7 @@
 # Saving games
 
 ## Introduction
+
 Save games can be complicated. For example, it may be desirable
 to store information from multiple objects across multiple levels.
 Advanced save game systems should allow for additional information about
@@ -14,6 +15,7 @@ See also
 You can see how saving and loading works in action using theSaving and Loading (Serialization) demo project.
 
 ## Identify persistent objects
+
 Firstly, we should identify what objects we want to keep between game
 sessions and what information we want to keep from those objects. For
 this tutorial, we will use groups to mark and handle objects to be saved,
@@ -23,11 +25,13 @@ do this through either the GUI or script. Let's add the relevant nodes using the
 GUI:
 Once this is done, when we need to save the game, we can get all objects
 to save them and then tell them all to save with this script:
+
 ```
 var save_nodes = get_tree().get_nodes_in_group("Persist")
 for node in save_nodes:
     # Now, we can call our save function on each node.
 ```
+
 ```
 var saveNodes = GetTree().GetNodesInGroup("Persist");
 foreach (Node saveNode in saveNodes)
@@ -37,12 +41,14 @@ foreach (Node saveNode in saveNodes)
 ```
 
 ## Serializing
+
 The next step is to serialize the data. This makes it much easier to
 read from and store to disk. In this case, we're assuming each member of
 group Persist is an instanced node and thus has a path. GDScript
 has the helper classJSONto convert between dictionary and string.
 Our node needs to contain a save function that returns this data.
 The save function will look like this:
+
 ```
 func save():
     var save_dict = {
@@ -67,6 +73,7 @@ func save():
     }
     return save_dict
 ```
+
 ```
 public Godot.Collections.Dictionary<string, Variant> Save()
 {
@@ -93,16 +100,19 @@ public Godot.Collections.Dictionary<string, Variant> Save()
     };
 }
 ```
+
 This gives us a dictionary with the style{"variable_name":value_of_variable}, which will be useful when
 loading.
 
 ## Saving and reading data
+
 As covered in theFile systemtutorial, we'll need to open a file
 so we can write to it or read from it. Now that we have a way to
 call our groups and get their relevant data, let's use the classJSONto
 convert it into an easily stored string and store them in a file. Doing
 it this way ensures that each line is its own object, so we have an easy
 way to pull the data out of the file as well.
+
 ```
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.
@@ -131,6 +141,7 @@ func save_game():
         # Store the save dictionary as a new line in the save file.
         save_file.store_line(json_string)
 ```
+
 ```
 // Note: This can be called from anywhere inside the tree. This function is
 // path independent.
@@ -168,12 +179,14 @@ public void SaveGame()
     }
 }
 ```
+
 Game saved! Now, to load, we'll read each
 line. Use theparsemethod to read the
 JSON string back to a dictionary, and then iterate over
 the dict to read our values. But we'll need to first create the object
 and we can use the filename and parent values to achieve that. Here is our
 load function:
+
 ```
 # Note: This can be called from anywhere inside the tree. This function
 # is path independent.
@@ -218,6 +231,7 @@ func load_game():
                 continue
             new_object.set(i, node_data[i])
 ```
+
 ```
 // Note: This can be called from anywhere inside the tree. This function is
 // path independent.
@@ -276,11 +290,13 @@ public void LoadGame()
     }
 }
 ```
+
 Now we can save and load an arbitrary number of objects laid out
 almost anywhere across the scene tree! Each object can store different
 data depending on what it needs to save.
 
 ## Some notes
+
 We have glossed over setting up the game state for loading. It's ultimately up
 to the project creator where much of this logic goes.
 This is often complicated and will need to be heavily
@@ -292,12 +308,15 @@ Load parent objects first so they are available for theadd_child()call when chil
 children to parents as theNodePathwill likely be invalid.
 
 ## JSON vs binary serialization
+
 For simple game state, JSON may work and it generates human-readable files that are easy to debug.
 But JSON has many limitations. If you need to store more complex game state or
 a lot of it,binary serializationmay be a better approach.
 
 ### JSON limitations
+
 Here are some important gotchas to know about when using JSON.
+
 - Filesize:JSON stores data in text format, which is much larger than binary formats.
 Filesize:JSON stores data in text format, which is much larger than binary formats.
 - Data types:JSON only offers a limited set of data types. If you have data types
@@ -314,8 +333,10 @@ Custom logic needed for encoding/decoding:If you have any custom classes that yo
 need to write your own logic for encoding and decoding those classes.
 
 ### Binary serialization
+
 Binary serializationis an alternative
 approach for storing game state, and you can use it with the functionsget_varandstore_varofFileAccess.
+
 - Binary serialization should produce smaller files than JSON.
 Binary serialization should produce smaller files than JSON.
 - Binary serialization can handle most common data types.
@@ -331,4 +352,5 @@ SeePropertyUsageFlagsfor the
 possible usage flags.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

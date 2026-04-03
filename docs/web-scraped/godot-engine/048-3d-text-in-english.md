@@ -3,6 +3,7 @@
 # 3D text
 
 ## Introduction
+
 In a project, there may be times when text needs to be created as part of a 3D
 scene and not just in the HUD. Godot provides 2 methods to do this: the
 Label3D node and the TextMeshresourcefor a MeshInstance3D node.
@@ -15,6 +16,7 @@ This page doesnotcover how to display a GUI scene within a 3D
 environment. For information on how to achieve that, see theGUI in 3Ddemo project.
 
 ## Label3D
+
 Label3D behaves like a Label node, but in 3D space. Unlike the Label node, this
 Label3D node doesnotinherit properties of a GUI theme. However, its look
 remains customizable and uses the same font subresource as Control nodes
@@ -22,6 +24,7 @@ remains customizable and uses the same font subresource as Control nodes
 rendering).
 
 ### Advantages
+
 - Label3D is faster to generate than TextMesh. While both use a caching
 mechanism to only render new glyphs once, Label3D will still be faster to
 (re)generate, especially for long text. This can avoid stuttering during
@@ -40,6 +43,7 @@ See also
 SeeUsing Fontsfor guidelines on configuring font imports.
 
 ### Limitations
+
 By default, Label3D has limited interaction with a 3D environment. It can be
 occluded by geometry and lit by light sources if theShadedflag is enabled.
 However, it will not cast shadows even ifCast Shadowis set toOnin
@@ -55,6 +59,7 @@ Text rendering quality can also suffer when the Label3D is viewed at a distance.
 text rendering quality,enable mipmaps on the fontorswitch the font to use MSDF rendering.
 
 ## TextMesh
+
 The TextMesh resource has similarities to Label3D. They both display text in a
 3D scene, and will use the same font subresource. However, instead of generating
 transparent quads, TextMesh generates 3D geometry that represents the glyphs'
@@ -65,7 +70,9 @@ Here is an example of a texture and how it's applied to the mesh. You can use
 the texture below as a reference for the generated mesh's UV map:
 
 ### Advantages
+
 TextMesh has a few advantages over Label3D:
+
 - TextMesh can use a texture to modify text color on a per-side basis.
 TextMesh can use a texture to modify text color on a per-side basis.
 - TextMesh geometry can have actual depth to it, giving glyphs a 3D look.
@@ -74,7 +81,9 @@ TextMesh geometry can have actual depth to it, giving glyphs a 3D look.
 TextMesh can use custom shaders, unlike Label3D.
 
 ### Limitations
+
 There are some limitations to TextMesh:
+
 - No built-in outline support, unlike Label3D. This can be simulated using custom
 shaders though.
 No built-in outline support, unlike Label3D. This can be simulated using custom
@@ -101,6 +110,7 @@ antialiasing method is enabled, text will appear grainy, especially at a
 distance. See3D antialiasingfor more information.
 
 ## Projected Label node (or any other Control)
+
 There is a last solution that is more complex to set up, but provides the most
 flexibility: projecting a 2D node onto 3D space. This can be achieved using the
 return value ofunproject_positionmethod on a Camera3D node in a script's_process()function. This return value
@@ -108,6 +118,7 @@ should then be used to set thepositionproperty of a Control node.
 See the3D waypointsdemo for an example of this.
 
 ### Advantages
+
 - Any Control node can be used, including Label, RichTextLabel or even nodes such
 as Button. This allows for powerful formatting and GUI interaction.
 Any Control node can be used, including Label, RichTextLabel or even nodes such
@@ -124,6 +135,7 @@ Control theming is obeyed. This allows for easier customization that globally
 applies to the project.
 
 ### Limitations
+
 - Projected Controls cannot be occluded by 3D geometry in any way. You can use a
 RayCast to fully hide the control if its target position is occluded by a
 collider, but this doesn't allow for partially hiding the control behind a
@@ -144,6 +156,7 @@ Handling resolution and aspect ratio changes must be taken into account in the
 script, which can be challenging.
 
 ## Should I use Label3D, TextMesh or a projected Control?
+
 In most scenarios, Label3D is recommended as it's easier to set up and provides
 higher rendering quality (especially if 3D antialiasing is disabled).
 For advanced use cases, TextMesh is more flexible as it allows styling the text
@@ -155,4 +168,5 @@ If you need features such as BBCode or Control theming support, then using a pro
 RichTextLabel node is the only way to go.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

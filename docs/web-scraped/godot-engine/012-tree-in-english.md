@@ -1,12 +1,15 @@
 # Tree in English
 
 # Tree
+
 Inherits:Control<CanvasItem<Node<Object
 A control used to show a set of internalTreeItems in a hierarchical structure.
 
 ## Description
+
 A control used to show a set of internalTreeItems in a hierarchical structure. The tree items can be selected, expanded and collapsed. The tree can have multiple columns with custom controls likeLineEdits, buttons and popups. It can be useful for structured displays and interactions.
 Trees are built via code, usingTreeItemobjects to create the structure. They have a single root, but multiple roots can be simulated withhide_root:
+
 ```
 func _ready():
     var tree = Tree.new()
@@ -17,6 +20,7 @@ func _ready():
     var subchild1 = tree.create_item(child1)
     subchild1.set_text(0, "Subchild1")
 ```
+
 ```
 public override void _Ready()
 {
@@ -29,6 +33,7 @@ public override void _Ready()
     subchild1.SetText(0, "Subchild1");
 }
 ```
+
 To iterate over all theTreeItemobjects in aTreeobject, useTreeItem.get_next()andTreeItem.get_first_child()after getting the root throughget_root(). You can useObject.free()on aTreeItemto remove it from theTree.
 Incremental search:LikeItemListandPopupMenu,Treesupports searching within the list while the control is focused. Press a key that matches the first letter of an item's name to select the first item starting with the given letter. After that point, there are two ways to perform incremental search: 1) Press the same key again before the timeout duration to select the next item starting with the same letter. 2) Press letter keys that match the rest of the word before the timeout duration to match to select the item in question directly. Both of these actions will be reset to the beginning of the list if the timeout duration has passed since the last keystroke was registered. You can adjust the timeout duration by changingProjectSettings.gui/timers/incremental_search_max_interval_msec.
 
@@ -437,6 +442,7 @@ StyleBox
 title_button_pressed
 
 ## Signals
+
 button_clicked(item:TreeItem, column:int, id:int, mouse_button_index:int)🔗
 Emitted when a button on the tree was pressed (seeTreeItem.add_button()).
 cell_selected()🔗
@@ -470,6 +476,7 @@ nothing_selected()🔗
 Emitted when a left mouse button click does not select any item.
 
 ## Enumerations
+
 enumSelectMode:🔗
 SelectModeSELECT_SINGLE=0
 Allows selection of a single cell at a time. From the perspective of items, only a single item is allowed to be selected. And there is only one column selected in the selected item.
@@ -501,7 +508,9 @@ ScrollHintModeSCROLL_HINT_MODE_BOTTOM=3
 Only the bottom scroll hint will be shown.
 
 ## Property Descriptions
+
 boolallow_reselect=false🔗
+
 - voidset_allow_reselect(value:bool)
 voidset_allow_reselect(value:bool)
 - boolget_allow_reselect()
@@ -600,6 +609,7 @@ boolis_scroll_hint_tiled()
 Iftrue, the scroll hint texture will be tiled instead of stretched. Seescroll_hint_mode.
 
 ## Method Descriptions
+
 voidclear()🔗
 Clears the tree. This removes all items.
 TreeItemcreate_item(parent:TreeItem= null, index:int= -1)🔗
@@ -642,6 +652,7 @@ Values -1, 0, or 1 will be returned for the "above item", "on item", and "below 
 To get the item which the returned drop section is relative to, useget_item_at_position().
 TreeItemget_edited()const🔗
 Returns the currently edited item. Can be used withitem_editedto get the item that was modified.
+
 ```
 func _ready():
     $Tree.item_edited.connect(on_Tree_item_edited)
@@ -649,6 +660,7 @@ func _ready():
 func on_Tree_item_edited():
     print($Tree.get_edited()) # This item just got edited (e.g. checked).
 ```
+
 ```
 public override void _Ready()
 {
@@ -660,6 +672,7 @@ public void OnTreeItemEdited()
     GD.Print(GetNode<Tree>("Tree").GetEdited()); // This item just got edited (e.g. checked).
 }
 ```
+
 intget_edited_column()const🔗
 Returns the column for the currently edited item.
 Rect2get_item_area_rect(item:TreeItem, column:int= -1, button_index:int= -1)const🔗
@@ -711,6 +724,7 @@ voidset_selected(item:TreeItem, column:int)🔗
 Selects the specifiedTreeItemand column.
 
 ## Theme Property Descriptions
+
 Colorchildren_hl_line_color=Color(0.27,0.27,0.27,1)🔗
 TheColorof the relationship lines between the selectedTreeItemand its children.
 Colorcustom_button_font_highlight=Color(0.95,0.95,0.95,1)🔗
@@ -866,4 +880,5 @@ StyleBoxtitle_button_pressed🔗
 StyleBoxused when the title button is being pressed.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

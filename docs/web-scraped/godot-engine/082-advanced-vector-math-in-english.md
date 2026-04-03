@@ -3,6 +3,7 @@
 # Advanced vector math
 
 ## Planes
+
 The dot product has another interesting property with unit vectors.
 Imagine that perpendicular to that vector (and through the origin)
 passes a plane. Planes divide the entire space into positive
@@ -22,20 +23,25 @@ sheet of paper that you can orient and is pinned to the origin) instead
 of a line.
 
 ### Distance to plane
+
 Now that it's clear what a plane is, let's go back to the dot product.
 The dot product between aunit vectorand anypoint in space(yes, this time we do dot product between vector and position), returns
 thedistance from the point to the plane:
+
 ```
 var distance = normal.dot(point)
 ```
+
 ```
 var distance = normal.Dot(point);
 ```
+
 But not just the absolute distance, if the point is in the negative half
 space the distance will be negative, too:
 This allows us to tell which side of the plane a point is.
 
 ### Away from the origin
+
 I know what you are thinking! So far this is nice, butrealplanes are
 everywhere in space, not only passing through the origin. You want realplaneaction and you want itnow.
 Remember that planes not only split space in two, but they also havepolarity. This means that it is possible to have perfectly overlapping
@@ -48,73 +54,93 @@ Basically, N and D can represent any plane in space, be it for 2D or 3D
 for both. It's the same as before, but D is the distance from the origin
 to the plane, travelling in N direction. As an example, imagine you want
 to reach a point in the plane, you will just do:
+
 ```
 var point_in_plane = N*D
 ```
+
 ```
 var pointInPlane = N * D;
 ```
+
 This will stretch (resize) the normal vector and make it touch the
 plane. This math might seem confusing, but it's actually much simpler
 than it seems. If we want to tell, again, the distance from the point to
 the plane, we do the same but adjusting for distance:
+
 ```
 var distance = N.dot(point) - D
 ```
+
 ```
 var distance = N.Dot(point) - D;
 ```
+
 The same thing, using a built-in function:
+
 ```
 var distance = plane.distance_to(point)
 ```
+
 ```
 var distance = plane.DistanceTo(point);
 ```
+
 This will, again, return either a positive or negative distance.
 Flipping the polarity of the plane can be done by negating both
 N and D. This will result in a plane in the same position, but with
 inverted negative and positive half spaces:
+
 ```
 N = -N
 D = -D
 ```
+
 ```
 N = -N;
 D = -D;
 ```
+
 Godot also implements this operator inPlane.
 So, using the format below will work as expected:
+
 ```
 var inverted_plane = -plane
 ```
+
 ```
 var invertedPlane = -plane;
 ```
+
 So, remember, the plane's main practical use is that we can
 calculate the distance to it. So, when is it useful to calculate the
 distance from a point to a plane? Let's see some examples.
 
 ### Constructing a plane in 2D
+
 Planes clearly don't come out of nowhere, so they must be built.
 Constructing them in 2D is easy, this can be done from either a normal
 (unit vector) and a point, or from two points in space.
 In the case of a normal and a point, most of the work is done, as the
 normal is already computed, so calculate D from the dot product of
 the normal and the point.
+
 ```
 var N = normal
 var D = normal.dot(point)
 ```
+
 ```
 var N = normal;
 var D = normal.Dot(point);
 ```
+
 For two points in space, there are actually two planes that pass through
 them, sharing the same space but with normal pointing to the opposite
 directions. To compute the normal from the two points, the direction
 vector must be obtained first, and then it needs to be rotated 90
 degrees to either side:
+
 ```
 # Calculate vector from `a` to `b`.
 var dvec = point_a.direction_to(point_b)
@@ -123,6 +149,7 @@ var normal = Vector2(dvec.y, -dvec.x)
 # Alternatively (depending the desired side of the normal):
 # var normal = Vector2(-dvec.y, dvec.x)
 ```
+
 ```
 // Calculate vector from `a` to `b`.
 var dvec = pointA.DirectionTo(pointB);
@@ -131,24 +158,29 @@ var normal = new Vector2(dvec.Y, -dvec.X);
 // Alternatively (depending the desired side of the normal):
 // var normal = new Vector2(-dvec.Y, dvec.X);
 ```
+
 The rest is the same as the previous example. Either point_a or
 point_b will work, as they are in the same plane:
+
 ```
 var N = normal
 var D = normal.dot(point_a)
 # this works the same
 # var D = normal.dot(point_b)
 ```
+
 ```
 var N = normal;
 var D = normal.Dot(pointA);
 // this works the same
 // var D = normal.Dot(pointB);
 ```
+
 Doing the same in 3D is a little more complex and is explained
 further down.
 
 ### Some examples of planes
+
 Here is an example of what planes are useful for. Imagine you have
 aconvexpolygon. For example, a rectangle, a trapezoid, a triangle, or just any
 polygon where no faces bend inwards.
@@ -159,6 +191,7 @@ We go through all planes, if we can find a plane where the distance to
 the point is positive, then the point is outside the polygon. If we
 can't, then the point is inside.
 Code should be something like this:
+
 ```
 var inside = true
 for p in planes:
@@ -167,6 +200,7 @@ for p in planes:
         inside = false
         break # with one that fails, it's enough
 ```
+
 ```
 var inside = true;
 foreach (var p in planes)
@@ -179,6 +213,7 @@ foreach (var p in planes)
     }
 }
 ```
+
 Pretty cool, huh? But this gets much better! With a little more effort,
 similar logic will let us know when two convex polygons are overlapping
 too. This is called the Separating Axis Theorem (or SAT) and most
@@ -189,6 +224,7 @@ With another polygon, we must find a plane wherealltheotherpolygonpointsreturn a
 performed with the planes of A against the points of B, and then with
 the planes of B against the points of A:
 Code should be something like this:
+
 ```
 var overlapping = true
 
@@ -222,6 +258,7 @@ if (overlapping):
 if (overlapping):
     print("Polygons Collided!")
 ```
+
 ```
 var overlapping = true;
 
@@ -275,6 +312,7 @@ if (overlapping)
     GD.Print("Polygons Collided!");
 }
 ```
+
 As you can see, planes are quite useful, and this is the tip of the
 iceberg. You might be wondering what happens with non convex polygons.
 This is usually just handled by splitting the concave polygon into
@@ -282,6 +320,7 @@ smaller convex polygons, or using a technique such as BSP (which is not
 used much nowadays).
 
 ## Collision detection in 3D
+
 This is another bonus bit, a reward for being patient and keeping up
 with this long tutorial. Here is another piece of wisdom. This might
 not be something with a direct use case (Godot already does collision
@@ -304,6 +343,7 @@ To avoid it, some extra planes need to be tested as separators, these
 planes are the cross product between the edges of polygon A and the
 edges of polygon B
 So the final algorithm is something like:
+
 ```
 var overlapping = true
 
@@ -373,6 +413,7 @@ if (overlapping):
 if (overlapping):
    print("Polygons collided!")
 ```
+
 ```
 var overlapping = true;
 
@@ -481,11 +522,14 @@ if (overlapping)
 ```
 
 ## More information
+
 For more information on using vector math in Godot, see the following article:
+
 - Matrices and transforms
 Matrices and transforms
 If you would like additional explanation, you should check out
 3Blue1Brown's excellent video seriesEssence of Linear Algebra.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

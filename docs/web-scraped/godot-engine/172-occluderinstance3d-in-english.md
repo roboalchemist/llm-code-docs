@@ -1,10 +1,12 @@
 # OccluderInstance3D in English
 
 # OccluderInstance3D
+
 Inherits:VisualInstance3D<Node3D<Node<Object
 Provides occlusion culling for 3D nodes, which improves performance in closed areas.
 
 ## Description
+
 Occlusion culling can improve rendering performance in closed/semi-open areas by hiding geometry that is occluded by other objects.
 The occlusion culling system is mostly static.OccluderInstance3Ds can be moved or hidden at run-time, but doing so will trigger a background recomputation that can take several frames. It is recommended to only moveOccluderInstance3Ds sporadically (e.g. for procedural generation purposes), rather than doing so every frame.
 The occlusion culling system works by rendering the occluders on the CPU in parallel usingEmbree, drawing the result to a low-resolution buffer then using this to cull 3D nodes individually. In the 3D editor, you can preview the occlusion culling buffer by choosingPerspective > Display Advanced... > Occlusion Culling Bufferin the top-left corner of the 3D viewport. The occlusion culling buffer quality can be adjusted in the Project Settings.
@@ -13,6 +15,7 @@ Note:Occlusion culling is only effective ifProjectSettings.rendering/occlusion_c
 Note:Due to memory constraints, occlusion culling is not supported by default in Web export templates. It can be enabled by compiling custom Web export templates withmodule_raycast_enabled=yes.
 
 ## Tutorials
+
 - Occlusion culling
 Occlusion culling
 
@@ -42,7 +45,9 @@ void
 set_bake_mask_value(layer_number:int, value:bool)
 
 ## Property Descriptions
+
 intbake_mask=4294967295🔗
+
 - voidset_bake_mask(value:int)
 voidset_bake_mask(value:int)
 - intget_bake_mask()
@@ -68,10 +73,12 @@ You can also draw your own 2D occluder polygon by adding a newPolygonOccluder3Dr
 Alternatively, you can select a primitive occluder to use:QuadOccluder3D,BoxOccluder3DorSphereOccluder3D.
 
 ## Method Descriptions
+
 boolget_bake_mask_value(layer_number:int)const🔗
 Returns whether or not the specified layer of thebake_maskis enabled, given alayer_numberbetween 1 and 32.
 voidset_bake_mask_value(layer_number:int, value:bool)🔗
 Based onvalue, enables or disables the specified layer in thebake_mask, given alayer_numberbetween 1 and 32.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

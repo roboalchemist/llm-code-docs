@@ -1,6 +1,7 @@
 # Using NavigationRegions
 
 # Using NavigationRegions
+
 NavigationRegions are the visual Node representation of aregionof the navigationmapon the NavigationServer.
 Each NavigationRegion node holds a resource for the navigation mesh data.
 Both 2D and 3D version are available asNavigationRegion2DandNavigationRegion3Drespectively.
@@ -20,13 +21,16 @@ Note
 Existing paths will not be automatically updated when a region gets enabled / disabled.
 
 ## Creating new navigation regions
+
 New NavigationRegion nodes will automatically register to the default world navigation map for their 2D/3D dimension.
 The region RID can then be obtained from NavigationRegion Nodes withget_rid().
+
 ```
 extends NavigationRegion2D
 
 var navigationserver_region_rid: RID = get_rid()
 ```
+
 ```
 public partial class MyNavigationRegion2D : NavigationRegion2D
 {
@@ -36,11 +40,13 @@ public partial class MyNavigationRegion2D : NavigationRegion2D
     }
 }
 ```
+
 ```
 extends NavigationRegion3D
 
 var navigationserver_region_rid: RID = get_rid()
 ```
+
 ```
 public partial class MyNavigationRegion3D : NavigationRegion3D
 {
@@ -50,8 +56,10 @@ public partial class MyNavigationRegion3D : NavigationRegion3D
     }
 }
 ```
+
 New regions can also be created with the NavigationServer API and added to any existing map.
 If regions are created with the NavigationServer API directly they need to be assigned a navigation map manually.
+
 ```
 extends Node2D
 
@@ -60,6 +68,7 @@ func _ready() -> void:
     var default_map_rid: RID = get_world_2d().get_navigation_map()
     NavigationServer2D.region_set_map(new_region_rid, default_map_rid)
 ```
+
 ```
 public partial class MyNode2D : Node2D
 {
@@ -71,6 +80,7 @@ public partial class MyNode2D : Node2D
     }
 }
 ```
+
 ```
 extends Node3D
 
@@ -79,6 +89,7 @@ func _ready() -> void:
     var default_map_rid: RID = get_world_3d().get_navigation_map()
     NavigationServer3D.region_set_map(new_region_rid, default_map_rid)
 ```
+
 ```
 public partial class MyNode3D : Node3D
 {
@@ -90,9 +101,11 @@ public partial class MyNode3D : Node3D
     }
 }
 ```
+
 Note
 Navigation regions can only be assigned to a single navigation map.
 If an existing region is assigned to a new navigation map it will leave the old map.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

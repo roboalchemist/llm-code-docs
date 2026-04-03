@@ -1,10 +1,12 @@
 # GridMap in English
 
 # GridMap
+
 Inherits:Node3D<Node<Object
 Node for 3D tile-based maps.
 
 ## Description
+
 GridMap lets you place meshes on a grid interactively. It works both from the editor and from scripts, which can help you create in-game level editors.
 GridMaps use aMeshLibrarywhich contains a list of tiles. Each tile is a mesh with materials plus optional collision and navigation shapes.
 A GridMap contains a collection of cells. Each grid cell refers to a tile in theMeshLibrary. All cells in the map have the same dimensions.
@@ -12,6 +14,7 @@ Internally, a GridMap is split into a sparse collection of octants for efficient
 Note:GridMap doesn't extendVisualInstance3Dand therefore can't be hidden or cull masked based onVisualInstance3D.layers. If you make a light not affect the first layer, the whole GridMap won't be lit by the light in question.
 
 ## Tutorials
+
 - Using gridmaps
 Using gridmaps
 - 3D Platformer Demo
@@ -132,17 +135,21 @@ void
 set_navigation_map(navigation_map:RID)
 
 ## Signals
+
 cell_size_changed(cell_size:Vector3)🔗
 Emitted whencell_sizechanges.
 changed()🔗
 Emitted when theMeshLibraryof this GridMap changes.
 
 ## Constants
+
 INVALID_CELL_ITEM=-1🔗
 Invalid cell item that can be used inset_cell_item()to clear cells (or represent an empty cell inget_cell_item()).
 
 ## Property Descriptions
+
 boolbake_navigation=false🔗
+
 - voidset_bake_navigation(value:bool)
 voidset_bake_navigation(value:bool)
 - boolis_baking_navigation()
@@ -219,6 +226,7 @@ PhysicsMaterialget_physics_material()
 Overrides the default friction and bounce physics properties for the wholeGridMap.
 
 ## Method Descriptions
+
 voidclear()🔗
 Clear all cells.
 voidclear_baked_meshes()🔗
@@ -273,4 +281,5 @@ voidset_navigation_map(navigation_map:RID)🔗
 Sets theRIDof the navigation map this GridMap node should use for its cell baked navigation meshes.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,13 +1,16 @@
 # InputEventMIDI
 
 # InputEventMIDI
+
 Inherits:InputEvent<Resource<RefCounted<Object
 Represents a MIDI message from a MIDI device, such as a musical keyboard.
 
 ## Description
+
 InputEventMIDI stores information about messages fromMIDI(Musical Instrument Digital Interface) devices. These may include musical keyboards, synthesizers, and drum machines.
 MIDI messages can be received over a 5-pin MIDI connector or over USB. If your device supports both be sure to check the settings in the device to see which output it is using.
 By default, Godot does not detect MIDI devices. You need to callOS.open_midi_inputs(), first. You can check which devices are detected withOS.get_connected_midi_inputs(), and close the connection withOS.close_midi_inputs().
+
 ```
 func _ready():
     OS.open_midi_inputs()
@@ -28,6 +31,7 @@ func _print_midi_info(midi_event):
     print("Controller number: ", midi_event.controller_number)
     print("Controller value: ", midi_event.controller_value)
 ```
+
 ```
 public override void _Ready()
 {
@@ -56,10 +60,12 @@ private void PrintMIDIInfo(InputEventMidi midiEvent)
     GD.Print($"Controller value: {midiEvent.ControllerValue}");
 }
 ```
+
 Note:Godot does not support MIDI output, so there is no way to emit MIDI messages from Godot. Only MIDI input is supported.
 Note:On the Web platform, using MIDI input requires a browser permission to be granted first. This permission request is performed when callingOS.open_midi_inputs(). MIDI input will not work until the user accepts the permission request.
 
 ## Tutorials
+
 - MIDI Message Status Byte List
 MIDI Message Status Byte List
 - Wikipedia General MIDI Instrument List
@@ -90,7 +96,9 @@ pressure
 velocity
 
 ## Property Descriptions
+
 intchannel=0🔗
+
 - voidset_channel(value:int)
 voidset_channel(value:int)
 - intget_channel()
@@ -143,6 +151,7 @@ voidset_velocity(value:int)
 intget_velocity()
 The velocity of the MIDI message. This value ranges from0to127. For a musical keyboard, this corresponds to how quickly the key was pressed, and is rarely above110in practice.
 Note:Some MIDI devices may send a@GlobalScope.MIDI_MESSAGE_NOTE_ONmessage with0velocity and expect it to be treated the same as a@GlobalScope.MIDI_MESSAGE_NOTE_OFFmessage. If necessary, this can be handled with a few lines of code:
+
 ```
 func _input(event):
     if event is InputEventMIDI:
@@ -151,4 +160,5 @@ func _input(event):
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

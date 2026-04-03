@@ -1,10 +1,12 @@
 # ReflectionProbe in English
 
 # ReflectionProbe
+
 Inherits:VisualInstance3D<Node3D<Node<Object
 Captures its surroundings to create fast, accurate reflections from a given point.
 
 ## Description
+
 Captures its surroundings as a cubemap, and stores versions of it with increasing levels of blur to simulate different material roughnesses.
 TheReflectionProbeis used to create high-quality reflections at a low performance cost (whenupdate_modeisUPDATE_ONCE).ReflectionProbes can be blended together and with the rest of the scene smoothly.ReflectionProbes can also be combined withVoxelGI, SDFGI (Environment.sdfgi_enabled) and screen-space reflections (Environment.ssr_enabled) to get more accurate reflections in specific areas.ReflectionProbes render all objects within theircull_mask, so updating them can be quite expensive. It is best to update them once with the important static objects and then leave them as-is.
 Note:UnlikeVoxelGIand SDFGI,ReflectionProbes only source their environment from aWorldEnvironmentnode. If you specify anEnvironmentresource within aCamera3Dnode, it will be ignored by theReflectionProbe. This can lead to incorrect lighting within theReflectionProbe.
@@ -12,6 +14,7 @@ Note:When using the Mobile rendering method, only8reflection probes can be displ
 Note:When using the Mobile rendering method, reflection probes will only correctly affect meshes whose visibility AABB intersects with the reflection probe's AABB. If using a shader to deform the mesh in a way that makes it go outside its AABB,GeometryInstance3D.extra_cull_marginmust be increased on the mesh. Otherwise, the reflection probe may not be visible on the mesh.
 
 ## Tutorials
+
 - Reflection probes
 Reflection probes
 
@@ -72,6 +75,7 @@ UpdateMode
 update_mode
 
 ## Enumerations
+
 enumUpdateMode:🔗
 UpdateModeUPDATE_ONCE=0
 Update the probe once on the next frame (recommended for most objects). The corresponding radiance map will be generated over the following six frames. This takes more time to update thanUPDATE_ALWAYS, but it has a lower performance cost and can result in higher-quality reflections. The ReflectionProbe is updated when its transform changes, but not when nearby geometry changes. You can force aReflectionProbeupdate by moving theReflectionProbeslightly in any direction.
@@ -86,7 +90,9 @@ AmbientModeAMBIENT_COLOR=2
 Apply custom ambient lighting inside theReflectionProbe's box defined by itssize. Seeambient_colorandambient_color_energy.
 
 ## Property Descriptions
+
 Colorambient_color=Color(0,0,0,1)🔗
+
 - voidset_ambient_color(value:Color)
 voidset_ambient_color(value:Color)
 - Colorget_ambient_color()
@@ -183,4 +189,5 @@ UpdateModeget_update_mode()
 Sets how frequently theReflectionProbeis updated. Can beUPDATE_ONCEorUPDATE_ALWAYS.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

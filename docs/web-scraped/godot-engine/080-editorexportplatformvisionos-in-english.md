@@ -1,10 +1,12 @@
 # EditorExportPlatformVisionOS in English
 
 # EditorExportPlatformVisionOS
+
 Inherits:EditorExportPlatformAppleEmbedded<EditorExportPlatform<RefCounted<Object
 Exporter for visionOS.
 
 ## Tutorials
+
 - Exporting for iOS
 Exporting for iOS
 - iOS plugins documentation index
@@ -537,12 +539,15 @@ bool
 user_data/accessible_from_itunes_sharing
 
 ## Property Descriptions
+
 Stringapplication/additional_plist_content🔗
 Additional data added to the root<dict>section of theInfo.plistfile. The value should be an XML section with pairs of key-value elements, e.g.:
+
 ```
 <key>key_name</key>
 <string>value</string>
 ```
+
 Stringapplication/app_store_team_id🔗
 Apple Team ID, unique 10-character string. To locate your Team ID check "Membership details" section in your Apple developer account dashboard, or "Organizational Unit" of your code signing certificate. SeeLocate your Team ID.
 Stringapplication/bundle_identifier🔗
@@ -602,10 +607,12 @@ Stringcustom_template/release🔗
 Path to the custom export template. If left empty, default template is used.
 Stringentitlements/additional🔗
 Additional data added to the root<dict>section of the.entitlementsfile. The value should be an XML section with pairs of key-value elements, for example:
+
 ```
 <key>key_name</key>
 <string>value</string>
 ```
+
 boolentitlements/game_center🔗
 Iftrue, allows access to Game Center features. Seecom.apple.developer.game-center.
 boolentitlements/increased_memory_limit🔗
@@ -934,4 +941,5 @@ booluser_data/accessible_from_itunes_sharing🔗
 Iftrue, the app "Documents" folder can be accessed via iTunes file sharing. SeeUIFileSharingEnabled.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

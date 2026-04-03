@@ -1,15 +1,18 @@
 # AnimationMixer in English
 
 # AnimationMixer
+
 Inherits:Node<Object
 Inherited By:AnimationPlayer,AnimationTree
 Base class forAnimationPlayerandAnimationTree.
 
 ## Description
+
 Base class forAnimationPlayerandAnimationTreeto manage animation lists. It also has general properties and methods for playback and blending.
 After instantiating the playback information data within the extended class, the blending is processed by theAnimationMixer.
 
 ## Tutorials
+
 - Migrating Animations from Godot 4.0 to 4.3
 Migrating Animations from Godot 4.0 to 4.3
 
@@ -122,6 +125,7 @@ void
 rename_animation_library(name:StringName, newname:StringName)
 
 ## Signals
+
 animation_finished(anim_name:StringName)🔗
 Notifies when an animation finished playing.
 Note:This signal is not emitted if an animation is looping.
@@ -140,6 +144,7 @@ mixer_updated()🔗
 Notifies when the property related process have been updated.
 
 ## Enumerations
+
 enumAnimationCallbackModeProcess:🔗
 AnimationCallbackModeProcessANIMATION_CALLBACK_MODE_PROCESS_PHYSICS=0
 Process animation during physics frames (seeNode.NOTIFICATION_INTERNAL_PHYSICS_PROCESS). This is especially useful when animating physics bodies.
@@ -161,6 +166,7 @@ AnimationCallbackModeDiscreteANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS=2
 Always treat theAnimation.UPDATE_DISCRETEtrack value asAnimation.UPDATE_CONTINUOUSwithAnimation.INTERPOLATION_NEAREST. This is the default behavior forAnimationTree.
 If a value track has un-interpolatable type key values, it is internally converted to useANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVEwithAnimation.UPDATE_DISCRETE.
 Un-interpolatable type list:
+
 - @GlobalScope.TYPE_NIL
 @GlobalScope.TYPE_NIL
 - @GlobalScope.TYPE_NODE_PATH
@@ -182,7 +188,9 @@ It is same for arrays and vectors with them such as@GlobalScope.TYPE_PACKED_INT3
 @GlobalScope.TYPE_STRINGand@GlobalScope.TYPE_STRING_NAMEare interpolated between character codes and lengths, but note that there is a difference in algorithm between interpolation between keys and interpolation by blending.
 
 ## Property Descriptions
+
 boolactive=true🔗
+
 - voidset_active(value:bool)
 voidset_active(value:bool)
 - boolis_active()
@@ -254,15 +262,18 @@ NodePathget_root_node()
 The node which node path references will travel from.
 
 ## Method Descriptions
+
 Variant_post_process_key_value(animation:Animation, track:int, value:Variant, object_id:int, object_sub_idx:int)virtualconst🔗
 A virtual function for processing after getting a key during playback.
 Erroradd_animation_library(name:StringName, library:AnimationLibrary)🔗
 Addslibraryto the animation player, under the keyname.
 AnimationMixer has a global library by default with an empty string as key. For adding an animation to the global library:
+
 ```
 var global_library = mixer.get_animation_library("")
 global_library.add_animation("animation_name", animation_resource)
 ```
+
 voidadvance(delta:float)🔗
 Manually advance the animations by the specified time (in seconds).
 voidcapture(name:StringName, duration:float, trans_type:TransitionType= 0, ease_type:EaseType= 0)🔗
@@ -289,6 +300,7 @@ Retrieve the motion delta of position with theroot_motion_trackas aVector3that c
 Ifroot_motion_trackis not a path to a track of typeAnimation.TYPE_POSITION_3D, returnsVector3(0,0,0).
 See alsoroot_motion_trackandRootMotionView.
 The most basic example is applying position toCharacterBody3D:
+
 ```
 var current_rotation
 
@@ -300,7 +312,9 @@ func _process(delta):
     set_velocity(velocity)
     move_and_slide()
 ```
+
 By using this in combination withget_root_motion_rotation_accumulator(), you can apply the root motion position more correctly to account for the rotation of the node.
+
 ```
 func _process(delta):
     if Input.is_action_just_pressed("animate"):
@@ -310,8 +324,10 @@ func _process(delta):
     set_velocity(velocity)
     move_and_slide()
 ```
+
 Ifroot_motion_localistrue, returns the pre-multiplied translation value with the inverted rotation.
 In this case, the code can be written as follows:
+
 ```
 func _process(delta):
     if Input.is_action_just_pressed("animate"):
@@ -321,10 +337,12 @@ func _process(delta):
     set_velocity(velocity)
     move_and_slide()
 ```
+
 Vector3get_root_motion_position_accumulator()const🔗
 Retrieve the blended value of the position tracks with theroot_motion_trackas aVector3that can be used elsewhere.
 This is useful in cases where you want to respect the initial key values of the animation.
 For example, if an animation with only one keyVector3(0,0,0)is played in the previous frame and then an animation with only one keyVector3(1,0,1)is played in the next frame, the difference can be calculated as follows:
+
 ```
 var prev_root_motion_position_accumulator
 
@@ -336,23 +354,27 @@ func _process(delta):
     prev_root_motion_position_accumulator = current_root_motion_position_accumulator
     transform.origin += difference
 ```
+
 However, if the animation loops, an unintended discrete change may occur, so this is only useful for some simple use cases.
 Quaternionget_root_motion_rotation()const🔗
 Retrieve the motion delta of rotation with theroot_motion_trackas aQuaternionthat can be used elsewhere.
 Ifroot_motion_trackis not a path to a track of typeAnimation.TYPE_ROTATION_3D, returnsQuaternion(0,0,0,1).
 See alsoroot_motion_trackandRootMotionView.
 The most basic example is applying rotation toCharacterBody3D:
+
 ```
 func _process(delta):
     if Input.is_action_just_pressed("animate"):
         state_machine.travel("Animate")
     set_quaternion(get_quaternion() * animation_tree.get_root_motion_rotation())
 ```
+
 Quaternionget_root_motion_rotation_accumulator()const🔗
 Retrieve the blended value of the rotation tracks with theroot_motion_trackas aQuaternionthat can be used elsewhere.
 This is necessary to apply the root motion position correctly, taking rotation into account. See alsoget_root_motion_position().
 Also, this is useful in cases where you want to respect the initial key values of the animation.
 For example, if an animation with only one keyQuaternion(0,0,0,1)is played in the previous frame and then an animation with only one keyQuaternion(0,0.707,0,0.707)is played in the next frame, the difference can be calculated as follows:
+
 ```
 var prev_root_motion_rotation_accumulator
 
@@ -364,12 +386,14 @@ func _process(delta):
     prev_root_motion_rotation_accumulator = current_root_motion_rotation_accumulator
     transform.basis *=  Basis(difference)
 ```
+
 However, if the animation loops, an unintended discrete change may occur, so this is only useful for some simple use cases.
 Vector3get_root_motion_scale()const🔗
 Retrieve the motion delta of scale with theroot_motion_trackas aVector3that can be used elsewhere.
 Ifroot_motion_trackis not a path to a track of typeAnimation.TYPE_SCALE_3D, returnsVector3(0,0,0).
 See alsoroot_motion_trackandRootMotionView.
 The most basic example is applying scale toCharacterBody3D:
+
 ```
 var current_scale = Vector3(1, 1, 1)
 var scale_accum = Vector3(1, 1, 1)
@@ -382,9 +406,11 @@ func _process(delta):
     scale_accum += animation_tree.get_root_motion_scale()
     set_scale(current_scale * scale_accum)
 ```
+
 Vector3get_root_motion_scale_accumulator()const🔗
 Retrieve the blended value of the scale tracks with theroot_motion_trackas aVector3that can be used elsewhere.
 For example, if an animation with only one keyVector3(1,1,1)is played in the previous frame and then an animation with only one keyVector3(2,2,2)is played in the next frame, the difference can be calculated as follows:
+
 ```
 var prev_root_motion_scale_accumulator
 
@@ -396,6 +422,7 @@ func _process(delta):
     prev_root_motion_scale_accumulator = current_root_motion_scale_accumulator
     transform.basis = transform.basis.scaled(difference)
 ```
+
 However, if the animation loops, an unintended discrete change may occur, so this is only useful for some simple use cases.
 boolhas_animation(name:StringName)const🔗
 Returnstrueif theAnimationMixerstores anAnimationwith keyname.
@@ -407,4 +434,5 @@ voidrename_animation_library(name:StringName, newname:StringName)🔗
 Moves theAnimationLibraryassociated with the keynameto the keynewname.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

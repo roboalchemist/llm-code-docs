@@ -1,10 +1,12 @@
 # SpringBoneSimulator3D in English
 
 # SpringBoneSimulator3D
+
 Inherits:SkeletonModifier3D<Node3D<Node<Object
 ASkeletonModifier3Dto apply inertial wavering to bone chains.
 
 ## Description
+
 ThisSkeletonModifier3Dcan be used to wiggle hair, cloth, and tails. This modifier behaves differently fromPhysicalBoneSimulator3Das it attempts to return the original pose after modification.
 If you setupset_root_bone()andset_end_bone(), it is treated as one bone chain. Note that it does not support a branched chain like Y-shaped chains.
 When a bone chain is created, an array is generated from the bones that exist in between and listed in the joint list.
@@ -258,6 +260,7 @@ void
 set_stiffness_damping_curve(index:int, curve:Curve)
 
 ## Enumerations
+
 enumCenterFrom:🔗
 CenterFromCENTER_FROM_WORLD_ORIGIN=0
 The world origin is defined as center.
@@ -269,7 +272,9 @@ The bone pose origin of the parentSkeleton3Dspecified byset_center_bone()is defi
 IfNode3Dis not found, the parentSkeleton3Dis treated as center.
 
 ## Property Descriptions
+
 Vector3external_force=Vector3(0,0,0)🔗
+
 - voidset_external_force(value:Vector3)
 voidset_external_force(value:Vector3)
 - Vector3get_external_force()
@@ -291,6 +296,7 @@ intget_setting_count()
 The number of settings.
 
 ## Method Descriptions
+
 boolare_all_child_collisions_enabled(index:int)const🔗
 Returnstrueif all childSpringBoneCollision3Ds are contained in the collision list atindexin the settings.
 voidclear_collisions(index:int)🔗
@@ -471,4 +477,5 @@ voidset_stiffness_damping_curve(index:int, curve:Curve)🔗
 Sets the stiffness force damping curve of the bone chain.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

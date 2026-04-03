@@ -1,10 +1,12 @@
 # HTTPClient in English
 
 # HTTPClient
+
 Inherits:RefCounted<Object
 Low-level hyper-text transfer protocol client.
 
 ## Description
+
 Hyper-text transfer protocol client (sometimes called "User Agent"). Used to make HTTP requests to download web content, upload files and other data or to communicate with various services, among other use cases.
 See theHTTPRequestnode for a higher-level alternative.
 Note:This client only needs to connect to a host once (seeconnect_to_host()) to send multiple requests. Because of this, methods that take URLs usually take just the part after the host instead of the full URL, as the client is already connected to a host. Seerequest()for a full example and to get started.
@@ -17,6 +19,7 @@ Note:TLS support is currently limited to TLSv1.2 and TLSv1.3. Attempting to conn
 Warning:TLS certificate revocation and certificate pinning are currently not supported. Revoked certificates are accepted as long as they are otherwise valid. If this is a concern, you may want to use automatically managed certificates with a short validity period.
 
 ## Tutorials
+
 - HTTP client class
 HTTP client class
 - TLS certificates
@@ -89,6 +92,7 @@ void
 set_https_proxy(host:String, port:int)
 
 ## Enumerations
+
 enumMethod:🔗
 MethodMETHOD_GET=0
 HTTP GET method. The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
@@ -140,6 +144,7 @@ ResponseCodeRESPONSE_PROCESSING=102
 HTTP status code102Processing(WebDAV). Indicates that the server has received and is processing the request, but no response is available yet.
 ResponseCodeRESPONSE_OK=200
 HTTP status code200OK. The request has succeeded. Default response for successful requests. Meaning varies depending on the request:
+
 - METHOD_GET: The resource has been fetched and is transmitted in the message body.
 METHOD_GET: The resource has been fetched and is transmitted in the message body.
 - METHOD_HEAD: The entity headers are in the message body.
@@ -266,7 +271,9 @@ ResponseCodeRESPONSE_NETWORK_AUTH_REQUIRED=511
 HTTP status code511NetworkAuthenticationRequired. The client needs to authenticate to gain network access.
 
 ## Property Descriptions
+
 boolblocking_mode_enabled=false🔗
+
 - voidset_blocking_mode(value:bool)
 voidset_blocking_mode(value:bool)
 - boolis_blocking_mode_enabled()
@@ -286,6 +293,7 @@ intget_read_chunk_size()
 The size of the buffer used and maximum bytes to read per iteration. Seeread_response_body_chunk().
 
 ## Method Descriptions
+
 voidclose()🔗
 Closes the current connection, allowing reuse of thisHTTPClient.
 Errorconnect_to_host(host:String, port:int= -1, tls_options:TLSOptions= null)🔗
@@ -301,12 +309,14 @@ PackedStringArrayget_response_headers()🔗
 Returns the response headers.
 Dictionaryget_response_headers_as_dictionary()🔗
 Returns all response headers as aDictionary. Each entry is composed by the header name, and aStringcontaining the values separated by";". The casing is kept the same as the headers were received.
+
 ```
 {
     "content-length": 12,
     "Content-Type": "application/json; charset=UTF-8",
 }
 ```
+
 Statusget_status()const🔗
 Returns aStatusconstant. Need to callpoll()in order to get status updates.
 boolhas_response()const🔗
@@ -317,22 +327,27 @@ Errorpoll()🔗
 This needs to be called in order to have any request processed. Check results withget_status().
 Stringquery_string_from_dict(fields:Dictionary)🔗
 Generates a GET/POST application/x-www-form-urlencoded style query string from a provided dictionary, e.g.:
+
 ```
 var fields = { "username": "user", "password": "pass" }
 var query_string = http_client.query_string_from_dict(fields)
 # Returns "username=user&password=pass"
 ```
+
 ```
 var fields = new Godot.Collections.Dictionary { { "username", "user" }, { "password", "pass" } };
 string queryString = httpClient.QueryStringFromDict(fields);
 // Returns "username=user&password=pass"
 ```
+
 Furthermore, if a key has anullvalue, only the key itself is added, without equal sign and value. If the value is an array, for each value in it a pair with the same key is added.
+
 ```
 var fields = { "single": 123, "not_valued": null, "multiple": [22, 33, 44] }
 var query_string = http_client.query_string_from_dict(fields)
 # Returns "single=123&not_valued&multiple=22&multiple=33&multiple=44"
 ```
+
 ```
 var fields = new Godot.Collections.Dictionary
 {
@@ -343,6 +358,7 @@ var fields = new Godot.Collections.Dictionary
 string queryString = httpClient.QueryStringFromDict(fields);
 // Returns "single=123&not_valued&multiple=22&multiple=33&multiple=44"
 ```
+
 PackedByteArrayread_response_body_chunk()🔗
 Reads one chunk from the response.
 Errorrequest(method:Method, url:String, headers:PackedStringArray, body:String= "")🔗
@@ -350,18 +366,21 @@ Sends an HTTP request to the connected host with the givenmethod.
 The URL parameter is usually just the part after the host, so forhttps://example.com/index.php, it is/index.php. When sending requests to an HTTP proxy server, it should be an absolute URL. ForMETHOD_OPTIONSrequests,*is also allowed. ForMETHOD_CONNECTrequests, it should be the authority component (host:port).
 headersare HTTP request headers.
 To create a POST request with query strings to push to the server, do:
+
 ```
 var fields = { "username": "user", "password": "pass" }
 var query_string = http_client.query_string_from_dict(fields)
 var headers = ["Content-Type: application/x-www-form-urlencoded", "Content-Length: " + str(query_string.length())]
 var result = http_client.request(http_client.METHOD_POST, "/index.php", headers, query_string)
 ```
+
 ```
 var fields = new Godot.Collections.Dictionary { { "username", "user" }, { "password", "pass" } };
 string queryString = new HttpClient().QueryStringFromDict(fields);
 string[] headers = ["Content-Type: application/x-www-form-urlencoded", $"Content-Length: {queryString.Length}"];
 var result = new HttpClient().Request(HttpClient.Method.Post, "index.php", headers, queryString);
 ```
+
 Note:Thebodyparameter is ignored ifmethodisMETHOD_GET. This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. SeeString.uri_encode()for an example.
 Errorrequest_raw(method:Method, url:String, headers:PackedStringArray, body:PackedByteArray)🔗
 Sends a raw HTTP request to the connected host with the givenmethod.
@@ -376,4 +395,5 @@ Sets the proxy server for HTTPS requests.
 The proxy server is unset ifhostis empty orportis -1.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

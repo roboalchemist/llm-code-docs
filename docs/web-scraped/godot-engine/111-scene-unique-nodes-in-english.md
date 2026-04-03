@@ -3,6 +3,7 @@
 # Scene Unique Nodes
 
 ## Introduction
+
 Usingget_node()to reference nodes from a script can sometimes be fragile.
 If you move a button in a UI scene from one panel to another, the button's node
 path changes, and if a script usesget_node()with a hard-coded node path,
@@ -12,6 +13,7 @@ unique node to avoid having to update the script every time
 the node's path is changed.
 
 ## Creation and usage
+
 There are two ways to create a scene unique node.
 In the Scene tree dock, right-click on a node and selectAccess as Unique Namein the context menu.
 After selecting the option, the node will now have a percent symbol (%) next
@@ -21,19 +23,23 @@ Once you confirm, the percent symbol will appear next to its name.
 You can now use the node in your script. For example, you can reference it with
 aget_node()method call by typing the % symbol, followed by the node's
 name:
+
 ```
 get_node("%RedButton").text = "Hello"
 %RedButton.text = "Hello" # Shorter syntax
 ```
+
 ```
 GetNode<Button>("%RedButton").Text = "Hello";
 ```
 
 ## Same-scene limitation
+
 A scene unique node can only be retrieved by a node inside the same scene. To
 demonstrate this limitation, consider this examplePlayerscene that
 instances aSwordscene:
 Here are the results ofget_node()calls inside thePlayerscript:
+
 - get_node("%Eyes")returns theEyesnode.
 get_node("%Eyes")returns theEyesnode.
 - get_node("%Hilt")returnsnull.
@@ -58,6 +64,7 @@ is marked as a scene unique node in thePlayerscene, so this is possible:
 get_node("%Sword/%Hilt")returns theHiltnode.
 
 ## Alternatives
+
 Scene unique nodes are a useful tool to navigate a scene. However, there are
 some situations where other techniques may be better.
 AGroupallows locating a node (or a group of many nodes)
@@ -74,4 +81,5 @@ method is called,find_child()needs to check every descendant (every child,
 grandchild, and so on).
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

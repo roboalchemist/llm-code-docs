@@ -1,14 +1,17 @@
 # PhysicalBone3D
 
 # PhysicalBone3D
+
 Inherits:PhysicsBody3D<CollisionObject3D<Node3D<Node<Object
 A physics body used to make bones in aSkeleton3Dreact to physics.
 
 ## Description
+
 ThePhysicalBone3Dnode is a physics body that can be used to make bones in aSkeleton3Dreact to physics.
 Note:In order to detect physical bones with raycasts, theSkeletonModifier3D.activeproperty of the parentPhysicalBoneSimulator3Dmust betrueand theSkeleton3D's bone must be assigned toPhysicalBone3Dcorrectly; it means thatget_bone_id()should return a valid id (>=0).
 
 ## Tutorials
+
 - Ragdoll System
 Ragdoll System
 
@@ -95,6 +98,7 @@ bool
 is_simulating_physics()
 
 ## Enumerations
+
 enumDampMode:🔗
 DampModeDAMP_MODE_COMBINE=0
 In this mode, the body's damping value is added to any value set in areas or the default value.
@@ -115,7 +119,9 @@ JointTypeJOINT_TYPE_6DOF=5
 A 6 degrees of freedom joint is applied to the PhysicsBone3D.
 
 ## Property Descriptions
+
 floatangular_damp=0.0🔗
+
 - voidset_angular_damp(value:float)
 voidset_angular_damp(value:float)
 - floatget_angular_damp()
@@ -217,6 +223,7 @@ floatget_mass()
 The body's mass.
 
 ## Method Descriptions
+
 void_integrate_forces(state:PhysicsDirectBodyState3D)virtual🔗
 Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but thecustom_integratorproperty allows you to disable the standard force integration and do fully custom force integration for a body.
 voidapply_central_impulse(impulse:Vector3)🔗
@@ -235,4 +242,5 @@ boolis_simulating_physics()🔗
 Returnstrueif the PhysicsBone3D is currently simulating physics.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

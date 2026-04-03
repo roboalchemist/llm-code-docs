@@ -3,8 +3,10 @@
 # 3D lights and shadows
 
 ## Introduction
+
 Light sources emit light that mixes with the materials and produces a visible
 result. Light can come from several types of sources in a scene:
+
 - From the material itself, in the form of the emission color (though it does
 not affect nearby objects unless baked or screen-space indirect lighting is enabled).
 From the material itself, in the form of the emission color (though it does
@@ -21,9 +23,11 @@ See also
 You can compare various types of lights in action using the3D Lights and Shadows demo project.
 
 ## Light nodes
+
 There are three types of light nodes:DirectionalLight3D,OmniLight3DandSpotLight3D. Let's take a look at the common
 parameters for lights:
 Each property has a specific function:
+
 - Color:Base color for emitted light.
 Color:Base color for emitted light.
 - Energy:Energy multiplier. This is useful for saturating lights or working withHigh dynamic range lighting.
@@ -49,6 +53,7 @@ SeePhysical light and camera unitsif you wish to use real world
 units to configure your lights' intensity and color temperature.
 
 ## Light number limits
+
 When using the Forward+ renderer, Godot uses aclusteringapproach for
 real-time lighting. As many lights as desired can be added (as long as
 performance allows). However, there's still a default limit of 512clustered
@@ -78,9 +83,11 @@ them much faster to render. You can also use emissive materials with anyglobal i
 as a replacement for light nodes that emit light over a large area.
 
 ## Shadow mapping
+
 Lights can optionally cast shadows. This gives them greater realism (light does
 not reach occluded areas), but it can incur a bigger performance cost.
 There is a list of generic shadow parameters, each also has a specific function:
+
 - Enabled:Check to enable shadow mapping in this light.
 Enabled:Check to enable shadow mapping in this light.
 - Opacity:Areas occluded are darkened by this opacity factor. Shadows are
@@ -127,6 +134,7 @@ Caster Mask:Shadows are only cast by objects in these layers. Note that
 this mask does not affect which objects shadows are castonto.
 
 ### Tweaking shadow bias
+
 Below is an image of what tweaking bias looks like. Default values work for most
 cases, but in general, it depends on the size and complexity of geometry.
 If theShadow BiasorShadow Normal Biasis set too low for a given light,
@@ -153,6 +161,7 @@ This change in rendering space can sometimes drastically alter the light's appea
 appearance to an unshadowed light, you may need to adjust the light's energy setting.
 
 ## Directional light
+
 This is the most common type of light and represents a light source very far
 away (such as the sun). It is also the cheapest light to compute and should be
 used whenever possible (although it's not the cheapest shadow-map to compute,
@@ -173,6 +182,7 @@ recommendations inPCSS recommendationsif setting
 this value above0.0on lights with shadows enabled.
 
 ### Directional shadow mapping
+
 To compute shadow maps, the scene is rendered (only depth) from an orthogonal
 point of view that covers the whole scene (or up to the max distance). There is,
 however, a problem with this approach because objects closer to the camera
@@ -212,6 +222,7 @@ value if you notice missing shadows that are not related to shadow biasing
 issues.
 
 ## Omni light
+
 Omni light is a point source that emits light spherically in all directions up to a given
 radius.
 In real life, light attenuation is an inverse function, which means omni lights don't have a radius.
@@ -225,6 +236,7 @@ called acontact-hardeningshadow (also known as PCSS). This kind of shadow is
 expensive, so check the recommendations inPCSS recommendationsif setting this value above0.0on lights with shadows enabled.
 
 ### Omni shadow mapping
+
 Omni light shadow mapping is relatively straightforward. The main issue that
 needs to be considered is the algorithm used to render it.
 Omni Shadows can be rendered as eitherDual ParaboloidorCubemapped.Dual Paraboloidrenders quickly, but can cause deformations, whileCubeis more correct, but slower. The default isCube, but consider changing it
@@ -244,18 +256,21 @@ With the projector texture below, the following result is obtained:
 If you've acquired omni projectors in the form of cubemap images, you can usethis web-based conversion toolto convert them to a single panorama image.
 
 ## Spot light
+
 Spot lights are similar to omni lights, except they emit light only into a cone
 (or "cutoff"). They are useful to simulate flashlights,
 car lights, reflectors, spots, etc. This type of light is also attenuated towards the
 opposite direction it points to.
 Spot lights share the sameRange,AttenuationandSizeas OmniLight3D,
 and add two extra parameters:
+
 - Angle:The aperture angle of the light.
 Angle:The aperture angle of the light.
 - Angle Attenuation:The cone attenuation, which helps soften the cone borders.
 Angle Attenuation:The cone attenuation, which helps soften the cone borders.
 
 ### Spot shadow mapping
+
 Spots feature the same parameters as omni lights for shadow mapping. Rendering
 spot shadow maps is significantly faster compared to omni lights, as only one
 shadow texture needs to be rendered (instead of rendering 6 faces, or 2 in dual
@@ -275,12 +290,14 @@ working entirely. If you need shadows for wider lights, use an omni light
 instead.
 
 ## Shadow atlas
+
 Unlike Directional lights, which have their own shadow texture, omni and spot
 lights are assigned to slots of a shadow atlas. This atlas can be configured in
 the advanced Project Settings (Rendering > Lights And Shadows > Positional Shadow).
 The resolution applies to the whole shadow atlas. This atlas is divided into four quadrants:
 Each quadrant can be subdivided to allocate any number of shadow maps; the following is the default subdivision:
 The shadow atlas allocates space as follows:
+
 - The biggest shadow map size (when no subdivision is used) represents a light the size of the screen (or bigger).
 The biggest shadow map size (when no subdivision is used) represents a light the size of the screen (or bigger).
 - Subdivisions (smaller maps) represent shadows for lights that are further away from view and proportionally smaller.
@@ -316,6 +333,7 @@ set all quadrants to have the same subdivision so that all lights have shadows
 of similar quality level.
 
 ## Balancing performance and quality
+
 Shadow rendering is a critical topic in 3D rendering performance. It's important
 to make the right choices here to avoid creating bottlenecks.
 Directional shadow quality settings can be changed at runtime by calling the
@@ -324,6 +342,7 @@ Positional (omni/spot) shadow quality settings can be changed at runtime on the
 rootViewport.
 
 ### Shadow map size
+
 High shadow resolutions result in sharper shadows, but at a significant
 performance cost. It should also be noted thatsharper shadows are not always
 more realistic. In most cases, this should be kept at its default value of4096or decreased to2048for low-end GPUs.
@@ -332,6 +351,7 @@ you can counteract this by adjusting theshadow atlasquadrants to contain
 fewer shadows. This will allow each shadow to be rendered at a higher resolution.
 
 ### Shadow filter mode
+
 Several shadow map quality settings can be chosen here. The defaultSoft Lowis a good balance between performance and quality for scenes with detailed
 textures, as the texture detail will help make the dithering pattern less noticeable.
 However, in projects with less detailed textures, the shadow dithering pattern
@@ -341,6 +361,7 @@ artifacts from the low sample count less visible. Conversely, theSoft HighandSof
 make use of the increased sample count.
 
 ### 16-bits versus 32-bit
+
 By default, Godot uses 16-bit depth textures for shadow map rendering. This is
 recommended in most cases as it performs better without a noticeable difference
 in quality.
@@ -350,9 +371,11 @@ enabled. However, the difference is often barely visible, yet this can have a
 significant performance cost.
 
 ### Light/shadow distance fade
+
 OmniLight3D and SpotLight3D offer several properties to hide distant lights.
 This can improve performance significantly in large scenes with dozens of lights
 or more.
+
 - Enabled:Controls whether distance fade (a form ofLOD)
 is enabled. The light will fade out overBegin + Length, after which it
 will be culled and not sent to the shader at all. Use this to reduce the number
@@ -381,11 +404,13 @@ invisible at the end. Higher values result in a smoother fade-out transition,
 which is more suited when the camera moves fast.
 
 ### PCSS recommendations
+
 Percentage-closer soft shadows (PCSS) provide a more realistic shadow mapping
 appearance, with the penumbra size varying depending on the distance between the
 caster and the surface receiving the shadow. This comes at a high performance
 cost, especially for directional lights.
 To avoid performance issues, it's recommended to:
+
 - Only use a handful of lights with PCSS shadows enabled at a given time. The
 effect is generally most visible on large, bright lights. Secondary light
 sources that are more faint usually don't benefit much from using PCSS
@@ -402,6 +427,7 @@ this can be done by setting the DirectionalLight3D'slight_angular_distanceproper
 lights, this can be done by setting the OmniLight3D or SpotLight3D'slight_sizeproperty to0.0in a script.
 
 ### Projector filter mode
+
 The way projectors are rendered also has an impact on performance. TheRendering > Textures > Light Projectors > Filteradvanced project setting
 lets you control how projector textures should be filtered.Nearest/Lineardo
 not use mipmaps, which makes them faster to render. However, projectors will
@@ -413,4 +439,5 @@ If your project has a pixel art style, consider setting the filter to one of the
 stick toLinear.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

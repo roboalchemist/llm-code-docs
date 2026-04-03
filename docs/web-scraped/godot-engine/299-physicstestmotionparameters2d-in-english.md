@@ -1,10 +1,12 @@
 # PhysicsTestMotionParameters2D in English
 
 # PhysicsTestMotionParameters2D
+
 Inherits:RefCounted<Object
 Provides parameters forPhysicsServer2D.body_test_motion().
 
 ## Description
+
 By changing various properties of this object, such as the motion, you can configure the parameters forPhysicsServer2D.body_test_motion().
 
 ## Properties
@@ -39,7 +41,9 @@ recovery_as_collision
 false
 
 ## Property Descriptions
+
 boolcollide_separation_ray=false🔗
+
 - voidset_collide_separation_ray_enabled(value:bool)
 voidset_collide_separation_ray_enabled(value:bool)
 - boolis_collide_separation_ray_enabled()
@@ -85,4 +89,5 @@ If set totrue, any depenetration from the recovery phase is reported as a collis
 If set tofalse, only collisions resulting from the motion are reported, which is generally the desired behavior.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

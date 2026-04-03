@@ -1,6 +1,7 @@
 # Size and anchors in English
 
 # Size and anchors
+
 If a game was always going to be run on the same device and at the same
 resolution, positioning controls would be a simple matter of setting the
 position and size of each one of them. Unfortunately, that is rarely the
@@ -41,9 +42,11 @@ anchored to the top-left of the parent, so when re-sizing the parent,
 the control will always cover it, leaving a 20 pixel offset:
 
 ## Centering a control
+
 To center a control in its parent, set its anchors to0.5and each offset
 to half of its relevant dimension. For example, the code below shows how
 a TextureRect can be centered in its parent:
+
 ```
 var rect = TextureRect.new()
 rect.texture = load("res://icon.png")
@@ -58,6 +61,7 @@ rect.offset_top = -texture_size.y / 2
 rect.offset_bottom = texture_size.y / 2
 add_child(rect)
 ```
+
 ```
 var rect = new TextureRect();
 
@@ -75,14 +79,17 @@ rect.OffsetTop = -textureSize.Y / 2;
 rect.OffsetBottom = textureSize.Y / 2;
 AddChild(rect);
 ```
+
 Setting each anchor to0.5moves the reference point for the offsets to
 the center of its parent. From there, we set negative offsets so that
 the control gets its natural size.
 
 ## Anchor Presets
+
 Instead of manually adjusting the offset and anchor values, you can use the
 toolbar's Anchor menu, above the viewport. Besides centering, it gives you many
 options to align and resize control nodes.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

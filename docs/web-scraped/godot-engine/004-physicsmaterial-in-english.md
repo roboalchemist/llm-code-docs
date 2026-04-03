@@ -1,10 +1,12 @@
 # PhysicsMaterial in English
 
 # PhysicsMaterial
+
 Inherits:Resource<RefCounted<Object
 Holds physics-related properties of a surface, namely its roughness and bounciness.
 
 ## Description
+
 Holds physics-related properties of a surface, namely its roughness and bounciness. This class is used to apply these properties to a physics body.
 
 ## Properties
@@ -27,7 +29,9 @@ rough
 false
 
 ## Property Descriptions
+
 boolabsorbent=false🔗
+
 - voidset_absorbent(value:bool)
 voidset_absorbent(value:bool)
 - boolis_absorbent()
@@ -54,4 +58,5 @@ boolis_rough()
 Iftrue, the physics engine will use the friction of the object marked as "rough" when two objects collide. Iffalse, the physics engine will use the lowest friction of all colliding objects instead. Iftruefor both colliding objects, the physics engine will use the highest friction.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

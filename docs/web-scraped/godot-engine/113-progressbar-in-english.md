@@ -1,10 +1,12 @@
 # ProgressBar in English
 
 # ProgressBar
+
 Inherits:Range<Control<CanvasItem<Node<Object
 A control used for visual representation of a percentage.
 
 ## Description
+
 A control used for visual representation of a percentage. Shows the fill percentage in the center. Can also be used to show indeterminate progress. For more fill modes, useTextureProgressBarinstead.
 
 ## Properties
@@ -52,6 +54,7 @@ StyleBox
 fill
 
 ## Enumerations
+
 enumFillMode:🔗
 FillModeFILL_BEGIN_TO_END=0
 The progress bar fills from begin to end horizontally, according to the language direction. IfControl.is_layout_rtl()returnsfalse, it fills from left to right, and if it returnstrue, it fills from right to left.
@@ -63,7 +66,9 @@ FillModeFILL_BOTTOM_TO_TOP=3
 The progress fills from bottom to top.
 
 ## Property Descriptions
+
 booleditor_preview_indeterminate🔗
+
 - voidset_editor_preview_indeterminate(value:bool)
 voidset_editor_preview_indeterminate(value:bool)
 - boolis_editor_preview_indeterminate_enabled()
@@ -89,6 +94,7 @@ boolis_percentage_shown()
 Iftrue, the fill percentage is displayed on the bar.
 
 ## Theme Property Descriptions
+
 Colorfont_color=Color(0.95,0.95,0.95,1)🔗
 The color of the text.
 Colorfont_outline_color=Color(0,0,0,1)🔗
@@ -106,4 +112,5 @@ StyleBoxfill🔗
 The style of the progress (i.e. the part that fills the bar).
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

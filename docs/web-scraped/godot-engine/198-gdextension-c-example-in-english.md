@@ -3,6 +3,7 @@
 # GDExtension C example
 
 ## Introduction
+
 This is a simple example on how to work with GDExtension directly with C code.
 Note that the API is not meant to be used directly, so this will definitely be
 quite verbose and require a lot of steps even for a small example. However, it
@@ -15,7 +16,9 @@ some of the things with GDExtension, like registering custom classes with
 methods, properties, and signals. It gives an insight on the GDExtension API.
 
 ## Setting up the project
+
 There are a few prerequisites you'll need:
+
 - a Godot 4.2 (or later) executable,
 a Godot 4.2 (or later) executable,
 - a C compiler,
@@ -25,7 +28,9 @@ SCons as a build tool.
 Since this is using the API directly, there's no need to use thegodot-cpp repository.
 
 ## File structure
+
 To organize our files, we're gonna split into mainly two folders:
+
 ```
 gdextension_c_example/
 |
@@ -33,20 +38,25 @@ gdextension_c_example/
 |
 +--src/                   # source code of the extension we are building
 ```
+
 We also need a copy of thegdextension_interface.hheader from the Godot
 source code, which can be obtained directly from the Godot executable by running
 the following command:
+
 ```
 godot --dump-gdextension-interface
 ```
+
 This creates the header in the current folder, so you can just copy it to thesrcfolder in the example project.
 Lastly, there's another source of information we need to refer to, which is the JSON
 file with the Godot API reference. This file won't be used by the code directly, we
 will only use it to extract some information manually.
 To get this JSON file, just call the Godot executable:
+
 ```
 godot --dump-extension-api
 ```
+
 The resultingextension_api.jsonfile will be created in the current
 folder. You can copy this file to the example folder to have it handy.
 Note
@@ -55,6 +65,7 @@ well. If you want to target a different minimal version, make sure to get the
 header and the JSON from the version Godot version you are targeting.
 
 ## Buildsystem
+
 Using a buildsystem makes our life a lot easier when dealing with C code. For
 the sake of convenience, we'll use SCons since it's the same as what Godot
 itself uses.
@@ -64,6 +75,7 @@ will be a non-optimized build for debugging purposes. It also assumes a 64-bit
 build, which is relevant for some parts of the example code. Making other build
 types and cross-compilation is out of the scope of this tutorial. Save this file
 to the root folder.
+
 ```
 #!/bin/env python
 from SCons.Script import Environment
@@ -96,14 +108,17 @@ library = env.SharedLibrary(
 # Set the library as the default target.
 env.Default(library)
 ```
+
 This will include all C files in thesrcfolder, so we don't need to change
 this file when adding new source files.
 
 ## Initializing the extension
+
 The first bit of code will be responsible for initializing the extension. This is
 what makes Godot aware of what our GDExtension provides, such as classes and
 plugins.
 Create the fileinit.hin thesrcfolder, with the following contents:
+
 ```
 #pragma once
 
@@ -115,6 +130,7 @@ void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLeve
 void deinitialize_gdexample_module(void *p_userdata, GDExtensionInitializationLevel p_level);
 GDExtensionBool GDE_EXPORT gdexample_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization);
 ```
+
 The functions declared here have the signatures expected by the GDExtension API.
 Note the inclusion of thedefs.hfile. This is one of our helpers to
 simplify writing the extension code. For now it will only contain the definition
@@ -122,6 +138,7 @@ ofGDE_EXPORT, a macro that makes the function public in the shared library
 so Godot can properly call it. This macro helps abstracting what each compiler
 expects.
 Create thedefs.hfile in thesrcfolder with the following contents:
+
 ```
 #pragma once
 
@@ -139,9 +156,11 @@ Create thedefs.hfile in thesrcfolder with the following contents:
 #endif
 #endif // ! GDE_EXPORT
 ```
+
 We also include some standard headers to make things easier. Now we only have to
 includedefs.hand those will come as a bonus.
 Now, let's implement the functions we just declared. Create a file calledinit.cin thesrcfolder and add this code:
+
 ```
 #include "init.h"
 
@@ -163,6 +182,7 @@ GDExtensionBool GDE_EXPORT gdexample_library_init(GDExtensionInterfaceGetProcAdd
     return true;
 }
 ```
+
 What this does is set up the initialization data that Godot expects. The
 functions to initialize and deinitialize are set so Godot will call then when
 needed. It also sets the initialization level which varies per extension. Since
@@ -170,11 +190,13 @@ we plan to add a custom node, theSCENElevel is enough.
 We will fill theinitialize_gdexample_module()function later to register our custom class.
 
 ## A basic class
+
 In order to make an actual node, first we'll create a C struct to hold data and
 functions that will act as methods. The plan is to make this a custom node that
 inherits fromSprite2D.
 Create a file calledgdexample.hin thesrcfolder with the following
 contents:
+
 ```
 #pragma once
 
@@ -198,6 +220,7 @@ void gdexample_class_destructor(GDExample *self);
 // Bindings.
 void gdexample_class_bind_methods();
 ```
+
 Noteworthy here is theobjectfield, which holds a pointer to
 the Godot object, and thegdexample_class_bind_methods()function, which will
 register the metadata of our custom class (properties, methods, and signals).
@@ -211,6 +234,7 @@ object of a type it knows and attach our extension to it. We will need the
 reference to such objects when calling methods on the parent class, for
 instance.
 Let's create the source counterpart of this header. Create the filegdexample.cin thesrcfolder and add the following code to it:
+
 ```
 #include "gdexample.h"
 
@@ -226,6 +250,7 @@ void gdexample_class_bind_methods()
 {
 }
 ```
+
 As we don't have anything to do with those functions yet, they'll stay empty
 for a while.
 The next step is registering our class. However, in order to do so we need to
@@ -235,7 +260,9 @@ also need other things, let's create a wrapper API to facilitate this kind of
 chore.
 
 ## A wrapper API
+
 We'll start by creating anapi.hfile in thesrcfolder:
+
 ```
 #pragma once
 
@@ -270,6 +297,7 @@ extern struct API
 
 void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address);
 ```
+
 This file will include many other helpers as we fill our extension with
 something useful. For now it only has a pointer to a function that creates a
 StringName from a C string (in Latin-1 encoding) and another to destruct a
@@ -282,6 +310,7 @@ making the call.
 There's also a function to load those function pointers from the GDExtension API.
 Let's work on the source counterpart of this header. Create theapi.cfile
 in thesrcfolder, adding the following code:
+
 ```
 #include "api.h"
 
@@ -306,6 +335,7 @@ void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     destructors.string_name_destructor = variant_get_ptr_destructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME);
 }
 ```
+
 The first important thing here isp_get_proc_address. This a function from
 the GDExtension API that is passed during initialization. You can use this
 function to request specific functions from the API by their name. Here we are
@@ -333,6 +363,7 @@ We also define theclass_libraryvariable here, which will be set during
 initialization.
 Speaking of initialization, now we have to change theinit.cfile in
 order to fill the things we just added:
+
 ```
 GDExtensionBool GDE_EXPORT gdexample_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address, GDExtensionClassLibraryPtr p_library, GDExtensionInitialization *r_initialization)
 {
@@ -341,7 +372,9 @@ GDExtensionBool GDE_EXPORT gdexample_library_init(GDExtensionInterfaceGetProcAdd
 
     ...
 ```
+
 Here we set theclass_libraryas needed and call our newload_api()function. Don't forget to also include the new headers at the top of this file:
+
 ```
 #include "init.h"
 
@@ -349,7 +382,9 @@ Here we set theclass_libraryas needed and call our newload_api()function. Don't 
 #include "gdexample.h"
 ...
 ```
+
 Since we are here, we can register our new custom class. Let's fill theinitialize_gdexample_module()function:
+
 ```
 void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLevel p_level)
 {
@@ -399,6 +434,7 @@ void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLeve
     destructors.string_name_destructor(&parent_class_name);
 }
 ```
+
 The struct with the class information is the biggest thing here. None of its
 fields are required with the exception ofcreate_instance_funcandfree_instance_func. We haven't made those functions yet, so we'll have
 to work on them soon. Note that we skip the initialization if it isn't at theSCENElevel. This function may be called multiple times, once for each
@@ -406,6 +442,7 @@ level, but we only want to register our class once.
 The other undefined thing here isStringName. This will be an opaque struct
 meant to hold the data of a Godot StringName in our extension. We'll define it
 in the appropriately nameddefs.hfile:
+
 ```
 ...
 // The sizes can be obtained from the extension_api.json file.
@@ -422,6 +459,7 @@ typedef struct
     uint8_t data[STRING_NAME_SIZE];
 } StringName;
 ```
+
 As mentioned in the comment, the sizes can be found in theextension_api.jsonfile that we generated earlier, under thebuiltin_class_sizesproperty. TheBUILD_32is never defined, as we
 assume we are working with a 64-bits build of Godot here, but if you need it you
 can addenv.Append(CPPDEFINES=["BUILD_32"])to yourSConstructfile.
@@ -433,6 +471,7 @@ data in the heap. We'll use this struct when we need to allocate data for a
 StringName ourselves, like we are doing when registering our class.
 Back to registering, we need to work on our create and free functions. Let's
 include them ingdexample.hsince they're specific to the custom class:
+
 ```
 ...
 // Bindings.
@@ -441,11 +480,13 @@ GDExtensionObjectPtr gdexample_class_create_instance(void *p_class_userdata);
 void gdexample_class_free_instance(void *p_class_userdata, GDExtensionClassInstancePtr p_instance);
 ...
 ```
+
 Before we can implement those function, we'll need a few more things in our API.
 We need a way to allocate and free memory. While we could do this with good ol'malloc(), we can instead make use of Godot's memory management functions.
 We'll also need a way to create a Godot object and set it with our custom
 instance.
 So let's change theapi.hto include these new functions:
+
 ```
 ...
 extern struct API
@@ -458,7 +499,9 @@ extern struct API
     GDExtensionInterfaceMemFree mem_free;
 } api;
 ```
+
 Then we change theload_api()function inapi.cto grab these new functions:
+
 ```
 ...
 void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
@@ -473,8 +516,10 @@ void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     api.mem_free = (GDExtensionInterfaceMemFree)p_get_proc_address("mem_free");
 }
 ```
+
 Now we can go back togdexample.cand define the new functions, without forgetting to
 include theapi.hheader:
+
 ```
 #include "gdexample.h"
 
@@ -521,6 +566,7 @@ void gdexample_class_free_instance(void *p_class_userdata, GDExtensionClassInsta
     api.mem_free(self);
 }
 ```
+
 When instantiating an object, first we create a new Sprite2D object, since
 that's the parent of our class. Then we allocate memory for our custom struct
 and call its constructor. We save the pointer to the Godot object in the struct
@@ -534,6 +580,7 @@ allocated for the custom data. It is not necessary to destruct the Godot object
 since that will be taken care of by the engine itself.
 
 ## A demo project
+
 Now that we can create and free our custom object, we should be able to try it
 out in an actual project. For this, you need to open Godot and create a new
 project in theprojectfolder. The project manager may warn you the folder
@@ -546,6 +593,7 @@ very simple.
 Then, create a file calledgdexample.gdextensioninside theprojectfolder.
 This is a Godot resource that describes the extension, allowing the engine to
 properly load it. Put the following content in this file:
+
 ```
 [configuration]
 
@@ -557,6 +605,7 @@ macos.debug = "res://bin/libgdexample.dylib"
 linux.debug = "res://bin/libgdexample.so"
 windows.debug = "res://bin/libgdexample.dll"
 ```
+
 As you can see,gdexample_library_init()is the same name of the function we
 defined in ourinit.cfile. It is important that the names match because it
 is how Godot calls the entry point of the extension.
@@ -589,11 +638,13 @@ and has nothing different than a regularSprite2Dnode. We will fix that next by
 adding custom methods and properties.
 
 ## Custom methods
+
 A common thing in extensions is creating methods for the custom classes and
 exposing those to the Godot API. We are going to create a couple of getters and
 setters which are need for binding the properties afterwards.
 First, let's add the new fields in our struct to hold the values foramplitudeandspeed, which we will use later on when creating the
 behavior for the node. Add them to thegdexample.hfile, changing theGDExamplestruct:
+
 ```
 ...
 
@@ -608,8 +659,10 @@ typedef struct
 
 ...
 ```
+
 In the same file, add the declaration for the getters and setters, right after
 the destructor.
+
 ```
 ...
 
@@ -624,8 +677,10 @@ double gdexample_class_get_speed(const GDExample *self);
 
 ...
 ```
+
 In thegdexample.cfile, we will initialize these values in the constructor
 and add the implementations for those new functions, which are quite trivial:
+
 ```
 void gdexample_class_constructor(GDExample *self)
 {
@@ -653,6 +708,7 @@ double gdexample_class_get_speed(const GDExample *self)
     return self->speed;
 }
 ```
+
 To make those simple functions work when called by Godot, we will need some
 wrappers to help us properly convert the data to and from the engine.
 First, we will create wrappers forptrcall. This is what Godot uses when the
@@ -661,15 +717,18 @@ gonna need two of those: one for the functions that take no arguments and
 return adouble(for the getters) and another for the functions that take a
 singledoubleargument and return nothing (for the setters).
 Add the declarations to theapi.hfile:
+
 ```
 void ptrcall_0_args_ret_float(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 void ptrcall_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 ```
+
 Those two functions follow theGDExtensionClassMethodPtrCalltype, as
 defined in thegdextension_interface.h. We usefloatas a name here
 because in Godot thefloattype has double precision, so we keep this
 convention.
 Then we implement those functions in theapi.cfile:
+
 ```
 void ptrcall_0_args_ret_float(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret)
 {
@@ -685,6 +744,7 @@ void ptrcall_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstanceP
     function(p_instance, *((double *)p_args[0]));
 }
 ```
+
 Themethod_userdataargument is a custom value that we give to Godot, in
 this case we will set as the function pointer for the one we want to call. So
 first we convert it to the function type, then we just call it by passing the
@@ -707,10 +767,12 @@ if that's the case (when the call comes from a dynamically typed language, such
 as GDScript). In those situations it uses regularcallfunctions, so we need to
 provide those as well when binding.
 Let's create two new wrappers in theapi.hfile:
+
 ```
 void call_0_args_ret_float(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
 void call_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error);
 ```
+
 These follow theGDExtensionClassMethodCalltype, which is a bit different.
 First, you receive pointers to Variants instead of exact types. There's also the
 amount of arguments and an error struct that you can set if something goes
@@ -718,6 +780,7 @@ wrong.
 In order to check the type and also extract interact with Variant, we will need
 a few more functions from the GDExtension API. So let's expand our wrapper
 structs:
+
 ```
 extern struct Constructors {
     ...
@@ -733,11 +796,13 @@ extern struct API
     GDExtensionInterfaceVariantGetType variant_get_type;
 } api;
 ```
+
 The names say all about what those do. We have a couple of constructors to
 create and extract a floating point value to and from a Variant. We also have a
 couple of helpers to actually get those constructors, as well as a function to
 find out the type of a Variant.
 Let's get those from the API, like we did before, by changing theload_api()function in theapi.cfile:
+
 ```
 void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
 {
@@ -757,7 +822,9 @@ void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     ...
 }
 ```
+
 Now that we have these set, we can implement our call wrappers in the same file:
+
 ```
 void call_0_args_ret_float(void *method_userdata, GDExtensionClassInstancePtr p_instance, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error)
 {
@@ -811,6 +878,7 @@ void call_1_float_arg_no_ret(void *method_userdata, GDExtensionClassInstancePtr 
     function(p_instance, arg1);
 }
 ```
+
 These functions are a bit longer but easy to follow. First they check if the
 argument count is as expected and if not they set the error struct and
 return. For the one that has one parameter, it also checks if the argument type
@@ -824,6 +892,7 @@ Before we can actually bind our methods, we need a way to createGDExtensionPrope
 functions that we'll implement afterwards, it's easier to have a helper for it
 since we'll need it multiple times, including for when we bind properties.
 Let's create these two functions in theapi.hfile:
+
 ```
 // Create a PropertyInfo struct.
 GDExtensionPropertyInfo make_property(
@@ -840,6 +909,7 @@ GDExtensionPropertyInfo make_property_full(
 
 void destruct_property(GDExtensionPropertyInfo *info);
 ```
+
 The first one is a simplified version of the second since we usually don't need
 all the arguments for the property and are okay with the defaults. Then we also
 have a function to destruct the PropertyInfo since we need to create Strings and
@@ -847,6 +917,7 @@ StringNames that need to be properly disposed of.
 Speaking of which, we also need a way to create and destruct Strings, so we'll
 make an addition to existing structs in this same file. We'll also get a new API
 function for actually binding our custom method.
+
 ```
 extern struct Constructors
 {
@@ -866,8 +937,10 @@ extern struct API
     GDExtensionInterfaceClassdbRegisterExtensionClassMethod classdb_register_extension_class_method;
 } api;
 ```
+
 Before implementing those, let's do a quick stop in thedefs.hfile and
 include the size of theStringtype and a couple of enums:
+
 ```
 // The sizes can be obtained from the extension_api.json file.
 #ifdef BUILD_32
@@ -900,6 +973,7 @@ typedef enum
     PROPERTY_USAGE_DEFAULT = PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_EDITOR,
 } PropertyUsageFlags;
 ```
+
 While it's the same size asStringName, it is more clear to use a different
 name for it.
 The enums here are just helpers to give names to the numbers they represent. The
@@ -907,6 +981,7 @@ information about them is present in theextension_api.jsonfile. Here we
 just set up the ones we need for the tutorial, to keep it more concise.
 Going now to theapi.c, we need to load the pointers to the new functions we
 added to the API.
+
 ```
 void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
 {
@@ -924,7 +999,9 @@ void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     destructors.string_destructor = variant_get_ptr_destructor(GDEXTENSION_VARIANT_TYPE_STRING);
 }
 ```
+
 Then we can also implement the functions to create thePropertyInfostruct.
+
 ```
 GDExtensionPropertyInfo make_property(
     GDExtensionVariantType type,
@@ -972,6 +1049,7 @@ void destruct_property(GDExtensionPropertyInfo *info)
     api.mem_free(info->class_name);
 }
 ```
+
 The simple version ofmake_property()just calls the more complete one with a
 some default arguments. What those values mean exactly is out of the scope of
 this tutorial, check the page about theObject classfor more details about binding methods and properties.
@@ -982,6 +1060,7 @@ Thedestruct_property()function is straightforward, it simply calls the
 destructors for the created objects and frees their allocated memory.
 Let's go back again to the headerapi.hto create the functions that will
 actually bind the methods:
+
 ```
 // Version for 0 arguments, with return.
 void bind_method_0_r(
@@ -998,7 +1077,9 @@ void bind_method_1(
     const char *arg1_name,
     GDExtensionVariantType arg1_type);
 ```
+
 Then switch back to theapi.cfile to implement these:
+
 ```
 // Version for 0 arguments, with return.
 void bind_method_0_r(
@@ -1083,6 +1164,7 @@ void bind_method_1(
     destruct_property(&args_info[0]);
 }
 ```
+
 Both functions are very similar. First, they create aStringNamewith the
 method name. This is created in the stack since we don't need to keep it after
 the function ends. Then they create local variables to hold thecall_funcandptrcall_func, pointing to the helper functions we defined earlier.
@@ -1105,6 +1187,7 @@ function callback. This is avoided here only to keep the example from becoming
 even longer.
 Now that we have the means to bind methods, we can actually do so in our custom
 class. Go to thegdexample.cfile and fill up thegdexample_class_bind_methods()function:
+
 ```
 void gdexample_class_bind_methods()
 {
@@ -1115,6 +1198,7 @@ void gdexample_class_bind_methods()
     bind_method_1("GDExample", "set_speed", gdexample_class_set_speed, "speed", GDEXTENSION_VARIANT_TYPE_FLOAT);
 }
 ```
+
 Since this function is already being called by the initialization process, we
 can stop here. This function is much more straightforward after we created all the
 infrastructure to make this work. You can see that implementing the binding
@@ -1126,19 +1210,23 @@ properly, you can search forGDExamplein the editor help and verify they
 are present in the documentation page.
 
 ## Custom properties
+
 Since we now have the getter and setter for our properties already bound, we can
 move forward to create actual properties that will be displayed in the Godot
 editor inspector.
 Given our extensive setup in the previous section, there are only a few things
 needed to enable us to bind properties. First, let's get a new API function in
 theapi.hfile:
+
 ```
 extern struct API {
     ...
     GDExtensionInterfaceClassdbRegisterExtensionClassProperty classdb_register_extension_class_property;
 } api;
 ```
+
 Let's also declare a function here to bind properties:
+
 ```
 void bind_property(
     const char *class_name,
@@ -1147,7 +1235,9 @@ void bind_property(
     const char *getter,
     const char *setter);
 ```
+
 In theapi.cfile, we can load the new API function:
+
 ```
 void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
 {
@@ -1158,7 +1248,9 @@ void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     ...
 }
 ```
+
 Then we can implement our new helper function in this same file:
+
 ```
 void bind_property(
     const char *class_name,
@@ -1184,6 +1276,7 @@ void bind_property(
     destructors.string_name_destructor(&setter_name);
 }
 ```
+
 This function is similar to the one for binding methods. The main difference is
 that we don't need an extra struct since we can simply use theGDExtensionPropertyInfothat is created by our helper function, so it's more
 straightforward. It only creates theStringNamevalues from the
@@ -1191,6 +1284,7 @@ C strings, creates a property info struct using our helper, calls the API
 function to register the property in the class and then destructs all the objects
 we created.
 With this done, we can extend thegdexample_class_bind_methods()function in thegdexample.cfile:
+
 ```
 void gdexample_class_bind_methods()
 {
@@ -1203,22 +1297,27 @@ void gdexample_class_bind_methods()
     bind_property("GDExample", "speed", GDEXTENSION_VARIANT_TYPE_FLOAT, "get_speed", "set_speed");
 }
 ```
+
 If you build the extension withscons, you'll see in the Godot editor the new property shown
 not only on the documentation page for the custom class but also in the Inspector dock when theGDExamplenode is selected.
 
 ## Binding virtual methods
+
 Our custom node now has properties to influence how it operates, but it still
 doesn't do anything. In this section, we will bind the virtual method_process()and make our custom sprite
 move a little bit.
 In thegdexample.hfile, let's add a function that represents the custom_process()method:
+
 ```
 // Methods.
 void gdexample_class_process(GDExample *self, double delta);
 ```
+
 We'll also add a "private" field to keep track of the time passed in our custom
 struct. This is "private" only in the sense that it won't be bound to the Godot
 API, even though it is public in the C side, given the language lacks access
 modifiers.
+
 ```
 typedef struct
 {
@@ -1227,8 +1326,10 @@ typedef struct
     ...
 } GDExample;
 ```
+
 On the counterpart source filegdexample.cwe need to initialize the new
 field in the constructor:
+
 ```
 void gdexample_class_constructor(GDExample *self)
 {
@@ -1237,13 +1338,16 @@ void gdexample_class_constructor(GDExample *self)
     self->speed = 1.0;
 }
 ```
+
 Then we can create the simplest implementation for the_processmethod:
+
 ```
 void gdexample_class_process(GDExample *self, double delta)
 {
     self->time_passed += self->speed * delta;
 }
 ```
+
 For now it will do nothing but update the private field we created. We'll come
 back to this after the method is properly bound.
 Virtual methods are a bit different from the regular bindings. Instead of
@@ -1253,18 +1357,23 @@ extension. The engine will pass aStringNameas an argument so, following
 the spirit of this tutorial, we'll create a helper function to check if it is
 equal to a C string.
 Let's add the declaration to theapi.hfile:
+
 ```
 // Compare a StringName with a C string.
 bool is_string_name_equal(GDExtensionConstStringNamePtr p_a, const char *p_b);
 ```
+
 We'll also add a new struct to this file, to hold function pointers for custom operators:
+
 ```
 extern struct Operators
 {
     GDExtensionPtrOperatorEvaluator string_name_equal;
 } operators;
 ```
+
 Then in theapi.cfile we'll load the function pointer from the API:
+
 ```
 struct Operators operators;
 
@@ -1280,9 +1389,11 @@ void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     operators.string_name_equal = variant_get_ptr_operator_evaluator(GDEXTENSION_VARIANT_OP_EQUAL, GDEXTENSION_VARIANT_TYPE_STRING_NAME, GDEXTENSION_VARIANT_TYPE_STRING_NAME);
 }
 ```
+
 As you can see we need a new local helper here in order to grab the function
 pointer for the operator.
 With this handy, we can easily create our comparison function in the same file:
+
 ```
 bool is_string_name_equal(GDExtensionConstStringNamePtr p_a, const char *p_b)
 {
@@ -1301,16 +1412,19 @@ bool is_string_name_equal(GDExtensionConstStringNamePtr p_a, const char *p_b)
     return is_equal;
 }
 ```
+
 This function creates aStringNamefrom the argument, compares with
 the other one using the operator function pointer, and returns the result. Note
 that the return value for the operator is passed as an out reference, this is a
 common thing in the API.
 Let's go back to thegdexample.hfile and add a couple of functions that
 will be used as the callbacks for the Godot API:
+
 ```
 void *gdexample_class_get_virtual_with_data(void *p_class_userdata, GDExtensionConstStringNamePtr p_name);
 void gdexample_class_call_virtual_with_data(GDExtensionClassInstancePtr p_instance, GDExtensionConstStringNamePtr p_name, void *p_virtual_call_userdata, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr r_ret);
 ```
+
 There are actually two ways of registering virtual methods. Only one has thegetpart, in which you give Godot a properly crafted function pointer which
 will be called. For this we would need to create another helper for each virtual
 method, something that is not very convenient. Instead, we use the second method
@@ -1320,6 +1434,7 @@ our own function pointer as custom data and then have a single callback for all
 virtual methods. Although in this example we will only use it for one method,
 this way is simpler to expand.
 So let's implement those two functions in thegdexample.cfile:
+
 ```
 void *gdexample_class_get_virtual_with_data(void *p_class_userdata, GDExtensionConstStringNamePtr p_name)
 {
@@ -1341,6 +1456,7 @@ void gdexample_class_call_virtual_with_data(GDExtensionClassInstancePtr p_instan
     }
 }
 ```
+
 Those functions are also quite straightforward after making all the helpers
 previously.
 For the first one, we simply check if the function name requested is_processand if it is we return a function pointer to our implementation of
@@ -1354,6 +1470,7 @@ methods being implemented.
 The only thing missing is using those callbacks when the class is registered. Go
 to theinit.cfile and change theclass_infoinitialization to include
 those, replacing theNULLvalue used previously:
+
 ```
 void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLevel p_level)
 {
@@ -1369,6 +1486,7 @@ void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLeve
     ...
 }
 ```
+
 This is enough to bind the virtual method. If you build the extension and run
 the Godot project again, the_process()function will be called. You just won't
 be able to tell since the function itself does nothing visible. We will solve
@@ -1378,6 +1496,7 @@ the GDExtension API functions as we've being doing so far, but actual engine
 methods, as we would do with scripting. This naturally requires some extra setup.
 First, let's addVector2to ourdefs.hfile, so we
 can use it in our method:
+
 ```
 // The sizes can be obtained from the extension_api.json file.
 ...
@@ -1398,10 +1517,12 @@ typedef struct
     uint8_t data[VECTOR2_SIZE];
 } Vector2;
 ```
+
 TheREAL_T_IS_DOUBLEdefine is only needed if your Godot version was built
 with double precision support, which is not the default.
 Now, in theapi.hfile, we'll add few things to the API structs, including a
 new one for holding engine methods to call.
+
 ```
 extern struct Constructors
 {
@@ -1423,7 +1544,9 @@ extern struct API
     GDExtensionInterfaceObjectMethodBindPtrcall object_method_bind_ptrcall;
 } api;
 ```
+
 Then in theapi.cfile we can grab the function pointers from Godot:
+
 ```
 struct Methods methods;
 
@@ -1445,6 +1568,7 @@ void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
     ...
 }
 ```
+
 The only noteworthy part here is theVector2constructor, for which we request the
 index3. Since there are multiple constructors with different kinds of
 arguments, we need to specify which one we want. In this case we're getting the
@@ -1456,6 +1580,7 @@ this function is called too early in the initialization process, so classes
 won't be properly registered yet.
 Instead, we're gonna use the initialization level callback to grab those when we
 are registering our custom class. Add this to theinit.cfile:
+
 ```
 void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLevel p_level)
 {
@@ -1478,6 +1603,7 @@ void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLeve
     ...
 }
 ```
+
 Here we createStringName's for the class and method we want to get, then use
 the GDExtension API to retrieve theirMethodBind, which is an object that
 represents the bound method. We get theset_positionmethod fromNode2Dsince this is where it was registered, even though we're going to use it in aSprite2D, a derived class.
@@ -1488,6 +1614,7 @@ compatibility method that matches what you're asking for. This is one of the
 systems that allow the engine to load extensions made for previous versions. You
 can get the value of this hash from theextension_api.jsonfile.
 With all that, we can finally implement our custom_process()method in thegdexample.cfile:
+
 ```
 ...
 
@@ -1514,6 +1641,7 @@ void gdexample_class_process(GDExample *self, double delta)
     api.object_method_bind_ptrcall(methods.node2d_set_position, self->object, args2, NULL);
 }
 ```
+
 After updating the time passed scaled by thespeedproperty, it createsxandyvalues based on that, also modulated by theamplitudeproperty. This is what will give the pattern effect. Themath.hheader is
 needed for thesin()andcos()functions used here.
 Then it sets up an array of arguments to construct aVector2, followed by
@@ -1526,11 +1654,13 @@ Try changing theSpeedandAmplitudeproperties and see how the sprite
 react.
 
 ## Registering and emitting a signal
+
 To complete this tutorial, let's see how you can register a custom signal and
 emit it when appropriate. As you might have guessed, we'll need a few more
 function pointers from the API and more helper functions.
 In theapi.hfile we're adding two things. One is an API function to
 register a signal, the other is a helper function to wrap the signal binding.
+
 ```
 extern struct API
 {
@@ -1547,10 +1677,12 @@ void bind_signal_1(
     const char *arg1_name,
     GDExtensionVariantType arg1_type);
 ```
+
 In this case we only have a version for one argument, since it's what we're
 going to use.
 Moving to theapi.cfile, we can load this new function pointer and
 implement the helper:
+
 ```
 void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
 {
@@ -1584,11 +1716,13 @@ void bind_signal_1(
     destruct_property(&args_info[0]);
 }
 ```
+
 This one is very similar to the function to bind methods. The main difference is
 that we don't need to fill another struct, we just pass the needed names and the
 array of arguments. The1at the end means the amount of arguments the
 signal provides.
 With this we can bind the signal ingdexample.c:
+
 ```
 void gdexample_class_bind_methods()
 {
@@ -1596,11 +1730,13 @@ void gdexample_class_bind_methods()
     bind_signal_1("GDExample", "position_changed", "new_position", GDEXTENSION_VARIANT_TYPE_VECTOR2);
 }
 ```
+
 In order to emit a signal, we need to call theemit_signal()method on our custom node.
 Since this is avarargfunction (meaning it takes any amount of arguments),
 we cannot useptrcall. To do a regular call, we have to create Variants,
 which require a few more steps of plumbing to get done.
 First, in thedefs.hfile we create a definition for Variant:
+
 ```
 ...
 
@@ -1625,6 +1761,7 @@ typedef struct
     uint8_t data[VARIANT_SIZE];
 } Variant;
 ```
+
 We first set the size of Variant together with the size of Vector2 that we added
 before. Then we use it to create an opaque struct that is enough to hold the
 Variant data. Again, we set the size for double precision builds as a fallback,
@@ -1637,6 +1774,7 @@ with these types. Even though it does return something (an error code), we don't
 need to deal with it, so for now we're just going to ignore it.
 In theapi.h, we're adding a few things to the existing structs, plus a new
 helper function for the call:
+
 ```
 extern struct Constructors
 {
@@ -1674,8 +1812,10 @@ void call_2_args_stringname_vector2_no_ret_variant(
     const GDExtensionTypePtr p_arg1,
     const GDExtensionTypePtr p_arg2);
 ```
+
 Now let's switch to theapi.cfile to load these new function pointers and
 implement the helper function.
+
 ```
 void load_api(GDExtensionInterfaceGetProcAddress p_get_proc_address)
 {
@@ -1718,6 +1858,7 @@ void call_2_args_stringname_vector2_no_ret_variant(GDExtensionMethodBindPtr p_me
     destructors.variant_destroy(&ret);
 }
 ```
+
 This helper function has some boilerplate code but is quite straightforward. It sets up the
 two arguments inside stack allocated Variants, then creates an array with
 pointers to those. It also sets up another Variant to keep the return value,
@@ -1730,6 +1871,7 @@ At the end we need to destruct the Variants we created. While technically the
 Vector2 one does not require destructing, it is clearer to cleanup everything.
 We also need to load the MethodBind, which we'll do in theinit.cfile,
 right after loading the one for theset_positionmethod we did before:
+
 ```
 void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLevel p_level)
 {
@@ -1745,9 +1887,11 @@ void initialize_gdexample_module(void *p_userdata, GDExtensionInitializationLeve
     ...
 }
 ```
+
 Note that we reuse thenative_class_nameandmethod_namevariables here,
 so we don't need to declare new ones.
 Now go to thegdexample.hfile where we're going to add a couple of fields:
+
 ```
 typedef struct
 {
@@ -1759,11 +1903,13 @@ typedef struct
     StringName position_changed; // For signal.
 } GDExample;
 ```
+
 The first one will store the time passed since the last signal was emitted,
 since we'll be doing so at regular intervals. The other is just to cache the
 signal name so we don't need to create a new StringName every time.
 In the sourcegdexample.cfile we can change the constructor and destructor
 to deal with the new fields:
+
 ```
 void gdexample_class_constructor(GDExample *self)
 {
@@ -1780,9 +1926,11 @@ void gdexample_class_destructor(GDExample *self)
     destructors.string_name_destructor(&self->position_changed);
 }
 ```
+
 It is important to destruct the StringName to avoid memory leaks.
 Now we can add to thegdexample_class_process()function to actually emit the
 signal:
+
 ```
 void gdexample_class_process(GDExample *self, double delta)
 {
@@ -1797,6 +1945,7 @@ void gdexample_class_process(GDExample *self, double delta)
     }
 }
 ```
+
 This updates the time passed for the signal emission and, if it is over one
 second it calls theemit_signal()function on the current instance, passing
 the name of the signal and the new position as arguments.
@@ -1806,6 +1955,7 @@ In the documentation page forGDExampleyou can see the new signal we bound:
 To check it's working, let's add a small script to the root node, parent of our
 custom one, that prints the position to the output every time it receives the
 signal:
+
 ```
 extends Node2D
 
@@ -1815,10 +1965,12 @@ func _ready():
 func on_position_changed(new_position):
     prints("New position:", new_position)
 ```
+
 Run the project and you can observe the values being printed in the Output dock
 in the editor:
 
 ## Conclusion
+
 This tutorial shows a basic extension with custom methods, properties, and
 signals. While it does require a good amount of boilerplate, it can scale well
 by creating helper functions to handle the tedious tasks.
@@ -1832,4 +1984,5 @@ instead, as it takes away all of the boilerplate from your code. Check thegodot-
 do this.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

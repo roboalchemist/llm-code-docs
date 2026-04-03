@@ -7,6 +7,7 @@ The content of this page was not yet updated for Godot4.6and may beoutdated. If 
 # Binary serialization API
 
 ## Introduction
+
 Godot has a serialization API based on Variant. It's used for
 converting data types to an array of bytes efficiently. This API is exposed
 via the globalbytes_to_var()andvar_to_bytes()functions,
@@ -14,6 +15,7 @@ but it is also used in theget_varandstore_varmethods ofFileAccessas well as the 
 This format isnotused for binary scenes and resources.
 
 ## Full Objects vs Object instance IDs
+
 If a variable is serialized withfull_objects=true, then any Objects
 contained in the variable will be serialized and included in the result. This
 is recursive.
@@ -21,11 +23,13 @@ Iffull_objects=false, then only the instance IDs will be serialized for
 any Objects contained in the variable.
 
 ## Packet specification
+
 The packet is designed to be always padded to 4 bytes. All values are
 little-endian-encoded. All packets have a 4-byte header representing an
 integer, specifying the type of data.
 The lowest value two bytes are used to determine the type, while the highest value
 two bytes contain flags:
+
 ```
 base_type = val & 0xFFFF;
 flags = val >> 16;
@@ -116,6 +120,7 @@ Integer
 0 for False, 1 for True
 
 ### 2:int
+
 If no flags are set (flags == 0), the integer is sent as a 32 bit integer:
 
 | Offset | Len | Type | Description |
@@ -141,6 +146,7 @@ Integer
 64-bit signed integer
 
 ### 3:float
+
 If no flags are set (flags == 0), the float is sent as a 32 bit single precision:
 
 | Offset | Len | Type | Description |
@@ -491,6 +497,7 @@ Every name string is padded to 4 bytes.
 ### 16:RID(unsupported)
 
 ### 17:Object
+
 An Object could be serialized in three different ways: as a null value, withfull_objects=false, or withfull_objects=true.
 
 #### A null value
@@ -766,4 +773,5 @@ Float
 Alpha (0..1)
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

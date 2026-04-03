@@ -1,6 +1,7 @@
 # Using C++ profilers in English
 
 # Using C++ profilers
+
 To optimize Godot's performance, you need to know what to optimize first.
 To this end, profilers are useful tools.
 Note
@@ -23,7 +24,9 @@ but it's difficult to provide a set of rules for which to use. Give both a try,
 and see what you can learn from them!
 
 ## Sampling profilers
+
 We recommend the following sampling profilers:
+
 - VerySleepy(Windows only)
 VerySleepy(Windows only)
 - Hotspot(Linux only)
@@ -34,6 +37,7 @@ These profilers may not be the most powerful or flexible options, but their
 standalone operation and limited feature set tends to make them easier to use.
 
 ### Setting up Godot
+
 To get useful profiling information, it isabsolutely requiredto use a Godot
 build that includes debugging symbols. Official binaries do not include debugging
 symbols, since these would make the download size significantly larger.
@@ -47,6 +51,7 @@ after compiling the binaries. Otherwise, you will no longer get useful
 profiling information when running a profiler.
 
 ### Benchmarking startup/shutdown times
+
 If you're looking into optimizing Godot's startup/shutdown performance,
 you can tell the profiler to use the--quitcommand line option on the Godot binary.
 This will exit Godot just after it's done starting.
@@ -56,7 +61,9 @@ SeeCommand line tutorialfor more command line arguments
 supported by Godot.
 
 ## Tracing profilers
+
 Godot currently supports three tracing profilers:
+
 - Tracy
 Tracy
 - Perfetto
@@ -71,4 +78,5 @@ forscons.
 ## All recommended profilers
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

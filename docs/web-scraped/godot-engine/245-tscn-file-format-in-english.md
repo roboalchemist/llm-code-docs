@@ -1,6 +1,7 @@
 # TSCN file format in English
 
 # TSCN file format
+
 The TSCN (text scene) file format represents a single scene tree inside
 Godot. Unlike binary SCN files, TSCN files have the advantage of being mostly
 human-readable and easy for version control systems to manage.
@@ -25,7 +26,9 @@ Scenes and resources saved with Godot 4.x containformat=3in their
 header, whereas Godot 3.x usesformat=2instead.
 
 ## File structure
+
 There are five main sections inside the TSCN file:
+
 - File descriptor
 File descriptor
 - External resources
@@ -57,7 +60,9 @@ Whitespace within a TSCN file is not significant (except within strings), but
 extraneous whitespace will be discarded when saving the file.
 
 ### Entries inside the file
+
 A heading looks like[<resource_type>key1=value1key2=value2key3=value3...]where resource_type is one of:
+
 - ext_resource
 ext_resource
 - sub_resource
@@ -69,12 +74,14 @@ connection
 Below every heading comes zero or morekey=valuepairs. The
 values can be complex datatypes such as Arrays, Transforms, Colors, and
 so on. For example, a Node3D looks like:
+
 ```
 [node name="Cube" type="Node3D" unique_id=224283918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 3)
 ```
 
 ## The scene tree
+
 The scene tree is made up of… nodes! The heading of each node consists of its
 name, parent, a unique ID (used to track nodes even if they are moved or
 renamed), and most of the time, a type. For example:[nodename="PlayerCamera"type="Camera"parent="Player/Head"unique_id=1697057368]
@@ -82,6 +89,7 @@ Note thatunique_idis only present in scenes saved with Godot 4.6 or later.
 Therefore, it is not guaranteed to be present.
 Other valid keywords include:
 > instanceinstance_placeholderownerindex(sets the order of appearance in the tree; if absent, inherited nodes will take precedence over plain ones)groups
+
 - instance
 instance
 - instance_placeholder
@@ -98,12 +106,14 @@ The parent path of other nodes should be absolute, but shouldn't contain
 the scene root's name. If the node is a direct child of the scene root,
 the path should be".". Here is an example scene tree
 (but without any node content):
+
 ```
 [node name="Player" type="Node3D" unique_id=1155673912]                    ; The scene root
 [node name="Arm" type="Node3D" parent="." unique_id=1010797352]            ; Parented to the scene root
 [node name="Hand" type="Node3D" parent="Arm" unique_id=536436825]          ; Child of "Arm"
 [node name="Finger" type="Node3D" parent="Arm/Hand" unique_id=1732647084]  ; Child of "Hand"
 ```
+
 To make the file structure easier to grasp, you can save a file with any
 given node or resource and then inspect it yourself in an external editor. You
 can also make incremental changes in the Godot editor, and keep an external
@@ -111,6 +121,7 @@ text editor open on the.tscnor.tresfile with auto-reload enabled
 to see what changes.
 Here is an example of a scene containing a RigidBody3D-based ball with
 collision, visuals (mesh + light) and a camera parented to the RigidBody3D:
+
 ```
 [gd_scene format=3 uid="uid://cecaux1sm7mo0"]
 
@@ -139,6 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0,
 ```
 
 ### NodePath
+
 A tree structure is not enough to represent the whole scene. Godot uses aNodePath(Path/To/Node)structure to refer to another node or attribute of
 the node anywhere in the scene tree. Paths are relative to the current node,
 withNodePath(".")pointing to the current node andNodePath("")pointing to no node at all.
@@ -151,14 +163,17 @@ is used by Animation resources to point to specific properties to animate. For
 example,NodePath("MeshInstance3D:scale.x")points to thexcomponent of
 thescaleVector3 property in MeshInstance3D.
 For example, theskeletonproperty in the MeshInstance3D node calledmeshpoints to its parent,Armature01:
+
 ```
 [node name="mesh" type="MeshInstance3D" parent="Armature01" unique_id=1638249225]
 skeleton = NodePath("..")
 ```
 
 ### Skeleton3D
+
 TheSkeleton3Dnode inherits the Node3D node, but may also have a
 list of bones described in key-value pairs in the formatbones/<id>/<attribute>=value. The bone attributes consist of:
+
 - position: Vector3
 position: Vector3
 - rotation: Quaternion
@@ -167,6 +182,7 @@ rotation: Quaternion
 scale: Vector3
 These attributes are all optional. For instance, a bone may only definepositionorrotationwithout defining the other properties.
 Here's an example of a skeleton node with two bones:
+
 ```
 [node name="Skeleton3D" type="Skeleton3D" parent="PlayerModel/Robot_Skeleton" index="0" unique_id=542985694]
 bones/1/position = Vector3(0.114471, 2.19771, -0.197845)
@@ -177,11 +193,13 @@ bones/2/scale = Vector3(0.9276, 0.9276, 0.9276)
 ```
 
 ### BoneAttachment3D
+
 TheBoneAttachment3Dnode is an intermediate node to describe some
 node being parented to a single bone in a Skeleton node. The BoneAttachment has
 abone_name="nameofbone"property, as well as a property for the matching
 bone index.
 An example of aMarker3Dnode parented to a bone in Skeleton:
+
 ```
 [node name="GunBone" type="BoneAttachment3D" parent="PlayerModel/Robot_Skeleton/Skeleton3D" index="5" unique_id=63481392]
 transform = Transform3D(0.333531, 0.128981, -0.933896, 0.567174, 0.763886, 0.308015, 0.753209, -0.632331, 0.181604, -0.323915, 1.07098, 0.0497144)
@@ -193,6 +211,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 ```
 
 ### AnimationPlayer
+
 TheAnimationPlayernode works with one or more animation libraries
 stored inAnimationLibraryresources. An animation library is a
 collection of individualAnimationresources, whose structure is
@@ -207,6 +226,7 @@ keeps the existing workflow if you don't want to use multiple animation
 libraries.
 
 ## Resources
+
 Resources are components that make up the nodes. For example, a MeshInstance3D
 node will have an accompanying ArrayMesh resource. The ArrayMesh resource
 may be either internal or external to the TSCN file.
@@ -220,6 +240,7 @@ For example, to refer to the resource[ext_resourcetype="Material"uid="uid://c4cp
 you would useExtResource("1_7bt6s").
 
 ### External resources
+
 External resources are links to resources not contained within the TSCN file
 itself. An external resource consists of a path, a type, a UID (used to map its
 filesystem location to a unique identifier) and an ID (used to refer to the
@@ -228,10 +249,12 @@ Godot always generates absolute paths relative to the resource directory and
 thus prefixed withres://, but paths relative to the TSCN file's location
 are also valid.
 Some example external resources are:
+
 ```
 [ext_resource type="Texture2D" uid="uid://ccbm14ebjmpy1" path="res://gradient.tres" id="2_eorut"]
 [ext_resource type="Material" uid="uid://c4cp0al3ljsjv" path="material.tres" id="1_7bt6s"]
 ```
+
 Like TSCN files, a TRES file may contain single-line comments starting with a
 semicolon (;). However, comments will be discarded when saving the resource
 using the Godot editor.
@@ -239,24 +262,29 @@ Whitespace within a TRES file is not significant (except within strings), but
 extraneous whitespace will be discarded when saving the file.
 
 ### Internal resources
+
 A TSCN file can contain meshes, materials and other data. These are contained in
 theinternal resourcessection of the file. The heading for an internal
 resource looks similar to those of external resources, except that it doesn't
 have a path. Internal resources also havekey=valuepairs under each
 heading. For example, a capsule collision shape looks like:
+
 ```
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fdxgg"]
 radius = 1.0
 height = 3.0
 ```
+
 Some internal resources contain links to other internal resources (such as a
 mesh having a material). In this case, the referring resource must appearbeforethe reference to it. This means that order matters in the file's
 internal resources section.
 
 ### ArrayMesh
+
 An ArrayMesh consists of several surfaces contained in the_surfacesarray
 (notice the leading underscore). Each surface's data is stored in a dictionary
 with the following keys:
+
 - aabb: The computed axis-aligned bounding box for visibility.
 aabb: The computed axis-aligned bounding box for visibility.
 - attribute_data: Vertex attribute data, such as normals, tangents, vertex
@@ -296,6 +324,7 @@ vertex_count: Number of vertices in the surface. This must matchvertex_data's si
 - vertex_data: The vertex position data.
 vertex_data: The vertex position data.
 Here's an example of an ArrayMesh saved to its own.tresfile. Some fields were shortened with...for brevity:
+
 ```
 [gd_resource type="ArrayMesh" format=3 uid="uid://dww8o7hsqrhx5"]
 
@@ -322,7 +351,9 @@ blend_shape_mode = 0
 ```
 
 ### Animation
+
 Each animation has the following properties:
+
 - length: The animation's length in seconds. Note that keyframes may be
 placed outside the[0;length]interval, but they may have no effect
 depending on the interpolation mode chosen.
@@ -374,6 +405,7 @@ Here is a scene containing an AnimationPlayer that scales down a cube over time
 using a generic property track. The AnimationLibrary workflow was not used, so
 the animation library has an empty name (but the animation is still given ascale_downname). Note that theRESETtrack was not created in this
 AnimationPlayer for brevity:
+
 ```
 [gd_scene format=3 uid="uid://cdyt3nktp6y6"]
 
@@ -413,6 +445,7 @@ libraries = {
 [node name="Box" type="MeshInstance3D" parent="." unique_id=711004519]
 mesh = SubResource("BoxMesh_u688r")
 ```
+
 For generic propertyvaluetracks,keysis a dictionary containing 3
 arrays with positions intimes(PackedFloat32Array), easing values intransitions(PackedFloat32Array) and values invalues(Array). There is
 an additionalupdateproperty, which is an integer with the values0=
@@ -425,6 +458,7 @@ The downside of these optimized track types is that they can't use custom easing
 values. Instead, all keyframes use linear interpolation. That said, you can
 still opt for using nearest or cubic interpolation for all keyframes in a given
 track by changing the track's interpolation mode.
+
 ```
 [sub_resource type="Animation" id="Animation_r2qdp"]
 resource_name = "move_and_rotate"
@@ -446,12 +480,14 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0.211, -0.047, 0.211, 0.953, 1.5, 1, 0.005, 0.976, -0.216, 0.022)
 ```
+
 For 3D position, rotation and scale tracks,keysis a PackedFloat32Array
 with all values stored in a sequence.
 In the visual guide below,Tis the keyframe's time in seconds since the
 start of the animation,Eis the keyframe's transition (currently always1). For 3D position and scale tracks,X,Y,Zare the Vector3's
 coordinates. For 3D rotation tracks,X,Y,ZandWare the
 Quaternion's coordinates.
+
 ```
 # For 3D position and scale, which use Vector3:
 tracks/<id>/keys = PackedFloat32Array(T, E,   X, Y, Z,      T, E,   X, Y, Z, ...)
@@ -461,4 +497,5 @@ tracks/<id>/keys = PackedFloat32Array(T, E,   X, Y, Z, W,      T, E,   X, Y, Z, 
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

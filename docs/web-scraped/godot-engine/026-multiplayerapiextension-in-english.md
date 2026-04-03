@@ -1,12 +1,15 @@
 # MultiplayerAPIExtension in English
 
 # MultiplayerAPIExtension
+
 Inherits:MultiplayerAPI<RefCounted<Object
 Base class used for extending theMultiplayerAPI.
 
 ## Description
+
 This class can be used to extend or replace the defaultMultiplayerAPIimplementation via script or extensions.
 The following example extend the default implementation (SceneMultiplayer) by logging every RPC being made, and every object being configured for replication.
+
 ```
 extends MultiplayerAPIExtension
 class_name LogMultiplayer
@@ -67,13 +70,16 @@ func _get_remote_sender_id() -> int:
 func _get_peer_ids() -> PackedInt32Array:
     return base_multiplayer.get_peers()
 ```
+
 Then in your main scene or in an autoload callSceneTree.set_multiplayer()to start using your customMultiplayerAPI:
+
 ```
 # autoload.gd
 func _enter_tree():
     # Sets our custom multiplayer as the main one in SceneTree.
     get_tree().set_multiplayer(LogMultiplayer.new())
 ```
+
 Native extensions can alternatively use theMultiplayerAPI.set_default_interface()method during initialization to configure themselves as the default implementation.
 
 ## Methods
@@ -107,6 +113,7 @@ void
 _set_multiplayer_peer(multiplayer_peer:MultiplayerPeer)virtual
 
 ## Method Descriptions
+
 MultiplayerPeer_get_multiplayer_peer()virtual🔗
 Called when theMultiplayerAPI.multiplayer_peeris retrieved.
 PackedInt32Array_get_peer_ids()virtualconst🔗
@@ -127,4 +134,5 @@ void_set_multiplayer_peer(multiplayer_peer:MultiplayerPeer)virtual🔗
 Called when theMultiplayerAPI.multiplayer_peeris set.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

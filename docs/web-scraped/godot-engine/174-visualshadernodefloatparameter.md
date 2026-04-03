@@ -1,10 +1,12 @@
 # VisualShaderNodeFloatParameter
 
 # VisualShaderNodeFloatParameter
+
 Inherits:VisualShaderNodeParameter<VisualShaderNode<Resource<RefCounted<Object
 A scalar float parameter to be used within the visual shader graph.
 
 ## Description
+
 Translated touniformfloatin the shader language.
 
 ## Properties
@@ -30,6 +32,7 @@ float
 step
 
 ## Enumerations
+
 enumHint:🔗
 HintHINT_NONE=0
 No hint used.
@@ -41,7 +44,9 @@ HintHINT_MAX=3
 Represents the size of theHintenum.
 
 ## Property Descriptions
+
 floatdefault_value=0.0🔗
+
 - voidset_default_value(value:float)
 voidset_default_value(value:float)
 - floatget_default_value()
@@ -79,4 +84,5 @@ floatget_step()
 Step (increment) value for the range hint with step. Used ifhintis set toHINT_RANGE_STEP.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

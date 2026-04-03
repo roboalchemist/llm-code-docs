@@ -1,14 +1,17 @@
 # EditorDebuggerPlugin in English
 
 # EditorDebuggerPlugin
+
 Inherits:RefCounted<Object
 A base class to implement debugger plugins.
 
 ## Description
+
 EditorDebuggerPluginprovides functions related to the editor side of the debugger.
 To interact with the debugger, an instance of this class must be added to the editor viaEditorPlugin.add_debugger_plugin().
 Once added, the_setup_session()callback will be called for everyEditorDebuggerSessionavailable to the plugin, and when new ones are created (the sessions may be inactive during this stage).
 You can retrieve the availableEditorDebuggerSessions viaget_sessions()or get a specific one viaget_session().
+
 ```
 @tool
 extends EditorPlugin
@@ -44,7 +47,9 @@ func _enter_tree():
 func _exit_tree():
     remove_debugger_plugin(debugger)
 ```
+
 To connect on the running game side, use theEngineDebuggersingleton:
+
 ```
 extends Node
 
@@ -59,6 +64,7 @@ func _capture(message, data):
         return true
     return false
 ```
+
 Note:While the game is running,@GlobalScope.print()and similar functionscalled in the editordo not print anything, the Output Log prints only game messages.
 
 ## Methods
@@ -91,6 +97,7 @@ Array
 get_sessions()
 
 ## Method Descriptions
+
 void_breakpoint_set_in_tree(script:Script, line:int, enabled:bool)virtual🔗
 Override this method to be notified when a breakpoint is set in the editor.
 void_breakpoints_cleared_in_tree()virtual🔗
@@ -110,4 +117,5 @@ Returns an array ofEditorDebuggerSessioncurrently available to this debugger plu
 Note:Sessions in the array may be inactive, check their state viaEditorDebuggerSession.is_active().
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

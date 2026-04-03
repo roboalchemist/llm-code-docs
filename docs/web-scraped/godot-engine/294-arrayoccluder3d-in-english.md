@@ -1,14 +1,17 @@
 # ArrayOccluder3D in English
 
 # ArrayOccluder3D
+
 Inherits:Occluder3D<Resource<RefCounted<Object
 3D polygon shape for use with occlusion culling inOccluderInstance3D.
 
 ## Description
+
 ArrayOccluder3Dstores an arbitrary 3D polygon shape that can be used by the engine's occlusion culling system. This is analogous toArrayMesh, but for occluders.
 SeeOccluderInstance3D's documentation for instructions on setting up occlusion culling.
 
 ## Tutorials
+
 - Occlusion culling
 Occlusion culling
 
@@ -33,7 +36,9 @@ void
 set_arrays(vertices:PackedVector3Array, indices:PackedInt32Array)
 
 ## Property Descriptions
+
 PackedInt32Arrayindices=PackedInt32Array()🔗
+
 - voidset_indices(value:PackedInt32Array)
 voidset_indices(value:PackedInt32Array)
 - PackedInt32Arrayget_indices()
@@ -51,8 +56,10 @@ Note:The occluder is always updated after setting this value. If creating occlud
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedVector3Arrayfor more details.
 
 ## Method Descriptions
+
 voidset_arrays(vertices:PackedVector3Array, indices:PackedInt32Array)🔗
 Setsindicesandvertices, while updating the final occluder only once after both values are set.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

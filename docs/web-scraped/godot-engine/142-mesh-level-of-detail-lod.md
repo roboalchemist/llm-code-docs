@@ -1,9 +1,11 @@
 # Mesh level of detail (LOD)
 
 # Mesh level of detail (LOD)
+
 Level of detail (LOD) is one of the most important ways to optimize rendering
 performance in a 3D project, along withOcclusion culling.
 On this page, you'll learn:
+
 - How mesh LOD can improve your 3D project's rendering performance.
 How mesh LOD can improve your 3D project's rendering performance.
 - How to set up mesh LOD in Godot.
@@ -16,6 +18,7 @@ See also
 You can see how mesh LOD works in action using theOcclusion Culling and Mesh LOD demo project.
 
 ## Introduction
+
 Historically, level of detail in 3D games involved manually authoring meshes
 with lower geometry density, then configuring the distance thresholds at which
 these lower-detailed meshes should be drawn. This approach is still used today
@@ -32,6 +35,7 @@ Mesh LOD works with any node that draws 3D meshes. This includes MeshInstance3D,
 MultiMeshInstance3D, GPUParticles3D and CPUParticles3D.
 
 ## Visual comparison
+
 Here is an example of LOD meshes generated on import. Lower detailed meshes
 will be used when the camera is far away from the object:
 From most detailed (left) to least detailed (right), shaded view
@@ -42,6 +46,7 @@ If you need to manually configure level of detail with artist-created meshes,
 useVisibility ranges (HLOD)instead of automatic mesh LOD.
 
 ## Generating mesh LOD
+
 By default, mesh LOD generation happens automatically for imported 3D scenes
 (glTF, .blend, Collada, FBX). Once LOD meshes are generated, they will
 automatically be used when rendering the scene. You don't need to configure
@@ -66,6 +71,7 @@ a per-mesh basis using the Advanced Import Settings dialog.
 SeeImporting 3D scenesfor more information.
 
 ## Comparing mesh LOD visuals and performance
+
 To disable mesh LOD in the editor for comparison purposes, use theDisable Mesh LODadvanced debug draw mode. This can be done using the menu
 in the top-left corner of the 3D viewport (labeledPerspectiveorOrthogonaldepending on camera mode):
 Disabling mesh LOD in the 3D viewport's top-left menu
@@ -79,16 +85,20 @@ CPU-bottlenecked).
 To see mesh LOD decimation in action, change the debug draw mode toDisplay Wireframein the menu specified above, then adjust theRendering > Mesh LOD > LOD Change > Threshold Pixelsproject setting.
 
 ## Configuring mesh LOD performance and quality
+
 You can adjust how aggressive mesh LOD transitions should be in the root viewport
 by changing theRendering > Mesh LOD > LOD Change > Threshold Pixelsproject
 setting. To change this value at runtime, setmesh_lod_thresholdon the
 root viewport as follows:
+
 ```
 get_tree().root.mesh_lod_threshold = 4.0
 ```
+
 ```
 GetTree().Root.MeshLodThreshold = 4.0f;
 ```
+
 Each viewport has its ownmesh_lod_thresholdproperty, which can be set
 independently from other viewports.
 The default mesh LOD threshold of 1 pixel is tuned to lookperceptuallylossless; it provides a significant performance gain with an unnoticeable loss
@@ -114,6 +124,7 @@ anything specific in your project to take camera FOV and viewport resolution
 into account.
 
 ## Using mesh LOD with MultiMesh and particles
+
 For LOD selection, the point of the node'sAABBthat is the closest to the camera is used as a basis. This applies to any kind
 of mesh LOD (including for individual MeshInstance3D)s, but this has some implications
 for nodes that display multiple meshes at once, such as MultiMeshInstance3D,
@@ -130,4 +141,5 @@ cull individual nodes (while they can't cull individual instances in a
 MultiMesh).
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

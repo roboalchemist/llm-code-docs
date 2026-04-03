@@ -1,11 +1,13 @@
 # Control in English
 
 # Control
+
 Inherits:CanvasItem<Node<Object
 Inherited By:BaseButton,ColorRect,Container,GraphEdit,ItemList,Label,LineEdit,MenuBar,NinePatchRect,Panel,Range,ReferenceRect,RichTextLabel,Separator,TabBar,TextEdit,TextureRect,Tree,VideoStreamPlayer
 Base class for all GUI controls. Adapts its position and size based on its parent control.
 
 ## Description
+
 Base class for all UI-related nodes.Controlfeatures a bounding rectangle that defines its extents, an anchor position relative to its parent control or the current viewport, and offsets relative to the anchor. The offsets update automatically when the node, any of its parents, or the screen size change.
 For more information on Godot's UI system, anchors, offsets, and containers, see the related tutorials in the manual. To build flexible UIs, you'll need a mix of UI elements that inherit fromControlandContainernodes.
 Note:Since bothNode2DandControlinherit fromCanvasItem, they share several concepts from the class such as theCanvasItem.z_indexandCanvasItem.visibleproperties.
@@ -19,6 +21,7 @@ Themeresources change the control's appearance. Thethemeof aControlnode affects 
 Note:Theme items arenotObjectproperties. This means you can't access their values usingObject.get()andObject.set(). Instead, use theget_theme_*andadd_theme_*_overridemethods provided by this class.
 
 ## Tutorials
+
 - GUI documentation index
 GUI documentation index
 - Custom drawing in 2D
@@ -486,6 +489,7 @@ void
 warp_mouse(position:Vector2)
 
 ## Signals
+
 focus_entered()🔗
 Emitted when the node gains focus.
 focus_exited()🔗
@@ -501,11 +505,13 @@ mouse_exited()🔗
 Emitted when the mouse cursor leaves the control's (and all child control's) visible area, that is not occluded behind other Controls or Windows, provided itsmouse_filterlets the event reach it and regardless if it's currently focused or not.
 Note:CanvasItem.z_indexdoesn't affect, which Control receives the signal.
 Note:If you want to check whether the mouse truly left the area, ignoring any top nodes, you can use code like this:
+
 ```
 func _on_mouse_exited():
     if not Rect2(Vector2(), size).has_point(get_local_mouse_position()):
         # Not hovering over area.
 ```
+
 resized()🔗
 Emitted when the control changes size.
 size_flags_changed()🔗
@@ -514,6 +520,7 @@ theme_changed()🔗
 Emitted when theNOTIFICATION_THEME_CHANGEDnotification is sent.
 
 ## Enumerations
+
 enumFocusMode:🔗
 FocusModeFOCUS_NONE=0
 The node cannot grab focus. Use withfocus_mode.
@@ -675,6 +682,7 @@ TextDirectionTEXT_DIRECTION_RTL=2
 Right-to-left text writing direction.
 
 ## Constants
+
 NOTIFICATION_RESIZED=40🔗
 Sent when the node changes size. Usesizeto get the new size.
 NOTIFICATION_MOUSE_ENTER=41🔗
@@ -702,6 +710,7 @@ Sent when the node loses focus.
 This notification is sent in reversed order.
 NOTIFICATION_THEME_CHANGED=45🔗
 Sent when the node needs to refresh its theme items. This happens in one of the following cases:
+
 - Thethemeproperty is changed on this node or any of its ancestors.
 Thethemeproperty is changed on this node or any of its ancestors.
 - Thetheme_type_variationproperty is changed on this node.
@@ -712,6 +721,7 @@ One of the node's theme property overrides is changed.
 The node enters the scene tree.
 Note:As an optimization, this notification won't be sent from changes that occur while this node is outside of the scene tree. Instead, all of the theme item updates can be applied at once when the node enters the scene tree.
 Note:This notification is received alongsideNode.NOTIFICATION_ENTER_TREE, so if you are instantiating a scene, the child nodes will not be initialized yet. You can use it to setup theming for this node, child nodes created from script, or if you want to access child nodes added in the editor, make sure the node is ready usingNode.is_node_ready().
+
 ```
 func _notification(what):
     if what == NOTIFICATION_THEME_CHANGED:
@@ -719,6 +729,7 @@ func _notification(what):
             await ready # Wait until ready signal.
         $Label.add_theme_color_override("font_color", Color.YELLOW)
 ```
+
 NOTIFICATION_SCROLL_BEGIN=47🔗
 Sent when this node is inside aScrollContainerwhich has begun being scrolled when dragging the scrollable areawith a touch event. This notification isnotsent when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.
 Note:This signal is only emitted on Android or iOS, or on desktop/web platforms whenProjectSettings.input_devices/pointing/emulate_touch_from_mouseis enabled.
@@ -729,7 +740,9 @@ NOTIFICATION_LAYOUT_DIRECTION_CHANGED=49🔗
 Sent when the control layout direction is changed from LTR or RTL or vice versa. This notification is propagated to child Control nodes as result of a change tolayout_direction.
 
 ## Property Descriptions
+
 Array[NodePath]accessibility_controls_nodes=[]🔗
+
 - voidset_accessibility_controls_nodes(value:Array[NodePath])
 voidset_accessibility_controls_nodes(value:Array[NodePath])
 - Array[NodePath]get_accessibility_controls_nodes()
@@ -1039,6 +1052,7 @@ Stringget_tooltip_text()
 The default tooltip text. The tooltip appears when the user's mouse cursor stays idle over this control for a few moments, provided that themouse_filterproperty is notMOUSE_FILTER_IGNORE. The time required for the tooltip to appear can be changed with theProjectSettings.gui/timers/tooltip_delay_secsetting.
 This string is the default return value ofget_tooltip(). Override_get_tooltip()to generate tooltip text dynamically. Override_make_custom_tooltip()to customize the tooltip interface and behavior.
 The tooltip popup will use either a default implementation, or a custom one that you can provide by overriding_make_custom_tooltip(). The default tooltip includes aPopupPanelandLabelwhose theme properties can be customized usingThememethods with the"TooltipPanel"and"TooltipLabel"respectively. For example:
+
 ```
 var style_box = StyleBoxFlat.new()
 style_box.set_bg_color(Color(1, 1, 0))
@@ -1047,6 +1061,7 @@ style_box.set_border_width_all(2)
 theme.set_stylebox("panel", "TooltipPanel", style_box)
 theme.set_color("font_color", "TooltipLabel", Color(0, 1, 1))
 ```
+
 ```
 var styleBox = new StyleBoxFlat();
 styleBox.SetBgColor(new Color(1, 1, 0));
@@ -1057,18 +1072,21 @@ Theme.SetColor("font_color", "TooltipLabel", new Color(0, 1, 1));
 ```
 
 ## Method Descriptions
+
 String_accessibility_get_contextual_info()virtualconst🔗
 Return the description of the keyboard shortcuts and other contextual help for this control.
 bool_can_drop_data(at_position:Vector2, data:Variant)virtualconst🔗
 Godot calls this method to test ifdatafrom a control's_get_drag_data()can be dropped atat_position.at_positionis local to this control.
 This method should only be used to test the data. Process the data in_drop_data().
 Note:If the drag was initiated by a keyboard shortcut oraccessibility_drag(),at_positionis set toVector2.INF, and the currently selected item/text position should be used as the drop position.
+
 ```
 func _can_drop_data(position, data):
     # Check position if it is relevant to you
     # Otherwise, just check data
     return typeof(data) == TYPE_DICTIONARY and data.has("expected")
 ```
+
 ```
 public override bool _CanDropData(Vector2 atPosition, Variant data)
 {
@@ -1077,9 +1095,11 @@ public override bool _CanDropData(Vector2 atPosition, Variant data)
     return data.VariantType == Variant.Type.Dictionary && data.AsGodotDictionary().ContainsKey("expected");
 }
 ```
+
 void_drop_data(at_position:Vector2, data:Variant)virtual🔗
 Godot calls this method to pass you thedatafrom a control's_get_drag_data()result. Godot first calls_can_drop_data()to test ifdatais allowed to drop atat_positionwhereat_positionis local to this control.
 Note:If the drag was initiated by a keyboard shortcut oraccessibility_drag(),at_positionis set toVector2.INF, and the currently selected item/text position should be used as the drop position.
+
 ```
 func _can_drop_data(position, data):
     return typeof(data) == TYPE_DICTIONARY and data.has("color")
@@ -1087,6 +1107,7 @@ func _can_drop_data(position, data):
 func _drop_data(position, data):
     var color = data["color"]
 ```
+
 ```
 public override bool _CanDropData(Vector2 atPosition, Variant data)
 {
@@ -1098,18 +1119,21 @@ public override void _DropData(Vector2 atPosition, Variant data)
     Color color = data.AsGodotDictionary()["color"].AsColor();
 }
 ```
+
 String_get_accessibility_container_name(node:Node)virtualconst🔗
 Override this method to return a human-readable description of the position of the childnodein the custom container, added to theaccessibility_name.
 Variant_get_drag_data(at_position:Vector2)virtual🔗
 Godot calls this method to get data that can be dragged and dropped onto controls that expect drop data. Returnsnullif there is no data to drag. Controls that want to receive drop data should implement_can_drop_data()and_drop_data().at_positionis local to this control. Drag may be forced withforce_drag().
 A preview that will follow the mouse that should represent the data can be set withset_drag_preview(). A good time to set the preview is in this method.
 Note:If the drag was initiated by a keyboard shortcut oraccessibility_drag(),at_positionis set toVector2.INF, and the currently selected item/text position should be used as the drag position.
+
 ```
 func _get_drag_data(position):
     var mydata = make_data() # This is your custom method generating the drag data.
     set_drag_preview(make_preview(mydata)) # This is your custom method generating the preview of the drag data.
     return mydata
 ```
+
 ```
 public override Variant _GetDragData(Vector2 atPosition)
 {
@@ -1118,6 +1142,7 @@ public override Variant _GetDragData(Vector2 atPosition)
     return myData;
 }
 ```
+
 Vector2_get_minimum_size()virtualconst🔗
 Virtual method to be implemented by the user. Returns the minimum size for this control. Alternative tocustom_minimum_sizefor controlling minimum size via code. The actual minimum size will be the max value of these two (in each axis separately).
 If not overridden, defaults toVector2.ZERO.
@@ -1128,12 +1153,14 @@ Note:If this method returns an emptyStringand_make_custom_tooltip()is not overri
 void_gui_input(event:InputEvent)virtual🔗
 Virtual method to be implemented by the user. Override this method to handle and accept inputs on UI elements. See alsoaccept_event().
 Example:Click on the control to print a message:
+
 ```
 func _gui_input(event):
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
             print("I've been clicked D:")
 ```
+
 ```
 public override void _GuiInput(InputEvent @event)
 {
@@ -1146,7 +1173,9 @@ public override void _GuiInput(InputEvent @event)
     }
 }
 ```
+
 If theeventinheritsInputEventMouse, this method willnotbe called when:
+
 - the control'smouse_filteris set toMOUSE_FILTER_IGNORE;
 the control'smouse_filteris set toMOUSE_FILTER_IGNORE;
 - the control is obstructed by another control on top, that doesn't havemouse_filterset toMOUSE_FILTER_IGNORE;
@@ -1170,12 +1199,14 @@ Note:The tooltip is shrunk to minimal size. If you want to ensure it's fully vis
 Note:The node (and any relevant children) should have theirCanvasItem.visibleset totruewhen returned, otherwise, the viewport that instantiates it will not be able to calculate its minimum size reliably.
 Note:If overridden, this method is called even ifget_tooltip()returns an empty string. When this happens with the default tooltip, it is not displayed. To copy this behavior, returnnullin this method whenfor_textis empty.
 Example:Use a constructed node as a tooltip:
+
 ```
 func _make_custom_tooltip(for_text):
     var label = Label.new()
     label.text = for_text
     return label
 ```
+
 ```
 public override Control _MakeCustomTooltip(string forText)
 {
@@ -1184,13 +1215,16 @@ public override Control _MakeCustomTooltip(string forText)
     return label;
 }
 ```
+
 Example:Use a scene instance as a tooltip:
+
 ```
 func _make_custom_tooltip(for_text):
     var tooltip = preload("res://some_tooltip_scene.tscn").instantiate()
     tooltip.get_node("Label").text = for_text
     return tooltip
 ```
+
 ```
 public override Control _MakeCustomTooltip(string forText)
 {
@@ -1199,6 +1233,7 @@ public override Control _MakeCustomTooltip(string forText)
     return tooltip;
 }
 ```
+
 Array[Vector3i]_structured_text_parser(args:Array, text:String)virtualconst🔗
 User defined BiDi algorithm override function.
 Returns anArrayofVector3itext ranges and text base directions, in the left-to-right order. Ranges should cover full sourcetextwithout overlaps. BiDi algorithm will be used on each range separately.
@@ -1213,6 +1248,7 @@ voidadd_theme_color_override(name:StringName, color:Color)🔗
 Creates a local override for a themeColorwith the specifiedname. Local overrides always take precedence when fetching theme items for the control. An override can be removed withremove_theme_color_override().
 See alsoget_theme_color().
 Example:Override aLabel's color and reset it later:
+
 ```
 # Given the child Label node "MyLabel", override its font color with a custom value.
 $MyLabel.add_theme_color_override("font_color", Color(1, 0.5, 0))
@@ -1221,6 +1257,7 @@ $MyLabel.remove_theme_color_override("font_color")
 # Alternatively it can be overridden with the default value from the Label type.
 $MyLabel.add_theme_color_override("font_color", get_theme_color("font_color", "Label"))
 ```
+
 ```
 // Given the child Label node "MyLabel", override its font color with a custom value.
 GetNode<Label>("MyLabel").AddThemeColorOverride("font_color", new Color(1, 0.5f, 0));
@@ -1229,6 +1266,7 @@ GetNode<Label>("MyLabel").RemoveThemeColorOverride("font_color");
 // Alternatively it can be overridden with the default value from the Label type.
 GetNode<Label>("MyLabel").AddThemeColorOverride("font_color", GetThemeColor("font_color", "Label"));
 ```
+
 voidadd_theme_constant_override(name:StringName, constant:int)🔗
 Creates a local override for a theme constant with the specifiedname. Local overrides always take precedence when fetching theme items for the control. An override can be removed withremove_theme_constant_override().
 See alsoget_theme_constant().
@@ -1245,6 +1283,7 @@ voidadd_theme_stylebox_override(name:StringName, stylebox:StyleBox)🔗
 Creates a local override for a themeStyleBoxwith the specifiedname. Local overrides always take precedence when fetching theme items for the control. An override can be removed withremove_theme_stylebox_override().
 See alsoget_theme_stylebox().
 Example:Modify a property in aStyleBoxby duplicating it:
+
 ```
 # The snippet below assumes the child node "MyButton" has a StyleBoxFlat assigned.
 # Resources are shared across instances, so we need to duplicate it
@@ -1256,6 +1295,7 @@ $MyButton.add_theme_stylebox_override("normal", new_stylebox_normal)
 # Remove the stylebox override.
 $MyButton.remove_theme_stylebox_override("normal")
 ```
+
 ```
 // The snippet below assumes the child node "MyButton" has a StyleBoxFlat assigned.
 // Resources are shared across instances, so we need to duplicate it
@@ -1267,6 +1307,7 @@ GetNode<Button>("MyButton").AddThemeStyleboxOverride("normal", newStyleboxNormal
 // Remove the stylebox override.
 GetNode<Button>("MyButton").RemoveThemeStyleboxOverride("normal");
 ```
+
 voidbegin_bulk_theme_override()🔗
 Prevents*_theme_*_overridemethods from emittingNOTIFICATION_THEME_CHANGEDuntilend_bulk_theme_override()is called.
 voidend_bulk_theme_override()🔗
@@ -1320,6 +1361,7 @@ Vector2get_screen_position()const🔗
 Returns the position of thisControlin global screen coordinates (i.e. taking window position into account). Mostly useful for editor plugins.
 Equivalent toget_screen_transform().origin(seeCanvasItem.get_screen_transform()).
 Example:Show a popup at the mouse position:
+
 ```
 popup_menu.position = get_screen_position() + get_screen_transform().basis_xform(get_local_mouse_position())
 
@@ -1329,9 +1371,11 @@ popup_menu.position = get_screen_transform() * get_local_mouse_position()
 popup_menu.reset_size()
 popup_menu.popup()
 ```
+
 Colorget_theme_color(name:StringName, theme_type:StringName= &"")const🔗
 Returns aColorfrom the first matchingThemein the tree if thatThemehas a color item with the specifiednameandtheme_type. Iftheme_typeis omitted the class name of the current control is used as the type, ortheme_type_variationif it is defined. If the type is a class name its parent classes are also checked, in order of inheritance. If the type is a variation its base types are checked, in order of dependency, then the control's class name and its parent classes are checked.
 For the current control its local overrides are considered first (seeadd_theme_color_override()), then its assignedtheme. After the current control, each parent control and its assignedthemeare considered; controls without athemeassigned are skipped. If no matchingThemeis found in the tree, the custom projectTheme(seeProjectSettings.gui/theme/custom) and the defaultThemeare used (seeThemeDB).
+
 ```
 func _ready():
     # Get the font color defined for the current Control's class, if it exists.
@@ -1339,6 +1383,7 @@ func _ready():
     # Get the font color defined for the Button class.
     modulate = get_theme_color("font_color", "Button")
 ```
+
 ```
 public override void _Ready()
 {
@@ -1348,6 +1393,7 @@ public override void _Ready()
     Modulate = GetThemeColor("font_color", "Button");
 }
 ```
+
 intget_theme_constant(name:StringName, theme_type:StringName= &"")const🔗
 Returns a constant from the first matchingThemein the tree if thatThemehas a constant item with the specifiednameandtheme_type.
 Seeget_theme_color()for details.
@@ -1378,16 +1424,19 @@ This method can be overridden to customize its behavior. See_get_tooltip().
 Note:If this method returns an emptyStringand_make_custom_tooltip()is not overridden, no tooltip is displayed.
 voidgrab_click_focus()🔗
 Creates anInputEventMouseButtonthat attempts to click the control. If the event is received, the control gains focus.
+
 ```
 func _process(delta):
     grab_click_focus() # When clicking another Control node, this node will be clicked instead.
 ```
+
 ```
 public override void _Process(double delta)
 {
     GrabClickFocus(); // When clicking another Control node, this node will be clicked instead.
 }
 ```
+
 voidgrab_focus(hide_focus:bool= false)🔗
 Steal the focus from another control and become the focused control (seefocus_mode).
 Ifhide_focusistrue, the control will not visually show its focused state. Has no effect forLineEditandTextEditwhenProjectSettings.gui/common/show_focus_state_on_pointer_eventis set toControlSupportsKeyboardInput, or for any control when it is set toAlways.
@@ -1468,6 +1517,7 @@ Setsoffset_leftandoffset_topat the same time. Equivalent of changingposition.
 voidset_drag_forwarding(drag_func:Callable, can_drop_func:Callable, drop_func:Callable)🔗
 Sets the given callables to be used instead of the control's own drag-and-drop virtual methods. If a callable is empty, its respective virtual method is used as normal.
 The arguments for each callable should be exactly the same as their respective virtual methods, which would be:
+
 - drag_funccorresponds to_get_drag_data()and requires aVector2;
 drag_funccorresponds to_get_drag_data()and requires aVector2;
 - can_drop_funccorresponds to_can_drop_data()and requires both aVector2and aVariant;
@@ -1476,6 +1526,7 @@ can_drop_funccorresponds to_can_drop_data()and requires both aVector2and aVarian
 drop_funccorresponds to_drop_data()and requires both aVector2and aVariant.
 voidset_drag_preview(control:Control)🔗
 Shows the given control at the mouse pointer. A good time to call this method is in_get_drag_data(). The control must not be in the scene tree. You should not free the control, and you should not keep a reference to the control beyond the duration of the drag. It will be deleted automatically after the drag has ended.
+
 ```
 @export var color = Color(1, 0, 0, 1)
 
@@ -1487,6 +1538,7 @@ func _get_drag_data(position):
     set_drag_preview(cpb)
     return color
 ```
+
 ```
 [Export]
 private Color _color = new Color(1, 0, 0, 1);
@@ -1501,6 +1553,7 @@ public override Variant _GetDragData(Vector2 atPosition)
     return _color;
 }
 ```
+
 voidset_end(position:Vector2)🔗
 Setsoffset_rightandoffset_bottomat the same time.
 voidset_focus_neighbor(side:Side, neighbor:NodePath)🔗
@@ -1527,4 +1580,5 @@ Moves the mouse cursor toposition, relative topositionof thisControl.
 Note:warp_mouse()is only supported on Windows, macOS and Linux. It has no effect on Android, iOS and Web.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

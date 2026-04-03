@@ -1,13 +1,16 @@
 # VisualShader in English
 
 # VisualShader
+
 Inherits:Shader<Resource<RefCounted<Object
 A custom shader program with a visual editor.
 
 ## Description
+
 This class provides a graph-like visual editor for creating aShader. AlthoughVisualShaders do not require coding, they share the same logic with script shaders. They useVisualShaderNodes that can be connected to each other to control the flow of the shader. The visual shader graph is converted to a script shader behind the scenes.
 
 ## Tutorials
+
 - Using VisualShaders
 Using VisualShaders
 
@@ -83,6 +86,7 @@ void
 set_node_position(type:Type, id:int, position:Vector2)
 
 ## Enumerations
+
 enumType:🔗
 TypeTYPE_VERTEX=0
 A vertex shader, operating on vertices.
@@ -134,13 +138,16 @@ VaryingTypeVARYING_TYPE_MAX=8
 Represents the size of theVaryingTypeenum.
 
 ## Constants
+
 NODE_ID_INVALID=-1🔗
 Indicates an invalidVisualShadernode.
 NODE_ID_OUTPUT=0🔗
 Indicates an output node ofVisualShader.
 
 ## Property Descriptions
+
 Vector2graph_offset🔗
+
 - voidset_graph_offset(value:Vector2)
 voidset_graph_offset(value:Vector2)
 - Vector2get_graph_offset()
@@ -149,6 +156,7 @@ Deprecated:This property does nothing and always equals to zero.
 Deprecated.
 
 ## Method Descriptions
+
 voidadd_node(type:Type, node:VisualShaderNode, position:Vector2, id:int)🔗
 Adds the specifiednodeto the shader.
 voidadd_varying(name:String, mode:VaryingMode, type:VaryingType)🔗
@@ -191,4 +199,5 @@ voidset_node_position(type:Type, id:int, position:Vector2)🔗
 Sets the position of the specified node.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

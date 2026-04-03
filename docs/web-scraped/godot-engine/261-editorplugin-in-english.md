@@ -1,15 +1,18 @@
 # EditorPlugin in English
 
 # EditorPlugin
+
 Inherits:Node<Object
 Inherited By:GridMapEditorPlugin
 Used by the editor to extend its functionality.
 
 ## Description
+
 Plugins are used by the editor to extend functionality. The most common types of plugins are those which edit a given node or resource type, import plugins and export plugins. See alsoEditorScriptto add functions to the editor.
 Note:Some names in this class contain "left" or "right" (e.g.DOCK_SLOT_LEFT_UL). These APIs assume left-to-right layout, and would be backwards when using right-to-left layout. These names are kept for compatibility reasons.
 
 ## Tutorials
+
 - Editor plugins documentation index
 Editor plugins documentation index
 
@@ -245,6 +248,7 @@ set_input_event_forwarding_always_enabled()
 update_overlays()const
 
 ## Signals
+
 main_screen_changed(screen_name:String)🔗
 Emitted when user changes the workspace (2D,3D,Script,Game,AssetLib). Also works with custom screens defined by plugins.
 project_settings_changed()🔗
@@ -260,6 +264,7 @@ scene_saved(filepath:String)🔗
 Emitted when a scene was saved on disc. The argument is a file path to the saved scene. See alsoresource_saved.
 
 ## Enumerations
+
 enumCustomControlContainer:🔗
 CustomControlContainerCONTAINER_TOOLBAR=0
 Main editor toolbar, next to play buttons.
@@ -317,6 +322,7 @@ AfterGUIInputAFTER_GUI_INPUT_CUSTOM=2
 Pass theInputEventto other editor plugins except the mainNode3Done. This can be used to prevent node selection changes and work with sub-gizmos instead.
 
 ## Method Descriptions
+
 void_apply_changes()virtual🔗
 This method is called when the editor is about to save the project, switch to another tab, etc. It asks the plugin to apply any pending state changes to ensure consistency.
 This is used, for example, in shader editors to let the plugin know that it must apply the shader code being written by the user to the object.
@@ -334,6 +340,7 @@ void_enable_plugin()virtual🔗
 Called by the engine when the user enables theEditorPluginin the Plugin tab of the project settings window.
 void_forward_3d_draw_over_viewport(viewport_control:Control)virtual🔗
 Called by the engine when the 3D editor's viewport is updated.viewport_controlis an overlay on top of the viewport and it can be used for drawing. You can update the viewport manually by callingupdate_overlays().
+
 ```
 func _forward_3d_draw_over_viewport(overlay):
     # Draw a circle at the cursor's position.
@@ -346,6 +353,7 @@ func _forward_3d_gui_input(camera, event):
         return EditorPlugin.AFTER_GUI_INPUT_STOP
     return EditorPlugin.AFTER_GUI_INPUT_PASS
 ```
+
 ```
 public override void _Forward3DDrawOverViewport(Control viewportControl)
 {
@@ -364,16 +372,19 @@ public override EditorPlugin.AfterGuiInput _Forward3DGuiInput(Camera3D viewportC
     return EditorPlugin.AfterGuiInput.Pass;
 }
 ```
+
 void_forward_3d_force_draw_over_viewport(viewport_control:Control)virtual🔗
 This method is the same as_forward_3d_draw_over_viewport(), except it draws on top of everything. Useful when you need an extra layer that shows over anything else.
 You need to enable calling of this method by usingset_force_draw_over_forwarding_enabled().
 int_forward_3d_gui_input(viewport_camera:Camera3D, event:InputEvent)virtual🔗
 Called when there is a root node in the current edited scene,_handles()is implemented, and anInputEventhappens in the 3D viewport. The return value decides whether theInputEventis consumed or forwarded to otherEditorPlugins. SeeAfterGUIInputfor options.
+
 ```
 # Prevents the InputEvent from reaching other Editor classes.
 func _forward_3d_gui_input(camera, event):
     return EditorPlugin.AFTER_GUI_INPUT_STOP
 ```
+
 ```
 // Prevents the InputEvent from reaching other Editor classes.
 public override EditorPlugin.AfterGuiInput _Forward3DGuiInput(Camera3D camera, InputEvent @event)
@@ -381,12 +392,15 @@ public override EditorPlugin.AfterGuiInput _Forward3DGuiInput(Camera3D camera, I
     return EditorPlugin.AfterGuiInput.Stop;
 }
 ```
+
 This method must returnAFTER_GUI_INPUT_PASSin order to forward theInputEventto other Editor classes.
+
 ```
 # Consumes InputEventMouseMotion and forwards other InputEvent types.
 func _forward_3d_gui_input(camera, event):
     return EditorPlugin.AFTER_GUI_INPUT_STOP if event is InputEventMouseMotion else EditorPlugin.AFTER_GUI_INPUT_PASS
 ```
+
 ```
 // Consumes InputEventMouseMotion and forwards other InputEvent types.
 public override EditorPlugin.AfterGuiInput _Forward3DGuiInput(Camera3D camera, InputEvent @event)
@@ -394,8 +408,10 @@ public override EditorPlugin.AfterGuiInput _Forward3DGuiInput(Camera3D camera, I
     return @event is InputEventMouseMotion ? EditorPlugin.AfterGuiInput.Stop : EditorPlugin.AfterGuiInput.Pass;
 }
 ```
+
 void_forward_canvas_draw_over_viewport(viewport_control:Control)virtual🔗
 Called by the engine when the 2D editor's viewport is updated.viewport_controlis an overlay on top of the viewport and it can be used for drawing. You can update the viewport manually by callingupdate_overlays().
+
 ```
 func _forward_canvas_draw_over_viewport(overlay):
     # Draw a circle at the cursor's position.
@@ -408,6 +424,7 @@ func _forward_canvas_gui_input(event):
         return true
     return false
 ```
+
 ```
 public override void _ForwardCanvasDrawOverViewport(Control viewportControl)
 {
@@ -426,16 +443,19 @@ public override bool _ForwardCanvasGuiInput(InputEvent @event)
     return false;
 }
 ```
+
 void_forward_canvas_force_draw_over_viewport(viewport_control:Control)virtual🔗
 This method is the same as_forward_canvas_draw_over_viewport(), except it draws on top of everything. Useful when you need an extra layer that shows over anything else.
 You need to enable calling of this method by usingset_force_draw_over_forwarding_enabled().
 bool_forward_canvas_gui_input(event:InputEvent)virtual🔗
 Called when there is a root node in the current edited scene,_handles()is implemented, and anInputEventhappens in the 2D viewport. If this method returnstrue,eventis intercepted by thisEditorPlugin, otherwiseeventis forwarded to other Editor classes.
+
 ```
 # Prevents the InputEvent from reaching other Editor classes.
 func _forward_canvas_gui_input(event):
     return true
 ```
+
 ```
 // Prevents the InputEvent from reaching other Editor classes.
 public override bool ForwardCanvasGuiInput(InputEvent @event)
@@ -443,7 +463,9 @@ public override bool ForwardCanvasGuiInput(InputEvent @event)
     return true;
 }
 ```
+
 This method must returnfalsein order to forward theInputEventto other Editor classes.
+
 ```
 # Consumes InputEventMouseMotion and forwards other InputEvent types.
 func _forward_canvas_gui_input(event):
@@ -451,6 +473,7 @@ func _forward_canvas_gui_input(event):
         return true
     return false
 ```
+
 ```
 // Consumes InputEventMouseMotion and forwards other InputEvent types.
 public override bool _ForwardCanvasGuiInput(InputEvent @event)
@@ -462,12 +485,14 @@ public override bool _ForwardCanvasGuiInput(InputEvent @event)
     return false;
 }
 ```
+
 PackedStringArray_get_breakpoints()virtualconst🔗
 This is for editors that edit script-based objects. You can return a list of breakpoints in the format (script:line), for example:res://path_to_script.gd:25.
 Texture2D_get_plugin_icon()virtualconst🔗
 Override this method in your plugin to return aTexture2Din order to give it an icon.
 For main screen plugins, this appears at the top of the screen, to the right of the "2D", "3D", "Script", "Game", and "AssetLib" buttons.
 Ideally, the plugin icon should be white with a transparent background and 16×16 pixels in size.
+
 ```
 func _get_plugin_icon():
     # You can use a custom icon:
@@ -475,6 +500,7 @@ func _get_plugin_icon():
     # Or use a built-in icon:
     return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")
 ```
+
 ```
 public override Texture2D _GetPluginIcon()
 {
@@ -484,6 +510,7 @@ public override Texture2D _GetPluginIcon()
     return EditorInterface.Singleton.GetEditorTheme().GetIcon("Node", "EditorIcons");
 }
 ```
+
 String_get_plugin_name()virtualconst🔗
 Override this method in your plugin to provide the name of the plugin when displayed in the Godot editor.
 For main screen plugins, this appears at the top of the screen, to the right of the "2D", "3D", "Script", "Game", and "AssetLib" buttons.
@@ -492,15 +519,18 @@ Override this method to provide a state data you want to be saved, like view pos
 Use_set_state()to restore your saved state.
 Note:This method should not be used to save important settings that should persist with the project.
 Note:You must implement_get_plugin_name()for the state to be stored and restored correctly.
+
 ```
 func _get_state():
     var state = { "zoom": zoom, "preferred_color": my_color }
     return state
 ```
+
 String_get_unsaved_status(for_scene:String)virtualconst🔗
 Override this method to provide a custom message that lists unsaved changes. The editor will call this method when exiting or when closing a scene, and display the returned string in a confirmation dialog. Return empty string if the plugin has no unsaved changes.
 When closing a scene,for_sceneis the path to the scene being closed. You can use it to handle built-in resources in that scene.
 If the user confirms saving,_save_external_data()will be called, before closing the editor.
+
 ```
 func _get_unsaved_status(for_scene):
     if not unsaved:
@@ -514,20 +544,25 @@ func _get_unsaved_status(for_scene):
 func _save_external_data():
     unsaved = false
 ```
+
 If the plugin has no scene-specific changes, you can ignore the calls when closing scenes:
+
 ```
 func _get_unsaved_status(for_scene):
     if not for_scene.is_empty():
         return ""
 ```
+
 void_get_window_layout(configuration:ConfigFile)virtual🔗
 Override this method to provide the GUI layout of the plugin or any other data you want to be stored. This is used to save the project's editor layout whenqueue_save_layout()is called or the editor layout was changed (for example changing the position of a dock). The data is stored in theeditor_layout.cfgfile in the editor metadata directory.
 Use_set_window_layout()to restore your saved layout.
+
 ```
 func _get_window_layout(configuration):
     configuration.set_value("MyPlugin", "window_position", $Window.position)
     configuration.set_value("MyPlugin", "icon_color", $Icon.modulate)
 ```
+
 bool_handles(object:Object)virtualconst🔗
 Implement this function if your plugin edits a specific type of object (Resource or Node). If you returntrue, then you will get the functions_edit()and_make_visible()called when the editor requests them. If you have declared the methods_forward_canvas_gui_input()and_forward_3d_gui_input()these will be called too.
 Note:Each plugin should handle only one type of objects at a time. If a plugin handles more types of objects and they are edited at the same time, it will result in errors.
@@ -535,6 +570,7 @@ bool_has_main_screen()virtualconst🔗
 Returnstrueif this is a main screen editor plugin (it goes in the workspace selector together with2D,3D,Script,Game, andAssetLib).
 When the plugin's workspace is selected, other main screen plugins will be hidden, but your plugin will not appear automatically. It needs to be added as a child ofEditorInterface.get_editor_main_screen()and made visible inside_make_visible().
 Use_get_plugin_name()and_get_plugin_icon()to customize the plugin button's appearance.
+
 ```
 var plugin_control
 
@@ -555,34 +591,41 @@ func _get_plugin_name():
 func _get_plugin_icon():
     return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")
 ```
+
 void_make_visible(visible:bool)virtual🔗
 This function will be called when the editor is requested to become visible. It is used for plugins that edit a specific object type.
 Remember that you have to manage the visibility of all your editor controls manually.
 PackedStringArray_run_scene(scene:String, args:PackedStringArray)virtualconst🔗
 This function is called when an individual scene is about to be played in the editor.argsis a list of command line arguments that will be passed to the new Godot instance, which will be replaced by the list returned by this function.
+
 ```
 func _run_scene(scene, args):
     args.append("--an-extra-argument")
     return args
 ```
+
 Note:Text that is printed in this method will not be visible in the editor's Output panel unlessEditorSettings.run/output/always_clear_output_on_playisfalse.
 void_save_external_data()virtual🔗
 This method is called after the editor saves the project or when it's closed. It asks the plugin to save edited external scenes/resources.
 void_set_state(state:Dictionary)virtual🔗
 Restore the state saved by_get_state(). This method is called when the current scene tab is changed in the editor.
 Note:Your plugin must implement_get_plugin_name(), otherwise it will not be recognized and this method will not be called.
+
 ```
 func _set_state(data):
     zoom = data.get("zoom", 1.0)
     preferred_color = data.get("my_color", Color.WHITE)
 ```
+
 void_set_window_layout(configuration:ConfigFile)virtual🔗
 Restore the plugin GUI layout and data saved by_get_window_layout(). This method is called for every plugin on editor startup. Use the providedconfigurationfile to read your saved data.
+
 ```
 func _set_window_layout(configuration):
     $Window.position = configuration.get_value("MyPlugin", "window_position", Vector2())
     $Icon.modulate = configuration.get_value("MyPlugin", "icon_color", Color.WHITE)
 ```
+
 voidadd_autoload_singleton(name:String, path:String)🔗
 Adds a script atpathto the Autoload list asname.
 voidadd_context_menu_plugin(slot:ContextMenuSlot, plugin:EditorContextMenuPlugin)🔗
@@ -628,6 +671,7 @@ Seeadd_inspector_plugin()for an example of how to register a plugin.
 voidadd_inspector_plugin(plugin:EditorInspectorPlugin)🔗
 Registers a newEditorInspectorPlugin. Inspector plugins are used to extendEditorInspectorand provide custom configuration tools for your object's properties.
 Note:Always useremove_inspector_plugin()to remove the registeredEditorInspectorPluginwhen yourEditorPluginis disabled to prevent leaks and an unexpected behavior.
+
 ```
 const MyInspectorPlugin = preload("res://addons/your_addon/path/to/your/script.gd")
 var inspector_plugin = MyInspectorPlugin.new()
@@ -638,6 +682,7 @@ func _enter_tree():
 func _exit_tree():
     remove_inspector_plugin(inspector_plugin)
 ```
+
 voidadd_node_3d_gizmo_plugin(plugin:EditorNode3DGizmoPlugin)🔗
 Registers a newEditorNode3DGizmoPlugin. Gizmo plugins are used to add custom gizmos to the 3D preview viewport for aNode3D.
 Seeadd_inspector_plugin()for an example of how to register a plugin.
@@ -729,4 +774,5 @@ intupdate_overlays()const🔗
 Updates the overlays of the 2D and 3D editor viewport. Causes methods_forward_canvas_draw_over_viewport(),_forward_canvas_force_draw_over_viewport(),_forward_3d_draw_over_viewport()and_forward_3d_force_draw_over_viewport()to be called.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

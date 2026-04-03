@@ -1,10 +1,12 @@
 # VisualShaderNodeDerivativeFunc in English
 
 # VisualShaderNodeDerivativeFunc
+
 Inherits:VisualShaderNode<Resource<RefCounted<Object
 Calculates a derivative within the visual shader graph.
 
 ## Description
+
 This node is only available inFragmentandLightvisual shaders.
 
 ## Properties
@@ -22,6 +24,7 @@ Precision
 precision
 
 ## Enumerations
+
 enumOpType:🔗
 OpTypeOP_TYPE_SCALAR=0
 A floating-point scalar.
@@ -53,7 +56,9 @@ PrecisionPRECISION_MAX=3
 Represents the size of thePrecisionenum.
 
 ## Property Descriptions
+
 Functionfunction=0🔗
+
 - voidset_function(value:Function)
 voidset_function(value:Function)
 - Functionget_function()
@@ -73,4 +78,5 @@ Precisionget_precision()
 Sets the level of precision to use for the derivative function. When using the Compatibility renderer, this setting has no effect.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

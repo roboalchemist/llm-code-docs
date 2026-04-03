@@ -1,10 +1,12 @@
 # SphereMesh in English
 
 # SphereMesh
+
 Inherits:PrimitiveMesh<Mesh<Resource<RefCounted<Object
 Class representing a sphericalPrimitiveMesh.
 
 ## Description
+
 Class representing a sphericalPrimitiveMesh.
 
 ## Properties
@@ -27,7 +29,9 @@ radius
 rings
 
 ## Property Descriptions
+
 floatheight=1.0🔗
+
 - voidset_height(value:float)
 voidset_height(value:float)
 - floatget_height()
@@ -60,4 +64,5 @@ intget_rings()
 Number of segments along the height of the sphere.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

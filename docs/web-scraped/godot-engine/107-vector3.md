@@ -1,15 +1,18 @@
 # Vector3
 
 # Vector3
+
 A 3D vector using floating-point coordinates.
 
 ## Description
+
 A 3-element structure that can be used to represent 3D coordinates or any other triplet of numeric values.
 It uses floating-point coordinates. By default, these floating-point values use 32-bit precision, unlikefloatwhich is always 64-bit. If double precision is needed, compile the engine with the optionprecision=double.
 SeeVector3ifor its integer counterpart.
 Note:In a boolean context, a Vector3 will evaluate tofalseif it's equal toVector3(0,0,0). Otherwise, a Vector3 will always evaluate totrue.
 
 ## Tutorials
+
 - Math documentation index
 Math documentation index
 - Vector math
@@ -227,15 +230,15 @@ operator !=(right:Vector3)
 Vector3
 operator *(right:Basis)
 Vector3
-operator *(right:Quaternion)
+operator*(right:Quaternion)
 Vector3
 operator *(right:Transform3D)
 Vector3
-operator *(right:Vector3)
+operator*(right:Vector3)
 Vector3
 operator *(right:float)
 Vector3
-operator *(right:int)
+operator*(right:int)
 Vector3
 operator +(right:Vector3)
 Vector3
@@ -264,6 +267,7 @@ Vector3
 operator unary-()
 
 ## Enumerations
+
 enumAxis:🔗
 AxisAXIS_X=0
 Enumerated value for the X axis. Returned bymax_axis_index()andmin_axis_index().
@@ -273,6 +277,7 @@ AxisAXIS_Z=2
 Enumerated value for the Z axis. Returned bymax_axis_index()andmin_axis_index().
 
 ## Constants
+
 ZERO=Vector3(0,0,0)🔗
 Zero vector, a vector with all components set to0.
 ONE=Vector3(1,1,1)🔗
@@ -305,6 +310,7 @@ MODEL_REAR=Vector3(0,0,-1)🔗
 Unit vector pointing towards the rear side (back) of imported 3D assets.
 
 ## Property Descriptions
+
 floatx=0.0🔗
 The vector's X component. Also accessible by using the index position[0].
 floaty=0.0🔗
@@ -313,6 +319,7 @@ floatz=0.0🔗
 The vector's Z component. Also accessible by using the index position[2].
 
 ## Constructor Descriptions
+
 Vector3Vector3()🔗
 Constructs a default-initializedVector3with all components set to0.
 Vector3Vector3(from:Vector3)
@@ -323,6 +330,7 @@ Vector3Vector3(x:float, y:float, z:float)
 Returns aVector3with the given components.
 
 ## Method Descriptions
+
 Vector3abs()const🔗
 Returns a new vector with all components in absolute values (i.e. positive).
 floatangle_to(to:Vector3)const🔗
@@ -437,6 +445,7 @@ Vector3snappedf(step:float)const🔗
 Returns a new vector with each component snapped to the nearest multiple ofstep. This can also be used to round the components to an arbitrary number of decimals.
 
 ## Operator Descriptions
+
 booloperator !=(right:Vector3)🔗
 Returnstrueif the vectors are not equal.
 Note:Due to floating-point precision errors, consider usingis_equal_approx()instead, which is more reliable.
@@ -452,30 +461,38 @@ Vector3operator *(right:Transform3D)🔗
 Inversely transforms (multiplies) theVector3by the givenTransform3Dtransformation matrix, under the assumption that the transformation basis is orthonormal (i.e. rotation/reflection is fine, scaling/skew is not).
 vector*transformis equivalent totransform.inverse()*vector. SeeTransform3D.inverse().
 For transforming by inverse of an affine transformation (e.g. with scaling)transform.affine_inverse()*vectorcan be used instead. SeeTransform3D.affine_inverse().
-Vector3operator *(right:Vector3)🔗
+Vector3operator*(right:Vector3)🔗
 Multiplies each component of theVector3by the components of the givenVector3.
+
 ```
 print(Vector3(10, 20, 30) * Vector3(3, 4, 5)) # Prints (30.0, 80.0, 150.0)
 ```
+
 Vector3operator *(right:float)🔗
 Multiplies each component of theVector3by the givenfloat.
-Vector3operator *(right:int)🔗
+Vector3operator*(right:int)🔗
 Multiplies each component of theVector3by the givenint.
 Vector3operator +(right:Vector3)🔗
 Adds each component of theVector3by the components of the givenVector3.
+
 ```
 print(Vector3(10, 20, 30) + Vector3(3, 4, 5)) # Prints (13.0, 24.0, 35.0)
 ```
+
 Vector3operator -(right:Vector3)🔗
 Subtracts each component of theVector3by the components of the givenVector3.
+
 ```
 print(Vector3(10, 20, 30) - Vector3(3, 4, 5)) # Prints (7.0, 16.0, 25.0)
 ```
+
 Vector3operator /(right:Vector3)🔗
 Divides each component of theVector3by the components of the givenVector3.
+
 ```
 print(Vector3(10, 20, 30) / Vector3(2, 5, 3)) # Prints (5.0, 4.0, 10.0)
 ```
+
 Vector3operator /(right:float)🔗
 Divides each component of theVector3by the givenfloat.
 Vector3operator /(right:int)🔗
@@ -504,4 +521,5 @@ Vector3operator unary-()🔗
 Returns the negative value of theVector3. This is the same as writingVector3(-v.x,-v.y,-v.z). This operation flips the direction of the vector while keeping the same magnitude. With floats, the number zero can be either positive or negative.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

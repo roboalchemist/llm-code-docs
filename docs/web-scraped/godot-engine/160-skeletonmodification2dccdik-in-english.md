@@ -1,11 +1,13 @@
 # SkeletonModification2DCCDIK in English
 
 # SkeletonModification2DCCDIK
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:SkeletonModification2D<Resource<RefCounted<Object
 A modification that uses CCDIK to manipulate a series of bones to reach a target in 2D.
 
 ## Description
+
 ThisSkeletonModification2Duses an algorithm called Cyclic Coordinate Descent Inverse Kinematics, or CCDIK, to manipulate a chain of bones in aSkeleton2Dso it reaches a defined target.
 CCDIK works by rotating a set of bones, typically called a "bone chain", on a single axis. Each bone is rotated to face the target from the tip (by default), which over a chain of bones allow it to rotate properly to reach the target. Because the bones only rotate on a single axis, CCDIKcanlook more robotic than other IK solvers.
 Note:The CCDIK modifier hasccdik_joints, which are the data objects that hold the data for each joint in the CCDIK chain. This is different from a bone! CCDIK joints hold the data needed for each bone in the bone chain used by CCDIK.
@@ -73,7 +75,9 @@ void
 set_ccdik_joint_rotate_from_joint(joint_idx:int, rotate_from_joint:bool)
 
 ## Property Descriptions
+
 intccdik_data_chain_length=0🔗
+
 - voidset_ccdik_data_chain_length(value:int)
 voidset_ccdik_data_chain_length(value:int)
 - intget_ccdik_data_chain_length()
@@ -93,6 +97,7 @@ NodePathget_tip_node()
 The end position of the CCDIK chain. Typically, this should be a child of aBone2Dnode attached to the finalBone2Din the CCDIK chain.
 
 ## Method Descriptions
+
 NodePathget_ccdik_joint_bone2d_node(joint_idx:int)const🔗
 Returns theBone2Dnode assigned to the CCDIK joint atjoint_idx.
 intget_ccdik_joint_bone_index(joint_idx:int)const🔗
@@ -124,4 +129,5 @@ voidset_ccdik_joint_rotate_from_joint(joint_idx:int, rotate_from_joint:bool)🔗
 Sets whether the joint atjoint_idxis set to rotate from the joint,true, or to rotate from the tip,false.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

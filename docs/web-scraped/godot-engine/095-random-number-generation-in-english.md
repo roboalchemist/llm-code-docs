@@ -1,6 +1,7 @@
 # Random number generation in English
 
 # Random number generation
+
 Many games rely on randomness to implement core game mechanics. This page
 guides you through common types of randomness and how to implement them in
 Godot.
@@ -14,6 +15,7 @@ Computers cannot generate "true" random numbers. Instead, they rely onpseudorand
 Godot internally uses thePCG Familyof pseudorandom number generators.
 
 ## Global scope versus RandomNumberGenerator class
+
 Godot exposes two ways to generate random numbers: viaglobal scopemethods or
 using theRandomNumberGeneratorclass.
 Global scope methods are easier to set up, but they don't offer as much control.
@@ -23,6 +25,7 @@ This tutorial uses global scope methods, except when the method only exists in
 the RandomNumberGenerator class.
 
 ## The randomize() method
+
 Note
 Since Godot 4.0, the random seed is automatically set to a random value when
 the project starts. This means you don't need to callrandomize()in_ready()anymore to ensure that results are random across project runs.
@@ -32,24 +35,29 @@ In global scope, you can find arandomize()method.This method should be called on
 once when your project starts to initialize the random seed.Calling it
 multiple times is unnecessary and may impact performance negatively.
 Putting it in your main scene script's_ready()method is a good choice:
+
 ```
 func _ready():
     randomize()
 ```
+
 ```
 public override void _Ready()
 {
     GD.Randomize();
 }
 ```
+
 You can also set a fixed random seed instead usingseed(). Doing so will give youdeterministicresults
 across runs:
+
 ```
 func _ready():
     seed(12345)
     # To use a string as a seed, you can hash it to a number.
     seed("Hello world".hash())
 ```
+
 ```
 public override void _Ready()
 {
@@ -58,24 +66,29 @@ public override void _Ready()
     GD.Seed("Hello world".Hash());
 }
 ```
+
 When using the RandomNumberGenerator class, you should callrandomize()on
 the instance since it has its own seed:
+
 ```
 var random = RandomNumberGenerator.new()
 random.randomize()
 ```
+
 ```
 var random = new RandomNumberGenerator();
 random.Randomize();
 ```
 
 ## Getting a random number
+
 Let's look at some of the most commonly used functions and methods to generate
 random numbers in Godot.
 The functionrandi()returns a random
 number between0and2^32-1. Since the maximum value is huge, you most
 likely want to use the modulo operator (%) to bound the result between 0 and
 the denominator:
+
 ```
 # Prints a random integer between 0 and 49.
 print(randi() % 50)
@@ -83,6 +96,7 @@ print(randi() % 50)
 # Prints a random integer between 10 and 60.
 print(randi() % 51 + 10)
 ```
+
 ```
 // Prints a random integer between 0 and 49.
 GD.Print(GD.Randi() % 50);
@@ -90,6 +104,7 @@ GD.Print(GD.Randi() % 50);
 // Prints a random integer between 10 and 60.
 GD.Print(GD.Randi() % 51 + 10);
 ```
+
 randf()returns a random floating-point
 number between 0 and 1. This is useful to implement aWeighted random probabilitysystem, among
 other things.
@@ -97,37 +112,47 @@ randfn()returns a random
 floating-point number following anormal distribution. This means the returned
 value is more likely to be around the mean (0.0 by default),
 varying by the deviation (1.0 by default):
+
 ```
 # Prints a random floating-point number from a normal distribution with a mean 0.0 and deviation 1.0.
 print(randfn(0.0, 1.0))
 ```
+
 ```
 // Prints a random floating-point number from a normal distribution with a mean 0.0 and deviation 1.0.
 GD.Print(GD.Randfn(0.0, 1.0));
 ```
+
 randf_range()takes two argumentsfromandto, and returns a random floating-point number betweenfromandto:
+
 ```
 # Prints a random floating-point number between -4 and 6.5.
 print(randf_range(-4, 6.5))
 ```
+
 ```
 // Prints a random floating-point number between -4 and 6.5.
 GD.Print(GD.RandRange(-4.0, 6.5));
 ```
+
 randi_range()takes two argumentsfromandto, and returns a random integer betweenfromandto:
+
 ```
 # Prints a random integer between -10 and 10.
 print(randi_range(-10, 10))
 ```
+
 ```
 // Prints a random integer number between -10 and 10.
 GD.Print(GD.RandRange(-10, 10));
 ```
 
 ## Get a random array element
+
 We can use random integer generation to get a random element from an array,
 or use theArray.pick_randommethod
 to do it for us:
+
 ```
 var _fruits = ["apple", "orange", "pear", "banana"]
 
@@ -147,6 +172,7 @@ func get_fruit():
     # We may get the same fruit multiple times in a row.
     return random_fruit
 ```
+
 ```
 // Use Godot's Array type instead of a BCL type so we can use `PickRandom()` on it.
 private Godot.Collections.Array<string> _fruits = ["apple", "orange", "pear", "banana"];
@@ -175,9 +201,11 @@ public string GetFruit()
     return randomFruit;
 }
 ```
+
 To prevent the same fruit from being picked more than once in a row, we can add
 more logic to the above method. In this case, we can't useArray.pick_randomsince it lacks a way to
 prevent repetition:
+
 ```
 var _fruits = ["apple", "orange", "pear", "banana"]
 var _last_fruit = ""
@@ -202,6 +230,7 @@ func get_fruit():
     # The function will never return the same fruit more than once in a row.
     return random_fruit
 ```
+
 ```
 private string[] _fruits = ["apple", "orange", "pear", "banana"];
 private string _lastFruit = "";
@@ -231,12 +260,15 @@ public string GetFruit()
     return randomFruit;
 }
 ```
+
 This approach can be useful to make random number generation feel less
 repetitive. Still, it doesn't prevent results from "ping-ponging" between a
 limited set of values. To prevent this, use theshuffle bagpattern instead.
 
 ## Get a random dictionary value
+
 We can apply similar logic from arrays to dictionaries as well:
+
 ```
 var _metals = {
     "copper": {"quantity": 50, "price": 50},
@@ -254,6 +286,7 @@ func get_metal():
     # The same metal may be selected multiple times in succession.
     return random_metal
 ```
+
 ```
 private Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, int>> _metals = new()
 {
@@ -280,9 +313,11 @@ public Godot.Collections.Dictionary<string, int> GetMetal()
 ```
 
 ## Weighted random probability
+
 Therandf()method returns a
 floating-point number between 0.0 and 1.0. We can use this to create a
 "weighted" probability where different outcomes have different likelihoods:
+
 ```
 func _ready():
     for i in range(100):
@@ -301,6 +336,7 @@ func get_item_rarity():
         # 5% chance of being returned.
         return "Rare"
 ```
+
 ```
 public override void _Ready()
 {
@@ -331,6 +367,7 @@ public string GetItemRarity()
     }
 }
 ```
+
 You can also get a weighted randomindexusing therand_weighted()method
 on a RandomNumberGenerator instance. This returns a random integer
 between 0 and the size of the array that is passed as a parameter. Each value in the
@@ -341,6 +378,7 @@ For example, if[0.5,1,1,2]is passed as a parameter, then the method is twice
 as likely to return3(the index of the value2) and twice as unlikely to return0(the index of the value0.5) compared to the indices1and2.
 Since the returned value matches the array's size, it can be used as an index to
 get a value from another array as follows:
+
 ```
 # Prints a random element using the weighted index that is returned by `rand_weighted()`.
 # Here, "apple" will be returned twice as rarely as "orange" and "pear".
@@ -351,6 +389,7 @@ var probabilities = [0.5, 1, 1, 2];
 var random = RandomNumberGenerator.new()
 print(fruits[random.rand_weighted(probabilities)])
 ```
+
 ```
 // Prints a random element using the weighted index that is returned by `RandWeighted()`.
 // Here, "apple" will be returned twice as rarely as "orange" and "pear".
@@ -363,6 +402,7 @@ GD.Print(fruits[random.RandWeighted(probabilities)]);
 ```
 
 ## "Better" randomness using shuffle bags
+
 Taking the same example as above, we would like to pick fruits at random.
 However, relying on random number generation every time a fruit is selected can
 lead to a lessuniformdistribution. If the player is lucky (or unlucky), they
@@ -370,6 +410,7 @@ could get the same fruit three or more times in a row.
 You can accomplish this using theshuffle bagpattern. It works by removing an
 element from the array after choosing it. After multiple selections, the array
 ends up empty. When that happens, you reinitialize it to its default value:
+
 ```
 var _fruits = ["apple", "orange", "pear", "banana"]
 # A copy of the fruits array so we can restore the original value into `fruits`.
@@ -395,6 +436,7 @@ func get_fruit():
     # When all fruit are removed, it refills the array.
     return random_fruit
 ```
+
 ```
 private Godot.Collections.Array<string> _fruits = ["apple", "orange", "pear", "banana"];
 // A copy of the fruits array so we can restore the original value into `fruits`.
@@ -429,12 +471,14 @@ public string GetFruit()
     return randomFruit;
 }
 ```
+
 When running the above code, there is a chance to get the same fruit twice in a
 row. Once we picked a fruit, it will no longer be a possible return value unless
 the array is now empty. When the array is empty, we reset it back to its default
 value, making it possible to have the same fruit again, but only once.
 
 ## Random noise
+
 The random number generation shown above can show its limits when you need a
 value thatslowlychanges depending on the input. The input can be a position,
 time, or anything else.
@@ -442,6 +486,7 @@ To achieve this, you can use randomnoisefunctions. Noise functions are
 especially popular in procedural generation to generate realistic-looking
 terrain. Godot providesFastNoiseLitefor this, which supports
 1D, 2D and 3D noise. Here's an example with 1D noise:
+
 ```
 var _noise = FastNoiseLite.new()
 
@@ -457,6 +502,7 @@ func _ready():
         # between -1.0 and 1.0.
         print(_noise.get_noise_1d(i))
 ```
+
 ```
 private FastNoiseLite _noise = new FastNoiseLite();
 
@@ -476,6 +522,7 @@ public override void _Ready()
 ```
 
 ## Cryptographically secure pseudorandom number generation
+
 So far, the approaches mentioned above arenotsuitable forcryptographically securepseudorandom number generation (CSPRNG). This is fine
 for games, but this is not sufficient for scenarios where encryption,
 authentication or signing is involved.
@@ -486,6 +533,7 @@ self-signedX509Certificates.
 The downside ofCSPRNGis that it's much slower than standard pseudorandom number generation. Its API
 is also less convenient to use. As a result,CSPRNGshould be avoided for gameplay elements.
 Example of using the Crypto class to generate 2 random integers between0and2^32-1(inclusive):
+
 ```
 var crypto := Crypto.new()
 # Request as many bytes as you need, but try to minimize the amount
@@ -502,10 +550,12 @@ var random_int_2 := byte_array.decode_u32(4)
 
 prints("Random integers:", random_int_1, random_int_2)
 ```
+
 See also
 SeePackedByteArray's documentation for other methods you can
 use to decode the generated bytes into various types of data, such as
 integers or floats.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

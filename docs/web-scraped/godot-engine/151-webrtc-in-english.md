@@ -7,20 +7,24 @@ The content of this page was not yet updated for Godot4.6and may beoutdated. If 
 # WebRTC
 
 ## HTML5, WebSocket, WebRTC
+
 One of Godot's great features is its ability to export to the HTML5/WebAssembly platform, allowing your game to run directly in the browser when a user visit your webpage.
 This is a great opportunity for both demos and full games, but used to come with some limitations. In the area of networking, browsers used to support only HTTPRequests until recently, when first WebSocket and then WebRTC were proposed as standards.
 
 ### WebSocket
+
 When the WebSocket protocol was standardized in December 2011, it allowed browsers to create stable and bidirectional connections to a WebSocket server. The protocol is a very powerful tool to send push notifications to browsers, and has been used to implement chats, turn-based games, etc.
 WebSockets, though, still use a TCP connection, which is good for reliability but not for latency, so not good for real-time applications like VoIP and fast-paced games.
 
 ### WebRTC
+
 For this reason, since 2010, Google started working on a new technology called WebRTC, which later on, in 2017, became a W3C candidate recommendation. WebRTC is a much more complex set of specifications, and relies on many other technologies behind the scenes (ICE, DTLS, SDP) to provide fast, real-time, and secure communication between two peers.
 The idea is to find the fastest route between the two peers and establish whenever possible a direct communication (i.e. try to avoid a relaying server).
 However, this comes at a price, which is that some media information must be exchanged between the two peers before the communication can start (in the form of Session Description Protocol - SDP strings). This usually takes the form of a so-called WebRTC Signaling Server.
 Peers connect to a signaling server (for example a WebSocket server) and send their media information. The server then relays this information to other peers, allowing them to establish the desired direct communication. Once this step is done, peers can disconnect from the signaling server and keep the direct Peer-to-Peer (P2P) connection open.
 
 ## Using WebRTC in Godot
+
 WebRTC is implemented in Godot via two main classesWebRTCPeerConnectionandWebRTCDataChannel, plus the multiplayer API implementationWebRTCMultiplayerPeer. See section onhigh-level multiplayerfor more details.
 Note
 These classes are available automatically in HTML5, butrequire an external GDExtension plugin on native (non-HTML5) platforms. Check out thewebrtc-native plugin repositoryfor instructions and to get the latestrelease.
@@ -30,8 +34,10 @@ using one-click deploy. Otherwise, network communication of any kind will be
 blocked by Android.
 
 ### Minimal connection example
+
 This example will show you how to create a WebRTC connection between two peers in the same application.
 This is not very useful in real life, but will give you a good overview of how a WebRTC connection is set up.
+
 ```
 extends Node
 
@@ -76,14 +82,18 @@ func _process(_delta):
     if ch2.get_ready_state() == ch2.STATE_OPEN and ch2.get_available_packet_count() > 0:
         print("P2 received: ", ch2.get_packet().get_string_from_utf8())
 ```
+
 This will print:
+
 ```
 P1 received: Hi from P1
 P2 received: Hi from P2
 ```
 
 ### Local signaling example
+
 This example expands on the previous one, separating the peers in two different scenes, and using asingletonas a signaling server.
+
 ```
 extends Node
 # An example p2p chat client.
@@ -121,9 +131,11 @@ func _process(delta):
 func send_message(message):
     channel.put_packet(message.to_utf8_buffer())
 ```
+
 And now for the local signaling server:
 Note
 This local signaling server is supposed to be used as asingletonto connect two peers in the same scene.
+
 ```
 # A local signaling server. Add this to autoloads with name "Signaling" (/root/Signaling)
 extends Node
@@ -154,7 +166,9 @@ func send_candidate(path, mid, index, sdp):
     assert(other != "")
     get_node(other).peer.add_ice_candidate(mid, index, sdp)
 ```
+
 Then you can use it like this:
+
 ```
 # Main scene (main.gd)
 extends Node
@@ -175,14 +189,18 @@ func _ready():
     await get_tree().create_timer(1).timeout
     p2.send_message("Hi from %s" % String(p2.get_path()))
 ```
+
 This will print something similar to this:
+
 ```
 /root/main/@@3 received: Hi from /root/main/@@2
 /root/main/@@2 received: Hi from /root/main/@@3
 ```
 
 ### Remote signaling with WebSocket
+
 A more advanced demo using WebSocket for signaling peers andWebRTCMultiplayerPeeris available in thegodot demo projectsundernetworking/webrtc_signaling.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

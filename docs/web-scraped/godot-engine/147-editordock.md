@@ -1,14 +1,17 @@
 # EditorDock
 
 # EditorDock
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:MarginContainer<Container<Control<CanvasItem<Node<Object
 Inherited By:FileSystemDock
 Dockable container for the editor.
 
 ## Description
+
 EditorDock is aContainernode that can be docked in one of the editor's dock slots. Docks are added by plugins to provide space for controls related to anEditorPlugin. The editor comes with a few built-in docks, such as the Scene dock, FileSystem dock, etc.
 You can add a dock by usingEditorPlugin.add_dock(). The dock can be customized by changing its properties.
+
 ```
 @tool
 extends EditorPlugin
@@ -34,6 +37,7 @@ func _exit_tree():
 ```
 
 ## Tutorials
+
 - Making plugins
 Making plugins
 
@@ -107,10 +111,12 @@ void
 open()
 
 ## Signals
+
 closed()🔗
 Emitted when the dock is closed with the Close button in the context popup, before it's removed from its parent. Seeclosable.
 
 ## Enumerations
+
 flagsDockLayout:🔗
 DockLayoutDOCK_LAYOUT_VERTICAL=1
 Allows placing the dock in the vertical dock slots on either side of the editor.
@@ -145,7 +151,9 @@ DockSlotDOCK_SLOT_MAX=9
 Represents the size of theDockSlotenum.
 
 ## Property Descriptions
+
 BitField[DockLayout]available_layouts=5🔗
+
 - voidset_available_layouts(value:BitField[DockLayout])
 voidset_available_layouts(value:BitField[DockLayout])
 - BitField[DockLayout]get_available_layouts()
@@ -220,16 +228,19 @@ boolis_transient()
 Iftrue, the dock is not automatically opened or closed when loading an editor layout, only moved. It also can't be opened using a shortcut. This is meant for docks that are opened and closed in specific cases, such as when selecting aTileMaporAnimationTreenode.
 
 ## Method Descriptions
+
 void_load_layout_from_config(config:ConfigFile, section:String)virtual🔗
 Implement this method to handle loading this dock's layout. It's equivalent toEditorPlugin._set_window_layout().sectionis a unique section based onlayout_key.
 void_save_layout_to_config(config:ConfigFile, section:String)virtualconst🔗
 Implement this method to handle saving this dock's layout. It's equivalent toEditorPlugin._get_window_layout().sectionis a unique section based onlayout_key.
 void_update_layout(layout:int)virtual🔗
 Implement this method to handle the layout switching for this dock.layoutis one of theDockLayoutconstants.
+
 ```
 func _update_layout(layout):
     box_container.vertical = (layout == DOCK_LAYOUT_VERTICAL)
 ```
+
 voidclose()🔗
 Closes the dock, making its tab hidden.
 voidmake_visible()🔗
@@ -239,4 +250,5 @@ Opens the dock. It will appear in the last used dock slot. If the dock has no de
 Note:This does not focus the dock. If you want to open and focus the dock, usemake_visible().
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

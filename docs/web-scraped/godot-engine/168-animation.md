@@ -1,11 +1,14 @@
 # Animation
 
 # Animation
+
 Inherits:Resource<RefCounted<Object
 Holds data that can be used to animate anything in the engine.
 
 ## Description
+
 This resource holds data that can be used to animate anything in the engine. Animations are divided into tracks and each track must be linked to a node. The state of that node can be changed through time, by adding timed keys (events) to the track.
+
 ```
 # This creates an animation that makes the node "Enemy" move to the right by
 # 100 pixels in 2.0 seconds.
@@ -16,6 +19,7 @@ animation.track_insert_key(track_index, 0.0, 0)
 animation.track_insert_key(track_index, 2.0, 100)
 animation.length = 2.0
 ```
+
 ```
 // This creates an animation that makes the node "Enemy" move to the right by
 // 100 pixels in 2.0 seconds.
@@ -26,10 +30,12 @@ animation.TrackInsertKey(trackIndex, 0.0f, 0);
 animation.TrackInsertKey(trackIndex, 2.0f, 100);
 animation.Length = 2.0f;
 ```
+
 Animations are just data containers, and must be added to nodes such as anAnimationPlayerto be played back. Animation tracks have different types, each with its own set of dedicated methods. CheckTrackTypeto see available types.
 Note:For 3D position/rotation/scale, using the dedicatedTYPE_POSITION_3D,TYPE_ROTATION_3DandTYPE_SCALE_3Dtrack types instead ofTYPE_VALUEis recommended for performance reasons.
 
 ## Tutorials
+
 - Animation documentation index
 Animation documentation index
 
@@ -279,6 +285,7 @@ void
 value_track_set_update_mode(track_idx:int, mode:UpdateMode)
 
 ## Enumerations
+
 enumTrackType:🔗
 TrackTypeTYPE_VALUE=0
 Value tracks set values in node properties, but only those which can be interpolated. For 3D position/rotation/scale, using the dedicatedTYPE_POSITION_3D,TYPE_ROTATION_3DandTYPE_SCALE_3Dtrack types instead ofTYPE_VALUEis recommended for performance reasons.
@@ -341,7 +348,9 @@ FindModeFIND_MODE_EXACT=2
 Finds only the key with matching the time.
 
 ## Property Descriptions
+
 boolcapture_included=false🔗
+
 - boolis_capture_included()
 boolis_capture_included()
 Returnstrueif the capture track is included. This is a cached readonly value for performance.
@@ -366,6 +375,7 @@ floatget_step()
 The animation step value.
 
 ## Method Descriptions
+
 voidadd_marker(name:StringName, time:float)🔗
 Adds a marker to this Animation.
 intadd_track(type:TrackType, at_position:int= -1)🔗
@@ -534,4 +544,5 @@ voidvalue_track_set_update_mode(track_idx:int, mode:UpdateMode)🔗
 Sets the update mode of a value track.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,16 +1,19 @@
 # ProjectSettings in English
 
 # ProjectSettings
+
 Inherits:Object
 Stores globally-accessible variables.
 
 ## Description
+
 Stores variables that can be accessed from everywhere. Useget_setting(),set_setting()orhas_setting()to access them. Variables stored inproject.godotare also loaded intoProjectSettings, making this object very useful for reading custom game configuration options.
 When naming a Project Settings property, use the full path to the setting including the category. For example,"application/config/name"for the project name. Category and property names can be viewed in the Project Settings dialog.
 Feature tags:Project settings can be overridden for specific platforms and configurations (debug, release, ...) usingfeature tags.
 Overriding:Any project setting can be overridden by creating a file namedoverride.cfgin the project's root directory. This can also be used in exported projects by placing this file in the same directory as the project binary. Overriding will still take the base project settings'feature tagsin account. Therefore, make sure toalsooverride the setting with the desired feature tags if you want them to override base project settings on all platforms and configurations.
 
 ## Tutorials
+
 - Project Settings
 Project Settings
 - 3D Physics Tests Demo
@@ -3025,12 +3028,15 @@ void
 set_setting(name:String, value:Variant)
 
 ## Signals
+
 settings_changed()🔗
 Emitted when any setting is changed, up to once per process frame.
 
 ## Property Descriptions
+
 intaccessibility/general/accessibility_support=0🔗
 Accessibility support mode:
+
 - Auto(0): Accessibility support is enabled, but updates to the accessibility information are processed only if an assistive app (such as a screen reader or a Braille display) is active (default).
 Auto(0): Accessibility support is enabled, but updates to the accessibility information are processed only if an assistive app (such as a screen reader or a Braille display) is active (default).
 - Always Active(1): Accessibility support is enabled, and updates to the accessibility information are always processed, regardless of the status of assistive apps.
@@ -3689,9 +3695,11 @@ Stringeditor/run/main_run_args=""🔗
 The command-line arguments to append to Godot's own command line when running the project. This doesn't affect the editor itself.
 It is possible to make another executable run Godot by using the%command%placeholder. The placeholder will be replaced with Godot's own command line. Program-specific arguments should be placedbeforethe placeholder, whereas Godot-specific arguments should be placedafterthe placeholder.
 For example, this can be used to force the project to run on the dedicated GPU in an NVIDIA Optimus system on Linux:
+
 ```
 prime-run %command%
 ```
+
 PackedStringArrayeditor/script/search_in_file_extensions🔗
 Text-based file extensions to include in the script editor's "Find in Files" feature. You can add e.g.tscnif you wish to also parse your scene files, especially if you use built-in scripts which are serialized in the scene files.
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedStringArrayfor more details.
@@ -3721,6 +3729,7 @@ intgui/common/drag_threshold=10🔗
 The minimum distance the mouse cursor must move while pressed before a drag operation begins in the default viewport. For custom viewports seeViewport.gui_drag_threshold.
 intgui/common/show_focus_state_on_pointer_event=1🔗
 Determines whether aControlshould visually indicate focus when said focus is gained using a mouse or touch input.
+
 - Never(0) show the focused state for mouse/touch input.
 Never(0) show the focused state for mouse/touch input.
 - Control Supports Keyboard Input(1) shows the focused state even when gained via mouse/touch input (similar to how browsers handle focus).
@@ -4626,25 +4635,31 @@ Warning:Godot's damping calculations are simulation tick rate dependent. Changin
 floatphysics/2d/default_gravity=980.0🔗
 The default gravity strength in 2D (in pixels per second squared).
 Note:This property is only read when the project starts. To change the default gravity at runtime, use the following code sample:
+
 ```
 # Set the default gravity strength to 980.
 PhysicsServer2D.area_set_param(get_viewport().find_world_2d().space, PhysicsServer2D.AREA_PARAM_GRAVITY, 980)
 ```
+
 ```
 // Set the default gravity strength to 980.
 PhysicsServer2D.AreaSetParam(GetViewport().FindWorld2D().Space, PhysicsServer2D.AreaParameter.Gravity, 980);
 ```
+
 Vector2physics/2d/default_gravity_vector=Vector2(0,1)🔗
 The default gravity direction in 2D.
 Note:This property is only read when the project starts. To change the default gravity vector at runtime, use the following code sample:
+
 ```
 # Set the default gravity direction to `Vector2(0, 1)`.
 PhysicsServer2D.area_set_param(get_viewport().find_world_2d().space, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, Vector2.DOWN)
 ```
+
 ```
 // Set the default gravity direction to `Vector2(0, 1)`.
 PhysicsServer2D.AreaSetParam(GetViewport().FindWorld2D().Space, PhysicsServer2D.AreaParameter.GravityVector, Vector2.Down)
 ```
+
 floatphysics/2d/default_linear_damp=0.1🔗
 The default linear motion damping in 2D. Damping is used to gradually slow down physical objects over time. RigidBodies will fall back to this value when combining their own damping values and no area damping value is present.
 Suggested values are in the range0to30. At value0objects will keep moving with the same velocity. Greater values will stop the object faster. A value equal to or greater than the physics tick rate (physics/common/physics_ticks_per_second) will bring the object to a stop in one iteration.
@@ -4688,25 +4703,31 @@ Warning:Godot's damping calculations are simulation tick rate dependent. Changin
 floatphysics/3d/default_gravity=9.8🔗
 The default gravity strength in 3D (in meters per second squared).
 Note:This property is only read when the project starts. To change the default gravity at runtime, use the following code sample:
+
 ```
 # Set the default gravity strength to 9.8.
 PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY, 9.8)
 ```
+
 ```
 // Set the default gravity strength to 9.8.
 PhysicsServer3D.AreaSetParam(GetViewport().FindWorld3D().Space, PhysicsServer3D.AreaParameter.Gravity, 9.8);
 ```
+
 Vector3physics/3d/default_gravity_vector=Vector3(0,-1,0)🔗
 The default gravity direction in 3D.
 Note:This property is only read when the project starts. To change the default gravity vector at runtime, use the following code sample:
+
 ```
 # Set the default gravity direction to `Vector3(0, -1, 0)`.
 PhysicsServer3D.area_set_param(get_viewport().find_world_3d().space, PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR, Vector3.DOWN)
 ```
+
 ```
 // Set the default gravity direction to `Vector3(0, -1, 0)`.
 PhysicsServer3D.AreaSetParam(GetViewport().FindWorld3D().Space, PhysicsServer3D.AreaParameter.GravityVector, Vector3.Down)
 ```
+
 floatphysics/3d/default_linear_damp=0.1🔗
 The default linear motion damping in 3D. Damping is used to gradually slow down physical objects over time. RigidBodies will fall back to this value when combining their own damping values and no area damping value is present.
 Suggested values are in the range0to30. At value0objects will keep moving with the same velocity. Greater values will stop the object faster. A value equal to or greater than the physics tick rate (physics/common/physics_ticks_per_second) will bring the object to a stop in one iteration.
@@ -4722,6 +4743,7 @@ Dummyis a 3D physics server that does nothing and returns only dummy values, eff
 Third-party extensions and modules can add other physics engines to select with this setting.
 Stringphysics/3d/physics_interpolation/scene_traversal="DEFAULT"🔗
 The approach used for 3D scene traversal when physics interpolation is enabled.
+
 - DEFAULT: The default optimized method.
 DEFAULT: The default optimized method.
 - Legacy: The previous reference method used for scene tree traversal, which is slower.
@@ -5405,6 +5427,7 @@ Set the default Variable Rate Shading (VRS) mode for the main viewport. SeeViewp
 Stringrendering/vrs/texture=""🔗
 Ifrendering/vrs/modeis set toTexture, this is the path to default texture loaded as the VRS image.
 The texturemustuse a lossless compression format so that colors can be matched precisely. The following VRS densities are mapped to various colors, with brighter colors representing a lower level of shading precision:
+
 ```
 - 1×1 = rgb(0, 0, 0)     - #000000
 - 1×2 = rgb(0, 85, 0)    - #005500
@@ -5417,6 +5440,7 @@ The texturemustuse a lossless compression format so that colors can be matched p
 - 8×4 = rgb(255, 170, 0) - #ffaa00 - Not supported on most hardware
 - 8×8 = rgb(255, 255, 0) - #ffff00 - Not supported on most hardware
 ```
+
 floatthreading/worker_pool/low_priority_thread_ratio=0.3🔗
 The ratio ofWorkerThreadPool's threads that will be reserved for low-priority tasks. For example, if 10 threads are available and this value is set to0.3, 3 of the worker threads will be reserved for low-priority tasks. The actual value won't exceed the number of CPU cores minus one, and if possible, at least one worker thread will be dedicated to low-priority tasks.
 intthreading/worker_pool/max_threads=-1🔗
@@ -5503,14 +5527,17 @@ boolxr/shaders/enabled=false🔗
 Iftrue, Godot will compile shaders required for XR.
 
 ## Method Descriptions
+
 voidadd_property_info(hint:Dictionary)🔗
 Adds a custom property info to a property. The dictionary must contain:
+
 - "name":String(the property's name)
 "name":String(the property's name)
 - "type":int(seeVariant.Type)
 "type":int(seeVariant.Type)
 - optionally"hint":int(seePropertyHint) and"hint_string":String
 optionally"hint":int(seePropertyHint) and"hint_string":String
+
 ```
 ProjectSettings.set("category/property_name", 0)
 
@@ -5523,6 +5550,7 @@ var property_info = {
 
 ProjectSettings.add_property_info(property_info)
 ```
+
 ```
 ProjectSettings.Singleton.Set("category/property_name", 0);
 
@@ -5536,6 +5564,7 @@ var propertyInfo = new Godot.Collections.Dictionary
 
 ProjectSettings.AddPropertyInfo(propertyInfo);
 ```
+
 Note:Setting"usage"for the property is not supported. Useset_as_basic(),set_restart_if_changed(), andset_as_internal()to modify usage flags.
 boolcheck_changed_settings_in_group(setting_prefix:String)const🔗
 Checks if any settings with the prefixsetting_prefixexist in the set of changed settings. See alsoget_changed_settings().
@@ -5545,6 +5574,7 @@ PackedStringArrayget_changed_settings()const🔗
 Gets an array of the settings which have been changed since the last save. Note that internallychanged_settingsis cleared after a successful save, so generally the most appropriate place to use this method is when processingsettings_changed.
 Array[Dictionary]get_global_class_list()🔗
 Returns anArrayof registered global classes. Each global class is represented as aDictionarythat contains the following entries:
+
 - baseis a name of the base class;
 baseis a name of the base class;
 - classis a name of the registered global class;
@@ -5560,30 +5590,37 @@ intget_order(name:String)const🔗
 Returns the order of a configuration value (influences when saved to the config file).
 Variantget_setting(name:String, default_value:Variant= null)const🔗
 Returns the value of the setting identified byname. If the setting doesn't exist anddefault_valueis specified, the value ofdefault_valueis returned. Otherwise,nullis returned.
+
 ```
 print(ProjectSettings.get_setting("application/config/name"))
 print(ProjectSettings.get_setting("application/config/custom_description", "No description specified."))
 ```
+
 ```
 GD.Print(ProjectSettings.GetSetting("application/config/name"));
 GD.Print(ProjectSettings.GetSetting("application/config/custom_description", "No description specified."));
 ```
+
 Note:This method doesn't take potential feature overrides into account automatically. Useget_setting_with_override()to handle seamlessly.
 See alsohas_setting()to check whether a setting exists.
 Variantget_setting_with_override(name:StringName)const🔗
 Similar toget_setting(), but applies feature tag overrides if any exists and is valid.
 Example:If the setting override"application/config/name.windows"exists, and the following code is executed on aWindowsoperating system, the overridden setting is printed instead:
+
 ```
 print(ProjectSettings.get_setting_with_override("application/config/name"))
 ```
+
 ```
 GD.Print(ProjectSettings.GetSettingWithOverride("application/config/name"));
 ```
+
 Variantget_setting_with_override_and_custom_features(name:StringName, features:PackedStringArray)const🔗
 Similar toget_setting_with_override(), but applies feature tag overrides instead of current OS features.
 Stringglobalize_path(path:String)const🔗
 Returns the absolute, native OS path corresponding to the localizedpath(starting withres://oruser://). The returned path will vary depending on the operating system and user preferences. SeeFile paths in Godot projectsto see what those paths convert to. See alsolocalize_path().
 Note:globalize_path()withres://will not work in an exported project. Instead, prepend the executable's base directory to the path when running from an exported project:
+
 ```
 var path = ""
 if OS.has_feature("editor"):
@@ -5597,6 +5634,7 @@ else:
     # but is close enough in spirit.
     path = OS.get_executable_path().get_base_dir().path_join("hello.txt")
 ```
+
 boolhas_setting(name:String)const🔗
 Returnstrueif a configuration value is present.
 Note:In order to be be detected, custom settings have to be either defined withset_setting(), or exist in theproject.godotfile. This is especially relevant when usingset_initial_value().
@@ -5618,6 +5656,7 @@ voidset_as_internal(name:String, internal:bool)🔗
 Defines if the specified setting is considered internal. An internal setting won't show up in the Project Settings dialog. This is mostly useful for addons that need to store their own internal settings without exposing them directly to the user.
 voidset_initial_value(name:String, value:Variant)🔗
 Sets the specified setting's initial value. This is the value the setting reverts to. The setting should already exist before calling this method. Note that project settings equal to their default value are not saved, so your code needs to account for that.
+
 ```
 extends EditorPlugin
 
@@ -5630,6 +5669,7 @@ func _enter_tree():
 
     ProjectSettings.set_initial_value(SETTING_NAME, SETTING_DEFAULT)
 ```
+
 If you have a project setting defined by anEditorPlugin, but want to use it in a running project, you will need a similar code at runtime.
 voidset_order(name:String, position:int)🔗
 Sets the order of a configuration value (influences when saved to the config file).
@@ -5638,13 +5678,17 @@ Sets whether a setting requires restarting the editor to properly take effect.
 Note:This is just a hint to display to the user that the editor must be restarted for changes to take effect. Enablingset_restart_if_changed()doesnotdelay the setting being set when changed.
 voidset_setting(name:String, value:Variant)🔗
 Sets the value of a setting.
+
 ```
 ProjectSettings.set_setting("application/config/name", "Example")
 ```
+
 ```
 ProjectSettings.SetSetting("application/config/name", "Example");
 ```
+
 This can also be used to erase custom project settings. To do this change the setting value tonull.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

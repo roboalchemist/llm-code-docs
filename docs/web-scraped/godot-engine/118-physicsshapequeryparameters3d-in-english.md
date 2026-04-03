@@ -1,10 +1,12 @@
 # PhysicsShapeQueryParameters3D in English
 
 # PhysicsShapeQueryParameters3D
+
 Inherits:RefCounted<Object
 Provides parameters forPhysicsDirectSpaceState3D's methods.
 
 ## Description
+
 By changing various properties of this object, such as the shape, you can configure the parameters forPhysicsDirectSpaceState3D's methods.
 
 ## Properties
@@ -44,7 +46,9 @@ transform
 Transform3D(1,0,0,0,1,0,0,0,1,0,0,0)
 
 ## Property Descriptions
+
 boolcollide_with_areas=false🔗
+
 - voidset_collide_with_areas(value:bool)
 voidset_collide_with_areas(value:bool)
 - boolis_collide_with_areas_enabled()
@@ -93,6 +97,7 @@ voidset_shape_rid(value:RID)
 - RIDget_shape_rid()
 RIDget_shape_rid()
 The queried shape'sRIDthat will be used for collision/intersection queries. Use this overshapeif you want to optimize for performance using the Servers API:
+
 ```
 var shape_rid = PhysicsServer3D.sphere_shape_create()
 var radius = 2.0
@@ -106,6 +111,7 @@ params.shape_rid = shape_rid
 # Release the shape when done with physics queries.
 PhysicsServer3D.free_rid(shape_rid)
 ```
+
 ```
 RID shapeRid = PhysicsServer3D.SphereShapeCreate();
 float radius = 2.0f;
@@ -119,7 +125,9 @@ params.ShapeRid = shapeRid;
 // Release the shape when done with physics queries.
 PhysicsServer3D.FreeRid(shapeRid);
 ```
+
 Transform3Dtransform=Transform3D(1,0,0,0,1,0,0,0,1,0,0,0)🔗
+
 - voidset_transform(value:Transform3D)
 voidset_transform(value:Transform3D)
 - Transform3Dget_transform()
@@ -127,4 +135,5 @@ Transform3Dget_transform()
 The queried shape's transform matrix.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

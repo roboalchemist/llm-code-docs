@@ -1,11 +1,13 @@
 # Node in English
 
 # Node
+
 Inherits:Object
 Inherited By:AnimationMixer,AudioStreamPlayer,CanvasItem,CanvasLayer,EditorFileSystem,EditorPlugin,EditorResourcePreview,HTTPRequest,InstancePlaceholder,MissingNode,MultiplayerSpawner,MultiplayerSynchronizer,NavigationAgent2D,NavigationAgent3D,Node3D,ResourcePreloader,ShaderGlobalsOverride,StatusIndicator,Timer,Viewport,WorldEnvironment
 Base class for all scene objects.
 
 ## Description
+
 Nodes are Godot's building blocks. They can be assigned as the child of another node, resulting in a tree arrangement. A given node can contain any number of nodes as children with the requirement that all siblings (direct children of a node) should have unique names.
 A tree of nodes is called ascene. Scenes can be saved to the disk and then instantiated into other scenes. This allows for very high flexibility in the architecture and data model of Godot projects.
 Scene tree:TheSceneTreecontains the active tree of nodes. When a node is added to the scene tree, it receives theNOTIFICATION_ENTER_TREEnotification and its_enter_tree()callback is triggered. Child nodes are always addedaftertheir parent node, i.e. the_enter_tree()callback of a parent node will be triggered before its child's.
@@ -20,6 +22,7 @@ Networking with nodes:After connecting to a server (or making one, seeENetMultip
 Note:Thescriptproperty is part of theObjectclass, notNode. It isn't exposed like most properties but does have a setter and getter (seeObject.set_script()andObject.get_script()).
 
 ## Tutorials
+
 - Nodes and scenes
 Nodes and scenes
 - All Demos
@@ -389,6 +392,7 @@ void
 update_configuration_warnings()
 
 ## Signals
+
 child_entered_tree(node:Node)🔗
 Emitted when the childnodeenters theSceneTree, usually because this node entered the tree (seetree_entered), oradd_child()has been called.
 This signal is emittedafterthe child node's ownNOTIFICATION_ENTER_TREEandtree_entered.
@@ -419,6 +423,7 @@ Emitted when the node is just about to exit the tree. The node is still valid. A
 This signal is emittedafterthe node's_exit_tree(), andbeforethe relatedNOTIFICATION_EXIT_TREE.
 
 ## Enumerations
+
 enumProcessMode:🔗
 ProcessModePROCESS_MODE_INHERIT=0
 Inheritsprocess_modefrom the node's parent. This is the default for any newly created node.
@@ -464,10 +469,12 @@ DuplicateFlagsDUPLICATE_INTERNAL_STATE=16
 Duplicate also non-serializable variables (i.e. without@GlobalScope.PROPERTY_USAGE_STORAGE).
 DuplicateFlagsDUPLICATE_DEFAULT=15
 Duplicate using default flags. This constant is useful to add or remove a single flag.
+
 ```
 # Duplicate non-exported variables.
 var dupe = duplicate(DUPLICATE_DEFAULT | DUPLICATE_INTERNAL_STATE)
 ```
+
 enumInternalMode:🔗
 InternalModeINTERNAL_MODE_DISABLED=0
 The node will not be internal.
@@ -485,6 +492,7 @@ Never automatically translate. This is the inverse ofAUTO_TRANSLATE_MODE_ALWAYS.
 String parsing for translation template generation will be skipped for this node and children that are set toAUTO_TRANSLATE_MODE_INHERIT.
 
 ## Constants
+
 NOTIFICATION_ENTER_TREE=10🔗
 Notification received when the node enters aSceneTree. See_enter_tree().
 This notification is receivedbeforethe relatedtree_enteredsignal.
@@ -574,6 +582,7 @@ Implemented only on iOS.
 NOTIFICATION_TRANSLATION_CHANGED=2010🔗
 Notification received when translations may have changed. Can be triggered by the user changing the locale, changingauto_translate_modeor when the node enters the scene tree. Can be used to respond to language changes, for example to change the UI strings on the fly. Useful when working with the built-in translation support, likeObject.tr().
 Note:This notification is received alongsideNOTIFICATION_ENTER_TREE, so if you are instantiating a scene, the child nodes will not be initialized yet. You can use it to setup translations for this node, child nodes created from script, or if you want to access child nodes added in the editor, make sure the node is ready usingis_node_ready().
+
 ```
 func _notification(what):
     if what == NOTIFICATION_TRANSLATION_CHANGED:
@@ -581,6 +590,7 @@ func _notification(what):
             await ready # Wait until ready signal.
         $Label.text = atr("%d Bananas") % banana_counter
 ```
+
 NOTIFICATION_WM_ABOUT=2011🔗
 Notification received from the OS when a request for "About" information is sent.
 Implemented only on macOS.
@@ -611,7 +621,9 @@ NOTIFICATION_ACCESSIBILITY_INVALIDATE=3001🔗
 Notification received when accessibility elements are invalidated. All node accessibility elements are automatically deleted after receiving this message, therefore all existing references to such elements should be discarded.
 
 ## Property Descriptions
+
 AutoTranslateModeauto_translate_mode=0🔗
+
 - voidset_auto_translate_mode(value:AutoTranslateMode)
 voidset_auto_translate_mode(value:AutoTranslateMode)
 - AutoTranslateModeget_auto_translate_mode()
@@ -707,6 +719,7 @@ Iftrue, the node can be accessed from any node sharing the sameowneror from theo
 Note:If another node with the sameownershares the samenameas this node, the other node will no longer be accessible as unique.
 
 ## Method Descriptions
+
 void_enter_tree()virtual🔗
 Called when the node enters theSceneTree(e.g. upon instantiating, scene changing, or after callingadd_child()in a script). If the node has children, its_enter_tree()callback will be called first, and then that of the children.
 Corresponds to theNOTIFICATION_ENTER_TREEnotification inObject._notification().
@@ -720,6 +733,7 @@ PackedStringArray_get_configuration_warnings()virtualconst🔗
 The elements in the array returned from this method are displayed as warnings in the Scene dock if the script that overrides it is atoolscript.
 Returning an empty array produces no warnings.
 Callupdate_configuration_warnings()when the warnings need to be updated for this node.
+
 ```
 @export var energy = 0:
     set(value):
@@ -732,6 +746,7 @@ func _get_configuration_warnings():
     else:
         return []
 ```
+
 RID_get_focused_accessibility_element()virtualconst🔗
 Called during accessibility information updates to determine the currently focused sub-element, should return a sub-element RID or the value returned byget_accessibility_element().
 void_input(event:InputEvent)virtual🔗
@@ -785,12 +800,14 @@ Adds a childnode. Nodes can have any number of children, but every child must ha
 Ifforce_readable_nameistrue, improves the readability of the addednode. If not named, thenodeis renamed to its type, and if it sharesnamewith a sibling, a number is suffixed more appropriately. This operation is very slow. As such, it is recommended leaving this tofalse, which assigns a dummy name featuring@in both situations.
 Ifinternalis different thanINTERNAL_MODE_DISABLED, the child will be added as internal node. These nodes are ignored by methods likeget_children(), unless their parameterinclude_internalistrue. It also prevents these nodes being duplicated with their parent. The intended usage is to hide the internal nodes from the user, so the user won't accidentally delete or modify them. Used by some GUI nodes, e.g.ColorPicker.
 Note:Ifnodealready has a parent, this method will fail. Useremove_child()first to removenodefrom its current parent. For example:
+
 ```
 var child_node = get_child(0)
 if child_node.get_parent():
     child_node.get_parent().remove_child(child_node)
 add_child(child_node)
 ```
+
 ```
 Node childNode = GetChild(0);
 if (childNode.GetParent() != null)
@@ -799,6 +816,7 @@ if (childNode.GetParent() != null)
 }
 AddChild(childNode);
 ```
+
 If you need the child node to be added below a specific node in the list of children, useadd_sibling()instead of this method.
 Note:If you want a child to be persisted to aPackedScene, you must setownerin addition to callingadd_child(). This is typically relevant fortool scriptsandeditor plugins. Ifadd_child()is called without settingowner, the newly addedNodewill not be visible in the scene tree, though it will be visible in the 2D/3D view.
 voidadd_sibling(sibling:Node, force_readable_name:bool= false)🔗
@@ -831,6 +849,7 @@ boolcan_auto_translate()const🔗
 Returnstrueif this node can automatically translate messages depending on the current locale. Seeauto_translate_mode,atr(), andatr_n().
 boolcan_process()const🔗
 Returnstrueif the node can receive processing notifications and input callbacks (NOTIFICATION_PROCESS,_input(), etc.) from theSceneTreeandViewport. The returned value depends onprocess_mode:
+
 - If set toPROCESS_MODE_PAUSABLE, returnstruewhen the game is processing, i.e.SceneTree.pausedisfalse;
 If set toPROCESS_MODE_PAUSABLE, returnstruewhen the game is processing, i.e.SceneTree.pausedisfalse;
 - If set toPROCESS_MODE_WHEN_PAUSED, returnstruewhen the game is paused, i.e.SceneTree.pausedistrue;
@@ -845,12 +864,15 @@ If the node is not inside the tree, returnsfalseno matter the value ofprocess_mo
 Tweencreate_tween()🔗
 Creates a newTweenand binds it to this node.
 This is the equivalent of doing:
+
 ```
 get_tree().create_tween().bind_node(self)
 ```
+
 ```
 GetTree().CreateTween().BindNode(this);
 ```
+
 The Tween will start automatically on the next process frame or physics frame (depending onTweenProcessMode). SeeTween.bind_node()for more info on Tweens bound to nodes.
 Note:The method can still be used when the node is not insideSceneTree. It can fail in an unlikely case of using a customMainLoop.
 Nodeduplicate(flags:int= 15)const🔗
@@ -879,6 +901,7 @@ Note:This method should be called only during accessibility information updates 
 Nodeget_child(idx:int, include_internal:bool= false)const🔗
 Fetches a child node by its index. Each child node has an index relative to its siblings (seeget_index()). The first child is at index 0. Negative values can also be used to start from the end of the list. This method can be used in combination withget_child_count()to iterate over this node's children. If no child exists at the given index, this method returnsnulland an error is generated.
 Ifinclude_internalisfalse, internal children are ignored (seeadd_child()'sinternalparameter).
+
 ```
 # Assuming the following are children of this node, in order:
 # First, Middle, Last.
@@ -888,6 +911,7 @@ var b = get_child(1).name  # b is "Middle"
 var b = get_child(2).name  # b is "Last"
 var c = get_child(-1).name # c is "Last"
 ```
+
 Note:To fetch a node byNodePath, useget_node().
 intget_child_count(include_internal:bool= false)const🔗
 Returns the number of children of this node.
@@ -899,6 +923,7 @@ Array[StringName]get_groups()const🔗
 Returns anArrayof group names that the node has been added to.
 Note:To improve performance, the order of group names isnotguaranteed and may vary between project runs. Therefore, do not rely on the group order.
 Note:This method may also return some group names starting with an underscore (_). These are internally used by the engine. To avoid conflicts, do not use custom groups starting with underscores. To exclude internal groups, see the following code snippet:
+
 ```
 # Stores the node's non-internal groups only (as an array of StringNames).
 var non_internal_groups = []
@@ -906,6 +931,7 @@ for group in get_groups():
     if not str(group).begins_with("_"):
         non_internal_groups.push_back(group)
 ```
+
 ```
 // Stores the node's non-internal groups only (as a List of StringNames).
 List<string> nonInternalGroups = new List<string>();
@@ -915,6 +941,7 @@ foreach (string group in GetGroups())
         nonInternalGroups.Add(group);
 }
 ```
+
 intget_index(include_internal:bool= false)const🔗
 Returns this node's order among its siblings. The first node's index is0. See alsoget_child().
 Ifinclude_internalisfalse, returns the index ignoring internal children. The first, non-internal child will have an index of0(seeadd_child()'sinternalparameter).
@@ -926,6 +953,7 @@ Nodeget_node(path:NodePath)const🔗
 Fetches a node. TheNodePathcan either be a relative path (from this node), or an absolute path (from theSceneTree.root) to a node. Ifpathdoes not point to a valid node, generates an error and returnsnull. Attempts to access methods on the return value will result in an"Attempt to call <method> on a null instance."error.
 Note:Fetching by absolute path only works when the node is inside the scene tree (seeis_inside_tree()).
 Example:Assume this method is called from the Character node, inside the following tree:
+
 ```
 ┖╴root
    ┠╴Character (you are here!)
@@ -938,21 +966,26 @@ Example:Assume this method is called from the Character node, inside the followi
       ┠╴Mosquito
       ┖╴Goblin
 ```
+
 The following calls will return a valid node:
+
 ```
 get_node("Sword")
 get_node("Backpack/Dagger")
 get_node("../Swamp/Alligator")
 get_node("/root/MyGame")
 ```
+
 ```
 GetNode("Sword");
 GetNode("Backpack/Dagger");
 GetNode("../Swamp/Alligator");
 GetNode("/root/MyGame");
 ```
+
 Arrayget_node_and_resource(path:NodePath)🔗
 Fetches a node and its most nested resource as specified by theNodePath's subname. Returns anArrayof size3where:
+
 - Element0is theNode, ornullif not found;
 Element0is theNode, ornullif not found;
 - Element1is the subname's last nestedResource, ornullif not found;
@@ -960,6 +993,7 @@ Element1is the subname's last nestedResource, ornullif not found;
 - Element2is the remainingNodePath, referring to an existing, non-Resourceproperty (seeObject.get_indexed()).
 Element2is the remainingNodePath, referring to an existing, non-Resourceproperty (seeObject.get_indexed()).
 Example:Assume that the child'sSprite2D.texturehas been assigned anAtlasTexture:
+
 ```
 var a = get_node_and_resource("Area2D/Sprite2D")
 print(a[0].name) # Prints Sprite2D
@@ -976,6 +1010,7 @@ print(c[0].name)        # Prints Sprite2D
 print(c[1].get_class()) # Prints AtlasTexture
 print(c[2])             # Prints ^":region"
 ```
+
 ```
 var a = GetNodeAndResource(NodePath("Area2D/Sprite2D"));
 GD.Print(a[0].Name); // Prints Sprite2D
@@ -992,6 +1027,7 @@ GD.Print(c[0].name);        // Prints Sprite2D
 GD.Print(c[1].get_class()); // Prints AtlasTexture
 GD.Print(c[2]);             // Prints ^":region"
 ```
+
 Nodeget_node_or_null(path:NodePath)const🔗
 Fetches a node byNodePath. Similar toget_node(), but does not generate an error ifpathdoes not point to a valid node.
 Variantget_node_rpc_config()const🔗
@@ -1021,6 +1057,7 @@ Returns theSceneTreethat contains this node. If this node is not inside the tree
 Stringget_tree_string()🔗
 Returns the tree as aString. Used mainly for debugging purposes. This version displays the path relative to the current node, and is good for copy/pasting into theget_node()function. It also can be used in game UI/UX.
 May print, for example:
+
 ```
 TheGame
 TheGame/Menu
@@ -1029,9 +1066,11 @@ TheGame/Menu/Camera2D
 TheGame/SplashScreen
 TheGame/SplashScreen/Camera2D
 ```
+
 Stringget_tree_string_pretty()🔗
 Similar toget_tree_string(), this returns the tree as aString. This version displays a more graphical representation similar to what is displayed in the Scene Dock. It is useful for inspecting larger trees.
 May print, for example:
+
 ```
 ┖╴TheGame
    ┠╴Menu
@@ -1040,6 +1079,7 @@ May print, for example:
    ┖╴SplashScreen
       ┖╴Camera2D
 ```
+
 Viewportget_viewport()const🔗
 Returns the node's closestViewportancestor, if the node is inside the tree. Otherwise, returnsnull.
 Windowget_window()const🔗
@@ -1103,6 +1143,7 @@ Note:This method only works in debug builds. It does nothing in a project export
 voidprint_tree()🔗
 Prints the node and its children to the console, recursively. The node does not have to be inside the tree. This method outputsNodePaths relative to this node, and is good for copy/pasting intoget_node(). See alsoprint_tree_pretty().
 May print, for example:
+
 ```
 .
 Menu
@@ -1111,9 +1152,11 @@ Menu/Camera2D
 SplashScreen
 SplashScreen/Camera2D
 ```
+
 voidprint_tree_pretty()🔗
 Prints the node and its children to the console, recursively. The node does not have to be inside the tree. Similar toprint_tree(), but the graphical representation looks like what is displayed in the editor's Scene dock. It is useful for inspecting larger trees.
 May print, for example:
+
 ```
 ┖╴TheGame
    ┠╴Menu
@@ -1122,6 +1165,7 @@ May print, for example:
    ┖╴SplashScreen
       ┖╴Camera2D
 ```
+
 voidpropagate_call(method:StringName, args:Array= [], parent_first:bool= false)🔗
 Calls the givenmethodname, passingargsas arguments, on this node and all of its children, recursively.
 Ifparent_firstistrue, the method is called on this node first, then on all of its children. Iffalse, the children's methods are called first.
@@ -1159,6 +1203,7 @@ May return@GlobalScope.OKif the call is successful,@GlobalScope.ERR_INVALID_PARA
 Note:You can only safely use RPCs on clients after you received theMultiplayerAPI.connected_to_serversignal from theMultiplayerAPI. You also need to keep track of the connection state, either by theMultiplayerAPIsignals likeMultiplayerAPI.server_disconnectedor by checking (get_multiplayer().peer.get_connection_status()==CONNECTION_CONNECTED).
 voidrpc_config(method:StringName, config:Variant)🔗
 Changes the RPC configuration for the givenmethod.configshould either benullto disable the feature (as by default), or aDictionarycontaining the following entries:
+
 - rpc_mode: seeRPCMode;
 rpc_mode: seeRPCMode;
 - transfer_mode: seeTransferMode;
@@ -1217,4 +1262,5 @@ voidupdate_configuration_warnings()🔗
 Refreshes the warnings displayed for this node in the Scene dock. Use_get_configuration_warnings()to customize the warning messages to display.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

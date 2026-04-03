@@ -1,11 +1,13 @@
 # NavigationServer3D in English
 
 # NavigationServer3D
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:Object
 A server interface for low-level 3D navigation access.
 
 ## Description
+
 NavigationServer3D is the server that handles navigation maps, regions and agents. It does not handle A* navigation fromAStar3D.
 Maps are divided into regions, which are composed of navigation meshes. Together, they define the navigable areas in the 3D world.
 Note:MostNavigationServer3Dchanges take effect after the next physics frame and not immediately. This includes all changes made to maps, regions or agents by navigation-related nodes in the scene tree or made through scripts.
@@ -16,6 +18,7 @@ Note:The collision avoidance system ignores regions. Using the modified velocity
 This server keeps tracks of any call and executes them during the sync phase. This means that you can request any change to the map, using any thread, without worrying.
 
 ## Tutorials
+
 - Using NavigationServer
 Using NavigationServer
 - 3D Navigation Demo
@@ -465,6 +468,7 @@ void
 source_geometry_parser_set_callback(parser:RID, callback:Callable)
 
 ## Signals
+
 avoidance_debug_changed()🔗
 Emitted when avoidance debug settings are changed. Only available in debug builds.
 map_changed(map:RID)🔗
@@ -473,6 +477,7 @@ navigation_debug_changed()🔗
 Emitted when navigation debug settings are changed. Only available in debug builds.
 
 ## Enumerations
+
 enumProcessInfo:🔗
 ProcessInfoINFO_ACTIVE_MAPS=0
 Constant to get the number of active navigation maps.
@@ -496,6 +501,7 @@ ProcessInfoINFO_OBSTACLE_COUNT=9
 Constant to get the number of active navigation obstacles.
 
 ## Method Descriptions
+
 RIDagent_create()🔗
 Creates the agent.
 boolagent_get_avoidance_enabled(agent:RID)const🔗
@@ -827,6 +833,7 @@ RIDsource_geometry_parser_create()🔗
 Creates a new source geometry parser. If aCallableis set for the parser withsource_geometry_parser_set_callback()the callback will be called for every single node that gets parsed wheneverparse_source_geometry_data()is used.
 voidsource_geometry_parser_set_callback(parser:RID, callback:Callable)🔗
 Sets thecallbackCallablefor the specific source geometryparser. TheCallablewill receive a call with the following parameters:
+
 - navigation_mesh- TheNavigationMeshreference used to define the parse settings. Do NOT edit or add directly to the navigation mesh.
 navigation_mesh- TheNavigationMeshreference used to define the parse settings. Do NOT edit or add directly to the navigation mesh.
 - source_geometry_data- TheNavigationMeshSourceGeometryData3Dreference. Add custom source geometry for navigation mesh baking to this object.
@@ -835,4 +842,5 @@ source_geometry_data- TheNavigationMeshSourceGeometryData3Dreference. Add custom
 node- TheNodethat is parsed.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

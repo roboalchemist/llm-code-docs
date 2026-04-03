@@ -1,10 +1,12 @@
 # Generic6DOFJoint3D in English
 
 # Generic6DOFJoint3D
+
 Inherits:Joint3D<Node3D<Node<Object
 A physics joint that allows for complex movement and rotation between two 3D physics bodies.
 
 ## Description
+
 TheGeneric6DOFJoint3D(6 Degrees Of Freedom) joint allows for implementing custom types of joints by locking the rotation and translation of certain axes.
 The first 3 DOF represent the linear motion of the physics bodies and the last 3 DOF represent the angular motion of the physics bodies. Each axis can be either locked, or limited.
 
@@ -334,6 +336,7 @@ void
 set_param_z(param:Param, value:float)
 
 ## Enumerations
+
 enumParam:🔗
 ParamPARAM_LINEAR_LOWER_LIMIT=0
 The minimum difference between the pivot points' axes.
@@ -398,7 +401,9 @@ FlagFLAG_MAX=6
 Represents the size of theFlagenum.
 
 ## Property Descriptions
+
 floatangular_limit_x/damping=1.0🔗
+
 - voidset_param_x(param:Param, value:float)
 voidset_param_x(param:Param, value:float)
 - floatget_param_x(param:Param)const
@@ -905,6 +910,7 @@ floatget_param_z(param:Param)const
 There is currently no description for this property. Please help us bycontributing one!
 
 ## Method Descriptions
+
 boolget_flag_x(flag:Flag)const🔗
 There is currently no description for this method. Please help us bycontributing one!
 boolget_flag_y(flag:Flag)const🔗
@@ -931,4 +937,5 @@ voidset_param_z(param:Param, value:float)🔗
 There is currently no description for this method. Please help us bycontributing one!
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

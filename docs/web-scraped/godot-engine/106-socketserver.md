@@ -1,11 +1,13 @@
 # SocketServer
 
 # SocketServer
+
 Inherits:RefCounted<Object
 Inherited By:TCPServer,UDSServer
 An abstract class for servers based on sockets.
 
 ## Description
+
 A socket server.
 
 ## Methods
@@ -26,6 +28,7 @@ StreamPeerSocket
 take_socket_connection()
 
 ## Method Descriptions
+
 boolis_connection_available()const🔗
 Returnstrueif a connection is available for taking.
 boolis_listening()const🔗
@@ -36,4 +39,5 @@ StreamPeerSockettake_socket_connection()🔗
 If a connection is available, returns a StreamPeerSocket with the connection.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

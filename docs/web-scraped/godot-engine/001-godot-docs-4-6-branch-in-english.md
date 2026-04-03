@@ -1,6 +1,7 @@
 # Godot Docs – 4.6 branch in English
 
 # Godot Docs –4.6branch
+
 Note
 Godot's documentation is available in various languages and versions.
 Expand the "Read the Docs" panel at the bottom of the sidebar to see
@@ -15,6 +16,7 @@ any section of the documentation for your topic of interest. You can
 also use the search function in the top-left corner.
 
 ## Get involved
+
 Godot Engine is an open source project developed by a community of volunteers.
 The documentation team can always use your feedback and help to improve the
 tutorials and class reference. If you don't understand something, or cannot find
@@ -24,6 +26,7 @@ Submit an issue or pull request on theGitHub repository,
 help ustranslate the documentationinto your language, or talk to us on the#documentationchannel on theGodot Contributors Chat!
 
 ## Offline documentation
+
 To browse the documentation offline, you can download an HTML copy (updated every Monday):stable,latest,3.6. Extract the ZIP archive then open
 the top-levelindex.htmlin a web browser.
 For mobile devices or e-readers, you can also download an ePub copy (updated every Monday):stable,latest,3.6. Extract the ZIP archive then open

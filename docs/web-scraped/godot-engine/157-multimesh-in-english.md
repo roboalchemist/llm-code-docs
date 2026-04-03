@@ -1,10 +1,12 @@
 # MultiMesh in English
 
 # MultiMesh
+
 Inherits:Resource<RefCounted<Object
 Provides high-performance drawing of a mesh multiple times using GPU instancing.
 
 ## Description
+
 MultiMesh provides low-level mesh instancing. Drawing thousands ofMeshInstance3Dnodes can be slow, since each object is submitted to the GPU then drawn individually.
 MultiMesh is much faster as it can draw thousands of instances with a single draw call, resulting in less API overhead.
 As a drawback, if the instances are too far away from each other, performance may be reduced as every single instance will always render (they are spatially indexed as one, for the whole object).
@@ -13,6 +15,7 @@ Note:A MultiMesh is a single object, therefore the same maximum lights per objec
 Note:Blend Shapes will be ignored if used in a MultiMesh.
 
 ## Tutorials
+
 - Using MultiMeshInstance
 Using MultiMeshInstance
 - Optimization using MultiMeshes
@@ -108,6 +111,7 @@ void
 set_instance_transform_2d(instance:int, transform:Transform2D)
 
 ## Enumerations
+
 enumTransformFormat:🔗
 TransformFormatTRANSFORM_2D=0
 Use this when using 2D transforms.
@@ -120,7 +124,9 @@ PhysicsInterpolationQualityINTERP_QUALITY_HIGH=1
 Attempt to interpolate using Basis slerping (spherical linear interpolation) where possible, otherwise fall back to lerping.
 
 ## Property Descriptions
+
 PackedFloat32Arraybuffer=PackedFloat32Array()🔗
+
 - voidset_buffer(value:PackedFloat32Array)
 voidset_buffer(value:PackedFloat32Array)
 - PackedFloat32Arrayget_buffer()
@@ -197,6 +203,7 @@ intget_visible_instance_count()
 Limits the number of instances drawn, -1 draws all instances. Changing this does not change the sizes of the buffers.
 
 ## Method Descriptions
+
 AABBget_aabb()const🔗
 Returns the visibility axis-aligned bounding box in local space.
 Colorget_instance_color(instance:int)const🔗
@@ -232,4 +239,5 @@ voidset_instance_transform_2d(instance:int, transform:Transform2D)🔗
 Sets theTransform2Dfor a specific instance.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

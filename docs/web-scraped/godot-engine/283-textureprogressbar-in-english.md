@@ -1,10 +1,12 @@
 # TextureProgressBar in English
 
 # TextureProgressBar
+
 Inherits:Range<Control<CanvasItem<Node<Object
 Texture-based progress bar. Useful for loading screens and life or stamina bars.
 
 ## Description
+
 TextureProgressBar works likeProgressBar, but uses up to 3 textures instead of Godot'sThemeresource. It can be used to create horizontal, vertical and radial progress bars.
 
 ## Properties
@@ -85,6 +87,7 @@ void
 set_stretch_margin(margin:Side, value:int)
 
 ## Enumerations
+
 enumFillMode:🔗
 FillModeFILL_LEFT_TO_RIGHT=0
 Thetexture_progressfills from left to right.
@@ -106,7 +109,9 @@ FillModeFILL_CLOCKWISE_AND_COUNTER_CLOCKWISE=8
 Turns the node into a radial bar. Thetexture_progressfills radially from the center, expanding both clockwise and counterclockwise. Seeradial_center_offset,radial_initial_angleandradial_fill_degreesto control the way the bar fills up.
 
 ## Property Descriptions
+
 intfill_mode=0🔗
+
 - voidset_fill_mode(value:int)
 voidset_fill_mode(value:int)
 - intget_fill_mode()
@@ -208,10 +213,12 @@ Colorget_tint_under()
 Multiplies the color of the bar'stexture_undertexture.
 
 ## Method Descriptions
+
 intget_stretch_margin(margin:Side)const🔗
 Returns the stretch margin with the specified index. Seestretch_margin_bottomand related properties.
 voidset_stretch_margin(margin:Side, value:int)🔗
 Sets the stretch margin with the specified index. Seestretch_margin_bottomand related properties.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

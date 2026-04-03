@@ -1,10 +1,12 @@
 # ThemeDB in English
 
 # ThemeDB
+
 Inherits:Object
 A singleton that provides access to static information aboutThemeresources used by the engine and by your project.
 
 ## Description
+
 This singleton provides access to static information aboutThemeresources used by the engine and by your projects. You can fetch the default engine theme, as well as your project configured theme.
 ThemeDBalso contains fallback values for theme properties.
 
@@ -39,11 +41,14 @@ Theme
 get_project_theme()
 
 ## Signals
+
 fallback_changed()🔗
 Emitted when one of the fallback values had been changed. Use it to refresh the look of controls that may rely on the fallback theme items.
 
 ## Property Descriptions
+
 floatfallback_base_scale=1.0🔗
+
 - voidset_fallback_base_scale(value:float)
 voidset_fallback_base_scale(value:float)
 - floatget_fallback_base_scale()
@@ -78,6 +83,7 @@ StyleBoxget_fallback_stylebox()
 The fallback stylebox of everyControlnode andThemeresource. Used when no other value is available to the control.
 
 ## Method Descriptions
+
 Themeget_default_theme()🔗
 Returns a reference to the default engineTheme. This theme resource is responsible for the out-of-the-box look ofControlnodes and cannot be overridden.
 Themeget_project_theme()🔗
@@ -85,4 +91,5 @@ Returns a reference to the custom projectTheme. This theme resources allows to o
 To set the project theme, seeProjectSettings.gui/theme/custom.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

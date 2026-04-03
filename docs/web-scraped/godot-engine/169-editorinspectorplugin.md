@@ -1,10 +1,12 @@
 # EditorInspectorPlugin
 
 # EditorInspectorPlugin
+
 Inherits:RefCounted<Object
 Plugin for adding custom property editors on the inspector.
 
 ## Description
+
 EditorInspectorPluginallows adding custom property editors toEditorInspector.
 When an object is edited, the_can_handle()function is called and must returntrueif the object type is supported.
 If supported, the function_parse_begin()will be called, allowing to place custom controls at the beginning of the class.
@@ -14,6 +16,7 @@ On each of these calls, the "add" functions can be called.
 To useEditorInspectorPlugin, register it using theEditorPlugin.add_inspector_plugin()method first.
 
 ## Tutorials
+
 - Inspector plugins
 Inspector plugins
 
@@ -50,6 +53,7 @@ void
 add_property_editor_for_multiple_properties(label:String, properties:PackedStringArray, editor:Control)
 
 ## Method Descriptions
+
 bool_can_handle(object:Object)virtualconst🔗
 Returnstrueif this object can be handled by this plugin.
 void_parse_begin(object:Object)virtual🔗
@@ -72,4 +76,5 @@ voidadd_property_editor_for_multiple_properties(label:String, properties:PackedS
 Adds an editor that allows modifying multiple properties. Theeditorcontrol must extendEditorProperty.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

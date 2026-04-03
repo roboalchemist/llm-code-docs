@@ -1,10 +1,12 @@
 # Time
 
 # Time
+
 Inherits:Object
 A singleton for working with time data.
 
 ## Description
+
 The Time singleton allows converting time between various formats and also getting time information from the system.
 This class conforms with as many of the ISO 8601 standards as possible. All dates follow the Proleptic Gregorian calendar. As such, the day before1582-10-15is1582-10-14, not1582-10-04. The year before 1 AD (aka 1 BC) is number0, with the year before that (2 BC) being-1, etc.
 Conversion methods assume "the same timezone", and do not handle timezone conversions or DST automatically. Leap seconds are also not handled, they must be done manually if desired. Suffixes such as "Z" are not handled, you need to strip them away manually.
@@ -76,6 +78,7 @@ float
 get_unix_time_from_system()const
 
 ## Enumerations
+
 enumMonth:🔗
 MonthMONTH_JANUARY=1
 The month of January, represented numerically as01.
@@ -118,6 +121,7 @@ WeekdayWEEKDAY_SATURDAY=6
 The day of the week Saturday, represented numerically as6.
 
 ## Method Descriptions
+
 Dictionaryget_date_dict_from_system(utc:bool= false)const🔗
 Returns the current date as a dictionary of keys:year,month,day, andweekday.
 The returned values are in the system's local time whenutcisfalse, otherwise they are in UTC.
@@ -169,6 +173,7 @@ Stringget_time_string_from_unix_time(unix_time_val:int)const🔗
 Converts the given Unix timestamp to an ISO 8601 time string (HH:MM:SS).
 Dictionaryget_time_zone_from_system()const🔗
 Returns the current time zone as a dictionary of keys:biasandname.
+
 - biasis the offset from UTC in minutes, since not all time zones are multiples of an hour from UTC.
 biasis the offset from UTC in minutes, since not all time zones are multiples of an hour from UTC.
 - nameis the localized name of the time zone, according to the OS locale settings of the current user.
@@ -188,4 +193,5 @@ Returns the current Unix timestamp in seconds based on the system time in UTC. T
 Note:Unlike other methods that use integer timestamps, this method returns the timestamp as afloatfor sub-second precision.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

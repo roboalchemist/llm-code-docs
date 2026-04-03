@@ -1,14 +1,17 @@
 # MeshInstance3D in English
 
 # MeshInstance3D
+
 Inherits:GeometryInstance3D<VisualInstance3D<Node3D<Node<Object
 Inherited By:SoftBody3D
 Node that instances meshes into a scenario.
 
 ## Description
+
 MeshInstance3D is a node that takes aMeshresource and adds it to the current scenario by creating an instance of it. This is the class most often used to render 3D geometry and can be used to instance a singleMeshin many places. This allows reusing geometry, which can save on resources. When aMeshhas to be instantiated more than thousands of times at close proximity, consider using aMultiMeshin aMultiMeshInstance3Dinstead.
 
 ## Tutorials
+
 - 3D Material Testers Demo
 3D Material Testers Demo
 - 3D Kinematic Character Demo
@@ -81,7 +84,9 @@ void
 set_surface_override_material(surface:int, material:Material)
 
 ## Property Descriptions
+
 Meshmesh🔗
+
 - voidset_mesh(value:Mesh)
 voidset_mesh(value:Mesh)
 - Meshget_mesh()
@@ -102,6 +107,7 @@ Skinget_skin()
 TheSkinto be used by this instance.
 
 ## Method Descriptions
+
 ArrayMeshbake_mesh_from_current_blend_shape_mix(existing:ArrayMesh= null)🔗
 Takes a snapshot from the currentArrayMeshwith all blend shapes applied according to their current weights and bakes it to the providedexistingmesh. If noexistingmesh is provided a newArrayMeshis created, baked and returned. Mesh surface materials are not copied.
 Performance:Meshdata needs to be received from the GPU, stalling theRenderingServerin the process.
@@ -141,4 +147,5 @@ Sets the overridematerialfor the specifiedsurfaceof theMeshresource. This materi
 Note:This assigns theMaterialassociated to theMeshInstance3D's Surface Material Override properties, not the material within theMeshresource. To set the material within theMeshresource, useMesh.surface_set_material()instead.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

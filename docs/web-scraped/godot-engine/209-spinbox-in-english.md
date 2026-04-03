@@ -1,13 +1,16 @@
 # SpinBox in English
 
 # SpinBox
+
 Inherits:Range<Control<CanvasItem<Node<Object
 An input field for numbers.
 
 ## Description
+
 SpinBoxis a numerical input text field. It allows entering integers and floating-point numbers. TheSpinBoxalso has up and down buttons that can be clicked increase or decrease the value. The value can also be changed by dragging the mouse up or down over theSpinBox's arrows.
 Additionally, mathematical expressions can be entered. These are evaluated when the user pressesEnterwhile editing theSpinBox's text field. This uses theExpressionclass to parse and evaluate the expression. The result of the expression is then set as the value of theSpinBox. Some examples of valid expressions are5+2*3,pow(2,4), andPI+sin(0.5). Expressions are case-sensitive.
 Example:Create aSpinBox, disable its context menu and set its text alignment to right.
+
 ```
 var spin_box = SpinBox.new()
 add_child(spin_box)
@@ -15,6 +18,7 @@ var line_edit = spin_box.get_line_edit()
 line_edit.context_menu_enabled = false
 spin_box.horizontal_alignment = LineEdit.HORIZONTAL_ALIGNMENT_RIGHT
 ```
+
 ```
 var spinBox = new SpinBox();
 AddChild(spinBox);
@@ -22,6 +26,7 @@ var lineEdit = spinBox.GetLineEdit();
 lineEdit.ContextMenuEnabled = false;
 spinBox.AlignHorizontal = LineEdit.HorizontalAlignEnum.Right;
 ```
+
 SeeRangeclass for more options over theSpinBox.
 Note:With theSpinBox's context menu disabled, you can right-click the bottom half of the spinbox to set the value to its minimum, while right-clicking the top half sets the value to its maximum.
 Note:SpinBoxrelies on an underlyingLineEditnode. To theme aSpinBox's background, add theme items forLineEditand customize them. TheLineEdithas theSpinBoxInnerLineEdittheme variation, so that you can give it a distinct appearance from regularLineEdits.
@@ -181,7 +186,9 @@ StyleBox
 up_down_buttons_separator
 
 ## Property Descriptions
+
 HorizontalAlignmentalignment=0🔗
+
 - voidset_horizontal_alignment(value:HorizontalAlignment)
 voidset_horizontal_alignment(value:HorizontalAlignment)
 - HorizontalAlignmentget_horizontal_alignment()
@@ -233,6 +240,7 @@ Sets the value of theRangefor thisSpinBoxwhen theLineEdittext ischangedinstead o
 Note:If set totrue, this will interfere with entering mathematical expressions in theSpinBox. TheSpinBoxwill try to evaluate the expression as you type, which means symbols like a trailing+are removed immediately by the expression being evaluated.
 
 ## Method Descriptions
+
 voidapply()🔗
 Applies the current value of thisSpinBox. This is equivalent to pressingEnterwhile editing theLineEditused by theSpinBox. This will causeLineEdit.text_submittedto be emitted and its currently contained expression to be evaluated.
 LineEditget_line_edit()🔗
@@ -240,6 +248,7 @@ Returns theLineEditinstance from thisSpinBox. You can use it to access propertie
 Warning:This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use theirCanvasItem.visibleproperty.
 
 ## Theme Property Descriptions
+
 Colordown_disabled_icon_modulate=Color(0.875,0.875,0.875,0.5)🔗
 Down button icon modulation color, when the button is disabled.
 Colordown_hover_icon_modulate=Color(0.95,0.95,0.95,1)🔗
@@ -304,4 +313,5 @@ StyleBoxup_down_buttons_separator🔗
 StyleBoxdrawn in the space occupied by the separation between the up and down buttons.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

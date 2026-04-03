@@ -1,14 +1,17 @@
 # InputEventMouseButton in English
 
 # InputEventMouseButton
+
 Inherits:InputEventMouse<InputEventWithModifiers<InputEventFromWindow<InputEvent<Resource<RefCounted<Object
 Represents a mouse button being pressed or released.
 
 ## Description
+
 Stores information about mouse click events. SeeNode._input().
 Note:On Wear OS devices, rotary input is mapped to@GlobalScope.MOUSE_BUTTON_WHEEL_UPand@GlobalScope.MOUSE_BUTTON_WHEEL_DOWN. This can be changed to@GlobalScope.MOUSE_BUTTON_WHEEL_LEFTand@GlobalScope.MOUSE_BUTTON_WHEEL_RIGHTwith theProjectSettings.input_devices/pointing/android/rotary_input_scroll_axissetting.
 
 ## Tutorials
+
 - Using InputEvent
 Using InputEvent
 - Mouse and input coordinates
@@ -38,7 +41,9 @@ pressed
 false
 
 ## Property Descriptions
+
 MouseButtonbutton_index=0🔗
+
 - voidset_button_index(value:MouseButton)
 voidset_button_index(value:MouseButton)
 - MouseButtonget_button_index()
@@ -70,4 +75,5 @@ boolis_pressed()
 Iftrue, the mouse button's state is pressed. Iffalse, the mouse button's state is released.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

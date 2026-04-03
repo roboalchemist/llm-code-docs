@@ -1,6 +1,7 @@
 # Creating applications in English
 
 # Creating applications
+
 Godot features an extensive built-in UI system, and its small distribution
 size can make it a suitable alternative to frameworks like Electron or Qt.
 This page provides guidelines for creating non-game applications with Godot,
@@ -16,6 +17,7 @@ open source applications made with Godot.
 ## Performing common tasks
 
 ### Spawning multiple windows
+
 This is only supported on Windows, macOS, and Linux (X11/XWayland only,
 not in native Wayland mode).
 Additional windows can be created using theWindownode.
@@ -29,6 +31,7 @@ to provide an alternative means of exiting the application in this case,
 such as atray icon.
 
 ### Constraining the window size
+
 Most applications can only render correctly starting from a certain minimum
 window size. For more specific use cases, it may also be desired to force
 a maximum window size.
@@ -39,6 +42,7 @@ As a reminder, you can retrieve the root Window node to set properties
 on it usingget_window()on any Node.
 
 ### Using native file dialogs
+
 This is only supported on Windows, macOS, Linux, and Android.
 By default, Godot uses its ownFileDialogimplementation for file dialogs.
 However, you can use the operating system's native file dialogs instead. This is
@@ -57,6 +61,7 @@ make sure you disable game embedding by switching to theGamescreen,
 clicking the 3 vertical dots and uncheckingEmbed Game on Next Play.
 
 ### Creating an icon in the system tray
+
 This is only supported on Windows and macOS.
 You can create one or more icons in the system tray (also known as the
 notification area) using aStatusIndicatornode.
@@ -69,6 +74,7 @@ After creating a tray icon, you may also want to implement "minimize on close"
 behavior. This means that when the user attempts to close the application using
 the window manager X button, it will minimize to the tray instead. To do so,
 attach this script to anAutoloadscenewith a StatusIndicator as the root node:
+
 ```
 extends StatusIndicator
 
@@ -106,6 +112,7 @@ func _notification(what):
             # Show the tray icon.
             visible = true
 ```
+
 SeeHandling quit requestsfor details on overriding the behavior
 when the user tries to close the application. This is important to handle
 when the user has unsaved changes to avoid data loss.
@@ -115,6 +122,7 @@ system tray is determined by the order in which they are added
 to the scene tree.
 
 ### Using the global menu
+
 This is only supported on macOS.
 On macOS, applications can use the system's global menu bar instead of displaying
 a menu bar inside the application window. This is also referred to as anative menuin Godot.
@@ -148,6 +156,7 @@ make sure you disable game embedding by switching to theGamescreen,
 clicking the 3 vertical dots and uncheckingEmbed Game on Next Play.
 
 ### Using client-side decorations
+
 This is only supported on macOS.
 Many modern applications useclient-side decorations(CSD) instead of relying
 on the operating system's window manager to draw the title bar and window borders
@@ -163,6 +172,7 @@ the buttons to display comfortably, while also displaying the window title using
 a Label node or similar.
 To conditionally adapt your UI according to whether client-side decorations
 are enabled, useDisplayServer.has_featureand also check the current value ofWindow.extend_to_title(which is what the project setting changes):
+
 ```
 func _ready():
     if DisplayServer.has_feature(FEATURE_EXTEND_TO_TITLE) and get_window().extend_to_title:
@@ -174,6 +184,7 @@ func _ready():
         if OS.is_debug_build():
             $WindowTitle.text += " (DEBUG)"
 ```
+
 To correctly position the window title, consider usingDisplayServer.window_get_safe_title_margins()which returns a Vector3 wherexis the left margin,yis the right
 margin (will increase when the system uses right-to-left typesetting),
 andzis the height. Additionally, you can callDisplayServer.window_set_window_buttons_offset()to adjust the position of the close/minimize/maximize buttons (usually to
@@ -186,8 +197,10 @@ make sure you disable game embedding by switching to theGamescreen,
 clicking the 3 vertical dots and uncheckingEmbed Game on Next Play.
 
 ### Sending desktop notifications
+
 Godot currently does not have native support for sending desktop notifications.
 However, on macOS and Linux, you can use theosascriptandnotify-sendcommand line utilities respectively to send desktop notifications:
+
 ```
 func send_notification(title, message):
     var app_name = ProjectSettings.get_setting("application/config/name")
@@ -211,13 +224,16 @@ func send_notification(title, message):
 func _ready():
     send_notification("Success", "Operation completed successfully.")
 ```
+
 Unfortunately, there is no equivalent that's available out of the box on
 Windows.
 
 ### Remembering window position and size across sessions
+
 Godot doesn't have built-in support for remembering window position
 and size across sessions, but it can be manually implemented using a script.
 A basic example that supports multi-monitor setups would be anAutoloadwith this script:
+
 ```
 extends Node
 
@@ -262,12 +278,14 @@ func _exit_tree():
     config_file.set_value("main", "size", get_window().size)
     config_file.save(CONFIG_WINDOW_PATH)
 ```
+
 Note
 The above example only tracks the main window's position.
 In applications that spawn multiple windows, you will need
 to save and load each window position's and size separately.
 
 ### Hiding the window during the splash screen
+
 For some applications, it may be preferred to hide the splash screen
 to draw a custom splash screen with a progress bar instead (or even
 no splash screen at all, if the application boots quickly).
@@ -276,6 +294,7 @@ but you can achieve this by using a very small transparent window in the
 project settings, then resizing the window and disabling transparency once
 the main scene is loaded.
 To do so, project settings should be configured as follows:
+
 - application/boot_splash/bg_colorset to a transparent black color (RGBA: 0, 0, 0, 0).
 application/boot_splash/bg_colorset to a transparent black color (RGBA: 0, 0, 0, 0).
 - application/boot_splash/show_imagedisabled.
@@ -295,6 +314,7 @@ display/window/size/transparentenabled.
 - rendering/viewport/transparent_backgroundenabled.
 rendering/viewport/transparent_backgroundenabled.
 This script can be used as anAutoloadto restore original settings once the splash screen is done displaying:
+
 ```
 extends Node
 
@@ -311,10 +331,12 @@ func _enter_tree():
 ```
 
 ### Displaying the application as an overlay
+
 It is possible to display the application window as an overlay that stays
 on top of other windows. This can be useful for applications like
 widgets or system monitors.
 To do so, enableallthe following project settings:
+
 - display/window/size/borderless
 display/window/size/borderless
 - display/window/per_pixel_transparency/allowed
@@ -361,6 +383,7 @@ On Linux with X11, transparency will not work if the user
 has disabled compositing in the window manager settings.
 
 ### Scaling to hiDPI displays
+
 Modern displays vary a lot in terms of pixel density, which means
 a different scaling factor is often needed to ensure UI elements
 are readable. The scaling factor can also be provided as a manual
@@ -376,6 +399,7 @@ On Linux (X11) and Windows, you will need to provide a manual
 scaling option for the user to adjust the UI scale as needed.
 
 ### Screen reader integration
+
 Screen readers allow visually impaired people to use an application
 by reading out the UI elements and providing navigation controls.
 Braille displays are another approach that also rely on accessibility
@@ -404,8 +428,10 @@ that is separate from screen readers.
 ## Recommended project settings
 
 ### Desktop integration
+
 To allow the application to better integrate with the desktop environment,
 you can set these project settings as follows:
+
 - Enableapplication/config/use_custom_user_dirand setapplication/config/custom_user_dir_nameto a suitable name for your application. This ensures user settings and
 files are stored in a dedicated folder instead of thedefault Godot folder.
 By convention, it's a good idea to use normal case on Windows
@@ -446,7 +472,9 @@ so that additional windows use the operating system theming and are
 seen as native operating system windows.
 
 ### Performance
+
 Here are some project settings you can use to reduce CPU, GPU, and memory utilization:
+
 - Use the Compatibility renderer if you don't need features that are exclusive
 to Forward+ or Mobile. The Compatibility renderer has lower hardware requirements
 and generally launches faster, which makes it a better option for applications.
@@ -537,9 +565,11 @@ Check outMaterial MakerandPixeloramafor examples of
 open source applications made with Godot.
 
 ### Mobile
+
 When designing an application for mobile platforms, there are several settings
 you can enable to improve usability:
 Android:
+
 - Enableinput_devices/pointing/android/enable_long_press_as_right_clickto allow users to perform right-click actions using a long press gesture.
 Enableinput_devices/pointing/android/enable_long_press_as_right_clickto allow users to perform right-click actions using a long press gesture.
 - Enableinput_devices/pointing/android/enable_pan_and_scale_gesturesto allow users to pan and zoom using touch gestures. This will emulateInputEventPanGestureandInputEventMagnifyGestureevents, which can be handled in your project's code and are normally
@@ -569,12 +599,14 @@ Disabledisplay/window/ios/suppress_ui_gestureto allow UI gestures to work immedi
 to be done twice.
 
 ## Adding unit tests
+
 In an application, there is often more value in having
 aunit testingsetup compared to a game. This can be used to catch regressions
 in an automated manner, which tends to be easier to do in an
 application scenario where logic can be cleanly separated.
 GDScript does not feature an integrated unit testing framework,
 but several plugins for unit testing maintained by the community exist:
+
 - Gut
 - GdUnit4(also supports C#)
 GdUnit4(also supports C#)
@@ -582,6 +614,7 @@ With C# and GDExtension (C++, Rust, etc.), you can use standard testing framewor
 such as NUnit ordoctest.
 
 ## Optimizing distribution size
+
 Since non-game applications generally avoid using large parts of the engine,
 such as audio or 3D functionality, you can compile an optimized export template
 to reduce its file size. This will also improve startup times,
@@ -592,6 +625,7 @@ since applications contain fewer large assets compared to games.
 SeeOptimizing a build for sizefor more information on how to do this.
 
 ## Creating installers
+
 While games are typically installed through launchers such as Steam or downloaded
 as a ZIP, applications are often distributed as installers for better desktop
 integration. The installer can perform actions like adding shortcuts to the
@@ -601,6 +635,7 @@ more desirable for corporate environments.
 Godot does not have built-in support for creating installers for exported projects.
 However, it is still possible to create your own installers using third-party tools.
 Here is a non-exhaustive list of tools that can be used to create installers:
+
 - Windows:Inno Setup,NSISIf you have a code signing certificate, remember to signboththe installer and project executable. To do so,sign the exported project executable,
 create the installer containing the exported project, then manually
 sign the installer that you just created.
@@ -622,7 +657,9 @@ There is aGodot BaseAppthat can be used as a base for creating Flatpak packages 
 Seethe Pixelorama Flatpakfor an example Flatpak that makes use of this BaseApp.
 
 ## Resources
+
 These pages cover tasks commonly performed in non-game applications:
+
 - Runtime file loading and saving
 Runtime file loading and saving
 - Making HTTP requests
@@ -631,4 +668,5 @@ Making HTTP requests
 ConfigFile(used to save user preferences)
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

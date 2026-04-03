@@ -1,9 +1,11 @@
 # Transform3D in English
 
 # Transform3D
+
 A 3×4 matrix representing a 3D transformation.
 
 ## Description
+
 TheTransform3Dbuilt-inVarianttype is a 3×4 matrix representing a transformation in 3D space. It contains aBasis, which on its own can represent rotation, scale, and shear. Additionally, combined with its ownorigin, the transform can also represent a translation.
 For a general introduction, see theMatrices and transformstutorial.
 Note:Godot uses aright-handed coordinate system, which is a common standard. For directions, the convention for built-in types likeCamera3Dis for -Z to point forward (+X is right, +Y is up, and +Z is back). Other objects may use different direction conventions. For more information, see the3D asset direction conventionstutorial.
@@ -11,6 +13,7 @@ Note
 There are notable differences when using this API with C#. SeeC# API differences to GDScriptfor more information.
 
 ## Tutorials
+
 - Math documentation index
 Math documentation index
 - Matrices and transforms
@@ -121,15 +124,15 @@ operator !=(right:Transform3D)
 AABB
 operator *(right:AABB)
 PackedVector3Array
-operator *(right:PackedVector3Array)
+operator*(right:PackedVector3Array)
 Plane
 operator *(right:Plane)
 Transform3D
-operator *(right:Transform3D)
+operator*(right:Transform3D)
 Vector3
 operator *(right:Vector3)
 Transform3D
-operator *(right:float)
+operator*(right:float)
 Transform3D
 operator *(right:int)
 Transform3D
@@ -140,14 +143,17 @@ bool
 operator ==(right:Transform3D)
 
 ## Constants
+
 IDENTITY=Transform3D(1,0,0,0,1,0,0,0,1,0,0,0)🔗
 The identityTransform3D. This is a transform with no translation, no rotation, and a scale ofVector3.ONE. Itsbasisis equal toBasis.IDENTITY. This also means that:
+
 - ItsBasis.xpoints right (Vector3.RIGHT);
 ItsBasis.xpoints right (Vector3.RIGHT);
 - ItsBasis.ypoints up (Vector3.UP);
 ItsBasis.ypoints up (Vector3.UP);
 - ItsBasis.zpoints back (Vector3.BACK).
 ItsBasis.zpoints back (Vector3.BACK).
+
 ```
 var transform = Transform3D.IDENTITY
 var basis = transform.basis
@@ -161,6 +167,7 @@ print("| %.f | %.f | %.f | %.f" % [basis.x.z, basis.y.z, basis.z.z, transform.or
 # | 0 | 1 | 0 | 0
 # | 0 | 0 | 1 | 0
 ```
+
 If aVector3, anAABB, aPlane, aPackedVector3Array, or anotherTransform3Dis transformed (multiplied) by this constant, no transformation occurs.
 Note:In GDScript, this constant is equivalent to creating aTransform3Dwithout any arguments. It can be used to make your code clearer, and for consistency with C#.
 FLIP_X=Transform3D(-1,0,0,0,1,0,0,0,1,0,0,0)🔗
@@ -171,12 +178,14 @@ FLIP_Z=Transform3D(1,0,0,0,1,0,0,0,-1,0,0,0)🔗
 Transform3Dwith mirroring applied perpendicular to the XY plane. Itsbasisis equal toBasis.FLIP_Z.
 
 ## Property Descriptions
+
 Basisbasis=Basis(1,0,0,0,1,0,0,0,1)🔗
 TheBasisof this transform. It is composed by 3 axes (Basis.x,Basis.y, andBasis.z). Together, these represent the transform's rotation, scale, and shear.
 Vector3origin=Vector3(0,0,0)🔗
 The translation offset of this transform. In 3D space, this can be seen as the position.
 
 ## Constructor Descriptions
+
 Transform3DTransform3D()🔗
 Constructs aTransform3Didentical toIDENTITY.
 Note:In C#, this constructs aTransform3Dwith itsoriginand the components of itsbasisset toVector3.ZERO.
@@ -191,6 +200,7 @@ Constructs aTransform3Dfrom fourVector3values (also called matrix columns).
 The first three arguments are thebasis's axes (Basis.x,Basis.y, andBasis.z).
 
 ## Method Descriptions
+
 Transform3Daffine_inverse()const🔗
 Returns the inverted version of this transform. Unlikeinverse(), this method works with almost anybasis, including non-uniform ones, but is slower. See alsoBasis.inverse().
 Note:For this method to return correctly, the transform'sbasisneeds to have a determinant that is not exactly0.0(seeBasis.determinant()).
@@ -238,20 +248,22 @@ This method is an optimized version of multiplying the given transformXwith a co
 This can be seen as transforming with respect to the local frame.
 
 ## Operator Descriptions
+
 booloperator !=(right:Transform3D)🔗
 Returnstrueif the components of both transforms are not equal.
 Note:Due to floating-point precision errors, consider usingis_equal_approx()instead, which is more reliable.
 AABBoperator *(right:AABB)🔗
 Transforms (multiplies) theAABBby this transformation matrix.
-PackedVector3Arrayoperator *(right:PackedVector3Array)🔗
+PackedVector3Arrayoperator*(right:PackedVector3Array)🔗
 Transforms (multiplies) everyVector3element of the givenPackedVector3Arrayby this transformation matrix.
 On larger arrays, this operation is much faster than transforming eachVector3individually.
 Planeoperator *(right:Plane)🔗
 Transforms (multiplies) thePlaneby this transformation matrix.
-Transform3Doperator *(right:Transform3D)🔗
+Transform3Doperator*(right:Transform3D)🔗
 Transforms (multiplies) this transform by therighttransform.
 This is the operation performed between parent and childNode3Ds.
 Note:If you need to only modify one attribute of this transform, consider using one of the following methods, instead:
+
 - For translation, seetranslated()ortranslated_local().
 For translation, seetranslated()ortranslated_local().
 - For rotation, seerotated()orrotated_local().
@@ -260,7 +272,7 @@ For rotation, seerotated()orrotated_local().
 For scale, seescaled()orscaled_local().
 Vector3operator *(right:Vector3)🔗
 Transforms (multiplies) theVector3by this transformation matrix.
-Transform3Doperator *(right:float)🔗
+Transform3Doperator*(right:float)🔗
 Multiplies all components of theTransform3Dby the givenfloat, including theorigin. This affects the transform's scale uniformly, scaling thebasis.
 Transform3Doperator *(right:int)🔗
 Multiplies all components of theTransform3Dby the givenint, including theorigin. This affects the transform's scale uniformly, scaling thebasis.
@@ -273,4 +285,5 @@ Returnstrueif the components of both transforms are exactly equal.
 Note:Due to floating-point precision errors, consider usingis_equal_approx()instead, which is more reliable.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

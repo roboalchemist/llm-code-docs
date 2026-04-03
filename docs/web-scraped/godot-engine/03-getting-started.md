@@ -16,18 +16,21 @@
 #### Installation
 
 **Windows**
+
 - Download the .exe or .zip file
 - For .exe: Run the installer and follow prompts
 - For .zip: Extract to desired location
 - Run godot.exe to launch
 
 **macOS**
+
 - Download the .zip file
 - Extract the archive
 - Drag Godot.app to Applications folder (optional)
 - Run Godot.app
 
 **Linux**
+
 - Download the executable
 - Make it executable: `chmod +x godot_engine`
 - Run: `./godot_engine`
@@ -35,6 +38,7 @@
 #### First Launch
 
 When you launch Godot for the first time:
+
 1. Godot displays a project manager window
 2. You can create a new project or open an existing one
 3. The editor opens with your project
@@ -68,6 +72,7 @@ A Godot project contains:
 The Godot editor consists of several key areas:
 
 **Top Menu**
+
 - File: New, Open, Save project
 - Edit: Undo, Redo, Preferences
 - Scene: Scene-specific operations
@@ -76,23 +81,27 @@ The Godot editor consists of several key areas:
 - Help: Documentation and resources
 
 **Left Panel (Scene Tree)**
+
 - Hierarchical view of all nodes in current scene
 - Add/remove nodes
 - Change node order (hierarchy)
 - Show/hide nodes
 
 **Center (Viewport)**
+
 - Visual editing of your scene
 - Move, rotate, scale objects
 - Real-time preview of your game
 
 **Right Panel (Inspector)**
+
 - Properties of selected node
 - Edit transform (position, rotation, scale)
 - Edit node-specific properties
 - Assign scripts and resources
 
 **Bottom Panel (Output)**
+
 - Console output from scripts
 - Error messages and warnings
 - Debugger information
@@ -101,6 +110,7 @@ The Godot editor consists of several key areas:
 #### Customizing the Layout
 
 The editor interface is highly customizable:
+
 - Drag panel borders to resize
 - Click the X on panels to hide them
 - Use Window menu to show/hide panels
@@ -129,6 +139,7 @@ Click the "+" button in Scene tree to add nodes:
 #### 3. Configure Nodes
 
 Select a node and modify properties in the Inspector:
+
 - **Transform**: Position (X, Y), Rotation, Scale
 - **Modulate**: Color and transparency
 - **Texture**: For Sprite2D, choose image file
@@ -259,6 +270,7 @@ func _ready():
 #### Node
 
 Base class for all scene elements. Key methods:
+
 - `_ready()`: Called when node enters scene
 - `_process(delta)`: Called every frame
 - `_input(event)`: Called on input events
@@ -266,6 +278,7 @@ Base class for all scene elements. Key methods:
 #### Node2D
 
 Base class for 2D objects. Adds:
+
 - Position, rotation, scale properties
 - `get_global_position()`: World position
 - `get_local_position()`: Parent-relative position
@@ -273,6 +286,7 @@ Base class for 2D objects. Adds:
 #### Control
 
 Base class for UI elements:
+
 - Layout management
 - Focus handling
 - Theme system
@@ -281,6 +295,7 @@ Base class for UI elements:
 #### Sprite2D / Sprite3D
 
 Displays images in 2D or 3D space:
+
 - Texture property for image
 - Animation support
 - Modulation for color/alpha
@@ -288,6 +303,7 @@ Displays images in 2D or 3D space:
 #### Area2D / Area3D
 
 Detects overlapping objects:
+
 - `area_entered` signal
 - `body_entered` signal
 - Used for triggers and detection

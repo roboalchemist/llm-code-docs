@@ -1,15 +1,18 @@
 # Skeleton3D in English
 
 # Skeleton3D
+
 Inherits:Node3D<Node<Object
 A node containing a bone hierarchy, used to create a 3D skeletal animation.
 
 ## Description
+
 Skeleton3Dprovides an interface for managing a hierarchy of bones, including pose, rest and animation (seeAnimation). It can also use ragdoll physics.
 The overall transform of a bone with respect to the skeleton is determined by bone pose. Bone rest defines the initial transform of the bone pose.
 Note that "global pose" below refers to the overall transform of the bone with respect to skeleton, so it is not the actual global/world transform of the bone.
 
 ## Tutorials
+
 - Third Person Shooter (TPS) Demo
 Third Person Shooter (TPS) Demo
 
@@ -177,6 +180,7 @@ void
 unparent_bone_and_rest(bone_idx:int)
 
 ## Signals
+
 bone_enabled_changed(bone_idx:int)🔗
 Emitted when the bone atbone_idxis toggled withset_bone_enabled(). Useis_bone_enabled()to check the new value.
 bone_list_changed()🔗
@@ -193,6 +197,7 @@ Emitted when the final pose has been calculated will be applied to the skin in t
 This means that allSkeletonModifier3Dprocessing is complete. In order to detect the completion of the processing of eachSkeletonModifier3D, useSkeletonModifier3D.modification_processed.
 
 ## Enumerations
+
 enumModifierCallbackModeProcess:🔗
 ModifierCallbackModeProcessMODIFIER_CALLBACK_MODE_PROCESS_PHYSICS=0
 Set a flag to process modification during physics frames (seeNode.NOTIFICATION_INTERNAL_PHYSICS_PROCESS).
@@ -202,11 +207,14 @@ ModifierCallbackModeProcessMODIFIER_CALLBACK_MODE_PROCESS_MANUAL=2
 Do not process modification. Useadvance()to process the modification manually.
 
 ## Constants
+
 NOTIFICATION_UPDATE_SKELETON=50🔗
 Notification received when this skeleton's pose needs to be updated. In that case, this is called only once per frame in a deferred process.
 
 ## Property Descriptions
+
 boolanimate_physical_bones=true🔗
+
 - voidset_animate_physical_bones(value:bool)
 voidset_animate_physical_bones(value:bool)
 - boolget_animate_physical_bones()
@@ -235,6 +243,7 @@ boolis_show_rest_only()
 Iftrue, forces the bones in their default rest pose, regardless of their values. In the editor, this also prevents the bones from being edited.
 
 ## Method Descriptions
+
 intadd_bone(name:String)🔗
 Adds a new bone with the given name. Returns the new bone's index, or-1if this method fails.
 Note:Bone names should be unique, non empty, and cannot include the:and/characters.
@@ -357,4 +366,5 @@ voidunparent_bone_and_rest(bone_idx:int)🔗
 Unparents the bone atbone_idxand sets its rest position to that of its parent prior to being reset.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

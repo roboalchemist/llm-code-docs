@@ -1,11 +1,14 @@
 # SurfaceTool
 
 # SurfaceTool
+
 Inherits:RefCounted<Object
 Helper tool to create geometry.
 
 ## Description
+
 TheSurfaceToolis used to construct aMeshby specifying vertex attributes individually. It can be used to construct aMeshfrom a script. All properties except indices need to be added before callingadd_vertex(). For example, to add vertex colors and UVs:
+
 ```
 var st = SurfaceTool.new()
 st.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -13,6 +16,7 @@ st.set_color(Color(1, 0, 0))
 st.set_uv(Vector2(0, 0))
 st.add_vertex(Vector3(0, 0, 0))
 ```
+
 ```
 var st = new SurfaceTool();
 st.Begin(Mesh.PrimitiveType.Triangles);
@@ -20,6 +24,7 @@ st.SetColor(new Color(1, 0, 0));
 st.SetUV(new Vector2(0, 0));
 st.AddVertex(new Vector3(0, 0, 0));
 ```
+
 The aboveSurfaceToolnow contains one vertex of a triangle which has a UV coordinate and a specifiedColor. If another vertex were added without callingset_uv()orset_color(), then the last values would be used.
 Vertex attributes must be passedbeforecallingadd_vertex(). Failure to do so will result in an error when committing the vertex information to a mesh.
 Additionally, the attributes used before the first vertex is added determine the format of the mesh. For example, if you only add UVs to the first vertex, you cannot add color to any of the subsequent vertices.
@@ -27,6 +32,7 @@ See alsoArrayMesh,ImmediateMeshandMeshDataToolfor procedural geometry generation
 Note:Godot uses clockwisewinding orderfor front faces of triangle primitive modes.
 
 ## Tutorials
+
 - Using the SurfaceTool
 Using the SurfaceTool
 - 3D Voxel Demo
@@ -137,6 +143,7 @@ void
 set_weights(weights:PackedFloat32Array)
 
 ## Enumerations
+
 enumCustomFormat:🔗
 CustomFormatCUSTOM_RGBA8_UNORM=0
 Limits range of data passed toset_custom()to unsigned normalized 0 to 1 stored in 8 bits per channel. SeeMesh.ARRAY_CUSTOM_RGBA8_UNORM.
@@ -163,6 +170,7 @@ SkinWeightCountSKIN_8_WEIGHTS=1
 Each individual vertex can be influenced by up to 8 bone weights.
 
 ## Method Descriptions
+
 voidadd_index(index:int)🔗
 Adds a vertex to index array if you are using indexed vertices. Does not need to be called before adding vertices.
 voidadd_triangle_fan(vertices:PackedVector3Array, uvs:PackedVector2Array= PackedVector2Array(), colors:PackedColorArray= PackedColorArray(), uv2s:PackedVector2Array= PackedVector2Array(), normals:PackedVector3Array= PackedVector3Array(), tangents:Array[Plane] = [])🔗
@@ -245,4 +253,5 @@ voidset_weights(weights:PackedFloat32Array)🔗
 Specifies weight values to use for thenextvertex.weightsmust contain 4 values. If every vertex needs to have this information set and you fail to submit it for the first vertex, this information may not be used at all.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

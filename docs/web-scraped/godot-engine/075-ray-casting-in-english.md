@@ -3,6 +3,7 @@
 # Ray-casting
 
 ## Introduction
+
 One of the most common tasks in game development is casting a ray (or
 custom shaped object) and checking what it hits. This enables complex
 behaviors, AI, etc. to take place. This tutorial will explain how to
@@ -15,6 +16,7 @@ Many times, though, ray-casting needs to be a more interactive process
 so a way to do this by code must exist.
 
 ## Space
+
 In the physics world, Godot stores all the low-level collision and
 physics information in aspace. The current 2d space (for 2D Physics)
 can be obtained by accessingCanvasItem.get_world_2d().space.
@@ -22,17 +24,20 @@ For 3D, it'sNode3D.get_world_3d().space.
 The resulting spaceRIDcan be used inPhysicsServer3DandPhysicsServer2Drespectively for 3D and 2D.
 
 ## Accessing space
+
 Godot physics runs by default in the same thread as game logic, but may
 be set to run on a separate thread to work more efficiently. Due to
 this, the only time accessing space is safe is during theNode._physics_process()callback. Accessing it from outside this function may result in an error
 due to space beinglocked.
 To perform queries into physics space, thePhysicsDirectSpaceState2DandPhysicsDirectSpaceState3Dmust be used.
 Use the following code in 2D:
+
 ```
 func _physics_process(delta):
     var space_rid = get_world_2d().space
     var space_state = PhysicsServer2D.space_get_direct_state(space_rid)
 ```
+
 ```
 public override void _PhysicsProcess(double delta)
 {
@@ -40,22 +45,28 @@ public override void _PhysicsProcess(double delta)
     var spaceState = PhysicsServer2D.SpaceGetDirectState(spaceRid);
 }
 ```
+
 Or more directly:
+
 ```
 func _physics_process(delta):
     var space_state = get_world_2d().direct_space_state
 ```
+
 ```
 public override void _PhysicsProcess(double delta)
 {
     var spaceState = GetWorld2D().DirectSpaceState;
 }
 ```
+
 And in 3D:
+
 ```
 func _physics_process(delta):
     var space_state = get_world_3d().direct_space_state
 ```
+
 ```
 public override void _PhysicsProcess(double delta)
 {
@@ -64,7 +75,9 @@ public override void _PhysicsProcess(double delta)
 ```
 
 ## Raycast query
+
 For performing a 2D raycast query, the methodPhysicsDirectSpaceState2D.intersect_ray()may be used. For example:
+
 ```
 func _physics_process(delta):
     var space_state = get_world_2d().direct_space_state
@@ -72,6 +85,7 @@ func _physics_process(delta):
     var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(50, 100))
     var result = space_state.intersect_ray(query)
 ```
+
 ```
 public override void _PhysicsProcess(double delta)
 {
@@ -81,20 +95,25 @@ public override void _PhysicsProcess(double delta)
     var result = spaceState.IntersectRay(query);
 }
 ```
+
 The result is a dictionary. If the ray didn't hit anything, the dictionary will
 be empty. If it did hit something, it will contain collision information:
+
 ```
 if result:
     print("Hit at point: ", result.position)
 ```
+
 ```
 if (result.Count > 0)
 {
     GD.Print("Hit at point: ", result["position"]);
 }
 ```
+
 Theresultdictionary when a collision occurs contains the following
 data:
+
 ```
 {
    position: Vector2 # point in world space for collision
@@ -106,8 +125,10 @@ data:
    metadata: Variant() # metadata of collider
 }
 ```
+
 The data is similar in 3D space, using Vector3 coordinates. Note that to enable collisions
 with Area3D, the boolean parametercollide_with_areasmust be set totrue.
+
 ```
 const RAY_LENGTH = 1000
 
@@ -123,6 +144,7 @@ func _physics_process(delta):
 
     var result = space_state.intersect_ray(query)
 ```
+
 ```
 private const int RayLength = 1000;
 
@@ -142,6 +164,7 @@ public override void _PhysicsProcess(double delta)
 ```
 
 ## Collision exceptions
+
 A common use case for ray casting is to enable a character to gather data
 about the world around it. One problem with this is that the same character
 has a collider, so the ray will only detect its parent's collider,
@@ -149,6 +172,7 @@ as shown in the following image:
 To avoid self-intersection, theintersect_ray()parameters object can take an
 array of exceptions via itsexcludeproperty. This is an example of how to use it
 from a CharacterBody2D or any other collision object node:
+
 ```
 extends CharacterBody2D
 
@@ -158,6 +182,7 @@ func _physics_process(delta):
     query.exclude = [self]
     var result = space_state.intersect_ray(query)
 ```
+
 ```
 using Godot;
 
@@ -172,14 +197,17 @@ public partial class MyCharacterBody2D : CharacterBody2D
     }
 }
 ```
+
 The exceptions array can contain objects or RIDs.
 
 ## Collision Mask
+
 While the exceptions method works fine for excluding the parent body, it becomes
 very inconvenient if you need a large and/or dynamic list of exceptions. In
 this case, it is much more efficient to use the collision layer/mask system.
 Theintersect_ray()parameters object can also be supplied a collision mask.
 For example, to use the same mask as the parent body, use thecollision_maskmember variable. The array of exceptions can be supplied as the last argument as well:
+
 ```
 extends CharacterBody2D
 
@@ -189,6 +217,7 @@ func _physics_process(delta):
         collision_mask, [self])
     var result = space_state.intersect_ray(query)
 ```
+
 ```
 using Godot;
 
@@ -203,9 +232,11 @@ public partial class MyCharacterBody2D : CharacterBody2D
     }
 }
 ```
+
 SeeCode examplefor details on how to set the collision mask.
 
 ## 3D ray casting from screen
+
 Casting a ray from screen to 3D physics space is useful for object
 picking. There is not much need to do this becauseCollisionObject3Dhas an "input_event" signal that will let you know when it was clicked,
 but in case there is any desire to do it manually, here's how.
@@ -213,6 +244,7 @@ To cast a ray from the screen, you need aCamera3Dnode. ACamera3Dcan be in two pr
 orthogonal. Because of this, both the ray origin and direction must be
 obtained. This is becauseoriginchanges in orthogonal mode, whilenormalchanges in perspective mode:
 To obtain it using a camera, the following code can be used:
+
 ```
 const RAY_LENGTH = 1000.0
 
@@ -222,6 +254,7 @@ func _input(event):
         var from = camera3d.project_ray_origin(event.position)
         var to = from + camera3d.project_ray_normal(event.position) * RAY_LENGTH
 ```
+
 ```
 private const float RayLength = 1000.0f;
 
@@ -235,8 +268,10 @@ public override void _Input(InputEvent @event)
     }
 }
 ```
+
 Remember that during_input(), the space may be locked, so in practice
 this query should be run in_physics_process().
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

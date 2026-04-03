@@ -1,11 +1,13 @@
 # Joint2D
 
 # Joint2D
+
 Inherits:Node2D<CanvasItem<Node<Object
 Inherited By:DampedSpringJoint2D,GrooveJoint2D,PinJoint2D
 Abstract base class for all 2D physics joints.
 
 ## Description
+
 Abstract base class for all joints in 2D physics. 2D joints bind together two physics bodies (node_aandnode_b) and apply a constraint.
 
 ## Properties
@@ -35,7 +37,9 @@ NodePath("")
 get_rid()const
 
 ## Property Descriptions
+
 floatbias=0.0🔗
+
 - voidset_bias(value:float)
 voidset_bias(value:float)
 - floatget_bias()
@@ -62,8 +66,10 @@ NodePathget_node_b()
 Path to the second body (B) attached to the joint. The node must inheritPhysicsBody2D.
 
 ## Method Descriptions
+
 RIDget_rid()const🔗
 Returns the joint's internalRIDfrom thePhysicsServer2D.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

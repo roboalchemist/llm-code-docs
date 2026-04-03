@@ -1,11 +1,13 @@
 # Noise in English
 
 # Noise
+
 Inherits:Resource<RefCounted<Object
 Inherited By:FastNoiseLite
 Abstract base class for noise generators.
 
 ## Description
+
 This class defines the interface for noise generation libraries to inherit from.
 A defaultget_seamless_image()implementation is provided for libraries that do not provide seamless noise. This function requests a larger image from theget_image()method, reverses the quadrants of the image, then uses the strips of extra width to blend over the seams.
 Inheriting noise classes can optionally override this function to provide a more optimal algorithm.
@@ -43,6 +45,7 @@ Array[Image]
 get_seamless_image_3d(width:int, height:int, depth:int, invert:bool= false, skirt:float= 0.1, normalize:bool= true)const
 
 ## Method Descriptions
+
 Imageget_image(width:int, height:int, invert:bool= false, in_3d_space:bool= false, normalize:bool= true)const🔗
 Returns anImagecontaining 2D noise values.
 Note:Withnormalizeset tofalse, the default implementation expects the noise generator to return values in the range-1.0to1.0.
@@ -67,4 +70,5 @@ Returns anArrayofImages containing seamless 3D noise values for use withImageTex
 Note:Withnormalizeset tofalse, the default implementation expects the noise generator to return values in the range-1.0to1.0.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

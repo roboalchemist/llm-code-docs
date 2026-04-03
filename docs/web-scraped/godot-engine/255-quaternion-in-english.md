@@ -1,9 +1,11 @@
 # Quaternion in English
 
 # Quaternion
+
 A unit quaternion used for representing 3D rotations.
 
 ## Description
+
 TheQuaternionbuilt-inVarianttype is a 4D data structure that represents rotation in the form of aHamilton convention quaternion. Compared to theBasistype which can store both rotation and scale, quaternions canonlystore rotation.
 AQuaternionis composed by 4 floating-point components:w,x,y, andz. These components are very compact in memory, and because of this some operations are more efficient and less likely to cause floating-point errors. Methods such asget_angle(),get_axis(), andslerp()are faster than theirBasiscounterparts.
 For a great introduction to quaternions, seethis video by 3Blue1Brown. You do not need to know the math behind quaternions, as Godot provides several helper methods that handle it for you. These includeslerp()andspherical_cubic_interpolate(), as well as the*operator.
@@ -13,6 +15,7 @@ Note
 There are notable differences when using this API with C#. SeeC# API differences to GDScriptfor more information.
 
 ## Tutorials
+
 - 3Blue1Brown's video on Quaternions
 3Blue1Brown's video on Quaternions
 - Online Quaternion Visualization
@@ -144,11 +147,11 @@ operator !=(right:Quaternion)
 Quaternion
 operator *(right:Quaternion)
 Vector3
-operator *(right:Vector3)
+operator*(right:Vector3)
 Quaternion
 operator *(right:float)
 Quaternion
-operator *(right:int)
+operator*(right:int)
 Quaternion
 operator +(right:Quaternion)
 Quaternion
@@ -167,12 +170,14 @@ Quaternion
 operator unary-()
 
 ## Constants
+
 IDENTITY=Quaternion(0,0,0,1)🔗
 The identity quaternion, representing no rotation. This has the same rotation asBasis.IDENTITY.
 If aVector3is rotated (multiplied) by this quaternion, it does not change.
 Note:In GDScript, this constant is equivalent to creating aQuaternionwithout any arguments. It can be used to make your code clearer, and for consistency with C#.
 
 ## Property Descriptions
+
 floatw=1.0🔗
 W component of the quaternion. This is the "real" part.
 Note:Quaternion components should usually not be manipulated directly.
@@ -187,6 +192,7 @@ Z component of the quaternion. This is the value along the "imaginary"kaxis.
 Note:Quaternion components should usually not be manipulated directly.
 
 ## Constructor Descriptions
+
 QuaternionQuaternion()🔗
 Constructs aQuaternionidentical toIDENTITY.
 Note:In C#, this constructs aQuaternionwith all of its components set to0.0.
@@ -204,6 +210,7 @@ Constructs aQuaterniondefined by the given values.
 Note:Only normalized quaternions represent rotation; if these values are not normalized, the newQuaternionwill not be a valid rotation.
 
 ## Method Descriptions
+
 floatangle_to(to:Quaternion)const🔗
 Returns the angle between this quaternion andto. This is the magnitude of the angle you would need to rotate by to get from one to the other.
 Note:The magnitude of the floating-point error for this method is abnormally high, so methods such asis_zero_approxwill not work reliably.
@@ -250,17 +257,18 @@ Performs a spherical cubic interpolation between quaternionspre_a, this vector,b
 It can perform smoother interpolation thanspherical_cubic_interpolate()by the time values.
 
 ## Operator Descriptions
+
 booloperator !=(right:Quaternion)🔗
 Returnstrueif the components of both quaternions are not exactly equal.
 Note:Due to floating-point precision errors, consider usingis_equal_approx()instead, which is more reliable.
 Quaternionoperator *(right:Quaternion)🔗
 Composes (multiplies) two quaternions. This rotates therightquaternion (the child) by this quaternion (the parent).
-Vector3operator *(right:Vector3)🔗
+Vector3operator*(right:Vector3)🔗
 Rotates (multiplies) therightvector by this quaternion, returning aVector3.
 Quaternionoperator *(right:float)🔗
 Multiplies each component of theQuaternionby the rightfloatvalue.
 This operation is not meaningful on its own, but it can be used as a part of a larger expression.
-Quaternionoperator *(right:int)🔗
+Quaternionoperator*(right:int)🔗
 Multiplies each component of theQuaternionby the rightintvalue.
 This operation is not meaningful on its own, but it can be used as a part of a larger expression.
 Quaternionoperator +(right:Quaternion)🔗
@@ -287,4 +295,5 @@ Quaternionoperator unary-()🔗
 Returns the negative value of theQuaternion. This is the same as multiplying all components by-1. This operation results in a quaternion that represents the same rotation.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

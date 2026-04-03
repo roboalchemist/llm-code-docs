@@ -1,12 +1,15 @@
 # HashingContext in English
 
 # HashingContext
+
 Inherits:RefCounted<Object
 Provides functionality for computing cryptographic hashes chunk by chunk.
 
 ## Description
+
 The HashingContext class provides an interface for computing cryptographic hashes over multiple iterations. Useful for computing hashes of big files (so you don't have to load them all in memory), network streams, and data streams in general (so you don't have to hold buffers).
 TheHashTypeenum shows the supported hashing algorithms.
+
 ```
 const CHUNK_SIZE = 1024
 
@@ -28,6 +31,7 @@ func hash_file(path):
     # Print the result as hex string and array.
     printt(res.hex_encode(), Array(res))
 ```
+
 ```
 public const int ChunkSize = 1024;
 
@@ -71,6 +75,7 @@ Error
 update(chunk:PackedByteArray)
 
 ## Enumerations
+
 enumHashType:🔗
 HashTypeHASH_MD5=0
 Hashing algorithm: MD5.
@@ -80,6 +85,7 @@ HashTypeHASH_SHA256=2
 Hashing algorithm: SHA-256.
 
 ## Method Descriptions
+
 PackedByteArrayfinish()🔗
 Closes the current context, and return the computed hash.
 Errorstart(type:HashType)🔗
@@ -88,4 +94,5 @@ Errorupdate(chunk:PackedByteArray)🔗
 Updates the computation with the givenchunkof data.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

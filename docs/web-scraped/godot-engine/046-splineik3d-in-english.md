@@ -1,10 +1,12 @@
 # SplineIK3D in English
 
 # SplineIK3D
+
 Inherits:ChainIK3D<IKModifier3D<SkeletonModifier3D<Node3D<Node<Object
 ASkeletonModifier3Dfor aligning bones along aPath3D.
 
 ## Description
+
 ASkeletonModifier3Dfor aligning bones along aPath3D. The smoothness of the fitting depends on theCurve3D.bake_interval.
 If you want thePath3Dto attach to a specific bone, it is recommended to place aModifierBoneTarget3Dbefore theSplineIK3Din theSkeletonModifier3Dlist (children of theSkeleton3D), and then place aPath3Das theModifierBoneTarget3D's child.
 Bone twist is determined based on theCurve3D.get_point_tilt().
@@ -45,7 +47,9 @@ void
 set_tilt_fade_out(index:int, size:int)
 
 ## Property Descriptions
+
 intsetting_count=0🔗
+
 - voidset_setting_count(value:int)
 voidset_setting_count(value:int)
 - intget_setting_count()
@@ -53,6 +57,7 @@ intget_setting_count()
 The number of settings.
 
 ## Method Descriptions
+
 NodePathget_path_3d(index:int)const🔗
 Returns the node path of thePath3Dwhich is describing the path.
 intget_tilt_fade_in(index:int)const🔗
@@ -75,4 +80,5 @@ Ifsizeis equal0, the tilts between the end bone tail and the end point of theCur
 Ifsizeis less than0, the tilts between the end bone and the end point of theCurve3Dare0.0.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

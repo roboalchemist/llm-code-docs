@@ -1,13 +1,16 @@
 # Overview of renderers in English
 
 # Overview of renderers
+
 See also
 This page gives an overview of Godot's renderers, focusing on the differences
 between their rendering features. For more technical details on the renderers,
 seeInternal rendering architecture.
 
 ## Introduction
+
 Godot 4 includes three renderers:
+
 - Forward+. The most advanced renderer, suited for desktop platforms only.
 Used by default on desktop platforms. This renderer usesVulkan,Direct3D 12,
 orMetalas the rendering driver, and it uses theRenderingDevicebackend.
@@ -28,6 +31,7 @@ renderer, suited for low-end desktop and mobile platforms. Used by default on
 the web platform. This renderer usesOpenGLas the rendering driver.
 
 ### Renderers, rendering drivers, and RenderingDevice
+
 Godot's rendering abstraction layers.
 Therenderer, orrendering method, determines which features are available.
 Most of the time, this is the only thing you need to think about. Godot's renderers
@@ -42,10 +46,12 @@ and the rendering driver. It is used by the Forward+ and Mobile renderers, and
 these renderers are sometimes called "RenderingDevice-based renderers".
 
 ## Choosing a renderer
+
 Choosing a renderer is a complex question, and depends on your hardware and the
 which platforms you are developing for. As a starting point:
 ChooseForward+if:
 > You are developing for desktop.You have relatively new hardware which supports Vulkan, Direct3D 12, or Metal.You are developing a 3D game.You want to use the most advanced rendering features.
+
 - You are developing for desktop.
 You are developing for desktop.
 - You have relatively new hardware which supports Vulkan, Direct3D 12, or Metal.
@@ -55,8 +61,10 @@ You are developing a 3D game.
 - You want to use the most advanced rendering features.
 You want to use the most advanced rendering features.
 ChooseMobileif:
+
 > You are developing for newer mobile devices, desktop XR, or desktop.You have relatively new hardware which supports Vulkan, Direct3D 12, or Metal.You are developing a 3D game.You want to use advanced rendering features, subject to the limitations
 of mobile hardware.
+
 - You are developing for newer mobile devices, desktop XR, or desktop.
 You are developing for newer mobile devices, desktop XR, or desktop.
 - You have relatively new hardware which supports Vulkan, Direct3D 12, or Metal.
@@ -68,11 +76,13 @@ of mobile hardware.
 You want to use advanced rendering features, subject to the limitations
 of mobile hardware.
 ChooseCompatibilityif:
+
 > You are developing for older mobile devices, older desktop devices, or
 standalone XR. The Compatibility renderer supports the widest range of hardware.You are developing for web. In this case, Compatibility is the only choice.You have older hardware which does not support Vulkan. In this case,
 Compatibility is the only choice.You are developing a 2D game, or a 3D game which does not need advanced
 rendering features.You want the best performance possible on all devices and don't need advanced
 rendering features.
+
 - You are developing for older mobile devices, older desktop devices, or
 standalone XR. The Compatibility renderer supports the widest range of hardware.
 You are developing for older mobile devices, older desktop devices, or
@@ -97,6 +107,7 @@ GPU, so you can support the widest range of hardware. Or you might want to use t
 Forward+ renderer for a 2D game, so you can use advanced features like compute shaders.
 
 ### Switching between renderers
+
 In the editor, you can always switch between renderers by clicking on the renderer
 name in the upper-right corner of the editor.
 Switching between renderers may require some manual tweaks to your scene, lighting,
@@ -111,6 +122,7 @@ anyway, but it may look different than the intended appearance due to the more
 limited renderer. This behavior can be disabled in the project settings by uncheckingRendering > Rendering Device > Fallback to OpenGL 3.
 
 ## Feature comparison
+
 This is not a complete list of the features of each renderer. If a feature is
 not listed here, it is available in all renderers, though it may be much faster
 on some renderers. For a list ofallfeatures in Godot, seeList of features.
@@ -302,6 +314,7 @@ Vulkan, Direct3D 12, or
 Metal.
 
 ### Lights and shadows
+
 See3D lights and shadowsfor more information.
 
 | Feature | Compatibility | Mobile | Forward+ |
@@ -365,6 +378,7 @@ textures
 ✔️ Supported.
 
 ### Global Illumination
+
 SeeIntroduction to global illuminationfor more information.
 
 | Feature | Compatibility | Mobile | Forward+ |
@@ -419,6 +433,7 @@ Global Illumination
 ✔️ Supported.
 
 ### Environment and post-processing
+
 SeeEnvironment and post-processingfor more information.
 
 | Feature | Compatibility | Mobile | Forward+ |
@@ -497,6 +512,7 @@ with CompositorEffects
 ✔️ Supported.
 
 ### Antialiasing
+
 See3D antialiasingfor more information.
 
 | Feature | Compatibility | Mobile | Forward+ |
@@ -544,6 +560,7 @@ roughness limiter
 ✔️ Supported.
 
 ### StandardMaterial features
+
 SeeStandard Material 3D and ORM Material 3Dfor more information.
 
 | Feature | Compatibility | Mobile | Forward+ |
@@ -560,6 +577,7 @@ Sub-surface scattering
 ✔️ Supported.
 
 ### Shader features
+
 SeeShading referencefor more information.
 
 | Feature | Compatibility | Mobile | Forward+ |
@@ -651,4 +669,5 @@ access
 ✔️ Supported.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

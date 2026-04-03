@@ -1,11 +1,13 @@
 # VisualInstance3D in English
 
 # VisualInstance3D
+
 Inherits:Node3D<Node<Object
 Inherited By:Decal,FogVolume,GeometryInstance3D,GPUParticlesAttractor3D,GPUParticlesCollision3D,Light3D,LightmapGI,OccluderInstance3D,OpenXRVisibilityMask,ReflectionProbe,RootMotionView,VisibleOnScreenNotifier3D,VoxelGI
 Parent of all visual 3D nodes.
 
 ## Description
+
 TheVisualInstance3Dis used to connect a resource to a visual representation. All visual 3D nodes inherit from theVisualInstance3D. In general, you should not access theVisualInstance3Dproperties directly as they are accessed and managed by the nodes that inherit fromVisualInstance3D.VisualInstance3Dis the node representation of theRenderingServerinstance.
 
 ## Properties
@@ -46,7 +48,9 @@ void
 set_layer_mask_value(layer_number:int, value:bool)
 
 ## Property Descriptions
+
 intlayers=1🔗
+
 - voidset_layer_mask(value:int)
 voidset_layer_mask(value:int)
 - intget_layer_mask()
@@ -71,6 +75,7 @@ Iftrue, the object is sorted based on theAABBcenter. The object will be sorted b
 TheAABBcenter based sorting is generally more accurate for 3D models. The position based sorting instead allows to better control the drawing order when working withGPUParticles3DandCPUParticles3D.
 
 ## Method Descriptions
+
 AABB_get_aabb()virtualconst🔗
 There is currently no description for this method. Please help us bycontributing one!
 AABBget_aabb()const🔗
@@ -87,4 +92,5 @@ voidset_layer_mask_value(layer_number:int, value:bool)🔗
 Based onvalue, enables or disables the specified layer in thelayers, given alayer_numberbetween 1 and 20.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

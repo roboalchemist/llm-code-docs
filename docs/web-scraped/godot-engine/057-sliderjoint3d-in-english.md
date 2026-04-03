@@ -1,10 +1,12 @@
 # SliderJoint3D in English
 
 # SliderJoint3D
+
 Inherits:Joint3D<Node3D<Node<Object
 A physics joint that restricts the movement of a 3D physics body along an axis relative to another physics body.
 
 ## Description
+
 A physics joint that restricts the movement of a 3D physics body along an axis relative to another physics body. For example, Body A could be aStaticBody3Drepresenting a piston base, while Body B could be aRigidBody3Drepresenting the piston head, moving up and down.
 
 ## Properties
@@ -91,6 +93,7 @@ void
 set_param(param:Param, value:float)
 
 ## Enumerations
+
 enumParam:🔗
 ParamPARAM_LINEAR_LIMIT_UPPER=0
 Constant for accessinglinear_limit/upper_distance. The maximum difference between the pivot points on their X axis before damping happens.
@@ -140,7 +143,9 @@ ParamPARAM_MAX=22
 Represents the size of theParamenum.
 
 ## Property Descriptions
+
 floatangular_limit/damping=0.0🔗
+
 - voidset_param(param:Param, value:float)
 voidset_param(param:Param, value:float)
 - floatget_param(param:Param)const
@@ -277,10 +282,12 @@ floatget_param(param:Param)const
 A factor applied to the movement across axes orthogonal to the slider.
 
 ## Method Descriptions
+
 floatget_param(param:Param)const🔗
 Returns the value of the given parameter.
 voidset_param(param:Param, value:float)🔗
 Assignsvalueto the given parameter.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

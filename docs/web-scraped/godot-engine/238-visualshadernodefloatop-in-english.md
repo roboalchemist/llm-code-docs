@@ -1,10 +1,12 @@
 # VisualShaderNodeFloatOp in English
 
 # VisualShaderNodeFloatOp
+
 Inherits:VisualShaderNode<Resource<RefCounted<Object
 A floating-point scalar operator to be used within the visual shader graph.
 
 ## Description
+
 Appliesoperatorto two floating-point inputs:aandb.
 
 ## Properties
@@ -15,6 +17,7 @@ Operator
 operator
 
 ## Enumerations
+
 enumOperator:🔗
 OperatorOP_ADD=0
 Sums two numbers usinga+b.
@@ -40,7 +43,9 @@ OperatorOP_ENUM_SIZE=10
 Represents the size of theOperatorenum.
 
 ## Property Descriptions
+
 Operatoroperator=0🔗
+
 - voidset_operator(value:Operator)
 voidset_operator(value:Operator)
 - Operatorget_operator()
@@ -48,4 +53,5 @@ Operatorget_operator()
 An operator to be applied to the inputs.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

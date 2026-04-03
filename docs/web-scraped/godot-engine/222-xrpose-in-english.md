@@ -1,14 +1,17 @@
 # XRPose in English
 
 # XRPose
+
 Inherits:RefCounted<Object
 This object contains all data related to a pose on a tracked object.
 
 ## Description
+
 XR runtimes often identify multiple locations on devices such as controllers that are spatially tracked.
 Orientation, location, linear velocity and angular velocity are all provided for each pose by the XR runtime. This object contains this state of a pose.
 
 ## Tutorials
+
 - XR documentation index
 XR documentation index
 
@@ -47,6 +50,7 @@ Transform3D
 get_adjusted_transform()const
 
 ## Enumerations
+
 enumTrackingConfidence:🔗
 TrackingConfidenceXR_TRACKING_CONFIDENCE_NONE=0
 No tracking information is available for this pose.
@@ -56,7 +60,9 @@ TrackingConfidenceXR_TRACKING_CONFIDENCE_HIGH=2
 Tracking information is considered accurate and up to date.
 
 ## Property Descriptions
+
 Vector3angular_velocity=Vector3(0,0,0)🔗
+
 - voidset_angular_velocity(value:Vector3)
 voidset_angular_velocity(value:Vector3)
 - Vector3get_angular_velocity()
@@ -102,8 +108,10 @@ Transform3Dget_transform()
 The transform containing the original and transform as reported by the XR runtime.
 
 ## Method Descriptions
+
 Transform3Dget_adjusted_transform()const🔗
 Returns thetransformwith world scale and our reference frame applied. This is the transform used to positionXRNode3Dobjects.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

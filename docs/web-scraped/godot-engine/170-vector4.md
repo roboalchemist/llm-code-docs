@@ -1,9 +1,11 @@
 # Vector4
 
 # Vector4
+
 A 4D vector using floating-point coordinates.
 
 ## Description
+
 A 4-element structure that can be used to represent 4D coordinates or any other quadruplet of numeric values.
 It uses floating-point coordinates. By default, these floating-point values use 32-bit precision, unlikefloatwhich is always 64-bit. If double precision is needed, compile the engine with the optionprecision=double.
 SeeVector4ifor its integer counterpart.
@@ -165,11 +167,11 @@ operator !=(right:Vector4)
 Vector4
 operator *(right:Projection)
 Vector4
-operator *(right:Vector4)
+operator*(right:Vector4)
 Vector4
 operator *(right:float)
 Vector4
-operator *(right:int)
+operator*(right:int)
 Vector4
 operator +(right:Vector4)
 Vector4
@@ -198,6 +200,7 @@ Vector4
 operator unary-()
 
 ## Enumerations
+
 enumAxis:🔗
 AxisAXIS_X=0
 Enumerated value for the X axis. Returned bymax_axis_index()andmin_axis_index().
@@ -209,6 +212,7 @@ AxisAXIS_W=3
 Enumerated value for the W axis. Returned bymax_axis_index()andmin_axis_index().
 
 ## Constants
+
 ZERO=Vector4(0,0,0,0)🔗
 Zero vector, a vector with all components set to0.
 ONE=Vector4(1,1,1,1)🔗
@@ -217,6 +221,7 @@ INF=Vector4(inf,inf,inf,inf)🔗
 Infinity vector, a vector with all components set to@GDScript.INF.
 
 ## Property Descriptions
+
 floatw=0.0🔗
 The vector's W component. Also accessible by using the index position[3].
 floatx=0.0🔗
@@ -227,6 +232,7 @@ floatz=0.0🔗
 The vector's Z component. Also accessible by using the index position[2].
 
 ## Constructor Descriptions
+
 Vector4Vector4()🔗
 Constructs a default-initializedVector4with all components set to0.
 Vector4Vector4(from:Vector4)
@@ -237,6 +243,7 @@ Vector4Vector4(x:float, y:float, z:float, w:float)
 Returns aVector4with the given components.
 
 ## Method Descriptions
+
 Vector4abs()const🔗
 Returns a new vector with all components in absolute values (i.e. positive).
 Vector4ceil()const🔗
@@ -308,6 +315,7 @@ Vector4snappedf(step:float)const🔗
 Returns a new vector with each component snapped to the nearest multiple ofstep. This can also be used to round the components to an arbitrary number of decimals.
 
 ## Operator Descriptions
+
 booloperator !=(right:Vector4)🔗
 Returnstrueif the vectors are not equal.
 Note:Due to floating-point precision errors, consider usingis_equal_approx()instead, which is more reliable.
@@ -317,36 +325,48 @@ Transforms (multiplies) theVector4by the transpose of the givenProjectionmatrix.
 For transforming by inverse of a projectionprojection.inverse()*vectorcan be used instead. SeeProjection.inverse().
 Vector4operator *(right:Vector4)🔗
 Multiplies each component of theVector4by the components of the givenVector4.
+
 ```
 print(Vector4(10, 20, 30, 40) * Vector4(3, 4, 5, 6)) # Prints (30.0, 80.0, 150.0, 240.0)
 ```
+
 Vector4operator *(right:float)🔗
 Multiplies each component of theVector4by the givenfloat.
+
 ```
 print(Vector4(10, 20, 30, 40) * 2) # Prints (20.0, 40.0, 60.0, 80.0)
 ```
+
 Vector4operator *(right:int)🔗
 Multiplies each component of theVector4by the givenint.
 Vector4operator +(right:Vector4)🔗
 Adds each component of theVector4by the components of the givenVector4.
+
 ```
 print(Vector4(10, 20, 30, 40) + Vector4(3, 4, 5, 6)) # Prints (13.0, 24.0, 35.0, 46.0)
 ```
+
 Vector4operator -(right:Vector4)🔗
 Subtracts each component of theVector4by the components of the givenVector4.
+
 ```
 print(Vector4(10, 20, 30, 40) - Vector4(3, 4, 5, 6)) # Prints (7.0, 16.0, 25.0, 34.0)
 ```
+
 Vector4operator /(right:Vector4)🔗
 Divides each component of theVector4by the components of the givenVector4.
+
 ```
 print(Vector4(10, 20, 30, 40) / Vector4(2, 5, 3, 4)) # Prints (5.0, 4.0, 10.0, 10.0)
 ```
+
 Vector4operator /(right:float)🔗
 Divides each component of theVector4by the givenfloat.
+
 ```
 print(Vector4(10, 20, 30, 40) / 2) # Prints (5.0, 10.0, 15.0, 20.0)
 ```
+
 Vector4operator /(right:int)🔗
 Divides each component of theVector4by the givenint.
 booloperator <(right:Vector4)🔗
@@ -373,4 +393,5 @@ Vector4operator unary-()🔗
 Returns the negative value of theVector4. This is the same as writingVector4(-v.x,-v.y,-v.z,-v.w). This operation flips the direction of the vector while keeping the same magnitude. With floats, the number zero can be either positive or negative.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

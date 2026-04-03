@@ -3,6 +3,7 @@
 # Third-person camera with spring arm
 
 ## Introduction
+
 3D games will often have a third-person camera that follows and
 rotates around something such as a player character or a vehicle.
 In Godot, this can be done by setting aCamera3Das a child of a node.
@@ -10,12 +11,14 @@ However, if you try this without any extra steps, you'll notice that the camera 
 This is where theSpringArm3Dnode comes in.
 
 ## What is a spring arm?
+
 A spring arm has two main components that affect its behavior.
 The "length" of the spring arm is how far from its global position to check for collisions:
 The "shape" of the spring arm is what it uses to check for collisions. The spring arm will "sweep" this shape from its origin out towards its length.
 The spring arm tries to keep all of its children at the end of its length. When the shape collides with something, the children are instead placed at or near that collision point:
 
 ## Spring arm with a camera
+
 When a camera is placed as a child of a spring arm, a pyramid representing the camera will be used as the shape.
 This pyramid represents thenear planeof the camera:
 Note
@@ -26,16 +29,22 @@ Every physics process frame, the spring arm will perform a motion cast to check 
 When the shape hits something, the camera will be placed at or near the collision point:
 
 ## Setting up the spring arm and camera
+
 Let's add a spring arm camera setup to the platformer demo.
 Note
 You can download the Platformer 3D demo onGitHubor using theAsset Library.
 In general, for a third-person camera setup, you will have three nodes as children of the node that you're following:
+
 - Node3D(the "pivot point" for the camera)SpringArm3DCamera3D
 Node3D(the "pivot point" for the camera)
+
 > SpringArm3DCamera3D
+
 - SpringArm3DCamera3D
 SpringArm3D
+
 > Camera3D
+
 - Camera3D
 Camera3D
 Open theplayer/player.tscnscene. Set these up as children of our player and give them unique names so we can find them in our script.Make sure to delete the existing camera node!
@@ -45,6 +54,7 @@ Note
 Leave theShapeof the spring arm as<empty>. This way, it will use the camera's pyramid shape.
 If you want, you can also try other shapes - a sphere is a common choice since it slides smoothly along edges.
 Update the top ofplayer/player.gdto grab the camera and the pivot points by their unique names:
+
 ```
 # Comment out this existing camera line.
 # @onready var _camera := $Target/Camera3D as Camera3D
@@ -52,7 +62,9 @@ Update the top ofplayer/player.gdto grab the camera and the pivot points by thei
 @onready var _camera := %Camera3D as Camera3D
 @onready var _camera_pivot := %CameraPivot as Node3D
 ```
+
 Add an_unhandled_inputfunction to check for camera movement and then rotate the pivot point accordingly:
+
 ```
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.01
 @export var tilt_limit = deg_to_rad(75)
@@ -65,8 +77,10 @@ func _unhandled_input(event: InputEvent) -> void:
         _camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit)
         _camera_pivot.rotation.y += -event.screen_relative.x * mouse_sensitivity
 ```
+
 By rotating the pivot point, the spring arm will also be rotated and it will change where the camera is positioned.
 Run the game and notice that mouse movement now rotates the camera around the character. If the camera moves into a wall, it collides with it.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,14 +1,17 @@
 # PhysicsBody2D in English
 
 # PhysicsBody2D
+
 Inherits:CollisionObject2D<Node2D<CanvasItem<Node<Object
 Inherited By:CharacterBody2D,RigidBody2D,StaticBody2D
 Abstract base class for 2D game objects affected by physics.
 
 ## Description
+
 PhysicsBody2Dis an abstract base class for 2D game objects affected by physics. All 2D physics bodies inherit from it.
 
 ## Tutorials
+
 - Physics introduction
 Physics introduction
 - Troubleshooting physics issues
@@ -46,6 +49,7 @@ bool
 test_move(from:Transform2D, motion:Vector2, collision:KinematicCollision2D= null, safe_margin:float= 0.08, recovery_as_collision:bool= false)
 
 ## Method Descriptions
+
 voidadd_collision_exception_with(body:Node)🔗
 Adds a body to the list of bodies that this body can't collide with.
 Array[PhysicsBody2D]get_collision_exceptions()🔗
@@ -68,4 +72,5 @@ safe_marginis the extra margin used for collision recovery (seeCharacterBody2D.s
 Ifrecovery_as_collisionistrue, any depenetration from the recovery phase is also reported as a collision; this is useful for checking whether the body wouldtouchany other bodies.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

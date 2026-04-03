@@ -1,6 +1,7 @@
 # Using the theme editor
 
 # Using the theme editor
+
 This article explains how to create and manage UI themes using the Godot
 editor and its theme editor tool. We recommend getting familiar with the
 basics behind GUI skinning/theming by readingIntroduction to GUI skinningbefore starting.
@@ -11,6 +12,7 @@ items. It features a preview section for testing your changes live, as well
 as a window dialog for doing bulk operations of the theme items.
 
 ## Creating a theme
+
 Like any other resources, themes can be created directly in the file system dock
 by right-clicking and selectingNew Resource..., then selectingThemeand clickingCreate. This is especially useful for creating project-wide
 themes.
@@ -25,6 +27,7 @@ include the default, fallback font that you can edit only using the Inspector do
 Same applies to the contents of complex resource types, such asStyleBoxesand icons — they open for editing in the Inspector.
 
 ## Theme editor overview
+
 The theme editor has two main parts. The main theme editor, located at the bottom of
 the Godot editor, aims to provide users with tools to quickly create, edit, and delete
 theme items and types. It gives visual tools for picking and changing controls, abstracting
@@ -33,6 +36,7 @@ tries to address the needs of those who want to change themes manually. It's als
 useful for creating a new editor theme.
 
 ### Theme previews
+
 The left-hand side of the main editor has a set of preview tabs. TheDefault Previewtab is visible out of the box and contains most of the frequently used controls in various
 states. Previews are interactive, so intermediate states (e.g. hover) can be previewed as well.
 Additional tabs can be created from arbitrary scenes in your project. The scene
@@ -46,6 +50,7 @@ nodes. Highlighted control nodes display their class name, or type variation if 
 Clicking on the highlighted control opens it for editing on the right-hand side.
 
 ### Theme types and items
+
 The right-hand side of the theme editor provides a list of theme types available
 in the edited theme resource, and the contents of the selected type. The list of
 type's items is divided into several tabs, corresponding to each data type available
@@ -73,6 +78,7 @@ arbitrary name to create a custom type. Text field also filters the list of cont
 nodes.
 
 ## Manage and import items
+
 Clicking theManage Itemsbutton brings up theManage Theme Itemsdialog.
 In theEdit Itemstab you can view and add theme types, as well as view and edit
 the theme items of the selected type.
@@ -93,4 +99,5 @@ will create the items of the corresponding data type and name, but will leave th
 creating a template of a theme in a way.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

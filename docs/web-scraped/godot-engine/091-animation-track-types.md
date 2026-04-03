@@ -1,6 +1,7 @@
 # Animation Track types
 
 # Animation Track types
+
 This page gives an overview of the track types available for Godot's animation
 player node on top of the default property tracks.
 See also
@@ -8,19 +9,23 @@ We assume you already readIntroduction to the animation features, which covers
 the basics, including property tracks.
 
 ## Property Track
+
 The most basic track type. SeeIntroduction to the animation features.
 
 ## Position 3D / Rotation 3D / Scale 3D Track
+
 These 3D transform tracks control the location, rotation, and scale of a 3D object.
 They make it easier to animate a 3D object's transform compared to using regular
 property tracks.
 It is designed for animations imported from external 3D models and can reduce resource capacity through compression.
 
 ## Blend Shape Track
+
 A blend shape track is optimized for animating blend shape inMeshInstance3D.
 It is designed for animations imported from external 3D models and can reduce resource capacity through compression.
 
 ## Call Method Track
+
 A call method track allow you to call a function at a precise time from within an
 animation. For example, you can callqueue_free()to delete a node at the
 end of a death animation.
@@ -48,6 +53,7 @@ Value
 The name of the method as aString
 "args"
 The arguments to pass to the function as anArray
+
 ```
 # Create a call method track.
 func create_method_animation_track():
@@ -73,6 +79,7 @@ func create_method_animation_track():
 func jump(jump_velocity, multiplier):
     velocity.y = jump_velocity * multiplier
 ```
+
 ```
 // Create a call method track.
 public void CreateAnimationTrack()
@@ -107,6 +114,7 @@ private void Jump(float jumpVelocity, float multiplier)
 ```
 
 ## Bezier Curve Track
+
 A bezier curve track is similar to a property track, except it allows you to
 animate a property's value using a bezier curve.
 Note
@@ -122,6 +130,7 @@ zoom in and out on the time axis, you can also do that withCtrl+Shift+Mousewheel
 UsingCtrl+Alt+Mousewheelwill zoom in and out on the Y axis
 While a keyframe is selected (not the handle), in the right click panel of the
 editor, you can select the handle mode:
+
 - Free: Allows you to orient a manipulator in any direction without affecting the
 other's position.
 Free: Allows you to orient a manipulator in any direction without affecting the
@@ -138,6 +147,7 @@ Mirrored: Makes the position of one manipulator perfectly mirror the other,
 including their distance to the key.
 
 ## Audio Playback Track
+
 If you want to create an animation with audio, you need to create an audio
 playback track. To create one, your scene must have either an AudioStreamPlayer,
 AudioStreamPlayer2D, or AudioStreamPlayer3D node. When creating the track, you
@@ -150,6 +160,7 @@ Key(s)" or click on it and press theDelkey.
 The blend mode allows you to choose whether or not to adjust the audio volume when blending in theAnimationTree.
 
 ## Animation Playback Track
+
 Animation playback tracks allow you to sequence the animations of other
 animation player nodes in a scene. For example, you can use it to animate
 several characters in a cut-scene.
@@ -167,4 +178,5 @@ access its animation player. Also, an animation player cannot
 reference itself.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

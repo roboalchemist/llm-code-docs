@@ -1,15 +1,18 @@
 # SceneTree in English
 
 # SceneTree
+
 Inherits:MainLoop<Object
 Manages the game loop via a hierarchy of nodes.
 
 ## Description
+
 As one of the most important classes, theSceneTreemanages the hierarchy of nodes in a scene, as well as scenes themselves. Nodes can be added, fetched and removed. The whole scene tree (and thus the current scene) can be paused. Scenes can be loaded, switched and reloaded.
 You can also use theSceneTreeto organize your nodes intogroups: every node can be added to as many groups as you want to create, e.g. an "enemy" group. You can then iterate these groups or even call methods and set properties on all the nodes belonging to any given group.
 SceneTreeis the defaultMainLoopimplementation used by the engine, and is thus in charge of the game loop.
 
 ## Tutorials
+
 - SceneTree
 SceneTree
 - Multiple resolutions
@@ -142,6 +145,7 @@ void
 unload_current_scene()
 
 ## Signals
+
 node_added(node:Node)🔗
 Emitted when thenodeenters this tree.
 node_configuration_warning_changed(node:Node)🔗
@@ -156,18 +160,21 @@ process_frame()🔗
 Emitted immediately beforeNode._process()is called on every node in this tree.
 scene_changed()🔗
 Emitted after the new scene is added to scene tree and initialized. Can be used to reliably accesscurrent_scenewhen changing scenes.
+
 ```
 # This code should be inside an autoload.
 get_tree().change_scene_to_file(other_scene_path)
 await get_tree().scene_changed
 print(get_tree().current_scene) # Prints the new scene.
 ```
+
 tree_changed()🔗
 Emitted any time the tree's hierarchy changes (nodes being moved, renamed, etc.).
 tree_process_mode_changed()🔗
 Emitted when theNode.process_modeof any node inside the tree is changed. Only emitted in the editor, to update the visibility of disabled nodes.
 
 ## Enumerations
+
 enumGroupCallFlags:🔗
 GroupCallFlagsGROUP_CALL_DEFAULT=0
 Call nodes within a group with no special behavior (default).
@@ -180,7 +187,9 @@ Call nodes within a group only once, even if the call is executed many times in 
 Note:Different arguments are not taken into account. Therefore, when the same call is executed with different arguments, only the first call will be performed.
 
 ## Property Descriptions
+
 boolauto_accept_quit=true🔗
+
 - voidset_auto_accept_quit(value:bool)
 voidset_auto_accept_quit(value:bool)
 - boolis_auto_accept_quit()
@@ -261,18 +270,21 @@ The tree's rootWindow. This is top-mostNodeof the scene tree, and is always pres
 Warning:Do not delete this node. This will result in unstable behavior, followed by a crash.
 
 ## Method Descriptions
+
 voidcall_group(group:StringName, method:StringName, ...)vararg🔗
 Callsmethodon each node inside this tree added to the givengroup. You can pass arguments tomethodby specifying them at the end of this method call. Nodes that cannot callmethod(either because the method doesn't exist or the arguments do not match) are ignored. See alsoset_group()andnotify_group().
 Note:This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.
 Note:In C#,methodmust be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in theMethodNameclass to avoid allocating a newStringNameon each call.
 voidcall_group_flags(flags:int, group:StringName, method:StringName, ...)vararg🔗
 Calls the givenmethodon each node inside this tree added to the givengroup. Useflagsto customize this method's behavior (seeGroupCallFlags). Additional arguments formethodcan be passed at the end of this method. Nodes that cannot callmethod(either because the method doesn't exist or the arguments do not match) are ignored.
+
 ```
 # Calls "hide" to all nodes of the "enemies" group, at the end of the frame and in reverse tree order.
 get_tree().call_group_flags(
         SceneTree.GROUP_CALL_DEFERRED | SceneTree.GROUP_CALL_REVERSE,
         "enemies", "hide")
 ```
+
 Note:In C#,methodmust be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in theMethodNameclass to avoid allocating a newStringNameon each call.
 Errorchange_scene_to_file(path:String)🔗
 Changes the running scene to the one at the givenpath, after loading it into aPackedSceneand creating a new instance.
@@ -282,6 +294,7 @@ Errorchange_scene_to_node(node:Node)🔗
 Changes the running scene to the providedNode. Useful when you want to set up the new scene before changing.
 Returns@GlobalScope.OKon success,@GlobalScope.ERR_INVALID_PARAMETERif thenodeisnull, or@GlobalScope.ERR_UNCONFIGUREDif thenodeis already inside the scene tree.
 Note:Operations happen in the following order whenchange_scene_to_node()is called:
+
 - The current scene node is immediately removed from the tree. From that point,Node.get_tree()called on the current (outgoing) scene will returnnull.current_scenewill benulltoo, because the new scene is not available yet.
 The current scene node is immediately removed from the tree. From that point,Node.get_tree()called on the current (outgoing) scene will returnnull.current_scenewill benulltoo, because the new scene is not available yet.
 - At the end of the frame, the formerly current scene, already removed from the tree, will be deleted (freed from memory) and then the new scene node will be added to the tree.Node.get_tree()andcurrent_scenewill be back to working as usual.
@@ -299,12 +312,14 @@ Ifprocess_alwaysisfalse, the timer will be paused when settingpausedtotrue.
 Ifprocess_in_physicsistrue, the timer will update at the end of the physics frame, instead of the process frame.
 Ifignore_time_scaleistrue, the timer will ignoreEngine.time_scaleand update with the real, elapsed time.
 This method is commonly used to create a one-shot delay timer, as in the following example:
+
 ```
 func some_function():
     print("start")
     await get_tree().create_timer(1.0).timeout
     print("end")
 ```
+
 ```
 public async Task SomeFunction()
 {
@@ -313,6 +328,7 @@ public async Task SomeFunction()
     GD.Print("end");
 }
 ```
+
 Note:The timer is always updatedafterall of the nodes in the tree. A node'sNode._process()method would be called before the timer updates (orNode._physics_process()ifprocess_in_physicsis set totrue).
 Tweencreate_tween()🔗
 Creates and returns a newTweenprocessed in this tree. The Tween will start automatically on the next process frame or physics frame (depending on itsTweenProcessMode).
@@ -366,4 +382,5 @@ voidunload_current_scene()🔗
 If a current scene is loaded, calling this method will unload it.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

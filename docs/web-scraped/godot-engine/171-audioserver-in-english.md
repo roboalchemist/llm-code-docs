@@ -1,13 +1,16 @@
 # AudioServer in English
 
 # AudioServer
+
 Inherits:Object
 Server interface for low-level audio access.
 
 ## Description
+
 AudioServeris a low-level server interface for audio access. It is in charge of creating sample data (playable audio) as well as its playback via a voice interface.
 
 ## Tutorials
+
 - Audio buses
 Audio buses
 - Audio Device Changer Demo
@@ -183,12 +186,14 @@ void
 unlock()
 
 ## Signals
+
 bus_layout_changed()🔗
 Emitted when an audio bus is added, deleted, or moved.
 bus_renamed(bus_index:int, old_name:StringName, new_name:StringName)🔗
 Emitted when the audio bus atbus_indexis renamed fromold_nametonew_name.
 
 ## Enumerations
+
 enumSpeakerMode:🔗
 SpeakerModeSPEAKER_MODE_STEREO=0
 Two or fewer speakers were detected.
@@ -215,7 +220,9 @@ Experimental:This constant may be changed or removed in future versions.
 Represents the size of thePlaybackTypeenum.
 
 ## Property Descriptions
+
 intbus_count=1🔗
+
 - voidset_bus_count(value:int)
 voidset_bus_count(value:int)
 - intget_bus_count()
@@ -242,6 +249,7 @@ floatget_playback_speed_scale()
 Scales the rate at which audio is played (i.e. setting it to0.5will make the audio be played at half its speed). See alsoEngine.time_scaleto affect the general simulation speed, which is independent fromplayback_speed_scale.
 
 ## Method Descriptions
+
 voidadd_bus(at_position:int= -1)🔗
 Adds a bus atat_position.
 voidadd_bus_effect(bus_idx:int, effect:AudioEffect, at_position:int= -1)🔗
@@ -359,4 +367,5 @@ voidunlock()🔗
 Unlocks the audio driver's main loop. (After locking it, you should always unlock it.)
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

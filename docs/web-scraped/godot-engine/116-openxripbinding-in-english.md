@@ -1,10 +1,12 @@
 # OpenXRIPBinding in English
 
 # OpenXRIPBinding
+
 Inherits:Resource<RefCounted<Object
 Defines a binding between anOpenXRActionand an XR input or output.
 
 ## Description
+
 This binding resource binds anOpenXRActionto an input or output. As most controllers have left hand and right versions that are handled by the same interaction profile we can specify multiple bindings. For instance an action "Fire" could be bound to both "/user/hand/left/input/trigger" and "/user/hand/right/input/trigger". This would require two binding entries.
 
 ## Properties
@@ -46,7 +48,9 @@ void
 remove_path(path:String)
 
 ## Property Descriptions
+
 OpenXRActionaction🔗
+
 - voidset_action(value:OpenXRAction)
 voidset_action(value:OpenXRAction)
 - OpenXRActionget_action()
@@ -75,6 +79,7 @@ Paths that define the inputs or outputs bound on the device.
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedStringArrayfor more details.
 
 ## Method Descriptions
+
 voidadd_path(path:String)🔗
 Deprecated:Binding is for a single path.
 Add an input/output path to this binding.
@@ -93,4 +98,5 @@ Deprecated:Binding is for a single path.
 Removes this input/output path from this binding.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

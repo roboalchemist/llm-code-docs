@@ -3,6 +3,7 @@
 # CPU optimization
 
 ## Measuring performance
+
 We have to know where the "bottlenecks" are to know how to speed up our program.
 Bottlenecks are the slowest parts of the program that limit the rate that
 everything can progress. Focusing on bottlenecks allows us to concentrate our
@@ -12,6 +13,7 @@ lead to small performance improvements.
 For the CPU, the easiest way to identify bottlenecks is to use a profiler.
 
 ## CPU profilers
+
 Profilers run alongside your program and take timing measurements to work out
 what proportion of time is spent in each function.
 The Godot IDE conveniently has a built-in profiler. It does not run every time
@@ -32,6 +34,7 @@ you can usually increase speed by optimizing this area.
 For more info about using Godot's built-in profiler, seeDebugger panel.
 
 ## External profilers
+
 Although the Godot IDE profiler is very convenient and useful, sometimes you
 need more power, and the ability to profile the Godot engine source code itself.
 You canuse a number of third-party C++ profilersto do this.
@@ -56,10 +59,12 @@ batching, which greatly speeds up 2D rendering by reducing bottlenecks in this
 area.
 
 ## Manually timing functions
+
 Another handy technique, especially once you have identified the bottleneck
 using a profiler, is to manually time the function or area under test.
 The specifics vary depending on the language, but in GDScript, you would do
 the following:
+
 ```
 var time_start = Time.get_ticks_usec()
 
@@ -69,6 +74,7 @@ update_enemies()
 var time_end = Time.get_ticks_usec()
 print("update_enemies() took %d microseconds" % (time_end - time_start))
 ```
+
 ```
 var timeStart = Time.GetTicksUsec();
 
@@ -78,6 +84,7 @@ UpdateEnemies();
 var timeEnd = Time.GetTicksUsec();
 GD.Print($"UpdateEnemies() took {timeEnd - timeStart} microseconds");
 ```
+
 When manually timing functions, it is usually a good idea to run the function
 many times (1,000 or more times), instead of just once (unless it is a very slow
 function). The reason for doing this is that timers often have limited accuracy.
@@ -88,6 +95,7 @@ time them as you go. This will give you crucial feedback as to whether the
 optimization is working (or not).
 
 ## Caches
+
 CPU caches are something else to be particularly aware of, especially when
 comparing timing results of two different versions of a function. The results
 can be highly dependent on whether the data is in the CPU cache or not. CPUs
@@ -116,6 +124,7 @@ rendering and physics. Still, you should be especially aware of caching when
 writing GDExtensions.
 
 ## Languages
+
 Godot supports a number of different languages, and it is worth bearing in mind
 that there are trade-offs involved. Some languages are designed for ease of use
 at the cost of speed, and others are faster but more difficult to work with.
@@ -124,6 +133,7 @@ language you choose. If your project is making a lot of calculations in its own
 code, consider moving those calculations to a faster language.
 
 ### GDScript
+
 GDScriptis designed to be easy to use and iterate,
 and is ideal for making many types of games. However, in this language, ease of
 use is considered more important than performance. If you need to make heavy
@@ -131,6 +141,7 @@ calculations, consider moving some of your project to one of the other
 languages.
 
 ### C#
+
 C#is popular and has first-class support in Godot. It
 offers a good compromise between speed and ease of use. Beware of possible
 garbage collection pauses and leaks that can occur during gameplay, though. A
@@ -138,15 +149,18 @@ common approach to workaround issues with garbage collection is to useobject
 pooling, which is outside the scope of this guide.
 
 ### Other languages
+
 Third parties provide support for several other languages, includingRust.
 
 ### C++
+
 Godot is written in C++. Using C++ will usually result in the fastest code.
 However, on a practical level, it is the most difficult to deploy to end users'
 machines on different platforms. Options for using C++ include
 GDExtensions andcustom modules.
 
 ## Threads
+
 Consider using threads when making a lot of calculations that can run in
 parallel to each other. Modern CPUs have multiple cores, each one capable of
 doing a limited amount of work. By spreading work over multiple threads, you can
@@ -160,6 +174,7 @@ Threads can make debugging considerably more difficult.
 For more information on threads, seeUsing multiple threads.
 
 ## SceneTree
+
 Although Nodes are an incredibly powerful and versatile concept, be aware that
 every node has a cost. Built-in functions such as_process()and_physics_process()propagate through the tree. This housekeeping can reduce
 performance when you have a very large numbers of nodes (how many exactly
@@ -178,9 +193,11 @@ You can avoid the SceneTree altogether by using Server APIs. For more
 information, seeOptimization using Servers.
 
 ## Physics
+
 In some situations, physics can end up becoming a bottleneck. This is
 particularly the case with complex worlds and large numbers of physics objects.
 Here are some techniques to speed up physics:
+
 - Try using simplified versions of your rendered geometry for collision shapes.
 Often, this won't be noticeable for end users, but can greatly increase
 performance.
@@ -210,4 +227,5 @@ physics tick. It's orders of magnitude faster, so this can be a significant
 performance win while also reducing jitter.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

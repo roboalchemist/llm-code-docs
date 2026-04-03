@@ -1,6 +1,7 @@
 # ImporterMeshInstance3D in English
 
 # ImporterMeshInstance3D
+
 Inherits:Node3D<Node<Object
 There is currently no description for this class. Please help us bycontributing one!
 
@@ -40,7 +41,9 @@ VisibilityRangeFadeMode
 visibility_range_fade_mode
 
 ## Property Descriptions
+
 ShadowCastingSettingcast_shadow=1🔗
+
 - voidset_cast_shadows_setting(value:ShadowCastingSetting)
 voidset_cast_shadows_setting(value:ShadowCastingSetting)
 - ShadowCastingSettingget_cast_shadows_setting()
@@ -102,4 +105,5 @@ VisibilityRangeFadeModeget_visibility_range_fade_mode()
 There is currently no description for this property. Please help us bycontributing one!
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

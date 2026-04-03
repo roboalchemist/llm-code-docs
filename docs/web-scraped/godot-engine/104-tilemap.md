@@ -1,17 +1,20 @@
 # TileMap
 
 # TileMap
+
 Deprecated:Use multipleTileMapLayernodes instead. To convert a TileMap to a set of TileMapLayer nodes, open the TileMap bottom panel with the node selected, click the toolbox icon in the top-right corner and choose 'Extract TileMap layers as individual TileMapLayer nodes'.
 Inherits:Node2D<CanvasItem<Node<Object
 Node for 2D tile-based maps.
 
 ## Description
+
 Node for 2D tile-based maps. Tilemaps use aTileSetwhich contain a list of tiles which are used to create grid-based maps. A TileMap may have several layers, layouting tiles on top of each other.
 For performance reasons, all TileMap updates are batched at the end of a frame. Notably, this means that scene tiles from aTileSetScenesCollectionSourcemay be initialized after their parent. This is only queued when inside the scene tree.
 To force an update earlier on, callupdate_internals().
 Note:For performance and compatibility reasons, the coordinates serialized byTileMapare limited to 16-bit signed integers, i.e. the range for X and Y coordinates is from-32768to32767. When saving tile data, tiles outside this range are wrapped.
 
 ## Tutorials
+
 - Using Tilemaps
 Using Tilemaps
 - 2D Platformer Demo
@@ -206,10 +209,12 @@ void
 update_internals()
 
 ## Signals
+
 changed()🔗
 Emitted when theTileSetof this TileMap changes.
 
 ## Enumerations
+
 enumVisibilityMode:🔗
 VisibilityModeVISIBILITY_MODE_DEFAULT=0
 Use the debug settings to determine visibility.
@@ -219,7 +224,9 @@ VisibilityModeVISIBILITY_MODE_FORCE_SHOW=1
 Always show.
 
 ## Property Descriptions
+
 boolcollision_animatable=false🔗
+
 - voidset_collision_animatable(value:bool)
 voidset_collision_animatable(value:bool)
 - boolis_collision_animatable()
@@ -254,6 +261,7 @@ TileSetget_tileset()
 TheTileSetused by thisTileMap. The textures, collisions, and additional behavior of all available tiles are stored here.
 
 ## Method Descriptions
+
 void_tile_data_runtime_update(layer:int, coords:Vector2i, tile_data:TileData)virtual🔗
 Called with a TileData object about to be used internally by the TileMap, allowing its modification at runtime.
 This method is only called if_use_tile_data_runtime_update()is implemented and returnstruefor the given tilecoordsandlayer.
@@ -293,6 +301,7 @@ Iflayeris negative, the layers are accessed from the last one.
 TileDataget_cell_tile_data(layer:int, coords:Vector2i, use_proxies:bool= false)const🔗
 Returns theTileDataobject associated with the given cell, ornullif the cell does not exist or is not aTileSetAtlasSource.
 Iflayeris negative, the layers are accessed from the last one.
+
 ```
 func get_clicked_tile_power():
     var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
@@ -302,6 +311,7 @@ func get_clicked_tile_power():
     else:
         return 0
 ```
+
 Ifuse_proxiesisfalse, ignores theTileSet's tile proxies. SeeTileSet.map_tile_proxy().
 Vector2iget_coords_for_body_rid(body:RID)🔗
 Returns the coordinates of the tile for given physics body RID. Such RID can be retrieved fromKinematicCollision2D.get_collider_rid(), when colliding with a tile.
@@ -378,6 +388,7 @@ voidremove_layer(layer:int)🔗
 Removes the layer at indexlayer.
 voidset_cell(layer:int, coords:Vector2i, source_id:int= -1, atlas_coords:Vector2i= Vector2i(-1, -1), alternative_tile:int= 0)🔗
 Sets the tile identifiers for the cell on layerlayerat coordinatescoords. Each tile of theTileSetis identified using three parts:
+
 - The source identifiersource_ididentifies aTileSetSourceidentifier. SeeTileSet.set_source_id(),
 The source identifiersource_ididentifies aTileSetSourceidentifier. SeeTileSet.set_source_id(),
 - The atlas coordinates identifieratlas_coordsidentifies a tile coordinates in the atlas (if the source is aTileSetAtlasSource). ForTileSetScenesCollectionSourceit should always beVector2i(0,0)),
@@ -435,4 +446,5 @@ However, for performance reasons, those updates are batched and delayed to the e
 Warning:Updating the TileMap is computationally expensive and may impact performance. Try to limit the number of updates and how many tiles they impact.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

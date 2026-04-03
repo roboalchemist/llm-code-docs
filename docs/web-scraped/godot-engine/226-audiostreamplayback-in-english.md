@@ -1,14 +1,17 @@
 # AudioStreamPlayback in English
 
 # AudioStreamPlayback
+
 Inherits:RefCounted<Object
 Inherited By:AudioStreamPlaybackInteractive,AudioStreamPlaybackPlaylist,AudioStreamPlaybackPolyphonic,AudioStreamPlaybackResampled,AudioStreamPlaybackSynchronized
 Meta class for playing back audio.
 
 ## Description
+
 Can play, loop, pause a scroll through audio. SeeAudioStreamandAudioStreamOggVorbisfor usage.
 
 ## Tutorials
+
 - Audio Generator Demo
 Audio Generator Demo
 
@@ -72,6 +75,7 @@ void
 stop()
 
 ## Method Descriptions
+
 int_get_loop_count()virtualconst🔗
 Overridable method. Should return how many times this audio stream has looped. Most built-in playbacks always return0.
 Variant_get_parameter(name:StringName)virtualconst🔗
@@ -117,4 +121,5 @@ voidstop()🔗
 Stops the stream.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

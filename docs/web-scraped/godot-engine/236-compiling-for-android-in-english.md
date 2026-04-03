@@ -1,11 +1,13 @@
 # Compiling for Android in English
 
 # Compiling for Android
+
 See also
 This page describes how to compile Android export template binaries from source.
 If you're looking to export your project to Android instead, readExporting for Android.
 
 ## Note
+
 In most cases, using the built-in deployer and export templates is good
 enough. Compiling the Android APK manually is mostly useful for custom
 builds or custom packages for the deployer.
@@ -13,14 +15,18 @@ Also, you still need to follow the steps mentioned in theExporting for Androidtu
 a custom export template.
 
 ## Requirements
+
 For compiling under Windows, Linux or macOS, the following is required:
+
 - Python 3.8+.
 Python 3.8+.
 - SCons 4.0+build system.
 SCons 4.0+build system.
 - Android SDKTo install the Android SDK, follow the steps here <https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html>_.On Linux,do not use an Android SDK provided by your distribution's repositoriesas it will often be outdated.On macOS,do not use an Android SDK provided by Homebrewas it will not be installed in a unified location.
 Android SDK
+
 > To install the Android SDK, follow the steps here <https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html>_.On Linux,do not use an Android SDK provided by your distribution's repositoriesas it will often be outdated.On macOS,do not use an Android SDK provided by Homebrewas it will not be installed in a unified location.
+
 - To install the Android SDK, follow the steps here <https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html>_.
 To install the Android SDK, follow the steps here <https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html>_.
 - On Linux,do not use an Android SDK provided by your distribution's repositoriesas it will often be outdated.
@@ -31,7 +37,9 @@ On macOS,do not use an Android SDK provided by Homebrewas it will not be install
 Gradle (will be downloaded and installed automatically if missing).
 - JDK 17 (either OpenJDK or Oracle JDK).You can download a build fromAdoptium.
 JDK 17 (either OpenJDK or Oracle JDK).
+
 > You can download a build fromAdoptium.
+
 - You can download a build fromAdoptium.
 You can download a build fromAdoptium.
 See also
@@ -39,6 +47,7 @@ To get the Godot source code for compiling, seeGetting the source.
 For a general overview of SCons usage for Godot, seeIntroduction to the buildsystem.
 
 ## Setting up the buildsystem
+
 - Set the environment variableANDROID_HOMEto point to the Android
 SDK. If you downloaded the Android command-line tools, this would be
 the folder where you extracted the contents of the ZIP archive.Windows: PressWindows+R, type "control system",
@@ -48,10 +57,12 @@ the root of the SDK directories.
 Set the environment variableANDROID_HOMEto point to the Android
 SDK. If you downloaded the Android command-line tools, this would be
 the folder where you extracted the contents of the ZIP archive.
+
 > Windows: PressWindows+R, type "control system",
 then click onAdvanced system settingsin the left pane,
 then click onEnvironment variableson the window that appears.Linux or macOS: Add the textexportANDROID_HOME="/path/to/android-sdk"to your.bashrcor.zshrcwhere/path/to/android-sdkpoints to
 the root of the SDK directories.
+
 - Windows: PressWindows+R, type "control system",
 then click onAdvanced system settingsin the left pane,
 then click onEnvironment variableson the window that appears.
@@ -76,6 +87,7 @@ If you are trying to compile GDExtension, you need to first compile
 the engine to download the NDK, then you can compile GDExtension.
 
 ## Building the export templates
+
 Godot needs three export templates for Android: the optimized "release"
 template (android_release.apk), the debug template (android_debug.apk),
 and the Gradle build template (android_source.zip).
@@ -83,25 +95,33 @@ As Google requires all APKs to include ARMv8 (64-bit) libraries since August 201
 the commands below build templates containing both ARMv7 and ARMv8 libraries.
 Compiling the standard export templates is done by calling SCons from the Godot
 root directory with the following arguments:
+
 - Release template (used when exporting withDebugging Enabledunchecked)
 Release template (used when exporting withDebugging Enabledunchecked)
+
 ```
 scons platform=android target=template_release arch=arm32
 scons platform=android target=template_release arch=arm64 generate_android_binaries=yes
 ```
+
 - Debug template (used when exporting withDebugging Enabledchecked)
 Debug template (used when exporting withDebugging Enabledchecked)
+
 ```
 scons platform=android target=template_debug arch=arm32
 scons platform=android target=template_debug arch=arm64 generate_android_binaries=yes
 ```
+
 - (Optional) Dev template (used when troubleshooting)
 (Optional) Dev template (used when troubleshooting)
+
 ```
 scons platform=android target=template_debug arch=arm32 dev_build=yes
 scons platform=android target=template_debug arch=arm64 dev_build=yes generate_android_binaries=yes
 ```
+
 The resulting templates will be located under thebindirectory:
+
 - bin/android_release.apkfor the release template
 bin/android_release.apkfor the release template
 - bin/android_debug.apkfor the debug template
@@ -115,29 +135,36 @@ Note
 If you are changing the list of architectures you're building, remember to addgenerate_android_binaries=yesto thelastarchitecture you're building, so that the template files are generated after the build.
 - To include debug symbols in the generated templates, add thedebug_symbols=yesparameters to the SCons command.Note that you can includeseparate_debug_symbols=yesto generate the debug symbols in a separate*-native-debug-symbols.zipfile.
 To include debug symbols in the generated templates, add thedebug_symbols=yesparameters to the SCons command.
+
 > Note that you can includeseparate_debug_symbols=yesto generate the debug symbols in a separate*-native-debug-symbols.zipfile.
+
 - Note that you can includeseparate_debug_symbols=yesto generate the debug symbols in a separate*-native-debug-symbols.zipfile.
 Note that you can includeseparate_debug_symbols=yesto generate the debug symbols in a separate*-native-debug-symbols.zipfile.
 See also
 If you want to enable Vulkan validation layers, seeVulkan validation layers on Android.
 
 ### Adding support for x86 devices
+
 If you also want to include support for x86 and x86_64 devices, run the SCons
 command a third and fourth time with thearch=x86_32, andarch=x86_64arguments before building the APK with Gradle. For
 example, for the release template:
+
 ```
 scons platform=android target=template_release arch=arm32
 scons platform=android target=template_release arch=arm64
 scons platform=android target=template_release arch=x86_32
 scons platform=android target=template_release arch=x86_64 generate_android_binaries=yes
 ```
+
 This will create template binaries that works on all platforms.
 The final binary size of exported projects will depend on the platforms you choose
 to support when exporting; in other words, unused platforms will be removed from
 the binary.
 
 ### Cleaning the generated export templates
+
 You can use the following commands to remove the generated export templates:
+
 ```
 cd platform/android/java
 # On Windows
@@ -147,6 +174,7 @@ cd platform/android/java
 ```
 
 ## Using the export templates
+
 Godot needs release and debug binaries that were compiled against the same
 version/commit as the editor. If you are using official binaries
 for the editor, make sure to install the matching export templates,
@@ -154,8 +182,10 @@ or build your own from the same version.
 When exporting your game, Godot uses the templates as a base, and updates their content as needed.
 
 ### Installing the templates
+
 The newly-compiled templates (android_debug.apk,android_release.apk, andandroid_source.zip) must be copied to Godot's templates folder
 with their respective names. The templates folder can be located in:
+
 - Windows:%APPDATA%\Godot\export_templates\<version>\
 Windows:%APPDATA%\Godot\export_templates\<version>\
 - Linux:$HOME/.local/share/godot/export_templates/<version>/
@@ -174,19 +204,24 @@ next time you build you will automatically have the custom templates
 referenced.
 
 ## Building the Godot editor
+
 Compiling the editor is done by calling SCons from the Godot
 root directory with the following arguments:
+
 ```
 scons platform=android arch=arm32 production=yes target=editor
 scons platform=android arch=arm64 production=yes target=editor
 scons platform=android arch=x86_32 production=yes target=editor
 scons platform=android arch=x86_64 production=yes target=editor generate_android_binaries=yes
 ```
+
 - You can add thedev_build=yesparameter to generate a dev build of the Godot editor.
 You can add thedev_build=yesparameter to generate a dev build of the Godot editor.
 - You can add thedebug_symbols=yesparameters to include the debug symbols in the generated build.Note that you can includeseparate_debug_symbols=yesto thelastarchitecture you're building, to generate the debug symbols in a separate*-native-debug-symbols.zipfile.
 You can add thedebug_symbols=yesparameters to include the debug symbols in the generated build.
+
 > Note that you can includeseparate_debug_symbols=yesto thelastarchitecture you're building, to generate the debug symbols in a separate*-native-debug-symbols.zipfile.
+
 - Note that you can includeseparate_debug_symbols=yesto thelastarchitecture you're building, to generate the debug symbols in a separate*-native-debug-symbols.zipfile.
 Note that you can includeseparate_debug_symbols=yesto thelastarchitecture you're building, to generate the debug symbols in a separate*-native-debug-symbols.zipfile.
 - You can skip certain architectures depending on your target device to speed up compilation.
@@ -195,7 +230,9 @@ Remember to addgenerate_android_binaries=yesto thelastarchitecture you're buildi
 The resulting binaries will be located underbin/android_editor_builds/.
 
 ## Removing the Editor binaries
+
 You can use the following commands to remove the generated editor binaries:
+
 ```
  cd platform/android/java
  # On Windows
@@ -205,8 +242,10 @@ You can use the following commands to remove the generated editor binaries:
 ```
 
 ## Installing the Godot editor APK
+
 With an Android device with Developer Options enabled, connect the Android device to your computer via its charging cable to a USB/USB-C port.
 Open up a Terminal/Command Prompt and run the following commands from the root directory with the following arguments:
+
 ```
 adb install ./bin/android_editor_builds/android_editor-android-debug.apk
 ```
@@ -214,28 +253,35 @@ adb install ./bin/android_editor_builds/android_editor-android-debug.apk
 ## Troubleshooting
 
 ### Platform doesn't appear in SCons
+
 Double-check that you've set theANDROID_HOMEenvironment variable. This is required for the platform to appear in SCons'
 list of detected platforms.
 SeeSetting up the buildsystemfor more information.
 
 ### Application not installed
+
 Android might complain the application is not correctly installed.
 If so:
+
 - Check that the debug keystore is properly generated.
 Check that the debug keystore is properly generated.
 - Check that the jarsigner executable is from JDK 8.
 Check that the jarsigner executable is from JDK 8.
 If it still fails, open a command line and runlogcat:
+
 ```
 adb logcat
 ```
+
 Then check the output while the application is installed;
 the error message should be presented there.
 Seek assistance if you can't figure it out.
 
 ### Application exits immediately
+
 If the application runs but exits immediately, this might be due to
 one of the following reasons:
+
 - Make sure to use export templates that match your editor version; if
 you use a new Godot version, youhaveto update the templates too.
 Make sure to use export templates that match your editor version; if
@@ -251,4 +297,5 @@ and that the export settings included support for that architecture.
 In any case,adblogcatshould also show the cause of the error.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

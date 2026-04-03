@@ -1,13 +1,16 @@
 # CopyTransformModifier3D in English
 
 # CopyTransformModifier3D
+
 Inherits:BoneConstraint3D<SkeletonModifier3D<Node3D<Node<Object
 ASkeletonModifier3Dthat apply transform to the bone which copied from reference.
 
 ## Description
+
 Apply the copied transform of the bone set byBoneConstraint3D.set_reference_bone()to the bone set byBoneConstraint3D.set_apply_bone()with processing it with some masks and options.
 There are 4 ways to apply the transform, depending on the combination ofset_relative()andset_additive().
 Relative + Additive:
+
 - Extract reference pose relative to the rest and add it to the apply bone's pose.
 Extract reference pose relative to the rest and add it to the apply bone's pose.
 Relative + Not Additive:
@@ -117,6 +120,7 @@ void
 set_relative(index:int, enabled:bool)
 
 ## Enumerations
+
 flagsTransformFlag:🔗
 TransformFlagTRANSFORM_FLAG_POSITION=1
 If set, allows to copy the position.
@@ -137,7 +141,9 @@ AxisFlagAXIS_FLAG_ALL=7
 If set, allows to process the all axes.
 
 ## Property Descriptions
+
 intsetting_count=0🔗
+
 - voidset_setting_count(value:int)
 voidset_setting_count(value:int)
 - intget_setting_count()
@@ -145,6 +151,7 @@ intget_setting_count()
 The number of settings in the modifier.
 
 ## Method Descriptions
+
 BitField[AxisFlag]get_axis_flags(index:int)const🔗
 Returns the axis flags of the setting atindex.
 BitField[TransformFlag]get_copy_flags(index:int)const🔗
@@ -210,4 +217,5 @@ If setsenabledtotrue, the extracted and applying transform is relative to the re
 If setsenabledtofalse, the extracted transform is absolute.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

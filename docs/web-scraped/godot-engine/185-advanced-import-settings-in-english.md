@@ -1,6 +1,7 @@
 # Advanced Import Settings in English
 
 # Advanced Import Settings
+
 While the regular import panel provides many essential options for imported 3D
 models, the advanced import settings provides per object options, model previews,
 and animation previews. To open it select theAdvanced...button at the
@@ -11,6 +12,7 @@ This page does not go over options also available in the import dock, or anythin
 outside of the advanced import settings. For information on those please read theImport configurationpage.
 
 ## Using the Advanced Import Settings dialog
+
 The first tab you'll see is theScenetab. The options available in the
 panel on the right are identical to the Import dock, but you have access to a 3D
 preview. The 3D preview can be rotated by holding down the left mouse button
@@ -19,9 +21,11 @@ Advanced Import Settings dialog (Scene tab).
 Credit:Modern Arm Chair 01 - Poly Haven
 
 ### Configuring node import options
+
 You can select individual nodes that compose the scene while in theScenetab using the tree view at the left:
 Selecting a node in the Advanced Import Settings dialog (Materials tab)
 This exposes several per-node import options:
+
 - Skip Import:If checked, the node will not be present in the final
 imported scene. Enabling this disables all other options.
 Skip Import:If checked, the node will not be present in the final
@@ -95,8 +99,10 @@ positives or false negatives). If you run into objects disappearing when they
 shouldn't when the camera is near a certain mesh, try decreasing this value.
 
 ### Configuring mesh and material import options
+
 In the Advanced Import Settings dialog, there are 2 ways to select individual
 meshes or materials:
+
 - Switch to theMeshesorMaterialstab in the top-left corner of the dialog.
 Switch to theMeshesorMaterialstab in the top-left corner of the dialog.
 - Stay in theScenetab, but unfold the options on the tree view on the
@@ -167,8 +173,10 @@ use an external material instead of the material that is included in the
 original 3D scene file; see the section below.
 
 ## Extracting materials to separate files
+
 While Godot can import materials authored in 3D modeling software, the default
 configuration may not be suitable for your needs. For example:
+
 - You want to configure material features not supported by your 3D application.
 You want to configure material features not supported by your 3D application.
 - You want to use a different texture filtering mode, as this option is
@@ -204,23 +212,28 @@ The above can be done in the dialog'sMaterialstab by selecting the
 material, enablingSave to File, then specifying the save path using thePathoption that appears after enablingSave to File.
 
 ## Animation options
+
 Several extra options are available for the generatedAnimationPlayernodes, as well as their individual animations when they're selected in theScenetab.
 
 ### Optimizer
+
 When animations are imported, an optimizer is run, which reduces the size of the
 animation considerably. In general, this should always be turned on unless you
 suspect that an animation might be broken due to it being enabled.
 
 ### Save to file
+
 By default, animations are saved as built-in. It is possible to save them to a
 file instead. This allows adding custom tracks to the animations and keeping
 them after a reimport.
 
 ### Slices
+
 It is possible to specify multiple animations from a single timeline as slices.
 For this to work, the model must have only one animation that is nameddefault. To create slices, change the slice amount to something greater than
 zero. You can then name a slice, specify which frames it starts and stops on, and
 choose whether the animation loops or not.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,11 +1,13 @@
 # RigidBody2D in English
 
 # RigidBody2D
+
 Inherits:PhysicsBody2D<CollisionObject2D<Node2D<CanvasItem<Node<Object
 Inherited By:PhysicalBone2D
 A 2D physics body that is moved by a physics simulation.
 
 ## Description
+
 RigidBody2Dimplements full 2D physics. It cannot be controlled directly, instead, you must apply forces to it (gravity, impulses, etc.), and the physics simulation will calculate the resulting movement, rotation, react to collisions, and affect other physics bodies in its path.
 The body's behavior can be adjusted vialock_rotation,freeze, andfreeze_mode. By changing various properties of the object, such asmass, you can control how the physics simulation acts on it.
 A rigid body will always maintain its shape and size, even when forces are applied to it. It is useful for objects that can be interacted with in an environment, such as a tree that can be knocked over or a stack of crates that can be pushed around.
@@ -14,6 +16,7 @@ If you need to override the default physics behavior, you can write a custom for
 Note:Changing the 2D transform orlinear_velocityof aRigidBody2Dvery often may lead to some unpredictable behaviors. This also happens when aRigidBody2Dis the descendant of a constantly moving node, like anotherRigidBody2D, as that will cause its global transform to be set whenever its ancestor moves.
 
 ## Tutorials
+
 - Physics introduction
 Physics introduction
 - Troubleshooting physics issues
@@ -149,6 +152,7 @@ void
 set_axis_velocity(axis_velocity:Vector2)
 
 ## Signals
+
 body_entered(body:Node)🔗
 Emitted when a collision with anotherPhysicsBody2DorTileMapoccurs. Requirescontact_monitorto be set totrueandmax_contacts_reportedto be set high enough to detect all the collisions.TileMaps are detected if theTileSethas CollisionShape2Ds.
 bodytheNode, if it exists in the tree, of the otherPhysicsBody2DorTileMap.
@@ -172,6 +176,7 @@ Emitted when the physics engine changes the body's sleeping state.
 Note:Changing the valuesleepingwill not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine oremit_signal("sleeping_state_changed")is used.
 
 ## Enumerations
+
 enumFreezeMode:🔗
 FreezeModeFREEZE_MODE_STATIC=0
 Static body freeze mode (default). The body is not affected by gravity and forces. It can be only moved by user code and doesn't collide with other bodies along its path.
@@ -196,7 +201,9 @@ CCDModeCCD_MODE_CAST_SHAPE=2
 Continuous collision detection enabled using shapecasting. This is the slowest CCD method and the most precise.
 
 ## Property Descriptions
+
 floatangular_damp=0.0🔗
+
 - voidset_angular_damp(value:float)
 voidset_angular_damp(value:float)
 - floatget_angular_damp()
@@ -298,12 +305,14 @@ floatget_inertia()
 The body's moment of inertia. This is like mass, but for rotation: it determines how much torque it takes to rotate the body. The moment of inertia is usually computed automatically from the mass and the shapes, but this property allows you to set a custom value.
 If set to0, inertia is automatically computed (default value).
 Note:This value does not change when inertia is automatically computed. UsePhysicsServer2Dto get the computed inertia.
+
 ```
 @onready var ball = $Ball
 
 func get_ball_inertia():
     return 1.0 / PhysicsServer2D.body_get_direct_state(ball.get_rid()).inverse_inertia
 ```
+
 ```
 private RigidBody2D _ball;
 
@@ -317,7 +326,9 @@ private float GetBallInertia()
     return 1.0f / PhysicsServer2D.BodyGetDirectState(_ball.GetRid()).InverseInertia;
 }
 ```
+
 floatlinear_damp=0.0🔗
+
 - voidset_linear_damp(value:float)
 voidset_linear_damp(value:float)
 - floatget_linear_damp()
@@ -370,6 +381,7 @@ boolis_sleeping()
 Iftrue, the body will not move and will not calculate forces until woken up by another body through, for example, a collision, or by using theapply_impulse()orapply_force()methods.
 
 ## Method Descriptions
+
 void_integrate_forces(state:PhysicsDirectBodyState2D)virtual🔗
 Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but thecustom_integratorproperty allows you to disable the standard force integration and do fully custom force integration for a body.
 voidadd_constant_central_force(force:Vector2)🔗
@@ -411,4 +423,5 @@ voidset_axis_velocity(axis_velocity:Vector2)🔗
 Sets the body's velocity on the given axis. The velocity in the given vector axis will be set as the given vector length. This is useful for jumping behavior.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

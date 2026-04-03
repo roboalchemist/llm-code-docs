@@ -1,14 +1,17 @@
 # ENetMultiplayerPeer in English
 
 # ENetMultiplayerPeer
+
 Inherits:MultiplayerPeer<PacketPeer<RefCounted<Object
 A MultiplayerPeer implementation using theENetlibrary.
 
 ## Description
+
 A MultiplayerPeer implementation that should be passed toMultiplayerAPI.multiplayer_peerafter being initialized as either a client, server, or mesh. Events can then be handled by connecting toMultiplayerAPIsignals. SeeENetConnectionfor more information on the ENet library wrapper.
 Note:ENet only uses UDP, not TCP. When forwarding the server port to make your server accessible on the public Internet, you only need to forward the server port in UDP. You can use theUPNPclass to try to forward the server port automatically when starting the server.
 
 ## Tutorials
+
 - High-level multiplayer
 High-level multiplayer
 - API documentation on the ENet website
@@ -45,12 +48,15 @@ void
 set_bind_ip(ip:String)
 
 ## Property Descriptions
+
 ENetConnectionhost🔗
+
 - ENetConnectionget_host()
 ENetConnectionget_host()
 The underlyingENetConnectioncreated aftercreate_client()andcreate_server().
 
 ## Method Descriptions
+
 Erroradd_mesh_peer(peer_id:int, host:ENetConnection)🔗
 Add a new remote peer with the givenpeer_idconnected to the givenhost.
 Note:Thehostmust have exactly one peer in theENetPacketPeer.STATE_CONNECTEDstate.
@@ -66,4 +72,5 @@ voidset_bind_ip(ip:String)🔗
 The IP used when creating a server. This is set to the wildcard"*"by default, which binds to all available interfaces. The given IP needs to be in IPv4 or IPv6 address format, for example:"192.168.1.1".
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

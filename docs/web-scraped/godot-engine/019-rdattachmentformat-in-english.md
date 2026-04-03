@@ -1,10 +1,12 @@
 # RDAttachmentFormat in English
 
 # RDAttachmentFormat
+
 Inherits:RefCounted<Object
 Attachment format (used byRenderingDevice).
 
 ## Description
+
 This object is used byRenderingDevice.
 
 ## Properties
@@ -21,7 +23,9 @@ samples
 usage_flags
 
 ## Property Descriptions
+
 DataFormatformat=36🔗
+
 - voidset_format(value:DataFormat)
 voidset_format(value:DataFormat)
 - DataFormatget_format()
@@ -41,4 +45,5 @@ intget_usage_flags()
 The attachment's usage flags, which determine what can be done with it.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

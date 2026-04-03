@@ -1,6 +1,7 @@
 # Inspector plugins in English
 
 # Inspector plugins
+
 The inspector dock allows you to create custom widgets to edit properties
 through plugins. This can be beneficial when working with custom datatypes and
 resources, although you can use the feature to change the inspector widgets for
@@ -12,6 +13,7 @@ between 0 and 99.
 The default behavior on the left and the end result on the right.
 
 ## Setting up your plugin
+
 Create a new empty plugin to get started.
 See also
 SeeMaking pluginsguide to set up your new plugin.
@@ -26,6 +28,7 @@ you should remove the instance you have added by callingremove_inspector_plugin(
 Note
 Here, you are loading a script and not a packed scene. Therefore you
 should usenew()instead ofinstantiate().
+
 ```
 # plugin.gd
 @tool
@@ -40,6 +43,7 @@ func _enter_tree():
 func _exit_tree():
     remove_inspector_plugin(plugin)
 ```
+
 ```
 // Plugin.cs
 #if TOOLS
@@ -65,6 +69,7 @@ public partial class Plugin : EditorPlugin
 ```
 
 ## Interacting with the inspector
+
 To interact with the inspector dock, yourmy_inspector_plugin.gdscript must
 extend theEditorInspectorPluginclass. This class provides several
 virtual methods that affect how the inspector handles properties.
@@ -79,6 +84,7 @@ They can add controls at the top or bottom of the inspector layout by callingadd
 As the editor parses the object, it calls the_parse_category()and_parse_property()methods. There, in addition toadd_custom_control(),
 you can call bothadd_property_editor()andadd_property_editor_for_multiple_properties(). Use these last two methods to
 specifically addEditorProperty-based controls.
+
 ```
 # my_inspector_plugin.gd
 extends EditorInspectorPlugin
@@ -101,6 +107,7 @@ func _parse_property(object, type, name, hint_type, hint_string, usage_flags, wi
     else:
         return false
 ```
+
 ```
 // MyInspectorPlugin.cs
 #if TOOLS
@@ -136,9 +143,11 @@ public partial class MyInspectorPlugin : EditorInspectorPlugin
 ```
 
 ## Adding an interface to edit properties
+
 TheEditorPropertyclass is a special type ofControlthat can interact with the inspector dock's edited objects. It doesn't display
 anything but can house any other control nodes, including complex scenes.
 There are three essential parts to the script extendingEditorProperty:
+
 - You must define the_init()method to set up the control nodes'
 structure.
 You must define the_init()method to set up the control nodes'
@@ -152,6 +161,7 @@ control has changed the property usingemit_changed.
 A signal must be emitted at some point to inform the inspector that the
 control has changed the property usingemit_changed.
 You can display your custom widget in two ways. Use just the defaultadd_child()method to display it to the right of the property name, and useadd_child()followed byset_bottom_editor()to position it below the name.
+
 ```
 # random_int_editor.gd
 extends EditorProperty
@@ -197,6 +207,7 @@ func _update_property():
 func refresh_control_text():
     property_control.text = "Value: " + str(current_value)
 ```
+
 ```
 // RandomIntEditor.cs
 #if TOOLS
@@ -259,8 +270,10 @@ public partial class RandomIntEditor : EditorProperty
 }
 #endif
 ```
+
 Using the example code above you should be able to make a custom widget that
 replaces the defaultSpinBoxcontrol for integers with aButtonthat generates random values.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,10 +1,12 @@
 # EditorSpinSlider in English
 
 # EditorSpinSlider
+
 Inherits:Range<Control<CanvasItem<Node<Object
 Godot editor's control for editing numeric values.
 
 ## Description
+
 ThisControlnode is used in the editor's Inspector dock to allow editing of numeric values. Can be used withEditorInspectorPluginto recreate the same behavior.
 If theRange.stepvalue is1, theEditorSpinSliderwill display up/down arrows, similar toSpinBox. If theRange.stepvalue is not1, a slider will be displayed instead.
 
@@ -62,6 +64,7 @@ Texture2D
 updown_disabled
 
 ## Signals
+
 grabbed()🔗
 Emitted when the spinner/slider is grabbed.
 ungrabbed()🔗
@@ -74,6 +77,7 @@ value_focus_exited()🔗
 Emitted when the value form loses focus.
 
 ## Enumerations
+
 enumControlState:🔗
 ControlStateCONTROL_STATE_DEFAULT=0
 The type of control used will depend on the value ofediting_integer. Up-down arrows iftrue, a slider iffalse.
@@ -83,7 +87,9 @@ ControlStateCONTROL_STATE_HIDE=2
 Neither the up-down arrows nor the slider will be shown.
 
 ## Property Descriptions
+
 ControlStatecontrol_state=0🔗
+
 - voidset_control_state(value:ControlState)
 voidset_control_state(value:ControlState)
 - ControlStateget_control_state()
@@ -128,10 +134,12 @@ Stringget_suffix()
 The suffix to display after the value (in a faded color). This should generally be a plural word. You may have to use an abbreviation if the suffix is too long to be displayed.
 
 ## Theme Property Descriptions
+
 Texture2Dupdown🔗
 Single texture representing both the up and down buttons.
 Texture2Dupdown_disabled🔗
 Single texture representing both the up and down buttons, when the control is readonly or disabled.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

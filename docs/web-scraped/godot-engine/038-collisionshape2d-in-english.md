@@ -1,13 +1,16 @@
 # CollisionShape2D in English
 
 # CollisionShape2D
+
 Inherits:Node2D<CanvasItem<Node<Object
 A node that provides aShape2Dto aCollisionObject2Dparent.
 
 ## Description
+
 A node that provides aShape2Dto aCollisionObject2Dparent and allows it to be edited. This can give a detection shape to anArea2Dor turn aPhysicsBody2Dinto a solid object.
 
 ## Tutorials
+
 - Physics introduction
 Physics introduction
 - 2D Dodge The Creeps Demo
@@ -41,7 +44,9 @@ Shape2D
 shape
 
 ## Property Descriptions
+
 Colordebug_color=Color(0,0,0,0)🔗
+
 - voidset_debug_color(value:Color)
 voidset_debug_color(value:Color)
 - Colorget_debug_color()
@@ -75,4 +80,5 @@ Shape2Dget_shape()
 The actual shape owned by this collision shape.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,11 +1,14 @@
 # ZIPReader in English
 
 # ZIPReader
+
 Inherits:RefCounted<Object
 Allows reading the content of a ZIP file.
 
 ## Description
+
 This class implements a reader that can extract the content of individual files inside a ZIP archive. See alsoZIPPacker.
+
 ```
 # Read a single file from a ZIP archive.
 func read_zip_file():
@@ -67,6 +70,7 @@ PackedByteArray
 read_file(path:String, case_sensitive:bool= true)
 
 ## Method Descriptions
+
 Errorclose()🔗
 Closes the underlying resources used by this instance.
 boolfile_exists(path:String, case_sensitive:bool= true)🔗
@@ -84,4 +88,5 @@ Loads the whole content of a file in the loaded zip archive into memory and retu
 Must be called afteropen().
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

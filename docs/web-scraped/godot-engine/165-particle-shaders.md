@@ -1,6 +1,7 @@
 # Particle shaders
 
 # Particle shaders
+
 Particle shaders are a special type of shader that runs before the object is
 drawn. They are used for calculating material properties such as color,
 position, and rotation. They can be drawn with any regular material for CanvasItem
@@ -37,11 +38,13 @@ collision_use_scale
 Scale the particle's size for collisions.
 
 ## Built-ins
+
 Values marked asinare read-only. Values marked asoutcan optionally be written to and will
 not necessarily contain sensible values. Values marked asinoutprovide a sensible default
 value, and can optionally be written to. Samplers cannot be written to so they are not marked.
 
 ## Global built-ins
+
 Global built-ins are available everywhere, including custom functions.
 
 | Built-in | Description |
@@ -69,6 +72,7 @@ in floatE
 AnEconstant (2.718281). Euler's number, the base of the natural logarithm.
 
 ## Start and Process built-ins
+
 These properties can be accessed from both thestart()andprocess()functions.
 
 | Function | Description |
@@ -189,12 +193,14 @@ in vec3ATTRACTOR_FORCE
 A combined force of the attractors at the moment on that particle.
 
 ## Process functions
+
 emit_subparticle()is currently the only custom function supported by
 particle shaders. It allows users to add a new particle with specified
 parameters from a sub-emitter. The newly created particle will only use the
 properties that match theflagsparameter. For example, the
 following code will emit a particle with a specified position, velocity, and
 color, but unspecified rotation, scale, and custom value:
+
 ```
 mat4 custom_transform = mat4(1.0);
 custom_transform[3].xyz = vec3(10.5, 0.0, 4.0);
@@ -211,4 +217,5 @@ boolemit_subparticle(mat4 xform, vec3 velocity, vec4 color, vec4 custom, uint fl
 Emits a particle from a sub-emitter.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

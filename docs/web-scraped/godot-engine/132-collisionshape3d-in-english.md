@@ -1,14 +1,17 @@
 # CollisionShape3D in English
 
 # CollisionShape3D
+
 Inherits:Node3D<Node<Object
 A node that provides aShape3Dto aCollisionObject3Dparent.
 
 ## Description
+
 A node that provides aShape3Dto aCollisionObject3Dparent and allows it to be edited. This can give a detection shape to anArea3Dor turn aPhysicsBody3Dinto a solid object.
 Warning:A non-uniformly scaledCollisionShape3Dwill likely not behave as expected. Make sure to keep its scale the same on all axes and adjust itsshaperesource instead.
 
 ## Tutorials
+
 - Physics introduction
 Physics introduction
 - 3D Kinematic Character Demo
@@ -50,7 +53,9 @@ void
 resource_changed(resource:Resource)
 
 ## Property Descriptions
+
 Colordebug_color=Color(0,0,0,0)🔗
+
 - voidset_debug_color(value:Color)
 voidset_debug_color(value:Color)
 - Colorget_debug_color()
@@ -77,6 +82,7 @@ Shape3Dget_shape()
 The actual shape owned by this collision shape.
 
 ## Method Descriptions
+
 voidmake_convex_from_siblings()🔗
 Sets the collision shape's shape to the addition of all its convexedMeshInstance3Dsiblings geometry.
 voidresource_changed(resource:Resource)🔗
@@ -84,4 +90,5 @@ Deprecated:UseResource.changedinstead.
 This method does nothing.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

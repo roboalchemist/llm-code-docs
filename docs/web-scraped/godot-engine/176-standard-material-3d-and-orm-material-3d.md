@@ -3,6 +3,7 @@
 # Standard Material 3D and ORM Material 3D
 
 ## Introduction
+
 StandardMaterial3DandORMMaterial3D(Occlusion, Roughness, Metallic)
 are default 3D materials that aim to provide most of the features artists look
 for in a material, without the need for writing shader code. However, they can
@@ -22,6 +23,7 @@ TheMaterial Overlayproperty will render a materialoverthe current one being used
 the mesh. As an example, this can be used to put a transparent shield effect on a mesh.
 
 ## BaseMaterial 3D settings
+
 StandardMaterial3D has many settings that determine the look of a material. All of these are
 under the BaseMaterial3D category
 ORM materials are almost exactly the same with one difference. Instead of separate settings
@@ -31,10 +33,12 @@ and Armor Paint will give you the option to export in this format, for these two
 with the export preset for unreal engine, which also uses ORM textures.
 
 ## Transparency
+
 By default, materials in Godot are opaque. This is fast to render, but it means
 the material can't be seen through even if you use a transparent texture in theAlbedo > Textureproperty (or setAlbedo > Colorto a transparent color).
 To be able to see through a material, the material needs to be madetransparent.
 Godot offers several transparency modes:
+
 - Disabled:Material is opaque. This is the fastest to render, with all
 rendering features supported.
 Disabled:Material is opaque. This is the fastest to render, with all
@@ -129,6 +133,7 @@ Before using theAlphatransparency mode, always consider whether
 another transparency mode is more suited for your needs.
 
 ### Alpha Antialiasing
+
 Note
 This property is only visible when the transparency mode isAlpha ScissororAlpha Hash.
 While alpha scissor and alpha hash materials are faster to render than
@@ -138,6 +143,7 @@ techniquessuch as FXAA and TAA, this is not always
 desired as these techniques tend to make the final result look blurrier or
 exhibit ghosting artifacts.
 There are 3 alpha antialiasing modes available:
+
 - Disabled:No alpha antialiasing. Edges of transparent materials will
 appear aliased unless a post-processing-based antialiasing solution is used.
 Disabled:No alpha antialiasing. Edges of transparent materials will
@@ -175,8 +181,10 @@ which isn't very effective at smoothing out edges (although it can still
 help a little).
 
 ### Blend Mode
+
 Controls the blend mode for the material. Keep in mind that any mode
 other thanMixforces the object to go through the transparent pipeline.
+
 - Mix:Default blend mode, alpha controls how much the object is visible.
 Mix:Default blend mode, alpha controls how much the object is visible.
 - Add:The final color of the object is added to the color of the screen,
@@ -197,7 +205,9 @@ Premultiplied Alpha:The color of the object is expected to have already been
 multiplied by the alpha. This behaves likeAddwhen the alpha is0.0(fully transparent) and likeMixwhen the alpha is1.0(opaque).
 
 ### Cull Mode
+
 Determines which side of the object is not drawn when backfaces are rendered:
+
 - Back:The back of the object is culled when not visible (default).
 Back:The back of the object is culled when not visible (default).
 - Front:The front of the object is culled when not visible.
@@ -213,7 +223,9 @@ being culled by other faces. To resolve this, enableBackface Cullingin
 Blender's Materials tab, then export the scene to glTF again.
 
 ### Depth Draw Mode
+
 Specifies when depth rendering must take place.
+
 - Opaque Only (default):Depth is only drawn for opaque objects.
 Opaque Only (default):Depth is only drawn for opaque objects.
 - Always:Depth draw is drawn for both opaque and transparent objects.
@@ -230,6 +242,7 @@ with the opaque parts, then transparency is drawn above.
 Use this option with transparent grass or tree foliage.
 
 ### No Depth Test
+
 In order for close objects to appear over far away objects, depth testing
 is performed. Disabling it has the result of objects appearing over
 (or under) everything else.
@@ -238,6 +251,7 @@ and works very well with theRender Priorityproperty of Material
 (see the bottom of this page).
 
 ### Depth Test
+
 This can be used to invert the standard depth test. When set toInverted,
 the object will only appear when occluded, and will be hidden otherwise.
 This has no effect ifNo Depth Testis enabled.
@@ -245,6 +259,7 @@ This has no effect ifNo Depth Testis enabled.
 ## Shading
 
 ### Shading mode
+
 Materials support three shading modes:Per-Pixel,Per-Vertex, andUnshaded.
 ThePer-Pixelshading mode calculates lighting for each pixel, and is a good
 fit for most use cases. However, in some cases you may want to increase
@@ -266,8 +281,10 @@ performance is needed, it can also be used for particles, or low-end or
 mobile devices.
 
 ### Diffuse Mode
+
 Specifies the algorithm used by diffuse scattering of light when hitting
 the object. The default isBurley. Other modes are also available:
+
 - Burley:Default mode, the original Disney Principled PBS diffuse algorithm.
 Burley:Default mode, the original Disney Principled PBS diffuse algorithm.
 - Lambert:Is not affected by roughness.
@@ -288,8 +305,10 @@ ambient light settings or disable ambient light in the StandardMaterial3D
 to achieve a better effect.
 
 ### Specular Mode
+
 Specifies how the specular blob will be rendered. The specular blob
 represents the shape of a light source reflected in the object.
+
 - SchlickGGX:The most common blob used by PBR 3D engines nowadays.
 SchlickGGX:The most common blob used by PBR 3D engines nowadays.
 - Toon:Creates a toon blob, which changes size depending on roughness.
@@ -298,27 +317,34 @@ Toon:Creates a toon blob, which changes size depending on roughness.
 Disabled:Sometimes the blob gets in the way. Begone!
 
 ### Disable Ambient Light
+
 Makes the object not receive any kind of ambient lighting that would
 otherwise light it.
 
 ### Disable Fog
+
 Makes the object unaffected by depth-based or volumetric fog. This is useful for particles or other additively blended materials that would otherwise show the shape of the mesh (even in places where it would be invisible without the fog).
 
 ### Disable Specular Occlusion
+
 Makes the object not have its reflections reduced where they would usually be occluded.
 
 ## Vertex Color
+
 This setting allows choosing what is done by default to vertex colors that come
 from your 3D modeling application. By default, they are ignored.
 
 ### Use as Albedo
+
 Choosing this option means vertex color is used as albedo color.
 
 ### Is sRGB
+
 Most 3D modeling software will likely export vertex colors as sRGB, so toggling
 this option on will help them look correct.
 
 ## Albedo
+
 Albedois the base color for the material, on which all the other settings
 operate. When set toUnshaded, this is the only color that is visible. In
 previous versions of Godot, this channel was namedDiffuse. The change
@@ -330,6 +356,7 @@ object transparency. If you use a color or texture withalpha channel,
 make sure to either enable transparency oralpha scissoringfor it to work.
 
 ## Metallic
+
 Godot uses a metallic model over competing models due to its simplicity.
 This parameter defines how reflective the material is. The more reflective, the
 less diffuse/ambient light affects the material and the more light is reflected.
@@ -340,17 +367,20 @@ The minimum internal reflectivity is0.04, so it's impossible to make a
 material completely unreflective, just like in real life.
 
 ## Roughness
+
 Roughnessaffects the way reflection happens. A value of0makes it a
 perfect mirror while a value of1completely blurs the reflection (simulating
 natural microsurfacing). Most common types of materials can be achieved with
 the right combination ofMetallicandRoughness.
 
 ## Emission
+
 Emissionspecifies how much light is emitted by the material (keep in mind this
 does not include light surrounding geometry unlessVoxelGIorSDFGIare used). This value is added to the resulting
 final image and is not affected by other lighting in the scene.
 
 ## Normal map
+
 Normal mapping allows you to set a texture that represents finer shape detail.
 This does not modify geometry, only the incident angle for light. In Godot,
 only the red and green channels of normal maps are used for better compression
@@ -364,12 +394,14 @@ More information about normal maps (including a coordinate order table for
 popular engines) can be foundhere.
 
 ## Bent normal map
+
 This is only available in the Forward+ and Mobile renderers, not the Compatibility
 renderer.
 A bent normal map describes the average direction of ambient lighting. Unlike a
 regular normal map, this is used to improve how a material reacts to lighting
 rather than add surface detail.
 This is achieved in two ways:
+
 - Indirect diffuse lighting is made to match global illumination more closely.
 Indirect diffuse lighting is made to match global illumination more closely.
 - If specular occlusion is enabled, it is calculated using the bent normals and
@@ -403,6 +435,7 @@ A bent normal map is different from a regular normal map. The two are not
 interchangeable.
 
 ## Rim
+
 Some fabrics have small micro-fur that causes light to scatter around it. Godot
 emulates this with theRimparameter. Unlike other rim lighting implementations,
 which just use the emission channel, this one actually takes light into account
@@ -413,16 +446,19 @@ rim. IfTintis1, then the albedo of the material is used. Using
 intermediate values generally works best.
 
 ## Clearcoat
+
 TheClearcoatparameter is used to add a secondary pass of transparent coat
 to the material. This is common in car paint and toys. In practice, it's a
 smaller specular blob added on top of the existing material.
 
 ## Anisotropy
+
 This changes the shape of the specular blob and aligns it to tangent space.
 Anisotropy is commonly used with hair, or to make materials such as brushed
 aluminum more realistic. It works especially well when combined with flowmaps.
 
 ## Ambient Occlusion
+
 It is possible to specify a baked ambient occlusion map. This map affects how
 much ambient light reaches each surface of the object (it does not affect direct
 light by default). While it is possible to use Screen-Space Ambient Occlusion
@@ -430,6 +466,7 @@ light by default). While it is possible to use Screen-Space Ambient Occlusion
 AO map. It is recommended to bake ambient occlusion whenever possible.
 
 ## Height
+
 Setting a height map on a material produces a ray-marched search to emulate the
 proper displacement of cavities along the view direction. This only creates an
 illusion of depth, and does not add real geometry — for a height map shape used
@@ -439,6 +476,7 @@ textures. For best results,Heightshould be used together with normal
 mapping.
 
 ## Subsurface Scattering
+
 This is only available in the Forward+ renderer, not the Mobile or Compatibility
 renderers.
 This effect emulates light that penetrates an object's surface, is scattered,
@@ -446,11 +484,13 @@ and then comes out. It is useful to create realistic skin, marble, colored
 liquids, etc.
 
 ## Back Lighting
+
 This controls how much light from the lit side (visible to light) is transferred
 to the dark side (opposite from the light). This works well for thin objects
 such as plant leaves, grass, human ears, etc.
 
 ## Refraction
+
 When refraction is enabled, Godot attempts to fetch information from behind the
 object being rendered. This allows distorting the transparency in a way similar
 to refraction in real life.
@@ -467,6 +507,7 @@ Note
 Refraction is implemented as a screen-space effect and forces the material
 to be transparent. This makes the effect relatively fast, but this results
 in some limitations:
+
 - Transparency sortingissues may occur.
 Transparency sortingissues may occur.
 - The refractive material cannot refract onto itself, or onto other
@@ -485,6 +526,7 @@ Opaque materials in front of the refractive material will appear to have
 "refracted" edges, even though they shouldn't.
 
 ## Detail
+
 Godot allows using secondary albedo and normal maps to generate a detail
 texture, which can be blended in many ways. By combining this with secondary
 UV or triplanar modes, many interesting textures can be achieved.
@@ -494,6 +536,7 @@ blending takes place on a texture. White is for the detail textures, Black
 is for the regular material textures, different shades of gray are for
 partial blending of the material textures and detail textures.
 Blend Mode: These four modes control how the textures are blended together.
+
 - Mix: Combines pixel values of both textures. At black, only show the material texture,
 at white, only show the detail texture. Values of gray create a smooth blend between
 the two.
@@ -525,11 +568,13 @@ in this slot it will be interpreted as a flat normal map. This can still be used
 even if the material does not have normal map enabled.
 
 ## UV1 and UV2
+
 Godot supports two UV channels per material. Secondary UV is often useful for
 ambient occlusion or emission (baked light). UVs can be scaled and offset,
 which is useful when using repeating textures.
 
 ### Triplanar Mapping
+
 Triplanar mapping is supported for both UV1 and UV2. This is an alternative way
 to obtain texture coordinates, sometimes called "Autotexture". Textures are
 sampled in X, Y and Z and blended by the normal. Triplanar mapping can be
@@ -538,32 +583,39 @@ In the image below, you can see how all primitives share the same material with
 world triplanar, so the brick texture continues smoothly between them.
 
 ### World Triplanar
+
 When using triplanar mapping, it is computed in object local space. This
 option makes it use world space instead.
 
 ## Sampling
 
 ### Filter
+
 The filtering method for the textures used by the material. Seethis pagefor a full list of options and their description.
 
 ### Repeat
+
 if the textures used by the material repeat, and how they repeat. Seethis pagefor a full list of options and their description.
 
 ## Shadows
 
 ### Disable Receive Shadows
+
 Makes the object not receive any kind of shadow that would otherwise
 be cast onto it.
 
 ### Shadow to Opacity
+
 Lighting modifies the alpha so shadowed areas are opaque and non-shadowed
 areas are transparent. Useful for overlaying shadows onto a camera feed in AR.
 
 ## Billboard
 
 ### Billboard Mode
+
 Enables billboard mode for drawing materials. This controls how the object
 faces the camera:
+
 - Disabled:Billboard mode is disabled.
 Disabled:Billboard mode is disabled.
 - Enabled:Billboard mode is enabled. The object's -Z axis will always
@@ -579,9 +631,11 @@ specifyingflipbook animation.
 TheParticles Animsection is only visible when the billboard mode isParticle Billboard.
 
 ### Billboard Keep Scale
+
 Enables scaling a mesh in billboard mode.
 
 ## Grow
+
 Grows the object vertices in the direction pointed by their normals:
 This is commonly used to create cheap outlines. Add a second material pass,
 make it black and unshaded, reverse culling (Cull Front), and add some grow:
@@ -596,19 +650,23 @@ This can be used as an alternative to Grow for outlines.
 ## Transform
 
 ### Fixed Size
+
 This causes the object to be rendered at the same size no matter the distance.
 This is useful mostly for indicators (no depth test and high render priority)
 and some types of billboards.
 
 ### Use Point Size
+
 This option is only effective when the geometry rendered is made of points
 (generally it's made of triangles when imported from 3D modeling software). If
 so, then those points can be resized (see below).
 
 ### Point Size
+
 When drawing points, specify the point size in pixels.
 
 ### Use Particle Trails
+
 This is only available in the Forward+ and Mobile renderers, not the Compatibility
 renderer.
 If true, enables parts of the shader required for GPUParticles3D trails to function.
@@ -617,6 +675,7 @@ or TubeTrailMesh. Enabling this feature outside of materials used in GPUParticle
 meshes will break material rendering.
 
 ### Use Z Clip Scale
+
 Scales the object being rendered towards the camera to avoid clipping into things
 like walls. This is intended to be used for objects that are fixed with respect to
 the camera like player arms, tools, etc. Lighting and shadows will continue to work
@@ -625,6 +684,7 @@ may break with lower scales. Therefore, try to keep this setting as close to 1.0
 possible.
 
 ### Use FOV Override
+
 Overrides theCamera3D's field of view angle (in degrees).
 Note
 This behaves as if the field of view is set on aCamera3DwithCamera3D.keep_aspectset toCamera3D.KEEP_HEIGHT. Additionally, it may not
@@ -632,6 +692,7 @@ look correct on a non-perspective camera where the field of view setting is
 ignored.
 
 ## Proximity and Distance Fade
+
 Godot allows materials to fade by proximity to each other as well as depending
 on the distance from the viewer. Proximity fade is useful for effects such as
 soft particles or a mass of water with a smooth blending to the shores.
@@ -652,6 +713,7 @@ Object Dithermode: Like the previous mode, but the calculated transparency
 is the same across the entire object's surface.
 
 ## Stencil
+
 Since Godot 4.5, Godot allows materials to make use of the stencil buffer.
 This feature is commonly used to create outlines and X-ray effects,
 which can be useful to highlight objects, especially behind walls.
@@ -672,6 +734,7 @@ in every scenario, especially when intersections with opaque surfaces are involv
 ## Material Settings
 
 ## Render priority
+
 The rendering order of objects can be changed, although this is mostly
 useful for transparent objects (or opaque objects that perform depth draw
 but no color draw, such as cracks on the floor).
@@ -680,6 +743,7 @@ with higher priority being drawn later. Transparent objects are also sorted by d
 Depth testing overrules priority. Priority alone cannot force opaque objects to be drawn over each other.
 
 ## Next Pass
+
 Settingnext_passon a material
 will cause an object to be rendered again with that next material.
 Materials are sorted by an opaque/transparent queue, thenrender_priority,
@@ -688,4 +752,5 @@ Depth will test equal between both materials unless the grow setting or other ve
 Multiple transparent passes should userender_priorityto ensure correct ordering.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

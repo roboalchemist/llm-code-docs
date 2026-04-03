@@ -1,6 +1,7 @@
 # Designing the mob scene in English
 
 # Designing the mob scene
+
 In this part, you're going to code the monsters, which we'll call mobs. In the
 next lesson, we'll spawn them randomly around the playable area.
 Let's design the monsters themselves in a new scene. The node structure is going
@@ -27,6 +28,7 @@ shapes don't have to match the model exactly. It's the way the game feels when
 you test it that should dictate their form and size.
 
 ## Removing monsters off-screen
+
 We're going to spawn monsters at regular time intervals in the game level. If
 we're not careful, their count could increase to infinity, and we don't want
 that. Each mob instance has both a memory and a processing cost, and we don't
@@ -49,12 +51,14 @@ node will emit a signal.
 Resize it using the orange dots until it covers the entire 3D model.
 
 ### Coding the mob's movement
+
 Let's implement the monster's motion. We're going to do this in two steps.
 First, we'll write a script on theMobthat defines a function to initialize
 the monster. We'll then code the randomized spawn mechanism in themain.tscnscene
 and call the function from there.
 Attach a script to theMob.
 Here's the movement code to start with. We define two properties,min_speedandmax_speed, to define a random speed range, which we will later use to defineCharacterBody3D.velocity.
+
 ```
 extends CharacterBody3D
 
@@ -66,6 +70,7 @@ extends CharacterBody3D
 func _physics_process(_delta):
     move_and_slide()
 ```
+
 ```
 using Godot;
 
@@ -86,6 +91,7 @@ public partial class Mob : CharacterBody3D
     }
 }
 ```
+
 Similarly to the player, we move the mob every frame by calling the functionCharacterBody3D.move_and_slide(). This time, we don't update
 thevelocityevery frame; we want the monster to move at a constant speed
 and leave the screen, even if it were to hit an obstacle.
@@ -97,6 +103,7 @@ We position the mob atstart_positionand turn it towards the player using
 thelook_at_from_position()method, and randomize the angle by rotating a
 random amount around the Y axis. Below,randf_range()outputs a random value
 between-PI/4radians andPI/4radians.
+
 ```
 # This function will be called from the Main scene.
 func initialize(start_position, player_position):
@@ -107,6 +114,7 @@ func initialize(start_position, player_position):
     # so that it doesn't move directly towards the player.
     rotate_y(randf_range(-PI / 4, PI / 4))
 ```
+
 ```
 // This function will be called from the Main scene.
 public void Initialize(Vector3 startPosition, Vector3 playerPosition)
@@ -119,7 +127,9 @@ public void Initialize(Vector3 startPosition, Vector3 playerPosition)
     RotateY((float)GD.RandRange(-Mathf.Pi / 4.0, Mathf.Pi / 4.0));
 }
 ```
+
 We got a random position, now we need arandom_speed.randi_range()will be useful as it gives random int values, and we will usemin_speedandmax_speed.random_speedis just an integer, and we just use it to multiply ourCharacterBody3D.velocity. Afterrandom_speedis applied, we rotateCharacterBody3D.velocityVector3 towards the player.
+
 ```
 func initialize(start_position, player_position):
     # ...
@@ -132,6 +142,7 @@ func initialize(start_position, player_position):
     # in order to move in the direction the mob is looking.
     velocity = velocity.rotated(Vector3.UP, rotation.y)
 ```
+
 ```
 public void Initialize(Vector3 startPosition, Vector3 playerPosition)
 {
@@ -148,6 +159,7 @@ public void Initialize(Vector3 startPosition, Vector3 playerPosition)
 ```
 
 ### Leaving the screen
+
 We still have to destroy the mobs when they leave the screen. To do so, we'll
 connect ourVisibleOnScreenNotifier3Dnode'sscreen_exitedsignal to theMob.
 Head back to the 3D viewport by clicking on the3Dlabel at the top of the
@@ -156,10 +168,12 @@ Select theVisibleOnScreenNotifier3Dnode and on the right side of the interface,
 navigate to theSignalsdock. Double-click thescreen_exited()signal.
 Connect the signal to theMob
 This will add a new function for you in your mob script,_on_visible_on_screen_notifier_3d_screen_exited(). From it, call thequeue_free()method. This function destroys the instance it's called on.
+
 ```
 func _on_visible_on_screen_notifier_3d_screen_exited():
     queue_free()
 ```
+
 ```
 // We also specified this function name in PascalCase in the editor's connection window.
 private void OnVisibilityNotifierScreenExited()
@@ -167,9 +181,11 @@ private void OnVisibilityNotifierScreenExited()
     QueueFree();
 }
 ```
+
 Our monster is ready to enter the game! In the next part, you will spawn
 monsters in the game level.
 Here is the completemob.gdscript for reference.
+
 ```
 extends CharacterBody3D
 
@@ -201,6 +217,7 @@ func initialize(start_position, player_position):
 func _on_visible_on_screen_notifier_3d_screen_exited():
     queue_free()
 ```
+
 ```
 using Godot;
 
@@ -246,4 +263,5 @@ public partial class Mob : CharacterBody3D
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

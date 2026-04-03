@@ -1,15 +1,18 @@
 # Upgrading from Godot 4.2 to Godot 4.3 in English
 
 # Upgrading from Godot 4.2 to Godot 4.3
+
 For most games and apps made with 4.2 it should be relatively safe to migrate to 4.3.
 This page intends to cover everything you need to pay attention to when migrating
 your project.
 
 ## Breaking changes
+
 If you are migrating from 4.2 to 4.3, the breaking changes listed here might
 affect you. Changes are grouped by areas/systems.
 This article indicates whether each breaking change affects GDScript and whether
 the C# breaking change isbinary compatibleorsource compatible:
+
 - Binary compatible- Existing binaries will load and execute successfully without
 recompilation, and the runtime behavior won't change.
 Binary compatible- Existing binaries will load and execute successfully without
@@ -395,9 +398,11 @@ Type renamed toEditorSceneFormatImporterFBX2GLTF
 GH-81746
 
 ## Behavior changes
+
 In 4.3, some behavior changes have been introduced, which might require you to adjust your project.
 
 ### Core
+
 Note
 Binary serialization was modified to fix some issues with the serialization of scripted Objects and typed Arrays (GH-78219).
 This breaks compat with script encoding/decoding.
@@ -418,6 +423,7 @@ which meansVector2(1.2,3.4)is formatted using.as the decimal separator independe
 of the operating system that the program is running on.
 
 ### Animation
+
 Note
 AnimationMixerreplaced its Capture mode with a new Capture feature that works much better than the old one,
 this replaces the existing cache (GH-86715).
@@ -428,6 +434,7 @@ should also note that this method is now deprecated and will be replaced by a ne
 More information about the changes to Animation can be found in theMigrating Animations from Godot 4.0 to 4.3article.
 
 ### GUI nodes
+
 Note
 The default font outline color was changed from white to black (GH-54641).
 Note
@@ -437,6 +444,7 @@ from their parent. This means, existing nodes with theauto_translateproperty set
 are children of a node with theauto_translateproperty set tofalse.
 
 ### Multiplayer
+
 Note
 TheSceneMultiplayercaching protocol was changed to send the received ID instead of the Node path when sending a node removal confirmation packet (GH-90027).
 This is a breaking change for the high-level multiplayer protocol making it incompatible with previous Godot versions.
@@ -444,6 +452,7 @@ Upgrade both your server and client versions to Godot 4.3 to handle this change 
 Note that high-level multiplayer facilities are only ever meant to be compatible with server and client using the same Godot version. It is recommended to implement some kind of version checking.
 
 ### Rendering
+
 Note
 Decals now convert the modulate color from an sRGB color to a linear color, like all other inputs, to ensure proper
 blending (GH-89849). Existing projects that were using the decal's modulate property will notice a change in
@@ -453,14 +462,17 @@ The reverse Z depth buffer technique is now implemented. This may break compatib
 Read theIntroducing Reverse Z (AKA I'm sorry for breaking your shader)article for more information and guidance on how to fix common scenarios.
 
 ### TileMap
+
 Note
 TileMaplayers were moved to individual nodes (GH-87379andGH-89179).
 
 ### Android
+
 Note
 Android permissions are no longer requested automatically because it goes against the recommended best practices (GH-87080).
 Use therequest_permissionmethod inOSand theon_request_permissions_resultsignal onMainLoopto request
 permissions and wait for the user response.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

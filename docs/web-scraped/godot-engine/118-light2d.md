@@ -1,14 +1,17 @@
 # Light2D
 
 # Light2D
+
 Inherits:Node2D<CanvasItem<Node<Object
 Inherited By:DirectionalLight2D,PointLight2D
 Casts light in a 2D environment.
 
 ## Description
+
 Casts light in a 2D environment. A light is defined as a color, an energy value, a mode (see constants), and various other parameters (range and shadows-related).
 
 ## Tutorials
+
 - 2D lights and shadows
 2D lights and shadows
 
@@ -75,6 +78,7 @@ void
 set_height(height:float)
 
 ## Enumerations
+
 enumShadowFilter:🔗
 ShadowFilterSHADOW_FILTER_NONE=0
 No filter applies to the shadow map. This provides hard shadow edges and is the fastest to render. Seeshadow_filter.
@@ -91,7 +95,9 @@ BlendModeBLEND_MODE_MIX=2
 Mix the value of pixels corresponding to the Light2D to the values of pixels under it by linear interpolation.
 
 ## Property Descriptions
+
 BlendModeblend_mode=0🔗
+
 - voidset_blend_mode(value:BlendMode)
 voidset_blend_mode(value:BlendMode)
 - BlendModeget_blend_mode()
@@ -184,10 +190,12 @@ intget_item_shadow_cull_mask()
 The shadow mask. Used withLightOccluder2Dto cast shadows. Only occluders with a matchingCanvasItem.light_maskwill cast shadows. See alsorange_item_cull_mask, which affects which objects canreceivethe light.
 
 ## Method Descriptions
+
 floatget_height()const🔗
 Returns the light's height, which is used in 2D normal mapping. SeePointLight2D.heightandDirectionalLight2D.height.
 voidset_height(height:float)🔗
 Sets the light's height, which is used in 2D normal mapping. SeePointLight2D.heightandDirectionalLight2D.height.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,11 +1,13 @@
 # DPITexture in English
 
 # DPITexture
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:Texture2D<Texture<Resource<RefCounted<Object
 An automatically scalableTexture2Dbased on an SVG image.
 
 ## Description
+
 An automatically scalableTexture2Dbased on an SVG image.DPITextures are used to automatically re-rasterize icons and other texture based UI theme elements to match viewport scale and font oversampling. See alsoProjectSettings.display/window/stretch/mode("canvas_items" mode) andViewport.oversampling_override.
 
 ## Properties
@@ -46,7 +48,9 @@ void
 set_source(source:String)
 
 ## Property Descriptions
+
 floatbase_scale=1.0🔗
+
 - voidset_base_scale(value:float)
 voidset_base_scale(value:float)
 - floatget_base_scale()
@@ -66,6 +70,7 @@ floatget_saturation()
 Overrides texture saturation.
 
 ## Method Descriptions
+
 DPITexturecreate_from_string(source:String, scale:float= 1.0, saturation:float= 1.0, color_map:Dictionary= {})static🔗
 Creates a newDPITextureand initializes it by allocating and setting the SVG data tosource.
 RIDget_scaled_rid()const🔗
@@ -78,4 +83,5 @@ voidset_source(source:String)🔗
 Sets this SVG texture's source code.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

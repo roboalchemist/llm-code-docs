@@ -3,6 +3,7 @@
 # Using TileSets
 
 ## Introduction
+
 A tilemap is a grid of tiles used to create a game's layout. There are several
 benefits to usingTileMapLayernodes to design your
 levels. First, they let you draw a layout by "painting" tiles onto a grid,
@@ -21,6 +22,7 @@ rectangular, hexagonal, or isometric (pseudo-3D perspective).
 ## Creating a new TileSet
 
 ### Using a tilesheet
+
 This demonstration will use the following tiles taken fromKenney's "Abstract Platformer" pack.
 We'll use this particulartilesheetfrom the set:
 Tilesheet with 64×64 tiles. Credit:Kenney
@@ -64,6 +66,7 @@ tilesheets is recommended for better usability).
 You can adjust properties for the atlas in the middle column:
 Adjusting TileSet atlas properties in the dedicated inspector (part of the TileSet panel)
 The following properties can be adjusted on the atlas:
+
 - ID:The identifier (unique within this TileSet), used for sorting.
 ID:The identifier (unique within this TileSet), used for sorting.
 - Name:The human-readable name for the atlas. Use a descriptive name
@@ -103,6 +106,7 @@ three vertical dots menu button at the top of the TileSet editor and chooseCreat
 Recreating tiles automatically after changing atlas properties
 
 ### Using a collection of scenes
+
 You can also place actualscenesas tiles. This allows you to use
 any collection of nodes as a tile. For example, you could use scene tiles to
 place gameplay elements, such as shops the player may be able to interact with.
@@ -129,6 +133,7 @@ editor, you'll be able to select it from the scenes collection and paint it like
 any other tile.
 
 ## Merging several atlases into a single atlas
+
 Using multiple atlases within a single TileSet resource can sometimes be useful,
 but it can also be cumbersome in certain situations (especially if you're using
 one image per tile). Godot allows you to merge several atlases into a single
@@ -156,6 +161,7 @@ that when editing a TileMap, you can replace all cells by their
 corresponding mapped value.
 
 ## Adding collision, navigation and occlusion to the TileSet
+
 We've now successfully created a basic TileSet. We could start using it in the
 TileMapLayer node now, but it currently lacks any form of collision detection.
 This means the player and other objects could walk straight through the floor or
@@ -190,6 +196,7 @@ the TileSet editor is focused. If the keyboard shortcut doesn't work, try
 clicking in the empty area around the polygon editor to focus it:
 Using default rectangle collision shape by pressingF
 In this tile collision editor, you have access to all the 2D polygon editing tools:
+
 - Use the toolbar above the polygon to toggle between creating a new polygon,
 editing an existing polygon and removing points on the polygon. The "three vertical dots"
 menu button offers additional options, such as rotating and flipping the polygon.
@@ -218,6 +225,7 @@ or 45-degree slopes). To apply a similar collision shape to several tiles
 quickly, use functionality toassign properties to multiple tiles at once.
 
 ## Assigning custom metadata to the TileSet's tiles
+
 You can assign custom data on a per-tile basis usingcustom data layers.
 This can be useful to store information specific to your game, such as the damage
 that a tile should deal when the player touches it, or whether a tile can be
@@ -238,6 +246,7 @@ Tile property paintingcan also be used for custom data:
 Assigning custom data in the TileSet editor using tile property painting
 
 ## Creating terrain sets (autotiling)
+
 Note
 This functionality was implemented in a different form asautotilingin Godot 3.x.
 Terrains are essentially a more powerful replacement of autotiles. Unlike
@@ -287,10 +296,12 @@ Example full tilesheet for a sidescrolling game
 Example full tilesheet for a sidescrolling game with terrain peering bits visible
 
 ## Assigning properties to multiple tiles at once
+
 There are two ways to assign properties to multiple tiles at once.
 Depending on your use cases, one method may be faster than the other:
 
 ### Using multiple tile selection
+
 If you wish to configure various properties on several tiles at once,
 choose theSelectmode at the top of the TileSet editor:
 After doing this, you can select multiple tiles on the right column by holdingShiftthen clicking on tiles. You can also perform rectangle selection by
@@ -306,6 +317,7 @@ property's value on all tiles in the atlas after editing a property:
 Selecting multiple tiles using the Select mode, then applying properties
 
 ### Using tile property painting
+
 If you wish to apply a single property to several tiles at once,
 you can use theproperty paintingmode for this purpose.
 Configure a property to be painted in the middle column, then
@@ -317,6 +329,7 @@ time-consuming to set manually, such as collision shapes:
 Painting a collision polygon, then left-clicking tiles to apply it
 
 ## Creating alternative tiles
+
 Sometimes, you want to use a single tile image (found only once within the
 atlas), but configured in different ways. For example, you may want to use the
 same tile image, but rotated, flipped, or modulated with a different color. This
@@ -339,6 +352,7 @@ Configuring an alternative tile after clicking it in the TileSet editor
 After selecting an alternative tile, you can change any properties using the
 middle column like you would on a base tile. However, the list of exposed
 properties is different compared to base tiles:
+
 - Alternative ID:The unique numerical identifier for this alternative tile.
 Changing it will break existing TileMaps, so be careful! This ID also controls
 the sorting in the list of alternative tiles displayed in the editor.
@@ -392,4 +406,5 @@ are inherited. You must set properties again on the alternative tile if you
 wish those to be identical on the base tile and the alternative tile.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

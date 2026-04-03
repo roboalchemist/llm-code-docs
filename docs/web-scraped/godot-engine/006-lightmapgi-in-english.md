@@ -1,10 +1,12 @@
 # LightmapGI in English
 
 # LightmapGI
+
 Inherits:VisualInstance3D<Node3D<Node<Object
 Computes and stores baked lightmaps for fast global illumination.
 
 ## Description
+
 TheLightmapGInode is used to compute and store baked lightmaps. Lightmaps are used to provide high-quality indirect lighting with very little light leaking.LightmapGIcan also provide rough reflections using spherical harmonics ifdirectionalis enabled. Dynamic objects can receive indirect lighting thanks tolight probes, which can be automatically placed by settinggenerate_probes_subdivto a value other thanGENERATE_PROBES_DISABLED. Additional lightmap probes can also be added by creatingLightmapProbenodes. The downside is that lightmaps are fully static and cannot be baked in an exported project. Baking aLightmapGInode is also slower compared toVoxelGI.
 Procedural generation:Lightmap baking functionality is only available in the editor. This meansLightmapGIis not suited to procedurally generated or user-built levels. For procedurally generated or user-built levels, useVoxelGIor SDFGI instead (seeEnvironment.sdfgi_enabled).
 Performance:LightmapGIprovides the best possible run-time performance for global illumination. It is suitable for low-end hardware including integrated graphics and mobile devices.
@@ -14,6 +16,7 @@ Note:If no custom lightmappers are installed,LightmapGIcan only be baked from de
 Note:TheLightmapGInode only bakes light data for child nodes of its parent. Nodes further up the hierarchy of the scene will not be baked.
 
 ## Tutorials
+
 - Using Lightmap global illumination
 Using Lightmap global illumination
 
@@ -93,6 +96,7 @@ use_texture_for_bounces
 true
 
 ## Enumerations
+
 enumBakeQuality:🔗
 BakeQualityBAKE_QUALITY_LOW=0
 Low bake quality (fastest bake times). The quality of this preset can be adjusted by changingProjectSettings.rendering/lightmapping/bake_quality/low_quality_ray_countandProjectSettings.rendering/lightmapping/bake_quality/low_quality_probe_ray_count.
@@ -150,7 +154,9 @@ EnvironmentModeENVIRONMENT_MODE_CUSTOM_COLOR=3
 Useenvironment_custom_colormultiplied byenvironment_custom_energyas a constant source of environment lighting when baking lightmaps.
 
 ## Property Descriptions
+
 floatbias=0.0005🔗
+
 - voidset_bias(value:float)
 voidset_bias(value:float)
 - floatget_bias()
@@ -298,4 +304,5 @@ Iftrue, a texture with the lighting information will be generated to speed up th
 Note:use_texture_for_bouncesonly has an effect ifbouncesis set to a value greater than or equal to1.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

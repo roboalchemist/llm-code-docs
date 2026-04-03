@@ -1,10 +1,12 @@
 # MultiplayerSpawner in English
 
 # MultiplayerSpawner
+
 Inherits:Node<Object
 Automatically replicates spawnable nodes from the authority to other multiplayer peers.
 
 ## Description
+
 Spawnable scenes can be configured in the editor or through code (seeadd_spawnable_scene()).
 Also supports custom node spawns throughspawn(), callingspawn_functionon all peers.
 Internally,MultiplayerSpawnerusesMultiplayerAPI.object_configuration_add()to notify spawns passing the spawned node as theobjectand itself as theconfiguration, andMultiplayerAPI.object_configuration_remove()to notify despawns in a similar way.
@@ -43,13 +45,16 @@ Node
 spawn(data:Variant= null)
 
 ## Signals
+
 despawned(node:Node)🔗
 Emitted when a spawnable scene or custom spawn was despawned by the multiplayer authority. Only called on remote peers.
 spawned(node:Node)🔗
 Emitted when a spawnable scene or custom spawn was spawned by the multiplayer authority. Only called on remote peers.
 
 ## Property Descriptions
+
 Callablespawn_function🔗
+
 - voidset_spawn_function(value:Callable)
 voidset_spawn_function(value:Callable)
 - Callableget_spawn_function()
@@ -71,6 +76,7 @@ NodePathget_spawn_path()
 Path to the spawn root. Spawnable scenes that are added as direct children are replicated to other peers.
 
 ## Method Descriptions
+
 voidadd_spawnable_scene(path:String)🔗
 Adds a scene path to spawnable scenes, making it automatically replicated from the multiplayer authority to other peers when added as children of the node pointed byspawn_path.
 voidclear_spawnable_scenes()🔗
@@ -84,4 +90,5 @@ Requests a custom spawn, withdatapassed tospawn_functionon all peers. Returns th
 Note:Spawnable scenes are spawned automatically.spawn()is only needed for custom spawns.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

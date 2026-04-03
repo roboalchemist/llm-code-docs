@@ -1,14 +1,17 @@
 # Vector3i in English
 
 # Vector3i
+
 A 3D vector using integer coordinates.
 
 ## Description
+
 A 3-element structure that can be used to represent 3D grid coordinates or any other triplet of integers.
 It uses integer coordinates and is therefore preferable toVector3when exact precision is required. Note that the values are limited to 32 bits, and unlikeVector3this cannot be configured with an engine build option. UseintorPackedInt64Arrayif 64-bit values are needed.
 Note:In a boolean context, a Vector3i will evaluate tofalseif it's equal toVector3i(0,0,0). Otherwise, a Vector3i will always evaluate totrue.
 
 ## Tutorials
+
 - Math documentation index
 Math documentation index
 - Vector math
@@ -121,7 +124,7 @@ operator %(right:int)
 Vector3i
 operator *(right:Vector3i)
 Vector3
-operator *(right:float)
+operator*(right:float)
 Vector3i
 operator *(right:int)
 Vector3i
@@ -151,6 +154,7 @@ Vector3i
 operator unary-()
 
 ## Enumerations
+
 enumAxis:🔗
 AxisAXIS_X=0
 Enumerated value for the X axis. Returned bymax_axis_index()andmin_axis_index().
@@ -160,6 +164,7 @@ AxisAXIS_Z=2
 Enumerated value for the Z axis. Returned bymax_axis_index()andmin_axis_index().
 
 ## Constants
+
 ZERO=Vector3i(0,0,0)🔗
 Zero vector, a vector with all components set to0.
 ONE=Vector3i(1,1,1)🔗
@@ -182,6 +187,7 @@ BACK=Vector3i(0,0,1)🔗
 Back unit vector. Represents the local direction of back, and the global direction of south.
 
 ## Property Descriptions
+
 intx=0🔗
 The vector's X component. Also accessible by using the index position[0].
 inty=0🔗
@@ -190,6 +196,7 @@ intz=0🔗
 The vector's Z component. Also accessible by using the index position[2].
 
 ## Constructor Descriptions
+
 Vector3iVector3i()🔗
 Constructs a default-initializedVector3iwith all components set to0.
 Vector3iVector3i(from:Vector3i)
@@ -200,6 +207,7 @@ Vector3iVector3i(x:int, y:int, z:int)
 Returns aVector3iwith the given components.
 
 ## Method Descriptions
+
 Vector3iabs()const🔗
 Returns a new vector with all components in absolute values (i.e. positive).
 Vector3iclamp(min:Vector3i, max:Vector3i)const🔗
@@ -236,50 +244,67 @@ Vector3isnappedi(step:int)const🔗
 Returns a new vector with each component snapped to the closest multiple ofstep.
 
 ## Operator Descriptions
+
 booloperator !=(right:Vector3i)🔗
 Returnstrueif the vectors are not equal.
 Vector3ioperator %(right:Vector3i)🔗
 Gets the remainder of each component of theVector3iwith the components of the givenVector3i. This operation uses truncated division, which is often not desired as it does not work well with negative numbers. Consider using@GlobalScope.posmod()instead if you want to handle negative numbers.
+
 ```
 print(Vector3i(10, -20, 30) % Vector3i(7, 8, 9)) # Prints (3, -4, 3)
 ```
+
 Vector3ioperator %(right:int)🔗
 Gets the remainder of each component of theVector3iwith the givenint. This operation uses truncated division, which is often not desired as it does not work well with negative numbers. Consider using@GlobalScope.posmod()instead if you want to handle negative numbers.
+
 ```
 print(Vector3i(10, -20, 30) % 7) # Prints (3, -6, 2)
 ```
+
 Vector3ioperator *(right:Vector3i)🔗
 Multiplies each component of theVector3iby the components of the givenVector3i.
+
 ```
 print(Vector3i(10, 20, 30) * Vector3i(3, 4, 5)) # Prints (30, 80, 150)
 ```
+
 Vector3operator *(right:float)🔗
 Multiplies each component of theVector3iby the givenfloat. Returns aVector3.
+
 ```
 print(Vector3i(10, 15, 20) * 0.9) # Prints (9.0, 13.5, 18.0)
 ```
+
 Vector3ioperator *(right:int)🔗
 Multiplies each component of theVector3iby the givenint.
 Vector3ioperator +(right:Vector3i)🔗
 Adds each component of theVector3iby the components of the givenVector3i.
+
 ```
 print(Vector3i(10, 20, 30) + Vector3i(3, 4, 5)) # Prints (13, 24, 35)
 ```
+
 Vector3ioperator -(right:Vector3i)🔗
 Subtracts each component of theVector3iby the components of the givenVector3i.
+
 ```
 print(Vector3i(10, 20, 30) - Vector3i(3, 4, 5)) # Prints (7, 16, 25)
 ```
+
 Vector3ioperator /(right:Vector3i)🔗
 Divides each component of theVector3iby the components of the givenVector3i.
+
 ```
 print(Vector3i(10, 20, 30) / Vector3i(2, 5, 3)) # Prints (5, 4, 10)
 ```
+
 Vector3operator /(right:float)🔗
 Divides each component of theVector3iby the givenfloat. Returns aVector3.
+
 ```
 print(Vector3i(1, 2, 3) / 2.5) # Prints (0.4, 0.8, 1.2)
 ```
+
 Vector3ioperator /(right:int)🔗
 Divides each component of theVector3iby the givenint.
 booloperator <(right:Vector3i)🔗
@@ -300,4 +325,5 @@ Vector3ioperator unary-()🔗
 Returns the negative value of theVector3i. This is the same as writingVector3i(-v.x,-v.y,-v.z). This operation flips the direction of the vector while keeping the same magnitude.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

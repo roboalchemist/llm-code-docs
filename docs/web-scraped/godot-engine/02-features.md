@@ -235,7 +235,7 @@ Godot supports exporting to:
 - Signal system for events
 - Built-in documentation strings
 
-#### C#
+#### C #
 
 - Full .NET language support
 - Access to .NET libraries

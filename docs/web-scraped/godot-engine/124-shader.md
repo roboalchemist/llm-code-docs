@@ -1,15 +1,18 @@
 # Shader
 
 # Shader
+
 Inherits:Resource<RefCounted<Object
 Inherited By:VisualShader
 A shader implemented in the Godot shading language.
 
 ## Description
+
 A custom shader program implemented in the Godot shading language, saved with the.gdshaderextension.
 This class is used by aShaderMaterialand allows you to write your own custom behavior for rendering visual items or updating particle information. For a detailed explanation and usage, please see the tutorials linked below.
 
 ## Tutorials
+
 - Shaders documentation index
 Shaders documentation index
 
@@ -41,6 +44,7 @@ void
 set_default_texture_parameter(name:StringName, texture:Texture, index:int= 0)
 
 ## Enumerations
+
 enumMode:🔗
 ModeMODE_SPATIAL=0
 Mode used to draw all 3D objects.
@@ -54,7 +58,9 @@ ModeMODE_FOG=4
 Mode used for setting the color and density of volumetric fog effect.
 
 ## Property Descriptions
+
 Stringcode=""🔗
+
 - voidset_code(value:String)
 voidset_code(value:String)
 - Stringget_code()
@@ -62,6 +68,7 @@ Stringget_code()
 Returns the shader's code as the user has written it, not the full generated code used internally.
 
 ## Method Descriptions
+
 Textureget_default_texture_parameter(name:StringName, index:int= 0)const🔗
 Returns the texture that is set as default for the specified parameter.
 Note:namemust match the name of the uniform in the code exactly.
@@ -79,4 +86,5 @@ Note:namemust match the name of the uniform in the code exactly.
 Note:If the sampler array is used useindexto access the specified texture.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

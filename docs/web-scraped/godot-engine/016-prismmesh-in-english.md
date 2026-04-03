@@ -1,10 +1,12 @@
 # PrismMesh in English
 
 # PrismMesh
+
 Inherits:PrimitiveMesh<Mesh<Resource<RefCounted<Object
 Class representing a prism-shapedPrimitiveMesh.
 
 ## Description
+
 Class representing a prism-shapedPrimitiveMesh.
 
 ## Properties
@@ -26,7 +28,9 @@ subdivide_height
 subdivide_width
 
 ## Property Descriptions
+
 floatleft_to_right=0.5🔗
+
 - voidset_left_to_right(value:float)
 voidset_left_to_right(value:float)
 - floatget_left_to_right()
@@ -58,4 +62,5 @@ intget_subdivide_width()
 Number of added edge loops along the X axis.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

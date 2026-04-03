@@ -1,13 +1,16 @@
 # Shortcut in English
 
 # Shortcut
+
 Inherits:Resource<RefCounted<Object
 A shortcut for binding input.
 
 ## Description
+
 Shortcuts (also known as hotkeys) are containers ofInputEventresources. They are commonly used to interact with aControlelement from anInputEvent.
 One shortcut can contain multipleInputEventresources, making it possible to trigger one action with multiple different inputs.
 Example:Capture theCtrl+Sshortcut using aShortcutresource:
+
 ```
 extends Node
 
@@ -24,6 +27,7 @@ func _input(event):
         print("Save shortcut pressed!")
         get_viewport().set_input_as_handled()
 ```
+
 ```
 using Godot;
 
@@ -78,7 +82,9 @@ bool
 matches_event(event:InputEvent)const
 
 ## Property Descriptions
+
 Arrayevents=[]🔗
+
 - voidset_events(value:Array)
 voidset_events(value:Array)
 - Arrayget_events()
@@ -87,6 +93,7 @@ The shortcut'sInputEventarray.
 Generally theInputEventused is anInputEventKey, though it can be anyInputEvent, including anInputEventAction.
 
 ## Method Descriptions
+
 Stringget_as_text()const🔗
 Returns the shortcut's first validInputEventas aString.
 boolhas_valid_event()const🔗
@@ -95,4 +102,5 @@ boolmatches_event(event:InputEvent)const🔗
 Returns whether anyInputEventineventsequalsevent. This usesInputEvent.is_match()to compare events.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

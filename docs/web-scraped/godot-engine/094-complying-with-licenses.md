@@ -1,11 +1,13 @@
 # Complying with licenses
 
 # Complying with licenses
+
 Warning
 The recommendations in this pageare not legal advice.They are provided
 in good faith to help users navigate license attribution requirements.
 
 ## What are licenses?
+
 Godot is created and distributed under theMIT License.
 It doesn't have a sole owner, as every contributor that submits code to
 the project does it under this same license and keeps ownership of their
@@ -24,9 +26,11 @@ This includes free assets, which often come with licenses that require
 attribution.
 
 ## Requirements
+
 In the case of the MIT license, the only requirement is to include the license
 text somewhere in your game or derivative project.
 This text reads as follows:
+
 ```
 This game uses Godot Engine, available under the following license:
 
@@ -51,6 +55,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
 Beside its own MIT license, Godot includes code from a number of third-party
 libraries. SeeThird-party licensesfor details.
 Note
@@ -59,37 +64,45 @@ your Godot projects under any license and to create commercial games with
 the engine.
 
 ## Inclusion
+
 The license text must be made available to the user. The license doesn't specify
 how the text has to be included, but here are the most common approaches (you
 only need to implement one of them, not all).
 
 ### Credits screen
+
 Include the above license text somewhere in the credits screen. It can be at the
 bottom after showing the rest of the credits. Most large studios use this
 approach with open source licenses.
 
 ### Licenses screen
+
 Some games have a special menu (often in the settings) to display licenses.
 This menu is typically accessed with a button calledThird-party LicensesorOpen Source Licenses.
 
 ### Output log
+
 Printing the license text using theprint()function may be enough on platforms where a global output log is readable.
 This is the case on desktop platforms, Android and HTML5 (but not iOS).
 
 ### Accompanying file
+
 If the game is distributed on desktop platforms, a file containing the license
 text can be added to the software that is installed to the user PC.
 
 ### Printed manual
+
 If the game includes a printed manual, the license text can be included there.
 
 ### Link to the license
+
 The Godot Engine developers consider that a link togodotengine.org/licensein your game documentation or credits would be an acceptable way to satisfy
 the license terms.
 Godot provides several methods to get license information in theEnginesingleton. This allows you to source the
 license information directly from the engine binary, which prevents the
 information from becoming outdated if you update engine versions.
 For the engine itself:
+
 - Engine.get_license_text
 Engine.get_license_text
 For third-party components used by the engine:
@@ -99,6 +112,7 @@ Engine.get_license_info
 Engine.get_copyright_info
 
 ## Third-party licenses
+
 Godot itself contains software written bythird parties,
 which is compatible with, but not covered by Godot's MIT license.
 Many of these dependencies are distributed under permissive open source licenses

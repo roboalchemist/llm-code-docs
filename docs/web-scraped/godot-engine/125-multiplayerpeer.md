@@ -1,16 +1,19 @@
 # MultiplayerPeer
 
 # MultiplayerPeer
+
 Inherits:PacketPeer<RefCounted<Object
 Inherited By:ENetMultiplayerPeer,MultiplayerPeerExtension,OfflineMultiplayerPeer,WebRTCMultiplayerPeer,WebSocketMultiplayerPeer
 Abstract class for specializedPacketPeers used by theMultiplayerAPI.
 
 ## Description
+
 Manages the connection with one or more remote peers acting as server or client and assigning unique IDs to each of them. See alsoMultiplayerAPI.
 Note:TheMultiplayerAPIprotocol is an implementation detail and isn't meant to be used by non-Godot servers. It may change without notice.
 Note:When exporting to Android, make sure to enable theINTERNETpermission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
 
 ## Tutorials
+
 - High-level multiplayer
 High-level multiplayer
 
@@ -63,12 +66,14 @@ void
 set_target_peer(id:int)
 
 ## Signals
+
 peer_connected(id:int)🔗
 Emitted when a remote peer connects.
 peer_disconnected(id:int)🔗
 Emitted when a remote peer has disconnected.
 
 ## Enumerations
+
 enumConnectionStatus:🔗
 ConnectionStatusCONNECTION_DISCONNECTED=0
 The MultiplayerPeer is disconnected.
@@ -85,13 +90,16 @@ TransferModeTRANSFER_MODE_RELIABLE=2
 Packets must be received and resend attempts should be made until the packets are acknowledged. Packets must be received in the order they were sent in. Most reliable transfer mode, but potentially the slowest due to the overhead. Use for critical data that must be transmitted and arrive in order, for example an ability being triggered or a chat message. Consider carefully if the information really is critical, and use sparingly.
 
 ## Constants
+
 TARGET_PEER_BROADCAST=0🔗
 Packets are sent to all connected peers.
 TARGET_PEER_SERVER=1🔗
 Packets are sent to the remote peer acting as server.
 
 ## Property Descriptions
+
 boolrefuse_new_connections=false🔗
+
 - voidset_refuse_new_connections(value:bool)
 voidset_refuse_new_connections(value:bool)
 - boolis_refusing_new_connections()
@@ -112,6 +120,7 @@ TransferModeget_transfer_mode()
 The manner in which to send packets to the target peer. See theset_target_peer()method.
 
 ## Method Descriptions
+
 voidclose()🔗
 Immediately close the multiplayer peer returning to the stateCONNECTION_DISCONNECTED. Connected peers will be dropped without emittingpeer_disconnected.
 voiddisconnect_peer(peer:int, force:bool= false)🔗
@@ -137,4 +146,5 @@ Sets the peer to which packets will be sent.
 Theidcan be one of:TARGET_PEER_BROADCASTto send to all connected peers,TARGET_PEER_SERVERto send to the peer acting as server, a valid peer ID to send to that specific peer, a negative peer ID to send to all peers except that one. By default, the target peer isTARGET_PEER_BROADCAST.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

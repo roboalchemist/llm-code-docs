@@ -3,6 +3,7 @@
 # Using 3D transforms
 
 ## Introduction
+
 If you have never made 3D games before, working with rotations in three dimensions can be confusing at first.
 Coming from 2D, the natural way of thinking is along the lines of"Oh, it's just like rotating in 2D, except now rotations happen in X, Y and Z".
 At first, this seems easy. For simple games, this way of thinking may even be enough. Unfortunately, it's often incorrect.
@@ -13,9 +14,11 @@ hat).
 The idea of this document is to explain why, as well as outlining best practices for dealing with transforms when programming 3D games.
 
 ## Problems of Euler angles
+
 While it may seem intuitive that each axis has a rotation, the truth is that it's just not practical.
 
 ### Axis order
+
 The main reason for this is that there isn't auniqueway to construct an orientation from the angles. There isn't a standard mathematical function that
 takes all the angles together and produces an actual 3D rotation. The only way an orientation can be produced from angles is to rotate the object angle
 by angle, in anarbitrary order.
@@ -30,24 +33,29 @@ If we were to apply rotation in theXaxis first, and then inY, the effect would b
 Depending on the type of game or effect desired, the order in which you want axis rotations to be applied may differ. Therefore, applying rotations in X, Y, and Z is not enough: you also need arotation order.
 
 ### Interpolation
+
 Another problem with using Euler angles is interpolation. Imagine you want to transition between two different camera or enemy positions (including rotations). One logical way to approach this is to interpolate the angles from one position to the next. One would expect it to look like this:
 But this does not always have the expected effect when using angles:
 The camera actually rotated the opposite direction!
 There are a few reasons this may happen:
+
 - Rotations don't map linearly to orientation, so interpolating them does not always result in the shortest path (i.e., to go from270to0degrees is not the same as going from270to360, even though the angles are equivalent).
 Rotations don't map linearly to orientation, so interpolating them does not always result in the shortest path (i.e., to go from270to0degrees is not the same as going from270to360, even though the angles are equivalent).
 - Gimbal lock is at play (first and last rotated axis align, so a degree of freedom is lost). SeeWikipedia's page on Gimbal Lockfor a detailed explanation of this problem.
 Gimbal lock is at play (first and last rotated axis align, so a degree of freedom is lost). SeeWikipedia's page on Gimbal Lockfor a detailed explanation of this problem.
 
 ### Say no to Euler angles
+
 The result of all this is that you shouldnot usetherotationproperty ofNode3Dnodes in Godot for games. It's there to be used mainly in the editor, for coherence with the 2D engine, and for simple rotations (generally just one axis, or even two in limited cases). As much as you may be tempted, don't use it.
 Instead, there is a better way to solve your rotation problems.
 
 ## Introducing transforms
+
 Godot uses theTransform3Ddatatype for orientations. EachNode3Dnode contains atransformproperty which is relative to the parent's transform, if the parent is a Node3D-derived type.
 It is also possible to access the world coordinate transform via theglobal_transformproperty.
 A transform has aBasis(transform.basis sub-property), which consists of threeVector3vectors. These are accessed via thetransform.basisproperty and can be accessed directly bytransform.basis.x,transform.basis.y, andtransform.basis.z. Each vector points in the direction its axis has been rotated, so they effectively describe the node's total rotation. The scale (as long as it's uniform) can also be inferred from the length of the axes. Abasiscan also be interpreted as a 3x3 matrix and used astransform.basis[x][y].
 A default basis (unmodified) is akin to:
+
 ```
 var basis = Basis()
 # Contains the following default values:
@@ -55,6 +63,7 @@ basis.x = Vector3(1, 0, 0) # Vector pointing along the X axis
 basis.y = Vector3(0, 1, 0) # Vector pointing along the Y axis
 basis.z = Vector3(0, 0, 1) # Vector pointing along the Z axis
 ```
+
 ```
 // Due to technical limitations on structs in C# the default
 // constructor will contain zero values for all fields.
@@ -71,6 +80,7 @@ GD.Print(identityBasis.Z); // prints: (0, 0, 1)
 var basis = new Basis(Vector3.Right, Vector3.Up, Vector3.Back);
 GD.Print(basis); // prints: ((1, 0, 0), (0, 1, 0), (0, 0, 1))
 ```
+
 This is also an analog of a 3x3 identity matrix.
 Following the OpenGL convention,Xis theRightaxis,Yis theUpaxis andZis theForwardaxis.
 Together with thebasis, a transform also has anorigin. This is aVector3specifying how far away from the actual origin(0,0,0)this transform is. Combining thebasiswith theorigin, atransformefficiently represents a unique translation, rotation, and scale in space.
@@ -79,8 +89,10 @@ The gizmo's arrows show theX,Y, andZaxes (in red, green, and blue respectively) 
 For more information on the mathematics of vectors and transforms, please read theVector mathtutorials.
 
 ### Manipulating transforms
+
 Of course, transforms are not as straightforward to manipulate as angles and have problems of their own.
 It is possible to rotate a transform, either by multiplying its basis by another (this is called accumulation), or by using the rotation methods.
+
 ```
 var axis = Vector3(1, 0, 0) # Or Vector3.RIGHT
 var rotation_amount = 0.1
@@ -89,6 +101,7 @@ transform.basis = Basis(axis, rotation_amount) * transform.basis
 # shortened
 transform.basis = transform.basis.rotated(axis, rotation_amount)
 ```
+
 ```
 Transform3D transform = Transform;
 Vector3 axis = new Vector3(1, 0, 0); // Or Vector3.Right
@@ -101,55 +114,70 @@ transform.Basis = transform.Basis.Rotated(axis, rotationAmount);
 
 Transform = transform;
 ```
+
 A method in Node3D simplifies this:
+
 ```
 # Rotate the transform around the X axis by 0.1 radians.
 rotate(Vector3(1, 0, 0), 0.1)
 # shortened
 rotate_x(0.1)
 ```
+
 ```
 // Rotate the transform around the X axis by 0.1 radians.
 Rotate(new Vector3(1, 0, 0), 0.1f);
 // shortened
 RotateX(0.1f);
 ```
+
 This rotates the node relative to the parent node.
 To rotate relative to object space (the node's own transform), use the following:
+
 ```
 # Rotate around the object's local X axis by 0.1 radians.
 rotate_object_local(Vector3(1, 0, 0), 0.1)
 ```
+
 ```
 // Rotate around the object's local X axis by 0.1 radians.
 RotateObjectLocal(new Vector3(1, 0, 0), 0.1f);
 ```
+
 The axis should be defined in the local coordinate system of the object. For example, to rotate around the object's local X, Y, or Z axes, useVector3.RIGHTfor the X-axis,Vector3.UPfor the Y-axis, andVector3.FORWARDfor the Z-axis.
 
 ### Precision errors
+
 Doing successive operations on transforms will result in a loss of precision due to floating-point error. This means the scale of each axis may no longer be exactly1.0, and they may not be exactly90degrees from each other.
 If a transform is rotated every frame, it will eventually start deforming over time. This is unavoidable.
 There are two different ways to handle this. The first is toorthonormalizethe transform after some time (maybe once per frame if you modify it every frame):
+
 ```
 transform = transform.orthonormalized()
 ```
+
 ```
 transform = transform.Orthonormalized();
 ```
+
 This will make all axes have1.0length again and be90degrees from each other. However, any scale applied to the transform will be lost.
 It is recommended you not scale nodes that are going to be manipulated; scale their children nodes instead (such as MeshInstance3D). If you absolutely must scale the node, then re-apply it at the end:
+
 ```
 transform = transform.orthonormalized()
 transform = transform.scaled(scale)
 ```
+
 ```
 transform = transform.Orthonormalized();
 transform = transform.Scaled(scale);
 ```
 
 ### Obtaining information
+
 You might be thinking at this point:"Ok, but how do I get angles from a transform?". The answer again is: you don't. You must do your best to stop thinking in angles.
 Imagine you need to shoot a bullet in the direction your player is facing. Just use the forward axis.
+
 ```
 # On RigidBody3D.
 
@@ -157,6 +185,7 @@ Imagine you need to shoot a bullet in the direction your player is facing. Just 
 bullet.transform = transform
 bullet.linear_velocity = -transform.basis.z * BULLET_SPEED
 ```
+
 ```
 // On RigidBody3D.
 
@@ -164,13 +193,16 @@ bullet.linear_velocity = -transform.basis.z * BULLET_SPEED
 bullet.Transform = Transform;
 bullet.LinearVelocity = -Transform.Basis.Z * BulletSpeed;
 ```
+
 Is the enemy looking at the player? Use the dot product for this (see theVector mathtutorial for an explanation of the dot product):
+
 ```
 # Get the direction vector from player to enemy
 var direction = enemy.transform.origin - player.transform.origin
 if direction.dot(enemy.transform.basis.z) > 0:
     enemy.im_watching_you(player)
 ```
+
 ```
 // Get the direction vector from player to enemy
 Vector3 direction = enemy.Transform.Origin - player.Transform.Origin;
@@ -179,7 +211,9 @@ if (direction.Dot(enemy.Transform.Basis.Z) > 0)
     enemy.ImWatchingYou(player);
 }
 ```
+
 Strafe left:
+
 ```
 # On CharacterBody3D.
 
@@ -189,6 +223,7 @@ if Input.is_action_pressed("strafe_left"):
 
 move_and_slide()
 ```
+
 ```
 // On CharacterBody3D.
 
@@ -200,7 +235,9 @@ if (Input.IsActionPressed("strafe_left"))
 
 MoveAndSlide();
 ```
+
 Jump:
+
 ```
 # On CharacterBody3D.
 
@@ -210,6 +247,7 @@ if Input.is_action_just_pressed("jump"):
 
 move_and_slide()
 ```
+
 ```
 // On CharacterBody3D.
 
@@ -221,12 +259,15 @@ if (Input.IsActionJustPressed("jump"))
 
 MoveAndSlide();
 ```
+
 All common behaviors and logic can be done with just vectors.
 
 ### Setting information
+
 There are, of course, cases where you want to set information to a transform. Imagine a first person controller or orbiting camera. Those are definitely done using angles, because youdo wantthe transforms to happen in a specific order.
 For such cases, keep the angles and rotationsoutsidethe transform and set them every frame. Don't try to retrieve and reuse them because the transform is not meant to be used this way.
 Example of looking around, FPS style:
+
 ```
 # accumulators
 var rot_x = 0
@@ -241,6 +282,7 @@ func _input(event):
         rotate_object_local(Vector3(0, 1, 0), rot_x) # first rotate in Y
         rotate_object_local(Vector3(1, 0, 0), rot_y) # then rotate in X
 ```
+
 ```
 // accumulators
 private float _rotationX = 0f;
@@ -264,11 +306,14 @@ public override void _Input(InputEvent @event)
     }
 }
 ```
+
 As you can see, in such cases it's even simpler to keep the rotation outside, then use the transform as thefinalorientation.
 
 ### Interpolating with quaternions
+
 Interpolating between two transforms can efficiently be done with quaternions. More information about how quaternions work can be found in other places around the Internet. For practical use, it's enough to understand that pretty much their main use is doing a closest path interpolation. As in, if you have two rotations, a quaternion will smoothly allow interpolation between them using the closest axis.
 Converting a rotation to quaternion is straightforward.
+
 ```
 # Convert basis to quaternion, keep in mind scale is lost
 var a = Quaternion(transform.basis)
@@ -278,6 +323,7 @@ var c = a.slerp(b,0.5) # find halfway point between a and b
 # Apply back
 transform.basis = Basis(c)
 ```
+
 ```
 // Convert basis to quaternion, keep in mind scale is lost
 var a = new Quaternion(transform.Basis);
@@ -287,6 +333,7 @@ var c = a.Slerp(b, 0.5f); // find halfway point between a and b
 // Apply back
 transform.Basis = new Basis(c);
 ```
+
 TheQuaterniontype reference has more information on the datatype (it
 can also do transform accumulation, transform points, etc., though this is used
 less often). If you interpolate or apply operations to quaternions many times,
@@ -295,8 +342,10 @@ suffer from numerical precision errors.
 Quaternions are useful when doing camera/path/etc. interpolations, as the result will always be correct and smooth.
 
 ## Transforms are your friend
+
 For most beginners, getting used to working with transforms can take some time. However, once you get used to them, you will appreciate their simplicity and power.
 Don't hesitate to ask for help on this topic in any of Godot'sonline communitiesand, once you become confident enough, please help others!
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

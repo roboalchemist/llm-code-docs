@@ -1,14 +1,17 @@
 # NavigationMesh in English
 
 # NavigationMesh
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:Resource<RefCounted<Object
 A navigation mesh that defines traversable areas and obstacles.
 
 ## Description
+
 A navigation mesh is a collection of polygons that define which areas of an environment are traversable to aid agents in pathfinding through complicated spaces.
 
 ## Tutorials
+
 - Using NavigationMeshes
 Using NavigationMeshes
 - 3D Navigation Demo
@@ -137,6 +140,7 @@ void
 set_vertices(vertices:PackedVector3Array)
 
 ## Enumerations
+
 enumSamplePartitionType:🔗
 SamplePartitionTypeSAMPLE_PARTITION_WATERSHED=0
 Watershed partitioning. Generally the best choice if you precompute the navigation mesh, use this if you have large open areas.
@@ -166,7 +170,9 @@ SourceGeometryModeSOURCE_GEOMETRY_MAX=3
 Represents the size of theSourceGeometryModeenum.
 
 ## Property Descriptions
+
 floatagent_height=1.5🔗
+
 - voidset_agent_height(value:float)
 voidset_agent_height(value:float)
 - floatget_agent_height()
@@ -323,6 +329,7 @@ floatget_vertices_per_polygon()
 The maximum number of vertices allowed for polygons generated during the contour to polygon conversion process.
 
 ## Method Descriptions
+
 voidadd_polygon(polygon:PackedInt32Array)🔗
 Adds a polygon using the indices of the vertices you get when callingget_vertices().
 voidclear()🔗
@@ -346,4 +353,5 @@ voidset_vertices(vertices:PackedVector3Array)🔗
 Sets the vertices that can be then indexed to create polygons with theadd_polygon()method.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

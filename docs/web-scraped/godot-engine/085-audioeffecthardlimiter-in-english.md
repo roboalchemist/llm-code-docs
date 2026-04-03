@@ -1,13 +1,16 @@
 # AudioEffectHardLimiter in English
 
 # AudioEffectHardLimiter
+
 Inherits:AudioEffect<Resource<RefCounted<Object
 Adds a hard limiter audio effect to an Audio bus.
 
 ## Description
+
 A limiter is an effect designed to disallow sound from going over a given dB threshold. Hard limiters predict volume peaks, and will smoothly apply gain reduction when a peak crosses the ceiling threshold to prevent clipping and distortion. It preserves the waveform and prevents it from crossing the ceiling threshold. Adding one in the Master bus is recommended as a safety measure to prevent sudden volume peaks from occurring, and to prevent distortion caused by clipping.
 
 ## Tutorials
+
 - Audio buses
 Audio buses
 
@@ -27,7 +30,9 @@ float
 release
 
 ## Property Descriptions
+
 floatceiling_db=-0.3🔗
+
 - voidset_ceiling_db(value:float)
 voidset_ceiling_db(value:float)
 - floatget_ceiling_db()
@@ -48,4 +53,5 @@ floatget_release()
 Time it takes in seconds for the gain reduction to fully release.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

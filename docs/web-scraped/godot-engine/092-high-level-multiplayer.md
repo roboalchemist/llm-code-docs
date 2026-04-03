@@ -3,10 +3,12 @@
 # High-level multiplayer
 
 ## High-level vs low-level API
+
 The following explains the differences of high- and low-level networking in Godot as well as some fundamentals. If you want to jump in head-first and add networking to your first nodes, skip toInitializing the networkbelow. But make sure to read the rest later on!
 Godot always supported standard low-level networking viaUDP,TCPand some higher-level protocols such asHTTPandSSL.
 These protocols are flexible and can be used for almost anything. However, using them to synchronize game state manually can be a large amount of work. Sometimes that work can't be avoided or is worth it, for example when working with a custom server implementation on the backend. But in most cases, it's worthwhile to consider Godot's high-level networking API, which sacrifices some of the fine-grained control of low-level networking for greater ease of use.
 This is due to the inherent limitations of the low-level protocols:
+
 - TCP ensures packets will always arrive reliably and in order, but latency is generally higher due to error correction.
 It's also quite a complex protocol because it understands what a "connection" is, and optimizes for goals that often don't suit applications like multiplayer games. Packets are buffered to be sent in larger batches, trading less per-packet overhead for higher latency. This can be useful for things like HTTP, but generally not for games. Some of this can be configured and disabled (e.g. by disabling "Nagle's algorithm" for the TCP connection).
 TCP ensures packets will always arrive reliably and in order, but latency is generally higher due to error correction.
@@ -42,6 +44,7 @@ You can of course experiment, but when you release a networked application,
 always take care of any possible security concerns.
 
 ## Mid-level abstraction
+
 Before going into how we would like to synchronize a game across the network, it can be helpful to understand how the base network API for synchronization works.
 Godot uses a mid-level objectMultiplayerPeer.
 This object is not meant to be created directly, but is designed so that several C++ implementations can provide it.
@@ -55,6 +58,7 @@ For most common cases, using this object directly is discouraged, as Godot provi
 This object is still made available in case a game has specific needs for a lower-level API.
 
 ## Hosting considerations
+
 When hosting a server, clients on yourLANcan
 connect using the internal IP address which is usually of the form192.168.*.*. This internal IP address isnotreachable by
 non-LAN/Internet clients.
@@ -75,6 +79,7 @@ Godot's high-level multiplayer API uses a modified version of ENet which allows
 for full IPv6 support.
 
 ## Initializing the network
+
 High-level networking in Godot is managed by theSceneTree.
 Each node has amultiplayerproperty, which is a reference to theMultiplayerAPIinstance configured for it
 by the scene tree. Initially, every node is configured with the same defaultMultiplayerAPIobject.
@@ -82,18 +87,22 @@ It is possible to create a newMultiplayerAPIobject and assign it to aNodePathin 
 which will overridemultiplayerfor the node at that path and all of its descendants.
 This allows sibling nodes to be configured with different peers, which makes it possible to run a server
 and a client simultaneously in one instance of Godot.
+
 ```
 # By default, these expressions are interchangeable.
 multiplayer # Get the MultiplayerAPI object configured for this node.
 get_tree().get_multiplayer() # Get the default MultiplayerAPI object.
 ```
+
 ```
 // By default, these expressions are interchangeable.
 Multiplayer; // Get the MultiplayerAPI object configured for this node.
 GetTree().GetMultiplayer(); // Get the default MultiplayerAPI object.
 ```
+
 To initialize networking, aMultiplayerPeerobject must be created, initialized as a server or client,
 and passed to theMultiplayerAPI.
+
 ```
 # Create client.
 var peer = ENetMultiplayerPeer.new()
@@ -105,6 +114,7 @@ var peer = ENetMultiplayerPeer.new()
 peer.create_server(PORT, MAX_CLIENTS)
 multiplayer.multiplayer_peer = peer
 ```
+
 ```
 // Create client.
 var peer = new ENetMultiplayerPeer();
@@ -116,21 +126,27 @@ var peer = new ENetMultiplayerPeer();
 peer.CreateServer(Port, MaxClients);
 Multiplayer.MultiplayerPeer = peer;
 ```
+
 To terminate networking:
+
 ```
 multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 ```
+
 ```
 Multiplayer.MultiplayerPeer = null;
 ```
+
 Warning
 When exporting to Android, make sure to enable theINTERNETpermission in the Android export preset before exporting the project or
 using one-click deploy. Otherwise, network communication of any kind will be
 blocked by Android.
 
 ## Managing connections
+
 Every peer is assigned a unique ID. The server's ID is always 1, and clients are assigned a random positive integer.
 Responding to connections or disconnections is possible by connecting toMultiplayerAPI's signals:
+
 - peer_connected(id:int)This signal is emitted with the newly connected peer's ID on each other peer, and on the new peer multiple times, once with each other peer's ID.
 peer_connected(id:int)This signal is emitted with the newly connected peer's ID on each other peer, and on the new peer multiple times, once with each other peer's ID.
 - peer_disconnected(id:int)This signal is emitted on every remaining peer when one disconnects.
@@ -143,24 +159,31 @@ connection_failed()
 - server_disconnected()
 server_disconnected()
 To get the unique ID of the associated peer:
+
 ```
 multiplayer.get_unique_id()
 ```
+
 ```
 Multiplayer.GetUniqueId();
 ```
+
 To check whether the peer is server or client:
+
 ```
 multiplayer.is_server()
 ```
+
 ```
 Multiplayer.IsServer();
 ```
 
 ## Remote procedure calls
+
 Remote procedure calls, or RPCs, are functions that can be called on other peers. To create one, use the@rpcannotation
 before a function definition. To call an RPC, useCallable's methodrpc()to call in every peer, orrpc_id()to
 call in a specific peer.
+
 ```
 func _ready():
     if multiplayer.is_server():
@@ -170,6 +193,7 @@ func _ready():
 func print_once_per_client():
     print("I will be printed to the console once per each connected client.")
 ```
+
 ```
 public override void _Ready()
 {
@@ -185,6 +209,7 @@ private void PrintOncePerClient()
     GD.Print("I will be printed to the console once per each connected client.");
 }
 ```
+
 RPCs will not serialize objects or callables.
 For a remote call to be successful, the sending and receiving node need to have the sameNodePath, which means they
 must have the same name. When usingadd_child()for nodes which are expected to use RPCs, set the argumentforce_readable_nametotrue.
@@ -204,14 +229,18 @@ error or cause unwanted behavior. The error message may be unrelated to the RPC 
 currently building and testing.
 See further explanation and troubleshooting onthis post.
 The annotation can take a number of arguments, which have default values.@rpcis equivalent to:
+
 ```
 @rpc("authority", "call_remote", "reliable", 0)
 ```
+
 ```
 [Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable, TransferChannel = 0)]
 ```
+
 The parameters and their functions are as follows:
 mode:
+
 - "authority": Only the multiplayer authority can call remotely.
 The authority is the server by default, but can be changed per-node usingNode.set_multiplayer_authority.
 "authority": Only the multiplayer authority can call remotely.
@@ -233,6 +262,7 @@ transfer_mode:
 transfer_channelis the channel index.
 The first 3 can be passed in any order, buttransfer_channelmust always be last.
 The functionmultiplayer.get_remote_sender_id()can be used to get the unique id of an rpc sender, when used within the function called by rpc.
+
 ```
 func _on_some_input(): # Connected to some input.
     transfer_some_input.rpc_id(1) # Send the input only to the server.
@@ -244,6 +274,7 @@ func transfer_some_input():
     var sender_id = multiplayer.get_remote_sender_id()
     # Process the input and affect game logic.
 ```
+
 ```
 private void OnSomeInput() // Connected to some input.
 {
@@ -261,6 +292,7 @@ private void TransferSomeInput()
 ```
 
 ## Channels
+
 Modern networking protocols support channels, which are separate connections within the connection. This allows for multiple
 streams of packets that do not interfere with each other.
 For example, game chat related messages and some of the core gameplay messages should all be sent reliably, but a gameplay
@@ -271,8 +303,10 @@ by using channels allows ordered transfer with little packet loss, and without t
 The default channel with index 0 is actually three different channels - one for each transfer mode.
 
 ## Example lobby implementation
+
 This is an example lobby that can handle peers joining and leaving, notify UI scenes through signals, and start the game after all clients
 have loaded the game scene.
+
 ```
 extends Node
 
@@ -372,6 +406,7 @@ func _on_server_disconnected():
     players.clear()
     server_disconnected.emit()
 ```
+
 ```
 using Godot;
 
@@ -521,7 +556,9 @@ public partial class Lobby : Node
     }
 }
 ```
+
 The game scene's root node should be named Game. In the script attached to it:
+
 ```
 extends Node3D # Or Node2D.
 
@@ -534,6 +571,7 @@ func _ready():
 func start_game():
     # All peers are ready to receive RPCs in this scene.
 ```
+
 ```
 using Godot;
 
@@ -555,6 +593,7 @@ public partial class Game : Node3D // Or Node2D.
 ```
 
 ## Exporting for dedicated servers
+
 Once you've made a multiplayer game, you may want to export it to run it on
 a dedicated server with no GPU available. SeeExporting for dedicated serversfor more information.
 Note
@@ -564,4 +603,5 @@ player. You'll also have to modify the game starting mechanism so that the
 first player who joins can start the game.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,10 +1,12 @@
 # CollisionPolygon3D in English
 
 # CollisionPolygon3D
+
 Inherits:Node3D<Node<Object
 A node that provides a thickened polygon shape (a prism) to aCollisionObject3Dparent.
 
 ## Description
+
 A node that provides a thickened polygon shape (a prism) to aCollisionObject3Dparent and allows it to be edited. The polygon can be concave or convex. This can give a detection shape to anArea3Dor turn aPhysicsBody3Dinto a solid object.
 Warning:A non-uniformly scaledCollisionShape3Dwill likely not behave as expected. Make sure to keep its scale the same on all axes and adjust its shape resource instead.
 
@@ -37,7 +39,9 @@ polygon
 PackedVector2Array()
 
 ## Property Descriptions
+
 Colordebug_color=Color(0,0,0,0)🔗
+
 - voidset_debug_color(value:Color)
 voidset_debug_color(value:Color)
 - Colorget_debug_color()
@@ -77,4 +81,5 @@ Array of vertices which define the 2D polygon in the local XY plane.
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedVector2Arrayfor more details.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

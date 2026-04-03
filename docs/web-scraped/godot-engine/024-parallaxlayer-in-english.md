@@ -1,11 +1,13 @@
 # ParallaxLayer in English
 
 # ParallaxLayer
+
 Deprecated:Use theParallax2Dnode instead.
 Inherits:Node2D<CanvasItem<Node<Object
 A parallax scrolling layer to be used withParallaxBackground.
 
 ## Description
+
 A ParallaxLayer must be the child of aParallaxBackgroundnode. Each ParallaxLayer can be set to move at different speeds relative to the camera movement or theParallaxBackground.scroll_offsetvalue.
 This node's children will be affected by its scroll offset.
 Note:Any changes to this node's position and scale made after it enters the scene will be ignored.
@@ -32,7 +34,9 @@ physics_interpolation_mode
 2(overridesNode)
 
 ## Property Descriptions
+
 Vector2motion_mirroring=Vector2(0,0)🔗
+
 - voidset_mirroring(value:Vector2)
 voidset_mirroring(value:Vector2)
 - Vector2get_mirroring()
@@ -55,4 +59,5 @@ Vector2get_motion_scale()
 Multiplies the ParallaxLayer's motion. If an axis is set to0, it will not scroll.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,10 +1,12 @@
 # VisualShaderNodeStep
 
 # VisualShaderNodeStep
+
 Inherits:VisualShaderNode<Resource<RefCounted<Object
 Calculates a Step function within the visual shader graph.
 
 ## Description
+
 Translates tostep(edge,x)in the shader language.
 Returns0.0ifxis smaller thanedgeand1.0otherwise.
 
@@ -16,6 +18,7 @@ OpType
 op_type
 
 ## Enumerations
+
 enumOpType:🔗
 OpTypeOP_TYPE_SCALAR=0
 A floating-point scalar type.
@@ -35,7 +38,9 @@ OpTypeOP_TYPE_MAX=7
 Represents the size of theOpTypeenum.
 
 ## Property Descriptions
+
 OpTypeop_type=0🔗
+
 - voidset_op_type(value:OpType)
 voidset_op_type(value:OpType)
 - OpTypeget_op_type()
@@ -43,4 +48,5 @@ OpTypeget_op_type()
 A type of operands and returned value.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

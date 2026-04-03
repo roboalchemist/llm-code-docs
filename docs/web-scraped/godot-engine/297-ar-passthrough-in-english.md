@@ -1,6 +1,7 @@
 # AR / Passthrough in English
 
 # AR / Passthrough
+
 Augmented Reality is supported through various methods depending on the capabilities of the hardware.
 Headsets such as the Magic Leap and glasses such as TiltFive show the rendered result onsee-through displaysallowing the user
 to see the real world.
@@ -16,6 +17,7 @@ For backwards compatibility the old API for passthrough is still available but i
 to follow the new instructions below.
 
 ## Environment blend modes
+
 The way we configure VR or AR functionality is through setting the environment blend mode.
 This mode determines how the (real world) environment is blended with the virtual world.
 
@@ -53,6 +55,7 @@ You can set the environment blend mode for your application through theenvironme
 You can query the supported blend modes on the hardware using theget_supported_environment_blend_modesproperty on the same instance.
 
 ## Configuring your background
+
 When setting the blend mode toXR_ENV_BLEND_MODE_ALPHA_BLENDyou must set
 thetransparent_bgproperty onViewportto true.
 When using theXR_ENV_BLEND_MODE_ADDITIVEblend mode you should set your
@@ -67,6 +70,7 @@ The core Godot XR functionality doesn't currently have support for this, however
 functionality can be exposed through plugins.
 
 ## OpenXR specific
+
 In OpenXR you can configure the default blend mode you want to use.
 Godot will select this blend mode at startup if available.
 If not available Godot will default to the first supported blend mode provided
@@ -79,7 +83,9 @@ TheBoundaryModeallows you to define whether the guardian is needed,
 disabling this fully requires passthrough to be enabled at all times.
 
 ## Putting it together
+
 Putting the above together we can use the following code as a base:
+
 ```
 @onready var viewport : Viewport = get_viewport()
 @onready var environment : Environment = $WorldEnvironment.environment
@@ -118,6 +124,7 @@ func switch_to_vr() -> bool:
 ```
 
 ## Shadow to opacity
+
 Shadow to opacity is a render mode for Godot spatial shaders
 that was introduced in Godot 3 specifically for AR.
 It is a special render mode where the more a surface is in shadow,
@@ -125,6 +132,7 @@ the more opaque the surface becomes. When a surface is fully lit,
 the surface becomes fully transparent and thus shows the real world.
 However the surface is rendered during the opaque state effectively.
 This has two consequences:
+
 - As both the depth buffer and color buffer are written to, we occlude
 any geometry behind our surface even when fully transparent.
 As both the depth buffer and color buffer are written to, we occlude
@@ -152,6 +160,7 @@ You can use a shader with this render mode when render a hand mesh
 using the hand tracking functionality, and ensure your hands properly
 occlude virtual objects.
 The following shader code is a good base for this functionality:
+
 ```
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, shadow_to_opacity;
@@ -160,8 +169,10 @@ void fragment() {
     ALBEDO = vec3(0.0, 0.0, 0.0);
 }
 ```
+
 Restrictions may apply depending on XR interface implementation.
 This feature is still being perfected.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

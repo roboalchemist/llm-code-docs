@@ -1,10 +1,12 @@
 # PathFollow2D
 
 # PathFollow2D
+
 Inherits:Node2D<CanvasItem<Node<Object
 Point sampler for aPath2D.
 
 ## Description
+
 This node takes its parentPath2D, and returns the coordinates of a point within it, given a distance from the first vertex.
 It is useful for making other nodes follow a path, without coding the movement pattern. For that, the nodes must be children of this node. The descendant nodes will then move accordingly when setting theprogressin this node.
 
@@ -38,7 +40,9 @@ float
 v_offset
 
 ## Property Descriptions
+
 boolcubic_interp=true🔗
+
 - voidset_cubic_interpolation(value:bool)
 voidset_cubic_interpolation(value:bool)
 - boolget_cubic_interpolation()
@@ -85,4 +89,5 @@ floatget_v_offset()
 The node's offset perpendicular to the curve.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

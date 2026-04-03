@@ -3,8 +3,10 @@
 # Feature tags
 
 ## Introduction
+
 Godot has a special system to tag availability of features.
 Eachfeatureis represented as a string, which can refer to many of the following:
+
 - Platform name.
 Platform name.
 - Platform architecture (64-bit or 32-bit, x86 or ARM).
@@ -20,17 +22,21 @@ Whether the project is running from the editor or a "standalone" binary.
 - Many more things.
 Many more things.
 Features can be queried at runtime from the singleton API by calling:
+
 ```
 OS.has_feature(name)
 ```
+
 ```
 OS.HasFeature(name);
 ```
+
 OS feature tags are used by GDExtension to determine which libraries to load.
 For example, a library forlinux.debug.editor.x86_64will be
 loaded only on a debug editor build for Linux x86_64.
 
 ## Default features
+
 Here is a list of most feature tags in Godot. Keep in mind they arecase-sensitive:
 
 | Feature tag | Description |
@@ -99,7 +105,7 @@ Running on visionOS (but not within a Web browser)
 windows
 Running on Windows
 linuxbsd
-Running on Linux or *BSD
+Running on Linux or*BSD
 debug
 Running on a debug build (including the editor)
 release
@@ -180,6 +186,7 @@ To check whether a project exported to Web is running on a mobile device,
 useOS.has_feature("web_android")orOS.has_feature("web_ios").
 
 ## Custom features
+
 It is possible to add custom features to a build; use the relevant
 field in theexport presetused to generate it:
 Note
@@ -189,6 +196,7 @@ running the project from the editor, even if the export preset marked asRunnable
 Custom feature tags are also not used inEditorExportPluginscripts. Instead, feature tags inEditorExportPluginwill reflect the device the editor is currently running on.
 
 ## Overriding project settings
+
 Features can be used to override specific configuration values in theProject Settings.
 This allows you to better customize any configuration when doing a build.
 In the following example, a different icon is added for the demo build of the game (which was
@@ -202,26 +210,32 @@ tag(s) if you want them to override base project settings on all platforms
 and configurations.
 
 ## Default overrides
+
 There are already a lot of settings that come with overrides by default; they can be found
 in many sections of the project settings.
 
 ## Taking feature tags into account when reading project settings
+
 By default, feature tags arenottaken into account when reading project settings
 using the typical approaches (ProjectSettings.get_settingorProjectSettings.get).
 Instead, you must useProjectSettings.get_setting_with_override.
 For example, with the following project settings:
+
 ```
 [section]
 
 subsection/example = "Release"
 subsection/example.debug = "Debug"
 ```
+
 UsingProjectSettings.get_setting("section/subsection/example")will return"Release"regardless of whether a debug build is currently running. On the
 other hand,ProjectSettings.get_setting_with_override("section/subsection/example")will obey feature tags and will return"Debug"if using a debug build.
 
 ## Customizing the build
+
 Feature tags can be used to customize a build process too, by writing a customExportPlugin.
 They are also used to specify which shared library is loaded and exported inGDExtension.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

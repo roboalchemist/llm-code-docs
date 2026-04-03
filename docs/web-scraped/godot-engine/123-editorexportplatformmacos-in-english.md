@@ -1,10 +1,12 @@
 # EditorExportPlatformMacOS in English
 
 # EditorExportPlatformMacOS
+
 Inherits:EditorExportPlatform<RefCounted<Object
 Exporter for macOS.
 
 ## Tutorials
+
 - Exporting for macOS
 Exporting for macOS
 - Running Godot apps on macOS
@@ -681,12 +683,15 @@ String
 xcode/xcode_version
 
 ## Property Descriptions
+
 Stringapplication/additional_plist_content🔗
 Additional data added to the root<dict>section of theInfo.plistfile. The value should be an XML section with pairs of key-value elements, e.g.:
+
 ```
 <key>key_name</key>
 <string>value</string>
 ```
+
 Stringapplication/app_category🔗
 Application category for the App Store.
 Stringapplication/bundle_identifier🔗
@@ -736,10 +741,12 @@ Array of the additional command line arguments passed to the code signing tool.
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedStringArrayfor more details.
 Stringcodesign/entitlements/additional🔗
 Additional data added to the root<dict>section of the.entitlementsfile. The value should be an XML section with pairs of key-value elements, for example:
+
 ```
 <key>key_name</key>
 <string>value</string>
 ```
+
 boolcodesign/entitlements/address_book🔗
 Enable to allow access to contacts in the user's address book, if it's enabled you should also provide usage message in theprivacy/address_book_usage_descriptionoption. Seecom.apple.security.personal-information.addressbook.
 boolcodesign/entitlements/allow_dyld_environment_variables🔗
@@ -1158,6 +1165,7 @@ Note:When exporting as a dedicated server, the shader baker is always disabled s
 Stringssh_remote_deploy/cleanup_script🔗
 Script code to execute on the remote host when app is finished.
 The following variables can be used in the script:
+
 - {temp_dir}- Path of temporary folder on the remote, used to upload app and scripts to.
 {temp_dir}- Path of temporary folder on the remote, used to upload app and scripts to.
 - {archive_name}- Name of the ZIP containing uploaded application.
@@ -1201,4 +1209,5 @@ Stringxcode/xcode_version🔗
 Xcode version used to build application executable.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

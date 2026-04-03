@@ -1,15 +1,18 @@
 # GLTFState in English
 
 # GLTFState
+
 Inherits:Resource<RefCounted<Object
 Inherited By:FBXState
 Represents all data of a glTF file.
 
 ## Description
+
 Contains all nodes and resources of a glTF file. This is used byGLTFDocumentas data storage, which allowsGLTFDocumentand allGLTFDocumentExtensionclasses to remain stateless.
 GLTFState can be populated byGLTFDocumentreading a file or by converting a Godot scene. Then the data can either be used to create a Godot scene or save to a glTF file. The code that converts to/from a Godot scene can be intercepted at arbitrary points byGLTFDocumentExtensionclasses. This allows for custom data to be stored in the glTF file or for custom data to be converted to/from Godot nodes.
 
 ## Tutorials
+
 - Runtime file loading and saving
 Runtime file loading and saving
 - glTF asset header schema
@@ -193,6 +196,7 @@ void
 set_unique_names(unique_names:Array[String])
 
 ## Enumerations
+
 enumHandleBinaryImageMode:🔗
 HandleBinaryImageModeHANDLE_BINARY_IMAGE_MODE_DISCARD_TEXTURES=0
 When importing a glTF file with embedded binary images, discards all images and uses untextured materials in their place. Images stored as separate files in theres://folder are not affected by this; those will be used as Godot imported them.
@@ -206,6 +210,7 @@ HandleBinaryImageModeHANDLE_BINARY_IMAGE_MODE_EMBED_AS_UNCOMPRESSED=3
 When importing a glTF file with embedded binary images, embeds textures compressed losslessly into the generated scene. Images stored as separate files in theres://folder are not affected by this; those will be used as Godot imported them.
 
 ## Constants
+
 HANDLE_BINARY_DISCARD_TEXTURES=0🔗
 Deprecated:UseHANDLE_BINARY_IMAGE_MODE_DISCARD_TEXTURESinstead.
 Discards all embedded textures and uses untextured materials.
@@ -220,7 +225,9 @@ Deprecated:UseHANDLE_BINARY_IMAGE_MODE_EMBED_AS_UNCOMPRESSEDinstead.
 Embeds textures compressed losslessly into the generated scene, matching old behavior.
 
 ## Property Descriptions
+
 floatbake_fps=30.0🔗
+
 - voidset_bake_fps(value:float)
 voidset_bake_fps(value:float)
 - floatget_bake_fps()
@@ -315,6 +322,7 @@ boolget_use_named_skin_binds()
 There is currently no description for this property. Please help us bycontributing one!
 
 ## Method Descriptions
+
 voidadd_used_extension(extension_name:String, required:bool)🔗
 Appends an extension to the list of extensions used by this glTF file during serialization. Ifrequiredistrue, the extension will also be added to the list of required extensions. Do not run this inGLTFDocumentExtension._export_post(), as that stage is too late to add extensions. The final list is sorted alphabetically.
 intappend_data_to_buffers(data:PackedByteArray, deduplication:bool)🔗
@@ -407,4 +415,5 @@ voidset_unique_names(unique_names:Array[String])🔗
 Sets the unique node names in the state. This is used in both the import process and export process.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

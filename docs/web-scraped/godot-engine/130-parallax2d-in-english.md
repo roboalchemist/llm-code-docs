@@ -1,14 +1,17 @@
 # Parallax2D in English
 
 # Parallax2D
+
 Inherits:Node2D<CanvasItem<Node<Object
 A node used to create a parallax scrolling background.
 
 ## Description
+
 AParallax2Dis used to create a parallax effect. It can move at a different speed relative to the camera movement usingscroll_scale. This creates an illusion of depth in a 2D game. If manual scrolling is desired, theCamera2Dposition can be ignored withignore_camera_scroll.
 Note:Any changes to this node's position made after it enters the scene tree will be overridden ifignore_camera_scrollisfalseorscreen_offsetis modified.
 
 ## Tutorials
+
 - 2D Parallax
 2D Parallax
 
@@ -60,7 +63,9 @@ scroll_scale
 Vector2(1,1)
 
 ## Property Descriptions
+
 Vector2autoscroll=Vector2(0,0)🔗
+
 - voidset_autoscroll(value:Vector2)
 voidset_autoscroll(value:Vector2)
 - Vector2get_autoscroll()
@@ -124,4 +129,5 @@ Multiplier to the finalParallax2D's offset. Can be used to simulate distance fro
 For example, a value of1scrolls at the same speed as the camera. A value greater than1scrolls faster, making objects appear closer. Less than1scrolls slower, making objects appear further, and a value of0stops the objects completely.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

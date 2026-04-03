@@ -1,9 +1,11 @@
 # PackedFloat64Array in English
 
 # PackedFloat64Array
+
 A packed array of 64-bit floating-point values.
 
 ## Description
+
 An array specifically designed to hold 64-bit floating-point values (double). Packs data tightly, so it saves memory for large array sizes.
 If you only need to pack 32-bit floats tightly, seePackedFloat32Arrayfor a more memory-friendly alternative.
 Differences between packed arrays, typed arrays, and untyped arrays:Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g.PackedFloat64ArrayversusArray[float]). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such asArray.map(). Typed arrays are in turn faster to iterate on and modify than untyped arrays.
@@ -110,6 +112,7 @@ float
 operator [](index:int)
 
 ## Constructor Descriptions
+
 PackedFloat64ArrayPackedFloat64Array()🔗
 Constructs an emptyPackedFloat64Array.
 PackedFloat64ArrayPackedFloat64Array(from:PackedFloat64Array)
@@ -118,6 +121,7 @@ PackedFloat64ArrayPackedFloat64Array(from:Array)
 Constructs a newPackedFloat64Array. Optionally, you can pass in a genericArraythat will be converted.
 
 ## Method Descriptions
+
 boolappend(value:float)🔗
 Appends an element at the end of the array (alias ofpush_back()).
 voidappend_array(array:PackedFloat64Array)🔗
@@ -179,6 +183,7 @@ Returns a copy of the data converted to aPackedByteArray, where each element has
 The size of the new array will befloat64_array.size()*8.
 
 ## Operator Descriptions
+
 booloperator !=(right:PackedFloat64Array)🔗
 Returnstrueif contents of the arrays differ.
 PackedFloat64Arrayoperator +(right:PackedFloat64Array)🔗
@@ -189,4 +194,5 @@ floatoperator [](index:int)🔗
 Returns thefloatat indexindex. Negative indices can be used to access the elements starting from the end. Using index out of array's bounds will result in an error.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

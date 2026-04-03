@@ -1,10 +1,12 @@
 # OpenXRActionMap in English
 
 # OpenXRActionMap
+
 Inherits:Resource<RefCounted<Object
 Collection ofOpenXRActionSetandOpenXRInteractionProfileresources for the OpenXR module.
 
 ## Description
+
 OpenXR uses an action system similar to Godots Input map system to bind inputs and outputs on various types of XR controllers to named actions. OpenXR specifies more detail on these inputs and outputs than Godot supports.
 Another important distinction is that OpenXR offers no control over these bindings. The bindings we register are suggestions, it is up to the XR runtime to offer users the ability to change these bindings. This allows the XR runtime to fill in the gaps if new hardware becomes available.
 The action map therefore needs to be loaded at startup and can't be changed afterwards. This resource is a container for the entire action map.
@@ -57,7 +59,9 @@ void
 remove_interaction_profile(interaction_profile:OpenXRInteractionProfile)
 
 ## Property Descriptions
+
 Arrayaction_sets=[]🔗
+
 - voidset_action_sets(value:Array)
 voidset_action_sets(value:Array)
 - Arrayget_action_sets()
@@ -71,6 +75,7 @@ Arrayget_interaction_profiles()
 Collection ofOpenXRInteractionProfiles that are part of this action map.
 
 ## Method Descriptions
+
 voidadd_action_set(action_set:OpenXRActionSet)🔗
 Add an action set.
 voidadd_interaction_profile(interaction_profile:OpenXRInteractionProfile)🔗
@@ -95,4 +100,5 @@ voidremove_interaction_profile(interaction_profile:OpenXRInteractionProfile)🔗
 Remove an interaction profile.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

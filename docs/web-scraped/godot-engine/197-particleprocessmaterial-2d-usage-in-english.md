@@ -3,6 +3,7 @@
 # ParticleProcessMaterial 2D Usage
 
 ## Process material properties
+
 Min, max, and curve properties
 The properties in this material control how particles behave and change over their lifetime.
 A lot of them haveMin,Max, andCurvevalues that allow you to fine-tune
@@ -17,6 +18,7 @@ This page covers how to use ParticleProcessMaterial for 2D scenes specifically.
 For information on how to use it in a 3D scene seeProcess material properties.
 
 ### Lifetime Randomness
+
 TheLifetimeRandomnessproperty controls how much randomness to apply to each particle's
 lifetime. A value of0means there is no randomness at all and all particles live for
 the same amount of time, set by theLifetimeproperty. A value of1means
@@ -27,12 +29,14 @@ that a particle's lifetime is completely random within the range of [0.0,Lifetim
 ## Spawn
 
 ### Angle
+
 Determines the initial angle of the particle (in degrees). This parameter
 is mostly useful randomized.
 
 ### Velocity
 
 #### Direction
+
 This is the base direction at which particles emit. The default isVector3(1,0,0)which makes particles emit to the right. However,
 with the default gravity settings, particles will go straight down.
 For this property to be noticeable, you need aninitial velocitygreater
@@ -40,15 +44,18 @@ than 0. Here, we set the initial velocity to 40. You'll notice that
 particles emit toward the right, then go down because of gravity.
 
 #### Spread
+
 This parameter is the angle in degrees which will be randomly added in
 either direction to the baseDirection. A spread of180will emit
 in all directions (+/- 180). For spread to do anything the "Initial Velocity"
 parameter must be greater than 0.
 
 #### Flatness
+
 This property is only useful for 3D particles.
 
 #### Initial Velocity
+
 Initial velocity is the speed at which particles will be emitted (in
 pixels/sec). Speed might later be modified by gravity or other
 accelerations (as described further below).
@@ -56,29 +63,36 @@ accelerations (as described further below).
 ## Animated Velocity
 
 ### Angular Velocity
+
 Angular velocity is the speed at which particles rotate around their center
 (in degrees/sec).
 
 ### Orbit Velocity
+
 Orbit velocity is used to make particles turn around their center.
 
 ## Accelerations
 
 ### Gravity
+
 The gravity applied to every particle.
 
 ### Linear Acceleration
+
 The linear acceleration applied to each particle.
 
 ### Radial Acceleration
+
 If this acceleration is positive, particles are accelerated away from
 the center. If negative, they are absorbed towards it.
 
 ### Tangential Acceleration
+
 This acceleration will use the tangent vector to the center. Combining
 with radial acceleration can do nice effects.
 
 ### Damping
+
 Damping applies friction to the particles, forcing them to stop. It is
 especially useful for sparks or explosions, which usually begin with a
 high linear velocity and then stop as they fade.
@@ -86,19 +100,23 @@ high linear velocity and then stop as they fade.
 ## Display
 
 ### Scale
+
 Determines the initial scale of the particles.
 
 ### Color Curves
 
 #### Color
+
 Used to change the color of the particles being emitted.
 
 ### Hue Variation
+
 TheVariationvalue sets the initial hue variation applied to each
 particle. TheVariationRandomvalue controls the hue variation
 randomness ratio.
 
 ### Animation
+
 Note
 Particle flipbook animation is only effective if the CanvasItemMaterial used
 on the GPUParticles2D or CPUParticles2D node has beenconfigured accordingly.
@@ -126,6 +144,7 @@ your use case, setFixed FPSto be equal to the effective framerate used by
 the flipbook animation (see above for the formula).
 
 ## Emission Shapes
+
 ParticleProcessMaterials allow you to set an Emission Mask, which dictates
 the area and direction in which particles are emitted.
 These can be generated from textures in your project.
@@ -136,7 +155,9 @@ Then select which texture you want to use as your mask:
 A dialog box with several settings will appear.
 
 ### Emission Mask
+
 Three types of emission masks can be generated from a texture:
+
 - Solid Pixels: Particles will spawn from any area of the texture,
 excluding transparent areas.
 Solid Pixels: Particles will spawn from any area of the texture,
@@ -153,6 +174,7 @@ from the borders. Note that anInitialVelocitywill need to
 be set in order to utilize this.
 
 ### Emission Colors
+
 CapturefromPixelwill cause the particles to inherit the color of the mask at their spawn points.
 Once you click "OK", the mask will be generated and set to the
 ParticleProcessMaterial, underSpawnand  thenPosition
@@ -163,6 +185,7 @@ An image should not be added toPointTextureorColorTexturedirectly.
 The "Load Emission Mask" menu should always be used instead.
 
 ## Customizing the process material
+
 If you need to change or implement new behaviors in shader code, you can do so by converting
 the current ParticleProcessMaterial to aShaderMaterial. Existing properties
 are preserved by the conversion process. Features that are enabled will also affect
@@ -171,4 +194,5 @@ To do so, right-click on the material in the FileSystem dock and chooseConvert t
 property holding a reference to the material in the inspector.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

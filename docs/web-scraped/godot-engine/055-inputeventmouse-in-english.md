@@ -1,14 +1,17 @@
 # InputEventMouse in English
 
 # InputEventMouse
+
 Inherits:InputEventWithModifiers<InputEventFromWindow<InputEvent<Resource<RefCounted<Object
 Inherited By:InputEventMouseButton,InputEventMouseMotion
 Base input event type for mouse events.
 
 ## Description
+
 Stores general information about mouse events.
 
 ## Tutorials
+
 - Using InputEvent
 Using InputEvent
 
@@ -29,7 +32,9 @@ position
 Vector2(0,0)
 
 ## Property Descriptions
+
 BitField[MouseButtonMask]button_mask=0🔗
+
 - voidset_button_mask(value:BitField[MouseButtonMask])
 voidset_button_mask(value:BitField[MouseButtonMask])
 - BitField[MouseButtonMask]get_button_mask()
@@ -51,4 +56,5 @@ When received inNode._input()orNode._unhandled_input(), returns the mouse's posi
 When received inControl._gui_input(), returns the mouse's position in theControlusing the local coordinate system of theControl.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

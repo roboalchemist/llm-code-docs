@@ -1,15 +1,18 @@
 # Nodes and Scenes in English
 
 # Nodes and Scenes
+
 InOverview of Godot's key concepts, we saw that a Godot game is a tree of
 scenes and that each scene is a tree of nodes. In this lesson, we explain a bit
 more about them. You will also create your first scene.
 
 ## Nodes
+
 Nodes are the fundamental building blocks of your game. They are like the
 ingredients in a recipe. There are dozens of kinds that can display an image,
 play a sound, represent a camera, and much more.
 All nodes have the following characteristics:
+
 - A name.
 A name.
 - Editable properties.
@@ -27,6 +30,7 @@ playable character the camera follows using aCharacterBody2Dnode, aSprite2Dnode,
 aCamera2Dnode, and aCollisionShape2Dnode.
 
 ## Scenes
+
 When you organize nodes in a tree, like our character, we call this construct a
 scene. Once saved, scenes work like new node types in the editor, where you can
 add them as a child of an existing node. In that case, the instance of the scene
@@ -39,6 +43,7 @@ contain as many of these scenes as you need. The engine only requires one as
 your application'smain scene. This is the scene Godot will first load when
 you or a player runs the game.
 On top of acting like nodes, scenes have the following characteristics:
+
 - They always have one root node, like the "Player" in our example.
 They always have one root node, like the "Player" in our example.
 - You can save them to your local drive and load them later.
@@ -49,6 +54,7 @@ You can create as many instances of a scene as you'd like. You could have
 five or ten characters in your game, created from your Character scene.
 
 ## Creating your first scene
+
 Let's create our first scene with a single node. To do so, you will need tocreate a new projectfirst. After
 opening the project, you should see an empty editor.
 In an empty scene, theScenedock on the left shows several options to add a
@@ -71,6 +77,7 @@ top-left corner of the viewport. The node appears in the Scene dock on the left,
 and the node's properties appear in the Inspector dock on the right.
 
 ## Changing a node's properties
+
 The next step is to change the Label'sTextproperty. Let's change
 it to "Hello World".
 Head to the Inspector dock on the right of the viewport. Click inside the field
@@ -85,6 +92,7 @@ With the Label selected, click and drag anywhere in the viewport to
 move it to the center of the view delimited by the rectangle.
 
 ## Running the scene
+
 Everything's ready to run the scene! Press theRun Current Scenebutton in the top-right of the screen or pressF6(Cmd+Ron
 macOS).
 A popup invites you to save the scene, which is required to run it. Click theSavebutton in the file browser to save it aslabel.tscn.
@@ -98,6 +106,7 @@ The application should open in a new window and display the text "Hello World".
 Close the window or pressF8(Cmd+.on macOS) to quit the running scene.
 
 ## Setting the main scene
+
 To run our test scene, we used theRun Current Scenebutton. Another button
 next to it,Run Project, allows you to set and run the project'smain scene. You can also pressF5(Cmd+Bon macOS) to do so.
 Note
@@ -116,4 +125,5 @@ In the next part, we will discuss another key concept in games and in Godot:
 creating instances of a scene.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

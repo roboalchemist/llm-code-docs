@@ -1,10 +1,12 @@
 # GLTFTexture in English
 
 # GLTFTexture
+
 Inherits:Resource<RefCounted<Object
 GLTFTexture represents a texture in a glTF file.
 
 ## Tutorials
+
 - Runtime file loading and saving
 Runtime file loading and saving
 
@@ -18,7 +20,9 @@ sampler
 src_image
 
 ## Property Descriptions
+
 intsampler=-1🔗
+
 - voidset_sampler(value:int)
 voidset_sampler(value:int)
 - intget_sampler()
@@ -32,4 +36,5 @@ intget_src_image()
 The index of the image associated with this texture, seeGLTFState.get_images(). If -1, then this texture does not have an image assigned.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

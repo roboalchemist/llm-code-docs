@@ -3,7 +3,9 @@
 # Importing images
 
 ## Supported image formats
+
 Godot can import the following image formats:
+
 - BMP (.bmp)
 - No support for 16-bit per pixel images. Only 1-bit, 4-bit, 8-bit, 24-bit, and 32-bit per pixel images are supported.
 BMP (.bmp)
@@ -61,6 +63,7 @@ If you've compiled the Godot editor from source with specific modules disabled,
 some formats may not be available.
 
 ## Importing textures
+
 The default action in Godot is to import images as textures. Textures are stored
 in video memory. Their pixel data can't be accessed directly from the CPU
 without converting them back to anImagein a script. This is what
@@ -71,7 +74,9 @@ Import options in the Import dock after selecting an image in the FileSystem doc
 Some of these options are only visible with certain compression modes.
 
 ### Changing import type
+
 It is possible to choose other types of imported resources in the Import dock:
+
 - BitMap:1-bit monochrome texture (intended to be used as a click mask inTextureButtonandTouchScreenButton). This resource
 type cannot be displayed directly onto 2D or 3D nodes, but the pixel values
 can be queried from a script usingget_bit.
@@ -139,6 +144,7 @@ Here are templates you can use for cubemap images (right-click >Save Link As…)
 6×1cubemaptemplate
 
 ### Detect 3D
+
 The default import options (no mipmaps andLosslesscompression) are suited
 for 2D, but are not ideal for most 3D projects.Detect 3Dmakes Godot aware
 of when a texture is used in a 3D scene (such as a texture in aBaseMaterial3D). If this happens, several import options are
@@ -152,15 +158,18 @@ texture in 3D, or changeCompress > ModetoLosslessafter using the texture in 3D. 
 looking grainy at a distance.
 
 ## Import options
+
 See also
 Since Godot 4.0, texture filter and repeat modes are set in the CanvasItem
 properties in 2D (with a project setting acting as a default), and in aper-material configuration in 3D.
 In custom shaders, filter and repeat mode is changed on thesampler2Duniform using hints described in theShading languagedocumentation.
 
 ### Compress > Mode
+
 Images are one of the largest assets in a game. To handle them efficiently, they
 need to be compressed. Godot offers several compression methods, depending on
 the use case.
+
 - Lossless:This is the default and most common compression mode for 2D assets.
 It shows assets without any kind of artifacting, and disk compression is
 decent. It will use considerably more amount of video memory than
@@ -333,6 +342,7 @@ FileSystem dock, then looking at the Inspector:
 Previewing a texture in the Inspector. Credit:Red Brick 03 - Poly Haven
 
 ### Compress > High Quality
+
 Note
 High-quality VRAM texture compression is only supported in the Forward+ and
 Mobile renderers.
@@ -348,6 +358,7 @@ BPTC and ASTC support VRAM compression for HDR textures, but S3TC and ETC2 do
 not (seeHDR Compressionbelow).
 
 ### Compress > HDR Compression
+
 Note
 This option only has an effect on textures that are imported as HDR formats in Godot
 (.hdrand.exrfiles).
@@ -362,6 +373,7 @@ If set toAlways, will force VRAM compression even for HDR textures with an
 alpha channel. To perform this, the alpha channel is discarded on import.
 
 ### Compress > Normal Map
+
 When using a texture as normal map, only the red and green channels are
 required. Given regular texture compression algorithms produce artifacts that
 don't look that nice in normal maps, theRGTCcompression format is the best fit for this data. Forcing this option toEnablewill make Godot import the image asRGTCcompressed.
@@ -384,6 +396,7 @@ More information about normal maps (including a coordinate order table for
 popular engines) can be foundhere.
 
 ### Compress > Channel Pack
+
 If set tosRGB Friendly(default), prevents the RG color format from being
 used as it does not support sRGB color.
 If set toOptimized, allows the RG color format to be used if the texture
@@ -396,9 +409,11 @@ preserve its detail much better, while using the same amount of memory as a stan
 RGBA VRAM-compressed texture. This only has an effect on textures with theVRAM CompressedorBasis Universalcompression modes.
 
 ### Mipmaps > Generate
+
 If enabled, smaller versions of the texture are generated on import. For
 example, a 64×64 texture will generate 6 mipmaps (32×32, 16×16, 8×8, 4×4, 2×2,
 1×1). This has several benefits:
+
 - Textures will not become grainy in the distance (in 3D), or if scaled down due
 to camera zoom or CanvasItem scale (in 2D).
 Textures will not become grainy in the distance (in 3D), or if scaled down due
@@ -416,6 +431,7 @@ camera never zooms out significantly, there won't be a benefit to enabling
 mipmaps but memory usage will increase.
 
 ### Mipmaps > Limit
+
 Warning
 Mipmaps > Limitis currently not implemented and has no effect when changed.
 If set to a value greater than-1, limits the maximum number of mipmaps that
@@ -423,14 +439,17 @@ can be generated. This can be decreased if you don't want textures to become too
 low-resolution at extreme distances, at the cost of some graininess.
 
 ### Roughness > Mode
+
 The color channel to consider as a roughness map in this texture. Only effective ifRoughness > Src Normalis not empty.
 
 ### Roughness > Src Normal
+
 The path to the texture to consider as a normal map for roughness filtering on
 import. Specifying this can help decrease specular aliasing slightly in 3D.
 Roughness filtering on import is only used in 3D rendering, not 2D.
 
 ### Process > Fix Alpha Border
+
 This puts pixels of the same surrounding color in transition from transparent to
 opaque areas. For textures displayed with bilinear filtering, this helps
 mitigate the outline effect when exporting images from an image editor.
@@ -438,10 +457,12 @@ It's recommended to leave this enabled (as it is by default), unless this causes
 issues for a particular image.
 
 ### Process > Premult Alpha
+
 An alternative to fixing darkened borders withFix Alpha Borderis to use
 premultiplied alpha. By enabling this option, the texture will be converted to
 this format. A premultiplied alpha texture requires specific materials to be
 displayed correctly:
+
 - In 2D, aCanvasItemMaterialwill need to be created and
 configured to use thePremul Alphablend mode on CanvasItems that use this
 texture. Incustom canvas item shaders,render_modeblend_premul_alpha;should be used.
@@ -456,6 +477,7 @@ to use thePremul Alphablend mode on materials that use this texture.
 Incustom spatial shaders,render_modeblend_premul_alpha;should be used.
 
 ### Process > Normal Map Invert Y
+
 Godot requires the normal map to use the X+, Y+ and Z+ coordinates, which is
 known as an OpenGL-style normal map. If you've imported a material made to be
 used with another engine, it may be DirectX-style. In this case, the normal map
@@ -464,6 +486,7 @@ More information about normal maps (including a coordinate order table for
 popular engines) can be foundhere.
 
 ### Process > HDR as sRGB
+
 Some HDR images you can find online may be broken and contain sRGB color data
 (instead of linear color data). It is advised not to use those files. If you
 absolutely have to, enabling this option on will make them look correct.
@@ -472,6 +495,7 @@ EnablingHDR as sRGBon well-formatted HDR images will cause the
 resulting image to look too dark, so leave this disabled if unsure.
 
 ### Process > HDR Clamp Exposure
+
 Some HDR panorama images you can find online may contain extremely bright
 pixels, due to being taken from real life sources without any clipping.
 While these HDR panorama images are accurate to real life, this can cause the
@@ -482,6 +506,7 @@ clamping formula that does not introducevisibleclipping – glow will keep
 working when looking at the background sky.
 
 ### Process > Size Limit
+
 If set to a value greater than0, the size of the texture is limited on
 import to a value smaller than or equal to the value specified here. For
 non-square textures, the size limit affects the longer dimension, with the
@@ -492,6 +517,7 @@ avoid issues with textures not displaying on mobile/web platforms (as these
 usually can't display textures larger than 4096×4096).
 
 ### Detect 3D > Compress To
+
 This changes theCompress > Modeoption that is used
 when a texture is detected as being used in 3D.
 Changing this import option only has an effect if a texture is detected as being
@@ -500,6 +526,7 @@ existing compress mode on a texture (if it's detected to be used in 3D), but
 choosingVRAM CompressedorBasis Universalwill.
 
 ### SVG > Scale
+
 This is only available for SVG images.
 The scale the SVG should be rendered at, with1.0being the original design
 size. Higher values result in a larger image. Note that unlike font
@@ -507,12 +534,14 @@ oversampling, this affects the physical size the SVG is rendered at in 2D. See
 alsoEditor > Scale With Editor Scalebelow.
 
 ### Editor > Scale With Editor Scale
+
 This is only available for SVG images.
 If true, scales the imported image to match the editor's display scale factor.
 This should be enabled for editor plugin icons and custom class icons, but
 should be left disabled otherwise.
 
 ### Editor > Convert Colors With Editor Theme
+
 This is only available for SVG images.
 If checked, converts the imported image's colors to match the editor's icon and
 font color palette. This assumes the image uses the exact same colors asGodot's own color palette for editor icons, with the
@@ -520,11 +549,13 @@ source file designed for a dark editor theme. This should be enabled for editor
 plugin icons and custom class icons, but should be left disabled otherwise.
 
 ## Importing SVG images with text
+
 As the SVG library used in Godot doesn't support rasterizing text found in SVG
 images, text must be converted to a path first. Otherwise, text won't appear in
 the rasterized image.
 There are two ways to achieve this in a non-destructive manner, so you can keep
 editing the original text afterwards:
+
 - Select your text object in Inkscape, then duplicate it in place by pressingCtrl+Dand usePath > Object to Path. Hide the original text
 object afterwards using theLayers and Objectsdock.
 Select your text object in Inkscape, then duplicate it in place by pressingCtrl+Dand usePath > Object to Path. Hide the original text
@@ -533,6 +564,7 @@ object afterwards using theLayers and Objectsdock.
 converted to paths:
 Use the Inkscape command line to export an SVG from another SVG file with text
 converted to paths:
+
 ```
 inkscape --export-text-to-path --export-filename svg_with_text_converted_to_path.svg svg_with_text.svg
 ```
@@ -540,11 +572,13 @@ inkscape --export-text-to-path --export-filename svg_with_text_converted_to_path
 ## Best practices
 
 ### Supporting high-resolution texture sizes in 2D without artifacts
+
 To supportmultiple resolutionswith crisp
 visuals at high resolutions, you will need to use high-resolution source images
 (suited for the highest resolution you wish to support without blurriness, which
 is typically 4K in modern desktop games).
 There are 2 ways to proceed:
+
 - Use a high base resolution in the project settings (such as 4K), then use the
 textures at original scale. This is an easier approach.
 Use a high base resolution in the project settings (such as 4K), then use the
@@ -565,8 +599,10 @@ to make textures sharper (at the cost of some graininess) by settingRendering > 
 negative value.
 
 ### Use appropriate texture sizes in 3D
+
 While there's no "one size fits all" recommendation, here are some general
 recommendations for choosing texture sizes in 3D:
+
 - The size of a texture should be adjusted to have a consistent texel density
 compared to surrounding objects. While this cannot be ensured perfectly when
 sticking to power-of-two texture sizes, it's usually possible to keep texture
@@ -622,4 +658,5 @@ Images can be loaded and saved at runtime usingruntime file loading and saving,
 including from an exported project.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

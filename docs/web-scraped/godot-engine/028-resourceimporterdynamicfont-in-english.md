@@ -1,15 +1,18 @@
 # ResourceImporterDynamicFont in English
 
 # ResourceImporterDynamicFont
+
 Inherits:ResourceImporter<RefCounted<Object
 Imports a TTF, TTC, OTF, OTC, WOFF or WOFF2 font file for font rendering that adapts to any size.
 
 ## Description
+
 Unlike bitmap fonts, dynamic fonts can be resized to any size and still look crisp. Dynamic fonts also optionally support MSDF font rendering, which allows for run-time scale changes with no re-rasterization cost.
 While WOFF and especially WOFF2 tend to result in smaller file sizes, there is no universally "better" font format. In most situations, it's recommended to use the font format that was shipped on the font developer's website.
 See alsoResourceImporterBMFontandResourceImporterImageFont.
 
 ## Tutorials
+
 - Dynamic fonts - Using fonts
 Dynamic fonts - Using fonts
 
@@ -79,6 +82,7 @@ script_support
 subpixel_positioning
 
 ## Property Descriptions
+
 boolallow_system_fallback=true🔗
 Iftrue, automatically use system fonts as a fallback if a glyph isn't found in this dynamic font. This makes supporting CJK characters or emoji more straightforward, as you don't need to include a CJK/emoji font in your project. See alsofallbacks.
 Note:The appearance of system fonts varies across platforms. Loading system fonts is only supported on Windows, macOS, Linux, Android and iOS.
@@ -133,4 +137,5 @@ One Quarter of a Pixel:Always perform precise subpixel positioning regardless of
 Auto (Except Pixel Fonts):Disabledfor the pixel style fonts (each glyph contours contain only straight horizontal and vertical lines),Autofor the other fonts.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

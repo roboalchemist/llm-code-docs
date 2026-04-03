@@ -1,11 +1,13 @@
 # OpenXRHand in English
 
 # OpenXRHand
+
 Deprecated:UseXRHandModifier3Dinstead.
 Inherits:Node3D<Node<Object
 Node supporting hand and finger tracking in OpenXR.
 
 ## Description
+
 This node enables OpenXR's hand tracking functionality. The node should be a child node of anXROrigin3Dnode, tracking will update its position to the player's tracked hand Palm joint location (the center of the middle finger's metacarpal bone). This node also updates the skeleton of a properly skinned hand or avatar model.
 If the skeleton is a hand (one of the hand bones is the root node of the skeleton), then the skeleton will be placed relative to the hand palm location and the hand mesh and skeleton should be children of the OpenXRHand node.
 If the hand bones are part of a full skeleton, then the root of the hand will keep its location with the assumption that IK is used to position the hand and arm.
@@ -33,6 +35,7 @@ SkeletonRig
 skeleton_rig
 
 ## Enumerations
+
 enumHands:🔗
 HandsHAND_LEFT=0
 Tracking the player's left hand.
@@ -63,7 +66,9 @@ BoneUpdateBONE_UPDATE_MAX=2
 Maximum supported bone update mode.
 
 ## Property Descriptions
+
 BoneUpdatebone_update=0🔗
+
 - voidset_bone_update(value:BoneUpdate)
 voidset_bone_update(value:BoneUpdate)
 - BoneUpdateget_bone_update()
@@ -95,4 +100,5 @@ SkeletonRigget_skeleton_rig()
 Set the type of skeleton rig thehand_skeletonis compliant with.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

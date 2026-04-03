@@ -1,11 +1,13 @@
 # Using SoftBody3D in English
 
 # Using SoftBody3D
+
 Soft bodies (orsoft-body dynamics) simulate movement, changing shape and other
 physical properties of deformable objects. For example, this can be used to simulate
 cloth or to create more realistic characters.
 
 ## Physics engine considerations
+
 Support for soft bodies is generally more robust in Jolt Physics compared to GodotPhysics3D.
 You can switch physics engines by changingPhysics > 3D > Physics Enginein the Project Settings. Projects created in Godot 4.6 and later use Jolt Physics
 by default, but existing projects will have to be switched over manually.
@@ -14,6 +16,7 @@ does not affect soft bodies. If you want soft body simulation to look smoother a
 higher framerates, you'll have to increase thePhysics > Common > Physics Ticks per Secondproject setting, which comes at a performance cost.
 
 ## Basic setup
+
 ASoftBody3Dnode is used for soft body simulations.
 Unlike other physics body nodes likeRigidBody3DorStaticBody3D, it doesnothave aCollisionShape3Dor aMeshInstance3Dchild node. Instead, the collision shape is derived from the mesh assigned to the node.
 This mesh is also directly used for rendering, which means you don't need to
@@ -41,6 +44,7 @@ This can give a significant improvement at the cost of performance.
 Alternatively, you can increase thePhysics > Common > Physics Ticks per Secondproject setting, which will also affect soft body simulation quality.
 
 ## Cloak simulation
+
 Let's make a cloak in the Platformer 3D demo.
 Note
 You can download the Platformer 3D demo onGitHuborthe Asset Library.
@@ -90,6 +94,7 @@ then setting its cull mode toDisabled. This will make the material render
 both sides of the plane.
 
 ## Using imported meshes
+
 TheSave to Fileoption in the Advanced Import Settings dialog allows you
 to save a mesh to a standalone resource file that you can then attach to
 SoftBody3D nodes.
@@ -103,4 +108,5 @@ being rendered as a single plane.
 SeeImport configurationandMesh level of detail (LOD)for more details.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

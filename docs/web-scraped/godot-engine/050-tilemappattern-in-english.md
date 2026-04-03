@@ -1,10 +1,12 @@
 # TileMapPattern in English
 
 # TileMapPattern
+
 Inherits:Resource<RefCounted<Object
 Holds a pattern to be copied from or pasted intoTileMaps.
 
 ## Description
+
 This resource holds a set of cells to help bulk manipulations ofTileMap.
 A pattern always starts at the(0,0)coordinates and cannot have cells with negative coordinates.
 
@@ -42,6 +44,7 @@ void
 set_size(size:Vector2i)
 
 ## Method Descriptions
+
 intget_cell_alternative_tile(coords:Vector2i)const🔗
 Returns the tile alternative ID of the cell atcoords.
 Vector2iget_cell_atlas_coords(coords:Vector2i)const🔗
@@ -64,4 +67,5 @@ voidset_size(size:Vector2i)🔗
 Sets the size of the pattern.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -3,6 +3,7 @@
 # Exporting projects
 
 ## Why export?
+
 Originally, Godot did not have any means to export projects. The
 developers would compile the proper binaries and build the packages for
 each platform manually.
@@ -11,6 +12,7 @@ when our company started taking more projects at the same time, it
 became evident that this was a bottleneck.
 
 ### On PC
+
 Distributing a game project on PC with Godot is rather easy. Drop
 the Godot binary in the same directory as theproject.godotfile,
 then compress the project directory and you are done.
@@ -24,6 +26,7 @@ tools like the editor and debugger.
 Finally, Godot has a simple but efficient system forcreating DLCs as extra package files.
 
 ### On mobile
+
 The same scenario on mobile platforms is a little worse.
 To distribute a project on those devices, a binary for each of
 those platforms is built, then added to a native project together
@@ -39,6 +42,7 @@ that has been standardized for more than a decade, but mobile devices
 use different formats for texture compression, such as ETC1 and ETC2.
 
 ## Export menu
+
 After many attempts at different export workflows, the current one has
 proven to work the best. At the time of this writing, not all platforms are
 supported yet, but the supported platforms continue to grow.
@@ -58,6 +62,7 @@ At that time, the user is expected to come back to the documentation and follow
 instructions on how to properly set up that platform.
 The buttons at the bottom of the menu allow you to export the project in a few
 different ways:
+
 - Export All: Export the project as a playable build (Godot executable and project data)
 for all the presets defined. All presets must have anExport Pathdefined for this
 to work.
@@ -74,14 +79,17 @@ Export PCK/ZIP: Export the project resources as a PCK or ZIP package.
 This is not a playable build, it only exports the project data without a Godot executable.
 
 ### Export templates
+
 Apart from setting up the platform, the export templates must be
 installed to be able to export projects. They can be obtained as a
 TPZ file (which is a renamed ZIP archive) from thedownload page of the website.
 Once downloaded, they can be installed using theInstall Export Templatesoption in the editor:
 
 ### Resource options
+
 When exporting, Godot makes a list of all the files to export and then
 creates the package. There are 5 different modes for exporting:
+
 - Export all resources in the project
 Export all resources in the project
 - Export selected scenes (and dependencies)
@@ -112,8 +120,10 @@ the project. The second filter can be used to exclude every file of a certain
 type without manually deselecting every one. For example,.pngfiles.
 
 ## Configuration files
+
 The export configuration is stored in two files that can both be found in the project
 directory:
+
 - export_presets.cfg: This file contains the vast majority of the export
 configuration and can be safely committed to version control. There is nothing
 in here that you would normally have to keep secret.
@@ -131,18 +141,22 @@ export options will be missing if you clone the project to a new machine. The ea
 way to deal with this is to copy the file manually from the old location to the new one.
 
 ## Exporting from the command line
+
 In production, it is useful to automate builds, and Godot supports this
 with the--export-releaseand--export-debugcommand line parameters.
 Exporting from the command line still requires an export preset to define
 the export parameters. A basic invocation of the command would be:
+
 ```
 godot --export-release "Windows Desktop" some_name.exe
 ```
+
 This will export tosome_name.exe, assuming there is a preset
 called "Windows Desktop" and the template can be found. (The export preset name
 must be written within quotes if it contains spaces or special characters.)
 The output path isrelative to the project pathorabsolute;it does not respect the directory the command was invoked from.
 The output file extension should match the one used by the Godot export process:
+
 - Windows:.exe
 Windows:.exe
 - macOS:.appor.zip(or.dmgwhen exportingfrommacOS)
@@ -158,23 +172,29 @@ iOS:.zip
 You can also configure it to exportonlythe PCK or ZIP file, allowing
 a single exported main pack file to be used with multiple Godot executables.
 When doing so, the export preset name must still be specified on the command line:
+
 ```
 godot --export-pack "Windows Desktop" some_name.pck
 ```
+
 It is often useful to combine the--export-releaseflag with the--pathflag, so that you do not need tocdto the project folder before running
 the command:
+
 ```
 godot --path /path/to/project --export-release "Windows Desktop" some_name.exe
 ```
+
 See also
 SeeCommand line tutorialfor more information about using Godot
 from the command line.
 
 ## PCK versus ZIP pack file formats
+
 Each format has its upsides and downsides. PCK is the default and recommended
 format for most use cases, but you may want to use a ZIP archive instead
 depending on your needs.
 PCK format:
+
 - Uncompressed format. Larger file size, but faster to read/write.
 Uncompressed format. Larger file size, but faster to read/write.
 - Not readable and writable using tools normally present on the user's
@@ -193,6 +213,7 @@ Due to aknown bug,
 when using a ZIP file as a pack file, the exported binary will not try to use
 it automatically. Therefore, you have to create alauncher scriptthat
 the player can double-click or run from a terminal to launch the project:
+
 ```
 :: launch.bat (Windows)
 @echo off
@@ -201,9 +222,11 @@ my_project.exe --main-pack my_project.zip
 # launch.sh (Linux)
 ./my_project.x86_64 --main-pack my_project.zip
 ```
+
 Save the launcher script and place it in the same folder as the exported binary.
 On Linux, make sure to give executable permissions to the launcher script using
 the commandchmod+xlaunch.sh.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

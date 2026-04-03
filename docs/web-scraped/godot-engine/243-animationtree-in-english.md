@@ -1,14 +1,17 @@
 # AnimationTree in English
 
 # AnimationTree
+
 Inherits:AnimationMixer<Node<Object
 A node used for advanced animation transitions in anAnimationPlayer.
 
 ## Description
+
 A node used for advanced animation transitions in anAnimationPlayer.
 Note:When linked with anAnimationPlayer, several properties and methods of the correspondingAnimationPlayerwill not function as expected. Playback and transitions should be handled using only theAnimationTreeand its constituentAnimationNode(s). TheAnimationPlayernode should be used solely for adding, deleting, and editing animations.
 
 ## Tutorials
+
 - Using AnimationTree
 Using AnimationTree
 - Third Person Shooter (TPS) Demo
@@ -50,10 +53,12 @@ void
 set_process_callback(mode:AnimationProcessCallback)
 
 ## Signals
+
 animation_player_changed()🔗
 Emitted when theanim_playeris changed.
 
 ## Enumerations
+
 enumAnimationProcessCallback:🔗
 AnimationProcessCallbackANIMATION_PROCESS_PHYSICS=0
 Deprecated:SeeAnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS.
@@ -63,7 +68,9 @@ AnimationProcessCallbackANIMATION_PROCESS_MANUAL=2
 Deprecated:SeeAnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL.
 
 ## Property Descriptions
+
 NodePathadvance_expression_base_node=NodePath(".")🔗
+
 - voidset_advance_expression_base_node(value:NodePath)
 voidset_advance_expression_base_node(value:NodePath)
 - NodePathget_advance_expression_base_node()
@@ -83,6 +90,7 @@ AnimationRootNodeget_tree_root()
 The root animation node of thisAnimationTree. SeeAnimationRootNode.
 
 ## Method Descriptions
+
 AnimationProcessCallbackget_process_callback()const🔗
 Deprecated:UseAnimationMixer.callback_mode_processinstead.
 Returns the process notification in which to update animations.
@@ -91,4 +99,5 @@ Deprecated:UseAnimationMixer.callback_mode_processinstead.
 Sets the process notification in which to update animations.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,9 +1,11 @@
 # @GlobalScope in English
 
 # @GlobalScope
+
 Global scope constants and functions.
 
 ## Description
+
 A list of global scope enumerated constants and built-in functions. This is all that resides in the globals, constants regarding error codes, keycodes, property hints, etc.
 Singletons are also documented here, since they can be accessed from anywhere.
 For the entries that can only be accessed from scripts written in GDScript, see@GDScript.
@@ -11,6 +13,7 @@ Note
 There are notable differences when using this API with C#. SeeC# API differences to GDScriptfor more information.
 
 ## Tutorials
+
 - Random number generation
 Random number generation
 
@@ -461,6 +464,7 @@ wrapf(value:float, min:float, max:float)
 wrapi(value:int, min:int, max:int)
 
 ## Enumerations
+
 enumSide:🔗
 SideSIDE_LEFT=0
 Left side, usually used forControlorStyleBox-derived classes.
@@ -517,11 +521,11 @@ Aligns the baseline (user defined) of the inline object (e.g. image, table) to t
 InlineAlignmentINLINE_ALIGNMENT_BOTTOM_TO=2
 Aligns the bottom of the inline object (e.g. image, table) to the position of the text specified byINLINE_ALIGNMENT_TO_*constant.
 InlineAlignmentINLINE_ALIGNMENT_TO_TOP=0
-Aligns the position of the inline object (e.g. image, table) specified byINLINE_ALIGNMENT_*_TOconstant to the top of the text.
+Aligns the position of the inline object (e.g. image, table) specified byINLINE_ALIGNMENT_**TOconstant to the top of the text.
 InlineAlignmentINLINE_ALIGNMENT_TO_CENTER=4
-Aligns the position of the inline object (e.g. image, table) specified byINLINE_ALIGNMENT_*_TOconstant to the center of the text.
+Aligns the position of the inline object (e.g. image, table) specified byINLINE_ALIGNMENT***TOconstant to the center of the text.
 InlineAlignmentINLINE_ALIGNMENT_TO_BASELINE=8
-Aligns the position of the inline object (e.g. image, table) specified byINLINE_ALIGNMENT_*_TOconstant to the baseline of the text.
+Aligns the position of the inline object (e.g. image, table) specified byINLINE_ALIGNMENT***TOconstant to the baseline of the text.
 InlineAlignmentINLINE_ALIGNMENT_TO_BOTTOM=12
 Aligns inline object (e.g. image, table) to the bottom of the text.
 InlineAlignmentINLINE_ALIGNMENT_TOP=0
@@ -531,9 +535,9 @@ Aligns center of the inline object (e.g. image, table) to the center of the text
 InlineAlignmentINLINE_ALIGNMENT_BOTTOM=14
 Aligns bottom of the inline object (e.g. image, table) to the bottom of the text. Equivalent toINLINE_ALIGNMENT_BOTTOM_TO|INLINE_ALIGNMENT_TO_BOTTOM.
 InlineAlignmentINLINE_ALIGNMENT_IMAGE_MASK=3
-A bit mask forINLINE_ALIGNMENT_*_TOalignment constants.
+A bit mask forINLINE_ALIGNMENT***TOalignment constants.
 InlineAlignmentINLINE_ALIGNMENT_TEXT_MASK=12
-A bit mask forINLINE_ALIGNMENT_TO_*alignment constants.
+A bit mask forINLINE_ALIGNMENT_TO**alignment constants.
 enumEulerOrder:🔗
 EulerOrderEULER_ORDER_XYZ=0
 Specifies that Euler angles should be in XYZ order. When composing, the order is X, Y, Z. When decomposing, the order is reversed, first Z, then Y, and X last.
@@ -1042,6 +1046,7 @@ JoyButtonJOY_BUTTON_SDL_MAX=21
 The number of SDL game controller buttons.
 JoyButtonJOY_BUTTON_MAX=128
 The maximum number of game controller buttons supported by the engine. The actual limit may be lower on specific platforms:
+
 - Android:Up to 36 buttons.
 Android:Up to 36 buttons.
 - Linux:Up to 80 buttons.
@@ -1115,6 +1120,7 @@ enumError:🔗
 ErrorOK=0
 Methods that returnErrorreturnOKwhen no error occurred.
 SinceOKhas value0, and all other error constants are positive integers, it can also be used in boolean checks.
+
 ```
 var error = method_that_returns_error()
 if error != OK:
@@ -1124,6 +1130,7 @@ if error != OK:
 if error:
     printerr("Still failing!")
 ```
+
 Note:Many functions do not return an error code, but will print error messages to standard output.
 ErrorFAILED=1
 Generic error.
@@ -1284,6 +1291,7 @@ PropertyHintPROPERTY_HINT_TYPE_STRING=23
 If a property isString, hints that the property represents a particular type (class). This allows to select a type from the create dialog. The property will store the selected type as a string.
 If a property isArray, hints the editor how to show elements. Thehint_stringmust encode nested types using":"and"/".
 If a property isDictionary, hints the editor how to show elements. Thehint_stringis the same asArray, with a";"separating the key and value.
+
 ```
 # Array of elem_type.
 hint_string = "%d:" % [elem_type]
@@ -1295,6 +1303,7 @@ hint_string = "%d:%d/%d:%s" % [TYPE_ARRAY, elem_type, elem_hint, elem_hint_strin
 hint_string = "%d:%d:%d:" % [TYPE_ARRAY, TYPE_ARRAY, elem_type]
 hint_string = "%d:%d:%d/%d:%s" % [TYPE_ARRAY, TYPE_ARRAY, elem_type, elem_hint, elem_hint_string]
 ```
+
 ```
 // Array of elemType.
 hintString = $"{elemType:D}:";
@@ -1306,7 +1315,9 @@ hintString = $"{Variant.Type.Array:D}:{elemType:D}/{elemHint:D}:{elemHintString}
 hintString = $"{Variant.Type.Array:D}:{Variant.Type.Array:D}:{elemType:D}:";
 hintString = $"{Variant.Type.Array:D}:{Variant.Type.Array:D}:{elemType:D}/{elemHint:D}:{elemHintString}";
 ```
+
 Examples:
+
 ```
 hint_string = "%d:" % [TYPE_INT] # Array of integers.
 hint_string = "%d/%d:1,10,1" % [TYPE_INT, PROPERTY_HINT_RANGE] # Array of integers (in range from 1 to 10).
@@ -1320,6 +1331,7 @@ hint_string = "%d:%d/%d:" % [TYPE_ARRAY, TYPE_STRING, PROPERTY_HINT_MULTILINE_TE
 hint_string = "%d:%d/%d:-1,1,0.1" % [TYPE_ARRAY, TYPE_FLOAT, PROPERTY_HINT_RANGE] # Two-dimensional array of floats (in range from -1 to 1).
 hint_string = "%d:%d/%d:Texture2D" % [TYPE_ARRAY, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE] # Two-dimensional array of textures.
 ```
+
 ```
 hintString = $"{Variant.Type.Int:D}/{PropertyHint.Range:D}:1,10,1"; // Array of integers (in range from 1 to 10).
 hintString = $"{Variant.Type.Int:D}/{PropertyHint.Enum:D}:Zero,One,Two"; // Array of integers (an enum).
@@ -1332,6 +1344,7 @@ hintString = $"{Variant.Type.Array:D}:{Variant.Type.String:D}/{PropertyHint.Mult
 hintString = $"{Variant.Type.Array:D}:{Variant.Type.Float:D}/{PropertyHint.Range:D}:-1,1,0.1"; // Two-dimensional array of floats (in range from -1 to 1).
 hintString = $"{Variant.Type.Array:D}:{Variant.Type.Object:D}/{PropertyHint.ResourceType:D}:Texture2D"; // Two-dimensional array of textures.
 ```
+
 Note:The trailing colon is required for properly detecting built-in types.
 PropertyHintPROPERTY_HINT_NODE_PATH_TO_EDITED_NODE=24
 Deprecated:This hint is not used by the engine.
@@ -1365,10 +1378,12 @@ PropertyHintPROPERTY_HINT_PASSWORD=36
 Hints that a string property is a password, and every character is replaced with the secret character.
 PropertyHintPROPERTY_HINT_TOOL_BUTTON=39
 Hints that aCallableproperty should be displayed as a clickable button. When the button is pressed, the callable is called. The hint string specifies the button text and optionally an icon from the"EditorIcons"theme type.
+
 ```
 "Click me!" - A button with the text "Click me!" and the default "Callable" icon.
 "Click me!,ColorRect" - A button with the text "Click me!" and the "ColorRect" icon.
 ```
+
 Note:ACallablecannot be properly serialized and stored in a file, so it is recommended to usePROPERTY_USAGE_EDITORinstead ofPROPERTY_USAGE_DEFAULT.
 PropertyHintPROPERTY_HINT_ONESHOT=40
 Hints that a property will be changed on its own after setting, such asAudioStreamPlayer.playingorGPUParticles3D.emitting.
@@ -1377,6 +1392,7 @@ Hints that a boolean property will enable the feature associated with the group 
 By default, disabling the property hides all properties in the group. Use the optional hint string"checkbox_only"to disable this behavior.
 PropertyHintPROPERTY_HINT_INPUT_NAME=43
 Hints that aStringorStringNameproperty is the name of an input action. This allows the selection of any action name from the Input Map in the Project Settings. The hint string may contain two options separated by commas:
+
 - If it contains"show_builtin", built-in input actions are included in the selection.
 If it contains"show_builtin", built-in input actions are included in the selection.
 - If it contains"loose_mode", loose mode is enabled. This allows inserting any action name even if it's not present in the input map.
@@ -1620,6 +1636,7 @@ Variant.OperatorOP_MAX=25
 Represents the size of theVariant.Operatorenum.
 
 ## Property Descriptions
+
 AudioServerAudioServer🔗
 TheAudioServersingleton.
 CameraServerCameraServer🔗
@@ -1704,8 +1721,10 @@ XRServerXRServer🔗
 TheXRServersingleton.
 
 ## Method Descriptions
+
 Variantabs(x:Variant)🔗
 Returns the absolute value of aVariantparameterx(i.e. non-negative value). Supported types:int,float,Vector2,Vector2i,Vector3,Vector3i,Vector4,Vector4i.
+
 ```
 var a = abs(-1)
 # a is 1
@@ -1725,63 +1744,81 @@ var e = abs(Vector3(-7, 8.5, -3.8))
 var f = abs(Vector3i(-7, -8, -9))
 # f is (7, 8, 9)
 ```
+
 Note:For better type safety, useabsf(),absi(),Vector2.abs(),Vector2i.abs(),Vector3.abs(),Vector3i.abs(),Vector4.abs(), orVector4i.abs().
 floatabsf(x:float)🔗
 Returns the absolute value of float parameterx(i.e. positive value).
+
 ```
 # a is 1.2
 var a = absf(-1.2)
 ```
+
 intabsi(x:int)🔗
 Returns the absolute value of int parameterx(i.e. positive value).
+
 ```
 # a is 1
 var a = absi(-1)
 ```
+
 floatacos(x:float)🔗
 Returns the arc cosine ofxin radians. Use to get the angle of cosinex.xwill be clamped between-1.0and1.0(inclusive), in order to preventacos()from returning@GDScript.NAN.
+
 ```
 # c is 0.523599 or 30 degrees if converted with rad_to_deg(c)
 var c = acos(0.866025)
 ```
+
 floatacosh(x:float)🔗
 Returns the hyperbolic arc (also called inverse) cosine ofx, returning a value in radians. Use it to get the angle from an angle's cosine in hyperbolic space ifxis larger or equal to 1. For values ofxlower than 1, it will return 0, in order to preventacosh()from returning@GDScript.NAN.
+
 ```
 var a = acosh(2) # Returns 1.31695789692482
 cosh(a) # Returns 2
 
 var b = acosh(-1) # Returns 0
 ```
+
 floatangle_difference(from:float, to:float)🔗
 Returns the difference between the two angles (in radians), in the range of[-PI,+PI]. Whenfromandtoare opposite, returns-PIiffromis smaller thanto, orPIotherwise.
 floatasin(x:float)🔗
 Returns the arc sine ofxin radians. Use to get the angle of sinex.xwill be clamped between-1.0and1.0(inclusive), in order to preventasin()from returning@GDScript.NAN.
+
 ```
 # s is 0.523599 or 30 degrees if converted with rad_to_deg(s)
 var s = asin(0.5)
 ```
+
 floatasinh(x:float)🔗
 Returns the hyperbolic arc (also called inverse) sine ofx, returning a value in radians. Use it to get the angle from an angle's sine in hyperbolic space.
+
 ```
 var a = asinh(0.9) # Returns 0.8088669356527824
 sinh(a) # Returns 0.9
 ```
+
 floatatan(x:float)🔗
 Returns the arc tangent ofxin radians. Use it to get the angle from an angle's tangent in trigonometry.
 The method cannot know in which quadrant the angle should fall. Seeatan2()if you have bothyandx.
+
 ```
 var a = atan(0.5) # a is 0.463648
 ```
+
 Ifxis between-PI/2andPI/2(inclusive),atan(tan(x))is equal tox.
 floatatan2(y:float, x:float)🔗
 Returns the arc tangent ofy/xin radians. Use to get the angle of tangenty/x. To compute the value, the method takes into account the sign of both arguments in order to determine the quadrant.
 Important note: The Y coordinate comes first, by convention.
+
 ```
 var a = atan2(0, -1) # a is 3.141593
 ```
+
 floatatanh(x:float)🔗
 Returns the hyperbolic arc (also called inverse) tangent ofx, returning a value in radians. Use it to get the angle from an angle's tangent in hyperbolic space ifxis between -1 and 1 (non-inclusive).
 In mathematics, the inverse hyperbolic tangent is only defined for -1 <x< 1 in the real set, so values equal or lower to -1 forxreturn negative@GDScript.INFand values equal or higher than 1 return positive@GDScript.INFin order to preventatanh()from returning@GDScript.NAN.
+
 ```
 var a = atanh(0.9) # Returns 1.47221948958322
 tanh(a) # Returns 0.9
@@ -1789,6 +1826,7 @@ tanh(a) # Returns 0.9
 var b = atanh(-2) # Returns -inf
 tanh(b) # Returns -1
 ```
+
 floatbezier_derivative(start:float, control_1:float, control_2:float, end:float, t:float)🔗
 Returns the derivative at the giventon a one-dimensionalBézier curvedefined by the givencontrol_1,control_2, andendpoints.
 floatbezier_interpolate(start:float, control_1:float, control_2:float, end:float, t:float)🔗
@@ -1801,10 +1839,12 @@ Decodes a byte array back to aVariantvalue. Decoding objects is allowed.
 Warning:Deserialized object can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats (remote code execution).
 Variantceil(x:Variant)🔗
 Roundsxupward (towards positive infinity), returning the smallest whole number that is not less thanx. Supported types:int,float,Vector2,Vector2i,Vector3,Vector3i,Vector4,Vector4i.
+
 ```
 var i = ceil(1.45) # i is 2.0
 i = ceil(1.001)    # i is 2.0
 ```
+
 See alsofloor(),round(), andsnapped().
 Note:For better type safety, useceilf(),ceili(),Vector2.ceil(),Vector3.ceil(), orVector4.ceil().
 floatceilf(x:float)🔗
@@ -1815,6 +1855,7 @@ Roundsxupward (towards positive infinity), returning the smallest whole number t
 A type-safe version ofceil(), returning anint.
 Variantclamp(value:Variant, min:Variant, max:Variant)🔗
 Clamps thevalue, returning aVariantnot less thanminand not more thanmax. Any values that can be compared with the less than and greater than operators will work.
+
 ```
 var a = clamp(-10, -1, 5)
 # a is -1
@@ -1822,10 +1863,12 @@ var a = clamp(-10, -1, 5)
 var b = clamp(8.1, 0.9, 5.5)
 # b is 5.5
 ```
+
 Note:For better type safety, useclampf(),clampi(),Vector2.clamp(),Vector2i.clamp(),Vector3.clamp(),Vector3i.clamp(),Vector4.clamp(),Vector4i.clamp(), orColor.clamp()(not currently supported by this method).
 Note:When using this on vectors it willnotperform component-wise clamping, and will pickminifvalue<minormaxifvalue>max. To perform component-wise clamping use the methods listed above.
 floatclampf(value:float, min:float, max:float)🔗
 Clamps thevalue, returning afloatnot less thanminand not more thanmax.
+
 ```
 var speed = 42.1
 var a = clampf(speed, 1.0, 20.5) # a is 20.5
@@ -1833,8 +1876,10 @@ var a = clampf(speed, 1.0, 20.5) # a is 20.5
 speed = -10.0
 var b = clampf(speed, -1.0, 1.0) # b is -1.0
 ```
+
 intclampi(value:int, min:int, max:int)🔗
 Clamps thevalue, returning anintnot less thanminand not more thanmax.
+
 ```
 var speed = 42
 var a = clampi(speed, 1, 20) # a is 20
@@ -1842,18 +1887,23 @@ var a = clampi(speed, 1, 20) # a is 20
 speed = -10
 var b = clampi(speed, -1, 1) # b is -1
 ```
+
 floatcos(angle_rad:float)🔗
 Returns the cosine of angleangle_radin radians.
+
 ```
 cos(PI * 2)         # Returns 1.0
 cos(PI)             # Returns -1.0
 cos(deg_to_rad(90)) # Returns 0.0
 ```
+
 floatcosh(x:float)🔗
 Returns the hyperbolic cosine ofxin radians.
+
 ```
 print(cosh(1)) # Prints 1.543081
 ```
+
 floatcubic_interpolate(from:float, to:float, pre:float, post:float, weight:float)🔗
 Cubic interpolates between two values by the factor defined inweightwithpreandpostvalues.
 floatcubic_interpolate_angle(from:float, to:float, pre:float, post:float, weight:float)🔗
@@ -1868,11 +1918,14 @@ floatdb_to_linear(db:float)🔗
 Converts from decibels to linear energy (audio).
 floatdeg_to_rad(deg:float)🔗
 Converts an angle expressed in degrees to radians.
+
 ```
 var r = deg_to_rad(180) # r is 3.141593
 ```
+
 floatease(x:float, curve:float)🔗
 Returns an "eased" value ofxbased on an easing function defined withcurve. This easing function is based on an exponent. Thecurvecan be any floating-point number, with specific values leading to the following behaviors:
+
 ```
 - Lower than -1.0 (exclusive): Ease in-out
 - -1.0: Linear
@@ -1882,29 +1935,36 @@ Returns an "eased" value ofxbased on an easing function defined withcurve. This 
 - 1.0: Linear
 - Greater than 1.0 (exclusive): Ease in
 ```
+
 ease() curve values cheatsheet
 See alsosmoothstep(). If you need to perform more advanced transitions, useTween.interpolate_value().
 Stringerror_string(error:int)🔗
 Returns a human-readable name for the givenErrorcode.
+
 ```
 print(OK)                              # Prints 0
 print(error_string(OK))                # Prints "OK"
 print(error_string(ERR_BUSY))          # Prints "Busy"
 print(error_string(ERR_OUT_OF_MEMORY)) # Prints "Out of memory"
 ```
+
 floatexp(x:float)🔗
 The natural exponential function. It raises the mathematical constanteto the power ofxand returns it.
 ehas an approximate value of 2.71828, and can be obtained withexp(1).
 For exponents to other bases use the methodpow().
+
 ```
 var a = exp(2) # Approximately 7.39
 ```
+
 Variantfloor(x:Variant)🔗
 Roundsxdownward (towards negative infinity), returning the largest whole number that is not more thanx. Supported types:int,float,Vector2,Vector2i,Vector3,Vector3i,Vector4,Vector4i.
+
 ```
 var a = floor(2.99) # a is 2.0
 a = floor(-2.99)    # a is -3.0
 ```
+
 See alsoceil(),round(), andsnapped().
 Note:For better type safety, usefloorf(),floori(),Vector2.floor(),Vector3.floor(), orVector4.floor().
 floatfloorf(x:float)🔗
@@ -1916,19 +1976,24 @@ A type-safe version offloor(), returning anint.
 Note:This function isnotthe same asint(x), which rounds towards 0.
 floatfmod(x:float, y:float)🔗
 Returns the floating-point remainder ofxdivided byy, keeping the sign ofx.
+
 ```
 var remainder = fmod(7, 5.5) # remainder is 1.5
 ```
+
 For the integer remainder operation, use the%operator.
 floatfposmod(x:float, y:float)🔗
 Returns the floating-point modulus ofxdivided byy, wrapping equally in positive and negative.
+
 ```
 print(" (x)  (fmod(x, 1.5))   (fposmod(x, 1.5))")
 for i in 7:
     var x = i * 0.5 - 1.5
     print("%4.1f           %4.1f  | %4.1f" % [x, fmod(x, 1.5), fposmod(x, 1.5)])
 ```
+
 Prints:
+
 ```
  (x)  (fmod(x, 1.5))   (fposmod(x, 1.5))
 -1.5           -0.0  |  0.0
@@ -1939,16 +2004,21 @@ Prints:
  1.0            1.0  |  1.0
  1.5            0.0  |  0.0
 ```
+
 inthash(variable:Variant)🔗
 Returns the integer hash of the passedvariable.
+
 ```
 print(hash("a")) # Prints 177670
 ```
+
 ```
 GD.Print(GD.Hash("a")); // Prints 177670
 ```
+
 Objectinstance_from_id(instance_id:int)🔗
 Returns theObjectthat corresponds toinstance_id. All Objects have a unique instance ID. See alsoObject.get_instance_id().
+
 ```
 var drink = "water"
 
@@ -1957,6 +2027,7 @@ func _ready():
     var instance = instance_from_id(id)
     print(instance.drink) # Prints "water"
 ```
+
 ```
 public partial class MyNode : Node
 {
@@ -1970,8 +2041,10 @@ public partial class MyNode : Node
     }
 }
 ```
+
 floatinverse_lerp(from:float, to:float, weight:float)🔗
 Returns an interpolation or extrapolation factor considering the range specified infromandto, and the interpolated value specified inweight. The returned value will be between0.0and1.0ifweightis betweenfromandto(inclusive). Ifweightis located outside this range, then an extrapolation factor will be returned (return value lower than0.0or greater than1.0). Useclamp()on the result ofinverse_lerp()if this is not desired.
+
 ```
 # The interpolation ratio in the `lerp()` call below is 0.75.
 var middle = lerp(20, 30, 0.75)
@@ -1981,6 +2054,7 @@ var middle = lerp(20, 30, 0.75)
 var ratio = inverse_lerp(20, 30, 27.5)
 # ratio is now 0.75.
 ```
+
 See alsolerp(), which performs the reverse of this operation, andremap()to map a continuous series of values to another.
 boolis_equal_approx(a:float, b:float)🔗
 Returnstrueifaandbare approximately equal to each other.
@@ -1998,6 +2072,7 @@ boolis_nan(x:float)🔗
 Returnstrueifxis a NaN ("Not a Number" or invalid) value. This method is needed as@GDScript.NANis not equal to itself, which meansx==NANcan't be used to check whether a value is a NaN.
 boolis_same(a:Variant, b:Variant)🔗
 Returnstrue, for value types, ifaandbshare the same value. Returnstrue, for reference types, if the references ofaandbare the same.
+
 ```
 # Vector2 is a value type
 var vec2_a = Vector2(0, 0)
@@ -2013,6 +2088,7 @@ var arr_b = []
 is_same(arr_a, arr_a)  # true
 is_same(arr_a, arr_b)  # false
 ```
+
 These areVariantvalue types:null,bool,int,float,String,StringName,Vector2,Vector2i,Vector3,Vector3i,Vector4,Vector4i,Rect2,Rect2i,Transform2D,Transform3D,Plane,Quaternion,AABB,Basis,Projection,Color,NodePath,RID,CallableandSignal.
 These areVariantreference types:Object,Dictionary,Array,PackedByteArray,PackedInt32Array,PackedInt64Array,PackedFloat32Array,PackedFloat64Array,PackedStringArray,PackedVector2Array,PackedVector3Array,PackedVector4Array, andPackedColorArray.
 boolis_zero_approx(x:float)🔗
@@ -2021,14 +2097,17 @@ This function is faster than usingis_equal_approx()with one value as zero.
 Variantlerp(from:Variant, to:Variant, weight:Variant)🔗
 Linearly interpolates between two values by the factor defined inweight. To perform interpolation,weightshould be between0.0and1.0(inclusive). However, values outside this range are allowed and can be used to performextrapolation. If this is not desired, useclampf()to limitweight.
 Bothfromandtomust be the same type. Supported types:int,float,Vector2,Vector3,Vector4,Color,Quaternion,Basis,Transform2D,Transform3D.
+
 ```
 lerp(0, 4, 0.75) # Returns 3.0
 ```
+
 See alsoinverse_lerp()which performs the reverse of this operation. To perform eased interpolation withlerp(), combine it withease()orsmoothstep(). See alsoremap()to map a continuous series of values to another.
 Note:For better type safety, uselerpf(),Vector2.lerp(),Vector3.lerp(),Vector4.lerp(),Color.lerp(),Quaternion.slerp(),Basis.slerp(),Transform2D.interpolate_with(), orTransform3D.interpolate_with().
 floatlerp_angle(from:float, to:float, weight:float)🔗
 Linearly interpolates between two angles (in radians) by aweightvalue between 0.0 and 1.0.
 Similar tolerp(), but interpolates correctly when the angles wrap around@GDScript.TAU. To perform eased interpolation withlerp_angle(), combine it withease()orsmoothstep().
+
 ```
 extends Sprite
 var elapsed = 0.0
@@ -2038,73 +2117,95 @@ func _process(delta):
     rotation = lerp_angle(min_angle, max_angle, elapsed)
     elapsed += delta
 ```
+
 Note:This function lerps through the shortest path betweenfromandto. However, when these two angles are approximatelyPI+k*TAUapart for any integerk, it's not obvious which way they lerp due to floating-point precision errors. For example,lerp_angle(0,PI,weight)lerps counter-clockwise, whilelerp_angle(0,PI+5*TAU,weight)lerps clockwise.
 floatlerpf(from:float, to:float, weight:float)🔗
 Linearly interpolates between two values by the factor defined inweight. To perform interpolation,weightshould be between0.0and1.0(inclusive). However, values outside this range are allowed and can be used to performextrapolation. If this is not desired, useclampf()on the result of this function.
+
 ```
 lerpf(0, 4, 0.75) # Returns 3.0
 ```
+
 See alsoinverse_lerp()which performs the reverse of this operation. To perform eased interpolation withlerp(), combine it withease()orsmoothstep().
 floatlinear_to_db(lin:float)🔗
 Converts from linear energy to decibels (audio). Since volume is not normally linear, this can be used to implement volume sliders that behave as expected.
 Example:Change the Master bus's volume through aSlidernode, which ranges from0.0to1.0:
+
 ```
 AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db($Slider.value))
 ```
+
 floatlog(x:float)🔗
 Returns thenatural logarithmofx(base[i]e[/i], withebeing approximately 2.71828). This is the amount of time needed to reach a certain level of continuous growth.
 Note:This is not the same as the "log" function on most calculators, which uses a base 10 logarithm. To use base 10 logarithm, uselog(x)/log(10).
+
 ```
 log(10) # Returns 2.302585
 ```
+
 Note:The logarithm of0returns-inf, while negative values return-nan.
 Variantmax(...)vararg🔗
 Returns the maximum of the given numeric values. This function can take any number of arguments.
+
 ```
 max(1, 7, 3, -6, 5) # Returns 7
 ```
+
 Note:When using this on vectors it willnotperform component-wise maximum, and will pick the largest value when compared usingx<y. To perform component-wise maximum, useVector2.max(),Vector2i.max(),Vector3.max(),Vector3i.max(),Vector4.max(), andVector4i.max().
 floatmaxf(a:float, b:float)🔗
 Returns the maximum of twofloatvalues.
+
 ```
 maxf(3.6, 24)   # Returns 24.0
 maxf(-3.99, -4) # Returns -3.99
 ```
+
 intmaxi(a:int, b:int)🔗
 Returns the maximum of twointvalues.
+
 ```
 maxi(1, 2)   # Returns 2
 maxi(-3, -4) # Returns -3
 ```
+
 Variantmin(...)vararg🔗
 Returns the minimum of the given numeric values. This function can take any number of arguments.
+
 ```
 min(1, 7, 3, -6, 5) # Returns -6
 ```
+
 Note:When using this on vectors it willnotperform component-wise minimum, and will pick the smallest value when compared usingx<y. To perform component-wise minimum, useVector2.min(),Vector2i.min(),Vector3.min(),Vector3i.min(),Vector4.min(), andVector4i.min().
 floatminf(a:float, b:float)🔗
 Returns the minimum of twofloatvalues.
+
 ```
 minf(3.6, 24)   # Returns 3.6
 minf(-3.99, -4) # Returns -4.0
 ```
+
 intmini(a:int, b:int)🔗
 Returns the minimum of twointvalues.
+
 ```
 mini(1, 2)   # Returns 1
 mini(-3, -4) # Returns -4
 ```
+
 floatmove_toward(from:float, to:float, delta:float)🔗
 Movesfromtowardtoby thedeltaamount. Will not go pastto.
 Use a negativedeltavalue to move away.
+
 ```
 move_toward(5, 10, 4)    # Returns 9
 move_toward(10, 5, 4)    # Returns 6
 move_toward(5, 10, 9)    # Returns 10
 move_toward(10, 5, -1.5) # Returns 11.5
 ```
+
 intnearest_po2(value:int)🔗
 Returns the smallest integer power of 2 that is greater than or equal tovalue.
+
 ```
 nearest_po2(3) # Returns 4
 nearest_po2(4) # Returns 4
@@ -2113,9 +2214,11 @@ nearest_po2(5) # Returns 8
 nearest_po2(0)  # Returns 0 (this may not be expected)
 nearest_po2(-1) # Returns 0 (this may not be expected)
 ```
+
 Warning:Due to its implementation, this method returns0rather than1for values less than or equal to0, with an exception forvaluebeing the smallest negative 64-bit integer (-9223372036854775808) in which case thevalueis returned unchanged.
 floatpingpong(value:float, length:float)🔗
 Wrapsvaluebetween0and thelength. If the limit is reached, the next value the function returns is decreased to the0side or increased to thelengthside (like a triangle wave). Iflengthis less than zero, it becomes positive.
+
 ```
 pingpong(-3.0, 3.0) # Returns 3.0
 pingpong(-2.0, 3.0) # Returns 2.0
@@ -2128,14 +2231,18 @@ pingpong(4.0, 3.0)  # Returns 2.0
 pingpong(5.0, 3.0)  # Returns 1.0
 pingpong(6.0, 3.0)  # Returns 0.0
 ```
+
 intposmod(x:int, y:int)🔗
 Returns the integer modulus ofxdivided byythat wraps equally in positive and negative.
+
 ```
 print("#(i)  (i % 3)   (posmod(i, 3))")
 for i in range(-3, 4):
     print("%2d       %2d  | %2d" % [i, i % 3, posmod(i, 3)])
 ```
+
 Prints:
+
 ```
 (i)  (i % 3)   (posmod(i, 3))
 -3        0  |  0
@@ -2146,164 +2253,209 @@ Prints:
  2        2  |  2
  3        0  |  0
 ```
+
 floatpow(base:float, exp:float)🔗
 Returns the result ofbaseraised to the power ofexp.
 In GDScript, this is the equivalent of the**operator.
+
 ```
 pow(2, 5)   # Returns 32.0
 pow(4, 1.5) # Returns 8.0
 ```
+
 voidprint(...)vararg🔗
 Converts one or more arguments of any type to string in the best way possible and prints them to the console.
+
 ```
 var a = [1, 2, 3]
 print("a", "b", a) # Prints "ab[1, 2, 3]"
 ```
+
 ```
 Godot.Collections.Array a = [1, 2, 3];
 GD.Print("a", "b", a); // Prints "ab[1, 2, 3]"
 ```
+
 Note:Consider usingpush_error()andpush_warning()to print error and warning messages instead ofprint()orprint_rich(). This distinguishes them from print messages used for debugging purposes, while also displaying a stack trace when an error or warning is printed. See alsoEngine.print_to_stdoutandProjectSettings.application/run/disable_stdout.
 voidprint_rich(...)vararg🔗
 Converts one or more arguments of any type to string in the best way possible and prints them to the console.
 The following BBCode tags are supported:b,i,u,s,indent,code,url,center,right,color,bgcolor,fgcolor.
 URL tags only support URLs wrapped by a URL tag, not URLs with a different title.
 When printing to standard output, the supported subset of BBCode is converted to ANSI escape codes for the terminal emulator to display. Support for ANSI escape codes varies across terminal emulators, especially for italic and strikethrough. In standard output,codeis represented with faint text but without any font change. Unsupported tags are left as-is in standard output.
+
 ```
 print_rich("[color=green][b]Hello world![/b][/color]") # Prints "Hello world!", in green with a bold font.
 ```
+
 ```
 GD.PrintRich("[color=green][b]Hello world![/b][/color]"); // Prints "Hello world!", in green with a bold font.
 ```
+
 Note:Consider usingpush_error()andpush_warning()to print error and warning messages instead ofprint()orprint_rich(). This distinguishes them from print messages used for debugging purposes, while also displaying a stack trace when an error or warning is printed.
 Note:Output displayed in the editor supports clickable[url=address]text[/url]tags. The[url]tag'saddressvalue is handled byOS.shell_open()when clicked.
 voidprint_verbose(...)vararg🔗
 If verbose mode is enabled (OS.is_stdout_verbose()returningtrue), converts one or more arguments of any type to string in the best way possible and prints them to the console.
 voidprinterr(...)vararg🔗
 Prints one or more arguments to strings in the best way possible to standard error line.
+
 ```
 printerr("prints to stderr")
 ```
+
 ```
 GD.PrintErr("prints to stderr");
 ```
+
 voidprintraw(...)vararg🔗
 Prints one or more arguments to strings in the best way possible to the OS terminal. Unlikeprint(), no newline is automatically added at the end.
 Note:The OS terminal isnotthe same as the editor's Output dock. The output sent to the OS terminal can be seen when running Godot from a terminal. On Windows, this requires using theconsole.exeexecutable.
+
 ```
 # Prints "ABC" to terminal.
 printraw("A")
 printraw("B")
 printraw("C")
 ```
+
 ```
 // Prints "ABC" to terminal.
 GD.PrintRaw("A");
 GD.PrintRaw("B");
 GD.PrintRaw("C");
 ```
+
 voidprints(...)vararg🔗
 Prints one or more arguments to the console with a space between each argument.
+
 ```
 prints("A", "B", "C") # Prints "A B C"
 ```
+
 ```
 GD.PrintS("A", "B", "C"); // Prints "A B C"
 ```
+
 voidprintt(...)vararg🔗
 Prints one or more arguments to the console with a tab between each argument.
+
 ```
 printt("A", "B", "C") # Prints "A       B       C"
 ```
+
 ```
 GD.PrintT("A", "B", "C"); // Prints "A       B       C"
 ```
+
 voidpush_error(...)vararg🔗
 Pushes an error message to Godot's built-in debugger and to the OS terminal.
+
 ```
 push_error("test error") # Prints "test error" to debugger and terminal as an error.
 ```
+
 ```
 GD.PushError("test error"); // Prints "test error" to debugger and terminal as an error.
 ```
+
 Note:This function does not pause project execution. To print an error message and pause project execution in debug builds, useassert(false,"testerror")instead.
 voidpush_warning(...)vararg🔗
 Pushes a warning message to Godot's built-in debugger and to the OS terminal.
+
 ```
 push_warning("test warning") # Prints "test warning" to debugger and terminal as a warning.
 ```
+
 ```
 GD.PushWarning("test warning"); // Prints "test warning" to debugger and terminal as a warning.
 ```
+
 floatrad_to_deg(rad:float)🔗
 Converts an angle expressed in radians to degrees.
+
 ```
 rad_to_deg(0.523599) # Returns 30
 rad_to_deg(PI)       # Returns 180
 rad_to_deg(PI * 2)   # Returns 360
 ```
+
 PackedInt64Arrayrand_from_seed(seed:int)🔗
 Given aseed, returns aPackedInt64Arrayof size2, where its first element is the randomizedintvalue, and the second element is the same asseed. Passing the sameseedconsistently returns the same array.
 Note:"Seed" here refers to the internal state of the pseudo random number generator, currently implemented as a 64 bit integer.
+
 ```
 var a = rand_from_seed(4)
 
 print(a[0]) # Prints 2879024997
 print(a[1]) # Prints 4
 ```
+
 floatrandf()🔗
 Returns a random floating-point value between0.0and1.0(inclusive).
+
 ```
 randf() # Returns e.g. 0.375671
 ```
+
 ```
 GD.Randf(); // Returns e.g. 0.375671
 ```
+
 floatrandf_range(from:float, to:float)🔗
 Returns a random floating-point value betweenfromandto(inclusive).
+
 ```
 randf_range(0, 20.5) # Returns e.g. 7.45315
 randf_range(-10, 10) # Returns e.g. -3.844535
 ```
+
 ```
 GD.RandRange(0.0, 20.5);   // Returns e.g. 7.45315
 GD.RandRange(-10.0, 10.0); // Returns e.g. -3.844535
 ```
+
 floatrandfn(mean:float, deviation:float)🔗
 Returns anormally-distributed, pseudo-random floating-point value from the specifiedmeanand a standarddeviation. This is also known as a Gaussian distribution.
 Note:This method uses theBox-Muller transformalgorithm.
 intrandi()🔗
 Returns a random unsigned 32-bit integer. Use remainder to obtain a random value in the interval[0,N-1](where N is smaller than 2^32).
+
 ```
 randi()           # Returns random integer between 0 and 2^32 - 1
 randi() % 20      # Returns random integer between 0 and 19
 randi() % 100     # Returns random integer between 0 and 99
 randi() % 100 + 1 # Returns random integer between 1 and 100
 ```
+
 ```
 GD.Randi();           // Returns random integer between 0 and 2^32 - 1
 GD.Randi() % 20;      // Returns random integer between 0 and 19
 GD.Randi() % 100;     // Returns random integer between 0 and 99
 GD.Randi() % 100 + 1; // Returns random integer between 1 and 100
 ```
+
 intrandi_range(from:int, to:int)🔗
 Returns a random signed 32-bit integer betweenfromandto(inclusive). Iftois lesser thanfrom, they are swapped.
+
 ```
 randi_range(0, 1)      # Returns either 0 or 1
 randi_range(-10, 1000) # Returns random integer between -10 and 1000
 ```
+
 ```
 GD.RandRange(0, 1);      // Returns either 0 or 1
 GD.RandRange(-10, 1000); // Returns random integer between -10 and 1000
 ```
+
 voidrandomize()🔗
 Randomizes the seed (or the internal state) of the random number generator. The current implementation uses a number based on the device's time.
 Note:This function is called automatically when the project is run. If you need to fix the seed to have consistent, reproducible results, useseed()to initialize the random number generator.
 floatremap(value:float, istart:float, istop:float, ostart:float, ostop:float)🔗
 Maps avaluefrom range[istart,istop]to[ostart,ostop]. See alsolerp()andinverse_lerp(). Ifvalueis outside[istart,istop], then the resulting value will also be outside[ostart,ostop]. If this is not desired, useclamp()on the result of this function.
+
 ```
 remap(75, 0, 100, -1, 1) # Returns 0.5
 ```
+
 For complex use cases where multiple ranges are needed, consider usingCurveorGradientinstead.
 Note:Ifistart==istop, the return value is undefined (most likely NaN, INF, or -INF).
 intrid_allocate_id()🔗
@@ -2316,11 +2468,13 @@ Similar tomove_toward(), but interpolates correctly when the angles wrap around@
 Ifdeltais negative, this function will rotate away fromto, toward the opposite angle, and will not go past the opposite angle.
 Variantround(x:Variant)🔗
 Roundsxto the nearest whole number, with halfway cases rounded away from 0. Supported types:int,float,Vector2,Vector2i,Vector3,Vector3i,Vector4,Vector4i.
+
 ```
 round(2.4) # Returns 2
 round(2.5) # Returns 3
 round(2.6) # Returns 3
 ```
+
 See alsofloor(),ceil(), andsnapped().
 Note:For better type safety, useroundf(),roundi(),Vector2.round(),Vector3.round(), orVector4.round().
 floatroundf(x:float)🔗
@@ -2331,6 +2485,7 @@ Roundsxto the nearest whole number, with halfway cases rounded away from 0.
 A type-safe version ofround(), returning anint.
 voidseed(base:int)🔗
 Sets the seed for the random number generator tobase. Setting the seed manually can ensure consistent, repeatable results for most random functions.
+
 ```
 var my_seed = "Godot Rocks".hash()
 seed(my_seed)
@@ -2339,6 +2494,7 @@ seed(my_seed)
 var b = randf() + randi()
 # a and b are now identical
 ```
+
 ```
 ulong mySeed = (ulong)GD.Hash("Godot Rocks");
 GD.Seed(mySeed);
@@ -2347,9 +2503,11 @@ GD.Seed(mySeed);
 var b = GD.Randf() + GD.Randi();
 // a and b are now identical
 ```
+
 Variantsign(x:Variant)🔗
 Returns the same type ofVariantasx, with-1for negative values,1for positive values, and0for zeros. Fornanvalues it returns 0.
 Supported types:int,float,Vector2,Vector2i,Vector3,Vector3i,Vector4,Vector4i.
+
 ```
 sign(-6.0) # Returns -1
 sign(0.0)  # Returns 0
@@ -2358,123 +2516,154 @@ sign(NAN)  # Returns 0
 
 sign(Vector3(-6.0, 0.0, 6.0)) # Returns (-1, 0, 1)
 ```
+
 Note:For better type safety, usesignf(),signi(),Vector2.sign(),Vector2i.sign(),Vector3.sign(),Vector3i.sign(),Vector4.sign(), orVector4i.sign().
 floatsignf(x:float)🔗
 Returns-1.0ifxis negative,1.0ifxis positive, and0.0ifxis zero. Fornanvalues ofxit returns 0.0.
+
 ```
 signf(-6.5) # Returns -1.0
 signf(0.0)  # Returns 0.0
 signf(6.5)  # Returns 1.0
 signf(NAN)  # Returns 0.0
 ```
+
 intsigni(x:int)🔗
 Returns-1ifxis negative,1ifxis positive, and0ifxis zero.
+
 ```
 signi(-6) # Returns -1
 signi(0)  # Returns 0
 signi(6)  # Returns 1
 ```
+
 floatsin(angle_rad:float)🔗
 Returns the sine of angleangle_radin radians.
+
 ```
 sin(0.523599)       # Returns 0.5
 sin(deg_to_rad(90)) # Returns 1.0
 ```
+
 floatsinh(x:float)🔗
 Returns the hyperbolic sine ofx.
+
 ```
 var a = log(2.0) # Returns 0.693147
 sinh(a) # Returns 0.75
 ```
+
 floatsmoothstep(from:float, to:float, x:float)🔗
 Returns a smooth cubic Hermite interpolation between0and1.
 For positive ranges (whenfrom<=to) the return value is0whenx<=from, and1whenx>=to. Ifxlies betweenfromandto, the return value follows an S-shaped curve that smoothly transitions from0to1.
 For negative ranges (whenfrom>to) the function is mirrored and returns1whenx<=toand0whenx>=from.
 This S-shaped curve is the cubic Hermite interpolator, given byf(y)=3*y^2-2*y^3wherey=(x-from)/(to-from).
+
 ```
 smoothstep(0, 2, -5.0) # Returns 0.0
 smoothstep(0, 2, 0.5) # Returns 0.15625
 smoothstep(0, 2, 1.0) # Returns 0.5
 smoothstep(0, 2, 2.0) # Returns 1.0
 ```
+
 Compared toease()with a curve value of-1.6521,smoothstep()returns the smoothest possible curve with no sudden changes in the derivative. If you need to perform more advanced transitions, useTweenorAnimationPlayer.
 Comparison between smoothstep() and ease(x, -1.6521) return values
 Smoothstep() return values with positive, zero, and negative ranges
 Variantsnapped(x:Variant, step:Variant)🔗
 Returns the multiple ofstepthat is the closest tox. This can also be used to round a floating-point number to an arbitrary number of decimals.
 The returned value is the same type ofVariantasstep. Supported types:int,float,Vector2,Vector2i,Vector3,Vector3i,Vector4,Vector4i.
+
 ```
 snapped(100, 32)  # Returns 96
 snapped(3.14159, 0.01)  # Returns 3.14
 
 snapped(Vector2(34, 70), Vector2(8, 8))  # Returns (32, 72)
 ```
+
 See alsoceil(),floor(), andround().
 Note:For better type safety, usesnappedf(),snappedi(),Vector2.snapped(),Vector2i.snapped(),Vector3.snapped(),Vector3i.snapped(),Vector4.snapped(), orVector4i.snapped().
 floatsnappedf(x:float, step:float)🔗
 Returns the multiple ofstepthat is the closest tox. This can also be used to round a floating-point number to an arbitrary number of decimals.
 A type-safe version ofsnapped(), returning afloat.
+
 ```
 snappedf(32.0, 2.5)  # Returns 32.5
 snappedf(3.14159, 0.01)  # Returns 3.14
 ```
+
 intsnappedi(x:float, step:int)🔗
 Returns the multiple ofstepthat is the closest tox.
 A type-safe version ofsnapped(), returning anint.
+
 ```
 snappedi(53, 16)  # Returns 48
 snappedi(4096, 100)  # Returns 4100
 ```
+
 floatsqrt(x:float)🔗
 Returns the square root ofx, wherexis a non-negative number.
+
 ```
 sqrt(9)     # Returns 3
 sqrt(10.24) # Returns 3.2
 sqrt(-1)    # Returns NaN
 ```
+
 Note:Negative values ofxreturn NaN ("Not a Number"). In C#, if you need negative inputs, useSystem.Numerics.Complex.
 intstep_decimals(x:float)🔗
 Returns the position of the first non-zero digit, after the decimal point. Note that the maximum return value is 10, which is a design decision in the implementation.
+
 ```
 var n = step_decimals(5)       # n is 0
 n = step_decimals(1.0005)      # n is 4
 n = step_decimals(0.000000005) # n is 9
 ```
+
 Stringstr(...)vararg🔗
 Converts one or more arguments of anyVarianttype to aStringin the best way possible.
+
 ```
 var a = [10, 20, 30]
 var b = str(a)
 print(len(a)) # Prints 3 (the number of elements in the array).
 print(len(b)) # Prints 12 (the length of the string "[10, 20, 30]").
 ```
+
 Variantstr_to_var(string:String)🔗
 Converts a formattedstringthat was returned byvar_to_str()to the originalVariant.
+
 ```
 var data = '{ "a": 1, "b": 2 }' # data is a String
 var dict = str_to_var(data)     # dict is a Dictionary
 print(dict["a"])                # Prints 1
 ```
+
 ```
 string data = "{ \"a\": 1, \"b\": 2 }";           // data is a string
 var dict = GD.StrToVar(data).AsGodotDictionary(); // dict is a Dictionary
 GD.Print(dict["a"]);                              // Prints 1
 ```
+
 floattan(angle_rad:float)🔗
 Returns the tangent of angleangle_radin radians.
+
 ```
 tan(deg_to_rad(45)) # Returns 1
 ```
+
 floattanh(x:float)🔗
 Returns the hyperbolic tangent ofx.
+
 ```
 var a = log(2.0) # Returns 0.693147
 tanh(a)          # Returns 0.6
 ```
+
 Varianttype_convert(variant:Variant, type:int)🔗
 Converts the givenvariantto the giventype, using theVariant.Typevalues. This method is generous with how it handles types, it can automatically convert between array types, convert numericStrings toint, and converting most things toString.
 If the type conversion cannot be done, this method will return the default value for that type, for example convertingRect2toVector2will always returnVector2.ZERO. This method will never show error messages as long astypeis a valid Variant type.
 The returned value is aVariant, but the data inside and its type will be the same as the requested type.
+
 ```
 type_convert("Hi!", TYPE_INT) # Returns 0
 type_convert("123", TYPE_INT) # Returns 123
@@ -2482,16 +2671,20 @@ type_convert(123.4, TYPE_INT) # Returns 123
 type_convert(5, TYPE_VECTOR2) # Returns (0, 0)
 type_convert("Hi!", TYPE_NIL) # Returns null
 ```
+
 Stringtype_string(type:int)🔗
 Returns a human-readable name of the giventype, using theVariant.Typevalues.
+
 ```
 print(TYPE_INT) # Prints 2
 print(type_string(TYPE_INT)) # Prints "int"
 print(type_string(TYPE_STRING)) # Prints "String"
 ```
+
 See alsotypeof().
 inttypeof(variable:Variant)🔗
 Returns the internal type of the givenvariable, using theVariant.Typevalues.
+
 ```
 var json = JSON.new()
 json.parse('["a", "b", "c"]')
@@ -2501,6 +2694,7 @@ if typeof(result) == TYPE_ARRAY:
 else:
     print("Unexpected result!")
 ```
+
 See alsotype_string().
 PackedByteArrayvar_to_bytes(variable:Variant)🔗
 Encodes aVariantvalue to a byte array, without encoding objects. Deserialization can be done withbytes_to_var().
@@ -2511,21 +2705,26 @@ Encodes aVariantvalue to a byte array. Encoding objects is allowed (and can pote
 Note:EncodingCallableis not supported and will result in an empty value, regardless of the data.
 Stringvar_to_str(variable:Variant)🔗
 Converts aVariantvariableto a formattedStringthat can then be parsed usingstr_to_var().
+
 ```
 var a = { "a": 1, "b": 2 }
 print(var_to_str(a))
 ```
+
 ```
 var a = new Godot.Collections.Dictionary { ["a"] = 1, ["b"] = 2 };
 GD.Print(GD.VarToStr(a));
 ```
+
 Prints:
+
 ```
 {
     "a": 1,
     "b": 2
 }
 ```
+
 Note:ConvertingSignalorCallableis not supported and will result in an empty value for these types, regardless of their data.
 Variantweakref(obj:Variant)🔗
 Returns aWeakRefinstance holding a weak reference toobj. Returns an emptyWeakRefinstance ifobjisnull. Prints an error and returnsnullifobjis neitherObject-derived nornull.
@@ -2533,6 +2732,7 @@ A weak reference to an object is not enough to keep the object alive: when the o
 Variantwrap(value:Variant, min:Variant, max:Variant)🔗
 Wraps theVariantvaluebetweenminandmax.minisinclusivewhilemaxisexclusive. This can be used for creating loop-like behavior or infinite surfaces.
 Variant typesintandfloatare supported. If any of the arguments isfloat, this function returns afloat, otherwise it returns anint.
+
 ```
 var a = wrap(4, 5, 10)
 # a is 9 (int)
@@ -2543,31 +2743,39 @@ var a = wrap(7, 5, 10)
 var a = wrap(10.5, 5, 10)
 # a is 5.5 (float)
 ```
+
 floatwrapf(value:float, min:float, max:float)🔗
 Wraps the floatvaluebetweenminandmax.minisinclusivewhilemaxisexclusive. This can be used for creating loop-like behavior or infinite surfaces.
+
 ```
 # Infinite loop between 5.0 and 9.9
 value = wrapf(value + 0.1, 5.0, 10.0)
 ```
+
 ```
 # Infinite rotation (in radians)
 angle = wrapf(angle + 0.1, 0.0, TAU)
 ```
+
 ```
 # Infinite rotation (in radians)
 angle = wrapf(angle + 0.1, -PI, PI)
 ```
+
 Note:Ifminis0, this is equivalent tofposmod(), so prefer using that instead.wrapf()is more flexible than using thefposmod()approach by giving the user control over the minimum value.
 intwrapi(value:int, min:int, max:int)🔗
 Wraps the integervaluebetweenminandmax.minisinclusivewhilemaxisexclusive. This can be used for creating loop-like behavior or infinite surfaces.
+
 ```
 # Infinite loop between 5 and 9
 frame = wrapi(frame + 1, 5, 10)
 ```
+
 ```
 # result is -2
 var result = wrapi(-6, -5, -1)
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

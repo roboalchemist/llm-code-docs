@@ -1,11 +1,13 @@
 # Model export considerations in English
 
 # Model export considerations
+
 Before exporting a 3D model from a 3D modeling application, such as Blender,
 there are some considerations that should be taken into account to ensure that
 the model follows the conventions and best practices for Godot.
 
 ## 3D asset direction conventions
+
 Godot uses a right-handed, Y-is-up coordinate system, with the -Z axis as
 the camera's forward direction. This is the same as OpenGL. This implies
 that +Z is back, +X is right, and -X is left for a camera.
@@ -25,6 +27,7 @@ coordinate system, this implies that +Z is south and -Z is north.
 In Blender, this means that +Y is north and -Y is south.
 
 ## Exporting textures separately
+
 While textures can be exported with a model in certain file formats, such as glTF 2.0, you can also export them
 separately. Godot uses PBR (physically based rendering) for its materials, so if a texturing program can export PBR
 textures, they can work in Godot. This includes theSubstance suite,ArmorPaint (open source), andMaterial Maker (open source).
@@ -32,6 +35,7 @@ See also
 For more information on Godot's materials, seeStandard Material 3D and ORM Material 3D.
 
 ## Exporting considerations
+
 Since GPUs can only render triangles, meshes that contain quads or N-gons have
 to betriangulatedbefore they can be rendered. Godot can triangulate meshes
 on import, but results may be unpredictable or incorrect, especially with
@@ -52,6 +56,7 @@ that the skeleton is reset to its T-pose or default rest pose before exporting
 with your favorite 3D editor.
 
 ## Lighting considerations
+
 While it's possible to import lights from a 3D scene using the glTF,.blendor Collada formats, it's generally advised to design the scene's lighting in the
 Godot editor after importing the scene.
 This allows you to get a more accurate feel for the final result, as different
@@ -60,4 +65,5 @@ with lights appearing excessively strong or faint as a result of the import
 process.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,6 +1,7 @@
 # XR full screen effects in English
 
 # XR full screen effects
+
 When adding custom full screen effects to your XR application, one approach is
 using a full screen quad and applying effects to that quad's shader.
 Add aMeshInstance3Dnode
@@ -17,12 +18,14 @@ While the capture on the left is centered in the render target, it is off-center
 But, after applying the projection matrix, we see that the effect is centered in the headset itself.
 
 ## Applying the projection matrix
+
 To properly center the effect, thePOSITIONof the full screen quad
 needs to take the asymmetric field of view into account. To do this while also ensuring the quad
 has full coverage of the entire render target, we can subdivide the quad and apply the projection matrix
 to the inner vertices. Let's increase the subdivide width and depth of the quad.
 Then, in the vertex function of our shader, we apply an offset from the projection matrix to
 the inner vertices. Here's an example of how you might do this with the above simple vignette shader:
+
 ```
 shader_type spatial;
 render_mode depth_test_disabled, skip_vertex_transform, unshaded, cull_disabled;
@@ -44,10 +47,12 @@ void fragment() {
         ALPHA = dot(UV * 2.0 - 1.0, UV * 2.0 - 1.0) * 2.0;
 }
 ```
+
 Note
 For more info on asymmetric FOV and its purpose, see thisMeta Asymmetric Field of View FAQ.
 
 ## Limitations
+
 This full screen effect method has no performance concerns for per-pixel effects such as the above vignette shader.
 However, it is not recommended to read from the screen texture when using this technique.
 Full screen effects that require reading from the screen texture effectively disable all rendering performance optimizations in XR.
@@ -55,4 +60,5 @@ This is because, when reading from the screen texture, Godot makes a full copy o
 this drastically increases the workload for the GPU and can create performance concerns.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

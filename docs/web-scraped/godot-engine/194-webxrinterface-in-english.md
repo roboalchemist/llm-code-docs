@@ -1,15 +1,18 @@
 # WebXRInterface in English
 
 # WebXRInterface
+
 Inherits:XRInterface<RefCounted<Object
 XR interface using WebXR.
 
 ## Description
+
 WebXR is an open standard that allows creating VR and AR applications that run in the web browser.
 As such, this interface is only available when running in Web exports.
 WebXR supports a wide range of devices, from the very capable (like Valve Index, HTC Vive, Oculus Rift and Quest) down to the much less capable (like Google Cardboard, Oculus Go, GearVR, or plain smartphones).
 Since WebXR is based on JavaScript, it makes extensive use of callbacks, which means thatWebXRInterfaceis forced to use signals, where other XR interfaces would instead use functions that return a result immediately. This makesWebXRInterfacequite a bit more complicated to initialize than other XR interfaces.
 Here's the minimum code required to start an immersive VR session:
+
 ```
 extends Node3D
 
@@ -89,7 +92,9 @@ func _webxr_session_ended():
 func _webxr_session_failed(message):
     OS.alert("Failed to initialize: " + message)
 ```
+
 There are a couple ways to handle "controller" input:
+
 - UsingXRController3Dnodes and theirXRController3D.button_pressedandXRController3D.button_releasedsignals. This is how controllers are typically handled in XR apps in Godot, however, this will only work with advanced VR controllers like the Oculus Touch or Index controllers, for example.
 UsingXRController3Dnodes and theirXRController3D.button_pressedandXRController3D.button_releasedsignals. This is how controllers are typically handled in XR apps in Godot, however, this will only work with advanced VR controllers like the Oculus Touch or Index controllers, for example.
 - Using theselect,squeezeand related signals. This method will work for both advanced VR controllers, and non-traditional input sources like a tap on the screen, a spoken voice command or a button press on the device itself.
@@ -97,6 +102,7 @@ Using theselect,squeezeand related signals. This method will work for both advan
 You can use both methods to allow your game or app to support a wider or narrower set of devices and input methods, or to allow more advanced interactions with more advanced devices.
 
 ## Tutorials
+
 - How to make a VR game for WebXR with Godot 4
 How to make a VR game for WebXR with Godot 4
 
@@ -153,6 +159,7 @@ void
 set_display_refresh_rate(refresh_rate:float)
 
 ## Signals
+
 display_refresh_rate_changed()🔗
 Emitted after the display's refresh rate has changed.
 reference_space_reset()🔗
@@ -192,6 +199,7 @@ visibility_state_changed()🔗
 Emitted whenvisibility_statehas changed.
 
 ## Enumerations
+
 enumTargetRayMode:🔗
 TargetRayModeTARGET_RAY_MODE_UNKNOWN=0
 We don't know the target ray mode.
@@ -203,7 +211,9 @@ TargetRayModeTARGET_RAY_MODE_SCREEN=3
 Target ray from touch screen, mouse or other tactile input device.
 
 ## Property Descriptions
+
 Stringenabled_features🔗
+
 - Stringget_enabled_features()
 Stringget_enabled_features()
 A comma-separated list of features that were successfully enabled byXRInterface.initialize()when setting up the WebXR session.
@@ -256,6 +266,7 @@ Indicates if the WebXR session's imagery is visible to the user.
 Possible values come fromWebXR's XRVisibilityState, including"hidden","visible", and"visible-blurred".
 
 ## Method Descriptions
+
 Arrayget_available_display_refresh_rates()const🔗
 Returns display refresh rates supported by the current HMD. Only returned if this feature is supported by the web browser and after the interface has been initialized.
 floatget_display_refresh_rate()const🔗
@@ -267,6 +278,7 @@ XRControllerTrackerget_input_source_tracker(input_source_id:int)const🔗
 Gets anXRControllerTrackerfor the giveninput_source_id.
 In the context of WebXR, an input source can be an advanced VR controller like the Oculus Touch or Index controllers, or even a tap on the screen, a spoken voice command or a button press on the device itself. When a non-traditional input source is used, interpret the position and orientation of theXRPositionalTrackeras a ray pointing at the object the user wishes to interact with.
 Use this method to get information about the input source that triggered one of these signals:
+
 - selectstart
 selectstart
 - select
@@ -289,4 +301,5 @@ voidset_display_refresh_rate(refresh_rate:float)🔗
 Sets the display refresh rate for the current HMD. Not supported on all HMDs and browsers. It won't take effect right away until afterdisplay_refresh_rate_changedis emitted.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

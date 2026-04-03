@@ -1,9 +1,11 @@
 # PackedColorArray in English
 
 # PackedColorArray
+
 A packed array ofColors.
 
 ## Description
+
 An array specifically designed to holdColor. Packs data tightly, so it saves memory for large array sizes.
 Differences between packed arrays, typed arrays, and untyped arrays:Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g.PackedColorArrayversusArray[Color]). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such asArray.map(). Typed arrays are in turn faster to iterate on and modify than untyped arrays.
 Note:Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, useduplicate(). This isnotthe case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it willnotaffect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.
@@ -109,6 +111,7 @@ Color
 operator [](index:int)
 
 ## Constructor Descriptions
+
 PackedColorArrayPackedColorArray()🔗
 Constructs an emptyPackedColorArray.
 PackedColorArrayPackedColorArray(from:PackedColorArray)
@@ -116,11 +119,13 @@ Constructs aPackedColorArrayas a copy of the givenPackedColorArray.
 PackedColorArrayPackedColorArray(from:Array)
 Constructs a newPackedColorArray. Optionally, you can pass in a genericArraythat will be converted.
 Note:When initializing aPackedColorArraywith elements, it must be initialized with anArrayofColorvalues:
+
 ```
 var array = PackedColorArray([Color(0.1, 0.2, 0.3), Color(0.4, 0.5, 0.6)])
 ```
 
 ## Method Descriptions
+
 boolappend(value:Color)🔗
 Appends an element at the end of the array (alias ofpush_back()).
 voidappend_array(array:PackedColorArray)🔗
@@ -174,6 +179,7 @@ PackedByteArrayto_byte_array()const🔗
 Returns aPackedByteArraywith each color encoded as bytes.
 
 ## Operator Descriptions
+
 booloperator !=(right:PackedColorArray)🔗
 Returnstrueif contents of the arrays differ.
 PackedColorArrayoperator +(right:PackedColorArray)🔗
@@ -184,4 +190,5 @@ Coloroperator [](index:int)🔗
 Returns theColorat indexindex. Negative indices can be used to access the elements starting from the end. Using index out of array's bounds will result in an error.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

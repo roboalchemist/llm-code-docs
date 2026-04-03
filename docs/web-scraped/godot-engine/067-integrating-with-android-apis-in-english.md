@@ -1,11 +1,13 @@
 # Integrating with Android APIs in English
 
 # Integrating with Android APIs
+
 The Android platform has numerous APIs as well as a rich ecosystem of third-party libraries with wide and
 diverse functionality, like push notifications, analytics, authentication, ads, etc...
 These don't make sense in Godot core itself so Godot has long provided anAndroid plugin system.
 TheAndroid plugin systemenables developers to create Godot Android plugins using Java or Kotlin code,
 which provides an interface to access and use Android APIs or third-party libraries in Godot projects from GDScript, C# or GDExtension.
+
 ```
 class MyAndroidSingleton(godot: Godot?) : GodotPlugin(godot) {
         @UsedByGodot
@@ -14,14 +16,17 @@ class MyAndroidSingleton(godot: Godot?) : GodotPlugin(godot) {
         }
 }
 ```
+
 Writing an Android plugin however requires knowledge of Java or Kotlin code, which most Godot developers do not have.
 As such there are many Android APIs and third-party libraries that don't have a Godot plugin that developers can interface with.
 In fact, this is one of the main reasons that developers cite for not being able to switch to Godot from other game engines.
 To address this, we've introduced a couple of tools inGodot 4.4to simplify the process for developers to access Android APIs and third-party libraries.
 
 ## JavaClassWrapper (Godot singleton)
+
 JavaClassWrapperis aGodot singletonwhich allows
 creating instances of Java / Kotlin classes and calling methods on them using only GDScript, C# or GDExtension.
+
 ```
 var LocalDateTime = JavaClassWrapper.wrap("java.time.LocalDateTime")
 var DateTimeFormatter = JavaClassWrapper.wrap("java.time.format.DateTimeFormatter")
@@ -31,13 +36,16 @@ var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
 
 print(datetime.format(formatter))
 ```
+
 In the code snippet above,JavaClassWrapperis used from GDScript to access the JavaLocalDateTimeandDateTimeFormatterclasses.
 ThroughJavaClassWrapper, we can call the Java classes methods directly from GDScript as if they were GDScript methods.
 
 ## AndroidRuntime plugin
+
 JavaClassWrapperis great, but to do many things on Android, you need access to various Android lifecycle / runtime objects.AndroidRuntimeplugin is abuilt-in Godot Android pluginthat allows you to do this.
 CombiningJavaClassWrapperandAndroidRuntimeplugin allows developers to access and use Android APIs without switching away from GDScript, or using any tools aside from Godot itself.
 This ishugefor the adoption of Godot for Android development:
+
 - If you need to do something simple, or only use a small part of a third-party library, you don't have to make a plugin
 If you need to do something simple, or only use a small part of a third-party library, you don't have to make a plugin
 - It allows developers to quickly integrate Android functionality
@@ -49,6 +57,7 @@ For exports usinggradle, Godot will automatically include.jaror.aarfiles it find
 So to use a third-party library, you can just drop its.jaror.aarfile in theaddonsdirectory, and call its method directly from GDScript usingJavaClassWrapper.
 
 ### Example: Show an Android toast
+
 ```
 # Retrieve the AndroidRuntime singleton.
 var android_runtime = Engine.get_singleton("AndroidRuntime")
@@ -67,6 +76,7 @@ if android_runtime:
 ```
 
 ### Example: Vibrate the device
+
 ```
 # Retrieve the AndroidRuntime singleton.
 var android_runtime = Engine.get_singleton("AndroidRuntime")
@@ -81,7 +91,9 @@ if android_runtime:
 ```
 
 ### Example: Accessing inner classes
+
 Java inner classes can be accessed using the$sign:
+
 ```
 # Accessing 'VERSION' class, which is an inner class from the 'android.os.Build' class.
 var version = JavaClassWrapper.wrap("android.os.Build$VERSION")
@@ -93,8 +105,10 @@ else:
 ```
 
 ### Example: Calling a constructor
+
 A constructor is invoked by calling a method with the same name as the class.
 This example creates an intent to send a text:
+
 ```
 # Retrieve the AndroidRuntime singleton.
 var android_runtime = Engine.get_singleton("AndroidRuntime")
@@ -109,6 +123,7 @@ if android_runtime:
 ```
 
 ### Example: Saving an image to the Android gallery
+
 ```
 # Retrieve the AndroidRuntime singleton.
 var android_runtime = Engine.get_singleton("AndroidRuntime")
@@ -132,4 +147,5 @@ if android_runtime:
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

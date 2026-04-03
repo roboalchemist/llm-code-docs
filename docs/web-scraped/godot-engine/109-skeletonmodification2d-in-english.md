@@ -1,12 +1,14 @@
 # SkeletonModification2D in English
 
 # SkeletonModification2D
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:Resource<RefCounted<Object
 Inherited By:SkeletonModification2DCCDIK,SkeletonModification2DFABRIK,SkeletonModification2DJiggle,SkeletonModification2DLookAt,SkeletonModification2DPhysicalBones,SkeletonModification2DStackHolder,SkeletonModification2DTwoBoneIK
 Base class for resources that operate onBone2Ds in aSkeleton2D.
 
 ## Description
+
 This resource provides an interface that can be expanded so code that operates onBone2Dnodes in aSkeleton2Dcan be mixed and matched together to create complex interactions.
 This is used to provide Godot with a flexible and powerful Inverse Kinematics solution that can be adapted for many different uses.
 
@@ -54,7 +56,9 @@ void
 set_is_setup(is_setup:bool)
 
 ## Property Descriptions
+
 boolenabled=true🔗
+
 - voidset_enabled(value:bool)
 voidset_enabled(value:bool)
 - boolget_enabled()
@@ -68,6 +72,7 @@ intget_execution_mode()
 The execution mode for the modification. This tells the modification stack when to execute the modification. Some modifications have settings that are only available in certain execution modes.
 
 ## Method Descriptions
+
 void_draw_editor_gizmo()virtual🔗
 Used for drawingeditor-onlymodification gizmos. This function will only be called in the Godot editor and can be overridden to draw custom gizmos.
 Note:You will need to use the Skeleton2D fromSkeletonModificationStack2D.get_skeleton()and it's draw functions, as theSkeletonModification2Dresource cannot draw on its own.
@@ -89,4 +94,5 @@ voidset_is_setup(is_setup:bool)🔗
 Manually allows you to set the setup state of the modification. This function should only rarely be used, as theSkeletonModificationStack2Dthe modification is bound to should handle setting the modification up.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

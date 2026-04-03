@@ -1,10 +1,12 @@
 # VisualShaderNodeParticleMeshEmitter in English
 
 # VisualShaderNodeParticleMeshEmitter
+
 Inherits:VisualShaderNodeParticleEmitter<VisualShaderNode<Resource<RefCounted<Object
 A visual shader node that makes particles emitted in a shape defined by aMesh.
 
 ## Description
+
 VisualShaderNodeParticleEmitterthat makes the particles emitted in a shape of the assignedmesh. It will emit from the mesh's surfaces, either all or only the specified one.
 
 ## Properties
@@ -22,7 +24,9 @@ use_all_surfaces
 true
 
 ## Property Descriptions
+
 Meshmesh🔗
+
 - voidset_mesh(value:Mesh)
 voidset_mesh(value:Mesh)
 - Meshget_mesh()
@@ -42,4 +46,5 @@ boolis_use_all_surfaces()
 Iftrue, the particles will emit from all surfaces of the mesh.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

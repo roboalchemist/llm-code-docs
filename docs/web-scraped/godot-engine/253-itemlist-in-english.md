@@ -1,10 +1,12 @@
 # ItemList in English
 
 # ItemList
+
 Inherits:Control<CanvasItem<Node<Object
 A vertical list of selectable items with one or multiple columns.
 
 ## Description
+
 This control provides a vertical list of selectable items that may be in a single or in multiple columns, with each item having options for text and an icon. Tooltips are supported and may be different for every item in the list.
 Selectable items in the list may be selected or deselected and multiple selection may be enabled. Selection with right mouse button may also be enabled to allow use of popup context menus. Items may also be "activated" by double-clicking them or by pressingEnter.
 Item text only supports single-line strings. Newline characters (e.g.\n) in the string won't produce a newline. Text wrapping is enabled inICON_MODE_TOPmode, but the column's width is adjusted to fully fit its content by default. You need to setfixed_column_widthgreater than zero to wrap the text.
@@ -308,6 +310,7 @@ StyleBox
 selected_focus
 
 ## Signals
+
 empty_clicked(at_position:Vector2, mouse_button_index:int)🔗
 Emitted when any mouse click is issued within the rect of the list but on empty space.
 at_positionis the click position in this control's local coordinate system.
@@ -323,6 +326,7 @@ multi_selected(index:int, selected:bool)🔗
 Emitted when a multiple selection is altered on a list allowing multiple selection.
 
 ## Enumerations
+
 enumIconMode:🔗
 IconModeICON_MODE_TOP=0
 Icon is drawn above the text.
@@ -346,7 +350,9 @@ ScrollHintModeSCROLL_HINT_MODE_BOTTOM=3
 Only the bottom scroll hint will be shown.
 
 ## Property Descriptions
+
 boolallow_reselect=false🔗
+
 - voidset_allow_reselect(value:bool)
 voidset_allow_reselect(value:bool)
 - boolget_allow_reselect()
@@ -463,6 +469,7 @@ Iftrue, the control will automatically move items into a new row to fit its cont
 Iffalse, the control will add a horizontal scrollbar to make all items visible.
 
 ## Method Descriptions
+
 intadd_icon_item(icon:Texture2D, selectable:bool= true)🔗
 Adds an item to the item list with no text, only an icon. Returns the index of an added item.
 intadd_item(text:String, icon:Texture2D= null, selectable:bool= true)🔗
@@ -571,6 +578,7 @@ voidsort_items_by_text()🔗
 Sorts items in the list by their text.
 
 ## Theme Property Descriptions
+
 Colorfont_color=Color(0.65,0.65,0.65,1)🔗
 Default textColorof the item.
 Colorfont_hovered_color=Color(0.95,0.95,0.95,1)🔗
@@ -622,4 +630,5 @@ StyleBoxselected_focus🔗
 StyleBoxfor the selected items, used when theItemListis being focused.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

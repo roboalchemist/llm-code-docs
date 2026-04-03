@@ -1,11 +1,13 @@
 # System requirements in English
 
 # System requirements
+
 This page contains system requirements for the editor and exported projects.
 These specifications are given for informative purposes only, but they can be
 referred to if you're looking to build or upgrade a system to use Godot on.
 
 ## Godot editor
+
 These are theminimumspecifications required to run the Godot editor and work
 on a simple 2D or 3D project:
 
@@ -214,6 +216,7 @@ Web editor:Latest version of Firefox, Chrome, Edge, Safari, Opera,
 Samsung Internet
 
 ## Exported Godot project
+
 Warning
 The requirements below are a baseline for asimple2D or 3D project,
 with basic scripting and few visual flourishes. CPU, GPU, RAM and

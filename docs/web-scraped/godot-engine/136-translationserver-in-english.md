@@ -1,14 +1,17 @@
 # TranslationServer in English
 
 # TranslationServer
+
 Inherits:Object
 The server responsible for language translations.
 
 ## Description
+
 The translation server is the API backend that manages all language translations.
 Translations are stored inTranslationDomains, which can be accessed by name. The most commonly used translation domain is the main translation domain. It always exists and can be accessed using an emptyStringName. The translation server provides wrapper methods for accessing the main translation domain directly, without having to fetch the translation domain first. Custom translation domains are mainly for advanced usages like editor plugins. Names starting withgodot.are reserved for engine internals.
 
 ## Tutorials
+
 - Internationalizing games
 Internationalizing games
 - Locales
@@ -123,7 +126,9 @@ StringName
 translate_plural(message:StringName, plural_message:StringName, n:int, context:StringName= &"")const
 
 ## Property Descriptions
+
 boolpseudolocalization_enabled=false🔗
+
 - voidset_pseudolocalization_enabled(value:bool)
 voidset_pseudolocalization_enabled(value:bool)
 - boolis_pseudolocalization_enabled()
@@ -131,6 +136,7 @@ boolis_pseudolocalization_enabled()
 Iftrue, enables the use of pseudolocalization on the main translation domain. SeeProjectSettings.internationalization/pseudolocalization/use_pseudolocalizationfor details.
 
 ## Method Descriptions
+
 voidadd_translation(translation:Translation)🔗
 Adds a translation to the main translation domain.
 voidclear()🔗
@@ -206,4 +212,5 @@ The numbernis the number or quantity of the plural object. It will be used to gu
 Note:This method always uses the main translation domain.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

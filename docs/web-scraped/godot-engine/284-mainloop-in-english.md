@@ -1,14 +1,17 @@
 # MainLoop in English
 
 # MainLoop
+
 Inherits:Object
 Inherited By:SceneTree
 Abstract base class for the game's main loop.
 
 ## Description
+
 MainLoopis the abstract base class for a Godot project's game loop. It is inherited bySceneTree, which is the default game loop implementation used in Godot projects, though it is also possible to write and use one's ownMainLoopsubclass instead of the scene tree.
 Upon the application start, aMainLoopimplementation must be provided to the OS; otherwise, the application will exit. This happens automatically (and aSceneTreeis created) unless aMainLoopScriptis provided from the command line (with e.g.godot-smy_loop.gd) or theProjectSettings.application/run/main_loop_typeproject setting is overwritten.
 Here is an example script implementing a simpleMainLoop:
+
 ```
 class_name CustomMainLoop
 extends MainLoop
@@ -28,6 +31,7 @@ func _finalize():
     print("Finalized:")
     print("  End time: %s" % str(time_elapsed))
 ```
+
 ```
 using Godot;
 
@@ -75,10 +79,12 @@ bool
 _process(delta:float)virtual
 
 ## Signals
+
 on_request_permissions_result(permission:String, granted:bool)🔗
 Emitted when a user responds to a permission request.
 
 ## Constants
+
 NOTIFICATION_OS_MEMORY_WARNING=2009🔗
 Notification received from the OS when the application is exceeding its allocated memory.
 Specific to the iOS platform.
@@ -110,6 +116,7 @@ NOTIFICATION_TEXT_SERVER_CHANGED=2018🔗
 Notification received when text server is changed.
 
 ## Method Descriptions
+
 void_finalize()virtual🔗
 Called before the program exits.
 void_initialize()virtual🔗
@@ -127,4 +134,5 @@ Note:When--fixed-fpsis enabled or the engine is running in Movie Maker mode (see
 Note:Frame delta may be post-processed byOS.delta_smoothingif this is enabled for the project.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

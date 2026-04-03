@@ -3,6 +3,7 @@
 # Using GridMaps
 
 ## Introduction
+
 Gridmapsare a tool for creating 3D
 game levels, similar to the wayTileMapworks in 2D. You start with a predefined collection of 3D meshes (aMeshLibrary) that can be placed on a grid,
 as if you were building a level with an unlimited amount of Lego blocks.
@@ -10,12 +11,14 @@ Collisions and navigation can also be added to the meshes, just like you
 would do with the tiles of a tilemap.
 
 ## Example project
+
 To learn how GridMaps work, start by downloading the sample project:gridmap_starter.zip.
 Unzip this project and add it to the Project Manager using the "Import"
 button. You may get a popup saying that it needs to be converted to a newer Godot
 version, clickConvert project.godot.
 
 ## Creating a MeshLibrary
+
 To begin, you need aMeshLibrary, which is a collection
 of individual meshes that can be used in the gridmap. Open the "mesh_library_source.tscn"
 scene to see an example of how to set up the mesh library.
@@ -25,6 +28,7 @@ If you don't need any physics in your scene, then you're done. However, in most
 cases you'll want to assign collision bodies to the meshes.
 
 ## Collisions
+
 You can manually assign aStaticBody3DandCollisionShape3Dto each mesh. Alternatively, you can use the "Mesh" menu
 to automatically create the collision body based on the mesh data.
 Note that a "Convex" collision body will work better for simple meshes. For more
@@ -33,10 +37,12 @@ a physics body and collision shape assigned, your mesh library is ready to
 be used.
 
 ## Materials
+
 Only the materials from within the meshes are used when generating the mesh
 library. Materials set on the node will be ignored.
 
 ## NavigationMeshes
+
 Like all mesh instances, MeshLibrary items can be assigned aNavigationMeshresource, which can be created manually, or baked as described below.
 To create the NavigationMesh from a MeshLibrary scene export, place aNavigationRegion3Dchild node below the main MeshInstance3D for the GridMap
 item. Add a valid NavigationMesh resource to the NavigationRegion3D and some source
@@ -51,6 +57,7 @@ The baked cell size of the NavigationMesh must match the NavigationServer map ce
 size to properly merge the navigation meshes of different grid cells.
 
 ## Lightmaps
+
 It is possible to bake lightmaps onto a GridMap. Lightmap UV2 data will be reused
 from meshes if already present. If UV2 data is not present, then it will be
 automatically generated on bake with a lightmap texel size of 0.1 units.
@@ -62,9 +69,11 @@ Aside from this peculiarity, the lightmap baking process is the same as for any 
 SeeUsing Lightmap global illuminationfor more information about lightmap baking.
 
 ## MeshLibrary format
+
 To summarize the specific constraints of the MeshLibrary format, a MeshLibrary
 scene has a Node3D as the root node, and several child nodes which will become
 MeshLibrary items. Each child of the root node should:
+
 - Be aMeshInstance3D, which will become the MeshLibrary item. Only
 this visual mesh will be exported.
 Be aMeshInstance3D, which will become the MeshLibrary item. Only
@@ -89,15 +98,18 @@ placingnodeson a grid, but rather a specific, optimized system, designed to
 placemesheswith collisions and navigation.
 
 ## Exporting the MeshLibrary
+
 To export the library, click onScene > Export As... > MeshLibrary..., and save it
 as a resource.
 You can find an already exported MeshLibrary in the project namedMeshLibrary.tres.
 
 ## Using GridMap
+
 Create a new scene and add a GridMap node. Add the mesh library by dragging
 the resource file from the FileSystem dock and dropping it in theMesh Libraryproperty in the Inspector.
 
 ### Inspector properties
+
 ThePhysics Materialsetting allows you to override the physics material for
 every mesh in the NavigationMesh.
 UnderCells, theSizeproperty should be set to the size of your meshes. You
@@ -112,9 +124,11 @@ individual meshes, such as their navigation mesh, navigation layers, or if the m
 casts shadows.
 
 ### GridMap panel
+
 At the bottom of the editor is the GridMap panel, which should have opened
 automatically when you added the GridMap node.
 From left to right in the toolbar:
+
 - Transform: Adds a gizmo to the scene that allows you to change the
 relative position and rotation of the gridmap in the scene.
 Transform: Adds a gizmo to the scene that allows you to change the
@@ -182,7 +196,9 @@ change thePick Distance, which is the maximum distance at which tiles can be pla
 on a GridMap, relative to the camera position (in meters).
 
 ## Using GridMap in code
+
 SeeGridMapfor details on the node's methods and member variables.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

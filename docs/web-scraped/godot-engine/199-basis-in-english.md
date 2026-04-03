@@ -1,12 +1,15 @@
 # Basis in English
 
 # Basis
+
 A 3×3 matrix for representing 3D rotation and scale.
 
 ## Description
+
 TheBasisbuilt-inVarianttype is a 3×3matrixused to represent 3D rotation, scale, and shear. It is frequently used within aTransform3D.
 ABasisis composed by 3 axis vectors, each representing a column of the matrix:x,y, andz. The length of each axis (Vector3.length()) influences the basis's scale, while the direction of all axes influence the rotation. Usually, these axes are perpendicular to one another. However, when you rotate any axis individually, the basis becomes sheared. Applying a sheared basis to a 3D model will make the model appear distorted.
 ABasisis:
+
 - Orthogonalif its axes are perpendicular to each other.
 Orthogonalif its axes are perpendicular to each other.
 - Normalizedif the length of every axis is1.0.
@@ -24,6 +27,7 @@ Note
 There are notable differences when using this API with C#. SeeC# API differences to GDScriptfor more information.
 
 ## Tutorials
+
 - Math documentation index
 Math documentation index
 - Matrices and transforms
@@ -156,11 +160,11 @@ operator !=(right:Basis)
 Basis
 operator *(right:Basis)
 Vector3
-operator *(right:Vector3)
+operator*(right:Vector3)
 Basis
 operator *(right:float)
 Basis
-operator *(right:int)
+operator*(right:int)
 Basis
 operator /(right:float)
 Basis
@@ -171,14 +175,17 @@ Vector3
 operator [](index:int)
 
 ## Constants
+
 IDENTITY=Basis(1,0,0,0,1,0,0,0,1)🔗
 The identityBasis. This is an orthonormal basis with no rotation, no shear, and a scale ofVector3.ONE. This also means that:
+
 - Thexpoints right (Vector3.RIGHT);
 Thexpoints right (Vector3.RIGHT);
 - Theypoints up (Vector3.UP);
 Theypoints up (Vector3.UP);
 - Thezpoints back (Vector3.BACK).
 Thezpoints back (Vector3.BACK).
+
 ```
 var basis = Basis.IDENTITY
 print("| X | Y | Z")
@@ -191,6 +198,7 @@ print("| %.f | %.f | %.f" % [basis.x.z, basis.y.z, basis.z.z])
 # | 0 | 1 | 0
 # | 0 | 0 | 1
 ```
+
 If aVector3or anotherBasisis transformed (multiplied) by this constant, no transformation occurs.
 Note:In GDScript, this constant is equivalent to creating aBasiswithout any arguments. It can be used to make your code clearer, and for consistency with C#.
 FLIP_X=Basis(-1,0,0,0,1,0,0,0,1)🔗
@@ -204,6 +212,7 @@ When any basis is multiplied byFLIP_Z, it negates all components of thezaxis (th
 WhenFLIP_Zis multiplied by any basis, it negates theVector3.zcomponent of all axes (the Z row).
 
 ## Property Descriptions
+
 Vector3x=Vector3(1,0,0)🔗
 The basis's X axis, and the column0of the matrix.
 On the identity basis, this vector points right (Vector3.RIGHT).
@@ -215,6 +224,7 @@ The basis's Z axis, and the column2of the matrix.
 On the identity basis, this vector points back (Vector3.BACK).
 
 ## Constructor Descriptions
+
 BasisBasis()🔗
 Constructs aBasisidentical toIDENTITY.
 Note:In C#, this constructs aBasiswith all of its components set toVector3.ZERO.
@@ -230,8 +240,10 @@ BasisBasis(x_axis:Vector3, y_axis:Vector3, z_axis:Vector3)
 Constructs aBasisfrom 3 axis vectors. These are the columns of the basis matrix.
 
 ## Method Descriptions
+
 floatdeterminant()const🔗
 Returns thedeterminantof this basis's matrix. For advanced math, this number can be used to determine a few attributes:
+
 - If the determinant is exactly0.0, the basis is not invertible (seeinverse()).
 If the determinant is exactly0.0, the basis is not invertible (seeinverse()).
 - If the determinant is a negative number, the basis represents a negative scale.
@@ -245,21 +257,25 @@ TheVector3.xshould contain the angle around thexaxis (pitch);
 TheVector3.yshould contain the angle around theyaxis (yaw);
 - TheVector3.zshould contain the angle around thezaxis (roll).
 TheVector3.zshould contain the angle around thezaxis (roll).
+
 ```
 # Creates a Basis whose z axis points down.
 var my_basis = Basis.from_euler(Vector3(TAU / 4, 0, 0))
 
 print(my_basis.z) # Prints (0.0, -1.0, 0.0)
 ```
+
 ```
 // Creates a Basis whose z axis points down.
 var myBasis = Basis.FromEuler(new Vector3(Mathf.Tau / 4.0f, 0.0f, 0.0f));
 
 GD.Print(myBasis.Z); // Prints (0, -1, 0)
 ```
+
 The order of each consecutive rotation can be changed withorder(seeEulerOrderconstants). By default, the YXZ convention is used (@GlobalScope.EULER_ORDER_YXZ): the basis rotates first around the Y axis (yaw), then X (pitch), and lastly Z (roll). When using the opposite methodget_euler(), this order is reversed.
 Basisfrom_scale(scale:Vector3)static🔗
 Constructs a newBasisthat only represents scale, with no rotation or shear, from the givenscalevector.
+
 ```
 var my_basis = Basis.from_scale(Vector3(2, 4, 8))
 
@@ -267,6 +283,7 @@ print(my_basis.x) # Prints (2.0, 0.0, 0.0)
 print(my_basis.y) # Prints (0.0, 4.0, 0.0)
 print(my_basis.z) # Prints (0.0, 0.0, 8.0)
 ```
+
 ```
 var myBasis = Basis.FromScale(new Vector3(2.0f, 4.0f, 8.0f));
 
@@ -274,9 +291,11 @@ GD.Print(myBasis.X); // Prints (2, 0, 0)
 GD.Print(myBasis.Y); // Prints (0, 4, 0)
 GD.Print(myBasis.Z); // Prints (0, 0, 8)
 ```
+
 Note:In linear algebra, the matrix of this basis is also known as adiagonal matrix.
 Vector3get_euler(order:int= 2)const🔗
 Returns this basis's rotation as aVector3ofEuler angles, in radians. For the returned value:
+
 - TheVector3.xcontains the angle around thexaxis (pitch);
 TheVector3.xcontains the angle around thexaxis (pitch);
 - TheVector3.ycontains the angle around theyaxis (yaw);
@@ -292,6 +311,7 @@ Returns this basis's rotation as aQuaternion.
 Note:Quaternions are much more suitable for 3D math but are less intuitive. For user interfaces, consider using theget_euler()method, which returns Euler angles.
 Vector3get_scale()const🔗
 Returns the length of each axis of this basis, as aVector3. If the basis is not sheared, this value is the scaling factor. It is not affected by rotation.
+
 ```
 var my_basis = Basis(
     Vector3(2, 0, 0),
@@ -304,6 +324,7 @@ my_basis = my_basis.rotated(Vector3.RIGHT, TAU / 4)
 
 print(my_basis.get_scale()) # Prints (2.0, 4.0, 8.0)
 ```
+
 ```
 var myBasis = new Basis(
     Vector3(2.0f, 0.0f, 0.0f),
@@ -316,6 +337,7 @@ myBasis = myBasis.Rotated(Vector3.Right, Mathf.Tau / 4.0f);
 
 GD.Print(myBasis.Scale); // Prints (2, 4, 8)
 ```
+
 Note:If the value returned bydeterminant()is negative, the scale is also negative.
 Basisinverse()const🔗
 Returns theinverse of this basis's matrix.
@@ -333,6 +355,7 @@ Thetargetand theupcannot beVector3.ZERO, and shouldn't be colinear to avoid unin
 Basisorthonormalized()const🔗
 Returns the orthonormalized version of this basis. An orthonormal basis is bothorthogonal(the axes are perpendicular to each other) andnormalized(the axes have a length of1.0), which also means it can only represent a rotation.
 It is often useful to call this method to avoid rounding errors on a rotating basis:
+
 ```
 # Rotate this Node3D every frame.
 func _process(delta):
@@ -340,6 +363,7 @@ func _process(delta):
     basis = basis.rotated(Vector3.RIGHT, TAU * delta)
     basis = basis.orthonormalized()
 ```
+
 ```
 // Rotate this Node3D every frame.
 public override void _Process(double delta)
@@ -349,9 +373,11 @@ public override void _Process(double delta)
             .Orthonormalized();
 }
 ```
+
 Basisrotated(axis:Vector3, angle:float)const🔗
 Returns a copy of this basis rotated around the givenaxisby the givenangle(in radians).
 Theaxismust be a normalized vector (seeVector3.normalized()). Ifangleis positive, the basis is rotated counter-clockwise around the axis.
+
 ```
 var my_basis = Basis.IDENTITY
 var angle = TAU / 2
@@ -360,6 +386,7 @@ my_basis = my_basis.rotated(Vector3.UP, angle)    # Rotate around the up axis (y
 my_basis = my_basis.rotated(Vector3.RIGHT, angle) # Rotate around the right axis (pitch).
 my_basis = my_basis.rotated(Vector3.BACK, angle)  # Rotate around the back axis (roll).
 ```
+
 ```
 var myBasis = Basis.Identity;
 var angle = Mathf.Tau / 2.0f;
@@ -368,9 +395,11 @@ myBasis = myBasis.Rotated(Vector3.Up, angle);    // Rotate around the up axis (y
 myBasis = myBasis.Rotated(Vector3.Right, angle); // Rotate around the right axis (pitch).
 myBasis = myBasis.Rotated(Vector3.Back, angle);  // Rotate around the back axis (roll).
 ```
+
 Basisscaled(scale:Vector3)const🔗
 Returns this basis with each axis's components scaled by the givenscale's components.
 The basis matrix's rows are multiplied byscale's components. This operation is a global scale (relative to the parent).
+
 ```
 var my_basis = Basis(
     Vector3(1, 1, 1),
@@ -383,6 +412,7 @@ print(my_basis.x) # Prints (0.0, 2.0, -2.0)
 print(my_basis.y) # Prints (0.0, 4.0, -4.0)
 print(my_basis.z) # Prints (0.0, 6.0, -6.0)
 ```
+
 ```
 var myBasis = new Basis(
     new Vector3(1.0f, 1.0f, 1.0f),
@@ -395,9 +425,11 @@ GD.Print(myBasis.X); // Prints (0, 2, -2)
 GD.Print(myBasis.Y); // Prints (0, 4, -4)
 GD.Print(myBasis.Z); // Prints (0, 6, -6)
 ```
+
 Basisscaled_local(scale:Vector3)const🔗
 Returns this basis with each axis scaled by the corresponding component in the givenscale.
 The basis matrix's columns are multiplied byscale's components. This operation is a local scale (relative to self).
+
 ```
 var my_basis = Basis(
     Vector3(1, 1, 1),
@@ -410,6 +442,7 @@ print(my_basis.x) # Prints (0.0, 0.0, 0.0)
 print(my_basis.y) # Prints (4.0, 4.0, 4.0)
 print(my_basis.z) # Prints (-6.0, -6.0, -6.0)
 ```
+
 ```
 var myBasis = new Basis(
     new Vector3(1.0f, 1.0f, 1.0f),
@@ -422,9 +455,11 @@ GD.Print(myBasis.X); // Prints (0, 0, 0)
 GD.Print(myBasis.Y); // Prints (4, 4, 4)
 GD.Print(myBasis.Z); // Prints (-6, -6, -6)
 ```
+
 Basisslerp(to:Basis, weight:float)const🔗
 Performs a spherical-linear interpolation with thetobasis, given aweight. Both this basis andtoshould represent a rotation.
 Example:Smoothly rotate aNode3Dto the target basis over time, with aTween:
+
 ```
 var start_basis = Basis.IDENTITY
 var target_basis = Basis.IDENTITY.rotated(Vector3.UP, TAU / 2)
@@ -435,6 +470,7 @@ func _ready():
 func interpolate(weight):
     basis = start_basis.slerp(target_basis, weight)
 ```
+
 floattdotx(with:Vector3)const🔗
 Returns the transposed dot product betweenwithand thexaxis (seetransposed()).
 This is equivalent tobasis.x.dot(vector).
@@ -446,6 +482,7 @@ Returns the transposed dot product betweenwithand thezaxis (seetransposed()).
 This is equivalent tobasis.z.dot(vector).
 Basistransposed()const🔗
 Returns the transposed version of this basis. This turns the basis matrix's columns into rows, and its rows into columns.
+
 ```
 var my_basis = Basis(
     Vector3(1, 2, 3),
@@ -458,6 +495,7 @@ print(my_basis.x) # Prints (1.0, 4.0, 7.0)
 print(my_basis.y) # Prints (2.0, 5.0, 8.0)
 print(my_basis.z) # Prints (3.0, 6.0, 9.0)
 ```
+
 ```
 var myBasis = new Basis(
     new Vector3(1.0f, 2.0f, 3.0f),
@@ -472,27 +510,31 @@ GD.Print(myBasis.Z); // Prints (3, 6, 9)
 ```
 
 ## Operator Descriptions
+
 booloperator !=(right:Basis)🔗
 Returnstrueif the components of bothBasismatrices are not equal.
 Note:Due to floating-point precision errors, consider usingis_equal_approx()instead, which is more reliable.
 Basisoperator *(right:Basis)🔗
 Transforms (multiplies) therightbasis by this basis.
 This is the operation performed between parent and childNode3Ds.
-Vector3operator *(right:Vector3)🔗
+Vector3operator*(right:Vector3)🔗
 Transforms (multiplies) therightvector by this basis, returning aVector3.
+
 ```
 # Basis that swaps the X/Z axes and doubles the scale.
 var my_basis = Basis(Vector3(0, 2, 0), Vector3(2, 0, 0), Vector3(0, 0, 2))
 print(my_basis * Vector3(1, 2, 3)) # Prints (4.0, 2.0, 6.0)
 ```
+
 ```
 // Basis that swaps the X/Z axes and doubles the scale.
 var myBasis = new Basis(new Vector3(0, 2, 0), new Vector3(2, 0, 0), new Vector3(0, 0, 2));
 GD.Print(myBasis * new Vector3(1, 2, 3)); // Prints (4, 2, 6)
 ```
+
 Basisoperator *(right:float)🔗
 Multiplies all components of theBasisby the givenfloat. This affects the basis's scale uniformly, resizing all 3 axes by therightvalue.
-Basisoperator *(right:int)🔗
+Basisoperator*(right:int)🔗
 Multiplies all components of theBasisby the givenint. This affects the basis's scale uniformly, resizing all 3 axes by therightvalue.
 Basisoperator /(right:float)🔗
 Divides all components of theBasisby the givenfloat. This affects the basis's scale uniformly, resizing all 3 axes by therightvalue.
@@ -506,4 +548,5 @@ Accesses each axis (column) of this basis by their index. Index0is the same asx,
 Note:In C++, this operator accesses the rows of the basis matrix,notthe columns. For the same behavior as scripting languages, use theset_columnandget_columnmethods.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,10 +1,12 @@
 # AudioStreamInteractive in English
 
 # AudioStreamInteractive
+
 Inherits:AudioStream<Resource<RefCounted<Object
 Audio stream that can playback music interactively, combining clips and a transition table.
 
 ## Description
+
 This is an audio stream that can playback music interactively, combining clips and a transition table. Clips must be added first, and then the transition rules via theadd_transition(). Additionally, this stream exports a property parameter to control the playback viaAudioStreamPlayer,AudioStreamPlayer2D, orAudioStreamPlayer3D.
 The way this is used is by filling a number of clips, then configuring the transition table. From there, clips are selected for playback and the music will smoothly go from the current to the new one while using the corresponding transition rule defined in the transition table.
 
@@ -78,6 +80,7 @@ void
 set_clip_stream(clip_index:int, stream:AudioStream)
 
 ## Enumerations
+
 enumTransitionFromTime:🔗
 TransitionFromTimeTRANSITION_FROM_TIME_IMMEDIATE=0
 Start transition as soon as possible, don't wait for any specific time position.
@@ -112,11 +115,14 @@ AutoAdvanceModeAUTO_ADVANCE_RETURN_TO_HOLD=2
 Enable auto-advance, but instead of specifying a clip, the playback will return to hold (seeadd_transition()).
 
 ## Constants
+
 CLIP_ANY=-1🔗
 This constant describes that any clip is valid for a specific transition as either source or destination.
 
 ## Property Descriptions
+
 intclip_count=0🔗
+
 - voidset_clip_count(value:int)
 voidset_clip_count(value:int)
 - intget_clip_count()
@@ -130,6 +136,7 @@ intget_initial_clip()
 Index of the initial clip, which will be played first when this stream is played.
 
 ## Method Descriptions
+
 voidadd_transition(from_clip:int, to_clip:int, from_time:TransitionFromTime, to_time:TransitionToTime, fade_mode:FadeMode, fade_beats:float, use_filler_clip:bool= false, filler_clip:int= -1, hold_previous:bool= false)🔗
 Add a transition between two clips. Provide the indices of the source and destination clips, or use theCLIP_ANYconstant to indicate that transition happens to/from any clip to this one.
 *from_timeindicates the moment in the current clip the transition will begin after triggered.
@@ -138,7 +145,8 @@ Add a transition between two clips. Provide the indices of the source and destin
 *fade_beatsindicates how many beats the fade will take. Using decimals is allowed.
 *use_filler_clipindicates that there will be a filler clip used between the source and destination clips.
 *filler_clipthe index of the filler clip.
-* Ifhold_previousis used, then this clip will be remembered. This can be used together withAUTO_ADVANCE_RETURN_TO_HOLDto return to this clip after another is done playing.
+
+- Ifhold_previousis used, then this clip will be remembered. This can be used together withAUTO_ADVANCE_RETURN_TO_HOLDto return to this clip after another is done playing.
 voiderase_transition(from_clip:int, to_clip:int)🔗
 Erase a transition by providingfrom_clipandto_clipclip indices.CLIP_ANYcan be used for either argument or both.
 AutoAdvanceModeget_clip_auto_advance(clip_index:int)const🔗
@@ -177,4 +185,5 @@ voidset_clip_stream(clip_index:int, stream:AudioStream)🔗
 Set theAudioStreamassociated with the current clip.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

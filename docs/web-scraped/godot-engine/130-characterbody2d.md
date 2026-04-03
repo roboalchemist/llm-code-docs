@@ -1,14 +1,17 @@
 # CharacterBody2D
 
 # CharacterBody2D
+
 Inherits:PhysicsBody2D<CollisionObject2D<Node2D<CanvasItem<Node<Object
 A 2D physics body specialized for characters moved by script.
 
 ## Description
+
 CharacterBody2Dis a specialized class for physics bodies that are meant to be user-controlled. They are not affected by physics at all, but they affect other physics bodies in their path. They are mainly used to provide high-level API to move objects with wall and slope detection (move_and_slide()method) in addition to the general collision detection provided byPhysicsBody2D.move_and_collide(). This makes it useful for highly configurable physics bodies that must move in specific ways and collide with the world, as is often the case with user-controlled characters.
 For game objects that don't require complex movement or collision detection, such as moving platforms,AnimatableBody2Dis simpler to configure.
 
 ## Tutorials
+
 - Physics introduction
 Physics introduction
 - Troubleshooting physics issues
@@ -138,6 +141,7 @@ bool
 move_and_slide()
 
 ## Enumerations
+
 enumMotionMode:🔗
 MotionModeMOTION_MODE_GROUNDED=0
 Apply when notions of walls, ceiling and floor are relevant. In this mode the body motion will react to slopes (acceleration/slowdown). This mode is suitable for sided games like platformers.
@@ -152,7 +156,9 @@ PlatformOnLeavePLATFORM_ON_LEAVE_DO_NOTHING=2
 Do nothing when leaving a platform.
 
 ## Property Descriptions
+
 boolfloor_block_on_wall=true🔗
+
 - voidset_floor_block_on_wall_enabled(value:bool)
 voidset_floor_block_on_wall_enabled(value:bool)
 - boolis_floor_block_on_wall_enabled()
@@ -251,6 +257,7 @@ floatget_wall_min_slide_angle()
 Minimum angle (in radians) where the body is allowed to slide when it encounters a wall. The default value equals 15 degrees. This property only affects movement whenmotion_modeisMOTION_MODE_FLOATING.
 
 ## Method Descriptions
+
 voidapply_floor_snap()🔗
 Allows to manually apply a snap to the floor regardless of the body's velocity. This function does nothing whenis_on_floor()returnstrue.
 floatget_floor_angle(up_direction:Vector2= Vector2(0, -1))const🔗
@@ -271,11 +278,13 @@ Returns the current real velocity since the last call tomove_and_slide(). For ex
 KinematicCollision2Dget_slide_collision(slide_idx:int)🔗
 Returns aKinematicCollision2D, which contains information about a collision that occurred during the last call tomove_and_slide(). Since the body can collide several times in a single call tomove_and_slide(), you must specify the index of the collision in the range 0 to (get_slide_collision_count()- 1). See alsoget_last_slide_collision().
 Example:Iterate through the collisions with aforloop:
+
 ```
 for i in get_slide_collision_count():
     var collision = get_slide_collision(i)
     print("Collided with: ", collision.get_collider().name)
 ```
+
 ```
 for (int i = 0; i < GetSlideCollisionCount(); i++)
 {
@@ -283,6 +292,7 @@ for (int i = 0; i < GetSlideCollisionCount(); i++)
     GD.Print("Collided with: ", (collision.GetCollider() as Node).Name);
 }
 ```
+
 intget_slide_collision_count()const🔗
 Returns the number of times the body collided and changed direction during the last call tomove_and_slide().
 Vector2get_wall_normal()const🔗
@@ -309,4 +319,5 @@ The general behavior and available properties change according to themotion_mode
 Returnstrueif the body collided, otherwise, returnsfalse.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

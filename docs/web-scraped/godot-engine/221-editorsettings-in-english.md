@@ -1,14 +1,17 @@
 # EditorSettings in English
 
 # EditorSettings
+
 Inherits:Resource<RefCounted<Object
 Object that holds the project-independent editor settings.
 
 ## Description
+
 Object that holds the project-independent editor settings. These settings are generally visible in theEditor > Editor Settingsmenu.
 Property names use slash delimiters to distinguish sections. Setting values can be of anyVarianttype. It's recommended to usesnake_casefor editor settings to be consistent with the Godot editor itself.
 Editor settings are saved automatically when changed.
 Accessing the settings can be done using the following methods, such as:
+
 ```
 var settings = EditorInterface.get_editor_settings()
 # `settings.set("some/property", 10)` also works as this class overrides `_set()` internally.
@@ -17,6 +20,7 @@ settings.set_setting("some/property", 10)
 settings.get_setting("some/property")
 var list_of_settings = settings.get_property_list()
 ```
+
 ```
 EditorSettings settings = EditorInterface.Singleton.GetEditorSettings();
 // `settings.set("some/property", value)` also works as this class overrides `_set()` internally.
@@ -25,6 +29,7 @@ settings.SetSetting("some/property", Value);
 settings.GetSetting("some/property");
 Godot.Collections.Array<Godot.Collections.Dictionary> listOfSettings = settings.GetPropertyList();
 ```
+
 Note:This class shouldn't be instantiated directly. Instead, access the singleton usingEditorInterface.get_editor_settings().
 
 ## Properties
@@ -1340,14 +1345,17 @@ void
 set_setting(name:String, value:Variant)
 
 ## Signals
+
 settings_changed()🔗
 Emitted after any editor setting has changed.
 
 ## Constants
+
 NOTIFICATION_EDITOR_SETTINGS_CHANGED=10000🔗
 Emitted after any editor setting has changed. It's used by various editor plugins to update their visuals on theme changes or logic on configuration changes.
 
 ## Property Descriptions
+
 boolasset_library/use_threads🔗
 Iftrue, the Asset Library uses multiple threads for its HTTP requests. This prevents the Asset Library from blocking the main thread for every loaded asset.
 booldebugger/auto_switch_to_remote_scene_tree🔗
@@ -1450,6 +1458,7 @@ floateditors/3d/freelook/freelook_inertia🔗
 The inertia of the 3D freelook camera. Higher values make the camera start and stop slower, which looks smoother but adds latency.
 inteditors/3d/freelook/freelook_navigation_scheme🔗
 The navigation scheme to use when freelook is enabled in the 3D editor. Some of the navigation schemes below may be more convenient when designing specific levels in the 3D editor.
+
 - Default:The "Freelook Forward", "Freelook Backward", "Freelook Up" and "Freelook Down" keys will move relative to the camera, taking its pitch angle into account for the movement.
 Default:The "Freelook Forward", "Freelook Backward", "Freelook Up" and "Freelook Down" keys will move relative to the camera, taking its pitch angle into account for the movement.
 - Partially Axis-Locked:The "Freelook Forward" and "Freelook Backward" keys will move relative to the camera, taking its pitch angle into account for the movement. The "Freelook Up" and "Freelook Down" keys will move in an "absolute" manner,nottaking the camera's pitch angle into account for the movement.
@@ -1762,11 +1771,14 @@ The path to the Blender executable used for converting the Blender 3D scene file
 To enable this feature for your specific project, useProjectSettings.filesystem/import/blender/enabled.
 If this setting is empty, Blender's default paths will be detected and used automatically if present in this order:
 Windows:
+
 ```
 - C:\Program Files\Blender Foundation\blender.exe
 - C:\Program Files (x86)\Blender Foundation\blender.exe
 ```
+
 macOS:
+
 ```
 - /opt/homebrew/bin/blender
 - /opt/local/bin/blender
@@ -1774,12 +1786,15 @@ macOS:
 - /usr/local/opt/blender
 - /Applications/Blender.app/Contents/MacOS/Blender
 ```
+
 Linux/*BSD:
+
 ```
 - /usr/bin/blender
 - /usr/local/bin/blender
 - /opt/blender/bin/blender
 ```
+
 intfilesystem/import/blender/rpc_port🔗
 The port number used for Remote Procedure Call (RPC) communication with Godot's created process of the blender executable.
 Setting this to 0 effectively disables communication with Godot and the blender process, making performance slower.
@@ -1826,6 +1841,7 @@ Input accumulation can be disabled to get slightly more precise/reactive input a
 Note:Input accumulation isenabledby default.
 intinterface/accessibility/accessibility_support🔗
 Editor accessibility support mode:
+
 - Auto(0): Accessibility support is enabled, but updates to the accessibility information are processed only if an assistive app (such as a screen reader or a Braille display) is active (default).
 Auto(0): Accessibility support is enabled, but updates to the accessibility information are processed only if an assistive app (such as a screen reader or a Braille display) is active (default).
 - Always Active(1): Accessibility support is enabled, and updates to the accessibility information are always processed, regardless of the status of assistive apps.
@@ -2465,14 +2481,17 @@ Stringversion_control/username🔗
 Default username for editor's Version Control integration.
 
 ## Method Descriptions
+
 voidadd_property_info(info:Dictionary)🔗
 Adds a custom property info to a property. The dictionary must contain:
+
 - name:String(the name of the property)
 name:String(the name of the property)
 - type:int(seeVariant.Type)
 type:int(seeVariant.Type)
 - optionallyhint:int(seePropertyHint) andhint_string:String
 optionallyhint:int(seePropertyHint) andhint_string:String
+
 ```
 var settings = EditorInterface.get_editor_settings()
 settings.set("category/property_name", 0)
@@ -2486,6 +2505,7 @@ var property_info = {
 
 settings.add_property_info(property_info)
 ```
+
 ```
 var settings = GetEditorInterface().GetEditorSettings();
 settings.Set("category/property_name", 0);
@@ -2500,9 +2520,11 @@ var propertyInfo = new Godot.Collections.Dictionary
 
 settings.AddPropertyInfo(propertyInfo);
 ```
+
 voidadd_shortcut(path:String, shortcut:Shortcut)🔗
 Adds ashortcutwhose path is specified bypath.
 Thepathdetermines how the shortcut is organized and displayed in the editor's shortcut settings. The path format affects the display as follows:
+
 - "name"(no slash): Creates a category namednamewith the shortcut displayed asname.
 "name"(no slash): Creates a category namednamewith the shortcut displayed asname.
 - "category/name"(single slash): Displays asnamein thecategorysection.
@@ -2510,6 +2532,7 @@ Thepathdetermines how the shortcut is organized and displayed in the editor's sh
 - "category/name/extra"(multiple slashes): Extra path components are ignored, so this behaves the same as"category/name".
 "category/name/extra"(multiple slashes): Extra path components are ignored, so this behaves the same as"category/name".
 Note:Shortcuts are only saved to the editor settings if they differ from their original/default state. This means empty shortcuts that were originally empty will not persist between editor sessions and must be re-added. If a shortcut with the samepathalready exists, this method will update it with the newshortcutinstead of creating a duplicate.
+
 ```
 # Add a custom shortcut for a plugin action.
 var my_shortcut = Shortcut.new()
@@ -2524,6 +2547,7 @@ EditorInterface.get_editor_settings().add_shortcut("my_plugin/reload_data", my_s
 # This will appear under the "Test Action" category as "Test Action".
 EditorInterface.get_editor_settings().add_shortcut("test_action", my_shortcut)
 ```
+
 boolcheck_changed_settings_in_group(setting_prefix:String)const🔗
 Checks if any settings with the prefixsetting_prefixexist in the set of changed settings. See alsoget_changed_settings().
 voiderase(property:String)🔗
@@ -2566,4 +2590,5 @@ voidset_setting(name:String, value:Variant)🔗
 Sets thevalueof the setting specified byname. This is equivalent to usingObject.set()on the EditorSettings instance.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

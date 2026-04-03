@@ -3,6 +3,7 @@
 # Audio buses
 
 ## Introduction
+
 Godot's audio processing code has been written with games in mind, with the aim
 of achieving an optimal balance between performance and sound quality.
 Godot's audio engine allows any number of audio buses to be created and any
@@ -11,9 +12,11 @@ device running your game will limit the number of buses and effects that can be
 used before performance starts to suffer.
 
 ## Decibel scale
+
 Godot's sound interface is designed to meet the expectations of sound design
 professionals. To this end, it primarily uses the decibel scale.
 For those unfamiliar with it, it can be explained with a few facts:
+
 - The decibel (dB) scale is a relative scale. It represents the ratio of
 sound power by using 20 times the base 10 logarithm of the ratio
 (20 × log10(P/P0)).
@@ -52,6 +55,7 @@ This can take a bit getting used to, but it's friendlier in the end
 and will allow you to communicate better with audio professionals.
 
 ## Audio buses
+
 Audio buses can be found in the bottom panel of the Godot editor:
 Anaudio bus(also called anaudio channel) can be considered a place that
 audio is channeled through on the way to playback through a device's speakers.
@@ -68,6 +72,7 @@ to the left. This avoids infinite routing loops.
 In the above image, the output ofBus 2has been routed to theMasterbus.
 
 ## Playback of audio through a bus
+
 To test passing audio to a bus, create an AudioStreamPlayer node, load an
 AudioStream and select a target bus for playback:
 Finally, toggle thePlayingproperty toOnand sound will flow.
@@ -75,6 +80,7 @@ See also
 You may also be interested in reading aboutAudio streamsnow.
 
 ## Adding effects
+
 Warning
 This feature is not supported on the web platform if the AudioStreamPlayer's
 playback mode is set toSample, which is the default. It will only work if the
@@ -86,12 +92,14 @@ one way or another and are applied in order.
 For information on what each effect does, seeAudio effects.
 
 ## Automatic bus disabling
+
 There is no need to disable buses manually when not in use. Godot detects
 that the bus has been silent for a few seconds and disables it (including
 all effects).
 Disabled buses have a blue VU meter instead of a red-green one.
 
 ## Bus rearrangement
+
 Stream Players use bus names to identify a bus, which allows adding, removing
 and moving buses around while the reference to them is kept. However, if a bus
 is renamed, the reference will be lost and the Stream Player will output
@@ -99,8 +107,10 @@ to Master. This system was chosen because rearranging buses is a more common
 process than renaming them.
 
 ## Default bus layout
+
 The default bus layout is automatically saved to theres://default_bus_layout.tresfile. Custom bus arrangements can be saved
 and loaded from disk.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

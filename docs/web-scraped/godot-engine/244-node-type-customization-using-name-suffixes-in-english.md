@@ -1,8 +1,10 @@
 # Node type customization using name suffixes in English
 
 # Node type customization using name suffixes
+
 Many times, when editing a scene, there are common tasks that need to be done
 after exporting:
+
 - Adding collision detection to objects.
 Adding collision detection to objects.
 - Setting objects as navigation meshes.
@@ -18,6 +20,7 @@ Warning
 All the suffixes described below can be used with-,$, and_and arecase-insensitive.
 
 ## Opting out
+
 If you do not want Godot to perform any of the actions described below, you
 can set thenodes/use_node_type_suffixesimport option tofalse.
 This will disable all node type suffixes, which keeps nodes the same type
@@ -35,6 +38,7 @@ results, and only has explicitly defined behavior, consider setting these
 options tofalseand usingGLTFDocumentExtensioninstead.
 
 ## Remove nodes and animations (-noimp)
+
 Nodes and animations that have the-noimpsuffix will be removed at
 import time no matter what their type is. They will not appear in the
 imported scene.
@@ -42,6 +46,7 @@ This is equivalent to enablingSkip Importfor a node in the Advanced Import
 Settings dialog.
 
 ## Create collisions (-col, -convcol, -colonly, -convcolonly)
+
 The option-colwill work only for Mesh objects. If it is detected, a child
 static collision node will be added, using the same geometry as the mesh. This
 will create a triangle mesh collision shape, which is a slow, but accurate
@@ -67,6 +72,7 @@ empty objects. On import, it will create aStaticBody3Dwith a
 collision node as a child. The collision node will have one of a number of
 predefined shapes, depending on Blender's empty draw type:
 Choosing a draw type for an Empty on creation in Blender
+
 - Single arrow will create aSeparationRayShape3D.
 Single arrow will create aSeparationRayShape3D.
 - Cube will create aBoxShape3D.
@@ -87,32 +93,41 @@ SeeCollision shapes (3D)for a comprehensive overview of collision
 shapes.
 
 ## Create Occluder (-occ, -occonly)
+
 If a mesh is imported with the-occsuffix anOccluder3Dnode
 will be created based on the geometry of the mesh, it does not replace the mesh.
 A mesh node with the-occonlysuffix will be converted to anOccluder3Don import.
 
 ## Create navigation (-navmesh)
+
 A mesh node with the-navmeshsuffix will be converted to a navigation mesh.
 The original Mesh object will be removed at import-time.
 
 ## Create a VehicleBody (-vehicle)
+
 A mesh node with the-vehiclesuffix will be imported as a child to aVehicleBody3Dnode.
 
 ## Create a VehicleWheel (-wheel)
+
 A mesh node with the-wheelsuffix will be imported as a child to aVehicleWheel3Dnode.
 
 ## Rigid Body (-rigid)
+
 A mesh node with the-rigidsuffix will be imported as aRigidBody3D.
 
 ## Animation loop (-loop, -cycle)
+
 Animation clips in the source 3D file that start or end with the tokenlooporcyclewill be imported as a GodotAnimationwith the loop flag set.Unlike the other suffixes described above, this does not require a hyphen.
 In Blender, this requires using the NLA Editor and naming the Action with thelooporcycleprefix or suffix.
 
 ## Material alpha (-alpha)
+
 A material with the-alphasuffix will be imported with theTRANSPARENCY_ALPHAtransparency mode.
 
 ## Material vertex color (-vcol)
+
 A material with the-vcolsuffix will be imported with theFLAG_ALBEDO_FROM_VERTEX_COLORandFLAG_SRGB_VERTEX_COLORflags set.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

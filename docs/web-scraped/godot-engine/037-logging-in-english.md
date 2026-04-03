@@ -1,9 +1,11 @@
 # Logging in English
 
 # Logging
+
 Godot comes with several ways to organize and collect log messages.
 
 ## Printing messages
+
 See also
 SeePrinting messagesfor instructions on printing
 messages. The printed output is generally identical to the logged output.
@@ -11,7 +13,9 @@ When running a project from the editor, the editor will display logged text
 in theOutput panel.
 
 ## Project settings
+
 There are several project settings to control logging behavior in Godot:
+
 - Application > Run > Disable stdout:Disables logging to standard output entirely.
 This also affects what custom loggers receive. This can be controlled at runtime
 by settingEngine.print_to_stdout.
@@ -42,6 +46,7 @@ Some of these project settings can also be overridden usingcommand line argument
 The engine's own file logging is also configurable, as described in the section below.
 
 ## Built-in file logging
+
 By default, Godot writes log files inuser://logs/godot.logon desktop
 platforms. You can change this location by modifying thedebug/file_logging/log_pathproject setting. Logs are rotated to keep older
 files available for inspection. Each session creates a new log file, with the
@@ -67,6 +72,7 @@ builds always flush stdout on print, so that logging services like journald can
 collect logs while the process is running. This can be done by enablingapplication/run/flush_stdout_on_printin the Project Settings.
 
 ## Script backtraces
+
 Since Godot 4.5, when GDScript code encounters an error, it will log a backtrace that points
 to the origin of the error, while also containing the call stack leading to it. This behavior
 is always enabled when running in the editor, or when the project is exported in debug mode.
@@ -76,6 +82,7 @@ the Project Settings. If you use a custom logging system that reports exceptions
 service, it's recommended to enable this to make reported errors more actionable.
 
 ## Crash backtraces
+
 Warning
 Crash backtraces are only useful if they were recorded in a build that
 containsdebugging symbols.
@@ -83,6 +90,7 @@ Official Godot binaries do not contain debugging symbols, so you must compile a
 custom editor or export template binary to get useful crash backtraces.
 When the project crashes, a crash backtrace is printed to the standard error stream. This is what
 it can look like in a build with debug symbols:
+
 ```
 ================================================================
 handle_crash: Program crashed with signal 4
@@ -107,7 +115,9 @@ GDScript backtrace (most recent call first):
 -- END OF GDSCRIPT BACKTRACE --
 ================================================================
 ```
+
 On the other hand, without debug symbols, it will look like this instead:
+
 ```
 ================================================================
 handle_crash: Program crashed with signal 4
@@ -132,6 +142,7 @@ GDScript backtrace (most recent call first):
 -- END OF GDSCRIPT BACKTRACE --
 ================================================================
 ```
+
 This backtrace is also logged to the file for the current session, but it isnotvisible in the editor Output panel. Since the engine's scripting system is not running
 anymore when the engine is crashing, it is not possible to access it from scripting in
 the same session. However, you can still read the crash backtrace on the next session
@@ -139,6 +150,7 @@ by loading log files and searching for the crash backtrace string
 (Programcrashedwithsignal) usingFileAccess. This allows you to access
 the backtrace information even after a crash, as long as the user restarts the project
 and file logging is enabled:
+
 ```
 # This script can be made an autoload, so that it runs when the project starts.
 extends Node
@@ -157,12 +169,15 @@ func _ready() -> void:
       print("The previous session has crashed with the following backtrace:\n")
       print(last_long_contents.substr(crash_begin_idx))
 ```
+
 You can customize the message that appears at the top of the backtrace using theDebug > Settings > Crash Handler > Messageproject setting. This can be used
 to point to a URL or email address that users can report issues to.
 
 ## Creating custom loggers
+
 Since Godot 4.5, it is possible to create custom loggers. This custom logging can
 be used for many purposes:
+
 - Show an in-game console with the same messages as printed by the engine,
 without requiring other scripts to be modified.
 Show an in-game console with the same messages as printed by the engine,
@@ -181,6 +196,7 @@ in a script's_init()method. A good place to do this
 is anautoload.
 The class must define two methods:_log_message()and_log_error().
 Here is a minimal working example of a custom logger, with the script added as an autoload:
+
 ```
 extends Node
 
@@ -216,9 +232,11 @@ class CustomLogger extends Logger:
 func _init() -> void:
     OS.add_logger(CustomLogger.new())
 ```
+
 Note that to avoid infinite recursion, you cannot effectively useprint()and its related methods in_log_message(). You also can't effectively usepush_error()orpush_warning()in_log_error(). Attempting to do so will print a message to the same stream
 as the original message. This message is not available in the custom logger,
 which is what prevents infinite recursion from occurring:
+
 ```
 While attempting to print a message, another message was printed:
 ...
@@ -226,8 +244,10 @@ While attempting to print a message, another message was printed:
 While attempting to print an error, another error was printed:
 ...
 ```
+
 See also
 You can find an example of an in-game console built with a custom logger in theCustom Logging demo project.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

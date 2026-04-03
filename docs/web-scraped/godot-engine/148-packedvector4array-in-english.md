@@ -1,9 +1,11 @@
 # PackedVector4Array in English
 
 # PackedVector4Array
+
 A packed array ofVector4s.
 
 ## Description
+
 An array specifically designed to holdVector4. Packs data tightly, so it saves memory for large array sizes.
 Differences between packed arrays, typed arrays, and untyped arrays:Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g.PackedVector4ArrayversusArray[Vector4]). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such asArray.map(). Typed arrays are in turn faster to iterate on and modify than untyped arrays.
 Note:Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, useduplicate(). This isnotthe case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it willnotaffect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.
@@ -109,6 +111,7 @@ Vector4
 operator [](index:int)
 
 ## Constructor Descriptions
+
 PackedVector4ArrayPackedVector4Array()🔗
 Constructs an emptyPackedVector4Array.
 PackedVector4ArrayPackedVector4Array(from:PackedVector4Array)
@@ -116,11 +119,13 @@ Constructs aPackedVector4Arrayas a copy of the givenPackedVector4Array.
 PackedVector4ArrayPackedVector4Array(from:Array)
 Constructs a newPackedVector4Array. Optionally, you can pass in a genericArraythat will be converted.
 Note:When initializing aPackedVector4Arraywith elements, it must be initialized with anArrayofVector4values:
+
 ```
 var array = PackedVector4Array([Vector4(12, 34, 56, 78), Vector4(90, 12, 34, 56)])
 ```
 
 ## Method Descriptions
+
 boolappend(value:Vector4)🔗
 Appends an element at the end of the array (alias ofpush_back()).
 voidappend_array(array:PackedVector4Array)🔗
@@ -181,6 +186,7 @@ PackedByteArrayto_byte_array()const🔗
 Returns aPackedByteArraywith each vector encoded as bytes.
 
 ## Operator Descriptions
+
 booloperator !=(right:PackedVector4Array)🔗
 Returnstrueif contents of the arrays differ.
 PackedVector4Arrayoperator +(right:PackedVector4Array)🔗
@@ -191,4 +197,5 @@ Vector4operator [](index:int)🔗
 Returns theVector4at indexindex. Negative indices can be used to access the elements starting from the end. Using index out of array's bounds will result in an error.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,10 +1,12 @@
 # RichTextLabel in English
 
 # RichTextLabel
+
 Inherits:Control<CanvasItem<Node<Object
 A control for displaying text that can contain different font styles, images, and basic formatting.
 
 ## Description
+
 A control for displaying text that can contain custom fonts, images, and basic formatting.RichTextLabelmanages these as an internal tag stack. It also adapts itself to given width/heights.
 Note:newline(),push_paragraph(),"\n","\r\n",ptag, and alignment tags start a new paragraph. Each paragraph is processed independently, in its own BiDi context. If you want to force line wrapping within paragraph, any other line breaking character can be used, for example, Form Feed (U+000C), Next Line (U+0085), Line Separator (U+2028).
 Note:Assignments totextclear the tag stack and reconstruct it from the property's contents. Any edits made totextwill erase previous edits made from other manual sources such asappend_text()and thepush_*/pop()methods.
@@ -13,6 +15,7 @@ Note:push_*/pop_*functions won't affect BBCode.
 Note:Whilebbcode_enabledis enabled, alignment tags such as[center]will take priority over thehorizontal_alignmentsetting which determines the default text alignment.
 
 ## Tutorials
+
 - BBCode in RichTextLabel
 BBCode in RichTextLabel
 - Rich Text Label with BBCode Demo
@@ -457,12 +460,14 @@ StyleBox
 normal
 
 ## Signals
+
 finished()🔗
 Triggered when the document is fully loaded.
 Note:This can happen before the text is processed for drawing. Scrolling values may not be valid until the document is drawn for the first time after this signal.
 meta_clicked(meta:Variant)🔗
 Triggered when the user clicks on content between meta (URL) tags. If the meta is defined in BBCode, e.g.[url={"key":"value"}]Text[/url], then the parameter for this signal will always be aStringtype. If a particular type or an object is desired, thepush_meta()method must be used to manually insert the data into the tag stack. Alternatively, you can convert theStringinput to the desired type based on its contents (such as callingJSON.parse()on it).
 For example, the following method can be connected tometa_clickedto open clicked URLs using the user's default web browser:
+
 ```
 # This assumes RichTextLabel's `meta_clicked` signal was connected to
 # the function below using the signal connection dialog.
@@ -470,12 +475,14 @@ func _richtextlabel_on_meta_clicked(meta):
     # `meta` is of Variant type, so convert it to a String to avoid script errors at run-time.
     OS.shell_open(str(meta))
 ```
+
 meta_hover_ended(meta:Variant)🔗
 Triggers when the mouse exits a meta tag.
 meta_hover_started(meta:Variant)🔗
 Triggers when the mouse enters a meta tag.
 
 ## Enumerations
+
 enumListType:🔗
 ListTypeLIST_NUMBERS=0
 Each list item has a number marker.
@@ -518,7 +525,9 @@ ImageUpdateMaskUPDATE_WIDTH_IN_PERCENT=128
 If this bit is set,update_image()changes image width from/to percents.
 
 ## Property Descriptions
+
 AutowrapModeautowrap_mode=3🔗
+
 - voidset_autowrap_mode(value:AutowrapMode)
 voidset_autowrap_mode(value:AutowrapMode)
 - AutowrapModeget_autowrap_mode()
@@ -708,6 +717,7 @@ The fraction of characters to display, relative to the total number of character
 Note:Setting this property updatesvisible_charactersaccordingly.
 
 ## Method Descriptions
+
 voidadd_hr(width:int= 90, height:int= 2, color:Color= Color(1, 1, 1, 1), alignment:HorizontalAlignment= 1, width_in_percent:bool= true, height_in_percent:bool= false)🔗
 Adds a horizontal rule that can be used to separate content.
 Ifwidth_in_percentis set,widthvalues are percentages of the control width instead of pixels.
@@ -764,6 +774,7 @@ Note:Ifthreadedis enabled, this method returns a value for the loaded part of th
 PopupMenuget_menu()const🔗
 Returns thePopupMenuof thisRichTextLabel. By default, this menu is displayed when right-clicking on theRichTextLabel.
 You can add custom menu items or remove standard ones. Make sure your IDs don't conflict with the standard ones (seeMenuItems). For example:
+
 ```
 func _ready():
     var menu = get_menu()
@@ -779,6 +790,7 @@ func _on_item_pressed(id):
     if id == MENU_MAX + 1:
         add_text("\n" + get_parsed_text())
 ```
+
 ```
 public override void _Ready()
 {
@@ -800,6 +812,7 @@ public void OnItemPressed(int id)
     }
 }
 ```
+
 Warning:This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use theirWindow.visibleproperty.
 intget_paragraph_count()const🔗
 Returns the total number of paragraphs (newlines orptags in the tag stack's text tags). Considers wrapped text as one paragraph.
@@ -824,6 +837,7 @@ Warning:This is a required internal node, removing and freeing it may cause a cr
 Rect2iget_visible_content_rect()const🔗
 Returns the bounding rectangle of the visible content.
 Note:This method returns a correct value only after the label has been drawn.
+
 ```
 extends RichTextLabel
 
@@ -834,6 +848,7 @@ func _ready():
     background_panel.position = get_visible_content_rect().position
     background_panel.size = get_visible_content_rect().size
 ```
+
 ```
 public partial class TestLabel : RichTextLabel
 {
@@ -848,6 +863,7 @@ public partial class TestLabel : RichTextLabel
     }
 }
 ```
+
 intget_visible_line_count()const🔗
 Returns the number of visible lines.
 Note:This method returns a correct value only after the label has been drawn.
@@ -859,6 +875,7 @@ Note:Ifthreadedis enabled, this method returns a value for the loaded part of th
 voidinstall_effect(effect:Variant)🔗
 Installs a custom effect. This can also be done in the Inspector through thecustom_effectsproperty.effectshould be a validRichTextEffect.
 Example:With the following script extending fromRichTextEffect:
+
 ```
 # effect.gd
 class_name MyCustomEffect
@@ -868,7 +885,9 @@ var bbcode = "my_custom_effect"
 
 # ...
 ```
+
 The above effect can be installed inRichTextLabelfrom a script:
+
 ```
 # rich_text_label.gd
 extends RichTextLabel
@@ -879,6 +898,7 @@ func _ready():
     # Alternatively, if not using `class_name` in the script that extends RichTextEffect:
     install_effect(preload("res://effect.gd").new())
 ```
+
 boolinvalidate_paragraph(paragraph:int)🔗
 Invalidatesparagraphand all subsequent paragraphs cache.
 boolis_finished()const🔗
@@ -990,6 +1010,7 @@ voidupdate_image(key:Variant, mask:BitField[ImageUpdateMask], image:Texture2D, w
 Updates the existing images with the keykey. Only properties specified bymaskbits are updated. Seeadd_image().
 
 ## Theme Property Descriptions
+
 Colordefault_color=Color(1,1,1,1)🔗
 The default text color.
 Colorfont_outline_color=Color(0,0,0,1)🔗
@@ -1059,4 +1080,5 @@ StyleBoxnormal🔗
 The normal background for theRichTextLabel.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,15 +1,18 @@
 # Shape2D in English
 
 # Shape2D
+
 Inherits:Resource<RefCounted<Object
 Inherited By:CapsuleShape2D,CircleShape2D,ConcavePolygonShape2D,ConvexPolygonShape2D,RectangleShape2D,SegmentShape2D,SeparationRayShape2D,WorldBoundaryShape2D
 Abstract base class for 2D shapes used for physics collision.
 
 ## Description
+
 Abstract base class for all 2D shapes, intended for use in physics.
 Performance:Primitive shapes, especiallyCircleShape2D, are fast to check collisions against.ConvexPolygonShape2Dis slower, andConcavePolygonShape2Dis the slowest.
 
 ## Tutorials
+
 - Physics introduction
 Physics introduction
 
@@ -44,7 +47,9 @@ Rect2
 get_rect()const
 
 ## Property Descriptions
+
 floatcustom_solver_bias=0.0🔗
+
 - voidset_custom_solver_bias(value:float)
 voidset_custom_solver_bias(value:float)
 - floatget_custom_solver_bias()
@@ -53,6 +58,7 @@ The shape's custom solver bias. Defines how much bodies react to enforce contact
 When set to0, the default value fromProjectSettings.physics/2d/solver/default_contact_biasis used.
 
 ## Method Descriptions
+
 boolcollide(local_xform:Transform2D, with_shape:Shape2D, shape_xform:Transform2D)🔗
 Returnstrueif this shape is colliding with another.
 This method needs the transformation matrix for this shape (local_xform), the shape to check collisions with (with_shape), and the transformation matrix of that shape (shape_xform).
@@ -75,4 +81,5 @@ Rect2get_rect()const🔗
 Returns aRect2representing the shapes boundary.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,15 +1,18 @@
 # Node2D in English
 
 # Node2D
+
 Inherits:CanvasItem<Node<Object
 Inherited By:AnimatedSprite2D,AudioListener2D,AudioStreamPlayer2D,BackBufferCopy,Bone2D,Camera2D,CanvasGroup,CanvasModulate,CollisionObject2D,CollisionPolygon2D,CollisionShape2D,CPUParticles2D,GPUParticles2D,Joint2D,Light2D,LightOccluder2D,Line2D,Marker2D,MeshInstance2D,MultiMeshInstance2D,NavigationLink2D,NavigationObstacle2D,NavigationRegion2D,Parallax2D,ParallaxLayer,Path2D,PathFollow2D,Polygon2D,RayCast2D,RemoteTransform2D,ShapeCast2D,Skeleton2D,Sprite2D,TileMap,TileMapLayer,TouchScreenButton,VisibleOnScreenNotifier2D
 A 2D game object, inherited by all 2D-related nodes. Has a position, rotation, scale, and skew.
 
 ## Description
+
 A 2D game object, with a transform (position, rotation, and scale). All 2D nodes, including physics objects and sprites, inherit from Node2D. Use Node2D as a parent node to move, scale and rotate children in a 2D project. Also gives control of the node's render order.
 Note:Since bothNode2DandControlinherit fromCanvasItem, they share several concepts from the class such as theCanvasItem.z_indexandCanvasItem.visibleproperties.
 
 ## Tutorials
+
 - Custom drawing in 2D
 Custom drawing in 2D
 - All 2D Demos
@@ -97,7 +100,9 @@ void
 translate(offset:Vector2)
 
 ## Property Descriptions
+
 Vector2global_position🔗
+
 - voidset_global_position(value:Vector2)
 voidset_global_position(value:Vector2)
 - Vector2get_global_position()
@@ -175,6 +180,7 @@ Transform2Dget_transform()
 The node'sTransform2D, relative to the node's parent. See alsoglobal_transform.
 
 ## Method Descriptions
+
 voidapply_scale(ratio:Vector2)🔗
 Multiplies the current scale by theratiovector.
 floatget_angle_to(point:Vector2)const🔗
@@ -201,4 +207,5 @@ voidtranslate(offset:Vector2)🔗
 Translates the node by the givenoffsetin local coordinates. This is equivalent toposition+=offset.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

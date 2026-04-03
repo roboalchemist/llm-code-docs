@@ -1,10 +1,12 @@
 # TouchScreenButton in English
 
 # TouchScreenButton
+
 Inherits:Node2D<CanvasItem<Node<Object
 Button for touch screen devices for gameplay use.
 
 ## Description
+
 TouchScreenButton allows you to create on-screen buttons for touch devices. It's intended for gameplay use, such as a unit you have to touch to move. UnlikeButton, TouchScreenButton supports multitouch out of the box. Several TouchScreenButtons can be pressed at the same time with touch input.
 This node inherits fromNode2D. Unlike withControlnodes, you cannot set anchors on it. If you want to create menus or user interfaces, you may want to useButtonnodes instead. To make button nodes react to touch events, you can enableProjectSettings.input_devices/pointing/emulate_mouse_from_touchin the Project Settings.
 You can configure TouchScreenButton to be visible only on touch devices, helping you develop your game both for desktop and mobile devices.
@@ -52,12 +54,14 @@ bool
 is_pressed()const
 
 ## Signals
+
 pressed()🔗
 Emitted when the button is pressed (down).
 released()🔗
 Emitted when the button is released (up).
 
 ## Enumerations
+
 enumVisibilityMode:🔗
 VisibilityModeVISIBILITY_ALWAYS=0
 Always visible.
@@ -65,7 +69,9 @@ VisibilityModeVISIBILITY_TOUCHSCREEN_ONLY=1
 Visible on touch screens only.
 
 ## Property Descriptions
+
 Stringaction=""🔗
+
 - voidset_action(value:String)
 voidset_action(value:String)
 - Stringget_action()
@@ -122,8 +128,10 @@ VisibilityModeget_visibility_mode()
 The button's visibility mode.
 
 ## Method Descriptions
+
 boolis_pressed()const🔗
 Returnstrueif this button is currently pressed.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

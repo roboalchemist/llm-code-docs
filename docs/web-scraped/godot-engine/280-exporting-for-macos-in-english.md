@@ -1,6 +1,7 @@
 # Exporting for macOS in English
 
 # Exporting for macOS
+
 See also
 This page describes how to export a Godot project to macOS.
 If you're looking to compile editor or export template binaries from source instead,
@@ -16,6 +17,7 @@ as optional helper executables in theContents/Helpers/subfolder, should have
 theexecutablepermission for the.appbundle to be valid.
 
 ## Requirements
+
 - Download the Godot export templates. Use the Godot menu:Editor>ManageExportTemplates.
 Download the Godot export templates. Use the Godot menu:Editor>ManageExportTemplates.
 - A valid and uniqueBundleidentifiershould be set in theApplicationsection of the export options.
@@ -24,19 +26,23 @@ Warning
 Projects exported without code signing and notarization will be blocked by Gatekeeper if they are downloaded from unknown sources, see theRunning Godot apps on macOSpage for more information.
 
 ## Code signing and notarization
+
 By default, macOS will run only applications that are signed and notarized. If you use any other signing configuration, seeRunning Godot apps on macOSfor workarounds.
 To notarize an app, youmusthave a validApple Developer ID Certificate.
 
 ### If you have an Apple Developer ID Certificate and exporting from macOS
+
 InstallXcodecommand line tools and open Xcode at least once or run thesudoxcodebuild-licenseacceptcommand to accept license agreement.
 
 #### To sign exported app
+
 - SelectXcodecodesignin theCodeSigning>Codesignoption.
 SelectXcodecodesignin theCodeSigning>Codesignoption.
 - Set valid Apple ID certificate identity (certificate "Common Name") in theCodeSigning>Identitysection.
 Set valid Apple ID certificate identity (certificate "Common Name") in theCodeSigning>Identitysection.
 
 #### To notarize exported app
+
 - SelectXcodealtoolin theNotarization>Notarizationoption.
 SelectXcodealtoolin theNotarization>Notarizationoption.
 - Disable theDebuggingentitlement.
@@ -48,15 +54,18 @@ If you encounter notarization issues, seeResolving common notarization issuesfor
 After notarization is completed,staple the ticketto the exported project.
 
 ### If you have an Apple Developer ID Certificate and exporting from Linux or Windows
+
 InstallPyOxidizer rcodesign, and configure the path torcodesignin theEditorSettings>Export>macOS>rcodesign.
 
 #### To sign exported app
+
 - SelectPyOxidizerrcodesignin theCodeSigning>Codesignoption.
 SelectPyOxidizerrcodesignin theCodeSigning>Codesignoption.
 - Set valid Apple ID PKCS #12 certificate file and password in theCodeSigningsection.
 Set valid Apple ID PKCS #12 certificate file and password in theCodeSigningsection.
 
 #### To notarize exported app
+
 - SelectPyOxidizerrcodesignin theNotarization>Notarizationoption.
 SelectPyOxidizerrcodesignin theNotarization>Notarizationoption.
 - Disable theDebuggingentitlement.
@@ -67,6 +76,7 @@ You can use thercodesignnotary-logcommand to check notarization status.
 After notarization is completed, use thercodesignstaplecommand to staple the ticket to the exported project.
 
 ### If you do not have an Apple Developer ID Certificate
+
 - SelectBuilt-in(ad-hoconly)in theCodeSigning>Codesignoption.
 SelectBuilt-in(ad-hoconly)in theCodeSigning>Codesignoption.
 - SelectDisabledin theNotarization>Notarizationoption.
@@ -132,6 +142,7 @@ SeeNotarizing macOS Software Before Distributionfor more info.
 ## Entitlements
 
 ### Hardened Runtime Entitlements
+
 Hardened Runtime entitlements manage security options and resource access policy.
 SeeHardened Runtimefor more info.
 
@@ -181,6 +192,7 @@ These features aren't supported by Godot out of the box, enable them only if you
 To notarize an app, you must disable theDebuggingentitlement.
 
 ### App Sandbox Entitlement
+
 The App Sandbox restricts access to user data, networking and devices.
 Sandboxed apps can't access most of the file system, can't use custom file dialogs and execute binaries (usingOS.executeandOS.create_process) outside the.appbundle.
 SeeApp Sandboxfor more info.
@@ -230,6 +242,7 @@ Note
 You can override default entitlements by selecting custom entitlements file, in this case all other entitlement are ignored.
 
 ## Environment variables
+
 You can use the following environment variables to set export options outside of
 the editor. During the export process, these override the values that you set in
 the export menu.
@@ -268,7 +281,9 @@ Options / Notarization / Apple ID Password
 GODOT_MACOS_NOTARIZATION_APPLE_ID_PASSWORD
 
 ## Export options
+
 You can find a full list of export options available in theEditorExportPlatformMacOSclass reference.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

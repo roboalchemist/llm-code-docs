@@ -1,10 +1,12 @@
 # ScriptEditorBase in English
 
 # ScriptEditorBase
+
 Inherits:VBoxContainer<BoxContainer<Container<Control<CanvasItem<Node<Object
 Base editor for editing scripts in theScriptEditor.
 
 ## Description
+
 Base editor for editing scripts in theScriptEditor. This does not include documentation items.
 
 ## Methods
@@ -19,6 +21,7 @@ Control
 get_base_editor()const
 
 ## Signals
+
 edited_script_changed()🔗
 Emitted after script validation.
 go_to_help(what:String)🔗
@@ -41,10 +44,12 @@ search_in_files_requested(text:String)🔗
 Emitted when the user request to search text in the file system.
 
 ## Method Descriptions
+
 voidadd_syntax_highlighter(highlighter:EditorSyntaxHighlighter)🔗
 Adds anEditorSyntaxHighlighterto the open script.
 Controlget_base_editor()const🔗
 Returns the underlyingControlused for editing scripts. For text scripts, this is aCodeEdit.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,15 +1,18 @@
 # InputEventKey in English
 
 # InputEventKey
+
 Inherits:InputEventWithModifiers<InputEventFromWindow<InputEvent<Resource<RefCounted<Object
 Represents a key on a keyboard being pressed or released.
 
 ## Description
+
 An input event for keys on a keyboard. Supports key presses, key releases andechoevents. It can also be received inNode._unhandled_key_input().
 Note:Events received from the keyboard usually have all properties set. Event mappings should have only one of thekeycode,physical_keycodeorunicodeset.
 When events are compared, properties are checked in the following priority -keycode,physical_keycodeandunicode. Events with the first matching value will be considered equal.
 
 ## Tutorials
+
 - Using InputEvent
 Using InputEvent
 
@@ -61,7 +64,9 @@ get_keycode_with_modifiers()const
 get_physical_keycode_with_modifiers()const
 
 ## Property Descriptions
+
 boolecho=false🔗
+
 - voidset_echo(value:bool)
 voidset_echo(value:bool)
 - boolis_echo()
@@ -76,26 +81,32 @@ Keyget_key_label()
 Represents the localized label printed on the key in the current keyboard layout, which corresponds to one of theKeyconstants or any valid Unicode character. Key labels are meant for key prompts.
 For keyboard layouts with a single label on the key, it is equivalent tokeycode.
 To get a human-readable representation of theInputEventKey, useOS.get_keycode_string(event.key_label)whereeventis theInputEventKey.
+
 ```
 +-----+ +-----+
 | Q   | | Q   | - "Q" - keycode
 |   Й | |  ض | - "Й" and "ض" - key_label
 +-----+ +-----+
 ```
+
 Keykeycode=0🔗
+
 - voidset_keycode(value:Key)
 voidset_keycode(value:Key)
 - Keyget_keycode()
 Keyget_keycode()
 Latin label printed on the key in the current keyboard layout, which corresponds to one of theKeyconstants. Key codes are meant for shortcuts expressed with a standard Latin keyboard, such asCtrl+Sfor a "Save" shortcut.
 To get a human-readable representation of theInputEventKey, useOS.get_keycode_string(event.keycode)whereeventis theInputEventKey.
+
 ```
 +-----+ +-----+
 | Q   | | Q   | - "Q" - keycode
 |   Й | |  ض | - "Й" and "ض" - key_label
 +-----+ +-----+
 ```
+
 KeyLocationlocation=0🔗
+
 - voidset_location(value:KeyLocation)
 voidset_location(value:KeyLocation)
 - KeyLocationget_location()
@@ -108,6 +119,7 @@ voidset_physical_keycode(value:Key)
 Keyget_physical_keycode()
 Represents the physical location of a key on the 101/102-key US QWERTY keyboard, which corresponds to one of theKeyconstants. Physical key codes meant for game input, such as WASD movement, where only the location of the keys is important.
 To get a human-readable representation of theInputEventKey, useOS.get_keycode_string()in combination withDisplayServer.keyboard_get_keycode_from_physical()orDisplayServer.keyboard_get_label_from_physical():
+
 ```
 func _input(event):
     if event is InputEventKey:
@@ -116,6 +128,7 @@ func _input(event):
         print(OS.get_keycode_string(keycode))
         print(OS.get_keycode_string(label))
 ```
+
 ```
 public override void _Input(InputEvent @event)
 {
@@ -128,7 +141,9 @@ public override void _Input(InputEvent @event)
     }
 }
 ```
+
 boolpressed=false🔗
+
 - voidset_pressed(value:bool)
 voidset_pressed(value:bool)
 - boolis_pressed()
@@ -143,6 +158,7 @@ The key Unicode character code (when relevant), shifted by modifier keys. Unicod
 Note:This property is set by the engine only for a pressed event. If the event is sent by an IME or a virtual keyboard, no corresponding key released event is sent.
 
 ## Method Descriptions
+
 Stringas_text_key_label()const🔗
 Returns aStringrepresentation of the event'skey_labeland modifiers.
 Stringas_text_keycode()const🔗
@@ -162,4 +178,5 @@ Returns the physical keycode combined with modifier keys such asShiftorAlt. See 
 To get a human-readable representation of theInputEventKeywith modifiers, useOS.get_keycode_string(event.get_physical_keycode_with_modifiers())whereeventis theInputEventKey.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

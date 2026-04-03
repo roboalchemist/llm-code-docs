@@ -1,9 +1,11 @@
 # Introduction to the animation features in English
 
 # Introduction to the animation features
+
 TheAnimationPlayernode allows you to create anything
 from simple to complex animations.
 In this guide you learn to:
+
 - Work with the Animation Panel
 Work with the Animation Panel
 - Animate any property of any node
@@ -16,6 +18,7 @@ of materials, and so on. You can also modify values of script variables
 and even call functions.
 
 ## Create an AnimationPlayer node
+
 To use the animation tools we first have to create anAnimationPlayernode.
 The AnimationPlayer node type is the data container for your animations.
 One AnimationPlayer node can hold multiple animations, which can
@@ -26,6 +29,7 @@ open the Animation Panel at the bottom of the viewport.
 The animation panel position
 The animation panel consists of four parts:
 The animation panel
+
 - Animation controls (i.e. add, load, save, and delete animations)
 Animation controls (i.e. add, load, save, and delete animations)
 - The tracks listing
@@ -38,6 +42,7 @@ The timeline and track controls, where you can zoom the timeline and
 edit tracks, for example.
 
 ## Computer animation relies on keyframes
+
 A keyframe defines the value of a property at a point in time.
 Diamond shapes represent keyframes in the timeline. A line between two
 keyframes indicates that the value doesn't change between them.
@@ -62,6 +67,7 @@ by double-clicking on it and typing the new path. Play the animation using the
 ## Tutorial: Creating a simple animation
 
 ### Scene setup
+
 For this tutorial, we'll create a Sprite node with an AnimationPlayer as
 its child. We will animate the sprite to move between two points on the screen.
 Our scene setup
@@ -76,18 +82,21 @@ click Texture in the Inspector, and then click Load. Select the default Godot
 icon for the sprite's texture.
 
 ### Adding an animation
+
 Select the AnimationPlayer node and click the "Animation" button in the
 animation editor. From the list, select "New" () to add a new
 animation. Enter a name for the animation in the dialog box.
 Add a new animation
 
 ### Managing animation libraries
+
 For reusability, the animation is registered in a list in the animation library resource. If you add an animation to AnimationPlayer without specifying any particular settings, the animation will be registered in the [Global] animation library that AnimationPlayer has by default.
 Manage animations
 If there are multiple animation libraries and you try to add an animation, a dialog box will appear with options.
 Add a new animation with library option
 
 ### Adding a track
+
 To add a new track for our sprite, select it and take a look at the
 toolbar:
 Convenience buttons
@@ -103,6 +112,7 @@ the timeline:
 The sprite track
 
 ### The second keyframe
+
 We need to set our sprite's end location and how long it will take for it to get there.
 Let's say we want it to take two seconds to move between the points. By
 default, the animation is set to last only one second, so change the animation
@@ -115,11 +125,13 @@ Click on the timeline header near the two-second mark in the animation panel
 and then click the key button in the toolbar to create the second keyframe.
 
 ### Run the animation
+
 Click on the "Play from beginning" () button.
 Yay! Our animation runs:
 The animation
 
 ### Autoplay on load
+
 You can make it so an animation plays automatically when the AnimationPlayer nodes
 scene starts, or joins another scene. To do this click the "Autoplay on load"
 button in the animation editor, it's right next to the edit button.
@@ -127,6 +139,7 @@ The icon for it will also appear in front of the name of the animation, so you c
 easily identify which one is the autoplay animation.
 
 ### Back and forth
+
 Godot has an interesting feature that we can use in animations. When Animation
 Looping is set but there's no keyframe specified at the end of the animation,
 the first keyframe is also the last.
@@ -138,11 +151,13 @@ You can change this behavior by changing the track's loop mode. This is covered
 in the next chapter.
 
 ### Track settings
+
 Each property track has a settings panel at the end, where you can set its update
 mode, track interpolation, and loop mode.
 Track settings
 The update mode of a track tells Godot when to update the property
 values. This can be:
+
 - Continuous:Update the property on each frame
 Continuous:Update the property on each frame
 - Discrete:Only update the property on keyframes
@@ -198,6 +213,7 @@ animation after the last keyframe to reach the values of the first
 keyframe again.
 
 ## Keyframes for other properties
+
 Godot's animation system isn't restricted to position, rotation, and scale.
 You can animate any property.
 If you select your sprite while the animation panel is visible, Godot will
@@ -207,6 +223,7 @@ the current animation.
 Keyframes for other properties
 
 ## Edit keyframes
+
 You can click on a keyframe in the animation timeline to display and
 edit its value in theInspector.
 Keyframe editor editing a key
@@ -216,6 +233,7 @@ reaches this keyframe.
 You can tweak your animations this way until the movement "looks right."
 
 ## Using RESET tracks
+
 You can set up a specialRESETanimation to contain the "default pose".
 This is used to ensure that the default pose is restored when you save
 the scene and open it again in the editor.
@@ -237,6 +255,7 @@ Note
 RESET tracks are also used as reference values for blending. See alsoFor better blending.
 
 ## Onion Skinning
+
 Godot's animation editor allows you use onion skinning while creating an
 animation. To turn this feature on click on the onion icon in the top right
 of the animation editor. Now there will be transparent red copies of what
@@ -246,6 +265,7 @@ menu that lets you adjust how it works, including the ability to use
 onion skinning for future frames.
 
 ## Animation Markers
+
 Animation markers can be used to play a specific part of an animation rather than
 the whole thing. Here is a use case example, there's an animation file that has a
 character doing two distinct actions, and the project requires the whole animation,
@@ -267,4 +287,5 @@ area is the whole animation.Play Animation from Startwill treat the first
 marker as the start of the animation,Play Animation Backwards from Endwill treat the second marker as the end, and so on.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

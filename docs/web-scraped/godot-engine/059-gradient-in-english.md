@@ -1,10 +1,12 @@
 # Gradient in English
 
 # Gradient
+
 Inherits:Resource<RefCounted<Object
 A color transition.
 
 ## Description
+
 This resource describes a color transition by defining a set of colored points and how to interpolate between them.
 See alsoCurvewhich supports more complex easing methods, but does not support colors.
 
@@ -59,6 +61,7 @@ void
 set_offset(point:int, offset:float)
 
 ## Enumerations
+
 enumInterpolationMode:🔗
 InterpolationModeGRADIENT_INTERPOLATE_LINEAR=0
 Linear interpolation.
@@ -75,7 +78,9 @@ ColorSpaceGRADIENT_COLOR_SPACE_OKLAB=2
 Oklabcolor space. This color space provides a smooth and uniform-looking transition between colors.
 
 ## Property Descriptions
+
 PackedColorArraycolors=PackedColorArray(0,0,0,1,1,1,1,1)🔗
+
 - voidset_colors(value:PackedColorArray)
 voidset_colors(value:PackedColorArray)
 - PackedColorArrayget_colors()
@@ -106,6 +111,7 @@ Note:Setting this property updates all offsets at once. To update any offset ind
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedFloat32Arrayfor more details.
 
 ## Method Descriptions
+
 voidadd_point(offset:float, color:Color)🔗
 Adds the specified color to the gradient, with the specified offset.
 Colorget_color(point:int)🔗
@@ -127,4 +133,5 @@ voidset_offset(point:int, offset:float)🔗
 Sets the offset for the gradient color at indexpoint.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

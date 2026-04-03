@@ -1,10 +1,12 @@
 # DampedSpringJoint2D in English
 
 # DampedSpringJoint2D
+
 Inherits:Joint2D<Node2D<CanvasItem<Node<Object
 A physics joint that connects two 2D physics bodies with a spring-like force.
 
 ## Description
+
 A physics joint that connects two 2D physics bodies with a spring-like force. This behaves like a spring that always wants to stretch to a given length.
 
 ## Properties
@@ -27,7 +29,9 @@ stiffness
 20.0
 
 ## Property Descriptions
+
 floatdamping=1.0🔗
+
 - voidset_damping(value:float)
 voidset_damping(value:float)
 - floatget_damping()
@@ -53,4 +57,5 @@ floatget_stiffness()
 The higher the value, the less the bodies attached to the joint will deform it. The joint applies an opposing force to the bodies, the product of the stiffness multiplied by the size difference from its resting length.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

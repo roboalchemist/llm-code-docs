@@ -1,7 +1,9 @@
 # Optimizing Navigation Performance
 
 # Optimizing Navigation Performance
+
 Common Navigation related performance problems can be categorized into the following topics:
+
 - Performance problems with parsing scene tree nodes for navigation mesh baking.
 Performance problems with parsing scene tree nodes for navigation mesh baking.
 - Performance problems with baking the actual navigation mesh.
@@ -15,6 +17,7 @@ Performance problems with synchronizing the navigation map.
 In the following sections information can be found on how to identify and fix or at least mitigate their impact on framerates.
 
 ## Performance problems with parsing scene tree nodes
+
 Prefer using simple shapes with as few edges as possible e.g. nothing rounded like a circle, sphere or torus.
 Prefer using physics collision shapes over complex visual meshes as source geometry as meshes need to be copied from the GPU and are commonly much more detailed than necessary.
 In general avoid using very complex geometry as source geometry for baking navigation meshes.
@@ -27,6 +30,7 @@ This requires locking the RenderingServer thread and can severely impact framera
 If the rendering runs single-threaded, the framerate impact might be even worse and the mesh parsing might freeze the entire game for a few seconds on complex meshes.
 
 ## Performance problems with navigation mesh baking
+
 At runtime, always prefer to use a background thread for baking navigation meshes.
 Increase NavigationMeshcell_sizeandcell_heightto create less voxels.
 Change theSamplePartitionTypefrom watershed to monotone or layers to gain baking performance.
@@ -43,6 +47,7 @@ Never scale source geometry with nodes. Not only can it result in a lot of preci
 E.g. if a mesh is downscaled visually in the Editor, e.g. the scale set to 0.001 on a MeshInstance, the mesh still requires a gigantic and very complex voxel grid to be processed for the baking.
 
 ## Performance problems with NavigationAgent path queries
+
 Avoid unnecessary path resets and queries every frame in NavigationAgent scripts.
 Avoid updating all NavigationAgent paths in the same frame.
 Logical errors and wasteful operations in the custom NavigationAgent scripts are very common causes of performance issues, e.g. watch out for resetting the path every single frame.
@@ -56,6 +61,7 @@ This avoids doing the equivalent of two full path queries every frame for the sa
 Divide the total number of NavigationAgents into update groups or use random timers so that they do not all request new paths in the same frame.
 
 ## Performance problems with the actual path search
+
 Optimize overdetailed navigation meshes by reducing the amount of polygons and edges.
 The cost of the actual path search correlates directly with the amount of navigation mesh polygons and edges and not the real size of a game world.
 If a giant game world uses very optimized navigation meshes with only few polygons that cover large areas, performance should be acceptable.
@@ -66,6 +72,7 @@ In normal path searches where the target position can be reached quickly the pat
 If the target position can not be reached the pathfinding has to do a far longer search through the available polygons to confirm that the position is absolutely not reachable.
 
 ## Performance problems with navigation map synchronization
+
 Merge navigation meshes polygons by vertex instead of by edge connection wherever possible.
 When changes are made to e.g. navigation meshes or navigation regions, the NavigationServer needs to synchronize the navigation map.
 Depending on the complexity of navigation meshes, this can take a significant amount of time which may impact the framerate.
@@ -77,4 +84,5 @@ The debug Navigation PerformanceMonitor can be used to get statistics on how man
 If the ratio between vertex merged and edge connections is way off (vertex should be significantly higher) the navigation meshes are properly created or placed very inefficient.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

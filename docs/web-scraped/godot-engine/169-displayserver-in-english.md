@@ -1,10 +1,12 @@
 # DisplayServer in English
 
 # DisplayServer
+
 Inherits:Object
 A server interface for low-level window management.
 
 ## Description
+
 DisplayServerhandles everything related to window management. It is separated fromOSas a single operating system may support multiple display servers.
 Headless mode:Starting the engine with the--headlesscommand line argumentdisables all rendering and window management functions. Most functions fromDisplayServerwill return dummy values in this case.
 
@@ -780,6 +782,7 @@ void
 window_start_resize(edge:WindowResizeEdge, window_id:int= 0)
 
 ## Enumerations
+
 enumFeature:🔗
 FeatureFEATURE_GLOBAL_MENU=0
 Deprecated:UseNativeMenuorPopupMenuinstead.
@@ -995,6 +998,7 @@ AccessibilityActionACTION_SHOW_TOOLTIP=8
 Show tooltip action, callback argument is not set.
 AccessibilityActionACTION_SET_TEXT_SELECTION=9
 Set text selection action, callback argument is set toDictionarywith the following keys:
+
 - "start_element"accessibility element of the selection start.
 "start_element"accessibility element of the selection start.
 - "start_char"character offset relative to the accessibility element of the selection start.
@@ -1332,6 +1336,7 @@ TTSUtteranceEventTTS_UTTERANCE_BOUNDARY=3
 Utterance reached a word or sentence boundary.
 
 ## Constants
+
 INVALID_SCREEN=-1🔗
 The ID that refers to a screen that does not exist. This is returned by someDisplayServermethods if no screen matches the requested result.
 SCREEN_WITH_MOUSE_FOCUS=-4🔗
@@ -1354,6 +1359,7 @@ INVALID_INDICATOR_ID=-1🔗
 The ID that refers to a nonexistent application status indicator.
 
 ## Method Descriptions
+
 RIDaccessibility_create_element(window_id:int, role:AccessibilityRole)🔗
 Creates a new, empty accessibility element resource.
 Note:An accessibility element is created and freed automatically for eachNode. In general, this function should not be called manually.
@@ -1580,17 +1586,20 @@ Note:On Android, this method uses the Android Storage Access Framework (SAF).
 The file picker returns a URI instead of a filesystem path. This URI can be passed directly toFileAccessto perform read/write operations.
 When usingFILE_DIALOG_MODE_OPEN_DIR, it returns a tree URI that grants full access to the selected directory. File operations inside this directory can be performed by passing a path on the formtreeUri#relative/path/to/filetoFileAccess.
 To avoid opening the file picker again after each app restart, you can take persistable URI permission as follows:
+
 ```
 val uri = "content://com.android..." # URI of the selected file or folder.
 val persist = true # Set to false to release the persistable permission.
 var android_runtime = Engine.get_singleton("AndroidRuntime")
 android_runtime.updatePersistableUriPermission(uri, persist)
 ```
+
 The persistable URI permission remains valid across app restarts as long as the directory is not moved, renamed, or deleted.
 Errorfile_dialog_with_options_show(title:String, current_directory:String, root:String, filename:String, show_hidden:bool, mode:FileDialogMode, filters:PackedStringArray, options:Array[Dictionary], callback:Callable, parent_window_id:int= 0)🔗
 Displays OS native dialog for selecting files or directories in the file system with additional user selectable options.
 Each filter string in thefiltersarray should be formatted like this:*.png,*.jpg,*.jpeg;ImageFiles;image/png,image/jpeg. The description text of the filter is optional and can be omitted. It is recommended to set both file extension and MIME type. See alsoFileDialog.filters.
 optionsis array ofDictionarys with the following keys:
+
 - "name"- option's nameString.
 "name"- option's nameString.
 - "values"-PackedStringArrayof values. If empty, boolean option (check box) is used.
@@ -1638,6 +1647,7 @@ Returnstrueif positions ofOKandCancelbuttons are swapped in dialogs. This is ena
 Note:This doesn't affect native dialogs such as the ones spawned bydialog_show().
 intget_window_at_screen_position(position:Vector2i)const🔗
 Returns the ID of the window at the specified screenposition(in pixels). On multi-monitor setups, the screen position is relative to the virtual desktop area. On multi-monitor setups with different screen resolutions or orientations, the origin may be located outside any display like this:
+
 ```
 * (0, 0)        +-------+
                 |       |
@@ -1646,6 +1656,7 @@ Returns the ID of the window at the specified screenposition(in pixels). On mult
 |             | |       |
 +-------------+ +-------+
 ```
+
 PackedInt32Arrayget_window_list()const🔗
 Returns the list of Godot window IDs belonging to this process.
 Note:Native dialogs are not included in this list.
@@ -1657,6 +1668,7 @@ Anacceleratorcan optionally be defined, which is a keyboard shortcut that can be
 Note:Thecallbackandkey_callbackCallables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed totag.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1664,6 +1676,7 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_icon_check_item(menu_root:String, icon:Texture2D, label:String, callback:Callable= Callable(), key_callback:Callable= Callable(), tag:Variant= null, accelerator:Key= 0, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds a new checkable item with textlabeland iconiconto the global menu with IDmenu_root.
@@ -1672,6 +1685,7 @@ Anacceleratorcan optionally be defined, which is a keyboard shortcut that can be
 Note:Thecallbackandkey_callbackCallables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed totag.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1679,6 +1693,7 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_icon_item(menu_root:String, icon:Texture2D, label:String, callback:Callable= Callable(), key_callback:Callable= Callable(), tag:Variant= null, accelerator:Key= 0, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds a new item with textlabeland iconiconto the global menu with IDmenu_root.
@@ -1687,6 +1702,7 @@ Anacceleratorcan optionally be defined, which is a keyboard shortcut that can be
 Note:Thecallbackandkey_callbackCallables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed totag.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1694,6 +1710,7 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_icon_radio_check_item(menu_root:String, icon:Texture2D, label:String, callback:Callable= Callable(), key_callback:Callable= Callable(), tag:Variant= null, accelerator:Key= 0, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds a new radio-checkable item with textlabeland iconiconto the global menu with IDmenu_root.
@@ -1703,6 +1720,7 @@ Note:Radio-checkable items just display a checkmark, but don't have any built-in
 Note:Thecallbackandkey_callbackCallables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed totag.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1710,6 +1728,7 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_item(menu_root:String, label:String, callback:Callable= Callable(), key_callback:Callable= Callable(), tag:Variant= null, accelerator:Key= 0, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds a new item with textlabelto the global menu with IDmenu_root.
@@ -1718,6 +1737,7 @@ Anacceleratorcan optionally be defined, which is a keyboard shortcut that can be
 Note:Thecallbackandkey_callbackCallables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed totag.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1725,6 +1745,7 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_multistate_item(menu_root:String, label:String, max_states:int, default_state:int, callback:Callable= Callable(), key_callback:Callable= Callable(), tag:Variant= null, accelerator:Key= 0, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds a new item with textlabelto the global menu with IDmenu_root.
@@ -1735,6 +1756,7 @@ Note:By default, there's no indication of the current item state, it should be c
 Note:Thecallbackandkey_callbackCallables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed totag.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1742,6 +1764,7 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_radio_check_item(menu_root:String, label:String, callback:Callable= Callable(), key_callback:Callable= Callable(), tag:Variant= null, accelerator:Key= 0, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds a new radio-checkable item with textlabelto the global menu with IDmenu_root.
@@ -1751,6 +1774,7 @@ Note:Radio-checkable items just display a checkmark, but don't have any built-in
 Note:Thecallbackandkey_callbackCallables need to accept exactly one Variant parameter, the parameter passed to the Callables will be the value passed totag.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1758,12 +1782,14 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_separator(menu_root:String, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds a separator between items to the global menu with IDmenu_root. Separators also occupy an index.
 Returns index of the inserted item, it's not guaranteed to be the same asindexvalue.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1771,12 +1797,14 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 intglobal_menu_add_submenu_item(menu_root:String, label:String, submenu:String, index:int= -1)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Adds an item that will act as a submenu of the global menumenu_root. Thesubmenuargument is the ID of the global menu root that will be shown when the item is clicked.
 Returns index of the inserted item, it's not guaranteed to be the same asindexvalue.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1784,11 +1812,13 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 voidglobal_menu_clear(menu_root:String)🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Removes all items from the global menu with IDmenu_root.
 Note:This method is implemented only on macOS.
 Supported system menu IDs:
+
 ```
 "_main" - Main menu (macOS).
 "_dock" - Dock popup menu (macOS).
@@ -1796,6 +1826,7 @@ Supported system menu IDs:
 "_window" - Window menu (macOS, custom items added after "Bring All to Front").
 "_help" - Help menu (macOS).
 ```
+
 Keyglobal_menu_get_item_accelerator(menu_root:String, idx:int)const🔗
 Deprecated:UseNativeMenuorPopupMenuinstead.
 Returns the accelerator of the item at indexidx. Accelerators are special combinations of keys that activate the item, no matter which control is focused.
@@ -2027,6 +2058,7 @@ Returns the dots per inch density of the specified screen. Returns platform spec
 Note:One of the following constants can be used asscreen:SCREEN_OF_MAIN_WINDOW,SCREEN_PRIMARY,SCREEN_WITH_MOUSE_FOCUS, orSCREEN_WITH_KEYBOARD_FOCUS.
 Note:On macOS, returned value is inaccurate if fractional display scaling mode is used.
 Note:On Android devices, the actual screen densities are grouped into six generalized densities:
+
 ```
    ldpi - 120 dpi
    mdpi - 160 dpi
@@ -2035,6 +2067,7 @@ Note:On Android devices, the actual screen densities are grouped into six genera
  xxhdpi - 480 dpi
 xxxhdpi - 640 dpi
 ```
+
 Note:This method is implemented on Android, iOS, Linux (X11/Wayland), macOS, Web, and Windows. On other platforms, this method always returns72.
 Imagescreen_get_image(screen:int= -1)const🔗
 Returns a screenshot of thescreen. Returnsnullifscreenis invalid or theDisplayServerfails to capture screenshot.
@@ -2059,6 +2092,7 @@ Note:This method is implemented on Linux (X11, excluding XWayland), macOS, and W
 Note:On macOS, this method requires the "Screen Recording" permission. If permission is not granted, this method returns a color from a screenshot that will not include other application windows or OS elements not related to the application.
 Vector2iscreen_get_position(screen:int= -1)const🔗
 Returns the screen's top-left corner position in pixels. ReturnsVector2i.ZEROifscreenis invalid. On multi-monitor setups, the screen position is relative to the virtual desktop area. On multi-monitor setups with different screen resolutions or orientations, the origin might be located outside any display like this:
+
 ```
 * (0, 0)        +-------+
                 |       |
@@ -2067,16 +2101,19 @@ Returns the screen's top-left corner position in pixels. ReturnsVector2i.ZEROifs
 |             | |       |
 +-------------+ +-------+
 ```
+
 See alsoscreen_get_size().
 Note:One of the following constants can be used asscreen:SCREEN_OF_MAIN_WINDOW,SCREEN_PRIMARY,SCREEN_WITH_MOUSE_FOCUS, orSCREEN_WITH_KEYBOARD_FOCUS.
 floatscreen_get_refresh_rate(screen:int= -1)const🔗
 Returns the current refresh rate of the specified screen. When V-Sync is enabled, this returns the maximum framerate the project can effectively reach. Returns-1.0ifscreenis invalid or theDisplayServerfails to find the refresh rate for the specified screen.
 To fallback to a default refresh rate if the method fails, try:
+
 ```
 var refresh_rate = DisplayServer.screen_get_refresh_rate()
 if refresh_rate < 0:
     refresh_rate = 60.0
 ```
+
 Note:One of the following constants can be used asscreen:SCREEN_OF_MAIN_WINDOW,SCREEN_PRIMARY,SCREEN_WITH_MOUSE_FOCUS, orSCREEN_WITH_KEYBOARD_FOCUS.
 Note:This method is implemented on Android, iOS, macOS, Linux (X11 and Wayland), and Windows. On other platforms, this method always returns-1.0.
 floatscreen_get_scale(screen:int= -1)const🔗
@@ -2145,6 +2182,7 @@ Note:This method is implemented only on Windows.
 voidtablet_set_current_driver(name:String)🔗
 Set active tablet driver name.
 Supported drivers:
+
 - winink: Windows Ink API, default.
 winink: Windows Ink API, default.
 - wintab: Wacom Wintab API (compatible device driver required).
@@ -2317,6 +2355,7 @@ Note:Setting the window to full screen forcibly sets the borderless flag totrue,
 voidwindow_set_mouse_passthrough(region:PackedVector2Array, window_id:int= 0)🔗
 Sets a polygonal region of the window which accepts mouse events. Mouse events outside the region will be passed through.
 Passing an empty array will disable passthrough support (all mouse events will be intercepted by the window, which is the default behavior).
+
 ```
 # Set region, using Path2D node.
 DisplayServer.window_set_mouse_passthrough($Path2D.curve.get_baked_points())
@@ -2327,6 +2366,7 @@ DisplayServer.window_set_mouse_passthrough($Polygon2D.polygon)
 # Reset region to default.
 DisplayServer.window_set_mouse_passthrough([])
 ```
+
 ```
 // Set region, using Path2D node.
 DisplayServer.WindowSetMousePassthrough(GetNode<Path2D>("Path2D").Curve.GetBakedPoints());
@@ -2337,12 +2377,14 @@ DisplayServer.WindowSetMousePassthrough(GetNode<Polygon2D>("Polygon2D").Polygon)
 // Reset region to default.
 DisplayServer.WindowSetMousePassthrough([]);
 ```
+
 Note:On Windows, the portion of a window that lies outside the region is not drawn, while on Linux (X11) and macOS it is.
 Note:This method is implemented on Linux (X11), macOS and Windows.
 voidwindow_set_popup_safe_rect(window:int, rect:Rect2i)🔗
 Sets the bounding box of control, or menu item that was used to open the popup window, in the screen coordinate system. Clicking this area will not auto-close this popup.
 voidwindow_set_position(position:Vector2i, window_id:int= 0)🔗
 Sets the position of the given window toposition. On multi-monitor setups, the screen position is relative to the virtual desktop area. On multi-monitor setups with different screen resolutions or orientations, the origin may be located outside any display like this:
+
 ```
 * (0, 0)        +-------+
                 |       |
@@ -2351,6 +2393,7 @@ Sets the position of the given window toposition. On multi-monitor setups, the s
 |             | |       |
 +-------------+ +-------+
 ```
+
 See alsowindow_get_position()andwindow_set_size().
 Note:It's recommended to change this value usingWindow.positioninstead.
 Note:On Linux (Wayland): this method is a no-op.
@@ -2386,4 +2429,5 @@ Starts an interactive resize operation on the window with the givenwindow_id, us
 Note:This method is implemented on Linux (X11/Wayland), macOS, and Windows.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

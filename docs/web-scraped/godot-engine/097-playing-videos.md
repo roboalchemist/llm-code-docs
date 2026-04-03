@@ -1,9 +1,11 @@
 # Playing videos
 
 # Playing videos
+
 Godot supports video playback with theVideoStreamPlayernode.
 
 ## Supported playback formats
+
 The only supported format in core isOgg Theora(not to be confused with
 Ogg Vorbis audio) with optional Ogg Vorbis audio tracks. It's possible for
 extensions to bring support for additional formats.
@@ -20,6 +22,7 @@ Renaming these file extensions to.ogvmayallow the videos to be
 imported in Godot. However, not all files with.oggor.ogxextensions are videos - some of them may only contain audio.
 
 ## Setting up VideoStreamPlayer
+
 - Create a VideoStreamPlayer node using the Create New Node dialog.
 Create a VideoStreamPlayer node using the Create New Node dialog.
 - Select the VideoStreamPlayer node in the scene tree dock, go to the inspector
@@ -34,6 +37,7 @@ If you want the video to play as soon as the scene is loaded, checkAutoplayin th
 desired.
 
 ### Handling resizing and different aspect ratios
+
 By default, the VideoStreamPlayer will automatically be resized to match
 the video's resolution. You can make it follow usualControlsizing
 by enablingExpandon the VideoStreamPlayer node.
@@ -59,11 +63,13 @@ SeeMultiple resolutionsfor more tips on supporting multiple
 aspect ratios in your project.
 
 ### Displaying a video on a 3D surface
+
 Using a VideoStreamPlayer node as a child of aSubViewportnode,
 it's possible to display any 2D node on a 3D surface. For example, this can be
 used to display animated billboards when frame-by-frame animation would require
 too much memory.
 This can be done with the following steps:
+
 - Create aSubViewportnode. Set its size to match your video's size
 in pixels.
 Create aSubViewportnode. Set its size to match your video's size
@@ -101,6 +107,7 @@ setShading ModetoUnshadedto improve rendering performance.
 SeeUsing Viewportsand theGUI in 3D demofor more information on setting this up.
 
 ### Looping a video
+
 For looping a video, theLoopproperty can be enabled. This will seamlessly
 restart the video when it reaches its end.
 Note that setting the project settingVideo Delay Compensationto a non-zero
@@ -110,11 +117,13 @@ frames. SetVideo Delay Compensationin your project settings to0to
 avoid frame drop issues.
 
 ## Video decoding conditions and recommended resolutions
+
 Video decoding is performed on the CPU, as GPUs don't have hardware acceleration
 for decoding Theora videos. Modern desktop CPUs can decode Ogg Theora videos at
 1440p @ 60 FPS or more, but low-end mobile CPUs will likely struggle with
 high-resolution videos.
 To ensure your videos decode smoothly on varied hardware:
+
 - When developing games for desktop platforms, it's recommended to encode in
 1080p at most (preferably at 30 FPS). Most people are still using 1080p or
 lower resolution displays, so encoding higher-resolution videos may not be
@@ -133,7 +142,9 @@ between 720p and 1080p videos on a mobile device is usually not that
 noticeable.
 
 ## Playback limitations
+
 There are some limitations with the current implementation of video playback in Godot:
+
 - Streaming a video from a URL is not supported.
 Streaming a video from a URL is not supported.
 - Only mono and stereo audio output is supported. Videos with 4, 5.1 and 7.1
@@ -142,8 +153,10 @@ Only mono and stereo audio output is supported. Videos with 4, 5.1 and 7.1
 audio channels are supported but down-mixed to stereo.
 
 ## Recommended Theora encoding settings
+
 A word of advice is toavoid relying on built-in Ogg Theora exporters(most of the time).
 There are 2 reasons you may want to favor using an external program to encode your video:
+
 - Some programs such as Blender can render to Ogg Theora. However, the default
 quality presets are usually very low by today's standards. You may be able to
 increase the quality options in the software you're using, but you may find
@@ -181,6 +194,7 @@ multiplexer. It's highly recommended to use one of the latest static daily
 builds, or build from their master branch to get the latest fixes.
 
 ### Balancing quality and file size
+
 Thevideo qualitylevel (-q:v) must be between1and10. Quality6is a good compromise between quality and file size. If encoding at a high
 resolution (such as 1440p or 4K), you will probably want to decrease-q:vto5to keep file sizes reasonable. Since pixel density is higher on a 1440p or
 4K video, lower quality presets at higher resolutions will look as good or
@@ -205,35 +219,44 @@ going beyond powers of two starting at64. Max seek times with GOP size65can be a
 decoding speed.
 
 ### FFmpeg: Convert while preserving original video resolution
+
 The following command converts the video while keeping its original resolution.
 The video and audio's bitrate will be variable to maximize quality while saving
 space in parts of the video/audio that don't require a high bitrate (such as
 static scenes).
+
 ```
 ffmpeg -i input.mp4 -q:v 6 -q:a 6 -g:v 64 output.ogv
 ```
 
 ### FFmpeg: Resize the video then convert it
+
 The following command resizes a video to be 720 pixels tall (720p), while
 preserving its existing aspect ratio. This helps decrease the file size
 significantly if the source is recorded at a higher resolution than 720p:
+
 ```
 ffmpeg -i input.mp4 -vf "scale=-1:720" -q:v 6 -q:a 6 -g:v 64 output.ogv
 ```
 
 ## Chroma Key Videos
+
 Chroma key, commonly known as the "green screen" or "blue screen" effect, allows you to remove a specific color from an image or video and replace it with another background. This effect is widely used in video production to composite different elements together seamlessly.
 We will achieve the chroma key effect by writing a custom shader in GDScript and using aVideoStreamPlayernode to display the video content.
 
 ### Scene Setup
+
 Ensure that the scene contains aVideoStreamPlayernode to play the video and aControlnode to hold the UI elements for controlling the chroma key effect.
 
 ### Writing the Custom Shader
+
 To implement the chroma key effect, follow these steps:
+
 - Select theVideoStreamPlayernode in the scene and go to its properties. UnderCanvasItem > Material, create a new shader named "ChromaKeyShader.gdshader."
 Select theVideoStreamPlayernode in the scene and go to its properties. UnderCanvasItem > Material, create a new shader named "ChromaKeyShader.gdshader."
 - In the "ChromaKeyShader.gdshader" file, write the custom shader code as shown below:
 In the "ChromaKeyShader.gdshader" file, write the custom shader code as shown below:
+
 ```
 shader_type canvas_item;
 
@@ -262,6 +285,7 @@ void fragment() {
     COLOR = vec4(color.rgb, fade_factor);
 }
 ```
+
 The shader uses the distance calculation to identify pixels close to the chroma key color and discards them,
 effectively removing the selected color. Pixels that are slightly further away from the chroma key color are
 faded based on the fade_factor, blending them smoothly with the surrounding colors.
@@ -271,7 +295,9 @@ The code above represents a simple demonstration of the Chroma Key shader,
 and users can customize it according to their specific requirements.
 
 ### UI Controls
+
 To allow users to manipulate the chroma key effect in real-time, we created sliders in theControlnode. TheControlnode's script contains the following functions:
+
 ```
  extends Control
 
@@ -291,6 +317,7 @@ func _on_video_stream_player_finished():
      # Restart the video playback when it's finished.
      $VideoStreamPlayer.play()
 ```
+
 ```
 using Godot;
 
@@ -328,9 +355,11 @@ public partial class MyControl : Control
     }
 }
 ```
+
 also make sure that the range of the sliders are appropriate, our settings are :
 
 ### Signal Handling
+
 Connect the appropriate signal from the UI elements to theControlnode's script.
 you created in theControlnode's script to control the chroma key effect.
 These signal handlers will update the shader's uniform variables
@@ -340,4 +369,5 @@ you can now adjust the chroma key color, pickup range, and fade amount in real-t
 chroma key functionality for your video content.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

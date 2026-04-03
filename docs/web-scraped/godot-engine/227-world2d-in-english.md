@@ -1,13 +1,16 @@
 # World2D in English
 
 # World2D
+
 Inherits:Resource<RefCounted<Object
 A resource that holds all components of a 2D world, such as a canvas and a physics space.
 
 ## Description
+
 Class that has everything pertaining to a 2D world: A physics space, a canvas, and a sound space. 2D nodes register their resources into the current 2D world.
 
 ## Tutorials
+
 - Ray-casting
 Ray-casting
 
@@ -26,7 +29,9 @@ navigation_map
 space
 
 ## Property Descriptions
+
 RIDcanvas🔗
+
 - RIDget_canvas()
 RIDget_canvas()
 TheRIDof this world's canvas resource. Used by theRenderingServerfor 2D drawing.
@@ -44,4 +49,5 @@ RIDget_space()
 TheRIDof this world's physics space resource. Used by thePhysicsServer2Dfor 2D physics, treating it as both a space and an area.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

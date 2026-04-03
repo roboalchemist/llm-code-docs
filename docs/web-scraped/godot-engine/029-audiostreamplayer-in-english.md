@@ -1,15 +1,18 @@
 # AudioStreamPlayer in English
 
 # AudioStreamPlayer
+
 Inherits:Node<Object
 A node for audio playback.
 
 ## Description
+
 TheAudioStreamPlayernode plays an audio stream non-positionally. It is ideal for user interfaces, menus, or background music.
 To use this node,streamneeds to be set to a validAudioStreamresource. Playing more than one sound at the same time is also supported, seemax_polyphony.
 If you need to play audio at a specific position, useAudioStreamPlayer2DorAudioStreamPlayer3Dinstead.
 
 ## Tutorials
+
 - Audio streams
 Audio streams
 - 2D Dodge The Creeps Demo
@@ -87,10 +90,12 @@ void
 stop()
 
 ## Signals
+
 finished()🔗
 Emitted when a sound finishes playing without interruptions. This signal isnotemitted when callingstop(), or when exiting the tree while sounds are playing.
 
 ## Enumerations
+
 enumMixTarget:🔗
 MixTargetMIX_TARGET_STEREO=0
 The audio will be played only on the first channel. This is the default.
@@ -100,7 +105,9 @@ MixTargetMIX_TARGET_CENTER=2
 The audio will be played on the second channel, which is usually the center.
 
 ## Property Descriptions
+
 boolautoplay=false🔗
+
 - voidset_autoplay(value:bool)
 voidset_autoplay(value:bool)
 - boolis_autoplay_enabled()
@@ -173,6 +180,7 @@ Volume of sound, as a linear value.
 Note:This member modifiesvolume_dbfor convenience. The returned value is equivalent to the result of@GlobalScope.db_to_linear()onvolume_db. Setting this member is equivalent to settingvolume_dbto the result of@GlobalScope.linear_to_db()on a value.
 
 ## Method Descriptions
+
 floatget_playback_position()🔗
 Returns the position in theAudioStreamof the latest sound, in seconds. Returns0.0if no sounds are playing.
 Note:The position is not always accurate, as theAudioServerdoes not mix audio every processed frame. To get more accurate results, addAudioServer.get_time_since_last_mix()to the returned position.
@@ -189,4 +197,5 @@ voidstop()🔗
 Stops all sounds from this node.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -5,16 +5,19 @@ The content of this page was not yet updated for Godot4.6and may beoutdated. If 
         that it's up to date, feel free toopen a pull request.
 
 # Plugins for iOS
+
 Godot provides StoreKit, GameCenter, iCloud services and other plugins.
 They are using same model of asynchronous calls explained below.
 ARKit and Camera access are also provided as plugins.
 Latest updates, documentation and source code can be found atGodot iOS plugins repository
 
 ## Accessing plugin singletons
+
 To access plugin functionality, you first need to check that the plugin is
 exported and available by calling theEngine.has_singleton()function, which
 returns a registered singleton.
 Here's an example of how to do this in GDScript:
+
 ```
 var in_app_store
 var game_center
@@ -32,11 +35,14 @@ func _ready():
 ```
 
 ## Asynchronous methods
+
 When requesting an asynchronous operation, the method will look like
 this:
+
 ```
 Error purchase(Variant params);
 ```
+
 The parameter will usually be a Dictionary, with the information
 necessary to make the request, and the call will have two phases. First,
 the method will immediately return an Error value. If the Error is not
@@ -44,6 +50,7 @@ the method will immediately return an Error value. If the Error is not
 locally (no internet connection, API incorrectly configured, etc). If
 the error value is 'OK', a response event will be produced and added to
 the 'pending events' queue. Example:
+
 ```
 func on_purchase_pressed():
     var result = in_app_store.purchase({ "product_id": "my_product" })
@@ -62,22 +69,26 @@ func check_events():
             else:
                 show_error()
 ```
+
 Remember that when a call returns OK, the API willalwaysproduce an
 event through the pending_event interface, even if it's an error, or a
 network timeout, etc. You should be able to, for example, safely block
 the interface waiting for a reply from the server. If any of the APIs
 don't behave this way it should be treated as a bug.
 The pending event interface consists of two methods:
+
 - get_pending_event_count()Returns the number of pending events on the queue.
 get_pending_event_count()Returns the number of pending events on the queue.
 - Variantpop_pending_event()Pops the first event from the queue and returns it.
 Variantpop_pending_event()Pops the first event from the queue and returns it.
 
 ## Store Kit
+
 Implemented inGodot iOS InAppStore plugin.
 The Store Kit API is accessible through theInAppStoresingleton.
 It is initialized automatically.
 The following methods are available and documented below:
+
 ```
    Error purchase(Variant params)
    Error request_product_info(Variant params)
@@ -94,20 +105,25 @@ and the pending events interface:
 ```
 
 ### purchase
+
 Purchases a product ID through the Store Kit API. You have to callfinish_transaction(product_id)once you
 receive a successful response or callset_auto_finish_transaction(true)prior to callingpurchase().
 These two methods ensure the transaction is completed.
 
 #### Parameters
+
 Takes a dictionary as a parameter, with one field,product_id, a
 string with your product ID. Example:
+
 ```
 var result = in_app_store.purchase({ "product_id": "my_product" })
 ```
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On error:
+
 ```
 {
   "type": "purchase",
@@ -115,7 +131,9 @@ On error:
   "product_id": "the product ID requested",
 }
 ```
+
 On success:
+
 ```
 {
   "type": "purchase",
@@ -125,17 +143,22 @@ On success:
 ```
 
 ### request_product_info
+
 Requests the product info on a list of product IDs.
 
 #### Parameters
+
 Takes a dictionary as a parameter, with a singleproduct_idskey to which a
 string array of product IDs is assigned. Example:
+
 ```
 var result = in_app_store.request_product_info({ "product_ids": ["my_product1", "my_product2"] })
 ```
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
+
 ```
 {
   "type": "product_info",
@@ -150,11 +173,14 @@ The response event will be a dictionary with the following fields:
 ```
 
 ### restore_purchases
+
 Restores previously made purchases on user's account. This will create
 response events for each previously purchased product ID.
 
 #### Response event
+
 The response events will be dictionaries with the following fields:
+
 ```
 {
   "type": "restore",
@@ -164,31 +190,39 @@ The response events will be dictionaries with the following fields:
 ```
 
 ### set_auto_finish_transaction
+
 If set totrue, once a purchase is successful, your purchase will be
 finalized automatically. Call this method prior to callingpurchase().
 
 #### Parameters
+
 Takes a boolean as a parameter which specifies if purchases should be
 automatically finalized. Example:
+
 ```
 in_app_store.set_auto_finish_transaction(true)
 ```
 
 ### finish_transaction
+
 If you don't want transactions to be automatically finalized, call this
 method after you receive a successful purchase response.
 
 #### Parameters
+
 Takes a stringproduct_idas an argument.product_idspecifies what product to
 finalize the purchase on. Example:
+
 ```
 in_app_store.finish_transaction("my_product1")
 ```
 
 ## Game Center
+
 Implemented inGodot iOS GameCenter plugin.
 The Game Center API is available through theGameCentersingleton. It
 has the following methods:
+
 ```
 Error authenticate()
 bool is_authenticated()
@@ -200,18 +234,23 @@ void request_achievement_descriptions()
 Error show_game_center(Variant params)
 Error request_identity_verification_signature()
 ```
+
 and the pending events interface:
+
 ```
 int get_pending_event_count()
 Variant pop_pending_event()
 ```
 
 ### authenticate
+
 Authenticates a user in Game Center.
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On error:
+
 ```
 {
   "type": "authentication",
@@ -220,7 +259,9 @@ On error:
   "error_description": the value from NSError::localizedDescription,
 }
 ```
+
 On success:
+
 ```
 {
   "type": "authentication",
@@ -230,22 +271,28 @@ On success:
 ```
 
 ### post_score
+
 Posts a score to a Game Center leaderboard.
 
 #### Parameters
+
 Takes a dictionary as a parameter, with two fields:
+
 - scorea float number
 scorea float number
 - categorya string with the category name
 categorya string with the category name
 Example:
+
 ```
 var result = game_center.post_score({ "score": 100, "category": "my_leaderboard", })
 ```
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On error:
+
 ```
 {
   "type": "post_score",
@@ -254,7 +301,9 @@ On error:
   "error_description": the value from NSError::localizedDescription,
 }
 ```
+
 On success:
+
 ```
 {
   "type": "post_score",
@@ -263,10 +312,13 @@ On success:
 ```
 
 ### award_achievement
+
 Modifies the progress of a Game Center achievement.
 
 #### Parameters
+
 Takes a Dictionary as a parameter, with 3 fields:
+
 - name(string) the achievement name
 name(string) the achievement name
 - progress(float) the achievement progress from 0.0 to 100.0
@@ -278,13 +330,16 @@ an achievement banner at the top of the screen
 show_completion_banner(bool) whether Game Center should display
 an achievement banner at the top of the screen
 Example:
+
 ```
 var result = award_achievement({ "name": "hard_mode_completed", "progress": 6.1 })
 ```
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On error:
+
 ```
 {
   "type": "award_achievement",
@@ -292,7 +347,9 @@ On error:
   "error_code": the error code taken from NSError::code,
 }
 ```
+
 On success:
+
 ```
 {
   "type": "award_achievement",
@@ -301,11 +358,14 @@ On success:
 ```
 
 ### reset_achievements
+
 Clears all Game Center achievements. The function takes no parameters.
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On error:
+
 ```
 {
   "type": "reset_achievements",
@@ -313,7 +373,9 @@ On error:
   "error_code": the value from NSError::code,
 }
 ```
+
 On success:
+
 ```
 {
   "type": "reset_achievements",
@@ -322,12 +384,15 @@ On success:
 ```
 
 ### request_achievements
+
 Request all the Game Center achievements the player has made progress
 on. The function takes no parameters.
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On error:
+
 ```
 {
   "type": "achievements",
@@ -335,7 +400,9 @@ On error:
   "error_code": the value from NSError::code,
 }
 ```
+
 On success:
+
 ```
 {
   "type": "achievements",
@@ -346,12 +413,15 @@ On success:
 ```
 
 ### request_achievement_descriptions
+
 Request the descriptions of all existing Game Center achievements
 regardless of progress. The function takes no parameters.
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On error:
+
 ```
 {
   "type": "achievement_descriptions",
@@ -359,7 +429,9 @@ On error:
   "error_code": the value from NSError::code,
 }
 ```
+
 On success:
+
 ```
 {
   "type": "achievement_descriptions",
@@ -375,11 +447,14 @@ On success:
 ```
 
 ### show_game_center
+
 Displays the built-in Game Center overlay showing leaderboards,
 achievements, and challenges.
 
 #### Parameters
+
 Takes a Dictionary as a parameter, with two fields:
+
 - view(string) (optional) the name of the view to present. Accepts
 "default", "leaderboards", "achievements", or "challenges". Defaults
 to "default".
@@ -395,14 +470,17 @@ to present. Only used when "view" is "leaderboards" (or "default" is
 configured to show leaderboards). If not specified, Game Center will
 display the aggregate leaderboard.
 Examples:
+
 ```
 var result = show_game_center({ "view": "leaderboards", "leaderboard_name": "best_time_leaderboard" })
 var result = show_game_center({ "view": "achievements" })
 ```
 
 #### Response event
+
 The response event will be a dictionary with the following fields:
 On close:
+
 ```
 {
   "type": "show_game_center",
@@ -411,4 +489,5 @@ On close:
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

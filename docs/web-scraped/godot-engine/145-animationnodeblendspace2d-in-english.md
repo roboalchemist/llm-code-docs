@@ -1,15 +1,18 @@
 # AnimationNodeBlendSpace2D in English
 
 # AnimationNodeBlendSpace2D
+
 Inherits:AnimationRootNode<AnimationNode<Resource<RefCounted<Object
 A set ofAnimationRootNodes placed on 2D coordinates, crossfading between the three adjacent ones. Used byAnimationTree.
 
 ## Description
+
 A resource used byAnimationNodeBlendTree.
 AnimationNodeBlendSpace2Drepresents a virtual 2D space on whichAnimationRootNodes are placed. Outputs the linear blend of the three adjacent animations using aVector2weight. Adjacent in this context means the threeAnimationRootNodes making up the triangle that contains the current value.
 You can add vertices to the blend space withadd_blend_point()and automatically triangulate it by settingauto_trianglestotrue. Otherwise, useadd_triangle()andremove_triangle()to triangulate the blend space by hand.
 
 ## Tutorials
+
 - Using AnimationTree
 Using AnimationTree
 - Third Person Shooter (TPS) Demo
@@ -85,10 +88,12 @@ void
 set_blend_point_position(point:int, pos:Vector2)
 
 ## Signals
+
 triangles_updated()🔗
 Emitted every time the blend space's triangles are created, removed, or when one of their vertices changes position.
 
 ## Enumerations
+
 enumBlendMode:🔗
 BlendModeBLEND_MODE_INTERPOLATED=0
 The interpolation between animations is linear.
@@ -98,7 +103,9 @@ BlendModeBLEND_MODE_DISCRETE_CARRY=2
 Similar toBLEND_MODE_DISCRETE, but starts the new animation at the last animation's playback position.
 
 ## Property Descriptions
+
 boolauto_triangles=true🔗
+
 - voidset_auto_triangles(value:bool)
 voidset_auto_triangles(value:bool)
 - boolget_auto_triangles()
@@ -149,6 +156,7 @@ Stringget_y_label()
 Name of the blend space's Y axis.
 
 ## Method Descriptions
+
 voidadd_blend_point(node:AnimationRootNode, pos:Vector2, at_index:int= -1)🔗
 Adds a new point that represents anodeat the position set bypos. You can insert it at a specific index using theat_indexargument. If you use the default value forat_index, the point is inserted at the end of the blend points array.
 voidadd_triangle(x:int, y:int, z:int, at_index:int= -1)🔗
@@ -173,4 +181,5 @@ voidset_blend_point_position(point:int, pos:Vector2)🔗
 Updates the position of the point at indexpointin the blend space.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

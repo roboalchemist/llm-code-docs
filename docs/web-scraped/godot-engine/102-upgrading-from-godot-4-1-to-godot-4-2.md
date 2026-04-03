@@ -1,11 +1,13 @@
 # Upgrading from Godot 4.1 to Godot 4.2
 
 # Upgrading from Godot 4.1 to Godot 4.2
+
 For most games and apps made with 4.1 it should be relatively safe to migrate to 4.2.
 This page intends to cover everything you need to pay attention to when migrating
 your project.
 
 ## Breaking changes
+
 If you are migrating from 4.1 to 4.2, the breaking changes listed here might
 affect you. Changes are grouped by areas/systems.
 Warning
@@ -15,6 +17,7 @@ constrained by memory bandwidth such as mobile.
 It is still possible to load the Godot 4.0-4.1 Mesh formats, but it isnotpossible to load the Godot 4.2 Mesh format in prior Godot versions.
 When opening a Godot project made with a version prior to 4.2, you may
 be presented with an upgrade dialog that offers two options:
+
 - Restart & Upgrade:Upgrades the mesh format for all meshes in the
 project and saves the result to disk. Once chosen, this option prevents
 downgrading the project to a Godot version prior to 4.2. Set up a
@@ -457,4 +460,5 @@ This change breaks compatibility in C# because the new property conflicts with t
 and the C# bindings generator gives priority to properties, so the enum type was renamed fromEnvironmentBlendModetoEnvironmentBlendModeEnum.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,17 +1,20 @@
 # List of features
 
 # List of features
+
 This page aims to listallfeatures currently supported by Godot.
 Note
 This page lists features supported by the current stable version of
 Godot. Some of these features are not available in the3.x release series.
 
 ## Platforms
+
 See also
 SeeSystem requirementsfor hardware and software version requirements.
 Note
 For information about console support, see theGodot website.
 Can run both the editor and exported projects:
+
 - Windows (x86 and ARM, 64-bit and 32-bit).
 Windows (x86 and ARM, 64-bit and 32-bit).
 - macOS (x86 and ARM, 64-bit only).
@@ -20,9 +23,11 @@ macOS (x86 and ARM, 64-bit only).
 on an old enough base distribution.Official binaries are compiled using theGodot Engine buildroot,
 allowing for binaries that work across common Linux distributions.
 Linux (x86 and ARM, 64-bit and 32-bit).
+
 > Binaries are statically linked and can run on any distribution if compiled
 on an old enough base distribution.Official binaries are compiled using theGodot Engine buildroot,
 allowing for binaries that work across common Linux distributions.
+
 - Binaries are statically linked and can run on any distribution if compiled
 on an old enough base distribution.
 Binaries are statically linked and can run on any distribution if compiled
@@ -53,7 +58,9 @@ Android and iOS platform support is available as of Godot 4.2, but is
 experimental andsome limitations apply.
 
 ## Editor
+
 Features:
+
 - Scene tree editor.
 Scene tree editor.
 - Built-in script editor.
@@ -64,7 +71,9 @@ Support forexternal script editorssuch as
 Visual Studio Code or Vim.
 - GDScriptdebugger.Support for debugging in threads is available since 4.2.
 GDScriptdebugger.
+
 > Support for debugging in threads is available since 4.2.
+
 - Support for debugging in threads is available since 4.2.
 Support for debugging in threads is available since 4.2.
 - Visual profiler with CPU and GPU time indications for each step of the
@@ -77,17 +86,23 @@ Performance monitoring tools, includingcustom performance monitors.
 Live script reloading.
 - Live scene editing.Changes will reflect in the editor and will be kept after closing the running project.
 Live scene editing.
+
 > Changes will reflect in the editor and will be kept after closing the running project.
+
 - Changes will reflect in the editor and will be kept after closing the running project.
 Changes will reflect in the editor and will be kept after closing the running project.
 - Remote inspector.Changes won't reflect in the editor and won't be kept after closing the running project.
 Remote inspector.
+
 > Changes won't reflect in the editor and won't be kept after closing the running project.
+
 - Changes won't reflect in the editor and won't be kept after closing the running project.
 Changes won't reflect in the editor and won't be kept after closing the running project.
 - Live camera replication.Move the in-editor camera and see the result in the running project.
 Live camera replication.
+
 > Move the in-editor camera and see the result in the running project.
+
 - Move the in-editor camera and see the result in the running project.
 Move the in-editor camera and see the result in the running project.
 - Built-in offline class reference documentation.
@@ -105,7 +120,9 @@ features or speed up your workflow.
 Download projects from the asset libraryin the Project Manager and import them directly.
 
 ## Rendering
+
 Godot 4 includes three renderers:
+
 - Forward+. The most advanced renderer, suited for desktop platforms only.
 Used by default on desktop platforms. This renderer usesVulkan,Direct3D 12,
 orMetalas the rendering driver, and it uses theRenderingDevicebackend.
@@ -127,23 +144,30 @@ the web platform. This renderer usesOpenGLas the rendering driver.
 SeeOverview of renderersfor a detailed comparison of the rendering methods.
 
 ## 2D graphics
+
 - Sprite, polygon and line rendering.High-level tools to draw lines and polygons such asPolygon2DandLine2D, with support for texturing.
 Sprite, polygon and line rendering.
+
 > High-level tools to draw lines and polygons such asPolygon2DandLine2D, with support for texturing.
+
 - High-level tools to draw lines and polygons such asPolygon2DandLine2D, with support for texturing.
 High-level tools to draw lines and polygons such asPolygon2DandLine2D, with support for texturing.
 - AnimatedSprite2D as a helper for creating animated sprites.
 AnimatedSprite2D as a helper for creating animated sprites.
 - Parallax layers.Pseudo-3D support including preview in the editor.
 Parallax layers.
+
 > Pseudo-3D support including preview in the editor.
+
 - Pseudo-3D support including preview in the editor.
 Pseudo-3D support including preview in the editor.
 - 2D lightingwith normal maps and specular maps.Point (omni/spot) and directional 2D lights.Hard or soft shadows (adjustable on a per-light basis).Custom shaders can access a real-timeSDFrepresentation of the 2D scene based onLightOccluder2Dnodes,
 which can be used for improved 2D lighting effects including 2D global illumination.
 2D lightingwith normal maps and specular maps.
+
 > Point (omni/spot) and directional 2D lights.Hard or soft shadows (adjustable on a per-light basis).Custom shaders can access a real-timeSDFrepresentation of the 2D scene based onLightOccluder2Dnodes,
 which can be used for improved 2D lighting effects including 2D global illumination.
+
 - Point (omni/spot) and directional 2D lights.
 Point (omni/spot) and directional 2D lights.
 - Hard or soft shadows (adjustable on a per-light basis).
@@ -161,12 +185,14 @@ requiring re-rasterization. Multi-channel usage makes SDF fonts scale down
 to lower sizes better compared to monochrome SDF fonts.
 Font renderingusing bitmaps, rasterization using FreeType
 or multi-channel signed distance fields (MSDF).
+
 > Bitmap fonts can be exported using tools like BMFont, or imported from images
 (for fixed-width fonts only).Dynamic fonts support monochrome fonts as well as colored fonts (e.g. for emoji).
 Supported formats are TTF, OTF, WOFF1 and WOFF2.Dynamic fonts support optional font outlines with adjustable width and color.Dynamic fonts support variable fonts and OpenType features including ligatures.Dynamic fonts support simulated bold and italic when the font file lacks
 those styles.Dynamic fonts support oversampling to keep fonts sharp at higher resolutions.Dynamic fonts support subpixel positioning to make fonts crisper at low sizes.Dynamic fonts support LCD subpixel optimizations to make fonts even crisper at low sizes.Signed distance field fonts can be scaled at any resolution without
 requiring re-rasterization. Multi-channel usage makes SDF fonts scale down
 to lower sizes better compared to monochrome SDF fonts.
+
 - Bitmap fonts can be exported using tools like BMFont, or imported from images
 (for fixed-width fonts only).
 Bitmap fonts can be exported using tools like BMFont, or imported from images
@@ -203,13 +229,16 @@ CPU-based particles.
 Optional2D HDR renderingfor better glow capabilities.
 
 ## 2D tools
+
 - TileMapsfor 2D tile-based level design.
 TileMapsfor 2D tile-based level design.
 - 2D camera with built-in smoothing and drag margins.
 2D camera with built-in smoothing and drag margins.
 - Path2D node to represent a path in 2D space.Can be drawn in the editor or generated procedurally.PathFollow2D node to make nodes follow a Path2D.
 Path2D node to represent a path in 2D space.
+
 > Can be drawn in the editor or generated procedurally.PathFollow2D node to make nodes follow a Path2D.
+
 - Can be drawn in the editor or generated procedurally.
 Can be drawn in the editor or generated procedurally.
 - PathFollow2D node to make nodes follow a Path2D.
@@ -218,7 +247,9 @@ PathFollow2D node to make nodes follow a Path2D.
 2D geometry helper class.
 
 ## 2D physics
+
 Physics bodies:
+
 - Static bodies.
 Static bodies.
 - Animatable bodies (for objects moving only by script or animation, such as doors and platforms).
@@ -238,6 +269,7 @@ Built-in shapes: line, box, circle, capsule, world boundary (infinite plane).
 Collision polygons (can be drawn manually or generated from a sprite in the editor).
 
 ## 3D graphics
+
 - HDR rendering with sRGB.
 HDR rendering with sRGB.
 - Perspective, orthographic and frustum-offset cameras.
@@ -331,12 +363,14 @@ harmonics.Lightmaps are baked on the GPU using compute shaders (much faster comp
 to CPU lightmapping). Baking can only be performed from the editor,
 not in exported projects.Supports GPU-baseddenoisingwith JNLM, or CPU/GPU-based denoising with OIDN.
 Baked lightmaps(fast, but can't be updated at runtime).
+
 > Supports baking indirect light only or baking both direct and indirect lighting.
 The bake mode can be adjusted on a per-light basis to allow for hybrid light
 baking setups.Supports lighting dynamic objects using automatic and manually placed probes.Optionally supports directional lighting and rough reflections based on spherical
 harmonics.Lightmaps are baked on the GPU using compute shaders (much faster compared
 to CPU lightmapping). Baking can only be performed from the editor,
 not in exported projects.Supports GPU-baseddenoisingwith JNLM, or CPU/GPU-based denoising with OIDN.
+
 - Supports baking indirect light only or baking both direct and indirect lighting.
 The bake mode can be adjusted on a per-light basis to allow for hybrid light
 baking setups.
@@ -571,6 +605,7 @@ Most effects listed above can be adjusted for better performance or to further
 improve quality. This can be helpful whenusing Godot for offline rendering.
 
 ## 3D tools
+
 - Built-in meshes: cube, cylinder/cone, (hemi)sphere, prism, plane, quad, torus, ribbon, tube.
 Built-in meshes: cube, cylinder/cone, (hemi)sphere, prism, plane, quad, torus, ribbon, tube.
 - GridMapsfor 3D tile-based level design.
@@ -581,7 +616,9 @@ Constructive solid geometry(intended for prototyping).
 Tools forprocedural geometry generation.
 - Path3D node to represent a path in 3D space.Can be drawn in the editor or generated procedurally.PathFollow3D node to make nodes follow a Path3D.
 Path3D node to represent a path in 3D space.
+
 > Can be drawn in the editor or generated procedurally.PathFollow3D node to make nodes follow a Path3D.
+
 - Can be drawn in the editor or generated procedurally.
 Can be drawn in the editor or generated procedurally.
 - PathFollow3D node to make nodes follow a Path3D.
@@ -594,7 +631,9 @@ Support for exporting the current scene as a glTF 2.0 file, both from the editor
 and at runtime from an exported project.
 
 ## 3D physics
+
 Physics bodies:
+
 - Static bodies.
 Static bodies.
 - Animatable bodies (for objects moving only by script or animation, such as doors and platforms).
@@ -622,6 +661,7 @@ Generate triangle collision shapes for any mesh from the editor.
 Generate one or several convex collision shapes for any mesh from the editor.
 
 ## Shaders
+
 - 2D:Custom vertex, fragment, and light shaders.
 2D:Custom vertex, fragment, and light shaders.
 - 3D:Custom vertex, fragment, light, and sky shaders.
@@ -630,12 +670,16 @@ Generate one or several convex collision shapes for any mesh from the editor.
 Text-based shaders using ashader language inspired by GLSL.
 - Visual shader editor.Support forvisual shader plugins.
 Visual shader editor.
+
 > Support forvisual shader plugins.
+
 - Support forvisual shader plugins.
 Support forvisual shader plugins.
 
 ## Scripting
+
 General:
+
 - Object-oriented design pattern with scripts extending nodes.
 Object-oriented design pattern with scripts extending nodes.
 - Signals and groups for communicating between scripts.
@@ -659,14 +703,18 @@ or make use of multiple processor cores.
 Packaged in a separate binary to keep file sizes and dependencies down.
 - Supports .NET 8 and higher.Full support for the C# 12.0 syntax and features.
 Supports .NET 8 and higher.
+
 > Full support for the C# 12.0 syntax and features.
+
 - Full support for the C# 12.0 syntax and features.
 Full support for the C# 12.0 syntax and features.
 - Supports Windows, Linux, and macOS. Since Godot 4.2, experimental support for Android and iOS is also available.On the iOS platform only some architectures are supported:arm64.The web platform is currently unsupported. To use C# on that platform,
 consider Godot 3 instead.
 Supports Windows, Linux, and macOS. Since Godot 4.2, experimental support for Android and iOS is also available.
+
 > On the iOS platform only some architectures are supported:arm64.The web platform is currently unsupported. To use C# on that platform,
 consider Godot 3 instead.
+
 - On the iOS platform only some architectures are supported:arm64.
 On the iOS platform only some architectures are supported:arm64.
 - The web platform is currently unsupported. To use C# on that platform,
@@ -679,27 +727,35 @@ GDExtension (C, C++, Rust, D, ...):
 - When you need it, link to native libraries for higher performance and third-party integrations.For scripting game logic, GDScript or C# are recommended if their
 performance is suitable.
 When you need it, link to native libraries for higher performance and third-party integrations.
+
 > For scripting game logic, GDScript or C# are recommended if their
 performance is suitable.
+
 - For scripting game logic, GDScript or C# are recommended if their
 performance is suitable.
 For scripting game logic, GDScript or C# are recommended if their
 performance is suitable.
 - Official GDExtension bindings forCandC++.Use any build system and language features you wish.
 Official GDExtension bindings forCandC++.
+
 > Use any build system and language features you wish.
+
 - Use any build system and language features you wish.
 Use any build system and language features you wish.
 - Actively developed GDExtension bindings forD,Swift, andRustbindings provided by the community. (Some of these bindings may be experimental and not production-ready).
 Actively developed GDExtension bindings forD,Swift, andRustbindings provided by the community. (Some of these bindings may be experimental and not production-ready).
 
 ## Audio
+
 Features:
+
 - Mono, stereo, 5.1 and 7.1 output.
 Mono, stereo, 5.1 and 7.1 output.
 - Non-positional and positional playback in 2D and 3D.Optional Doppler effect in 2D and 3D.
 Non-positional and positional playback in 2D and 3D.
+
 > Optional Doppler effect in 2D and 3D.
+
 - Optional Doppler effect in 2D and 3D.
 Optional Doppler effect in 2D and 3D.
 - Support for re-routableaudio busesand effects
@@ -726,7 +782,9 @@ Audio input to record microphones.
 Text to speechusing platform-provided TTS engines.
 - MIDI input.No support for MIDI output yet.
 MIDI input.
+
 > No support for MIDI output yet.
+
 - No support for MIDI output yet.
 No support for MIDI output yet.
 APIs used:
@@ -738,6 +796,7 @@ macOS:CoreAudio.
 Linux:PulseAudio or ALSA.
 
 ## Import
+
 - Support forcustom import plugins.
 Support forcustom import plugins.
 Formats:
@@ -745,7 +804,9 @@ Formats:
 Images:SeeImporting images.
 - Audio:WAV with optional IMA-ADPCM compression.Ogg Vorbis.MP3.
 Audio:
+
 > WAV with optional IMA-ADPCM compression.Ogg Vorbis.MP3.
+
 - WAV with optional IMA-ADPCM compression.
 WAV with optional IMA-ADPCM compression.
 - Ogg Vorbis.
@@ -754,7 +815,9 @@ Ogg Vorbis.
 MP3.
 - 3D scenes:SeeImporting 3D scenes.glTF 2.0(recommended)..blend(by calling Blender's glTF export functionality transparently).FBX (by callingFBX2glTFtransparently).Collada (.dae).Wavefront OBJ (static scenes only, can be loaded directly as a mesh or imported as a 3D scene).
 3D scenes:SeeImporting 3D scenes.
+
 > glTF 2.0(recommended)..blend(by calling Blender's glTF export functionality transparently).FBX (by callingFBX2glTFtransparently).Collada (.dae).Wavefront OBJ (static scenes only, can be loaded directly as a mesh or imported as a 3D scene).
+
 - glTF 2.0(recommended).
 glTF 2.0(recommended).
 - .blend(by calling Blender's glTF export functionality transparently).
@@ -773,25 +836,32 @@ on import, which ensures consistency with other 3D applications such as Blender.
 on import, which ensures consistency with other 3D applications such as Blender.
 
 ## Input
+
 - Input mapping systemusing hardcoded input events
 or remappable input actions.Axis values can be mapped to two different actions with a configurable deadzone.Use the same code to support both keyboards and gamepads.
 Input mapping systemusing hardcoded input events
 or remappable input actions.
+
 > Axis values can be mapped to two different actions with a configurable deadzone.Use the same code to support both keyboards and gamepads.
+
 - Axis values can be mapped to two different actions with a configurable deadzone.
 Axis values can be mapped to two different actions with a configurable deadzone.
 - Use the same code to support both keyboards and gamepads.
 Use the same code to support both keyboards and gamepads.
 - Keyboard input.Keys can be mapped in "physical" mode to be independent of the keyboard layout.
 Keyboard input.
+
 > Keys can be mapped in "physical" mode to be independent of the keyboard layout.
+
 - Keys can be mapped in "physical" mode to be independent of the keyboard layout.
 Keys can be mapped in "physical" mode to be independent of the keyboard layout.
 - Mouse input.The mouse cursor can be visible, hidden, captured or confined within the window.When captured, raw input will be used on Windows and Linux to
 sidestep the OS' mouse acceleration settings.
 Mouse input.
+
 > The mouse cursor can be visible, hidden, captured or confined within the window.When captured, raw input will be used on Windows and Linux to
 sidestep the OS' mouse acceleration settings.
+
 - The mouse cursor can be visible, hidden, captured or confined within the window.
 The mouse cursor can be visible, hidden, captured or confined within the window.
 - When captured, raw input will be used on Windows and Linux to
@@ -804,7 +874,8 @@ Gamepad input (up to 8 simultaneous controllers).
 Pen/tablet input with pressure support.
 
 ## Navigation
-- A* algorithm in2Dand3D.
+
+- A*algorithm in2Dand3D.
 A* algorithm in2Dand3D.
 - Navigation meshes with dynamic obstacle avoidance in2Dand3D.
 Navigation meshes with dynamic obstacle avoidance in2Dand3D.
@@ -812,6 +883,7 @@ Navigation meshes with dynamic obstacle avoidance in2Dand3D.
 Generate navigation meshes from the editor or at runtime (including from an exported project).
 
 ## Networking
+
 - Low-level TCP networking usingStreamPeerandTCPServer.
 Low-level TCP networking usingStreamPeerandTCPServer.
 - Low-level UDP networking usingPacketPeerandUDPServer.
@@ -820,12 +892,16 @@ Low-level UDP networking usingPacketPeerandUDPServer.
 Low-level HTTP requests usingHTTPClient.
 - High-level HTTP requests usingHTTPRequest.Supports HTTPS out of the box using bundled certificates.
 High-level HTTP requests usingHTTPRequest.
+
 > Supports HTTPS out of the box using bundled certificates.
+
 - Supports HTTPS out of the box using bundled certificates.
 Supports HTTPS out of the box using bundled certificates.
 - High-level multiplayerAPI using UDP and ENet.Automatic replication using remote procedure calls (RPCs).Supports unreliable, reliable and ordered transfers.
 High-level multiplayerAPI using UDP and ENet.
+
 > Automatic replication using remote procedure calls (RPCs).Supports unreliable, reliable and ordered transfers.
+
 - Automatic replication using remote procedure calls (RPCs).
 Automatic replication using remote procedure calls (RPCs).
 - Supports unreliable, reliable and ordered transfers.
@@ -840,6 +916,7 @@ Support forUPnPto sidestep the requirement to forward ports
 when hosting a server behind a NAT.
 
 ## Internationalization
+
 - Full support for Unicode including emoji.
 Full support for Unicode including emoji.
 - Support for loading system fonts on Windows, macOS, and Linux.By default, system fonts are used as a fallback to display unsupported
@@ -872,6 +949,7 @@ Automatic UI mirroring for right-to-left locales.
 Support for pseudolocalization to test your project for i18n-friendliness.
 
 ## Windowing and OS integration
+
 - Spawn multiple independent windows within a single process.
 Spawn multiple independent windows within a single process.
 - Move, resize, minimize, and maximize windows spawned by the project.
@@ -887,8 +965,10 @@ Request attention (will cause the title bar to blink on most platforms).
 - Fullscreen mode.Uses borderless fullscreen by default on Windows for fast alt-tabbing,
 but can optionally use exclusive fullscreen to reduce input lag.
 Fullscreen mode.
+
 > Uses borderless fullscreen by default on Windows for fast alt-tabbing,
 but can optionally use exclusive fullscreen to reduce input lag.
+
 - Uses borderless fullscreen by default on Windows for fast alt-tabbing,
 but can optionally use exclusive fullscreen to reduce input lag.
 Uses borderless fullscreen by default on Windows for fast alt-tabbing,
@@ -929,15 +1009,19 @@ See also
 SeeCreating applicationsfor details on using these features.
 
 ## Mobile
+
 - In-app purchases onAndroidandiOS.
 In-app purchases onAndroidandiOS.
 - Support for advertisements using third-party modules.
 Support for advertisements using third-party modules.
 
 ## XR support (AR and VR)
+
 - Out of the boxsupport for OpenXR.Including support for popular desktop headsets like the Valve Index, WMR headsets, and Quest over Link.
 Out of the boxsupport for OpenXR.
+
 > Including support for popular desktop headsets like the Valve Index, WMR headsets, and Quest over Link.
+
 - Including support for popular desktop headsets like the Valve Index, WMR headsets, and Quest over Link.
 Including support for popular desktop headsets like the Valve Index, WMR headsets, and Quest over Link.
 - Support forAndroid-based headsetsusing OpenXR through a plugin.Including support for popular stand alone headsets like the Meta Quest 1/2/3 and Pro, Pico 4, Magic Leap 2, and Lynx R1.
@@ -957,9 +1041,11 @@ Other devices supported through an XR plugin structure.
 Various advanced toolkits are available that implement common features required by XR applications.
 
 ## GUI system
+
 Godot's GUI is built using the same Control nodes used to make games in Godot.
 The editor UI can easily be extended in many ways using add-ons.
 Nodes:
+
 - Buttons.
 Buttons.
 - Checkboxes, check buttons, radio buttons.
@@ -991,7 +1077,9 @@ Sizing:
 Anchors to keep GUI elements in a specific corner, edge or centered.
 - Containers to place GUI elements automatically following certain rules.Stacklayouts.Gridlayouts.Flowlayouts (similar to autowrapping text).Margin,centeredandaspect ratiolayouts.Draggable splitterlayouts.
 Containers to place GUI elements automatically following certain rules.
+
 > Stacklayouts.Gridlayouts.Flowlayouts (similar to autowrapping text).Margin,centeredandaspect ratiolayouts.Draggable splitterlayouts.
+
 - Stacklayouts.
 Stacklayouts.
 - Gridlayouts.
@@ -1009,12 +1097,16 @@ Support any aspect ratio using anchors and theexpandstretch aspect.
 Theming:
 - Built-in theme editor.Generate a theme based on the current editor theme settings.
 Built-in theme editor.
+
 > Generate a theme based on the current editor theme settings.
+
 - Generate a theme based on the current editor theme settings.
 Generate a theme based on the current editor theme settings.
 - Procedural vector-based theming usingStyleBoxFlat.Supports rounded/beveled corners, drop shadows, per-border widths and antialiasing.
 Procedural vector-based theming usingStyleBoxFlat.
+
 > Supports rounded/beveled corners, drop shadows, per-border widths and antialiasing.
+
 - Supports rounded/beveled corners, drop shadows, per-border widths and antialiasing.
 Supports rounded/beveled corners, drop shadows, per-border widths and antialiasing.
 - Texture-based theming usingStyleBoxTexture.
@@ -1023,6 +1115,7 @@ Godot's small distribution size can make it a suitable alternative to frameworks
 like Electron or Qt.
 
 ## Animation
+
 - Direct kinematics and inverse kinematics.
 Direct kinematics and inverse kinematics.
 - Support for animating any property with customizable interpolation.
@@ -1035,23 +1128,30 @@ Support for playing sounds in animation tracks.
 Support for Bézier curves in animation.
 
 ## File formats
+
 - Scenes and resources can be saved intext-basedor binary formats.Text-based formats are human-readable and more friendly to version control.Binary formats are faster to save/load for large scenes/resources.
 Scenes and resources can be saved intext-basedor binary formats.
+
 > Text-based formats are human-readable and more friendly to version control.Binary formats are faster to save/load for large scenes/resources.
+
 - Text-based formats are human-readable and more friendly to version control.
 Text-based formats are human-readable and more friendly to version control.
 - Binary formats are faster to save/load for large scenes/resources.
 Binary formats are faster to save/load for large scenes/resources.
 - Read and write text or binary files usingFileAccess.Can optionally be compressed or encrypted.
 Read and write text or binary files usingFileAccess.
+
 > Can optionally be compressed or encrypted.
+
 - Can optionally be compressed or encrypted.
 Can optionally be compressed or encrypted.
 - Read and writeJSONfiles.
 Read and writeJSONfiles.
 - Read and write INI-style configuration files usingConfigFile.Can (de)serialize any Godot datatype, including Vector2/3, Color, ...
 Read and write INI-style configuration files usingConfigFile.
+
 > Can (de)serialize any Godot datatype, including Vector2/3, Color, ...
+
 - Can (de)serialize any Godot datatype, including Vector2/3, Color, ...
 Can (de)serialize any Godot datatype, including Vector2/3, Color, ...
 - Read XML files usingXMLParser.
@@ -1068,6 +1168,7 @@ Export additional PCK filesthat can be read
 by the engine to support mods and DLCs.
 
 ## Miscellaneous
+
 - Video playbackwith built-in support for Ogg Theora.
 Video playbackwith built-in support for Ogg Theora.
 - Movie Maker modeto record videos from a running
@@ -1080,7 +1181,9 @@ Low-level access to serverswhich allows bypassing
 the scene tree's overhead when needed.
 - Command line interfacefor automation.Export and deploy projects using continuous integration platforms.Shell completion scriptsare available for Bash, zsh and fish.Print colored text to standard output on all platforms usingprint_rich.
 Command line interfacefor automation.
+
 > Export and deploy projects using continuous integration platforms.Shell completion scriptsare available for Bash, zsh and fish.Print colored text to standard output on all platforms usingprint_rich.
+
 - Export and deploy projects using continuous integration platforms.
 Export and deploy projects using continuous integration platforms.
 - Shell completion scriptsare available for Bash, zsh and fish.
@@ -1107,10 +1210,12 @@ Clang and MSVC. MinGW is also supported.Friendly towards packagers. In most case
 instead of the ones provided by Godot. The build system doesn't download anything.
 Builds can be fully reproducible.
 Engine and editor written in C++17.
+
 > Can becompiledusing GCC,
 Clang and MSVC. MinGW is also supported.Friendly towards packagers. In most cases, system libraries can be used
 instead of the ones provided by Godot. The build system doesn't download anything.
 Builds can be fully reproducible.
+
 - Can becompiledusing GCC,
 Clang and MSVC. MinGW is also supported.
 Can becompiledusing GCC,
@@ -1123,7 +1228,9 @@ instead of the ones provided by Godot. The build system doesn't download anythin
 Builds can be fully reproducible.
 - Licensed under the permissive MIT license.Open development process withcontributions welcome.
 Licensed under the permissive MIT license.
+
 > Open development process withcontributions welcome.
+
 - Open development process withcontributions welcome.
 Open development process withcontributions welcome.
 See also

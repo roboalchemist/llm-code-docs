@@ -1,10 +1,12 @@
 # Marshalls in English
 
 # Marshalls
+
 Inherits:Object
 Data transformation (marshaling) and encoding helpers.
 
 ## Description
+
 Provides data transformation and encoding utility functions.
 
 ## Methods
@@ -31,6 +33,7 @@ String
 variant_to_base64(variant:Variant, full_objects:bool= false)
 
 ## Method Descriptions
+
 PackedByteArraybase64_to_raw(base64_str:String)🔗
 Returns a decodedPackedByteArraycorresponding to the Base64-encoded stringbase64_str.
 Stringbase64_to_utf8(base64_str:String)🔗
@@ -48,4 +51,5 @@ Returns a Base64-encoded string of theVariantvariant. Iffull_objectsistrue, enco
 Internally, this uses the same encoding mechanism as the@GlobalScope.var_to_bytes()method.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,15 +1,18 @@
 # VideoStreamPlayer
 
 # VideoStreamPlayer
+
 Inherits:Control<CanvasItem<Node<Object
 A control used for video playback.
 
 ## Description
+
 A control used for playback ofVideoStreamresources.
 Supported video formats areOgg Theora(.ogv,VideoStreamTheora) and any format exposed via a GDExtension plugin.
 Warning:On Web, video playbackwillperform poorly due to missing architecture-specific assembly optimizations.
 
 ## Tutorials
+
 - Playing videos
 Playing videos
 
@@ -80,11 +83,14 @@ void
 stop()
 
 ## Signals
+
 finished()🔗
 Emitted when playback is finished.
 
 ## Property Descriptions
+
 intaudio_track=0🔗
+
 - voidset_audio_track(value:int)
 voidset_audio_track(value:int)
 - intget_audio_track()
@@ -158,6 +164,7 @@ floatget_volume_db()
 Audio volume in dB.
 
 ## Method Descriptions
+
 floatget_stream_length()const🔗
 The length of the current stream, in seconds.
 Stringget_stream_name()const🔗
@@ -174,4 +181,5 @@ Stops the video playback and sets the stream position to 0.
 Note:Although the stream position will be set to 0, the first frame of the video stream won't become the current frame.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

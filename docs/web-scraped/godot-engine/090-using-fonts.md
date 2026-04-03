@@ -1,6 +1,7 @@
 # Using Fonts
 
 # Using Fonts
+
 Godot allows you to set specific fonts for different UI nodes.
 There are three different places where you can setup font usage.
 The first is the theme editor. Choose the node you want to set the
@@ -27,7 +28,9 @@ See also
 You can see how fonts work in action using theBiDI and Font Features demo project.
 
 ## Dynamic fonts
+
 Godot supports the following dynamic font formats:
+
 - TrueType Font or Collection (.ttf,.ttc)
 TrueType Font or Collection (.ttf,.ttc)
 - OpenType Font or Collection (.otf,.otc)
@@ -42,6 +45,7 @@ recommended to use the font format that was shipped on the font developer's
 website.
 
 ## Bitmap fonts
+
 Godot supports the BMFont (.fnt) bitmap font format. This is a format created
 by theBMFontprogram. Many
 BMFont-compatible programs also exist, likeBMGlyphor web-basedfontcutter.
@@ -90,6 +94,7 @@ If needed, your kerning pair characters can be specified by Unicode character co
 by entering\uXXXXwhere XXXX is the hexadecimal value of the Unicode character.
 
 ## Loading a font file
+
 To load a font file (dynamic or bitmap), use the resource dropdown'sQuick LoadorLoadoption next to a font property, then navigate to the
 font file in question:
 Loading a font file
@@ -110,6 +115,7 @@ The texture filter mode can also be set on individual nodes that inherit from Ca
 by settingCanvasItem.texture_filter.
 
 ## Font outlines and shadows
+
 Font outlines and shadows can be used to improve readability when the background
 color isn't known in advance. For instance, this is the case for HUD elements
 that are drawn over a 2D/3D scene.
@@ -137,6 +143,7 @@ resource takes priority overtheme properties.
 ## Advanced font features
 
 ### Antialiasing
+
 You can adjust how the font should be smoothed out when rendering by adjustingantialiasingandhinting. These are different properties, with different use
 cases.
 Antialiasing controls how glyph edges should be smoothed out when rasterizing
@@ -155,6 +162,7 @@ Note
 Antialiasing cannot be changed onMSDF-rendered fonts– these are always rendered with grayscale antialiasing.
 
 ### Hinting
+
 Hinting controls how aggressively glyph edges should be snapped to pixels when
 rasterizing the font.Noneresults in the smoothest appearance, which can
 make the font look blurry at small sizes.Light(default) is sharper by
@@ -170,6 +178,7 @@ Import dock. This will useFreeType's autohinter
 to automatically add hinting instructions to the imported font.
 
 ### Subpixel positioning
+
 Subpixel positioning can be adjusted. This is aFreeTypefeature that allows glyphs to be rendered more closely to their intended form.
 The default setting ofAutoautomatically enables subpixel positioning at
 small sizes, but disables it at large font sizes to improve rasterization
@@ -187,6 +196,7 @@ This step is not required for bitmap fonts, as subpixel positioning is only
 relevant for dynamic fonts (which are usually made of vector elements).
 
 ### Mipmaps
+
 By default, fonts do not have mipmaps generated to reduce memory usage and speed
 up rasterization. However, this can cause downscaled fonts to become grainy. This
 can be especially noticeable with3D textthat doesn't haveFixed
@@ -200,10 +210,12 @@ quality a little at smaller-than-default sizes, but MSDF fonts are already
 resistant to graininess out of the box.
 
 ### MSDF font rendering
+
 Multi-channel signed distance field (MSDF) font rendering allows rendering fonts
 at any size, without having to re-rasterize them when their size changes.
 MSDF font rendering has 2 upsides over traditional font rasterization, which
 Godot uses by default:
+
 - The font will always look crisp, even at huge sizes.
 The font will always look crisp, even at huge sizes.
 - There is less stuttering when rendering charactersat large font sizesfor
@@ -238,7 +250,9 @@ to the Import dock, enableMultichannel Signed Distance Field, then clickReimport
 Enabling MSDF in the font's import options
 
 ### Using emoji
+
 Godot has limited support for emoji fonts:
+
 - CBDT/CBLC (embedded PNGs) and SVG emoji fonts are supported.
 CBDT/CBLC (embedded PNGs) and SVG emoji fonts are supported.
 - COLR/CPAL emoji fonts (custom vector format) arenotsupported.
@@ -269,6 +283,7 @@ system fonts is not supported on all platforms.
 It's possible to use a system font as a fallback font too.
 
 ### Using icon fonts
+
 Tools likeFontellocan be used to generate font
 files containing vectors imported from SVG files. This can be used to render
 custom vector elements as part of your text, or to create extruded 3D icons
@@ -299,8 +314,10 @@ While easier to use, this approach cannot be used with font fallbacks as the mai
 font's characters will take priority over the fallback font's ligatures.
 
 ### Font fallbacks
+
 Godot supports defining one or more fallbacks when the main font lacks a glyph
 to be displayed. There are 2 main use cases for defining font fallbacks:
+
 - Use a font that only supports Latin character sets, but use another font to
 be able to display text another character set such as Cyrillic.
 Use a font that only supports Latin character sets, but use another font to
@@ -325,6 +342,7 @@ Font fallbacks can also be defined on a local basis similar toOpenType font feat
 for brevity reasons.
 
 ### Variable fonts
+
 Godot has full support forvariable fonts, which
 allow you to use a single font file to represent various font weights and styles
 (regular, bold, italic, …). This must be supported by the font file you're using.
@@ -374,6 +392,7 @@ places:
 Saving FontVariation to an external resource file
 
 ### Faux bold and italic
+
 When writing text in bold or italic, using font variants specifically designed
 for this looks better. Spacing between glyphs will be more consistent when using
 a bold font, and certain glyphs' shapes may change entirely in italic variants
@@ -397,11 +416,13 @@ character transform to a positive value will italicize the text. Recommended
 values are between0.2and0.4depending on the font.
 
 ### Adjusting font spacing
+
 For stylistic purposes or for better readability, you may want to adjust how a
 font is presented in Godot.
 Create a FontVariation resource in a property where a Font resource is expected.
 There are 4 properties available in theVariation > Extra Spacingsection,
 which accept positive and negative values:
+
 - Glyph:Additional spacing between every glyph.
 Glyph:Additional spacing between every glyph.
 - Space:Additional spacing between words.
@@ -423,6 +444,7 @@ kind should be used sparingly, as fonts are generally not designed to be
 displayed with stretching.
 
 ### OpenType font features
+
 Godot supports enabling OpenType font features, which are a standardized way to
 define alternate characters that can be toggled without having to swap font
 files entirely. Despite being named OpenType font features, these are also
@@ -454,6 +476,7 @@ features, then unchecking them in the inspector:
 Disabling ligatures and kerning for a font
 
 ### System fonts
+
 Warning
 Loading system fonts is only supported on Windows, macOS, Linux, Android and iOS.
 However, loading system fonts on Android is unreliable as there is no
@@ -463,6 +486,7 @@ in non-functional system font loading.
 System fonts are a different type of resource compared to imported fonts. They
 are never actually imported into the project, but are loaded at runtime. This
 has 2 benefits:
+
 - The fonts are not included within the exported PCK file, leading to a smaller
 file size for the exported project.
 The fonts are not included within the exported PCK file, leading to a smaller
@@ -543,6 +567,7 @@ It is also possible to load fonts at runtime even if they aren't installed on th
 SeeRuntime loading and savingfor details.
 
 ### Font prerendering
+
 When using traditional rasterized fonts, Godot caches glyphs on a per-font and
 per-size basis. This reduces stuttering, but it can still occur the first time a
 glyph is displayed when running the project. This can be especially noticeable
@@ -610,8 +635,10 @@ which languages are supported in your game. For English, onlyBasic Latinneeds to
 covering many more languages, such as French, German and Spanish. For Russian,Cyrillicneeds to be enabled, and so on.
 
 ### Default project font properties
+
 In theGUI > Themesection of the advanced Project Settings, you can choose
 how the default font should be rendered:
+
 - Default Font Antialiasing:Controls theantialiasingmethod used
 for the default project font.
 Default Font Antialiasing:Controls theantialiasingmethod used
@@ -640,4 +667,5 @@ instead. You can use theImport Defaultssection of the Project Settings
 dialog to override default import options for custom fonts.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

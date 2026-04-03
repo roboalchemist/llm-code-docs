@@ -1,21 +1,26 @@
 # AnimationNodeStateMachine in English
 
 # AnimationNodeStateMachine
+
 Inherits:AnimationRootNode<AnimationNode<Resource<RefCounted<Object
 A state machine with multipleAnimationRootNodes, used byAnimationTree.
 
 ## Description
+
 Contains multipleAnimationRootNodes representing animation states, connected in a graph. State transitions can be configured to happen automatically or via code, using a shortest-path algorithm. Retrieve theAnimationNodeStateMachinePlaybackobject from theAnimationTreenode to control it programmatically.
+
 ```
 var state_machine = $AnimationTree.get("parameters/playback")
 state_machine.travel("some_state")
 ```
+
 ```
 var stateMachine = GetNode<AnimationTree>("AnimationTree").Get("parameters/playback") as AnimationNodeStateMachinePlayback;
 stateMachine.Travel("some_state");
 ```
 
 ## Tutorials
+
 - Using AnimationTree
 Using AnimationTree
 
@@ -100,6 +105,7 @@ void
 set_node_position(name:StringName, position:Vector2)
 
 ## Enumerations
+
 enumStateMachineType:🔗
 StateMachineTypeSTATE_MACHINE_TYPE_ROOT=0
 Seeking to the beginning is treated as playing from the start state. Transition to the end state is treated as exiting the state machine.
@@ -109,7 +115,9 @@ StateMachineTypeSTATE_MACHINE_TYPE_GROUPED=2
 This is a grouped state machine that can be controlled from a parent state machine. It does not work independently. There must be a state machine withstate_machine_typeofSTATE_MACHINE_TYPE_ROOTorSTATE_MACHINE_TYPE_NESTEDin the parent or ancestor.
 
 ## Property Descriptions
+
 boolallow_transition_to_self=false🔗
+
 - voidset_allow_transition_to_self(value:bool)
 voidset_allow_transition_to_self(value:bool)
 - boolis_allow_transition_to_self()
@@ -130,6 +138,7 @@ StateMachineTypeget_state_machine_type()
 This property can define the process of transitions for different use cases. See alsoStateMachineType.
 
 ## Method Descriptions
+
 voidadd_node(name:StringName, node:AnimationNode, position:Vector2= Vector2(0, 0))🔗
 Adds a new animation node to the graph. Thepositionis used for display in the editor.
 voidadd_transition(from:StringName, to:StringName, transition:AnimationNodeStateMachineTransition)🔗
@@ -172,4 +181,5 @@ voidset_node_position(name:StringName, position:Vector2)🔗
 Sets the animation node's coordinates. Used for display in the editor.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

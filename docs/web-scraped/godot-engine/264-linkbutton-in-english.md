@@ -1,10 +1,12 @@
 # LinkButton in English
 
 # LinkButton
+
 Inherits:BaseButton<Control<CanvasItem<Node<Object
 A button that represents a link.
 
 ## Description
+
 A button that represents a link. This type of button is primarily used for interactions that cause a context change (like linking to a web page).
 See alsoBaseButtonwhich contains common properties and methods associated with this node.
 
@@ -93,6 +95,7 @@ StyleBox
 focus
 
 ## Enumerations
+
 enumUnderlineMode:🔗
 UnderlineModeUNDERLINE_MODE_ALWAYS=0
 The LinkButton will always show an underline at the bottom of its text.
@@ -102,7 +105,9 @@ UnderlineModeUNDERLINE_MODE_NEVER=2
 The LinkButton will never show an underline at the bottom of its text.
 
 ## Property Descriptions
+
 Stringellipsis_char="…"🔗
+
 - voidset_ellipsis_char(value:String)
 voidset_ellipsis_char(value:String)
 - Stringget_ellipsis_char()
@@ -156,11 +161,13 @@ voidset_uri(value:String)
 - Stringget_uri()
 Stringget_uri()
 TheURIfor thisLinkButton. If set to a valid URI, pressing the button opens the URI using the operating system's default program for the protocol (viaOS.shell_open()). HTTP and HTTPS URLs open the default web browser.
+
 ```
 uri = "https://godotengine.org"  # Opens the URL in the default web browser.
 uri = "C:\SomeFolder"  # Opens the file explorer at the given path.
 uri = "C:\SomeImage.png"  # Opens the given image in the default viewing app.
 ```
+
 ```
 Uri = "https://godotengine.org"; // Opens the URL in the default web browser.
 Uri = "C:\SomeFolder"; // Opens the file explorer at the given path.
@@ -168,6 +175,7 @@ Uri = "C:\SomeImage.png"; // Opens the given image in the default viewing app.
 ```
 
 ## Theme Property Descriptions
+
 Colorfont_color=Color(0.875,0.875,0.875,1)🔗
 Default textColorof theLinkButton.
 Colorfont_disabled_color=Color(0,0,0,1)🔗
@@ -195,4 +203,5 @@ StyleBoxfocus🔗
 StyleBoxused when theLinkButtonis focused. ThefocusStyleBoxis displayedoverthe baseStyleBox, so a partially transparentStyleBoxshould be used to ensure the baseStyleBoxremains visible. AStyleBoxthat represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign aStyleBoxEmptyresource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

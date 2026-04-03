@@ -1,12 +1,15 @@
 # FontVariation in English
 
 # FontVariation
+
 Inherits:Font<Resource<RefCounted<Object
 A variation of a font with additional settings.
 
 ## Description
+
 Provides OpenType variations, simulated bold / slant, and additional font settings like OpenType features and extra spacing.
 To use simulated bold font variant:
+
 ```
 var fv = FontVariation.new()
 fv.base_font = load("res://BarlowCondensed-Regular.ttf")
@@ -14,6 +17,7 @@ fv.variation_embolden = 1.2
 $Label.add_theme_font_override("font", fv)
 $Label.add_theme_font_size_override("font_size", 64)
 ```
+
 ```
 var fv = new FontVariation();
 fv.SetBaseFont(ResourceLoader.Load<FontFile>("res://BarlowCondensed-Regular.ttf"));
@@ -21,7 +25,9 @@ fv.SetVariationEmbolden(1.2);
 GetNode("Label").AddThemeFontOverride("font", fv);
 GetNode("Label").AddThemeFontSizeOverride("font_size", 64);
 ```
+
 To set the coordinate of multiple variation axes:
+
 ```
 var fv = FontVariation.new();
 var ts = TextServerManager.get_primary_interface()
@@ -71,7 +77,9 @@ void
 set_spacing(spacing:SpacingType, value:int)
 
 ## Property Descriptions
+
 Fontbase_font🔗
+
 - voidset_base_font(value:Font)
 voidset_base_font(value:Font)
 - Fontget_base_font()
@@ -143,8 +151,10 @@ Transform2Dget_variation_transform()
 For example, to simulate italic typeface by slanting, apply the following transformTransform2D(1.0,slant,0.0,1.0,0.0,0.0).
 
 ## Method Descriptions
+
 voidset_spacing(spacing:SpacingType, value:int)🔗
 Sets the spacing forspacingtovaluein pixels (not relative to the font size).
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

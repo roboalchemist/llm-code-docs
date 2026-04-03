@@ -1,18 +1,22 @@
 # MobileVRInterface in English
 
 # MobileVRInterface
+
 Inherits:XRInterface<RefCounted<Object
 Generic mobile VR implementation.
 
 ## Description
+
 This is a generic mobile VR implementation where you need to provide details about the phone and HMD used. It does not rely on any existing framework. This is the most basic interface we have. For the best effect, you need a mobile phone with a gyroscope and accelerometer.
 Note that even though there is no positional tracking, the camera will assume the headset is at a height of 1.85 meters. You can change this by settingeye_height.
 You can initialize this interface as follows:
+
 ```
 var interface = XRServer.find_interface("Native mobile")
 if interface and interface.initialize():
     get_viewport().use_xr = true
 ```
+
 Note:For Android,ProjectSettings.input_devices/sensors/enable_accelerometer,ProjectSettings.input_devices/sensors/enable_gravity,ProjectSettings.input_devices/sensors/enable_gyroscopeandProjectSettings.input_devices/sensors/enable_magnetometermust be enabled.
 
 ## Properties
@@ -58,7 +62,9 @@ xr_play_area_mode
 1(overridesXRInterface)
 
 ## Property Descriptions
+
 floatdisplay_to_lens=4.0🔗
+
 - voidset_display_to_lens(value:float)
 voidset_display_to_lens(value:float)
 - floatget_display_to_lens()
@@ -122,4 +128,5 @@ The strength used to calculate the VRS density map. The greater this value, the 
 Note:Mobile and Forward+ renderers only. RequiresViewport.vrs_modeto be set toViewport.VRS_XR.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

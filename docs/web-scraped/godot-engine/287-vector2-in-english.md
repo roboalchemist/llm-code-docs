@@ -1,15 +1,18 @@
 # Vector2 in English
 
 # Vector2
+
 A 2D vector using floating-point coordinates.
 
 ## Description
+
 A 2-element structure that can be used to represent 2D coordinates or any other pair of numeric values.
 It uses floating-point coordinates. By default, these floating-point values use 32-bit precision, unlikefloatwhich is always 64-bit. If double precision is needed, compile the engine with the optionprecision=double.
 SeeVector2ifor its integer counterpart.
 Note:In a boolean context, a Vector2 will evaluate tofalseif it's equal toVector2(0,0). Otherwise, a Vector2 will always evaluate totrue.
 
 ## Tutorials
+
 - Math documentation index
 Math documentation index
 - Vector math
@@ -223,11 +226,11 @@ operator !=(right:Vector2)
 Vector2
 operator *(right:Transform2D)
 Vector2
-operator *(right:Vector2)
+operator*(right:Vector2)
 Vector2
 operator *(right:float)
 Vector2
-operator *(right:int)
+operator*(right:int)
 Vector2
 operator +(right:Vector2)
 Vector2
@@ -256,6 +259,7 @@ Vector2
 operator unary-()
 
 ## Enumerations
+
 enumAxis:🔗
 AxisAXIS_X=0
 Enumerated value for the X axis. Returned bymax_axis_index()andmin_axis_index().
@@ -263,6 +267,7 @@ AxisAXIS_Y=1
 Enumerated value for the Y axis. Returned bymax_axis_index()andmin_axis_index().
 
 ## Constants
+
 ZERO=Vector2(0,0)🔗
 Zero vector, a vector with all components set to0.
 ONE=Vector2(1,1)🔗
@@ -279,12 +284,14 @@ DOWN=Vector2(0,1)🔗
 Down unit vector. Y is down in 2D, so this vector points +Y.
 
 ## Property Descriptions
+
 floatx=0.0🔗
 The vector's X component. Also accessible by using the index position[0].
 floaty=0.0🔗
 The vector's Y component. Also accessible by using the index position[1].
 
 ## Constructor Descriptions
+
 Vector2Vector2()🔗
 Constructs a default-initializedVector2with all components set to0.
 Vector2Vector2(from:Vector2)
@@ -295,6 +302,7 @@ Vector2Vector2(x:float, y:float)
 Constructs a newVector2from the givenxandy.
 
 ## Method Descriptions
+
 Vector2abs()const🔗
 Returns a new vector with all components in absolute values (i.e. positive).
 floatangle()const🔗
@@ -350,11 +358,13 @@ Vector2floor()const🔗
 Returns a new vector with all components rounded down (towards negative infinity).
 Vector2from_angle(angle:float)static🔗
 Creates aVector2rotated to the givenanglein radians. This is equivalent to doingVector2(cos(angle),sin(angle))orVector2.RIGHT.rotated(angle).
+
 ```
 print(Vector2.from_angle(0)) # Prints (1.0, 0.0)
 print(Vector2(1, 0).angle()) # Prints 0.0, which is the angle used above.
 print(Vector2.from_angle(PI / 2)) # Prints (0.0, 1.0)
 ```
+
 Note:The length of the returnedVector2isapproximately1.0, but is is not guaranteed to be exactly1.0due to floating-point precision issues. Callnormalized()on the returnedVector2if you require a unit vector.
 boolis_equal_approx(to:Vector2)const🔗
 Returnstrueif this vector andtoare approximately equal, by running@GlobalScope.is_equal_approx()on each component.
@@ -421,6 +431,7 @@ Vector2snappedf(step:float)const🔗
 Returns a new vector with each component snapped to the nearest multiple ofstep. This can also be used to round the components to an arbitrary number of decimals.
 
 ## Operator Descriptions
+
 booloperator !=(right:Vector2)🔗
 Returnstrueif the vectors are not equal.
 Note:Due to floating-point precision errors, consider usingis_equal_approx()instead, which is more reliable.
@@ -431,28 +442,36 @@ vector*transformis equivalent totransform.inverse()*vector. SeeTransform2D.inver
 For transforming by inverse of an affine transformation (e.g. with scaling)transform.affine_inverse()*vectorcan be used instead. SeeTransform2D.affine_inverse().
 Vector2operator *(right:Vector2)🔗
 Multiplies each component of theVector2by the components of the givenVector2.
+
 ```
 print(Vector2(10, 20) * Vector2(3, 4)) # Prints (30.0, 80.0)
 ```
+
 Vector2operator *(right:float)🔗
 Multiplies each component of theVector2by the givenfloat.
-Vector2operator *(right:int)🔗
+Vector2operator*(right:int)🔗
 Multiplies each component of theVector2by the givenint.
 Vector2operator +(right:Vector2)🔗
 Adds each component of theVector2by the components of the givenVector2.
+
 ```
 print(Vector2(10, 20) + Vector2(3, 4)) # Prints (13.0, 24.0)
 ```
+
 Vector2operator -(right:Vector2)🔗
 Subtracts each component of theVector2by the components of the givenVector2.
+
 ```
 print(Vector2(10, 20) - Vector2(3, 4)) # Prints (7.0, 16.0)
 ```
+
 Vector2operator /(right:Vector2)🔗
 Divides each component of theVector2by the components of the givenVector2.
+
 ```
 print(Vector2(10, 20) / Vector2(2, 5)) # Prints (5.0, 4.0)
 ```
+
 Vector2operator /(right:float)🔗
 Divides each component of theVector2by the givenfloat.
 Vector2operator /(right:int)🔗
@@ -481,4 +500,5 @@ Vector2operator unary-()🔗
 Returns the negative value of theVector2. This is the same as writingVector2(-v.x,-v.y). This operation flips the direction of the vector while keeping the same magnitude. With floats, the number zero can be either positive or negative.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,13 +1,16 @@
 # DirAccess
 
 # DirAccess
+
 Inherits:RefCounted<Object
 Provides methods for managing directories and their content.
 
 ## Description
+
 This class is used to manage directories and their content, even outside of the project folder.
 DirAccesscan't be instantiated directly. Instead it is created with a static method that takes a path for which it will be opened.
 Most of the methods have a static alternative that can be used without creating aDirAccess. Static methods only support absolute paths (includingres://anduser://).
+
 ```
 # Standard
 var dir = DirAccess.open("user://levels")
@@ -15,8 +18,10 @@ dir.make_dir("world1")
 # Static
 DirAccess.make_dir_absolute("user://levels/world1")
 ```
+
 Note:Accessing project ("res://") directories once exported may behave unexpectedly as some files are converted to engine-specific formats and their original source files may not be present in the expected PCK package. Because of this, to access resources in an exported project, it is recommended to useResourceLoaderinstead ofFileAccess.
 Here is an example on how to iterate through the files of a directory:
+
 ```
 func dir_contents(path):
     var dir = DirAccess.open(path)
@@ -32,6 +37,7 @@ func dir_contents(path):
     else:
         print("An error occurred when trying to access the path.")
 ```
+
 ```
 public void DirContents(string path)
 {
@@ -59,9 +65,11 @@ public void DirContents(string path)
     }
 }
 ```
+
 Keep in mind that file names may change or be remapped after export. If you want to see the actual resource file list as it appears in the editor, useResourceLoader.list_directory()instead.
 
 ## Tutorials
+
 - File system
 File system
 
@@ -190,7 +198,9 @@ Error
 rename_absolute(from:String, to:String)static
 
 ## Property Descriptions
+
 boolinclude_hidden🔗
+
 - voidset_include_hidden(value:bool)
 voidset_include_hidden(value:bool)
 - boolget_include_hidden()
@@ -206,6 +216,7 @@ Iftrue,.and..are included when navigating the directory.
 Affectslist_dir_begin()andget_directories().
 
 ## Method Descriptions
+
 Errorchange_dir(to_dir:String)🔗
 Changes the currently opened directory to the one passed as an argument. The argument can be relative to the current directory (e.g.newdiror../newdir), or an absolute path (e.g./tmp/newdirorres://somedir/newdir).
 Returns one of theErrorcode constants (@GlobalScope.OKon success).
@@ -324,4 +335,5 @@ Errorrename_absolute(from:String, to:String)static🔗
 Static version ofrename(). Supports only absolute paths.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

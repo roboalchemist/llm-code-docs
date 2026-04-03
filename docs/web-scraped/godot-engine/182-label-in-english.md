@@ -1,14 +1,17 @@
 # Label in English
 
 # Label
+
 Inherits:Control<CanvasItem<Node<Object
 A control for displaying plain text.
 
 ## Description
+
 A control for displaying plain text. It gives you control over the horizontal and vertical alignment and can wrap the text inside the node's bounding rectangle. It doesn't support bold, italics, or other rich text formatting. For that, useRichTextLabelinstead.
 Note:A single Label node is not designed to display huge amounts of text. To display large amounts of text in a single node, consider usingRichTextLabelinstead as it supports features like an integrated scroll bar and threading.RichTextLabelgenerally performs better when displaying large amounts of text (several pages or more).
 
 ## Tutorials
+
 - 2D Dodge The Creeps Demo
 2D Dodge The Creeps Demo
 
@@ -149,7 +152,9 @@ StyleBox
 normal
 
 ## Property Descriptions
+
 AutowrapModeautowrap_mode=0🔗
+
 - voidset_autowrap_mode(value:AutowrapMode)
 voidset_autowrap_mode(value:AutowrapMode)
 - AutowrapModeget_autowrap_mode()
@@ -287,6 +292,7 @@ The fraction of characters to display, relative to the total number of character
 Note:Setting this property updatesvisible_charactersaccordingly.
 
 ## Method Descriptions
+
 Rect2get_character_bounds(pos:int)const🔗
 Returns the bounding rectangle of the character at positionposin the label's local coordinate system. If the character is a non-visual character orposis outside the valid range, an emptyRect2is returned. If the character is a part of a composite grapheme, the bounding rectangle of the whole grapheme is returned.
 intget_line_count()const🔗
@@ -301,6 +307,7 @@ intget_visible_line_count()const🔗
 Returns the number of lines shown. Useful if theLabel's height cannot currently display all lines.
 
 ## Theme Property Descriptions
+
 Colorfont_color=Color(1,1,1,1)🔗
 Default textColorof theLabel.
 Colorfont_outline_color=Color(0,0,0,1)🔗
@@ -331,4 +338,5 @@ StyleBoxnormal🔗
 BackgroundStyleBoxfor theLabel.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

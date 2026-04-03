@@ -1,16 +1,19 @@
 # TileMapLayer in English
 
 # TileMapLayer
+
 Inherits:Node2D<CanvasItem<Node<Object
 Node for 2D tile-based maps.
 
 ## Description
+
 Node for 2D tile-based maps. ATileMapLayeruses aTileSetwhich contain a list of tiles which are used to create grid-based maps. Unlike theTileMapnode, which is deprecated,TileMapLayerhas only one layer of tiles. You can use severalTileMapLayerto achieve the same result as aTileMapnode.
 For performance reasons, all TileMap updates are batched at the end of a frame. Notably, this means that scene tiles from aTileSetScenesCollectionSourceare initialized after their parent. This is only queued when inside the scene tree.
 To force an update earlier on, callupdate_internals().
 Note:For performance and compatibility reasons, the coordinates serialized byTileMapLayerare limited to 16-bit signed integers, i.e. the range for X and Y coordinates is from-32768to32767. When saving tile data, tiles outside this range are wrapped.
 
 ## Tutorials
+
 - Using Tilemaps
 Using Tilemaps
 - 2D Platformer Demo
@@ -175,11 +178,13 @@ void
 update_internals()
 
 ## Signals
+
 changed()🔗
 Emitted when thisTileMapLayer's properties changes. This includes modified cells, properties, or changes made to its assignedTileSet.
 Note:This signal may be emitted very often when batch-modifying aTileMapLayer. Avoid executing complex processing in a connected function, and consider delaying it to the end of the frame instead (i.e. callingObject.call_deferred()).
 
 ## Enumerations
+
 enumDebugVisibilityMode:🔗
 DebugVisibilityModeDEBUG_VISIBILITY_MODE_DEFAULT=0
 Hide the collisions or navigation debug shapes in the editor, and use the debug settings to determine their visibility in game (i.e.SceneTree.debug_collisions_hintorSceneTree.debug_navigation_hint).
@@ -189,7 +194,9 @@ DebugVisibilityModeDEBUG_VISIBILITY_MODE_FORCE_SHOW=1
 Always show the collisions or navigation debug shapes.
 
 ## Property Descriptions
+
 boolcollision_enabled=true🔗
+
 - voidset_collision_enabled(value:bool)
 voidset_collision_enabled(value:bool)
 - boolis_collision_enabled()
@@ -274,6 +281,7 @@ intget_y_sort_origin()
 This Y-sort origin value is added to each tile's Y-sort origin value. This allows, for example, to fake a different height level. This can be useful for top-down view games.
 
 ## Method Descriptions
+
 void_tile_data_runtime_update(coords:Vector2i, tile_data:TileData)virtual🔗
 Called with aTileDataobject about to be used internally by theTileMapLayer, allowing its modification at runtime.
 This method is only called if_use_tile_data_runtime_update()is implemented and returnstruefor the given tilecoords.
@@ -281,6 +289,7 @@ Warning:Thetile_dataobject's sub-resources are the same as the one in the TileSe
 Note:If the properties oftile_dataobject should change over time, usenotify_runtime_tile_data_update()to notify theTileMapLayerit needs an update.
 void_update_cells(coords:Array[Vector2i], forced_cleanup:bool)virtual🔗
 Called when thisTileMapLayer's cells need an internal update. This update may be caused from individual cells being modified or by a change in thetile_set(causing all cells to be queued for an update). The first call to this function is always for initializing all theTileMapLayer's cells.coordscontains the coordinates of all modified cells, roughly in the order they were modified.forced_cleanupistruewhen theTileMapLayer's internals should be fully cleaned up. This is the case when:
+
 - The layer is disabled;
 The layer is disabled;
 - The layer is not visible;
@@ -311,6 +320,7 @@ intget_cell_source_id(coords:Vector2i)const🔗
 Returns the tile source ID of the cell at coordinatescoords. Returns-1if the cell does not exist.
 TileDataget_cell_tile_data(coords:Vector2i)const🔗
 Returns theTileDataobject associated with the given cell, ornullif the cell does not exist or is not aTileSetAtlasSource.
+
 ```
 func get_clicked_tile_power():
     var clicked_cell = tile_map_layer.local_to_map(tile_map_layer.get_local_mouse_position())
@@ -320,6 +330,7 @@ func get_clicked_tile_power():
     else:
         return 0
 ```
+
 Vector2iget_coords_for_body_rid(body:RID)const🔗
 Returns the coordinates of the physics quadrant (seephysics_quadrant_size) for given physics bodyRID. Such anRIDcan be retrieved fromKinematicCollision2D.get_collider_rid(), when colliding with a tile.
 Note:Higher values ofphysics_quadrant_sizewill make this function less precise. To get the exact cell coordinates, you need to setphysics_quadrant_sizeto1, which disables physics chunking.
@@ -361,6 +372,7 @@ Warning:Updating theTileMapLayeris computationally expensive and may impact perf
 Note:This does not trigger a direct update of theTileMapLayer, the update will be done at the end of the frame as usual (unless you callupdate_internals()).
 voidset_cell(coords:Vector2i, source_id:int= -1, atlas_coords:Vector2i= Vector2i(-1, -1), alternative_tile:int= 0)🔗
 Sets the tile identifiers for the cell at coordinatescoords. Each tile of theTileSetis identified using three parts:
+
 - The source identifiersource_ididentifies aTileSetSourceidentifier. SeeTileSet.set_source_id(),
 The source identifiersource_ididentifies aTileSetSourceidentifier. SeeTileSet.set_source_id(),
 - The atlas coordinate identifieratlas_coordsidentifies a tile coordinates in the atlas (if the source is aTileSetAtlasSource). ForTileSetScenesCollectionSourceit should always beVector2i(0,0),
@@ -386,4 +398,5 @@ However, for performance reasons, those updates are batched and delayed to the e
 Warning:Updating theTileMapLayeris computationally expensive and may impact performance. Try to limit the number of updates and how many tiles they impact.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,17 +1,21 @@
 # TextServer in English
 
 # TextServer
+
 Inherits:RefCounted<Object
 Inherited By:TextServerExtension
 A server interface for font management and text rendering.
 
 ## Description
+
 TextServeris the API backend for managing fonts and rendering text.
 Note:This is a low-level API, consider usingTextLine,TextParagraph, andFontclasses instead.
 This is an abstract class, so to get the currently activeTextServerinstance, use the following code:
+
 ```
 var ts = TextServerManager.get_primary_interface()
 ```
+
 ```
 var ts = TextServerManager.GetPrimaryInterface();
 ```
@@ -690,6 +694,7 @@ String
 tag_to_name(tag:int)const
 
 ## Enumerations
+
 enumFontAntialiasing:🔗
 FontAntialiasingFONT_ANTIALIASING_NONE=0
 Font glyphs are rasterized as 1-bit bitmaps.
@@ -773,7 +778,7 @@ LineBreakFlagBREAK_TRIM_INDENT=32
 Subtract first line indentation width from all lines after the first one.
 LineBreakFlagBREAK_TRIM_START_EDGE_SPACES=64
 Remove spaces and line break characters from the start of broken line segments.
-E.g, after line breaking, the second segment of the following texttest\nnext, isnextif the flag is set, and ``  next`` if it is not.
+E.g, after line breaking, the second segment of the following texttest\nnext, isnextif the flag is set, and ``next`` if it is not.
 LineBreakFlagBREAK_TRIM_END_EDGE_SPACES=128
 Remove spaces and line break characters from the end of broken line segments.
 E.g, after line breaking, the first segment of the following texttest\nnext, istestif the flag is set, andtest\nif it is not.
@@ -861,6 +866,7 @@ SubpixelPositioningSUBPIXEL_POSITIONING_DISABLED=0
 Glyph horizontal position is rounded to the whole pixel size, each glyph is rasterized once.
 SubpixelPositioningSUBPIXEL_POSITIONING_AUTO=1
 Glyph horizontal position is rounded based on font size.
+
 - To one quarter of the pixel size if font size is smaller or equal toSUBPIXEL_POSITIONING_ONE_QUARTER_MAX_SIZE.
 To one quarter of the pixel size if font size is smaller or equal toSUBPIXEL_POSITIONING_ONE_QUARTER_MAX_SIZE.
 - To one half of the pixel size if font size is smaller or equal toSUBPIXEL_POSITIONING_ONE_HALF_MAX_SIZE.
@@ -955,6 +961,7 @@ FixedSizeScaleModeFIXED_SIZE_SCALE_ENABLED=2
 Bitmap font is scaled to an arbitrary (fractional) size. This is the recommended option for non-pixel art fonts.
 
 ## Method Descriptions
+
 RIDcreate_font()🔗
 Creates a new, empty font cache entry resource. To free the resulting resource, use thefree_rid()method.
 RIDcreate_font_linked_variation(font_rid:RID)🔗
@@ -1020,6 +1027,7 @@ Returns outline contours of the glyph as aDictionarywith the following contents:
 points-PackedVector3Array, containing outline points.xandyare point coordinates.zis the type of the point, using theContourPointTagvalues.
 contours-PackedInt32Array, containing indices the end points of each contour.
 orientation-bool, contour orientation. Iftrue, clockwise contours must be filled.
+
 - Two successiveCONTOUR_CURVE_TAG_ONpoints indicate a line segment.
 Two successiveCONTOUR_CURVE_TAG_ONpoints indicate a line segment.
 - OneCONTOUR_CURVE_TAG_OFF_CONICpoint between twoCONTOUR_CURVE_TAG_ONpoints indicates a single conic (quadratic) Bézier arc.
@@ -1278,15 +1286,15 @@ Returnstrueifstringis a valid identifier.
 If the text server supports theFEATURE_UNICODE_IDENTIFIERSfeature, a valid identifier must:
 - Conform to normalization form C.
 Conform to normalization form C.
-- Begin with a Unicode character of class XID_Start or"_".
-Begin with a Unicode character of class XID_Start or"_".
+- Begin with a Unicode character of class XID_Start or"*".
+Begin with a Unicode character of class XID_Start or"*".
 - May contain Unicode characters of class XID_Continue in the other positions.
 May contain Unicode characters of class XID_Continue in the other positions.
 - Use UAX #31 recommended scripts only (mixed scripts are allowed).
 Use UAX #31 recommended scripts only (mixed scripts are allowed).
 If theFEATURE_UNICODE_IDENTIFIERSfeature is not supported, a valid identifier must:
-- Begin with a Unicode character of class XID_Start or"_".
-Begin with a Unicode character of class XID_Start or"_".
+- Begin with a Unicode character of class XID_Start or"*".
+Begin with a Unicode character of class XID_Start or"*".
 - May contain Unicode characters of class XID_Continue in the other positions.
 May contain Unicode characters of class XID_Continue in the other positions.
 boolis_valid_letter(unicode:int)const🔗
@@ -1483,13 +1491,16 @@ Returnstrueifstringis likely to be an attempt at confusing the reader.
 Note:Always returnsfalseif the server does not support theFEATURE_UNICODE_SECURITYfeature.
 PackedInt32Arraystring_get_character_breaks(string:String, language:String= "")const🔗
 Returns array of the composite character boundaries.
+
 ```
 var ts = TextServerManager.get_primary_interface()
 print(ts.string_get_character_breaks("Test ❤️‍🔥 Test")) # Prints [1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14]
 ```
+
 PackedInt32Arraystring_get_word_breaks(string:String, language:String= "", chars_per_line:int= 0)const🔗
 Returns an array of the word break boundaries. Elements in the returned array are the offsets of the start and end of words. Therefore the length of the array is always even.
 Whenchars_per_lineis greater than zero, line break boundaries are returned instead.
+
 ```
 var ts = TextServerManager.get_primary_interface()
 # Corresponds to the substrings "The", "Godot", "Engine", and "4".
@@ -1499,6 +1510,7 @@ print(ts.string_get_word_breaks("The Godot Engine, 4", "en", 5)) # Prints [0, 3,
 # Corresponds to the substrings "The Godot" and "Engine, 4".
 print(ts.string_get_word_breaks("The Godot Engine, 4", "en", 10)) # Prints [0, 9, 10, 19]
 ```
+
 Stringstring_to_lower(string:String, language:String= "")const🔗
 Returns the string converted tolowercase.
 Note:Casing is locale dependent and context sensitive if server supportFEATURE_CONTEXT_SENSITIVE_CASE_CONVERSIONfeature (supported byTextServerAdvanced).
@@ -1518,4 +1530,5 @@ Stringtag_to_name(tag:int)const🔗
 Converts the given OpenType tag to the readable name of a feature, variation, script, or language.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

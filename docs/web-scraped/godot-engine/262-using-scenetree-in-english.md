@@ -3,11 +3,13 @@
 # Using SceneTree
 
 ## Introduction
+
 In previous tutorials, everything revolved around the concept of
 nodes. Scenes are collections of nodes. They become active once
 they enter thescene tree.
 
 ## MainLoop
+
 The way Godot works internally is as follows. There is theOSclass,
 which is the only instance that runs at the beginning. Afterwards, all
 drivers, servers, scripting languages, scene system, etc are loaded.
@@ -21,6 +23,7 @@ methods, for initialization, idle (frame-synchronized callback), fixed
 level and when making games in Godot, writing your own MainLoop seldom makes sense.
 
 ## SceneTree
+
 One of the ways to explain how Godot works is that it's a high-level
 game engine over a low-level middleware.
 The scene system is the game engine, while theOSand servers are the low-level API.
@@ -29,6 +32,7 @@ This is automatically instanced and set when running a scene, no need
 to do any extra work.
 It's important to know that this class exists because it has a few
 important uses:
+
 - It contains the rootViewport, to which a
 scene is added as a child when it's first opened to become
 part of theScene Tree(more on that next).
@@ -46,16 +50,20 @@ mode or quitting the process.
 When a node is part of the Scene Tree, theSceneTreesingleton can be obtained by callingNode.get_tree().
 
 ## Root viewport
+
 The rootViewportis always at the top of the scene. From a node, it can be obtained in
 two different ways:
+
 ```
 get_tree().root # Access via scene main loop.
 get_node("/root") # Access via absolute path.
 ```
+
 ```
 GetTree().Root // Access via scene main loop.
 GetNode("/root"); // Access via absolute path.
 ```
+
 This node contains the main viewport. Anything that is a child of aViewportis drawn inside of it by default, so it makes sense that the top of all
 nodes is always a node of this type otherwise nothing would be seen.
 While other viewports can be created in the scene (for split-screen
@@ -63,6 +71,7 @@ effects and such), this one is the only one that is never created by the
 user. It's created automatically inside SceneTree.
 
 ## Scene tree
+
 When a node is connected, directly or indirectly, to the root
 viewport, it becomes part of thescene tree.
 This means that as explained in previous tutorials, it will get the_enter_tree()and_ready()callbacks (as well as_exit_tree()).
@@ -71,6 +80,7 @@ to everything they need to process, get input, display 2D and 3D visuals,
 receive and send notifications, play sounds, etc. When they are removed from thescene tree, they lose these abilities.
 
 ## Tree order
+
 Most node operations in Godot, such as drawing 2D, processing, or getting
 notifications are done intree order, or top to bottom as seen in the
 editor (also known as pre-order traversal):
@@ -86,6 +96,7 @@ The order of operations can also be overridden using theprocess_prioritynode pro
 with the priorities "0, 1, 2, 3" would be called in that order from left to right.
 
 ## "Becoming active" by entering theScene Tree
+
 - A scene is loaded from disk or created by scripting.
 A scene is loaded from disk or created by scripting.
 - The root node of that scene (only one root, remember?) is added as
@@ -112,26 +123,32 @@ scene" notification (_exit_tree()callback in GDScript) in
 bottom-to-top order (the exact reverse of top-to-bottom order).
 
 ## Changing current scene
+
 After a scene is loaded, you may want to change this scene for
 another one. One way to do this is to use theSceneTree.change_scene_to_file()function:
+
 ```
 func _my_level_was_completed():
     get_tree().change_scene_to_file("res://levels/level2.tscn")
 ```
+
 ```
 public void _MyLevelWasCompleted()
 {
     GetTree().ChangeSceneToFile("res://levels/level2.tscn");
 }
 ```
+
 Rather than using file paths, one can also use ready-madePackedSceneresources using the equivalent
 functionSceneTree.change_scene_to_packed(PackedScene scene):
+
 ```
 var next_scene = preload("res://levels/level2.tscn")
 
 func _my_level_was_completed():
     get_tree().change_scene_to_packed(next_scene)
 ```
+
 ```
 public void _MyLevelWasCompleted()
 {
@@ -139,6 +156,7 @@ public void _MyLevelWasCompleted()
     GetTree().ChangeSceneToPacked(nextScene);
 }
 ```
+
 These are quick and useful ways to switch scenes but have the drawback
 that the game will stall until the new scene is loaded and running. At
 some point in the development of your game, it may be preferable to create proper loading
@@ -146,4 +164,5 @@ screens with progress bar, animated indicators or threaded (background)
 loading. This must be done manually usingSingletons (Autoload)andBackground loading.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

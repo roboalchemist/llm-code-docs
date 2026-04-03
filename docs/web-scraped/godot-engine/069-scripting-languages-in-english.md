@@ -1,6 +1,7 @@
 # Scripting languages in English
 
 # Scripting languages
+
 This lesson will give you an overview of the available scripting languages in
 Godot. You will learn the pros and cons of each option. In the next part, you
 will write your first script using GDScript.
@@ -12,6 +13,7 @@ takes damage. As this feature is not built into Godot, you would attach a script
 to the Camera2D node and code the shake.
 
 ## Available scripting languages
+
 Godot offersfour gameplay programming languages: GDScript, C#,
 and, via its GDExtension technology, C and C++. There are more
 community-supported languages, but these are the official ones.
@@ -23,6 +25,7 @@ We provide this flexibility to answer the needs of different game projects and
 developers.
 
 ## Which language should I use?
+
 If you're a beginner, we recommend tostart with GDScript. We made this
 language specifically for Godot and the needs of game developers. It has a
 lightweight and straightforward syntax and provides the tightest integration
@@ -34,8 +37,10 @@ with the language.
 Let's look at each language's features, as well as its pros and cons.
 
 ### GDScript
+
 GDScriptis anobject-orientedandimperativeprogramming language built for Godot. It's made by and for game developers
 to save you time coding games. Its features include:
+
 - A simple syntax that leads to short files.
 A simple syntax that leads to short files.
 - Blazing fast compilation and loading times.
@@ -78,6 +83,7 @@ and features that would've been difficult to offer with third-party
 languages.
 
 ### .NET / C#
+
 As Microsoft'sC#is a favorite
 amongst game developers, we officially support it. C# is a mature and flexible
 language with tons of libraries written for it. We were able to add support for it
@@ -106,6 +112,7 @@ See also
 To learn more about C#, head to theC#/.NETsection.
 
 ### C++ via GDExtension
+
 GDExtension allows you to write game code in C++ without needing to recompile
 Godot.
 You can use any version of the language or mix compiler brands and versions for
@@ -116,6 +123,7 @@ When working with GDExtension, the available types, functions, and properties
 closely resemble Godot's actual C++ API.
 
 ## Summary
+
 Scripts are files containing code that you attach to a node to extend its
 functionality.
 Godot supports four official scripting languages, offering you flexibility
@@ -124,4 +132,5 @@ You can mix languages, for instance, to implement demanding algorithms with C or
 C++ and write most of the game logic with GDScript or C#.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

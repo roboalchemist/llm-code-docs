@@ -1,10 +1,12 @@
 # PhysicalBone2D in English
 
 # PhysicalBone2D
+
 Inherits:RigidBody2D<PhysicsBody2D<CollisionObject2D<Node2D<CanvasItem<Node<Object
 ARigidBody2D-derived node used to makeBone2Ds in aSkeleton2Dreact to physics.
 
 ## Description
+
 ThePhysicalBone2Dnode is aRigidBody2D-based node that can be used to makeBone2Ds in aSkeleton2Dreact to physics.
 Note:To make theBone2Ds visually follow thePhysicalBone2Dnode, use aSkeletonModification2DPhysicalBonesmodification on theSkeleton2Dparent.
 Note:ThePhysicalBone2Dnode does not automatically create aJoint2Dnode to keepPhysicalBone2Dnodes together. They must be created manually. For most cases, you want to use aPinJoint2Dnode. ThePhysicalBone2Dnode will automatically configure theJoint2Dnode once it's been added as a child node.
@@ -44,7 +46,9 @@ bool
 is_simulating_physics()const
 
 ## Property Descriptions
+
 boolauto_configure_joint=true🔗
+
 - voidset_auto_configure_joint(value:bool)
 voidset_auto_configure_joint(value:bool)
 - boolget_auto_configure_joint()
@@ -77,10 +81,12 @@ Iftrue, thePhysicalBone2Dwill start simulating using physics. Iffalse, thePhysic
 Note:To have theBone2Ds visually follow thePhysicalBone2D, use aSkeletonModification2DPhysicalBonesmodification on theSkeleton2Dnode with theBone2Dnodes.
 
 ## Method Descriptions
+
 Joint2Dget_joint()const🔗
 Returns the firstJoint2Dchild node, if one exists. This is mainly a helper function to make it easier to get theJoint2Dthat thePhysicalBone2Dis autoconfiguring.
 boolis_simulating_physics()const🔗
 Returns a boolean that indicates whether thePhysicalBone2Dis running and simulating using the Godot 2D physics engine. Whentrue, the PhysicalBone2D node is using physics.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

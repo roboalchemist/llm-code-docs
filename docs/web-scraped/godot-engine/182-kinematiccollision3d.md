@@ -1,10 +1,12 @@
 # KinematicCollision3D
 
 # KinematicCollision3D
+
 Inherits:RefCounted<Object
 Holds collision data from the movement of aPhysicsBody3D.
 
 ## Description
+
 Holds collision data from the movement of aPhysicsBody3D, usually fromPhysicsBody3D.move_and_collide(). When aPhysicsBody3Dis moved, it stops if it detects a collision with another body. If a collision is detected, aKinematicCollision3Dobject is returned.
 The collision data includes the colliding object, the remaining motion, and the collision position. This data can be used to determine a custom response to the collision.
 
@@ -52,6 +54,7 @@ Vector3
 get_travel()const
 
 ## Method Descriptions
+
 floatget_angle(collision_index:int= 0, up_direction:Vector3= Vector3(0, 1, 0))const🔗
 Returns the collision angle according toup_direction, which isVector3.UPby default. This value is always positive.
 Objectget_collider(collision_index:int= 0)const🔗
@@ -82,4 +85,5 @@ Vector3get_travel()const🔗
 Returns the moving object's travel before collision.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

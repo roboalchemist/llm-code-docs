@@ -1,6 +1,7 @@
 # GDScript reference in English
 
 # GDScript reference
+
 GDScriptis a high-level,object-oriented,imperative, andgradually typedprogramming language built for Godot.
 It uses an indentation-based syntax similar to languages likePython.
 Its goal is to be optimized for and tightly integrated with Godot Engine,
@@ -8,12 +9,15 @@ allowing great flexibility for content creation and integration.
 GDScript is entirely independent from Python and is not based on it.
 
 ## History
+
 Note
 Documentation about GDScript's history has been moved to theFrequently Asked Questions.
 
 ## Example of GDScript
+
 Some people can learn better by taking a look at the syntax, so
 here's an example of how GDScript looks.
+
 ```
 # Everything after "#" is a comment.
 # A file is a class!
@@ -93,11 +97,13 @@ func _init():
     var lv = Something.new()
     print(lv.a)
 ```
+
 If you have previous experience with statically typed languages such as
 C, C++, or C# but never used a dynamically typed one before, it is advised you
 read this tutorial:GDScript: An introduction to dynamic languages.
 
 ## Identifiers
+
 Any string that restricts itself to alphabetic characters (atozandAtoZ), digits (0to9) and_qualifies as an identifier.
 Additionally, identifiers must not begin with a digit. Identifiers are
 case-sensitive (foois different fromFOO).
@@ -107,6 +113,7 @@ that are considered "confusable" for ASCII characters and emoji are not allowed
 in identifiers.
 
 ## Keywords
+
 The following is the list of keywords supported by the language. Since
 keywords are reserved words (tokens), they can't be used as identifiers.
 Operators (likein,not,andoror) and names of built-in types
@@ -217,6 +224,7 @@ Infinity constant. Used for comparisons and as result of calculations.
 NAN (not a number) constant. Used as impossible result from calculations.
 
 ## Operators
+
 The following is the list of supported operators and their precedence. All binary operators areleft-associative,
 including the**operator. This means that2**2**3is equal to(2**2)**3. Use parentheses to explicitly specify precedence you need, for
 example2**(2**3). The ternaryif/elseoperator is right-associative.
@@ -295,6 +303,7 @@ Assignment (lowest priority)
 You cannot use an assignment operator inside an expression.
 Note
 The behavior of some operators may differ from what you expect:
+
 - If both operands of the/operator areint, then integer division is performed instead of fractional. For example5/2==2, not2.5.
 If this is not desired, use at least onefloatliteral (x/2.0), cast (float(x)/y), or multiply by1.0(x*1.0/y).
 If both operands of the/operator areint, then integer division is performed instead of fractional. For example5/2==2, not2.5.
@@ -369,12 +378,14 @@ Shorthand forget_node("NodePath")
 Shorthand forget_node("%UniqueNode")
 Integers and floats can have their numbers separated with_to make them more readable.
 The following ways to write numbers are all valid:
+
 ```
 12_345_678  # Equal to 12345678.
 3.141_592_7  # Equal to 3.1415927.
 0x8080_0000_ffff  # Equal to 0x80800000ffff.
 0b11_00_11_00  # Equal to 0b11001100.
 ```
+
 Regular string literalscan contain the following escape sequences:
 
 | Escape sequence | Expands to |
@@ -409,6 +420,7 @@ UTF-16 Unicode codepointXXXX(hexadecimal, case-insensitive)
 \UXXXXXX
 UTF-32 Unicode codepointXXXXXX(hexadecimal, case-insensitive)
 There are two ways to represent an escaped Unicode character above0xFFFF:
+
 - as aUTF-16 surrogate pair\uXXXX\uXXXX.
 as aUTF-16 surrogate pair\uXXXX\uXXXX.
 - as a single UTF-32 codepoint\UXXXXXX.
@@ -422,10 +434,12 @@ Raw string literalsalways encode the string as it appears in the source code.
 This is especially useful for regular expressions. A raw string literal doesn't process escape sequences,
 however it does recognize\\and\"(\') and replaces them with themselves.
 Thus, a string can have a quote that matches the opening one, but only if it's preceded by a backslash.
+
 ```
 print("\tchar=\"\\t\"")  # Prints `    char="\t"`.
 print(r"\tchar=\"\\t\"") # Prints `\tchar=\"\\t\"`.
 ```
+
 Note
 Some strings cannot be represented using raw string literals: you cannot have an odd number
 of backslashes at the end of a string or have an unescaped opening quote inside the string.
@@ -434,28 +448,34 @@ or use concatenation with a regular string literal.
 GDScript also supportsformat strings.
 
 ## Annotations
+
 Annotations are special tokens in GDScript that act as modifiers to an entire script,
 a declaration, a statement, or a location in the source code. Annotations may affect
 how the script is treated by the Godot editor and the GDScript compiler.
 Every annotation starts with the@character and is specified by a name. A
 detailed description and example for each annotation can be found inside theGDScript class reference.
 For instance, you can use it to export a value to the editor:
+
 ```
 @export_range(1, 100, 1, "or_greater")
 var ranged_var: int = 50
 ```
+
 For more information about exporting properties, read theGDScript exportsarticle.
 Any constant expression compatible with the required argument type can be passed as an annotation argument value:
+
 ```
 const MAX_SPEED = 120.0
 
 @export_range(0.0, 0.5 * MAX_SPEED)
 var initial_speed: float = 0.25 * MAX_SPEED
 ```
+
 Annotations can be specified one per line or all in the same line. They affect
 the next statement that isn't an annotation. Annotations can have arguments sent
 between parentheses and separated by commas.
 Both of these are the same:
+
 ```
 @annotation_a
 @annotation_b
@@ -465,28 +485,34 @@ var variable
 ```
 
 ### @onreadyannotation
+
 When using nodes, it's common to desire to keep references to parts
 of the scene in a variable. As scenes are only warranted to be
 configured when entering the active scene tree, the sub-nodes can only
 be obtained when a call toNode._ready()is made.
+
 ```
 var my_label
 
 func _ready():
     my_label = get_node("MyLabel")
 ```
+
 This can get a little cumbersome, especially when nodes and external
 references pile up. For this, GDScript has the@onreadyannotation, that
 defers initialization of a member variable until_ready()is called. It
 can replace the above code with a single line:
+
 ```
 @onready var my_label = get_node("MyLabel")
 ```
+
 Warning
 Applying@onreadyand any@exportannotation to the same variable
 doesn't work as you might expect. The@onreadyannotation will cause
 the default value to be set after the@exporttakes effect and will
 override it:
+
 ```
 @export var a = "init_value_a"
 @onready @export var b = "init_value_b"
@@ -501,17 +527,22 @@ func _notification(what):
 func _ready():
     prints(a, b) # exported_value_a init_value_b
 ```
+
 Therefore, theONREADY_WITH_EXPORTwarning is generated, which is treated
 as an error by default. We do not recommend disabling or ignoring it.
 
 ## Comments
+
 Anything from a#to the end of the line is ignored and is
 considered a comment.
+
 ```
 # This is a comment.
 ```
+
 In the Godot script editor, special keywords are highlighted within comments
 to bring the user's attention to specific comments:
+
 - Critical(appears in red):ALERT,ATTENTION,CAUTION,CRITICAL,DANGER,SECURITY
 Critical(appears in red):ALERT,ATTENTION,CAUTION,CRITICAL,DANGER,SECURITY
 - Warning(appears in yellow):BUG,DEPRECATED,FIXME,HACK,TASK,TBD,TODO,WARNING
@@ -520,12 +551,14 @@ Warning(appears in yellow):BUG,DEPRECATED,FIXME,HACK,TASK,TBD,TODO,WARNING
 Notice(appears in green):INFO,NOTE,NOTICE,TEST,TESTING
 These keywords are case-sensitive, so they must be written in uppercase for them
 to be recognized:
+
 ```
 # In the example below, "TODO" will appear in yellow by default.
 # The `:` symbol after the keyword is not required, but it's often used.
 
 # TODO: Add more items for the player to choose from.
 ```
+
 The list of highlighted keywords and their colors can be changed in theText
 Editor > Theme > Comment Markerssection of the Editor Settings.
 Use two hash symbols (##) instead of one (#) to add adocumentation
@@ -533,6 +566,7 @@ comment, which will appear in the script documentation and in the inspector
 description of an exported variable. Documentation comments must be placed
 directlyabovea documentable item (such as a member variable), or at the top
 of a file. Dedicated formatting options are also available. SeeGDScript documentation commentsfor details.
+
 ```
 ## This comment will appear in the script documentation.
 var value
@@ -542,11 +576,13 @@ var value
 ```
 
 ## Code regions
+
 Code regions are special types of comments that the script editor understands asfoldable regions. This means that after writing code region comments, you can
 collapse and expand the region by clicking the arrow that appears at the left of
 the comment. This arrow appears within a purple square to be distinguishable
 from standard code folding.
 The syntax is as follows:
+
 ```
 # Important: There must be *no* space between the `#` and `region` or `endregion`.
 
@@ -560,11 +596,13 @@ The syntax is as follows:
 ...
 #endregion
 ```
+
 To create a code region quickly, select several lines in the script editor,
 right-click the selection then chooseCreate Code Region. The region
 description will be selected automatically for editing.
 It is possible to nest code regions within other code regions.
 Here's a concrete usage example of code regions:
+
 ```
 # This comment is outside the code region. It will be visible when collapsed.
 #region Terrain generation
@@ -584,6 +622,7 @@ func place_roads():
     pass
 #endregion
 ```
+
 This can be useful to organize large chunks of code into easier to understand
 sections. However, remember that external editors generally don't support this
 feature, so make sure your code is easy to follow even when not relying on
@@ -595,14 +634,18 @@ won't bring much of a benefit. Code regions work best when they're used to
 group multiple elements together.
 
 ## Line continuation
+
 A line of code in GDScript can be continued on the next line by using a backslash
 (\). Add one at the end of a line and the code on the next line will act like
 it's where the backslash is. Here is an example:
+
 ```
 var a = 1 + \
 2
 ```
+
 A line can be continued multiple times like this:
+
 ```
 var a = 1 + \
 4 + \
@@ -611,6 +654,7 @@ var a = 1 + \
 ```
 
 ## Built-in types
+
 Built-in types are stack-allocated. They are passed as values. This means a copy
 is created on each assignment or when passing them as arguments to functions.
 The exceptions areObject,Array,Dictionary, and packed arrays
@@ -619,9 +663,11 @@ All arrays,Dictionary, and some objects (Node,Resource)
 have aduplicate()method that allows you to make a copy.
 
 ### Basic built-in types
+
 A variable in GDScript can be assigned to several built-in types.
 
 #### null
+
 nullis an empty data type that contains no information and can not
 be assigned any other value.
 Only types that inherit from Object can have anullvalue
@@ -629,26 +675,32 @@ Only types that inherit from Object can have anullvalue
 and therefore cannot have anullvalue.
 
 #### bool
+
 Short for "boolean", it can only containtrueorfalse.
 
 #### int
+
 Short for "integer", it stores whole numbers (positive and negative).
 It is stored as a 64-bit value, equivalent toint64_tin C++.
 
 #### float
+
 Stores real numbers, including decimals, using floating-point values.
 It is stored as a 64-bit value, equivalent todoublein C++.
 Note: Currently, data structures such asVector2,Vector3, andPackedFloat32Arraystore 32-bit single-precisionfloatvalues.
 
 #### String
+
 A sequence of characters inUnicode format.
 
 #### StringName
+
 An immutable string that allows only one instance of each name. They are slower to
 create and may result in waiting for locks when multithreading. In exchange, they're
 very fast to compare, which makes them good candidates for dictionary keys.
 
 #### NodePath
+
 A pre-parsed path to a node or a node property.  It can be
 easily assigned to, and from, a String. They are useful to interact with
 the tree to get a node, or affecting properties like withTweens.
@@ -656,65 +708,81 @@ the tree to get a node, or affecting properties like withTweens.
 ### Vector built-in types
 
 #### Vector2
+
 2D vector type containingxandyfields. Can also be
 accessed as an array.
 
 #### Vector2i
+
 Same as a Vector2 but the components are integers. Useful for representing
 items in a 2D grid.
 
 #### Rect2
+
 2D Rectangle type containing two vectors fields:positionandsize.
 Also contains anendfield which isposition+size.
 
 #### Vector3
+
 3D vector type containingx,yandzfields. This can also
 be accessed as an array.
 
 #### Vector3i
+
 Same as Vector3 but the components are integers. Can be use for indexing items
 in a 3D grid.
 
 #### Transform2D
+
 3×2 matrix used for 2D transforms.
 
 #### Plane
+
 3D Plane type in normalized form that contains anormalvector field
 and adscalar distance.
 
 #### Quaternion
+
 Quaternion is a datatype used for representing a 3D rotation. It's
 useful for interpolating rotations.
 
 #### AABB
+
 Axis-aligned bounding box (or 3D box) contains 2 vectors fields:positionandsize. Also contains anendfield which isposition+size.
 
 #### Basis
+
 3x3 matrix used for 3D rotation and scale. It contains 3 vector fields
 (x,yandz) and can also be accessed as an array of 3D
 vectors.
 
 #### Transform3D
+
 3D Transform contains a Basis fieldbasisand a Vector3 fieldorigin.
 
 ### Engine built-in types
 
 #### Color
+
 Color data type containsr,g,b, andafields. It can
 also be accessed ash,s, andvfor hue/saturation/value.
 
 #### RID
+
 Resource ID (RID). Servers use generic RIDs to reference opaque data.
 
 #### Object
+
 Base class for anything that is not a built-in type.
 
 ### Container built-in types
 
 #### Array
+
 Generic sequence of arbitrary object types, including other arrays or dictionaries (see below).
 The array can resize dynamically. Arrays are indexed starting from index0.
 Negative indices count from the end.
+
 ```
 var arr = []
 arr = [1, 2, 3]
@@ -726,11 +794,13 @@ arr.append(4) # Array is now ["Hi!", 2, 3, 4].
 ```
 
 #### Typed arrays
+
 Godot also features support for typed arrays. On write operations, Godot checks that
 element values match the specified type, so the array cannot contain invalid values.
 The GDScript static analyzer takes typed arrays into account, however array methods likefront()andback()still have theVariantreturn type.
 Typed arrays have the syntaxArray[Type], whereTypecan be anyVarianttype,
 native or user class, or enum. Nested array types (likeArray[Array[int]]) are not supported.
+
 ```
 var a: Array[int]
 var b: Array[Node]
@@ -738,6 +808,7 @@ var c: Array[MyClass]
 var d: Array[MyEnum]
 var e: Array[Variant]
 ```
+
 ArrayandArray[Variant]are the same thing.
 Note
 Arrays are passed by reference, so the array element type is also an attribute of the in-memory
@@ -745,6 +816,7 @@ structure referenced by a variable in runtime. The static type of a variable res
 that it can reference to. Therefore, youcannotassign an array with a different element type,
 even if the type is a subtype of the required type.
 If you want toconverta typed array, you can create a new array and use theArray.assign()method:
+
 ```
 var a: Array[Node2D] = [Node2D.new()]
 
@@ -758,10 +830,12 @@ b = a
 # the `assign()` method copies the contents of the array, not the reference.
 b.assign(a)
 ```
+
 The only exception was made for theArray(Array[Variant]) type, for user convenience
 and compatibility with old code. However, operations on untyped arrays are considered unsafe.
 
 #### Packed arrays
+
 PackedArrays are generally faster to iterate on and modify compared to a typed
 Array of the same type (e.g. PackedInt64Array versus Array[int]) and consume
 less memory. In the worst case, they are expected to be as fast as an untyped
@@ -780,6 +854,7 @@ write and maintain (and potentially faster if your data requires such
 operations a lot). If the data you will store is of a known type (including
 your own defined classes), prefer to use a typed Array as it may yield better
 performance in iteration and modification compared to an untyped Array.
+
 - PackedByteArray: An array of bytes (integers from 0 to 255).
 PackedByteArray: An array of bytes (integers from 0 to 255).
 - PackedInt32Array: An array of 32-bit integers.
@@ -802,7 +877,9 @@ PackedVector4Array: An array ofVector4values.
 PackedColorArray: An array ofColorvalues.
 
 #### Dictionary
+
 Associative container which contains values referenced by unique keys.
+
 ```
 var d = {4: 5, "A key": "A value", 28: [1, 2, 3]}
 d["Hi!"] = 0
@@ -813,9 +890,11 @@ d = {
     "more_key": "Hello"
 }
 ```
+
 Lua-style table syntax is also supported. Lua-style uses=instead of:and doesn't use quotes to mark string keys (making for slightly less to write).
 However, keys written in this form can't start with a digit (like any GDScript
 identifier), and must be string literals.
+
 ```
 var d = {
     test22 = "value",
@@ -824,8 +903,10 @@ var d = {
     more_key = "Hello"
 }
 ```
+
 To add a key to an existing dictionary, access it like an existing key and
 assign to it:
+
 ```
 var d = {} # Create an empty Dictionary.
 d.waiting = 14 # Add String "waiting" as a key and assign the value 14 to it.
@@ -838,12 +919,14 @@ var test = 4
 # `d.test` is `d["test"]`.
 print(d[test])
 ```
+
 Note
 The bracket syntax can be used to access properties of anyObject, not just Dictionaries. Keep in mind it will cause a
 script error when attempting to index a non-existing property. To avoid
 this, use theObject.get()andObject.set()methods instead.
 
 #### Typed dictionaries
+
 Godot 4.4 added support for typed dictionaries. On write operations, Godot checks that
 element keys and values match the specified type, so the dictionary cannot contain invalid
 keys or values. The GDScript static analyzer takes typed dictionaries into account. However,
@@ -852,6 +935,7 @@ Typed dictionaries have the syntaxDictionary[KeyType,ValueType], whereKeyTypeand
 but you can useVariantto make either of them untyped.
 Nested typed collections (likeDictionary[String,Dictionary[String,int]])
 are not supported.
+
 ```
 var a: Dictionary[String, int]
 var b: Dictionary[String, Node]
@@ -862,47 +946,58 @@ var e: Dictionary[String, Variant]
 # Keys can be any type, boolean values.
 var f: Dictionary[Variant, bool]
 ```
+
 DictionaryandDictionary[Variant,Variant]are the same thing.
 
 #### Signal
+
 A signal is a message that can be emitted by an object to those who want to
 listen to it. The Signal type can be used for passing the emitter around.
 Signals are better used by getting them from actual objects, e.g.$Button.button_up.
 
 #### Callable
+
 Contains an object and a function, which is useful for passing functions as
 values (e.g. when connecting to signals).
 Getting a method as a member returns a callable.varx=$Sprite2D.rotatewill set the value ofxto a callable with$Sprite2Das the object androtateas the method.
 You can call it using thecallmethod:x.call(PI).
 
 ## Variables
+
 Variables can exist as class members or local to functions. They are
 created with thevarkeyword and may, optionally, be assigned a
 value upon initialization.
+
 ```
 var a # Data type is 'null' by default.
 var b = 5
 var c = 3.8
 var d = b + c # Variables are always initialized in direct order (see below).
 ```
+
 Variables can optionally have a type specification. When a type is specified,
 the variable will be forced to have always that same type, and trying to assign
 an incompatible value will raise an error.
 Types are specified in the variable declaration using a:(colon) symbol
 after the variable name, followed by the type.
+
 ```
 var my_vector2: Vector2
 var my_node: Node = Sprite2D.new()
 ```
+
 If the variable is initialized within the declaration, the type can be inferred, so
 it's possible to omit the type name:
+
 ```
 var my_vector2 := Vector2() # 'my_vector2' is of type 'Vector2'.
 var my_node := Sprite2D.new() # 'my_node' is of type 'Sprite2D'.
 ```
+
 Type inference is only possible if the assigned value has a defined type, otherwise
 it will raise an error.
 Valid types are:
+
 - Built-in types (Array, Vector2, int, String, etc.).
 Built-in types (Array, Vector2, int, String, etc.).
 - Engine classes (Node, Resource, RefCounted, etc.).
@@ -924,7 +1019,9 @@ You can turn off this check, or make it only a warning, by changing it in
 the project settings. SeeGDScript warning systemfor details.
 
 ### Initialization order
+
 Member variables are initialized in the following order:
+
 - Depending on the variable's static type, the variable is eithernull(untyped variables and objects) or has a default value of the type
 (0forint,falseforbool, etc.).
 Depending on the variable's static type, the variable is eithernull(untyped variables and objects) or has a default value of the type
@@ -950,6 +1047,7 @@ Warning
 You can specify a complex expression as a variable initializer, including function calls.
 Make sure the variables are initialized in the correct order, otherwise your values
 may be overwritten. For example:
+
 ```
 var a: int = proxy("a", 1)
 var b: int = proxy("b", 2)
@@ -963,20 +1061,26 @@ func proxy(key: String, value: int):
 func _init() -> void:
     print(_data)
 ```
+
 Will print:
+
 ```
 { "a": 1 }
 { "a": 1, "b": 2 }
 {  }
 ```
+
 To fix this, move the_datavariable definition above theadefinition
 or remove the empty dictionary assignment (={}).
 
 ### Static variables
+
 A class member variable can be declared static:
+
 ```
 static var a
 ```
+
 Static variables belong to the class, not instances. This means that static variables
 share values between multiple instances, unlike regular member variables.
 From inside a class, you can access static variables from any function, both static and non-static.
@@ -988,6 +1092,7 @@ Local variables cannot be static.
 The following example defines aPersonclass with a static variable namedmax_id.
 We increment themax_idin the_init()function. This makes it easy to keep track
 of the number ofPersoninstances in our game.
+
 ```
 # person.gd
 class_name Person
@@ -1002,8 +1107,10 @@ func _init(p_name):
     id = max_id
     name = p_name
 ```
+
 In this code, we create two instances of ourPersonclass and check that the class
 and every instance have the samemax_idvalue, because the variable is static and accessible to every instance.
+
 ```
 # test.gd
 extends Node
@@ -1019,7 +1126,9 @@ func _ready():
     print(person1.max_id) # 2
     print(person2.max_id) # 2
 ```
+
 Static variables can have type hints, setters and getters:
+
 ```
 static var balance: int = 0
 
@@ -1029,7 +1138,9 @@ static var debt: int:
     set(value):
         balance = -value
 ```
+
 A base class static variable can also be accessed via a child class:
+
 ```
 class A:
     static var x = 1
@@ -1044,12 +1155,14 @@ func _ready():
     B.x = 3
     prints(A.x, B.x) # 3 3
 ```
+
 Note
 When referencing a static variable from a tool script, the other script
 containing the static variablemustalso be a tool script.
 SeeRunning code in the editorfor details.
 
 ### @static_unloadannotation
+
 Since GDScript classes are resources, having static variables in a script prevents it from being unloaded
 even if there are no more instances of that class and no other references left. This can be important
 if static variables store large amounts of data or hold references to other project resources, such as scenes.
@@ -1058,37 +1171,47 @@ Warning
 Currently, due to a bug, scripts are never freed, even if@static_unloadannotation is used.
 Note that@static_unloadapplies to the entire script (including inner classes)
 and must be placed at the top of the script, beforeclass_nameandextends:
+
 ```
 @static_unload
 class_name MyNode
 extends Node
 ```
+
 See alsoStatic functionsandStatic constructor.
 
 ### Casting
+
 Values assigned to typed variables must have a compatible type. If it's needed to
 coerce a value to be of a certain type, in particular for object types, you can
 use the casting operatoras.
 Casting between object types results in the same object if the value is of the
 same type or a subtype of the cast type.
+
 ```
 var my_node2D: Node2D
 my_node2D = $Sprite2D as Node2D # Works since Sprite2D is a subtype of Node2D.
 ```
+
 If the value is not a subtype, the casting operation will result in anullvalue.
+
 ```
 var my_node2D: Node2D
 my_node2D = $Button as Node2D # Results in 'null' since a Button is not a subtype of Node2D.
 ```
+
 For built-in types, they will be forcibly converted if possible, otherwise the
 engine will raise an error.
+
 ```
 var my_int: int
 my_int = "123" as int # The string can be converted to int.
 my_int = Vector2() as int # A Vector2 can't be converted to int, this will cause an error.
 ```
+
 Casting is also useful to have better type-safe variables when interacting with
 the scene tree:
+
 ```
 # Will infer the variable to be of type Sprite2D.
 var my_sprite := $Character as Sprite2D
@@ -1098,10 +1221,12 @@ var my_sprite := $Character as Sprite2D
 ```
 
 ## Constants
+
 Constants are values you cannot change when the game is running.
 Their value must be known at compile-time. Using theconstkeyword allows you to give a constant value a name. Trying to assign a
 value to a constant after it's declared will give you an error.
 We recommend using constants whenever a value is not meant to change.
+
 ```
 const A = 5
 const B = Vector2(20, 20)
@@ -1112,19 +1237,24 @@ const F = sin(20) # 'sin()' can be used in constant expressions.
 const G = x + 20 # Invalid; this is not a constant expression!
 const H = A + 20 # Constant expression: 25 (`A` is a constant).
 ```
+
 Although the type of constants is inferred from the assigned value, it's also
 possible to add explicit type specification:
+
 ```
 const A: int = 5
 const B: Vector2 = Vector2()
 ```
+
 Assigning a value of an incompatible type will raise an error.
 You can also create constants inside a function, which is useful to name local
 magic values.
 
 ### Enums
+
 Enums are basically a shorthand for constants, and are pretty useful if you
 want to assign consecutive integers to some constant.
+
 ```
 enum {TILE_BRICK, TILE_FLOOR, TILE_SPIKE, TILE_TELEPORT}
 
@@ -1134,12 +1264,14 @@ const TILE_FLOOR = 1
 const TILE_SPIKE = 2
 const TILE_TELEPORT = 3
 ```
+
 If you pass a name to the enum, it will put all the keys inside a constantDictionaryof that name. This means all constant methods of
 a dictionary can also be used with a named enum.
 Important
 Keys in a named enum are not registered
 as global constants. They should be accessed prefixed
 by the enum's name (Name.KEY).
+
 ```
 enum State {STATE_IDLE, STATE_JUMP = 5, STATE_SHOOT}
 
@@ -1158,24 +1290,29 @@ func _ready():
     # prints '[0, 5, 6]'
     print(State.values())
 ```
+
 If not assigning a value to a key of an enum it will be assigned the previous value plus one,
 or0if it is the first entry in the enum. Multiple keys with the same value are allowed.
 
 ## Functions
+
 Functions always belong to aclass. The scope priority for
 variable look-up is: local → class member → global. Theselfvariable is
 always available and is provided as an option for accessing class members
 (seeself), but is not always required (and shouldnotbe sent as the
 function's first argument, unlike Python).
+
 ```
 func my_function(a, b):
     print(a)
     print(b)
     return a + b  # Return is optional; without it 'null' is returned.
 ```
+
 A function canreturnat any point. The default return value isnull.
 By default, all function parameters are required. You can make one or more
 parameters at the end optional by assigning a default value to them:
+
 ```
 # Since the last two parameters are optional, all these calls are valid:
 # - my_function(1)
@@ -1186,7 +1323,9 @@ func my_function(a_required, b_optional = 10, c_optional = 42):
     print(b_optional)
     print(c_optional)
 ```
+
 If a function contains only one line of code, it can be written on one line:
+
 ```
 func square(a): return a * a
 
@@ -1194,30 +1333,39 @@ func hello_world(): print("Hello World")
 
 func empty_function(): pass
 ```
+
 Functions can also have type specification for the arguments and for the return
 value. Types for arguments can be added in a similar way to variables:
+
 ```
 func my_function(a: int, b: String):
     pass
 ```
+
 If a function argument has a default value, it's possible to infer the type:
+
 ```
 func my_function(int_arg := 42, String_arg := "string"):
     pass
 ```
+
 The return type of the function can be specified after the arguments list using
 the arrow token (->):
+
 ```
 func my_int_function() -> int:
     return 0
 ```
+
 Functions that have a return typemustreturn a proper value. Setting the
 type asvoidmeans the function doesn't return anything. Void functions can
 return early with thereturnkeyword, but they can't return any value.
+
 ```
 func void_function() -> void:
     return # Can't return a value.
 ```
+
 Note
 Non-void functions mustalwaysreturn a value, so if your code has
 branching statements (such as anif/elseconstruct), all the
@@ -1226,9 +1374,11 @@ error because if the block is not executed, the function won't have a
 valid value to return.
 
 ### Referencing functions
+
 Functions are first-class values in terms of theCallableobject.
 Referencing a function by name without calling it will automatically generate the proper
 callable. This can be used to pass functions as arguments.
+
 ```
 func map(arr: Array, function: Callable) -> Array:
     var result = []
@@ -1244,47 +1394,62 @@ func _ready() -> void:
     var plus_one = map(my_array, add1)
     print(plus_one) # Prints `[2, 3, 4]`.
 ```
+
 Note
 Callablesmustbe called with thecall()method.
 You cannot use the()operator directly. This behavior is implemented to avoid
 performance issues on direct function calls.
 
 ### Lambda functions
+
 Lambda functions allow you to declare functions that do not belong to a class. Instead, aCallableobject is created and assigned to a variable directly.
 This can be useful to create callables to pass around without polluting the class scope.
+
 ```
 var lambda = func (x):
     print(x)
 ```
+
 To call the created lambda you can use thecall()method:
+
 ```
 lambda.call(42) # Prints `42`.
 ```
+
 Lambda functions can be named for debugging purposes (the name is displayed in the Debugger):
+
 ```
 var lambda = func my_lambda(x):
     print(x)
 ```
+
 You can specify type hints for lambda functions in the same way as for regular ones:
+
 ```
 var lambda := func (x: int) -> void:
     print(x)
 ```
+
 Note that if you want to return a value from a lambda function, an explicitreturnis required (you can't omitreturn):
+
 ```
 var lambda = func (x): return x ** 2
 print(lambda.call(2)) # Prints `4`.
 ```
+
 Lambda functions capture the local environment:
+
 ```
 var x = 42
 var lambda = func ():
     print(x) # Prints `42`.
 lambda.call()
 ```
+
 Warning
 Local variables are captured by value once, when the lambda is created.
 So they won't be updated in the lambda if reassigned in the outer function:
+
 ```
 var x = 42
 var lambda = func (): print(x)
@@ -1292,8 +1457,10 @@ lambda.call() # Prints `42`.
 x = "Hello"
 lambda.call() # Prints `42`.
 ```
+
 Also, a lambda cannot reassign an outer local variable. After exiting the lambda,
 the variable will be unchanged, because the lambda capture implicitly shadows it:
+
 ```
 var x = 42
 var lambda = func ():
@@ -1303,8 +1470,10 @@ var lambda = func ():
 lambda.call()
 print(x) # Prints `42`.
 ```
+
 However, if you use pass-by-reference data types (arrays, dictionaries, and objects),
 then the content changes are shared until you reassign the variable:
+
 ```
 var a = []
 var lambda = func ():
@@ -1317,19 +1486,24 @@ print(a) # Prints `[1]`.
 ```
 
 ### Static functions
+
 A function can be declared static. When a function is static, it has no access to the instance member variables orself.
 A static function has access to static variables. Also static functions are useful to make libraries of helper functions:
+
 ```
 static func sum2(a, b):
     return a + b
 ```
+
 Lambda functions cannot be declared static.
 See alsoStatic variablesandStatic constructor.
 
 ### Variadic functions
+
 A variadic function is a function that can take a variable number of arguments.
 Since Godot 4.5, GDScript supports variadic functions. To declare a variadic function,
 you need to use therest parameter, which collects all the excess arguments into an array.
+
 ```
 func my_func(a, b = 0, ...args):
     prints(a, b, args)
@@ -1341,10 +1515,12 @@ func _ready():
     my_func(1, 2, 3, 4)    # 1 2 [3, 4]
     my_func(1, 2, 3, 4, 5) # 1 2 [3, 4, 5]
 ```
+
 A function can have at most one rest parameter, which must be the last one in the parameter list.
 The rest parameter cannot have a default value. Static and lambda functions can also be variadic.
 Static typing works for variadic functions too. However, typed arrays are currently not supported
 as a static type of the rest parameter:
+
 ```
 # You cannot specify `...values: Array[int]`.
 func sum(...values: Array) -> int:
@@ -1354,11 +1530,13 @@ func sum(...values: Array) -> int:
         result += value
     return result
 ```
+
 Note
 Although you can declare functions as variadic using the rest parameter, unpacking parameters
 when calling a function usingspread syntaxthat exists in some languages ​​(JavaScript, PHP)
 is currently not supported in GDScript. However, you can usecallv()to call a function
 with an array of arguments:
+
 ```
 func test_func(...args):
     #log_data(...args) # This won't work.
@@ -1376,19 +1554,23 @@ func write_data(path, ...values):
 ```
 
 ### Abstract functions
+
 SeeAbstract classes and methods.
 
 ## Statements and control flow
+
 Statements are standard and can be assignments, function calls, control
 flow structures, etc (see below).;as a statement separator is
 entirely optional.
 
 ### Expressions
+
 Expressions are sequences of operators and their operands in orderly fashion. An expression by itself can be a
 statement too, though only calls are reasonable to use as statements since other expressions don't have side effects.
 Expressions return values that can be assigned to valid targets. Operands to some operator can be another
 expression. An assignment is not an expression and thus does not return any value.
 Here are some examples of expressions:
+
 ```
 2 + 2 # Binary operation.
 -5 # Unary operation.
@@ -1404,14 +1586,17 @@ do_something() # Function call.
 preload("res://icon.png") # Preload builtin function.
 self # Reference to current instance.
 ```
+
 Identifiers, attributes, and subscripts are valid assignment targets. Other expressions cannot be on the left side of
 an assignment.
 
 #### self
+
 selfcan be used to refer to the current instance and is often equivalent to
 directly referring to symbols available in the current script. However,selfalso allows you to access properties, methods, and other names that are defined
 dynamically (i.e. are expected to exist in subtypes of the current class, or are
 provided using_set()and/or_get()).
+
 ```
 extends Node
 
@@ -1426,6 +1611,7 @@ func _ready():
     # Checked at runtime, thus may work for descendant classes.
     self.my_func()
 ```
+
 Warning
 Beware that accessing members of child classes in the base class is often
 considered a bad practice, because this blurs the area of responsibility of
@@ -1434,9 +1620,11 @@ your game harder to reason about. Besides that, one can simply forget that
 the parent class had some expectations about it's descendants.
 
 ### if/else/elif
+
 Simple conditions are created by using theif/else/elifsyntax.
 Parenthesis around conditions are allowed, but not required. Given the
 nature of the tab-based indentation,elifcan be used instead ofelse/ifto maintain a level of indentation.
+
 ```
 if (expression):
     statement(s)
@@ -1445,22 +1633,28 @@ elif (expression):
 else:
     statement(s)
 ```
+
 Short statements can be written on the same line as the condition:
+
 ```
 if 1 + 1 == 2: return 2 + 2
 else:
     var x = 3 + 3
     return x
 ```
+
 Sometimes, you might want to assign a different initial value based on a
 boolean expression. In this case, ternary-if expressions come in handy:
+
 ```
 var x = (value) if (expression) else (value)
 y += 3 if y < 10 else -1
 ```
+
 Ternary-if expressions can be nested to handle more than 2 cases. When nesting
 ternary-if expressions, it is recommended to wrap the complete expression over
 multiple lines to preserve readability:
+
 ```
 var count = 0
 
@@ -1481,8 +1675,10 @@ var fruit_alt = \
         else "orange"
 print(fruit_alt)  # banana
 ```
+
 You may also wish to check if a value is contained within something. You can
 use anifstatement combined with theinoperator to accomplish this:
+
 ```
 # Check if a letter is in a string.
 var text = "abc"
@@ -1493,19 +1689,23 @@ if "varName" in get_parent(): print("varName is defined in parent!")
 ```
 
 ### while
+
 Simple loops are created by usingwhilesyntax. Loops can be broken
 usingbreakor continued usingcontinue(which skips to the next
 iteration of the loop without executing any further code in the current iteration):
+
 ```
 while (expression):
     statement(s)
 ```
 
 ### for
+
 To iterate through a range, such as an array or table, aforloop is
 used. When iterating over an array, the current array element is stored in
 the loop variable. When iterating over a dictionary, thekeyis stored
 in the loop variable.
+
 ```
 for x in [5, 7, 11]:
     statement # Loop iterates 3 times with 'x' as 5, then 7 and finally 11.
@@ -1539,15 +1739,19 @@ for i in 3:
 for i in 2.2:
     statement # Similar to range(ceil(2.2)).
 ```
+
 If you want to assign values on an array as it is being iterated through, it
 is best to useforiinarray.size().
+
 ```
 for i in array.size():
     array[i] = "Hello World"
 ```
+
 The loop variable is local to the for-loop and assigning to it will not change
 the value on the array. Objects passed by reference (such as nodes) can still
 be manipulated by calling methods on the loop variable.
+
 ```
 for string in string_array:
     string = "Hello World" # This has no effect
@@ -1557,6 +1761,7 @@ for node in node_array:
 ```
 
 ### match
+
 Amatchstatement is used to branch execution of a program.
 It's the equivalent of theswitchstatement found in many other languages, but offers some additional features.
 Warning
@@ -1564,6 +1769,7 @@ matchis more type strict than the==operator. For example1willnotmatch1.0. The on
 for example, the String"hello"is considered equal to the StringName&"hello".
 
 #### Basic syntax
+
 ```
 match <test value>:
     <pattern(s)>:
@@ -1574,6 +1780,7 @@ match <test value>:
 ```
 
 #### Crash-course for people who are familiar with switch statements
+
 - Replaceswitchwithmatch.
 Replaceswitchwithmatch.
 - Removecase.
@@ -1584,15 +1791,18 @@ Remove anybreaks.
 Changedefaultto a single underscore.
 
 #### Control flow
+
 The patterns are matched from top to bottom.
 If a pattern matches, the first corresponding block will be executed. After that, the execution continues below thematchstatement.
 Note
 The specialcontinuebehavior inmatchsupported in 3.x was removed in Godot 4.0.
 The following pattern types are available:
+
 - Literal patternMatches aliteral:matchx:1:print("We are number one!")2:print("Two are better than one!")"test":print("Oh snap! It's a string!")
 Literal pattern
 Matches aliteral:matchx:1:print("We are number one!")2:print("Two are better than one!")"test":print("Oh snap! It's a string!")
 Matches aliteral:
+
 ```
 match x:
     1:
@@ -1602,10 +1812,12 @@ match x:
     "test":
         print("Oh snap! It's a string!")
 ```
+
 - Expression patternMatches a constant expression, an identifier, or an attribute access (A.B):matchtypeof(x):TYPE_FLOAT:print("float")TYPE_STRING:print("text")TYPE_ARRAY:print("array")
 Expression pattern
 Matches a constant expression, an identifier, or an attribute access (A.B):matchtypeof(x):TYPE_FLOAT:print("float")TYPE_STRING:print("text")TYPE_ARRAY:print("array")
 Matches a constant expression, an identifier, or an attribute access (A.B):
+
 ```
 match typeof(x):
     TYPE_FLOAT:
@@ -1615,11 +1827,13 @@ match typeof(x):
     TYPE_ARRAY:
         print("array")
 ```
-- Wildcard patternThis pattern matches everything. It's written as a single underscore.It can be used as the equivalent of thedefaultin aswitchstatement in other languages:matchx:1:print("It's one!")2:print("It's one times two!")_:print("It's not 1 or 2. I don't care to be honest.")
+
+- Wildcard patternThis pattern matches everything. It's written as a single underscore.It can be used as the equivalent of thedefaultin aswitchstatement in other languages:matchx:1:print("It's one!")2:print("It's one times two!")*:print("It's not 1 or 2. I don't care to be honest.")
 Wildcard pattern
-This pattern matches everything. It's written as a single underscore.It can be used as the equivalent of thedefaultin aswitchstatement in other languages:matchx:1:print("It's one!")2:print("It's one times two!")_:print("It's not 1 or 2. I don't care to be honest.")
+This pattern matches everything. It's written as a single underscore.It can be used as the equivalent of thedefaultin aswitchstatement in other languages:matchx:1:print("It's one!")2:print("It's one times two!")*:print("It's not 1 or 2. I don't care to be honest.")
 This pattern matches everything. It's written as a single underscore.
 It can be used as the equivalent of thedefaultin aswitchstatement in other languages:
+
 ```
 match x:
     1:
@@ -1629,6 +1843,7 @@ match x:
     _:
         print("It's not 1 or 2. I don't care to be honest.")
 ```
+
 - Binding patternA binding pattern introduces a new variable. Like the wildcard pattern, it matches everything - and also gives that value a name.
 It's especially useful in array and dictionary patterns:matchx:1:print("It's one!")2:print("It's one times two!")varnew_var:print("It's not 1 or 2, it's ",new_var)
 Binding pattern
@@ -1636,6 +1851,7 @@ A binding pattern introduces a new variable. Like the wildcard pattern, it match
 It's especially useful in array and dictionary patterns:matchx:1:print("It's one!")2:print("It's one times two!")varnew_var:print("It's not 1 or 2, it's ",new_var)
 A binding pattern introduces a new variable. Like the wildcard pattern, it matches everything - and also gives that value a name.
 It's especially useful in array and dictionary patterns:
+
 ```
 match x:
     1:
@@ -1645,13 +1861,15 @@ match x:
     var new_var:
         print("It's not 1 or 2, it's ", new_var)
 ```
-- Array patternMatches an array. Every single element of the array pattern is a pattern itself, so you can nest them.The length of the array is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.Open-ended array: An array can be bigger than the pattern by making the last subpattern...Every subpattern has to be comma-separated.matchx:[]:print("Empty array")[1,3,"test",null]:print("Very specific array")[varstart,_,"test"]:print("First element is ",start,", and the last is\"test\"")[42,..]:print("Open ended array")
+
+- Array patternMatches an array. Every single element of the array pattern is a pattern itself, so you can nest them.The length of the array is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.Open-ended array: An array can be bigger than the pattern by making the last subpattern...Every subpattern has to be comma-separated.matchx:[]:print["Empty array"](1,3,"test",null):print["Very specific array"](varstart,*,"test"):print["First element is ",start,", and the last is\"test\""](42,..):print("Open ended array")
 Array pattern
-Matches an array. Every single element of the array pattern is a pattern itself, so you can nest them.The length of the array is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.Open-ended array: An array can be bigger than the pattern by making the last subpattern...Every subpattern has to be comma-separated.matchx:[]:print("Empty array")[1,3,"test",null]:print("Very specific array")[varstart,_,"test"]:print("First element is ",start,", and the last is\"test\"")[42,..]:print("Open ended array")
+Matches an array. Every single element of the array pattern is a pattern itself, so you can nest them.The length of the array is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.Open-ended array: An array can be bigger than the pattern by making the last subpattern...Every subpattern has to be comma-separated.matchx:[]:print["Empty array"](1,3,"test",null):print["Very specific array"](varstart,*,"test"):print["First element is ",start,", and the last is\"test\""](42,..):print("Open ended array")
 Matches an array. Every single element of the array pattern is a pattern itself, so you can nest them.
 The length of the array is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.
 Open-ended array: An array can be bigger than the pattern by making the last subpattern...
 Every subpattern has to be comma-separated.
+
 ```
 match x:
     []:
@@ -1663,6 +1881,7 @@ match x:
     [42, ..]:
         print("Open ended array")
 ```
+
 - Dictionary patternWorks in the same way as the array pattern. Every key has to be a constant pattern.The size of the dictionary is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.Open-ended dictionary: A dictionary can be bigger than the pattern by making the last subpattern...Every subpattern has to be comma separated.If you don't specify a value, then only the existence of the key is checked.A value pattern is separated from the key pattern with a:.matchx:{}:print("Empty dict"){"name":"Dennis"}:print("The name is Dennis"){"name":"Dennis","age":varage}:print("Dennis is ",age," years old."){"name","age"}:print("Has a name and an age, but it's not Dennis :("){"key":"godotisawesome",..}:print("I only checked for one entry and ignored the rest")
 Dictionary pattern
 Works in the same way as the array pattern. Every key has to be a constant pattern.The size of the dictionary is tested first, it has to be the same size as the pattern, otherwise the pattern doesn't match.Open-ended dictionary: A dictionary can be bigger than the pattern by making the last subpattern...Every subpattern has to be comma separated.If you don't specify a value, then only the existence of the key is checked.A value pattern is separated from the key pattern with a:.matchx:{}:print("Empty dict"){"name":"Dennis"}:print("The name is Dennis"){"name":"Dennis","age":varage}:print("Dennis is ",age," years old."){"name","age"}:print("Has a name and an age, but it's not Dennis :("){"key":"godotisawesome",..}:print("I only checked for one entry and ignored the rest")
@@ -1672,6 +1891,7 @@ Open-ended dictionary: A dictionary can be bigger than the pattern by making the
 Every subpattern has to be comma separated.
 If you don't specify a value, then only the existence of the key is checked.
 A value pattern is separated from the key pattern with a:.
+
 ```
 match x:
     {}:
@@ -1685,10 +1905,12 @@ match x:
     {"key": "godotisawesome", ..}:
         print("I only checked for one entry and ignored the rest")
 ```
+
 - Multiple patternsYou can also specify multiple patterns separated by a comma. These patterns aren't allowed to have any bindings in them.matchx:1,2,3:print("It's 1 - 3")"Sword","Splash potion","Fist":print("Yep, you've taken damage")
 Multiple patterns
 You can also specify multiple patterns separated by a comma. These patterns aren't allowed to have any bindings in them.matchx:1,2,3:print("It's 1 - 3")"Sword","Splash potion","Fist":print("Yep, you've taken damage")
 You can also specify multiple patterns separated by a comma. These patterns aren't allowed to have any bindings in them.
+
 ```
 match x:
     1, 2, 3:
@@ -1698,12 +1920,14 @@ match x:
 ```
 
 #### Pattern guards
+
 Apattern guardis an optional condition that follows the pattern list
 and allows you to make additional checks before choosing amatchbranch.
 Unlike a pattern, a pattern guard can be an arbitrary expression.
 Only one branch can be executed permatch. Once a branch is chosen, the rest are not checked.
 If you want to use the same pattern for multiple branches or to prevent choosing a branch with too general pattern,
 you can specify a pattern guard after the list of patterns with thewhenkeyword:
+
 ```
 match point:
     [0, 0]:
@@ -1719,6 +1943,7 @@ match point:
     [var x, var y]:
         print("Point (%s, %s)" % [x, y])
 ```
+
 - If there is no matching pattern for the current branch, the pattern guard
 isnotevaluated and the patterns of the next branch are checked.
 If there is no matching pattern for the current branch, the pattern guard
@@ -1731,9 +1956,11 @@ If it's true, then the body of the branch is executed andmatchends.
 If it's false, then the patterns of the next branch are checked.
 
 ## Classes
+
 By default, all script files are unnamed classes. In this case, you can only
 reference them using the file's path, using either a relative or an absolute
 path. For example, if you name a script filecharacter.gd:
+
 ```
 # Inherit from 'character.gd'.
 
@@ -1746,10 +1973,12 @@ var character_node = Character.new()
 ```
 
 ### Registering named classes
+
 You can give your class a name to register it as a new type in Godot's
 editor. For that, you use theclass_namekeyword. You can optionally use
 the@iconannotation with a path to an image, to use it as an icon. Your
 class will then appear with its new icon in the editor:
+
 ```
 # item.gd
 
@@ -1757,10 +1986,12 @@ class will then appear with its new icon in the editor:
 class_name Item
 extends Node
 ```
+
 SVG images that are used as custom node icons should have theEditor > Scale With Editor ScaleandEditor > Convert Icons With Editor Themeimport optionsenabled. This allows
 icons to follow the editor's scale and theming settings if the icons are designed with
 the same color palette as Godot's own icons.
 Here's a class file example:
+
 ```
 # Saved as a file named 'character.gd'.
 
@@ -1776,18 +2007,23 @@ func print_this_script_three_times():
     print(ResourceLoader.load("res://character.gd"))
     print(Character)
 ```
+
 If you want to useextendstoo, you can keep both on the same line:
+
 ```
 class_name MyNode extends Node
 ```
+
 Named classes are globally registered, which means they become available to use
 in other scripts without the need toloadorpreloadthem:
+
 ```
 var player
 
 func _ready():
     player = Character.new()
 ```
+
 Note
 Godot initializes non-static variables every time you create an instance,
 and this includes arrays and dictionaries. This is in the spirit of thread safety,
@@ -1800,6 +2036,7 @@ automatically hidden by the editor windows along with the built-in editor nodes 
 by the Godot editor.
 
 ### Abstract classes and methods
+
 Since Godot 4.5, you can define abstract classes and methods using
 the@abstractannotation.
 An abstract class is a class that cannot be instantiated directly.
@@ -1820,6 +2057,7 @@ For example, you could have an abstract class calledShapethat defines
 an abstract method calleddraw(). You can then create subclasses likeCircleandSquarethat implement thedraw()method in their own way.
 This allows you to define a commoninterfacefor all shapes without
 having to implement all the details in the abstract class itself:
+
 ```
 @abstract class Shape:
     @abstract func draw()
@@ -1834,9 +2072,11 @@ class Square extends Shape:
     func draw():
         print("Drawing a square.")
 ```
+
 Both inner classes and classes created usingclass_namecan be abstract.
 This example creates two abstract classes, one of which is a subclass of another
 abstract class:
+
 ```
 @abstract
 class_name AbstractClass
@@ -1853,22 +2093,28 @@ class ConcreteClass extends AbstractSubClass:
     func _ready():
         print("Concrete class ready.")
 ```
+
 Warning
 Since an abstract class cannot be instantiated, it is not possible to attach
 an abstract class to a node. If you attempt to do so, the engine will print
 an error when running the scene:
+
 ```
 Cannot set object script. Script '<path to script>' should not be abstract.
 ```
+
 Unnamed classes can also be defined as abstract, the@abstractannotation
 must precedeextends:
+
 ```
 @abstract
 extends Node
 ```
 
 ### Inheritance
+
 A class (stored as a file) can inherit from:
+
 - A global class.
 A global class.
 - Another class file.
@@ -1877,6 +2123,7 @@ Another class file.
 An inner class inside another class file.
 Multiple inheritance is not allowed.
 Inheritance uses theextendskeyword:
+
 ```
 # Inherit/extend a globally available class.
 extends SomeClass
@@ -1887,10 +2134,12 @@ extends "somefile.gd"
 # Inherit/extend an inner class in another file.
 extends "somefile.gd".SomeInnerClass
 ```
+
 Note
 If inheritance is not explicitly defined, the class will default to inheritingRefCounted.
 To check if a given instance inherits from a given class,
 theiskeyword can be used:
+
 ```
 # Cache the enemy class.
 const Enemy = preload("enemy.gd")
@@ -1901,20 +2150,26 @@ const Enemy = preload("enemy.gd")
 if entity is Enemy:
     entity.apply_damage()
 ```
+
 To call a function in asuper class(i.e. oneextend-ed in your current
 class), use thesuperkeyword:
+
 ```
 super(args)
 ```
+
 This is especially useful because functions in extending classes replace
 functions with the same name in their super classes. If you still want to
 call them, you can usesuper:
+
 ```
 func some_func(x):
     super(x) # Calls the same function on the super class.
 ```
+
 If you need to call a different function from the super class, you can specify
 the function name with the attribute operator:
+
 ```
 func overriding():
     return 0 # This overrides the method in the base class.
@@ -1922,6 +2177,7 @@ func overriding():
 func dont_override():
     return super.overriding() # This calls the method as defined in the base class.
 ```
+
 Warning
 One of the common misconceptions is trying to overridenon-virtualengine methods
 such asget_class(),queue_free(), etc. This is not supported for technical reasons.
@@ -1936,16 +2192,20 @@ These methods are specifically for customizing engine behavior and can be overri
 Signals and notifications can also be useful for these purposes.
 
 ### Class constructor
+
 The class constructor, called on class instantiation, is named_init. If you
 want to call the base class constructor, you can also use thesupersyntax.
 Note that every class has an implicit constructor that is always called
 (defining the default values of class variables).superis used to call the
 explicit constructor:
+
 ```
 func _init(arg):
    super("some_default", arg) # Call the custom base constructor.
 ```
+
 This is better explained through examples. Consider this scenario:
+
 ```
 # state.gd (inherited class).
 var entity = null
@@ -1965,7 +2225,9 @@ func _init(e = null, m = null):
     # Do something with 'e'.
     message = m
 ```
+
 There are a few things to keep in mind here:
+
 - If the inherited class (state.gd) defines an_initconstructor that takes
 arguments (ein this case), then the inheriting class (idle.gd)mustdefine_initas well and pass appropriate parameters to_initfromstate.gd.
 If the inherited class (state.gd) defines an_initconstructor that takes
@@ -1982,6 +2244,7 @@ can pass expressions to the base constructor as well, not just variables, e.g.:
 Ifidle.gd's_initconstructor takes 0 arguments, it still needs to pass some value
 to thestate.gdbase class, even if it does nothing. This brings us to the fact that you
 can pass expressions to the base constructor as well, not just variables, e.g.:
+
 ```
 # idle.gd
 
@@ -1990,18 +2253,23 @@ func _init():
 ```
 
 ### Static constructor
+
 A static constructor is a static function_static_initthat is called automatically
 when the class is loaded, after the static variables have been initialized:
+
 ```
 static var my_static_var = 1
 
 static func _static_init():
     my_static_var = 2
 ```
+
 A static constructor cannot take arguments and must not return any value.
 
 ### Inner classes
+
 A class file can contain inner classes. Inner classes are defined using theclasskeyword. They are instanced using theClassName.new()function.
+
 ```
 # Inside a class file.
 
@@ -2019,10 +2287,12 @@ func _init():
 ```
 
 ### Classes as resources
+
 Classes stored as files are treated asGDScripts. They
 must be loaded from disk to access them in other classes. This is done using
 either theloadorpreloadfunctions (see below). Instancing of a loaded
 class resource is done by calling thenewfunction on the class object:
+
 ```
 # Load the class resource when calling load().
 var MyClass = load("myclass.gd")
@@ -2036,16 +2306,19 @@ func _init():
 ```
 
 ## Exports
+
 Note
 Documentation about exports has been moved toGDScript exported properties.
 
 ## Properties (setters and getters)
+
 Sometimes, you want a class' member variable to do more than just hold data and actually perform
 some validation or computation whenever its value changes. It may also be desired to
 encapsulate its access in some way.
 For this, GDScript provides a special syntax to define properties using thesetandgetkeywords after a variable declaration. Then you can define a code block that will be executed
 when the variable is accessed or assigned.
 Example:
+
 ```
 var milliseconds: int = 0
 var seconds: int:
@@ -2054,6 +2327,7 @@ var seconds: int:
     set(value):
         milliseconds = value * 1000
 ```
+
 Note
 Unlikesetgetin previous Godot versions,setandgetmethods arealwayscalled (except as noted below),
 even when accessed inside the same class (with or without prefixing withself.). This makes the behavior
@@ -2061,16 +2335,21 @@ consistent. If you need direct access to the value, use another variable for dir
 code use that name.
 
 ### Alternative syntax
+
 Also there is another notation to use existing class functions if you want to split the code from the variable declaration
 or you need to reuse the code across multiple properties (but you can't distinguish which property the setter/getter is being called for):
+
 ```
 var my_prop:
     get = get_my_prop, set = set_my_prop
 ```
+
 This can also be done in the same line:
+
 ```
 var my_prop: get = get_my_prop, set = set_my_prop
 ```
+
 The setter and getter must use the same notation, mixing styles for the same variable is not allowed.
 Note
 You cannot specify type hints forinlinesetters and getters. This is done on purpose to reduce the boilerplate.
@@ -2078,10 +2357,12 @@ If the variable is typed, then the setter's argument is automatically of the sam
 Separated setter/getter functions can have type hints, and the type must match the variable's type or be a wider type.
 
 ### When setter/getter is not called
+
 When a variable is initialized, the value of the initializer will be written directly to the variable.
 Including if the@onreadyannotation is applied to the variable.
 Using the variable's name to set it inside its own setter or to get it inside its own getter will directly access the underlying member,
 so it won't generate infinite recursion and saves you from explicitly declaring another variable:
+
 ```
 signal changed(new_value)
 var warns_when_changed = "some value":
@@ -2091,16 +2372,20 @@ var warns_when_changed = "some value":
         changed.emit(value)
         warns_when_changed = value
 ```
+
 This also applies to the alternative syntax:
+
 ```
 var my_prop: set = set_my_prop
 
 func set_my_prop(value):
     my_prop = value # No infinite recursion.
 ```
+
 Warning
 The exception doesnotpropagate to other functions called in the setter/getter.
 For example, the following codewillcause an infinite recursion:
+
 ```
 var my_prop:
     set(value):
@@ -2111,11 +2396,13 @@ func set_my_prop(value):
 ```
 
 ## Tool mode
+
 By default, scripts don't run inside the editor and only the exported
 properties can be changed. In some cases, it is desired that they do run
 inside the editor (as long as they don't execute game code or manually
 avoid doing so). For this, the@toolannotation exists and must be
 placed at the top of the file:
+
 ```
 @tool
 extends Button
@@ -2123,6 +2410,7 @@ extends Button
 func _ready():
     print("Hello")
 ```
+
 SeeRunning code in the editorfor more information.
 Warning
 Be cautious when freeing nodes withqueue_free()orfree()in a tool script (especially the script's owner itself). As tool
@@ -2130,6 +2418,7 @@ scripts run their code in the editor, misusing them may lead to
 crashing the editor.
 
 ## Memory management
+
 Godot implements reference counting to free certain instances that are no longer
 used, instead of a garbage collector, or requiring purely manual management.
 Any instance of theRefCountedclass (or any class that inherits
@@ -2142,6 +2431,7 @@ all of its children will also recursively be deleted.
 To avoid reference cycles that can't be freed, aWeakReffunction is provided for creating weak references, which allow access
 to the object without preventing aRefCountedfrom freeing.
 Here is an example:
+
 ```
 extends Node
 
@@ -2160,18 +2450,22 @@ func _this_is_called_later():
     if my_file:
         my_file.close()
 ```
+
 Alternatively, when not using references, theis_instance_valid(instance)can be used to check if an object has been
 freed.
 
 ## Signals
+
 Signals are a tool to emit messages from an object that other objects can react
 to. To create custom signals for a class, use thesignalkeyword.
+
 ```
 extends Node
 
 # A signal named health_depleted.
 signal health_depleted
 ```
+
 Note
 Signals are aCallbackmechanism. They also fill the role of Observers, a common programming
 pattern. For more information, read theObserver tutorialin the
@@ -2180,6 +2474,7 @@ You can connect these signals to methods the same way you connect built-in
 signals of nodes likeButtonorRigidBody3D.
 In the example below, we connect thehealth_depletedsignal from aCharacternode to aGamenode. When theCharacternode emits the
 signal, the game node's_on_character_health_depletedis called:
+
 ```
 # game.gd
 
@@ -2190,6 +2485,7 @@ func _ready():
 func _on_character_health_depleted():
     get_tree().reload_current_scene()
 ```
+
 You can emit as many arguments as you want along with a signal.
 Here is an example where this is useful. Let's say we want a life bar on screen
 to react to health changes with an animation, but we want to keep the user
@@ -2198,6 +2494,7 @@ In ourcharacter.gdscript, we define ahealth_changedsignal and emit
 it withSignal.emit(), and from
 aGamenode higher up our scene tree, we connect it to theLifebarusing
 theSignal.connect()method:
+
 ```
 # character.gd
 
@@ -2213,6 +2510,7 @@ func take_damage(amount):
     health_changed.emit(old_health, health)
 ...
 ```
+
 ```
 # lifebar.gd
 
@@ -2231,8 +2529,10 @@ func _on_Character_health_changed(old_value, new_value):
     progress_bar.animate(old_value, new_value)
 ...
 ```
+
 In theGamenode, we get both theCharacterandLifebarnodes, then
 connect the character, that emits the signal, to the receiver, theLifebarnode in this case.
+
 ```
 # game.gd
 
@@ -2242,13 +2542,16 @@ func _ready():
 
     character_node.health_changed.connect(lifebar_node._on_Character_health_changed)
 ```
+
 This allows theLifebarto react to health changes without coupling it to
 theCharacternode.
 You can write optional argument names in parentheses after the signal's definition:
+
 ```
 # Defining a signal that forwards two arguments.
 signal health_changed(old_value, new_value)
 ```
+
 These arguments show up in the editor's node dock, and Godot can use them to
 generate callback functions for you. However, you can still emit any number of
 arguments when you emit signals; it's up to you to emit the correct values.
@@ -2262,6 +2565,7 @@ Building on the example above, let's say we want to display a log of the damage
 taken by each character on the screen, likePlayer1took22damage.. Thehealth_changedsignal doesn't give us the name of the character that took
 damage. So when we connect the signal to the in-game console, we can add the
 character's name using the bind method:
+
 ```
 # game.gd
 
@@ -2271,7 +2575,9 @@ func _ready():
 
     character_node.health_changed.connect(battle_log_node._on_Character_health_changed.bind(character_node.name))
 ```
+
 OurBattleLognode receives each bound element as an extra argument:
+
 ```
 # battle_log.gd
 
@@ -2284,10 +2590,12 @@ func _on_Character_health_changed(old_value, new_value, character_name):
 ```
 
 ### Awaiting signals or coroutines
+
 Theawaitkeyword can be used to createcoroutineswhich wait until a signal is emitted before continuing execution. Using theawaitkeyword with a signal or a
 call to a function that is also a coroutine will immediately return the control to the caller. When the signal is
 emitted (or the called coroutine finishes), it will resume execution from the point on where it stopped.
 For example, to stop execution until the user presses a button, you can do something like this:
+
 ```
 func wait_confirmation():
     print("Prompting user")
@@ -2295,7 +2603,9 @@ func wait_confirmation():
     print("User confirmed")
     return true
 ```
+
 In this case, thewait_confirmationbecomes a coroutine, which means that the caller also needs to await it:
+
 ```
 func request_confirmation():
     print("Will ask the user")
@@ -2305,20 +2615,26 @@ func request_confirmation():
     else:
         print("User cancelled")
 ```
+
 Note that requesting a coroutine's return value withoutawaitwill trigger an error:
+
 ```
 func wrong():
     var confirmed = wait_confirmation() # Will give an error.
 ```
+
 However, if you don't depend on the result, you can just call it asynchronously, which won't stop execution and won't
 make the current function a coroutine:
+
 ```
 func okay():
     wait_confirmation()
     print("This will be printed immediately, before the user press the button.")
 ```
+
 If you use await with an expression that isn't a signal nor a coroutine, the value will be returned immediately and the
 function won't give the control back to the caller:
+
 ```
 func no_wait():
     var x = await get_five()
@@ -2327,7 +2643,9 @@ func no_wait():
 func get_five():
     return 5
 ```
+
 This also means that returning a signal from a function that isn't a coroutine will make the caller await that signal:
+
 ```
 func get_signal():
     return $Button.button_up
@@ -2336,6 +2654,7 @@ func wait_button():
     await get_signal()
     print("Button was pressed")
 ```
+
 Note
 Unlikeyieldin previous Godot versions, you cannot obtain the function state object.
 This is done to ensure type safety.
@@ -2343,22 +2662,27 @@ With this type safety in place, a function cannot say that it returns anintwhile
 during runtime.
 
 ## Assert keyword
+
 Theassertkeyword can be used to check conditions in debug builds. These
 assertions are ignored in non-debug builds. This means that the expression
 passed as argument won't be evaluated in a project exported in release mode.
 Due to this, assertions mustnotcontain expressions that have
 side effects. Otherwise, the behavior of the script would vary
 depending on whether the project is run in a debug build.
+
 ```
 # Check that 'i' is 0. If 'i' is not 0, an assertion error will occur.
 assert(i == 0)
 ```
+
 When running a project from the editor, the project will be paused if an
 assertion error occurs.
 You can optionally pass a custom error message to be shown if the assertion fails:
+
 ```
 assert(enemy_power < 256, "Enemy is too powerful!")
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

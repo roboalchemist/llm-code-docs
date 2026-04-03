@@ -1,10 +1,12 @@
 # 3D antialiasing in English
 
 # 3D antialiasing
+
 See also
 Godot also supports antialiasing in 2D rendering. This is covered on the2D antialiasingpage.
 
 ## Introduction
+
 Due to their limited resolution, scenes rendered in 3D can exhibit aliasing
 artifacts. These artifacts commonly manifest as a "staircase" effect on surface
 edges (edge aliasing) and as flickering and/or sparkles on reflective surfaces
@@ -19,6 +21,7 @@ See also
 You can compare antialiasing algorithms in action using the3D Antialiasing demo project.
 
 ## Multisample antialiasing (MSAA)
+
 This is available in all renderers.
 This technique is the "historical" way of dealing with aliasing. MSAA is very
 effective on geometry edges (especially at higher levels). MSAA does not
@@ -44,6 +47,7 @@ Comparison between no antialiasing (left) and various MSAA levels (right).
 Note that alpha antialiasing is not used here:
 
 ## Temporal antialiasing (TAA)
+
 This is only available in the Forward+ renderer, not the Mobile or Compatibility
 renderers.
 Temporal antialiasing works byconvergingthe result of previously rendered
@@ -64,6 +68,7 @@ Temporal antialiasing can be enabled in the Project Settings by changing the val
 Comparison between no antialiasing (left) and TAA (right):
 
 ## AMD FidelityFX Super Resolution 2.2 (FSR2)
+
 This is only available in the Forward+ renderer, not the Mobile or Compatibility
 renderers.
 Since Godot 4.2, there is built-in support forAMD FidelityFX Super Resolution2.2. This is anupscaling methodcompatible with all recent GPUs from any vendor. FSR2 is normally designed to
@@ -85,6 +90,7 @@ values result in less sharpening). For the purposes of comparison, FSR
 sharpening has been disabled by setting it to2.0on the above screenshot.
 
 ## Fast approximate antialiasing (FXAA)
+
 This is only available in the Forward+ and Mobile renderers, not the Compatibility
 renderer.
 Fast approximate antialiasing is a post-processing antialiasing solution. It is
@@ -101,6 +107,7 @@ FXAA can be enabled in the Project Settings by changing the value of theRenderin
 Comparison between no antialiasing (left) and FXAA (right):
 
 ## Sub-pixel Morphological Antialiasing (SMAA 1x)
+
 This is only available in the Forward+ and Mobile renderers, not the Compatibility
 renderer.
 Sub-pixel Morphological Antialiasing is a post-processing antialiasing solution.
@@ -115,6 +122,7 @@ SMAA 1x can be enabled in the Project Settings by changing the value of theRende
 Comparison between no antialiasing (left) and SMAA 1x (right):
 
 ## Supersample antialiasing (SSAA)
+
 This is available in all renderers.
 Supersampling provides the highest quality of antialiasing possible, but it's
 also the most expensive. It works by shading every pixel in the scene multiple
@@ -140,6 +148,7 @@ the resolution scale past a certain value will cause a heavy slowdown (or
 even a crash) due to running out of VRAM.
 
 ## Screen-space roughness limiter
+
 This is only available in the Forward+ and Mobile renderers, not the Compatibility
 renderer.
 This is not an edge antialiasing method, but it is a way of reducing specular
@@ -152,6 +161,7 @@ if your project isn't affected by specular aliasing much. You can disable it
 with theRendering > Quality > Screen Space Filters > Screen Space Roughness Limiterproject setting.
 
 ## Texture roughness limiter on import
+
 Like the screen-space roughness limiter, this is not an edge antialiasing
 method, but it is a way of reducing specular aliasing in 3D.
 Roughness limiting on import works by specifying a normal map to use as a guide
@@ -164,6 +174,7 @@ only helps reduce specular aliasing within textures, not the aliasing that
 occurs on geometry edges on detailed meshes.
 
 ## Which antialiasing technique should I use?
+
 There is no "one size fits all" antialiasing technique.Since antialiasing is
 often demanding on the GPU or can introduce unwanted blurriness, you'll want to
 add a setting to allow players to disable antialiasing.
@@ -285,4 +296,5 @@ SSAA has some blur from bilinear downscaling. This can be mitigated by
 using an integer scaling factor of2.0.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

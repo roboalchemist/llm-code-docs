@@ -1,15 +1,19 @@
 # EditorInterface in English
 
 # EditorInterface
+
 Inherits:Object
 Godot editor's interface.
 
 ## Description
+
 EditorInterfacegives you control over Godot editor's window. It allows customizing the window, saving and (re-)loading scenes, rendering mesh previews, inspecting and editing resources and objects, and provides access toEditorSettings,EditorFileSystem,EditorResourcePreview,ScriptEditor, the editor viewport, and information about scenes.
 Note:This class shouldn't be instantiated directly. Instead, access the singleton directly by its name.
+
 ```
 var editor_settings = EditorInterface.get_editor_settings()
 ```
+
 ```
 // In C# you can access it via the static Singleton property.
 EditorSettings settings = EditorInterface.Singleton.GetEditorSettings();
@@ -230,7 +234,9 @@ void
 stop_playing_scene()
 
 ## Property Descriptions
+
 booldistraction_free_mode🔗
+
 - voidset_distraction_free_mode(value:bool)
 voidset_distraction_free_mode(value:bool)
 - boolis_distraction_free_mode_enabled()
@@ -244,6 +250,7 @@ boolis_movie_maker_enabled()
 Iftrue, the Movie Maker mode is enabled in the editor. SeeMovieWriterfor more information.
 
 ## Method Descriptions
+
 voidadd_root_node(node:Node)🔗
 Makesnoderoot of the currently opened scene. Only works if the scene is empty. If thenodeis a scene instance, an inheriting scene will be created.
 Errorclose_scene()🔗
@@ -327,6 +334,7 @@ voidinspect_object(object:Object, for_property:String= "", inspector_only:bool= 
 Shows the given property on the givenobjectin the editor's Inspector dock. Ifinspector_onlyistrue, plugins will not attempt to editobject.
 boolis_multi_window_enabled()const🔗
 Returnstrueif multiple window support is enabled in the editor. Multiple window support is enabled ifallof these statements are true:
+
 - EditorSettings.interface/multi_window/enableistrue.
 EditorSettings.interface/multi_window/enableistrue.
 - EditorSettings.interface/editor/single_window_modeisfalse.
@@ -379,6 +387,7 @@ Pops up an editor dialog for selecting a method fromobject. Thecallbackmust take
 voidpopup_node_selector(callback:Callable, valid_types:Array[StringName] = [], current_value:Node= null)🔗
 Pops up an editor dialog for selecting aNodefrom the edited scene. Thecallbackmust take a single argument of typeNodePath. It is called on the selectedNodePathor the empty path^""if the dialog is canceled. Ifvalid_typesis provided, the dialog will only show Nodes that match one of the listed Node types. Ifcurrent_valueis provided, the Node will be automatically selected in the tree, if it exists.
 Example:Display the node selection dialog as soon as this node is added to the tree for the first time:
+
 ```
 func _ready():
     if Engine.is_editor_hint():
@@ -390,8 +399,10 @@ func _on_node_selected(node_path):
     else:
         print("selected ", node_path)
 ```
+
 voidpopup_property_selector(object:Object, callback:Callable, type_filter:PackedInt32Array= PackedInt32Array(), current_value:String= "")🔗
 Pops up an editor dialog for selecting properties fromobject. Thecallbackmust take a single argument of typeNodePath. It is called on the selected property path (seeNodePath.get_as_property_path()) or the empty path^""if the dialog is canceled. Iftype_filteris provided, the dialog will only show properties that match one of the listedVariant.Typevalues. Ifcurrent_valueis provided, the property will be selected automatically in the property list, if it exists.
+
 ```
 func _ready():
     if Engine.is_editor_hint():
@@ -403,6 +414,7 @@ func _on_property_selected(property_path):
     else:
         print("selected ", property_path)
 ```
+
 voidpopup_quick_open(callback:Callable, base_types:Array[StringName] = [])🔗
 Pops up an editor dialog for quick selecting a resource file. Thecallbackmust take a single argument of typeStringwhich will contain the path of the selected resource or be empty if the dialog is canceled. Ifbase_typesis provided, the dialog will only show resources that match these types. Only types deriving fromResourceare supported.
 voidreload_scene_from_path(scene_filepath:String)🔗
@@ -433,4 +445,5 @@ voidstop_playing_scene()🔗
 Stops the scene that is currently playing.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

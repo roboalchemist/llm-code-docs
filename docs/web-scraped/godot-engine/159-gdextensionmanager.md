@@ -1,14 +1,17 @@
 # GDExtensionManager
 
 # GDExtensionManager
+
 Inherits:Object
 Provides access to GDExtension functionality.
 
 ## Description
+
 The GDExtensionManager loads, initializes, and keeps track of all availableGDExtensionlibraries in the project.
 Note:Do not worry about GDExtension unless you know what you are doing.
 
 ## Tutorials
+
 - GDExtension overview
 GDExtension overview
 - GDExtension example in C++
@@ -41,6 +44,7 @@ LoadStatus
 unload_extension(path:String)
 
 ## Signals
+
 extension_loaded(extension:GDExtension)🔗
 Emitted after the editor has finished loading a new extension.
 Note:This signal is only emitted in editor builds.
@@ -51,6 +55,7 @@ extensions_reloaded()🔗
 Emitted after the editor has finished reloading one or more extensions.
 
 ## Enumerations
+
 enumLoadStatus:🔗
 LoadStatusLOAD_STATUS_OK=0
 The extension has loaded successfully.
@@ -64,6 +69,7 @@ LoadStatusLOAD_STATUS_NEEDS_RESTART=4
 The extension requires the application to restart to fully load.
 
 ## Method Descriptions
+
 GDExtensionget_extension(path:String)🔗
 Returns theGDExtensionat the given filepath, ornullif it has not been loaded or does not exist.
 PackedStringArrayget_loaded_extensions()const🔗
@@ -81,4 +87,5 @@ LoadStatusunload_extension(path:String)🔗
 Unloads an extension by file path. Thepathneeds to point to an already loadedGDExtension, otherwise this method returnsLOAD_STATUS_NOT_LOADED.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

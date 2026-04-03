@@ -1,14 +1,17 @@
 # NavigationLink3D in English
 
 # NavigationLink3D
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:Node3D<Node<Object
 A link between two positions onNavigationRegion3Ds that agents can be routed through.
 
 ## Description
+
 A link between two positions onNavigationRegion3Ds that agents can be routed through. These positions can be on the sameNavigationRegion3Dor on two different ones. Links are useful to express navigation methods other than traveling along the surface of the navigation mesh, such as ziplines, teleporters, or gaps that can be jumped across.
 
 ## Tutorials
+
 - Using NavigationLinks
 Using NavigationLinks
 
@@ -72,7 +75,9 @@ void
 set_navigation_map(navigation_map:RID)
 
 ## Property Descriptions
+
 boolbidirectional=true🔗
+
 - voidset_bidirectional(value:bool)
 voidset_bidirectional(value:bool)
 - boolis_bidirectional()
@@ -120,6 +125,7 @@ floatget_travel_cost()
 When pathfinding moves along the link the traveled distance is multiplied withtravel_costfor determining the shortest path.
 
 ## Method Descriptions
+
 Vector3get_global_end_position()const🔗
 Returns theend_positionthat is relative to the link as a global position.
 Vector3get_global_start_position()const🔗
@@ -140,4 +146,5 @@ voidset_navigation_map(navigation_map:RID)🔗
 Sets theRIDof the navigation map this link should use. By default the link will automatically join theWorld3Ddefault navigation map so this function is only required to override the default map.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

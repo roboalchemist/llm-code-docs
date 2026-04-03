@@ -7,6 +7,7 @@ The content of this page was not yet updated for Godot4.6and may beoutdated. If 
 # Cutout animation
 
 ## What is it?
+
 Traditionally,cutout animationis a type ofstop motion animationin which pieces of paper (or other thin material) are cut into special shapes
 and arranged in two-dimensional representations of characters and objects.
 Characters' bodies are usually made out of several pieces. The pieces are
@@ -19,7 +20,9 @@ In video games, this technique has also become popular. Examples of
 this arePaper MarioorRayman Origins.
 
 ## Cutout animation in Godot
+
 Godot provides tools for working with cutout rigs, and is ideal for the workflow:
+
 - The animation system is fully integrated with the engine: This
 means animations can control much more than just motion of objects. Textures,
 sprite sizes, pivots, opacity, color modulation, and more, can all be animated
@@ -57,10 +60,12 @@ several animations, the same way it works in 3D.
 And much more!
 
 ## Making of GBot
+
 For this tutorial, we will use as demo content the pieces of theGBotcharacter, created by Andreas Esau.
 Get your assets:cutout_animation_assets.zip.
 
 ## Setting up the rig
+
 Create an empty Node2D as root of the scene, we will work under it:
 The first node of the model is the hip.
 Generally, both in 2D and 3D, the hip is the root of the skeleton. This
@@ -75,6 +80,7 @@ This small cross in the middle of theSprite2Dis
 the rotation pivot:
 
 ## Adjusting the pivot
+
 The pivot can be adjusted by changing theoffsetproperty in the
 Sprite2D:
 The pivot can also be adjustedvisually. While hovering over the
@@ -95,6 +101,7 @@ You can also fix depth ordering problems by adjusting the Z property
 of any node inheriting from Node2D.
 
 ## RemoteTransform2D node
+
 TheRemoteTransform2Dnode transforms nodes
 somewhere else in the hierarchy. This node applies its own transform (including
 any transformation it inherits from its parents) to the remote node it targets.
@@ -107,11 +114,13 @@ Moving theRemoteTransform2Dnodes now moves the sprites. So we can create
 animations by adjusting theRemoteTransform2Dtransforms:
 
 ## Completing the skeleton
+
 Complete the skeleton by following the same steps for the rest of the
 parts. The resulting scene should look similar to this:
 The resulting rig will be easy to animate. By selecting the nodes and
 rotating them you can animate forward kinematics (FK) efficiently.
 For simple objects and rigs this is fine, but there are limitations:
+
 - Selecting sprites in the main viewport can become difficult in complex rigs.
 The scene tree ends up being used to select parts instead, which can be slower.
 Selecting sprites in the main viewport can become difficult in complex rigs.
@@ -123,6 +132,7 @@ feet, and can't be used with our rig in its current state.
 To solve these problems we'll use Godot's skeletons.
 
 ## Skeletons
+
 In Godot there is a helper to create "bones" between nodes. The bone-linked
 nodes are called skeletons.
 As an example, let's turn the right arm into a skeleton. To create
@@ -154,6 +164,7 @@ Now that the whole figure is rigged, the next step is setting up the IK
 chains. IK chains allow for more natural control of extremities.
 
 ## IK chains
+
 IK stands for inverse kinematics. It's a convenient technique for animating the
 position of hands, feet and other extremities of rigs like the one we've made.
 Imagine you want to pose a character's foot in a specific position on the ground.
@@ -175,11 +186,13 @@ chain (e.g. a foot), and move it. You'll see the rest of the chain adjust as you
 adjust its position.
 
 ## Animation tips
+
 The following section will be a collection of tips for creating animation for
 your cutout rigs. For more information on how the animation system in Godot
 works, seeIntroduction to the animation features.
 
 ### Setting keyframes and excluding properties
+
 Special contextual elements appear in the top toolbar when the animation editor
 window is open:
 The key button inserts location, rotation, and scale keyframes for the
@@ -196,21 +209,26 @@ add a new keyframe. This way, you can avoid adding unwanted scale keyframes
 which would disrupt the existing scale animation.
 
 ## Creating a rest pose
+
 Think of a rest pose as a default pose that your cutout rig should be set to
 when no other pose is active in your game. Create a rest pose as follows:
+
 1. Make sure the rig parts are positioned in what looks like a "resting"
 arrangement.
+
 - Create a new animation, rename it "rest".
 Create a new animation, rename it "rest".
 - Select all nodes in your rig (box selection should work fine).
 Select all nodes in your rig (box selection should work fine).
-4. Make sure the "loc", "rot", and "scl" toggle buttons are all active in the
+
+1. Make sure the "loc", "rot", and "scl" toggle buttons are all active in the
 toolbar.
-5. Press the key button. Keys will be inserted for all selected parts storing
+2. Press the key button. Keys will be inserted for all selected parts storing
 their current arrangement. This pose can now be recalled when necessary in
 your game by playing the "rest" animation you've created.
 
 ## Modifying rotation only
+
 When animating a cutout rig, often it's only the rotation of the nodes that
 needs to change.
 Location and scale are rarely used.
@@ -220,11 +238,13 @@ This will avoid the creation of unwanted animation tracks for position
 and scale.
 
 ## Keyframing IK chains
+
 When editing IK chains, it's not necessary to select the whole chain to
 add keyframes. Selecting the endpoint of the chain and inserting a
 keyframe will automatically insert keyframes for all other parts of the chain too.
 
 ## Visually move a sprite behind its parent
+
 Sometimes it is necessary to have a node change its visual depth relative to
 its parent node during an animation. Think of a character facing the camera,
 who pulls something out from behind his back and holds it out in front of him.
@@ -236,7 +256,9 @@ will need to perform and give some thought to how you'll use "Behind Parent"
 and/or RemoteTransform2D nodes. They provide overlapping functionality.
 
 ## Setting easing curves for multiple keys
+
 To apply the same easing curve to multiple keyframes at once:
+
 - Select the relevant keys.
 Select the relevant keys.
 - Click on the pencil icon in the bottom right of the animation panel. This
@@ -247,9 +269,11 @@ will open the transition editor.
 In the transition editor, click on the desired curve to apply it.
 
 ## 2D Skeletal deform
+
 Skeletal deform can be used to augment a cutout rig, allowing single pieces to
 deform organically (e.g. antennae that wobble as an insect character walks).
 This process is described in aseparate tutorial.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

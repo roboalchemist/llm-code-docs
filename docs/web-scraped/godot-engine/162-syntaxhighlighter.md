@@ -1,11 +1,13 @@
 # SyntaxHighlighter
 
 # SyntaxHighlighter
+
 Inherits:Resource<RefCounted<Object
 Inherited By:CodeHighlighter,EditorSyntaxHighlighter
 Base class for syntax highlighters. Provides syntax highlighting data to aTextEdit.
 
 ## Description
+
 Base class for syntax highlighters. Provides syntax highlighting data to aTextEdit. The associatedTextEditwill call into theSyntaxHighlighteron an as-needed basis.
 Note:ASyntaxHighlighterinstance should not be used across multipleTextEditnodes.
 
@@ -36,6 +38,7 @@ void
 update_cache()
 
 ## Method Descriptions
+
 void_clear_highlighting_cache()virtual🔗
 Virtual method which can be overridden to clear any local caches.
 Dictionary_get_line_syntax_highlighting(line:int)virtualconst🔗
@@ -50,6 +53,7 @@ Dictionaryget_line_syntax_highlighting(line:int)🔗
 Returns the syntax highlighting data for the line at indexline. If the line is not cached, calls_get_line_syntax_highlighting()first to calculate the data.
 Each entry is a column number containing a nestedDictionary. The column number denotes the start of a region, the region will end if another region is found, or at the end of the line. The nestedDictionarycontains the data for that region. Currently only the key"color"is supported.
 Example:Possible return value. This means columns0to4should be red, and columns5to the end of the line should be green:
+
 ```
 {
     0: {
@@ -60,6 +64,7 @@ Example:Possible return value. This means columns0to4should be red, and columns5
     }
 }
 ```
+
 TextEditget_text_edit()const🔗
 Returns the associatedTextEditnode.
 voidupdate_cache()🔗
@@ -67,4 +72,5 @@ Clears then updates theSyntaxHighlightercaches. Override_update_cache()for a cal
 Note:This is called automatically when the associatedTextEditnode, updates its own cache.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

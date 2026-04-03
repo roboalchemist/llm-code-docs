@@ -1,10 +1,12 @@
 # VisualShaderNodeTexture
 
 # VisualShaderNodeTexture
+
 Inherits:VisualShaderNode<Resource<RefCounted<Object
 Performs a 2D texture lookup within the visual shader graph.
 
 ## Description
+
 Performs a lookup operation on the provided texture, with support for multiple texture sources to choose from.
 
 ## Properties
@@ -22,6 +24,7 @@ TextureType
 texture_type
 
 ## Enumerations
+
 enumSource:🔗
 SourceSOURCE_TEXTURE=0
 Use the texture given as an argument for this function.
@@ -52,7 +55,9 @@ TextureTypeTYPE_MAX=3
 Represents the size of theTextureTypeenum.
 
 ## Property Descriptions
+
 Sourcesource=0🔗
+
 - voidset_source(value:Source)
 voidset_source(value:Source)
 - Sourceget_source()
@@ -72,4 +77,5 @@ TextureTypeget_texture_type()
 Specifies the type of the texture ifsourceis set toSOURCE_TEXTURE.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

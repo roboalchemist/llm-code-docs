@@ -1,6 +1,7 @@
 # Volumetric fog and fog volumes in English
 
 # Volumetric fog and fog volumes
+
 Note
 Volumetric fog is only supported in the Forward+ renderer, not the Mobile or
 Compatibility renderers.
@@ -10,6 +11,7 @@ fog and volumetric fog. Traditional fog affects the entire scene at once and
 cannot be customized withFog shaders.
 Volumetric fog can be used at the same time as non-volumetric fog if desired.
 On this page, you'll learn:
+
 - How to set up volumetric fog in Godot.
 How to set up volumetric fog in Godot.
 - What fog volumes are and how they differ from "global" volumetric fog.
@@ -20,8 +22,10 @@ Here is a comparison between traditional fog (which does not interact with light
 and volumetric fog, which is able to interact with lighting:
 
 ## Volumetric fog properties
+
 After enabling volumetric fog in the WorldEnvironment node's Environment
 resource, you can edit the following properties:
+
 - Density:The baseexponentialdensity of the volumetric fog. Set this to
 the lowest density you want to have globally. FogVolumes can be used to add to
 or subtract from this density in specific areas. A value of0.0disables
@@ -130,6 +134,7 @@ enable both non-volumetric fog and volumetric fog at the same time, and
 adjust their density accordingly.
 
 ## Light interaction with volumetric fog
+
 To simulate fog light scattering behavior in real life, all light types will
 interact with volumetric fog. How much each light will affect volumetric fog can
 be adjusted using theVolumetric Fog Energyproperty on each light. Enabling
@@ -142,6 +147,7 @@ also improve performance slightly by excluding the light from volumetric fog
 computations.
 
 ## Using volumetric fog as a volumetric lighting solution
+
 While not physically accurate, it is possible to tune volumetric fog's settings
 to work as volumetriclightingsolution. This means that unlit parts of the
 environment will not be darkened anymore by fog, but light will still be able to
@@ -150,8 +156,10 @@ This can be done by setting volumetric fog density to the lowest permitted value
 between200.0and5000.0usually work well for this.
 
 ## Balancing performance and quality
+
 There are a few project settings available to adjust volumetric fog performance
 and quality:
+
 - Rendering > Environment > Volumetric Fog > Volume Size:Base size used to
 determine size of froxel buffer in the camera X-axis and Y-axis. The final
 size is scaled by the aspect ratio of the screen, so actual values may differ
@@ -183,10 +191,12 @@ Volumetric fog can cause banding to appear on the viewport, especially at
 higher density levels. SeeColor bandingfor guidance on reducing banding.
 
 ## Using fog volumes for local volumetric fog
+
 Sometimes, you want fog to be constrained to specific areas. Conversely, you may
 want to have global volumetric fog, but fog should be excluded from certain
 areas. Both approaches can be followed using FogVolume nodes.
 Here's a quick start guide to using FogVolumes:
+
 - Make sureVolumetric Fogis enabled in the Environment properties. If
 global volumetric fog is undesired, set itsDensityto0.0.
 Make sureVolumetric Fogis enabled in the Environment properties. If
@@ -212,6 +222,7 @@ fog range). Alternatively, the FogVolume can be made thicker and use a lower
 density in theMaterial.
 
 ## FogVolume properties
+
 - Extents:The size of the FogVolume whenShapeisEllipsoid,Cone,CylinderorBox. IfShapeisConeorCylinder,
 the cone/cylinder will be adjusted to fit within the extents. Non-uniform
 scaling of cone/cylinder shapes via theExtentsproperty is not supported,
@@ -272,6 +283,7 @@ with any kind of static pattern. For animated effects, consider using a customfo
 You can import any image as a 3D texture bychanging its import type in the Import dock.
 
 ### Using 3D noise density textures
+
 Since Godot 4.1, there is a NoiseTexture3D resource that can be used to
 procedurally generate 3D noise. This is well-suited to FogMaterial density
 textures, which can result in more detailed fog effects:
@@ -294,13 +306,16 @@ texture. You would need to use a custom shader that reads a Texture3D to
 achieve this.
 
 ## Custom FogVolume shaders
+
 This page only covers the built-in settings offered by FogMaterial. If you need
 to customize fog behavior within a FogVolume node (such as creating animated fog),
 FogVolume nodes' appearance can be customized usingFog shaders.
 
 ## Faking volumetric fog using quads
+
 In some cases, it may be better to use specially configured QuadMeshes as an
 alternative to volumetric fog:
+
 - Quads work with any rendering method, including Mobile and Compatibility.
 Quads work with any rendering method, including Mobile and Compatibility.
 - Quads do not require temporal reprojection to look smooth, which makes
@@ -341,4 +356,5 @@ where all of its corners are in solid geometry. This can be useful for fogging
 large planes that the camera cannot enter, such as bottomless pits.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

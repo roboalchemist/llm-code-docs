@@ -1,16 +1,19 @@
 # Script in English
 
 # Script
+
 Inherits:Resource<RefCounted<Object
 Inherited By:CSharpScript,GDScript,ScriptExtension
 A class stored as a resource.
 
 ## Description
+
 A class stored as a resource. A script extends the functionality of all objects that instantiate it.
 This is the base class for all scripts and should not be used directly. Trying to create a new script with this class will result in an error.
 Thenewmethod of a script subclass creates a new instance.Object.set_script()extends an existing object, if that object's class matches one of the script's base classes.
 
 ## Tutorials
+
 - Scripting documentation index
 Scripting documentation index
 
@@ -75,7 +78,9 @@ Error
 reload(keep_state:bool= false)
 
 ## Property Descriptions
+
 Stringsource_code🔗
+
 - voidset_source_code(value:String)
 voidset_source_code(value:String)
 - Stringget_source_code()
@@ -83,6 +88,7 @@ Stringget_source_code()
 The script source code or an empty string if source code is not available. When set, does not reload the class implementation automatically.
 
 ## Method Descriptions
+
 boolcan_instantiate()const🔗
 Returnstrueif the script can be instantiated.
 Scriptget_base_script()const🔗
@@ -90,10 +96,12 @@ Returns the script directly inherited by this script.
 StringNameget_global_name()const🔗
 Returns the class name associated with the script, if there is one. Returns an empty string otherwise.
 To give the script a global name, you can use theclass_namekeyword in GDScript and the[GlobalClass]attribute in C#.
+
 ```
 class_name MyNode
 extends Node
 ```
+
 ```
 using Godot;
 
@@ -102,6 +110,7 @@ public partial class MyNode : Node
 {
 }
 ```
+
 StringNameget_instance_base_type()const🔗
 Returns the script's base type.
 Variantget_property_default_value(property:StringName)🔗
@@ -134,4 +143,5 @@ Errorreload(keep_state:bool= false)🔗
 Reloads the script's class implementation. Returns an error code.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

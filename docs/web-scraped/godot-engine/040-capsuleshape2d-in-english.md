@@ -1,10 +1,12 @@
 # CapsuleShape2D in English
 
 # CapsuleShape2D
+
 Inherits:Shape2D<Resource<RefCounted<Object
 A 2D capsule shape used for physics collision.
 
 ## Description
+
 A 2D capsule shape, intended for use in physics. Usually used to provide a shape for aCollisionShape2D.
 Performance:CapsuleShape2Dis fast to check collisions against, but it is slower thanRectangleShape2DandCircleShape2D.
 
@@ -25,7 +27,9 @@ radius
 10.0
 
 ## Property Descriptions
+
 floatheight=30.0🔗
+
 - voidset_height(value:float)
 voidset_height(value:float)
 - floatget_height()
@@ -47,4 +51,5 @@ The capsule's radius.
 Note:Theradiusof a capsule cannot be greater than half of itsheight. Otherwise, the capsule becomes a circle. If theradiusis greater than half of theheight, the properties adjust to a valid value.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

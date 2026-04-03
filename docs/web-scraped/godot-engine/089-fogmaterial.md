@@ -1,10 +1,12 @@
 # FogMaterial
 
 # FogMaterial
+
 Inherits:Material<Resource<RefCounted<Object
 A material that controls how volumetric fog is rendered, to be assigned to aFogVolume.
 
 ## Description
+
 AMaterialresource that can be used byFogVolumes to draw volumetric effects.
 If you need more advanced effects, use a customfog shader.
 
@@ -34,7 +36,9 @@ float
 height_falloff
 
 ## Property Descriptions
+
 Coloralbedo=Color(1,1,1,1)🔗
+
 - voidset_albedo(value:Color)
 voidset_albedo(value:Color)
 - Colorget_albedo()
@@ -73,4 +77,5 @@ floatget_height_falloff()
 The rate by which the height-based fog decreases in density as height increases in world space. A high falloff will result in a sharp transition, while a low falloff will result in a smoother transition. A value of0.0results in uniform-density fog. The height threshold is determined by the height of the associatedFogVolume.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

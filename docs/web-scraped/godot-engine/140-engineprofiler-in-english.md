@@ -1,10 +1,12 @@
 # EngineProfiler in English
 
 # EngineProfiler
+
 Inherits:RefCounted<Object
 Base class for creating custom profilers.
 
 ## Description
+
 This class can be used to implement custom profilers that are able to interact with the engine and editor debugger.
 SeeEngineDebuggerandEditorDebuggerPluginfor more information.
 
@@ -23,6 +25,7 @@ void
 _toggle(enable:bool, options:Array)virtual
 
 ## Method Descriptions
+
 void_add_frame(data:Array)virtual🔗
 Called when data is added to profiler usingEngineDebugger.profiler_add_frame_data().
 void_tick(frame_time:float, process_time:float, physics_time:float, physics_frame_time:float)virtual🔗
@@ -31,4 +34,5 @@ void_toggle(enable:bool, options:Array)virtual🔗
 Called when the profiler is enabled/disabled, along with a set ofoptions.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,10 +1,12 @@
 # MultiplayerPeerExtension
 
 # MultiplayerPeerExtension
+
 Inherits:MultiplayerPeer<PacketPeer<RefCounted<Object
 Class that can be inherited to implement custom multiplayer API networking layers via GDExtension.
 
 ## Description
+
 This class is designed to be inherited from a GDExtension plugin to implement custom networking layers for the multiplayer API (such as WebRTC). All the methods belowmustbe implemented to have a working custom multiplayer implementation. See alsoMultiplayerAPI.
 
 ## Methods
@@ -76,6 +78,7 @@ void
 _set_transfer_mode(p_mode:TransferMode)virtualrequired
 
 ## Method Descriptions
+
 void_close()virtualrequired🔗
 Called when the multiplayer peer should be immediately closed (seeMultiplayerPeer.close()).
 void_disconnect_peer(p_peer:int, p_force:bool)virtualrequired🔗
@@ -124,4 +127,5 @@ void_set_transfer_mode(p_mode:TransferMode)virtualrequired🔗
 Called when the transfer mode is set on thisMultiplayerPeer(seeMultiplayerPeer.transfer_mode).
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

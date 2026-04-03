@@ -1,11 +1,13 @@
 # CollisionObject3D in English
 
 # CollisionObject3D
+
 Inherits:Node3D<Node<Object
 Inherited By:Area3D,PhysicsBody3D
 Abstract base class for 3D physics objects.
 
 ## Description
+
 Abstract base class for 3D physics objects.CollisionObject3Dcan hold any number ofShape3Ds for collision. Each shape must be assigned to ashape owner. Shape owners are not nodes and do not appear in the editor, but are accessible through code using theshape_owner_*methods.
 Warning:With a non-uniform scale, this node will likely not behave as expected. It is advised to keep its scale the same on all axes and adjust its collision shape(s) instead.
 
@@ -102,6 +104,7 @@ void
 shape_owner_set_transform(owner_id:int, transform:Transform3D)
 
 ## Signals
+
 input_event(camera:Node, event:InputEvent, event_position:Vector3, normal:Vector3, shape_idx:int)🔗
 Emitted when the object receives an unhandledInputEvent.event_positionis the location in world space of the mouse pointer on the surface of the shape with indexshape_idxandnormalis the normal vector of the surface at that point.
 mouse_entered()🔗
@@ -112,6 +115,7 @@ Emitted when the mouse pointer exits all this object's shapes. Requiresinput_ray
 Note:Due to the lack of continuous collision detection, this signal may not be emitted in the expected order if the mouse moves fast enough and theCollisionObject3D's area is small. This signal may also not be emitted if anotherCollisionObject3Dis overlapping theCollisionObject3Din question.
 
 ## Enumerations
+
 enumDisableMode:🔗
 DisableModeDISABLE_MODE_REMOVE=0
 WhenNode.process_modeis set toNode.PROCESS_MODE_DISABLED, remove from the physics simulation to stop all physics interactions with thisCollisionObject3D.
@@ -123,7 +127,9 @@ DisableModeDISABLE_MODE_KEEP_ACTIVE=2
 WhenNode.process_modeis set toNode.PROCESS_MODE_DISABLED, do not affect the physics simulation.
 
 ## Property Descriptions
+
 intcollision_layer=1🔗
+
 - voidset_collision_layer(value:int)
 voidset_collision_layer(value:int)
 - intget_collision_layer()
@@ -163,6 +169,7 @@ boolis_ray_pickable()
 Iftrue, this object is pickable. A pickable object can detect the mouse pointer entering/leaving, and if the mouse is inside it, report input events. Requires at least onecollision_layerbit to be set.
 
 ## Method Descriptions
+
 void_input_event(camera:Camera3D, event:InputEvent, event_position:Vector3, normal:Vector3, shape_idx:int)virtual🔗
 Receives unhandledInputEvents.event_positionis the location in world space of the mouse pointer on the surface of the shape with indexshape_idxandnormalis the normal vector of the surface at that point. Connect to theinput_eventsignal to easily pick up these events.
 Note:_input_event()requiresinput_ray_pickableto betrueand at least onecollision_layerbit to be set.
@@ -212,4 +219,5 @@ voidshape_owner_set_transform(owner_id:int, transform:Transform3D)🔗
 Sets theTransform3Dof the given shape owner.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -71,6 +71,7 @@ The Godot documentation is organized into the following sections:
 #### About
 
 Information about Godot Engine, its features, requirements, and policies:
+
 - Introduction (this page)
 - List of features
 - System requirements
@@ -82,6 +83,7 @@ Information about Godot Engine, its features, requirements, and policies:
 #### Getting Started
 
 Tutorials and guides for new users:
+
 - Installation and setup
 - Your first game (2D and 3D tutorials)
 - Introduction to the editor
@@ -91,6 +93,7 @@ Tutorials and guides for new users:
 #### Manual
 
 Comprehensive reference documentation:
+
 - Project setup and management
 - File system and asset management
 - Scenes and nodes system
@@ -107,6 +110,7 @@ Comprehensive reference documentation:
 #### Tutorials
 
 Practical, hands-on learning:
+
 - 2D game development
 - 3D game development
 - Advanced scripting techniques
@@ -118,6 +122,7 @@ Practical, hands-on learning:
 #### Engine Details
 
 Advanced technical information:
+
 - Engine architecture
 - Rendering system internals
 - Physics engine details
@@ -128,6 +133,7 @@ Advanced technical information:
 #### Community
 
 Resources and guidelines:
+
 - Official forums
 - Discord community server
 - GitHub repository
@@ -146,12 +152,14 @@ Before diving into Godot, here are some things to consider:
 #### System Requirements
 
 **Minimum:**
+
 - Processor: Dual-core CPU
 - RAM: 4GB
 - Disk Space: 500MB for engine installation
 - OS: Windows 7+, macOS 10.12+, or recent Linux
 
 **Recommended:**
+
 - Processor: Quad-core CPU or better
 - RAM: 8GB or more
 - Disk Space: SSD with at least 2GB free
@@ -164,6 +172,7 @@ While Godot is beginner-friendly, basic programming knowledge is helpful. The do
 #### Supported Platforms for Development
 
 Godot editor runs on:
+
 - Windows (7 and later)
 - macOS (10.12 and later)
 - Linux (various distributions)
@@ -194,6 +203,7 @@ In this documentation, you will learn:
 ### About This Documentation
 
 This documentation is:
+
 - **Comprehensive**: Covering all major features and systems
 - **Practical**: Including examples and tutorials
 - **Accessible**: Written for beginners while maintaining depth for advanced users
@@ -212,6 +222,7 @@ The Godot documentation is a community effort. If you find errors, outdated info
 ### License
 
 Godot Engine and its documentation are available under permissive open-source licenses:
+
 - **Engine**: MIT License
 - **Documentation**: CC BY 3.0 License
 

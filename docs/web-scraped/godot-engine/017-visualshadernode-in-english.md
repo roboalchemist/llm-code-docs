@@ -1,14 +1,17 @@
 # VisualShaderNode in English
 
 # VisualShaderNode
+
 Inherits:Resource<RefCounted<Object
 Inherited By:VisualShaderNodeBillboard,VisualShaderNodeClamp,VisualShaderNodeColorFunc,VisualShaderNodeColorOp,VisualShaderNodeCompare,VisualShaderNodeConstant,VisualShaderNodeCubemap,VisualShaderNodeCustom,VisualShaderNodeDerivativeFunc,VisualShaderNodeDeterminant,VisualShaderNodeDistanceFade,VisualShaderNodeDotProduct,VisualShaderNodeFloatFunc,VisualShaderNodeFloatOp,VisualShaderNodeFresnel,VisualShaderNodeIf,VisualShaderNodeInput,VisualShaderNodeIntFunc,VisualShaderNodeIntOp,VisualShaderNodeIs,VisualShaderNodeLinearSceneDepth,VisualShaderNodeMix,VisualShaderNodeMultiplyAdd,VisualShaderNodeOuterProduct,VisualShaderNodeOutput,VisualShaderNodeParameter,VisualShaderNodeParameterRef,VisualShaderNodeParticleAccelerator,VisualShaderNodeParticleConeVelocity,VisualShaderNodeParticleEmit,VisualShaderNodeParticleEmitter,VisualShaderNodeParticleMultiplyByAxisAngle,VisualShaderNodeParticleRandomness,VisualShaderNodeProximityFade,VisualShaderNodeRandomRange,VisualShaderNodeRemap,VisualShaderNodeReroute,VisualShaderNodeResizableBase,VisualShaderNodeRotationByAxis,VisualShaderNodeSample3D,VisualShaderNodeScreenNormalWorldSpace,VisualShaderNodeScreenUVToSDF,VisualShaderNodeSDFRaymarch,VisualShaderNodeSDFToScreenUV,VisualShaderNodeSmoothStep,VisualShaderNodeStep,VisualShaderNodeSwitch,VisualShaderNodeTexture,VisualShaderNodeTextureSDF,VisualShaderNodeTextureSDFNormal,VisualShaderNodeTransformCompose,VisualShaderNodeTransformDecompose,VisualShaderNodeTransformFunc,VisualShaderNodeTransformOp,VisualShaderNodeTransformVecMult,VisualShaderNodeUIntFunc,VisualShaderNodeUIntOp,VisualShaderNodeUVFunc,VisualShaderNodeUVPolarCoord,VisualShaderNodeVarying,VisualShaderNodeVectorBase,VisualShaderNodeWorldPositionFromDepth
 Base class forVisualShadernodes. Not related to scene nodes.
 
 ## Description
+
 Visual shader graphs consist of various nodes. Each node in the graph is a separate object and they are represented as a rectangular boxes with title and a set of properties. Each node also has connection ports that allow to connect it to another nodes and control the flow of the shader.
 
 ## Tutorials
+
 - Using VisualShaders
 Using VisualShaders
 
@@ -47,6 +50,7 @@ void
 set_input_port_default_value(port:int, value:Variant, prev_value:Variant= null)
 
 ## Enumerations
+
 enumPortType:🔗
 PortTypePORT_TYPE_SCALAR=0
 Floating-point scalar. Translated tofloattype in shader code.
@@ -70,7 +74,9 @@ PortTypePORT_TYPE_MAX=9
 Represents the size of thePortTypeenum.
 
 ## Property Descriptions
+
 intlinked_parent_graph_frame=-1🔗
+
 - voidset_frame(value:int)
 voidset_frame(value:int)
 - intget_frame()
@@ -84,6 +90,7 @@ intget_output_port_for_preview()
 Sets the output port index which will be showed for preview. If set to-1no port will be open for preview.
 
 ## Method Descriptions
+
 voidclear_default_input_values()🔗
 Clears the default input ports value.
 intget_default_input_port(type:PortType)const🔗
@@ -100,4 +107,5 @@ voidset_input_port_default_value(port:int, value:Variant, prev_value:Variant= nu
 Sets the defaultvaluefor the selected inputport.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

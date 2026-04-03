@@ -3,12 +3,15 @@
 # Upgrading from Godot 3 to Godot 4
 
 ## Should I upgrade to Godot 4?
+
 Before beginning the upgrade process, it's worth thinking about the advantages
 and disadvantages that upgrading would bring to your project.
 
 ### Advantages of upgrading
+
 Along with thenew features present in 4.0,
 upgrading gives the following advantages:
+
 - Many bugs are fixed in 4.0, but cannot be resolved in 3.x for various reasons
 (such as graphics API differences or backwards compatibility).
 Many bugs are fixed in 4.0, but cannot be resolved in 3.x for various reasons
@@ -23,8 +26,10 @@ SeeDocumentation changelogfor a list of pages documenting new features in
 Godot 4.0, andList of featuresfor a list of all features in Godot.
 
 ### Disadvantages of upgrading
+
 If you don'tneedany features present in Godot 4.x, you may want to stay on
 Godot 3.x for the following reasons:
+
 - Godot 4's baseline hardware requirements (such as memory usage) are slightly
 higher, both for the editor and exported projects. This was required for the
 implementation of some core optimizations.
@@ -57,9 +62,11 @@ generation) integrated graphics, this will prevent the project from running
 on such hardware after upgrading.Software OpenGL implementationscan be used to bypass this limitation, but they're too slow for gaming.
 
 ### Caveats of upgrading
+
 Since Godot 4 is a complete rewrite in many aspects, some features have
 unfortunately been lost in the process.Some of these features may be restored
 in future Godot releases:
+
 - Bullet physics was removed in favor of GodotPhysics. This only affects 3D
 projects that used the default physics engine (which was Bullet) and didn't
 manually change it to GodotPhysics. There are no plans to re-add Bullet physics
@@ -97,6 +104,7 @@ improves.
 You can find a more complete list of functional regressions by searching forissues labeled "regression" but not "bug" on GitHub.
 
 ## Preparing before the upgrade (optional)
+
 If you want to be ready to upgrade to Godot 4 in the future, consider usingTweenerand theTimesingleton in your project. These
 classes are both available in Godot 3.5 and later.
 This way, you won't be relying on the deprecated Tween node and OS time
@@ -105,6 +113,7 @@ It's also a good idea to rename external shaders so that their extension is.gdsh
 only.gdshaderis supported in Godot 4.0.
 
 ## Running the project upgrade tool
+
 Danger
 Make a full backup of your projectbefore upgrading! The project upgrade
 tool willnotperform any backups of the project that is being upgraded.
@@ -112,7 +121,9 @@ You can backup a project by using version control, or by copying the project
 folder to another location.
 
 ### Using the Project Manager
+
 To use the project upgrade tool:
+
 - Open the Godot 4 Project Manager.
 Open the Godot 4 Project Manager.
 - Import the Godot 3.x project using theImportbutton, or use theScanbutton to find the project within a folder.
@@ -144,20 +155,25 @@ you can use the command line to upgrade the project (see below). This will allow
 you to override the converter's size limits.
 
 ### Using the command line
+
 To use the project upgrade tool from thecommand line,
 it's recommended to validate the project conversion by running the Godot editor binary with the following arguments:
+
 ```
 # [<max_file_kb>] [<max_line_size>] are optional arguments.
 # Remove them if you aren't changing their values.
 path/to/godot.binary --path /path/to/project/folder --validate-conversion-3to4 [<max_file_kb>] [<max_line_size>]
 ```
+
 If the list of planned upgrades looks good to you, run the following command on
 the Godot editor binary to upgrade project files:
+
 ```
 # [<max_file_kb>] [<max_line_size>] are optional arguments.
 # Remove them if you aren't changing their values.
 path/to/godot.binary --path /path/to/project/folder --convert-3to4 [<max_file_kb>] [<max_line_size>]
 ```
+
 [<max_file_kb>]and[<max_line_size>]areoptionalarguments to specify
 the maximum size of files to be converted (in kilobytes and lines). The default
 limits are 4 MB and 100,000 lines respectively. If a file hits either of those
@@ -167,9 +183,11 @@ If you still want large files to be converted by the project upgrade tool,
 increase the size limits when running the project upgrade tool. For example,
 running the Godot editor binary with those arguments increases both limits by a
 10× factor:
+
 ```
 path/to/godot.binary --path /path/to/project/folder --convert-3to4 40000 1000000
 ```
+
 Note
 Only Godot 3.0 and later projects can be upgraded using the project
 conversion tool found in the Godot 4 editor.
@@ -177,6 +195,7 @@ It's recommended to ensure that your project is up-to-date with the latest
 3.x stable release before running the project upgrade tool.
 
 ## Fixing the project after running the project upgrade tool
+
 After upgrading the project, you may notice that certain things don't look as
 they should. Scripts will likely contain various errors as well (possibly
 hundreds in large projects). This is because the project upgrade tool cannot
@@ -184,6 +203,7 @@ cater to all situations. Therefore, a large part of the upgrade process remains
 manual.
 
 ### Automatically renamed nodes and resources
+
 The list below refers to nodes which were simply renamed for consistency or
 clarity in Godot 4.0. The project upgrade tool renames them automatically in
 your scripts.
@@ -438,6 +458,7 @@ VisualShaderNodeUniformRef
 VisualShaderNodeParameterRef
 
 ### Manually renaming methods, properties, signals and constants
+
 Due to how the project upgrade tool works, not allAPIrenames can be performed automatically.
 The list below contains all renames that must be performed manually using the script editor.
 If you cannot find a node or resource in the list below, refer to the above
@@ -451,6 +472,7 @@ If using C#, remember to search for outdated API usage with PascalCase
 notation in the project (and perform the replacement with PascalCase
 notation).
 Methods
+
 - File and Directory classes were replaced byFileAccessandDirAccess, which have an entirely different API. Several methods
 are now static, which means you can call them directly on FileAccess or
 DirAccess without having to create an instance of that class.
@@ -655,12 +677,14 @@ you can remove theMainLoop.prefix when referencing them.
 MainLoop'sNOTIFICATION_WM_QUIT_REQUESTis nowNOTIFICATION_WM_CLOSE_REQUEST.
 
 ### Checking project settings
+
 Several project settings were renamed, and some of them had their enums changed
 in incompatible ways (such as shadow filter quality). This means you may need to
 set some project settings' values again. Make sure theAdvancedtoggle is
 enabled in the project settings dialog so you can see all project settings.
 
 ### Checking Environment settings
+
 Graphics quality settings were moved from Environment properties to project
 settings. This was done to make runtime quality adjustments easier, without
 having to access the currently active Environment resource then modify its
@@ -673,6 +697,7 @@ Godot 3.x, you will have to change its code to callRenderingServermethods that a
 environment effect and its visual knobs remain within the Environment resource.
 
 ### Updating shaders
+
 There have been some changes to shaders that aren't covered by the upgrade tool.
 You will need to make some manual changes, especially if your shader uses coordinate
 space transformations or a customlight()function.
@@ -680,6 +705,7 @@ The.shaderfile extension is no longer supported, which means you must
 rename.shaderfiles to.gdshaderand update references accordingly in
 scene/resource files using an external text editor.
 Some notable changes you will need to perform in shaders are:
+
 - Texture filter and repeat modes are now set on individual uniforms, rather
 than the texture files themselves.
 Texture filter and repeat modes are now set on individual uniforms, rather
@@ -711,9 +737,11 @@ This list is not exhaustive. If you made all the changes mentioned here and your
 shader still doesn't work, try asking for help in one of thecommunity channels.
 
 ### Updating scripts to take backwards-incompatible changes into account
+
 Some changes performed between Godot 3.x and 4 are not renames, but they still
 break backwards compatibility due to different default behavior.
 The most notable examples of this are:
+
 - Lifecycle functions such as_ready()and_process()no longer
 implicitly call parent classes' functions that have the same name. Instead,
 you must usesuper()at the top of a lifecycle function in the child class
@@ -929,6 +957,7 @@ If loading an old project, the node will be replaced with itsClosest approximati
 Threading changes
 ThreadingAPIs have changed in 4.0. For
 example, the following code snippet in Godot 3.x must be modified to work in 4.0:
+
 ```
 # 3.x
 var start_success = new_thread.start(self, "__threaded_background_loader",
@@ -938,21 +967,25 @@ var start_success = new_thread.start(self, "__threaded_background_loader",
 # 4.0
 var start_success = new_thread.start(__threaded_background_loader.bind(resource_path, thread_num))
 ```
+
 Thread.is_active()is no longer used and should be converted toThread.is_alive().
 See also
 See thechangelogfor a full list of changes between Godot 3.x and 4.
 
 ### ArrayMesh resource compatibility breakage
+
 If you've saved an ArrayMesh resource to a.resor.tresfile, the
 format used in 4.0 is not compatible with the one used in 3.x. You will need to
 go through the process of importing the source mesh file and saving it as an
 ArrayMesh resource again.
 
 ## List of automatically renamed methods, properties, signals and constants
+
 Theeditor/renames_map_3_to_4.cppsource file lists all automatic renames performed by the project upgrade tool.
 Lines that are commented out refer to API renames thatcannot be performed automatically.
 
 ## Porting editor settings
+
 Godot 3.x and 4.0 use different editor settings files. This means their settings
 can be changed independently from each other.
 If you wish to port over your Godot 3.x settings to Godot 4, open theeditor settings folderand copyeditor_settings-3.trestoeditor_settings-4.treswhile the Godot 4
@@ -963,8 +996,10 @@ whose name or category has changed won't carry over to Godot 4.0; you will
 have to set their values again.
 
 ## Updating version control settings
+
 Godot 3.x and 4.x have entirely different lists of files and folders that should
 be ignored by yourversion control system.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

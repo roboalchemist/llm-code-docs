@@ -1,15 +1,18 @@
 # HTTPRequest in English
 
 # HTTPRequest
+
 Inherits:Node<Object
 A node with the ability to send HTTP(S) requests.
 
 ## Description
+
 A node with the ability to send HTTP requests. UsesHTTPClientinternally.
 Can be used to make HTTP requests, i.e. download or upload files or web content via HTTP.
 Warning:See the notes and warnings onHTTPClientfor limitations, especially regarding TLS security.
 Note:When exporting to Android, make sure to enable theINTERNETpermission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
 Example:Contact a REST API and print one of its returned fields:
+
 ```
 func _ready():
     # Create an HTTP request node and connect its completion signal.
@@ -39,6 +42,7 @@ func _http_request_completed(result, response_code, headers, body):
     # Will print the user agent string used by the HTTPRequest node (as recognized by httpbin.org).
     print(response.headers["User-Agent"])
 ```
+
 ```
 public override void _Ready()
 {
@@ -79,7 +83,9 @@ private void HttpRequestCompleted(long result, long responseCode, string[] heade
     GD.Print((response["headers"].AsGodotDictionary())["User-Agent"]);
 }
 ```
+
 Example:Load an image usingHTTPRequestand display it:
+
 ```
 func _ready():
     # Create an HTTP request node and connect its completion signal.
@@ -109,6 +115,7 @@ func _http_request_completed(result, response_code, headers, body):
     add_child(texture_rect)
     texture_rect.texture = texture
 ```
+
 ```
 public override void _Ready()
 {
@@ -147,9 +154,11 @@ private void HttpRequestCompleted(long result, long responseCode, string[] heade
     textureRect.Texture = texture;
 }
 ```
+
 Note:HTTPRequestnodes will automatically handle decompression of response bodies. AnAccept-Encodingheader will be automatically added to each of your requests, unless one is already specified. Any response with aContent-Encoding:gzipheader will automatically be decompressed and delivered to you as uncompressed bytes.
 
 ## Tutorials
+
 - Making HTTP requests
 Making HTTP requests
 - TLS certificates
@@ -212,10 +221,12 @@ void
 set_tls_options(client_options:TLSOptions)
 
 ## Signals
+
 request_completed(result:int, response_code:int, headers:PackedStringArray, body:PackedByteArray)🔗
 Emitted when a request is completed.
 
 ## Enumerations
+
 enumResult:🔗
 ResultRESULT_SUCCESS=0
 Request successful.
@@ -247,7 +258,9 @@ ResultRESULT_TIMEOUT=13
 Request failed due to a timeout. If you expect requests to take a long time, try increasing the value oftimeoutor setting it to0.0to remove the timeout completely.
 
 ## Property Descriptions
+
 boolaccept_gzip=true🔗
+
 - voidset_accept_gzip(value:bool)
 voidset_accept_gzip(value:bool)
 - boolis_accepting_gzip()
@@ -296,6 +309,7 @@ boolis_using_threads()
 Iftrue, multithreading is used to improve performance.
 
 ## Method Descriptions
+
 voidcancel_request()🔗
 Cancels the current request.
 intget_body_size()const🔗
@@ -323,4 +337,5 @@ voidset_tls_options(client_options:TLSOptions)🔗
 Sets theTLSOptionsto be used when connecting to an HTTPS server. SeeTLSOptions.client().
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

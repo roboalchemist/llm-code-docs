@@ -1,10 +1,12 @@
 # TileSetAtlasSource
 
 # TileSetAtlasSource
+
 Inherits:TileSetSource<Resource<RefCounted<Object
 Exposes a 2D atlas texture as a set of tiles for aTileSetresource.
 
 ## Description
+
 An atlas is a grid of tiles laid out on a texture. Each tile in the grid must be exposed usingcreate_tile(). Those tiles are then indexed using their coordinates in the grid.
 Each tile can also have a size in the grid coordinates, making it more or less cells in the atlas.
 Alternatives version of a tile can be created usingcreate_alternative_tile(), which are then indexed using an alternative ID. The main tile (the one in the grid), is accessed with an alternative ID equal to 0.
@@ -130,6 +132,7 @@ void
 set_tile_animation_speed(atlas_coords:Vector2i, speed:float)
 
 ## Enumerations
+
 enumTileAnimationMode:🔗
 TileAnimationModeTILE_ANIMATION_MODE_DEFAULT=0
 Tile animations start at same time, looking identical.
@@ -139,15 +142,19 @@ TileAnimationModeTILE_ANIMATION_MODE_MAX=2
 Represents the size of theTileAnimationModeenum.
 
 ## Constants
+
 TRANSFORM_FLIP_H=4096🔗
 Represents cell's horizontal flip flag. Should be used directly withTileMapLayerto flip placed tiles by altering their alternative IDs.
+
 ```
 var alternate_id = $TileMapLayer.get_cell_alternative_tile(Vector2i(2, 2))
 if not alternate_id & TileSetAtlasSource.TRANSFORM_FLIP_H:
     # If tile is not already flipped, flip it.
     $TileMapLayer.set_cell(Vector2i(2, 2), source_id, atlas_coords, alternate_id | TileSetAtlasSource.TRANSFORM_FLIP_H)
 ```
+
 Note:These transformations can be combined to do the equivalent of 0, 90, 180, and 270 degree rotations, as shown below:
+
 ```
 enum TileTransform {
     ROTATE_0 = 0,
@@ -156,13 +163,16 @@ enum TileTransform {
     ROTATE_270 = TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_V,
 }
 ```
+
 TRANSFORM_FLIP_V=8192🔗
 Represents cell's vertical flip flag. SeeTRANSFORM_FLIP_Hfor usage.
 TRANSFORM_TRANSPOSE=16384🔗
 Represents cell's transposed flag. SeeTRANSFORM_FLIP_Hfor usage.
 
 ## Property Descriptions
+
 Vector2imargins=Vector2i(0,0)🔗
+
 - voidset_margins(value:Vector2i)
 voidset_margins(value:Vector2i)
 - Vector2iget_margins()
@@ -195,6 +205,7 @@ Iftrue, generates an internal texture with an additional one pixel padding aroun
 Disabling this setting might lead a small performance improvement, as generating the internal texture requires both memory and processing time when the TileSetAtlasSource resource is modified.
 
 ## Method Descriptions
+
 voidclear_tiles_outside_texture()🔗
 Removes all tiles that don't fit the available texture area. This method iterates over all the source's tiles, so it's advised to usehas_tiles_outside_texture()beforehand.
 intcreate_alternative_tile(atlas_coords:Vector2i, alternative_id_override:int= -1)🔗
@@ -265,4 +276,5 @@ voidset_tile_animation_speed(atlas_coords:Vector2i, speed:float)🔗
 Sets the animation speed of the tile at coordinatesatlas_coordshas.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

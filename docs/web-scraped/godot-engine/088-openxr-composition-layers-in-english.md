@@ -3,6 +3,7 @@
 # OpenXR composition layers
 
 ## Introduction
+
 In XR games you generally want to create user interactions that happen in 3D space
 and involve users touching objects as if they are touching them in real life.
 Sometimes however creating a more traditional 2D interface is unavoidable.
@@ -33,6 +34,7 @@ This means the UI is only visible in the headset,
 it will not be accessible by Godot and will thus
 not be shown when you have a spectator view on the desktop.
 There are currently 3 nodes that expose this functionality:
+
 - OpenXRCompositionLayerCylindershows the contents of the SubViewport on the inside of a cylinder (or "slice" of a cylinder).
 OpenXRCompositionLayerCylindershows the contents of the SubViewport on the inside of a cylinder (or "slice" of a cylinder).
 - OpenXRCompositionLayerEquirectshows the contents of the SubViewport on the interior of a sphere (or "slice" of a sphere).
@@ -41,6 +43,7 @@ OpenXRCompositionLayerEquirectshows the contents of the SubViewport on the inter
 OpenXRCompositionLayerQuadshows the contents of the SubViewport on a flat rectangle.
 
 ## Setting up the SubViewport
+
 The first step is adding a SubViewport for our 2D UI,
 this doesn't require any specific steps.
 For our example we do mark the viewport as transparent.
@@ -52,6 +55,7 @@ the viewport is visible to the user.
 When assigning our viewport to a composition layer Godot will automatically adjust this.
 
 ## Adding a composition layer
+
 The second step is adding our composition layer.
 We can add the correct composition layer node as a child node of
 ourXROrigin3Dnode.
@@ -65,6 +69,7 @@ you will want to reposition the composition layer when the player recenters the 
 Using the reference spaceLocalFloorwill apply this logic automatically.
 
 ## Making the interface work
+
 So far we're only displaying our UI, to make it work we need to add some code.
 For this example we're going to keep things simple and
 make one of the controllers work as a pointer.
@@ -79,6 +84,7 @@ the UV where our ray intersects our viewport.
 It returnsVector2(-1.0,-1.0)if we're not pointing at our viewport.
 We start with setting up some variables, important here are the export variables
 which identify our controller node with which we point to our screen.
+
 ```
 extends OpenXRCompositionLayerQuad
 
@@ -92,8 +98,10 @@ var was_intersect : Vector2 = NO_INTERSECTION
 
 ...
 ```
+
 Next we define a helper function that takes the value returned fromintersects_rayand gives us the global position for that intersection point.
 This implementation only works for ourOpenXRCompositionLayerQuadnode.
+
 ```
 ...
 
@@ -106,8 +114,10 @@ func _intersect_to_global_pos(intersect : Vector2) -> Vector3:
 
 ...
 ```
+
 We also define a helper function that takes ourintersectvalue and
 returns our location in the viewport's local coordinate system:
+
 ```
 ...
 
@@ -120,10 +130,12 @@ func _intersect_to_viewport_pos(intersect : Vector2) -> Vector2i:
 
 ...
 ```
+
 The main logic happens in our_processfunction.
 Here we start by hiding our pointer,
 we then check if we have a valid controller and viewport,
 and we callintersects_raywith the position and orientation of our controller:
+
 ```
 ...
 
@@ -138,8 +150,10 @@ func _process(_delta):
 
 ...
 ```
+
 Next we check if we're intersecting with our viewport.
 If so, we check if our button is pressed and place our pointer at our intersection point.
+
 ```
 ...
 
@@ -153,9 +167,11 @@ If so, we check if our button is pressed and place our pointer at our intersecti
 
 ...
 ```
+
 If we were intersecting in our previous process call and our pointer has moved,
 we prepare anInputEventMouseMotionobject
 to simulate our mouse moving and send that to our viewport for further processing.
+
 ```
 ...
 
@@ -172,9 +188,11 @@ to simulate our mouse moving and send that to our viewport for further processin
 
 ...
 ```
+
 If we've just released our button we also prepare
 anInputEventMouseButtonobject
 to simulate a button release and send that to our viewport for further processing.
+
 ```
 ...
 
@@ -188,9 +206,11 @@ to simulate a button release and send that to our viewport for further processin
 
 ...
 ```
+
 Or if we've just pressed our button we prepare
 anInputEventMouseButtonobject
 to simulate a button press and send that to our viewport for further processing.
+
 ```
 ...
 
@@ -205,7 +225,9 @@ to simulate a button press and send that to our viewport for further processing.
 
 ...
 ```
+
 Next we remember our state for next frame.
+
 ```
 ...
 
@@ -214,7 +236,9 @@ Next we remember our state for next frame.
 
 ...
 ```
+
 Finally, if we aren't intersecting, we clear our state.
+
 ```
 ...
 
@@ -224,6 +248,7 @@ Finally, if we aren't intersecting, we clear our state.
 ```
 
 ## Hole punching
+
 As the composition layer is composited on top of the render result,
 it can be rendered in front of objects that are actually forward of the viewport.
 By enabling hole punch you instruct Godot to render a transparent object
@@ -237,4 +262,5 @@ Use case showing how the user's hand is incorrectly obscured
 by a composition layer when hole punching is not used.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

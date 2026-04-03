@@ -3,9 +3,11 @@
 # Exporting packs, patches, and mods
 
 ## Use cases
+
 Oftentimes, one would like to add functionality to one's game after it has been
 deployed.
 Examples of this include...
+
 - Downloadable Content: the ability to add features and content to one's game.
 Downloadable Content: the ability to add features and content to one's game.
 - Patches: the ability to fix a bug that is present in a shipped product.
@@ -16,9 +18,11 @@ These tools help developers to extend their development beyond the initial
 release.
 
 ## Overview of PCK/ZIP files
+
 Godot enables this via a feature calledresource packs(PCK files,
 with the.pckextension, or ZIP files).
 Advantages:
+
 - incremental updates/patches
 incremental updates/patches
 - offer DLCs
@@ -64,6 +68,7 @@ The downside of this approach is that it's less transparent to the game logic,
 as it will not benefit from the same resource management as PCK/ZIP files.
 
 ## Generating PCK files
+
 In order to pack all resources of a project into a PCK file, open the project
 and go toProject > Exportand click onExport PCK/ZIP. Also, make sure
 to have an export preset selected while doing so.
@@ -74,6 +79,7 @@ If one wishes to support mods for their game, they will need their users to
 create similarly exported files. Assuming the original game expects a
 certain structure for the PCK's resources and/or a certain interface for
 its scripts, then either...
+
 - The developer must publicize documentation of these expected structures/
 interfaces, expect modders to install Godot Engine, and then also expect
 those modders to conform to the documentation's defined API when building
@@ -102,9 +108,11 @@ use a tool-build of the engine (for security), so it's best to keep
 the modding tool and game separate.
 
 ## Opening PCK or ZIP files at runtime
+
 To load a PCK or ZIP file, one uses the ProjectSettings singleton. The following
 example expects amod.pckfile in the directory of the game's executable.
 The PCK or ZIP file contains amod_scene.tscntest scene in its root.
+
 ```
 func _your_function():
     # This could fail if, for example, mod.pck cannot be found.
@@ -114,6 +122,7 @@ func _your_function():
         # Now one can use the assets as if they had them in the project from the start.
         var imported_scene = load("res://mod_scene.tscn")
 ```
+
 ```
 private void YourFunction()
 {
@@ -127,6 +136,7 @@ private void YourFunction()
     }
 }
 ```
+
 Warning
 By default, if you import a file with the same file path/name as one you
 already have in your project, the imported one will replace it. This is
@@ -141,6 +151,7 @@ For a C# project, you need to build the DLL and place it in the project director
 Then, before loading the resource pack, you need to load its DLL as follows:Assembly.LoadFile("mod.dll")
 
 ### Troubleshooting
+
 If you are loading a resource pack and are not noticing any changes, it may be
 due to the pack being loaded too late. This is particularly the case with menu
 scenes that may preload other scenes usingpreload(). This means that loading
@@ -150,6 +161,7 @@ To do so, create a newautoloadscript and
 callProjectSettings.load_resource_pack()in the autoload script's_init()function, rather than_enter_tree()or_ready().
 
 ## Summary
+
 This tutorial explains how to add mods, patches, or DLC to a game.
 The most important thing is to identify how one plans to distribute future
 content for their game and develop a workflow that is customized for that
@@ -157,4 +169,5 @@ purpose. Godot should make that process smooth regardless of which route a
 developer pursues.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

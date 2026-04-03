@@ -1,10 +1,12 @@
 # Curve in English
 
 # Curve
+
 Inherits:Resource<RefCounted<Object
 A mathematical curve.
 
 ## Description
+
 This resource describes a mathematical curve by defining a set of points and tangents at each point. By default, it ranges between0and1on the X and Y axes, but these ranges can be changed.
 Please note that many resources and nodes assume they are givenunit curves. A unit curve is a curve whose domain (the X axis) is between0and1. Some examples of unit curve usage areCPUParticles2D.angle_curveandLine2D.width_curve.
 
@@ -93,12 +95,14 @@ void
 set_point_value(index:int, y:float)
 
 ## Signals
+
 domain_changed()🔗
 Emitted whenmax_domainormin_domainis changed.
 range_changed()🔗
 Emitted whenmax_valueormin_valueis changed.
 
 ## Enumerations
+
 enumTangentMode:🔗
 TangentModeTANGENT_FREE=0
 The tangent on this side of the point is user-defined.
@@ -108,7 +112,9 @@ TangentModeTANGENT_MODE_COUNT=2
 The total number of available tangent modes.
 
 ## Property Descriptions
+
 intbake_resolution=100🔗
+
 - voidset_bake_resolution(value:int)
 voidset_bake_resolution(value:int)
 - intget_bake_resolution()
@@ -146,6 +152,7 @@ intget_point_count()
 The number of points describing the curve.
 
 ## Method Descriptions
+
 intadd_point(position:Vector2, left_tangent:float= 0, right_tangent:float= 0, left_mode:TangentMode= 0, right_mode:TangentMode= 0)🔗
 Adds a point to the curve. For each side, if the*_modeisTANGENT_LINEAR, the*_tangentangle (in degrees) uses the slope of the curve halfway to the adjacent point. Allows custom assignments to the*_tangentangle if*_modeis set toTANGENT_FREE.
 voidbake()🔗
@@ -188,4 +195,5 @@ voidset_point_value(index:int, y:float)🔗
 Assigns the vertical positionyto the point atindex.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

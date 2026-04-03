@@ -1,10 +1,12 @@
 # VisualShaderNodeFloatFunc in English
 
 # VisualShaderNodeFloatFunc
+
 Inherits:VisualShaderNode<Resource<RefCounted<Object
 A scalar floating-point function to be used within the visual shader graph.
 
 ## Description
+
 Accept a floating-point scalar (x) to the input port and transform it according tofunction.
 
 ## Properties
@@ -15,6 +17,7 @@ Function
 function
 
 ## Enumerations
+
 enumFunction:🔗
 FunctionFUNC_SIN=0
 Returns the sine of the parameter. Translates tosin(x)in the Godot Shader Language.
@@ -84,7 +87,9 @@ FunctionFUNC_MAX=32
 Represents the size of theFunctionenum.
 
 ## Property Descriptions
+
 Functionfunction=13🔗
+
 - voidset_function(value:Function)
 voidset_function(value:Function)
 - Functionget_function()
@@ -92,4 +97,5 @@ Functionget_function()
 A function to be applied to the scalar.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -7,11 +7,13 @@ The content of this page was not yet updated for Godot4.6and may beoutdated. If 
 # Audio streams
 
 ## Introduction
+
 As you might have already read inAudio buses, sound is sent to
 each bus via an AudioStreamPlayer node. There are different kinds
 of AudioStreamPlayers. Each one loads an AudioStream and plays it back.
 
 ## AudioStream
+
 An audio stream is an abstract object that emits sound. The sound can come from
 many places, but is most commonly loaded from the filesystem. Audio files can be
 loaded as AudioStreams and placed inside an AudioStreamPlayer. You can find
@@ -22,6 +24,7 @@ back, and applies random pitch and volume shifting. This can be helpful for addi
 variation to sounds that are played back often.
 
 ## AudioStreamPlayer
+
 This is the standard, non-positional stream player. It can play to any bus.
 In 5.1 sound setups, it can send audio to stereo mix or front speakers.
 Playback Type is an experimental setting, and could change in future versions
@@ -33,6 +36,7 @@ you have an explicit reason to. You can change the default playback type
 for the web and other platforms in the project settings underAudio > General(advanced settings must be turned on to see the setting).
 
 ## AudioStreamPlayer2D
+
 This is a variant of AudioStreamPlayer, but emits sound in a 2D positional
 environment. When close to the left of the screen, the panning will go left.
 When close to the right side, it will go right.
@@ -43,6 +47,7 @@ different reverb or sound qualities to handle action happening in a
 particular parts of your game world.
 
 ## AudioStreamPlayer3D
+
 This is a variant of AudioStreamPlayer, but emits sound in a 3D positional
 environment. Depending on the location of the player relative to the screen,
 it can position sound in stereo, 5.1 or 7.1 depending on the chosen audio setup.
@@ -50,6 +55,7 @@ Similar to AudioStreamPlayer2D, an Area3D can divert the sound to an audio bus.
 Unlike for 2D, the 3D version of AudioStreamPlayer has a few more advanced options:
 
 ### Reverb buses
+
 Warning
 This feature is not supported on the web platform if the AudioStreamPlayer's
 playback mode is set toSample, which is the default. It will only work if the
@@ -70,6 +76,7 @@ source may be far away. Playing around with this parameter can simulate
 that effect.
 
 ### Doppler
+
 Warning
 This feature is not supported on the web platform if the AudioStreamPlayer's
 playback mode is set toSample, which is the default. It will only work if the
@@ -85,4 +92,5 @@ useIdlefor objects moved using_process, orPhysicsfor objects moved using_physics
 happen automatically.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

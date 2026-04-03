@@ -1,13 +1,16 @@
 # WebSocketPeer in English
 
 # WebSocketPeer
+
 Inherits:PacketPeer<RefCounted<Object
 A WebSocket connection.
 
 ## Description
+
 This class represents WebSocket connection, and can be used as a WebSocket client (RFC 6455-compliant) or as a remote peer of a WebSocket server.
 You can send WebSocket binary frames usingPacketPeer.put_packet(), and WebSocket text frames usingsend()(prefer text frames when interacting with text-based API). You can check the frame type of the last packet viawas_string_packet().
 To start a WebSocket client, first callconnect_to_url(), then regularly callpoll()(e.g. duringNodeprocess). You can query the socket state viaget_ready_state(), get the number of pending packets usingPacketPeer.get_available_packet_count(), and retrieve them viaPacketPeer.get_packet().
+
 ```
 extends Node
 
@@ -31,6 +34,7 @@ func _process(delta):
         print("WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1])
         set_process(false) # Stop processing.
 ```
+
 To use the peer as part of a WebSocket server refer toaccept_stream()and the online tutorial.
 
 ## Properties
@@ -109,6 +113,7 @@ bool
 was_string_packet()const
 
 ## Enumerations
+
 enumWriteMode:🔗
 WriteModeWRITE_MODE_TEXT=0
 Specifies that WebSockets messages should be transferred as text payload (only valid UTF-8 is allowed).
@@ -125,7 +130,9 @@ StateSTATE_CLOSED=3
 The connection is closed or couldn't be opened.
 
 ## Property Descriptions
+
 PackedStringArrayhandshake_headers=PackedStringArray()🔗
+
 - voidset_handshake_headers(value:PackedStringArray)
 voidset_handshake_headers(value:PackedStringArray)
 - PackedStringArrayget_handshake_headers()
@@ -167,6 +174,7 @@ The WebSocket sub-protocols allowed during the WebSocket handshake.
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedStringArrayfor more details.
 
 ## Method Descriptions
+
 Erroraccept_stream(stream:StreamPeer)🔗
 Accepts a peer connection performing the HTTP handshake as a WebSocket server. Thestreammust be a valid TCP stream retrieved viaTCPServer.take_connection(), or a TLS stream accepted viaStreamPeerTLS.accept_stream().
 Note:Not supported in Web exports due to browsers' restrictions.
@@ -211,4 +219,5 @@ boolwas_string_packet()const🔗
 Returnstrueif the last received packet was sent as a text payload. SeeWriteMode.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

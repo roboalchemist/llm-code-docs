@@ -1,14 +1,17 @@
 # Mesh in English
 
 # Mesh
+
 Inherits:Resource<RefCounted<Object
 Inherited By:ArrayMesh,ImmediateMesh,PlaceholderMesh,PrimitiveMesh
 AResourcethat contains vertex array-based geometry.
 
 ## Description
+
 Mesh is a type ofResourcethat contains vertex array-based geometry, divided insurfaces. Each surface contains a completely separate array and a material used to draw it. Design wise, a mesh with multiple surfaces is preferred to a single surface, because objects created in 3D editing software commonly contain multiple materials. The maximum number of surfaces per mesh isRenderingServer.MAX_MESH_SURFACES.
 
 ## Tutorials
+
 - 3D Material Testers Demo
 3D Material Testers Demo
 - 3D Kinematic Character Demo
@@ -103,6 +106,7 @@ void
 surface_set_material(surf_idx:int, material:Material)
 
 ## Enumerations
+
 enumPrimitiveType:🔗
 PrimitiveTypePRIMITIVE_POINTS=0
 Render array as points (one vertex equals one point).
@@ -226,7 +230,9 @@ BlendShapeModeBLEND_SHAPE_MODE_RELATIVE=1
 Blend shapes are relative to base weight.
 
 ## Property Descriptions
+
 Vector2ilightmap_size_hint=Vector2i(0,0)🔗
+
 - voidset_lightmap_size_hint(value:Vector2i)
 voidset_lightmap_size_hint(value:Vector2i)
 - Vector2iget_lightmap_size_hint()
@@ -234,6 +240,7 @@ Vector2iget_lightmap_size_hint()
 Sets a hint to be used for lightmap resolution.
 
 ## Method Descriptions
+
 AABB_get_aabb()virtualrequiredconst🔗
 Virtual method to override theAABBfor a custom class extendingMesh.
 int_get_blend_shape_count()virtualrequiredconst🔗
@@ -294,4 +301,5 @@ Sets aMaterialfor a given surface. Surface will be rendered using this material.
 Note:This assigns the material within theMeshresource, not theMaterialassociated to theMeshInstance3D's Surface Material Override properties. To set theMaterialassociated to theMeshInstance3D's Surface Material Override properties, useMeshInstance3D.set_surface_override_material()instead.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

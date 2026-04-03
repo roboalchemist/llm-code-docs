@@ -1,12 +1,15 @@
 # Dictionary in English
 
 # Dictionary
+
 A built-in data structure that holds key-value pairs.
 
 ## Description
+
 Dictionaries are associative containers that contain values referenced by unique keys. Dictionaries will preserve the insertion order when adding new entries. In other programming languages, this data structure is often referred to as a hash map or an associative array.
 You can define a dictionary by placing a comma-separated list ofkey:valuepairs inside curly braces{}.
 Creating a dictionary:
+
 ```
 var my_dict = {} # Creates an empty dictionary.
 
@@ -27,6 +30,7 @@ another_dict = {
     some_key = 42,
 }
 ```
+
 ```
 var myDict = new Godot.Collections.Dictionary(); // Creates an empty dictionary.
 var pointsDict = new Godot.Collections.Dictionary
@@ -36,7 +40,9 @@ var pointsDict = new Godot.Collections.Dictionary
     { "Orange", 100 },
 };
 ```
+
 You can access a dictionary's value by referencing its corresponding key. In the above example,points_dict["White"]will return50. You can also writepoints_dict.White, which is equivalent. However, you'll have to use the bracket syntax if the key you're accessing the dictionary with isn't a fixed string (such as a number or variable).
+
 ```
 @export_enum("White", "Yellow", "Orange") var my_color: String
 var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
@@ -44,6 +50,7 @@ func _ready():
     # We can't use dot syntax here as `my_color` is a variable.
     var points = points_dict[my_color]
 ```
+
 ```
 [Export(PropertyHint.Enum, "White,Yellow,Orange")]
 public string MyColor { get; set; }
@@ -59,24 +66,30 @@ public override void _Ready()
     int points = (int)_pointsDict[MyColor];
 }
 ```
+
 In the above code,pointswill be assigned the value that is paired with the appropriate color selected inmy_color.
 Dictionaries can contain more complex data:
+
 ```
 var my_dict = {
     "First Array": [1, 2, 3, 4] # Assigns an Array to a String key.
 }
 ```
+
 ```
 var myDict = new Godot.Collections.Dictionary
 {
     { "First Array", new Godot.Collections.Array { 1, 2, 3, 4 } }
 };
 ```
+
 To add a key to an existing dictionary, access it like an existing key and assign to it:
+
 ```
 var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
 points_dict["Blue"] = 150 # Add "Blue" as a key and assign 150 as its value.
 ```
+
 ```
 var pointsDict = new Godot.Collections.Dictionary
 {
@@ -86,7 +99,9 @@ var pointsDict = new Godot.Collections.Dictionary
 };
 pointsDict["Blue"] = 150; // Add "Blue" as a key and assign 150 as its value.
 ```
+
 Finally, untyped dictionaries can contain different types of keys and values in the same dictionary:
+
 ```
 # This is a valid dictionary.
 # To access the string "Nested value" below, use `my_dict.sub_dict.sub_key` or `my_dict["sub_dict"]["sub_key"]`.
@@ -98,6 +113,7 @@ var my_dict = {
     "sub_dict": { "sub_key": "Nested value" },
 }
 ```
+
 ```
 // This is a valid dictionary.
 // To access the string "Nested value" below, use `((Godot.Collections.Dictionary)myDict["sub_dict"])["sub_key"]`.
@@ -108,12 +124,15 @@ var myDict = new Godot.Collections.Dictionary {
     { "sub_dict", new Godot.Collections.Dictionary { { "sub_key", "Nested value" } } },
 };
 ```
+
 The keys of a dictionary can be iterated with theforkeyword:
+
 ```
 var groceries = { "Orange": 20, "Apple": 2, "Banana": 4 }
 for fruit in groceries:
     var amount = groceries[fruit]
 ```
+
 ```
 var groceries = new Godot.Collections.Dictionary { { "Orange", 20 }, { "Apple", 2 }, { "Banana", 4 } };
 foreach (var (fruit, amount) in groceries)
@@ -121,7 +140,9 @@ foreach (var (fruit, amount) in groceries)
     // `fruit` is the key, `amount` is the value.
 }
 ```
+
 To enforce a certain type for keys and values, you can create atyped dictionary. Typed dictionaries can only contain keys and values of the given types, or that inherit from the given classes:
+
 ```
 # Creates a typed dictionary with String keys and int values.
 # Attempting to use any other type for keys or values will result in an error.
@@ -137,6 +158,7 @@ var typed_dict_key_only: Dictionary[String, Variant] = {
     "some_other_key": "string",
 }
 ```
+
 ```
 // Creates a typed dictionary with String keys and int values.
 // Attempting to use any other type for keys or values will result in an error.
@@ -152,12 +174,14 @@ var typedDictKeyOnly = new Godot.Collections.Dictionary<String, Variant> {
     {"some_other_key", "string"},
 };
 ```
+
 Note:Dictionaries are always passed by reference. To get a copy of a dictionary which can be modified independently of the original dictionary, useduplicate().
 Note:Erasing elements while iterating over dictionaries isnotsupported and will result in unpredictable behavior.
 Note
 There are notable differences when using this API with C#. SeeC# API differences to GDScriptfor more information.
 
 ## Tutorials
+
 - GDScript basics: Dictionary
 GDScript basics: Dictionary
 - 3D Voxel Demo
@@ -297,6 +321,7 @@ Variant
 operator [](key:Variant)
 
 ## Constructor Descriptions
+
 DictionaryDictionary()🔗
 Constructs an emptyDictionary.
 DictionaryDictionary(base:Dictionary, key_type:int, key_class_name:StringName, key_script:Variant, value_type:int, value_class_name:StringName, value_script:Variant)
@@ -305,6 +330,7 @@ DictionaryDictionary(from:Dictionary)
 Returns the same dictionary asfrom. If you need a copy of the dictionary, useduplicate().
 
 ## Method Descriptions
+
 voidassign(dictionary:Dictionary)🔗
 Assigns elements of anotherdictionaryinto the dictionary. Resizes the dictionary to matchdictionary. Performs type conversions if the dictionary is typed.
 voidclear()🔗
@@ -340,6 +366,7 @@ Variantget_typed_value_script()const🔗
 Returns theScriptinstance associated with this typed dictionary's values, ornullif it does not exist. See alsois_typed_value().
 boolhas(key:Variant)const🔗
 Returnstrueif the dictionary contains an entry with the givenkey.
+
 ```
 var my_dict = {
     "Godot" : 4,
@@ -350,6 +377,7 @@ print(my_dict.has("Godot")) # Prints true
 print(my_dict.has(210))     # Prints true
 print(my_dict.has(4))       # Prints false
 ```
+
 ```
 var myDict = new Godot.Collections.Dictionary
 {
@@ -361,26 +389,33 @@ GD.Print(myDict.ContainsKey("Godot")); // Prints True
 GD.Print(myDict.ContainsKey(210));     // Prints True
 GD.Print(myDict.ContainsKey(4));       // Prints False
 ```
+
 In GDScript, this is equivalent to theinoperator:
+
 ```
 if "Godot" in { "Godot": 4 }:
     print("The key is here!") # Will be printed.
 ```
+
 Note:This method returnstrueas long as thekeyexists, even if its corresponding value isnull.
 boolhas_all(keys:Array)const🔗
 Returnstrueif the dictionary contains all keys in the givenkeysarray.
+
 ```
 var data = { "width": 10, "height": 20 }
 data.has_all(["height", "width"]) # Returns true
 ```
+
 inthash()const🔗
 Returns a hashed 32-bit integer value representing the dictionary contents.
+
 ```
 var dict1 = { "A": 10, "B": 2 }
 var dict2 = { "A": 10, "B": 2 }
 
 print(dict1.hash() == dict2.hash()) # Prints true
 ```
+
 ```
 var dict1 = new Godot.Collections.Dictionary { { "A", 10 }, { "B", 2 } };
 var dict2 = new Godot.Collections.Dictionary { { "A", 10 }, { "B", 2 } };
@@ -388,6 +423,7 @@ var dict2 = new Godot.Collections.Dictionary { { "A", 10 }, { "B", 2 } };
 // Godot.Collections.Dictionary has no Hash() method. Use GD.Hash() instead.
 GD.Print(GD.Hash(dict1) == GD.Hash(dict2)); // Prints True
 ```
+
 Note:Dictionaries with the same entries but in a different order will not have the same hash.
 Note:Dictionaries with equal hash values arenotguaranteed to be the same, because of hash collisions. On the contrary, dictionaries with different hash values are guaranteed to be different.
 boolis_empty()const🔗
@@ -412,6 +448,7 @@ voidmake_read_only()🔗
 Makes the dictionary read-only, i.e. disables modification of the dictionary's contents. Does not apply to nested content, e.g. content of nested dictionaries.
 voidmerge(dictionary:Dictionary, overwrite:bool= false)🔗
 Adds entries fromdictionaryto this dictionary. By default, duplicate keys are not copied over, unlessoverwriteistrue.
+
 ```
 var dict = { "item": "sword", "quantity": 2 }
 var other_dict = { "quantity": 15, "color": "silver" }
@@ -424,6 +461,7 @@ print(dict)  # { "item": "sword", "quantity": 2, "color": "silver" }
 dict.merge(other_dict, true)
 print(dict)  # { "item": "sword", "quantity": 15, "color": "silver" }
 ```
+
 ```
 var dict = new Godot.Collections.Dictionary
 {
@@ -445,10 +483,12 @@ GD.Print(dict); // { "item": "sword", "quantity": 2, "color": "silver" }
 dict.Merge(otherDict, true);
 GD.Print(dict); // { "item": "sword", "quantity": 15, "color": "silver" }
 ```
+
 Note:merge()isnotrecursive. Nested dictionaries are considered as keys that can be overwritten or not depending on the value ofoverwrite, but they will never be merged together.
 Dictionarymerged(dictionary:Dictionary, overwrite:bool= false)const🔗
 Returns a copy of this dictionary merged with the otherdictionary. By default, duplicate keys are not copied over, unlessoverwriteistrue. See alsomerge().
 This method is useful for quickly making dictionaries with default values:
+
 ```
 var base = { "fruit": "apple", "vegetable": "potato" }
 var extra = { "fruit": "orange", "dressing": "vinegar" }
@@ -457,6 +497,7 @@ print(extra.merged(base))
 # Prints { "fruit": "apple", "vegetable": "potato", "dressing": "vinegar" }
 print(extra.merged(base, true))
 ```
+
 boolrecursive_equal(dictionary:Dictionary, recursion_count:int)const🔗
 Returnstrueif the two dictionaries contain the same keys and values, innerDictionaryandArraykeys and values are compared recursively.
 boolset(key:Variant, value:Variant)🔗
@@ -465,16 +506,19 @@ intsize()const🔗
 Returns the number of entries in the dictionary. Empty dictionaries ({}) always return0. See alsois_empty().
 voidsort()🔗
 Sorts the dictionary in ascending order, by key. The final order is dependent on the "less than" (<) comparison between keys.
+
 ```
 var numbers = { "c": 2, "a": 0, "b": 1 }
 numbers.sort()
 print(numbers) # Prints { "a": 0, "b": 1, "c": 2 }
 ```
+
 This method ensures that the dictionary's entries are ordered consistently whenkeys()orvalues()are called, or when the dictionary needs to be converted to a string through@GlobalScope.str()orJSON.stringify().
 Arrayvalues()const🔗
 Returns the list of values in this dictionary.
 
 ## Operator Descriptions
+
 booloperator !=(right:Dictionary)🔗
 Returnstrueif the two dictionaries do not contain the same keys and values.
 booloperator ==(right:Dictionary)🔗
@@ -484,4 +528,5 @@ Variantoperator [](key:Variant)🔗
 Returns the corresponding value for the givenkeyin the dictionary. If the entry does not exist, fails and returnsnull. For safe access, useget()orhas().
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

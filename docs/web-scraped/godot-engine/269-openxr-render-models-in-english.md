@@ -1,6 +1,7 @@
 # OpenXR Render Models in English
 
 # OpenXR Render Models
+
 A cornerstone of OpenXR's API design is being as platform agnostic as possible.
 A great example of this is OpenXR's action map system where XR runtimes
 have to support core interaction profiles to fall back on,
@@ -28,6 +29,7 @@ shape of the controller.
 Do note that this works in combination with thehand joints motion range extensionto prevent clipping of the fingers.
 
 ## OpenXR Render models node
+
 TheOpenXRRenderModelManagernode can be used to automate most of the render models functionality.
 This node keeps track of the active render models currently made
 available by the XR runtime.
@@ -63,6 +65,7 @@ tracking poses to properly offset the render models.
 This falls beyond the scope of this documentation.
 
 ### Render model manager example
+
 You can downloadour render models demowhich implements the setup described below.
 In this setup we find anOpenXRRenderModelManagernode directly underneath ourXROrigin3Dnode.
 On this node ourtargetproperty is set toNonesetand will handle
@@ -86,6 +89,7 @@ after any physics logic that moves the XROrigin3D node or the hand
 will lag a frame behind.
 The script below shows a basic implementation for this that you can build
 upon.
+
 ```
 class_name CollisionHands3D
 extends AnimatableBody3D
@@ -106,11 +110,13 @@ func _physics_process(_delta):
     # Attempt to move to where our tracked hand is.
     move_and_collide(dest_transform.origin - global_position)
 ```
+
 Finally we see anotherOpenXRRenderModelManagernode, this one withtargetset to the appropriate hand andmake_local_to_poseset to the correct pose.
 This will ensure that the render models related to this hand are properly
 shown and offset if our collision handler has altered the location.
 
 ## Render model node
+
 TheOpenXRRenderModelnode implements
 all the logic to display and position a given render model provided by
 the render models API.
@@ -132,6 +138,7 @@ Depending on your setup of theOpenXRRenderModelManagernodes,
 render models will be removed or added as their top level path changes.
 
 ## Backend access
+
 The nodes we've detailed out above handle all the display logic
 for us but it is possible to interact with the data that drives
 this directly and create your own implementation.
@@ -218,4 +225,5 @@ This is a local transform that can be directly
 applied.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

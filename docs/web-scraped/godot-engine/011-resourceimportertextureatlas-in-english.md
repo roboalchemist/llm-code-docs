@@ -1,10 +1,12 @@
 # ResourceImporterTextureAtlas in English
 
 # ResourceImporterTextureAtlas
+
 Inherits:ResourceImporter<RefCounted<Object
 Imports a collection of textures from a PNG image into an optimizedAtlasTexturefor 2D rendering.
 
 ## Description
+
 This imports a collection of textures from a PNG image into anAtlasTextureor 2DArrayMesh. This can be used to save memory when importing 2D animations from spritesheets. Texture atlases are only supported in 2D rendering, not 3D. See alsoResourceImporterTextureandResourceImporterLayeredTexture.
 Note:ResourceImporterTextureAtlasdoes not handle importingTileSetAtlasSource, which is created using theTileSeteditor instead.
 
@@ -27,6 +29,7 @@ trim_alpha_border_from_region
 true
 
 ## Property Descriptions
+
 Stringatlas_file=""🔗
 Path to the atlas spritesheet. Thismustbe set to valid path to a PNG image. Otherwise, the atlas will fail to import.
 boolcrop_to_region=false🔗
@@ -40,4 +43,5 @@ Iftrue, trims the region to exclude fully transparent pixels using a clipping re
 Note:Only effective ifimport_modeisRegion.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

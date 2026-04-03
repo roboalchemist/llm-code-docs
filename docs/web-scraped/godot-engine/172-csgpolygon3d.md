@@ -1,14 +1,17 @@
 # CSGPolygon3D
 
 # CSGPolygon3D
+
 Inherits:CSGPrimitive3D<CSGShape3D<GeometryInstance3D<VisualInstance3D<Node3D<Node<Object
 Extrudes a 2D polygon shape to create a 3D mesh.
 
 ## Description
+
 An array of 2D points is extruded to quickly and easily create a variety of 3D meshes. See alsoCSGMesh3Dfor using 3D meshes as CSG nodes.
 Note:CSG nodes are intended to be used for level prototyping. Creating CSG nodes has a significant CPU cost compared to creating aMeshInstance3Dwith aPrimitiveMesh. Moving a CSG node within another CSG node also has a significant CPU cost, so it should be avoided during gameplay.
 
 ## Tutorials
+
 - Prototyping levels with CSG
 Prototyping levels with CSG
 
@@ -70,6 +73,7 @@ spin_degrees
 spin_sides
 
 ## Enumerations
+
 enumMode:🔗
 ModeMODE_DEPTH=0
 Thepolygonshape is extruded along the negative Z axis.
@@ -93,7 +97,9 @@ PathIntervalTypePATH_INTERVAL_SUBDIVIDE=1
 Whenmodeis set toMODE_PATH,path_intervalwill subdivide the polygons along the path.
 
 ## Property Descriptions
+
 floatdepth=1.0🔗
+
 - voidset_depth(value:float)
 voidset_depth(value:float)
 - floatget_depth()
@@ -199,4 +205,5 @@ intget_spin_sides()
 WhenmodeisMODE_SPIN, the number of extrusions made.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

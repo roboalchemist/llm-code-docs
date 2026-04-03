@@ -1,10 +1,12 @@
 # RenderDataExtension in English
 
 # RenderDataExtension
+
 Inherits:RenderData<Object
 This class allows for a RenderData implementation to be made in GDExtension.
 
 ## Description
+
 This class allows for a RenderData implementation to be made in GDExtension.
 
 ## Methods
@@ -23,6 +25,7 @@ RenderSceneData
 _get_render_scene_data()virtualconst
 
 ## Method Descriptions
+
 RID_get_camera_attributes()virtualconst🔗
 Implement this in GDExtension to return theRIDfor the implementation's camera attributes object.
 RID_get_environment()virtualconst🔗
@@ -33,4 +36,5 @@ RenderSceneData_get_render_scene_data()virtualconst🔗
 Implement this in GDExtension to return the implementation'sRenderSceneDataExtensionobject.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

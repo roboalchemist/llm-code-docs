@@ -1,6 +1,7 @@
 # Introduction to 3D
 
 # Introduction to 3D
+
 Creating a 3D game can be challenging. That extra Z coordinate makes
 many of the common techniques that helped to make 2D games simpler no
 longer work. To aid in this transition, it is worth mentioning that
@@ -14,6 +15,7 @@ relevant math written for game developers, not mathemeticians or engineers,
 check outVector mathandUsing 3D transforms.
 
 ## 3D workspace
+
 Editing 3D scenes is done in the 3D workspace. This workspace can be selected
 manually, but it will be automatically selected when a Node3D node is
 selected.
@@ -24,11 +26,13 @@ Below the scene selector, the main toolbar is visible, and beneath the main tool
 is the 3D viewport.
 
 ### Main toolbar
+
 Some buttons in the main toolbar are the same as those in the 2D workspace. A brief explanation
 is given with the shortcut if the mouse cursor is hovered over a button for one second.
 Some buttons may have additional functionality if another keypress is performed. A recap
 of main functionality of each button with its default shortcut is provided below from
 left to right:
+
 - Select Mode(Q): Allows selection of nodes in the viewport. Left clicking
 on a node to select one. Left clicking and dragging a rectangle selects all
 nodes within the rectangle's boundaries, once released.
@@ -105,9 +109,11 @@ sunlight and environment settings. SeePreview environment and lightfor more deta
 and transform) manually.Snap Settings: Allows you to change transform, rotate snap (in degrees), and scale snap
 (in percent) settings.
 Transform menu: It has three options:
+
 > Snap Object to Floor: Snaps an object to a solid floor.Transform Dialog: Opens a dialog to adjust transform parameters (translate, rotate, scale,
 and transform) manually.Snap Settings: Allows you to change transform, rotate snap (in degrees), and scale snap
 (in percent) settings.
+
 - Snap Object to Floor: Snaps an object to a solid floor.
 Snap Object to Floor: Snaps an object to a solid floor.
 - Transform Dialog: Opens a dialog to adjust transform parameters (translate, rotate, scale,
@@ -133,6 +139,7 @@ MeshInstance3D is selected. This menu provides some quick actions or tools to
 work on a specific node or selection.
 
 ### View menu of viewport
+
 Below theSelecttool, in the 3D viewport, clicking on the three dots opens theView menufor the viewport.
 Hiding all shown gizmos in the editor's 3D view can also be performed through
 this menu:
@@ -141,6 +148,7 @@ viewport's viewing angle. Additionally, it offers options to modify the appearan
 nodes within the viewport.
 
 ### Coordinate system
+
 Godot uses themetricsystem for everything in 3D, with 1 unit being equal to 1 meter.
 Physics and other areas are tuned for this scale. Therefore, attempting to use a
 different scale is usually a bad idea (unless you know what you are doing).
@@ -153,6 +161,7 @@ in the right scale!
 The Y coordinate is used for "up". As for the horizontal X/Z axes, Godot uses aright-handedcoordinate system. This means that for most objects that need
 alignment (such as lights or cameras), the Z axis is used as a "pointing
 towards" direction. This convention roughly means that:
+
 - Xis sides
 Xis sides
 - Yis up/down
@@ -163,6 +172,7 @@ See this chart for comparison with other 3D software:
 Image byFreya Holmér
 
 ### Space and manipulation gizmos
+
 Moving, rotating, and scaling objects in the 3D view is done through the
 manipulator gizmos.
 Each axis is represented by a color: Red, Green, Blue represent X, Y, Z
@@ -170,6 +180,7 @@ respectively. This convention applies to the grid and other gizmos too
 (and also to the shader language, ordering of components for
 Vector3, Color, etc.).
 Some useful keybindings:
+
 - To snap placement or rotation, pressCtrlwhile moving, scaling,
 or rotating.
 To snap placement or rotation, pressCtrlwhile moving, scaling,
@@ -184,6 +195,7 @@ If the transform mode is changed fromSelect ModetoScale Mode, the arrows will be
 replaced by cubes, which can be dragged to scale an object as if the object is being moved.
 
 ### Navigating the 3D environment
+
 In 3D environments, it is often important to adjust the viewpoint or angle
 from which you are viewing the scene.
 In Godot, navigating the 3D environment in the viewport (or spatial editor)
@@ -215,8 +227,10 @@ In orthogonal mode, holding the right mouse button will pan the view instead.
 UseKeypad5to toggle between perspective and orthogonal view.
 
 ### Using Blender-style transform shortcuts
+
 Since Godot 4.2, you can enable Blender-style shortcuts for translating,
 rotating and scaling nodes. In Blender, these shortcuts are:
+
 - Gfor translating
 Gfor translating
 - Rfor rotating
@@ -243,6 +257,7 @@ Finally, unbindScale Modeso that its shortcut won't conflict withBegin Rotate Tr
 More shortcuts can be found on the3D / Spatial editorpage.
 
 ## Node3D node
+
 Node2Dis the base node for 2D.Controlis the base node for everything GUI.
 Following this reasoning, the 3D engine uses theNode3Dnode for everything 3D.
 Node3Ds have a local transform, which is relative to the parent
@@ -251,6 +266,7 @@ Node3D). This transform can be accessed as a 3×4Transform3D, or as 3Vector3memb
 scale.
 
 ## 3D content
+
 Unlike 2D, where loading image content and drawing is straightforward, 3D is a
 little more difficult. The content needs to be created with special 3D tools
 (also called Digital Content Creation tools, or DCCs) and exported to an
@@ -258,6 +274,7 @@ exchange file format to be imported in Godot. This is required since 3D formats
 are not as standardized as images.
 
 ### Manually authored models (using 3D modeling software)
+
 It is possible to import 3D models in Godot created in external tools.
 Depending on the format, you can import entire scenes (exactly as they look in
 the 3D modeling software), including animation, skeletal rigs, blend shapes, or
@@ -266,6 +283,7 @@ See also
 SeeImporting 3D scenesfor more on importing.
 
 ### Generated geometry
+
 It is possible to create custom geometry by using theArrayMeshresource directly. Simply create your arrays
 and use theArrayMesh.add_surface_from_arrays()function. A helper class is also available,SurfaceTool,
 which provides a more straightforward API and helpers for indexing,
@@ -277,6 +295,7 @@ Note
 To learn about prototyping inside Godot or using external tools, seePrototyping levels with CSG.
 
 ### Immediate geometry
+
 If, instead, you need to generate simple geometry that will be updated often,
 Godot provides a specialImmediateMeshresource
 that can be used in aMeshInstance3Dnode.
@@ -284,6 +303,7 @@ This provides an OpenGL 1.x-style immediate-mode API to create points, lines,
 triangles, etc.
 
 ### 2D in 3D
+
 While Godot packs a powerful 2D engine, many types of games use 2D in a
 3D environment. By using a fixed camera (either orthogonal or
 perspective) that does not rotate, nodes such asSprite3DandAnimatedSprite3Dcan be used to create 2D games that take advantage of mixing with 3D
@@ -293,12 +313,14 @@ performance in comparison to plain 2D, as well as the lack of reference
 of working in pixels.
 
 ## Environment
+
 Besides editing a scene, it is often common to edit the environment.
 Godot provides aWorldEnvironmentnode that allows changing the background color, mode (as in, put a
 skybox), and applying several types of built-in post-processing effects.
 Environments can also be overridden in the Camera.
 
 ### Preview environment and light
+
 By default, any 3D scene that doesn't have aWorldEnvironmentnode, or aDirectionalLight3D, will have
 a preview turned on for what it's missing to light the scene.
 The preview light and environment will only be visible in the scene while
@@ -313,6 +335,7 @@ So only make adjustments that would apply to all of the scenes you will need a p
 light and environment for.
 
 ### Cameras
+
 No matter how many objects are placed in the 3D space, nothing will be
 displayed unless aCamera3Dis
 also added to the scene. Cameras can work in either orthogonal or
@@ -324,6 +347,7 @@ or picture-in-picture) are desired, they need their own children cameras
 to display.
 When dealing with multiple cameras, the following rules are enforced for
 each viewport:
+
 - If no cameras are present in the scene tree, the first one that
 enters it will become the active camera. Further cameras entering the
 scene will be ignored (unless they are set ascurrent).
@@ -342,6 +366,7 @@ If an active camera leaves the scene tree, the first camera in
 tree-order will take its place.
 
 ### Lights
+
 The background environment emits some ambient light which appears on surfaces.
 Still, without any light sources placed in the scene, the scene will appear
 quite dark unless the background environment is very bright.
@@ -350,4 +375,5 @@ scenes typically have several positional lights (lamps, torches, …).
 See3D lights and shadowsfor more information on setting up lights in Godot.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -5,6 +5,7 @@ The content of this page was not yet updated for Godot4.6and may beoutdated. If 
         that it's up to date, feel free toopen a pull request.
 
 # Optimization using MultiMeshes
+
 For large amount of instances (in the thousands), that need to be constantly processed
 (and certain amount of control needs to be retained),using servers directlyis the recommended optimization.
 When the amount of objects reach the hundreds of thousands or millions,
@@ -12,6 +13,7 @@ none of these approaches are efficient anymore. Still, depending on the requirem
 is one more optimization possible.
 
 ## MultiMeshes
+
 AMultiMeshis a single draw primitive that can draw up to millions
 of objects in one go. It's extremely efficient because it uses the GPU hardware to do this.
 The only drawback is that there is noscreenorfrustumculling possible for individual instances.
@@ -33,8 +35,10 @@ controlled with theMultiMesh.visible_instance_countproperty. The typical workflo
 then change the amount visible depending on how many are currently needed.
 
 ## Multimesh example
+
 Here is an example of using a MultiMesh from code. Languages other than GDScript may be more
 efficient for millions of objects, but for a few thousands, GDScript should be fine.
+
 ```
 extends MultiMeshInstance3D
 
@@ -52,6 +56,7 @@ func _ready():
     for i in multimesh.visible_instance_count:
         multimesh.set_instance_transform(i, Transform3D(Basis(), Vector3(i * 20, 0, 0)))
 ```
+
 ```
 using Godot;
 
@@ -78,4 +83,5 @@ public partial class MyMultiMeshInstance3D : MultiMeshInstance3D
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

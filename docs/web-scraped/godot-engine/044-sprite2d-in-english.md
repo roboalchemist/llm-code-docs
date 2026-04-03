@@ -1,13 +1,16 @@
 # Sprite2D in English
 
 # Sprite2D
+
 Inherits:Node2D<CanvasItem<Node<Object
 General-purpose sprite node.
 
 ## Description
+
 A node that displays a 2D texture. The texture displayed can be a region from a larger atlas texture, or a frame from a sprite sheet animation.
 
 ## Tutorials
+
 - Instancing Demo
 Instancing Demo
 
@@ -69,13 +72,16 @@ bool
 is_pixel_opaque(pos:Vector2)const
 
 ## Signals
+
 frame_changed()🔗
 Emitted when theframechanges.
 texture_changed()🔗
 Emitted when thetexturechanges.
 
 ## Property Descriptions
+
 boolcentered=true🔗
+
 - voidset_centered(value:bool)
 voidset_centered(value:bool)
 - boolis_centered()
@@ -152,15 +158,18 @@ intget_vframes()
 The number of rows in the sprite sheet. When this property is changed,frameis adjusted so that the same visual frame is maintained (same row and column). If that's impossible,frameis reset to0.
 
 ## Method Descriptions
+
 Rect2get_rect()const🔗
 Returns aRect2representing the Sprite2D's boundary in local coordinates.
 Example:Detect if the Sprite2D was clicked:
+
 ```
 func _input(event):
     if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
         if get_rect().has_point(to_local(event.position)):
             print("A click!")
 ```
+
 ```
 public override void _Input(InputEvent @event)
 {
@@ -176,8 +185,10 @@ public override void _Input(InputEvent @event)
     }
 }
 ```
+
 boolis_pixel_opaque(pos:Vector2)const🔗
 Returnstrueif the pixel at the given position is opaque,falseotherwise. Also returnsfalseif the given position is out of bounds or this sprite'stextureisnull.posis in local coordinates.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

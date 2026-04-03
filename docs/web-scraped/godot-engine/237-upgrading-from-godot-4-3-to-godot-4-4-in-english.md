@@ -1,15 +1,18 @@
 # Upgrading from Godot 4.3 to Godot 4.4 in English
 
 # Upgrading from Godot 4.3 to Godot 4.4
+
 For most games and apps made with 4.3 it should be relatively safe to migrate to 4.4.
 This page intends to cover everything you need to pay attention to when migrating
 your project.
 
 ## Breaking changes
+
 If you are migrating from 4.3 to 4.4, the breaking changes listed here might
 affect you. Changes are grouped by areas/systems.
 This article indicates whether each breaking change affects GDScript and whether
 the C# breaking change isbinary compatibleorsource compatible:
+
 - Binary compatible- Existing binaries will load and execute successfully without
 recompilation, and the run-time behavior won't change.
 Binary compatible- Existing binaries will load and execute successfully without
@@ -289,16 +292,19 @@ compatibility breakage as there's no way for users to rely on this affecting eng
 ## Behavior changes
 
 ### Core
+
 Note
 TheCurveresource now enforces its value range, somin_valueandmax_valueneed to be changed
 if any of the points fall outside of the default[0,1]range.
 
 ### Rendering
+
 Note
 TheVisualShaderNodeVec4Constantshader node had its input type changed toVector4. Users need to
 recreate the values in their constants.
 
 ### CSG
+
 Note
 The CSG implementation now uses Emmett Lalish'sManifoldlibrary (GH-94321).
 The new implementation is more consistent with manifold definitions and fixes a number of bugs and stability
@@ -306,9 +312,11 @@ issues. As a result, non-manifold meshes are no longer supported. You can useMes
 rendering non-manifold geometry, such as quads or planes.
 
 ### Android
+
 Note
 Android sensor events are no longer enabled by default (GH-94799). Projects that use sensor events can
 enable them as needed in Project Settings underInput Devices > Sensors.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,15 +1,18 @@
 # Area2D
 
 # Area2D
+
 Inherits:CollisionObject2D<Node2D<CanvasItem<Node<Object
 A region of 2D space that detects otherCollisionObject2Ds entering or exiting it.
 
 ## Description
+
 Area2Dis a region of 2D space defined by one or multipleCollisionShape2DorCollisionPolygon2Dchild nodes. It detects when otherCollisionObject2Ds enter or exit it, and it also keeps track of which collision objects haven't exited it yet (i.e. which one are overlapping it).
 This node can also locally alter or override physics parameters (gravity, damping) and route audio to custom audio buses.
 Note:Areas and bodies created withPhysicsServer2Dmight not interact as expected withArea2Ds, and might not emit signals or track objects correctly.
 
 ## Tutorials
+
 - Using Area2D
 Using Area2D
 - 2D Dodge The Creeps Demo
@@ -100,6 +103,7 @@ bool
 overlaps_body(body:Node)const
 
 ## Signals
+
 area_entered(area:Area2D)🔗
 Emitted when the receivedareaenters this area. Requiresmonitoringto be set totrue.
 area_exited(area:Area2D)🔗
@@ -108,6 +112,7 @@ area_shape_entered(area_rid:RID, area:Area2D, area_shape_index:int, local_shape_
 Emitted when aShape2Dof the receivedareaenters a shape of this area. Requiresmonitoringto be set totrue.
 local_shape_indexandarea_shape_indexcontain indices of the interacting shapes from this area and the other area, respectively.area_ridcontains theRIDof the other area. These values can be used with thePhysicsServer2D.
 Example:Get theCollisionShape2Dnode from the shape index:
+
 ```
 var other_shape_owner = area.shape_find_owner(area_shape_index)
 var other_shape_node = area.shape_owner_get_owner(other_shape_owner)
@@ -115,6 +120,7 @@ var other_shape_node = area.shape_owner_get_owner(other_shape_owner)
 var local_shape_owner = shape_find_owner(local_shape_index)
 var local_shape_node = shape_owner_get_owner(local_shape_owner)
 ```
+
 area_shape_exited(area_rid:RID, area:Area2D, area_shape_index:int, local_shape_index:int)🔗
 Emitted when aShape2Dof the receivedareaexits a shape of this area. Requiresmonitoringto be set totrue.
 See alsoarea_shape_entered.
@@ -126,6 +132,7 @@ body_shape_entered(body_rid:RID, body:Node2D, body_shape_index:int, local_shape_
 Emitted when aShape2Dof the receivedbodyenters a shape of this area.bodycan be aPhysicsBody2Dor aTileMap.TileMaps are detected if theirTileSethas collision shapes configured. Requiresmonitoringto be set totrue.
 local_shape_indexandbody_shape_indexcontain indices of the interacting shapes from this area and the interacting body, respectively.body_ridcontains theRIDof the body. These values can be used with thePhysicsServer2D.
 Example:Get theCollisionShape2Dnode from the shape index:
+
 ```
 var body_shape_owner = body.shape_find_owner(body_shape_index)
 var body_shape_node = body.shape_owner_get_owner(body_shape_owner)
@@ -133,11 +140,13 @@ var body_shape_node = body.shape_owner_get_owner(body_shape_owner)
 var local_shape_owner = shape_find_owner(local_shape_index)
 var local_shape_node = shape_owner_get_owner(local_shape_owner)
 ```
+
 body_shape_exited(body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int)🔗
 Emitted when aShape2Dof the receivedbodyexits a shape of this area.bodycan be aPhysicsBody2Dor aTileMap.TileMaps are detected if theirTileSethas collision shapes configured. Requiresmonitoringto be set totrue.
 See alsobody_shape_entered.
 
 ## Enumerations
+
 enumSpaceOverride:🔗
 SpaceOverrideSPACE_OVERRIDE_DISABLED=0
 This area does not affect gravity/damping.
@@ -151,7 +160,9 @@ SpaceOverrideSPACE_OVERRIDE_REPLACE_COMBINE=4
 This area replaces any gravity/damping calculated so far (inpriorityorder), but keeps calculating the rest of the areas.
 
 ## Property Descriptions
+
 floatangular_damp=1.0🔗
+
 - voidset_angular_damp(value:float)
 voidset_angular_damp(value:float)
 - floatget_angular_damp()
@@ -246,6 +257,7 @@ intget_priority()
 The area's priority. Higher priority areas are processed first. TheWorld2D's physics is always processed last, after all areas.
 
 ## Method Descriptions
+
 Array[Area2D]get_overlapping_areas()const🔗
 Returns a list of intersectingArea2Ds. The overlapping area'sCollisionObject2D.collision_layermust be part of this area'sCollisionObject2D.collision_maskin order to be detected.
 For performance reasons (collisions are all processed at the same time) this list is modified once during the physics step, not immediately after objects are moved. Consider using signals instead.
@@ -267,4 +279,5 @@ Note:The result of this test is not immediate after moving objects. For performa
 Thebodyargument can either be aPhysicsBody2Dor aTileMapinstance. While TileMaps are not physics bodies themselves, they register their tiles with collision shapes as a virtual physics body.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

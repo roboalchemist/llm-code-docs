@@ -1,13 +1,16 @@
 # Label3D in English
 
 # Label3D
+
 Inherits:GeometryInstance3D<VisualInstance3D<Node3D<Node<Object
 A node for displaying plain text in 3D space.
 
 ## Description
+
 A node for displaying plain text in 3D space. By adjusting various properties of this node, you can configure things such as the text's appearance and whether it always faces the camera.
 
 ## Tutorials
+
 - 3D text
 3D text
 
@@ -144,6 +147,7 @@ void
 set_draw_flag(flag:DrawFlags, enabled:bool)
 
 ## Enumerations
+
 enumDrawFlags:🔗
 DrawFlagsFLAG_SHADED=0
 If set, lights in the environment affect the label.
@@ -169,7 +173,9 @@ AlphaCutModeALPHA_CUT_HASH=3
 This mode draws cuts off all values below a spatially-deterministic threshold, the rest will remain opaque.
 
 ## Property Descriptions
+
 floatalpha_antialiasing_edge=0.0🔗
+
 - voidset_alpha_antialiasing_edge(value:float)
 voidset_alpha_antialiasing_edge(value:float)
 - floatget_alpha_antialiasing_edge()
@@ -374,6 +380,7 @@ floatget_width()
 Text width (in pixels), used for autowrap and fill alignment.
 
 ## Method Descriptions
+
 TriangleMeshgenerate_triangle_mesh()const🔗
 Returns aTriangleMeshwith the label's vertices following its current configuration (such as itspixel_size).
 boolget_draw_flag(flag:DrawFlags)const🔗
@@ -382,4 +389,5 @@ voidset_draw_flag(flag:DrawFlags, enabled:bool)🔗
 Iftrue, the specifiedflagwill be enabled.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

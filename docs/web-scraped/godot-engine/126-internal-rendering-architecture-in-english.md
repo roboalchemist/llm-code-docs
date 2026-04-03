@@ -1,6 +1,7 @@
 # Internal rendering architecture in English
 
 # Internal rendering architecture
+
 This page is a high-level overview of Godot 4's internal renderer design.
 It does not apply to previous Godot versions.
 The goal of this page is to document design decisions taken to best suitGodot's design philosophy,
@@ -19,6 +20,7 @@ RenderingDevice, which is our abstraction over Vulkan/Direct3D 12/Metal.
 ## Rendering methods
 
 ### Forward+
+
 This is a forward renderer that uses aclusteredapproach to lighting.
 Clustered lighting uses a compute shader to group lights into a 3D frustum
 aligned grid. Then, at render time, pixels can lookup what lights affect the
@@ -28,6 +30,7 @@ This approach can greatly speed up rendering performance on desktop hardware,
 but is substantially less efficient on mobile.
 
 ### Mobile
+
 This is a forward renderer that uses a traditional single-pass approach to lighting.
 Internally, it is calledForward Mobile.
 Intended for mobile platforms, but can also run on desktop platforms. This
@@ -75,6 +78,7 @@ rendering features such as SDFGI andVolumetric fog and fog volumes. Several
 post-processing effects are also not available.
 
 ### Compatibility
+
 Note
 This is the only rendering method available when using the OpenGL driver.
 This rendering method is not available when using Vulkan, Direct3D 12, or Metal.
@@ -102,6 +106,7 @@ rendering features (even less so compared to Mobile). Most
 post-processing effects are not available.
 
 ### Why not deferred rendering?
+
 Forward rendering generally provides a better tradeoff for performance versus
 flexibility, especially when a clustered approach to lighting is used. While
 deferred rendering can be faster in some cases, it's also less flexible and
@@ -115,9 +120,11 @@ A clustered deferred renderer may be developed in the future. This renderer
 could be used in situations where performance is favored over flexibility.
 
 ## Rendering drivers
+
 Godot 4 supports the following graphics APIs:
 
 ### Vulkan
+
 This is the main driver in Godot 4, with most of the development focus going
 towards this driver.
 Vulkan 1.0 is required as a baseline, with optional Vulkan 1.1 and 1.2 features
@@ -126,6 +133,7 @@ loader, andVulkan Memory Allocatoris used for memory management.
 Both the Forward+ and MobileRendering methodsare supported when using the
 Vulkan driver.
 Vulkan context creation:
+
 - drivers/vulkan/vulkan_context.cpp
 drivers/vulkan/vulkan_context.cpp
 Direct3D 12 context creation:
@@ -133,6 +141,7 @@ Direct3D 12 context creation:
 drivers/d3d12/d3d12_context.cpp
 
 ### Direct3D 12
+
 Like Vulkan, the Direct3D 12 driver targets modern platforms only. It is
 designed to target both Windows and Xbox (whereas Vulkan can't be used directly on Xbox).
 Both the Forward+ and MobileRendering methodscan be
@@ -145,6 +154,7 @@ as windowed optimizations and Auto HDR, Vulkan is still recommended for most pro
 See thepull request that introduced Direct3D 12 supportfor more information.
 
 ### Metal
+
 Godot provides a native Metal driver that works on all Apple Silicon hardware
 (macOS ARM). Compared to using the MoltenVK translation layer, this is
 significantly faster, particularly in CPU-bound scenarios.
@@ -157,6 +167,7 @@ which is used as a fallback when native Metal support is not available (e.g. on 
 This driver is still experimental and only available in Godot 4.4 and later.See thepull request that introduced Metal supportfor more information.
 
 ### OpenGL
+
 This driver uses OpenGL ES 3.0 and targets legacy and low-end devices that don't
 support Vulkan. OpenGL 3.3 Core Profile is used on desktop platforms to run this
 driver, as most graphics drivers on desktop don't support OpenGL ES.
@@ -173,7 +184,9 @@ Many advanced features are not supported with this driver, as it targets low-end
 devices first and foremost.
 
 ### Summary of rendering drivers/methods
+
 The following rendering API + rendering method combinations are currently possible:
+
 - Vulkan + Forward+ (optionally through MoltenVK on macOS and iOS)
 Vulkan + Forward+ (optionally through MoltenVK on macOS and iOS)
 - Vulkan + Mobile (optionally through MoltenVK on macOS and iOS)
@@ -193,6 +206,7 @@ sure to test your changes on all rendering methods if possible before opening a
 pull request.
 
 ## RenderingDevice abstraction
+
 Note
 The OpenGL driver does not use the RenderingDevice abstraction.
 To make the complexity of modern low-level graphics APIs more manageable,
@@ -203,6 +217,7 @@ lower-level than an API like OpenGL, this makes working on the renderer easier,
 as RenderingDevice will abstract many API-specific quirks for you. The
 RenderingDevice presents a similar level of abstraction as WebGPU.
 Vulkan RenderingDevice implementation:
+
 - drivers/vulkan/rendering_device_driver_vulkan.cpp
 drivers/vulkan/rendering_device_driver_vulkan.cpp
 Direct3D 12 RenderingDevice implementation:
@@ -213,10 +228,12 @@ Metal RenderingDevice implementation:
 drivers/metal/rendering_device_driver_metal.mm
 
 ## Core rendering classes architecture
+
 This diagram represents the structure of rendering classes in Godot, including the RenderingDevice abstraction:
 View at full size
 
 ## Core shaders
+
 While shaders in Godot projects are written using acustom language inspired by GLSL, core shaders are
 written directly in GLSL.
 These core shaders are embedded in the editor and export template binaries at
@@ -252,6 +269,7 @@ when these features are used in a project. This can make shader compilation
 stutter more noticeable in complex 3D scenes.
 SeeThe Shader Permutation ProblemandBranching on a GPUblog posts for more information.
 Core GLSL material shaders:
+
 - Forward+:servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl
 Forward+:servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered.glsl
 - Mobile:servers/rendering/renderer_rd/shaders/forward_mobile/scene_forward_mobile.glsl
@@ -271,6 +289,7 @@ Other GLSL shaders for the Compatibility rendering method:
 drivers/gles3/shaders/
 
 ## 2D and 3D rendering separation
+
 Note
 The following is only applicable in the Forward+ and Mobile
 rendering methods, not in Compatibility. Multiple Viewports can be used to
@@ -292,6 +311,7 @@ buffers when the resolution or scaling changes.
 Dynamic resolution scaling isn't supported yet, but is planned in a future Godot
 release.
 2D and 3D rendering buffer configuration C++ code:
+
 - servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp
 servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp
 FSR 1.0:
@@ -301,6 +321,7 @@ servers/rendering/renderer_rd/effects/fsr.cpp
 thirdparty/amd-fsr/
 
 ## 2D rendering techniques
+
 2D light rendering is performed in a single pass to allow for better performance
 with large amounts of lights.
 All rendering methods feature 2D batching to improve performance, which is
@@ -314,18 +335,21 @@ automatically generated if a user shader requests it. This can be used for
 various effects in custom shaders, such as 2D global illumination. It is also
 used to calculate particle collisions in 2D.
 2D SDF generation GLSL shader:
+
 - servers/rendering/renderer_rd/shaders/canvas_sdf.glsl
 servers/rendering/renderer_rd/shaders/canvas_sdf.glsl
 
 ## 3D rendering techniques
 
 ### Batching and instancing
+
 In the Forward+ renderer, Vulkan instancing is used to group rendering of
 identical opaque or alpha-tested objects for performance. (Alpha-blended objects
 are never instanced.) This is not as fast as static mesh merging, but it still
 allows instances to be culled individually.
 
 ### Light, decal and reflection probe rendering
+
 Note
 Decal rendering is currently not available in the Compatibility renderer.
 The Forward+ renderer uses clustered lighting. This
@@ -357,6 +381,7 @@ Clustering is also used for reflection probes and decal rendering in the
 Forward+ renderer.
 
 ### Shadow mapping
+
 Both Forward+ and Mobile methods usePCFto filter shadow maps and create a
 soft penumbra. Instead of using a fixed PCF pattern, these methods use a vogel
 disk pattern which allows for changing the number of samples and smoothly
@@ -371,6 +396,7 @@ The Compatibility renderer supports shadow mapping for DirectionalLight3D,
 OmniLight3D, and SpotLight3D lights.
 
 ### Temporal antialiasing
+
 Note
 Only available in the Forward+ renderer, not the Mobile or Compatibility renderers.
 Godot uses a custom TAA implementation based on the old TAA implementation fromSpartan Engine.
@@ -384,6 +410,7 @@ Alternatively, FSR 2.2 can be used as an upscaling solution that also provides
 its own temporal antialiasing algorithm. FSR 2.2 is implemented on top of the
 RenderingDevice abstraction as opposed to using AMD's reference code directly.
 TAA resolve:
+
 - servers/rendering/renderer_rd/shaders/effects/taa_resolve.glsl
 servers/rendering/renderer_rd/shaders/effects/taa_resolve.glsl
 FSR 2.2:
@@ -395,6 +422,7 @@ servers/rendering/renderer_rd/shaders/effects/fsr2/
 thirdparty/amd-fsr2/
 
 ### Global illumination
+
 Note
 VoxelGI and SDFGI are only available in the Forward+ renderer, not the
 Mobile or Compatibility renderers.
@@ -410,6 +438,7 @@ Lightmapper class. This allows for implementing additional lightmappers, paving
 the way for a future port of the CPU-based lightmapper present in Godot 3.x.
 This would allow baking lightmaps while using the Compatibility renderer.
 Core GI C++ code:
+
 - servers/rendering/renderer_rd/environment/gi.cpp
 servers/rendering/renderer_rd/environment/gi.cpp
 - scene/3d/voxel_gi.cpp- VoxelGI node
@@ -449,6 +478,7 @@ modules/lightmapper_rd/lm_compute.glsl
 modules/lightmapper_rd/lm_blendseams.glsl
 
 ### Depth of field
+
 Note
 Only available in the Forward+ and Mobile renderers, not the
 Compatibility renderer.
@@ -460,6 +490,7 @@ Box, hexagon and circle bokeh shapes are available (from fastest to slowest).
 Depth of field can optionally be jittered every frame to improve its appearance
 when temporal antialiasing is enabled.
 Depth of field C++ code:
+
 - servers/rendering/renderer_rd/effects/bokeh_dof.cpp
 servers/rendering/renderer_rd/effects/bokeh_dof.cpp
 Depth of field GLSL shader (compute - used for Forward+):
@@ -470,6 +501,7 @@ Depth of field GLSL shader (raster - used for Mobile):
 servers/rendering/renderer_rd/shaders/effects/bokeh_dof_raster.glsl
 
 ### Screen-space effects (SSAO, SSIL, SSR, SSS)
+
 Note
 Only available in the Forward+ renderer, not the Mobile or Compatibility renderers.
 The Forward+ renderer supports screen-space ambient occlusion,
@@ -480,6 +512,7 @@ When both SSAO and SSIL are enabled, parts of SSAO and SSIL are shared to reduce
 the performance impact.
 SSAO, SSIL, and SSR are performed at half resolution by default to improve performance.
 Screen-space effects C++ code:
+
 - servers/rendering/renderer_rd/effects/ss_effects.cpp
 servers/rendering/renderer_rd/effects/ss_effects.cpp
 Screen-space ambient occlusion GLSL shader:
@@ -512,6 +545,7 @@ Subsurface scattering GLSL:
 servers/rendering/renderer_rd/shaders/effects/subsurface_scattering.glsl
 
 ### Sky rendering
+
 See also
 Sky shaders
 Godot supports using shaders to render the sky background. The radiance map
@@ -522,6 +556,7 @@ PanoramaSkyMaterial generate a built-in shader for sky rendering. This is
 similar to what BaseMaterial3D provides for 3D scene materials.
 A detailed technical implementation can be found in theCustom sky shaders in Godot 4.0article.
 Sky rendering C++ code:
+
 - servers/rendering/renderer_rd/environment/sky.cpp- Sky rendering
 servers/rendering/renderer_rd/environment/sky.cpp- Sky rendering
 - scene/resources/sky.cpp- Sky resource (not to be confused with sky rendering)
@@ -531,6 +566,7 @@ scene/resources/sky_material.cppSkyMaterial resources (used in the Sky resource)
 Sky rendering GLSL shader:
 
 ### Volumetric fog
+
 Note
 Only available in the Forward+ renderer, not the Mobile or Compatibility renderers.
 See also
@@ -544,6 +580,7 @@ The FogMaterial resource generates a built-in shader for FogVolume nodes. This i
 similar to what BaseMaterial3D provides for 3D scene materials.
 A detailed technical explanation can be found in theFog Volumes arrive in Godot 4.0article.
 Volumetric fog C++ code:
+
 - servers/rendering/renderer_rd/environment/fog.cpp- General volumetric fog
 servers/rendering/renderer_rd/environment/fog.cpp- General volumetric fog
 - scene/3d/fog_volume.cpp- FogVolume node
@@ -557,6 +594,7 @@ servers/rendering/renderer_rd/shaders/environment/volumetric_fog.glsl
 servers/rendering/renderer_rd/shaders/environment/volumetric_fog_process.glsl
 
 ### Occlusion culling
+
 While modern GPUs can handle drawing a lot of triangles, the number of draw
 calls in complex scenes can still be a bottleneck (even with Vulkan, Direct3D 12,
 and Metal).
@@ -575,6 +613,7 @@ updating occluders at runtime is best done only on simple occluder shapes such
 as quads or cuboids.
 This CPU-based approach has a few advantages over other solutions, such as
 portals and rooms or a GPU-based culling solution:
+
 - No manual setup required (but can be tweaked manually for best performance).
 No manual setup required (but can be tweaked manually for best performance).
 - No frame delay, which is problematic in cutscenes during camera cuts or when
@@ -596,16 +635,19 @@ scene/3d/occluder_instance_3d.cpp
 servers/rendering/renderer_scene_occlusion_cull.cpp
 
 ### Visibility range (LOD)
+
 Godot supports manually authored hierarchical level of detail (HLOD), with
 distances specified by the user in the inspector.
 In RenderingSceneCull, the_scene_cull()and_render_scene()functions
 are where most of the LOD determination happens. Each viewport can render the
 same mesh with different LODs (to allow for split screen rendering to look correct).
 Visibility range C++ code:
+
 - servers/rendering/renderer_scene_cull.cpp
 servers/rendering/renderer_scene_cull.cpp
 
 ### Automatic mesh LOD
+
 The ImporterMesh class is used for the 3D mesh import workflow in the editor.
 Itsgenerate_lods()function handles generating using themeshoptimizerlibrary.
 LOD mesh generation also generates shadow meshes at the same time. These are
@@ -621,6 +663,7 @@ intervention. The threshold multiplier can be adjusted in the project settings.
 To improve performance, shadow rendering and reflection probe rendering also choose
 their own mesh LOD thresholds (which can be different from the main scene rendering).
 Mesh LOD generation on import C++ code:
+
 - scene/resources/importer_mesh.cpp
 scene/resources/importer_mesh.cpp
 Mesh LOD determination C++ code:
@@ -628,4 +671,5 @@ Mesh LOD determination C++ code:
 servers/rendering/renderer_scene_cull.cpp
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

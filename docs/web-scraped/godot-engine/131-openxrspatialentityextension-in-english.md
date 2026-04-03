@@ -1,11 +1,13 @@
 # OpenXRSpatialEntityExtension in English
 
 # OpenXRSpatialEntityExtension
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:OpenXRExtensionWrapper<Object
 OpenXR extension that handles spatial entities.
 
 ## Description
+
 OpenXR extension that handles spatial entities and, when enabled, allows querying those spatial entities. This extension will also automatically manageXRTrackerobjects for static entities.
 
 ## Methods
@@ -80,10 +82,12 @@ supports_component_type(capability:Capability, component_type:ComponentType)
 update_spatial_entities(spatial_context:RID, entities:Array[RID], component_types:PackedInt64Array, next:OpenXRStructureBase= null)
 
 ## Signals
+
 spatial_discovery_recommended(spatial_context:RID)🔗
 Emitted when OpenXR recommends running a discovery query because entities managed by this spatial context have (likely) changed.
 
 ## Enumerations
+
 enumCapability:🔗
 CapabilityCAPABILITY_PLANE_TRACKING=1000741000
 Plane tracking capability.
@@ -122,6 +126,7 @@ ComponentTypeCOMPONENT_TYPE_PERSISTENCE=1000763000
 Component that provides the persisted UUID for a spatial entity. The corresponding list structure isXrSpatialComponentPersistenceListEXT;thecorrespondingdatastructureis[code]XrSpatialPersistenceDataEXT(Added by theXR_EXT_spatial_persistenceextension).
 
 ## Method Descriptions
+
 RIDadd_spatial_entity(spatial_context:RID, entity_id:int, entity:int)🔗
 Registers an entity that was created directly on the OpenXR runtime.
 OpenXRFutureResultcreate_spatial_context(capability_configurations:Array[OpenXRSpatialCapabilityConfigurationBaseHeader], next:OpenXRStructureBase= null, user_callback:Callable= Callable())🔗
@@ -181,4 +186,5 @@ RIDupdate_spatial_entities(spatial_context:RID, entities:Array[RID], component_t
 Performs a snapshot for a limited number of entities. This is NOT an asynchronous method and will return the snapshot immediately.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

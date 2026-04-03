@@ -3,6 +3,7 @@
 # Using Viewports
 
 ## Introduction
+
 Think of aViewportas a screen onto which the game is projected. In order
 to see the game, we need to have a surface on which to draw it. That surface is
 the Root Viewport.
@@ -13,6 +14,7 @@ By using a SubViewport as render target, we can either render multiple scenes si
 aViewportTexturewhich is applied to an object in the scene, for example a dynamic
 skybox.
 SubViewportshave a variety of use cases, including:
+
 - Rendering 3D objects within a 2D game
 Rendering 3D objects within a 2D game
 - Rendering 2D elements in a 3D game
@@ -30,6 +32,7 @@ Another kind of Viewports in Godot areWindows. They allow their content to be pr
 flexible. If you want to use the texture of a Viewport, you'll be working withSubViewportsmost of the time.
 
 ## Input
+
 Viewportsare also responsible for delivering properly adjusted and
 scaled input events to their children nodes. By defaultSubViewportsdon't
 automatically receive input, unless they receive it from their directSubViewportContainerparent node. In this case, input can be
@@ -37,12 +40,14 @@ disabled with theDisable Inputproperty.
 For more information on how Godot handles input, please read theInput Event Tutorial.
 
 ## Listener
+
 Godot supports 3D sound (in both 2D and 3D nodes). More on this can be
 found in theAudio Streams Tutorial. For this type of sound to be
 audible, theViewportneeds to be enabled as a listener (for 2D or 3D).
 If you are using aSubViewportto display yourWorld3DorWorld2D, don't forget to enable this!
 
 ## Cameras (2D & 3D)
+
 When using aCamera3DorCamera2D, it will always display on the
 closest parentViewport(going towards the root). For example, in the
 following hierarchy:
@@ -53,31 +58,39 @@ capture nodes below them in the hierarchy.
 There can only be one active camera perViewport, so if there is more
 than one, make sure that the desired one has thecurrentproperty set,
 or make it the current camera by calling:
+
 ```
 camera.make_current()
 ```
+
 ```
 camera.MakeCurrent();
 ```
+
 By default, cameras will render all objects in their world. In 3D, cameras can use theircull_maskproperty combined with theVisualInstance3D'slayerproperty to restrict which objects are rendered.
 
 ## Scale & stretching
+
 SubViewportshave asizeproperty, which represents the size of the SubViewport
 in pixels. For SubViewports which are children ofSubViewportContainers,
 these values are overridden, but for all others, this sets their resolution.
 It is also possible to scale the 2D content and make theSubViewportresolution
 different from the one specified in size, by calling:
+
 ```
 sub_viewport.set_size_2d_override(Vector2i(width, height)) # Custom size for 2D.
 sub_viewport.set_size_2d_override_stretch(true) # Enable stretch for custom size.
 ```
+
 ```
 subViewport.Size2DOverride = new Vector2I(width, height); // Custom size for 2D.
 subViewport.Size2DOverrideStretch = true; // Enable stretch for custom size.
 ```
+
 For information on scaling and stretching with the Root Viewport visit theMultiple Resolutions Tutorial
 
 ## Worlds
+
 For 3D, aViewportwill contain aWorld3D. This
 is basically the universe that links physics and rendering together.
 Node3D-based nodes will register using the World3D of the closest Viewport.
@@ -100,9 +113,11 @@ is possible to do so by settingworld_2don the Viewport through code.
 For an example of how this works, see the demo projects3D in 2Dand2D in 3Drespectively.
 
 ## Capture
+
 It is possible to query a capture of theViewportcontents. For the Root
 Viewport, this is effectively a screen capture. This is done with the
 following code:
+
 ```
 # Retrieve the captured Image using get_image().
 var img = get_viewport().get_texture().get_image()
@@ -111,6 +126,7 @@ var tex = ImageTexture.create_from_image(img)
 # Set sprite texture.
 sprite.texture = tex
 ```
+
 ```
 // Retrieve the captured Image using get_image().
 var img = GetViewport().GetTexture().GetImage();
@@ -119,14 +135,17 @@ var tex = ImageTexture.CreateFromImage(img);
 // Set sprite texture.
 sprite.Texture = tex;
 ```
+
 But if you use this in_ready()or from the first frame of theViewport'sinitialization,
 you will get an empty texture because there is nothing to get as texture. You can deal with
 it using (for example):
+
 ```
 # Wait until the frame has finished before getting the texture.
 await RenderingServer.frame_post_draw
 # You can get the image after this.
 ```
+
 ```
 // Wait until the frame has finished before getting the texture.
 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
@@ -134,6 +153,7 @@ await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDr
 ```
 
 ## Viewport Container
+
 If theSubViewportis a child of aSubViewportContainer, it will become active and display anything it has inside. The layout looks like this:
 TheSubViewportwill cover the area of its parentSubViewportContainercompletely
 ifStretchis set totruein the SubViewportContainer.
@@ -141,6 +161,7 @@ Note
 The size of theSubViewportContainercannot be smaller than the size of theSubViewport.
 
 ## Rendering
+
 Due to the fact that theViewportis an entryway into another rendering surface, it exposes a few
 rendering properties that can be different from the project settings. You can
 choose to use a different level ofMSAAfor each Viewport. The default behavior isDisabled.
@@ -153,6 +174,7 @@ Otherwise, shadows won't be rendered. By default, the equivalent project setting
 Godot also provides a way of customizing how everything is drawn insideViewportsusingDebug Draw.
 Debug Draw allows you to specify a mode which determines how the Viewport will display things drawn
 inside it. Debug Draw isDisabledby default. Some other options areUnshaded,Overdraw, andWireframe. For a full list, refer to theViewport Documentation.
+
 - Debug Draw = Disabled(default): The scene is drawn normally.
 Debug Draw = Disabled(default): The scene is drawn normally.
 - Debug Draw = Unshaded: Unshaded draws the scene without using lighting information so all the objects appear flatly colored in their albedo color.
@@ -166,19 +188,23 @@ Debug Draw modes are currentlynotsupported when using the
 Compatibility rendering method. They will appear as regular draw modes.
 
 ## Render target
+
 When rendering to aSubViewport, whatever is inside will not be
 visible in the scene editor. To display the contents, you have to draw the SubViewport'sViewportTexturesomewhere.
 This can be requested via code using (for example):
+
 ```
 # This gives us the ViewportTexture.
 var tex = viewport.get_texture()
 sprite.texture = tex
 ```
+
 ```
 // This gives us the ViewportTexture.
 var tex = viewport.GetTexture();
 sprite.Texture = tex;
 ```
+
 Or it can be assigned in the editor by selecting "New ViewportTexture"
 and then selecting theViewportyou want to use.
 Every frame, theViewport'stexture is cleared away with the default clear color (or a transparent
@@ -195,4 +221,5 @@ Make sure to check the Viewport demos. They are available in the
 viewport folder of the demos archive, or athttps://github.com/godotengine/godot-demo-projects/tree/master/viewport.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

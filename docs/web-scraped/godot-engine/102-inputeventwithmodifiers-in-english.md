@@ -1,15 +1,18 @@
 # InputEventWithModifiers in English
 
 # InputEventWithModifiers
+
 Inherits:InputEventFromWindow<InputEvent<Resource<RefCounted<Object
 Inherited By:InputEventGesture,InputEventKey,InputEventMouse
 Abstract base class for input events affected by modifier keys likeShiftandAlt.
 
 ## Description
+
 Stores information about mouse, keyboard, and touch gesture input events. This includes information about which modifier keys are pressed, such asShiftorAlt. SeeNode._input().
 Note:Modifier keys are considered modifiers only when used in combination with another key. As a result, their corresponding member variables, such asctrl_pressed, will returnfalseif the key is pressed on its own.
 
 ## Tutorials
+
 - Using InputEvent
 Using InputEvent
 
@@ -50,7 +53,9 @@ bool
 is_command_or_control_pressed()const
 
 ## Property Descriptions
+
 boolalt_pressed=false🔗
+
 - voidset_alt_pressed(value:bool)
 voidset_alt_pressed(value:bool)
 - boolis_alt_pressed()
@@ -82,6 +87,7 @@ boolis_shift_pressed()
 State of theShiftmodifier.
 
 ## Method Descriptions
+
 BitField[KeyModifierMask]get_modifiers_mask()const🔗
 Returns the keycode combination of modifier keys.
 boolis_command_or_control_pressed()const🔗
@@ -89,4 +95,5 @@ On macOS, returnstrueifMeta(Cmd) is pressed.
 On other platforms, returnstrueifCtrlis pressed.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

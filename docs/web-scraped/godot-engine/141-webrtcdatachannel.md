@@ -1,6 +1,7 @@
 # WebRTCDataChannel
 
 # WebRTCDataChannel
+
 Inherits:PacketPeer<RefCounted<Object
 Inherited By:WebRTCDataChannelExtension
 There is currently no description for this class. Please help us bycontributing one!
@@ -50,6 +51,7 @@ bool
 was_string_packet()const
 
 ## Enumerations
+
 enumWriteMode:🔗
 WriteModeWRITE_MODE_TEXT=0
 Tells the channel to send data over this channel as text. An external peer (non-Godot) would receive this as a string.
@@ -66,7 +68,9 @@ ChannelStateSTATE_CLOSED=3
 The channel was closed, or connection failed.
 
 ## Property Descriptions
+
 WriteModewrite_mode=1🔗
+
 - voidset_write_mode(value:WriteMode)
 voidset_write_mode(value:WriteMode)
 - WriteModeget_write_mode()
@@ -74,6 +78,7 @@ WriteModeget_write_mode()
 The transfer mode to use when sending outgoing packet. Either text or binary.
 
 ## Method Descriptions
+
 voidclose()🔗
 Closes this data channel, notifying the other peer.
 intget_buffered_amount()const🔗
@@ -103,4 +108,5 @@ boolwas_string_packet()const🔗
 Returnstrueif the last received packet was transferred as text. Seewrite_mode.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,10 +1,12 @@
 # PhysicsRayQueryParameters2D
 
 # PhysicsRayQueryParameters2D
+
 Inherits:RefCounted<Object
 Provides parameters forPhysicsDirectSpaceState2D.intersect_ray().
 
 ## Description
+
 By changing various properties of this object, such as the ray position, you can configure the parameters forPhysicsDirectSpaceState2D.intersect_ray().
 
 ## Properties
@@ -45,7 +47,9 @@ PhysicsRayQueryParameters2D
 create(from:Vector2, to:Vector2, collision_mask:int= 4294967295, exclude:Array[RID] = [])static
 
 ## Property Descriptions
+
 boolcollide_with_areas=false🔗
+
 - voidset_collide_with_areas(value:bool)
 voidset_collide_with_areas(value:bool)
 - boolis_collide_with_areas_enabled()
@@ -90,12 +94,15 @@ Vector2get_to()
 The ending point of the ray being queried for, in global coordinates.
 
 ## Method Descriptions
+
 PhysicsRayQueryParameters2Dcreate(from:Vector2, to:Vector2, collision_mask:int= 4294967295, exclude:Array[RID] = [])static🔗
 Returns a new, pre-configuredPhysicsRayQueryParameters2Dobject. Use it to quickly create query parameters using the most common options.
+
 ```
 var query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(0, 100))
 var collision = get_world_2d().direct_space_state.intersect_ray(query)
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

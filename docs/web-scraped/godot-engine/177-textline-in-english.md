@@ -1,10 +1,12 @@
 # TextLine in English
 
 # TextLine
+
 Inherits:RefCounted<Object
 Holds a line of text.
 
 ## Description
+
 Abstraction overTextServerfor handling a single line of text.
 
 ## Properties
@@ -109,7 +111,9 @@ void
 tab_align(tab_stops:PackedFloat32Array)
 
 ## Property Descriptions
+
 HorizontalAlignmentalignment=0🔗
+
 - voidset_horizontal_alignment(value:HorizontalAlignment)
 voidset_horizontal_alignment(value:HorizontalAlignment)
 - HorizontalAlignmentget_horizontal_alignment()
@@ -165,6 +169,7 @@ floatget_width()
 Text line width.
 
 ## Method Descriptions
+
 booladd_object(key:Variant, size:Vector2, inline_align:InlineAlignment= 5, length:int= 1, baseline:float= 0.0)🔗
 Adds inline object to the text buffer,keymust be unique. In the text, object is represented aslengthobject replacement characters.
 booladd_string(text:String, font:Font, font_size:int, language:String= "", meta:Variant= null)🔗
@@ -210,4 +215,5 @@ voidtab_align(tab_stops:PackedFloat32Array)🔗
 Aligns text to the given tab-stops.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,15 +1,18 @@
 # AnimationNode in English
 
 # AnimationNode
+
 Inherits:Resource<RefCounted<Object
 Inherited By:AnimationNodeExtension,AnimationNodeOutput,AnimationNodeSync,AnimationNodeTimeScale,AnimationNodeTimeSeek,AnimationRootNode
 Base class forAnimationTreenodes. Not related to scene nodes.
 
 ## Description
+
 Base resource forAnimationTreenodes. In general, it's not used directly, but you can create custom ones with custom blending formulas.
 Inherit this when creating animation nodes mainly for use inAnimationNodeBlendTree, otherwiseAnimationRootNodeshould be used instead.
 You can access the time information as read-only parameter which is processed and stored in the previous frame for all nodes exceptAnimationNodeOutput.
 Note:If multiple inputs exist in theAnimationNode, which time information takes precedence depends on the type ofAnimationNode.
+
 ```
 var current_length = $AnimationTree["parameters/AnimationNodeName/current_length"]
 var current_position = $AnimationTree["parameters/AnimationNodeName/current_position"]
@@ -17,6 +20,7 @@ var current_delta = $AnimationTree["parameters/AnimationNodeName/current_delta"]
 ```
 
 ## Tutorials
+
 - Using AnimationTree
 Using AnimationTree
 
@@ -99,6 +103,7 @@ void
 set_parameter(name:StringName, value:Variant)
 
 ## Signals
+
 animation_node_removed(object_id:int, name:String)🔗
 Emitted by nodes that inherit from this class and that have an internal tree when one of their animation nodes removes. The animation nodes that emit this signal areAnimationNodeBlendSpace1D,AnimationNodeBlendSpace2D,AnimationNodeStateMachine, andAnimationNodeBlendTree.
 animation_node_renamed(object_id:int, old_name:String, new_name:String)🔗
@@ -107,6 +112,7 @@ tree_changed()🔗
 Emitted by nodes that inherit from this class and that have an internal tree when one of their animation nodes changes. The animation nodes that emit this signal areAnimationNodeBlendSpace1D,AnimationNodeBlendSpace2D,AnimationNodeStateMachine,AnimationNodeBlendTreeandAnimationNodeTransition.
 
 ## Enumerations
+
 enumFilterAction:🔗
 FilterActionFILTER_IGNORE=0
 Do not use filtering.
@@ -118,7 +124,9 @@ FilterActionFILTER_BLEND=3
 Paths matching the filter will be blended (by the blend value).
 
 ## Property Descriptions
+
 boolfilter_enabled🔗
+
 - voidset_filter_enabled(value:bool)
 voidset_filter_enabled(value:bool)
 - boolis_filter_enabled()
@@ -126,6 +134,7 @@ boolis_filter_enabled()
 Iftrue, filtering is enabled.
 
 ## Method Descriptions
+
 String_get_caption()virtualconst🔗
 When inheriting fromAnimationRootNode, implement this virtual method to override the text caption for this animation node.
 AnimationNode_get_child_by_name(name:StringName)virtualconst🔗
@@ -179,4 +188,5 @@ voidset_parameter(name:StringName, value:Variant)🔗
 Sets a custom parameter. These are used as local memory, because resources can be reused across the tree or scenes.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

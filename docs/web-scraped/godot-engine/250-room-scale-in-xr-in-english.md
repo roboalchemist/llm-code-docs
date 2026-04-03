@@ -1,6 +1,7 @@
 # Room scale in XR in English
 
 # Room scale in XR
+
 One of the staples of XR projects is the ability to walk around freely in a large space.
 This space is often constrained by the room the player is physically in with tracking sensors placed within this space.
 With the advent of inside out tracking however ever larger play spaces are possible.
@@ -35,6 +36,7 @@ When the path for the player is blocked in the virtual world, the player can sti
 We will look at solving the first two problem with two separate solutions, and then discuss dealing with the third.
 
 ## Origin centric solution
+
 Looking at the first approach for solving this we are going to change our structure.
 This is the approach currently implemented in XR Tools.
 In this setup we mark the character body as top level so it does not move with the origin.
@@ -45,8 +47,10 @@ Note
 TheOrigin centric movement democontains a more elaborate example of the technique described below.
 
 ## Step 1
+
 In the first step we're going to process the physical movement of the player.
 We determine where the player is right now, and attempt to move our character body there.
+
 ```
 func _process_on_physical_movement(delta):
   # Remember our current velocity, we'll apply that later
@@ -79,9 +83,11 @@ func _process_on_physical_movement(delta):
 func _physics_process(delta):
   var is_colliding = _process_on_physical_movement(delta)
 ```
+
 Note that we're returningtruefrom our_process_on_physical_movementfunction when we couldn't move our player all the way.
 
 ## Step 2
+
 The second step is to handle rotation of the player as a result of user input.
 As the input used can differ based on your needs we are simply calling the function_get_rotational_input.
 This function should obtain the necessary input and return the rotational speed in radians per second.
@@ -89,6 +95,7 @@ Note
 For our example we are going to keep this simple and straight forward.
 We are not going to worry about comfort features such as snap turning and applying a vignette.
 We highly recommend implementing such comfort features.
+
 ```
 func _get_rotational_input() -> float:
   # Implement this function to return rotation in radians per second.
@@ -122,16 +129,19 @@ func _physics_process(delta):
   if !is_colliding:
     _process_rotation_on_input(delta)
 ```
+
 Note
 We've added the call for processing our rotation to our physics process but we are only executing this if we were able to move our player fully.
 This means that if the player moves somewhere they shouldn't, we don't process further movement.
 
 ## Step 3
+
 The third and final step is moving the player forwards, backwards or sideways as a result of user input.
 Just like with the rotation the inputs differ from project to project so we are simply calling the function_get_movement_input.
 This function should obtain the necessary input and return a directional vector scaled to the required velocity.
 Note
 Just like with rotation we're keeping it simple. Here too it is advisable to look at adding comfort settings.
+
 ```
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -166,6 +176,7 @@ func _physics_process(delta):
 ```
 
 ## Character body centric solution
+
 In this setup we are going to keep our character body as our root node and as such is easier to combine with traditional game mechanics.
 Here we have a standard character body with collision shape, and our XR origin node and camera as normal children.
 We also have our neck helper node.
@@ -174,10 +185,12 @@ Note
 TheCharacter centric movement democontains a more elaborate example of the technique described below.
 
 ## Step 1
+
 In this approach step 1 is where all the magic happens.
 Just like with our previous approach we will be applying our physical movement to the character body,
 but we will counter that movement on the origin node.
 This will ensure that the player's location stays in sync with the character body's location.
+
 ```
 # Helper variables to keep our code readable
 @onready var origin_node = $XROrigin3D
@@ -224,6 +237,7 @@ func _process_on_physical_movement(delta) -> bool:
 func _physics_process(delta):
   var is_colliding = _process_on_physical_movement(delta)
 ```
+
 In essence the code above will move the character body to where the player is, and then move the origin node back in equal amounts.
 The result is that the player stays centered above the character body.
 We start with applying the rotation.
@@ -241,10 +255,12 @@ The player may thus move away from this location but that will be reflected in t
 As with our previous solution we return true if this is the case.
 
 ## Step 2
+
 In this step we again apply the rotation based on controller input.
 However in this case the code is nearly identical to how one would implement this in a normal first person game.
 As the input used can differ based on your needs we are simply calling the function_get_rotational_input.
 This function should obtain the necessary input and return the rotational speed in radians per second.
+
 ```
 func _get_rotational_input() -> float:
   # Implement this function to return rotation in radians per second.
@@ -260,10 +276,12 @@ func _physics_process(delta):
 ```
 
 ## Step 3
+
 For step three we again apply the movement based on controller input.
 However just like at step 2, we can now implement this as we would in a normal first person game.
 Just like with the rotation the inputs differ from project to project so we are simply calling the function_get_movement_input.
 This function should obtain the necessary input and return a directional vector scaled to the required velocity.
+
 ```
 func _get_movement_input() -> Vector2:
   # Implement this to return requested directional movement in meters per second.
@@ -289,6 +307,7 @@ func _physics_process(delta):
 ```
 
 ## When the player walks to somewhere they shouldn't
+
 Think of a situation where the player is outside a locked room.
 You don't want the player to go into that room until the door is unlocked.
 You also don't want the player to see what is in this room.
@@ -307,6 +326,7 @@ As this distance increases, usually to a distance of a few centimeters, the scre
 Our solutions up above would allow us to add this logic into the code at the end of step 1.
 Further improvements to the code presented could be:
 > allowing controller input as long as this distance is still small,still applying gravity to the player even when controller input is disabled.
+
 - allowing controller input as long as this distance is still small,
 allowing controller input as long as this distance is still small,
 - still applying gravity to the player even when controller input is disabled.
@@ -315,6 +335,7 @@ Note
 The movement demos in our demo repository contain an example of blacking out the screen when a user walks into restricted areas.
 
 ## Further suggestions for improvements
+
 The above provides two good options as starting points for implementing room scale XR games.
 A few more things that are worth pointing out that you will likely want to implement:
 > The height of the camera can be used to detect whether the player is standing up, crouching, jumping or lying down.
@@ -323,6 +344,7 @@ Extra bonus points for adding multiple collision shapes so the head and body hav
 This could result in the player spawning into a different room than our origin point.
 The game will now attempt, and fail, to move the player body from the starting point to where the player is standing.
 You should implement a reset function that moves the origin point so the player is in the correct starting position.
+
 - The height of the camera can be used to detect whether the player is standing up, crouching, jumping or lying down.
 You can adjust the size and orientation of the collision shape accordingly.
 Extra bonus points for adding multiple collision shapes so the head and body have their own, more accurately sized, shapes.
@@ -344,4 +366,5 @@ This starting environment is often a large location where the positioning of the
 When the player is ready, and presses the button, this is the moment you record the position and height of the camera.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

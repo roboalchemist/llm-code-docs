@@ -1,12 +1,14 @@
 # Spatial shaders in English
 
 # Spatial shaders
+
 Spatial shaders are used for shading 3D objects. They are the most complex type of shader Godot offers.
 Spatial shaders are highly configurable with different render modes and different rendering options
 (e.g. Subsurface Scattering, Transmission, Ambient Occlusion, Rim lighting, etc.). Users can optionally
 write vertex, fragment, and light processor functions to affect how objects are drawn.
 
 ## Render modes
+
 For visual examples of these render modes, seeStandard Material 3D and ORM Material 3D.
 
 | Render mode | Description |
@@ -133,6 +135,7 @@ fog_disabled
 Disable receiving depth-based or volumetric fog. Useful forblend_addmaterials like particles.
 
 ## Stencil modes
+
 Note
 Stencil support is experimental, use at your own risk.
 We will try to not break compatibility as much as possible,
@@ -142,6 +145,7 @@ Stencil operations are a set of operations that allow writing to
 an efficient buffer in an hardware-accelerated manner.
 This is generally used to mask in or out parts of the scene.
 Some of the most well-known uses are:
+
 - Outlines: Mask out the inner mesh that is being outlined to avoid inner outlines.
 Outlines: Mask out the inner mesh that is being outlined to avoid inner outlines.
 - X-Ray: Display a mesh behind other objects.
@@ -191,6 +195,7 @@ compare_greater_or_equal
 Pass stencil test if the reference value is greater than or equal to the stencil buffer value.
 
 ## Built-ins
+
 Values marked asinare read-only. Values marked asoutcan optionally be written to and will
 not necessarily contain sensible values. Values marked asinoutprovide a sensible default
 value, and can optionally be written to. Samplers cannot be written to so they are not marked.
@@ -199,6 +204,7 @@ built-in from thefragment()function, you can use avarying.
 The same applies for accessing fragment built-ins from thelight()function.
 
 ## Global built-ins
+
 Global built-ins are available everywhere, including custom functions.
 
 | Built-in | Description |
@@ -240,12 +246,14 @@ In the Forward+ or Mobile renderers, it's0.0.
 In the Compatibility renderer, it's-1.0.
 
 ## Vertex built-ins
+
 Vertex data (VERTEX,NORMAL,TANGENT, andBITANGENT) are presented in model space
 (also called local space). If not written to, these values will not be modified and be
 passed through as they came, then transformed into view space to be used infragment().
 They can optionally be presented in world space by using theworld_vertex_coordsrender mode.
 Users can disable the built-in modelview transform (projection will still happen later) and do
 it manually with the following code:
+
 ```
 shader_type spatial;
 render_mode skip_vertex_transform;
@@ -257,6 +265,7 @@ void vertex() {
     TANGENT = normalize((MODELVIEW_MATRIX * vec4(TANGENT, 0.0)).xyz);
 }
 ```
+
 Other built-ins, such asUV,UV2, andCOLOR, are also passed through to thefragment()function if not modified.
 Users can override the modelview and projection transforms using thePOSITIONbuilt-in. IfPOSITIONis written
 to anywhere in the shader, it will always be used, so the user becomes responsible for ensuring that it always has
@@ -264,6 +273,7 @@ an acceptable value. WhenPOSITIONis used, the value fromVERTEXis ignored and pro
 However, the value passed to the fragment shader still comes fromVERTEX.
 For instancing, theINSTANCE_CUSTOMvariable contains the instance custom data. When using particles, this information
 is usually:
+
 - x: Rotation angle in radians.
 x: Rotation angle in radians.
 - y: Phase during lifetime (0.0to1.0).
@@ -445,6 +455,7 @@ Note
 INV_VIEW_MATRIXis the matrix used for rendering the object in that pass, unlikeMAIN_CAM_INV_VIEW_MATRIX, which is the matrix of the camera in the scene. In the shadow pass,INV_VIEW_MATRIX's view is based on the camera that is located at the position of the light.
 
 ## Fragment built-ins
+
 The default use of a Godot fragment processor function is to set up the material properties of your object
 and to let the built-in renderer handle the final shading. However, you are not required to use all
 these properties, and if you don't write to them, Godot will optimize away the corresponding functionality.
@@ -690,16 +701,19 @@ Shaders going through the transparent pipeline whenALPHAis written to
 may exhibit transparency sorting issues. Read thetransparency sorting section in the 3D rendering limitations pagefor more information and ways to avoid issues.
 
 ## Light built-ins
+
 Writing light processor functions is completely optional. You can skip thelight()function by using
 theunshadedrender mode. If no light function is written, Godot will use the material properties
 written to in thefragment()function to calculate the lighting for you (subject to the render mode).
 Thelight()function is called for every light in every pixel. It is called within a loop for each light type.
 Below is an example of a customlight()function using a Lambertian lighting model:
+
 ```
 void light() {
     DIFFUSE_LIGHT += clamp(dot(NORMAL, LIGHT), 0.0, 1.0) * ATTENUATION * LIGHT_COLOR / PI;
 }
 ```
+
 If you want the lights to add together, add the light contribution toDIFFUSE_LIGHTusing+=, rather than overwriting it.
 Warning
 Thelight()function won't be run if thevertex_lightingrender mode is enabled, or ifRendering > Quality > Shading > Force Vertex Shadingis enabled in the Project Settings. (It's enabled by default on mobile platforms.)
@@ -796,4 +810,5 @@ materials from appearing in screen-space reflections or refraction.SDFGIsharp re
 materials (only rough reflections are visible on transparent materials).
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

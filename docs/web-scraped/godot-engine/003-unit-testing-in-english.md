@@ -1,6 +1,7 @@
 # Unit testing in English
 
 # Unit testing
+
 Godot Engine allows to write unit tests directly in C++. The engine integrates
 thedoctestunit testing framework which
 gives ability to write test suites and test cases next to production code, but
@@ -9,25 +10,33 @@ reside in a dedicatedtests/directory instead, which is located at the root
 of the engine source code.
 
 ## Platform and target support
+
 C++ unit tests can be run on Linux, macOS, and Windows operating systems.
 Tests can only be run with editortoolsenabled, which means that export
 templates cannot be tested currently.
 
 ## Running tests
+
 Before tests can be actually run, the engine must be compiled with thetestsbuild option enabled (and any other build option you typically use), as the
 tests are not compiled as part of the engine by default:
+
 ```
 scons tests=yes
 ```
+
 Once the build is done, run the tests with a--testcommand-line option:
+
 ```
 ./bin/<godot_binary> --test
 ```
+
 The test run can be configured with the various doctest-specific command-line
 options. To retrieve the full list of supported options, run the--testcommand with the--helpoption:
+
 ```
 ./bin/<godot_binary> --test --help
 ```
+
 Any other options and arguments after the--testcommand are treated as
 arguments for doctest.
 Note
@@ -38,6 +47,7 @@ detected, so you should strive to fix all warnings before opening a pull
 request.
 
 ### Filtering tests
+
 By default, all tests are run if you don't supply any extra arguments after the--testcommand. But if you're writing new tests or would like to see the
 successful assertions output coming from those tests for debugging purposes, you
 can run the tests of interest with the various filtering options provided by
@@ -61,29 +71,36 @@ Examples
 --source-file
 -sf="*test_color*"
 For instance, to run only theStringunit tests, run:
+
 ```
 ./bin/<godot_binary> --test --test-case="*[String]*"
 ```
+
 Successful assertions output can be enabled with the--success(-s)
 option, and can be combined with any combination of filtering options above,
 for instance:
+
 ```
 ./bin/<godot_binary> --test --source-file="*test_color*" --success
 ```
+
 Specific tests can be skipped with corresponding-excludeoptions. As of
 now, some tests include random stress tests which take a while to execute. In
 order to skip those kind of tests, run the following command:
+
 ```
 ./bin/<godot_binary> --test --test-case-exclude="*[Stress]*"
 ```
 
 ## Writing tests
+
 Test suites represent C++ header files which must be included as part of the
 main test entry point intests/test_main.cpp. Most test suites are located
 directly undertests/directory.
 All header files are prefixed withtest_, and this is a naming convention
 which the Godot build system relies on to detect tests throughout the engine.
 Here's a minimal working test suite with a single test case written:
+
 ```
 #pragma once
 
@@ -98,6 +115,7 @@ TEST_CASE("[String] Hello World!") {
 
 } // namespace TestString
 ```
+
 Note
 You can quickly generate new tests using thecreate_test.pyscript found in thetests/directory.
 This script automatically creates a new test file with the required boilerplate code in the appropriate location.
@@ -120,7 +138,9 @@ Godot supports writing tests per C++ module. For instructions on how to write
 module tests, refer toWriting custom unit tests.
 
 ### Subcases
+
 In situations where you have a common setup for several test cases with only slight variations, subcases can be very helpful. Here's an example:
+
 ```
 TEST_CASE("[SceneTree][Node] Testing node operations with a very simple scene tree") {
     // ... common setup (e.g. creating a scene tree with a few nodes)
@@ -132,10 +152,12 @@ TEST_CASE("[SceneTree][Node] Testing node operations with a very simple scene tr
     }
 }
 ```
+
 EachSUBCASEcauses theTEST_CASEto be executed from the beginning.
 Subcases can be nested to an arbitrary depth, but it is advised to limit nesting to no more than one level deep.
 
 ### Assertions
+
 A list of all commonly used assertions used throughout the Godot tests, sorted
 by severity.
 
@@ -169,6 +191,7 @@ See also
 doctest: Assertion macros.
 
 ### Logging
+
 The test output is handled by doctest itself, and does not rely on Godot
 printing or logging functionality at all, so it's recommended to use dedicated
 macros which allow to log test output in a format written by doctest.
@@ -189,13 +212,16 @@ FAIL
 Fails the test immediately. Can be wrapped in conditionals for complex checks.
 Different reporters can be chosen at runtime. For instance, here's how the
 output can be redirected to an XML file:
+
 ```
 ./bin/<godot_binary> --test --source-file="*test_validate*" --success --reporters=xml --out=doctest.txt
 ```
+
 See also
 doctest: Logging macros.
 
 ### Testing failure paths
+
 Sometimes, it's not always feasible to test for anexpectedresult. With the
 Godot development philosophy of that the engine should not crash and should
 gracefully recover whenever a non-fatal error occurs, it's important to check
@@ -207,6 +233,7 @@ successful).
 To alleviate this problem, useERR_PRINT_OFFandERR_PRINT_ONmacros
 directly within test cases to temporarily disable the error output coming from
 the engine, for instance:
+
 ```
 TEST_CASE("[Color] Constructor methods") {
     ERR_PRINT_OFF;
@@ -219,6 +246,7 @@ TEST_CASE("[Color] Constructor methods") {
 ```
 
 ### Special tags in test case names
+
 These tags can be added to the test case name to modify or extend the test environment:
 
 | Tag | Description |
@@ -243,6 +271,7 @@ Creates the default 3D navigation server and makes it available for testing.
 You can use them together to combine multiple test environment extensions.
 
 ### Testing signals
+
 The following macros can be use to test signals:
 
 | Macro | Description |
@@ -266,6 +295,7 @@ Checks if the specified signal was not fired.
 SIGNAL_DISCARD("signal_name")
 Discards all records of the specified signal.
 Below is an example demonstrating the use of these macros:
+
 ```
 //...
 SUBCASE("[Timer] Timer process timeout signal must be emitted") {
@@ -285,21 +315,25 @@ SUBCASE("[Timer] Timer process timeout signal must be emitted") {
 ```
 
 ## Test tools
+
 Test tools are advanced methods which allow you to run arbitrary procedures to
 facilitate the process of manual testing and debugging the engine internals.
 These tools can be run by supplying the name of a tool after the--testcommand-line option. For instance, the GDScript module implements and registers
 several tools to help the debugging of the tokenizer, parser, and compiler:
+
 ```
 ./bin/<godot_binary> --test gdscript-tokenizer test.gd
 ./bin/<godot_binary> --test gdscript-parser test.gd
 ./bin/<godot_binary> --test gdscript-compiler test.gd
 ```
+
 If any such tool is detected, then the rest of the unit tests are skipped.
 Test tools can be registered anywhere throughout the engine as the registering
 mechanism closely resembles of what doctest provides while registering test
 cases using dynamic initialization technique, but usually these can be
 registered at correspondingregister_types.cppsources (per module or core).
 Here's an example of how GDScript registers test tools inmodules/gdscript/register_types.cpp:
+
 ```
 #ifdef TESTS_ENABLED
 void test_tokenizer() {
@@ -319,12 +353,15 @@ REGISTER_TEST_COMMAND("gdscript-parser", &test_parser);
 REGISTER_TEST_COMMAND("gdscript-compiler", &test_compiler);
 #endif
 ```
+
 The custom command-line parsing can be performed by a test tool itself with the
 help of OSget_cmdline_argsmethod.
 
 ## Integration tests for GDScript
+
 Godot uses doctest to prevent regressions in GDScript during development. There
 are several types of test scripts which can be written:
+
 - tests for expected errors;
 tests for expected errors;
 - tests for warnings;
@@ -347,30 +384,39 @@ The test should not have any dependency unless it's part of the test too.
 Global classes (usingclass_name) are registered before the runner
 starts, so those should work if needed.
 Here's an example test script:
+
 ```
 func test():
     if true # Missing colon here.
         print("true")
 ```
+
 - Change directory to the Godot source repository root.cdgodot
 Change directory to the Godot source repository root.
+
 ```
 cd godot
 ```
+
 - Generate*.outfiles to update the expected results from the output:bin/<godot_binary>--gdscript-generate-testsmodules/gdscript/tests/scripts
 Generate*.outfiles to update the expected results from the output:
+
 ```
 bin/<godot_binary> --gdscript-generate-tests modules/gdscript/tests/scripts
 ```
+
 You may add the--print-filenamesoption to see filenames as their test
 outputs are generated. If you are working on a new feature that is causing
 hard crashes, you can use this option to quickly find which test file causes
 the crash and debug from there.
+
 - Run GDScript tests with:./bin/<godot_binary>--test--test-suite="*GDScript*"
 Run GDScript tests with:
+
 ```
 ./bin/<godot_binary> --test --test-suite="*GDScript*"
 ```
+
 This also accepts the--print-filenamesoption (see above).
 If no errors are printed and everything goes well, you're done!
 Warning
@@ -389,4 +435,5 @@ you can disable the runtime section of the test by naming the script file so tha
 For example, "test_empty_file.notest.gd".
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

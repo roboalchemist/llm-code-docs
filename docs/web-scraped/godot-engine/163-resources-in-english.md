@@ -3,6 +3,7 @@
 # Resources
 
 ## Nodes and resources
+
 Up to this tutorial, we focused on theNodeclass in Godot as that's the one you use to code behavior and
 most of the engine's features rely on it. There is
 another datatype that is just as important:Resource.
@@ -10,6 +11,7 @@ Nodesgive you functionality: they draw sprites, 3D models, simulate physics,
 arrange user interfaces, etc.Resourcesaredata containers. They don't
 do anything on their own: instead, nodes use the data contained in resources.
 Anything Godot saves or loads from disk is a resource. Be it a scene (a.tscnor a.scnfile), an image, a script... Here are someResourceexamples:
+
 - Texture
 Texture
 - Script
@@ -34,7 +36,9 @@ can become a resource. This means that both nodes and resources can contain
 resources as properties:
 
 ## External vs built-in
+
 There are two ways to save resources. They can be:
+
 - Externalto a scene, saved on the disk as individual files.
 Externalto a scene, saved on the disk as individual files.
 - Built-in, saved inside the.tscnor the.scnfile they're attached to.
@@ -53,13 +57,16 @@ Even if you save a built-in resource, when you instance a scene multiple
 times, the engine will only load one copy of it.
 
 ## Loading resources from code
+
 There are two ways to load resources from code. First, you can use theload()function anytime:
+
 ```
 func _ready():
     # Godot loads the Resource when it reads this very line.
     var imported_resource = load("res://robi.png")
     $sprite.texture = imported_resource
 ```
+
 ```
 public override void _Ready()
 {
@@ -69,28 +76,34 @@ public override void _Ready()
     sprite.Texture = texture;
 }
 ```
+
 You can alsopreloadresources. Unlikeload, this function will read the
 file from disk and load it at compile-time. As a result, you cannot callpreloadwith a variable path: you need to use a constant string.
+
 ```
 func _ready():
     # Godot loads the resource at compile-time
     var imported_resource = preload("res://robi.png")
     get_node("sprite").texture = imported_resource
 ```
+
 ```
 // 'preload()' is unavailable in C Sharp.
 ```
 
 ## Loading scenes
+
 Scenes are also resources, but there is a catch. Scenes saved to disk are
 resources of typePackedScene. The
 scene is packed inside aResource.
 To get an instance of the scene, you have to use thePackedScene.instantiate()method.
+
 ```
 func _on_shoot():
         var bullet = preload("res://bullet.tscn").instantiate()
         add_child(bullet)
 ```
+
 ```
 private PackedScene _bulletScene = GD.Load<PackedScene>("res://Bullet.tscn");
 
@@ -100,6 +113,7 @@ private void OnShoot()
     AddChild(bullet);
 }
 ```
+
 This method creates the nodes in the scene's hierarchy, configures them, and
 returns the root node of the scene. You can then add it as a child of any other
 node.
@@ -109,20 +123,23 @@ time. Remember that, as always, images, meshes, etc. are all shared between the
 scene instances.
 
 ## Freeing resources
+
 When aResourceis no longer in use, it will automatically free itself.
 Since, in most cases, Resources are contained in Nodes, when you free a node,
 the engine frees all the resources it owns as well if no other node uses them.
 
 ## Creating your own resources
+
 Like any Object in Godot, users can also script Resources. Resource scripts
 inherit the ability to freely translate between object properties and serialized
-text or binary data (*.tres, *.res). They also inherit the reference-counting
+text or binary data (*.tres,*.res). They also inherit the reference-counting
 memory management from the RefCounted type.
 This comes with many distinct advantages over alternative data
 structures, such as JSON, CSV, or custom TXT files. Users can only import these
 assets as aDictionary(JSON) or as aFileAccessto parse. What sets Resources apart is their
 inheritance ofObject,RefCounted,
 andResourcefeatures:
+
 - They can define constants, so constants from other data fields or objects are not needed.
 They can define constants, so constants from other data fields or objects are not needed.
 - They can define methods, including setter/getter methods for properties. This allows for abstraction and encapsulation of the underlying data. If the Resource script's structure needs to change, the game using the Resource need not also change.
@@ -161,6 +178,7 @@ Without a script, it's useless, so let's add some data and logic!
 Attach a script to it namedbot_stats.gd(or just create a new script, and then drag it to it).
 Note
 To make the new resource class appear in the Create Resource GUI you need to provide a class name for GDScript, or use the [GlobalClass] attribute in C#.
+
 ```
 class_name BotStats
 extends Resource
@@ -177,6 +195,7 @@ func _init(p_health = 0, p_sub_resource = null, p_strings = []):
     sub_resource = p_sub_resource
     strings = p_strings
 ```
+
 ```
 // BotStats.cs
 using Godot;
@@ -211,7 +230,9 @@ namespace ExampleProject
     }
 }
 ```
+
 Now, create aCharacterBody3D, name itBot, and add the following script to it:
+
 ```
 extends CharacterBody3D
 
@@ -224,6 +245,7 @@ func _ready():
         print(stats.health)
         # Prints "10"
 ```
+
 ```
 // Bot.cs
 using Godot;
@@ -245,6 +267,7 @@ namespace ExampleProject
     }
 }
 ```
+
 Now, select theCharacterBody3Dnode which we namedbot, and drag&drop thebot_stats.tresresource onto the Inspector. It should print 10! Obviously, this setup can be used for more advanced features than this, but as long you really understandhowit all worked, you should figure out everything else related to Resources.
 Note
 Resource scripts are similar to Unity's ScriptableObjects. The Inspector
@@ -255,6 +278,7 @@ visualizations and editors for their data.
 Unreal Engine's DataTables and CurveTables are also easy to recreate with
 Resource scripts. DataTables are a String mapped to a custom struct, similar
 to a Dictionary mapping a String to a secondary custom Resource script.
+
 ```
 # bot_stats_table.gd
 extends Resource
@@ -269,6 +293,7 @@ var data = {
 func _init():
     print(data)
 ```
+
 ```
 using Godot;
 
@@ -285,7 +310,9 @@ public partial class BotStatsTable : Resource
     }
 }
 ```
+
 Instead of inlining the Dictionary values, one could also, alternatively:
+
 - Import a table of values from a spreadsheet and generate these key-value pairs.
 Import a table of values from a spreadsheet and generate these key-value pairs.
 - Design a visualization within the editor and create a plugin that adds it
@@ -303,6 +330,7 @@ work. Godot will not serialize the custom properties on the script inner class p
 In the example below, Godot would load theNodescript, see that it doesn't
 extendResource, and then determine that the script failed to load for the
 Resource object since the types are incompatible.
+
 ```
 extends Node
 
@@ -316,6 +344,7 @@ func _ready():
     # This will NOT serialize the 'value' property.
     ResourceSaver.save(my_res, "res://my_res.tres")
 ```
+
 ```
 using Godot;
 
@@ -339,4 +368,5 @@ public partial class MyNode : Node
 ```
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -3,8 +3,10 @@
 # Import process
 
 ## Importing assets in Godot
+
 To import assets in Godot, place your assets (image files, scenes, audio
 files, fonts, etc) directly in the project folder. There are 2 ways to achieve this:
+
 - For any file type:Copy files manually with your operating system's file manager.
 For any file type:Copy files manually with your operating system's file manager.
 - For file types that can be imported by Godot:Drag-and-drop files from the operating system's file manager to the editor's FileSystem dock.
@@ -22,6 +24,7 @@ However, theResource Loadercannot access
 non-imported files. Only theFileAccessclass can.
 
 ## Changing import parameters
+
 Note
 Import parameters are only present innon-nativeGodot resource types.
 This means Godot's own scene and resource file formats (.tscn,.scn,.tres,.res) don't have import options you can select in the Import
@@ -37,6 +40,7 @@ possible. Select all of them together in the FileSystem dock and the
 exposed parameters will apply to all of them when reimporting.
 
 ## Reimporting multiple assets
+
 While working on a project you may find that several assets need to have
 the same parameters changed, such as enabling mipmaps, but you only want
 those specific parameters changed. To do this, select every asset you want
@@ -48,27 +52,33 @@ button and every selected asset will be reimported with only those
 parameters changed.
 
 ## Automatic reimport
+
 When the MD5 checksum of the source asset changes, Godot will perform an
 automatic reimport of it, applying the preset configured for that specific
 asset.
 
 ## Files generated
+
 Importing will add an extra<asset>.importfile next to the source file,
 containing the import configuration.
 Make sure to commit these files to your version control system, as these
 files contain important metadata.
+
 ```
 ls
 example.png
 example.png.import
 project.godot
 ```
+
 Additionally, extra assets will be present in the hiddenres://.godot/imported/folder:
+
 ```
 ls .godot/imported
 example.png-218a8f2b3041327d8a5756f3a245f83b.ctex
 example.png-218a8f2b3041327d8a5756f3a245f83b.md5
 ```
+
 If any of the files present in this folder is erased (or the whole folder), the
 asset or assets will be reimported automatically. As such, committing the.godot/folder to the version control system is not recommended. While
 committing this folder can shorten reimporting time when checking out on another
@@ -77,6 +87,7 @@ The default version control metadata that can be generated on project creation
 will automatically ignore the.godot/folder.
 
 ## Changing import resource type
+
 Some source assets can be imported as different types of resources. For this,
 select the relevant type of resource desired then clickReimport:
 SelectKeepFile(exportedasis)as resource type to skip file import, files
@@ -85,6 +96,7 @@ SelectSkipFile(notexported)as resource type to skip file import and ignore
 file during project export.
 
 ## Changing default import parameters
+
 Different types of projects might require different defaults. Changing the import
 options to a predefined set of options can be achieved by using thePreset...Menu. Besides some resource types offering presets, the default
 settings can be saved and cleared too:
@@ -92,10 +104,12 @@ The default import parameters for a given resource type can be changed
 project-wide using theImport Defaultstab of the Project Settings dialog:
 
 ## Further reading
+
 This workflow takes a little time to get used to, but it enforces a more correct
 way to deal with resources.
 There are many types of assets available for import. Continue reading to
 understand how to work with all of them:
+
 - Importing images
 Importing images
 - Importing audio samples
@@ -106,4 +120,5 @@ Importing 3D scenes
 Importing translations
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

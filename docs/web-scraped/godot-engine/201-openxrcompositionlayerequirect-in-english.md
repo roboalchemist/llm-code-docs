@@ -1,11 +1,13 @@
 # OpenXRCompositionLayerEquirect in English
 
 # OpenXRCompositionLayerEquirect
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:OpenXRCompositionLayer<Node3D<Node<Object
 An OpenXR composition layer that is rendered as an internal slice of a sphere.
 
 ## Description
+
 An OpenXR composition layer that allows rendering aSubViewporton an internal slice of a sphere.
 
 ## Properties
@@ -31,7 +33,9 @@ upper_vertical_angle
 0.7853982
 
 ## Property Descriptions
+
 floatcentral_horizontal_angle=1.5707964🔗
+
 - voidset_central_horizontal_angle(value:float)
 voidset_central_horizontal_angle(value:float)
 - floatget_central_horizontal_angle()
@@ -63,4 +67,5 @@ floatget_upper_vertical_angle()
 The upper vertical angle of the sphere. Used (together withlower_vertical_angle) to set the height.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

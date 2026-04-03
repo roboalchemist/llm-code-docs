@@ -1,10 +1,12 @@
 # GraphNode in English
 
 # GraphNode
+
 Inherits:GraphElement<Container<Control<CanvasItem<Node<Object
 A container with connection ports, representing a node in aGraphEdit.
 
 ## Description
+
 GraphNodeallows to create nodes for aGraphEditgraph with customizable content based on its child controls.GraphNodeis derived fromContainerand it is responsible for placing its children on screen. This works similar toVBoxContainer. Children, in turn, provideGraphNodewith so-called slots, each of which can have a connection port on either side.
 EachGraphNodeslot is defined by its index and can provide the node with up to two ports: one on the left, and one on the right. By convention the left port is also referred to as theinput portand the right port is referred to as theoutput port. Each port can be enabled and configured individually, using different type and color. The type is an arbitrary value that you can define using your own considerations. The parentGraphEditwill receive this information on each connect and disconnect request.
 Slots can be configured in the Inspector dock once you add at least one childControl. The properties are grouped by each slot's index in the "Slot" section.
@@ -179,13 +181,16 @@ StyleBox
 titlebar_selected
 
 ## Signals
+
 slot_sizes_changed()🔗
 Emitted when any slot's size might have changed.
 slot_updated(slot_index:int)🔗
 Emitted when any GraphNode's slot is updated.
 
 ## Property Descriptions
+
 boolignore_invalid_connection_type=false🔗
+
 - voidset_ignore_invalid_connection_type(value:bool)
 voidset_ignore_invalid_connection_type(value:bool)
 - boolis_ignoring_valid_connection_type()
@@ -211,6 +216,7 @@ Stringget_title()
 The text displayed in the GraphNode's title bar.
 
 ## Method Descriptions
+
 void_draw_port(slot_index:int, position:Vector2i, left:bool, color:Color)virtual🔗
 There is currently no description for this method. Please help us bycontributing one!
 voidclear_all_slots()🔗
@@ -293,6 +299,7 @@ voidset_slot_type_right(slot_index:int, type:int)🔗
 Sets the right (output) type of the slot with the givenslot_indextotype. If the value is negative, all connections will be disallowed to be created via user inputs.
 
 ## Theme Property Descriptions
+
 Colorresizer_color=Color(0.875,0.875,0.875,1)🔗
 The color modulation applied to the resizer icon.
 intport_h_offset=0🔗
@@ -317,4 +324,5 @@ StyleBoxtitlebar_selected🔗
 TheStyleBoxused for the title bar of theGraphNodewhen it is selected.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

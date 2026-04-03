@@ -3,11 +3,13 @@
 # Thread-safe APIs
 
 ## Threads
+
 Threads are used to balance processing power across CPUs and cores.
 Godot supports multithreading, but not in the whole engine.
 Below is a list of ways multithreading can be used in different areas of Godot.
 
 ## Global scope
+
 MostGlobal Scopesingletons are thread-safe by default.
 Accessing servers from threads is supported. However, for therenderingandphysicsservers,
 thread-safe operation must be enabled in the project settings first.
@@ -16,36 +18,43 @@ in servers and controls them from threads. Of course, it requires a bit more
 code, as this is used directly and not within the scene tree.
 
 ## Scene tree
+
 Interacting with the active scene tree isnotthread-safe. Make sure
 to use mutexes when sending data between threads. If you want to call
 functions or set properties from a thread, you may usecall_deferredorset_deferred:
+
 ```
 # Unsafe:
 node.add_child(child_node)
 # Safe:
 node.add_child.call_deferred(child_node)
 ```
+
 ```
 // Unsafe:
 node.AddChild(childNode);
 // Safe:
 node.CallDeferred(Node.MethodName.AddChild, childNode);
 ```
+
 However, creating scene chunks (nodes in tree arrangement) outside the active
 tree is fine. This way, parts of a scene can be built or instantiated
 in a thread, then added in the main thread:
+
 ```
 var enemy_scene = load("res://enemy_scene.scn")
 var enemy = enemy_scene.instantiate()
 enemy.add_child(weapon) # Set a weapon.
 world.add_child.call_deferred(enemy)
 ```
+
 ```
 PackedScene enemyScene = GD.Load<PackedScene>("res://EnemyScene.scn");
 Node enemy = enemyScene.Instantiate<Node>();
 enemy.AddChild(weapon);
 world.CallDeferred(Node.MethodName.AddChild, enemy);
 ```
+
 Still, this is only really useful if you haveonethread loading data.
 Attempting to load or create scene chunks from multiple threads may work,
 but you risk resources (which are only loaded once in Godot) being tweaked
@@ -56,6 +65,7 @@ set in multiple ones. Otherwise, you are safer just using the servers API
 (which is fully thread-safe) directly and not touching scene or resources.
 
 ## Rendering
+
 Instancing nodes that render anything in 2D or 3D (such asSprite2DorMeshInstance3D) isnotthread-safe by default. To run the
 rendering driver on a separate thread, set theRendering > Driver > Thread Modelproject setting toSeparate.
 Note that theSeparatethread model has several known bugs, so it may not be usable
@@ -68,14 +78,17 @@ synchronization with theRenderingServer,
 as data needs to be transmitted to or updated on the GPU.
 
 ## Physics
+
 Physics simulation isnotthread-safe by default. To run the physics servers
 on separate threads (making them thread-safe), enable the following project settings:
+
 - PhysicsServer2D:Physics > 2D > Run on Separate Thread.
 PhysicsServer2D:Physics > 2D > Run on Separate Thread.
 - PhysicsServer3D:Physics > 3D > Run on Separate Thread.
 PhysicsServer3D:Physics > 3D > Run on Separate Thread.
 
 ## Navigation
+
 NavigationServer2DandNavigationServer3Dare both thread-safe and thread-friendly.
 The navigation-related query functions can be called by threads and run in true parallel.
 By default, a conservative number of threads is supported running in true parallel on navigation maps before
@@ -90,11 +103,13 @@ For example, using a dedicated background thread per AStar object to populate po
 but two threads using the same AStar object would corrupt each other's data.
 
 ## GDScript arrays and dictionaries
+
 In GDScript, reading and writing elements from multiple threads is OK, but anything
 that changes the container size (resizing, adding, or removing elements) requires
 locking amutex.
 
 ## Resources
+
 Modifying a unique resource from multiple threads is not supported. However,
 handling references on multiple threadsissupported. Hence loading resources
 on a thread is as well - scenes, textures, meshes, etc - can be loaded and manipulated
@@ -104,4 +119,5 @@ multiple threads at once. Therefore, it's easiest to useonethread for loading
 and modifying resources, and then the main thread for adding them.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

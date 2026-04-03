@@ -1,14 +1,17 @@
 # AudioEffectPhaser in English
 
 # AudioEffectPhaser
+
 Inherits:AudioEffect<Resource<RefCounted<Object
 Adds a phaser audio effect to an audio bus.
 Combines the original signal with a copy that is slightly out of phase with the original.
 
 ## Description
+
 Combines phase-shifted signals with the original signal. The movement of the phase-shifted signals is controlled using a low-frequency oscillator.
 
 ## Tutorials
+
 - Audio buses
 Audio buses
 
@@ -35,7 +38,9 @@ float
 rate_hz
 
 ## Property Descriptions
+
 floatdepth=1.0🔗
+
 - voidset_depth(value:float)
 voidset_depth(value:float)
 - floatget_depth()
@@ -67,4 +72,5 @@ floatget_rate_hz()
 Adjusts the rate in Hz at which the effect sweeps up and down across the frequency range.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

@@ -1,14 +1,17 @@
 # BaseMaterial3D
 
 # BaseMaterial3D
+
 Inherits:Material<Resource<RefCounted<Object
 Inherited By:ORMMaterial3D,StandardMaterial3D
 Abstract base class for defining the 3D rendering properties of meshes.
 
 ## Description
+
 This class serves as a default material with a wide variety of rendering features and properties without the need to write shader code. See the tutorial below for details.
 
 ## Tutorials
+
 - Standard Material 3D and ORM Material 3D
 Standard Material 3D and ORM Material 3D
 
@@ -483,6 +486,7 @@ void
 set_texture(param:TextureParam, texture:Texture2D)
 
 ## Enumerations
+
 enumTextureParam:🔗
 TextureParamTEXTURE_ALBEDO=0
 Texture specifying per-pixel color.
@@ -775,7 +779,9 @@ StencilCompareSTENCIL_COMPARE_GREATER_OR_EQUAL=6
 Passes the stencil test when the reference value is greater than or equal to the existing stencil value.
 
 ## Property Descriptions
+
 Coloralbedo_color=Color(1,1,1,1)🔗
+
 - voidset_albedo(value:Color)
 voidset_albedo(value:Color)
 - Colorget_albedo()
@@ -1609,6 +1615,7 @@ floatget_z_clip_scale()
 Scales the object being rendered towards the camera to avoid clipping into things like walls. This is intended to be used for objects that are fixed with respect to the camera like player arms, tools, etc. Lighting and shadows will continue to work correctly when this setting is adjusted, but screen-space effects like SSAO and SSR may break with lower scales. Therefore, try to keep this setting as close to1.0as possible.
 
 ## Method Descriptions
+
 boolget_feature(feature:Feature)const🔗
 Returnstrueif the specifiedfeatureis enabled.
 boolget_flag(flag:Flags)const🔗
@@ -1623,4 +1630,5 @@ voidset_texture(param:TextureParam, texture:Texture2D)🔗
 Sets the texture for the slot specified byparam.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

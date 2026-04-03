@@ -1,12 +1,15 @@
 # Thread in English
 
 # Thread
+
 Inherits:RefCounted<Object
 A unit of execution in a process.
 
 ## Description
+
 A unit of execution in a process. Can run methods onObjects simultaneously. The use of synchronization viaMutexorSemaphoreis advised if working with shared objects.
 Warning:To ensure proper cleanup without crashes or deadlocks, when aThread's reference count reaches zero and it is therefore destroyed, the following conditions must be met:
+
 - It must not have anyMutexobjects locked.
 It must not have anyMutexobjects locked.
 - It must not be waiting on anySemaphoreobjects.
@@ -15,6 +18,7 @@ It must not be waiting on anySemaphoreobjects.
 wait_to_finish()should have been called on it.
 
 ## Tutorials
+
 - Using multiple threads
 Using multiple threads
 - Thread-safe APIs
@@ -49,6 +53,7 @@ Variant
 wait_to_finish()
 
 ## Enumerations
+
 enumPriority:🔗
 PriorityPRIORITY_LOW=0
 A thread running with lower priority than normally.
@@ -58,6 +63,7 @@ PriorityPRIORITY_HIGH=2
 A thread running with higher priority than normally.
 
 ## Method Descriptions
+
 Stringget_id()const🔗
 Returns the currentThread's ID, uniquely identifying it among all threads. If theThreadhas not started running or ifwait_to_finish()has been called, this returns an empty string.
 boolis_alive()const🔗
@@ -87,4 +93,5 @@ Should either be used when you want to retrieve the value returned from the meth
 To determine if this can be called without blocking the calling thread, check ifis_alive()isfalse.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

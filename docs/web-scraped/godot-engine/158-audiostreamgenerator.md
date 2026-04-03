@@ -1,12 +1,15 @@
 # AudioStreamGenerator
 
 # AudioStreamGenerator
+
 Inherits:AudioStream<Resource<RefCounted<Object
 An audio stream with utilities for procedural sound generation.
 
 ## Description
+
 AudioStreamGeneratoris a type of audio stream that does not play back sounds on its own; instead, it expects a script to generate audio data for it. See alsoAudioStreamGeneratorPlayback.
 Here's a sample on how to use it to generate a sine wave:
+
 ```
 var playback # Will hold the AudioStreamGeneratorPlayback.
 @onready var sample_hz = $AudioStreamPlayer.stream.mix_rate
@@ -26,6 +29,7 @@ func fill_buffer():
         playback.push_frame(Vector2.ONE * sin(phase * TAU))
         phase = fmod(phase + increment, 1.0)
 ```
+
 ```
 [Export] public AudioStreamPlayer Player { get; set; }
 
@@ -57,11 +61,13 @@ public void FillBuffer()
     }
 }
 ```
+
 In the example above, the "AudioStreamPlayer" node must use anAudioStreamGeneratoras its stream. Thefill_bufferfunction provides audio data for approximating a sine wave.
 See alsoAudioEffectSpectrumAnalyzerfor performing real-time audio spectrum analysis.
 Note:Due to performance constraints, this class is best used from C# or from a compiled language via GDExtension. If you still want to use this class from GDScript, consider using a lowermix_ratesuch as 11,025 Hz or 22,050 Hz.
 
 ## Tutorials
+
 - Audio Generator Demo
 Audio Generator Demo
 
@@ -81,6 +87,7 @@ AudioStreamGeneratorMixRate
 mix_rate_mode
 
 ## Enumerations
+
 enumAudioStreamGeneratorMixRate:🔗
 AudioStreamGeneratorMixRateMIX_RATE_OUTPUT=0
 CurrentAudioServeroutput mixing rate.
@@ -92,7 +99,9 @@ AudioStreamGeneratorMixRateMIX_RATE_MAX=3
 Maximum value for the mixing rate mode enum.
 
 ## Property Descriptions
+
 floatbuffer_length=0.5🔗
+
 - voidset_buffer_length(value:float)
 voidset_buffer_length(value:float)
 - floatget_buffer_length()
@@ -116,4 +125,5 @@ AudioStreamGeneratorMixRateget_mix_rate_mode()
 Mixing rate mode. If set toMIX_RATE_CUSTOM,mix_rateis used, otherwise currentAudioServermixing rate is used.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

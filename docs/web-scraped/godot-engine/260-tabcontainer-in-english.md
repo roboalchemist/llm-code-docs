@@ -1,14 +1,17 @@
 # TabContainer in English
 
 # TabContainer
+
 Inherits:Container<Control<CanvasItem<Node<Object
 A container that creates a tab for each child control, displaying only the active tab's control.
 
 ## Description
+
 Arranges child controls into a tabbed view, creating a tab for each one. The active tab's corresponding control is made visible, while all other child controls are hidden. Ignores non-control children.
 Note:The drawing of the clickable tabs is handled by this node;TabBaris not needed.
 
 ## Tutorials
+
 - Using Containers
 Using Containers
 
@@ -242,6 +245,7 @@ StyleBox
 tabbar_background
 
 ## Signals
+
 active_tab_rearranged(idx_to:int)🔗
 Emitted when the active tab is rearranged via mouse drag. Seedrag_to_rearrange_enabled.
 pre_popup_pressed()🔗
@@ -258,6 +262,7 @@ tab_selected(tab:int)🔗
 Emitted when a tab is selected via click, directional input, or script, even if it is the current tab.
 
 ## Enumerations
+
 enumTabPosition:🔗
 TabPositionPOSITION_TOP=0
 Places the tab bar at the top.
@@ -267,7 +272,9 @@ TabPositionPOSITION_MAX=2
 Represents the size of theTabPositionenum.
 
 ## Property Descriptions
+
 boolall_tabs_in_front=false🔗
+
 - voidset_all_tabs_in_front(value:bool)
 voidset_all_tabs_in_front(value:bool)
 - boolis_all_tabs_in_front()
@@ -344,6 +351,7 @@ boolget_use_hidden_tabs_for_min_size()
 Iftrue, childControlnodes that are hidden have their minimum size take into account in the total, instead of only the currently visible one.
 
 ## Method Descriptions
+
 Controlget_current_tab_control()const🔗
 Returns the childControlnode located at the active tab index.
 Popupget_popup()const🔗
@@ -403,6 +411,7 @@ Sets a custom tooltip text for tab at indextab_idx.
 Note:By default, if thetooltipis empty and the tab text is truncated (not all characters fit into the tab), the title will be displayed as a tooltip. To hide the tooltip, assign""as thetooltiptext.
 
 ## Theme Property Descriptions
+
 Colordrop_mark_color=Color(1,1,1,1)🔗
 Modulation color for thedrop_markicon.
 Colorfont_disabled_color=Color(0.875,0.875,0.875,0.5)🔗
@@ -470,4 +479,5 @@ StyleBoxtabbar_background🔗
 The style for the background fill of theTabBararea.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

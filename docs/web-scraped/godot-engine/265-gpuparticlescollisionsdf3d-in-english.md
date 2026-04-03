@@ -1,10 +1,12 @@
 # GPUParticlesCollisionSDF3D in English
 
 # GPUParticlesCollisionSDF3D
+
 Inherits:GPUParticlesCollision3D<VisualInstance3D<Node3D<Node<Object
 A baked signed distance field 3D particle collision shape affectingGPUParticles3Dnodes.
 
 ## Description
+
 A baked signed distance field 3D particle collision shape affectingGPUParticles3Dnodes.
 Signed distance fields (SDF) allow for efficiently representing approximate collision shapes for convex and concave objects of any shape. This is more flexible thanGPUParticlesCollisionHeightField3D, but it requires a baking step.
 Baking:The signed distance field texture can be baked by selecting theGPUParticlesCollisionSDF3Dnode in the editor, then clickingBake SDFat the top of the 3D viewport. AnyvisibleMeshInstance3Ds within thesizewill be taken into account for baking, regardless of theirGeometryInstance3D.gi_mode.
@@ -45,6 +47,7 @@ void
 set_bake_mask_value(layer_number:int, value:bool)
 
 ## Enumerations
+
 enumResolution:🔗
 ResolutionRESOLUTION_16=0
 Bake a 16×16×16 signed distance field. This is the fastest option, but also the least precise.
@@ -62,7 +65,9 @@ ResolutionRESOLUTION_MAX=6
 Represents the size of theResolutionenum.
 
 ## Property Descriptions
+
 intbake_mask=4294967295🔗
+
 - voidset_bake_mask(value:int)
 voidset_bake_mask(value:int)
 - intget_bake_mask()
@@ -94,10 +99,12 @@ floatget_thickness()
 The collision shape's thickness. Unlike other particle colliders,GPUParticlesCollisionSDF3Dis actually hollow on the inside.thicknesscan be increased to prevent particles from tunneling through the collision shape at high speeds, or when theGPUParticlesCollisionSDF3Dis moved.
 
 ## Method Descriptions
+
 boolget_bake_mask_value(layer_number:int)const🔗
 Returns whether or not the specified layer of thebake_maskis enabled, given alayer_numberbetween 1 and 32.
 voidset_bake_mask_value(layer_number:int, value:bool)🔗
 Based onvalue, enables or disables the specified layer in thebake_mask, given alayer_numberbetween 1 and 32.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.

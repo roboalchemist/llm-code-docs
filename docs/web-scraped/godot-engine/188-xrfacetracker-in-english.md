@@ -1,15 +1,18 @@
 # XRFaceTracker in English
 
 # XRFaceTracker
+
 Experimental:This class may be changed or removed in future versions.
 Inherits:XRTracker<RefCounted<Object
 A tracked face.
 
 ## Description
+
 An instance of this object represents a tracked face and its corresponding blend shapes. The blend shapes come from theUnified Expressionsstandard, and contain extended details and visuals for each blend shape. Additionally theTracking Standard Comparisonpage documents the relationship between Unified Expressions and other standards.
 As face trackers are turned on they are registered with theXRServer.
 
 ## Tutorials
+
 - XR documentation index
 XR documentation index
 
@@ -38,6 +41,7 @@ void
 set_blend_shape(blend_shape:BlendShapeEntry, weight:float)
 
 ## Enumerations
+
 enumBlendShapeEntry:🔗
 BlendShapeEntryFT_EYE_LOOK_OUT_RIGHT=0
 Right eye looks outwards.
@@ -329,7 +333,9 @@ BlendShapeEntryFT_MAX=143
 Represents the size of theBlendShapeEntryenum.
 
 ## Property Descriptions
+
 PackedFloat32Arrayblend_shapes=PackedFloat32Array()🔗
+
 - voidset_blend_shapes(value:PackedFloat32Array)
 voidset_blend_shapes(value:PackedFloat32Array)
 - PackedFloat32Arrayget_blend_shapes()
@@ -338,10 +344,12 @@ The array of face blend shape weights with indices corresponding to theBlendShap
 Note:The returned array iscopiedand any changes to it will not update the original property value. SeePackedFloat32Arrayfor more details.
 
 ## Method Descriptions
+
 floatget_blend_shape(blend_shape:BlendShapeEntry)const🔗
 Returns the requested face blend shape weight.
 voidset_blend_shape(blend_shape:BlendShapeEntry, weight:float)🔗
 Sets a face blend shape weight.
 
 ## User-contributed notes
+
 Please read theUser-contributed notes policybefore submitting a comment.
