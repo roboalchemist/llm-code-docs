@@ -1,6 +1,8 @@
 # HATEOAS: Hypermedia As The Engine Of Application State
 
-# Source: https://en.wikipedia.org/wiki/HATEOAS, https://restfulapi.net/hateoas/, https://docs.spring.io/spring-hateoas/docs/current/reference/html/
+**Documentation Sources:**
+- 📘 [Spring HATEOAS Reference](./001-spring-hateoas.md) - Official Java/Spring HATEOAS framework documentation
+- 🔗 [RESTful API Best Practices](./002-restfulapi-guide.md) - Comprehensive HATEOAS design guide from restfulapi.net
 
 ## Overview
 

@@ -1,32 +1,37 @@
-# Source: https://docs.8base.com/
+# 8base Documentation Index
 
-Title: Introduction | 8base Docs
+Welcome to the 8base comprehensive documentation archive.
 
-URL Source: https://docs.8base.com/
+8base is a powerful low-code platform designed for building full-stack JavaScript applications.
 
-Markdown Content:
-Welcome to 8base, a powerful low-code development platform designed to facilitate the creation of full-stack JavaScript applications. We created this platform for professional developers who seek an efficient and streamlined tool to bring their projects to life.
+## Documentation Structure
 
-![Image 1:  ](https://docs.8base.com/assets/images/relaxed-coder-9abd26cd7aaae8e35a429eb093885351.png)
+### Introduction
+- What is 8base?
+- Who uses 8base?
+- Quickstart guide
+- Main modules and capabilities
+- Projects overview
+- Backend capabilities
+- Frontend capabilities
+- Application architecture
+- Using 8base at scale
+- Developer resources
 
-8base empowers developers to generate comprehensive applications, manage data effectively, and design and deploy scalable and robust digital products. With 8base, developers can generate comprehensive GraphQL APIs and extend them with custom server-side functions.
+### Getting Started
+Start building your first 8base application
 
-8base also enables developers to build frontend applications that interact seamlessly with their 8base backend and communicate with any third-party API. The versatility of 8base provides a wide range of opportunities to innovate and deliver high-quality digital solutions.
+### 8base Home
+Platform overview and workspace management
 
-Create an Account[​](https://docs.8base.com/#create-an-account "Direct link to Create an Account")
---------------------------------------------------------------------------------------------------
+### Backend Development
+Learn how to build backend services with 8base
 
-Create your free account to get started with 8base at [app.8base.com](https://app.8base.com/). After you've set up your account, you'll be able to create Projects and use the 8base tools to buiold and run web applications.
+### Frontend Development
+Learn how to build frontend applications with 8base
 
-You can sign up with user name and password, Github, or Google.
+### Advanced Development
+Advanced patterns and techniques
 
-System Requirements[​](https://docs.8base.com/#system-requirements "Direct link to System Requirements")
---------------------------------------------------------------------------------------------------------
-
-8base is a browser-based web application. Please review these system requirements for the best experience. Building on any laptop or desktop is currently supported using a screen resolution that is at least 1280 x 1084 is recommended.
-
-8base works best on Google Chrome but also supports Apple Safari, Mozilla Firefox and Microsoft Edge – if you are experiencing any issues, we recommend switching to Chrome.
-
-You must allow pop-ups, redirects, and ClipBoard from app.8base.com and appbuilder.8base.com.
-
-### Node.js[​](https://docs.8base.com/#nodejs "Direct link to Node.js")
+## Source
+Documentation extracted from: https://docs.8base.com/

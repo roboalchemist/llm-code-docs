@@ -1,42 +1,36 @@
 # Source: https://animate.style/
+# Repository: https://github.com/animate-css/animate.css
 
-Title: Animate.css | A cross-browser library of CSS animations.
-
-URL Source: https://animate.style/
-
-Markdown Content:
-> Animate.css v4 brought some **breaking changes**, please refer to the [migration guide](https://animate.style/#migration) before updating from v3.x and under.
+> Animate.css v4 brought some **breaking changes**, please refer to the [migration guide](#migration) before updating from v3.x and under.
 
 **Animate.css** is a library of ready-to-use, cross-browser animations for use in your web projects. Great for emphasis, home pages, sliders, and attention-guiding hints.
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/00-intro.md "Edit this on GitHub")
 
-Installation and Usage
-----------------------
+## Installation and Usage
 
 ### Installing
 
 Install with npm:
 
-```
+```shell
 $ npm install animate.css --save
 ```
 
 Or install with Yarn (this will only work with appropriate tooling like Webpack, Parcel, etc. If you are not using any tool for packing or bundling your code, you can simply use the CDN method below):
 
-```
+```shell
 $ yarn add animate.css
 ```
 
 Import it into your file:
 
-```
+```js
 import 'animate.css';
 ```
 
 Or add it directly to your webpage using a CDN:
 
-```
+```html
 <head>
   <link
     rel="stylesheet"
@@ -47,15 +41,15 @@ Or add it directly to your webpage using a CDN:
 
 ### Basic usage
 
-After installing Animate.css, add the class `animate__animated` to an element, along with any of the [animation names](https://animate.style/#attention_seekers) (don't forget the `animate__` prefix!):
+After installing Animate.css, add the class `animate__animated` to an element, along with any of the [animation names](#attention_seekers) (don't forget the `animate__` prefix!):
 
-```
+```html
 <h1 class="animate__animated animate__bounce">An animated element</h1>
 ```
 
 That's it! You've got a CSS animated element. Super!
 
-> Animations can improve the UX of an interface, but keep in mind that they can also get in the way of your users! Please read the [best practices](https://animate.style/#best-practices) and [gotchas](https://animate.style/#gotchas) sections to bring your web-things to life in the best way possible.
+> Animations can improve the UX of an interface, but keep in mind that they can also get in the way of your users! Please read the [best practices](#best-practices) and [gotchas](#gotchas) sections to bring your web-things to life in the best way possible.
 
 #### Using `@keyframes`
 
@@ -63,7 +57,7 @@ Even though the library provides you a few helper classes like the `animated` cl
 
 Example:
 
-```
+```css
 .my-element {
   display: inline-block;
   margin: 0 0.5rem;
@@ -81,7 +75,7 @@ Since version 4, Animate.css uses custom properties (also known as CSS variables
 
 Example:
 
-```
+```css
 /* This only changes this particular animation duration */
 .animate__animated.animate__bounce {
   --animate-duration: 2s;
@@ -96,7 +90,7 @@ Example:
 
 Custom properties also make it easy to change all your animation's time-constrained properties on the fly. It means that you can have a slow-motion or time-lapse effect with a javascript one-liner:
 
-```
+```javascript
 // All animations will take twice the time to accomplish
 document.documentElement.style.setProperty('--animate-duration', '2s');
 
@@ -106,10 +100,8 @@ document.documentElement.style.setProperty('--animate-duration', '.5s');
 
 Even though some aging browsers do not support custom properties, Animate.css provides a proper fallback, widening its support for any browser that supports CSS animations.
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/01-usage.md "Edit this on GitHub")
 
-Utility Classes
----------------
+## Utility Classes
 
 Animate.css comes packed with a few utility classes to simplify its use.
 
@@ -117,22 +109,22 @@ Animate.css comes packed with a few utility classes to simplify its use.
 
 You can add delays directly on the element's class attribute, just like this:
 
-```
+```html
 <div class="animate__animated animate__bounce animate__delay-2s">Example</div>
 ```
 
 Animate.css provides the following delays:
 
-| Class name | Default delay time |
-| --- | --- |
-| `animate__delay-2s` | `2s` |
-| `animate__delay-3s` | `3s` |
-| `animate__delay-4s` | `4s` |
-| `animate__delay-5s` | `5s` |
+| Class name          | Default delay time |
+| ------------------- | ------------------ |
+| `animate__delay-2s` | `2s`               |
+| `animate__delay-3s` | `3s`               |
+| `animate__delay-4s` | `4s`               |
+| `animate__delay-5s` | `5s`               |
 
 The provided delays are from 1 to 5 seconds. You can customize them setting the `--animate-delay` property to a longer or a shorter duration:
 
-```
+```css
 /* All delay classes will take 2x longer to start */
 :root {
   --animate-delay: 2s;
@@ -148,20 +140,20 @@ The provided delays are from 1 to 5 seconds. You can customize them setting the 
 
 You can control the speed of the animation by adding these classes, as below:
 
-```
+```html
 <div class="animate__animated animate__bounce animate__faster">Example</div>
 ```
 
-| Class name | Default speed time |
-| --- | --- |
-| `animate__slow` | `2s` |
-| `animate__slower` | `3s` |
-| `animate__fast` | `800ms` |
-| `animate__faster` | `500ms` |
+| Class name        | Default speed time |
+| ----------------- | ------------------ |
+| `animate__slow`   | `2s`               |
+| `animate__slower` | `3s`               |
+| `animate__fast`   | `800ms`            |
+| `animate__faster` | `500ms`            |
 
 The `animate__animated` class has a default speed of `1s`. You can also customize the animations duration through the `--animate-duration` property, globally or locally. This will affect both the animations and the utility classes. Example:
 
-```
+```css
 /* All animations will take twice as long to finish */
 :root {
   --animate-duration: 2s;
@@ -179,20 +171,20 @@ Notice that some animations have a duration of less than 1 second. As we used th
 
 You can control the iteration count of the animation by adding these classes, like below:
 
-```
+```html
 <div class="animate__animated animate__bounce animate__repeat-2">Example</div>
 ```
 
-| Class Name | Default iteration count |
-| --- | --- |
-| `animate__repeat-1` | `1` |
-| `animate__repeat-2` | `2` |
-| `animate__repeat-3` | `3` |
-| `animate__infinite` | `infinite` |
+| Class Name          | Default iteration count |
+| ------------------- | ----------------------- |
+| `animate__repeat-1` | `1`                     |
+| `animate__repeat-2` | `2`                     |
+| `animate__repeat-3` | `3`                     |
+| `animate__infinite` | `infinite`              |
 
 As with the delay and speed classes, the `animate__repeat` class is based on the `--animate-repeat` property and has a default iteration count of `1`. You can customize them by setting the `--animate-repeat` property to a longer or a shorter value:
 
-```
+```css
 /* The element will repeat the animation 2x
    It's better to set this property locally and not globally or
    you might end up with a messy situation */
@@ -201,12 +193,10 @@ As with the delay and speed classes, the `animate__repeat` class is based on the
 }
 ```
 
-Notice that `animate__infinite` doesn't use any custom property, and changes to `--animate-repeat` will have no effect. Don't forget to read the [best practices](https://animate.style/#best-practices) section to make the best use of repeating animations.
+Notice that `animate__infinite` doesn't use any custom property, and changes to `--animate-repeat` will have no effect. Don't forget to read the [best practices](#best-practices) section to make the best use of repeating animations.
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/02-utilities.md "Edit this on GitHub")
 
-Best Practices
---------------
+## Best Practices
 
 Animations can greatly improve an interface's UX, but it's important to follow some guidelines to not overdo it and deteriorate the user experience on your web-things. Following the following rules should provide a good start.
 
@@ -226,7 +216,7 @@ Avoid it as it won't bring much value to the user and will probably only cause c
 
 Animating the `<html/>` or `<body/>` tags is possible, but you should avoid it. There were some reports pointing out that this could trigger some weird browser bugs. Besides, making the whole page bounce would hardly provide good value to your UX. If you indeed need this sort of effect, wrap your page in an element and animate it, like this:
 
-```
+```html
 <body>
   <main class="animate__animated animate__fadeInLeft">
     <!-- Your code -->
@@ -246,8 +236,14 @@ All the Animate.css animations include a CSS property called `animation-fill-mod
 
 Since version 3.7.0 Animate.css supports the `prefers-reduced-motion` media query which disables animations based on the OS system's preference on supporting browsers (most current browsers support it). This is a **critical accessibility feature** and should never be disabled! This is built into browsers to help people with vestibular and seizure disorders. You can read more about it [here](https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/). If your web-thing needs the animations to function, warn users, but don't disable the feature. You can do it easily with CSS only. Here's a simple example:
 
-Gotchas
--------
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="eltonmesquita" data-slug-hash="oNjGGbw" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Prefers-reduce-motion media query">
+  <span>See the Pen <a href="https://codepen.io/eltonmesquita/pen/oNjGGbw">
+  Prefers-reduce-motion media query</a> by Elton Mesquita (<a href="https://codepen.io/eltonmesquita">@eltonmesquita</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="gotchas">Gotchas</h2>
 
 ### You can't animate inline elements
 
@@ -261,21 +257,19 @@ Most of the Animate.css animations will move elements across the screen and migh
 
 Unfortunately, this isn't possible with pure CSS right now. You have to use Javascript to achieve this result.
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/03-best-practices.md "Edit this on GitHub")
 
-Usage with Javascript
----------------------
+## Usage with Javascript
 
 You can do a whole bunch of other stuff with animate.css when you combine it with Javascript. A simple example:
 
-```
+```javascript
 const element = document.querySelector('.my-element');
 element.classList.add('animate__animated', 'animate__bounceOutLeft');
 ```
 
 You can detect when an animation ends:
 
-```
+```javascript
 const element = document.querySelector('.my-element');
 element.classList.add('animate__animated', 'animate__bounceOutLeft');
 
@@ -286,14 +280,14 @@ element.addEventListener('animationend', () => {
 
 or change its duration:
 
-```
+```javascript
 const element = document.querySelector('.my-element');
 element.style.setProperty('--animate-duration', '0.5s');
 ```
 
 You can also use a simple function to add the animations classes and remove them automatically:
 
-```
+```javascript
 const animateCSS = (element, animation, prefix = 'animate__') =>
   // We create a Promise and return it
   new Promise((resolve, reject) => {
@@ -315,7 +309,7 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
 And use it like this:
 
-```
+```javascript
 animateCSS('.my-element', 'bounce');
 
 // or
@@ -326,10 +320,8 @@ animateCSS('.my-element', 'bounce').then((message) => {
 
 If you had a hard time understanding the previous function, have a look at [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const), [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList), [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), and [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/04-javascript.md "Edit this on GitHub")
 
-Migration from v3.x and Under
------------------------------
+## Migration from v3.x and Under
 
 Animate.css v4 brought some improvements, improved animations, and new animations, which makes it worth upgrading. However, it also comes with a breaking change: we have added a prefix for all of the Animate.css classes - defaulting to `animate__` - so a direct migration is impossible.
 
@@ -339,13 +331,13 @@ If you're using a bundler, update your import:
 
 from:
 
-```
+```js
 import 'animate.min.css';
 ```
 
 to
 
-```
+```js
 import 'animate.compat.css';
 ```
 
@@ -355,7 +347,7 @@ In case of using a CDN, update the link in your HTML:
 
 from:
 
-```
+```html
 <head>
   <link
     rel="stylesheet"
@@ -366,7 +358,7 @@ from:
 
 to
 
-```
+```html
 <head>
   <link
     rel="stylesheet"
@@ -377,18 +369,16 @@ to
 
 In the case of a new project, it's highly recommended to use the default prefixed version as it'll make sure that you'll hardly have classes conflicting with your project. Besides, in later versions, we might decide to discontinue the `animate.compat.css` file.
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/06-migration.md "Edit this on GitHub")
 
-Custom Builds
--------------
+## Custom Builds
 
-Custom builds are not possible from a node_modules folder as we don't ship the building tools in the npm module.
+<p class="warning">Custom builds are not possible from a node_modules folder as we don't ship the building tools in the npm module.</p>
 
 Animate.css is powered by npm, postcss + postcss-preset-env, which means you can create custom builds pretty easily, using future CSS with proper fallbacks.
 
 First of all, you’ll need Node and all other dependencies:
 
-```
+```shell
 $ git clone https://github.com/animate-css/animate.css.git
 $ cd animate.css
 $ npm install
@@ -396,13 +386,13 @@ $ npm install
 
 Next, run `npm start` to compile your custom build. Three files will be generated:
 
-*   `animate.css`: raw build, easy to read and without any optimization
-*   `animate.min.css`: minified build ready for production
-*   `animate.compat.css`: minified build ready for production **without class prefix**. This should only be used as an easy path for migrations.
+- `animate.css`: raw build, easy to read and without any optimization
+- `animate.min.css`: minified build ready for production
+- `animate.compat.css`: minified build ready for production **without class prefix**. This should only be used as an easy path for migrations.
 
-For example, if you'll only use some of the “attention seekers” animations, simply edit the `./source/animate.css` file, delete every `@import` and the ones you want to use.
+For example, if you'll only use some of the “attention seekers” animations, simply edit the `./source/animate.css` file, delete every `@import`, and add the ones you want to use.
 
-```
+```css
 @import 'attention_seekers/bounce.css';
 @import 'attention_seekers/flash.css';
 @import 'attention_seekers/pulse.css';
@@ -422,7 +412,7 @@ Now, just run `npm start` and your highly optimized build will be generated at t
 
 It's pretty straight forward to change animate's prefix on your custom build. Change the `animateConfig`'s `prefix` property in the `package.json` file and rebuild the library with `npm start`:
 
-```
+```json
 /* on Animate.css package.json */
 "animateConfig": {
   "prefix": "myCustomPrefix__"
@@ -431,42 +421,36 @@ It's pretty straight forward to change animate's prefix on your custom build. Ch
 
 then:
 
-```
+```shell
 $ npm start
 ```
 
 Easy peasy!
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/07-custom-builds.md "Edit this on GitHub")
 
-Accessibility
--------------
+## Accessibility
 
 Animate.css supports the [`prefers-reduced-motion` media query](https://webkit.org/blog/7551/responsive-design-for-motion/) so that users with motion sensitivity can opt out of animations. On supported platforms (currently all the major browsers and OS, including mobile), users can select "reduce motion" on their operating system preferences, and it will turn off CSS transitions for them without any further work required.
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/08-accessibility.md "Edit this on GitHub")
 
-Core Team
----------
+## Core Team
 
-| ![Image 1](https://avatars2.githubusercontent.com/u/439365?s=460&u=512b4cc5324938ae40bbb8f3b7769d335953cd3a&v=4) | ![Image 2](https://avatars2.githubusercontent.com/u/5007208?s=460&u=418401ee605824272e5dcb955fd64ea24546a857&v=4) | ![Image 3](https://avatars1.githubusercontent.com/u/15052701?s=460&u=9e58364978379536d3f26c4ce5cae1a2a449a0e4&v=4) |
+| ![](https://avatars2.githubusercontent.com/u/439365?s=460&u=512b4cc5324938ae40bbb8f3b7769d335953cd3a&v=4) | ![](https://avatars2.githubusercontent.com/u/5007208?s=460&u=418401ee605824272e5dcb955fd64ea24546a857&v=4) | ![](https://avatars1.githubusercontent.com/u/15052701?s=460&u=9e58364978379536d3f26c4ce5cae1a2a449a0e4&v=4) |
 | --- | --- | --- |
 | [Daniel Eden](https://github.com/daneden) | [Elton Mesquita](https://github.com/eltonmesquita) | [Waren Gonzaga](https://github.com/warengonzaga) |
 | Animate.css Creator | Maintainer | Core Contributor |
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/09-contributors.md "Edit this on GitHub")
 
-License and Contributing
-------------------------
+## License and Contributing
 
-Animate.css is licensed under the [Hippocratic License](http://firstdonoharm.dev/).
+Animate.css is licensed under the [Hippocratic License](http://firstdonoharm.dev).
 
 ### Contributing
 
-Pull requests are the way to go here. We only have two rules for submitting a pull request: match the naming convention (camelCase, categorized [fades, bounces, etc.]) and let us see a demo of submitted animations in a [pen](https://codepen.io/). That **last one is important**.
+Pull requests are the way to go here. We only have two rules for submitting a pull request: match the naming convention (camelCase, categorized [fades, bounces, etc.]) and let us see a demo of submitted animations in a [pen](https://codepen.io). That **last one is important**.
 
 ### Code of Conduct
 
 This project and everyone participating in it is governed by the [Contributor Covenant Code of Conduct](https://github.com/animate-css/animate.css/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [animate@eltonmesquita.com](mailto:animate@eltonmesquita.com).
 
-[Edit this on GitHub](https://github.com/animate-css/animate.css/blob/main/docsSource/sections/09-license-contributing.md "Edit this on GitHub")
+
