@@ -1387,14 +1387,6 @@ llms_txt:
   file_count: 1
   size: 4.3MB
   last_updated: 2026-04-03 02:03
-- name: dat1
-  description: Dat1 Documentation
-  url: https://dat1.com/
-  path: docs/llms-txt/dat1/
-  status: fetched
-  file_count: 2
-  size: 277.3KB
-  last_updated: 2026-04-03 02:03
 - name: databricks
   description: Databricks Documentation
   url: https://databricks.com/
