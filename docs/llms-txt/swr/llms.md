@@ -11,8 +11,6 @@ related:
 
 # API
 
-
-
 ```js
 const { data, error, isLoading, isValidating, mutate } = useSWR(key, fetcher, options)
 ```
@@ -73,21 +71,20 @@ More information can be found [here](/docs/advanced/understanding).
 
 You can also use [global configuration](/docs/global-configuration) to provide default options.
 
-
 ---
 title: Arguments
 type: reference
 summary: Pass arguments to SWR fetcher functions.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/data-fetching
-  - /docs/conditional-fetching
+* /docs/data-fetching
+* /docs/conditional-fetching
+
 ---
 
 # Arguments
-
-
 
 By default, `key` will be passed to `fetcher` as the argument. So the following 3 expressions are equivalent:
 
@@ -146,21 +143,20 @@ const { data: orders } = useSWR({ url: '/api/orders', args: user }, fetcher)
   In older versions (\< 1.1.0), SWR **shallowly** compares the arguments on every render, and triggers revalidation if any of them has changed.
 </Callout>
 
-
 ---
 title: Conditional Fetching
 type: guide
 summary: Conditionally fetch data based on dependencies or user state.
 prerequisites:
-  - /docs/data-fetching
+
+* /docs/data-fetching
 related:
-  - /docs/data-fetching
-  - /docs/arguments
+* /docs/data-fetching
+* /docs/arguments
+
 ---
 
 # Conditional Fetching
-
-
 
 ## Conditional
 
@@ -196,21 +192,20 @@ function MyProjects () {
 }
 ```
 
-
 ---
 title: Data Fetching
 type: guide
 summary: Fetch data with SWR using custom fetcher functions.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/error-handling
-  - /docs/arguments
+* /docs/error-handling
+* /docs/arguments
+
 ---
 
 # Data Fetching
-
-
 
 ```js
 const { data, error } = useSWR(key, fetcher)
@@ -285,21 +280,20 @@ function App () {
 
 *If you want to pass variables to a GraphQL query, check out [Multiple Arguments](/docs/arguments).*
 
-
 ---
 title: Error Handling
 type: guide
 summary: Handle errors when fetching data with SWR.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/data-fetching
-  - /docs/revalidation
+* /docs/data-fetching
+* /docs/revalidation
+
 ---
 
 # Error Handling
-
-
 
 If an error is thrown inside [`fetcher`](/docs/data-fetching), it will be returned as `error` by the hook.
 
@@ -401,19 +395,18 @@ there's an [`onError`](/docs/api#options) event:
 </SWRConfig>
 ```
 
-
 ---
 title: Getting Started
 type: guide
 summary: Install and set up SWR for data fetching in React applications.
 related:
-  - /docs/data-fetching
-  - /docs/api
+
+* /docs/data-fetching
+* /docs/api
+
 ---
 
 # Getting Started
-
-
 
 ## Installation
 
@@ -627,21 +620,20 @@ the request is **deduped**, **cached** and **shared** automatically.
 Also, the application now has the ability to refetch the data on [user focus or network reconnect](/docs/revalidation)!
 That means, when the user's laptop wakes from sleep or they switch between browser tabs, the data will be refreshed automatically.
 
-
 ---
 title: Global Configuration
 type: reference
 summary: Configure default options for all SWR hooks.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/api
-  - /docs/middleware
+* /docs/api
+* /docs/middleware
+
 ---
 
 # Global Configuration
-
-
 
 The context `SWRConfig` can provide global configurations ([options](/docs/api)) for all SWR hooks.
 
@@ -781,20 +773,19 @@ function Component () {
 
 Nested configurations will be extended. If no `<SWRConfig>` is used, it will return the default ones.
 
-
 ---
 title: Middleware
 type: conceptual
 summary: Extend SWR with custom middleware.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/global-configuration
+* /docs/global-configuration
+
 ---
 
 # Middleware
-
-
 
 <Callout>
   Upgrade to the latest version (≥ 1.0.0) to use this feature.
@@ -1003,21 +994,20 @@ You don’t need to worry that object might change between renders. It’s alway
   Furthermore, you can use libs like [fast-json-stable-stringify](https://github.com/epoberezkin/fast-json-stable-stringify) instead of `JSON.stringify` — faster and stabler.
 </Callout>
 
-
 ---
 title: Mutation & Revalidation
 type: guide
 summary: Mutate cached data and trigger revalidation.
 prerequisites:
-  - /docs/data-fetching
+
+* /docs/data-fetching
 related:
-  - /docs/data-fetching
-  - /docs/revalidation
+* /docs/data-fetching
+* /docs/revalidation
+
 ---
 
 # Mutation & Revalidation
-
-
 
 SWR provides the [`mutate`](/docs/mutation#mutate) and [`useSWRMutation`](/docs/mutation#useswrmutation) APIs for mutating remote data and related cache.
 
@@ -1510,21 +1500,20 @@ const clearCache = () => mutate(
 clearCache()
 ```
 
-
 ---
 title: Pagination
 type: guide
 summary: Implement pagination and infinite loading patterns with SWR.
 prerequisites:
-  - /docs/data-fetching
+
+* /docs/data-fetching
 related:
-  - /docs/data-fetching
-  - /docs/mutation
+* /docs/data-fetching
+* /docs/mutation
+
 ---
 
 # Pagination
-
-
 
 <Callout emoji="✅">
   Please update to the latest version (≥ 0.3.0) to use this API. The previous <code>useSWRPages</code> API is now deprecated.
@@ -1918,21 +1907,20 @@ function App() {
 * changeable data source
 * refresh the entire list
 
-
 ---
 title: Prefetching Data
 type: guide
 summary: Prefetch data to improve perceived performance.
 prerequisites:
-  - /docs/data-fetching
+
+* /docs/data-fetching
 related:
-  - /docs/data-fetching
-  - /docs/advanced/performance
+* /docs/data-fetching
+* /docs/advanced/performance
+
 ---
 
 # Prefetching Data
-
-
 
 ## Top-Level Page Data
 
@@ -2048,21 +2036,20 @@ When using Next.js App Router with React Server Components, you can prefetch dat
 
 For detailed information and examples, see the [Usage with Next.js](/docs/with-nextjs#prefetch-data-in-server-components) documentation.
 
-
 ---
 title: Automatic Revalidation
 type: conceptual
 summary: Automatically revalidate stale data with focus, interval, and reconnect strategies.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/mutation
-  - /docs/conditional-fetching
+* /docs/mutation
+* /docs/conditional-fetching
+
 ---
 
 # Automatic Revalidation
-
-
 
 <Callout>
   If you want to manually revalidate the data, check <Link href="/docs/mutation">mutation</Link>.
@@ -2148,20 +2135,19 @@ A SWR hook mounts as:
 
 If `revalidateIfStale` is set to true it only refetches if there's any cache data else it will not refetch.
 
-
 ---
 title: Subscription
 type: guide
 summary: Subscribe to real-time data sources with SWR.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/data-fetching
+* /docs/data-fetching
+
 ---
 
 # Subscription
-
-
 
 <Callout emoji="✅">
   Please update to the latest version (≥ 2.1.0) to use this API.
@@ -2263,20 +2249,19 @@ When the last component using the key unmounts, the subscription will be closed.
 This means that if you have multiple components using the same key, they will all receive the same data.
 And there's only one subscription to the real-time data source per key.
 
-
 ---
 title: Suspense
 type: guide
 summary: Use SWR with React Suspense for declarative data fetching.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/data-fetching
+* /docs/data-fetching
+
 ---
 
 # Suspense
-
-
 
 You can enable the `suspense` option to use SWR with React [Suspense](https://react.dev/reference/react/Suspense):
 
@@ -2349,20 +2334,19 @@ If you want to read more technical details about this restriction, check [the di
 
 When using suspense mode on the server-side (including pre-rendering in Next.js), it's **required** to provide the initial data via [fallbackData or fallback](/docs/with-nextjs#pre-rendering-with-default-data). This means that you can't use `Suspense` to fetch data on the server side, but either doing fully client-side data fetching, or fetch the data via the framework level data fetching method(such as getStaticProps in Next.js). More discussions can be found [here](https://github.com/vercel/swr/issues/1906).
 
-
 ---
 title: TypeScript
 type: reference
 summary: Use SWR with TypeScript for type-safe data fetching.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/api
+* /docs/api
+
 ---
 
 # TypeScript
-
-
 
 SWR is friendly for apps written in TypeScript, with type safety out of the box.
 
@@ -2501,21 +2485,20 @@ const swrMiddleware: Middleware = (useSWRNext: SWRHook) => (key, fetcher, config
 }
 ```
 
-
 ---
 title: Usage with Next.js
 type: integration
 summary: Integrate SWR with Next.js for server-side rendering and static generation.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/prefetching
-  - /docs/advanced/cache
+* /docs/prefetching
+* /docs/advanced/cache
+
 ---
 
 # Usage with Next.js
-
-
 
 ## App Router
 
@@ -2716,20 +2699,19 @@ export default function Page({ fallback }) {
 }
 ```
 
-
 ---
 title: Cache
 type: conceptual
 summary: Customize the cache provider and implement advanced caching strategies.
 prerequisites:
-  - /docs/global-configuration
+
+* /docs/global-configuration
 related:
-  - /docs/global-configuration
+* /docs/global-configuration
+
 ---
 
 # Cache
-
-
 
 <Callout>
   Upgrade to the latest version (≥ 1.0.0) to use this feature.
@@ -2892,20 +2874,19 @@ mutate(
 
 More information can be found [here](/docs/arguments#multiple-arguments).
 
-
 ---
 title: DevTools
 type: guide
 summary: Debug SWR with developer tools.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/advanced/cache
+* /docs/advanced/cache
+
 ---
 
 # DevTools
-
-
 
 <Callout>
   SWRDevTools is not an official project of Vercel.
@@ -2922,21 +2903,20 @@ After installing it, the SWR devtool panel will appear on browsers' developer to
 
 Checkout more information on the [website](https://swr-devtools.vercel.app/) and the [repository](https://github.com/koba04/swr-devtools)
 
-
 ---
 title: Performance
 type: conceptual
 summary: Optimize performance with deduplication, deep comparison, and dependency tracking.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/data-fetching
-  - /docs/advanced/cache
+* /docs/data-fetching
+* /docs/advanced/cache
+
 ---
 
 # Performance
-
-
 
 SWR provides critical functionality in all kinds of web apps, so **performance** is a top priority.
 
@@ -3047,20 +3027,19 @@ At [Vercel](https://vercel.com), this optimization results in \~60% fewer re-ren
 The SWR package is [tree-shakeable](https://webpack.js.org/guides/tree-shaking) and side-effect free.
 That means if you are only importing the core `useSWR` API, unused APIs like `useSWRInfinite` won't be bundled in your application.
 
-
 ---
 title: React Native
 type: integration
 summary: Use SWR with React Native applications.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/getting-started
+* /docs/getting-started
+
 ---
 
 # React Native
-
-
 
 <Callout>
   Upgrade to the latest version (≥ 1.0.0) to experience this customization.
@@ -3154,35 +3133,20 @@ import { AppState } from 'react-native'
 
 For `initReconnect`, it requires some 3rd party libraries such as [NetInfo](https://github.com/react-native-netinfo/react-native-netinfo) to subscribe to the network status. The implementation will be similar to the example above: receiving a `callback` function and trigger it when the network recovers from offline, so SWR can start a revalidation to keep your data up-to-date.
 
-
 ---
 title: Understanding SWR
 type: conceptual
 summary: Understand how SWR works internally.
 prerequisites:
-  - /docs/getting-started
+
+* /docs/getting-started
 related:
-  - /docs/advanced/cache
-  - /docs/advanced/performance
+* /docs/advanced/cache
+* /docs/advanced/performance
+
 ---
 
 # Understanding SWR
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## State Machine
 
