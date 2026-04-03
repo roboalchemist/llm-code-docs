@@ -8,14 +8,14 @@
 
 metadata:
   last_updated: 2026-04-03 01:51
-  total_sources: 1857
-  total_fetched: 1857
+  total_sources: 1859
+  total_fetched: 1859
   llms_txt_count: 716
   llms_txt_fetched: 716
-  github_count: 530
-  github_fetched: 530
-  web_scraped_count: 611
-  web_scraped_fetched: 611
+  github_count: 531
+  github_fetched: 531
+  web_scraped_count: 612
+  web_scraped_fetched: 612
 llms_txt:
 - name: '0'
   description: 'Option 2: CLI for automation'
@@ -2531,8 +2531,8 @@ llms_txt:
   url: https://jfrog-xray.com/
   path: docs/llms-txt/jfrog-xray/
   status: fetched
-  file_count: 124
-  size: 2.5MB
+  file_count: 135
+  size: 2.6MB
   last_updated: 2026-04-03 01:51
 - name: jina
   description: Example solutions
@@ -4757,7 +4757,7 @@ llms_txt:
   path: docs/llms-txt/stedi/
   status: fetched
   file_count: 55
-  size: 66.6MB
+  size: 66.7MB
   last_updated: 2026-04-03 01:51
 - name: stencil
   description: Stencil Documentation
@@ -5016,12 +5016,12 @@ llms_txt:
   size: 99.9KB
   last_updated: 2026-04-03 01:51
 - name: tempo
-  description: tempo documentation
+  description: Grafana Tempo Documentation
   url: https://tempo.com/
   path: docs/llms-txt/tempo/
   status: fetched
-  file_count: 3
-  size: 2.2MB
+  file_count: 1
+  size: 6.5KB
   last_updated: 2026-04-03 01:51
 - name: temporal
   description: temporal documentation
@@ -7159,6 +7159,13 @@ github_scraped:
   status: fetched
   file_count: 9
   size: 36.7KB
+  last_updated: 2026-04-03 01:51
+- name: ibm-cloud-functions
+  description: ibm-cloud-functions from GitHub
+  path: docs/github-scraped/ibm-cloud-functions/
+  status: fetched
+  file_count: 46
+  size: 407.8KB
   last_updated: 2026-04-03 01:51
 - name: in-toto
   description: in-toto from GitHub
@@ -12228,6 +12235,13 @@ web_scraped:
   status: fetched
   file_count: 15
   size: 100.8KB
+  last_updated: 2026-04-03 01:51
+- name: pega
+  description: pega documentation
+  path: docs/web-scraped/pega/
+  status: fetched
+  file_count: 1
+  size: 1.4KB
   last_updated: 2026-04-03 01:51
 - name: percy
   description: percy documentation
