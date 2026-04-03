@@ -608,6 +608,9 @@ sites:
 - name: meilisearch
   base_url: https://www.meilisearch.com/
   description: Meilisearch search engine
+- name: mlflow
+  base_url: https://mlflow.org/
+  description: MLflow AI engineering platform for agents, LLMs, and models
 - name: mikro-orm
   base_url: https://mikro-orm.io/
   description: TypeScript ORM with unit of work and identity map patterns
