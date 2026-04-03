@@ -1,0 +1,227 @@
+title: Diplodoc
+href: index.yaml
+analytics:
+  text: 'Мы используем <a href="https://yandex.ru/legal/cookies_policy">файлы cookie</a>, чтобы вы могли наилучшим образом пользоваться нашим веб-сайтом. Если вы продолжаете использовать наш веб-сайт, мы полагаем, что вы согласны с таким использованием.'
+  buttons:
+    accept:
+      text: "Ок"
+      theme: "accent"
+      size: "xl"
+navigation:
+  logo:
+    url: "../ru"
+    urlTitle: 'Вернуться на главную'
+    dark:
+      icon: "https://storage.yandexcloud.net/diplodoc-www-assets/logo/ddos-logo-dark.svg"
+    light:
+      icon: "https://storage.yandexcloud.net/diplodoc-www-assets/navigation/diplodoc-logo.svg"
+  header:
+    leftItems:
+      - text: "Как все устроено"
+        type: "link"
+        url: "../../how-to/"
+      - text: "Документация"
+        type: "link"
+        url: "../../docs/ru/"
+      - text: "Онлайн редактор"
+        type: "link"
+        url: "https://diplodoc-platform.github.io/playground/?prefill=true"
+      - text: "Telegram"
+        type: "link"
+        url: "https://t.me/diplodoc_ru"
+      - text: "GitHub"
+        type: "link"
+        url: "https://github.com/diplodoc-platform/"
+      - text: "Для разработчиков"
+        type: "link"
+        url: "../../docs/ru/dev/"
+    rightItems:
+      - type: controls
+items:
+  - name: Платформа Diplodoc
+    labeled: true
+    href: index.yaml
+  - name: Функциональные возможности
+    href: features.md
+  - name: Варианты использования
+    href: about.md
+  - name: Быстрый старт
+    href: quickstart.md
+  - name: Релизы YFM
+    hidden: true
+    href: changelog.md
+  - name: Редактирование контента
+    labeled: true
+    items:
+      - name: Синтаксис
+        href: syntax/index.md
+        items:
+          - name: Базовая разметка
+            href: syntax/base.md
+          - name: Ссылки
+            href: syntax/links.md
+          - name: Списки
+            href: syntax/lists.md
+          - name: Таблицы
+            items:
+              - name: Простые таблицы
+                href: syntax/tables/gfm.md
+              - name: Многострочные таблицы
+                href: syntax/tables/multiline.md
+          - name: Заметки
+            href: syntax/notes.md
+          - name: Интерактивные элементы разметки
+            href: syntax/interactive-elements/index.md
+            items:
+              - name: Каты
+                href: syntax/interactive-elements/cuts.md
+              - name: Табы
+                href: syntax/interactive-elements/tabs.md
+              - name: Радиобаттоны
+                href: syntax/interactive-elements/radio.md
+              - name: Дропдаун
+                href: syntax/interactive-elements/dropdawn.md
+              - name: Аккордеон
+                href: syntax/interactive-elements/accordion.md
+              - name: Общие параметры
+                href: syntax/interactive-elements/common-params.md
+          - name: Медиа
+            href: syntax/media.md
+          - name: Фрагменты кода
+            href: syntax/code.md
+          - name: Переменные и шаблоны
+            href: syntax/vars.md
+          - name: Всплывающие подсказки
+            href: syntax/term.md
+          - name: Переиспользование контента
+            href: syntax/includes.md
+          - name: Дополнительные возможности
+            href: syntax/additional.md
+      - name: Дополнительные возможности YFM
+        items:
+          - name: Page constructor
+            href: project/page-constructor.md
+            items:
+              - name: Пример 1
+                href: project/pc-example1.yaml
+              - name: Пример 2
+                href: project/pc-example2.yaml
+              - name: Пример 3 (fullScreen mode)
+                href: project/pc-example3.yaml 
+          - name: Диаграммы
+            href: custom-plugins/mermaid.md
+            items:
+              - name: Кастомизация Mermaid-диаграмм
+                href: custom-plugins/mermaid-info.md
+      - name: Организация контента
+        items:
+          - name: Обзор
+            href: project/index.md
+          - name: Оглавление
+            href: project/toc.md
+            items:
+              - name: Оглавление на странице документации
+                href: project/minitoc.md
+          - name: Расширенная навигация
+            href: project/navigation.md
+          - name: Разводящая страница
+            href: project/leading-page.md
+          - name: Метаданные
+            href: project/meta.md
+          - name: Редиректы
+            href: project/redirects.md
+  - name: Конфигурация проекта
+    labeled: true
+    items:
+      - name: Настройки проекта
+        href: settings.md
+      - name: Поиск
+        href: project/search.md
+        items:
+          - name: Локальный поиск (lunr.js)
+            href: project/lunr.md
+          - name: Algolia
+            href: project/algolia.md
+      - name: Пресеты переменных
+        href: project/presets.md
+      - name: Файл конфигурации линтера
+        href: project/lint.md
+  - name: Пакет CLI
+    href: tools/docs/index.md
+    labeled: true
+    items:
+      - name: Сборка
+        href: tools/docs/build.md
+        items:
+          - name: Параметры сборки
+            href: tools/docs/settings.md
+          - name: Одностраничная сборка
+            href: tools/docs/singlepage.md
+      - name: Локализация
+        href: tools/docs/translate.md
+      - name: Выкладка на S3
+        href: tools/docs/publish-s3.md
+      - name: Внесение изменений
+        hidden: true
+        href: contribution.md
+#  - name: Настройка внешнего вида
+#    labeled: true
+#    items:
+      #- name: Темизация
+      #  href: style/theme.md
+  - name: Практические руководства
+    labeled: true
+    items:
+      - name: Контентная аналитика
+        href: guides/content-analytics.md
+      - name: Настройка личного домена
+        href: personal-domain-ya-cloud.md
+      - name: Единый источник
+        href: guides/single-source/index.md
+        items:
+          - name: Профилирование
+            href: guides/single-source/profiling.md
+      - name: Автогенерация и интеграция документации
+        href: guides/includers.md
+        items:
+          - name: Generic
+            href: guides/generic.md
+          - name: Open API
+            href: guides/openapi.md
+          - name: Unarchive
+            href: guides/unarchive.md
+          - name: Source Docs
+            href: guides/source-docs.md
+      - name: Content Security Policy (CSP)
+        href: guides/csp.md
+      - name: Настройка версионирования документации
+        href: guides/release-version.md
+      - name: Подключение CSS и JS
+        href: style/css-js.md
+      - name: Подключение темизатора
+        href: style/theme.md
+      - name: Создание PDF из документации
+        href: guides/generate-pdf.md
+  - name: Инструменты и библиотеки
+    labeled: true
+    items:
+      - name: Расширения
+        href: extensions/index.md
+      - name: Плагины
+        href: plugins/index.md
+        items:
+          - name: Предустановленные
+            href: plugins/installed.md
+          - name: Внешние
+            href: plugins/external.md
+  - name: Вакансии
+    hidden: true
+    items:
+      - name: Старший разработчик
+        href: vacancy.md
+  - name: Yandex Open Source Jam 2024
+    hidden: true
+    href: jam.md
+  - name: Для разработчиков
+    href: dev/index.yaml
+
