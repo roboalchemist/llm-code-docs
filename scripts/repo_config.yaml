@@ -37,6 +37,14 @@ repositories:
   source_folder: docs/source
   target_folder: docs/github-scraped/tensorrt-llm
   branch: main
+- name: Terrascan
+  description: Terrascan - Infrastructure as Code (IaC) security scanner supporting
+    Terraform, CloudFormation, Kubernetes, Docker, and more with policies and compliance
+    checks
+  repo_url: https://github.com/tenable/terrascan.git
+  source_folder: docs
+  target_folder: docs/github-scraped/terrascan
+  branch: master
 - name: Text Embeddings Inference
   description: HuggingFace Text Embeddings Inference (TEI) - High-performance inference
     server for text embeddings, re-ranking, and sequence classification with optimized
@@ -1123,6 +1131,13 @@ repositories:
   repo_url: https://github.com/PaloAltoNetworks/prisma-cloud-docs.git
   source_folder: docs
   target_folder: docs/github-scraped/prisma-cloud
+  branch: master
+- name: PagerDuty
+  description: PagerDuty - Incident response platform with comprehensive REST API,
+    webhooks, integrations, and operational guides
+  repo_url: https://github.com/PagerDuty/developer-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pagerduty
   branch: master
 - name: WasmEdge
   description: WasmEdge - High-performance WebAssembly runtime for edge computing
