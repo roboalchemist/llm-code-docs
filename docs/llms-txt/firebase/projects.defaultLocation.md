@@ -1,0 +1,11 @@
+# Source: https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation.md.txt
+
+# REST Resource: projects.defaultLocation
+
+## Resource
+
+There is no persistent data associated with this resource.
+
+|                                                                                                                                                                                                                                                                                                            ## Methods                                                                                                                                                                                                                                                                                                             ||
+|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ### [finalize](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.defaultLocation/finalize)` ` **(deprecated)** | **DECOMMISSIONED.** **If called, this endpoint will return a 404 error.** *Instead, use the applicable resource-specific REST API to set the location for each resource used in your Project.* Sets the ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location) for the specified [FirebaseProject](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject). |

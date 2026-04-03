@@ -1,0 +1,856 @@
+# Source: https://firebase.google.com/docs/firestore/solutions/counters.md.txt
+
+<br />
+
+Many realtime apps have documents that act as counters. For example, you might count 'likes' on a post, or 'favorites' of a specific item.
+
+InCloud Firestore, you can't update a single document at an unlimited rate. If you have a counter based on single document and frequent enough increments to it you will eventually see contention on the updates to the document. See[Updates to a single document](https://firebase.google.com/docs/firestore/best-practices#updates_to_a_single_document).
+
+## Solution: Distributed counters
+
+To support more frequent counter updates, create a distributed counter. Each counter is a document with a subcollection of "shards," and the value of the counter is the sum of the value of the shards.
+
+Write throughput increases linearly with the number of shards, so a distributed counter with 10 shards can handle 10x as many writes as a traditional counter.  
+
+### Web
+
+    // counters/${ID}
+    {
+      "num_shards": NUM_SHARDS,
+      "shards": [subcollection]
+    }
+
+    // counters/${ID}/shards/${NUM}
+    {
+      "count": 123
+    }
+
+### Swift
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```swift
+// counters/${ID}
+struct Counter {
+  let numShards: Int
+
+  init(numShards: Int) {
+    self.numShards = numShards
+  }
+}
+
+// counters/${ID}/shards/${NUM}
+struct Shard {
+  let count: Int
+
+  init(count: Int) {
+    self.count = count
+  }
+}https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/swift/firestore-smoketest/SolutionCountersViewController.swift#L32-L48
+```
+
+<br />
+
+### Objective-C
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```objective-c
+// counters/${ID}
+@interface FIRCounter : NSObject
+@property (nonatomic, readonly) NSInteger shardCount;
+@end
+
+@implementation FIRCounter
+- (instancetype)initWithShardCount:(NSInteger)shardCount {
+  self = [super init];
+  if (self != nil) {
+    _shardCount = shardCount;
+  }
+  return self;
+}
+@end
+
+// counters/${ID}/shards/${NUM}
+@interface FIRShard : NSObject
+@property (nonatomic, readonly) NSInteger count;
+@end
+
+@implementation FIRShard
+- (instancetype)initWithCount:(NSInteger)count {
+  self = [super init];
+  if (self != nil) {
+    _count = count;
+  }
+  return self;
+}
+@end  
+https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/objc/firestore-smoketest-objc/FIRSolutionCountersViewController.m#L22-L50
+```
+
+### Kotlin
+
+```kotlin
+// counters/${ID}
+data class Counter(var numShards: Int)
+
+// counters/${ID}/shards/${NUM}
+data class Shard(var count: Int)https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/kotlin/SolutionCounters.kt#L16-L20
+```
+
+### Java
+
+```java
+// counters/${ID}
+public class Counter {
+    int numShards;
+
+    public Counter(int numShards) {
+        this.numShards = numShards;
+    }
+}
+
+// counters/${ID}/shards/${NUM}
+public class Shard {
+    int count;
+
+    public Shard(int count) {
+        this.count = count;
+    }
+}https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/SolutionCounters.java#L25-L41
+```
+
+### Python
+
+    import random
+
+    from google.cloud import firestore
+
+
+    class Shard:
+        """
+        A shard is a distributed counter. Each shard can support being incremented
+        once per second. Multiple shards are needed within a Counter to allow
+        more frequent incrementing.
+        """
+
+        def __init__(self):
+            self._count = 0
+
+        def to_dict(self):
+            return {"count": self._count}
+
+
+    class Counter:
+        """
+        A counter stores a collection of shards which are
+        summed to return a total count. This allows for more
+        frequent incrementing than a single document.
+        """
+
+        def __init__(self, num_shards):
+            self._num_shards = num_shards  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-client/distributed_counters.py#L16-L44
+
+### Python
+
+    import random
+
+    from google.cloud import firestore
+
+
+    class Shard:
+        """
+        A shard is a distributed counter. Each shard can support being incremented
+        once per second. Multiple shards are needed within a Counter to allow
+        more frequent incrementing.
+        """
+
+        def __init__(self):
+            self._count = 0
+
+        def to_dict(self):
+            return {"count": self._count}
+
+
+    class Counter:
+        """
+        A counter stores a collection of shards which are
+        summed to return a total count. This allows for more
+        frequent incrementing than a single document.
+        """
+
+        def __init__(self, num_shards):
+            self._num_shards = num_shards  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-async-client/distributed_counters.py#L16-L44
+
+### Node.js
+
+Not applicable, see the counter increment snippet below.
+
+### Go
+
+    import (
+    	"context"
+    	"fmt"
+    	"math/rand"
+    	"strconv"
+
+    	"cloud.google.com/go/firestore"
+    	"google.golang.org/api/iterator"
+    )
+
+    // Counter is a collection of documents (shards)
+    // to realize counter with high frequency.
+    type Counter struct {
+    	numShards int
+    }
+
+    // Shard is a single counter, which is used in a group
+    // of other shards within Counter.
+    type Shard struct {
+    	Count int
+    }  
+    https://github.com/GoogleCloudPlatform/golang-samples/blob/afaa7f40a550aee552c7b962c8a9ac3a390381ca/firestore/solution_counters.go#L18-L39
+
+### PHP
+
+Not applicable, see the counter initialization snippet below.
+
+### C#
+
+    /// <summary>
+    /// Shard is a document that contains the count.
+    /// </summary>
+    [FirestoreData]
+    public class Shard
+    {
+        [FirestoreProperty(name: "count")]
+        public int Count { get; set; }
+    }  
+    https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/7c95aa33b780cf05c9d699b3c664812d40629c35/firestore/api/SolutionCounter/Program.cs#L42-L50
+
+The following code initializes a distributed counter:  
+
+### Web
+
+```javascript
+function createCounter(ref, num_shards) {
+    var batch = db.batch();
+
+    // Initialize the counter document
+    batch.set(ref, { num_shards: num_shards });
+
+    // Initialize each shard with count=0
+    for (let i = 0; i < num_shards; i++) {
+        const shardRef = ref.collection('shards').doc(i.toString());
+        batch.set(shardRef, { count: 0 });
+    }
+
+    // Commit the write batch
+    return batch.commit();
+}https://github.com/firebase/snippets-web/blob/95c8c159ff4d90af442352f058406f1aeb8adcbb/firestore/test.solution-counters.js#L7-L21
+```
+
+### Swift
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```swift
+func createCounter(ref: DocumentReference, numShards: Int) async {
+  do {
+    try await ref.setData(["numShards": numShards])
+    for i in 0...numShards {
+      try await ref.collection("shards").document(String(i)).setData(["count": 0])
+    }
+  } catch {
+    // ...
+  }
+}https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/swift/firestore-smoketest/SolutionCountersViewController.swift#L52-L61
+```
+
+<br />
+
+### Objective-C
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```objective-c
+- (void)createCounterAtReference:(FIRDocumentReference *)reference
+                      shardCount:(NSInteger)shardCount {
+  [reference setData:@{ @"numShards": @(shardCount) } completion:^(NSError * _Nullable error) {
+    for (NSInteger i = 0; i < shardCount; i++) {
+      NSString *shardName = [NSString stringWithFormat:@"%ld", (long)shardCount];
+      [[[reference collectionWithPath:@"shards"] documentWithPath:shardName]
+          setData:@{ @"count": @(0) }];
+    }
+  }];
+}https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/objc/firestore-smoketest-objc/FIRSolutionCountersViewController.m#L65-L74
+```
+
+### Kotlin
+
+```kotlin
+fun createCounter(ref: DocumentReference, numShards: Int): Task<Void> {
+    // Initialize the counter document, then initialize each shard.
+    return ref.set(Counter(numShards))
+        .continueWithTask { task ->
+            if (!task.isSuccessful) {
+                throw task.exception!!
+            }
+
+            val tasks = arrayListOf<Task<Void>>()
+
+            // Initialize each shard with count=0
+            for (i in 0 until numShards) {
+                val makeShard = ref.collection("shards")
+                    .document(i.toString())
+                    .set(Shard(0))
+
+                tasks.add(makeShard)
+            }
+
+            Tasks.whenAll(tasks)
+        }
+}https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/kotlin/SolutionCounters.kt#L24-L45
+```
+
+### Java
+
+```java
+public Task<Void> createCounter(final DocumentReference ref, final int numShards) {
+    // Initialize the counter document, then initialize each shard.
+    return ref.set(new Counter(numShards))
+            .continueWithTask(new Continuation<Void, Task<Void>>() {
+                @Override
+                public Task<Void> then(@NonNull Task<Void> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    List<Task<Void>> tasks = new ArrayList<>();
+
+                    // Initialize each shard with count=0
+                    for (int i = 0; i < numShards; i++) {
+                        Task<Void> makeShard = ref.collection("shards")
+                                .document(String.valueOf(i))
+                                .set(new Shard(0));
+
+                        tasks.add(makeShard);
+                    }
+
+                    return Tasks.whenAll(tasks);
+                }
+            });
+}https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/SolutionCounters.java#L45-L69
+```
+
+### Python
+
+    def init_counter(self, doc_ref):
+        """
+        Create a given number of shards as
+        subcollection of specified document.
+        """
+        col_ref = doc_ref.collection("shards")
+
+        # Initialize each shard with count=0
+        for num in range(self._num_shards):
+            shard = Shard()
+            col_ref.document(str(num)).set(shard.to_dict())  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-client/distributed_counters.py#L48-L59
+
+### Python
+
+    async def init_counter(self, doc_ref):
+        """
+        Create a given number of shards as
+        subcollection of specified document.
+        """
+        col_ref = doc_ref.collection("shards")
+
+        # Initialize each shard with count=0
+        for num in range(self._num_shards):
+            shard = Shard()
+            await col_ref.document(str(num)).set(shard.to_dict())  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-async-client/distributed_counters.py#L48-L59
+
+### Node.js
+
+Not applicable, see the counter increment snippet below.
+
+### Go
+
+<br />
+
+
+    // initCounter creates a given number of shards as
+    // subcollection of specified document.
+    func (c *Counter) initCounter(ctx context.Context, docRef *firestore.DocumentRef) error {
+    	colRef := docRef.Collection("shards")
+
+    	// Initialize each shard with count=0
+    	for num := 0; num < c.numShards; num++ {
+    		shard := Shard{0}
+
+    		if _, err := colRef.Doc(strconv.Itoa(num)).Set(ctx, shard); err != nil {
+    			return fmt.Errorf("Set: %w", err)
+    		}
+    	}
+    	return nil
+    }  
+    https://github.com/GoogleCloudPlatform/golang-samples/blob/afaa7f40a550aee552c7b962c8a9ac3a390381ca/firestore/solution_counters.go#L43-L59
+
+<br />
+
+### PHP
+
+    $numShards = 10;
+    $ref = $db->collection('samples/php/distributedCounters');
+    for ($i = 0; $i < $numShards; $i++) {
+        $doc = $ref->document((string) $i);
+        $doc->set(['Cnt' => 0]);
+    }  
+    https://github.com/GoogleCloudPlatform/php-docs-samples/blob/819b0089cc6bdecde9fe4ec1c54f80f130c4b4d1/firestore/src/solution_sharded_counter_create.php#L40-L45
+
+### C#
+
+    /// <summary>
+    /// Create a given number of shards as a
+    /// subcollection of specified document.
+    /// </summary>
+    /// <param name="docRef">The document reference <see cref="DocumentReference"/></param>
+    private static async Task CreateCounterAsync(DocumentReference docRef, int numOfShards)
+    {
+        CollectionReference colRef = docRef.Collection("shards");
+        var tasks = new List<Task>();
+        // Initialize each shard with Count=0
+        for (var i = 0; i < numOfShards; i++)
+        {
+            tasks.Add(colRef.Document(i.ToString()).SetAsync(new Shard() { Count = 0 }));
+        }
+        await Task.WhenAll(tasks);
+    }  
+    https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/7c95aa33b780cf05c9d699b3c664812d40629c35/firestore/api/SolutionCounter/Program.cs#L54-L69
+
+### Ruby
+
+    # project_id = "Your Google Cloud Project ID"
+    # num_shards = "Number of shards for distributed counter"
+    # collection_path = "shards"
+
+    require "google/cloud/firestore"
+
+    firestore = Google::Cloud::Firestore.new project_id: project_id
+
+    shards_ref = firestore.col collection_path
+
+    # Initialize each shard with count=0
+    num_shards.times do |i|
+      shards_ref.doc(i).set({ count: 0 })
+    end
+
+    puts "Distributed counter shards collection created."  
+    https://github.com/googleapis/google-cloud-ruby/blob/0ed698db17c491e8e3dd82b79fa990c3ae3ef0fa/google-cloud-firestore/samples/distributed_counters.rb#L18-L33
+
+To increment the counter, choose a random shard and increment the count:  
+
+### Web
+
+```javascript
+function incrementCounter(ref, num_shards) {
+    // Select a shard of the counter at random
+    const shard_id = Math.floor(Math.random() * num_shards).toString();
+    const shard_ref = ref.collection('shards').doc(shard_id);
+
+    // Update count
+    return shard_ref.update("count", firebase.firestore.FieldValue.increment(1));
+}https://github.com/firebase/snippets-web/blob/95c8c159ff4d90af442352f058406f1aeb8adcbb/firestore/test.solution-counters.js#L25-L32
+```
+
+### Swift
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```swift
+func incrementCounter(ref: DocumentReference, numShards: Int) {
+  // Select a shard of the counter at random
+  let shardId = Int(arc4random_uniform(UInt32(numShards)))
+  let shardRef = ref.collection("shards").document(String(shardId))
+
+  shardRef.updateData([
+    "count": FieldValue.increment(Int64(1))
+  ])
+}https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/swift/firestore-smoketest/SolutionCountersViewController.swift#L65-L73
+```
+
+<br />
+
+### Objective-C
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```objective-c
+- (void)incrementCounterAtReference:(FIRDocumentReference *)reference
+                         shardCount:(NSInteger)shardCount {
+  // Select a shard of the counter at random
+  NSInteger shardID = (NSInteger)arc4random_uniform((uint32_t)shardCount);
+  NSString *shardName = [NSString stringWithFormat:@"%ld", (long)shardID];
+  FIRDocumentReference *shardReference =
+      [[reference collectionWithPath:@"shards"] documentWithPath:shardName];
+
+  [shardReference updateData:@{
+    @"count": [FIRFieldValue fieldValueForIntegerIncrement:1]
+  }];
+}https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/objc/firestore-smoketest-objc/FIRSolutionCountersViewController.m#L78-L89
+```
+
+### Kotlin
+
+```kotlin
+fun incrementCounter(ref: DocumentReference, numShards: Int): Task<Void> {
+    val shardId = Math.floor(Math.random() * numShards).toInt()
+    val shardRef = ref.collection("shards").document(shardId.toString())
+
+    return shardRef.update("count", FieldValue.increment(1))
+}https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/kotlin/SolutionCounters.kt#L49-L54
+```
+
+### Java
+
+```java
+public Task<Void> incrementCounter(final DocumentReference ref, final int numShards) {
+    int shardId = (int) Math.floor(Math.random() * numShards);
+    DocumentReference shardRef = ref.collection("shards").document(String.valueOf(shardId));
+
+    return shardRef.update("count", FieldValue.increment(1));
+}https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/SolutionCounters.java#L73-L78
+```
+
+### Python
+
+    def increment_counter(self, doc_ref):
+        """Increment a randomly picked shard."""
+        doc_id = random.randint(0, self._num_shards - 1)
+
+        shard_ref = doc_ref.collection("shards").document(str(doc_id))
+        return shard_ref.update({"count": firestore.Increment(1)})  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-client/distributed_counters.py#L63-L69
+
+### Python
+
+    async def increment_counter(self, doc_ref):
+        """Increment a randomly picked shard."""
+        doc_id = random.randint(0, self._num_shards - 1)
+
+        shard_ref = doc_ref.collection("shards").document(str(doc_id))
+        return await shard_ref.update({"count": firestore.Increment(1)})  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-async-client/distributed_counters.py#L63-L69
+
+### Node.js
+
+    function incrementCounter(docRef, numShards) {
+      const shardId = Math.floor(Math.random() * numShards);
+      const shardRef = docRef.collection('shards').doc(shardId.toString());
+      return shardRef.set({count: FieldValue.increment(1)}, {merge: true});
+    }  
+    https://github.com/googleapis/nodejs-firestore/blob/bc0c73db1fc840bf34115ffab20d7b48eb0a76e5/samples/solution-counters.js#L20-L24
+
+### Go
+
+
+    // incrementCounter increments a randomly picked shard.
+    func (c *Counter) incrementCounter(ctx context.Context, docRef *firestore.DocumentRef) (*firestore.WriteResult, error) {
+    	docID := strconv.Itoa(rand.Intn(c.numShards))
+
+    	shardRef := docRef.Collection("shards").Doc(docID)
+    	return shardRef.Update(ctx, []firestore.Update{
+    		{Path: "Count", Value: firestore.Increment(1)},
+    	})
+    }  
+    https://github.com/GoogleCloudPlatform/golang-samples/blob/afaa7f40a550aee552c7b962c8a9ac3a390381ca/firestore/solution_counters.go#L63-L73
+
+### PHP
+
+    $ref = $db->collection('samples/php/distributedCounters');
+    $numShards = 0;
+    $docCollection = $ref->documents();
+    foreach ($docCollection as $doc) {
+        $numShards++;
+    }
+    $shardIdx = random_int(0, max(1, $numShards) - 1);
+    $doc = $ref->document((string) $shardIdx);
+    $doc->update([
+        ['path' => 'Cnt', 'value' => FieldValue::increment(1)]
+    ]);  
+    https://github.com/GoogleCloudPlatform/php-docs-samples/blob/819b0089cc6bdecde9fe4ec1c54f80f130c4b4d1/firestore/src/solution_sharded_counter_increment.php#L42-L52
+
+### C#
+
+    /// <summary>
+    /// Increment a randomly picked shard by 1.
+    /// </summary>
+    /// <param name="docRef">The document reference <see cref="DocumentReference"/></param>
+    /// <returns>The <see cref="Task"/></returns>
+    private static async Task IncrementCounterAsync(DocumentReference docRef, int numOfShards)
+    {
+        int documentId;
+        lock (s_randLock)
+        {
+            documentId = s_rand.Next(numOfShards);
+        }
+        var shardRef = docRef.Collection("shards").Document(documentId.ToString());
+        await shardRef.UpdateAsync("count", FieldValue.Increment(1));
+    }  
+    https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/7c95aa33b780cf05c9d699b3c664812d40629c35/firestore/api/SolutionCounter/Program.cs#L73-L87
+
+### Ruby
+
+    # project_id = "Your Google Cloud Project ID"
+    # num_shards = "Number of shards for distributed counter"
+    # collection_path = "shards"
+
+    require "google/cloud/firestore"
+
+    firestore = Google::Cloud::Firestore.new project_id: project_id
+
+    # Select a shard of the counter at random
+    shard_id = rand 0...num_shards
+    shard_ref = firestore.doc "#{collection_path}/#{shard_id}"
+
+    # increment counter
+    shard_ref.update({ count: firestore.field_increment(1) })
+
+    puts "Counter incremented."  
+    https://github.com/googleapis/google-cloud-ruby/blob/0ed698db17c491e8e3dd82b79fa990c3ae3ef0fa/google-cloud-firestore/samples/distributed_counters.rb#L39-L54
+
+To get the total count, query for all shards and sum their`count`fields:  
+
+### Web
+
+```javascript
+function getCount(ref) {
+    // Sum the count of each shard in the subcollection
+    return ref.collection('shards').get().then((snapshot) => {
+        let total_count = 0;
+        snapshot.forEach((doc) => {
+            total_count += doc.data().count;
+        });
+
+        return total_count;
+    });
+}https://github.com/firebase/snippets-web/blob/95c8c159ff4d90af442352f058406f1aeb8adcbb/firestore/test.solution-counters.js#L36-L46
+```
+
+### Swift
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```swift
+func getCount(ref: DocumentReference) async {
+  do {
+    let querySnapshot = try await ref.collection("shards").getDocuments()
+    var totalCount = 0
+    for document in querySnapshot.documents {
+      let count = document.data()["count"] as! Int
+      totalCount += count
+    }
+
+    print("Total count is \(totalCount)")
+  } catch {
+    // handle error
+  }
+}https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/swift/firestore-smoketest/SolutionCountersViewController.swift#L77-L90
+```
+
+<br />
+
+### Objective-C
+
+<br />
+
+**Note:**This product is not available on watchOS and App Clip targets.  
+
+```objective-c
+- (void)getCountWithReference:(FIRDocumentReference *)reference {
+  [[reference collectionWithPath:@"shards"]
+      getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot,
+                                   NSError *error) {
+        NSInteger totalCount = 0;
+        if (error != nil) {
+          // Error getting shards
+          // ...
+        } else {
+          for (FIRDocumentSnapshot *document in snapshot.documents) {
+            NSInteger count = [document[@"count"] integerValue];
+            totalCount += count;
+          }
+
+          NSLog(@"Total count is %ld", (long)totalCount);
+        }
+  }];
+}https://github.com/firebase/snippets-ios/blob/affc6b838d3dc3382ca741983dad489631d52b43/firestore/objc/firestore-smoketest-objc/FIRSolutionCountersViewController.m#L93-L110
+```
+
+### Kotlin
+
+```kotlin
+fun getCount(ref: DocumentReference): Task<Int> {
+    // Sum the count of each shard in the subcollection
+    return ref.collection("shards").get()
+        .continueWith { task ->
+            var count = 0
+            for (snap in task.result!!) {
+                val shard = snap.toObject<Shard>()
+                count += shard.count
+            }
+            count
+        }
+}https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/kotlin/SolutionCounters.kt#L58-L69
+```
+
+### Java
+
+```java
+public Task<Integer> getCount(final DocumentReference ref) {
+    // Sum the count of each shard in the subcollection
+    return ref.collection("shards").get()
+            .continueWith(new Continuation<QuerySnapshot, Integer>() {
+                @Override
+                public Integer then(@NonNull Task<QuerySnapshot> task) throws Exception {
+                    int count = 0;
+                    for (DocumentSnapshot snap : task.getResult()) {
+                        Shard shard = snap.toObject(Shard.class);
+                        count += shard.count;
+                    }
+                    return count;
+                }
+            });
+}https://github.com/firebase/snippets-android/blob/4c2b992d5e2f28aff48e72d2727127fe8100cae3/firestore/app/src/main/java/com/google/example/firestore/SolutionCounters.java#L82-L96
+```
+
+### Python
+
+    def get_count(self, doc_ref):
+        """Return a total count across all shards."""
+        total = 0
+        shards = doc_ref.collection("shards").list_documents()
+        for shard in shards:
+            total += shard.get().to_dict().get("count", 0)
+        return total  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-client/distributed_counters.py#L73-L80
+
+### Python
+
+    async def get_count(self, doc_ref):
+        """Return a total count across all shards."""
+        total = 0
+        shards = doc_ref.collection("shards").list_documents()
+        async for shard in shards:
+            total += (await shard.get()).to_dict().get("count", 0)
+        return total  
+    https://github.com/GoogleCloudPlatform/python-docs-samples/blob/420b4003c11686f07de626c03f710d9b10b1160b/firestore/cloud-async-client/distributed_counters.py#L73-L80
+
+### Node.js
+
+    async function getCount(docRef) {
+      const querySnapshot = await docRef.collection('shards').get();
+      const documents = querySnapshot.docs;
+
+      let count = 0;
+      for (const doc of documents) {
+        count += doc.get('count');
+      }
+      return count;
+    }  
+    https://github.com/googleapis/nodejs-firestore/blob/bc0c73db1fc840bf34115ffab20d7b48eb0a76e5/samples/solution-counters.js#L28-L37
+
+### Go
+
+
+    // getCount returns a total count across all shards.
+    func (c *Counter) getCount(ctx context.Context, docRef *firestore.DocumentRef) (int64, error) {
+    	var total int64
+    	shards := docRef.Collection("shards").Documents(ctx)
+    	for {
+    		doc, err := shards.Next()
+    		if err == iterator.Done {
+    			break
+    		}
+    		if err != nil {
+    			return 0, fmt.Errorf("Next: %w", err)
+    		}
+
+    		vTotal := doc.Data()["Count"]
+    		shardCount, ok := vTotal.(int64)
+    		if !ok {
+    			return 0, fmt.Errorf("firestore: invalid dataType %T, want int64", vTotal)
+    		}
+    		total += shardCount
+    	}
+    	return total, nil
+    }  
+    https://github.com/GoogleCloudPlatform/golang-samples/blob/afaa7f40a550aee552c7b962c8a9ac3a390381ca/firestore/solution_counters.go#L77-L100
+
+### PHP
+
+    $result = 0;
+    $docCollection = $db->collection('samples/php/distributedCounters')->documents();
+    foreach ($docCollection as $doc) {
+        $result += $doc->data()['Cnt'];
+    }  
+    https://github.com/GoogleCloudPlatform/php-docs-samples/blob/819b0089cc6bdecde9fe4ec1c54f80f130c4b4d1/firestore/src/solution_sharded_counter_get.php#L40-L44
+
+### C#
+
+    /// <summary>
+    /// Get total count across all shards.
+    /// </summary>
+    /// <param name="docRef">The document reference <see cref="DocumentReference"/></param>
+    /// <returns>The <see cref="int"/></returns>
+    private static async Task<int> GetCountAsync(DocumentReference docRef)
+    {
+        var snapshotList = await docRef.Collection("shards").GetSnapshotAsync();
+        return snapshotList.Sum(shard => shard.GetValue<int>("count"));
+    }  
+    https://github.com/GoogleCloudPlatform/dotnet-docs-samples/blob/7c95aa33b780cf05c9d699b3c664812d40629c35/firestore/api/SolutionCounter/Program.cs#L91-L100
+
+### Ruby
+
+    # project_id = "Your Google Cloud Project ID"
+    # collection_path = "shards"
+
+    require "google/cloud/firestore"
+
+    firestore = Google::Cloud::Firestore.new project_id: project_id
+
+    shards_ref = firestore.col_group collection_path
+
+    count = 0
+    shards_ref.get do |doc_ref|
+      count += doc_ref[:count]
+    end
+
+    puts "Count value is #{count}."  
+    https://github.com/googleapis/google-cloud-ruby/blob/0ed698db17c491e8e3dd82b79fa990c3ae3ef0fa/google-cloud-firestore/samples/distributed_counters.rb#L60-L74
+
+## Limitations
+
+The solution shown above is a scalable way to create shared counters inCloud Firestore, but you should be aware of the following limitations:
+
+- **Shard count**- The number of shards controls the performance of the distributed counter. With too few shards, some transactions may have to retry before succeeding, which will slow writes. With too many shards, reads become slower and more expensive. You can offset the read-expense by keeping the counter total in a separate roll-up document which is updated at a slower cadence, and having clients read from that document to get the total. The tradeoff is that clients will have to wait for the roll-up document to be updated, instead of computing the total by reading all of the shards immediately after any update.
+- **Cost**- The cost of reading a counter value increases linearly with the number of shards, because the entire shards subcollection must be loaded.

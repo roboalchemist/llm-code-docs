@@ -1,0 +1,106 @@
+# Source: https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder.md.txt
+
+# LocalBusinessBuilder
+
+public final class **LocalBusinessBuilder** extends [IndexableBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder)\<[LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder)\>  
+Builder to construct an [Indexable](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/Indexable)
+for a local business.
+
+For reference, see: <https://schema.org/LocalBusiness>.  
+
+### Public Method Summary
+
+|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) | [setAddress](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder#setAddress(com.google.firebase.appindexing.builders.PostalAddressBuilder))([PostalAddressBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/PostalAddressBuilder) address) Sets the physical address of the local business.                             |
+| [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) | [setAggregateRating](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder#setAggregateRating(com.google.firebase.appindexing.builders.AggregateRatingBuilder))([AggregateRatingBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/AggregateRatingBuilder) aggregateRating) Sets the overall rating of the local business. |
+| [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) | [setGeo](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder#setGeo(com.google.firebase.appindexing.builders.GeoShapeBuilder))([GeoShapeBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/GeoShapeBuilder) geoShape) Sets the geo coordinates of the local business.                                                    |
+| [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) | [setPriceRange](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder#setPriceRange(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) priceRange) Sets the price range of the local business.                                                                                                                                       |
+| [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) | [setTelephone](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder#setTelephone(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) telephone) Sets the telephone number of the local business.                                                                                                                                     |
+
+### Inherited Method Summary
+
+From class [com.google.firebase.appindexing.builders.IndexableBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder)  
+
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| final [Indexable](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/Indexable)                                             | [build](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#build())() Finalize building the object.                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| T                                                                                                                                                           | [put](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#put(java.lang.String,%20boolean...))([String](https://developer.android.com/reference/java/lang/String.html) key, boolean... values) Sets one or multiple boolean values for a property, replacing its previous values.                                                                                                                                                                                                                                       |
+| \<S extends [IndexableBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder)\<?\>\> T       | [put](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#put(java.lang.String,%20S...))([String](https://developer.android.com/reference/java/lang/String.html) key, S... values) Sets one or multiple [Indexable](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/Indexable) values for a property.                                                                                                                                                                                |
+| T                                                                                                                                                           | [put](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#put(java.lang.String,%20com.google.firebase.appindexing.Indexable...))([String](https://developer.android.com/reference/java/lang/String.html) key, [Indexable...](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/Indexable) values) Sets one or multiple [Indexable](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/Indexable) values for a property, replacing its previous values. |
+| T                                                                                                                                                           | [put](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#put(java.lang.String,%20java.lang.String...))([String](https://developer.android.com/reference/java/lang/String.html) key, [String...](https://developer.android.com/reference/java/lang/String.html) values) Sets one or multiple string values for a property, replacing its previous values.                                                                                                                                                               |
+| T                                                                                                                                                           | [put](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#put(java.lang.String,%20long...))([String](https://developer.android.com/reference/java/lang/String.html) key, long... values) Sets one or multiple long values for a property, replacing its previous values.                                                                                                                                                                                                                                                |
+| T                                                                                                                                                           | [setAlternateName](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setAlternateName(java.lang.String...))([String...](https://developer.android.com/reference/java/lang/String.html) alternateNames) Sets the alternate names for the content.                                                                                                                                                                                                                                                                      |
+| final T                                                                                                                                                     | [setDescription](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setDescription(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) description) Sets the optional description of the content.                                                                                                                                                                                                                                                                               |
+| T                                                                                                                                                           | [setId](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setId(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) id) Sets the ID for the Indexable.                                                                                                                                                                                                                                                                                                                         |
+| final T                                                                                                                                                     | [setImage](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setImage(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) url) Sets the image of the content.                                                                                                                                                                                                                                                                                                                  |
+| final \<S extends [IndexableBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder)\<?\>\> T | [setIsPartOf](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setIsPartOf(S...))(S... collections) Sets the sub-group or collection that this Indexable is part of.                                                                                                                                                                                                                                                                                                                                                 |
+| final T                                                                                                                                                     | [setKeywords](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setKeywords(java.lang.String...))([String...](https://developer.android.com/reference/java/lang/String.html) keywords) Sets the keywords of the Indexable.                                                                                                                                                                                                                                                                                            |
+| T                                                                                                                                                           | [setMetadata](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setMetadata(com.google.firebase.appindexing.Indexable.Metadata.Builder))([Indexable.Metadata.Builder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/Indexable.Metadata.Builder) metadataBuilder) Sets the metadata.                                                                                                                                                                                              |
+| final T                                                                                                                                                     | [setName](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setName(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) name) Sets the name of the content, must not be null.                                                                                                                                                                                                                                                                                                  |
+| final T                                                                                                                                                     | [setSameAs](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setSameAs(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) webUrl) Sets the corresponding web URL.                                                                                                                                                                                                                                                                                                            |
+| final T                                                                                                                                                     | [setUrl](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/IndexableBuilder#setUrl(java.lang.String))([String](https://developer.android.com/reference/java/lang/String.html) url) Sets the URL.                                                                                                                                                                                                                                                                                                                                       |
+
+From class java.lang.Object  
+
+|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| [Object](https://developer.android.com/reference/java/lang/Object.html)          | clone()                                                                              |
+| boolean                                                                          | equals([Object](https://developer.android.com/reference/java/lang/Object.html) arg0) |
+| void                                                                             | finalize()                                                                           |
+| final [Class](https://developer.android.com/reference/java/lang/Class.html)\<?\> | getClass()                                                                           |
+| int                                                                              | hashCode()                                                                           |
+| final void                                                                       | notify()                                                                             |
+| final void                                                                       | notifyAll()                                                                          |
+| [String](https://developer.android.com/reference/java/lang/String.html)          | toString()                                                                           |
+| final void                                                                       | wait(long arg0, int arg1)                                                            |
+| final void                                                                       | wait(long arg0)                                                                      |
+| final void                                                                       | wait()                                                                               |
+
+## Public Methods
+
+#### public [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) **setAddress**
+([PostalAddressBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/PostalAddressBuilder) address)
+
+Sets the physical address of the local business.  
+
+##### Parameters
+
+| address | The the physical address of the business. |
+|---------|-------------------------------------------|
+
+#### public [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) **setAggregateRating** ([AggregateRatingBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/AggregateRatingBuilder) aggregateRating)
+
+Sets the overall rating of the local business.  
+
+##### Parameters
+
+| aggregateRating | The overall rating, based on a collection of reviews or ratings. |
+|-----------------|------------------------------------------------------------------|
+
+#### public [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) **setGeo**
+([GeoShapeBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/GeoShapeBuilder) geoShape)
+
+Sets the geo coordinates of the local business.  
+
+##### Parameters
+
+| geoShape | The geo coordinates of the local business. |
+|----------|--------------------------------------------|
+
+#### public [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) **setPriceRange**
+([String](https://developer.android.com/reference/java/lang/String.html) priceRange)
+
+Sets the price range of the local business.  
+
+##### Parameters
+
+| priceRange | The price range of the business. For example, "$11-30". |
+|------------|---------------------------------------------------------|
+
+#### public [LocalBusinessBuilder](https://firebase.google.com/docs/reference/android/com/google/firebase/appindexing/builders/LocalBusinessBuilder) **setTelephone**
+([String](https://developer.android.com/reference/java/lang/String.html) telephone)
+
+Sets the telephone number of the local business.  
+
+##### Parameters
+
+| telephone | The telephone number of the business. |
+|-----------|---------------------------------------|
