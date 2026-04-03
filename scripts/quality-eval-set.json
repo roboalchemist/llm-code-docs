@@ -1,242 +1,242 @@
 [
   {
     "source": "llms-txt",
-    "library": "mailcatcher",
-    "label": "ok",
-    "min_score": 0,
-    "max_score": 5,
-    "reason": "HTML dump masquerading as .md"
-  },
-  {
-    "source": "github-scraped",
-    "library": "rake",
-    "label": "weak",
-    "min_score": 45,
-    "max_score": 75,
-    "reason": "rake RST docs with examples, 10KB but well-structured"
-  },
-  {
-    "source": "llms-txt",
-    "library": "lettuce",
-    "label": "ok",
-    "min_score": 0,
-    "max_score": 5,
-    "reason": "HTML dump masquerading as .md"
-  },
-  {
-    "source": "llms-txt",
-    "library": "pycryptodome",
-    "label": "ok",
-    "min_score": 0,
-    "max_score": 5,
-    "reason": "HTML dump masquerading as .md"
-  },
-  {
-    "source": "github-scraped",
-    "library": "phpmailer",
-    "label": "poor",
-    "min_score": 0,
-    "max_score": 25,
-    "reason": "redirect stub ~1KB"
-  },
-  {
-    "source": "web-scraped",
-    "library": "godot-ui",
-    "label": "poor",
-    "min_score": 0,
-    "max_score": 25,
-    "reason": "index-only nav page 2KB"
-  },
-  {
-    "source": "github-scraped",
-    "library": "veevalidate",
-    "label": "poor",
-    "min_score": 0,
-    "max_score": 20,
-    "reason": "changelog only, no real docs"
-  },
-  {
-    "source": "github-scraped",
-    "library": "ristretto",
-    "label": "poor",
-    "min_score": 0,
-    "max_score": 25,
-    "reason": "API reference placeholders, no content"
-  },
-  {
-    "source": "web-scraped",
-    "library": "ineffassign",
-    "label": "ok",
-    "min_score": 45,
-    "max_score": 65,
-    "reason": "close to old range, actual quality is solid for small linter docs"
-  },
-  {
-    "source": "web-scraped",
-    "library": "varcheck",
-    "label": "ok",
-    "min_score": 35,
-    "max_score": 55,
-    "reason": "comprehensive tool docs with examples"
-  },
-  {
-    "source": "web-scraped",
-    "library": "eslint-plugin-performance",
-    "label": "ok",
-    "min_score": 50,
-    "max_score": 75,
-    "reason": "3KB but 22% code ratio 12 headings - rich for size"
-  },
-  {
-    "source": "web-scraped",
-    "library": "assertj",
-    "label": "good",
-    "min_score": 45,
-    "max_score": 70,
-    "reason": "432KB with only 4 headings and 0 code blocks - heuristic limit"
-  },
-  {
-    "source": "web-scraped",
-    "library": "corebluetooth",
-    "label": "dead",
-    "min_score": 0,
-    "max_score": 15,
-    "reason": "docs.rs build failed, almost no content"
-  },
-  {
-    "source": "llms-txt",
-    "library": "pgvector",
-    "label": "good",
-    "min_score": 65,
-    "max_score": 85,
-    "reason": "dense complete vector search reference"
-  },
-  {
-    "source": "web-scraped",
-    "library": "marker",
-    "label": "good",
-    "min_score": 70,
-    "max_score": 90,
-    "reason": "4 files 39KB, high signal practical tool"
-  },
-  {
-    "source": "llms-txt",
-    "library": "wireit",
+    "library": "desearch",
     "label": "dead",
     "min_score": 0,
     "max_score": 5,
-    "reason": "534KB raw GitHub HTML, not markdown"
+    "reason": "error-page signal detected in content"
   },
   {
     "source": "llms-txt",
-    "library": "physx",
+    "library": "giselles",
     "label": "dead",
     "min_score": 0,
     "max_score": 5,
-    "reason": "318KB raw HTML, not docs"
+    "reason": "error-page signal detected in content"
+  },
+  {
+    "source": "web-scraped",
+    "library": "zincsearch",
+    "label": "poor",
+    "min_score": 5,
+    "max_score": 30,
+    "reason": "small single-file 1.3KB documentation stub"
   },
   {
     "source": "llms-txt",
-    "library": "sourcegraph",
+    "library": "xata",
+    "label": "poor",
+    "min_score": 5,
+    "max_score": 30,
+    "reason": "small single-file 1.1KB documentation stub"
+  },
+  {
+    "source": "llms-txt",
+    "library": "skypack",
+    "label": "poor",
+    "min_score": 5,
+    "max_score": 30,
+    "reason": "single file 1.3KB, minimal content"
+  },
+  {
+    "source": "web-scraped",
+    "library": "miragejs",
     "label": "poor",
     "min_score": 10,
-    "max_score": 30,
-    "reason": "marketing overview, no technical implementation docs"
+    "max_score": 35,
+    "reason": "single file 3KB web-scraped, limited content"
+  },
+  {
+    "source": "github-scraped",
+    "library": "tornado",
+    "label": "poor",
+    "min_score": 10,
+    "max_score": 40,
+    "reason": "46 files 316KB but low code density and heading score"
+  },
+  {
+    "source": "github-scraped",
+    "library": "searxng",
+    "label": "poor",
+    "min_score": 15,
+    "max_score": 40,
+    "reason": "150 files 256KB but avg file size is small"
   },
   {
     "source": "llms-txt",
-    "library": "apache-spark",
+    "library": "neverbounce",
+    "label": "poor",
+    "min_score": 15,
+    "max_score": 40,
+    "reason": "single file 595B, very small stub"
+  },
+  {
+    "source": "web-scraped",
+    "library": "tempo",
+    "label": "poor",
+    "min_score": 15,
+    "max_score": 45,
+    "reason": "single file 2.2KB web-scraped"
+  },
+  {
+    "source": "web-scraped",
+    "library": "cloud-run",
+    "label": "poor",
+    "min_score": 15,
+    "max_score": 45,
+    "reason": "single file 3KB"
+  },
+  {
+    "source": "llms-txt",
+    "library": "beyondtrust-password-safe",
+    "label": "poor",
+    "min_score": 20,
+    "max_score": 45,
+    "reason": "single file 8.7KB with minimal structure"
+  },
+  {
+    "source": "web-scraped",
+    "library": "lambda-cloud",
+    "label": "poor",
+    "min_score": 20,
+    "max_score": 45,
+    "reason": "56 files 104KB but low code signal"
+  },
+  {
+    "source": "web-scraped",
+    "library": "statuscake",
+    "label": "poor",
+    "min_score": 20,
+    "max_score": 45,
+    "reason": "single file 2.7KB"
+  },
+  {
+    "source": "web-scraped",
+    "library": "apple-developer-docs",
+    "label": "poor",
+    "min_score": 20,
+    "max_score": 50,
+    "reason": "327K files but avg file tiny and zero code blocks (nav-scrape pattern)"
+  },
+  {
+    "source": "llms-txt",
+    "library": "stedi",
     "label": "poor",
     "min_score": 25,
-    "max_score": 45,
-    "reason": "3KB link index, 6 nav headings inflate score"
+    "max_score": 55,
+    "reason": "single file 12.8KB, decent size but limited signals"
+  },
+  {
+    "source": "llms-txt",
+    "library": "smtp2go",
+    "label": "poor",
+    "min_score": 25,
+    "max_score": 55,
+    "reason": "single file 16KB but no code blocks"
+  },
+  {
+    "source": "github-scraped",
+    "library": "apache-atlas",
+    "label": "poor",
+    "min_score": 25,
+    "max_score": 55,
+    "reason": "single large file 21KB from GitHub"
+  },
+  {
+    "source": "llms-txt",
+    "library": "bika",
+    "label": "ok",
+    "min_score": 30,
+    "max_score": 55,
+    "reason": "single file 24KB with decent content"
+  },
+  {
+    "source": "llms-txt",
+    "library": "fastify",
+    "label": "ok",
+    "min_score": 35,
+    "max_score": 65,
+    "reason": "single file 45KB with good headings"
   },
   {
     "source": "web-scraped",
-    "library": "alembic",
+    "library": "swiftui",
+    "label": "ok",
+    "min_score": 40,
+    "max_score": 70,
+    "reason": "2 files 74KB web-scraped with decent signals"
+  },
+  {
+    "source": "llms-txt",
+    "library": "jfrog-artifactory",
+    "label": "ok",
+    "min_score": 40,
+    "max_score": 70,
+    "reason": "single large file 457KB with good content"
+  },
+  {
+    "source": "github-scraped",
+    "library": "rutorrent",
+    "label": "ok",
+    "min_score": 45,
+    "max_score": 70,
+    "reason": "63 files 85KB github-scraped docs"
+  },
+  {
+    "source": "github-scraped",
+    "library": "ansible-runner",
     "label": "good",
+    "min_score": 55,
+    "max_score": 80,
+    "reason": "18 RST files 73KB with autodoc stubs but real content"
+  },
+  {
+    "source": "github-scraped",
+    "library": "octopus-deploy",
+    "label": "good",
+    "min_score": 60,
+    "max_score": 85,
+    "reason": "2631 files 5.9MB comprehensive docs"
+  },
+  {
+    "source": "github-scraped",
+    "library": "physx",
+    "label": "good",
+    "min_score": 60,
+    "max_score": 90,
+    "reason": "2 files 6.6KB from GitHub with good structure"
+  },
+  {
+    "source": "llms-txt",
+    "library": "dat1",
+    "label": "good",
+    "min_score": 65,
+    "max_score": 90,
+    "reason": "single file 5.1KB but llms-txt bonus and good signals"
+  },
+  {
+    "source": "web-scraped",
+    "library": "sonatype-nexus-repository",
+    "label": "good",
+    "min_score": 65,
+    "max_score": 95,
+    "reason": "10 files 309KB with good content coverage"
+  },
+  {
+    "source": "github-scraped",
+    "library": "gopls",
+    "label": "good",
+    "min_score": 65,
+    "max_score": 95,
+    "reason": "11 files 200KB golang tools docs with examples"
+  },
+  {
+    "source": "llms-txt",
+    "library": "base44",
+    "label": "great",
     "min_score": 75,
     "max_score": 100,
-    "reason": "comprehensive Alembic API ref, aggregated content is rich"
-  },
-  {
-    "source": "web-scraped",
-    "library": "sonarr",
-    "label": "good",
-    "min_score": 80,
-    "max_score": 100,
-    "reason": "sonarr is good docs with API + install guides"
-  },
-  {
-    "source": "github-scraped",
-    "library": "express",
-    "label": "great",
-    "min_score": 80,
-    "max_score": 100,
-    "reason": "express is excellent routing docs, RST-based"
-  },
-  {
-    "source": "llms-txt",
-    "library": "three.js",
-    "label": "great",
-    "min_score": 80,
-    "max_score": 100,
-    "reason": "125KB single file 87 headings 115 code blocks"
-  },
-  {
-    "source": "llms-txt",
-    "library": "env0",
-    "label": "poor",
-    "min_score": 60,
-    "max_score": 100,
-    "reason": "582 files x 10.8KB avg - real Terraform provider docs, high structural quality"
-  },
-  {
-    "source": "llms-txt",
-    "library": "debricked",
-    "label": "poor",
-    "min_score": 60,
-    "max_score": 100,
-    "reason": "302KB main file + real per-topic pages, strong structural signals"
-  },
-  {
-    "source": "web-scraped",
-    "library": "mapkit",
-    "label": "poor",
-    "min_score": 65,
-    "max_score": 100,
-    "reason": "95 files x 27KB Apple API reference - substantial real content per file"
-  },
-  {
-    "source": "github-scraped",
-    "library": "bridgecrew",
-    "label": "weak",
-    "min_score": 45,
-    "max_score": 85,
-    "reason": "auto-generated Terraform schemas, has real headings+code+examples"
-  },
-  {
-    "source": "llms-txt",
-    "library": "bullmq",
-    "label": "great",
-    "min_score": 85,
-    "max_score": 100,
-    "reason": "1100KB 110 files real job queue architecture docs"
-  },
-  {
-    "source": "llms-txt",
-    "library": "i18next",
-    "label": "great",
-    "min_score": 80,
-    "max_score": 100,
-    "reason": "643KB 33 files substantive i18n docs with examples"
-  },
-  {
-    "source": "github-scraped",
-    "library": "wasmedge",
-    "label": "great",
-    "min_score": 80,
-    "max_score": 100,
-    "reason": "2092KB 189 files multilingual platform docs"
+    "reason": "single file 6.6KB but rich llms-txt with strong signals"
   }
 ]
