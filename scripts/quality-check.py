@@ -13,6 +13,12 @@ Usage:
     python3 scripts/quality-check.py --fix             # delete score-0 entries
     python3 scripts/quality-check.py --eval            # run against eval set
     python3 scripts/quality-check.py --workers 32
+
+Library-centric structure:
+    docs/{library}/_meta.yaml          primary_source: llms | github | web
+    docs/{library}/llms/               llms.txt content
+    docs/{library}/github/             github-scraped content
+    docs/{library}/web/                web-scraped content
 """
 
 import argparse
@@ -23,11 +29,34 @@ import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
+from typing import Optional
+
+try:
+    import yaml as _yaml
+    _HAS_YAML = True
+except ImportError:
+    _HAS_YAML = False
 
 
 DOCS_ROOT = Path(__file__).parent.parent / "docs"
 EVAL_SET  = Path(__file__).parent / "quality-eval-set.json"
+
+# Directories to skip when scanning DOCS_ROOT for library dirs.
+# Any dir starting with "_" is also skipped (e.g. _index).
+_SKIP_DIRS = {"META_EXAMPLES"}
+
+# Known source subdirectory names inside a library dir.
+_SOURCE_SUBDIRS = {"llms", "github", "web"}
+
+# Mapping between old source names (used in eval set / --source flag) and
+# the primary_source values stored in _meta.yaml.
 SOURCES = ["llms-txt", "github-scraped", "web-scraped"]
+_OLD_TO_NEW: dict[str, str] = {
+    "llms-txt":      "llms",
+    "github-scraped": "github",
+    "web-scraped":   "web",
+}
+_NEW_TO_OLD: dict[str, str] = {v: k for k, v in _OLD_TO_NEW.items()}
 
 GENERIC_NAMES = {
     "readme", "contributing", "license", "changelog", "index",
@@ -195,12 +224,29 @@ class LibraryScore:
         return " ".join(parts) if parts else "ok"
 
 
-def score_library(lib_dir: Path, source: str) -> LibraryScore | None:
-    all_files = (
-        list(lib_dir.glob("**/*.md"))
-        + list(lib_dir.glob("**/*.rst"))
-        + list(lib_dir.glob("**/*.txt"))
-    )
+def score_library(lib_dir: Path, source: str) -> Optional["LibraryScore"]:
+    """Score a library directory.
+
+    ``source`` is the old-style source name (e.g. ``llms-txt``) used for display
+    and eval-set matching.  The actual content is collected from *all* source
+    subdirectories (``llms/``, ``github/``, ``web/``) found inside *lib_dir*,
+    falling back to scanning *lib_dir* itself when no such subdirs exist.
+    ``_meta.yaml`` files are excluded from content scoring.
+    """
+    # Collect content roots: any recognised source subdirs, or the lib dir itself.
+    source_subdirs = [lib_dir / sd for sd in _SOURCE_SUBDIRS if (lib_dir / sd).is_dir()]
+    content_roots = source_subdirs if source_subdirs else [lib_dir]
+
+    all_files = []
+    for root in content_roots:
+        all_files += (
+            list(root.glob("**/*.md"))
+            + list(root.glob("**/*.rst"))
+            + list(root.glob("**/*.txt"))
+        )
+    # Exclude _meta.yaml and similar non-content files
+    all_files = [f for f in all_files if f.name != "_meta.yaml"]
+
     if not all_files:
         return None
 
@@ -425,16 +471,85 @@ def score_library(lib_dir: Path, source: str) -> LibraryScore | None:
     return s
 
 
+# ── Metadata helpers ──────────────────────────────────────────────────────────
+
+def _read_meta_source(lib_dir: Path) -> Optional[str]:
+    """Return the primary_source value from _meta.yaml, or None if unavailable."""
+    meta_path = lib_dir / "_meta.yaml"
+    if not meta_path.exists():
+        return None
+    try:
+        if _HAS_YAML:
+            import yaml
+            data = yaml.safe_load(meta_path.read_text())
+            return data.get("primary_source") if isinstance(data, dict) else None
+        else:
+            # Minimal YAML parser: look for "primary_source: <value>" line
+            for line in meta_path.read_text().splitlines():
+                stripped = line.strip()
+                if stripped.startswith("primary_source:"):
+                    value = stripped.split(":", 1)[1].strip().strip('"').strip("'")
+                    return value or None
+    except Exception:
+        pass
+    return None
+
+
+def _detect_source_from_subdirs(lib_dir: Path) -> Optional[str]:
+    """Guess primary_source by checking which source subdirs exist."""
+    for sd in ("llms", "github", "web"):
+        if (lib_dir / sd).is_dir():
+            return sd
+    return None
+
+
+def _resolve_source(lib_dir: Path) -> str:
+    """Return the old-style source name for *lib_dir* (e.g. 'llms-txt').
+
+    Resolution order:
+    1. ``_meta.yaml`` primary_source field
+    2. Presence of a recognised source subdir
+    3. Fallback: 'web-scraped'
+    """
+    new_src = _read_meta_source(lib_dir) or _detect_source_from_subdirs(lib_dir)
+    if new_src and new_src in _NEW_TO_OLD:
+        return _NEW_TO_OLD[new_src]
+    # Fallback — library has content but no metadata
+    return "web-scraped"
+
+
 # ── Scanning ──────────────────────────────────────────────────────────────────
 
-def scan_source(source: str, workers: int) -> list[LibraryScore]:
-    src_dir = DOCS_ROOT / source
-    if not src_dir.exists():
+def scan_library(source_filter: Optional[str], workers: int) -> "list[LibraryScore]":
+    """Scan DOCS_ROOT/{library}/ directly (library-centric structure).
+
+    Each top-level subdirectory of DOCS_ROOT is treated as a library unless:
+    - its name is in _SKIP_DIRS, or
+    - its name starts with '_'.
+
+    When *source_filter* is given (old-style name, e.g. 'llms-txt'), only
+    libraries whose resolved source matches that filter are scored.
+    """
+    if not DOCS_ROOT.exists():
         return []
-    lib_dirs = [d for d in src_dir.iterdir() if d.is_dir()]
+
+    lib_dirs = [
+        d for d in DOCS_ROOT.iterdir()
+        if d.is_dir()
+        and d.name not in _SKIP_DIRS
+        and not d.name.startswith("_")
+    ]
+
     results = []
+
+    def _score(lib_dir: Path) -> Optional["LibraryScore"]:
+        source = _resolve_source(lib_dir)
+        if source_filter and source != source_filter:
+            return None
+        return score_library(lib_dir, source)
+
     with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = {executor.submit(score_library, d, source): d for d in lib_dirs}
+        futures = {executor.submit(_score, d): d for d in lib_dirs}
         for future in as_completed(futures):
             r = future.result()
             if r is not None:
@@ -451,9 +566,9 @@ def run_eval(workers: int):
 
     cases = json.loads(EVAL_SET.read_text())
     scores_by_key = {}
-    for source in SOURCES:
-        for s in scan_source(source, workers):
-            scores_by_key[(s.source, s.library)] = s
+    for s in scan_library(source_filter=None, workers=workers):
+        # Key uses old-style source name to match eval set entries
+        scores_by_key[(s.source, s.library)] = s
 
     passed = failed = 0
     print(f"\n{'Pass':<5} {'Score':<7} {'Range':<12} {'Source':<15} {'Library':<35} {'Signals'}")
@@ -485,7 +600,8 @@ def run_eval(workers: int):
 
 def main():
     parser = argparse.ArgumentParser(description="Quality scorer for llm-code-docs")
-    parser.add_argument("--source", choices=SOURCES)
+    parser.add_argument("--source", choices=SOURCES,
+                        help="Filter by source type (e.g. llms-txt, github-scraped, web-scraped)")
     parser.add_argument("--min-score", type=int, default=101,
                         help="Show libraries with score <= this (default: show all)")
     parser.add_argument("--json", action="store_true")
@@ -498,14 +614,15 @@ def main():
         run_eval(args.workers)
         return
 
-    sources = [args.source] if args.source else SOURCES
     show_all = args.min_score == 101
 
-    all_scores: list[LibraryScore] = []
-    for source in sources:
-        if not args.json:
-            print(f"Scanning {source}...", file=sys.stderr)
-        all_scores.extend(scan_source(source, args.workers))
+    if not args.json:
+        label = args.source if args.source else "all libraries"
+        print(f"Scanning {label}...", file=sys.stderr)
+
+    all_scores = scan_library(
+        source_filter=args.source, workers=args.workers
+    )
 
     all_scores.sort(key=lambda x: (x.score, x.kb))
     threshold = 100 if show_all else args.min_score
@@ -546,8 +663,9 @@ def main():
             return
         print(f"\nDeleting {len(to_del)} score-0 entries...")
         for s in to_del:
-            shutil.rmtree(DOCS_ROOT / s.source / s.library, ignore_errors=True)
-            print(f"  Deleted {s.source}/{s.library}")
+            # Library dirs live directly under DOCS_ROOT in the new structure
+            shutil.rmtree(DOCS_ROOT / s.library, ignore_errors=True)
+            print(f"  Deleted {s.library}")
         print("Done. Run 'git add -A && git commit' to save.")
 
 
