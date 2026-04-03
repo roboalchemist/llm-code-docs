@@ -708,6 +708,12 @@ sites:
 - name: oxla
   base_url: https://docs.oxla.com/
   description: Oxla distributed SQL database
+- name: paypal
+  base_url: https://www.paypal.com/
+  description: PayPal online payments platform for consumers and businesses
+- name: paypal-developer
+  base_url: https://developer.paypal.com/
+  description: PayPal developer documentation and payment APIs
 - name: paysafe
   base_url: https://developer.paysafe.com/
   description: Paysafe payment gateway API
