@@ -1,0 +1,2558 @@
+settings:
+  overwrite_existing: true
+  clone_timeout: 300
+  temp_dir_base: null
+repositories:
+- name: APScheduler
+  description: APScheduler - Advanced Python Scheduler for scheduling jobs to run
+    at specific times or intervals with support for multiple schedulers, job stores,
+    and triggers
+  repo_url: https://github.com/agronholm/apscheduler.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apscheduler
+  branch: master
+- name: axe-core
+  description: axe-core accessibility testing engine with comprehensive WCAG rule
+    documentation and API guides
+  repo_url: https://github.com/dequelabs/axe-core.git
+  source_folder: doc
+  target_folder: docs/github-scraped/axe-core
+  branch: develop
+- name: CircuitPython
+  description: CircuitPython documentation and examples
+  repo_url: https://github.com/adafruit/circuitpython
+  source_folder: docs
+  target_folder: docs/github-scraped/circuitpython
+  branch: main
+- name: Semantic Kernel
+  description: Microsoft's SDK for integrating LLMs into applications with orchestration
+  repo_url: https://github.com/MicrosoftDocs/semantic-kernel-docs.git
+  source_folder: semantic-kernel
+  target_folder: docs/github-scraped/semantic-kernel
+  branch: main
+- name: TensorRT-LLM
+  description: NVIDIA TensorRT-LLM - Easy-to-use Python API for defining LLMs with
+    optimizations for efficient inference on NVIDIA GPUs
+  repo_url: https://github.com/NVIDIA/TensorRT-LLM.git
+  source_folder: docs/source
+  target_folder: docs/github-scraped/tensorrt-llm
+  branch: main
+- name: Terrascan
+  description: Terrascan - Infrastructure as Code (IaC) security scanner supporting
+    Terraform, CloudFormation, Kubernetes, Docker, and more with policies and compliance
+    checks
+  repo_url: https://github.com/tenable/terrascan.git
+  source_folder: docs
+  target_folder: docs/github-scraped/terrascan
+  branch: master
+- name: Text Embeddings Inference
+  description: HuggingFace Text Embeddings Inference (TEI) - High-performance inference
+    server for text embeddings, re-ranking, and sequence classification with optimized
+    batching and quantization
+  repo_url: https://github.com/huggingface/text-embeddings-inference.git
+  source_folder: docs/source/en
+  target_folder: docs/github-scraped/text-embeddings-inference
+  branch: main
+- name: Three.js
+  description: Three.js - JavaScript 3D library for WebGL with comprehensive API documentation
+  repo_url: https://github.com/mrdoob/three.js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/threejs
+  branch: dev
+- name: Textual
+  description: Textual documentation and examples
+  repo_url: https://github.com/Textualize/textual.git
+  source_folder: docs
+  target_folder: docs/github-scraped/textual
+  branch: main
+- name: MicroPython
+  description: MicroPython documentation
+  repo_url: https://github.com/micropython/micropython.git
+  source_folder: docs
+  target_folder: docs/github-scraped/micropython
+  branch: master
+- name: BuildBuddy
+  description: BuildBuddy documentation - Remote execution and caching platform
+  repo_url: https://github.com/buildbuddy-io/buildbuddy.git
+  source_folder: docs
+  target_folder: docs/github-scraped/buildbuddy
+  branch: master
+- name: Biome
+  description: Biome - Fast formatter and linter for JavaScript, TypeScript, JSON,
+    and more with ESLint and Prettier compatibility
+  repo_url: https://github.com/biomejs/website.git
+  source_folder: src/content/docs
+  target_folder: docs/github-scraped/biome
+  branch: main
+- name: Celery
+  description: Celery - Distributed task queue library for Python with support for
+    message brokers and result backends
+  repo_url: https://github.com/celery/celery.git
+  source_folder: docs
+  target_folder: docs/github-scraped/celery
+  branch: main
+- name: esptool
+  description: ESP8266 and ESP32 serial bootloader utility documentation
+  repo_url: https://github.com/espressif/esptool.git
+  source_folder: docs
+  target_folder: docs/github-scraped/esptool
+  branch: master
+- name: ESPHome
+  description: ESPHome - System to control ESP8266/ESP32 microcontrollers via configuration
+    files for home automation
+  repo_url: https://github.com/esphome/esphome-docs.git
+  source_folder: content
+  target_folder: docs/github-scraped/esphome
+  branch: current
+- name: mcp-jest
+  description: MCP Jest - Model Context Protocol testing utilities
+  repo_url: https://github.com/josharsh/mcp-jest.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mcp-jest
+  branch: main
+- name: LibreChat
+  description: LibreChat - Enhanced ChatGPT clone with multi-AI support
+  repo_url: https://github.com/LibreChat-AI/librechat.ai.git
+  source_folder: pages/docs
+  target_folder: docs/github-scraped/librechat
+  branch: main
+- name: Joplin
+  description: Joplin - Open source note taking and to-do application
+  repo_url: https://github.com/laurent22/joplin.git
+  source_folder: readme
+  target_folder: docs/github-scraped/joplin
+  branch: dev
+- name: JSHint
+  description: JSHint - Lightweight JavaScript linter with configurable rules and
+    good legacy support
+  repo_url: https://github.com/jshint/jshint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jshint
+  branch: main
+- name: Loghouse
+  description: Loghouse - Log management system built on ClickHouse for storing and
+    analyzing logs
+  repo_url: https://github.com/flant/loghouse.git
+  source_folder: docs/en
+  target_folder: docs/github-scraped/loghouse
+  branch: master
+- name: Mattermost
+  description: Mattermost - Open source platform for secure collaboration with REST
+    API, webhooks, and integrations documentation
+  repo_url: https://github.com/mattermost/docs.git
+  source_folder: source
+  target_folder: docs/github-scraped/mattermost
+  branch: master
+- name: Matter RS
+  description: Matter RS - Rust implementation of the Matter protocol with support
+    for controllers, devices, commissioning, and secure communications
+  repo_url: https://github.com/project-chip/rs-matter.git
+  source_folder: docs
+  target_folder: docs/github-scraped/matter-rs
+  branch: main
+- name: Matter Handbook
+  description: Matter Handbook - Official reference guide for building Matter-enabled
+    devices with documentation on cluster definitions, device types, and best practices
+  repo_url: https://github.com/project-chip/matter-handbook.git
+  source_folder: src
+  target_folder: docs/github-scraped/matter-handbook
+  branch: main
+- name: Matter.js
+  description: Matter.js - Complete TypeScript implementation of the Matter protocol
+    specification with full support for controllers, devices, commissioning, and cluster
+    definitions
+  repo_url: https://github.com/matter-js/matter.js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/matter.js
+  branch: main
+- name: KuzuDB
+  description: KuzuDB - Embedded property graph database with vector search, full-text
+    search, Cypher query language, and multi-language bindings (Python, Node.js, Java,
+    Rust, Go, C++)
+  repo_url: https://github.com/kuzudb/docs.git
+  source_folder: src/content/docs
+  target_folder: docs/github-scraped/kuzudb
+  branch: main
+- name: Laravel
+  description: Laravel - PHP framework with elegant middleware system for HTTP request
+    handling
+  repo_url: https://github.com/laravel/docs.git
+  source_folder: .
+  target_folder: docs/github-scraped/laravel
+  branch: master
+- name: Llamafile
+  description: Llamafile - Mozilla project for single-file executables for running
+    LLMs locally without dependencies using Cosmopolitan Libc
+  repo_url: https://github.com/mozilla-ai/llamafile.git
+  source_folder: docs
+  target_folder: docs/github-scraped/llamafile
+  branch: main
+- name: Langroid
+  description: Langroid - Multi-agent LLM programming framework with message-passing
+    architecture
+  repo_url: https://github.com/langroid/langroid.git
+  source_folder: docs
+  target_folder: docs/github-scraped/langroid
+  branch: main
+- name: LMDeploy
+  description: LMDeploy - Efficient LLM inference and serving toolkit with high throughput
+    and low latency
+  repo_url: https://github.com/InternLM/lmdeploy.git
+  source_folder: docs/en
+  target_folder: docs/github-scraped/lmdeploy
+  branch: main
+- name: Jest
+  description: Jest - Delightful JavaScript testing framework by Meta with zero config
+    and built-in code coverage
+  repo_url: https://github.com/jestjs/jest.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jest
+  branch: main
+- name: SQLAlchemy
+  description: SQLAlchemy - The Python SQL Toolkit and ORM
+  repo_url: https://github.com/sqlalchemy/sqlalchemy.git
+  source_folder: doc/build
+  target_folder: docs/github-scraped/sqlalchemy
+  branch: main
+- name: Semantic-UI
+  description: Semantic UI - UI component framework with human-friendly HTML and 50+
+    responsive components
+  repo_url: https://github.com/Semantic-Org/Semantic-UI-Docs.git
+  source_folder: server/documents
+  target_folder: docs/github-scraped/semantic-ui
+  branch: master
+- name: SeeedStudio
+  description: Seeed Studio Wiki - Documentation for Grove sensors, Wio Terminal,
+    XIAO microcontrollers, reComputer, SenseCAP IoT devices
+  repo_url: https://github.com/Seeed-Studio/wiki-documents.git
+  source_folder: docs
+  target_folder: docs/github-scraped/seeedstudio
+  branch: docusaurus-version
+- name: SearXNG
+  description: SearXNG - Privacy-respecting, hackable metasearch engine that aggregates
+    results from various search services
+  repo_url: https://github.com/searxng/searxng.git
+  source_folder: docs
+  target_folder: docs/github-scraped/searxng
+  branch: master
+- name: Go
+  description: Go Programming Language - Official documentation website
+  repo_url: https://github.com/golang/website.git
+  source_folder: _content
+  target_folder: docs/github-scraped/go-docs
+  branch: master
+- name: Godot Engine
+  description: Godot Engine - Free and open-source 2D and 3D game engine with comprehensive
+    documentation covering the editor, API reference, tutorials, and best practices
+  repo_url: https://github.com/godotengine/godot-docs.git
+  source_folder: .
+  target_folder: docs/github-scraped/godot-engine
+  branch: master
+- name: Gunicorn
+  description: Gunicorn - Python WSGI HTTP Server with pre-forked worker model, multiple
+    worker types, and comprehensive configuration options for deploying Python web
+    applications
+  repo_url: https://github.com/benoitc/gunicorn.git
+  source_folder: docs/source
+  target_folder: docs/github-scraped/gunicorn
+  branch: master
+- name: Go LSP
+  description: Go Language Server Protocol implementation - Structs and interfaces
+    for LSP wire format with Go mappings
+  repo_url: https://github.com/go-language-server/protocol.git
+  source_folder: docs
+  target_folder: docs/github-scraped/go-lsp
+  branch: main
+- name: HeroUI
+  description: HeroUI - Open-source React UI component library built on Tailwind CSS,
+    React Aria, and Framer Motion (formerly NextUI)
+  repo_url: https://github.com/heroui-inc/heroui.git
+  source_folder: apps/docs/content
+  target_folder: docs/github-scraped/heroui
+  branch: main
+- name: HAP-nodejs
+  description: HAP-nodejs - HomeKit Accessory Protocol implementation for Node.js
+    with complete protocol documentation, service definitions, and pairing mechanisms
+  repo_url: https://github.com/homebridge/HAP-nodejs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/hap-nodejs
+  branch: latest
+- name: HomeKit ADK
+  description: Apple HomeKit Accessory Development Kit - Official HAP specification,
+    implementation guide, and C reference with support for HTTP/IP and Bluetooth LE
+  repo_url: https://github.com/apple/HomeKitADK.git
+  source_folder: Documentation
+  target_folder: docs/github-scraped/homekit-adk
+  branch: master
+- name: HomeAssistant
+  description: Home Assistant - Open-source home automation platform with focus on
+    local control and privacy
+  repo_url: https://github.com/home-assistant/home-assistant.io.git
+  source_folder: source/_docs
+  target_folder: docs/github-scraped/home-assistant
+  branch: current
+- name: isort
+  description: isort - Python utility for sorting and organizing import statements
+    with support for multiple profiles and integration with code formatters
+  repo_url: https://github.com/PyCQA/isort.git
+  source_folder: docs
+  target_folder: docs/github-scraped/isort
+  branch: main
+- name: Jedi
+  description: Jedi - Static analysis library for Python providing autocompletion,
+    code intelligence, and refactoring
+  repo_url: https://github.com/davidhalter/jedi.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jedi
+  branch: master
+- name: HTTPX
+  description: HTTPX - A modern, async-capable HTTP client for Python with HTTP/1.1
+    and HTTP/2 support
+  repo_url: https://github.com/encode/httpx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/httpx
+  branch: master
+- name: Flask
+  description: Flask - Lightweight WSGI web application framework
+  repo_url: https://github.com/pallets/flask.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flask
+  branch: main
+- name: Flow
+  description: Flow - Static type checker for JavaScript with Language Server Protocol
+    support
+  repo_url: https://github.com/facebook/flow.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/flow
+  branch: main
+- name: FreshRSS
+  description: FreshRSS - Free, self-hosted RSS feed aggregator with multi-user support
+    and modern UI
+  repo_url: https://github.com/FreshRSS/FreshRSS.git
+  source_folder: docs/en
+  target_folder: docs/github-scraped/freshrss
+  branch: edge
+- name: Click
+  description: Python CLI framework - Command-line interface creation toolkit
+  repo_url: https://github.com/pallets/click.git
+  source_folder: docs
+  target_folder: docs/github-scraped/click
+  branch: main
+- name: FastAPI
+  description: FastAPI - Modern, fast Python web framework
+  repo_url: https://github.com/fastapi/fastapi.git
+  source_folder: docs/en/docs
+  target_folder: docs/github-scraped/fastapi
+  branch: master
+- name: Python
+  description: Python official documentation - Language reference and standard library
+  repo_url: https://github.com/python/cpython.git
+  source_folder: Doc
+  target_folder: docs/github-scraped/python-docs
+  branch: '3.13'
+- name: Goose
+  description: Goose - AI-powered developer agent by Block
+  repo_url: https://github.com/block/goose.git
+  source_folder: documentation/docs
+  target_folder: docs/github-scraped/goose
+  branch: main
+- name: GraphQL
+  description: GraphQL - Query language and API design approach for flexible data
+    fetching and real-time subscriptions
+  repo_url: https://github.com/graphql/graphql.github.io.git
+  source_folder: src/pages
+  target_folder: docs/github-scraped/graphql
+  branch: source
+- name: Incus
+  description: Incus - Container and virtual machine manager (community fork of LXD)
+  repo_url: https://github.com/lxc/incus.git
+  source_folder: doc
+  target_folder: docs/github-scraped/incus
+  branch: main
+- name: Jina Serve
+  description: Jina Serve - Framework for building and deploying multimodal AI services
+    with gRPC, HTTP, and WebSocket support
+  repo_url: https://github.com/jina-ai/serve.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jina-serve
+  branch: master
+- name: Jina Python SDK
+  description: Jina - Python package for building multimodal AI services and pipelines
+    with cloud-native stack
+  repo_url: https://github.com/jina-ai/jina.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jina-python-sdk
+  branch: master
+- name: Jina JavaScript SDK
+  description: Jina AI JavaScript/TypeScript SDK - Client library for integrating
+    Jina AI APIs into JavaScript applications
+  repo_url: https://github.com/jina-ai/jinaai-js.git
+  source_folder: .
+  target_folder: docs/github-scraped/jina-js-sdk
+  branch: main
+- name: Matplotlib
+  description: Matplotlib - Python plotting library for creating 2D/3D visualizations,
+    statistical plots, histograms, bar charts, and more
+  repo_url: https://github.com/matplotlib/matplotlib.git
+  source_folder: doc
+  target_folder: docs/github-scraped/matplotlib
+  branch: main
+- name: MinerU
+  description: MinerU - Open-source tool for extracting high-quality structured data
+    from PDFs, transforming complex documents into LLM-ready markdown/JSON for agentic
+    workflows
+  repo_url: https://github.com/opendatalab/MinerU.git
+  source_folder: docs/en
+  target_folder: docs/github-scraped/mineru
+  branch: master
+- name: Milkdown
+  description: Milkdown - A lightweight, customizable markdown editor with a powerful
+    plugin system, real-time collaboration support, and comprehensive API documentation
+  repo_url: https://github.com/Milkdown/milkdown.git
+  source_folder: docs
+  target_folder: docs/github-scraped/milkdown
+  branch: main
+- name: Milvus
+  description: Milvus - Open source vector database for AI applications
+  repo_url: https://github.com/milvus-io/milvus-docs.git
+  source_folder: site/en
+  target_folder: docs/github-scraped/milvus
+  branch: v2.6.x
+- name: MobX
+  description: MobX - Simple, scalable state management library for JavaScript with
+    transparent reactive programming
+  repo_url: https://github.com/mobxjs/mobx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mobx
+  branch: main
+- name: FlagEmbedding
+  description: BAAI BGE - Embeddings and rerankers (bge-m3, bge-reranker)
+  repo_url: https://github.com/FlagOpen/FlagEmbedding.git
+  source_folder: .
+  target_folder: docs/github-scraped/flagembedding
+  branch: master
+- name: txtai
+  description: txtai - All-in-one embeddings database for semantic search, LLM orchestration
+    and language model workflows
+  repo_url: https://github.com/neuml/txtai.git
+  source_folder: docs
+  target_folder: docs/github-scraped/txtai
+  branch: master
+- name: FAISS
+  description: Facebook AI Similarity Search - Efficient similarity search and clustering
+    of dense vectors
+  repo_url: https://github.com/facebookresearch/faiss.wiki.git
+  source_folder: .
+  target_folder: docs/github-scraped/faiss
+  branch: master
+- name: Chroma
+  description: Chroma - Open-source vector database for AI applications with embeddings
+    support
+  repo_url: https://github.com/chroma-core/chroma.git
+  source_folder: docs/docs.trychroma.com/markdoc/content
+  target_folder: docs/github-scraped/chroma
+  branch: main
+- name: Clerk
+  description: Clerk - Authentication and user management platform with SDKs, APIs,
+    and documentation for React, Next.js, and other frameworks
+  repo_url: https://github.com/clerk/clerk-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/clerk
+  branch: main
+- name: sqlite-vec
+  description: sqlite-vec - Vector search SQLite extension written in pure C
+  repo_url: https://github.com/asg017/sqlite-vec.git
+  source_folder: site
+  target_folder: docs/github-scraped/sqlite-vec
+  branch: main
+- name: sqlite-vss
+  description: sqlite-vss - SQLite extension for vector similarity search based on
+    FAISS (deprecated in favor of sqlite-vec)
+  repo_url: https://github.com/asg017/sqlite-vss.git
+  source_folder: site
+  target_folder: docs/github-scraped/sqlite-vss
+  branch: main
+- name: Qwen3-Embedding
+  description: Qwen3 Embedding - Text embedding and reranking models from Alibaba's
+    Qwen team
+  repo_url: https://github.com/QwenLM/Qwen3-Embedding.git
+  source_folder: .
+  target_folder: docs/github-scraped/qwen3-embedding
+  branch: main
+- name: OpenSearch
+  description: OpenSearch - Open-source search and analytics suite with vector DB,
+    observability, and security analytics
+  repo_url: https://github.com/opensearch-project/documentation-website.git
+  source_folder: .
+  target_folder: docs/github-scraped/opensearch
+  branch: main
+- name: Gitea
+  description: Gitea - Self-hosted Git service with issue tracking, code review, and
+    CI/CD
+  repo_url: https://github.com/go-gitea/docs.git
+  source_folder: content/doc
+  target_folder: docs/github-scraped/gitea
+  branch: master
+- name: Pandas
+  description: Pandas - Powerful Python data analysis library for data manipulation
+    and analysis with DataFrame and Series structures
+  repo_url: https://github.com/pandas-dev/pandas.git
+  source_folder: doc/source
+  target_folder: docs/github-scraped/pandas
+  branch: main
+- name: ParkUI
+  description: Park UI - Beautifully designed components built on Ark UI and Panda
+    CSS with React, Solid.js, and Vue support
+  repo_url: https://github.com/chakra-ui/park-ui.git
+  source_folder: website/src/content/docs
+  target_folder: docs/github-scraped/park-ui
+  branch: main
+- name: PiKVM
+  description: PiKVM - Open source DIY IP-KVM based on Raspberry Pi
+  repo_url: https://github.com/pikvm/pikvm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pikvm
+  branch: master
+- name: PlatformIO
+  description: PlatformIO - Open-source ecosystem for embedded development with unified
+    debugger and IDE for IoT (Arduino, ESP32, STM32)
+  repo_url: https://github.com/platformio/platformio-docs.git
+  source_folder: .
+  target_folder: docs/github-scraped/platformio
+  branch: master
+- name: PowerDNS
+  description: PowerDNS - High-performance, modular open-source DNS server designed
+    for large-scale providers
+  repo_url: https://github.com/PowerDNS/pdns.git
+  source_folder: docs
+  target_folder: docs/github-scraped/powerdns
+  branch: master
+- name: PrimeReact
+  description: PrimeReact - React UI component library with 80+ customizable components
+  repo_url: https://github.com/primefaces/primereact.git
+  source_folder: pages
+  target_folder: docs/github-scraped/primereact
+  branch: master
+- name: Pretty TypeScript Errors
+  description: Pretty TypeScript Errors - VS Code extension that reformats TypeScript
+    compiler errors with code frames for faster debugging
+  repo_url: https://github.com/yoavbls/pretty-ts-errors.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pretty-ts-errors
+  branch: main
+- name: Prospector
+  description: Prospector - Comprehensive Python static analysis tool aggregating
+    multiple linters
+  repo_url: https://github.com/prospector-dev/prospector.git
+  source_folder: docs
+  target_folder: docs/github-scraped/prospector
+  branch: master
+- name: PyTorch
+  description: PyTorch - Deep learning framework by Meta with dynamic computation
+    graphs, automatic differentiation, and GPU acceleration
+  repo_url: https://github.com/pytorch/pytorch.git
+  source_folder: docs/source
+  target_folder: docs/github-scraped/pytorch
+  branch: main
+- name: Penpot
+  description: Penpot - Open source design and prototyping platform (Figma alternative)
+  repo_url: https://github.com/penpot/penpot-docs.git
+  source_folder: .
+  target_folder: docs/github-scraped/penpot
+  branch: main
+- name: RadixUI
+  description: Radix UI - Unstyled, accessible React component library with Primitives
+    and Themes for building design systems
+  repo_url: https://github.com/radix-ui/website.git
+  source_folder: data
+  target_folder: docs/github-scraped/radix-ui
+  branch: main
+- name: RaspberryPi
+  description: Raspberry Pi - Official documentation for Raspberry Pi hardware, OS,
+    software, and programming guides
+  repo_url: https://github.com/raspberrypi/documentation.git
+  source_folder: documentation/asciidoc
+  target_folder: docs/github-scraped/raspberrypi
+  branch: master
+- name: Draw.io
+  description: Draw.io - JavaScript diagramming application (flowcharts, network diagrams,
+    UML)
+  repo_url: https://github.com/jgraph/drawio-docs.git
+  source_folder: .
+  target_folder: docs/github-scraped/drawio
+  branch: master
+- name: Electron
+  description: Electron - Desktop application framework for building cross-platform
+    applications with web technologies (HTML, CSS, JavaScript, Node.js)
+  repo_url: https://github.com/electron/electron.git
+  source_folder: docs
+  target_folder: docs/github-scraped/electron
+  branch: main
+- name: ESLint
+  description: ESLint - Pluggable JavaScript linter for identifying and fixing code
+    issues with customizable rules and configurations
+  repo_url: https://github.com/eslint/eslint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/eslint
+  branch: main
+- name: eslint-plugin-import
+  description: ESLint plugin for validating imports and enforcing module conventions
+    with support for static analysis and circular dependency detection
+  repo_url: https://github.com/import-js/eslint-plugin-import.git
+  source_folder: docs
+  target_folder: docs/github-scraped/eslint-plugin-import
+  branch: main
+- name: eslint-plugin-security
+  description: ESLint plugin for detecting security vulnerabilities in JavaScript
+    with rules for identifying common security hotspots
+  repo_url: https://github.com/eslint-community/eslint-plugin-security.git
+  source_folder: docs
+  target_folder: docs/github-scraped/eslint-plugin-security
+  branch: main
+- name: eslint-plugin-react
+  description: ESLint plugin for React-specific linting rules and best practices with
+    rule documentation and configuration guidance
+  repo_url: https://github.com/jsx-eslint/eslint-plugin-react.git
+  source_folder: docs
+  target_folder: docs/github-scraped/eslint-plugin-react
+  branch: master
+- name: eslint-plugin-vue
+  description: Official ESLint plugin for Vue.js single-file components with rules,
+    configuration, and usage guidance
+  repo_url: https://github.com/vuejs/eslint-plugin-vue.git
+  source_folder: docs
+  target_folder: docs/github-scraped/eslint-plugin-vue
+  branch: master
+- name: Express
+  description: Express.js - Fast, unopinionated, minimalist web framework for Node.js
+  repo_url: https://github.com/expressjs/expressjs.com.git
+  source_folder: en
+  target_folder: docs/github-scraped/express
+  branch: gh-pages
+- name: coc.nvim
+  description: coc.nvim - Completion framework for Neovim with native LSP support,
+    extensions system, and IDE-like features for JavaScript/TypeScript
+  repo_url: https://github.com/neoclide/coc.nvim.git
+  source_folder: doc
+  target_folder: docs/github-scraped/coc-nvim
+  branch: master
+- name: ChromeDevToolsMCP
+  description: Chrome DevTools MCP - Model Context Protocol server for controlling
+    Chrome browser via DevTools API
+  repo_url: https://github.com/ChromeDevTools/chrome-devtools-mcp.git
+  source_folder: .
+  target_folder: docs/github-scraped/chrome-devtools-mcp
+  branch: main
+- name: CodeMirror
+  description: CodeMirror - Versatile JavaScript code editor for the browser with
+    language modes and advanced editing features
+  repo_url: https://github.com/codemirror/website.git
+  source_folder: site/docs
+  target_folder: docs/github-scraped/codemirror
+  branch: main
+- name: Coqui TTS
+  description: Coqui TTS - Open-source text-to-speech library with multiple models
+    (XTTS, Bark, Glow-TTS, Tacotron2) supporting multiple languages
+  repo_url: https://github.com/coqui-ai/TTS.git
+  source_folder: docs/source
+  target_folder: docs/github-scraped/coqui-tts
+  branch: dev
+- name: Whisper
+  description: OpenAI Whisper - Robust speech recognition via large-scale weak supervision
+    (STT/ASR)
+  repo_url: https://github.com/openai/whisper.git
+  source_folder: .
+  target_folder: docs/github-scraped/whisper
+  branch: main
+- name: vim-lsp
+  description: vim-lsp - Async Language Server Protocol (LSP) plugin for Vim 8 and
+    Neovim with server registration, key mappings, and diagnostic signs
+  repo_url: https://github.com/prabirshrestha/vim-lsp.git
+  source_folder: doc
+  target_folder: docs/github-scraped/vim-lsp
+  branch: master
+- name: Neovim
+  description: Neovim - Hyperextensible Vim-based text editor with built-in LSP client,
+    Lua scripting, and plugin API for development and AI-assisted workflows
+  repo_url: https://github.com/neovim/neovim.git
+  source_folder: runtime/doc
+  target_folder: docs/github-scraped/neovim
+  branch: master
+- name: NumPy
+  description: NumPy - Fundamental package for scientific computing in Python with
+    support for large, multi-dimensional arrays and matrices
+  repo_url: https://github.com/numpy/numpy.git
+  source_folder: doc/source
+  target_folder: docs/github-scraped/numpy
+  branch: main
+- name: OpenBambuAPI
+  description: OpenBambuAPI - Community-maintained reverse-engineered documentation
+    for Bambu Lab 3D printer protocols (MQTT, HTTP, FTP, G-code, video streaming,
+    TLS)
+  repo_url: https://github.com/Doridian/OpenBambuAPI.git
+  source_folder: .
+  target_folder: docs/github-scraped/openbambuapi
+  branch: main
+- name: OpenMPI
+  description: Open MPI - High-performance Message Passing Interface (MPI) library
+    for parallel computing
+  repo_url: https://github.com/open-mpi/ompi.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openmpi
+  branch: main
+- name: CV-CUDA
+  description: CV-CUDA - NVIDIA/ByteDance CUDA-accelerated library for high-throughput
+    computer vision and video processing
+  repo_url: https://github.com/CVCUDA/CV-CUDA.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cvcuda
+  branch: main
+- name: D3
+  description: D3.js - JavaScript library for creating dynamic, interactive data visualizations
+    in web browsers using SVG, Canvas, and HTML
+  repo_url: https://github.com/d3/d3.git
+  source_folder: docs
+  target_folder: docs/github-scraped/d3
+  branch: main
+- name: Discord-API
+  description: Discord API - Official REST and Gateway API documentation for building
+    Discord bots and applications
+  repo_url: https://github.com/discord/discord-api-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/discord-api
+  branch: main
+- name: Django REST Framework
+  description: Django REST Framework - Comprehensive REST framework built on Django
+    for Python APIs with serialization, authentication, and browsable API
+  repo_url: https://github.com/encode/django-rest-framework.git
+  source_folder: docs
+  target_folder: docs/github-scraped/django-rest-framework
+  branch: master
+- name: decord
+  description: Decord - Efficient video reader library with hardware-accelerated decoding
+    for deep learning
+  repo_url: https://github.com/dmlc/decord.git
+  source_folder: .
+  target_folder: docs/github-scraped/decord
+  branch: master
+- name: TorchAudio
+  description: TorchAudio - PyTorch's audio and signal processing library (I/O, transformations,
+    datasets, models)
+  repo_url: https://github.com/pytorch/audio.git
+  source_folder: docs
+  target_folder: docs/github-scraped/torchaudio
+  branch: main
+- name: Tasmota
+  description: Tasmota - Open-source firmware for ESP8266/ESP32 based smart home devices
+    with MQTT, Web UI, and home automation support
+  repo_url: https://github.com/tasmota/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tasmota
+  branch: master
+- name: TypeDoc
+  description: TypeDoc - Documentation generator for TypeScript projects with support
+    for JSDoc, type annotations, and themes
+  repo_url: https://github.com/TypeStrong/typedoc.git
+  source_folder: site
+  target_folder: docs/github-scraped/typedoc
+  branch: master
+- name: TypeScript
+  description: TypeScript - Microsoft's typed superset of JavaScript with complete
+    language documentation, handbook, and reference
+  repo_url: https://github.com/microsoft/TypeScript-Website.git
+  source_folder: packages/documentation/copy/en
+  target_folder: docs/github-scraped/typescript
+  branch: v2
+- name: Typer
+  description: Typer - Python CLI framework built on Click with automatic API documentation
+    and automatic command line interface generation from Python type hints
+  repo_url: https://github.com/fastapi/typer.git
+  source_folder: docs
+  target_folder: docs/github-scraped/typer
+  branch: master
+- name: typescript-eslint
+  description: TypeScript ESLint - ESLint parser and plugin for TypeScript enabling
+    linting of TypeScript code with TypeScript-specific rules
+  repo_url: https://github.com/typescript-eslint/typescript-eslint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/typescript-eslint
+  branch: main
+- name: ts-morph
+  description: ts-morph - TypeScript Compiler API wrapper for programmatic code manipulation
+    and analysis
+  repo_url: https://github.com/dsherret/ts-morph.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ts-morph
+  branch: latest
+- name: ts-node
+  description: ts-node - TypeScript execution engine for Node.js with source map and
+    native ESM support
+  repo_url: https://github.com/TypeStrong/ts-node.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/ts-node
+  branch: main
+- name: The Update Framework
+  description: The Update Framework - Framework for securing software update systems
+    against various attacks (key compromise, rollback, freeze, mix-and-match)
+  repo_url: https://github.com/theupdateframework/python-tuf.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tuf
+  branch: develop
+- name: llama.cpp
+  description: llama.cpp - LLM inference in C/C++ with GGUF format support (CPU, CUDA,
+    Vulkan, OpenCL backends)
+  repo_url: https://github.com/ggerganov/llama.cpp.git
+  source_folder: .
+  target_folder: docs/github-scraped/llama-cpp
+  branch: master
+- name: FFmpeg
+  description: FFmpeg - Complete cross-platform solution to record, convert and stream
+    audio and video
+  repo_url: https://github.com/FFmpeg/FFmpeg.git
+  source_folder: doc
+  target_folder: docs/github-scraped/ffmpeg
+  branch: master
+- name: torchcodec
+  description: torchcodec - PyTorch video decoding library with hardware acceleration
+    support
+  repo_url: https://github.com/meta-pytorch/torchcodec.git
+  source_folder: docs
+  target_folder: docs/github-scraped/torchcodec
+  branch: main
+- name: xterm.js
+  description: xterm.js - Terminal for the web (used by VS Code, Theia, and more)
+  repo_url: https://github.com/xtermjs/xterm.js.git
+  source_folder: .
+  target_folder: docs/github-scraped/xtermjs
+  branch: master
+- name: AionUi
+  description: AionUi - Free, open-source GUI app for AI CLI agents (Gemini CLI, Claude
+    Code, Codex, Qwen Code, Goose) with multi-agent mode, AI image generation and
+    editing, file management, and multi-task processing
+  repo_url: https://github.com/iOfficeAI/AionUi.git
+  source_folder: .
+  target_folder: docs/github-scraped/aionui
+  branch: main
+- name: agentskills
+  description: agentskills - Documentation and specifications for Claude Code agent
+    skills
+  repo_url: https://github.com/agentskills/agentskills.git
+  source_folder: docs
+  target_folder: docs/github-scraped/agentskills
+  branch: main
+- name: Arduino
+  description: Arduino - Open-source electronics platform with documentation for hardware,
+    software, tutorials, and cloud services
+  repo_url: https://github.com/arduino/docs-content.git
+  source_folder: content
+  target_folder: docs/github-scraped/arduino
+  branch: main
+- name: Bambu Lab Cloud API
+  description: Bambu Lab printer API documentation - MQTT, local server API, cloud
+    API, authentication, device control, file management, and status monitoring
+  repo_url: https://github.com/coelacant1/Bambu-Lab-Cloud-API.git
+  source_folder: .
+  target_folder: docs/github-scraped/bambu-lab-api
+  branch: main
+- name: BigCommerce
+  description: BigCommerce e-commerce platform API documentation - REST APIs (Catalog,
+    Orders, Customers, Carts), GraphQL (Admin, Storefront, Account, B2B), authentication,
+    webhooks, rate limits, and pagination
+  repo_url: https://github.com/bigcommerce/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bigcommerce
+  branch: main
+- name: ariakit
+  description: Ariakit - React toolkit for building accessible web applications with
+    unstyled WAI-ARIA components, includes guide, components, and examples documentation
+  repo_url: https://github.com/ariakit/ariakit.git
+  source_folder: .
+  target_folder: docs/github-scraped/ariakit
+  branch: main
+- name: react-bootstrap
+  description: React Bootstrap - Bootstrap components built with React, providing
+    native React implementations without jQuery
+  repo_url: https://github.com/react-bootstrap/react-bootstrap.git
+  source_folder: www/docs
+  target_folder: docs/github-scraped/react-bootstrap
+  branch: master
+- name: react-testing-library
+  description: React Testing Library - Testing utilities for React that encourage
+    best practices by querying the DOM like users do
+  repo_url: https://github.com/testing-library/testing-library-docs.git
+  source_folder: docs/react-testing-library
+  target_folder: docs/github-scraped/react-testing-library
+  branch: main
+- name: reactstrap
+  description: Reactstrap - React Bootstrap 5 components with stateless components
+    and prop-driven design
+  repo_url: https://github.com/reactstrap/reactstrap.git
+  source_folder: stories
+  target_folder: docs/github-scraped/reactstrap
+  branch: master
+- name: scikit-learn
+  description: scikit-learn - Machine learning library for Python with classification,
+    regression, clustering, and dimensionality reduction algorithms
+  repo_url: https://github.com/scikit-learn/scikit-learn.git
+  source_folder: doc
+  target_folder: docs/github-scraped/scikit-learn
+  branch: main
+- name: styled-components
+  description: styled-components - CSS-in-JS library for styling React components
+    with tagged template literals
+  repo_url: https://github.com/styled-components/styled-components-website.git
+  source_folder: sections
+  target_folder: docs/github-scraped/styled-components
+  branch: main
+- name: react-chartjs-2
+  description: react-chartjs-2 - React wrapper for Chart.js providing components for
+    line, bar, doughnut charts and more
+  repo_url: https://github.com/reactchartjs/react-chartjs-2.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/react-chartjs-2
+  branch: master
+- name: react-hook-form
+  description: React Hook Form - Performant, flexible and extensible forms with easy-to-use
+    validation
+  repo_url: https://github.com/react-hook-form/documentation.git
+  source_folder: src/content
+  target_folder: docs/github-scraped/react-hook-form
+  branch: master
+- name: visx
+  description: visx - Low-level visualization components for React by Airbnb, combining
+    D3 with React (31 packages for charts and data visualization)
+  repo_url: https://github.com/airbnb/visx.git
+  source_folder: .
+  target_folder: docs/github-scraped/visx
+  branch: master
+- name: victory
+  description: Victory - React charting library by Formidable with modular, composable
+    components for data visualization
+  repo_url: https://github.com/FormidableLabs/victory.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/victory
+  branch: main
+- name: Webpack
+  description: Webpack - Static module bundler for modern JavaScript applications
+    with code splitting, lazy loading, and plugins
+  repo_url: https://github.com/webpack/webpack.js.org.git
+  source_folder: src/content
+  target_folder: docs/github-scraped/webpack
+  branch: main
+- name: nivo
+  description: nivo - React data visualization library built on D3.js with 30+ chart
+    components and responsive design
+  repo_url: https://github.com/plouc/nivo.git
+  source_folder: website/src/data/components
+  target_folder: docs/github-scraped/nivo
+  branch: master
+- name: Zustand
+  description: Zustand - Fast, minimal state management library for React with a simple
+    hooks-based API without boilerplate
+  repo_url: https://github.com/pmndrs/zustand.git
+  source_folder: docs
+  target_folder: docs/github-scraped/zustand
+  branch: main
+- name: Docling
+  description: Docling - Open-source document processing library for converting PDFs,
+    DOCX, PPTX, HTML, images, and more into structured formats like Markdown and JSON
+  repo_url: https://github.com/docling-project/docling.git
+  source_folder: docs
+  target_folder: docs/github-scraped/docling
+  branch: main
+- name: Docusaurus
+  description: Docusaurus - Static site generator for building documentation websites
+    with React, versioning, and i18n support
+  repo_url: https://github.com/facebook/docusaurus.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/docusaurus
+  branch: main
+- name: Mermaid
+  description: Mermaid.js - JavaScript-based diagramming and charting tool for creating
+    flowcharts, sequence diagrams, Gantt charts, and more using markdown-inspired
+    syntax
+  repo_url: https://github.com/mermaid-js/mermaid.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mermaid
+  branch: develop
+- name: Pillow
+  description: Pillow - Python Imaging Library (PIL Fork) for image processing, manipulation,
+    and filtering
+  repo_url: https://github.com/python-pillow/Pillow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pillow
+  branch: main
+- name: React Router
+  description: React Router - Declarative routing library for React with dynamic route
+    matching, location transition handling, and lazy code loading
+  repo_url: https://github.com/remix-run/react-router.git
+  source_folder: docs
+  target_folder: docs/github-scraped/react-router
+  branch: main
+- name: Redux Toolkit
+  description: Redux Toolkit - Official library for efficient Redux development including
+    RTK Query for data fetching and caching
+  repo_url: https://github.com/reduxjs/redux-toolkit.git
+  source_folder: docs
+  target_folder: docs/github-scraped/redux-toolkit
+  branch: master
+- name: Tree-sitter
+  description: Tree-sitter - Incremental parsing system for programming tools with
+    support for multiple languages and incremental parsing
+  repo_url: https://github.com/tree-sitter/tree-sitter.git
+  source_folder: docs/src
+  target_folder: docs/github-scraped/tree-sitter
+  branch: master
+- name: terraform-cloud
+  description: Terraform Cloud (HCP Terraform) - HashiCorp's managed service for Terraform
+    with remote state management, run environments, VCS integration, policy enforcement,
+    team collaboration, and cost estimation
+  repo_url: https://github.com/hashicorp/web-unified-docs.git
+  source_folder: content/terraform-docs-common/docs/cloud-docs
+  target_folder: docs/github-scraped/terraform-cloud
+  branch: main
+- name: terraform-ls
+  description: Terraform Language Server - Official Terraform language server maintained
+    by HashiCorp providing IDE features to LSP-compatible editors
+  repo_url: https://github.com/hashicorp/terraform-ls.git
+  source_folder: docs
+  target_folder: docs/github-scraped/terraform-ls
+  branch: main
+- name: LLMWare
+  description: LLMWare - End-to-end RAG framework with hybrid search, document parsing,
+    and edge deployment
+  repo_url: https://github.com/llmware-ai/llmware.git
+  source_folder: docs
+  target_folder: docs/github-scraped/llmware
+  branch: main
+- name: vLLM
+  description: vLLM - High-throughput and memory-efficient LLM inference engine with
+    PagedAttention optimization
+  repo_url: https://github.com/vllm-project/vllm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vllm
+  branch: main
+- name: Apache Airflow
+  description: Apache Airflow - open-source workflow orchestration platform for authoring,
+    scheduling, and monitoring data pipelines and ETL workflows at scale
+  repo_url: https://github.com/apache/airflow.git
+  source_folder: airflow-core/docs
+  target_folder: docs/github-scraped/apache-airflow
+  branch: main
+- name: Apache APISIX
+  description: Apache APISIX - Cloud-native API gateway with intelligent routing,
+    traffic management, and LLM traffic handling
+  repo_url: https://github.com/apache/apisix.git
+  source_folder: docs/en/latest
+  target_folder: docs/github-scraped/apache-apisix
+  branch: master
+- name: Prompt Flow
+  description: Microsoft Prompt Flow - Visual workflow designer and SDK for developing
+    LLM applications with tools, flows, and connections
+  repo_url: https://github.com/microsoft/promptflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/prompt-flow
+  branch: main
+- name: ESLint
+  description: ESLint - Pluggable JavaScript linter for identifying and fixing code
+    issues with extensive rule library and plugin ecosystem
+  repo_url: https://github.com/eslint/eslint.git
+  source_folder: docs/src
+  target_folder: docs/github-scraped/eslint
+  branch: main
+- name: ExecuTorch
+  description: ExecuTorch - PyTorch framework for efficient edge device inference
+    with support for mobile, embedded, and IoT devices
+  repo_url: https://github.com/pytorch/executorch.git
+  source_folder: docs/source
+  target_folder: docs/github-scraped/executorch
+  branch: main
+- name: PiKVM
+  description: PiKVM - IP-based KVM (keyboard, video, mouse) control using Raspberry
+    Pi or x86 hardware for remote server management
+  repo_url: https://github.com/pikvm/pikvm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pikvm
+  branch: master
+- name: pyannote
+  description: pyannote.audio - Open-source Python library for speaker diarization
+    with neural building blocks for identifying who spoke when in audio
+  repo_url: https://github.com/pyannote/pyannote-audio.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pyannote
+  branch: main
+- name: Ray
+  description: Ray - Distributed computing framework for scaling ML and LLM workloads
+    with Ray Core, Tune, Serve, RLlib, and Data libraries
+  repo_url: https://github.com/ray-project/ray.git
+  source_folder: doc/source
+  target_folder: docs/github-scraped/ray
+  branch: master
+- name: Scrapling
+  description: Scrapling - Adaptive web scraping framework with fetcher selection,
+    spider architecture, proxy rotation, stealth features, and MCP server integration
+    for modern web scraping
+  repo_url: https://github.com/D4Vinci/Scrapling.git
+  source_folder: docs
+  target_folder: docs/github-scraped/scrapling
+  branch: main
+- name: SiYuan
+  description: SiYuan - Privacy-first, self-hosted personal knowledge management system
+    with Markdown editing, block-level references, and local-first data storage
+  repo_url: https://github.com/siyuan-note/user-guide-en_US.git
+  source_folder: .
+  target_folder: docs/github-scraped/siyuan
+  branch: master
+- name: Stable Diffusion
+  description: Stable Diffusion - Latent diffusion model for text-to-image generation
+    with official CompVis repository
+  repo_url: https://github.com/CompVis/stable-diffusion.git
+  source_folder: .
+  target_folder: docs/github-scraped/stable-diffusion
+  branch: main
+- name: Hugging Face Diffusers
+  description: Hugging Face Diffusers - Python library for generating images, audio,
+    and 3D objects with diffusion models
+  repo_url: https://github.com/huggingface/diffusers.git
+  source_folder: docs/source
+  target_folder: docs/github-scraped/huggingface-diffusers
+  branch: main
+- name: RAGFlow
+  description: RAGFlow - Open-source RAG engine for building retrieval-augmented generation
+    applications with deep document understanding
+  repo_url: https://github.com/infiniflow/ragflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ragflow
+  branch: main
+- name: Palo Alto Prisma Cloud
+  description: Palo Alto Prisma Cloud - Container security, compliance, and cloud
+    security platform (formerly Twistlock) with comprehensive RQL, policies, and administration
+    guides
+  repo_url: https://github.com/PaloAltoNetworks/prisma-cloud-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/prisma-cloud
+  branch: master
+- name: PagerDuty
+  description: PagerDuty - Incident response platform with comprehensive REST API,
+    webhooks, integrations, and operational guides
+  repo_url: https://github.com/PagerDuty/developer-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pagerduty
+  branch: master
+- name: WasmEdge
+  description: WasmEdge - High-performance WebAssembly runtime for edge computing
+    and serverless applications
+  repo_url: https://github.com/WasmEdge/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/wasmedge
+  branch: main
+- name: Volar.js
+  description: Volar.js - Framework-agnostic LSP (Language Server Protocol) toolkit
+    enabling multiple frameworks to share TypeScript instances with advanced language
+    features
+  repo_url: https://github.com/volarjs/docs.git
+  source_folder: src/content/docs
+  target_folder: docs/github-scraped/volarjs
+  branch: main
+- name: nvim-lspconfig
+  description: nvim-lspconfig - Collection of common configurations for Neovim's built-in
+    language server client
+  repo_url: https://github.com/neovim/nvim-lspconfig.git
+  source_folder: doc
+  target_folder: docs/github-scraped/nvim-lspconfig
+  branch: master
+- name: Agent Client Protocol - Python SDK
+  description: Agent Client Protocol Python SDK - Pydantic models, async base classes,
+    and JSON-RPC utilities for building ACP-compatible agents and clients
+  repo_url: https://github.com/agentclientprotocol/python-sdk.git
+  source_folder: docs
+  target_folder: docs/github-scraped/agent-client-protocol-python-sdk
+  branch: main
+- name: deadcode
+  description: deadcode - Go tool for finding unused code in Go programs using Rapid
+    Type Analysis
+  repo_url: https://go.googlesource.com/tools.git
+  source_folder: cmd/deadcode
+  target_folder: docs/github-scraped/deadcode
+  branch: master
+- name: vscode-languageserver-node
+  description: Microsoft's Node.js-based Language Server Protocol (LSP) client/server
+    implementation framework with npm modules for building language servers and clients
+  repo_url: https://github.com/microsoft/vscode-languageserver-node.git
+  source_folder: .
+  target_folder: docs/github-scraped/vscode-languageserver-node
+  branch: main
+- name: python-lsp-server
+  description: Python Language Server - Fork of python-language-server with plugin
+    system for flake8, pylint, autopep8, and other linting/formatting tools
+  repo_url: https://github.com/python-lsp/python-lsp-server.git
+  source_folder: .
+  target_folder: docs/github-scraped/python-lsp-server
+  branch: develop
+- name: pygls
+  description: pygls - A pythonic generic language server framework for building Language
+    Server Protocol (LSP) implementations
+  repo_url: https://github.com/openlawlibrary/pygls.git
+  source_folder: docs/source
+  target_folder: docs/github-scraped/pygls
+  branch: main
+- name: basedpyright
+  description: basedpyright - Community fork of Microsoft's Pyright Python type checker
+    with additional features and faster release cycles
+  repo_url: https://github.com/DetachHead/basedpyright.git
+  source_folder: docs
+  target_folder: docs/github-scraped/basedpyright
+  branch: main
+- name: go-critic
+  description: go-critic - Go linter for checking code style issues and performance
+    anti-patterns
+  repo_url: https://github.com/go-critic/go-critic.git
+  source_folder: docs
+  target_folder: docs/github-scraped/go-critic
+  branch: master
+- name: Delve
+  description: Delve - Debugger for the Go programming language with breakpoints,
+    stepping, variable inspection, and DAP support
+  repo_url: https://github.com/go-delve/delve.git
+  source_folder: Documentation
+  target_folder: docs/github-scraped/delve
+  branch: master
+- name: gopls
+  description: 'gopls - Official Go language server providing IDE features (LSP) to
+    all editors: auto-completion, diagnostics, go-to-definition, refactoring, and
+    formatting'
+  repo_url: https://github.com/golang/tools.git
+  source_folder: gopls/doc
+  target_folder: docs/github-scraped/gopls
+  branch: master
+- name: Trivy
+  description: Trivy - All-in-one vulnerability scanner for containers, filesystems,
+    and Go modules with support for multiple security scanners
+  repo_url: https://github.com/aquasecurity/trivy.git
+  source_folder: docs
+  target_folder: docs/github-scraped/trivy
+  branch: main
+- name: NilAway
+  description: NilAway - Static analysis tool for detecting nil pointer dereferences
+    in Go code before runtime
+  repo_url: https://github.com/uber-go/nilaway.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nilaway
+  branch: main
+- name: quick-lint-js
+  description: quick-lint-js - Fast JavaScript linter with minimal overhead and LSP
+    support for IDE integration
+  repo_url: https://github.com/quick-lint/quick-lint-js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/quick-lint-js
+  branch: master
+- name: web-vitals
+  description: web-vitals - Library for measuring and monitoring Core Web Vitals performance
+    metrics (CLS, INP, LCP, FCP, TTFB)
+  repo_url: https://github.com/GoogleChrome/web-vitals.git
+  source_folder: .
+  target_folder: docs/github-scraped/web-vitals
+  branch: main
+- name: Cloudflare API
+  description: Cloudflare API - OpenAPI schemas for the Cloudflare API covering DNS,
+    CDN, Workers, R2, D1, Zero Trust, WAF, Load Balancing, and all Cloudflare services
+  repo_url: https://github.com/cloudflare/api-schemas.git
+  source_folder: .
+  target_folder: docs/github-scraped/cloudflare-api
+  branch: main
+- name: Swift
+  description: The Swift Programming Language - Official Apple documentation covering
+    language guide, syntax, standard library, and reference manual
+  repo_url: https://github.com/swiftlang/swift-book.git
+  source_folder: TSPL.docc
+  target_folder: docs/github-scraped/swift
+  branch: main
+- name: prometheus
+  description: prometheus from GitHub
+  repo_url: https://github.com/prometheus/prometheus.git
+  source_folder: docs
+  target_folder: docs/github-scraped/prometheus
+  branch: main
+- name: cryptography
+  description: cryptography from GitHub
+  repo_url: https://github.com/pyca/cryptography.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cryptography
+  branch: main
+- name: terraform
+  description: terraform from GitHub
+  repo_url: https://github.com/hashicorp/terraform.git
+  source_folder: docs
+  target_folder: docs/github-scraped/terraform
+  branch: main
+- name: flask
+  description: flask from GitHub
+  repo_url: https://github.com/pallets/flask.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flask
+  branch: main
+- name: marshmallow
+  description: marshmallow from GitHub
+  repo_url: https://github.com/marshmallow-code/marshmallow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/marshmallow
+  branch: main
+- name: date-fns
+  description: date-fns from GitHub
+  repo_url: https://github.com/date-fns/date-fns.git
+  source_folder: docs
+  target_folder: docs/github-scraped/date-fns
+  branch: main
+- name: pytorch
+  description: pytorch from GitHub
+  repo_url: https://github.com/pytorch/pytorch.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pytorch
+  branch: main
+- name: pandas
+  description: pandas from GitHub
+  repo_url: https://github.com/pandas-dev/pandas.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pandas
+  branch: main
+- name: numpy
+  description: numpy from GitHub
+  repo_url: https://github.com/numpy/numpy.git
+  source_folder: doc
+  target_folder: docs/github-scraped/numpy
+  branch: main
+- name: jotai
+  description: jotai from GitHub
+  repo_url: https://github.com/pmndrs/jotai.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jotai
+  branch: main
+- name: zustand
+  description: zustand from GitHub
+  repo_url: https://github.com/pmndrs/zustand.git
+  source_folder: docs
+  target_folder: docs/github-scraped/zustand
+  branch: main
+- name: redux
+  description: redux from GitHub
+  repo_url: https://github.com/reduxjs/redux.git
+  source_folder: docs
+  target_folder: docs/github-scraped/redux
+  branch: main
+- name: grpc
+  description: grpc from GitHub
+  repo_url: https://github.com/grpc/grpc.git
+  source_folder: doc
+  target_folder: docs/github-scraped/grpc
+  branch: main
+- name: onnx
+  description: onnx from GitHub
+  repo_url: https://github.com/onnx/onnx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/onnx
+  branch: main
+- name: pytest
+  description: pytest from GitHub
+  repo_url: https://github.com/pytest-dev/pytest.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pytest
+  branch: main
+- name: playwright
+  description: playwright from GitHub
+  repo_url: https://github.com/microsoft/playwright.git
+  source_folder: docs
+  target_folder: docs/github-scraped/playwright
+  branch: main
+- name: moto
+  description: moto from GitHub
+  repo_url: https://github.com/getmoto/moto.git
+  source_folder: docs
+  target_folder: docs/github-scraped/moto
+  branch: main
+- name: grafana
+  description: grafana from GitHub
+  repo_url: https://github.com/grafana/grafana.git
+  source_folder: docs
+  target_folder: docs/github-scraped/grafana
+  branch: main
+- name: structlog
+  description: structlog from GitHub
+  repo_url: https://github.com/hynek/structlog.git
+  source_folder: docs
+  target_folder: docs/github-scraped/structlog
+  branch: main
+- name: pyjwt
+  description: pyjwt from GitHub
+  repo_url: https://github.com/jpadilla/pyjwt.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pyjwt
+  branch: main
+- name: click
+  description: click from GitHub
+  repo_url: https://github.com/pallets/click.git
+  source_folder: docs
+  target_folder: docs/github-scraped/click
+  branch: main
+- name: rich
+  description: rich from GitHub
+  repo_url: https://github.com/Textualize/rich.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rich
+  branch: main
+- name: RDFLib
+  description: RDFLib - Python library for working with RDF, SPARQL queries, and semantic
+    web technologies
+  repo_url: https://github.com/RDFLib/rdflib.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rdflib
+  branch: main
+- name: pgx
+  description: pgx from GitHub
+  repo_url: https://github.com/sotetsuk/pgx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pgx
+  branch: main
+- name: grpcio
+  description: grpcio from GitHub
+  repo_url: https://github.com/grpc/grpc.git
+  source_folder: doc
+  target_folder: docs/github-scraped/grpcio
+  branch: main
+- name: '@typescript-eslint/utils'
+  description: '@typescript-eslint/utils from GitHub'
+  repo_url: https://github.com/typescript-eslint/typescript-eslint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/@typescript-eslint/utils
+  branch: main
+- name: greenlet
+  description: greenlet from GitHub
+  repo_url: https://github.com/python-greenlet/greenlet.git
+  source_folder: docs
+  target_folder: docs/github-scraped/greenlet
+  branch: main
+- name: grafanalib
+  description: grafanalib from GitHub
+  repo_url: https://github.com/weaveworks/grafanalib.git
+  source_folder: docs
+  target_folder: docs/github-scraped/grafanalib
+  branch: main
+- name: googleapiclient
+  description: googleapiclient from GitHub
+  repo_url: https://github.com/googleapis/google-api-python-client.git
+  source_folder: docs
+  target_folder: docs/github-scraped/googleapiclient
+  branch: main
+- name: google/protobuf
+  description: google/protobuf from GitHub
+  repo_url: https://github.com/protocolbuffers/protobuf.git
+  source_folder: docs
+  target_folder: docs/github-scraped/google/protobuf
+  branch: main
+- name: github.com/zclconf/go-cty
+  description: github.com/zclconf/go-cty from GitHub
+  repo_url: https://github.com/zclconf/go-cty.git
+  source_folder: docs
+  target_folder: docs/github-scraped/github.com/zclconf/go-cty
+  branch: main
+- name: google-cloud-storage
+  description: google-cloud-storage from GitHub
+  repo_url: https://github.com/googleapis/python-storage.git
+  source_folder: docs
+  target_folder: docs/github-scraped/google-cloud-storage
+  branch: main
+- name: ray-serve
+  description: ray-serve from GitHub
+  repo_url: https://github.com/ray-project/ray.git
+  source_folder: doc
+  target_folder: docs/github-scraped/ray-serve
+  branch: main
+- name: Metabase
+  description: Metabase - Open-source business intelligence and analytics platform
+    with comprehensive documentation for installation, administration, querying, and
+    embedding
+  repo_url: https://github.com/metabase/metabase.git
+  source_folder: docs
+  target_folder: docs/github-scraped/metabase
+  branch: master
+- name: GraphRAG
+  description: Microsoft's graph-based retrieval augmented generation framework that
+    builds knowledge graphs from documents and enables graph-based querying with comprehensive
+    indexing, query, and configuration documentation
+  repo_url: https://github.com/microsoft/graphrag.git
+  source_folder: docs
+  target_folder: docs/github-scraped/graphrag
+  branch: main
+- name: juce
+  description: juce from GitHub
+  repo_url: https://github.com/juce-framework/JUCE.git
+  source_folder: docs
+  target_folder: docs/github-scraped/juce
+  branch: main
+- name: .net-maui
+  description: .net-maui from GitHub
+  repo_url: https://github.com/dotnet/maui.git
+  source_folder: docs
+  target_folder: docs/github-scraped/.net-maui
+  branch: main
+- name: wails
+  description: wails from GitHub
+  repo_url: https://github.com/wailsapp/wails.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/wails
+- name: cloudkit
+  description: cloudkit from GitHub
+  repo_url: https://github.com/openstack/cloudkitty.git
+  source_folder: doc
+  target_folder: docs/github-scraped/cloudkit
+- name: avalonia
+  description: avalonia from GitHub
+  repo_url: https://github.com/AvaloniaUI/avalonia-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/avalonia
+  branch: main
+- name: cryptokit
+  description: cryptokit from GitHub
+  repo_url: https://github.com/istommao/cryptokit.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cryptokit
+  branch: main
+- name: localauthentication
+  description: localauthentication from GitHub
+  repo_url: https://github.com/bebnev/react-native-local-authentication.git
+  source_folder: docs
+  target_folder: docs/github-scraped/localauthentication
+- name: slint
+  description: slint from GitHub
+  repo_url: https://github.com/slint-ui/slint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/slint
+  branch: main
+- name: homekit
+  description: homekit from GitHub
+  repo_url: https://github.com/jlusiardi/homekit_python.git
+  source_folder: doc
+  target_folder: docs/github-scraped/homekit
+  branch: main
+- name: contacts
+  description: contacts from GitHub
+  repo_url: https://github.com/vestrel00/contacts-android.git
+  source_folder: docs
+  target_folder: docs/github-scraped/contacts
+- name: accelerate
+  description: accelerate from GitHub
+  repo_url: https://github.com/huggingface/accelerate.git
+  source_folder: docs
+  target_folder: docs/github-scraped/accelerate
+  branch: main
+- name: vision
+  description: vision from GitHub
+  repo_url: https://github.com/pytorch/vision.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vision
+- name: .net-core
+  description: .net-core from GitHub
+  repo_url: https://github.com/dotnet/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/.net-core
+  branch: main
+- name: teamcity
+  description: teamcity from GitHub
+  repo_url: https://github.com/cvbarros/terraform-provider-teamcity.git
+  source_folder: docs
+  target_folder: docs/github-scraped/teamcity
+  branch: main
+- name: ole
+  description: ole from GitHub
+  repo_url: https://github.com/decalage2/olefile.git
+  source_folder: doc
+  target_folder: docs/github-scraped/ole
+- name: wf
+  description: wf from GitHub
+  repo_url: https://github.com/joyent/node-workflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/wf
+  branch: main
+- name: playfab
+  description: playfab from GitHub
+  repo_url: https://github.com/PlayFab/thundernetes.git
+  source_folder: docs
+  target_folder: docs/github-scraped/playfab
+  branch: main
+- name: quasar
+  description: quasar from GitHub
+  repo_url: https://github.com/quasarframework/quasar.git
+  source_folder: docs
+  target_folder: docs/github-scraped/quasar
+  branch: main
+- name: sails.js
+  description: sails.js from GitHub
+  repo_url: https://github.com/balderdashy/sails.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sails.js
+  branch: main
+- name: magento
+  description: magento from GitHub
+  repo_url: https://github.com/OpenMage/magento-lts.git
+  source_folder: docs
+  target_folder: docs/github-scraped/magento
+  branch: main
+- name: sap-cloud-sdk
+  description: sap-cloud-sdk from GitHub
+  repo_url: https://github.com/SAP/cloud-sdk-java.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sap-cloud-sdk
+  branch: main
+- name: salesforce-api
+  description: salesforce-api from GitHub
+  repo_url: https://github.com/simple-salesforce/simple-salesforce.git
+  source_folder: docs
+  target_folder: docs/github-scraped/salesforce-api
+  branch: main
+- name: logto
+  description: logto from GitHub
+  repo_url: https://github.com/logto-io/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/logto
+  branch: main
+- name: django-oauth-toolkit
+  description: django-oauth-toolkit from GitHub
+  repo_url: https://github.com/django-oauth/django-oauth-toolkit.git
+  source_folder: docs
+  target_folder: docs/github-scraped/django-oauth-toolkit
+  branch: main
+- name: junit
+  description: junit from GitHub
+  repo_url: https://github.com/junit-team/junit4.git
+  source_folder: doc
+  target_folder: docs/github-scraped/junit
+  branch: main
+- name: k6
+  description: k6 from GitHub
+  repo_url: https://github.com/grafana/k6-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/k6
+  branch: main
+- name: mytap
+  description: mytap from GitHub
+  repo_url: https://github.com/hepabolu/mytap.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mytap
+  branch: main
+- name: particle-device-os
+  description: particle-device-os from GitHub
+  repo_url: https://github.com/particle-iot/device-os.git
+  source_folder: docs
+  target_folder: docs/github-scraped/particle-device-os
+  branch: main
+- name: tvm-microtvm
+  description: tvm-microtvm from GitHub
+  repo_url: https://github.com/apache/tvm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tvm-microtvm
+  branch: main
+- name: cement
+  description: cement from GitHub
+  repo_url: https://github.com/datafolklabs/cement.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cement
+  branch: main
+- name: django-orm
+  description: django-orm from GitHub
+  repo_url: https://github.com/agiliq/django-orm-cookbook.git
+  source_folder: docs
+  target_folder: docs/github-scraped/django-orm
+  branch: main
+- name: falcon
+  description: falcon from GitHub
+  repo_url: https://github.com/falconry/falcon.git
+  source_folder: docs
+  target_folder: docs/github-scraped/falcon
+  branch: main
+- name: peewee
+  description: peewee from GitHub
+  repo_url: https://github.com/coleifer/peewee.git
+  source_folder: docs
+  target_folder: docs/github-scraped/peewee
+  branch: main
+- name: seaborn
+  description: seaborn from GitHub
+  repo_url: https://github.com/mwaskom/seaborn.git
+  source_folder: doc
+  target_folder: docs/github-scraped/seaborn
+  branch: main
+- name: aiohttp
+  description: aiohttp from GitHub
+  repo_url: https://github.com/aio-libs/aiohttp.git
+  source_folder: docs
+  target_folder: docs/github-scraped/aiohttp
+  branch: main
+- name: ginkgo
+  description: ginkgo from GitHub
+  repo_url: https://github.com/ginkgo-project/ginkgo.git
+  source_folder: doc
+  target_folder: docs/github-scraped/ginkgo
+  branch: main
+- name: containerd
+  description: containerd from GitHub
+  repo_url: https://github.com/containerd/containerd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/containerd
+  branch: main
+- name: templ
+  description: templ from GitHub
+  repo_url: https://github.com/a-h/templ.git
+  source_folder: docs
+  target_folder: docs/github-scraped/templ
+  branch: main
+- name: node-fetch
+  description: node-fetch from GitHub
+  repo_url: https://github.com/node-fetch/node-fetch.git
+  source_folder: docs
+  target_folder: docs/github-scraped/node-fetch
+  branch: main
+- name: argo-cd
+  description: argo-cd from GitHub
+  repo_url: https://github.com/argoproj/argo-cd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/argo-cd
+  branch: main
+- name: apache-openwhisk
+  description: apache-openwhisk from GitHub
+  repo_url: https://github.com/apache/openwhisk.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-openwhisk
+  branch: main
+- name: whoosh
+  description: whoosh from GitHub
+  repo_url: https://github.com/mchaput/whoosh.git
+  source_folder: docs
+  target_folder: docs/github-scraped/whoosh
+  branch: main
+- name: doris
+  description: doris from GitHub
+  repo_url: https://github.com/apache/doris-website.git
+  source_folder: docs
+  target_folder: docs/github-scraped/doris
+  branch: main
+- name: neomodel
+  description: neomodel from GitHub
+  repo_url: https://github.com/neo4j-contrib/neomodel.git
+  source_folder: doc
+  target_folder: docs/github-scraped/neomodel
+  branch: main
+- name: spark-graphx
+  description: spark-graphx from GitHub
+  repo_url: https://github.com/apache/spark.git
+  source_folder: docs
+  target_folder: docs/github-scraped/spark-graphx
+  branch: main
+- name: cytoscape
+  description: cytoscape from GitHub
+  repo_url: https://github.com/cytoscape/cytoscape.js.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/cytoscape
+  branch: main
+- name: cerberus
+  description: cerberus from GitHub
+  repo_url: https://github.com/pyeve/cerberus.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cerberus
+  branch: main
+- name: openlineage
+  description: openlineage from GitHub
+  repo_url: https://github.com/OpenLineage/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openlineage
+  branch: main
+- name: geoserver
+  description: geoserver from GitHub
+  repo_url: https://github.com/geoserver/geoserver.git
+  source_folder: doc
+  target_folder: docs/github-scraped/geoserver
+  branch: main
+- name: git-lfs
+  description: git-lfs from GitHub
+  repo_url: https://github.com/git-lfs/git-lfs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/git-lfs
+  branch: main
+- name: amazon-deequ
+  description: amazon-deequ from GitHub
+  repo_url: https://github.com/awslabs/python-deequ.git
+  source_folder: docs
+  target_folder: docs/github-scraped/amazon-deequ
+  branch: main
+- name: simplebus
+  description: simplebus from GitHub
+  repo_url: https://github.com/SimpleBus/SimpleBus.git
+  source_folder: docs
+  target_folder: docs/github-scraped/simplebus
+  branch: main
+- name: tigerbeetle
+  description: tigerbeetle from GitHub
+  repo_url: https://github.com/tigerbeetle/tigerbeetle.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tigerbeetle
+  branch: main
+- name: apache-mesos
+  description: apache-mesos from GitHub
+  repo_url: https://github.com/apache/mesos.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-mesos
+  branch: main
+- name: datarobot
+  description: datarobot from GitHub
+  repo_url: https://github.com/datarobot/airflow-provider-datarobot.git
+  source_folder: docs
+  target_folder: docs/github-scraped/datarobot
+  branch: main
+- name: rq
+  description: rq from GitHub
+  repo_url: https://github.com/rq/rq.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rq
+  branch: main
+- name: uipath
+  description: uipath from GitHub
+  repo_url: https://github.com/UiPath/orchestrator-powershell.git
+  source_folder: docs
+  target_folder: docs/github-scraped/uipath
+  branch: main
+- name: flux
+  description: flux from GitHub
+  repo_url: https://github.com/facebookarchive/flux.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flux
+  branch: main
+- name: openstack-heat
+  description: openstack-heat from GitHub
+  repo_url: https://github.com/openstack/heat.git
+  source_folder: doc
+  target_folder: docs/github-scraped/openstack-heat
+  branch: main
+- name: yunikorn
+  description: yunikorn from GitHub
+  repo_url: https://github.com/apache/yunikorn-site.git
+  source_folder: docs
+  target_folder: docs/github-scraped/yunikorn
+  branch: main
+- name: ariadne-codegen
+  description: ariadne-codegen from GitHub
+  repo_url: https://github.com/mirumee/ariadne-codegen.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ariadne-codegen
+  branch: main
+- name: graphql-playground
+  description: graphql-playground from GitHub
+  repo_url: https://github.com/graphcool/graphql-playground.git
+  source_folder: docs
+  target_folder: docs/github-scraped/graphql-playground
+  branch: main
+- name: keystonejs
+  description: keystonejs from GitHub
+  repo_url: https://github.com/keystonejs/keystone.git
+  source_folder: docs
+  target_folder: docs/github-scraped/keystonejs
+  branch: main
+- name: apache-thrift
+  description: apache-thrift from GitHub
+  repo_url: https://github.com/apache/thrift.git
+  source_folder: doc
+  target_folder: docs/github-scraped/apache-thrift
+  branch: main
+- name: web3.js
+  description: web3.js from GitHub
+  repo_url: https://github.com/web3/web3.js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/web3.js
+  branch: main
+- name: bootstrap-email
+  description: bootstrap-email from GitHub
+  repo_url: https://github.com/bootstrap-email/documentation-1.x.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bootstrap-email
+  branch: main
+- name: sharedb
+  description: sharedb from GitHub
+  repo_url: https://github.com/share/sharedb.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sharedb
+  branch: main
+- name: yorkie
+  description: yorkie from GitHub
+  repo_url: https://github.com/yorkie-team/yorkie-team.github.io.git
+  source_folder: docs
+  target_folder: docs/github-scraped/yorkie
+  branch: main
+- name: d3.js
+  description: d3.js from GitHub
+  repo_url: https://github.com/d3/d3.git
+  source_folder: docs
+  target_folder: docs/github-scraped/d3.js
+  branch: main
+- name: multer
+  description: multer from GitHub
+  repo_url: https://github.com/expressjs/multer.git
+  source_folder: doc
+  target_folder: docs/github-scraped/multer
+- name: nativebase
+  description: nativebase from GitHub
+  repo_url: https://github.com/GeekyAnts/nativebase-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nativebase
+  branch: main
+- name: omnitrace
+  description: omnitrace from GitHub
+  repo_url: https://github.com/ROCm/omnitrace.git
+  source_folder: docs
+  target_folder: docs/github-scraped/omnitrace
+- name: podman
+  description: podman from GitHub
+  repo_url: https://github.com/containers/podman.git
+  source_folder: docs
+  target_folder: docs/github-scraped/podman
+  branch: main
+- name: snakeviz
+  description: snakeviz from GitHub
+  repo_url: https://github.com/jiffyclub/snakeviz.git
+  source_folder: docs
+  target_folder: docs/github-scraped/snakeviz
+  branch: main
+- name: open-web-components
+  description: open-web-components from GitHub
+  repo_url: https://github.com/open-wc/open-wc.git
+  source_folder: docs
+  target_folder: docs/github-scraped/open-web-components
+  branch: main
+- name: nunjucks
+  description: nunjucks from GitHub
+  repo_url: https://github.com/mozilla/nunjucks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nunjucks
+  branch: main
+- name: rollup
+  description: rollup from GitHub
+  repo_url: https://github.com/rollup/rollup.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rollup
+- name: material-ui
+  description: material-ui from GitHub
+  repo_url: https://github.com/mui/material-ui.git
+  source_folder: docs
+  target_folder: docs/github-scraped/material-ui
+  branch: main
+- name: bundler
+  description: bundler from GitHub
+  repo_url: https://github.com/rubygems/bundler.git
+  source_folder: doc
+  target_folder: docs/github-scraped/bundler
+  branch: main
+- name: dragonbones
+  description: dragonbones from GitHub
+  repo_url: https://github.com/DragonBones/DragonBonesJS.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dragonbones
+- name: sinon.js
+  description: sinon.js from GitHub
+  repo_url: https://github.com/sinonjs/sinon.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sinon.js
+  branch: main
+- name: megalinter
+  description: megalinter from GitHub
+  repo_url: https://github.com/oxsecurity/megalinter.git
+  source_folder: docs
+  target_folder: docs/github-scraped/megalinter
+  branch: main
+- name: cfn-lint
+  description: cfn-lint from GitHub
+  repo_url: https://github.com/aws-cloudformation/cfn-lint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cfn-lint
+- name: hoverfly
+  description: hoverfly from GitHub
+  repo_url: https://github.com/SpectoLabs/hoverfly.git
+  source_folder: docs
+  target_folder: docs/github-scraped/hoverfly
+  branch: main
+- name: mockito
+  description: mockito from GitHub
+  repo_url: https://github.com/mockito/mockito.git
+  source_folder: doc
+  target_folder: docs/github-scraped/mockito
+- name: bokeh
+  description: bokeh from GitHub
+  repo_url: https://github.com/bokeh/bokeh.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bokeh
+- name: pants
+  description: pants from GitHub
+  repo_url: https://github.com/pantsbuild/pants.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pants
+  branch: main
+- name: holoviews
+  description: holoviews from GitHub
+  repo_url: https://github.com/holoviz/holoviews.git
+  source_folder: doc
+  target_folder: docs/github-scraped/holoviews
+  branch: main
+- name: vue-test-utils
+  description: vue-test-utils from GitHub
+  repo_url: https://github.com/vuejs/vue-test-utils.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vue-test-utils
+- name: poetry
+  description: poetry from GitHub
+  repo_url: https://github.com/python-poetry/poetry.git
+  source_folder: docs
+  target_folder: docs/github-scraped/poetry
+  branch: main
+- name: fakeiteasy
+  description: fakeiteasy from GitHub
+  repo_url: https://github.com/FakeItEasy/FakeItEasy.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fakeiteasy
+- name: bioconductor
+  description: bioconductor from GitHub
+  repo_url: https://github.com/Bioconductor/OrchestratingSingleCellAnalysis-release.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bioconductor
+- name: maplibre-gl
+  description: maplibre-gl from GitHub
+  repo_url: https://github.com/maplibre/maplibre-gl-js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/maplibre-gl
+  branch: main
+- name: flake8
+  description: flake8 from GitHub
+  repo_url: https://github.com/pycqa/flake8.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flake8
+- name: fink
+  description: fink from GitHub
+  repo_url: https://github.com/astrolabsoftware/fink-documentation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fink
+- name: datafaker
+  description: datafaker from GitHub
+  repo_url: https://github.com/datafaker-net/datafaker.git
+  source_folder: docs
+  target_folder: docs/github-scraped/datafaker
+  branch: main
+- name: uncrustify
+  description: uncrustify from GitHub
+  repo_url: https://github.com/uncrustify/uncrustify.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/uncrustify
+- name: vega
+  description: vega from GitHub
+  repo_url: https://github.com/vega/vega.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vega
+  branch: main
+- name: asp.net-core-validation
+  description: asp.net-core-validation from GitHub
+  repo_url: https://github.com/FluentValidation/FluentValidation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/asp.net-core-validation
+  branch: main
+- name: opam
+  description: opam from GitHub
+  repo_url: https://github.com/ocaml/opam.git
+  source_folder: doc
+  target_folder: docs/github-scraped/opam
+- name: fluentvalidation
+  description: fluentvalidation from GitHub
+  repo_url: https://github.com/FluentValidation/FluentValidation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fluentvalidation
+  branch: main
+- name: rustup
+  description: rustup from GitHub
+  repo_url: https://github.com/rust-lang/rustup.git
+  source_folder: doc
+  target_folder: docs/github-scraped/rustup
+- name: io-ts
+  description: io-ts from GitHub
+  repo_url: https://github.com/gcanti/io-ts.git
+  source_folder: docs
+  target_folder: docs/github-scraped/io-ts
+- name: dredd
+  description: dredd from GitHub
+  repo_url: https://github.com/apiaryio/dredd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dredd
+  branch: main
+- name: refine
+  description: refine from GitHub
+  repo_url: https://github.com/refinedev/refine.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/refine
+  branch: main
+- name: skywalking
+  description: skywalking from GitHub
+  repo_url: https://github.com/apache/skywalking.git
+  source_folder: docs
+  target_folder: docs/github-scraped/skywalking
+- name: yargs
+  description: yargs from GitHub
+  repo_url: https://github.com/yargs/yargs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/yargs
+  branch: main
+- name: spectral
+  description: spectral from GitHub
+  repo_url: https://github.com/stoplightio/spectral.git
+  source_folder: docs
+  target_folder: docs/github-scraped/spectral
+  branch: main
+- name: swagger
+  description: swagger from GitHub
+  repo_url: https://github.com/swagger-api/swagger-ui.git
+  source_folder: docs
+  target_folder: docs/github-scraped/swagger
+  branch: main
+- name: swagger-ui
+  description: swagger-ui from GitHub
+  repo_url: https://github.com/swagger-api/swagger-ui.git
+  source_folder: docs
+  target_folder: docs/github-scraped/swagger-ui
+  branch: main
+- name: detox
+  description: detox from GitHub
+  repo_url: https://github.com/wix/Detox.git
+  source_folder: docs
+  target_folder: docs/github-scraped/detox
+  branch: main
+- name: system.commandline
+  description: system.commandline from GitHub
+  repo_url: https://github.com/dotnet/command-line-api.git
+  source_folder: docs
+  target_folder: docs/github-scraped/system.commandline
+  branch: main
+- name: bridgecrew
+  description: bridgecrew from GitHub
+  repo_url: https://github.com/bridgecrewio/terraform-provider-bridgecrew.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bridgecrew
+  branch: main
+- name: husky
+  description: husky from GitHub
+  repo_url: https://github.com/typicode/husky.git
+  source_folder: docs
+  target_folder: docs/github-scraped/husky
+  branch: main
+- name: codacy
+  description: codacy from GitHub
+  repo_url: https://github.com/codacy/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/codacy
+  branch: main
+- name: apt
+  description: apt from GitHub
+  repo_url: https://github.com/Debian/apt.git
+  source_folder: doc
+  target_folder: docs/github-scraped/apt
+- name: verify-dotnet
+  description: verify-dotnet from GitHub
+  repo_url: https://github.com/VerifyTests/Verify.git
+  source_folder: docs
+  target_folder: docs/github-scraped/verify-dotnet
+  branch: main
+- name: inquirer
+  description: inquirer from GitHub
+  repo_url: https://github.com/magmax/python-inquirer.git
+  source_folder: docs
+  target_folder: docs/github-scraped/inquirer
+  branch: main
+- name: lanterna
+  description: lanterna from GitHub
+  repo_url: https://github.com/mabe02/lanterna.git
+  source_folder: docs
+  target_folder: docs/github-scraped/lanterna
+  branch: main
+- name: moulti
+  description: moulti from GitHub
+  repo_url: https://github.com/xavierog/moulti.git
+  source_folder: doc
+  target_folder: docs/github-scraped/moulti
+  branch: main
+- name: textual
+  description: textual from GitHub
+  repo_url: https://github.com/Textualize/textual.git
+  source_folder: docs
+  target_folder: docs/github-scraped/textual
+- name: lerna
+  description: lerna from GitHub
+  repo_url: https://github.com/lerna/lerna.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/lerna
+  branch: main
+- name: buildkit
+  description: buildkit from GitHub
+  repo_url: https://github.com/moby/buildkit.git
+  source_folder: docs
+  target_folder: docs/github-scraped/buildkit
+- name: nix-flakes
+  description: nix-flakes from GitHub
+  repo_url: https://github.com/ryan4yin/nixos-and-flakes-book.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nix-flakes
+  branch: main
+- name: composer
+  description: composer from GitHub
+  repo_url: https://github.com/composer/composer.git
+  source_folder: doc
+  target_folder: docs/github-scraped/composer
+  branch: main
+- name: coursier
+  description: coursier from GitHub
+  repo_url: https://github.com/coursier/coursier.git
+  source_folder: docs
+  target_folder: docs/github-scraped/coursier
+  branch: main
+- name: wezterm
+  description: wezterm from GitHub
+  repo_url: https://github.com/wezterm/wezterm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/wezterm
+- name: go-mod
+  description: go-mod from GitHub
+  repo_url: https://github.com/scagogogo/go-mod-parser.git
+  source_folder: docs
+  target_folder: docs/github-scraped/go-mod
+  branch: main
+- name: julia
+  description: julia from GitHub
+  repo_url: https://github.com/JuliaLang/julia.git
+  source_folder: doc
+  target_folder: docs/github-scraped/julia
+  branch: main
+- name: luarocks
+  description: luarocks from GitHub
+  repo_url: https://github.com/luarocks/luarocks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/luarocks
+  branch: main
+- name: stylelint
+  description: stylelint from GitHub
+  repo_url: https://github.com/stylelint/stylelint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/stylelint
+  branch: main
+- name: rake
+  description: rake from GitHub
+  repo_url: https://github.com/csurfer/rake-nltk.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rake
+- name: json-schema-validator
+  description: json-schema-validator from GitHub
+  repo_url: https://github.com/networknt/json-schema-validator.git
+  source_folder: doc
+  target_folder: docs/github-scraped/json-schema-validator
+  branch: main
+- name: tyro
+  description: tyro from GitHub
+  repo_url: https://github.com/brentyi/tyro.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tyro
+- name: markdownlint
+  description: markdownlint from GitHub
+  repo_url: https://github.com/DavidAnson/markdownlint.git
+  source_folder: doc
+  target_folder: docs/github-scraped/markdownlint
+  branch: main
+- name: super-linter
+  description: super-linter from GitHub
+  repo_url: https://github.com/super-linter/super-linter.git
+  source_folder: docs
+  target_folder: docs/github-scraped/super-linter
+  branch: main
+- name: oclif
+  description: oclif from GitHub
+  repo_url: https://github.com/oclif/oclif.git
+  source_folder: docs
+  target_folder: docs/github-scraped/oclif
+  branch: main
+- name: clipanion
+  description: clipanion from GitHub
+  repo_url: https://github.com/arcanis/clipanion.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/clipanion
+- name: opa
+  description: opa from GitHub
+  repo_url: https://github.com/open-policy-agent/opa.git
+  source_folder: docs
+  target_folder: docs/github-scraped/opa
+  branch: main
+- name: xonsh
+  description: xonsh from GitHub
+  repo_url: https://github.com/xonsh/xonsh.git
+  source_folder: docs
+  target_folder: docs/github-scraped/xonsh
+  branch: main
+- name: ghostty
+  description: ghostty from GitHub
+  repo_url: https://github.com/ghostty-org/website.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ghostty
+  branch: main
+- name: detect-secrets
+  description: detect-secrets from GitHub
+  repo_url: https://github.com/Yelp/detect-secrets.git
+  source_folder: docs
+  target_folder: docs/github-scraped/detect-secrets
+  branch: main
+- name: openvas
+  description: openvas from GitHub
+  repo_url: https://github.com/greenbone/openvas-scanner.git
+  source_folder: doc
+  target_folder: docs/github-scraped/openvas
+  branch: main
+- name: pmd
+  description: pmd from GitHub
+  repo_url: https://github.com/pmd/pmd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pmd
+  branch: main
+- name: psalm
+  description: psalm from GitHub
+  repo_url: https://github.com/vimeo/psalm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/psalm
+  branch: main
+- name: kubewarden
+  description: kubewarden from GitHub
+  repo_url: https://github.com/kubewarden/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kubewarden
+  branch: main
+- name: cyclonedx
+  description: cyclonedx from GitHub
+  repo_url: https://github.com/CycloneDX/cyclonedx-python-lib.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cyclonedx
+  branch: main
+- name: gnupg
+  description: gnupg from GitHub
+  repo_url: https://github.com/isislovecruft/python-gnupg.git
+  source_folder: docs
+  target_folder: docs/github-scraped/gnupg
+  branch: main
+- name: liboqs
+  description: liboqs from GitHub
+  repo_url: https://github.com/open-quantum-safe/liboqs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/liboqs
+  branch: main
+- name: s2n-bignum
+  description: s2n-bignum from GitHub
+  repo_url: https://github.com/awslabs/s2n-bignum.git
+  source_folder: doc
+  target_folder: docs/github-scraped/s2n-bignum
+  branch: main
+- name: syslog-ng
+  description: syslog-ng from GitHub
+  repo_url: https://github.com/syslog-ng/syslog-ng.github.io.git
+  source_folder: doc
+  target_folder: docs/github-scraped/syslog-ng
+  branch: main
+- name: heapster
+  description: heapster from GitHub
+  repo_url: https://github.com/kubernetes/heapster.git
+  source_folder: docs
+  target_folder: docs/github-scraped/heapster
+  branch: main
+- name: line_profiler
+  description: line_profiler from GitHub
+  repo_url: https://github.com/pyutils/line_profiler.git
+  source_folder: docs
+  target_folder: docs/github-scraped/line_profiler
+  branch: main
+- name: tcpdump
+  description: tcpdump from GitHub
+  repo_url: https://github.com/the-tcpdump-group/tcpdump.git
+  source_folder: doc
+  target_folder: docs/github-scraped/tcpdump
+  branch: main
+- name: checkmk
+  description: checkmk from GitHub
+  repo_url: https://github.com/Checkmk/checkmk.git
+  source_folder: doc
+  target_folder: docs/github-scraped/checkmk
+  branch: main
+- name: powermock
+  description: powermock from GitHub
+  repo_url: https://github.com/powermock/powermock.git
+  source_folder: docs
+  target_folder: docs/github-scraped/powermock
+  branch: main
+- name: instancio
+  description: instancio from GitHub
+  repo_url: https://github.com/instancio/instancio.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/instancio
+  branch: main
+- name: mimesis
+  description: mimesis from GitHub
+  repo_url: https://github.com/lk-geimfari/mimesis.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mimesis
+  branch: main
+- name: test.check
+  description: test.check from GitHub
+  repo_url: https://github.com/clojure/test.check.git
+  source_folder: doc
+  target_folder: docs/github-scraped/test.check
+  branch: main
+- name: fluent-assertions
+  description: fluent-assertions from GitHub
+  repo_url: https://github.com/fluentassertions/fluentassertions.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fluent-assertions
+  branch: main
+- name: saucelabs
+  description: saucelabs from GitHub
+  repo_url: https://github.com/saucelabs/sauce-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/saucelabs
+  branch: main
+- name: testing-library
+  description: testing-library from GitHub
+  repo_url: https://github.com/testing-library/testing-library-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/testing-library
+  branch: main
+- name: guzzle
+  description: guzzle from GitHub
+  repo_url: https://github.com/guzzle/guzzle.git
+  source_folder: docs
+  target_folder: docs/github-scraped/guzzle
+  branch: main
+- name: posthtml
+  description: posthtml from GitHub
+  repo_url: https://github.com/posthtml/posthtml.git
+  source_folder: docs
+  target_folder: docs/github-scraped/posthtml
+  branch: main
+- name: superagent
+  description: superagent from GitHub
+  repo_url: https://github.com/ladjs/superagent.git
+  source_folder: docs
+  target_folder: docs/github-scraped/superagent
+  branch: main
+- name: html-validate
+  description: html-validate from GitHub
+  repo_url: https://github.com/html-validate/html-validate.git
+  source_folder: docs
+  target_folder: docs/github-scraped/html-validate
+  branch: main
+- name: kontent.ai
+  description: kontent.ai from GitHub
+  repo_url: https://github.com/kontent-ai/delivery-sdk-net.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kontent.ai
+  branch: main
+- name: sitecore
+  description: sitecore from GitHub
+  repo_url: https://github.com/Sitecore/Sitecore.Rocks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sitecore
+  branch: main
+- name: openimaj
+  description: openimaj from GitHub
+  repo_url: https://github.com/openimaj/openimaj.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/openimaj
+  branch: main
+- name: docfx
+  description: docfx from GitHub
+  repo_url: https://github.com/dotnet/docfx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/docfx
+  branch: main
+- name: pandoc
+  description: pandoc from GitHub
+  repo_url: https://github.com/jgm/pandoc.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pandoc
+  branch: main
+- name: apache-arrow
+  description: apache-arrow from GitHub
+  repo_url: https://github.com/apache/arrow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-arrow
+  branch: main
+- name: opennmt
+  description: opennmt from GitHub
+  repo_url: https://github.com/OpenNMT/OpenNMT-py.git
+  source_folder: docs
+  target_folder: docs/github-scraped/opennmt
+  branch: main
+- name: trl
+  description: trl from GitHub
+  repo_url: https://github.com/huggingface/trl.git
+  source_folder: docs
+  target_folder: docs/github-scraped/trl
+  branch: main
+- name: caffe
+  description: caffe from GitHub
+  repo_url: https://github.com/BVLC/caffe.git
+  source_folder: docs
+  target_folder: docs/github-scraped/caffe
+  branch: main
+- name: openvino
+  description: openvino from GitHub
+  repo_url: https://github.com/openvinotoolkit/openvino.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openvino
+  branch: main
+- name: ultralytics
+  description: ultralytics from GitHub
+  repo_url: https://github.com/ultralytics/ultralytics.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ultralytics
+  branch: main
+- name: metaflow
+  description: metaflow from GitHub
+  repo_url: https://github.com/Netflix/metaflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/metaflow
+  branch: main
+- name: tensorflow-data-validation
+  description: tensorflow-data-validation from GitHub
+  repo_url: https://github.com/tensorflow/data-validation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tensorflow-data-validation
+  branch: main
+- name: autofeat
+  description: autofeat from GitHub
+  repo_url: https://github.com/cod3licious/autofeat.git
+  source_folder: docs
+  target_folder: docs/github-scraped/autofeat
+  branch: main
+- name: neptune
+  description: neptune from GitHub
+  repo_url: https://github.com/neptune-ai/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/neptune
+  branch: main
+- name: tornado
+  description: Tornado - Python web framework and asynchronous networking library
+  repo_url: https://github.com/tornadoweb/tornado.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tornado
+  branch: stable
+- name: owasp-dependency-check
+  description: OWASP Dependency-Check - Software security vulnerability scanner
+  repo_url: https://github.com/jeremylong/DependencyCheck.git
+  source_folder: docs
+  target_folder: docs/github-scraped/owasp-dependency-check
+  branch: main
+- name: kube-bench
+  description: kube-bench - Kubernetes security benchmark compliance checker
+  repo_url: https://github.com/aquasecurity/kube-bench.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kube-bench
+  branch: main
