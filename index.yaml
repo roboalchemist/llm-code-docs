@@ -5001,12 +5001,12 @@ llms_txt:
   last_updated: 2026-04-03 02:03
 - name: tempo
   description: Grafana Tempo Documentation
-  url: https://tempo.com/
-  path: docs/llms-txt/tempo/
+  url: https://grafana.com/docs/tempo/latest/
+  path: docs/web-scraped/tempo/
   status: fetched
   file_count: 1
-  size: 6.5KB
-  last_updated: 2026-04-03 02:03
+  size: 2.2KB
+  last_updated: 2026-04-03 02:11
 - name: temporal
   description: temporal documentation
   url: https://temporal.com/
