@@ -44,7 +44,7 @@ image = (
 )
 ```
 
-If you have your own container image definitions, like a Dockerfile or a registry link, you can use those too!
+If you have your own container image defintions, like a Dockerfile or a registry link, you can use those too!
 See [this guide](https://modal.com/docs/guide/existing-images).
 
 This page is a high-level guide to using Modal Images.
@@ -211,9 +211,9 @@ def my_function():
 ```
 
 Because these imports happen before a new container processes its first input,
-you can combine this context manager with [Memory Snapshots](https://modal.com/docs/guide/memory-snapshots)
+you can combine this decorator with [memory snapshots](https://modal.com/docs/guide/memory-snapshot)
 to improve [cold start performance](https://modal.com/docs/guide/cold-start#share-initialization-work-across-cold-starts-with-memory-snapshots)
-for Functions that frequently scale up.
+for Functions that frequently scale from zero.
 
 ## Install system packages with `.apt_install`
 
@@ -463,7 +463,7 @@ username to create a Modal [Secret](https://modal.com/docs/guide/secrets).
 
 ```
 REGISTRY_USERNAME=my-dockerhub-username
-REGISTRY_PASSWORD=dckr_pat_TS012345aaa67890bbbb1234ccc
+REGISTRY_PASSWORD=dckr_pat_REDACTED_FOR_SECURITY
 ```
 
 Use this Secret with the
@@ -483,7 +483,7 @@ image = (
         "000000000000.dkr.ecr.us-east-1.amazonaws.com/my-private-registry:latest",
         secret=aws_secret,
     )
-    .pip_install("torch", "numpy", "huggingface")
+    .pip_install("torch", "huggingface")
 )
 
 app = modal.App(image=image)
@@ -703,7 +703,7 @@ Here's a simple example of a Function running on an A100 in Modal:
 ```python
 import modal
 
-image = modal.Image.debian_slim().pip_install("torch", "numpy")
+image = modal.Image.debian_slim().pip_install("torch")
 app = modal.App(image=image)
 
 @app.function(gpu="A100")
@@ -721,14 +721,13 @@ Modal supports the following values for this parameter:
 - `T4`
 - `L4`
 - `A10`
-- `L40S`
 - `A100`
 - `A100-40GB`
 - `A100-80GB`
-- `RTX-PRO-6000`
+- `L40S`
 - `H100`/`H100!`
 - `H200`
-- `B200`/`B200+`
+- `B200`
 
 For instance, to use a B200, you can use `@app.function(gpu="B200")`.
 
@@ -786,10 +785,6 @@ language models with small batch sizes (e.g. one prompt at a time) results in a
 Since arithmetic throughput has risen faster than memory throughput in recent
 hardware generations, speedups for memory-bound GPU jobs are not as extreme and
 may not be worth the extra cost.
-
-### Opt-in upgrade to B300
-
-When B200 capacity is tight, it can be useful to run B200 requests on B300s. Use `gpu="B200+"` to allow Modal to run requests on either B200 or B300 GPUs. B200+ is billed as B200, regardless of which GPU is used. Use this option only if your your code is compatible with both types of GPUs. B300 requires CUDA version 13.0+.
 
 ## H200 and H100 GPUs
 
@@ -856,7 +851,7 @@ See [this example](https://modal.com/docs/examples/gpu_fallbacks) for more detai
 
 ## Multi GPU training
 
-Modal currently supports multi-GPU training on a single node, with multi-node training in private Beta (email us at support@modal.com for access).
+Modal currently supports multi-GPU training on a single node, with multi-node training in closed beta ([contact us](https://modal.com/slack) for access).
 Depending on which framework you are using, you may need to use different techniques to train on multiple GPUs.
 
 If the framework re-executes the entrypoint of the Python process (like [PyTorch Lightning](https://lightning.ai/docs/pytorch/stable/index.html)) you need to either set the strategy to `ddp_spawn` or `ddp_notebook` if you wish to invoke the training directly. Another option is to run the training script as a subprocess instead.
@@ -900,8 +895,8 @@ see our [GPU Glossary](https://modal.com/gpu-glossary/readme).
 
 Here's the tl;dr:
 
-- The [NVIDIA Accelerated Graphics Driver for Linux-x86_64](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#driver-installation), version 580.95.05,
-  and [CUDA Driver API](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/index.html), version 13.0, are already installed.
+- The [NVIDIA Accelerated Graphics Driver for Linux-x86_64](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#driver-installation), version 575.57.08,
+  and [CUDA Driver API](https://docs.nvidia.com/cuda/archive/12.9.0/cuda-driver-api/index.html), version 12.9, are already installed.
   You can call `nvidia-smi` or run compiled CUDA programs from any Modal Function with access to a GPU.
 - That means you can install many popular libraries like `torch` that bundle their other CUDA dependencies [with a simple `pip_install`](#install-gpu-accelerated-torch-and-transformers-with-pip_install).
 - For bleeding-edge libraries like `flash-attn`, you may need to install CUDA dependencies manually.
@@ -1062,8 +1057,8 @@ def run_tiny_model():
 ```
 
 Make sure to choose a version of CUDA that is no greater than the version provided by the host machine.
-Older versions in the `12.*` and `13.*` series are guaranteed to be compatible with the host machine's driver,
-but older major versions (`11.*`, `10.*`, etc.) may not be.
+Older minor (`12.*`) versions are guaranteed to be compatible with the host machine's driver,
+but older major (`11.*`, `10.*`, etc.) versions may not be.
 
 ## What next?
 
@@ -1179,7 +1174,7 @@ Running Modal containers have access to many GBs of SSD disk, but the amount
 of writes is limited by:
 
 1. The size of the underlying worker's SSD disk capacity
-2. A per-container disk quota that defaults to 512 GiB.
+2. A per-container disk quota that is set in the 100s of GBs.
 
 Hitting either limit will cause the container's disk writes to be rejected, which
 typically manifests as an `OSError`.
@@ -1394,7 +1389,7 @@ the examples for more information about asynchronous usage.
 ## GPU acceleration
 
 Sometimes you can speed up your applications by utilizing GPU acceleration. See
-the [GPU section](https://modal.com/docs/guide/gpu) for more information.
+the [gpu section](https://modal.com/docs/guide/gpu) for more information.
 
 ## Scaling Limits
 
@@ -1412,14 +1407,6 @@ Additionally, each `.map()` invocation can process at most 1000 inputs concurren
 #### Input concurrency
 
 # Input concurrency
-
-This guide documents the use of the `modal.concurrent` decorator to
-process multiple inputs at the same time in a single Modal container.
-
-This page is a high-level guide to input concurrency. For reference documentation
-of the `modal.concurrent` decorator, see [this page](https://modal.com/docs/reference/modal.concurrent).
-
-## Overview
 
 As traffic to your application increases, Modal will automatically scale up the
 number of containers running your Function:
@@ -1491,6 +1478,10 @@ Because all methods on a class will be served by the same containers, a class
 with input concurrency enabled will concurrently run distinct methods in
 addition to multiple inputs for the same method.
 
+**Note:** The `@modal.concurrent` decorator was added in v0.73.148 of the Modal
+Python SDK. Input concurrency could previously be enabled by setting the
+`allow_concurrent_inputs` parameter on the `@app.function` decorator.
+
 ## Setting a concurrency target
 
 When using the `@modal.concurrent` decorator, you must always configure the
@@ -1506,7 +1497,7 @@ above the target up to the `max_inputs` limit:
 
 ```python
 @app.function()
-@modal.concurrent(max_inputs=96, target_inputs=80)  # Allow a 20% burst
+@modal.concurrent(max_inputs=120, target_inputs=100)  # Allow a 20% burst
 def my_function(input: str):
     ...
 ```
@@ -1834,7 +1825,7 @@ You can customize the behavior of the job queue by configuring the
 
 #### Dynamic batching (beta)
 
-# Dynamic batching
+# Dynamic batching (beta)
 
 Modal's `@batched` feature allows you to accumulate requests
 and process them in dynamically-sized batches, rather than one-by-one.
@@ -1896,11 +1887,11 @@ The result is an iterator that yields `301`, `202`, and `101`.
 For a Python function to be compatible with `@modal.batched`, it must adhere to
 the following rules:
 
-- **The inputs to the function must be lists.**
+- ** The inputs to the function must be lists. **
   In the example above, we pass `xs` and `ys`, which are both lists of `int`s.
-- **The function must return a list**. In the example above, the function returns
+- ** The function must return a list**. In the example above, the function returns
   a list of sums.
-- **The lengths of all the input lists and the output list must be the same.**
+- ** The lengths of all the input lists and the output list must be the same. **
   In the example above, if `L == len(xs) == len(ys)`, then `L == len(batch_add(xs, ys))`.
 
 ## Modal `Cls` methods are compatible with dynamic batching
@@ -2004,9 +1995,9 @@ asyncio.run(main())
 
 #### Multi-node clusters (beta)
 
-# Multi-node clusters (Beta)
+# Multi-node clusters (beta)
 
-> 🚄 Multi-node clusters with RDMA are in **private Beta.** Please email us at support@modal.com to get access.
+> 🚄 Multi-node clusters with RDMA are in **private beta.** Please contact us via the [Modal Slack](https://modal.com/slack) or support@modal.com to get access.
 
 Modal supports running a training job across several coordinated containers. Each container can saturate the available GPU devices on its host (aka node) and communicate with peer containers which do the same. By scaling a training job from a single GPU to 16 GPUs you can achieve nearly 16x improvements in training time.
 
@@ -2093,7 +2084,6 @@ To run a simple Infiniband RDMA performance test see the [this sample code](http
 `modal.experimental.get_cluster_info()` exposes the following information about the cluster:
 
 - `rank: int` is the current container's order within the cluster, starting from `0`, the leader.
-- `cluster_id: str` is the unique identifier for the cluster.
 - `container_ips: list[str]` contains the IPv6 addresses of each container in the cluster, sorted by rank.
 - `container_ipv4_ips: list[str]` contains the IPv4 addresses of each container in the cluster, sorted by rank.
 
@@ -2377,7 +2367,7 @@ versions when an App is redeployed. In general, Modal aims to support
 zero-downtime deployments by gradually transitioning traffic to the new version.
 
 If the deployment involves building new versions of the Images used by the App,
-the build process will need to complete successfully. The existing version of
+the build process will need to complete succcessfully. The existing version of
 the App will continue to handle requests during this time. Errors during the
 build will abort the deployment with no change to the status of the App.
 
@@ -2659,7 +2649,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Install Python
         uses: actions/setup-python@v5
@@ -2684,37 +2674,40 @@ additionally specify the target environment in the YAML using
 
 #### Running untrusted code in Functions
 
-# Run untrusted code with Restricted Functions
+# Running untrusted code in Functions
 
-This guide page documents Restricted Functions, which can be used to safely execute untrusted code in Modal Functions.
+Modal provides two primitives for running untrusted code: Restricted Functions and [Sandboxes](https://modal.com/docs/guide/sandboxes). While both can be used for running untrusted code, they serve different purposes: Sandboxes provide a container-like interface while Restricted Functions provide an interface similar to a traditional Function.
 
-## Create a Restricted Function
+Restricted Functions are useful for executing:
 
-To create a Restricted Function, set `restrict_modal_access=True` in the Function definition:
+- Code generated by language models (LLMs)
+- User-submitted code in interactive environments
+- Third-party plugins or extensions
+
+## Using `restrict_modal_access`
+
+To restrict a Function's access to Modal resources, set `restrict_modal_access=True` on the Function definition:
 
 ```python
+import modal
+
+app = modal.App()
+
 @app.function(restrict_modal_access=True)
 def run_untrusted_code(code_input: str):
-    # This code cannot access Modal resources
+    # This function cannot access Modal resources
     return eval(code_input)
 ```
 
-When `restrict_modal_access` is enabled, the Function cannot
+When `restrict_modal_access` is enabled:
 
-- access Modal resources (Queues, Dicts, etc.)
-- call other Functions
-- access Modal's internal APIs
+- The Function cannot access Modal resources (Queues, Dicts, etc.)
+- The Function cannot call other Functions
+- The Function cannot access Modal's internal APIs
 
-## Sandboxes offer an alternative interface for untrusted code
+## Comparison with Sandboxes
 
-Modal provides two primitives for running untrusted code: Restricted Functions and [Sandboxes](https://modal.com/docs/guide/sandboxes).
-While both can be used for running untrusted code, they provide different interfaces:
-Sandboxes provide a process interface,
-while Restricted Functions provide a function-calling interface.
-Process interfaces are especially useful for stateful, multi-stage communication,
-while function-calling interfaces are especially useful for stateless, input/output communication.
-
-These differences are summarized in the table below.
+While both `restrict_modal_access` and [Sandboxes](https://modal.com/docs/guide/sandboxes) can be used for running untrusted code, they serve different purposes:
 
 | Feature   | Restricted Function            | Sandbox                                        |
 | --------- | ------------------------------ | ---------------------------------------------- |
@@ -2736,9 +2729,7 @@ def isolated_function(input_data):
     return process(input_data)
 ```
 
-Note: Prior to v1.3.0, single-use containers were configured by setting `max_inputs=1`.
-
-1. Set appropriate timeouts to prevent long-running operations:
+2. Set appropriate timeouts to prevent long-running operations:
 
 ```python
 @app.function(
@@ -2750,7 +2741,7 @@ def time_limited_function(input_data):
     return process(input_data)
 ```
 
-1. Consider using `block_network=True` to prevent the container from making outbound network requests:
+3. Consider using `block_network=True` to prevent the container from making outbound network requests:
 
 ```python
 @app.function(
@@ -2762,7 +2753,7 @@ def network_isolated_function(input_data):
     return process(input_data)
 ```
 
-1. Minimize the App source that's included in the container
+4. Minimize the App source that's included in the container
 
 A restricted Modal Function will have read access to its source files in the
 container, so you'll want to avoid including anything that would be harmful
@@ -2840,7 +2831,7 @@ This example locks down the container to ensure that the code is safe to execute
 
 ## Error Handling
 
-When a Restricted Function attempts to access Modal resources, it will raise an `AuthError`:
+When a restricted Function attempts to access Modal resources, it will raise an `AuthError`:
 
 ```python
 @app.function(restrict_modal_access=True)
@@ -2859,14 +2850,6 @@ The error message will indicate that the operation is not permitted due to restr
 #### Sandboxes
 
 # Sandboxes
-
-This page is a high-level guide to Sandboxes,
-secure containers for executing untrusted user or agent code on Modal.
-
-For reference documentation on the `modal.Sandbox` interface,
-see [this page](https://modal.com/docs/reference/modal.Sandbox).
-
-## What are Sandboxes and why should I use them?
 
 In addition to the Function interface, Modal has a direct
 interface for defining containers _at runtime_ and securely running arbitrary code
@@ -2901,7 +2884,6 @@ for line in p.stdout:
     print(line, end="")
 
 sb.terminate()
-sb.detach()
 ```
 
 {/snippet}
@@ -2942,37 +2924,37 @@ await sb.terminate();
 package main
 
 import (
- "context"
- "fmt"
- "io"
- "os"
- "time"
+	"context"
+	"fmt"
+	"io"
+	"os"
+	"time"
 
- "github.com/modal-labs/libmodal/modal-go"
+	"github.com/modal-labs/libmodal/modal-go"
 )
 
 func main() {
- ctx := context.Background()
- mc, _ := modal.NewClient()
+	ctx := context.Background()
+	mc, _ := modal.NewClient()
 
- app, _ := mc.Apps.FromName(ctx, "my-app", &modal.AppFromNameParams{
-  CreateIfMissing: true,
- })
- image := mc.Images.FromRegistry("python:3.13-slim", nil)
+	app, _ := mc.Apps.FromName(ctx, "my-app", &modal.AppFromNameParams{
+		CreateIfMissing: true,
+	})
+	image := mc.Images.FromRegistry("python:3.13-slim", nil)
 
- sb, _ := mc.Sandboxes.Create(ctx, app, image, nil)
- defer sb.Terminate(ctx)
+	sb, _ := mc.Sandboxes.Create(ctx, app, image, nil)
+	defer sb.Terminate(context.Background())
 
- p, _ := sb.Exec(ctx, []string{"python", "-c", "print('hello')"}, &modal.SandboxExecParams{
-  Timeout: 3 * time.Second,
- })
- stdout, _ := io.ReadAll(p.Stdout)
- fmt.Println(string(stdout))
+	p, _ := sb.Exec(ctx, []string{"python", "-c", "print('hello')"}, &modal.SandboxExecParams{
+		Timeout: 3 * time.Second,
+	})
+	stdout, _ := io.ReadAll(p.Stdout)
+	fmt.Println(string(stdout))
 
- p2, _ := sb.Exec(ctx, []string{"bash", "-c", "for i in {1..10}; do date +%T; sleep 0.5; done"}, &modal.SandboxExecParams{
-  Timeout: 5 * time.Second,
- })
- io.Copy(os.Stdout, p2.Stdout)
+	p2, _ := sb.Exec(ctx, []string{"bash", "-c", "for i in {1..10}; do date +%T; sleep 0.5; done"}, &modal.SandboxExecParams{
+		Timeout: 5 * time.Second,
+	})
+	io.Copy(os.Stdout, p2.Stdout)
 }
 ```
 
@@ -2997,7 +2979,6 @@ a `timeout` of up to 24 hours to the `Sandbox.create(...)` function.
 
 ```python notest
 sb = modal.Sandbox.create(app=my_app, timeout=10*60)  # 10 minutes
-sb.detach()
 ```
 
 {/snippet}
@@ -3008,7 +2989,6 @@ sb.detach()
 const sb = await modal.sandboxes.create(app, image, {
   timeout: 10 * 60 * 1000, // 10 minutes
 });
-sb.detach();
 ```
 
 {/snippet}
@@ -3017,9 +2997,8 @@ sb.detach();
 
 ```go notest
 sb, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
- Timeout: 10 * time.Minute,
+	Timeout: 10 * time.Minute,
 })
-defer sb.Detach()
 ```
 
 {/snippet}
@@ -3054,7 +3033,6 @@ sb = modal.Sandbox.create(
     workdir="/repo",
     app=my_app,
 )
-sb.detach()
 ```
 
 {/snippet}
@@ -3068,7 +3046,6 @@ const sb = await modal.sandboxes.create(app, image, {
   volumes: { "/data": volume },
   workdir: "/repo",
 });
-sb.detach();
 ```
 
 {/snippet}
@@ -3082,7 +3059,6 @@ sb, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
   Volumes: map[string]*modal.Volume{"/data": volume},
   Workdir: "/repo",
 })
-defer sb.Detach()
 ```
 
 {/snippet}
@@ -3105,7 +3081,6 @@ sb = modal.Sandbox.create(
 )
 p = sb.exec("bash", "-c", "echo $MY_SECRET")
 print(p.stdout.read())
-sb.detach()
 ```
 
 {/snippet}
@@ -3121,7 +3096,6 @@ const sb = await modal.sandboxes.create(app, image, {
 });
 const p = await sb.exec(["bash", "-c", "echo $MY_SECRET"]);
 console.log(await p.stdout.readText());
-sb.detach();
 ```
 
 {/snippet}
@@ -3135,7 +3109,6 @@ image := mc.Images.FromRegistry("python:3.13-slim", nil)
 sb, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
   Secrets: []*modal.Secret{secret},
 })
-defer sb.Detach()
 p, err := sb.Exec(ctx, []string{"bash", "-c", "echo $MY_SECRET"}, nil)
 stdout, err := io.ReadAll(p.Stdout)
 fmt.Println(string(stdout))
@@ -3158,7 +3131,6 @@ image = modal.Image.debian_slim().pip_install("pandas", "numpy")
 
 with modal.enable_output():
     sb = modal.Sandbox.create(image=image, app=my_app)
-sb.detach()
 ```
 
 {/snippet}
@@ -3171,7 +3143,6 @@ const image = modal.images
   .dockerfileCommands(["RUN pip install pandas numpy"]);
 
 const sb = await modal.sandboxes.create(app, image);
-sb.detach();
 ```
 
 {/snippet}
@@ -3184,7 +3155,6 @@ image := mc.Images.FromRegistry("python:3.13-slim", nil).
 
 // Note: Image build logs are automatically streamed in Go
 sb, err := mc.Sandboxes.Create(ctx, app, image, nil)
-defer sb.Detach()
 ```
 
 {/snippet}
@@ -3212,7 +3182,6 @@ Sandbox constructor:
 sb = modal.Sandbox.create("python", "-m", "http.server", "8080", app=my_app, timeout=10)
 for line in sb.stdout:
     print(line, end="")
-sb.detach()
 ```
 
 {/snippet}
@@ -3224,7 +3193,6 @@ const sb = await modal.sandboxes.create(app, image, {
   entrypoint: ["python", "-m", "http.server", "8080"],
   timeout: 10 * 1000,
 });
-sb.detach();
 ```
 
 {/snippet}
@@ -3236,7 +3204,6 @@ sb, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
   Entrypoint: []string{"python", "-m", "http.server", "8080"},
   Timeout:    10 * time.Second,
 })
-sb.Detach()
 ```
 
 {/snippet}
@@ -3263,8 +3230,6 @@ sb2 = modal.Sandbox.from_id(sb_id)
 p = sb2.exec("echo", "hello")
 print(p.stdout.read())
 sb2.terminate()
-sb2.detach()
-sb.detach()
 ```
 
 {/snippet}
@@ -3282,7 +3247,6 @@ const sb2 = await modal.sandboxes.fromId(sbId);
 const p = await sb2.exec(["echo", "hello"]);
 console.log(await p.stdout.readText());
 await sb2.terminate();
-await sb.detach();
 ```
 
 {/snippet}
@@ -3291,17 +3255,16 @@ await sb.detach();
 
 ```go notest
 sb, err := mc.Sandboxes.Create(ctx, app, image, nil)
-defer sb.Detach()
 sbId := sb.SandboxID
 
 // ... later in the program ...
 
 sb2, err := mc.Sandboxes.FromID(ctx, sbId)
-defer sb2.Terminate(ctx)
 
 p, err := sb2.Exec(ctx, []string{"echo", "hello"}, nil)
 stdout, err := io.ReadAll(p.Stdout)
 fmt.Println(string(stdout))
+sb2.Terminate(ctx)
 ```
 
 {/snippet}
@@ -3325,7 +3288,6 @@ print(p.stdout.read())
 
 with sb.open("test.txt", "w") as f:
     f.write("Hello World\n")
-sb.detach()
 ```
 
 {/snippet}
@@ -3334,7 +3296,6 @@ sb.detach()
 
 ```javascript notest
 const sb = await modal.sandboxes.create(app, image, { verbose: true });
-sb.detach();
 ```
 
 {/snippet}
@@ -3345,7 +3306,6 @@ sb.detach();
 sb, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
   Verbose: true,
 })
-defer sb.Detach()
 ```
 
 {/snippet}
@@ -3417,8 +3377,6 @@ sb1 = modal.Sandbox.create(app=my_app, name="my-name")
 # deployed app named "my-app".
 sb2 = modal.Sandbox.from_name("my-app", "my-name")
 assert sb1.object_id == sb2.object_id # sb1 and sb2 refer to the same Sandbox
-sb1.detach()
-sb2.detach()
 ```
 
 {/snippet}
@@ -3432,8 +3390,6 @@ const sb1 = await modal.sandboxes.create(app, image, { name: "my-name" });
 // deployed app named "my-app".
 const sb2 = await modal.sandboxes.fromName("my-app", "my-name");
 console.assert(sb1.sandboxId === sb2.sandboxId); // sb1 and sb2 refer to the same Sandbox
-sb1.detach();
-sb2.detach();
 ```
 
 {/snippet}
@@ -3452,8 +3408,6 @@ sb1, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
 sb2, err := mc.Sandboxes.FromName(ctx, "my-app", "my-name", nil)
 // sb1 and sb2 refer to the same Sandbox
 fmt.Println(sb1.SandboxID == sb2.SandboxID)
-defer sb1.Detach()
-defer sb2.Detach()
 ```
 
 {/snippet}
@@ -3490,9 +3444,6 @@ for sandbox in modal.Sandbox.list(
     tags={"major_version": "1", "minor_version": "2"},
 ):  # Just the latest sandbox.
     print(sandbox.object_id)
-
-sandbox_v1_1.detach()
-sandbox_v1_2.detach()
 ```
 
 {/snippet}
@@ -3530,8 +3481,6 @@ for await (const sandbox of modal.sandboxes.list({
 })) {
   console.log(sandbox.sandboxId);
 }
-sandboxV1_1.detach();
-sandboxV1_2.detach();
 ```
 
 {/snippet}
@@ -3545,8 +3494,6 @@ sandboxV1_1, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreatePar
 sandboxV1_2, err := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
   Command: []string{"sleep", "20"},
 })
-defer sandboxV1_1.Detach()
-defer sandboxV1_2.Detach()
 
 sandboxV1_1.SetTags(ctx, map[string]string{"major_version": "1", "minor_version": "1"})
 sandboxV1_2.SetTags(ctx, map[string]string{"major_version": "1", "minor_version": "2"})
@@ -3581,48 +3528,6 @@ for sandbox := range it {
 {/snippet}
 </CodeTabs>
 
-## Cleaning up Client-side Connections
-
-Unlike other Modal objects, the local Sandbox will hold a direct connection to
-its compute substrate. While this connection should be automatically closed
-during garbage collection, we recommend explicitly cleaning up the resources
-once you are finished interacting with the Sandbox by calling its `detach()` method:
-
-  {#snippet python()}
-
-```python notest
-sb = modal.Sandbox.create(app=my_app)
-sb.detach()
-```
-
-{/snippet}
-
-{#snippet javascript()}
-
-```javascript notest
-const sb = await modal.sandboxes.create(app, image);
-sb.detach();
-```
-
-{/snippet}
-
-{#snippet go()}
-
-```go notest
-sb, err := mc.Sandboxes.Create(ctx, app, image, nil)
-defer sb.Detach()
-```
-
-{/snippet}
-</CodeTabs>
-
-After calling `detach`, any operation using the Sandbox object is not guaranteed to
-work. If you want to continue interacting with a running sandbox, use `Sandbox.from_id`
-to get a new Sandbox object that references the original sandbox. In the Python SDK,
-`terminate` leaves your sandbox attached, so we recommend calling `detach` after you
-are done with your terminated sandbox. In the Go/JS SDK, `Terminate` will also detach
-your sandbox.
-
 #### Running commands
 
 # Running commands in Sandboxes
@@ -3649,7 +3554,6 @@ for line in process.stdout:
     print(line, end="")
 
 sb.terminate()
-sb.detach()
 ```
 
 `Sandbox.exec` returns a [`ContainerProcess`](https://modal.com/docs/reference/modal.container_process#modalcontainer_processcontainerprocess)
@@ -3673,7 +3577,6 @@ p.stdin.write_eof()
 p.stdin.drain()
 p.wait()
 sb.terminate()
-sb.detach()
 
 async def run_async():
     sb = await modal.Sandbox.create.aio(app=my_app)
@@ -3683,7 +3586,6 @@ async def run_async():
     await p.stdin.drain.aio()
     await p.wait.aio()
     await sb.terminate.aio()
-    await sb.detach.aio()
 
 asyncio.run(run_async())
 ```
@@ -3702,7 +3604,6 @@ sb = modal.Sandbox.create(app=my_app)
 p = sb.exec("echo", "hello")
 print(p.stdout.read())
 sb.terminate()
-sb.detach()
 ```
 
 To stream output, take advantage of the fact that `stdout` and `stderr` are
@@ -3720,7 +3621,6 @@ for line in p.stdout:
     print(line, end="")
 p.wait()
 sb.terminate()
-sb.detach()
 
 async def run_async():
     sb = await modal.Sandbox.create.aio(app=my_app)
@@ -3730,7 +3630,6 @@ async def run_async():
         print(line, end="")
     await p.wait.aio()
     await sb.terminate.aio()
-    await sb.detach.aio()
 
 asyncio.run(run_async())
 ```
@@ -3779,7 +3678,6 @@ p = sb.exec(
 p.wait()
 
 sb.terminate()
-sb.detach()
 ```
 
 #### Networking and security
@@ -3822,8 +3720,6 @@ url = f"{creds.url}/?_modal_connect_token={creds.token}"
 ws_url = url.replace("https://", "wss://")
 with websockets.connect(ws_url) as socket:
     socket.send("Hello world!")
-
-sb.detach()
 ```
 
 The server running on port 8080 in the container will receive an authenticated
@@ -3873,8 +3769,6 @@ time.sleep(1)  # Wait for server to start.
 
 print(f"Connecting to {tunnel.url}...")
 print(requests.get(tunnel.url, timeout=5).text)
-
-sb.detach()
 ```
 
 It is also possible to create an encrypted port that uses `HTTP/2` rather than `HTTP/1.1` with the `h2_ports` option. This will return
@@ -3895,8 +3789,6 @@ p = sb.exec("python", "my_http2_server.py")
 tunnel = sb.tunnels()[port]
 time.sleep(1)
 print(f"Tunnel URL: {tunnel.url}")
-
-sb.detach()
 ```
 
 For more details on how tunnels work, see the [tunnels guide](https://modal.com/docs/guide/tunnels).
@@ -3938,7 +3830,6 @@ sb = modal.Sandbox.create(
 p = sb.exec("ls", "/app")
 print(p.stdout.read())
 p.wait()
-sb.detach()
 ```
 
 Alternatively, it's possible to use Modal [Volume](https://modal.com/docs/reference/modal.Volume)s or
@@ -3967,7 +3858,6 @@ with modal.Volume.ephemeral() as vol:
     print(p.stdout.read())
     p.wait()
     sb.terminate()
-    sb.detach()
 ```
 
 The caller also can access files created in the Volume from the Sandbox, even after the Sandbox is terminated:
@@ -3980,10 +3870,10 @@ with modal.Volume.ephemeral() as vol:
     )
     p = sb.exec("bash", "-c", "echo foo > /cache/a.txt")
     p.wait()
-    sb.terminate(wait=True)
+    sb.terminate()
+    sb.wait(raise_on_termination=False)
     for data in vol.read_file("a.txt"):
         print(data)
-    sb.detach()
 ```
 
 Alternatively, if you want to persist files between Sandbox invocations (useful
@@ -3999,46 +3889,15 @@ sb = modal.Sandbox.create(
 )
 p = sb.exec("bash", "-c", "echo foo > /cache/a.txt")
 p.wait()
-sb.terminate(wait=True)
+sb.terminate()
+sb.wait(raise_on_termination=False)
 for data in vol.read_file("a.txt"):
     print(data)
-sb.detach()
 ```
 
 File syncing behavior differs between Volumes and CloudBucketMounts. For
 Volumes, files are only synced back to the Volume when the Sandbox terminates.
 For CloudBucketMounts, files are synced automatically.
-
-### Committing Volume changes with `sync` (v2 only)
-
-For [Volumes v2](https://modal.com/docs/guide/volumes#volumes-v2-overview), you can explicitly
-commit changes at any point during Sandbox execution by running the `sync`
-command on the mountpoint. This persists all data and metadata changes to the
-Volume's storage without waiting for the Sandbox to terminate:
-
-```python notest
-sb = modal.Sandbox.create(
-    volumes={"/data": modal.Volume.from_name("my-v2-volume")},
-    app=my_app,
-)
-
-# Write files to the volume
-sb.exec("bash", "-c", "echo 'hello' > /data/output.txt").wait()
-
-# Commit changes immediately
-p = sb.exec("sync", "/data")
-p.wait()
-if p.returncode != 0:
-    raise Exception(f"sync failed with exit code {p.returncode}")
-
-# Changes are now persisted and visible to other containers
-sb.terminate()
-sb.detach()
-```
-
-This is particularly useful for long-running Sandboxes where you want to
-persist intermediate results, or when you need changes to be visible to other
-containers before the Sandbox terminates.
 
 ## Filesystem API (Alpha)
 
@@ -4063,9 +3922,6 @@ with sb.open("test.txt", "w") as f:
 f = sb.open("test.txt", "rb")
 print(f.read())
 f.close()
-
-sb.terminate()
-sb.detach()
 ```
 
 The filesystem API is similar to Python's built-in [io.FileIO](https://docs.python.org/3/library/io.html#io.FileIO) and supports many of the same methods, including `read`, `readline`, `readlines`, `write`, `flush`, `seek`, and `close`.
@@ -4107,17 +3963,10 @@ async def main():
 Sandboxes support snapshotting, allowing you to save your Sandbox's state
 and restore it later. This is useful for:
 
-- Reducing startup latency
 - Creating custom environments for your Sandboxes to run in
 - Backing up your Sandbox's state for debugging
 - Running large-scale experiments with the same initial state
 - Branching your Sandbox's state to test different code changes independently
-
-Modal currently supports three different kinds of Sandbox snapshots:
-
-1. [Filesystem Snapshots](#filesystem-snapshots)
-2. [Directory Snapshots (Beta)](#directory-snapshots-beta)
-3. [Memory Snapshots (Alpha)](#memory-snapshots-alpha)
 
 ## Filesystem Snapshots
 
@@ -4143,6 +3992,7 @@ sb.terminate()
 sb2 = modal.Sandbox.create(image=image, app=app)
 p2 = sb2.exec("bash", "-c", "cat /test")
 assert p2.stdout.read().strip() == "test"
+sb2.terminate()
 ```
 
 Filesystem Snapshots are optimized for performance: they are calculated as the difference
@@ -4151,237 +4001,10 @@ utilizes the same infrastructure we use to get fast cold starts for your Sandbox
 
 Filesystem Snapshots will generally persist indefinitely.
 
-## Directory Snapshots (Beta)
+## Memory Snapshots
 
-Directory Snapshots allow you to snapshot a specific directory within a running Sandbox. The resulting snapshot is an Image that can then be mounted into another already-running Sandbox (typically at a later time), which can be useful for:
-
-- **Updating system dependencies separately from application code**: Base dependencies can be updated by starting a new Sandbox from an updated base Image, and then mounting in previously snapshotted application code.
-- **Using warm pools in combination with snapshots**: For use cases that benefit from a [warm pool](https://github.com/modal-labs/modal-examples/blob/main/13_sandboxes/sandbox_pool.py) of Sandboxes to reduce start-up latency, the first initialization can now happen in the warm pool without losing the ability to restore application-specific code at a later point in time.
-- **Speeding up resumptions of previous sessions**: Files in mounted Images are prioritized when containers load files, so mounting a directory can speed up Sandbox resumptions vs. starting from a full file system image.
-
-### Usage
-
-Use `snapshot_directory` to snapshot a directory and `mount_image` to mount a previous directory snapshot at a directory path.
-
-  {#snippet python()}
-
-```python notest
-sb = modal.Sandbox.create(app=app)
-# Write some dummy data
-sb.exec("bash", "-c", "mkdir /project && echo 'data' > /project/file.txt").wait()
-
-# Snapshot the directory
-snapshot = sb.snapshot_directory("/project")
-
-# Ok to throw away the old sandbox at this point
-sb.terminate()
-
-# Mount the snapshot in a new Sandbox
-sb2 = modal.Sandbox.create(app=app)
-try:
-    sb2.mount_image("/project", snapshot)
-except modal.exception.NotFoundError:
-    # Handle a potential ttl expiry of the old snapshot here
-    ...
-
-# The sandbox now has access to the previous project state
-assert sb2.exec("cat", "/project/file.txt").stdout.read().strip() == "data"
-
-```
-
-{/snippet}
-{#snippet javascript()}
-
-```javascript notest
-
-const sb = await modal.sandboxes.create(app, image);
-// Write some dummy data
-const p = await sb.exec([
-  "bash",
-  "-c",
-  "mkdir /project && echo 'data' > /project/file.txt",
-]);
-await p.wait();
-
-// Snapshot the directory
-const snapshot = await sb.snapshotDirectory("/project");
-
-// Ok to throw away the old sandbox at this point
-await sb.terminate();
-sb.detach();
-
-// Mount the snapshot in a new Sandbox
-const sb2 = await modal.sandboxes.create(app, image);
-try {
-  await sb2.mountImage("/project", snapshot);
-} catch (e) {
-  if (e instanceof NotFoundError) {
-    // Handle a potential ttl expiry of the old snapshot here
-  }
-}
-
-// The sandbox now has access to the previous project state
-const p2 = await sb2.exec(["cat", "/project/file.txt"]);
-console.assert((await p2.stdout.readText()).trim() === "data");
-sb2.detach();
-```
-
-{/snippet}
-{#snippet go()}
-
-```go notest
-sb, _ := mc.Sandboxes.Create(ctx, app, image, nil)
-defer sb.Detach()
-
-// Write some dummy data
-p, _ := sb.Exec(ctx, []string{"bash", "-c", "mkdir /project && echo 'data' > /project/file.txt"}, nil)
-p.Wait(ctx)
-
-// Snapshot the directory
-snapshot, _ := sb.SnapshotDirectory(ctx, "/project")
-
-// Ok to throw away the old sandbox at this point
-sb.Terminate(ctx, nil)
-
-// Mount the snapshot in a new Sandbox
-sb2, _ := mc.Sandboxes.Create(ctx, app, image, nil)
-defer sb2.Detach()
-
-if err := sb2.MountImage(ctx, "/project", snapshot); err != nil {
-  if errors.Is(err, modal.NotFoundError) {
-    // Handle a potential ttl expiry of the old snapshot here
-  }
-}
-
-// The sandbox now has access to the previous project state
-p2, _ := sb2.Exec(ctx, []string{"cat", "/project/file.txt"}, nil)
-stdout, _ := io.ReadAll(p2.Stdout)
-fmt.Println(strings.TrimSpace(string(stdout))) // "data"
-```
-
-{/snippet}
-</CodeTabs>
-
-### Persistence
-
-Directory snapshots are currently persisted for 30 days after they were last created or used. If you try to use an expired snapshot, Modal will raise a `NotFoundError`, letting you handle the case gracefully.
-
-## Memory Snapshots (Alpha)
-
-> 🌱 Sandbox memory snapshots are in **Alpha.**
-
-Sandbox memory snapshots are copies of a Sandbox’s entire state, both in memory and on the filesystem. These Snapshots can be restored later to create a new Sandbox, which is an exact clone of the original Sandbox.
-
-To snapshot a Sandbox, create it with `_experimental_enable_snapshot` set to `True`, and use the `_experimental_snapshot` method, which returns a `SandboxSnapshot` object:
-
-```python notest
-image = modal.Image.debian_slim().apt_install("curl", "procps")
-app = modal.App.lookup("sandbox-snapshot", create_if_missing=True)
-
-with modal.enable_output():
-    sb = modal.Sandbox.create(
-        "python3", "-m", "http.server", "8000",
-        app=app, image=image, _experimental_enable_snapshot=True
-    )
-
-print(f"Performing snapshot of {sb.object_id} ...")
-snapshot = sb._experimental_snapshot()
-```
-
-Create a new Sandbox from the returned SandboxSnapshot with `Sandbox._experimental_from_snapshot`:
-
-```python notest
-print(f"Restoring from snapshot {sb.object_id} ...")
-sb2 = modal.Sandbox._experimental_from_snapshot(snapshot)
-
-print("Let's see that the http.server is still running...")
-p = sb2.exec("ps", "aux")
-print(p.stdout.read())
-
-# Talk to snapshotted sandbox http.server
-p = sb2.exec("curl", "http://localhost:8000/")
-reply = p.stdout.read()
-print(reply)  # <!DOCTYPE HTML><html lang...
-```
-
-The new Sandbox will be a duplicate of your original Sandbox. All running processes will still be running, in the same state as when they were snapshotted, and any changes made to the filesystem will be visible.
-
-You can retrieve the ID of any Sandbox Snapshot with `snapshot.object_id` . To restore from a snapshot by ID, first rehydrate the Snapshot with `SandboxSnapshot.from_id` and then restore from it:
-
-```python notest
-snapshot_id = snapshot.object_id
-# ... save the Sandbox ID (sb-123abc) for later
-# sometime in the future...
-snapshot = modal.SandboxSnapshot.from_id(snapshot_id)
-sandbox = modal.Sandbox._experimental_from_snapshot(snapshot)
-```
-
-Note that these methods are _experimental_, and we may change them in the future.
-
-### Re-snapshotting
-
-Modal supports creating a new snapshot from a restored Sandbox snapshot. To maintain the snapshot’s expiration window, the new snapshot inherits the expiration of its parent.
-
-Continuing from the example code above, we demonstrate re-snapshotting:
-
-```python notest
-# Add a file to the snapshotted sandbox
-p = sb2.exec("touch", "/foo")
-p.wait()
-
-snapshot2 = sb2._experimental_snapshot()
-print(f"Restoring from new snapshot {snapshot2.object_id} ...")
-sb3 = modal.Sandbox._experimental_from_snapshot(snapshot2)
-# Talk to re-snapshotted sandbox http.server
-p = sb3.exec("curl", "http://localhost:8000/")
-reply = p.stdout.read()
-print(reply)  # Shows the new 'foo' directory in the HTML listing.
-```
-
-### Limitations
-
-Currently, Sandbox Memory Snapshots will expire 7 days after creation. For longer persisting snapshots, try [Filesystem Snapshots](https://modal.com/docs/guide/sandbox-snapshots).
-
-Open TCP connections will be closed automatically when a Snapshot is taken, and will need to be reopened when the Snapshot is restored.
-
-Snapshotting a sandbox will currently cause it to terminate. We intend to remove this limitation soon.
-
-Sandboxes created with `_experimental_enable_snapshot=True` or restored from Snapshots cannot run with GPUs.
-
-It is not possible to snapshot a sandbox while a `Sandbox.exec` command is still running. Furthermore, any background processes launched by a call to `Sandbox.exec` will not be properly restored after a snapshot.
-
-## Persisting Sandbox State
-
-To persist state across Sandbox sessions, you need to:
-
-1. **Trigger the snapshot.** Snapshots are triggered from outside the Sandbox, typically just before termination. A common pattern is to run an exec process inside the Sandbox and wait for it to exit. Once it does, the controller takes a snapshot and terminates the Sandbox.
-2. **Store the snapshot ID.** The `object_id` string must be persisted so you can restore from it later. This is typically keyed by a session or user ID, and can be stored in your database, an external key-value store, or a [Modal Dict](https://modal.com/docs/guide/dicts).
-
-The following example shows this pattern. This code would typically run in a Modal Function or your own backend, orchestrating the Sandbox:
-
-```python notest
-import modal
-
-app = modal.App.lookup("sandbox-snapshot-lifecycle", create_if_missing=True)
-snapshot_store = modal.Dict.from_name("sandbox-snapshots", create_if_missing=True)
-session_id = "sess_a1b2c3d4"
-
-# Restore from snapshot, or use base image
-if session_id in snapshot_store:
-    image = modal.Image.from_id(snapshot_store[session_id])
-else:
-    image = modal.Image.debian_slim()
-
-sb = modal.Sandbox.create(image=image, app=app)
-
-# Run agent which exits when ready to be snapshotted
-p = sb.exec("python", "agent.py")
-p.wait()
-
-# Snapshot and store the object_id
-snapshot_store[session_id] = sb.snapshot_filesystem().object_id
-sb.terminate()
-```
+[Sandboxes memory snapshots](https://modal.com/docs/guide/sandbox-memory-snapshots) are in early preview.
+Contact us if this is something you're interested in!
 
 ### Modal Notebooks
 
@@ -4443,7 +4066,7 @@ Note that the CPU and memory settings are _reservations_, so you can usually bur
 
 ### Notebook pricing
 
-Modal Notebooks are priced simply, by compute usage while the kernel is running. See the [pricing page](https://modal.com/pricing) for rates. Currently the CPU and Memory costs are priced according to Sandboxes. They appear in your [usage dashboard](https://modal.com/settings/usage) under “Notebooks”.
+Modal Notebooks are priced simply, by compute usage while the kernel is running. See the [pricing page](https://modal.com/pricing) for rates. Currently the CPU and Memory costs are priced according to Sandboxes. They appear in your [usage dashboard](https://modal.com/settings/usage) under "Sandboxes" as well.
 
 Inactive notebooks do not incur any cost. You are only billed for time the notebook is actively running.
 
@@ -4494,7 +4117,7 @@ For more information on custom images in Modal, see our [guide on defining image
 
 Secrets can be created from the dashboard at [modal.com/secrets](https://modal.com/secrets). We have templates for common credential types, and they are saved as encrypted objects until container startup.
 
-Attached secrets become available as environment variables in your notebook.
+Attacahed secrets become available as environment variables in your notebook.
 
 ### Creating a Volume
 
@@ -4552,7 +4175,7 @@ Modal Notebooks bundle the same productivity tooling you’d expect from a moder
 
 With Pyright, you get autocomplete, signature help, and on-hover documentation for every installed library.
 
-We also implemented AI-powered code completion using Anthropic's **Claude Sonnet 4.6** model. This keeps you in the flow for everything from small snippets to multi-line functions. Just press `Tab` to accept suggestions or `Esc` to dismiss them.
+We also implemented AI-powered code completion using Anthropic's **Claude 4** model. This keeps you in the flow for everything from small snippets to multi-line functions. Just press `Tab` to accept suggestions or `Esc` to dismiss them.
 
 Familiar Jupyter shortcuts (`A`, `B`, `X`, `Y`, `M`, etc.) all work within the notebook, so you can quickly add new cells, delete existing ones, or change cell types.
 
@@ -4596,7 +4219,7 @@ Run `%modal` to see all options. This works for Cls as well, and you can import 
 
 ## Roadmap
 
-The product is in Beta, and we're planning to make a lot of improvements over the coming months. Some bigger features on mind:
+The product is in beta, and we're planning to make a lot of improvements over the coming months. Some bigger features on mind:
 
 - **Modal cloud integrations**
   - Expose ports with [Tunnels](https://modal.com/docs/guide/tunnels)
@@ -4743,7 +4366,7 @@ The Modal runtime sets several environment variables during initialization. The
 keys for these environment variables are reserved and cannot be overridden by
 your Function or Sandbox configuration.
 
-These variables provide information about the container's runtime
+These variables provide information about the containers's runtime
 environment.
 
 ## Container runtime environment variables
@@ -5198,12 +4821,12 @@ is executed on container startup, creating a file server at the root directory.
 When you hit the web endpoint URL, your request will be routed to the file
 server listening on port `8000`.
 
-For `@modal.web_server` endpoints, you need to make sure that the application binds to
+For `@web_server` endpoints, you need to make sure that the application binds to
 the external network interface, not just localhost. This usually means binding
 to `0.0.0.0` instead of `127.0.0.1`.
 
-See, for instance, our examples of how to serve [Streamlit](https://modal.com/docs/examples/serve_streamlit) and
-[vLLM](https://modal.com/docs/examples/vllm_inference) on Modal.
+See our examples of how to serve [Streamlit](https://modal.com/docs/examples/serve_streamlit) and
+[ComfyUI](https://modal.com/docs/examples/comfyapp) on Modal.
 
 ## Serve many configurations with parametrized functions
 
@@ -5230,16 +4853,16 @@ class Server:
 The values are provided in URLs as query parameters:
 
 ```bash
-curl https://ecorp--server-files.modal.run  # use the default value
+curl https://ecorp--server-files.modal.run		# use the default value
 curl https://ecorp--server-files.modal.run?root=.cache  # use a different value
-curl https://ecorp--server-files.modal.run?root=%2F # don't forget to URL encode!
+curl https://ecorp--server-files.modal.run?root=%2F	# don't forget to URL encode!
 ```
 
 For details, see [this guide to parametrized functions](https://modal.com/docs/guide/parametrized-functions).
 
 ## WebSockets
 
-Functions annotated with `@modal.web_server`, `@modal.asgi_app`, or `@modal.wsgi_app` also support
+Functions annotated with `@web_server`, `@asgi_app`, or `@wsgi_app` also support
 the WebSocket protocol. Consult your web framework for appropriate documentation
 on how to use WebSockets with that library.
 
@@ -5327,7 +4950,7 @@ This assumes you have a [Modal Secret](https://modal.com/secrets) named
 `my-web-auth-token` created, with contents `{AUTH_TOKEN: secret-random-token}`.
 Now, your endpoint will return a 401 status code except when you hit it with the
 correct `Authorization` header set (note that you have to prefix the token with
-`Bearer`):
+`Bearer `):
 
 ```bash
 curl --header "Authorization: Bearer secret-random-token" https://modal-labs--auth-example-f.modal.run
@@ -5356,7 +4979,7 @@ def get_ip_address(request: Request):
 
 # Streaming endpoints
 
-Modal `fastapi_endpoint`s support streaming responses using FastAPI's
+Modal web endpoints support streaming responses using FastAPI's
 [`StreamingResponse`](https://fastapi.tiangolo.com/advanced/custom-response/#streamingresponse)
 class. This class accepts asynchronous generators, synchronous generators, or
 any Python object that implements the
@@ -5704,12 +5327,12 @@ Custom domains can also be used with
 # Request timeouts
 
 Web endpoint (a.k.a. webhook) requests should complete quickly, ideally within a
-few seconds. All web endpoint Function types
+few seconds. All web endpoint function types
 ([`web_endpoint`, `asgi_app`, `wsgi_app`](https://modal.com/docs/reference/modal.web_endpoint))
 have a maximum HTTP request timeout of 150 seconds enforced. However, the
-underlying Modal Function can have a longer [timeout](https://modal.com/docs/guide/timeouts).
+underlying Modal function can have a longer [timeout](https://modal.com/docs/guide/timeouts).
 
-In case the Function takes more than 150 seconds to complete, an HTTP status 303
+In case the function takes more than 150 seconds to complete, a HTTP status 303
 redirect response is returned pointing at the original URL with a special query
 parameter linking it that request. This is the _result URL_ for your function.
 Most web browsers allow for up to 20 such redirects, effectively allowing up to
@@ -6013,7 +5636,7 @@ You're just getting the TLS-encrypted TCP stream directly!
 
 #### Proxies (beta)
 
-# Proxies (Beta)
+# Proxies (beta)
 
 You can securely connect with resources in your private network
 using a Modal Proxy. Proxies are a secure tunnel between
@@ -6029,7 +5652,7 @@ Modal Proxies are built on top of [vprox](https://github.com/modal-labs/vprox),
 a Modal open-source project used to create highly available proxy servers
 using WireGuard.
 
-_Modal Proxies are in Beta. Please let us know if you run into issues._
+_Modal Proxies are in beta. Please let us know if you run into issues._
 
 ## Creating a Proxy
 
@@ -6112,9 +5735,9 @@ always print the same IP address.
 
 # Cluster networking
 
-i6pn (IPv6 private networking) is Modal's private container-to-container networking solution. It allows users to create clusters of Modal containers which can send network traffic to each other with low latency and high bandwidth (≥ 50Gbps).
+i6pn (IPv6 private networking) is Modal’s private container-to-container networking solution. It allows users to create clusters of Modal containers which can send network traffic to each other with low latency and high bandwidth (≥ 50Gbps).
 
-Normally, `modal.Function` containers can initiate outbound network connections to the internet but they are not directly addressable by other containers. i6pn-enabled containers, on the other hand, can be directly connected to by other i6pn-enabled containers and this is a key enabler of Modal's Beta `@modal.experimental.clustered` functionality.
+Normally, `modal.Function` containers can initiate outbound network connections to the internet but they are not directly addressable by other containers. i6pn-enabled containers, on the other hand, can be directly connected to by other i6pn-enabled containers and this is a key enabler of Modal’s preview `@modal.experimental.clustered` functionality.
 
 You can enable i6pn on any `modal.Function`:
 
@@ -6139,7 +5762,7 @@ All i6pn network traffic is _Workspace private_.
 
 In the image above, Workspace A has subnet `fdaa:1::/48`, while Workspace B has subnet `fdaa:2::/48`.
 
-You'll notice they share the first 16 bits. This is because the `fdaa::/16` prefix contains all of our private network IPv6 addresses, while each workspace is assigned a random 32-bit identifier when it is created. Together, these form the 48-bit subnet.
+You’ll notice they share the first 16 bits. This is because the `fdaa::/16` prefix contains all of our private network IPv6 addresses, while each workspace is assigned a random 32-bit identifier when it is created. Together, these form the 48-bit subnet.
 
 The upshot of this is that only containers in the same workspace can see each other and send each other network packets. i6pn networking is secure by default.
 
@@ -6147,7 +5770,7 @@ The upshot of this is that only containers in the same workspace can see each ot
 
 Modal operates a [global fleet](https://modal.com/docs/guide/region-selection) and allows containers to run on multiple cloud providers and in many regions. i6pn networking is however region-scoped functionality, meaning that only i6pn-enabled containers in the same region can perform network communication.
 
-Modal's i6pn-enabled primitives such as `@modal.experimental.clustered` automatically restrict container geographic placement and cloud placement to ensure inter-container connectivity.
+Modal’s i6pn-enabled primitives such as `@modal.experimental.clustered` automatically restrict container geographic placement and cloud placement to ensure inter-container connectivity.
 
 ## Public network access to cluster networking
 
@@ -6208,10 +5831,10 @@ For reference documentation on the `modal.Volume` object, see
 For reference documentation on the `modal volume` CLI command, see
 [this page](https://modal.com/docs/reference/cli/volume).
 
-## Volumes v2 (Beta)
+## Volumes v2
 
-A new generation of the file system, Volumes v2, is now available in open
-Beta.
+A new generation of the file system, Volumes v2, is now available as a
+beta preview.
 
 > 🌱 Instructions that are specific to v2 Volumes will be annotated with 🌱
 > below.
@@ -6495,7 +6118,7 @@ create new files or directories will error with
 [`ENOSPC` (No space left on device)](https://pubs.opengroup.org/onlinepubs/9799919799/).
 
 If you need to work with a large number of files, consider using Volumes v2!
-It is currently in Beta. See below for more info.
+It is currently in beta. See below for more info.
 
 ## Filesystem consistency
 
@@ -6561,17 +6184,6 @@ def run():
 If you instead write to `/xyz.txt`, the file will be saved to the local disk of the Modal Function.
 When you dump the contents of the Volume, you will not see the `xyz.txt` file.
 
-## Disk usage reporting
-
-Modal Volumes are not block devices and do not have a fixed capacity.
-Additionally, used space is not currently reported at the filesystem level.
-As a result, tools that query disk usage via the `statfs` syscall
-(e.g. `shutil.disk_usage()`, `os.statvfs()`, `df`) will return placeholder
-values.
-
-If you need to check the size of a Volume, refer to the size shown in the Modal
-dashboard, or use `du` on the mounted Volume within a container.
-
 ## Volumes v2 overview
 
 Volumes v2 generally behave just like Volumes v1, and most of the existing APIs
@@ -6580,9 +6192,9 @@ Because the file system implementation is completely different, there will be
 some significant performance characteristics that can differ from version 1
 Volumes. Below is an outline of the key differences you should be aware of.
 
-### Volumes v2 are still in Beta
+### Volumes v2 is still in beta
 
-This new file system version is still in Beta, and we cannot guarantee that
+This new file system version is still in beta, and we cannot guarantee that
 no data will be lost. We don't recommend using Volumes v2 for any
 mission-critical data at this time. You can still reap the benefits of v2 for
 data that isn't precious, or that is easy to rebuild, such as log files,
@@ -6590,7 +6202,7 @@ regularly updated training data and model weights, caches, and more.
 
 ### Volumes v2 are HIPAA compliant
 
-If you delete the volume, the data is guaranteed to be lost according to HIPAA requirements.
+If you delete the volume, the data is be guaranteed to be lost according to HIPAA requirements.
 
 ### Volumes v2 is more scaleable
 
@@ -6627,56 +6239,13 @@ overhead, like a rewrite of the entire file.
 
 In v2, this overhead is removed, and only changes are written.
 
-### In v2, you can commit using `sync`
-
-For Volumes v2, you can trigger a commit from within a Sandbox or modal shell
-by running the `sync` command on the mountpoint:
-
-```bash
-sync /path/to/mountpoint
-```
-
-This is useful when you don't have access to the Python SDK's
-[`.commit()`](https://modal.com/docs/reference/modal.Volume#commit) method, such as when running
-shell commands in a Sandbox or during an interactive `modal shell` session.
-
-Running `sync` on the mountpoint will flush any pending writes to the kernel
-and then persist all data and metadata changes to the Volume's persistent
-storage.
-
-For example, to commit changes in a modal shell session:
-
-```bash
-% modal shell --volume my-v2-volume
-root / → echo "hello" > /mnt/my-v2-volume/test.txt
-root / → sync /mnt/my-v2-volume  # Persist changes before exiting
-```
-
-Or to commit from within a Sandbox:
-
-```python notest
-sb = modal.Sandbox.create(
-    volumes={"/data": modal.Volume.from_name("my-v2-volume")},
-    app=my_app,
-)
-sb.exec("bash", "-c", "echo 'hello' > /data/test.txt").wait()
-
-# Persist changes and check for errors
-p = sb.exec("sync", "/data")
-p.wait()
-if p.returncode != 0:
-    raise Exception(f"sync failed with exit code {p.returncode}")
-```
-
-> ⚠️ This feature is only available for Volumes v2.
-
 ### Volumes v2 has a few limits in place
 
 While we work out performance trade-offs and listen to user feedback, we have
 put some artificial limits in place.
 
-- Files must be less than 1 TiB.
-- At most 262,144 files can be stored in a single directory.
+- Files must be less than one 1 TiB.
+- At most 32,768 files can be stored in a single directory.
   Directory depth is unbounded, so the total file count is unbounded.
 - Traversing the filesystem can be slower in v2 than in v1, due to demand
   loading of the filesystem tree.
@@ -6846,14 +6415,14 @@ Images are rebuilt when their definition changes, starting from the changed laye
 which increases reproducibility for some builds but leads to unnecessary extra downloads
 in most cases.
 
-## Optimizing model weight reads with `@modal.enter`
+## Optimizing model weight reads with `@enter`
 
 In the above code samples, weights are loaded from disk into memory each time
 the `inference` function is run. This isn't so bad if inference is much
 slower than model loading (e.g. it is run on very large datasets)
 or if the model loading logic is smart enough to skip reloading.
 
-To guarantee a particular model's weights are only loaded once, you can use the `@modal.enter`
+To guarantee a particular model's weights are only loaded once, you can use the `@enter`
 [container lifecycle hook](https://modal.com/docs/guide/lifecycle-functions)
 to load the weights only when a new container starts.
 
@@ -6873,7 +6442,7 @@ class Model:
         return self.model.run(prompt)
 ```
 
-Note that methods decorated with `@modal.enter` can't be passed dynamic arguments.
+Note that methods decorated with `@enter` can't be passed dynamic arguments.
 
 If you need to load a single but possibly different model on each container start, you can
 [parametrize](https://modal.com/docs/guide/parametrized-functions) your Modal Cls.
@@ -7298,7 +6867,7 @@ dictionary = modal.Dict.from_name("async-dict", create_if_missing=True)
 @app.local_entrypoint()
 async def main():
     await dictionary.put.aio("key", "value")  # setting a value asynchronously
-    assert await dictionary.get.aio("key")   # getting a value asynchronously
+    assert await dictionary.get.aio("key")   # getting a value asyncrhonrously
 ```
 
 See the guide to [asynchronous functions](https://modal.com/docs/guide/async) for more
@@ -7359,7 +6928,7 @@ Dicts also provide a locking primitive. See
 
 Modal Queues provide distributed FIFO queues to your Modal Apps.
 
-```python runner:ModalRunner retry:2
+```python runner:ModalRunner
 import modal
 
 app = modal.App()
@@ -7414,27 +6983,36 @@ Each partition has an independent TTL, by default 24 hours.
 Lower TTLs can be specified by the `partition_ttl` argument in the `put` or
 `put_many` methods.
 
-```python
-with modal.Queue.ephemeral() as q:
-    q.put("some value")  # first in
-    q.put(123)
+```python runner:ModalRunner
+import modal
 
-    assert q.get() == "some value"  # first out
-    assert q.get() == 123
+app = modal.App()
+my_queue = modal.Queue.from_name("partitioned-queue", create_if_missing=True)
 
-    q.put(0)
-    q.put(1, partition="foo")
-    q.put(2, partition="bar")
+@app.local_entrypoint()
+def main():
+    # clear all elements, start from a clean slate
+    my_queue.clear()
+
+    my_queue.put("some value")  # first in
+    my_queue.put(123)
+
+    assert my_queue.get() == "some value"  # first out
+    assert my_queue.get() == 123
+
+    my_queue.put(0)
+    my_queue.put(1, partition="foo")
+    my_queue.put(2, partition="bar")
 
     # Default and "foo" partition are ignored by the get operation.
-    assert q.get(partition="bar") == 2
+    assert my_queue.get(partition="bar") == 2
 
     # Set custom 10s expiration time on "foo" partition.
-    q.put(3, partition="foo", partition_ttl=10)
+    my_queue.put(3, partition="foo", partition_ttl=10)
 
-    # Iterate through items in place (read immutably)
-    q.put(1)
-    assert [v for v in q.iterate()] == [0, 1]
+    # (beta feature) Iterate through items in place (read immutably)
+    my_queue.put(1)
+    assert [v for v in my_queue.iterate()] == [0, 1]
 ```
 
 ## You can access Modal Queues synchronously or asynchronously, blocking or non-blocking
@@ -7480,26 +7058,27 @@ really make sense to serialize, like live system resources (sockets, writable fi
 Note that you will need to have the library defining the type installed in the environment
 where you retrieve the object so that it can be deserialized.
 
-```python runner:ModalRunner retry:2
+```python runner:ModalRunner
 import modal
 
 app = modal.App()
+queue = modal.Queue.from_name("funky-queue", create_if_missing=True)
+queue.clear()  # start from a clean slate
 
 @app.function(image=modal.Image.debian_slim().pip_install("numpy"))
-def fill(q: modal.Queue):
+def fill():
     import numpy
 
-    q.put(modal)
-    q.put(q)  # don't try this at home!
-    q.put(numpy)
+    queue.put(modal)
+    queue.put(queue)  # don't try this at home!
+    queue.put(numpy)
 
 @app.local_entrypoint()
 def main():
-    with modal.Queue.ephemeral() as q:
-        fill.remote(q)
-        print(q.get().Queue)
-        print(q.get())
-        # print(q.get())  # DeserializationError, if no numpy locally
+    fill.remote()
+    print(queue.get().Queue)
+    print(queue.get())
+    # print(queue.get())  # DeserializationError, if no torch locally
 ```
 
 #### Dataset ingestion
@@ -7620,10 +7199,6 @@ The examples include these popular large datasets:
 
 # Cold start performance
 
-This guide page details the techniques and Modal features used to improve cold start performance.
-
-## What is a cold start?
-
 Modal Functions are run in [containers](https://modal.com/docs/guide/images).
 
 If a container is already ready to run your Function, it will be reused.
@@ -7639,6 +7214,9 @@ There are two sources of increased latency during cold starts:
 2. when an input is handled by the container that just started,
    there may be **extra work that only needs to be done on the first invocation**
    ("initialization").
+
+This guide presents techniques and Modal features for reducing the impact of both queueing
+and initialization on observed latencies.
 
 If you are invoking Functions with no warm containers
 or if you otherwise see inputs spending too much time in the "pending" state,
@@ -7675,7 +7253,6 @@ The time taken for a container to become warm
 and ready for inputs can range from seconds to minutes.
 
 Modal's custom container stack has been heavily optimized to reduce this time.
-You can read about some of our optimizations [here](https://modal.com/blog/jono-containers-talk).
 Containers boot in about one second.
 
 But before a container is considered warm and ready to handle inputs,
@@ -7732,7 +7309,7 @@ Increasing the `scaledown_window` reduces the chance that subsequent requests
 will require a cold start, although you will be billed for any resources used
 while the container is idle (e.g., GPU reservation or residual memory
 occupancy). Note that containers will not necessarily remain alive for the
-entire window, as the autoscaler will scale down more aggressively when the
+entire window, as the autoscaler will scale down more agressively when the
 Function is substantially over-provisioned.
 
 #### Overprovision resources with `min_containers` and `buffer_containers`
@@ -7803,10 +7380,9 @@ it just moves the latency to the warm up period,
 where it can be handled by
 [running more warm containers](#run-more-warm-containers).
 
-### Share initialization work across cold starts with Memory Snapshots
+### Share initialization work across cold starts with memory snapshots
 
-Cold starts can also be made faster by using Modal
-[Memory Snapshots](https://modal.com/docs/guide/memory-snapshots).
+Cold starts can also be made faster by using memory snapshots.
 
 Invocations of a Function after the first
 are faster in part because the memory is already populated
@@ -7818,8 +7394,8 @@ at user-controlled points after it has been warmed up
 and reuses that state in future boots, which can substantially
 reduce cold start latency penalties and warm up period duration.
 
-Refer to the [Memory Snapshots guide](https://modal.com/docs/guide/memory-snapshots)
-for details.
+Refer to the [memory snapshot](https://modal.com/docs/guide/memory-snapshot)
+guide for details.
 
 ### Optimize initialization code
 
@@ -7881,246 +7457,62 @@ starts, it's possible that some part of your function's code is holding the
 Python [GIL](https://wiki.python.org/moin/GlobalInterpreterLock) and reducing
 the efficacy of the multi-threaded executor.
 
-#### Memory Snapshots
+#### Memory Snapshot
 
-# Memory Snapshots
+# Memory Snapshot
 
-Modal Memory Snapshots can dramatically reduce the [cold start](https://modal.com/docs/guide/cold-start) latency of Modal Functions by skipping initialization work on most container boots.
+Modal can save the state of your Function's memory right after initialization and restore it directly later, skipping initialization work.
 
-For instance, during initialization, your code might issue many file read operations sequentially,
-like the >20,000 file operations required to load `torch`.
-It might then run a JIT compiler that takes several minutes or more,
-like the one in PyTorch.
-Memory Snapshots replace this initialization work with direct restoration of the memory state that work created.
+These "memory snapshots" can dramatically improve cold start performance for Modal Functions.
 
-The relative speedup is unbounded: the more work you do to create fewer bytes, the greater it becomes.
-In our experience, practical initialization-heavy Functions often start up
-[3-10x faster from Memory Snapshots](https://modal.com/blog/gpu-mem-snapshots).
+During initialization, your code might read many files from the file system, which is quite expensive.
+For example, the `torch` package is [hundreds of MiB](https://pypi.org/project/torch/#files) and requires over 20,000 file operations to load!
+Such Functions typically start several times faster with memory snapshots enabled.
 
-There are two variants of Memory Snapshots.
-[CPU Memory Snapshots](#cpu-memory-snapshots) capture the state of CPU memory.
-[GPU Memory Snapshots](#gpu-memory-snapshots-alpha), an [alpha feature](https://modal.com/docs/guide/feature-maturity), also capture the state of GPU memory.
+The memory snapshot feature has two variants. GPU memory snapshots (alpha) provide full GPU access before the snapshot is taken, while CPU memory snapshots do not.
 
-## CPU Memory Snapshots
+## CPU Memory Snapshot
 
-CPU Memory Snapshots capture the state of a container and save it to disk.
-This saved snapshot can then be used to put new containers directly into the exact same state.
+CPU memory snapshots capture the state of a container and save it to disk. This saved snapshot can then be used to quickly restore new containers to the exact same state.
 
-You can enable Memory Snapshots for your Function with the `enable_memory_snapshot=True` parameter:
+### Basic usage
+
+You can enable memory snapshots for your Function with the `enable_memory_snapshot=True` parameter:
 
 ```python
 @app.function(enable_memory_snapshot=True)
 def my_func():
-    ...
+    print("hello")
 ```
 
-Then deploy the App, e.g. with `modal deploy`. Memory Snapshots are created only for deployed Apps.
+Then deploy the App with `modal deploy`. Memory snapshots are created only for deployed Apps.
 
-Any code executed in global scope, such as imports, will be captured in the Memory Snapshot.
-Use the [`Image.imports` context manager](https://modal.com/docs/reference/modal.Image#imports)
-to import remote-only dependencies in the global scope.
-
-```python
-image = modal.Image.debian_slim().uv_pip_install("pandas")
-
-with image.imports():
-    import pandas as pd
-
-@app.function(enable_memory_snapshot=True, image=image)
-def my_func():
-    print(f"pandas v{pd.__version__}")
-```
-
-## Container lifecycle hooks and Memory Snapshots
-
-Modal's [container lifecycle hooks](https://modal.com/docs/guide/lifecycle-functions)
-provide additional control over what parts of container initialization work
-are included in Memory Snapshots. Put initialization code that you want to run
-before snapshotting inside methods decorated with `@modal.enter(snap=True)`.
+When using classes decorated with [`@cls`](https://modal.com/docs/guide/lifecycle-functions), [`@modal.enter()`](https://modal.com/docs/reference/modal.enter) hooks are not included in the snapshot by default. Add `snap=True` to include them:
 
 ```python
 @app.cls(enable_memory_snapshot=True)
 class MyCls:
     @modal.enter(snap=True)
     def load(self):
-        ...  # will be snapshot
-
-    @modal.enter()
-    def load_more(self):
-        ...  # will not be snapshot
+        ...
 ```
 
-## GPU Memory Snapshots (Alpha)
+Any code executed in global scope, such as top-level imports, will also be captured by the memory snapshot.
 
-GPU Memory Snapshots build on CPU Memory Snapshots and additionally capture GPU state.
-This feature is [experimental and in Alpha](https://modal.com/docs/guide/feature-maturity).
+### CPU memory snapshots for GPU workloads
 
-In addition to `enable_memory_snapshot=True`,
-pass `experimental_options={"enable_gpu_snapshot": True}` to your Function or Cls
-to enable GPU Memory Snapshots.
-
-```python
-@app.function(
-    gpu="a10",
-    enable_memory_snapshot=True,
-    experimental_options={"enable_gpu_snapshot": True}
-    )
-def my_gpu_func():
-    ...
-```
-
-You'll generally want to include any expensive initialization work that
-requires the GPU in the Memory Snapshot.
-Use a Modal [Cls](https://modal.com/docs/guide/lifecycle-functions)
-and put that work inside a `@modal.enter` method,
-like so:
-
-```python
-image = modal.Image.debian_slim().uv_pip_install("transformers[torch]")
-
-with image.imports():
-     import torch
-     from transformers import pipeline
-
-@app.cls(
-    gpu="h100",
-    enable_memory_snapshot=True,
-    experimental_options={"enable_gpu_snapshot": True},
-    image=image,
-)
-class Llm:
-    @modal.enter(snap=True)
-    def init(self):
-        self.pipeline = pipeline(model="Qwen/Qwen3-1.7B-FP8", device_map="cuda")
-        self.pipeline.model = torch.compile(self.pipeline.model, mode="reduce-overhead")
-        context = [{"role": "user", "content": DEFAULT_PROMPT}]
-        self.pipeline(context)
-```
-
-You can find a complete code sample [here](https://modal.com/docs/examples/gpu_snapshot).
-
-We recommend warming up your model by running a few forward passes on sample data
-in the `@modal.enter(snap=True)` method to move more initialization work into the snapshotting phase.
-Without warmup, this work is generally done on the first few requests after container start
-(regardless of whether Memory Snapshots are used),
-which shows up as tail latency.
-
-### Limitations of GPU Memory Snapshots
-
-[We've seen](https://modal.com/blog/gpu-mem-snapshots) that GPU Memory Snapshots can massively reduce cold start time,
-but they are subject to certain limitations.
-The underlying checkpoint/restore technology in the device drivers
-is still quite new, and so there are sharp edges and surprising gaps.
-We expect these to be resolved as the drivers update,
-but in the meantime, we recommend reviewing the material below
-before adding GPU Memory Snapshots to your Modal Functions.
-
-#### You may need to rewrite code for compatibility or to improve performance
-
-While most GPU-accelerated Modal Functions can take advantage of GPU Memory Snapshots,
-apart from the limitations described below,
-most Functions will need some of their code rewritten to ensure compatibility with GPU Memory Snapshots
-or to deliver performance improvements.
-
-This is particularly true for more complex inference engines,
-like those used to maximize [LLM inference performance](https://modal.com/docs/guide/high-performance-llm-inference).
-For instance, it is often better to discard the initial, unfilled KV cache before the snapshot is taken,
-then recreate it on restore, rather than writing and then reading the KV cache's meaningless pages in a snapshot.
-See [this example with vLLM](https://modal.com/docs/examples/vllm_snapshot)
-and [this example with SGLang](https://modal.com/docs/examples/sglang_snapshot)
-for sample code, patterns, and other guidance.
-
-#### GPU Memory Snapshots are generally incompatible with multi-GPU code
-
-Though a few simple programs interacting with multiple GPUs can be successfully snapshot,
-there are known issues with most practical uses of multiple GPUs,
-stemming from multi-process and multi-GPU resource management concerns.
-We anticipate improvements here in future drivers.
-
-#### GPU Memory Snapshots are generally incompatible with non-CUDA GPU code
-
-For instance, use of graphics capabilities prior to snapshotting will generally cause failures.
-
-#### GPU Memory Snapshots do not speed up model loading from storage
-
-Memory Snapshots use the same high-performance distributed filesystem
-that delivers Modal [Images](https://modal.com/docs/guide/images)
-and Modal [Volumes](https://modal.com/docs/guide/volumes)
-to our worldwide fleet of containers at minimum latency and maximum throughput.
-
-That means that if the majority of your initialization latency is spent loading weights,
-GPU Memory Snapshots will generally not improve your cold start times --
-and may even worsen them, by adding overhead.
-Instead, Memory Snapshots should primarily be used to "skip past" work
-that is not bottlenecked by storage bandwidth, like library initialization (imports)
-and JIT compilation (Torch, DeepGEMM, Triton, etc.).
-
-#### GPU Memory Snapshots can interact poorly with `torch.compile`
-
-In certain cases, running the Torch Compiler can cause Memory Snapshot creation to fail.
-
-Some of these failures can be fixed by setting the environment variable `TORCHINDUCTOR_COMPILE_THREADS` to `1` before compiling.
-
-## Memory Snapshots FAQs
-
-### How do I know whether Memory Snapshots are being created or used?
-
-You can see Memory Snapshots in action in your Function's "Containers" tab. Containers that created a memory snapshot are marked with a  icon in the Startup column. Containers that restored from a snapshot are marked with a  icon. In the below screenshot, the container startup times when restoring from a memory snapshot are significantly faster.
-
-![snapshot icons](https://modal-cdn.com/cdnbot/memory-snapshot-iconss6tm168n_cb303ec9.webp)
-
-You can also search your Modal App's logs for the line `Snapshot created. Restoring Function from memory snapshot.`
-
-### When are Memory Snapshots updated?
-
-Redeploying your Function with new configuration (e.g. a [new GPU type](https://modal.com/docs/guide/gpu))
-or new code will cause previous Memory Snapshots to become obsolete.
-Subsequent invocations to the new Function version will automatically create new Memory Snapshots with the new configuration and code.
-
-Changes to [Modal Volumes](https://modal.com/docs/guide/volumes) do not cause Memory Snapshots to update.
-Deleting files in a Volume used during restore will cause restore failures.
-
-### I haven't changed my Function. Why do I still see Memory Snapshots being created sometimes?
-
-Modal recaptures Memory Snapshots to keep up with the platform's latest runtime and security changes.
-
-Additionally, you may observe your Function being snapshot multiple times during its first few invocations.
-This happens because Memory Snapshots are specific to the underlying worker type that created them
-(e.g. CPU flags), and Modal Functions run across a handful of worker types.
-
-Snapshot creation may add some latency to Function initialization.
-
-CPU-only Functions need around 6 snapshots for full coverage, and Functions targeting a specific
-GPU (e.g. A100) need 2-3.
-
-### How do Memory Snapshots handle randomness?
-
-If your application depends on uniqueness of state, you must evaluate your
-Function code and verify that it is resilient to snapshotting operations. For
-example, if a variable is randomly initialized and that value included in a Memory Snapshot,
-that variable will be identical after every restore, possibly breaking uniqueness expectations
-of later code.
-
-## Advanced usage of Memory Snapshots
-
-### Using GPUs without using GPU Memory Snapshots
-
-CPU Memory Snapshots on their own block GPU access,
-but GPU Functions can still benefit from Memory Snapshots.
-This involves refactoring your initialization code to run across two separate `@modal.enter` functions:
-one that runs before creating the snapshot (`snap=True`),
-and one that runs after restoring from the snapshot (`snap=False`).
-
-For instance, you might load model weights into CPU memory in the `snap=True` method,
-then move the weights onto GPU memory in the `snap=False` method.
-
-Even without GPU snapshotting, this technique reduces the startup time for `Embedder.run`
-in the below example by about 3x, from ~6 seconds down to just ~2 seconds.
+CPU memory snapshots don't support direct GPU memory capture, but GPU Functions can still benefit
+from memory snapshots through a two-stage initialization process. This involves refactoring
+your initialization code to run across two separate `@modal.enter` functions: one that runs before
+creating the snapshot (`snap=True`), and one that runs after restoring from the
+snapshot (`snap=False`). Load model weights onto CPU memory in the `snap=True`
+method, and then move the weights onto GPU memory in the `snap=False` method.
+Here's an example using the `sentence-transformers` package:
 
 ```python
 import modal
 
-image = modal.Image.debian_slim().uv_pip_install("sentence-transformers")
+image = modal.Image.debian_slim().pip_install("sentence-transformers")
 app = modal.App("sentence-transformers", image=image)
 
 with image.imports():
@@ -8128,7 +7520,7 @@ with image.imports():
 
 model_vol = modal.Volume.from_name("sentence-transformers-models", create_if_missing=True)
 
-@app.cls(gpu="a10", volumes={"/models": model_vol}, enable_memory_snapshot=True)
+@app.cls(gpu="a10g", volumes={"/models": model_vol}, enable_memory_snapshot=True)
 class Embedder:
     model_id = "BAAI/bge-small-en-v1.5"
 
@@ -8139,7 +7531,7 @@ class Embedder:
 
     @modal.enter(snap=False)
     def setup(self):
-        self.model.to("cuda")  # Move the model to the GPU!
+        self.model.to("cuda")  # Move the model to a GPU!
 
     @modal.method()
     def run(self, sentences:list[str]):
@@ -8155,18 +7547,21 @@ if __name__ == "__main__":
     cls().run.remote(sentences=["what is the meaning of life?"])
 ```
 
-#### GPUs are not available in CPU-only Memory Snapshots
+Even without GPU snapshotting, this workaround reduces the time it takes for `Embedder.run`
+to startup by about 3x, from ~6 seconds down to just ~2 seconds.
 
-If you are using the GPU Memory Snapshot feature (`enable_gpu_snapshot`), then
-GPUs are available within `@modal.enter(snap=True)`.
+### GPU availability during the memory snapshot phase
+
+If you are using the GPU memory snapshot feature (`enable_gpu_snapshot`), then
+GPUs are available within `@enter(snap=True)`.
 
 If you are using memory snapshots _without_ `enable_gpu_snapshot`, then it's important
-to note that GPUs will not be available within the `@modal.enter(snap=True)` method.
+to note that GPUs will not be available within the `@enter(snap=True)` method.
 
 ```python
-image = modal.Image.debian_slim().uv_pip_install("torch", "numpy")
-
-@app.cls(enable_memory_snapshot=True, gpu="a10", image=image)
+import modal
+app = modal.App(image=modal.Image.debian_slim().pip_install("torch"))
+@app.cls(enable_memory_snapshot=True, gpu="A10")
 class GPUAvailability:
     @modal.enter(snap=True)
     def no_gpus_available_during_snapshots(self):
@@ -8183,7 +7578,7 @@ class GPUAvailability:
         print(f"GPUs available: {torch.cuda.is_available()}") # True
 ```
 
-#### Watch out for accidental GPU initialization during CPU-only Memory Snapshots
+### Known limitations
 
 The `torch.cuda` module has multiple functions which, if called during
 snapshotting, will initialize CUDA as having zero GPU devices. Such functions
@@ -8219,324 +7614,91 @@ image = modal.Image.debian_slim().pip_install("xformers>=0.28")  # for instance
 image = image.env({"XFORMERS_ENABLE_TRITON": "1"})
 ```
 
-#### High-performance LLM inference
+## GPU Memory Snapshot
 
-# High-performance LLM inference
+With our experimental GPU memory snapshot feature, we are able to capture the entire GPU state too.
+This makes for simpler initialization logic and even faster cold starts.
 
-This high-level guide documents the key techniques used to achieve high performance
-when running LLM inference on Modal.
+Pass the additional option `experimental_options={"enable_gpu_snapshot": True}` to your Function or class
+to enable GPU snapshotting. These functions have full GPU and CUDA access.
 
-Open weights models and open source inference engines have
-closed much of the gap with proprietary models and proprietary engines
-and continue to improve as they attract work from a broad community.
-It is now and will increasingly be economical to run many generative AI applications in-house,
-rather than relying on external providers.
+```python
+@app.function(
+    gpu="a10",
+    enable_memory_snapshot=True,
+    experimental_options={"enable_gpu_snapshot": True},
+)
+def my_gpu_func():
+    import torch
+    print(f"GPUs available: {torch.cuda.is_available()}")  # True
+```
 
-Achieving competitive performance and cost is not instantaneous, however.
-It requires some thought and tuning.
-And LLM inference is in many ways quite different to the web serving and database workloads
-that engineers are used to deploying and optimizing.
+Here's what the above `SentenceTransformer` example looks like with GPU memory snapshot enabled:
 
-This guide collects techniques we have seen work in production inference deployments.
-We include code samples so that you can try high-performance LLM inference for yourself.
+```python notest
+@app.cls(
+    gpu="a10g",
+    volumes={"/models": model_vol},
+    enable_memory_snapshot=True,
+    experimental_options={"enable_gpu_snapshot": True}
+)
+class Embedder:
+    model_id = "BAAI/bge-small-en-v1.5"
 
-We split the guide by the key performance criterion that matters for the workload:
+    @modal.enter(snap=True)
+    def load(self):
+        # Create a memory snapshot with the model loaded in GPU memory.
+        self.model = SentenceTransformer(f"/models/{self.model_id}", device="cuda")
+```
 
-- **[throughput](#achieving-high-throughput-llm-inference-tps)**,
-  for large "jobs" made of many parallel requests that are only finished when they all finish,
-- **[latency](#minimizing-llm-inference-latency-ttfttpotttlt)**,
-  for serving each individual request as fast as possible, usually on human-interactive timescales,
-- **[cold start time](#high-performance-llm-inference-for-bursty-workloads-cold-start-time)**,
-  for bursty workloads that mix latency- and throughput-sensitive components.
+To achieve even faster cold starts, we recommend warming up your model by running a few forward passes on sample data
+in the `@enter(snap=True)` method.
 
-This high-level guide and the attendant code samples are intended to kick-start
-your own process of inference deployment and performance optimization.
-You can find [baseline benchmarks](https://modal.com/llm-almanac/advisor)
-and [benchmarking recommendations](https://modal.com/llm-almanac/how-to-benchmark)
-in our [LLM Engineer's Almanac](https://modal.com/llm-almanac/workloads).
+Refer to the code sample [here](https://modal.com/docs/examples/gpu_snapshot) for a more complete example. Our
+[blog post](https://modal.com/blog/gpu-mem-snapshots) also provides more useful details.
 
-If you just want to get started running a basic LLM server on Modal, see
-[this example](https://modal.com/docs/examples/llm_inference).
-If you just want to dive into code, see
-[this example for high throughput](https://modal.com/docs/examples/vllm_throughput),
-[this example for low latency](https://modal.com/docs/examples/sglang_low_latency),
-and [this example for low cold start time](https://modal.com/docs/examples/sglang_snapshot).
+### Known limitations
 
-## Achieving high throughput LLM inference (TPS)
+GPU memory snapshots are in _alpha_.
+[We've seen](https://modal.com/blog/gpu-mem-snapshots) that they can massively reduce cold boot time
+but we are still exploring their limitations. Try it for yourself and let us know how it goes!
 
-The quintessential "high throughput" LLM inference workload is a database backfill:
-on a trigger, a large number (100s or more) of rows need to be processed,
-e.g. to produce a sentiment score as part of an analytics pipeline
-or to produce a generation that will be scored as part of offline evals.
-No person or system is waiting on the result from any particular row.
+#### Compatibility with `torch.compile`
 
-Performance is defined by _throughput_, the rate at which tasks are completed,
-which translates to end-to-end latency for the entire job.
-For most deployments, this in turn directly determines cost.
-It is measured in tokens per second (TPS).
+If `torch.compile` is called (either directly or indirectly) during the `@modal.enter(snap=True)` method, creating the snapshot will fail for some models. In some of these cases, setting the [environment variable](https://modal.com/docs/guide/environment_variables) `TORCHINDUCTOR_COMPILE_THREADS` to `1` will solve the issue.
 
-Many, but not all, high throughput LLM inference applications have large contexts and small outputs,
-which means they are dominated by prefill/prompt processing time, rather than decode/token generation time.
-Combined with batching that increases
-[arithmetic intensity](https://modal.com/gpu-glossary/perf/arithmetic-intensity),
-throughput-oriented LLM inference jobs are generally
-[compute-bound](https://modal.com/gpu-glossary/perf/compute-bound).
+## Memory Snapshot FAQ
 
-In general, high throughput is easier to achieve than low latency.
-GPUs are inherently [designed for maximum throughput](https://modal.com/gpu-glossary/perf/latency-hiding).
-Additionally, LLM training is a throughput-sensitive workload, so good kernels
-are typically made available open source earlier.
+### When are snapshots updated?
 
-For instance, the [Flash Attention 4 kernel](https://modal.com/blog/reverse-engineer-flash-attention-4)
-that extends the Flash Attention kernel series to [Blackwell GPUs](https://modal.com/blog/introducing-b200-h200)
-is, at time of writing months after its initial release,
-primarily suitable for throughput-sensitive applications -- but watch this space!
+Redeploying your Function with new configuration (e.g. a [new GPU type](https://modal.com/docs/guide/gpu))
+or new code will cause previous snapshots to become obsolete.
+Subsequent invocations to the new Function version will automatically create new snapshots with the new configuration and code.
 
-For related reasons, we don't recommend using 4bit floating point (FP4) for these jobs.
-FP4 is only supported in [Blackwell or later GPUs](https://modal.com/gpu-glossary/device-software/compute-capability).
-Instead, we recommend the more mature 8bit floating point (FP8),
-supported in Hopper or later GPUs (one generation back).
+Changes to [Modal Volumes](https://modal.com/docs/guide/volumes) do not cause snapshots to update.
+Deleting files in a Volume used during restore will cause restore failures.
 
-On Modal, the [rates](https://modal.com/pricing) for 16bit FLOP/$ are roughly the same across
-A100s, H100s, and B200s -- newer GPUs run faster but cost more to match.
-So peak throughput per _dollar_ per replica is roughly the same,
-even though throughput per _second_ per replica is lower.
+### I haven't changed my Function. Why do I still see snapshots being created sometimes?
 
-But older GPUs running at lower rates offer a few advantages:
+Modal recaptures snapshots to keep up with the platform's latest runtime and security changes.
 
-- any time spent [underutilizing the GPUs](https://modal.com/blog/gpu-utilization-guide) is less expensive
-- GPUs a generation or two back are generally available in larger quantities from hyperscalers
+Additionally, you may observe your Function being memory
+snapshot multiple times during its first few invocations. This happens because
+memory snapshots are specific to the underlying worker type that created them (e.g. low-level processor details),
+and Modal Functions run across a handful of worker types.
 
-Throughput-oriented jobs don't necessarily benefit from scaling up each replica to more GPUs.
-The aggregate throughput is the same as more replicas with fewer GPUs,
-but fewer GPUs means reduced communication overhead and
-reduced complexity, especially for single GPU-per-replica deployments.
-Importantly, you must be able to fit a large enough batch of sequences
-into the [GPU RAM](https://modal.com/gpu-glossary/device-hardware/gpu-ram)
-that you are compute-bound, or else efficiency will decrease.
+Snapshots may add a small amount of latency to Function initialization.
 
-We recommend the [vLLM](https://vllm.ai/) inference server for this use case.
-It is better able to schedule a mix of prefill and decode work,
-which leads to higher throughput.
+CPU-only Functions need around 6 snapshots for full coverage, and Functions targeting a specific
+GPU (e.g. A100) need 2-3.
 
-### High throughput LLM inference on Modal
+### How do snapshots handle randomness?
 
-The lack of latency constraints opens up a large number
-of architectural choices for high throughput LLM inference.
-
-For instance, values can be retrieved from an external datastore
-or a [Modal Volume](https://modal.com/docs/guide/volumes)
-based on identifiers or other information in the datastore.
-This is particularly useful for
-[cronjob deployments on Modal](https://modal.com/docs/guide/cron).
-Results can then be placed back in that datastore.
-
-Modal provides primitives for building a
-[job queue](https://modal.com/docs/guide/job-queue)
-that can scale to millions of pending inputs
-and jobs that last up to a week.
-In this case, the underlying LLM inference is provided by a
-[Modal Cls](https://modal.com/docs/guide/lifecycle-functions)
-invoked via
-[`.spawn`](https://modal.com/docs/guide/job-queue).
-Each call gets a string
-[`modal.FunctionCall` identifier](https://modal.com/docs/reference/modal.FunctionCall)
-that can be used to query the result for up to a week.
-
-The primary scaling limit from Modal in this case is the rate at which these calls can be queued.
-If the inference system can complete more than 400 tasks per second,
-we recommend batching multiple tasks into a single Function input until peak throughput
-in tasks per second is serviced by 400 inputs per second.
-
-See [this code sample](https://modal.com/docs/examples/vllm_throughput)
-for a system that implements these recommendatons and
-achieves maximal per-replica throughput.
-
-## Minimizing LLM inference latency (TTFT/TPOT/TTLT)
-
-The quintessential "low latency" LLM inference workload is a chatbot:
-each request represents a waiting user, and users operate at the scale of a few hundred milliseconds.
-Generating a token of usefully intelligent text often also takes on the order of milliseconds,
-and users want many tokens in responses, so latency budgets are tight.
-
-Performance is defined by _latency_, the time a given task spends waiting.
-It is measured in time-to-first-token (TTFT) and time-per-output-token (TPOT)
-or in time-to-last-token (TTLT),
-depending on to what degree the application supports streaming responses.
-For streaming applications, like most chatbots, TTFT matters most.
-
-To whatever degree the application does support streaming, it is strongly recommended
-to improve perceived latency by users.
-Contemporary Transformer language models are sequential and so generate their responses
-serially, leading to long gaps between the creation of the first token in a response and the last.
-
-These long decode or token generation phases demand quite different performance
-from hardware than long prefills do.
-They are typically [memory-bound](https://modal.com/gpu-glossary/perf/memory-bound)
-and so benefit from techniques that reduce the amount of memory loaded per token into the
-[Streaming Multiprocessors](https://modal.com/gpu-glossary/device-hardware/streaming-multiprocessor)
-or increase the amount of available
-[memory bandwidth](https://modal.com/gpu-glossary/perf/memory-bandwidth).
-
-Several techniques can reduce the amount of memory loaded per token:
-
-- smaller and more aggressively [quantized](https://quant.exposed) models require less memory
-- [speculative decoding](https://huggingface.co/docs/text-generation-inference/en/conceptual/speculation)
-  generates multiple tokens at once via draft models
-
-For memory-bound workloads, quantizing a model to a format not natively supported by the hardware
-can still sometimes lead to gains.
-The reduced demand on memory bandwidth cuts memory latency and there is generally sufficient unused
-[arithmetic bandwidth](https://modal.com/gpu-glossary/perf/arithmetic-bandwidth)
-to perform extra numerical conversions.
-
-There are a wide variety of speculative decoding techniques, ranging from simple n-gram speculation
-to stacks of models drafting tokens for each other in sequence.
-We have generally found that the [EAGLE-3 method](https://arxiv.org/abs/2503.01840)
-provides the best performance improvement for the least overhead --
-computationally and operationally.
-Generic draft models are available on Hugging Face,
-but we have also seen major improvements from custom draft models
-trained on sample production data using tools like
-[SpecForge](https://lmsys.org/blog/2025-07-25-spec-forge/).
-
-Additionally, using multiple GPUs to generate a single token increases the aggregate memory bandwidth,
-at the cost of some extra communication.
-Critically, multiple accelerators need to be used to load model weights in parallel,
-or latency will not be reduced.
-That means the usual form of parallelism used to reduce latency is _tensor parallelism_,
-which splits up individual matrix multiplications across GPUs,
-rather than _pipeline parallelism_,
-which splits the entire model across GPUs.
-
-There are few models below 70B parameters that work well in 4bit floating point
-(with exceptions like [GPT-OSS](https://modal.com/docs/examples/gpt_oss_inference)).
-Additionally, at time of writing in early 2026, there are not high-quality open source
-Blackwell-optimized kernels for latency-sensitive LLM inference.
-Therefore, we generally recommend FP8-quantized models on H100s or H200s.
-
-Finally, we recommend the [SGLang](https://docs.sglang.io/)
-inference engine for these workloads.
-SGLang generally exhibits lower host overhead --
-time when the GPU idles waiting on the CPU --
-for decode-heavy workloads, especially for smaller models.
-You can read more about host overhead and its solutions in
-[this blog post](https://modal.com/blog/host-overhead-inference-efficiency).
-
-### Low latency LLM inference on Modal
-
-For latency budgets in the few hundreds of milliseconds,
-network latencies and proxy/load-balancing overhead matter --
-communicating with clients across an ocean takes dozens of milliseconds,
-due to speed-of-light constraints.
-
-Modal offers ultra-low-latency, regionalized web server deployment with
-`modal.experimental.http_server`
-to reduce network overhead below 100ms.
-Please contact us if you are interested in running production LLM inference
-with the experimental `http_server`.
-
-You can find an example demonstrating all the pieces of
-low latency LLM inference on Modal together
-[here](https://modal.com/docs/examples/sglang_low_latency).
-
-## High performance LLM inference for bursty workloads (cold start time)
-
-The final major class of workloads sits between pure throughput and pure latency.
-The quintessential application is a "workflow" where LLM inference is one workflow step,
-and the workflow is sometimes run interactively by a human and at other times run asynchronously in bulk.
-
-For these applications, the primary concern is handling the high
-[peak-to-average load ratio](https://brooker.co.za/blog/2023/03/23/economics.html).
-For instance, a pipeline might serve zero requests per second most of the time,
-then ten for a bit, then one hundred, then back down to zero.
-Statically provisioning enough resources to handle one hundred requests is clearly wasteful,
-but spinning up new resources on demand incurs latency.
-
-The key performance criterion, then, is
-[_cold start time_](https://modal.com/docs/guide/cold-start):
-how long does it take for a new replica to spin up and start handling requests.
-On a typical cloud deployment, that includes instance requisition, machine boot, and container setup.
-We've written about the resource allocation challenges [here](https://modal.com/blog/gpu-utilization-guide).
-
-Approaches based on requesting resources from clouds directly take minutes to tens of minutes.
-Modal has been designed from the kernel up to provide sub-second latencies
-all the way through to container start.
-From there, the primary performance concern is speeding up server startup.
-
-- **Use small models and quantize aggressively**.
-  Models can be loaded from a [Modal Volume](https://modal.com/docs/guide/volumes)
-  at a rate of 1-2 GB/s. That means you're incurring nearly a second of cold start latency
-  per gigabyte of model weights. More exotic compression formats, like integer quantization
-  or even ternary quantization, are particularly helpful here, even when they don't improve
-  latency during inference.
-
-- **Skip compilation steps**.
-  Optimizations like CUDA Graph capture, JIT-compiled kernels, and Torch compilation
-  are great for improving latency and throughput but they are generally quite tricky to cache
-  and cache hits sometimes take nearly as long as cache misses.
-  That often means a large latency penalty from compilation on each boot,
-  and latencies can easily range into the tens of seconds or even tens of minutes.
-
-- **Restore from snapshots**.
-  In some cases, startup-time work like JIT compilation is unavoidable.
-  For these workloads, Modal provides
-  [Memory Snapshots](https://modal.com/docs/guide/memory-snapshots):
-  the full in-memory state of a container just before it is ready to
-  handle requests is serialized to disk and future container starts
-  only need to deserialize this back into memory.
-  Modal includes support for
-  [GPU Memory Snapshots](https://modal.com/blog/gpu-mem-snapshots)
-  so that GPU-accelerated LLM inference servers can be snapshot as well.
-  Memory snapshotting is powerful
-  ([we've observed 10x reductions in cold start time](https://modal.com/blog/gpu-mem-snapshots)),
-  but it requires some code modification, described below.
-
-Which optimizations discussed above apply
-depend on the balance of the workload between low latency and high throughput.
-But a few general statements can be made.
-For instance, speculative decoding is generally a bad choice,
-since it harms performance in the high throughput regime.
-
-Relatedly, we don't have a particular recommendation between vLLM and SGLang here.
-Besides the points made above about host overhead latency vs bulk throughput,
-the primary difference we have seen is that vLLM is a bit faster to market with new models
-and new features, but SGLang is a bit easier to hack on and extend.
-
-### Serving bursty LLM inference workloads on Modal
-
-Modal's rapid autoscaling infrastructure,
-from [the custom container runtime and filesystem](https://modal.com/blog/jono-containers-talk),
-to [memory snapshot support](https://modal.com/blog/gpu-mem-snapshots),
-is particularly well-suited
-to bursty LLM inference workloads.
-
-These workloads can either be served by vanilla
-[Modal Functions](https://modal.com/docs/guide/apps)
-invoked via remote Python procedure calling or as
-[web endpoints](https://modal.com/docs/guide/webhooks)
-invoked via HTTP.
-Web endpoints are better for integrating with a variety
-of producers and consumers.
-The tradeoff of lower overhead for increased complexity
-with `modal.experimental.http_server` is generally not worth it.
-
-The [`@modal.concurrent` decorator](https://modal.com/docs/guide/concurrent-inputs)
-supports setting both a limit (`max_inputs`)
-and a target (`target_inputs`).
-Set the limit higher than the target to absorb load increases into
-existing capacity (typically at the expense of longer latency).
-Make sure that the inference server is configured to handle batches as large as `max_inputs`
-without internal queueing!
-
-Almost all GPU programs can be snapshot, but most GPU programs
-require some code changes to be snapshot.
-For instance, both the vLLM and SGLang inference servers require
-manual offloading of weights/KV cache to CPU memory before snapshotting.
-
-For details, see our full sample code for running bursty workloads on Modal
-with vLLM [here](https://modal.com/docs/examples/vllm_snapshot)
-and with SGLang [here](https://modal.com/docs/examples/sglang_snapshot).
+If your application depends on uniqueness of state, you must evaluate your
+Function code and verify that it is resilient to snapshotting operations. For
+example, if a variable is randomly initialized and snapshotted, that variable
+will be identical after every restore, possibly breaking uniqueness expectations
+of the proceeding Function code.
 
 #### Geographic latency
 
@@ -8571,14 +7733,32 @@ For more information, please see [Region selection](https://modal.com/docs/guide
 
 # Failures and retries
 
-Failure is part of life. Sometimes you just have to retry. This guide page documents how to do this on Modal.
+When you call a function over a sequence of inputs with
+[Function.map()](https://modal.com/docs/guide/scale#parallel-execution-of-inputs), sometimes
+errors can happen during function execution. Exceptions from within the remote
+function are propagated to the caller, so you can handle them with a
+`try-except` statement (refer to
+[section on custom types](https://modal.com/docs/guide/troubleshooting#custom-types-defined-in-__main__)
+for more on how to catch user-defined exceptions):
 
-For reference documentation on the `modal.Retries` object, see [this page](https://modal.com/docs/reference/modal.Retries).
+```python
+@app.function()
+def f(i):
+    raise ValueError()
 
-## Automatically recover from flakes with `retries`
+@app.local_entrypoint()
+def main():
+    try:
+        for _ in f.map([1, 2, 3]):
+            pass
+    except ValueError:
+        print("Exception handled")
+```
 
-You can configure Modal to automatically retry Function failures if you set the
-`retries` option when declaring your Function:
+## Function retries
+
+You can configure Modal to automatically retry function failures if you set the
+`retries` option when declaring your function:
 
 ```python
 @app.function(retries=3)
@@ -8586,30 +7766,22 @@ def my_flaky_function():
     pass
 ```
 
+When used with `Function.map()`, each input is retried up to the max number of
+retries specified.
+
 The basic configuration shown provides a fixed 1s delay between retry attempts.
 For fine-grained control over retry delays, including exponential backoff
 configuration, use [`modal.Retries`](https://modal.com/docs/reference/modal.Retries).
 
-## Handle failures in `Function.map`
-
-By default, failures are propagated back to the caller.
-To treat exceptions like successful results and aggregate them in the results list instead,
-pass in [`return_exceptions=True`](https://modal.com/docs/guide/scale#exceptions).
-
-When used with [`Function.map()`](https://modal.com/docs/guide/scale#parallel-execution-of-inputs)`,
-each input is retried independently.
+To treat exceptions as successful results and aggregate them in the results list instead, pass in [`return_exceptions=True`](https://modal.com/docs/guide/scale#exceptions).
 
 ## Container crashes
 
-If a `modal.Function` container crashes (either on start-up, e.g. while handling imports in global scope, or during execution, e.g. an out-of-memory error),
-Modal will reschedule the container and any work it was currently assigned.
+If a `modal.Function` container crashes (either on start-up, e.g. while handling imports in global scope, or during execution, e.g. an out-of-memory error), Modal will reschedule the container and any work it was currently assigned.
 
-For [ephemeral apps](https://modal.com/docs/guide/apps#ephemeral-apps), container crashes will be retried until a failure rate is exceeded,
-after which all pending inputs will be failed and the exception will be propagated to the caller.
+For [ephemeral apps](https://modal.com/docs/guide/apps#ephemeral-apps), container crashes will be retried until a failure rate is exceeded, after which all pending inputs will be failed and the exception will be propagated to the caller.
 
-For [deployed apps](https://modal.com/docs/guide/apps#deployed-apps), container crashes will be retried indefinitely, so as to not disrupt service.
-Modal will instead apply a crash-loop backoff and the rate of new container creation for the Function will be slowed down.
-Crash-looping containers are displayed in the [App dashboard](https://modal.com/apps).
+For [deployed apps](https://modal.com/docs/guide/apps#deployed-apps), container crashes will be retried indefinitely, so as to not disrupt service. Modal will instead apply a crash-loop backoff and the rate of new container creation for the function will be slowed down. Crash-looping containers are displayed in the app dashboard.
 
 #### Preemption
 
@@ -8783,7 +7955,7 @@ def demo():
 
 The Xid message is an error report from the NVIDIA driver. The SXid, or "Switch Xid" is a report for the NVSwitch component used in GPU-to-GPU communication, and is thus only relevant in multi-GPU containers.
 
-A classic critical Xid error is the 'fell off the bus' report, code 79. The `gpu-health` event log looks like this:
+A classic critical Xid error is the 'fell of the bus' report, code 79. The `gpu-health` event log looks like this:
 
 ```
 [gpu-health] [CRITICAL] GPU-1234: XID: NVRM: Xid (PCI:0000:c6:00): 79, pid=1101234, name=nvc:[driver], GPU has fallen off the bus.
@@ -8796,11 +7968,6 @@ we maintain our own tabular information below.
 #### Troubleshooting
 
 # Troubleshooting
-
-This guide page documents solutions for common Modal issues.
-
-For tips on troubleshooting your own code running on Modal,
-see [this guide page](https://modal.com/docs/guide/developing-debugging).
 
 ## "Command not found" errors
 
@@ -8839,11 +8006,11 @@ def db_op():
     ...
 ```
 
-This Function _can_ (but will not necessarily) fail on the second invocation
+This function _can_ (but will not necessarily) fail on the second invocation
 with an `OperationalError: table foo already exists` error.
 
 To get around this, take care to either clean up your side effects (e.g.
-deleting the db file at the end your function call above) or make your Functions
+deleting the db file at the end your function call above) or make your functions
 take them into consideration (e.g. adding an
 `if os.path.exists("db_file.sqlite")` condition or randomize the filename
 above). Alternatively, you can set `single_use_containers=True` so that every
@@ -8911,8 +8078,6 @@ def warmup_cuda(self):
 ```
 
 We are investigating a root cause fix for this problem.
-Multi-cloud GPU reliability at the scale of many thousands of GPUs is a tough technical challenge!
-Read more about our solution [here](https://modal.com/blog/gpu-health).
 
 ### Security and privacy
 
@@ -9014,7 +8179,7 @@ HIPAA, which stands for the Health Insurance Portability and Accountability Act,
 
 Modal's services can be used in a HIPAA compliant manner. It is important to note that unlike other security standards, there is no officially recognized certification process for HIPAA compliance. Instead, we demonstrate our compliance with regulations such as HIPAA via the practices outlined in this doc, our technical and operational security measures, and through official audits for standards compliance such as SOC 2 certification.
 
-To use Modal services for HIPAA-compliant workloads, a Business Associate Agreement (BAA) should be established with us prior to submission of any PHI. This is available on our Enterprise plan. Contact us at security@modal.com to get started. At the moment, [Volumes v1](https://modal.com/docs/guide/volumes), [Images](https://modal.com/docs/guide/images) (persistent storage), [Memory Snapshots](https://modal.com/docs/guide/memory-snapshots), and user code are out of scope of the commitments within our BAA, so PHI should not be used in those areas of the product.
+To use Modal services for HIPAA-compliant workloads, a Business Associate Agreement (BAA) should be established with us prior to submission of any PHI. This is available on our Enterprise plan. Contact us at security@modal.com to get started. At the moment, [Volumes v1](https://modal.com/docs/guide/volumes), [Images](https://modal.com/docs/guide/images) (persistent storage), [memory snapshots](https://modal.com/docs/guide/memory-snapshot), and user code are out of scope of the commitments within our BAA, so PHI should not be used in those areas of the product.
 
 [Volumes v2](https://modal.com/docs/guide/volumes#volumes-v2) are HIPAA compliant.
 
@@ -9110,6 +8275,25 @@ environment variable. Below is an example of what claims might be included in a 
 }
 ```
 
+### Key thumbprints
+
+RSA keys have [thumbprints](https://connect2id.com/products/nimbus-jose-jwt/examples/jwk-thumbprints). You
+can use these thumbprints to verify that the keys in our discovery document are
+genuine. This protects against potential Man in the Middle (MitM) attacks, although
+our required use of HTTPS mitigates this risk.
+
+If you'd like to have the extra security of verifying the thumbprints, you can
+use the following command to print the thumbprints for the keys in our
+discovery document:
+
+```bash
+$ openssl s_client -connect oidc.modal.com:443 < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout | awk -F= '{print $2}' | tr -d ':'
+F062F2151EDE30D1620B48B7AC91D66047D769D3
+```
+
+Note that these thumbprints may change over time as we rotate keys. We recommend
+periodically checking for and updating your scripts with the new thumbprints.
+
 ### App name format
 
 By default, Modal Apps can be created with arbitrary names. However, when using
@@ -9181,7 +8365,11 @@ Modal's OIDC provider as a trusted entity in our AWS account.
 ```bash
 aws iam create-open-id-connect-provider \
     --url https://oidc.modal.com \
-    --client-id-list oidc.modal.com
+    --client-id-list oidc.modal.com \
+    # Optionally replace with the thumbprint from the discovery document.
+    # Note that this may change over time as we rotate keys, and this argument
+    # can be omitted if you'd prefer to rely on the HTTPS verification instead.
+    --thumbprint-list "<thumbprint>"
 ```
 
 This will trigger AWS to pull down our [JSON Web Key Set (JWKS)](https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-key-sets)
@@ -9401,19 +8589,15 @@ The Modal Datadog Integration will forward the following metrics to Datadog:
 - `modal.function.pending_inputs`
 - `modal.function.running_inputs`
 
-All metrics are tagged with `container_id`, `environment_name`, `app_name`, `app_id`,
-`function_name`, `function_id`, `workspace_name`, and `workspace_id`.
-
 Deprecated metrics:
 
 - `modal.memory.utilization` (use `modal.memory.usage`)
 - `modal.gpu.memory.utilization` (use `modal.gpu.memory.usage`)
 
-`modal.input_events.successes` and `modal.input_events.total_inputs` can be used
-to measure the success rate of a certain function or app.
+`modal.input_events.successes` and `modal.input_events.total_inputs` can be used to measure the success rate of a certain function or app.
 
-As an [official Datadog integration](https://docs.datadoghq.com/integrations/modal/),
-Modal metrics are free on Datadog while logs are charged.
+These metrics come free of charge and are tagged with `container_id`, `environment_name`,
+`app_name`, `app_id`, `function_name`, `function_id`, `workspace_name`, and `workspace_id`.
 
 ## Structured logging
 
@@ -9497,8 +8681,7 @@ These metrics are tagged with `container_id`, `environment_name`, `app_name`,
 ## Custom metrics (Beta)
 
 The Modal OpenTelemetry Integration allows you to send custom metrics and spans to your provider.
-To use this feature, please contact us and we will enable this feature for your workspace. You will
-then need to export our collector environment variables. These configure the OpenTelemetry SDK
+To use this feature, export our collector environment variables. These configure the OpenTelemetry SDK
 to send messages to our collector in HTTP format. You don't need to do this to get the
 out-of-the-box metrics above, only for your own custom metrics.
 
@@ -9559,8 +8742,8 @@ your provider.
 
 ## Supported features
 
-- Identity Provider (IdP) initiated SSO
-- Service Provider (SP) initiated SSO
+- IdP-initiated SSO
+- SP-initiated SSO
 - Just-In-Time account provisioning
 
 For more information on the listed features, visit the
@@ -9606,8 +8789,8 @@ enabling.
 
 ![Okta Assign Users](../../assets/docs/okta-assign-people.png)
 
-1. To test the integration, sign in as one of the users you assigned in the previous step.
-2. Click on the Modal application on the Okta Dashboard to initiate Single Sign-On.
+3. To test the integration, sign in as one of the users you assigned in the previous step.
+4. Click on the Modal application on the Okta Dashboard to initiate Single Sign-On.
 
 #### Notes
 
@@ -9626,86 +8809,9 @@ The sign-in process is initiated from https://modal.com/login/sso
 1. Enter your workspace name in the input
 2. Click "continue with SSO" to authenticate with Okta
 
-#### Custom SAML SSO
-
-# Custom SAML SSO
-
-If you use an identity provider (IdP) other than Okta, you can configure custom SAML SSO for your Modal workspace.
-
-For Okta-specific setup, see our [Okta SSO documentation](https://modal.com/docs/guide/okta-sso).
-
-## Prerequisites
-
-- A Workspace that's on an [Enterprise](https://modal.com/pricing) plan
-- Admin access to the Workspace you want to configure with SSO
-- Admin privileges for your identity provider
-
-## Supported features
-
-- Identity Provider (IdP) initiated SSO
-- Service Provider (SP) initiated SSO
-- Just-In-Time account provisioning
-
-## Configuration
-
-### Modal SAML settings
-
-Configure your IdP with the following settings:
-
-| Setting   | Value                                             |
-| --------- | ------------------------------------------------- |
-| Entity ID | `https://www.modal.com`                           |
-| ACS URL   | `https://modal.com/api/okta/saml/sso/<workspace>` |
-
-Replace `<workspace>` with your Modal Workspace name.
-
-### Required SAML attributes
-
-Your IdP must send the following SAML attributes:
-
-| Attribute | Description          |
-| --------- | -------------------- |
-| email     | User's email address |
-| firstName | User's first name    |
-| lastName  | User's last name     |
-
-### Configuration steps
-
-#### Step 1: Configure your IdP
-
-1. Create a new SAML application in your identity provider
-2. Set the Entity ID to `https://www.modal.com`
-3. Set the ACS URL to `https://modal.com/api/okta/saml/sso/<workspace>` (replace `<workspace>` with your Workspace name)
-4. Configure the required SAML attributes (email, firstName, lastName)
-5. Ensure your IdP signs SAML assertions
-
-#### Step 2: Link your Workspace to your IdP
-
-1. Obtain the SAML Metadata URL from your IdP
-2. Sign in to https://modal.com and visit your [Workspace Management](https://modal.com/settings/workspace-management/identity-and-provisioning) page's `Identity and Provisioning` tab
-3. Paste the Metadata URL in the input and click "Save Changes"
-
-#### Step 3: Test the integration
-
-1. Assign users in your IdP
-2. Test IdP-initiated SSO by clicking the Modal application in your IdP dashboard
-3. Test SP-initiated SSO by visiting the login URL below
-
-#### Step 4: Read this before you enable "Require SSO"
-
-Enabling "Require SSO" will force all users to sign in via SSO. Ensure that you
-have admin access to your Modal Workspace through your identity provider before
-enabling.
-
-## Login URL
-
-This URL can be used so that users can sign-in to the correct workspace from your IdP.
-
-`https://modal.com/login/sso?workspace=<workspace>` (replace `<workspace>` with your workspace name)
-
 #### Slack notifications (beta)
 
-# Slack notifications (Beta)
+# Slack notifications (beta)
 
 You can integrate your Modal Workspace with Slack to receive timely essential notifications.
 
@@ -9762,31 +8868,27 @@ You'll be prompted to select the Workspace you want to link to the Slack channel
 
 # Workspaces
 
-This page is a high-level guide to Modal Workspaces,
-the primary unit of organization for Modal resources
-and authentication.
-
-A **Workspace** is an area where a user can deploy Modal apps and other
-resources. There are two types of Workspaces: personal and shared. After a new
-user has signed up to Modal, a personal Workspace is automatically created for
-them. The name of the personal Workspace is based on your GitHub username, but
+A **workspace** is an area where a user can deploy Modal apps and other
+resources. There are two types of workspaces: personal and shared. After a new
+user has signed up to Modal, a personal workspace is automatically created for
+them. The name of the personal workspace is based on your GitHub username, but
 it might be randomly generated if already taken or invalid.
 
-To collaborate with others, a new shared Workspace needs to be created.
+To collaborate with others, a new shared workspace needs to be created.
 
 ## Create a Workspace
 
-All additional Workspaces are shared Workspaces, meaning you can invite others
-by email to collaborate with you. There are two ways to create a Modal Workspace
+All additional workspaces are shared workspaces, meaning you can invite others
+by email to collaborate with you. There are two ways to create a Modal workspace
 on the [settings](https://modal.com/settings/workspaces) page.
 
 ![view of workspaces creation interface](https://modal-cdn.com/cdnbot/create-new-workspace-viewk0ka46_7_800f2053.webp)
 
-1. Create from [GitHub organization](https://docs.github.com/en/organizations). Allows members in GitHub organization to auto-join the Workspace.
+1. Create from [GitHub organization](https://docs.github.com/en/organizations). Allows members in GitHub organization to auto-join the workspace.
 
-2. Create from scratch. You can invite anyone to your Workspace.
+2. Create from scratch. You can invite anyone to your workspace.
 
-If you're interested in having a Workspace associated with your Okta
+If you're interested in having a workspace associated with your Okta
 organization, then check out our [Okta SSO docs](https://modal.com/docs/guide/okta-sso).
 
 If you're interested in using SSO through Google or other providers, then please reach out to us at [support@modal.com](mailto:support@modal.com).
@@ -9802,10 +8904,10 @@ To turn off this functionality a Workspace Manager can disable it on the **Works
 ## Inviting new Workspace members
 
 To invite a new Workspace member, you can visit the [settings](https://modal.com/settings) page
-and navigate to the members tab for the appropriate Workspace.
+and navigate to the members tab for the appropriate workspace.
 
 You can either send an email invite or share an invite link. Both existing Modal
-users and non-existing users can use the links to join your Workspace. If they
+users and non-existing users can use the links to join your workspace. If they
 are a new user a Modal account will be created for them.
 
 ![invite member section](../../assets/screenshots/invite-member.png)
@@ -9820,7 +8922,7 @@ particular Workspace.
 After adding a token for a Workspace to your Modal config file you can activate
 that Workspace's profile using the CLI (see below).
 
-As an manager or Workspace owner you can manage active tokens for a Workspace on
+As an manager or workspace owner you can manage active tokens for a workspace on
 [the member tokens page](https://modal.com/settings/tokens/member-tokens). For more information on API
 token management see the
 [documentation about configuration](https://modal.com/docs/reference/modal.config).
@@ -9840,7 +8942,7 @@ using the workspace selector at the top of [the dashboard](https://modal.com/hom
 To switch the Workspace associated with CLI commands, use
 `modal profile activate`.
 
-## Administering Workspace membership
+## Administrating workspace members
 
 Workspaces have three different levels of access privileges:
 
@@ -9848,7 +8950,7 @@ Workspaces have three different levels of access privileges:
 - Manager
 - Member
 
-The user that creates a Workspace is automatically set as the **Owner** for that
+The user that creates a workspace is automatically set as the **Owner** for that
 workspace. The owner can assign any other roles within the workspace, as well as
 remove other members of the workspace.
 
@@ -9866,40 +8968,36 @@ members on the `Workspace Management` tab in [settings](https://modal.com/settin
 
 To leave a workspace, navigate to [the settings page](https://modal.com/settings/workspaces) and
 click "Leave" on a listed Workspace. There must be at least one owner assigned
-to a Workspace.
+to a workspace.
 
 #### Environments
 
 # Environments
 
-Modal Environments isolate Modal applications and resources from one another.
+Environments are sub-divisions of workspaces, allowing you to deploy the same app
+(or set of apps) in multiple instances for different purposes without changing
+your code. Typical use cases for environments include having one `dev`
+environment and one `prod` environment, preventing overwriting production apps
+when developing new features, while still being able to deploy changes to a
+"live" and potentially complex structure of apps.
 
-Environments are sub-divisions of [Workspaces](https://modal.com/docs/guide/workspaces),
-allowing you to deploy the same App (or set of Apps)
-in multiple instances for different purposes without changing code.
+Each environment has its own set of [Secrets](https://modal.com/docs/guide/secrets) and any
+object lookups performed from an app in an environment will by default look for
+objects in the same environment.
 
-Typical use cases for Environments include having one `dev`
-Environment and one `prod` Environment. Production Apps are protected from overwriting
-when developing new features, but you can still deploy and test changes with a
-"live" and potentially complex structure of Apps.
-
-Each Environment has its own set of [Secrets](https://modal.com/docs/guide/secrets) and any
-object lookups, say for [Dicts](https://modal.com/docs/guide/dicts) or [Volumes](https://modal.com/docs/guide/volumes),
-performed from an App in an Environment will by default look for objects in the same Environment.
-
-By default, every Workspace has a single Environment called "main". New
+By default, every workspace has a single Environment called "main". New
 Environments can be created on the CLI:
 
 ```sh
 modal environment create dev
 ```
 
-Run `modal environment --help` for more info.
+(You can run `modal environment --help` for more info)
 
 Workspaces can have up to 1500 Environments.
 
 Once created, Environments show up as a dropdown menu in the navbar of the
-[Modal dashboard](https://modal.com/apps), letting you set browse all Modal Apps, Secrets, and Storage
+[Modal dashboard](https://modal.com/home), letting you set browse all Modal Apps and Secrets
 filtered by which Environment they were deployed to.
 
 Most CLI commands also support an `--env` flag letting you specify which
@@ -9928,12 +9026,12 @@ Environment is allowed to have no suffix (`""`).
 ## Cross environment lookups
 
 It's possible to explicitly look up objects in Environments other than the Environment
-your App runs within:
+your app runs within:
 
 ```python
 production_secret = modal.Secret.from_name(
     "my-secret",
-    environment_name="main",
+    environment_name="main"
 )
 ```
 
@@ -9977,7 +9075,7 @@ You can change your email on the [settings](https://modal.com/settings) page.
 
 #### Service users
 
-# Service Users (Beta)
+# Service Users (beta)
 
 Service users are programmatic accounts that allow automated systems to interact with Modal. They're ideal for CI/CD pipelines, automated deployments, and other workflows that need to authenticate.
 
@@ -10035,33 +9133,17 @@ In addition to monthly billing, you will be auto-charged for incremental usage t
 
 ## Setting a workspace budget
 
-To set limits on how how much Modal usage can be incurred within the monthly billing period, go to the “Workspace budget” section of [Usage & Billing](https://modal.com/settings/usage). The max you can set this limit to is based on the history of prior successful charges to your payment method. Within a billing period, you may be charged for incremental usage when you pass certain thresholds. If those charges are successful, the max cap goes up.
+To set limits on how how much Modal usage can be incurred within the monthly billing period, go to the “Workspace budget” section of [Usage and Billing](https://modal.com/settings/usage). The max you can set this limit to is based on the history of prior successful charges to your payment method. Within a billing period, you may be charged for incremental usage when you pass certain thresholds. If those charges are successful, the max cap goes up.
 
 ## Updating billing information
 
-To update your billing information, click on “Manage payment details” in the [Usage & Billing](https://modal.com/settings/usage) section of Settings. This will take you to a Stripe-hosted page where you can update your payment method and/or billing email.
+To update your billing information, click on “Manage payment information” in the [Usage and Billing](https://modal.com/settings/usage) section of Settings. This will take you to a Stripe-hosted page where you can update your payment method and/or billing email.
 
 Note that you must have a payment method on file in order to use Modal. If you would like to remove your payment method and delete your workspace, please contact [support@modal.com](mailto:support@modal.com).
 
 ## Viewing invoice history
 
-To view your invoice history and/or download receipts, click on “View invoices” in the [Usage & Billing](https://modal.com/settings/usage) section of Settings. You should see an “Invoice History” section at the bottom of the Stripe-hosted page.
-
-## Generating billing reports
-
-We also offer programmatic APIs for exporting billing reports to workspaces at the Team and Enterprise plan levels. Use the APIs in [`modal.billing`](https://modal.com/docs/reference/modal.billing) or the [`modal billing`](https://modal.com/docs/reference/cli/billing) CLI to generate tabular reports of spend over time broken down across specific Modal Apps or other resources.
-
-Note that the granular billing reports generated by these interfaces show a cost breakdown before factoring in credits or reservations, so the total invoiced cost may be less than the aggregate from these reports.
-
-## Attributing costs
-
-We offer a flexible tagging system so that you can categorize your Apps and properly attribute spend across your workspace to different teams, projects, etc. Tags are key-value pairs that can be set when deploying an App or assigned to already running Apps:
-
-```python
-app = modal.App(name="inference-engine", tags={"team": "llm-platform"})
-```
-
-When generating a billing report through the API or CLI, you can request to have specific tags included for each row in the report.
+To view your invoice history and/or download receipts, click on “Manage payment information” in the [Usage and Billing](https://modal.com/settings/usage) section of Settings. You should see an “Invoice History” section at the bottom of the Stripe-hosted page.
 
 ## Custom invoicing
 
@@ -10071,57 +9153,11 @@ Questions on billing? Reach out to [billing@modal.com](mailto:billing@modal.com)
 
 ### Other topics
 
-#### Feature maturity
-
-# Feature Maturity
-
-New features at Modal evolve through several stages. To help you understand their stability, we use two separate concepts:
-
-- [Release phases](#release-phases) ([Alpha](#alpha), [Beta](#beta) or [GA](#general-availability-ga)): signals the stability of a feature's underlying infrastructure
-- [Experimental SDK](#experimental-sdk): signals API stability in the code interface
-
-This separation allows the SDK to remain stable even while we are still refining the performance or scaling of a backend feature.
-
-## Release Phases
-
-We use the following release phases to signal the maturity of a feature's underlying design and infrastructure:
-
-### Alpha
-
-Alpha is reserved for features that might still be fragile and have known limitations. We provide these early so you can experiment with them, but you should expect significant changes to how the feature works. The documentation will clearly state their limitations.
-
-Some Alpha features are private, meaning you need to contact us to get access.
-
-### Beta
-
-Beta is our default phase for new features. Beta features are generally self-serve, functional, and mostly stable. Beta features are often suitable for production use, though we may still be refining the final behavior, pricing, or scale limits.
-
-Some Beta features are private, meaning you need to contact us to get access.
-
-### General Availability (GA)
-
-GA features are stable and fully ready for production grade usage. No breaking changes are planned. Any feature not marked as Alpha or Beta in the Modal docs can be considered GA.
-
-## Experimental SDK
-
-In addition to the release phases described above, you may see certain parts of the Modal SDK marked as experimental (e.g., `_experimental_snapshot()`).
-
-This is strictly an SDK concept which indicates API stability, not infrastructure maturity. It often correlates with the Alpha → Beta → GA progression, but not always. Some features stabilize their API early while the backend is still maturing, but experimental APIs may also be introduced later in a feature's lifecycle to provide additional depth of configuration.
-
-An experimental tag means we're still gathering feedback and iterating on the interface: method names, parameters, or return types may change. Once we're confident in the design, we remove the experimental marker and commit to backwards compatibility.
-
-## Providing Feedback
-
-We value your feedback on Alpha and Beta features! If you're using a feature at any release phase and have suggestions or encounter issues:
-
-- Join our [Slack community](https://modal.com/slack) to discuss with the team and other users
-- Reach out to support@modal.com with specific feedback or bug reports
-
 #### JavaScript/Go SDKs
 
-# Modal SDKs for JavaScript and Go (Beta)
+# Modal SDKs for JavaScript and Go
 
-Modal also provides SDKs that enable using Modal Functions and Sandboxes from JavaScript/TypeScript and Go projects.
+Modal also provides SDKs (currently in beta) that enable using Modal Functions and Sandboxes from JavaScript/TypeScript and Go projects.
 
 While Python is the primary language for building Modal applications and implementing Modal Functions, these SDKs enable use cases like:
 
@@ -10178,36 +9214,36 @@ The `modal-go` package is [installed via go get](https://pkg.go.dev/github.com/m
 package main
 
 import (
- "context"
- "fmt"
- "io"
+	"context"
+	"fmt"
+	"io"
 
- "github.com/modal-labs/libmodal/modal-go"
+	"github.com/modal-labs/libmodal/modal-go"
 )
 
 func main() {
- // Skipping err handling throughout for brevity
- ctx := context.Background()
+	// Skipping err handling throughout for brevity
+	ctx := context.Background()
 
- mc, _ := modal.NewClient()
+	mc, _ := modal.NewClient()
 
- app, _err := mc.Apps.FromName(ctx, "libmodal-example", &modal.AppFromNameParams{CreateIfMissing: true})
+	app, _err := mc.Apps.FromName(ctx, "libmodal-example", &modal.AppFromNameParams{CreateIfMissing: true})
 
- // Create a Sandbox with the specified Image, and mount a Volume
- volume, _ := mc.Volumes.FromName(ctx, "libmodal-example-volume", &modal.VolumeFromNameParams{CreateIfMissing: true})
- image := mc.Images.FromRegistry("alpine:3.21", nil)
- sb, _ := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
-  Volumes: map[string]*modal.Volume{"/mnt/volume": volume},
- })
- defer sb.Terminate(context.Background())
- p, _ := sb.Exec(ctx, []string{"cat", "/mnt/volume/message.txt"}, nil)
- stdout, _ := io.ReadAll(p.Stdout)
- fmt.Printf("Message: %s\n", stdout)
+	// Create a Sandbox with the specified Image, and mount a Volume
+	volume, _ := mc.Volumes.FromName(ctx, "libmodal-example-volume", &modal.VolumeFromNameParams{CreateIfMissing: true})
+	image := mc.Images.FromRegistry("alpine:3.21", nil)
+	sb, _ := mc.Sandboxes.Create(ctx, app, image, &modal.SandboxCreateParams{
+		Volumes: map[string]*modal.Volume{"/mnt/volume": volume},
+	})
+	defer sb.Terminate(context.Background())
+	p, _ := sb.Exec(ctx, []string{"cat", "/mnt/volume/message.txt"}, nil)
+	stdout, _ := io.ReadAll(p.Stdout)
+	fmt.Printf("Message: %s\n", stdout)
 
- // Call a previously deployed Modal Function
- echo, _ := mc.Functions.FromName(ctx, "libmodal-example", "echo", nil)
- result, _ := echo.Remote(ctx, []any{"Hello world!"}, nil)
- fmt.Println(result)
+	// Call a previously deployed Modal Function
+	echo, _ := mc.Functions.FromName(ctx, "libmodal-example", "echo", nil)
+	result, _ := echo.Remote(ctx, []any{"Hello world!"}, nil)
+	fmt.Println(result)
 }
 ```
 
@@ -10655,7 +9691,7 @@ just the Functions defined in that module.
 
 One option would be to ensure that one module in the project transitively
 imports all of the other modules and to point the `modal deploy` CLI at it, but
-this approach can lead to an awkward project structure.
+this approach can lead to an awkard project structure.
 
 ### Defining your project as a Python package
 
@@ -10674,7 +9710,7 @@ import .llm
 import .web
 ```
 
-_Important: use _relative_ imports (`import .app`) between member modules._
+_Important: use *relative* imports (`import .app`) between member modules._
 
 Unfortunately, it's not enough just to set this up and make your deploy command
 `modal deploy src/app.py`. Instead, you need to invoke Modal in _module mode_:
@@ -10961,19 +9997,11 @@ We encourage you to report cases where you need to enable this functionality, as
 
 #### Developing Modal code with LLMs
 
-# Developing Modal code with LLMs and agents
+# Developing Modal code with LLMs
 
-Modal is designed for fast iteration on infrastructure by both humans and machines.
-
-Modal was [built to provide human backend engineers the rapid feedback loops frontend engineers take for granted](https://erikbern.com/2022/12/07/what-ive-been-working-on-modal.html).
-This [also means](https://modal.com/blog/agents-devex) that Modal works well with code generation agents, especially those that can run CLI commands like `modal run` in an implement, test and debug loop, like OpenCode, Amp, Claude Code, Cursor's agent mode, Gemini CLI, etc.
+Excellent developer experience is at the core of Modal. This also means that Modal works well with code generation agents, especially those that can run CLI commands like `modal run` in an implement, test and debug loop, like Amp, Claude Code, Cursor's agent mode, Gemini CLI, etc.
 
 There are of course also many concepts and design patterns that are unique to Modal, so below we gather rules and guidelines that we have found useful when developing Modal code with LLMs. You can paste/import this into your `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/modal.mdc`, etc. or use it as a starting point for your own rules or prompts.
-We also provide an [`llms.txt`](https://modal.com/llms.txt).
-
-If you're instead looking for information about how to run code generation agents _on Modal_,
-see [the guide page for Modal Sandboxes](https://modal.com/docs/guide/sandboxes)
-or [this example code](https://modal.com/docs/examples/sandbox_agent).
 
 ````markdown
 # Modal Rules and Guidelines for LLMs
@@ -11008,7 +10036,7 @@ Always refer to documentation and examples for up-to-date functionality and exac
   ```python
   image = (
     modal.Image.debian_slim(python_version="3.12")
-    .pip_install("torch", "numpy", "transformers")
+    .pip_install("torch", "transformers")
     .apt_install("ffmpeg")
     .run_commands("mkdir -p /models")
   )
@@ -11136,11 +10164,7 @@ Logs:
 
 # Jupyter notebooks
 
-This guide page documents integrations between Jupyter notebooks and Modal.
-
-> **Note:** For our hosted notebooks product with real-time collaboration, see [Modal Notebooks](https://modal.com/docs/guide/notebooks).
-
-## Modal inside Jupyter
+> **Note:** This page is about running Jupyter on Modal. For our hosted notebooks product with real-time collaboration, see [Modal Notebooks](https://modal.com/docs/guide/notebooks).
 
 You can use the Modal client library in notebook environments like Jupyter! Just
 `import modal` and use as normal. You will likely need to use [`app.run`](https://modal.com/docs/guide/apps#ephemeral-apps) to create an ephemeral app to run your functions:
@@ -11163,7 +10187,7 @@ with modal.enable_output():
         my_function.remote(42)
 ```
 
-### Known issues
+## Known issues
 
 - **Interactive shell and interactive functions are not supported.**
 
@@ -11190,12 +10214,12 @@ in a notebook feels just like developing in regular Python modules and scripts.
 You can run Jupyter in Modal using the `modal launch` command. For example:
 
 ```
-modal launch jupyter --gpu a10g
+$ modal launch jupyter --gpu a10g
 ```
 
 That will start a Jupyter instance with an A10G GPU attached. You'll be able to
 access the app with via a
-[Modal Tunnel URL](https://modal.com/docs/guide/tunnels). Jupyter
+[Modal Tunnel URL](https://modal.com/docs/guide/tunnels#tunnels-beta). Jupyter
 will stop running whenever you stop Modal call in your terminal.
 
 See `--help` for additional options.
@@ -11328,43 +10352,43 @@ def foo():
 
 # Region selection
 
-Modal allows you to specify the cloud region a Function runs in.
-
-This may be useful if:
+Modal allows you to specify which cloud region you would like to run a Function in. This may be useful if:
 
 - you are required (for regulatory reasons or by your customers) to process data within certain regions.
 - you want to reduce egress fees that result from reading data from a dependency like S3.
 - you have a latency-sensitive app where app endpoints need to run near an external DB.
 
-Note that regardless of what region your Function runs in, all Function inputs and outputs go through Modal's control plane in `us-east-1`.
-
-## Specifying a region
-
-To run your Modal Function in a specific region, pass a `region=` argument to the `function` decorator.
-
-```python
-@app.function(region=["us-east"])
-def f():
-    import os
-
-    print(f"running in {os.environ['MODAL_REGION']}") # us-east-1, us-east-2, us-ashburn-1, etc.
-```
-
-You can specify a region in addition to the underlying cloud.
-For instance, `@app.function(cloud="aws", region="us-east")` would run your Function only in `"us-east-1"` or `"us-east-2"`.
+Note that regardless of what region your Function runs in, all Function inputs and outputs go through Modal's control plane in us-east-1.
 
 ## Pricing
 
-A multiplier on top of our [base usage pricing](https://modal.com/pricing) will be applied to any Function that has a cloud region defined.
+A multiplier on top of our [base usage pricing](https://modal.com/pricing) will be applied to any function that has a cloud region defined.
 
 | **Region**                   | **Multiplier** |
 | ---------------------------- | -------------- |
 | Any region in US/EU/UK/AP    | 1.25x          |
 | Any region in CA/SA/ME/MX/AF | 2.5x           |
 
-Here's an example: let's say you have a Function that uses 1 T4, 1 CPU core, and 1GB memory. You've specified that the function should run in `us-east-2`. The cost to run this function for 1 hour would be `((T4 hourly cost) + (CPU hourly cost for one core) + (Memory hourly cost for one GB)) * 1.25`.
+Here's an example: let's say you have a function that uses 1 T4, 1 CPU core, and 1GB memory. You've specified that the function should run in `us-east-2`. The cost to run this function for 1 hour would be `((T4 hourly cost) + (CPU hourly cost for one core) + (Memory hourly cost for one GB)) * 1.25`.
 
 If you specify multiple regions and they span the two categories above, we will apply the smaller of the two multipliers.
+
+## Specifying a region
+
+To run your Modal Function in a specific region, pass a `region=` argument to the `function` decorator.
+
+```python
+import os
+import modal
+
+app = modal.App("...")
+
+@app.function(region="us-east") # also supports a list of options, for example region=["us-central", "us-east"]
+def f():
+    print(f"running in {os.environ['MODAL_REGION']}") # us-east-1, us-east-2, us-ashburn-1, etc.
+```
+
+You can specify a region in addition to the underlying cloud, `@app.function(cloud="aws", region="us-east")` would run your Function only in `"us-east-1"` or `"us-east-2"` for instance.
 
 ## Region options
 
@@ -11569,6 +10593,10 @@ The following are convenience aliases for selecting specific countries within br
                       "australiaeast"                AZR Sydney
 ```
 
+## Region selection and GPU availability
+
+Region selection limits the pool of instances we can run your Functions on. As a result, you may observe higher wait times between when your Function is called and when it gets executed. Generally, we have higher availability in US/EU versus other regions. Whenever possible, select the broadest possible regions so you get the best resource availability.
+
 #### Container lifecycle hooks
 
 # Container lifecycle hooks
@@ -11584,19 +10612,19 @@ need to:
 2. Decorate the class with `@app.cls(...)` with same arguments you previously
    had for `@app.function(...)`.
 3. Instead of the `@app.function` decorator on the original method, use
-   `@modal.method` or the appropriate decorator for a
+   `@method` or the appropriate decorator for a
    [web endpoint](#lifecycle-hooks-for-web-endpoints).
 4. Add the correct method "hooks" to your class based on your need:
-   - `@modal.enter` for one-time initialization (remote)
-   - `@modal.exit` for one-time cleanup (remote)
+   - `@enter` for one-time initialization (remote)
+   - `@exit` for one-time cleanup (remote)
 
-## `@modal.enter`
+## `@enter`
 
 The container entry handler is called when a new container is started. This is
 useful for doing one-time initialization, such as loading model weights or
 importing packages that are only present in that image.
 
-To use, make your function a member of a class, and apply the `@modal.enter()`
+To use, make your function a member of a class, and apply the `@enter()`
 decorator to one or more class methods:
 
 ```python
@@ -11643,15 +10671,15 @@ async def main():
     await Processor().run.remote(x=123)
 ```
 
-Note: The `@modal.enter()` decorator replaces the earlier `__enter__` syntax, which
+Note: The `@enter()` decorator replaces the earlier `__enter__` syntax, which
 has been deprecated.
 
-## `@modal.exit`
+## `@exit`
 
 The container exit handler is called when a container is about to exit. It is
 useful for doing one-time cleanup, such as closing a database connection or
 saving intermediate results. To use, make your function a member of a class, and
-apply the `@modal.exit()` decorator:
+apply the `@exit()` decorator:
 
 ```python
 import modal
@@ -11810,7 +10838,7 @@ curl "https://parametrized-endpoint.modal.run?foo=hedgehog"
 
 Parametrized functions can be used with [lifecycle functions](https://modal.com/docs/guide/lifecycle-functions).
 
-For example, here is how you might parametrize the [`@modal.enter`](https://modal.com/docs/guide/lifecycle-functions#enter) lifecycle function to load a specific model:
+For example, here is how you might parametrize the [`@enter`](https://modal.com/docs/guide/lifecycle-functions#enter) lifecycle function to load a specific model:
 
 ```python
 @app.cls()
@@ -11892,10 +10920,10 @@ A Modal App is a group of functions and classes that are deployed together.
 
 The app serves at least three purposes:
 
-- A unit of deployment for functions and classes.
-- Syncing of identities of (primarily) functions and classes across processes
+* A unit of deployment for functions and classes.
+* Syncing of identities of (primarily) functions and classes across processes
   (your local Python interpreter and every Modal container active in your application).
-- Manage log collection for everything that happens inside your code.
+* Manage log collection for everything that happens inside your code.
 
 **Registering functions with an app**
 
@@ -11939,7 +10967,6 @@ secret = modal.Secret.from_name("my-secret")
 volume = modal.Volume.from_name("my-data")
 app = modal.App(image=image, secrets=[secret], volumes={"/mnt/data": volume})
 ```
-
 ## name
 
 ```python
@@ -11948,7 +10975,6 @@ def name(self) -> Optional[str]:
 ```
 
 The user-provided name of the App.
-
 ## app_id
 
 ```python
@@ -11957,7 +10983,6 @@ def app_id(self) -> Optional[str]:
 ```
 
 Return the app_id of a running or stopped app.
-
 ## description
 
 ```python
@@ -11966,7 +10991,6 @@ def description(self) -> Optional[str]:
 ```
 
 The App's `name`, if available, or a fallback descriptive identifier.
-
 ## lookup
 
 ```python
@@ -11990,13 +11014,6 @@ is mainly useful for creating an App to associate with a Sandbox:
 app = modal.App.lookup("my-app", create_if_missing=True)
 modal.Sandbox.create("echo", "hi", app=app)
 ```
-
-## get_dashboard_url
-
-```python
-def get_dashboard_url(self) -> str:
-```
-
 ## run
 
 ```python
@@ -12048,7 +11065,6 @@ You can then run your script with:
 ```shell
 python app_module.py
 ```
-
 ## deploy
 
 ```python
@@ -12064,7 +11080,7 @@ def deploy(
 
 Deploy the App so that it is available persistently.
 
-Deployed Apps will be available for lookup or web-based invocations until they are stopped.
+Deployed Apps will be avaible for lookup or web-based invocations until they are stopped.
 Unlike with `App.run`, this method will return as soon as the deployment completes.
 
 This method is a programmatic alternative to the `modal deploy` CLI command.
@@ -12102,7 +11118,6 @@ Then you can deploy your app with:
 ```shell
 python app_module.py
 ```
-
 ## local_entrypoint
 
 ```python
@@ -12157,7 +11172,6 @@ def main(foo: int, bar: str):
 
 Currently, `str`, `int`, `float`, `bool`, and `datetime.datetime` are supported.
 Use `modal run app_module.py --help` for more information on usage.
-
 ## function
 
 ```python
@@ -12169,7 +11183,9 @@ def function(
     schedule: Optional[Schedule] = None,  # An optional Modal Schedule for the function
     env: Optional[dict[str, Optional[str]]] = None,  # Environment variables to set in the container
     secrets: Optional[Collection[_Secret]] = None,  # Secrets to inject into the container as environment variables
-    gpu: Union[GPU_T, list[GPU_T]] = None,  # GPU request; either a single GPU type or a list of types
+    gpu: Union[
+        GPU_T, list[GPU_T]
+    ] = None,  # GPU request as string ("any", "T4", ...), object (`modal.GPU.A100()`, ...), or a list of either
     serialized: bool = False,  # Whether to send the function over using cloudpickle.
     network_file_systems: dict[
         Union[str, PurePosixPath], _NetworkFileSystem
@@ -12226,7 +11242,6 @@ def function(
 ```
 
 Decorator to register a new Modal Function with this App.
-
 ## cls
 
 ```python
@@ -12238,7 +11253,9 @@ def cls(
     image: Optional[_Image] = None,  # The image to run as the container for the function
     env: Optional[dict[str, Optional[str]]] = None,  # Environment variables to set in the container
     secrets: Optional[Collection[_Secret]] = None,  # Secrets to inject into the container as environment variables
-    gpu: Union[GPU_T, list[GPU_T]] = None,  # GPU request; either a single GPU type or a list of types
+    gpu: Union[
+        GPU_T, list[GPU_T]
+    ] = None,  # GPU request as string ("any", "T4", ...), object (`modal.GPU.A100()`, ...), or a list of either
     serialized: bool = False,  # Whether to send the function over using cloudpickle.
     network_file_systems: dict[
         Union[str, PurePosixPath], _NetworkFileSystem
@@ -12289,7 +11306,6 @@ def cls(
 ```
 
 Decorator to register a new Modal [Cls](https://modal.com/docs/reference/modal.Cls) with this App.
-
 ## include
 
 ```python
@@ -12321,7 +11337,6 @@ def main():
 
 When `inherit_tags=True` any tags set on the other App will be inherited by this App
 (with this App's tags taking precedence in the case of conflicts).
-
 ## set_tags
 
 ```python
@@ -12336,7 +11351,6 @@ the App constructor.
 
 Any tags set on the App before calling this method will be removed if they are not
 included in the argument (i.e., this method does not have `.update()` semantics).
-
 ## get_tags
 
 ```python
@@ -12366,7 +11380,6 @@ def hello(self):
 ```
 
 Connect to server and retrieve version information; raise appropriate error for various failures.
-
 ## from_credentials
 
 ```python
@@ -12383,7 +11396,6 @@ client = modal.Client.from_credentials("my_token_id", "my_token_secret")
 
 modal.Sandbox.create("echo", "hi", client=client, app=app)
 ```
-
 ## get_input_plane_metadata
 
 ```python
@@ -12516,8 +11528,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## from_name
 
 ```python
@@ -12541,7 +11552,6 @@ time it is actually used.
 ```python
 Model = modal.Cls.from_name("other-app", "Model")
 ```
-
 ## with_options
 
 ```python
@@ -12595,7 +11605,6 @@ Model.with_options(gpu="A100").with_options(scaledown_window=300)  # Use an A100
 
 Note that container arguments (i.e. `volumes` and `secrets`) passed in subsequent calls
 will not be merged.
-
 ## with_concurrency
 
 ```python
@@ -12611,7 +11620,6 @@ Model = modal.Cls.from_name("my_app", "Model")
 ModelUsingGPU = Model.with_options(gpu="A100").with_concurrency(max_inputs=100)
 ModelUsingGPU().generate.remote(42)  # will run on an A100 GPU with input concurrency enabled
 ```
-
 ## with_batching
 
 ```python
@@ -12739,8 +11747,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## objects
 
 ```python
@@ -12787,7 +11794,6 @@ Note that this method does not return a local instance of the Dict. You can use
 `modal.Dict.from_name` to perform a lookup after creation.
 
 Added in v1.1.2.
-
 ### list
 
 ```python
@@ -12824,7 +11830,6 @@ dicts = modal.Dict.objects.list(max_objects=10, created_before="2025-01-01")
 ```
 
 Added in v1.1.2.
-
 ### delete
 
 ```python
@@ -12840,7 +11845,7 @@ def delete(
 
 Delete a named Dict.
 
-Warning: This deletes an _entire Dict_, not just a specific key.
+Warning: This deletes an *entire Dict*, not just a specific key.
 Deletion is irreversible and will affect any Apps currently using the Dict.
 
 **Examples:**
@@ -12856,7 +11861,6 @@ await modal.Dict.objects.delete("my-dict", environment_name="dev")
 ```
 
 Added in v1.1.2.
-
 ## name
 
 ```python
@@ -12880,7 +11884,6 @@ def ephemeral(
 Creates a new ephemeral Dict within a context manager:
 
 Usage:
-
 ```python
 from modal import Dict
 
@@ -12892,7 +11895,6 @@ with Dict.ephemeral() as d:
 async with Dict.ephemeral() as d:
     await d.put.aio("foo", "bar")
 ```
-
 ## from_name
 
 ```python
@@ -12916,39 +11918,6 @@ time it is actually used.
 d = modal.Dict.from_name("my-dict", create_if_missing=True)
 d[123] = 456
 ```
-
-## from_id
-
-```python
-@staticmethod
-def from_id(
-    dict_id: str,
-    client: Optional[_Client] = None,
-) -> "_Dict":
-```
-
-Construct a Dict from an id and look up the Dict metadata.
-
-This is a lazy method that defers hydrating the local
-object with metadata from Modal servers until the first
-time it is actually used.
-
-The ID of a Dict object can be accessed using `.object_id`.
-
-**Example:**
-
-```python notest
-@app.function()
-def my_worker(dict_id: str):
-    d = modal.Dict.from_id(dict_id)
-    d["key"] = "Hello from remote function!"
-
-with modal.Dict.ephemeral() as d:
-    # Pass the dict ID to a remote function
-    my_worker.remote(d.object_id)
-    print(d["key"])  # "Hello from remote function!"
-```
-
 ## info
 
 ```python
@@ -12957,7 +11926,6 @@ def info(self) -> DictInfo:
 ```
 
 Return information about the Dict object.
-
 ## clear
 
 ```python
@@ -12966,7 +11934,6 @@ def clear(self) -> None:
 ```
 
 Remove all items from the Dict.
-
 ## get
 
 ```python
@@ -12977,7 +11944,6 @@ def get(self, key: Any, default: Optional[Any] = None) -> Any:
 Get the value associated with a key.
 
 Returns `default` if key does not exist.
-
 ## contains
 
 ```python
@@ -12986,7 +11952,6 @@ def contains(self, key: Any) -> bool:
 ```
 
 Return if a key is present.
-
 ## len
 
 ```python
@@ -12997,7 +11962,6 @@ def len(self) -> int:
 Return the length of the Dict.
 
 Note: This is an expensive operation and will return at most 100,000.
-
 ## update
 
 ```python
@@ -13006,7 +11970,6 @@ def update(self, other: Optional[Mapping] = None, /, **kwargs) -> None:
 ```
 
 Update the Dict with additional items.
-
 ## put
 
 ```python
@@ -13018,7 +11981,6 @@ Add a specific key-value pair to the Dict.
 
 Returns True if the key-value pair was added and False if it wasn't because the key already existed and
 `skip_if_exists` was set.
-
 ## pop
 
 ```python
@@ -13029,7 +11991,6 @@ def pop(self, key: Any, default: Any = _NO_DEFAULT) -> Any:
 Remove a key from the Dict, returning the value if it exists.
 
 If key is not found, return default if provided, otherwise raise KeyError.
-
 ## keys
 
 ```python
@@ -13041,7 +12002,6 @@ Return an iterator over the keys in this Dict.
 
 Note that (unlike with Python dicts) the return value is a simple iterator,
 and results are unordered.
-
 ## values
 
 ```python
@@ -13053,7 +12013,6 @@ Return an iterator over the values in this Dict.
 
 Note that (unlike with Python dicts) the return value is a simple iterator,
 and results are unordered.
-
 ## items
 
 ```python
@@ -13100,7 +12059,6 @@ class FilePatternMatcher(modal.file_pattern_matcher._AbstractPatternMatcher)
 Allows matching file Path objects against a list of patterns.
 
 **Usage:**
-
 ```python
 from pathlib import Path
 from modal import FilePatternMatcher
@@ -13126,7 +12084,6 @@ Args:
 
 Raises:
     ValueError: If an illegal exclusion pattern is provided.
-
 ## can_prune_directories
 
 ```python
@@ -13138,7 +12095,6 @@ Returns True if this pattern matcher allows safe early directory pruning.
 Directory pruning is safe when matching directories can be skipped entirely
 without missing any files that should be included. This is for example not
 safe when we have inverted/negated ignore patterns (e.g. "!**/*.py").
-
 ## from_file
 
 ```python
@@ -13154,7 +12110,6 @@ Args:
     file_path (Path): The path to the file containing patterns.
 
 **Usage:**
-
 ```python
 from modal import FilePatternMatcher
 
@@ -13186,8 +12141,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## update_autoscaler
 
 ```python
@@ -13225,7 +12179,6 @@ f.update_autoscaler(max_containers=5)
 f.update_autoscaler(scaledown_window=300)
 
 ```
-
 ## from_name
 
 ```python
@@ -13249,7 +12202,6 @@ time it is actually used.
 ```python
 f = modal.Function.from_name("other-app", "function")
 ```
-
 ## get_web_url
 
 ```python
@@ -13258,7 +12210,6 @@ def get_web_url(self) -> Optional[str]:
 ```
 
 URL of a Function running as a web endpoint.
-
 ## remote
 
 ```python
@@ -13267,7 +12218,6 @@ def remote(self, *args: P.args, **kwargs: P.kwargs) -> ReturnType:
 ```
 
 Calls the function remotely, executing it with the given arguments and returning the execution's result.
-
 ## remote_gen
 
 ```python
@@ -13276,7 +12226,6 @@ def remote_gen(self, *args, **kwargs) -> AsyncGenerator[Any, None]:
 ```
 
 Calls the generator remotely, executing it with the given arguments and returning the execution's result.
-
 ## local
 
 ```python
@@ -13288,7 +12237,6 @@ Calls the function locally, executing it with the given arguments and returning 
 The function will execute in the same environment as the caller, just like calling the underlying function
 directly in Python. In particular, only secrets available in the caller environment will be available
 through environment variables.
-
 ## spawn
 
 ```python
@@ -13302,7 +12250,6 @@ Returns a [`modal.FunctionCall`](https://modal.com/docs/reference/modal.Function
 that can later be polled or waited for using
 [`.get(timeout=...)`](https://modal.com/docs/reference/modal.FunctionCall#get).
 Conceptually similar to `multiprocessing.pool.apply_async`, or a Future/Promise in other contexts.
-
 ## get_raw_f
 
 ```python
@@ -13310,7 +12257,6 @@ def get_raw_f(self) -> Callable[..., Any]:
 ```
 
 Return the inner Python object wrapped by this Modal Function.
-
 ## get_current_stats
 
 ```python
@@ -13319,7 +12265,6 @@ def get_current_stats(self) -> FunctionStats:
 ```
 
 Return a `FunctionStats` object describing the current function's queue and runner counts.
-
 ## map
 
 ```python
@@ -13339,7 +12284,6 @@ Parallel map over a set of inputs.
 Takes one iterator argument per argument in the function being mapped over.
 
 Example:
-
 ```python
 @app.function()
 def my_func(a):
@@ -13368,7 +12312,6 @@ def main():
     # [0, 1, UserCodeException(Exception('ohno'))]
     print(list(my_func.map(range(3), return_exceptions=True)))
 ```
-
 ## starmap
 
 ```python
@@ -13389,7 +12332,6 @@ Like `map`, but spreads arguments over multiple function arguments.
 Assumes every input is a sequence (e.g. a tuple).
 
 Example:
-
 ```python
 @app.function()
 def my_func(a, b):
@@ -13399,7 +12341,6 @@ def my_func(a, b):
 def main():
     assert list(my_func.starmap([(1, 2), (3, 4)])) == [3, 7]
 ```
-
 ## for_each
 
 ```python
@@ -13410,7 +12351,6 @@ Execute function for all inputs, ignoring outputs. Waits for completion of the i
 
 Convenient alias for `.map()` in cases where the function just needs to be called.
 as the caller doesn't have to consume the generator to process the inputs.
-
 ## spawn_map
 
 ```python
@@ -13423,7 +12363,6 @@ for the map to complete).
 Takes one iterator argument per argument in the function being mapped over.
 
 Example:
-
 ```python
 @app.function()
 def my_func(a):
@@ -13465,8 +12404,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## num_inputs
 
 ```python
@@ -13475,7 +12413,6 @@ def num_inputs(self) -> int:
 ```
 
 Get the number of inputs in the function call.
-
 ## get
 
 ```python
@@ -13492,7 +12429,6 @@ This function waits indefinitely by default. It takes an optional
 which can be set to `0` to poll for an output immediately.
 
 The returned coroutine is not cancellation-safe.
-
 ## iter
 
 ```python
@@ -13505,7 +12441,6 @@ Iterate in-order over the results of the function call.
 Optionally, specify a range [start, end) to iterate over.
 
 Example:
-
 ```python
 @app.function()
 def my_func(a):
@@ -13519,7 +12454,6 @@ def main():
 ```
 
 If `end` is not provided, it will iterate over all results.
-
 ## get_call_graph
 
 ```python
@@ -13532,7 +12466,6 @@ call ID, along with the status of execution for each node.
 
 See [`modal.call_graph`](https://modal.com/docs/reference/modal.call_graph) reference page
 for documentation on the structure of the returned `InputInfo` items.
-
 ## cancel
 
 ```python
@@ -13549,7 +12482,6 @@ Cancels the function call, which will stop its execution and mark its inputs as
 
 If `terminate_containers=True` - the containers running the cancelled inputs are all terminated
 causing any non-cancelled inputs on those containers to be rescheduled in new containers.
-
 ## from_id
 
 ```python
@@ -13576,7 +12508,6 @@ result = fc.get()
 
 Note that it's only necessary to re-instantiate the `FunctionCall` with this method
 if you no longer have access to the original object returned from `Function.spawn`.
-
 ## gather
 
 ```python
@@ -13600,7 +12531,7 @@ fc2 = slow_func_2.spawn()
 result_1, result_2 = modal.FunctionCall.gather(fc1, fc2)
 ```
 
-_Added in v0.73.69_: This method replaces the deprecated `modal.functions.gather` function.
+*Added in v0.73.69*: This method replaces the deprecated `modal.functions.gather` function.
 
 #### Image
 
@@ -13633,8 +12564,7 @@ copy=True can slow down iteration since it requires a rebuild of the Image and a
 build steps whenever the included files change, but it is required if you want to run additional
 build steps after this one.
 
-_Added in v0.66.40_: This method replaces the deprecated `modal.Image.copy_local_file` method.
-
+*Added in v0.66.40*: This method replaces the deprecated `modal.Image.copy_local_file` method.
 ## add_local_dir
 
 ```python
@@ -13701,8 +12631,7 @@ image = modal.Image.debian_slim().add_local_dir(
 )
 ```
 
-_Added in v0.66.40_: This method replaces the deprecated `modal.Image.copy_local_dir` method.
-
+*Added in v0.66.40*: This method replaces the deprecated `modal.Image.copy_local_dir` method.
 ## add_local_python_source
 
 ```python
@@ -13743,8 +12672,7 @@ modal.Image.debian_slim().add_local_python_source(
 )
 ```
 
-_Added in v0.67.28_: This method replaces the deprecated `modal.Mount.from_local_python_packages` pattern.
-
+*Added in v0.67.28*: This method replaces the deprecated `modal.Mount.from_local_python_packages` pattern.
 ## from_id
 
 ```python
@@ -13756,7 +12684,6 @@ def from_id(cls, image_id: str, client: Optional["modal.client.Client"] = None) 
 Construct an Image from an id and look up the Image result.
 
 The ID of an Image object can be accessed using `.object_id`.
-
 ## build
 
 ```python
@@ -13812,7 +12739,6 @@ image = modal.Image.debian_slim()
 def f():
     ...
 ```
-
 ## pip_install
 
 ```python
@@ -13836,13 +12762,11 @@ Install a list of Python packages using pip.
 **Examples**
 
 Simple installation:
-
 ```python
 image = modal.Image.debian_slim().pip_install("click", "httpx~=0.23.3")
 ```
 
 More complex installation:
-
 ```python
 image = (
     modal.Image.from_registry(
@@ -13859,7 +12783,6 @@ image = (
     )
 )
 ```
-
 ## pip_install_private_repos
 
 ```python
@@ -13908,7 +12831,6 @@ image = (
     )
 )
 ```
-
 ## pip_install_from_requirements
 
 ```python
@@ -13929,7 +12851,6 @@ def pip_install_from_requirements(
 ```
 
 Install a list of Python packages from a local `requirements.txt` file.
-
 ## pip_install_from_pyproject
 
 ```python
@@ -13956,7 +12877,6 @@ Install dependencies specified by a local `pyproject.toml` file.
 optional-dependencies section(s) of the `pyproject.toml` file
 (e.g. test, doc, experiment, etc). When provided,
 all of the packages in each listed section are installed as well.
-
 ## uv_pip_install
 
 ```python
@@ -13982,19 +12902,16 @@ Install a list of Python packages using uv pip install.
 **Examples**
 
 Simple installation:
-
 ```python
 image = modal.Image.debian_slim().uv_pip_install("torch==2.7.1", "numpy")
 ```
 
 This method assumes that:
-
 - Python is on the `$PATH` and dependencies are installed with the first Python on the `$PATH`.
 - Shell supports backticks for substitution
 - `which` command is on the `$PATH`
 
 Added in v1.1.0.
-
 ## poetry_install_from_file
 
 ```python
@@ -14019,7 +12936,7 @@ def poetry_install_from_file(
 ) -> "_Image":
 ```
 
-Install poetry _dependencies_ specified by a local `pyproject.toml` file.
+Install poetry *dependencies* specified by a local `pyproject.toml` file.
 
 If not provided as argument the path to the lockfile is inferred. However, the
 file has to exist, unless `ignore_lockfile` is set to `True`.
@@ -14030,7 +12947,6 @@ For including local python source files see `add_local_python_source`
 Poetry will be installed to the Image (using pip) unless `poetry_version` is set to None.
 Note that the interpretation of `poetry_version="latest"` depends on the Modal Image Builder
 version, with versions 2024.10 and earlier limiting poetry to 1.x.
-
 ## uv_sync
 
 ```python
@@ -14053,7 +12969,6 @@ def uv_sync(
 Creates a virtual environment with the dependencies in a uv managed project with `uv sync`.
 
 **Examples**
-
 ```python
 image = modal.Image.debian_slim().uv_sync()
 ```
@@ -14061,7 +12976,7 @@ image = modal.Image.debian_slim().uv_sync()
 The `pyproject.toml` and `uv.lock` in `uv_project_dir` are automatically added to the build context. The
 `uv_project_dir` is relative to the current working directory of where `modal` is called.
 
-NOTE: This does _not_ install the project itself into the environment (this is equivalent to the
+NOTE: This does *not* install the project itself into the environment (this is equivalent to the
 `--no-install-project` flag in the `uv sync` command) and you would be expected to add any local python source
 files using `Image.add_local_python_source` or similar methods after this call.
 
@@ -14071,7 +12986,6 @@ after every change.
 uv workspaces are currently not supported.
 
 Added in v1.1.0.
-
 ## dockerfile_commands
 
 ```python
@@ -14127,7 +13041,6 @@ image = modal.Image.debian_slim().dockerfile_commands(
     ignore=FilePatternMatcher.from_file("/path/to/dockerignore"),
 )
 ```
-
 ## entrypoint
 
 ```python
@@ -14138,7 +13051,6 @@ def entrypoint(
 ```
 
 Set the ENTRYPOINT for the image.
-
 ## shell
 
 ```python
@@ -14149,7 +13061,6 @@ def shell(
 ```
 
 Overwrite default shell for the image.
-
 ## run_commands
 
 ```python
@@ -14165,7 +13076,6 @@ def run_commands(
 ```
 
 Extend an image with a list of shell commands to run.
-
 ## micromamba
 
 ```python
@@ -14177,7 +13087,6 @@ def micromamba(
 ```
 
 A Micromamba base image. Micromamba allows for fast building of small Conda-based containers.
-
 ## micromamba_install
 
 ```python
@@ -14197,7 +13106,6 @@ def micromamba_install(
 ```
 
 Install a list of additional packages using micromamba.
-
 ## from_registry
 
 ```python
@@ -14239,7 +13147,6 @@ modal.Image.from_registry("python:3.11-slim-bookworm")
 modal.Image.from_registry("ubuntu:22.04", add_python="3.11")
 modal.Image.from_registry("nvcr.io/nvidia/pytorch:22.12-py3")
 ```
-
 ## from_gcp_artifact_registry
 
 ```python
@@ -14283,7 +13190,6 @@ modal.Image.from_gcp_artifact_registry(
     add_python="3.11",
 )
 ```
-
 ## from_aws_ecr
 
 ```python
@@ -14327,7 +13233,6 @@ modal.Image.from_aws_ecr(
     add_python="3.11",
 )
 ```
-
 ## from_dockerfile
 
 ```python
@@ -14394,7 +13299,6 @@ image = modal.Image.from_dockerfile(
     ignore=FilePatternMatcher.from_file("/path/to/dockerignore"),
 )
 ```
-
 ## debian_slim
 
 ```python
@@ -14403,7 +13307,6 @@ def debian_slim(python_version: Optional[str] = None, force_build: bool = False)
 ```
 
 Default image, based on the official `python` Docker images.
-
 ## apt_install
 
 ```python
@@ -14424,7 +13327,6 @@ Install a list of Debian packages using `apt`.
 ```python
 image = modal.Image.debian_slim().apt_install("git")
 ```
-
 ## run_function
 
 ```python
@@ -14457,7 +13359,7 @@ filesystem state will be captured on container exit and saved as a new Image.
 
 **Note**
 
-Only the source code of `raw_f`, the contents of `**kwargs`, and any referenced _global_ variables
+Only the source code of `raw_f`, the contents of `**kwargs`, and any referenced *global* variables
 are used to determine whether the image has changed and needs to be rebuilt.
 If this function references other functions or variables, the image will not be rebuilt if you
 make changes to them. You can force a rebuild by changing the function's source code itself.
@@ -14476,7 +13378,6 @@ image = (
         .run_function(my_build_function, secrets=[...], mounts=[...])
 )
 ```
-
 ## env
 
 ```python
@@ -14493,7 +13394,6 @@ image = (
     .env({"HF_HUB_ENABLE_HF_TRANSFER": "1"})
 )
 ```
-
 ## workdir
 
 ```python
@@ -14512,7 +13412,6 @@ image = (
     .run_commands("yarn install")
 )
 ```
-
 ## cmd
 
 ```python
@@ -14530,7 +13429,6 @@ image = (
     modal.Image.debian_slim().cmd(["python", "app.py"])
 )
 ```
-
 ## imports
 
 ```python
@@ -14607,8 +13505,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## from_name
 
 ```python
@@ -14635,7 +13532,6 @@ nfs = NetworkFileSystem.from_name("my-nfs", create_if_missing=True)
 def f():
     pass
 ```
-
 ## ephemeral
 
 ```python
@@ -14651,7 +13547,6 @@ def ephemeral(
 Creates a new ephemeral network filesystem within a context manager:
 
 Usage:
-
 ```python
 with modal.NetworkFileSystem.ephemeral() as nfs:
     assert nfs.listdir("/") == []
@@ -14661,7 +13556,6 @@ with modal.NetworkFileSystem.ephemeral() as nfs:
 async with modal.NetworkFileSystem.ephemeral() as nfs:
     assert await nfs.listdir("/") == []
 ```
-
 ## delete
 
 ```python
@@ -14682,7 +13576,6 @@ Will create any needed parent directories automatically.
 
 If remote_path ends with `/` it's assumed to be a directory and the
 file will be uploaded with its current name to that directory.
-
 ## read_file
 
 ```python
@@ -14691,7 +13584,6 @@ def read_file(self, path: str) -> Iterator[bytes]:
 ```
 
 Read a file from the network file system
-
 ## iterdir
 
 ```python
@@ -14701,11 +13593,10 @@ def iterdir(self, path: str) -> Iterator[FileEntry]:
 
 Iterate over all files in a directory in the network file system.
 
-- Passing a directory path lists all files in the directory (names are relative to the directory)
-- Passing a file path returns a list containing only that file's listing description
-- Passing a glob path (including at least one * or ** sequence) returns all files matching
+* Passing a directory path lists all files in the directory (names are relative to the directory)
+* Passing a file path returns a list containing only that file's listing description
+* Passing a glob path (including at least one * or ** sequence) returns all files matching
 that glob path (using absolute paths)
-
 ## add_local_file
 
 ```python
@@ -14739,11 +13630,10 @@ def listdir(self, path: str) -> list[FileEntry]:
 
 List all files in a directory in the network file system.
 
-- Passing a directory path lists all files in the directory (names are relative to the directory)
-- Passing a file path returns a list containing only that file's listing description
-- Passing a glob path (including at least one * or ** sequence) returns all files matching
+* Passing a directory path lists all files in the directory (names are relative to the directory)
+* Passing a file path returns a list containing only that file's listing description
+* Passing a glob path (including at least one * or ** sequence) returns all files matching
 that glob path (using absolute paths)
-
 ## remove_file
 
 ```python
@@ -14828,8 +13718,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## from_name
 
 ```python
@@ -14887,7 +13776,7 @@ with Queue.ephemeral() as my_queue:
     # Set custom 10s expiration time on "foo" partition.
     my_queue.put(3, partition="foo", partition_ttl=10)
 
-    # Iterate through items in place (read immutably)
+    # (beta feature) Iterate through items in place (read immutably)
     my_queue.put(1)
     assert [v for v in my_queue.iterate()] == [0, 1]
 
@@ -14899,7 +13788,7 @@ assert queue.get() == 42
 
 For more examples, see the [guide](https://modal.com/docs/guide/dicts-and-queues#modal-queues).
 
-**Queue partitions**
+**Queue partitions (beta)**
 
 Specifying partition keys gives access to other independent FIFO partitions within the same `Queue` object.
 Across any two partitions, puts and gets are completely independent.
@@ -14938,8 +13827,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## objects
 
 ```python
@@ -14986,7 +13874,6 @@ Note that this method does not return a local instance of the Queue. You can use
 `modal.Queue.from_name` to perform a lookup after creation.
 
 Added in v1.1.2.
-
 ### list
 
 ```python
@@ -15023,7 +13910,6 @@ queues = modal.Queue.objects.list(max_objects=10, created_before="2025-01-01")
 ```
 
 Added in v1.1.2.
-
 ### delete
 
 ```python
@@ -15039,7 +13925,7 @@ def delete(
 
 Delete a named Queue.
 
-Warning: This deletes an _entire Queue_, not just a specific entry or partition.
+Warning: This deletes an *entire Queue*, not just a specific entry or partition.
 Deletion is irreversible and will affect any Apps currently using the Queue.
 
 **Examples:**
@@ -15055,7 +13941,6 @@ await modal.Queue.objects.delete("my-queue", environment_name="dev")
 ```
 
 Added in v1.1.2.
-
 ## name
 
 ```python
@@ -15085,7 +13970,6 @@ def ephemeral(
 Creates a new ephemeral queue within a context manager:
 
 Usage:
-
 ```python
 from modal import Queue
 
@@ -15097,7 +13981,6 @@ with Queue.ephemeral() as q:
 async with Queue.ephemeral() as q:
     await q.put.aio(123)
 ```
-
 ## from_name
 
 ```python
@@ -15121,39 +14004,6 @@ time it is actually used.
 q = modal.Queue.from_name("my-queue", create_if_missing=True)
 q.put(123)
 ```
-
-## from_id
-
-```python
-@staticmethod
-def from_id(
-    queue_id: str,
-    client: Optional[_Client] = None,
-) -> "_Queue":
-```
-
-Construct a Queue from an id and look up the Queue metadata.
-
-This is a lazy method that defers hydrating the local
-object with metadata from Modal servers until the first
-time it is actually used.
-
-The ID of a Queue object can be accessed using `.object_id`.
-
-**Example:**
-
-```python notest
-@app.function()
-def my_consumer(queue_id: str):
-    queue = modal.Queue.from_id(queue_id)
-    queue.put("Hello from remote function!")
-
-with modal.Queue.ephemeral() as q:
-    # Pass the queue ID to a remote function
-    my_consumer.remote(q.object_id)
-    print(q.get())  # "Hello from remote function!"
-```
-
 ## info
 
 ```python
@@ -15162,7 +14012,6 @@ def info(self) -> QueueInfo:
 ```
 
 Return information about the Queue object.
-
 ## clear
 
 ```python
@@ -15171,16 +14020,6 @@ def clear(self, *, partition: Optional[str] = None, all: bool = False) -> None:
 ```
 
 Clear the contents of a single partition or all partitions.
-
-Warning: this is a destructive operation and will irrevocably delete data.
-
-**Examples:**
-
-```python
-q = modal.Queue.from_name("my-queue", create_if_missing=True)
-q.clear()
-```
-
 ## get
 
 ```python
@@ -15198,7 +14037,6 @@ if the `timeout` is reached.
 
 If `block` is `False`, `get` returns `None` immediately if the queue is empty. The `timeout` is
 ignored in this case.
-
 ## get_many
 
 ```python
@@ -15218,7 +14056,6 @@ exception if the `timeout` is reached.
 
 If `block` is `False`, `get` returns `None` immediately if the queue is empty. The `timeout` is
 ignored in this case.
-
 ## put
 
 ```python
@@ -15242,7 +14079,6 @@ If blocking it is not recommended to omit the `timeout`, as the operation could 
 
 If `block` is `False`, this method raises `queue.Full` immediately if the queue is full. The `timeout` is
 ignored in this case.
-
 ## put_many
 
 ```python
@@ -15266,7 +14102,6 @@ If blocking it is not recommended to omit the `timeout`, as the operation could 
 
 If `block` is `False`, this method raises `queue.Full` immediately if the queue is full. The `timeout` is
 ignored in this case.
-
 ## len
 
 ```python
@@ -15275,7 +14110,6 @@ def len(self, *, partition: Optional[str] = None, total: bool = False) -> int:
 ```
 
 Return the number of objects in the queue partition.
-
 ## iterate
 
 ```python
@@ -15286,7 +14120,7 @@ def iterate(
 ) -> AsyncGenerator[Any, None]:
 ```
 
-Iterate through items in the queue without mutation.
+(Beta feature) Iterate through items in the queue without mutation.
 
 Specify `item_poll_timeout` to control how long the iterator should wait for the next time before giving up.
 
@@ -15378,8 +14212,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## create
 
 ```python
@@ -15420,8 +14253,6 @@ def create(
     h2_ports: Sequence[int] = [],
     # List of ports to tunnel into the sandbox without encryption.
     unencrypted_ports: Sequence[int] = [],
-    # Allow connections to the Sandbox via a subdomain of this parent rather than a default Modal domain.
-    custom_domain: Optional[str] = None,
     # Reference to a Modal Proxy to use in front of this Sandbox.
     proxy: Optional[_Proxy] = None,
     # Enable verbose logging for sandbox operations.
@@ -15447,19 +14278,6 @@ sandbox = modal.Sandbox.create("echo", "hello world", app=app)
 print(sandbox.stdout.read())
 sandbox.wait()
 ```
-
-## detach
-
-```python
-def detach(self):
-```
-
-Disconnects your client from the sandbox and cleans up resources assoicated with the connection.
-
-Be sure to only call `detach` when you are done interacting with the sandbox. After calling `detach`,
-any operation using the Sandbox object is not guaranteed to work anymore. If you want to continue interacting
-with a running sandbox, use `Sandbox.from_id` to get a new Sandbox object.
-
 ## from_name
 
 ```python
@@ -15477,7 +14295,6 @@ Get a running Sandbox by name from a deployed App.
 
 Raises a modal.exception.NotFoundError if no running sandbox is found with the given name.
 A Sandbox's name is the `name` argument passed to `Sandbox.create`.
-
 ## from_id
 
 ```python
@@ -15488,7 +14305,6 @@ def from_id(sandbox_id: str, client: Optional[_Client] = None) -> "_Sandbox":
 Construct a Sandbox from an id and look up the Sandbox result.
 
 The ID of a Sandbox object can be accessed using `.object_id`.
-
 ## get_tags
 
 ```python
@@ -15496,7 +14312,6 @@ def get_tags(self) -> dict[str, str]:
 ```
 
 Fetches any tags (key-value pairs) currently attached to this Sandbox from the server.
-
 ## set_tags
 
 ```python
@@ -15504,7 +14319,6 @@ def set_tags(self, tags: dict[str, str], *, client: Optional[_Client] = None) ->
 ```
 
 Set tags (key-value pairs) on the Sandbox. Tags can be used to filter results in `Sandbox.list`.
-
 ## snapshot_filesystem
 
 ```python
@@ -15515,57 +14329,6 @@ Snapshot the filesystem of the Sandbox.
 
 Returns an [`Image`](https://modal.com/docs/reference/modal.Image) object which
 can be used to spawn a new Sandbox with the same filesystem.
-
-## mount_image
-
-```python
-def mount_image(self, path: Union[PurePosixPath, str], image: _Image):
-```
-
-Mount an Image at a specified path in a running Sandbox.
-
-`path` should be a directory. If it doesn't exist it will be created. If it exists and contains
-data, the previous directory will be replaced by the mount.
-
-The `image` argument currently only supports Images that are either:
-
-- prebuilt using `image.build()`
-- referenced by image id, e.g. `Image.from_id(...)`
-- filesystem/directory snapshots e.g. created by `.snapshot_directory()`
-or `.snapshot_filesystem()`"
-
-Usage:
-
-```py notest
-user_project_snapshot: Image = sandbox_session_1.snapshot_directory("/user_project")
-
-# You can later mount this snapshot to another Sandbox:
-sandbox_session_2 = modal.Sandbox.create(...)
-sandbox_session_2.mount_image("/user_project", user_project_snapshot)
-sandbox_session_2.ls("/user_project")
-```
-
-## snapshot_directory
-
-```python
-def snapshot_directory(self, path: Union[PurePosixPath, str]) -> _Image:
-```
-
-Snapshot a directory in a running Sandbox, creating a new Image with its content.
-
-Directory snapshots are currently persisted for 30 days after they were last created or used.
-
-Usage:
-
-```py notest
-user_project_snapshot: Image = sandbox_session_1.snapshot_directory("/user_project")
-
-# You can later mount this snapshot to another Sandbox:
-sandbox_session_2 = modal.Sandbox.create(...)
-sandbox_session_2.mount_image("/user_project", user_project_snapshot)
-sandbox_session_2.ls("/user_project")
-```
-
 ## wait
 
 ```python
@@ -15573,7 +14336,6 @@ def wait(self, raise_on_termination: bool = True):
 ```
 
 Wait for the Sandbox to finish running.
-
 ## tunnels
 
 ```python
@@ -15588,7 +14350,6 @@ Returns a dictionary of `Tunnel` objects which are keyed by the container port.
 
 NOTE: Previous to client [v0.64.153](https://modal.com/docs/reference/changelog#064153-2024-09-30), this
 returned a list of `TunnelData` objects.
-
 ## create_connect_token
 
 ```python
@@ -15597,11 +14358,10 @@ def create_connect_token(
 ) -> SandboxConnectCredentials:
 ```
 
-Create a token for making HTTP connections to the Sandbox.
+[Alpha] Create a token for making HTTP connections to the Sandbox.
 
 Also accepts an optional user_metadata string or dict to associate with the token. This metadata
 will be added to the headers by the proxy when forwarding requests to the Sandbox.
-
 ## reload_volumes
 
 ```python
@@ -15611,21 +14371,15 @@ def reload_volumes(self) -> None:
 Reload all Volumes mounted in the Sandbox.
 
 Added in v1.1.0.
-
 ## terminate
 
 ```python
-def terminate(
-    self,
-    *,
-    wait: bool = False,  # wait for terminate to complete and return the exit code.
-) -> int | None:
+def terminate(self) -> None:
 ```
 
 Terminate Sandbox execution.
 
 This is a no-op if the Sandbox has already finished running.
-
 ## poll
 
 ```python
@@ -15635,7 +14389,6 @@ def poll(self) -> Optional[int]:
 Check if the Sandbox has finished running.
 
 Returns `None` if the Sandbox is still running, else returns the exit code.
-
 ## exec
 
 ```python
@@ -15673,7 +14426,6 @@ process = sandbox.exec("bash", "-c", "for i in $(seq 1 3); do echo foo $i; sleep
 for line in process.stdout:
     print(line)
 ```
-
 ## open
 
 ```python
@@ -15696,7 +14448,6 @@ f = sb.open("/test.txt", "w")
 f.write("hello")
 f.close()
 ```
-
 ## ls
 
 ```python
@@ -15704,7 +14455,6 @@ def ls(self, path: str) -> builtins.list[str]:
 ```
 
 [Alpha] List the contents of a directory in the Sandbox.
-
 ## mkdir
 
 ```python
@@ -15712,7 +14462,6 @@ def mkdir(self, path: str, parents: bool = False) -> None:
 ```
 
 [Alpha] Create a new directory in the Sandbox.
-
 ## rm
 
 ```python
@@ -15720,7 +14469,6 @@ def rm(self, path: str, recursive: bool = False) -> None:
 ```
 
 [Alpha] Remove a file or directory in the Sandbox.
-
 ## watch
 
 ```python
@@ -15734,7 +14482,6 @@ def watch(
 ```
 
 [Alpha] Watch a file or directory in the Sandbox for changes.
-
 ## stdout
 
 ```python
@@ -15744,7 +14491,6 @@ def stdout(self) -> _StreamReader[str]:
 
 [`StreamReader`](https://modal.com/docs/reference/modal.io_streams#modalio_streamsstreamreader) for
 the sandbox's stdout stream.
-
 ## stderr
 
 ```python
@@ -15754,7 +14500,6 @@ def stderr(self) -> _StreamReader[str]:
 
 [`StreamReader`](https://modal.com/docs/reference/modal.io_streams#modalio_streamsstreamreader) for
 the Sandbox's stderr stream.
-
 ## stdin
 
 ```python
@@ -15764,7 +14509,6 @@ def stdin(self) -> _StreamWriter:
 
 [`StreamWriter`](https://modal.com/docs/reference/modal.io_streams#modalio_streamsstreamwriter) for
 the Sandbox's stdin stream.
-
 ## returncode
 
 ```python
@@ -15773,7 +14517,6 @@ def returncode(self) -> Optional[int]:
 ```
 
 Return code of the Sandbox process if it has finished running, else `None`.
-
 ## list
 
 ```python
@@ -15812,8 +14555,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## from_id
 
 ```python
@@ -15854,8 +14596,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## objects
 
 ```python
@@ -15905,7 +14646,6 @@ Note that this method does not return a local instance of the Secret. You can us
 `modal.Secret.from_name` to perform a lookup after creation.
 
 Added in v1.1.2.
-
 ### list
 
 ```python
@@ -15942,7 +14682,6 @@ secrets = modal.Secret.objects.list(max_objects=10, created_before="2025-01-01")
 ```
 
 Added in v1.1.2.
-
 ### delete
 
 ```python
@@ -15973,7 +14712,6 @@ await modal.Secret.objects.delete("my-secret", environment_name="dev")
 ```
 
 Added in v1.1.2.
-
 ## name
 
 ```python
@@ -15995,13 +14733,11 @@ def from_dict(
 Create a secret from a str-str dictionary. Values can also be `None`, which is ignored.
 
 Usage:
-
 ```python
 @app.function(secrets=[modal.Secret.from_dict({"FOO": "bar"})])
 def run():
     print(os.environ["FOO"])
 ```
-
 ## from_local_environ
 
 ```python
@@ -16012,7 +14748,6 @@ def from_local_environ(
 ```
 
 Create secrets from local environment variables automatically.
-
 ## from_dotenv
 
 ```python
@@ -16028,7 +14763,6 @@ calling `Secret.from_dotenv`.
 
 If called with an argument, it will use that as a starting point for finding `.env` files.
 In particular, you can call it like this:
-
 ```python
 @app.function(secrets=[modal.Secret.from_dotenv(__file__)])
 def run():
@@ -16046,7 +14780,6 @@ keyword argument:
 def run():
     ...
 ```
-
 ## from_name
 
 ```python
@@ -16075,7 +14808,6 @@ secret = modal.Secret.from_name("my-secret")
 def run():
    ...
 ```
-
 ## info
 
 ```python
@@ -16084,18 +14816,6 @@ def info(self) -> SecretInfo:
 ```
 
 Return information about the Secret object.
-
-## update
-
-```python
-@live_method
-def update(self, env_dict: dict[str, str]) -> None:
-```
-
-Update this Secret, adding or overwriting key-value pairs.
-
-Like dict.update(), this merges `env_dict` into the existing Secret.
-Keys not mentioned in `env_dict` are left unchanged.
 
 #### Tunnel
 
@@ -16121,7 +14841,6 @@ def url(self) -> str:
 ```
 
 Get the public HTTPS URL of the forwarded port.
-
 ## tls_socket
 
 ```python
@@ -16130,7 +14849,6 @@ def tls_socket(self) -> tuple[str, int]:
 ```
 
 Get the public TLS socket as a (host, port) tuple.
-
 ## tcp_socket
 
 ```python
@@ -16200,8 +14918,7 @@ It is rarely necessary to call this method explicitly, as most operations
 will lazily hydrate when needed. The main use case is when you need to
 access object metadata, such as its ID.
 
-_Added in v0.72.39_: This method replaces the deprecated `.resolve()` method.
-
+*Added in v0.72.39*: This method replaces the deprecated `.resolve()` method.
 ## objects
 
 ```python
@@ -16249,7 +14966,6 @@ Note that this method does not return a local instance of the Volume. You can us
 `modal.Volume.from_name` to perform a lookup after creation.
 
 Added in v1.1.2.
-
 ### list
 
 ```python
@@ -16286,7 +15002,6 @@ volumes = modal.Volume.objects.list(max_objects=10, created_before="2025-01-01")
 ```
 
 Added in v1.1.2.
-
 ### delete
 
 ```python
@@ -16302,7 +15017,7 @@ def delete(
 
 Delete a named Volume.
 
-Warning: This deletes an _entire Volume_, not just a specific file.
+Warning: This deletes an *entire Volume*, not just a specific file.
 Deletion is irreversible and will affect any Apps currently using the Volume.
 
 **Examples:**
@@ -16318,7 +15033,6 @@ await modal.Volume.objects.delete("my-volume", environment_name="dev")
 ```
 
 Added in v1.1.2.
-
 ## name
 
 ```python
@@ -16351,7 +15065,6 @@ The Volume is mounted as a read-only volume in a function. Any file system write
 mounted volume will result in an error.
 
 Added in v1.0.5.
-
 ## from_name
 
 ```python
@@ -16382,39 +15095,6 @@ app = modal.App()
 def f():
     pass
 ```
-
-## from_id
-
-```python
-@staticmethod
-def from_id(
-    volume_id: str,
-    client: Optional[_Client] = None,
-) -> "_Volume":
-```
-
-Construct a Volume from an id and look up the Volume metadata.
-
-This is a lazy method that defers hydrating the local
-object with metadata from Modal servers until the first
-time it is actually used.
-
-The ID of a Volume object can be accessed using `.object_id`.
-
-**Example:**
-
-```python notest
-@app.function()
-def my_worker(volume_id: str):
-    vol = modal.Volume.from_id(volume_id)
-    for entry in vol.listdir("/"):
-        print(entry.path)
-
-with modal.Volume.ephemeral() as vol:
-    # Pass the volume ID to a remote function
-    my_worker.remote(vol.object_id)
-```
-
 ## ephemeral
 
 ```python
@@ -16431,7 +15111,6 @@ def ephemeral(
 Creates a new ephemeral volume within a context manager:
 
 Usage:
-
 ```python
 import modal
 with modal.Volume.ephemeral() as vol:
@@ -16442,7 +15121,6 @@ with modal.Volume.ephemeral() as vol:
 async with modal.Volume.ephemeral() as vol:
     assert await vol.listdir("/") == []
 ```
-
 ## info
 
 ```python
@@ -16451,7 +15129,6 @@ def info(self) -> VolumeInfo:
 ```
 
 Return information about the Volume object.
-
 ## commit
 
 ```python
@@ -16463,7 +15140,6 @@ Commit changes to a mounted volume.
 
 If successful, the changes made are now persisted in durable storage and available to other containers accessing
 the volume.
-
 ## reload
 
 ```python
@@ -16477,7 +15153,6 @@ Any uncommitted changes to the volume, such as new or modified files, may implic
 reloading.
 
 Reloading will fail if there are open files for the volume.
-
 ## iterdir
 
 ```python
@@ -16490,7 +15165,6 @@ Iterate over all files in a directory in the volume.
 Passing a directory path lists all files in the directory. For a file path, return only that
 file's description. If `recursive` is set to True, list all files and folders under the path
 recursively.
-
 ## listdir
 
 ```python
@@ -16503,7 +15177,6 @@ List all files under a path prefix in the modal.Volume.
 Passing a directory path lists all files in the directory. For a file path, return only that
 file's description. If `recursive` is set to True, list all files and folders under the path
 recursively.
-
 ## read_file
 
 ```python
@@ -16526,7 +15199,6 @@ for chunk in vol.read_file("1mb.csv"):
     data += chunk
 print(len(data))  # == 1024 * 1024
 ```
-
 ## remove_file
 
 ```python
@@ -16535,7 +15207,6 @@ def remove_file(self, path: str, recursive: bool = False) -> None:
 ```
 
 Remove a file or directory from a volume.
-
 ## copy_files
 
 ```python
@@ -16549,7 +15220,7 @@ The semantics of the copy operation follow those of the UNIX cp command.
 The `src_paths` parameter is a list. If you want to copy a single file, you should pass a list with a
 single element.
 
-`src_paths` and `dst_path` should refer to the desired location _inside_ the volume. You do not need to prepend
+`src_paths` and `dst_path` should refer to the desired location *inside* the volume. You do not need to prepend
 the volume mount path.
 
 **Usage**
@@ -16564,7 +15235,6 @@ vol.copy_files(["bar/example.txt"], "bar/example2.txt")  # Rename a file by copy
 Note that if the volume is already mounted on the Modal function, you should use normal filesystem operations
 like `os.rename()` and then `commit()` the volume. The `copy_files()` method is useful when you don't have
 the volume mounted as a filesystem, e.g. when running a script on your local computer.
-
 ## batch_upload
 
 ```python
@@ -16588,7 +15258,6 @@ with vol.batch_upload() as batch:
     batch.put_directory("/local/directory/", "/remote/directory")
     batch.put_file(io.BytesIO(b"some data"), "/foobar")
 ```
-
 ## rename
 
 ```python
@@ -16675,62 +15344,6 @@ class BatchedClass:
 
 See the [dynamic batching guide](https://modal.com/docs/guide/dynamic-batching) for more information.
 
-#### billing
-
-# modal.billing
-
-## modal.billing.WorkspaceBillingReportItem
-
-```python
-class WorkspaceBillingReportItem(TypedDict):
-    object_id: str
-    description: str
-    environment_name: str
-    interval_start: datetime.datetime
-    cost: decimal.Decimal
-    tags: dict[str, str]
-```
-
-## modal.billing.workspace_billing_report
-
-```python
-async def workspace_billing_report(
-    *,
-    start: datetime,  # Start of the report, inclusive
-    end: Optional[datetime] = None,  # End of the report, exclusive
-    resolution: str = "d",  # Resolution, e.g. "d" for daily or "h" for hourly
-    tag_names: Optional[list[str]] = None,  # Optional additional metadata to include
-    client: Optional[_Client] = None,
-) -> list[WorkspaceBillingReportItem]:
-```
-
-Generate a tabular report of workspace usage by object and time.
-
-The result will be a list of dictionaries for each interval (determined by `resolution`)
-between the `start` and `end` limits. The dictionary represents a single Modal object
-that billing can be attributed to (e.g., an App) along with metadata (including user-defined
-tags) for identifying that object.
-
-The `start` and `end` parameters are required to either have a UTC timezone or to be
-timezone-naive (which will be interpreted as UTC times). The timestamps in the result will
-be in UTC. Cost will be reported for full intervals, even if the provided `start` or `end`
-parameters are partial: `start` will be rounded to the beginning of its interval, while
-partial `end` intervals will be excluded.
-
-Additional user-provided metadata can be included in the report if the objects have tags
-and `tag_names` (i.e., keys) are specified in the request. Alternatively, pass `tag_names=["*"]`
-to include all tags in the report. Note that tags will be attributed to the entire interval even
-if they were added or removed at some point within it. If the tag name was not in use during an
-interval, it will be absent from the tags dictionary in that output row.
-
-In most cases, billing data will be available in the database that this API queries within
-minutes, although there may be collection delays. If completeness is important for your use
-case, we recommend leaving a buffer after the end of the query interval.
-
-It's also possible to generate reports using the
-[`modal billing report`](https://modal.com/docs/reference/cli/billing) CLI command. The CLI
-has a few convenience features for generating reports across relative time ranges.
-
 #### call graph
 
 # modal.call_graph
@@ -16757,12 +15370,12 @@ Enum representing status of a function input.
 
 The possible values are:
 
-- `PENDING`
-- `SUCCESS`
-- `FAILURE`
-- `INIT_FAILURE`
-- `TERMINATED`
-- `TIMEOUT`
+* `PENDING`
+* `SUCCESS`
+* `FAILURE`
+* `INIT_FAILURE`
+* `TERMINATED`
+* `TIMEOUT`
 
 #### concurrent
 
@@ -16782,7 +15395,6 @@ def concurrent(
 Decorator that allows individual containers to handle multiple inputs concurrently.
 
 The concurrency mechanism depends on whether the function is async or not:
-
 - Async functions will run inputs on a single thread as asyncio tasks.
 - Synchronous functions will use multi-threading. The code must be thread-safe.
 
@@ -16798,7 +15410,6 @@ arrival rate of inputs increases. This can trade-off a small increase in average
 latency to avoid larger tail latencies from input queuing.
 
 **Examples:**
-
 ```python
 # Stack the decorator under `@app.function()` to enable input concurrency
 @app.function()
@@ -16818,7 +15429,7 @@ class C:
 
 ```
 
-_Added in v0.73.148:_ This decorator replaces the `allow_concurrent_inputs` parameter
+*Added in v0.73.148:* This decorator replaces the `allow_concurrent_inputs` parameter
 in `@app.function()` and `@app.cls()`.
 
 #### config
@@ -16871,37 +15482,37 @@ Other configuration options
 
 Other possible configuration options are:
 
-- `loglevel` (in the .toml file) / `MODAL_LOGLEVEL` (as an env var).
+* `loglevel` (in the .toml file) / `MODAL_LOGLEVEL` (as an env var).
   Defaults to `WARNING`. Set this to `DEBUG` to see internal messages.
-- `logs_timeout` (in the .toml file) / `MODAL_LOGS_TIMEOUT` (as an env var).
+* `logs_timeout` (in the .toml file) / `MODAL_LOGS_TIMEOUT` (as an env var).
   Defaults to 10.
   Number of seconds to wait for logs to drain when closing the session,
   before giving up.
-- `max_throttle_wait` (in the .toml file) / `MODAL_MAX_THROTTLE_WAIT` (as an env var).
+* `max_throttle_wait` (in the .toml file) / `MODAL_MAX_THROTTLE_WAIT` (as an env var).
   Defaults to None (no limit).
   Maximum number of seconds to wait when requests are being throttled (i.e., due
   to rate limiting or other cases that can normally be resolved through backoff).
-- `force_build` (in the .toml file) / `MODAL_FORCE_BUILD` (as an env var).
+* `force_build` (in the .toml file) / `MODAL_FORCE_BUILD` (as an env var).
   Defaults to False.
   When set, ignores the Image cache and builds all Image layers. Note that this
   will break the cache for all images based on the rebuilt layers, so other images
   may rebuild on subsequent runs / deploys even if the config is reverted.
-- `ignore_cache` (in the .toml file) / `MODAL_IGNORE_CACHE` (as an env var).
+* `ignore_cache` (in the .toml file) / `MODAL_IGNORE_CACHE` (as an env var).
   Defaults to False.
   When set, ignores the Image cache and builds all Image layers. Unlike `force_build`,
   this will not overwrite the cache for other images that have the same recipe.
-  Subsequent runs that do not use this option will pull the _previous_ Image from
+  Subsequent runs that do not use this option will pull the *previous* Image from
   the cache, if one exists. It can be useful for testing an App's robustness to
   Image rebuilds without clobbering Images used by other Apps.
-- `traceback` (in the .toml file) / `MODAL_TRACEBACK` (as an env var).
+* `traceback` (in the .toml file) / `MODAL_TRACEBACK` (as an env var).
   Defaults to False. Enables printing full tracebacks on unexpected CLI
   errors, which can be useful for debugging client issues.
-- `log_pattern` (in the .toml file) / `MODAL_LOG_PATTERN` (as an env var).
+* `log_pattern` (in the .toml file) / `MODAL_LOG_PATTERN` (as an env var).
   Defaults to `"[modal-client] %(asctime)s %(message)s"`
   The log formatting pattern that will be used by the modal client itself.
   See https://docs.python.org/3/library/logging.html#logrecord-attributes for available
   log attributes.
-- `dev_suffix` (in the .toml file) / `MODAL_DEV_SUFFIX` (as an env var).
+* `dev_suffix` (in the .toml file) / `MODAL_DEV_SUFFIX` (as an env var).
   Overrides the default `-dev` suffix added to URLs generated for web endpoints
   when the App is ephemeral (i.e., created via `modal serve`). Must be a short
   alphanumeric string.
@@ -16911,9 +15522,9 @@ Meta-configuration
 
 Some "meta-options" are set using environment variables only:
 
-- `MODAL_CONFIG_PATH` lets you override the location of the .toml file,
+* `MODAL_CONFIG_PATH` lets you override the location of the .toml file,
   by default `~/.modal.toml`.
-- `MODAL_PROFILE` lets you use multiple sections in the .toml file
+* `MODAL_PROFILE` lets you use multiple sections in the .toml file
   and switch between them. It defaults to "default".
 
 ## modal.config.Config
@@ -16937,11 +15548,9 @@ def get(self, key, profile=None, use_env=True):
 Looks up a configuration value.
 
 Will check (in decreasing order of priority):
-
 1. Any environment variable of the form MODAL_FOO_BAR (when use_env is True)
 2. Settings in the user's .toml configuration file
 3. The default value of the setting
-
 ### override_locally
 
 ```python
@@ -16964,7 +15573,6 @@ def config_profiles():
 ```
 
 List the available modal profiles in the .modal.toml file.
-
 ## modal.config.config_set_active_profile
 
 ```python
@@ -17008,7 +15616,6 @@ def stdout(self) -> _StreamReader[T]:
 ```
 
 StreamReader for the container process's stdout stream.
-
 ### stderr
 
 ```python
@@ -17017,7 +15624,6 @@ def stderr(self) -> _StreamReader[T]:
 ```
 
 StreamReader for the container process's stderr stream.
-
 ### stdin
 
 ```python
@@ -17026,7 +15632,6 @@ def stdin(self) -> _StreamWriter:
 ```
 
 StreamWriter for the container process's stdin stream.
-
 ### returncode
 
 ```python
@@ -17043,7 +15648,6 @@ def poll(self) -> Optional[int]:
 Check if the container process has finished running.
 
 Returns `None` if the process is still running, else returns the exit code.
-
 ### wait
 
 ```python
@@ -17098,28 +15702,23 @@ def process_stuff():
 
 ```python
 @contextlib.contextmanager
-def enable_output() -> Generator[OutputManager, None, None]:
+def enable_output(show_progress: bool = True) -> Generator[None, None, None]:
 ```
 
 Context manager that enable output when using the Python SDK.
 
 This will print to stdout and stderr things such as
-
 1. Logs from running functions
 2. Status of creating objects
 3. Map progress
 
 Example:
-
 ```python
 app = modal.App()
 with modal.enable_output():
     with app.run():
         ...
 ```
-
-To suppress progress indicators, use `output_manager.set_quiet_mode(True)`.
-To enable timestamps, use `output_manager.set_timestamps(True)`.
 
 #### enter
 
@@ -17832,7 +16431,7 @@ and can leverage many of FastAPI's features.
 For more information on using Modal with popular web frameworks, see our
 [guide on web endpoints](https://modal.com/docs/guide/webhooks).
 
-_Added in v0.73.82_: This function replaces the deprecated `@web_endpoint` decorator.
+*Added in v0.73.82*: This function replaces the deprecated `@web_endpoint` decorator.
 
 #### file io
 
@@ -17880,7 +16479,6 @@ def create(
 ```
 
 Create a new FileIO handle.
-
 ### read
 
 ```python
@@ -17888,7 +16486,6 @@ def read(self, n: Optional[int] = None) -> T:
 ```
 
 Read n bytes from the current position, or the entire remaining file if n is None.
-
 ### readline
 
 ```python
@@ -17896,7 +16493,6 @@ def readline(self) -> T:
 ```
 
 Read a single line from the current position.
-
 ### readlines
 
 ```python
@@ -17904,7 +16500,6 @@ def readlines(self) -> Sequence[T]:
 ```
 
 Read all lines from the current position.
-
 ### write
 
 ```python
@@ -17916,7 +16511,6 @@ Write data to the current position.
 Writes may not appear until the entire buffer is flushed, which
 can be done manually with `flush()` or automatically when the file is
 closed.
-
 ### flush
 
 ```python
@@ -17924,7 +16518,6 @@ def flush(self) -> None:
 ```
 
 Flush the buffer to disk.
-
 ### seek
 
 ```python
@@ -17935,7 +16528,6 @@ Move to a new position in the file.
 
 `whence` defaults to 0 (absolute file positioning); other values are 1
 (relative to the current position) and 2 (relative to the file's end).
-
 ### ls
 
 ```python
@@ -17944,7 +16536,6 @@ def ls(cls, path: str, client: _Client, task_id: str) -> list[str]:
 ```
 
 List the contents of the provided directory.
-
 ### mkdir
 
 ```python
@@ -17953,7 +16544,6 @@ def mkdir(cls, path: str, client: _Client, task_id: str, parents: bool = False) 
 ```
 
 Create a new directory.
-
 ### rm
 
 ```python
@@ -17962,7 +16552,6 @@ def rm(cls, path: str, client: _Client, task_id: str, recursive: bool = False) -
 ```
 
 Remove a file or directory in the Sandbox.
-
 ### watch
 
 ```python
@@ -17985,7 +16574,6 @@ def close(self) -> None:
 ```
 
 Flush the buffer and close the file.
-
 ## modal.file_io.FileWatchEvent
 
 ```python
@@ -18008,11 +16596,11 @@ An enumeration.
 
 The possible values are:
 
-- `Unknown`
-- `Access`
-- `Create`
-- `Modify`
-- `Remove`
+* `Unknown`
+* `Access`
+* `Create`
+* `Modify`
+* `Remove`
 
 #### forward
 
@@ -18142,7 +16730,6 @@ You can pass a wide range of `str` values for the `gpu` parameter of
 [`@app.function`](https://modal.com/docs/reference/modal.App#function).
 
 For instance:
-
 - `gpu="H100"` will attach 1 H100 GPU to each container
 - `gpu="L40S"` will attach 1 L40S GPU to each container
 - `gpu="T4:4"` will attach 4 T4 GPUs to each container
@@ -18299,6 +16886,12 @@ def __init__(
 ):
 ```
 
+## modal.gpu.parse_gpu_config
+
+```python
+def parse_gpu_config(value: GPU_T) -> api_pb2.GPUConfig:
+```
+
 #### interact
 
 # modal.interact
@@ -18335,7 +16928,6 @@ def file_descriptor(self) -> int:
 ```
 
 Possible values are `1` for stdout and `2` for stderr.
-
 ### read
 
 ```python
@@ -18343,7 +16935,6 @@ def read(self) -> T:
 ```
 
 Fetch the entire contents of the stream until EOF.
-
 ## modal.io_streams.StreamWriter
 
 ```python
@@ -18376,7 +16967,6 @@ proc.stdin.write(b"bar\n")
 proc.stdin.write_eof()
 proc.stdin.drain()
 ```
-
 ### write_eof
 
 ```python
@@ -18388,7 +16978,6 @@ Close the write end of the stream after the buffered data is drained.
 If the process was blocked on input, it will become unblocked after
 `write_eof()`. This method needs to be used along with the `drain()`
 method, which flushes the EOF to the process.
-
 ### drain
 
 ```python
@@ -18408,7 +16997,6 @@ writer.drain()
 ```
 
 Async usage:
-
 ```python notest
 writer.write(data)  # not a blocking operation
 await writer.drain.aio()
@@ -18462,7 +17050,6 @@ def parameter(*, default: Any = _no_default, init: bool = True) -> Any:
 ```
 
 Used to specify options for modal.cls parameters, similar to dataclass.field for dataclasses
-
 ```
 class A:
     a: str = modal.parameter()
@@ -18602,16 +17189,15 @@ modal app [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `list`: List Modal apps that are currently deployed/running or recently stopped.
-- `logs`: Show App logs, streaming while active.
-- `rollback`: Redeploy a previous version of an App.
-- `stop`: Stop an app.
-- `history`: Show App deployment history, for a currently deployed app
-- `dashboard`: Open an App's dashboard page in your web browser.
+* `list`: List Modal apps that are currently deployed/running or recently stopped.
+* `logs`: Show App logs, streaming while active.
+* `rollback`: Redeploy a previous version of an App.
+* `stop`: Stop an app.
+* `history`: Show App deployment history, for a currently deployed app
 
 ## `modal app list`
 
@@ -18625,12 +17211,12 @@ modal app list [OPTIONS]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--json / --no-json`: [default: no-json]
-- `--help`: Show this message and exit.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
 
 ## `modal app logs`
 
@@ -18658,16 +17244,16 @@ modal app logs [OPTIONS] [APP_IDENTIFIER]
 
 **Arguments**:
 
-- `[APP_IDENTIFIER]`: App name or ID
+* `[APP_IDENTIFIER]`: App name or ID
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--timestamps`: Show timestamps for each log line
-- `--help`: Show this message and exit.
+* `--timestamps`: Show timestamps for each log line
+* `--help`: Show this message and exit.
 
 ## `modal app rollback`
 
@@ -18705,16 +17291,16 @@ modal app rollback [OPTIONS] [APP_IDENTIFIER] [VERSION]
 
 **Arguments**:
 
-- `[APP_IDENTIFIER]`: App name or ID
-- `[VERSION]`: Target version for rollback.
+* `[APP_IDENTIFIER]`: App name or ID
+* `[VERSION]`: Target version for rollback.
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal app stop`
 
@@ -18728,15 +17314,15 @@ modal app stop [OPTIONS] [APP_IDENTIFIER]
 
 **Arguments**:
 
-- `[APP_IDENTIFIER]`: App name or ID
+* `[APP_IDENTIFIER]`: App name or ID
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal app history`
 
@@ -18764,163 +17350,16 @@ modal app history [OPTIONS] [APP_IDENTIFIER]
 
 **Arguments**:
 
-- `[APP_IDENTIFIER]`: App name or ID
+* `[APP_IDENTIFIER]`: App name or ID
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--json / --no-json`: [default: no-json]
-- `--help`: Show this message and exit.
-
-## `modal app dashboard`
-
-Open an App's dashboard page in your web browser.
-
-**Examples:**
-
-Open dashboard for an app by name:
-
-```
-modal app dashboard my-app
-```
-
-Use a specified environment:
-
-```
-modal app dashboard my-app --env dev
-```
-
-**Usage**:
-
-```shell
-modal app dashboard [OPTIONS] [APP_IDENTIFIER]
-```
-
-**Arguments**:
-
-- `[APP_IDENTIFIER]`: App name or ID
-
-**Options**:
-
-- `-e, --env TEXT`: Environment to interact with.
-
-If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
-Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
-
-### modal billing
-
-# `modal billing`
-
-View workspace billing information.
-
-**Usage**:
-
-```shell
-modal billing [OPTIONS] COMMAND [ARGS]...
-```
-
-**Options**:
-
-- `--help`: Show this message and exit.
-
-**Commands**:
-
-- `report`: Generate a billing report for the workspace.
-
-## `modal billing report`
-
-Generate a billing report for the workspace.
-
-The report range can be provided by setting `--start` / `--end` dates (`--end` defaults to 'now')
-or by requesting a date range using `--for` (e.g., `--for today`, `--for 'last month'`).
-
-This command provides a CLI frontend for the
-[`modal.billing.workspace_billing_report`](https://modal.com/docs/reference/modal.billing) API.
-
-Note that, as with the API, the start date is inclusive and the end date is exclusive.
-Data will be reported for full intervals only. Using `--for` is a convenient way to define a
-complete interval.
-
-Examples:
-
-```bash
-modal billing report --start 2025-12-01 --end 2026-01-01
-
-modal billing report --for "last month" --tag-names team,project
-
-modal billing report --for today --resolution h
-
-modal billing report --for yesterday -r h --tz local
-
-modal billing report --for "last month" --csv > report.csv
-
-modal billing report --start 2025-12-01 --json > report.json
-```
-
-**Usage**:
-
-```shell
-modal billing report [OPTIONS]
-```
-
-**Options**:
-
-- `--start TEXT`: Start date. Date (in UTC by default): ISO format (2025-01-01) or relative (yesterday, 3 days ago, etc.).
-- `--end TEXT`: End date. Date (in UTC by default): ISO format (2025-01-01) or relative (yesterday, 3 days ago, etc.). Defaults to now.
-- `--for TEXT`: Convenience range: today, yesterday, this week, last week, this month, last month.
-- `-r, --resolution TEXT`: Time resolution: 'd' (daily) or 'h' (hourly).  [default: d]
-- `--tz TEXT`: Timezone for date interpretation: 'local', offset (5, -4, +05:30), or IANA name. Requires hourly resolution.
-- `-t, --tag-names TEXT`: Comma-separated list of tag names to include.
-- `--json`: Output as JSON.
-- `--csv`: Output as CSV.
-- `--help`: Show this message and exit.
-
-### modal changelog
-
-# `modal changelog`
-
-Fetch release notes from the Modal changelog.
-
-This command prints changelog contents as markdown text and is useful for including
-information about recent updates in the context for agent development sessions.
-
-By default, the most recent updates in the current release series are shown. Other options
-allow for showing changes since a previous version, changes in a specific version, or changes
-that are newer than what's currently installed.
-
-Examples:
-
-    modal changelog --since 1.2.0  # Show updates added after a specific version
-
-    modal changelog --since 2026-01-01  # Show updates added after a specific date
-
-    modal changelog --newer  # Show updates released after the currently installed version
-
-    modal changelog --last 3  # Show updates included in the 3 most recent releases
-
-    modal changelog --for 1.3.1  # Show the changelog for a specific release
-
-Note: when using `--since` or `--last`, only changes up to the currently installed version are shown.
-
-**Usage**:
-
-```shell
-modal changelog [OPTIONS]
-```
-
-**Options**:
-
-- `--last INTEGER`: Show the N most recent entries before the installed version.
-- `--since TEXT`: Show entries after a version (X.Y.Z) or date (YYYY-MM-DD), exclusive.
-- `--for TEXT`: Show entries for a version (X.Y.Z) or series (X.Y).
-- `--newer`: Show entries newer than the installed version.
-- `--all`: Show all entries.
-- `--json`: Output as JSON.
-- `--help`: Show this message and exit.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
 
 ### modal config
 
@@ -18939,12 +17378,12 @@ modal config [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `show`: Show current configuration values (debugging command).
-- `set-environment`: Set the default Modal environment for the active profile
+* `show`: Show current configuration values (debugging command).
+* `set-environment`: Set the default Modal environment for the active profile
 
 ## `modal config show`
 
@@ -18958,8 +17397,8 @@ modal config show [OPTIONS]
 
 **Options**:
 
-- `--redact / --no-redact`: Redact the `token_secret` value.  [default: redact]
-- `--help`: Show this message and exit.
+* `--redact / --no-redact`: Redact the `token_secret` value.  \[default: redact]
+* `--help`: Show this message and exit.
 
 ## `modal config set-environment`
 
@@ -18978,11 +17417,11 @@ modal config set-environment [OPTIONS] ENVIRONMENT_NAME
 
 **Arguments**:
 
-- `ENVIRONMENT_NAME`: [required]
+* `ENVIRONMENT_NAME`: \[required]
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ### modal container
 
@@ -18998,14 +17437,14 @@ modal container [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `list`: List all containers that are currently running.
-- `logs`: Show logs for a specific container, streaming while active.
-- `exec`: Execute a command in a container.
-- `stop`: Stop a currently-running container and reassign its in-progress inputs.
+* `list`: List all containers that are currently running.
+* `logs`: Show logs for a specific container, streaming while active.
+* `exec`: Execute a command in a container.
+* `stop`: Stop a currently-running container and reassign its in-progress inputs.
 
 ## `modal container list`
 
@@ -19019,12 +17458,12 @@ modal container list [OPTIONS]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--json / --no-json`: [default: no-json]
-- `--help`: Show this message and exit.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
 
 ## `modal container logs`
 
@@ -19038,12 +17477,11 @@ modal container logs [OPTIONS] CONTAINER_ID
 
 **Arguments**:
 
-- `CONTAINER_ID`: Container ID  [required]
+* `CONTAINER_ID`: Container ID  \[required]
 
 **Options**:
 
-- `--timestamps`: Show timestamps for each log line
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal container exec`
 
@@ -19057,15 +17495,15 @@ modal container exec [OPTIONS] CONTAINER_ID COMMAND...
 
 **Arguments**:
 
-- `CONTAINER_ID`: Container ID  [required]
-- `COMMAND...`: A command to run inside the container.
+* `CONTAINER_ID`: Container ID  \[required]
+* `COMMAND...`: A command to run inside the container.
 
-To pass command-line flags or options, add `--` before the start of your commands. For example: `modal container exec <id> -- /bin/bash -c 'echo hi'`  [required]
+To pass command-line flags or options, add `--` before the start of your commands. For example: `modal container exec <id> -- /bin/bash -c 'echo hi'`  \[required]
 
 **Options**:
 
-- `--pty / --no-pty`: Run the command using a PTY.
-- `--help`: Show this message and exit.
+* `--pty / --no-pty`: Run the command using a PTY.
+* `--help`: Show this message and exit.
 
 ## `modal container stop`
 
@@ -19081,31 +17519,11 @@ modal container stop [OPTIONS] CONTAINER_ID
 
 **Arguments**:
 
-- `CONTAINER_ID`: Container ID  [required]
+* `CONTAINER_ID`: Container ID  \[required]
 
 **Options**:
 
-- `--help`: Show this message and exit.
-
-### modal dashboard
-
-# `modal dashboard`
-
-Open the Modal Dashboard in a web browser.
-
-**Usage**:
-
-```shell
-modal dashboard [OPTIONS] [OBJECT_ID]
-```
-
-**Arguments**:
-
-- `[OBJECT_ID]`: Open a view for a specific object.
-
-**Options**:
-
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ### modal deploy
 
@@ -19125,20 +17543,19 @@ modal deploy [OPTIONS] APP_REF
 
 **Arguments**:
 
-- `APP_REF`: Path to a Python file with an app to deploy  [required]
+* `APP_REF`: Path to a Python file with an app to deploy  \[required]
 
 **Options**:
 
-- `--name TEXT`: Name of the deployment.
-- `-e, --env TEXT`: Environment to interact with.
+* `--name TEXT`: Name of the deployment.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--stream-logs / --no-stream-logs`: Stream logs from the app upon deployment.  [default: no-stream-logs]
-- `--tag TEXT`: Tag the deployment with a version.
-- `-m`: Interpret argument as a Python module path instead of a file/script path
-- `--timestamps`: Show timestamps for each log line.
-- `--help`: Show this message and exit.
+* `--stream-logs / --no-stream-logs`: Stream logs from the app upon deployment.  \[default: no-stream-logs]
+* `--tag TEXT`: Tag the deployment with a version.
+* `-m`: Interpret argument as a Python module path instead of a file/script path
+* `--help`: Show this message and exit.
 
 ### modal dict
 
@@ -19154,16 +17571,16 @@ modal dict [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `create`: Create a named Dict object.
-- `list`: List all named Dicts.
-- `clear`: Clear the contents of a named Dict by deleting all of its data.
-- `delete`: Delete a named Dict and all of its data.
-- `get`: Print the value for a specific key.
-- `items`: Print the contents of a Dict.
+* `create`: Create a named Dict object.
+* `list`: List all named Dicts.
+* `clear`: Clear the contents of a named Dict by deleting all of its data.
+* `delete`: Delete a named Dict and all of its data.
+* `get`: Print the value for a specific key.
+* `items`: Print the contents of a Dict.
 
 ## `modal dict create`
 
@@ -19179,15 +17596,15 @@ modal dict create [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal dict list`
 
@@ -19201,12 +17618,12 @@ modal dict list [OPTIONS]
 
 **Options**:
 
-- `--json / --no-json`: [default: no-json]
-- `-e, --env TEXT`: Environment to interact with.
+* `--json / --no-json`: \[default: no-json]
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal dict clear`
 
@@ -19220,16 +17637,16 @@ modal dict clear [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `-y, --yes`: Run without pausing for confirmation.
-- `-e, --env TEXT`: Environment to interact with.
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal dict delete`
 
@@ -19243,17 +17660,17 @@ modal dict delete [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `--allow-missing`: Don't error if the Dict doesn't exist.
-- `-y, --yes`: Run without pausing for confirmation.
-- `-e, --env TEXT`: Environment to interact with.
+* `--allow-missing`: Don't error if the Dict doesn't exist.
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal dict get`
 
@@ -19269,16 +17686,16 @@ modal dict get [OPTIONS] NAME KEY
 
 **Arguments**:
 
-- `NAME`: [required]
-- `KEY`: [required]
+* `NAME`: \[required]
+* `KEY`: \[required]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal dict items`
 
@@ -19295,19 +17712,19 @@ modal dict items [OPTIONS] NAME [N]
 
 **Arguments**:
 
-- `NAME`: [required]
-- `[N]`: Limit the number of entries shown  [default: 20]
+* `NAME`: \[required]
+* `[N]`: Limit the number of entries shown  \[default: 20]
 
 **Options**:
 
-- `-a, --all`: Ignore N and print all entries in the Dict (may be slow)
-- `-r, --repr`: Display items using `repr()` to see more details
-- `--json / --no-json`: [default: no-json]
-- `-e, --env TEXT`: Environment to interact with.
+* `-a, --all`: Ignore N and print all entries in the Dict (may be slow)
+* `-r, --repr`: Display items using `repr()` to see more details
+* `--json / --no-json`: \[default: no-json]
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ### modal environment
 
@@ -19332,14 +17749,14 @@ modal environment [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `list`: List all environments in the current workspace
-- `create`: Create a new environment in the current workspace
-- `delete`: Delete an environment in the current workspace
-- `update`: Update the name or web suffix of an environment
+* `list`: List all environments in the current workspace
+* `create`: Create a new environment in the current workspace
+* `delete`: Delete an environment in the current workspace
+* `update`: Update the name or web suffix of an environment
 
 ## `modal environment list`
 
@@ -19353,8 +17770,8 @@ modal environment list [OPTIONS]
 
 **Options**:
 
-- `--json / --no-json`: [default: no-json]
-- `--help`: Show this message and exit.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
 
 ## `modal environment create`
 
@@ -19368,11 +17785,11 @@ modal environment create [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: Name of the new environment. Must be unique. Case sensitive  [required]
+* `NAME`: Name of the new environment. Must be unique. Case sensitive  \[required]
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal environment delete`
 
@@ -19388,12 +17805,12 @@ modal environment delete [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: Name of the environment to be deleted. Case sensitive  [required]
+* `NAME`: Name of the environment to be deleted. Case sensitive  \[required]
 
 **Options**:
 
-- `-y, --yes`: Run without pausing for confirmation.
-- `--help`: Show this message and exit.
+* `-y, --yes`: Run without pausing for confirmation.
+* `--help`: Show this message and exit.
 
 ## `modal environment update`
 
@@ -19407,13 +17824,13 @@ modal environment update [OPTIONS] CURRENT_NAME
 
 **Arguments**:
 
-- `CURRENT_NAME`: [required]
+* `CURRENT_NAME`: \[required]
 
 **Options**:
 
-- `--set-name TEXT`: New name of the environment
-- `--set-web-suffix TEXT`: New web suffix of environment (empty string is no suffix)
-- `--help`: Show this message and exit.
+* `--set-name TEXT`: New name of the environment
+* `--set-web-suffix TEXT`: New web suffix of environment (empty string is no suffix)
+* `--help`: Show this message and exit.
 
 ### modal launch
 
@@ -19429,12 +17846,12 @@ modal launch [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `jupyter`: Start Jupyter Lab on Modal.
-- `vscode`: Start Visual Studio Code on Modal.
+* `jupyter`: Start Jupyter Lab on Modal.
+* `vscode`: Start Visual Studio Code on Modal.
 
 ## `modal launch jupyter`
 
@@ -19448,16 +17865,16 @@ modal launch jupyter [OPTIONS]
 
 **Options**:
 
-- `--cpu INTEGER`: [default: 8]
-- `--memory INTEGER`: [default: 32768]
-- `--gpu TEXT`
-- `--timeout INTEGER`: [default: 3600]
-- `--image TEXT`: [default: ubuntu:22.04]
-- `--add-python TEXT`: [default: 3.11]
-- `--mount TEXT`
-- `--volume TEXT`
-- `--detach / --no-detach`: [default: no-detach]
-- `--help`: Show this message and exit.
+* `--cpu INTEGER`: \[default: 8]
+* `--memory INTEGER`: \[default: 32768]
+* `--gpu TEXT`
+* `--timeout INTEGER`: \[default: 3600]
+* `--image TEXT`: \[default: ubuntu:22.04]
+* `--add-python TEXT`: \[default: 3.11]
+* `--mount TEXT`
+* `--volume TEXT`
+* `--detach / --no-detach`: \[default: no-detach]
+* `--help`: Show this message and exit.
 
 ## `modal launch vscode`
 
@@ -19471,15 +17888,217 @@ modal launch vscode [OPTIONS]
 
 **Options**:
 
-- `--cpu INTEGER`: [default: 8]
-- `--memory INTEGER`: [default: 32768]
-- `--gpu TEXT`
-- `--image TEXT`: [default: debian:12]
-- `--timeout INTEGER`: [default: 3600]
-- `--mount TEXT`
-- `--volume TEXT`
-- `--detach / --no-detach`: [default: no-detach]
-- `--help`: Show this message and exit.
+* `--cpu INTEGER`: \[default: 8]
+* `--memory INTEGER`: \[default: 32768]
+* `--gpu TEXT`
+* `--image TEXT`: \[default: debian:12]
+* `--timeout INTEGER`: \[default: 3600]
+* `--mount TEXT`
+* `--volume TEXT`
+* `--detach / --no-detach`: \[default: no-detach]
+* `--help`: Show this message and exit.
+
+### modal nfs
+
+# `modal nfs`
+
+Read and edit `modal.NetworkFileSystem` file systems.
+
+**Usage**:
+
+```shell
+modal nfs [OPTIONS] COMMAND [ARGS]...
+```
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+**Commands**:
+
+* `list`: List the names of all network file systems.
+* `create`: Create a named network file system.
+* `ls`: List files and directories in a network file system.
+* `put`: Upload a file or directory to a network file system.
+* `get`: Download a file from a network file system.
+* `rm`: Delete a file or directory from a network file system.
+* `delete`: Delete a named, persistent modal.NetworkFileSystem.
+
+## `modal nfs list`
+
+List the names of all network file systems.
+
+**Usage**:
+
+```shell
+modal nfs list [OPTIONS]
+```
+
+**Options**:
+
+* `-e, --env TEXT`: Environment to interact with.
+
+If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
+Otherwise, raises an error if the workspace has multiple environments.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
+
+## `modal nfs create`
+
+Create a named network file system.
+
+**Usage**:
+
+```shell
+modal nfs create [OPTIONS] NAME
+```
+
+**Arguments**:
+
+* `NAME`: \[required]
+
+**Options**:
+
+* `-e, --env TEXT`: Environment to interact with.
+
+If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
+Otherwise, raises an error if the workspace has multiple environments.
+* `--help`: Show this message and exit.
+
+## `modal nfs ls`
+
+List files and directories in a network file system.
+
+**Usage**:
+
+```shell
+modal nfs ls [OPTIONS] VOLUME_NAME [PATH]
+```
+
+**Arguments**:
+
+* `VOLUME_NAME`: \[required]
+* `[PATH]`: \[default: /]
+
+**Options**:
+
+* `-e, --env TEXT`: Environment to interact with.
+
+If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
+Otherwise, raises an error if the workspace has multiple environments.
+* `--help`: Show this message and exit.
+
+## `modal nfs put`
+
+Upload a file or directory to a network file system.
+
+Remote parent directories will be created as needed.
+
+Ending the REMOTE_PATH with a forward slash (/), it's assumed to be a directory and the file
+will be uploaded with its current name under that directory.
+
+**Usage**:
+
+```shell
+modal nfs put [OPTIONS] VOLUME_NAME LOCAL_PATH [REMOTE_PATH]
+```
+
+**Arguments**:
+
+* `VOLUME_NAME`: \[required]
+* `LOCAL_PATH`: \[required]
+* `[REMOTE_PATH]`: \[default: /]
+
+**Options**:
+
+* `-e, --env TEXT`: Environment to interact with.
+
+If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
+Otherwise, raises an error if the workspace has multiple environments.
+* `--help`: Show this message and exit.
+
+## `modal nfs get`
+
+Download a file from a network file system.
+
+Specifying a glob pattern (using any `*` or `**` patterns) as the `remote_path` will download
+all matching files, preserving their directory structure.
+
+For example, to download an entire network file system into `dump_volume`:
+
+```
+modal nfs get <volume-name> "**" dump_volume
+```
+
+Use "-" as LOCAL_DESTINATION to write file contents to standard output.
+
+**Usage**:
+
+```shell
+modal nfs get [OPTIONS] VOLUME_NAME REMOTE_PATH [LOCAL_DESTINATION]
+```
+
+**Arguments**:
+
+* `VOLUME_NAME`: \[required]
+* `REMOTE_PATH`: \[required]
+* `[LOCAL_DESTINATION]`: \[default: .]
+
+**Options**:
+
+* `--force / --no-force`: \[default: no-force]
+* `-e, --env TEXT`: Environment to interact with.
+
+If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
+Otherwise, raises an error if the workspace has multiple environments.
+* `--help`: Show this message and exit.
+
+## `modal nfs rm`
+
+Delete a file or directory from a network file system.
+
+**Usage**:
+
+```shell
+modal nfs rm [OPTIONS] VOLUME_NAME REMOTE_PATH
+```
+
+**Arguments**:
+
+* `VOLUME_NAME`: \[required]
+* `REMOTE_PATH`: \[required]
+
+**Options**:
+
+* `-r, --recursive`: Delete directory recursively
+* `-e, --env TEXT`: Environment to interact with.
+
+If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
+Otherwise, raises an error if the workspace has multiple environments.
+* `--help`: Show this message and exit.
+
+## `modal nfs delete`
+
+Delete a named, persistent modal.NetworkFileSystem.
+
+**Usage**:
+
+```shell
+modal nfs delete [OPTIONS] NFS_NAME
+```
+
+**Arguments**:
+
+* `NFS_NAME`: Name of the modal.NetworkFileSystem to be deleted. Case sensitive  \[required]
+
+**Options**:
+
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
+
+If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
+Otherwise, raises an error if the workspace has multiple environments.
+* `--help`: Show this message and exit.
 
 ### modal profile
 
@@ -19495,13 +18114,13 @@ modal profile [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `activate`: Change the active Modal profile.
-- `current`: Print the currently active Modal profile.
-- `list`: Show all Modal profiles and highlight the active one.
+* `activate`: Change the active Modal profile.
+* `current`: Print the currently active Modal profile.
+* `list`: Show all Modal profiles and highlight the active one.
 
 ## `modal profile activate`
 
@@ -19515,11 +18134,11 @@ modal profile activate [OPTIONS] PROFILE
 
 **Arguments**:
 
-- `PROFILE`: Modal profile to activate.  [required]
+* `PROFILE`: Modal profile to activate.  \[required]
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal profile current`
 
@@ -19533,7 +18152,7 @@ modal profile current [OPTIONS]
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal profile list`
 
@@ -19547,8 +18166,8 @@ modal profile list [OPTIONS]
 
 **Options**:
 
-- `--json / --no-json`: [default: no-json]
-- `--help`: Show this message and exit.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
 
 ### modal queue
 
@@ -19564,16 +18183,16 @@ modal queue [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `create`: Create a named Queue.
-- `delete`: Delete a named Queue and all of its data.
-- `list`: List all named Queues.
-- `clear`: Clear the contents of a queue by removing all of its data.
-- `peek`: Print the next N items in the queue or queue partition (without removal).
-- `len`: Print the length of a queue partition or the total length of all partitions.
+* `create`: Create a named Queue.
+* `delete`: Delete a named Queue and all of its data.
+* `list`: List all named Queues.
+* `clear`: Clear the contents of a queue by removing all of its data.
+* `peek`: Print the next N items in the queue or queue partition (without removal).
+* `len`: Print the length of a queue partition or the total length of all partitions.
 
 ## `modal queue create`
 
@@ -19589,15 +18208,15 @@ modal queue create [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal queue delete`
 
@@ -19611,17 +18230,17 @@ modal queue delete [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `--allow-missing`: Don't error if the Queue doesn't exist.
-- `-y, --yes`: Run without pausing for confirmation.
-- `-e, --env TEXT`: Environment to interact with.
+* `--allow-missing`: Don't error if the Queue doesn't exist.
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal queue list`
 
@@ -19635,12 +18254,12 @@ modal queue list [OPTIONS]
 
 **Options**:
 
-- `--json / --no-json`: [default: no-json]
-- `-e, --env TEXT`: Environment to interact with.
+* `--json / --no-json`: \[default: no-json]
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal queue clear`
 
@@ -19654,18 +18273,18 @@ modal queue clear [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `-p, --partition TEXT`: Name of the partition to use, otherwise use the default (anonymous) partition.
-- `-a, --all`: Clear the contents of all partitions.
-- `-y, --yes`: Run without pausing for confirmation.
-- `-e, --env TEXT`: Environment to interact with.
+* `-p, --partition TEXT`: Name of the partition to use, otherwise use the default (anonymous) partition.
+* `-a, --all`: Clear the contents of all partitions.
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal queue peek`
 
@@ -19679,17 +18298,17 @@ modal queue peek [OPTIONS] NAME [N]
 
 **Arguments**:
 
-- `NAME`: [required]
-- `[N]`: [default: 1]
+* `NAME`: \[required]
+* `[N]`: \[default: 1]
 
 **Options**:
 
-- `-p, --partition TEXT`: Name of the partition to use, otherwise use the default (anonymous) partition.
-- `-e, --env TEXT`: Environment to interact with.
+* `-p, --partition TEXT`: Name of the partition to use, otherwise use the default (anonymous) partition.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal queue len`
 
@@ -19703,17 +18322,17 @@ modal queue len [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `-p, --partition TEXT`: Name of the partition to use, otherwise use the default (anonymous) partition.
-- `-t, --total`: Compute the sum of the queue lengths across all partitions
-- `-e, --env TEXT`: Environment to interact with.
+* `-p, --partition TEXT`: Name of the partition to use, otherwise use the default (anonymous) partition.
+* `-t, --total`: Compute the sum of the queue lengths across all partitions
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ### modal run
 
@@ -19758,17 +18377,16 @@ modal run [OPTIONS] FUNC_REF
 
 **Options**:
 
-- `-w, --write-result TEXT`: Write return value (which must be str or bytes) to this local path.
-- `-q, --quiet`: Don't show Modal progress indicators.
-- `-d, --detach`: Don't stop the app if the local process dies or disconnects.
-- `-i, --interactive`: Run the app in interactive mode.
-- `-e, --env TEXT`: Environment to interact with.
+* `-w, --write-result TEXT`: Write return value (which must be str or bytes) to this local path.
+* `-q, --quiet`: Don't show Modal progress indicators.
+* `-d, --detach`: Don't stop the app if the local process dies or disconnects.
+* `-i, --interactive`: Run the app in interactive mode.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `-m`: Interpret argument as a Python module path instead of a file/script path
-- `--timestamps`: Show timestamps for each log line.
-- `--help`: Show this message and exit.
+* `-m`: Interpret argument as a Python module path instead of a file/script path
+* `--help`: Show this message and exit.
 
 ### modal secret
 
@@ -19784,13 +18402,13 @@ modal secret [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `list`: List your published secrets.
-- `create`: Create a new secret.
-- `delete`: Delete a named Secret.
+* `list`: List your published secrets.
+* `create`: Create a new secret.
+* `delete`: Delete a named Secret.
 
 ## `modal secret list`
 
@@ -19804,12 +18422,12 @@ modal secret list [OPTIONS]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--json / --no-json`: [default: no-json]
-- `--help`: Show this message and exit.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
 
 ## `modal secret create`
 
@@ -19823,19 +18441,19 @@ modal secret create [OPTIONS] SECRET_NAME [KEYVALUES]...
 
 **Arguments**:
 
-- `SECRET_NAME`: [required]
-- `[KEYVALUES]...`: Space-separated KEY=VALUE items.
+* `SECRET_NAME`: \[required]
+* `[KEYVALUES]...`: Space-separated KEY=VALUE items.
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--from-dotenv PATH`: Path to a .env file to load secrets from.
-- `--from-json PATH`: Path to a JSON file to load secrets from.
-- `--force`: Overwrite the secret if it already exists.
-- `--help`: Show this message and exit.
+* `--from-dotenv PATH`: Path to a .env file to load secrets from.
+* `--from-json PATH`: Path to a JSON file to load secrets from.
+* `--force`: Overwrite the secret if it already exists.
+* `--help`: Show this message and exit.
 
 ## `modal secret delete`
 
@@ -19849,17 +18467,17 @@ modal secret delete [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: Name of the modal.Secret to be deleted. Case sensitive  [required]
+* `NAME`: Name of the modal.Secret to be deleted. Case sensitive  \[required]
 
 **Options**:
 
-- `--allow-missing`: Don't error if the Secret doesn't exist.
-- `-y, --yes`: Run without pausing for confirmation.
-- `-e, --env TEXT`: Environment to interact with.
+* `--allow-missing`: Don't error if the Secret doesn't exist.
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ### modal serve
 
@@ -19886,18 +18504,17 @@ modal serve [OPTIONS] APP_REF
 
 **Arguments**:
 
-- `APP_REF`: Path to a Python file with an app.  [required]
+* `APP_REF`: Path to a Python file with an app.  \[required]
 
 **Options**:
 
-- `--timeout FLOAT`
-- `-e, --env TEXT`: Environment to interact with.
+* `--timeout FLOAT`
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `-m`: Interpret argument as a Python module path instead of a file/script path
-- `--timestamps`: Show timestamps for each log line.
-- `--help`: Show this message and exit.
+* `-m`: Interpret argument as a Python module path instead of a file/script path
+* `--help`: Show this message and exit.
 
 ### modal setup
 
@@ -19913,8 +18530,8 @@ modal setup [OPTIONS]
 
 **Options**:
 
-- `--profile TEXT`
-- `--help`: Show this message and exit.
+* `--profile TEXT`
+* `--help`: Show this message and exit.
 
 ### modal shell
 
@@ -19970,28 +18587,28 @@ modal shell [OPTIONS] [REF]
 
 **Arguments**:
 
-- `[REF]`: ID of running container or Sandbox, or path to a Python file containing an App. Can also include a Function specifier, like `module.py::func`, if the file defines multiple Functions.
+* `[REF]`: ID of running container or Sandbox, or path to a Python file containing an App. Can also include a Function specifier, like `module.py::func`, if the file defines multiple Functions.
 
 **Options**:
 
-- `-c, --cmd TEXT`: Command to run inside the Modal image.  [default: /bin/bash]
-- `-e, --env TEXT`: Environment to interact with.
+* `-c, --cmd TEXT`: Command to run inside the Modal image.  \[default: /bin/bash]
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--image TEXT`: Container image tag for inside the shell (if not using REF).
-- `--add-python TEXT`: Add Python to the image (if not using REF).
-- `--volume TEXT`: Name of a `modal.Volume` to mount inside the shell at `/mnt/{name}` (if not using REF). Can be used multiple times.
-- `--add-local TEXT`: Local file or directory to mount inside the shell at `/mnt/{basename}` (if not using REF). Can be used multiple times.
-- `--secret TEXT`: Name of a `modal.Secret` to mount inside the shell (if not using REF). Can be used multiple times.
-- `--cpu INTEGER`: Number of CPUs to allocate to the shell (if not using REF).
-- `--memory INTEGER`: Memory to allocate for the shell, in MiB (if not using REF).
-- `--gpu TEXT`: GPUs to request for the shell, if any. Examples are `any`, `a10g`, `a100:4` (if not using REF).
-- `--cloud TEXT`: Cloud provider to run the shell on. Possible values are `aws`, `gcp`, `oci`, `auto` (if not using REF).
-- `--region TEXT`: Region(s) to run the container on. Can be a single region or a comma-separated list to choose from (if not using REF).
-- `--pty`: Run the command using a PTY.
-- `-m`: Interpret argument as a Python module path instead of a file/script path
-- `--help`: Show this message and exit.
+* `--image TEXT`: Container image tag for inside the shell (if not using REF).
+* `--add-python TEXT`: Add Python to the image (if not using REF).
+* `--volume TEXT`: Name of a `modal.Volume` to mount inside the shell at `/mnt/{name}` (if not using REF). Can be used multiple times.
+* `--add-local TEXT`: Local file or directory to mount inside the shell at `/mnt/{basename}` (if not using REF). Can be used multiple times.
+* `--secret TEXT`: Name of a `modal.Secret` to mount inside the shell (if not using REF). Can be used multiple times.
+* `--cpu INTEGER`: Number of CPUs to allocate to the shell (if not using REF).
+* `--memory INTEGER`: Memory to allocate for the shell, in MiB (if not using REF).
+* `--gpu TEXT`: GPUs to request for the shell, if any. Examples are `any`, `a10g`, `a100:4` (if not using REF).
+* `--cloud TEXT`: Cloud provider to run the shell on. Possible values are `aws`, `gcp`, `oci`, `auto` (if not using REF).
+* `--region TEXT`: Region(s) to run the container on. Can be a single region or a comma-separated list to choose from (if not using REF).
+* `--pty`: Run the command using a PTY.
+* `-m`: Interpret argument as a Python module path instead of a file/script path
+* `--help`: Show this message and exit.
 
 ### modal token
 
@@ -20007,13 +18624,12 @@ modal token [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `set`: Set account credentials for connecting to Modal.
-- `new`: Create a new token by using an authenticated web session.
-- `info`: Display information about the token that is currently in use.
+* `set`: Set account credentials for connecting to Modal.
+* `new`: Create a new token by using an authenticated web session.
 
 ## `modal token set`
 
@@ -20029,12 +18645,12 @@ modal token set [OPTIONS]
 
 **Options**:
 
-- `--token-id TEXT`: Account token ID.
-- `--token-secret TEXT`: Account token secret.
-- `--profile TEXT`: Modal profile to set credentials for. If unspecified (and MODAL_PROFILE environment variable is not set), uses the workspace name associated with the credentials.
-- `--activate / --no-activate`: Activate the profile containing this token after creation.  [default: activate]
-- `--verify / --no-verify`: Make a test request to verify the new credentials.  [default: verify]
-- `--help`: Show this message and exit.
+* `--token-id TEXT`: Account token ID.
+* `--token-secret TEXT`: Account token secret.
+* `--profile TEXT`: Modal profile to set credentials for. If unspecified (and MODAL_PROFILE environment variable is not set), uses the workspace name associated with the credentials.
+* `--activate / --no-activate`: Activate the profile containing this token after creation.  \[default: activate]
+* `--verify / --no-verify`: Make a test request to verify the new credentials.  \[default: verify]
+* `--help`: Show this message and exit.
 
 ## `modal token new`
 
@@ -20048,25 +18664,11 @@ modal token new [OPTIONS]
 
 **Options**:
 
-- `--profile TEXT`: Modal profile to set credentials for. If unspecified (and MODAL_PROFILE environment variable is not set), uses the workspace name associated with the credentials.
-- `--activate / --no-activate`: Activate the profile containing this token after creation.  [default: activate]
-- `--verify / --no-verify`: Make a test request to verify the new credentials.  [default: verify]
-- `--source TEXT`
-- `--help`: Show this message and exit.
-
-## `modal token info`
-
-Display information about the token that is currently in use.
-
-**Usage**:
-
-```shell
-modal token info [OPTIONS]
-```
-
-**Options**:
-
-- `--help`: Show this message and exit.
+* `--profile TEXT`: Modal profile to set credentials for. If unspecified (and MODAL_PROFILE environment variable is not set), uses the workspace name associated with the credentials.
+* `--activate / --no-activate`: Activate the profile containing this token after creation.  \[default: activate]
+* `--verify / --no-verify`: Make a test request to verify the new credentials.  \[default: verify]
+* `--source TEXT`
+* `--help`: Show this message and exit.
 
 ### modal volume
 
@@ -20084,20 +18686,19 @@ modal volume [OPTIONS] COMMAND [ARGS]...
 
 **Options**:
 
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 **Commands**:
 
-- `create`: Create a named, persistent modal.Volume.
-- `get`: Download files from a modal.Volume object.
-- `list`: List the details of all modal.Volume volumes in an Environment.
-- `ls`: List files and directories in a modal.Volume volume.
-- `put`: Upload a file or directory to a modal.Volume.
-- `rm`: Delete a file or directory from a modal.Volume.
-- `cp`: Copy within a modal.Volume.
-- `delete`: Delete a named Volume and all of its data.
-- `rename`: Rename a modal.Volume.
-- `dashboard`: Open the Volume's dashboard page in your web browser.
+* `create`: Create a named, persistent modal.Volume.
+* `get`: Download files from a modal.Volume object.
+* `list`: List the details of all modal.Volume volumes in an Environment.
+* `ls`: List files and directories in a modal.Volume volume.
+* `put`: Upload a file or directory to a modal.Volume.
+* `rm`: Delete a file or directory from a modal.Volume.
+* `cp`: Copy within a modal.Volume.
+* `delete`: Delete a named Volume and all of its data.
+* `rename`: Rename a modal.Volume.
 
 ## `modal volume create`
 
@@ -20111,16 +18712,16 @@ modal volume create [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: [required]
+* `NAME`: \[required]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--version INTEGER`: VolumeFS version. (Experimental)
-- `--help`: Show this message and exit.
+* `--version INTEGER`: VolumeFS version. (Experimental)
+* `--help`: Show this message and exit.
 
 ## `modal volume get`
 
@@ -20146,18 +18747,18 @@ modal volume get [OPTIONS] VOLUME_NAME REMOTE_PATH [LOCAL_DESTINATION]
 
 **Arguments**:
 
-- `VOLUME_NAME`: [required]
-- `REMOTE_PATH`: [required]
-- `[LOCAL_DESTINATION]`: [default: .]
+* `VOLUME_NAME`: \[required]
+* `REMOTE_PATH`: \[required]
+* `[LOCAL_DESTINATION]`: \[default: .]
 
 **Options**:
 
-- `--force / --no-force`: [default: no-force]
-- `-e, --env TEXT`: Environment to interact with.
+* `--force / --no-force`: \[default: no-force]
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal volume list`
 
@@ -20171,12 +18772,12 @@ modal volume list [OPTIONS]
 
 **Options**:
 
-- `-e, --env TEXT`: Environment to interact with.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--json / --no-json`: [default: no-json]
-- `--help`: Show this message and exit.
+* `--json / --no-json`: \[default: no-json]
+* `--help`: Show this message and exit.
 
 ## `modal volume ls`
 
@@ -20190,17 +18791,17 @@ modal volume ls [OPTIONS] VOLUME_NAME [PATH]
 
 **Arguments**:
 
-- `VOLUME_NAME`: [required]
-- `[PATH]`: [default: /]
+* `VOLUME_NAME`: \[required]
+* `[PATH]`: \[default: /]
 
 **Options**:
 
-- `--json / --no-json`: [default: no-json]
-- `-e, --env TEXT`: Environment to interact with.
+* `--json / --no-json`: \[default: no-json]
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal volume put`
 
@@ -20219,18 +18820,18 @@ modal volume put [OPTIONS] VOLUME_NAME LOCAL_PATH [REMOTE_PATH]
 
 **Arguments**:
 
-- `VOLUME_NAME`: [required]
-- `LOCAL_PATH`: [required]
-- `[REMOTE_PATH]`: [default: /]
+* `VOLUME_NAME`: \[required]
+* `LOCAL_PATH`: \[required]
+* `[REMOTE_PATH]`: \[default: /]
 
 **Options**:
 
-- `-f, --force`: Overwrite existing files.
-- `-e, --env TEXT`: Environment to interact with.
+* `-f, --force`: Overwrite existing files.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal volume rm`
 
@@ -20244,17 +18845,17 @@ modal volume rm [OPTIONS] VOLUME_NAME REMOTE_PATH
 
 **Arguments**:
 
-- `VOLUME_NAME`: [required]
-- `REMOTE_PATH`: [required]
+* `VOLUME_NAME`: \[required]
+* `REMOTE_PATH`: \[required]
 
 **Options**:
 
-- `-r, --recursive`: Delete directory recursively
-- `-e, --env TEXT`: Environment to interact with.
+* `-r, --recursive`: Delete directory recursively
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal volume cp`
 
@@ -20268,17 +18869,17 @@ modal volume cp [OPTIONS] VOLUME_NAME PATHS...
 
 **Arguments**:
 
-- `VOLUME_NAME`: [required]
-- `PATHS...`: [required]
+* `VOLUME_NAME`: \[required]
+* `PATHS...`: \[required]
 
 **Options**:
 
-- `-r, --recursive`: Copy directories recursively
-- `-e, --env TEXT`: Environment to interact with.
+* `-r, --recursive`: Copy directories recursively
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal volume delete`
 
@@ -20292,17 +18893,17 @@ modal volume delete [OPTIONS] NAME
 
 **Arguments**:
 
-- `NAME`: Name of the modal.Volume to be deleted. Case sensitive  [required]
+* `NAME`: Name of the modal.Volume to be deleted. Case sensitive  \[required]
 
 **Options**:
 
-- `--allow-missing`: Don't error if the Volume doesn't exist.
-- `-y, --yes`: Run without pausing for confirmation.
-- `-e, --env TEXT`: Environment to interact with.
+* `--allow-missing`: Don't error if the Volume doesn't exist.
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 ## `modal volume rename`
 
@@ -20316,39 +18917,17 @@ modal volume rename [OPTIONS] OLD_NAME NEW_NAME
 
 **Arguments**:
 
-- `OLD_NAME`: [required]
-- `NEW_NAME`: [required]
+* `OLD_NAME`: \[required]
+* `NEW_NAME`: \[required]
 
 **Options**:
 
-- `-y, --yes`: Run without pausing for confirmation.
-- `-e, --env TEXT`: Environment to interact with.
+* `-y, --yes`: Run without pausing for confirmation.
+* `-e, --env TEXT`: Environment to interact with.
 
 If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
 Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
-
-## `modal volume dashboard`
-
-Open the Volume's dashboard page in your web browser.
-
-**Usage**:
-
-```shell
-modal volume dashboard [OPTIONS] VOLUME_NAME
-```
-
-**Arguments**:
-
-- `VOLUME_NAME`: Name of the Volume to view in the dashboard.  [required]
-
-**Options**:
-
-- `-e, --env TEXT`: Environment to interact with.
-
-If not specified, Modal will use the default environment of your current profile, or the `MODAL_ENVIRONMENT` variable.
-Otherwise, raises an error if the workspace has multiple environments.
-- `--help`: Show this message and exit.
+* `--help`: Show this message and exit.
 
 # Changelog
 
@@ -20356,87 +18935,9 @@ This changelog documents user-facing updates (features, enhancements, fixes, and
 
 ## Latest
 
-### 1.3.5 (2026-03-03)
-
-- We've added a `modal changelog` CLI for retrieving changelog entries with a flexible query interface (e.g. `modal changelog --since=1.2`, `modal changelog --since=2025-12-01`, `modal changelog --newer`). We expect that this will be a useful way to surface information about new features to coding agents.
-- We've added a new `modal.Secret.update` method, which allows you to programmatically modify the environment variables within a Secret. This method has the semantics of Python's `dict.update`: Secret contents can be overwritten or extended when using it. Note that Secret updates will take effect only for containers that start up after the modification.
-- The dataclass returned by `modal.Function.get_current_stats()` now includes a `num_running_inputs` field that reports the number of inputs the Function is currently handling.
-
-### 1.3.4 (2026-02-23)
-
-- We're introducing "Directory Snapshots": a new beta feature for persisting specific directories past the lifetime of an individual Sandbox. Using the new methods `modal.Sandbox.snapshot_directory()` and `modal.Sandbox.mount_image()`, you can capture the state of a directory and then later include it in a different Sandbox:
-
-  ```python notest
-  sb = modal.Sandbox.create(app=app)
-  snapshot = sb.snapshot_directory("/project")
-
-  sb2 = modal.Sandbox.create(app=app)
-  sb2.mount_image("/project", snapshot)
-  ```
-
-  This feature can be useful for separating the lifecycle of application code in the Sandbox's main Image from project code that changes in each Sandbox session. Files in the mounted snapshot also benefit from several optimizations that allow them to be read faster. See the [Sandbox Snapshot guide](https://modal.com/docs/guide/sandbox-snapshots) for more information.
-- We've added a new `modal.Sandbox.detach()` method that we recommend calling after you are done interacting with a Sandbox. This method disconnects your local client from the Sandbox and cleans up resources associated with the connection. After calling `detach`, operations on the Sandbox object may raise and are otherwise not guaranteed to work.
-- The `modal.Sandbox.terminate()` method now accepts a `wait` parameter. With `wait=True`, `terminate` will block until the Sandbox is finished and return the exit code. The default `wait=False` maintains the previous behavior.
-- Throughput for writing to the `stdin` of a `modal.Sandbox.exec` process has been increased by 8x.
-- We've added a new `modal.Volume.from_id()` method for referencing a Volume by its object id.
-
-### 1.3.3 (2026-02-12)
-
-- We've added a new `modal billing report` CLI and promoted the `modal.billing.workspace_billing_report` API to General Availability for all Team and Enterprise plan workspaces.
-- We've added `modal.Queue.from_id()` and `modal.Dict.from_id()` methods to support referencing a Queue or Dict by its object id.
-- Modal's async usage warnings are now enabled by default. These warnings will fire when using a [blocking interface on a Modal object](https://modal.com/docs/guide/async) in an async context. We've aimed to provide detailed and actionable suggestions for how to modify the code, which makes the warnings verbose. While we recommend addressing any warnings that pop up, as they can point to significant performance issues or bugs, we also provide a configuration option to disable them (`MODAL_ASYNC_WARNINGS=0` or `async_warnings = false` in the `.modal.toml`). Please report any apparent false positives or incorrect suggested fixes.
-- We've fixed a bug where the ASGI scope's `state` contents could leak between requests when using `@modal.asgi_app`.
-
-### 1.3.2 (2026-01-30)
-
-- Modal objects now have a `.get_dashboard_url()` method. This method will return a URL for viewing that object on the Modal dashboard:
-
-  ```python
-  fc = f.spawn()
-  print(fc.get_dashboard_url())  # Easy access to logs, etc.
-  ```
-
-- There is also a new `modal dashboard` CLI and new `modal app dashboard` / `modal volume dashboard` CLI subcommands:
-
-  ```bash
-  modal dashboard  # Opens up the Apps homepage for the current environment
-  modal dashboard <object-id>  # Opens up a view of this object
-  modal app dashboard <app-name>  # Opens up the dashboard for this deployed App
-  modal volume dashboard <volume-name>  # Opens up the file browser for this persistent Volume
-  ```
-
-- You can now pass a Sandbox ID (`sb-xxxxx`) directly to the `modal container logs` CLI.
-- The `modal token info` CLI will now include the token name, if provided at token creation.
-- We've fixed an issue where `modal.Cls.with_options()` (or the `with_concurrency()` / `with_batching()` methods) could sometimes use stale argument values when called repeatedly.
-
-### 1.3.1 (2026-01-22)
-
-- We've improved our experimental support for Python 3.14t (free-threaded Python) inside Modal containers.
-  - The container environment will now use the Python implementation of the Protobuf runtime rather than the incompatible `upb` implementation.
-  - As 3.14t images are not being published to the official source for our prebuilt `modal.Image.debian_slim()` images, we recommend using `modal.Image.from_registry` to build a 3.14t Image:
-
-    ```python
-    modal.Image.from_registry("debian:bookworm-slim", add_python="3.14t")
-    ```
-
-  - Note that 3.14t support is available only on the 2025.06 [Image Builder Version](https://modal.com/settings/image-config).
-  - Support is still experimental, so please share any issues that you encounter running 3.14t in Modal containers.
-- It's now possible to provide a `custom_domain` for a `modal.Sandbox`:
-
-  ```python
-  sb = modal.Sandbox.create(..., custom_domain="sandboxes.mydomain.com")
-  ```
-
-  Note that Sandbox custom domains work differently from Function custom domains and must currently be set up manually by Modal; please get in touch if this feature interests you.
-- We added a new `modal token info` CLI command to retrieve information about the credentials that are currently in use.
-- We added a `--timestamps` flag to a number of CLI entrypoints (`modal run`, `modal serve`, `modal deploy`, and `modal container logs`) to show timestamps in the logging output.
-- The automatic CLI creation for `modal run` entrypoints now supports `Literal` type annotations, provided that the literal type contains either all `str` or all `int` values.
-- We've fixed a bug that could cause App builds to fail with an uninformative `CancelledError` when the App was misconfigured.
-- We've improved client resource management when running `modal.Sandbox.exec`, which avoids a rare thread race condition.
-
 ### 1.3.0 (2025-12-19)
 
-Modal now supports Python 3.14. Python 3.14t (the free-threading build) support is currently a work in progress, because we are waiting for dependencies to be updated with free-threaded support. Additionally, Modal no longer supports Python 3.9, which has reached [end-of-life](https://devguide.python.org/versions).
+Modal now supports Python 3.14. Support for Python 3.14t (the free-threading build) is still experimental; please report any issues you encounter using Modal with free-threading Python. Additionally, Modal no longer supports Python 3.9, which has reached [end-of-life](https://devguide.python.org/versions).
 
 We are adding experimental support for detecting cases where Modal's blocking APIs are used in async contexts (which can be a source of bugs or performance issues). You can opt into runtime warnings by setting `MODAL_ASYNC_WARNINGS=1` as an environment variable or `async_warnings = true` as a config field. We will enable these warnings by default in the future; please report any apparent false positives or other issues while support is experimental.
 
@@ -20590,19 +19091,14 @@ Finally, some functionality that began issuing deprecation warnings prior to v0.
 We're introducing a new API pattern for imperative management of Modal resource types (`modal.Volume`, `modal.Secret`, `modal.Dict`, and `modal.Queue`). The API is accessible through the `.objects` namespace on each class. The object management namespace has methods for the following operations:
 
 - `.objects.create(name)` creates an object on our backend. E.g., with [`modal.Volume.objects.create`](https://modal.com/docs/reference/modal.Volume#create):
-
   ```python notest
   modal.Volume.objects.create("huggingface-cache", environment_name="dev")
   ```
-
 - `.objects.delete(name)` deletes the object with that name. E.g., with [`modal.Secret.objects.delete`](https://modal.com/docs/reference/modal.Secret#delete):
-
   ```python notest
   modal.Secret.objects.delete("aws-token")
   ```
-
 - `.objects.list()` returns a list of object instances. E.g., with [`modal.Queue.objects.list`](https://modal.com/docs/reference/modal.Queue#list):
-
   ```python notest
   for queue in modal.Queue.objects.list():
       queue_info = queue.info()
@@ -20700,17 +19196,13 @@ Finally, this release introduces a small number of deprecations and potentially-
 ### 1.0.4 (2025-06-13)
 
 - When `modal.Cls.with_options` is called multiple times on the same instance, the overrides will now be merged. For example, the following configuration will use an H100 GPU and request 16 CPU cores:
-
   ```python
   Model.with_options(gpu="A100", cpu=16).with_options(gpu="H100")
   ```
-
 - Added a `--secret` option to `modal shell` for including environment variables defined by named Secret(s) in the shell session:
-
   ```
   modal shell --secret huggingface --secret wandb
   ```
-
 - Added a `verbose: bool` option to `modal.Sandbox.create()`. When this is set to `True`, execs and file system operations will appear in the Sandbox logs.
 - Updated `modal.Sandbox.watch()` so that exceptions are now raised in (and can be caught by) the calling task.
 
@@ -20728,11 +19220,9 @@ Finally, this release introduces a small number of deprecations and potentially-
   ```
 
 - Added an `h2_ports` parameter to `Sandbox.create`, which exposes encrypted ports using HTTP/2. The following example will create an H2 port on 5002 and a port using HTTPS over HTTP/1.1 on 5003:
-
   ```python
   sb = modal.Sandbox.create(app=app, h2_ports = [5002], encrypted_ports = [5003])
   ```
-
 - Added `--from-dotenv` and `--from-json` options to `modal secret create`, which will read from local files to populate Secret contents.
 - `Sandbox.terminate` no longer waits for container shutdown to complete before returning. It still ensures that a terminated container will shutdown imminently. To restore the previous behavior (i.e., to wait until the Sandbox is actually terminated), call `sb.wait(raise_on_termination=False)` after calling `sb.terminate()`.
 - Improved performance and stability for `modal volume get`.
@@ -20763,37 +19253,1624 @@ With this release, we're beginning to enforce the deprecations discussed in the 
 Additionally, we have enforced a number of previously-introduced deprecations:
 
 - Removed `modal.Mount` as a public object, along with various `mount=` parameters where Mounts could be passed into the Modal API. Usage can be replaced with `modal.Image` methods, e.g.:
-
   ```python
   @app.function(image=image, mounts=[modal.Mount.from_local_dir("data", "/root/data")])  # This is now an error!
   @app.function(image=image.add_local_dir("data", "/root/data"))  # Correct spelling
   ```
-
 - Removed the `show_progress` parameter from `modal.App.run`. This parameter has been replaced by the `modal.enable_output` context manager:
-
   ```python
   with modal.enable_output(), app.run():
     ...  # Will produce verbose Modal output
   ```
-
 - Passing flagged options to the `Image.pip_install` package list will now raise an error. Use the `extra_options` parameter to specify options that aren't exposed through the `Image.pip_install` signature:
-
   ```python
   image.pip_install("flash-attn", "--no-build-isolation")  # This is now an error!
   image.pip_install("flash-attn", extra_options="--no-build-isolation")  # Correct spelling
   ```
-
 - Removed backwards compatibility for using `label=` or `tag=` keywords in object lookup methods. We standardized these methods to use `name=` as the parameter name, but we recommend using positional arguments:
-
   ```python
   f = modal.Function.from_name("my-app", tag="f")  # No longer supported! Will raise an error!
   f = modal.Function.from_name("my-app", "f")  # Preferred spelling
   ```
-
 - It's no longer possible to invoke a generator Function with `Function.spawn`; previously this warned, now it raises an `InvalidError`. Additionally, the `FunctionCall.get_gen` method has been removed, and it's no longer possible to set `is_generator` when using `FunctionCall.from_id`.
 - Removed the `.resolve()` method on Modal objects. This method had not been publicly documented, but where used it can be replaced straightforwardly with `.hydrate()`. Note that explicit hydration should rarely be necessary: in most cases you can rely on lazy hydration semantics (i.e., objects will be hydrated when the first method that requires server metadata is called).
 - Functions decorated with `@modal.asgi_app` or `@modal.wsgi_app` are now required to be nullary. Previously, we warned in the case where a function was defined with parameters that all had default arguments.
 - Referencing the deprecated `modal.Stub` object will now raise an `AttributeError`, whereas previously it was an alias for `modal.App`. This is a simple name change.
+
+## 0.77
+
+### 0.77.0 (2025-05-13)
+
+- This is the final pre-1.0 release of the Modal client. The next release will be version 1.0. While we do not plan to enforce most major deprecations until later in the 1.0 cycle, there will be some breaking changes introduced in the next release.
+
+## 0.76
+
+### 0.76.3 (2025-05-12)
+
+- Fixed the behavior of `modal app history --json` when the history contains versions with and without commit information or "tag" metadata. Commit information is now always included (with a `null` placeholder when absent), while tag metadata is included only when there is at least one tagged release (other releases will have a `null` placeholder).
+
+### 0.76.0 (2025-05-12)
+
+- Fixed the behavior of `ignore=` in `modal.Image` methods, including when `.dockerignore` files are implicitly used in docker-oriented methods. This may result in Image rebuilds with different final inventories:
+  - When using `modal.Image.add_local_dir`, exclusion patterns are now correctly interpreted as relative to the directory being added (e.g., `*.json` will now ignore all json files in the top-level of the directory).
+  - When using `modal.Image.from_dockerfile`, exclusion patterns are correctly interpreted as relative to the context directory.
+  - As in Docker, leading or trailing path delimiters are stripped from the ignore patterns before being applied.
+  - **Breaking change**: When providing a custom function to `ignore=`, file paths passed into the function will now be _relative_, rather than absolute.
+
+## 0.75
+
+### 0.75.8 (2025-05-12)
+
+- Introduced `modal.Cls.with_concurrency` and `modal.Cls.with_batching` for runtime configuration of functionality that is exposed through the `@modal.concurrent` and `@modal.batched` decorators.
+  ```python
+  model = Model.with_options(gpu="H100").with_concurrency(max_inputs=100)()
+  ```
+- Added a deprecation warning when using `allow_concurrent_inputs` in `modal.Cls.with_options`.
+- Added `buffer_containers` to `modal.Cls.with_options`.
+- _Behavior change:_ when `modal.Cls.with_options` is called multiple times on the same object, the configurations will be merged rather than using the most recent.
+
+### 0.75.4 (2025-05-09)
+
+- Fixed issue with .spawn_map producing wrong number of arguments
+
+### 0.75.3 (2025-05-08)
+
+- New `modal.Dict`s (forthcoming on 2025-05-20) use a new durable storage backend with more "cache-like" behavior - items expire after 7 days of inactivity (no reads or writes). Previously created `modal.Dict`s will continue to use the old backend, but support will eventually be dropped.
+- `modal.Dict.put` now supports an `skip_if_exists` flag that can be used to avoid overwriting the value for existing keys:
+
+  ```
+  item_created = my_dict.put("foo", "bar", skip_if_exists=True)
+  assert item_created
+  new_item_created = my_dict.put("foo", "baz", skip_if_exists=True)
+  assert not new_item_created
+  ```
+
+  Note that this flag only works for `modal.Dict` objects with the new backend (forthcoming on 2025-05-20) and will raise an error otherwise.
+
+### 0.75.2 (2025-05-08)
+
+- Reverts defective changes to the interpretation of `ignore=` patterns and `.dockerignore` files that were introduced in v0.75.0.
+
+### 0.75.0 (2025-05-08)
+
+- Introduced some changes to the handling of `ignore=` patterns in `modal.Image` methods. Due to a defect around the handling of leading path delimiter characters, these changes reverted in 0.75.2 and later reintroduced in 0.76.0.
+
+## 0.74
+
+### 0.74.63 (2025-05-08)
+
+- Deprecates `Function.web_url` in favor of a new `Function.get_web_url()` method. This also allows the url of a `Function` to be retrieved in an async manner using `Function.get_web_url.aio()` (like all other io-bearing methods in the Modal API)
+
+### 0.74.61 (2025-05-07)
+
+- Adds a deprecation warning when data is passed directly to `modal.Dict.from_name` or `modal.Dict.ephemeral`. Going forward, it will be necessary to separate `Dict` population from creation.
+
+### 0.74.60 (2025-05-07)
+
+- `modal.Dict.update` now also accepts a positional Mapping, like Python's `dict` type:
+
+  ```python
+  d = modal.Dict.from_name("some-dict")
+  d.update({"a_key": 1, "another_key": "b"}, some_kwarg=True)
+  ```
+
+### 0.74.56 (2025-05-06)
+
+- Experimental `modal cluster` subcommand is added.
+
+### 0.74.53 (2025-05-06)
+
+- Added functionality for `.spawn_map` on a function instantiated from `Function.from_name`.
+
+### 0.74.51 (2025-05-06)
+
+- The `modal` client library can now be installed with Protobuf 6.
+
+### 0.74.49 (2025-05-06)
+
+- Changes the log format of the modal client's default logger. Instead of `[%(threadName)s]`, the client now logs `[modal-client]` as the log line prefix.
+- Adds a configuration option (MODAL_LOG_PATTERN) to the modal config for setting the log formatting pattern, in case users want to customize the format. To get the old format, use `MODAL_LOG_PATTERN='[%(threadName)s] %(asctime)s %(message)s'` (or add this to your `.modal.toml` in the `log_pattern` field).
+
+### 0.74.48 (2025-05-05)
+
+- Added a new method for spawning many function calls in parallel: `Function.spawn_map`.
+
+### 0.74.46 (2025-05-05)
+
+- Introduces a new `.update_autoscaler()` method, which will replace the existing `.keep_warm()` method with the ability to dynamically change the entire autoscaler configuration (`min_containers`, `max_containers`, `buffer_containers`, and `scaledown_window`).
+
+### 0.74.39 (2025-04-30)
+
+- The `modal` client no longer includes `fastapi` as a library dependency.
+
+### 0.74.36 (2025-04-29)
+
+- A new parameter, `restrict_modal_access`, can be provided on a Function to prevent it from interacting with other resources in your Modal Workspace like Queues, Volumes, or other Functions. This can be useful for running user-provided or LLM-written code in a safe way.
+
+### 0.74.35 (2025-04-29)
+
+- Fixed a bug that prevented doing `modal run` against an entrypoint defined by `Cls.with_options`.
+
+### 0.74.32 (2025-04-29)
+
+- When setting a custom `name=` in `@app.function()`, an error is now raised unless `serialized=True` is also set.
+
+### 0.74.25 (2025-04-25)
+
+- The `App.include` method now returns `self` so it's possible to build up an App through chained calls:
+
+  ```python
+  app = modal.App("main-app").include(sub_app_1).include(sub_app_2)
+  ```
+
+### 0.74.23 (2025-04-25)
+
+- Marked some parameters in a small number of Modal functions as requiring keyword arguments (namely, `modal.App.run`, `modal.Cls.with_options`, all `.from_name` methods, and a few others). Code that calls these functions with positional arguments will now raise an error. This is expected to be minimally disruptive as the affected parameters are mostly "extra" options or positioned after parameters that have previously been deprecated.
+
+### 0.74.22 (2025-04-24)
+
+- Added a `modal secret delete` command to the CLI.
+
+### 0.74.21 (2025-04-24)
+
+- The `allow_cross_region_volumes` parameter of the `@app.function` and `@app.cls` decorators now issues a deprecation warning; the parameter is always treated as `True` on the Modal backend.
+
+### 0.74.18 (2025-04-23)
+
+- Adds a `.deploy()` method to the `App` object. This method allows you programmatically deploy Apps from Python:
+
+  ```python
+  app = modal.App("programmatic-deploy")
+  ...
+  app.deploy()
+  ```
+
+### 0.74.12 (2025-04-18)
+
+- The `@app.function` and `@app.cls` decorators now support `experimental_options`, which we'll use going forward when testing experimental functionality that depends only on server-side configuration.
+
+### 0.74.7 (2025-04-17)
+
+- Modal will now raise an error if local files included in the App are modified during the build process. This behavior can be controlled with the `MODAL_BUILD_VALIDATION` configuration, which accepts `error` (default), `warn`, or `ignore`.
+
+### 0.74.6 (2025-04-17)
+
+- Internal change that makes containers for functions/classes with `serialized=True` start up _slightly_ faster than before
+
+### 0.74.0 (2025-04-15)
+
+- Introduces a deprecation warning when using explicit constructors (`__init__` methods) on `@modal.cls`-decorated classes. Class parameterization should instead be done via [dataclass-style `modal.parameter()` declarations](https://modal.com/docs/guide/parametrized-functions). Initialization logic should run in `@modal.enter()`-decorated [lifecycle methods](https://modal.com/docs/guide/lifecycle-functions).
+
+## 0.73
+
+### 0.73.173 (2025-04-15)
+
+- Fix bug where containers hang with batch sizes above 100 (with `@modal.batched`).
+- Fix bug where containers can fail with large outputs and batch sizes above 49 (with `@modal.batched`)
+
+### 0.73.170 (2025-04-14)
+
+- Fixes a bug where `modal run` didn't recognize `modal.parameter()` class parameters
+
+### 0.73.165 (2025-04-11)
+
+- Allow running new ephemeral apps from **within** Modal containers using `with app.run(): ...`. Use with care, as putting such a run block in global scope of a module could easily lead to infinite app creation recursion
+
+### 0.73.160 (2025-04-10)
+
+- The `allow_concurrent_inputs` parameter of `@app.function` and `@app.cls` is now deprecated in favor of the `@modal.concurrent` decorator. See the [Modal 1.0 Migration Guide](https://modal.com/docs/guide/modal-1-0-migration#replacing-allow_concurrent_inputs-with-modalconcurrent) and documentation on [input concurrency](https://modal.com/docs/guide/concurrent-inputs) for more information.
+
+### 0.73.159 (2025-04-10)
+
+- Fixes a bug where `serialized=True` classes could not `self.` reference other methods on the class, or use `modal.parameter()` synthetic constructors
+
+### 0.73.158 (2025-04-10)
+
+- Adds support for `bool` type to class parameters using `name: bool = modal.parameter()`. Note that older clients can't instantiate classes with bool parameters unless those have default values which are not modified. Bool parameters are also not supported by web endpoints at this time.
+
+### 0.73.148 (2025-04-07)
+
+- Fixes a bug introduced in 0.73.147 that broke App builds when using `@modal.batched` on a class method.
+
+### 0.73.147 (2025-04-07)
+
+- Improved handling of cases where `@modal.concurrent` is stacked with other decorators.
+
+### 0.73.144 (2025-04-04)
+
+- Adds a `context_dir` parameter to `modal.Image.from_dockerfile` and `modal.Image.dockerfile_commands`. This parameter can be used to provide a local reference for relative COPY commands.
+
+### 0.73.139 (2025-04-02)
+
+- Added `modal.experimental.ipython` module, which can be loaded in Jupyter notebooks with `%load_ext modal.experimental.ipython`. Currently it provides the `%modal` line magic for looking up functions:
+
+  ```python
+  %modal from main/my-app import my_function, MyClass as Foo
+
+  # Now you can use my_function() and Foo in your notebook.
+  my_function.remote()
+  Foo().my_method.remote()
+  ```
+
+- Removed the legacy `modal.extensions.ipython` module from 2022.
+
+### 0.73.135 (2025-03-29)
+
+- Fix shutdown race bug that emitted spurious error-level logs.
+
+### 0.73.132 (2025-03-28)
+
+- Adds the `@modal.concurrent` decorator, which will be replacing the beta `allow_concurrent_inputs=` parameter of `@app.function` and `@app.cls` for enabling input concurrency. Notably, `@modal.concurrent` introduces a distinction between `max_inputs` and `target_inputs`, allowing containers to burst over the concurrency level targeted by the Modal autoscaler during periods of high load.
+
+### 0.73.131 (2025-03-28)
+
+- Instantiation of classes using keyword arguments that are not defined as as `modal.parameter()` will now raise an error on the calling side rather than in the receiving container. Note that this only applies if there is at least one modal.parameter() defined on the class, but this will likely apply to parameter-less classes in the future as well.
+
+### 0.73.121 (2025-03-24)
+
+- Adds a new "commit info" column to the `modal app history` command. It shows the short git hash at the time of deployment, with an asterisk `*` if the repository had uncommitted changes.
+
+### 0.73.119 (2025-03-21)
+
+- Class parameters are no longer automatically cast into their declared type. If the wrong type is provided to a class parameter, method calls to that class instance will now fail with an exception.
+
+### 0.73.115 (2025-03-19)
+
+- Adds support for new strict `bytes` type for `modal.parameter`
+
+Usage:
+
+```py
+import typing
+import modal
+
+app = modal.App()
+
+@app.cls()
+class Foo:
+    a: bytes = modal.parameter(default=b"hello")
+
+    @modal.method()
+    def bar(self):
+        return f"hello {self.a}"
+
+@app.local_entrypoint()
+def main():
+    foo = Foo(a=b"world")
+    foo.bar.remote()
+```
+
+**Note**: For parameterized web endoints you must base64 encode the bytes before passing them in as a query parameter.
+
+### 0.73.107 (2025-03-14)
+
+- Include git commit info at the time of app deployment.
+
+### 0.73.105 (2025-03-14)
+
+- Added `Image.cmd()` for setting image default entrypoint args (a.k.a. `CMD`).
+
+### 0.73.95 (2025-03-12)
+
+- Fixes a bug which could cause `Function.map` and sibling methods to stall indefinitely if there was an exception in the input iterator itself (i.e. not the mapper function)
+
+### 0.73.89 (2025-03-05)
+
+- The `@modal.web_endpoint` decorator is now deprecated. We are replacing it with `@modal.fastapi_endpoint`. This can be a simple name substitution in your code; the two decorators have identical semantics.
+
+### 0.73.84 (2025-03-04)
+
+- The `keep_warm=` parameter has been removed from the`@modal.method` decorator. This parameter has been nonfunctional since v0.63.0; all autoscaler configuration must be done at the level of the modal Cls.
+
+### 0.73.82 (2025-03-04)
+
+- Adds `modal.fastapi_endpoint` as an alias for `modal.web_endpoint`. We will be deprecating the `modal.web_endpoint` _name_ (but not the functionality) as part of the Modal 1.0 release.
+
+### 0.73.81 (2025-03-03)
+
+- The `wait_for_response` parameter of Modal's web endpoint decorators has been removed (originally deprecated in May 2024).
+
+### 0.73.78 (2025-03-01)
+
+- It is now possible to call `Cls.with_options` on an unhydrated Cls, e.g.
+
+  ```python
+  ModelWithGPU = modal.Cls.from_name("my-app", "Model").with_options(gpu="H100")
+  ```
+
+### 0.73.77 (2025-03-01)
+
+- `Cls.with_options()` now accept unhydated volume and secrets
+
+### 0.73.76 (2025-02-28)
+
+- We're renaming several `App.function` and `App.cls` parameters that configure the behavior of Modal's autoscaler:
+  - `concurrency_limit` is now `max_containers`
+  - `keep_warm` is now `min_containers`
+  - `container_idle_timeout` is now `scaledown_window`
+- The old names will continue to work, but using them will issue a deprecation warning. The aim of the renaming is to reduce some persistent confusion about what these parameters mean. Code updates should require only a simple substitution of the new name.
+- We're adding a new parameter, `buffer_containers` (previously available as `_experimental_buffer_containers`). When your Function is actively handling inputs, the autoscaler will spin up additional `buffer_containers` so that subsequent inputs will not be blocked on cold starts. When the Function is idle, it will still scale down to the value given by `min_containers`.
+
+### 0.73.75 (2025-02-28)
+
+- Adds a new config field, `ignore_cache` (also accessible via environment variables as `MODAL_IGNORE_CACHE=1`), which will force Images used by the App to rebuild but not clobber any existing cached Images. This can be useful for testing an App's robustness to Image rebuilds without affecting other Apps that depend on the same base Image layer(s).
+
+### 0.73.73 (2025-02-28)
+
+- Adds a deprecation warning to the `workspace` parameter in `modal.Cls` lookup methods. This argument is unused and will be removed in the future.
+
+### 0.73.69 (2025-02-25)
+
+- We've moved the `modal.functions.gather` function to be a staticmethod on `modal.FunctionCall.gather`. The former spelling has been deprecated and will be removed in a future version.
+
+### 0.73.68 (2025-02-25)
+
+- Fixes issue where running `modal shell` with a dot-separated module reference as input would not accept the required `-m` flag for "module mode", but still emitted a warning telling users to use `-m`
+
+### 0.73.60 (2025-02-20)
+
+- Fixes an issue where `modal.runner.deploy_app()` didn't work when called from within a running (remote) Modal Function
+
+### 0.73.58 (2025-02-20)
+
+- Introduces an `-m` flag to `modal run`, `modal shell`, `modal serve` and `modal deploy`, which indicates that the modal app/function file is specified using python "module syntax" rather than a file path. In the future this will be a required flag when using module syntax.
+
+  Old syntax:
+
+  ```sh
+  modal run my_package/modal_main.py
+  modal run my_package.modal_main
+  ```
+
+  New syntax (note the `-m` on the second line):
+
+  ```sh
+  modal run my_package/modal_main.py
+  modal run -m my_package.modal_main
+  ```
+
+### 0.73.54 (2025-02-18)
+
+- Passing `App.lookup` an invalid name now raises an error. App names may contain only alphanumeric characters, dashes, periods, and underscores, must be shorter than 64 characters, and cannot conflict with App ID strings.
+
+### 0.73.51 (2025-02-14)
+
+- Fixes a bug where sandboxes returned from `Sandbox.list()` were not snapshottable even if they were created with `_experimental_enable_snapshot`.
+
+### 0.73.44 (2025-02-13)
+
+- `modal.FunctionCall` is now available in the top-level `modal` namespace. We recommend referencing the class this way instead of using the the fully-qualified `modal.functions.FunctionCall` name.
+
+### 0.73.40 (2025-02-12)
+
+- `Function.web_url` will now return None (instead of raising an error) when the Function is not a web endpoint
+
+### 0.73.31 (2025-02-10)
+
+- Deprecate the GPU classes (`gpu=A100(...)` etc) in favor of just using strings (`gpu="A100"` etc)
+
+### 0.73.26 (2025-02-10)
+
+- Adds a pending deprecation warning when looking up class methods using `Function.from_name`, e.g. `Function.from_name("some_app", "SomeClass.some_method")`. The recommended way to reference methods of classes is to look up the class instead: `RemoteClass = Cls.from_name("some_app", "SomeClass")`
+
+### 0.73.25 (2025-02-09)
+
+- Fixes an issue introduced in `0.73.19` that prevented access to GPUs during image builds
+
+### 0.73.18 (2025-02-06)
+
+- When using a parameterized class (with at least one `modal.parameter()` specified), class instantiation with an incorrect construction signature (wrong arguments or types) will now fail at the `.remote()` calling site instead of container startup for the called class.
+
+### 0.73.14 (2025-02-04)
+
+- Fixed the status message shown in terminal logs for ephemeral Apps to accurately report the number of active containers.
+
+### 0.73.11 (2025-02-04)
+
+- Warns users if the `modal.Image` of a Function/Cls doesn't include all the globally imported "local" modules (using `.add_local_python_source()`), and the user hasn't explicitly set an `include_source` value of True/False. This is in preparation for an upcoming deprecation of the current "auto mount" logic.
+
+### 0.73.10 (2025-02-04)
+
+- Modal functions, methods and entrypoints can now accept variable-length arguments to skip Modal's default CLI parsing. This is useful if you want to use Modal with custom argument parsing via `argparse` or `HfArgumentParser`. For example, the following function can be invoked with `modal run my_file.py --foo=42 --bar="baz"`:
+
+  ```python
+  import argparse
+
+  @app.function()
+  def train(*arglist):
+      parser = argparse.ArgumentParser()
+      parser.add_argument("--foo", type=int)
+      parser.add_argument("--bar", type=str)
+      args = parser.parse_args(args = arglist)
+  ```
+
+### 0.73.1 (2025-01-30)
+
+- `modal run` now runs a single local entrypoints/function in the selected module. If exactly one local entrypoint or function exists in the selected module, the user doesn't have to qualify the runnable
+  in the modal run command, even if some of the module's referenced apps have additional local entrypoints or functions. This partially restores "auto-inferred function" functionality that was changed in v0.72.48.
+
+### 0.73.0 (2025-01-30)
+
+- Introduces an `include_source` argument in the `App.function` and `App.cls` decorators that let users configure which class of python packages are automatically included as source mounts in created modal functions/classes (what we used to call "automount" behavior). This will supersede the MODAL_AUTOMOUNT configuration value which will eventually be deprecated. As a convenience, the `modal.App` constructor will also accept an `include_source` argument which serves as the default for all the app's functions and classes.
+
+  The `include_source` argument accepts the following values:
+
+  - `True` (default in a future version of Modal) Automatically includes the Python files of the source package of the function's own home module, but not any other local packages. Roughly equivalent ot `MODAL_AUTOMOUNT=0` in previous versions of Modal.
+  - `False` - don't include _any_ local source. Assumes the function's home module is importable in the container environment through some other means (typically added to the provided `modal.Image`'s Python environment).
+  - `None` (the default) - use current soon-to-be-deprecated automounting behavior, including source of all first party packages that are not installed into site-packages locally.
+
+- Minor change to `MODAL_AUTOMOUNT=0`: When running/deploying using a module path (e.g. `modal run mypak.mymod`), **all non .pyc files** of the source package (`mypak` in this case) are now included in the function's container. Previously, only the function's home `.py` module file + any `__init__.py` files in its package structure were included. Note that this is only for MODAL_AUTOMOUNT=0. To get full control over which source files are included with your functions, you can set `include_source=False` on your function (see above) and manually specify the files to include using the `ignore` argument to `Image.add_local_python_source`.
+
+## 0.72
+
+### 0.72.56 (2025-01-28)
+
+- Deprecated `.lookup` methods on Modal objects. Users are encouraged to use `.from_name` instead. In most cases this will be a simple name substitution. See [the 1.0 migration guide](https://modal.com/docs/guide/modal-1-0-migration#deprecating-the-lookup-method-on-modal-objects) for more information.
+
+### 0.72.54 (2025-01-28)
+
+- Fixes bug introduced in v0.72.48 where `modal run` didn't work with files having global `Function.from_name()`/`Function.lookup()`/`Cls.from_name()`/`Cls.lookup()` calls.
+
+### 0.72.48 (2025-01-24)
+
+- Fixes a CLI bug where you couldn't reference functions via a qualified app, e.g. `mymodule::{app_variable}.{function_name}`.
+- The `modal run`, `modal serve` and `modal shell` commands get more consistent error messages in cases where the passed app or function reference isn't resolvable to something that the current command expects.
+- Removes the deprecated `__getattr__`, `__setattr__`, `__getitem__` and `__setitem__` methods from `modal.App`
+
+### 0.72.39 (2025-01-22)
+
+- Introduced a new public method, `.hydrate`, for on-demand hydration of Modal objects. This method replaces the existing semi-public `.resolve` method, which is now deprecated.
+
+### 0.72.33 (2025-01-20)
+
+- The Image returned by `Sandbox.snapshot_filesystem` now has `object_id` and other metadata pre-assigned rather than require loading by subsequent calls to sandboxes or similar to set this data.
+
+### 0.72.30 (2025-01-18)
+
+- Adds a new `oidc_auth_role_arn` field to `CloudBucketMount` for using OIDC authentication to create the mountpoint.
+
+### 0.72.24 (2025-01-17)
+
+- No longer prints a warning if `app.include` re-includes an already included function (warning is still printed if _another_ function with the same name is included)
+
+### 0.72.22 (2025-01-17)
+
+- Internal refactor of the `modal.object` module. All entities except `Object` from that module have now been moved to the `modal._object` "private" module.
+
+### 0.72.17 (2025-01-16)
+
+- The `@modal.build` decorator is now deprecated. For storing large assets (e.g. model weights), we now recommend using a `modal.Volume` over writing data to the `modal.Image` filesystem directly.
+
+### 0.72.16 (2025-01-16)
+
+- Fixes bug introduced in v0.72.9 where `modal run SomeClass.some_method` would incorrectly print a deprecation warning.
+
+### 0.72.15 (2025-01-15)
+
+- Added an `environment_name` parameter to the `App.run` context manager.
+
+### 0.72.8 (2025-01-10)
+
+- Fixes a bug introduced in v0.72.2 when specifying `add_python="3.9"` in `Image.from_registry`.
+
+### 0.72.0 (2025-01-09)
+
+- The default behavior`Image.from_dockerfile()` and `image.dockerfile_commands()` if no parameter is passed to `ignore` will be to automatically detect if there is a valid dockerignore file in the current working directory or next to the dockerfile following the same rules as `dockerignore` does using `docker` commands. Previously no patterns were ignored.
+
+## 0.71
+
+### 0.71.13 (2025-01-09)
+
+- `FilePatternMatcher` has a new constructor `from_file` which allows you to read file matching patterns from a file instead of having to pass them in directly, this can be used for `Image` methods accepting an `ignore` parameter in order to read ignore patterns from files.
+
+### 0.71.11 (2025-01-08)
+
+- Modal Volumes can now be renamed via the CLI (`modal volume rename`) or SDK (`modal.Volume.rename`).
+
+### 0.71.7 (2025-01-08)
+
+- Adds `Image.from_id`, which returns an `Image` object from an existing image id.
+
+### 0.71.1 (2025-01-06)
+
+- Sandboxes now support fsnotify-like file watching:
+
+```python
+from modal.file_io import FileWatchEventType
+
+app = modal.App.lookup("file-watch", create_if_missing=True)
+sb = modal.Sandbox.create(app=app)
+events = sb.watch("/foo")
+for event in events:
+    if event.type == FileWatchEventType.Modify:
+        print(event.paths)
+```
+
+## 0.70
+
+### 0.70.1 (2024-12-27)
+
+- The sandbox filesystem API now accepts write payloads of sizes up to 1 GiB.
+
+## 0.69
+
+### 0.69.0 (2024-12-21)
+
+- `Image.from_dockerfile()` and `image.dockerfile_commands()` now auto-infer which files need to be uploaded based on COPY commands in the source if `context_mount` is omitted. The `ignore=` argument to these methods can be used to selectively omit files using a set of glob patterns.
+
+## 0.68
+
+### 0.68.53 (2024-12-20)
+
+- You can now point `modal launch vscode` at an arbitrary Dockerhub base image:
+
+  `modal launch vscode --image=nvidia/cuda:12.4.0-devel-ubuntu22.04`
+
+### 0.68.44 (2024-12-19)
+
+- You can now run GPU workloads on [Nvidia L40S GPUs](https://www.nvidia.com/en-us/data-center/l40s/):
+
+  ```python
+  @app.function(gpu="L40S")
+  def my_gpu_fn():
+      ...
+  ```
+
+### 0.68.43 (2024-12-19)
+
+- Fixed a bug introduced in v0.68.39 that changed the exception type raise when the target object for `.from_name`/`.lookup` methods was not found.
+
+### 0.68.39 (2024-12-18)
+
+- Standardized terminology in `.from_name`/`.lookup`/`.delete` methods to use `name` consistently where `label` and `tag` were used interchangeably before. Code that invokes these methods using `label=` as an explicit keyword argument will issue a deprecation warning and will break in a future release.
+
+### 0.68.29 (2024-12-17)
+
+- The internal `deprecation_error` and `deprecation_warning` utilities have been moved to a private namespace
+
+### 0.68.28 (2024-12-17)
+
+- Sandboxes now support additional filesystem commands `mkdir`, `rm`, and `ls`.
+
+```python
+app = modal.App.lookup("sandbox-fs", create_if_missing=True)
+sb = modal.Sandbox.create(app=app)
+sb.mkdir("/foo")
+with sb.open("/foo/bar.txt", "w") as f:
+    f.write("baz")
+print(sb.ls("/foo"))
+```
+
+### 0.68.27 (2024-12-17)
+
+- Two previously-introduced deprecations are now enforced and raise an error:
+  - The `App.spawn_sandbox` method has been removed in favor of `Sandbox.create`
+  - `Sandbox.create` now requires an `App` object to be passed
+
+### 0.68.24 (2024-12-16)
+
+- The `modal run` CLI now has a `--write-result` option. When you pass a filename, Modal will write the return value of the entrypoint function to that location on your local filesystem. The return value of the function must be either `str` or `bytes` to use this option; otherwise, an error will be raised. It can be useful for exercising a remote function that returns text, image data, etc.
+
+### 0.68.21 (2024-12-13)
+
+Adds an `ignore` parameter to our `Image` `add_local_dir` and `copy_local_dir` methods. It is similar to the `condition` method on `Mount` methods but instead operates on a `Path` object. It takes either a list of string patterns to ignore which follows the `dockerignore` syntax implemented in our `FilePatternMatcher` class, or you can pass in a callable which allows for more flexible selection of files.
+
+Usage:
+
+```python
+img.add_local_dir(
+  "./local-dir",
+  remote_path="/remote-path",
+  ignore=FilePatternMatcher("**/*", "!*.txt") # ignore everything except files ending with .txt
+)
+
+img.add_local_dir(
+  ...,
+  ignore=~FilePatternMatcher("**/*.py") # can be inverted for when inclusion filters are simpler to write
+)
+
+img.add_local_dir(
+  ...,
+  ignore=["**/*.py", "!module/*.py"] # ignore all .py files except those in the module directory
+)
+
+img.add_local_dir(
+  ...,
+  ignore=lambda fp: fp.is_relative_to("somewhere") # use a custom callable
+)
+```
+
+which will add the `./local-dir` directory to the image but ignore all files except `.txt` files
+
+### 0.68.15 (2024-12-13)
+
+Adds the `requires_proxy_auth` parameter to `web_endpoint`, `asgi_app`, `wsgi_app`, and `web_server` decorators. Requests to the app will respond with 407 Proxy Authorization Required if a webhook token is not supplied in the HTTP headers. Protects against DoS attacks that will unnecessarily charge users.
+
+### 0.68.11 (2024-12-13)
+
+- `Cls.from_name(...)` now works as a lazy alternative to `Cls.lookup()` that doesn't perform any IO until a method on the class is used for a .remote() call or similar
+
+### 0.68.6 (2024-12-12)
+
+- Fixed a bug introduced in v0.67.47 that suppressed console output from the `modal deploy` CLI.
+
+### 0.68.5 (2024-12-12)
+
+We're removing support for `.spawn()`ing generator functions.
+
+### 0.68.2 (2024-12-11)
+
+- Sandboxes now support a new filesystem API. The `open()` method returns a `FileIO` handle for native file handling in sandboxes.
+
+```python
+app = modal.App.lookup("sandbox-fs", create_if_missing=True)
+sb = modal.Sandbox.create(app=app)
+
+with sb.open("test.txt", "w") as f:
+  f.write("Hello World\n")
+
+f = sb.open("test.txt", "rb")
+print(f.read())
+```
+
+## 0.67
+
+### 0.67.43 (2024-12-11)
+
+- `modal container exec` and `modal shell` now work correctly even when a pseudoterminal (PTY) is not present. This means, for example, that you can pipe the output of these commands to a file:
+
+  ```python
+  modal shell -c 'uv pip list' > env.txt
+  ```
+
+### 0.67.39 (2024-12-09)
+
+- It is now possible to delete named `NetworkFileSystem` objects via the CLI (`modal nfs delete ...`) or API `(modal.NetworkFileSystem.delete(...)`)
+
+### 0.67.38 (2024-12-09)
+
+- Sandboxes now support filesystem snapshots. Run `Sandbox.snapshot_filesystem()` to get an Image which can be used to spawn new Sandboxes.
+
+### 0.67.28 (2024-12-05)
+
+- Adds `Image.add_local_python_source` which works similarly to the old and soon-to-be-deprecated `Mount.from_local_python_packages` but for images. One notable difference is that the new `add_local_python_source` _only_ includes `.py`-files by default
+
+### 0.67.23 (2024-12-04)
+
+- Image build functions that use a `functools.wraps` decorator will now have their global variables included in the cache key. Previously, the cache would use global variables referenced within the wrapper itself. This will force a rebuild for Image layers defined using wrapped functions.
+
+### 0.67.22 (2024-12-03)
+
+- Fixed a bug introduced in v0.67.0 where it was impossible to call `modal.Cls` methods when passing a list of requested GPUs.
+
+### 0.67.12 (2024-12-02)
+
+- Fixed a bug that executes the wrong method when a Modal Cls overrides a `@modal.method` inherited from a parent.
+
+### 0.67.7 (2024-11-29)
+
+- Fixed a bug where pointing `modal run` at a method on a Modal Cls would fail if the method was inherited from a parent.
+
+### 0.67.0 (2024-11-27)
+
+New minor client version `0.67.x` comes with an internal data model change for how Modal creates functions for Modal classes. There are no breaking or backwards-incompatible changes with this release. All forward lookup scenarios (`.lookup()` of a `0.67` class from a pre `0.67` client) as well as backwards lookup scenarios (`.lookup()` of a pre `0.67` class from a `0.67` client) work, except for a `0.62` client looking up a `0.67` class (this maintains our current restriction of not being able to lookup a `0.63+` class from a `0.62` client).
+
+## 0.66
+
+### 0.66.49 (2024-11-26)
+
+- `modal config set-environment` will now raise if the requested environment does not exist.
+
+### 0.66.45 (2024-11-26)
+
+- The `modal launch` CLI now accepts a `--detach` flag to run the App in detached mode, such that it will persist after the local client disconnects.
+
+### 0.66.40 (2024-11-23)
+
+- Adds `Image.add_local_file(..., copy=False)` and `Image.add_local_dir(..., copy=False)` as a unified replacement for the old `Image.copy_local_*()` and `Mount.add_local_*` methods.
+
+### 0.66.30 (2024-11-21)
+
+- Removed the `aiostream` package from the modal client library dependencies.
+
+### 0.66.12 (2024-11-19)
+
+`Sandbox.exec` now accepts arguments `text` and `bufsize` for streaming output, which controls text output and line buffering.
+
+### 0.66.0 (2024-11-15)
+
+- Modal no longer supports Python 3.8, which has reached its [official EoL](https://devguide.python.org/versions/).
+
+## 0.65
+
+### 0.65.55 (2024-11-13)
+
+- Escalates stuck input cancellations to container death. This prevents unresponsive user code from holding up resources.
+- Input timeouts no longer kill the entire container. Instead, they just cancel the timed-out input, leaving the container and other concurrent inputs running.
+
+### 0.65.49 (2024-11-12)
+
+- Fixed issue in `modal serve` where files used in `Image.copy_*` commands were not watched for changes
+
+### 0.65.42 (2024-11-07)
+
+- `Sandbox.exec` can now accept `timeout`, `workdir`, and `secrets`. See the `Sandbox.create` function for context on how to use these arguments.
+
+### 0.65.33 (2024-11-06)
+
+- Removed the `interactive` parameter from `function` and `cls` decorators. This parameter has been deprecated since May 2024. Instead of specifying Modal Functions as interactive, use `modal run --interactive` to activate interactive mode.
+
+### 0.65.30 (2024-11-05)
+
+- The `checkpointing_enabled` option, deprecated in March 2024, has now been removed.
+
+### 0.65.9 (2024-10-31)
+
+- Output from `Sandbox.exec` can now be directed to `/dev/null`, `stdout`, or stored for consumption. This behavior can be controlled via the new `StreamType` arguments.
+
+### 0.65.8 (2024-10-31)
+
+- Fixed a bug where the `Image.imports` context manager would not correctly propagate ImportError when using a `modal.Cls`.
+
+### 0.65.2 (2024-10-30)
+
+- Fixed an issue where `modal run` would pause for 10s before exiting if there was a failure during app creation.
+
+## 0.64
+
+### 0.64.227 (2024-10-25)
+
+- The `modal container list` CLI command now shows the containers within a specific environment: the active profile's environment if there is one, otherwise the workspace's default environment. You can pass `--env` to list containers in other environments.
+
+### 0.64.223 (2024-10-24)
+
+- Fixed `modal serve` not showing progress when reloading apps on file changes since v0.63.79.
+
+### 0.64.218 (2024-10-23)
+
+- Fix a regression introduced in client version 0.64.209, which affects client authentication within a container.
+
+### 0.64.198 (2024-10-18)
+
+- Fixed a bug where `Queue.put` and `Queue.put_many` would throw `queue.Full` even if `timeout=None`.
+
+### 0.64.194 (2024-10-18)
+
+- The previously-deprecated `--confirm` flag has been removed from the `modal volume delete` CLI. Use `--yes` to force deletion without a confirmation prompt.
+
+### 0.64.193 (2024-10-18)
+
+- Passing `wait_for_response=False` in Modal webhook decorators is no longer supported. See [the docs](https://modal.com/docs/guide/webhook-timeouts#polling-solutions) for alternatives.
+
+### 0.64.187 (2024-10-16)
+
+- When writing to a `StreamWriter` that has already had EOF written, a `ValueError` is now raised instead of an `EOFError`.
+
+### 0.64.185 (2024-10-15)
+
+- Memory snapshotting can now be used with parametrized functions.
+
+### 0.64.184 (2024-10-15)
+
+- StreamWriters now accept strings as input.
+
+### 0.64.182 (2024-10-15)
+
+- Fixed a bug where App rollbacks would not restart a schedule that had been removed in an intervening deployment.
+
+### 0.64.181 (2024-10-14)
+
+- The `modal shell` CLI command now takes a container ID, allowing you to shell into a running container.
+
+### 0.64.180 (2024-10-14)
+
+- `modal shell --cmd` now can be shortened to `modal shell -c`. This means you can use it like `modal shell -c "uname -a"` to quickly run a command within the remote environment.
+
+### 0.64.168 (2024-10-03)
+
+- The `Image.conda`, `Image.conda_install`, and `Image.conda_update_from_environment` methods are now fully deprecated. We recommend using `micromamba` (via `Image.micromamba` and `Image.micromamba_install`) instead, or manually installing and using conda with `Image.run_commands` when strictly necessary.
+
+### 0.64.153 (2024-09-30)
+
+- **Breaking Change:** `Sandbox.tunnels()` now returns a `Dict` rather than a `List`. This dict is keyed by the container's port, and it returns a `Tunnel` object, just like `modal.forward` does.
+
+### 0.64.142 (2024-09-25)
+
+- `modal.Function` and `modal.Cls` now support specifying a `list` of GPU configurations, allowing the Function's container pool to scale across each GPU configuration in preference order.
+
+### 0.64.139 (2024-09-25)
+
+- The deprecated `_experimental_boost` argument is now removed. (Deprecated in late July.)
+
+### 0.64.123 (2024-09-18)
+
+- Sandboxes can now be created without an entrypoint command. If they are created like this, they will stay alive up until their set timeout. This is useful if you want to keep a long-lived sandbox and execute code in it later.
+
+### 0.64.119 (2024-09-17)
+
+- Sandboxes now have a `cidr_allowlist` argument, enabling controlled access to certain IP ranges. When not used (and with `block_network=False`), the sandbox process will have open network access.
+
+### 0.64.118 (2024-09-17)
+
+Introduce an experimental API to allow users to set the input concurrency for a container locally.
+
+### 0.64.112 (2024-09-15)
+
+- Creating sandboxes without an associated `App` is deprecated. If you are spawning a `Sandbox` outside a Modal container, you can lookup an `App` by name to attach to the `Sandbox`:
+
+  ```python
+  app = modal.App.lookup('my-app', create_if_missing=True)
+  modal.Sandbox.create('echo', 'hi', app=app)
+  ```
+
+### 0.64.109 (2024-09-13)
+
+- App handles can now be looked up by name with `modal.App.lookup(name)`. This can be useful for associating Sandboxes with Apps:
+
+  ```python
+  app = modal.App.lookup("my-app", create_if_missing=True)
+  modal.Sandbox.create("echo", "hi", app=app)
+  ```
+
+### 0.64.100 (2024-09-11)
+
+- The default timeout for `modal.Image.run_function` has been lowered to 1 hour. Previously it was 24 hours.
+
+### 0.64.99 (2024-09-11)
+
+- Fixes an issue that could cause containers using `enable_memory_snapshot=True` on Python 3.9 and below to shut down prematurely.
+
+### 0.64.97 (2024-09-11)
+
+- Added support for [ASGI lifespan protocol](https://asgi.readthedocs.io/en/latest/specs/lifespan.html):
+
+  ```python
+  @app.function()
+  @modal.asgi_app()
+  def func():
+      from fastapi import FastAPI, Request
+
+      def lifespan(wapp: FastAPI):
+          print("Starting")
+          yield {"foo": "bar"}
+          print("Shutting down")
+
+      web_app = FastAPI(lifespan=lifespan)
+
+      @web_app.get("/")
+      def get_state(request: Request):
+          return {"message": f"This is the state: {request.state.foo}"}
+
+      return web_app
+  ```
+
+  which enables support for `gradio>=v4` amongst other libraries using lifespans
+
+### 0.64.87 (2024-09-05)
+
+- Sandboxes now support port tunneling. Ports can be exposed via the `open_ports` argument, and a list of active tunnels can be retrieved via the `.tunnels()` method.
+
+### 0.64.67 (2024-08-30)
+
+- Fixed a regression in `modal launch` to resume displaying output when starting the container.
+
+### 0.64.48 (2024-08-21)
+
+- Introduces new dataclass-style syntax for class parametrization (see updated [docs](https://modal.com/docs/guide/parametrized-functions))
+
+  ```python
+  @app.cls()
+  class MyCls:
+      param_a: str = modal.parameter()
+
+  MyCls(param_a="hello")  # synthesized constructor
+  ```
+
+- The new syntax enforces types (`str` or `int` for now) on all parameters
+
+- _When the new syntax is used_, any web endpoints (`web_endpoint`, `asgi_app`, `wsgi_app` or `web_server`) on the app will now also support parametrization through the use of query parameters matching the parameter names, e.g. `https://myfunc.modal.run/?param_a="hello` in the above example.
+
+- The old explicit `__init__` constructor syntax is still allowed, but could be deprecated in the future and doesn't work with web endpoint parametrization
+
+### 0.64.38 (2024-08-16)
+
+- Added a `modal app rollback` CLI command for rolling back an App deployment to a previous version.
+
+### 0.64.33 (2024-08-16)
+
+- Commands in the `modal app` CLI now accept an App name as a positional argument, in addition to an App ID:
+
+  ```
+  modal app history my-app
+  ```
+
+  Accordingly, the explicit `--name` option has been deprecated. Providing a name that can be confused with an App ID will also now raise an error.
+
+### 0.64.32 (2024-08-16)
+
+- Updated type stubs using generics to allow static type inferrence for functions calls, e.g. `function.remote(...)`.
+
+### 0.64.26 (2024-08-15)
+
+- `ContainerProcess` handles now support `wait()` and `poll()`, like `Sandbox` objects
+
+### 0.64.24 (2024-08-14)
+
+- Added support for dynamic batching. Functions or class methods decorated with `@modal.batched` will now automatically batch their invocations together, up to a specified `max_batch_size`. The batch will wait for a maximum of `wait_ms` for more invocations after the first invocation is made. See guide for more details.
+
+  ```python
+  @app.function()
+  @modal.batched(max_batch_size=4, wait_ms=1000)
+  async def batched_multiply(xs: list[int], ys: list[int]) -> list[int]:
+      return [x * y for x, y in zip(xs, xs)]
+
+  @app.cls()
+  class BatchedClass():
+      @modal.batched(max_batch_size=4, wait_ms=1000)
+      async def batched_multiply(xs: list[int], ys: list[int]) -> list[int]:
+          return [x * y for x, y in zip(xs, xs)]
+  ```
+
+  The batched function is called with individual inputs:
+
+  ```python
+  await batched_multiply.remote.aio(2, 3)
+  ```
+
+### 0.64.18 (2024-08-12)
+
+- Sandboxes now have an `exec()` method that lets you execute a command inside the sandbox container. `exec` returns a `ContainerProcess` handle for input and output streaming.
+
+  ```python
+  sandbox = modal.Sandbox.create("sleep", "infinity")
+
+  process = sandbox.exec("bash", "-c", "for i in $(seq 1 10); do echo foo $i; sleep 0.5; done")
+
+  for line in process.stdout:
+      print(line)
+  ```
+
+### 0.64.8 (2024-08-06)
+
+- Removed support for the undocumented `modal.apps.list_apps()` function, which was internal and not intended to be part of public API.
+
+### 0.64.7 (2024-08-05)
+
+- Removed client check for CPU core request being at least 0.1, deferring to server-side enforcement.
+
+### 0.64.2 (2024-08-02)
+
+- Volumes can now be mounted to an ad hoc modal shell session:
+
+  ```
+  modal shell --volume my-vol-name
+  ```
+
+  When the shell starts, the volume will be mounted at `/mnt/my-vol-name`. This may be helpful for shell-based exploration or manipulation of volume contents.
+
+  Note that the option can be used multiple times to mount additional models:
+
+  ```
+  modal shell --volume models --volume data
+  ```
+
+### 0.64.0 (2024-07-29)
+
+- App deployment events are now atomic, reducing the risk that a failed deploy will leave the App in a bad state.
+
+## 0.63
+
+### 0.63.87 (2024-07-24)
+
+- The `_experimental_boost` argument can now be removed. Boost is now enabled on all modal Functions.
+
+### 0.63.77 (2024-07-18)
+
+- Setting `_allow_background_volume_commits` is no longer necessary and has been deprecated. Remove this argument in your decorators.
+
+### 0.63.36 (2024-07-05)
+
+- Image layers defined with a `@modal.build` method will now include the values of any _class variables_ that are referenced within the method as part of the layer cache key. That means that the layer will rebuild when the class variables change or are overridden by a subclass.
+
+### 0.63.22 (2024-07-01)
+
+- Fixed an error when running `@modal.build` methods that was introduced in v0.63.19
+
+### 0.63.20 (2024-07-01)
+
+- Fixed bug where `self.method.local()` would re-trigger lifecycle methods in classes
+
+### 0.63.14 (2024-06-28)
+
+- Adds `Cls.lookup()` backwards compatibility with classes created by clients prior to `v0.63`.
+
+  **Important**: When updating (to >=v0.63) an app with a Modal `class` that's accessed using `Cls.lookup()` - make sure to update the client of the app/service **using** `Cls.lookup()` first, and **then** update the app containing the class being looked up.
+
+### 0.63.12 (2024-06-27)
+
+- Fixed a bug introduced in 0.63.0 that broke `modal.Cls.with_options`
+
+### 0.63.10 (2024-06-26)
+
+- Adds warning about future deprecation of `retries` for generators. Retries are being deprecated as they can lead to nondetermistic generator behavior.
+
+### 0.63.9 (2024-06-26)
+
+- Fixed a bug in `Volume.copy_files()` where some source paths may be ignored if passed as `bytes`.
+- `Volume.read_file`, `Volume.read_file_into_fileobj`, `Volume.remove_file`, and `Volume.copy_files` can no longer take both string or bytes for their paths. They now only accept `str`.
+
+### 0.63.2 (2024-06-25)
+
+- Fixes issue with `Cls.lookup` not working (at all) after upgrading to v0.63.0. **Note**: this doesn't fix the cross-version lookup incompatibility introduced in 0.63.0.
+
+### 0.63.0 (2024-06-24)
+
+- Changes how containers are associated with methods of `@app.cls()`-decorated Modal "classes".
+
+  Previously each `@method` and web endpoint of a class would get its own set of isolated containers and never run in the same container as other sibling methods.
+  Starting in this version, all `@methods` and web endpoints will be part of the same container pool. Notably, this means all methods will scale up/down together, and options like `keep_warm` and `concurrency_limit` will affect the total number of containers for all methods in the class combined, rather than individually.
+
+  **Version incompatibility warning:** Older clients (below 0.63) can't use classes deployed by new clients (0.63 and above), and vice versa. Apps or standalone clients using `Cls.lookup(...)` to invoke Modal classes need to be upgraded to version `0.63` at the same time as the deployed app that's being called into.
+
+- `keep_warm` for classes is now an attribute of the `@app.cls()` decorator rather than individual methods.
+
+## 0.62
+
+### 0.62.236 (2024-06-21)
+
+- Added support for mounting Volume or CloudBucketMount storage in `Image.run_function`. Note that this is _typically_ not necessary, as data downloaded during the Image build can be stored directly in the Image filesystem.
+
+### 0.62.230 (2024-06-18)
+
+- It is now an error to create or lookup Modal objects (`Volume`, `Dict`, `Secret`, etc.) with an invalid name. Object names must be shorter than 64 characters and may contain only alphanumeric characters, dashes, periods, and underscores. The name check had inadvertently been removed for a brief time following an internal refactor and then reintroduced as a warning. It is once more a hard error. Please get in touch if this is blocking access to your data.
+
+### 0.62.224 (2024-06-17)
+
+- The `modal app list` command now reports apps created by `modal app run` or `modal app serve` as being in an "ephemeral" state rather than a "running" state to reduce confusion with deployed apps that are actively processing inputs.
+
+### 0.62.223 (2024-06-14)
+
+- All modal CLI commands now accept `-e` as a short-form of `--env`
+
+### 0.62.220 (2024-06-12)
+
+- Added support for entrypoint and shell for custom containers: `Image.debian_slim().entrypoint([])` can be used interchangeably with `.dockerfile_commands('ENTRYPOINT []')`, and `.shell(["/bin/bash", "-c"])` can be used interchangeably with `.dockerfile_commands('SHELL ["/bin/bash", "-c"]')`
+
+### 0.62.219 (2024-06-12)
+
+- Fix an issue with `@web_server` decorator not working on image builder version 2023.12
+
+### 0.62.208 (2024-06-08)
+
+- `@web_server` endpoints can now return HTTP headers of up to 64 KiB in length. Previously, they were limited to 8 KiB due to an implementation detail.
+
+### 0.62.201 (2024-06-04)
+
+- `modal deploy` now accepts a `--tag` optional parameter that allows you to specify a custom tag for the deployed version, making it easier to identify and manage different deployments of your app.
+
+### 0.62.199 (2024-06-04)
+
+- `web_endpoint`s now have the option to include interactive SwaggerUI/redoc docs by setting `docs=True`
+- `web_endpoint`s no longer include an OpenAPI JSON spec route by default
+
+### 0.62.190 (2024-05-29)
+
+- `modal.Function` now supports requesting ephemeral disk (SSD) via the new `ephemeral_disk` parameter. Intended for use in doing large dataset ingestion and transform.
+
+### 0.62.186 (2024-05-29)
+
+- `modal.Volume` background commits are now enabled by default when using `spawn_sandbox`.
+
+### 0.62.185 (2024-05-28)
+
+- The `modal app stop` CLI command now accepts a `--name` (or `-n`) option to stop an App by name rather than by ID.
+
+### 0.62.181 (2024-05-24)
+
+- Background committing on `modal.Volume` mounts is now default behavior.
+
+### 0.62.178 (2024-05-21)
+
+- Added a `modal container stop` CLI command that will kill an active container and reassign its current inputs.
+
+### 0.62.175 (2024-05-17)
+
+- `modal.CloudBucketMount` now supports writing to Google Cloud Storage buckets.
+
+### 0.62.174 (2024-05-17)
+
+- Using `memory=` to specify the type of `modal.gpu.A100` is deprecated in favor of `size=`. Note that `size` accepts a string type (`"40GB"` or `"80GB"`) rather than an integer, as this is a request for a specific variant of the A100 GPU.
+
+### 0.62.173 (2024-05-17)
+
+- Added a `version` flag to the `modal.Volume` API and CLI, allow opting in to a new backend implementation.
+
+### 0.62.172 (2024-05-17)
+
+- Fixed a bug where other functions weren't callable from within an `asgi_app` or `wsgi_app` constructor function and side effects of `@enter` methods weren't available in that scope.
+
+### 0.62.166 (2024-05-14)
+
+- Disabling background commits on `modal.Volume` volumes is now deprecated. Background commits will soon become mandatory behavior.
+
+### 0.62.165 (2024-05-13)
+
+- Deprecated `wait_for_response=False` on web endpoints. See [the docs](https://modal.com/docs/guide/webhook-timeouts#polling-solutions) for alternatives.
+
+### 0.62.162 (2024-05-13)
+
+- A deprecation warning is now raised when using `modal.Stub`, which has been renamed to `modal.App`. Additionally, it is recommended to use `app` as the variable name rather than `stub`, which matters when using the automatic app discovery feature in the `modal run` CLI command.
+
+### 0.62.159 (2024-05-10)
+
+- Added a `--stream-logs` flag to `modal deploy` that, if True, begins streaming the app logs once deployment is complete.
+
+### 0.62.156 (2024-05-09)
+
+- Added support for looking up a deployed App by its deployment name in `modal app logs`
+
+### 0.62.150 (2024-05-08)
+
+- Added validation that App `name`, if provided, is a string.
+
+### 0.62.149 (2024-05-08)
+
+- The `@app.function` decorator now raises an error when it is used to decorate a class (this was always invalid, but previously produced confusing behavior).
+
+### 0.62.148 (2024-05-08)
+
+- The `modal app list` output has been improved in several ways:
+  - Persistent storage objects like Volumes or Dicts are no longer included (these objects receive an app ID internally, but this is an implementation detail and subject to future change). You can use the dedicated CLI for each object (e.g. `modal volume list`) instead.
+  - For Apps in a _stopped_ state, the output is now limited to those stopped within the past 2 hours.
+  - The number of tasks running for each App is now shown.
+
+### 0.62.146 (2024-05-07)
+
+- Added the `region` parameter to the `modal.App.function` and `modal.App.cls` decorators. This feature allows the selection of specific regions for function execution. Note that it is available only on some plan types. See our [blog post](https://modal.com/blog/region-selection-launch) for more details.
+
+### 0.62.144 (2024-05-06)
+
+- Added deprecation warnings when using Python 3.8 locally or in a container. Python 3.8 is nearing EOL, and Modal will be dropping support for it soon.
+
+### 0.62.141 (2024-05-03)
+
+- Deprecated the `Image.conda` constructor and the `Image.conda_install` / `Image.conda_update_from_environment` methods. Conda-based images had a number of tricky issues and were generally slower and heavier than images based on `micromamba`, which offers a similar featureset and can install packages from the same repositories.
+- Added the `spec_file` parameter to allow `Image.micromamba_install` to install dependencies from a local file. Note that `micromamba` supports conda yaml syntax along with simple text files.
+
+### 0.62.131 (2024-05-01)
+
+- Added a deprecation warning when object names are invalid. This applies to `Dict`, `NetworkFileSystem`, `Secret`, `Queue`, and `Volume` objects. Names must be shorter than 64 characters and may contain only alphanumeric characters, dashes, periods, and underscores. These rules were previously enforced, but the check had inadvertently been dropped in a recent refactor. Please update the names of your objects and transfer any data to retain access, as invalid names will become an error in a future release.
+
+### 0.62.130 (2024-05-01)
+
+- Added a command-line interface for interacting with `modal.Queue` objects. Run `modal queue --help` in your terminal to see what is available.
+
+### 0.62.116 (2024-04-26)
+
+- Added a command-line interface for interacting with `modal.Dict` objects. Run `modal dict --help` in your terminal to see what is available.
+
+### 0.62.114 (2024-04-25)
+
+- `Secret.from_dotenv` now accepts an optional filename keyword argument:
+
+  ```python
+  @app.function(secrets=[modal.Secret.from_dotenv(filename=".env-dev")])
+  def run():
+      ...
+  ```
+
+### 0.62.110 (2024-04-25)
+
+- Passing a glob `**` argument to the `modal volume get` CLI has been deprecated — instead, simply download the desired directory path, or `/` for the entire volume.
+- `Volume.listdir()` no longer takes trailing glob arguments. Use `recursive=True` instead.
+- `modal volume get` and `modal nfs get` performance is improved when downloading a single file. They also now work with multiple files when outputting to stdout.
+- Fixed a visual bug where `modal volume get` on a single file will incorrectly display the destination path.
+
+### 0.62.109 (2024-04-24)
+
+- Improved feedback for deserialization failures when objects are being transferred between local / remote environments.
+
+### 0.62.108 (2024-04-24)
+
+- Added `Dict.delete` and `Queue.delete` as API methods for deleting named storage objects:
+
+  ```python
+  import modal
+  modal.Queue.delete("my-job-queue")
+  ```
+
+- Deprecated invoking `Volume.delete` as an instance method; it should now be invoked as a static method with the name of the Volume to delete, as with the other methods.
+
+### 0.62.98 (2024-04-21)
+
+- The `modal.Dict` object now implements a `keys`/`values`/`items` API. Note that there are a few differences when compared to standard Python dicts:
+  - The return value is a simple iterator, whereas Python uses a dictionary view object with more features.
+  - The results are unordered.
+- Additionally, there was no key data stored for items added to a `modal.Dict` prior to this release, so empty strings will be returned for these entries.
+
+### 0.62.81 (2024-04-18)
+
+- We are introducing `modal.App` as a replacement for `modal.Stub` and encouraging the use of "app" terminology over "stub" to reduce confusion between concepts used in the SDK and the Dashboard. Support for `modal.Stub` will be gradually deprecated over the next few months.
+
+### 0.62.72 (2024-04-16)
+
+- Specifying a hard memory limit for a `modal.Function` is now supported. Pass a tuple of `memory=(request, limit)`. Above the `limit`, which is specified in MiB, a Function's container will be OOM killed.
+
+### 0.62.70 (2024-04-16)
+
+- `modal.CloudBucketMount` now supports read-only access to Google Cloud Storage
+
+### 0.62.69 (2024-04-16)
+
+- Iterators passed to `Function.map()` and similar parallel execution primitives are now executed on the main thread, preventing blocking iterators from possibly locking up background Modal API calls, and risking task shutdowns.
+
+### 0.62.67 (2024-04-15)
+
+- The return type of `Volume.listdir()`, `Volume.iterdir()`, `NetworkFileSystem.listdir()`, and `NetworkFileSystem.iterdir()` is now a `FileEntry` dataclass from the `modal.volume` module. The fields of this data class are the same as the old protobuf object returned by these methods, so it should be mostly backwards-compatible.
+
+### 0.62.65 (2024-04-15)
+
+- Cloudflare R2 bucket support added to `modal.CloudBucketMount`
+
+### 0.62.55 (2024-04-11)
+
+- When Volume reloads fail due to an open file, we now try to identify and report the relevant path. Note that there may be some circumstances in which we are unable to identify the specific file blocking a reload and will report a generic error message in that case.
+
+### 0.62.53 (2024-04-10)
+
+- Values in the `modal.toml` config file that are spelled as `0`, `false`, `"False"`, or `"false"` will now be coerced in Python to`False`, whereas previously only `"0"` (as a string) would have the intended effect.
+
+### 0.62.25 (2024-04-01)
+
+- Fixed a recent regression that caused functions using `modal.interact()` to crash.
+
+### 0.62.15 (2024-03-29)
+
+- Queue methods `put`, `put_many`, `get`, `get_many` and `len` now support an optional `partition` argument (must be specified as a `kwarg`). When specified, users read and write from new partitions of the queue independently. `partition=None` corresponds to the default partition of the queue.
+
+### 0.62.3 (2024-03-27)
+
+- User can now mount S3 buckets using [Requester Pays](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html). This can be done with `CloudBucketMount(..., requester_pays=True)`.
+
+### 0.62.1 (2024-03-27)
+
+- Raise an error on `@web_server(startup_timeout=0)`, which is an invalid configuration.
+
+### 0.62.0 (2024-03-26)
+
+- The `.new()` method has now been deprecated on all Modal objects. It should typically be replaced with `.from_name(...)` in Modal app code, or `.ephemeral()` in scripts that use Modal
+- Assignment of Modal objects to a `Stub` via subscription (`stub["object"]`) or attribute (`stub.object`) syntax is now deprecated. This syntax was only necessary when using `.new()`.
+
+## 0.61
+
+### 0.61.104 (2024-03-25)
+
+- Fixed a bug where images based on `micromamba` could fail to build if requesting Python 3.12 when a different version of Python was being used locally.
+
+### 0.61.76 (2024-03-19)
+
+- The `Sandbox`'s `LogsReader` is now an asynchronous iterable. It supports the `async for` statement to stream data from the sandbox's `stdout/stderr`.
+
+```python
+@stub.function()
+async def my_fn():
+    sandbox = stub.spawn_sandbox(
+      "bash",
+      "-c",
+      "while true; do echo foo; sleep 1; done"
+    )
+    async for message in sandbox.stdout:
+        print(f"Message: {message}")
+```
+
+### 0.61.57 (2024-03-15)
+
+- Add the `@web_server` decorator, which exposes a server listening on a container port as a web endpoint.
+
+### 0.61.56 (2024-03-15)
+
+- Allow users to write to the `Sandbox`'s `stdin` with `StreamWriter`.
+
+```python
+@stub.function()
+def my_fn():
+    sandbox = stub.spawn_sandbox(
+        "bash",
+        "-c",
+        "while read line; do echo $line; done",
+    )
+    sandbox.stdin.write(b"foo\\n")
+    sandbox.stdin.write(b"bar\\n")
+    sandbox.stdin.write_eof()
+    sandbox.stdin.drain()
+    sandbox.wait()
+```
+
+### 0.61.53 (2024-03-15)
+
+- Fixed an bug where` Mount` was failing to include symbolic links.
+
+### 0.61.45 (2024-03-13)
+
+When called from within a container, `modal.experimental.stop_fetching_inputs()` causes it to gracefully exit after the current input has been processed.
+
+### 0.61.35 (2024-03-12)
+
+- The `@wsgi_app()` decorator now uses a different backend based on `a2wsgi` that streams requests in chunks, rather than buffering the entire request body.
+
+### 0.61.32 (2024-03-11)
+
+- Stubs/apps can now be "composed" from several smaller stubs using `stub.include(...)`. This allows more ergonomic setup of multi-file Modal apps.
+
+### 0.61.31 (2024-03-08)
+
+- The `Image.extend` method has been deprecated. This is a low-level interface and can be replaced by other `Image` methods that offer more flexibility, such as `Image.from_dockerfile`, `Image.dockerfile_commands`, or `Image.run_commands`.
+
+### 0.61.24 (2024-03-06)
+
+- Fixes `modal volume put` to support uploading larger files, beyond 40 GiB.
+
+### 0.61.22 (2024-03-05)
+
+- Modal containers now display a warning message if lingering threads are present at container exit, which prevents runner shutdown.
+
+### 0.61.17 (2024-03-05)
+
+- Bug fix: Stopping an app while a container's `@exit()` lifecycle methods are being run no longer interrupts the lifecycle methods.
+- Bug fix: Worker preemptions no longer interrupt a container's `@exit()` lifecycle method (until 30 seconds later).
+- Bug fix: Async `@exit()` lifecycle methods are no longer skipped for sync functions.
+- Bug fix: Stopping a sync function with `allow_concurrent_inputs>1` now actually stops the container. Previously, it would not propagate the signal to worker threads, so they would continue running.
+- Bug fix: Input-level cancellation no longer skips the `@exit()` lifecycle method.
+- Improve stability of container entrypoint against race conditions in task cancellation.
+
+### 0.61.9 (2024-03-05)
+
+- Fix issue with pdm where all installed packages would be automounted when using package cache (MOD-2485)
+
+### 0.61.6 (2024-03-04)
+
+- For modal functions/classes with `concurrency_limit < keep_warm`, we'll raise an exception now. Previously we (silently) respected the `concurrency_limit` parameter.
+
+### 0.61.1 (2024-03-03)
+
+`modal run --interactive` or `modal run -i` run the app in "interactive mode". This allows any remote code to connect to the user's local terminal by calling `modal.interact()`.
+
+```python
+@stub.function()
+def my_fn(x):
+    modal.interact()
+
+    x = input()
+    print(f"Your number is {x}")
+```
+
+This means that you can dynamically start an IPython shell if desired for debugging:
+
+```python
+@stub.function()
+def my_fn(x):
+    modal.interact()
+
+    from IPython import embed
+    embed()
+```
+
+For convenience, breakpoints automatically call `interact()`:
+
+```python
+@stub.function()
+def my_fn(x):
+    breakpoint()
+```
+
+## 0.60
+
+### 0.60.0 (2024-02-29)
+
+- `Image.run_function` now allows you to pass args and kwargs to the function. Usage:
+
+```python
+def my_build_function(name, size, *, variant=None):
+    print(f"Building {name} {size} {variant}")
+
+image = modal.Image.debian_slim().run_function(
+    my_build_function, args=("foo", 10), kwargs={"variant": "bar"}
+)
+```
+
+## 0.59
+
+### 0.59.0 (2024-02-28)
+
+- Mounted packages are now deduplicated across functions in the same stub
+- Mounting of local Python packages are now marked as such in the mount creation output, e.g. `PythonPackage:my_package`
+- Automatic mounting now includes packages outside of the function file's own directory. Mounted packages are mounted in /root/<module path>
+
+## 0.58
+
+### 0.58.92 (2024-02-27)
+
+- Most errors raised through usage of the CLI will now print a simple error message rather than showing a traceback from inside the `modal` library.
+- Tracebacks originating from user code will include fewer frames from within `modal` itself.
+- The new `MODAL_TRACEBACK` environment variable (and `traceback` field in the Modal config file) can override these behaviors so that full tracebacks are always shown.
+
+### 0.58.90 (2024-02-27)
+
+- Fixed a bug that could cause `cls`-based functions to to ignore timeout signals.
+
+### 0.58.88 (2024-02-26)
+
+- `volume get` performance is improved for large (> 100MB) files
+
+### 0.58.79 (2024-02-23)
+
+- Support for function parameters in methods decorated with `@exit` has been deprecated. Previously, exit methods were required to accept three arguments containing exception information (akin to `__exit__` in the context manager protocol). However, due to a bug, these arguments were always null. Going forward, `@exit` methods are expected to have no parameters.
+
+### 0.58.75 (2024-02-23)
+
+- Function calls can now be cancelled without killing the container running the inputs. This allows new inputs by different function calls to the same function to be picked up immediately without having to cold-start new containers after cancelling calls.
+
+## 0.57
+
+### 0.57.62 (2024-02-21)
+
+- An `InvalidError` is now raised when a lifecycle decorator (`@build`, `@enter`, or `@exit`) is used in conjunction with `@method`. Previously, this was undefined and could produce confusing failures.
+
+### 0.57.61 (2024-02-21)
+
+- Reduced the amount of context for frames in modal's CLI framework when showing a traceback.
+
+### 0.57.60 (2024-02-21)
+
+- The "dunder method" approach for class lifecycle management (`__build__`, `__enter__`, `__exit__`, etc.) is now deprecated in favor of the modal `@build`, `@enter`, and `@exit` decorators.
+
+### 0.57.52 (2024-02-17)
+
+- In `modal token new` and `modal token set`, the `--no-no-verify` flag has been removed in favor of a `--verify` flag. This remains the default behavior.
+
+### 0.57.51 (2024-02-17)
+
+- Fixes a regression from 0.57.40 where `@enter` methods used a separate event loop.
+
+### 0.57.42 (2024-02-14)
+
+- Adds a new environment variable/config setting, `MODAL_FORCE_BUILD`/`force_build`, that coerces all images to be built from scratch, rather than loaded from cache.
+
+### 0.57.40 (2024-02-13)
+
+- The `@enter()` lifecycle method can now be used to run additional setup code prior to function checkpointing (when the class is decorated with `stub.cls(enable_checkpointing=True)`. Note that there are currently some limitations on function checkpointing:
+  - Checkpointing only works for CPU memory; any GPUs attached to the function will not available
+  - Networking is disabled while the checkpoint is being created
+- Please note that function checkpointing is still a beta feature.
+
+### 0.57.31 (2024-02-12)
+
+- Fixed an issue with displaying deprecation warnings on Windows systems.
+
+### 0.57.22 (2024-02-09)
+
+- Modal client deprecation warnings are now highlighted in the CLI
+
+### 0.57.16 (2024-02-07)
+
+- Fixes a regression in container scheduling. Users on affected versions (**0.57.5**—**0.57.15**) are encouraged to upgrade immediately.
+
+### 0.57.15 (2024-02-07)
+
+- The legacy `image_python_version` config option has been removed. Use the `python_version=` parameter on your image definition instead.
+
+### 0.57.13 (2024-02-07)
+
+- Adds support for mounting an S3 bucket as a volume.
+
+### 0.57.9 (2024-02-07)
+
+- Support for an implicit 'default' profile is now deprecated. If you have more than one profile in your Modal config file, one must be explicitly set to `active` (use `modal profile activate` or edit your `.modal.toml` file to resolve).
+- An error is now raised when more than one profile is set to `active`.
+
+### 0.57.2 (2024-02-06)
+
+- Improve error message when generator functions are called with `.map(...)`.
+
+### 0.57.0 (2024-02-06)
+
+- Greatly improved streaming performance of generators and WebSocket web endpoints.
+- **Breaking change:** You cannot use `.map()` to call a generator function. (In previous versions, this merged the results onto a single stream, but the behavior was undocumented and not widely used.)
+- **Incompatibility:** Generator outputs are now on a different internal system. Modal code on client versions before 0.57 cannot trigger [deployed functions](https://modal.com/docs/guide/trigger-deployed-functions) with `.remote_gen()` that are on client version 0.57, and vice versa.
+
+## 0.56
+
+Note that in version 0.56 and prior, Modal used a different numbering system for patch releases.
+
+### 0.56.4964 (2024-02-05)
+
+- When using `modal token new` or `model token set`, the profile containing the new token will now be activated by default. Use the `--no-activate` switch to update the `modal.toml` file without activating the corresponding profile.
+
+### 0.56.4953 (2024-02-05)
+
+- The `modal profile list` output now indicates when the workspace is determined by a token stored in environment variables.
+
+### 0.56.4952 (2024-02-05)
+
+- Variadic parameters (e.g. \*args and \*\*kwargs) can now be used in scheduled functions as long as the function doesn't have any other parameters without a default value
+
+### 0.56.4903 (2024-02-01)
+
+- `modal container exec`'s `--no-tty` flag has been renamed to `--no-pty`.
+
+### 0.56.4902 (2024-02-01)
+
+- The singular form of the `secret` parameter in `Stub.function`, `Stub.cls`, and `Image.run_function` has been deprecated. Please update your code to use the plural form instead:`secrets=[Secret(...)]`.
+
+### 0.56.4885 (2024-02-01)
+
+- In `modal profile list`, the user's GitHub username is now shown as the name for the "Personal" workspace.
+
+### 0.56.4874 (2024-01-31)
+
+- The `modal token new` and `modal token set` commands now create profiles that are more closely associated with workspaces, and they have more explicit profile activation behavior:
+  - By default, these commands will create/update a profile named after the workspace that the token points to, rather than a profile named "default"
+  - Both commands now have an `--activate` flag that will activate the profile associated with the new token
+  - If no other profiles exist at the time of creation, the new profile will have its `active` metadata set to True
+- With these changes, we are moving away from the concept of a "default" profile. Implicit usage of the "default" profile will be deprecated in a future update.
+
+### 0.56.4849 (2024-01-29)
+
+- Adds tty support to `modal container exec` for fully-interactive commands. Example: `modal container exec [container-id] /bin/bash`
+
+### 0.56.4792 (2024-01-26)
+
+- The `modal profile list` command now shows the workspace associated with each profile.
+
+### 0.56.4715 (2024-01-24)
+
+- `Mount.from_local_python_packages` now places mounted packages at `/root` in the Modal runtime by default (used to be `/pkg`). To override this behavior, the function now takes a `remote_dir: Union[str, PurePosixPath]` argument.
+
+### 0.56.4707 (2024-01-23)
+
+- The Modal client library is now compatible with Python 3.12, although there are a few limitations:
+
+  - Images that use Python 3.12 without explicitly specifing it through `python_version` or `add_python` will not build
+    properly unless the modal client is also running on Python 3.12.
+  - The `conda` and `microconda` base images currently do not support Python 3.12 because an upstream dependency is not yet compatible.
+
+### 0.56.4700 (2024-01-22)
+
+- `gpu.A100` class now supports specifying GiB memory configuration using a `size: str` parameter. The `memory: int` parameter is deprecated.
+
+### 0.56.4693 (2024-01-22)
+
+- You can now execute commands in running containers with `modal container exec [container-id] [command]`.
+
+### 0.56.4691 (2024-01-22)
+
+- The `modal` cli now works more like the `python` cli in regard to script/module loading:
+  - Running `modal my_dir/my_script.py` now puts `my_dir` on the PYTHONPATH.
+  - `modal my_package.my_module` will now mount to /root/my_package/my_module.py in your Modal container, regardless if using automounting or not (and any intermediary `__init__.py` files will also be mounted)
+
+### 0.56.4687 (2024-01-20)
+
+- Modal now uses the current profile if `MODAL_PROFILE` is set to the empty string.
+
+### 0.56.4649 (2024-01-17)
+
+- Dropped support for building Python 3.7 based `modal.Image`s. Python 3.7 is end-of-life since late June 2023.
+
+### 0.56.4620 (2024-01-16)
+
+- modal.Stub.function now takes a `block_network` argument.
+
+### 0.56.4616 (2024-01-16)
+
+- modal.Stub now takes a `volumes` argument for setting the default volumes of all the stub's functions, similarly to the `mounts` and `secrets` argument.
+
+### 0.56.4590 (2024-01-13)
+
+- `modal serve`: Setting MODAL_LOGLEVEL=DEBUG now displays which files cause an app reload during serve
+
+### 0.56.4570 (2024-01-12)
+
+- `modal run` cli command now properly propagates `--env` values to object lookups in global scope of user code
 
 ## Examples
 
@@ -21627,7 +21704,7 @@ The Sandbox will also spin down after one hour.
 
 ### App
 
-## Demo Streamlit application
+## Demo Streamlit application.
 
 This application is the example from https://docs.streamlit.io/library/get-started/create-an-app.
 
@@ -21691,7 +21768,6 @@ import os
 import sys
 import tempfile
 import wave
-from pathlib import Path
 from typing import Callable, Sequence
 from urllib.request import urlopen
 
@@ -21764,7 +21840,7 @@ def get_bytes_from_wav(location: str) -> bytes:
     if location.startswith("http"):
         bytes = urlopen(location).read()
     else:
-        bytes = Path(location).read_bytes()
+        bytes = open(location, "rb").read()
 
     return bytes
 
@@ -22082,7 +22158,6 @@ web endpoint in the output:
 
 We can now visit the link using a web browser, using a `package_name` of our choice in the URL query params.
 For example:
-
 - `https://YOUR_SUBDOMAIN.modal.run/?package_name=synchronicity`
 - `https://YOUR_SUBDOMAIN.modal.run/?package_name=torch`
 
@@ -22146,7 +22221,7 @@ def main():
 
 ### Basic Web
 
-# Hello world wide web
+# Hello world wide web!
 
 Modal makes it easy to turn your Python functions into serverless web services:
 access them via a browser or call them from any client that speaks HTTP, all
@@ -22214,7 +22289,6 @@ Now, your function will be available even when you've closed your terminal or tu
 The web endpoint above was a bit silly: it always returns the same message.
 
 Most endpoints need an input to be useful. There are two ways to send data to a web endpoint:
-
 - in the URL as a [query parameter](#sending-data-in-query-parameters)
 - in the [body of the request](#sending-data-in-the-request-body) as JSON
 
@@ -22359,7 +22433,6 @@ Modal's `fastapi_endpoint` decorator is opinionated and designed for relatively 
 one or a few independent Python functions that you want to expose to the web.
 
 Three additional decorators allow you to serve more complex web applications with greater control:
-
 - [`asgi_app`](https://modal.com/docs/guide/webhooks#asgi) to serve applications compliant with the ASGI standard,
 like [FastAPI](https://fastapi.tiangolo.com/)
 - [`wsgi_app`](https://modal.com/docs/guide/webhooks#wsgi) to serve applications compliant with the WSGI standard,
@@ -22547,7 +22620,7 @@ to run the transcription. You can run this locally with `modal run batched_whisp
 async def main(dataset_name: Optional[str] = None):
     if dataset_name is None:
         dataset_name = "hf-internal-testing/librispeech_asr_dummy"
-    async for result in transcribe_hf_dataset.remote_gen.aio(dataset_name):
+    for result in transcribe_hf_dataset.remote_gen(dataset_name):
         print(result["text"])
 
 ```
@@ -23350,7 +23423,6 @@ class CacheAwareStreamingAudioBuffer:
 # Example (cbx_load_test.py)
 
 This is the source code for **07_web_endpoints.fasthtml-checkboxes.cbx_load_test**.
-
 ```python
 import os
 from datetime import datetime
@@ -24171,7 +24243,6 @@ def convert_pdf_to_images(pdf_bytes):
 Before deploying in a UI, we can test our service from the terminal.
 
 Just run
-
 ```bash
 modal run chat_with_pdf_vision.py
 ```
@@ -24354,7 +24425,6 @@ import modal
 ## Define a container image
 
 We start with Modal's baseline `debian_slim` image and install the required packages.
-
 - `chatterbox-tts`: The TTS model library
 - `fastapi`: Web framework for creating the API endpoint
 - "peft": Required for properly loading the model
@@ -24370,12 +24440,10 @@ image = modal.Image.debian_slim(python_version="3.10").uv_pip_install(
 
 We'll also use Chatterbox's provided set of voice prompts which you can download [here](https://modal-cdn.com/blog/audio/chatterbox-tts-voices.zip).
 Unzip the file and upload it to a `modal.Volume` called `chatterbox-tts-voices` with the following CLI commands:
-
 ```shell
 modal volume create chatterbox-tts-voices
 modal volume put chatterbox-tts-voices <PATH-TO-UNZIPPED-VOICE-PROMPTS-DIRECTORY>
 ```
-
 Now we can instantiate the volume and use it with our app.
 
 ```python
@@ -24715,7 +24783,7 @@ class StableDiffusionLoRA:
 
 ```
 
-## Try it locally
+## Try it locally!
 
 To use our inference code from our local command line, we add a `local_entrypoint` to our `app`.
 Run it using `modal run cloud_bucket_mount_loras.py`, and pass `--help`
@@ -24847,70 +24915,6 @@ def as_slug(name):
     s = str(name).strip().replace(" ", "-")
     s = re.sub(r"(?u)[^-\w.]", "", s)
     return s
-
-```
-
-### Cls With Options
-
-# Override Modal resource options (GPU, scaling) at runtime with `Cls.with_options`
-
-[`Cls.with_options`](https://modal.com/docs/reference/modal.Cls#with_options)
-lets you override the resource configuration of a
-Modal [Cls](https://modal.com/docs/guide/lifecycle-functions) at runtime.
-This is useful when the same code needs to run
-with different resource allocations -- say, with a GPU or with out,
-or with a large [warm pool of containers](https://modal.com/docs/guide/cold-start)
--- at different times -- say, when iterating on code and when in production.
-
-Each call to `with_options` returns a new class handle that scales
-independently from the original.
-
-## Setup
-
-```python
-import modal
-
-app = modal.App("example-cls-with-options")
-
-```
-
-## Defining the class
-
-We define a simple class with a method that performs a
-CPU-bound computation. The class is configured with modest defaults.
-
-```python
-@app.cls(cpu=1, memory=128, timeout=60)
-class Worker:
-    @modal.method()
-    def compute(self, n: int) -> int:
-        import subprocess
-
-        # if GPU available, prints details
-        subprocess.Popen("nvidia-smi", shell=True)
-
-        return sum(i * i for i in range(n))
-
-```
-
-## Using `with_options` to override configuration
-
-We can call `with_options` on the class to get a new handle
-with different resource settings.
-
-```python
-@app.local_entrypoint()
-def main():
-    # Use the default configuration for a light workload
-    default_worker = Worker()
-    result = default_worker.compute.remote(1_000)
-    print(f"Default worker result: {result}")
-
-    # Create a GPU-accelerated variant
-    GpuWorker = Worker.with_options(gpu="T4", memory=512)
-    gpu_worker = GpuWorker()
-    result = gpu_worker.compute.remote(10_000_000)
-    print(f"GPU worker result:     {result}")
 
 ```
 
@@ -25073,6 +25077,335 @@ def import_transform_load() -> None:
 
 ```
 
+### Comfyapp
+
+# Run Flux on ComfyUI as an API
+
+In this example, we show you how to turn a [ComfyUI](https://github.com/comfyanonymous/ComfyUI) workflow into a scalable API endpoint.
+
+## Quickstart
+
+To run this simple text-to-image [Flux Schnell workflow](https://github.com/modal-labs/modal-examples/blob/main/06_gpu_and_ml/comfyui/workflow_api.json) as an API:
+
+1. Deploy ComfyUI behind a web endpoint:
+
+```bash
+modal deploy 06_gpu_and_ml/comfyui/comfyapp.py
+```
+
+2. In another terminal, run inference:
+
+```bash
+python 06_gpu_and_ml/comfyui/comfyclient.py --modal-workspace $(modal profile current) --prompt "Surreal dreamscape with floating islands, upside-down waterfalls, and impossible geometric structures, all bathed in a soft, ethereal light"
+```
+
+![example comfyui image](https://modal-cdn.com/cdnbot/flux_gen_imagesenr_0w3_209b7170.webp)
+
+The first inference will take ~1m since the container needs to launch the ComfyUI server and load Flux into memory. Successive calls on a warm container should take a few seconds.
+
+## Installing ComfyUI
+
+We use [comfy-cli](https://github.com/Comfy-Org/comfy-cli) to install ComfyUI and its dependencies.
+
+```python
+import json
+import subprocess
+import uuid
+from pathlib import Path
+from typing import Dict
+
+import modal
+import modal.experimental
+
+image = (  # build up a Modal Image to run ComfyUI, step by step
+    modal.Image.debian_slim(  # start from basic Linux with Python
+        python_version="3.11"
+    )
+    .apt_install("git")  # install git to clone ComfyUI
+    .uv_pip_install("fastapi[standard]==0.115.4")  # install web dependencies
+    .uv_pip_install("comfy-cli==1.5.3")  # install comfy-cli
+    .run_commands(  # use comfy-cli to install ComfyUI and its dependencies
+        "comfy --skip-prompt install --fast-deps --nvidia --version 0.3.71"
+    )
+)
+
+```
+
+## Downloading custom nodes
+
+We'll also use `comfy-cli` to download custom nodes, in this case the popular [WAS Node Suite](https://github.com/WASasquatch/was-node-suite-comfyui).
+
+Use the [ComfyUI Registry](https://registry.comfy.org/) to find the specific custom node name to use with this command.
+
+```python
+image = (
+    image.run_commands(  # download a custom node
+        "comfy node install --fast-deps was-ns@3.0.1"
+    )
+    # Add .run_commands(...) calls for any other custom nodes you want to download
+)
+
+```
+
+See [this post](https://modal.com/blog/comfyui-custom-nodes) for more examples
+on how to install popular custom nodes like ComfyUI Impact Pack and ComfyUI IPAdapter Plus.
+
+## Downloading models
+
+`comfy-cli` also supports downloading models, but we've found it's faster to use
+[`hf_hub_download`](https://huggingface.co/docs/huggingface_hub/en/guides/download#download-a-single-file)
+directly by:
+
+1. Enabling [faster downloads](https://huggingface.co/docs/huggingface_hub/en/guides/download#faster-downloads)
+2. Mounting the cache directory to a [Volume](https://modal.com/docs/guide/volumes)
+
+By persisting the cache to a Volume, you avoid re-downloading the models every time you rebuild your image.
+For more on storing model weights on Modal, see
+[this guide](https://modal.com/docs/guide/model-weights).
+
+```python
+def hf_download():
+    from huggingface_hub import hf_hub_download
+
+    flux_model = hf_hub_download(
+        repo_id="Comfy-Org/flux1-schnell",
+        filename="flux1-schnell-fp8.safetensors",
+        cache_dir="/cache",
+    )
+
+    # symlink the model to the right ComfyUI directory
+    subprocess.run(
+        f"ln -s {flux_model} /root/comfy/ComfyUI/models/checkpoints/flux1-schnell-fp8.safetensors",
+        shell=True,
+        check=True,
+    )
+
+vol = modal.Volume.from_name("hf-hub-cache", create_if_missing=True)
+
+image = (
+    # install huggingface_hub with hf_xet support to speed up downloads
+    image.uv_pip_install("huggingface-hub==0.36.0")
+    .env({"HF_XET_HIGH_PERFORMANCE": "1"})
+    .run_function(
+        hf_download,
+        # persist the HF cache to a Modal Volume so future runs don't re-download models
+        volumes={"/cache": vol},
+    )
+)
+
+```
+
+Lastly, copy the ComfyUI workflow JSON to the container.
+
+```python
+image = image.add_local_file(
+    Path(__file__).parent / "workflow_api.json", "/root/workflow_api.json"
+)
+
+```
+
+## Running ComfyUI interactively
+
+Spin up an interactive ComfyUI server by wrapping the `comfy launch` command in a Modal Function
+and serving it as a [web server](https://modal.com/docs/guide/webhooks#non-asgi-web-servers).
+
+```python
+app = modal.App(name="example-comfyapp", image=image)
+
+@app.function(
+    max_containers=1,  # limit interactive session to 1 container
+    gpu="L40S",  # good starter GPU for inference
+    volumes={"/cache": vol},  # mounts our cached models
+)
+@modal.concurrent(
+    max_inputs=10
+)  # required for UI startup process which runs several API calls concurrently
+@modal.web_server(8000, startup_timeout=60)
+def ui():
+    subprocess.Popen("comfy launch -- --listen 0.0.0.0 --port 8000", shell=True)
+
+```
+
+At this point you can run `modal serve 06_gpu_and_ml/comfyui/comfyapp.py` and open the UI in your browser for the classic ComfyUI experience.
+
+Remember to **close your UI tab** when you are done developing.
+This will close the connection with the container serving ComfyUI and you will stop being charged.
+
+## Running ComfyUI as an API
+
+To run a workflow as an API:
+
+1. Stand up a "headless" ComfyUI server in the background when the app starts.
+
+2. Define an `infer` method that takes in a workflow path and runs the workflow on the ComfyUI server.
+
+3. Create a web handler `api` as a web endpoint, so that we can run our workflow as a service and accept inputs from clients.
+
+We group all these steps into a single Modal `cls` object, which we'll call `ComfyUI`.
+
+```python
+@app.cls(
+    scaledown_window=300,  # 5 minute container keep alive after it processes an input
+    gpu="L40S",
+    volumes={"/cache": vol},
+)
+@modal.concurrent(max_inputs=5)  # run 5 inputs per container
+class ComfyUI:
+    port: int = 8000
+
+    @modal.enter()
+    def launch_comfy_background(self):
+        # launch the ComfyUI server exactly once when the container starts
+        cmd = f"comfy launch --background -- --port {self.port}"
+        subprocess.run(cmd, shell=True, check=True)
+
+    @modal.method()
+    def infer(self, workflow_path: str = "/root/workflow_api.json"):
+        # sometimes the ComfyUI server stops responding (we think because of memory leaks), so this makes sure it's still up
+        self.poll_server_health()
+
+        # runs the comfy run --workflow command as a subprocess
+        cmd = f"comfy run --workflow {workflow_path} --wait --timeout 1200 --verbose"
+        subprocess.run(cmd, shell=True, check=True)
+
+        # completed workflows write output images to this directory
+        output_dir = "/root/comfy/ComfyUI/output"
+
+        # looks up the name of the output image file based on the workflow
+        workflow = json.loads(Path(workflow_path).read_text())
+        file_prefix = [
+            node.get("inputs")
+            for node in workflow.values()
+            if node.get("class_type") == "SaveImage"
+        ][0]["filename_prefix"]
+
+        # returns the image as bytes
+        for f in Path(output_dir).iterdir():
+            if f.name.startswith(file_prefix):
+                return f.read_bytes()
+
+    @modal.fastapi_endpoint(method="POST")
+    def api(self, item: Dict):
+        from fastapi import Response
+
+        workflow_data = json.loads(
+            (Path(__file__).parent / "workflow_api.json").read_text()
+        )
+
+        # insert the prompt
+        workflow_data["6"]["inputs"]["text"] = item["prompt"]
+
+        # give the output image a unique id per client request
+        client_id = uuid.uuid4().hex
+        workflow_data["9"]["inputs"]["filename_prefix"] = client_id
+
+        # save this updated workflow to a new file
+        new_workflow_file = f"{client_id}.json"
+        json.dump(workflow_data, Path(new_workflow_file).open("w"))
+
+        # run inference on the currently running container
+        img_bytes = self.infer.local(new_workflow_file)
+
+        return Response(img_bytes, media_type="image/jpeg")
+
+    def poll_server_health(self) -> Dict:
+        import socket
+        import urllib
+
+        try:
+            # check if the server is up (response should be immediate)
+            req = urllib.request.Request(f"http://127.0.0.1:{self.port}/system_stats")
+            urllib.request.urlopen(req, timeout=5)
+            print("ComfyUI server is healthy")
+        except (socket.timeout, urllib.error.URLError) as e:
+            # if no response in 5 seconds, stop the container
+            print(f"Server health check failed: {str(e)}")
+            modal.experimental.stop_fetching_inputs()
+
+            # all queued inputs will be marked "Failed", so you need to catch these errors in your client and then retry
+            raise Exception("ComfyUI server is not healthy, stopping container")
+
+```
+
+This serves the `workflow_api.json` in this repo. When deploying your own workflows, make sure you select the "Export (API)" option in the ComfyUI menu:
+
+![comfyui menu](https://modal-cdn.com/cdnbot/comfyui_menugo5j8ahx_27d72c45.webp)
+
+## More resources
+- Use [memory snapshots](https://modal.com/docs/guide/memory-snapshot) to speed up cold starts (check out the `memory_snapshot` directory on [Github](https://github.com/modal-labs/modal-examples/tree/main/06_gpu_and_ml/comfyui))
+- Run a ComfyUI workflow as a [Python script](https://modal.com/blog/comfyui-prototype-to-production)
+
+- When to use [A1111 vs ComfyUI](https://modal.com/blog/a1111-vs-comfyui)
+
+- Understand tradeoffs of parallel processing strategies when
+[scaling ComfyUI](https://modal.com/blog/scaling-comfyui)
+
+### Comfyclient
+
+```python
+import argparse
+import json
+import pathlib
+import sys
+import time
+import urllib.request
+
+OUTPUT_DIR = pathlib.Path("/tmp/comfyui")
+OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
+
+def main(args: argparse.Namespace):
+    url = f"https://{args.modal_workspace}--example-comfyapp-comfyui-api{'-dev' if args.dev else ''}.modal.run/"
+    data = json.dumps({"prompt": args.prompt}).encode("utf-8")
+    print(f"Sending request to {url} with prompt: {args.prompt}")
+    print("Waiting for response...")
+    start_time = time.time()
+    req = urllib.request.Request(
+        url, data=data, headers={"Content-Type": "application/json"}
+    )
+    try:
+        with urllib.request.urlopen(req) as response:
+            assert response.status == 200, response.status
+            elapsed = round(time.time() - start_time, 1)
+            print(f"Image finished generating in {elapsed} seconds!")
+            filename = OUTPUT_DIR / f"{slugify(args.prompt)}.png"
+            filename.write_bytes(response.read())
+            print(f"Saved to '{filename}'")
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            print(f"Workflow API not found at {url}")
+
+def parse_args(arglist: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--modal-workspace",
+        type=str,
+        required=True,
+        help="Name of the Modal workspace with the deployed app. Run `modal profile current` to check.",
+    )
+    parser.add_argument(
+        "--prompt",
+        type=str,
+        required=True,
+        help="Prompt for the image generation model.",
+    )
+    parser.add_argument(
+        "--dev",
+        action="store_true",
+        help="use this flag when running the ComfyUI server in development mode with `modal serve`",
+    )
+
+    return parser.parse_args(arglist[1:])
+
+def slugify(s: str) -> str:
+    return s.lower().replace(" ", "-").replace(".", "-").replace("/", "-")[:32]
+
+if __name__ == "__main__":
+    args = parse_args(sys.argv)
+    main(args)
+
+```
+
 ### Constants
 
 # Example (constants.py)
@@ -25117,7 +25450,7 @@ The demos each depend on their own custom pretrained StableDiffusion model, and 
 We can only run one demo at a time, so this module avoids downloading the model and 'detector' dependencies for
 all 10 demos and instead uses the demo configuration object to download only what's necessary for the chosen demo.
 
-Even just limiting our dependencies setup to what's required for one demo, the resulting container image is _huge_.
+Even just limiting our dependencies setup to what's required for one demo, the resulting container image is *huge*.
 
 ```python
 @dataclass(frozen=True)
@@ -25227,7 +25560,7 @@ selected_demo = demos_map[DEMO_NAME]
 
 ## Setting up the dependencies
 
-ControlNet requires _a lot_ of dependencies which could be fiddly to setup manually, but Modal's programmatic
+ControlNet requires *a lot* of dependencies which could be fiddly to setup manually, but Modal's programmatic
 container image building Python APIs handle this complexity straightforwardly and automatically.
 
 To run any of the 10 demo apps, we need the following:
@@ -25397,7 +25730,7 @@ def run():
 
 ```
 
-## Have fun
+## Have fun!
 
 Serve your chosen demo app with `modal serve controlnet_gradio_demos.py`. If you don't have any images ready at hand,
 try one that's in the `06_gpu_and_ml/controlnet/demo_images/` folder.
@@ -25526,11 +25859,11 @@ Try it out for yourself [here](https://modal-labs-examples--example-cron-dataset
 
 Along the way, we will learn how to use the following Modal features:
 
-- [Volumes](https://modal.com/docs/guide/volumes): a persisted volume lets us store and grow the published dataset over time.
+* [Volumes](https://modal.com/docs/guide/volumes): a persisted volume lets us store and grow the published dataset over time.
 
-- [Scheduled functions](https://modal.com/docs/guide/cron): the underlying dataset is refreshed daily, so we schedule a function to run daily.
+* [Scheduled functions](https://modal.com/docs/guide/cron): the underlying dataset is refreshed daily, so we schedule a function to run daily.
 
-- [Web endpoints](https://modal.com/docs/guide/webhooks): exposes the Datasette application for web browser interaction and API requests.
+* [Web endpoints](https://modal.com/docs/guide/webhooks): exposes the Datasette application for web browser interaction and API requests.
 
 ## Basic setup
 
@@ -25959,7 +26292,7 @@ information. Then we press **Next** and name our Secret `postgres-secret` and cl
 We'll now add another Secret for Google Sheets access through Google Cloud Platform. Click **New
 secret** and select the Google Sheets preset.
 
-In order to access the Google Sheets API, we'll need to create a _Service Account_ in Google Cloud
+In order to access the Google Sheets API, we'll need to create a *Service Account* in Google Cloud
 Platform. You can skip this step if you already have a Service Account json file.
 
 1. Sign up to Google Cloud Platform or log in if you haven't
@@ -26148,7 +26481,7 @@ You may also need to enable the Google Sheets API for your project in the Google
 If so, the URL will be printed inside the message of a 403 Forbidden error when you run the function.
 It begins with https://console.developers.google.com/apis/api/sheets.googleapis.com/overview.
 
-Lastly, we need to point our code to the correct Google Sheet. We'll need the _key_ of the document.
+Lastly, we need to point our code to the correct Google Sheet. We'll need the *key* of the document.
 You can find the key in the URL of the Google Sheet. It appears after the `/d/` in the URL, like:
 `https://docs.google.com/spreadsheets/d/1wOktal......IJR77jD8Do`.
 
@@ -26301,7 +26634,7 @@ populate it with `.parquet` data, so be sure to provide credentials for a user
 with permission to create S3 buckets and read & write data from them.
 
 The policy required for this example is the following.
-Not that you _must_ update the bucket name listed in the policy to your
+Not that you *must* update the bucket name listed in the policy to your
 own bucket name.
 
 ```json
@@ -28274,7 +28607,7 @@ def run_esm(sequence: str) -> str:
 
 ### Building a UI in Python with Gradio
 
-We'll visualize the results using [Mol*](https://molstar.org/).
+We'll visualize the results using [Mol* ](https://molstar.org/).
 Mol* (pronounced "molstar") is an open-source toolkit for
 visualizing and analyzing large-scale molecular data, including secondary structures
 and residue-specific positions of proteins.
@@ -28697,7 +29030,7 @@ def web():
             db["checkboxes"] = checkboxes
         print("Checkbox state persisted.")
 
-    style = Path(css_path_remote).read_text()
+    style = open(css_path_remote, "r").read()
     app, _ = fh.fast_app(
         # FastHTML uses the ASGI spec, which allows handling of shutdown events
         on_shutdown=[on_shutdown],
@@ -29209,7 +29542,6 @@ class Config:
 ### Defining our training Function
 
 The training Function does the following:
-
 1. Load the pre-trained model, along with the feature extractor and tokenizer
 2. Load the dataset -> select our training category -> extract features for training
 3. Run baseline evals
@@ -30015,6 +30347,290 @@ warnings.filterwarnings(  # filter warning from the terminal image library
 
 ```
 
+### Flan T5 Finetune
+
+# Finetuning Flan-T5
+
+Example by [@anishpdalal](https://github.com/anishpdalal)
+
+[Flan-T5](https://huggingface.co/docs/transformers/model_doc/flan-t5) is a highly versatile model that's been instruction-tuned to
+perform well on a variety of text-based tasks such as question answering and summarization. There are smaller model variants available which makes
+Flan-T5 a great base model to use for finetuning on a specific instruction dataset with just a single GPU. In this example, we'll
+finetune Flan-T5 on the [Extreme Sum ("XSum")](https://huggingface.co/datasets/xsum) dataset to summarize news articles.
+
+## Defining dependencies
+
+The example uses the `dataset` package from HuggingFace to load the xsum dataset. It also uses the `transformers`
+and `accelerate` packages with a PyTorch backend to finetune and serve the model. Finally, we also
+install `tensorboard` and serve it via a web app. All packages are installed into a Debian Slim base image
+using the `uv_pip_install` function.
+
+```python
+from pathlib import Path
+
+import modal
+
+VOL_MOUNT_PATH = Path("/vol")
+
+```
+
+Other Flan-T5 models can be found [here](https://huggingface.co/docs/transformers/model_doc/flan-t5)
+
+```python
+BASE_MODEL = "google/flan-t5-base"
+
+image = modal.Image.debian_slim(python_version="3.12").uv_pip_install(
+    "accelerate",
+    "transformers",
+    "torch",
+    "datasets",
+    "tensorboard",
+)
+
+app = modal.App(name="example-flan-t5-finetune", image=image)
+output_vol = modal.Volume.from_name("finetune-volume", create_if_missing=True)
+
+```
+
+### Handling preemption
+
+As this finetuning job is long-running it's possible that it experiences a preemption.
+The training code is robust to preemption events by periodically saving checkpoints and restoring
+from checkpoint on restart. But it's also helpful to observe in logs when a preemption restart has occurred,
+so we track restarts with a `modal.Dict`.
+
+See the [guide on preemptions](https://modal.com/docs/guide/preemption#preemption)
+for more details on preemption handling.
+
+```python
+restart_tracker_dict = modal.Dict.from_name(
+    "finetune-restart-tracker", create_if_missing=True
+)
+
+def track_restarts(restart_tracker: modal.Dict) -> int:
+    if not restart_tracker.contains("count"):
+        preemption_count = 0
+        print(f"Starting first time. {preemption_count=}")
+        restart_tracker["count"] = preemption_count
+    else:
+        preemption_count = restart_tracker.get("count") + 1
+        print(f"Restarting after pre-emption. {preemption_count=}")
+        restart_tracker["count"] = preemption_count
+    return preemption_count
+
+```
+
+## Finetuning Flan-T5 on XSum dataset
+
+Each row in the dataset has a `document` (input news article) and `summary` column.
+
+```python
+@app.function(
+    gpu="A10g",
+    timeout=7200,
+    volumes={VOL_MOUNT_PATH: output_vol},
+)
+def finetune(num_train_epochs: int = 1, size_percentage: int = 10):
+    from datasets import load_dataset
+    from transformers import (
+        AutoModelForSeq2SeqLM,
+        AutoTokenizer,
+        DataCollatorForSeq2Seq,
+        Seq2SeqTrainer,
+        Seq2SeqTrainingArguments,
+    )
+
+    restarts = track_restarts(restart_tracker_dict)
+
+    # Use size percentage to retrieve subset of the dataset to iterate faster
+    if size_percentage:
+        xsum_train = load_dataset("xsum", split=f"train[:{size_percentage}%]")
+        xsum_test = load_dataset("xsum", split=f"test[:{size_percentage}%]")
+
+    # Load the whole dataset
+    else:
+        xsum = load_dataset("xsum")
+        xsum_train = xsum["train"]
+        xsum_test = xsum["test"]
+
+    # Load the tokenizer and model
+    tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+    model = AutoModelForSeq2SeqLM.from_pretrained(BASE_MODEL)
+
+    # Replace all padding tokens with a large negative number so that the loss function ignores them in
+    # its calculation
+    padding_token_id = -100
+
+    batch_size = 8
+
+    def preprocess(batch):
+        # prepend summarize: prefix to document to convert the example to a summarization instruction
+        inputs = ["summarize: " + doc for doc in batch["document"]]
+
+        model_inputs = tokenizer(
+            inputs, max_length=512, truncation=True, padding="max_length"
+        )
+
+        labels = tokenizer(
+            text_target=batch["summary"],
+            max_length=128,
+            truncation=True,
+            padding="max_length",
+        )
+
+        labels["input_ids"] = [
+            [l if l != tokenizer.pad_token_id else padding_token_id for l in label]
+            for label in labels["input_ids"]
+        ]
+
+        model_inputs["labels"] = labels["input_ids"]
+        return model_inputs
+
+    tokenized_xsum_train = xsum_train.map(
+        preprocess, batched=True, remove_columns=["document", "summary", "id"]
+    )
+
+    tokenized_xsum_test = xsum_test.map(
+        preprocess, batched=True, remove_columns=["document", "summary", "id"]
+    )
+
+    data_collator = DataCollatorForSeq2Seq(
+        tokenizer,
+        model=model,
+        label_pad_token_id=padding_token_id,
+        pad_to_multiple_of=batch_size,
+    )
+
+    training_args = Seq2SeqTrainingArguments(
+        # Save checkpoints to the mounted volume
+        output_dir=str(VOL_MOUNT_PATH / "model"),
+        per_device_train_batch_size=batch_size,
+        per_device_eval_batch_size=batch_size,
+        predict_with_generate=True,
+        learning_rate=3e-5,
+        num_train_epochs=num_train_epochs,
+        logging_strategy="steps",
+        logging_steps=100,
+        evaluation_strategy="steps",
+        save_strategy="steps",
+        save_steps=100,
+        save_total_limit=2,
+        load_best_model_at_end=True,
+    )
+
+    trainer = Seq2SeqTrainer(
+        model=model,
+        args=training_args,
+        data_collator=data_collator,
+        train_dataset=tokenized_xsum_train,
+        eval_dataset=tokenized_xsum_test,
+    )
+
+    try:
+        resume = restarts > 0
+        if resume:
+            print("resuming from checkpoint")
+        trainer.train(resume_from_checkpoint=resume)
+    except KeyboardInterrupt:  # handle possible preemption
+        print("received interrupt; saving state and model")
+        trainer.save_state()
+        trainer.save_model()
+        raise
+
+    # Save the trained model and tokenizer to the mounted volume
+    model.save_pretrained(str(VOL_MOUNT_PATH / "model"))
+    tokenizer.save_pretrained(str(VOL_MOUNT_PATH / "tokenizer"))
+    output_vol.commit()
+    print("✅ done")
+
+```
+
+## Monitoring Finetuning with Tensorboard
+
+Tensorboard is an application for visualizing training loss. In this example we
+serve it as a Modal WSGI app.
+
+```python
+@app.function(volumes={VOL_MOUNT_PATH: output_vol})
+@modal.wsgi_app()
+def monitor():
+    import tensorboard
+
+    board = tensorboard.program.TensorBoard()
+    board.configure(logdir=f"{VOL_MOUNT_PATH}/logs")
+    (data_provider, deprecated_multiplexer) = board._make_data_provider()
+    wsgi_app = tensorboard.backend.application.TensorBoardWSGIApp(
+        board.flags,
+        board.plugin_loaders,
+        data_provider,
+        board.assets_zip_provider,
+        deprecated_multiplexer,
+    )
+    return wsgi_app
+
+```
+
+## Model Inference
+
+```python
+@app.cls(volumes={VOL_MOUNT_PATH: output_vol})
+class Summarizer:
+    @modal.enter()
+    def load_model(self):
+        from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
+
+        # Load saved tokenizer and finetuned from training run
+        tokenizer = AutoTokenizer.from_pretrained(
+            BASE_MODEL, cache_dir=VOL_MOUNT_PATH / "tokenizer/"
+        )
+        model = AutoModelForSeq2SeqLM.from_pretrained(
+            BASE_MODEL, cache_dir=VOL_MOUNT_PATH / "model/"
+        )
+
+        self.summarizer = pipeline("summarization", tokenizer=tokenizer, model=model)
+
+    @modal.method()
+    def generate(self, input: str) -> str:
+        return self.summarizer(input)[0]["summary_text"]
+
+@app.local_entrypoint()
+def main():
+    input = """
+    The 14-time major champion, playing in his first full PGA Tour event for almost 18 months,
+    carded a level-par second round of 72, but missed the cut by four shots after his first-round 76.
+    World number one Jason Day and US Open champion Dustin Johnson also missed the cut at Torrey Pines in San Diego.
+    Overnight leader Rose carded a one-under 71 to put him on eight under. Canada's
+    Adam Hadwin and USA's Brandt Snedeker are tied in second on seven under, while US PGA champion
+    Jimmy Walker missed the cut as he finished on three over. Woods is playing in just his
+    second tournament since 15 months out with a back injury. "It's frustrating not being
+    able to have a chance to win the tournament," said the 41-year-old, who won his last major,
+    the US Open, at the same course in 2008. "Overall today was a lot better than yesterday.
+    I hit it better, I putted well again. I hit a lot of beautiful putts that didn't go in, but
+    I hit it much better today, which was nice." Scotland's Martin Laird and England's Paul Casey
+    are both on two under, while Ireland's Shane Lowry is on level par.
+    """
+    model = Summarizer()
+    response = model.generate.remote(input)
+    print(response)
+
+```
+
+## Run via the CLI
+
+Trigger model finetuning using the following command:
+
+```bash
+modal run --detach flan_t5_finetune.py::finetune --num-train-epochs=1 --size-percentage=10
+View the tensorboard logs at https://<username>--example-flan-t5-finetune-monitor-dev.modal.run
+```
+
+Then, you can invoke inference via the `local_entrypoint` with this command:
+
+```bash
+modal run flan_t5_finetune.py
+World number one Tiger Woods missed the cut at the US Open as he failed to qualify for the final round of the event in Los Angeles.
+```
+
 ### Flask App
 
 # Deploy Flask app with Modal
@@ -30212,13 +30828,13 @@ instead of in the path of every call.
 
 2. We run the actual inference in methods decorated with `@modal.method()`.
 
-_Note: Access to the Flux.1-schnell model on Hugging Face is
+*Note: Access to the Flux.1-schnell model on Hugging Face is
 [gated by a license agreement](https://huggingface.co/docs/hub/en/models-gated)
 which you must agree to
 [here](https://huggingface.co/black-forest-labs/FLUX.1-schnell).
 After you have accepted the license,
 [create a Modal Secret](https://modal.com/secrets)
-with the name `huggingface-secret` following the instructions in the template._
+with the name `huggingface-secret` following the instructions in the template.*
 
 ```python
 MINUTES = 60  # seconds
@@ -30439,7 +31055,6 @@ image = (
         "torch==2.8.0",
         "torchaudio==2.8.0",
         "git+https://github.com/ace-step/ACE-Step.git@6ae0852b1388de6dc0cca26b31a86d711f723cb3",  # we can install directly from GitHub!
-        "numba==0.63.1",
     )
 )
 
@@ -30749,7 +31364,6 @@ async def run_async():
 # Example (get_started.py)
 
 This is the source code for **01_getting_started.get_started**.
-
 ```python
 import modal
 
@@ -30819,11 +31433,9 @@ vllm_image = (
     )
     .entrypoint([])
     .uv_pip_install(
-        "vllm==0.13.0",
-        "huggingface_hub[hf_transfer]==0.36.0",
-    )
-    .env(  # fast Blackwell-specific MoE kernels
-        {"VLLM_USE_FLASHINFER_MOE_MXFP4_MXFP8": "1"}
+        "vllm==0.11.0",
+        "huggingface_hub[hf_transfer]==0.35.0",
+        "flashinfer-python==0.3.1",
     )
 )
 
@@ -30857,90 +31469,28 @@ a number of artifacts are created. We also cache these artifacts.
 
 ```python
 vllm_cache_vol = modal.Volume.from_name("vllm-cache", create_if_missing=True)
-flashinfer_cache_vol = modal.Volume.from_name(
-    "flashinfer-cache", create_if_missing=True
-)
-
-```
-
-## Configuring vLLM to serve GPT-OSS
-
-The vLLM docs include an [excellent resource on tuning GPT-OSS](https://docs.vllm.ai/projects/recipes/en/latest/OpenAI/GPT-OSS.html).
-We mostly use the configuration values reported there, but try to explain the reasoning as we go.
-
-```python
-VLLM_CONFIG = {  # return tokens in chunks of 20, save on host overhead
-    "stream-interval": 20
-}
-
-```
-
-One of the most important choices is to use speculative decoding,
-which attempts to generate multiple tokens per forward pass
-by means of a separate "speculator" model.
-We here use RedHatAI's open source, generic EAGLE3-based speculator for this model.
-We recommend using the EAGLE3 technique to train a custom speculator on your own traffic.
-
-```python
-SPECULATIVE_CONFIG = {
-    "model": "RedHatAI/gpt-oss-20b-speculator.eagle3",
-    "num_speculative_tokens": 7,
-    "method": "eagle3",
-}
-
-```
-
-Speculative decoding acclerates inference without changing model behavior.
-We can also accelerate inference by further quantizing the model.
-Here, we reduce the size of KV cache entries by quantizing them to FP8.
-
-```python
-VLLM_CONFIG |= {"kv-cache-dtype": "fp8"}
 
 ```
 
 There are a number of compilation settings for vLLM. Compilation improves inference performance
-but incurs extra latency at engine start time. When iterating on and developing a server,
-we recommend turning compilation off to speed up development cycles, which we here control
-with a global variable.
+but incur extra latency at engine start time. We offer a high-level variable for controlling this trade-off.
 
 ```python
-FAST_BOOT = False
+FAST_BOOT = False  # slower boots but faster inference
 
 ```
 
-Otherwise, we use the values suggested in the recipe:
-
-```python
-COMPILATION_CONFIG = {
-    "pass_config": {"fuse_allreduce_rms": True, "eliminate_noops": True}
-}
-
-```
-
-As part of compilation, vLLM collects up sequences (really, DAGs)
-of CUDA kernel launches into CUDA graphs.
-We set the maximum batch size for the CUDA graph capture step to the
-maximum number of inputs we want to handle per replica,
-which also shows up in our autoscaling configuration below.
+Among the artifacts that are created at startup are CUDA graphs,
+which allow the replay of several kernel launches for the price of one,
+reducing CPU overhead. We over-ride the defaults with a smaller number of sizes
+that we think better balances latency from future JIT CUDA graph generation
+and startup latency.
 
 ```python
 MAX_INPUTS = 32  # how many requests can one replica handle? tune carefully!
-VLLM_CONFIG |= {"max-cudagraph-capture-size": MAX_INPUTS}
-
-```
-
-Lastly, there are a few knobs we can tune based on the typical lengths
-of sequences we expect to observe.
-For many agentic tasks to which this model is well-suited,
-those lengths can go into the tens of thousands of tokens.
-Let's assume they're never longer than 2 ^ 15 tokens.
-
-```python
-VLLM_CONFIG |= {
-    "max-num-batched-tokens": 16384,
-    "max-model-len": 32768,
-}
+CUDA_GRAPH_CAPTURE_SIZES = [  # 1, 2, 4, ... MAX_INPUTS
+    1 << i for i in range((MAX_INPUTS).bit_length())
+]
 
 ```
 
@@ -30958,12 +31508,11 @@ VLLM_PORT = 8000
 @app.function(
     image=vllm_image,
     gpu=f"B200:{N_GPU}",
-    scaledown_window=10 * MINUTES,  # how long should we stay up with no requests?
+    scaledown_window=15 * MINUTES,  # how long should we stay up with no requests?
     timeout=30 * MINUTES,  # how long should we wait for container start?
     volumes={
         "/root/.cache/huggingface": hf_cache_vol,
         "/root/.cache/vllm": vllm_cache_vol,
-        "/root/.cache/flashinfer": flashinfer_cache_vol,
     },
 )
 @modal.concurrent(max_inputs=MAX_INPUTS)
@@ -30974,6 +31523,7 @@ def serve():
     cmd = [
         "vllm",
         "serve",
+        "--uvicorn-log-level=info",
         MODEL_NAME,
         "--revision",
         MODEL_REVISION,
@@ -30984,27 +31534,24 @@ def serve():
         "0.0.0.0",
         "--port",
         str(VLLM_PORT),
-        "--async-scheduling",  # reduces host overhead, but might not be compatible with all features
     ]
 
     # enforce-eager disables both Torch compilation and CUDA graph capture
     # default is no-enforce-eager. see the --compilation-config flag for tighter control
     cmd += ["--enforce-eager" if FAST_BOOT else "--no-enforce-eager"]
 
+    if not FAST_BOOT:  # CUDA graph capture is only used with `--enforce-eager`
+        cmd += [
+            "-O.cudagraph_capture_sizes="
+            + str(CUDA_GRAPH_CAPTURE_SIZES).replace(" ", "")
+        ]
+
     # assume multiple GPUs are for splitting up large matrix multiplications
     cmd += ["--tensor-parallel-size", str(N_GPU)]
 
-    # add complex configuration objects
-    cmd += ["--compilation-config", json.dumps(COMPILATION_CONFIG)]
-    cmd += ["--speculative-config", json.dumps(SPECULATIVE_CONFIG)]
+    print(cmd)
 
-    cmd += [  # add assorted config
-        item for k, v in VLLM_CONFIG.items() for item in (f"--{k}", str(v))
-    ]
-
-    print(*cmd)
-
-    subprocess.Popen(cmd)
+    subprocess.Popen(" ".join(cmd), shell=True)
 
 ```
 
@@ -31041,7 +31588,7 @@ which can be installed with `pip install openai-harmony`.
 ```python
 @app.local_entrypoint()
 async def test(test_timeout=30 * MINUTES, user_content=None, twice=True):
-    url = await serve.get_web_url.aio()
+    url = serve.get_web_url()
     system_prompt = {
         "role": "system",
         "content": f"""You are ChatModal, a large language model trained by Modal.
@@ -31269,7 +31816,7 @@ async def main(n_requests: int = 100):
     print("Testing Baseline (1 Model)")
     t0 = time.time()
     server = Server(n_models=1)
-    await server.prewarm.remote.aio()
+    server.prewarm.remote()
     print("Container boot took {:.4f}s".format(time.time() - t0))
 
     t0 = time.time()
@@ -31282,7 +31829,7 @@ async def main(n_requests: int = 100):
     print("Testing Packing (10 Models)")
     t0 = time.time()
     server = Server(n_models=10)
-    await server.prewarm.remote.aio()
+    server.prewarm.remote()
     print("Container boot took {:.4f}s".format(time.time() - t0))
 
     t0 = time.time()
@@ -31392,11 +31939,7 @@ We also install vLLM for the next part of this example. We also use Weights & Bi
 
 ```python
 image: modal.Image = modal.Image.debian_slim().uv_pip_install(
-    "trl[vllm]==0.28.0",
-    "vllm==0.12.0",
-    "transformers==4.57",
-    "datasets==3.5.1",
-    "wandb==0.17.6",
+    "trl[vllm]==0.19.1", "datasets==3.5.1", "wandb==0.17.6"
 )
 
 ```
@@ -31634,8 +32177,8 @@ We provide the code for setting up an OpenAI compatible inference endpoint here.
 vllm_image = (
     modal.Image.debian_slim(python_version="3.12")
     .uv_pip_install(
-        "vllm==0.12.0",
-        "flashinfer-python==0.5.3",
+        "vllm==0.9.1",
+        "flashinfer-python==0.2.6.post1",
         extra_index_url="https://download.pytorch.org/whl/cu128",
         extra_options="--index-strategy unsafe-best-match",
     )
@@ -31697,7 +32240,6 @@ GRPO is a reinforcement learning algorithm introduced by DeepSeek, and was used 
 verl is a reinforcement learning training library that is an implementation of [HybridFlow](https://arxiv.org/abs/2409.19256v2), an RLHF framework.
 
 The training process works as follows:
-
 - Each example in the dataset corresponds to a math problem.
 - In each training step, the model attempts to solve the math problems showing its steps.
 - We then compute a reward for the model's solution using the reward function defined below.
@@ -32145,13 +32687,13 @@ its execution history, logs and other stats.
 
 ### Hello World
 
-# Hello, world
+# Hello, world!
 
 This tutorial demonstrates some core features of Modal:
 
-- You can run functions on Modal just as easily as you run them locally.
-- Running functions in parallel on Modal is simple and fast.
-- Logs and errors show up immediately, even for functions running on Modal.
+* You can run functions on Modal just as easily as you run them locally.
+* Running functions in parallel on Modal is simple and fast.
+* Logs and errors show up immediately, even for functions running on Modal.
 
 ## Importing Modal and setting up
 
@@ -32266,11 +32808,11 @@ And it'll happen lightning fast!
 The function `f` is a bit silly and doesn't do much, but in its place
 imagine something that matters to you, like:
 
-- Running [language model inference](https://modal.com/docs/examples/vllm_inference)
+* Running [language model inference](https://modal.com/docs/examples/vllm_inference)
 or [fine-tuning](https://modal.com/docs/examples/slack-finetune)
-- Manipulating [audio](https://modal.com/docs/examples/musicgen)
+* Manipulating [audio](https://modal.com/docs/examples/musicgen)
 or [images](https://modal.com/docs/examples/diffusers_lora_finetune)
-- [Embedding huge text datasets](https://modal.com/docs/examples/amazon_embeddings) at lightning fast speeds
+* [Embedding huge text datasets](https://modal.com/docs/examples/amazon_embeddings) at lightning fast speeds
 
 Modal lets you parallelize that operation effortlessly by running hundreds or
 thousands of containers in the cloud.
@@ -33145,7 +33687,6 @@ def setup_optimizer(model, learning_rate):
 ```
 
 ### Miscellaneous
-
 The remaining code includes small helper functions for training the model.
 
 ```python
@@ -33192,412 +33733,16 @@ def log_evals(result, step, t_last, logs_manager):
 
 ```
 
-### Http Server
-
-# Deploy HTTP servers with ultra low latency on Modal
-
-Modal offers a primitive for edge-deployed, low latency web services:
-the Modal HTTP Server.
-
-Modal HTTP Servers are designed for applications with very demanding
-latency requirements, where a few tens of milliseconds of round-trip latency is unacceptable,
-like [low latency LLM inference](https://modal.com/docs/guide/high-performance-llm-inference).
-That ends up meaning users and clients are required to do more work.
-For Modal's higher-level primitives for web serving, see
-[this guide](https://modal.com/docs/guide/webhooks).
-
-This example documents a minimal Modal HTTP Server and client.
-
-## How to define a Modal HTTP Server
-
-```python
-from pathlib import Path
-
-import modal
-import modal.experimental
-
-```
-
-Notice that we imported `modal.experimental` above.
-Modal HTTP Servers are still under development,
-so the interface is subject to change.
-
-To make a Modal HTTP Server, define a Python class
-with a [`modal.enter`-decorated](https://modal.com/docs/guide/lifecycle-functions) method
-that creates a subtask (thread or process) that listens for HTTP requests on some port.
-
-Then wrap that class in the `modal.experimental.http_server` decorator,
-passing in the `port` your server task is listening on
-and a list of `proxy_regions` where Modal should add your server to an edge proxy
-that communicates directly with the containers running your server.
-
-Finally, add one more decorator, `app.cls`, with the rest of your resource definitions,
-like [distributed Volume storage](https://modal.com/docs/guide/volumes)
-[CPU/memory resources](https://modal.com/docs/guide/resources),
-and [GPU type and count](https://modal.com/docs/guide/gpu).
-To reduce end-to-end latency, include a [Region](https://modal.com/docs/guide/region-selection)
-in this decorator that matches the proxy region and containers will be deployed into that Region.
-Note that region-pinning has cost and resource availability implications!
-See [the guide](https://modal.com/docs/guide/region-selection)
-for details.
-
-Altogether, the minimal version of a Modal HTTP Server looks something like:
-
-```python
-PORT = 8000
-REGION = "us"
-PROXY_REGION = "us-east"
-
-app = modal.App("example-http-server")
-
-@app.cls(region=REGION)
-@modal.experimental.http_server(port=PORT, proxy_regions=[PROXY_REGION])
-class FileServer:
-    @modal.enter()
-    def start(self):
-        import subprocess
-
-        subprocess.Popen(["python", "-m", "http.server", f"{PORT}"])
-
-```
-
-## How to write a client and tests for a Modal HTTP Server
-
-We test the file server defined above by requesting file from it.
-This one will do nicely.
-
-We put the test in a `local_entrypoint` so that we can execute it from the command line:
-
-```bash
-modal run http_server.py
-```
-
-```python
-@app.local_entrypoint()
-def ping():
-    from urllib.error import HTTPError
-    from urllib.request import urlopen
-
-    url = FileServer._experimental_get_flash_urls()[0]  # one URL per proxy region
-
-    this = Path(__file__).name
-
-    print(f"requesting {this} from Modal HTTP Server at {url}")
-
-    while True:
-        try:
-            print(urlopen(url + f"/{this}").read().decode("utf-8"))
-            break
-        except HTTPError as e:
-            if e.code == 503:
-                continue
-            else:
-                raise e
-
-```
-
-Notice the retry loop! Modal Clses and Functions are serverless and scale to zero by default.
-When a Modal HTTP Server has scaled to zero, clients will get a
-[503 Service Unavailable](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503)
-error response from Modal. Those requests still trigger the underlying Modal Cls to scale up,
-and once a container is ready, the 503s will stop and clients will receive the server's responses.
-
-Modal HTTP Servers also support "sticky routing" for improved cache locality within client sessions.
-For details, see [this example](https://modal.com/docs/examples/http_server_sticky).
-
-### Http Server Sticky
-
-# Sticky routing for Modal HTTP Servers
-
-This example demonstrates the usage and behavior of
-the optional "sticky" routing behavior of
-Modal HTTP Servers with a basic routing test.
-
-For a gentler introduction to Modal HTTP Servers,
-see [this example](https://modal.com/docs/examples/http_server).
-For the use of Modal HTTP Servers for LLM inference,
-see [this example](https://modal.com/docs/examples/sglang_low_latency).
-
-In sticky routing, sequential requests from the same client
-are sent to the same server replica.
-Modal HTTP Servers offer sticky routing for fixed replica sets
-using [rendezvous hashing](https://randorithms.com/2020/12/26/rendezvous-hashing.html),
-ensuring that as your servers scale up and down, load stays balanced across replicas
-and clients are typically routed to the same replica for repeated requests.
-
-Note that requests are not _guaranteed_ to be routed to the same replica,
-and so this form of sticky routing should not be relied on for logical correctness.
-Instead, this sticky routing is intended to be used as a performance optimization,
-as in KV cacheing for [Transformer LLM inference](https://modal.com/docs/examples/sglang_low_latency).
-
-## Define the Modal HTTP Server
-
-First, we import the libraries we'll use both locally, to run a routing test,
-and remotely, to run our server.
-
-We also define our Modal [App](https://modal.com/docs/guide/apps)
-and the Modal [Image](https://modal.com/docs/guide/images)
-that provides the dependencies of our server code.
-
-```python
-import asyncio
-import time
-from dataclasses import dataclass
-from typing import Any
-
-import aiohttp
-import modal
-import modal.experimental
-from rich.console import Console
-
-app = modal.App("example-http-server-sticky")
-
-image = modal.Image.debian_slim().uv_pip_install("fastapi[standard]==0.115.4")
-
-```
-
-Now we can define our HTTP Server.
-We set the minimum number of containers (replicas)
-to be greater than one so that there are multiple
-replicas available for routing during our test.
-
-Additionally, we set the regions into which we
-want to deploy the proxies that communicate between
-our clients and the server.
-
-We also use the [`modal.concurrent` decorator](https://modal.com/docs/guide/concurrent-inputs)
-to allow each HTTP Server replica to handle more than one input.
-
-Modal HTTP Servers are structured as Modal [Clses](https://modal.com/docs/guide/lifecycle-functions)
-that start a process or thread that listens on the provided `port` in a `modal.enter`-decorated method.
-Here, we spin up a simple FastAPI server that returns the
-[identity of the replica within Modal](https://modal.com/docs/guide/environment_variables)
-and run it with `uvicorn`.
-
-```python
-PORT = 8000
-CONTAINERS = 2
-PROXY_REGIONS = ["us-west"]
-
-@app.cls(image=image, min_containers=CONTAINERS)
-@modal.experimental.http_server(port=PORT, proxy_regions=PROXY_REGIONS)
-@modal.concurrent(target_inputs=100)
-class Server:
-    @modal.enter()
-    def start(self):
-        import os
-        import threading
-
-        import uvicorn
-        from fastapi import FastAPI
-
-        container_id = os.environ["MODAL_TASK_ID"]
-        fastapi_app = FastAPI(title=container_id)
-
-        @fastapi_app.post("/")
-        async def whoami():
-            return {"CONTAINER_ID": container_id}
-
-        self.thread = threading.Thread(
-            target=uvicorn.run,
-            kwargs={"app": fastapi_app, "host": "0.0.0.0", "port": PORT},
-            daemon=True,
-        )
-        self.thread.start()
-
-```
-
-## Test the routing behavior of the Modal HTTP Server
-
-Now we define our routing test, which will run locally
-and interact with our Modal HTTP Server by sending requests.
-
-It spins up some `n`umber of `client` tasks and repeatedly sends requests from each for some number of `seconds`.
-The clients can be configured to use `sticky` routing or not (`--no-sticky`).
-
-The test uses the `CONTAINER_ID`s returned by the HTTP Server
-to track whether clients' requests are serviced by the same or different replicas.
-It fails if the clients were configured to be sticky and any client
-observes a different `CONTAINER_ID` on different requests.
-So long as the set of containers does not change,
-due to, for instance, replica failure or pre-emption,
-this test should pass.
-
-```python
-@app.local_entrypoint()
-async def test(n_clients: int = 10, sticky: bool = True, seconds: float = 5.0):
-    # wait for at least one replica to spin up
-    url = (await Server._experimental_get_flash_urls.aio())[0]
-    async with aiohttp.ClientSession() as sess:
-        await wait_available(sess, url)
-
-    # allow generous time for all replicas to spin up based on rough heuristic;
-    # remove this sleep and increase CONTAINERS
-    # to observe session routing changes during autoscaling
-    await asyncio.sleep(5 + ((CONTAINERS - 10) // 2))
-
-    # run the test
-    results = await run_clients(url, n_clients, seconds, sticky)
-    stats = aggregate_results(results)
-
-    # give time for server logs to flush,
-    await asyncio.sleep(1)
-    # then display results
-    print_summary(url, sticky, n_clients, seconds, stats)
-
-    if sticky and stats["multi"]:
-        raise AssertionError("Sticky routing violated for some clients")
-
-```
-
-Because it is a Modal `local_entrypoint`,
-this Python function automatically gets a CLI:
-
-```bash
-modal run http_server_sticky.py --help
-```
-
-You can run the test with:
-
-```bash
-modal run http_server_sticky.py
-```
-
-## Write the client for the Modal HTTP Server
-
-The code in this section implements some Modal HTTP Server-specific client logic.
-
-First, clients of Modal HTTP Servers need to handle
-[503 Service Unavailable](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503)
-error response status codes, which are returned whenever there are no live replicas.
-
-In our case, we use them as a signal that at least one replica
-is ready and so we can proceed with the test.
-
-```python
-async def wait_available(sess: aiohttp.ClientSession, url: str) -> None:
-    while True:
-        async with sess.post(url, json={}) as resp:
-            if resp.status != 503:
-                return
-
-```
-
-The full client logic appears in the function below.
-Notably, it includes the header `Modal-Session-Id`
-if clients are configured for sticky routing.
-Here, we choose a simple small integer `client_id`.
-
-The client collects information about which `CONTAINER_ID`s
-it receives from the server and returns those in the form of
-a simple `dataclass`.
-
-```python
-@dataclass
-class ClientResult:
-    client_id: int
-    containers_seen: set[str]
-    requests_ok: int
-    requests_err: int
-
-async def client(
-    url: str, client_id: int, seconds: float, sticky: bool
-) -> ClientResult:
-    headers = {"Modal-Session-Id": str(client_id)} if sticky else {}
-    end = time.monotonic() + seconds
-
-    seen: set[str] = set()
-    n_ok: int = 0
-    n_err: int = 0
-
-    async with aiohttp.ClientSession(headers=headers) as sess:
-        while time.monotonic() < end:
-            try:
-                async with sess.post(
-                    url, json={}, timeout=aiohttp.ClientTimeout(total=5)
-                ) as resp:
-                    if resp.status == 200:
-                        data = await resp.json()
-                        seen.add(data["CONTAINER_ID"])
-                        n_ok += 1
-                    else:
-                        n_err += 1
-            except asyncio.TimeoutError:
-                n_err += 1
-
-    return ClientResult(client_id, seen, n_ok, n_err)
-
-```
-
-## Addenda
-
-The remainder of this code is required for this example to run
-but is not necessary for Modal HTTP Servers or their clients in general.
-For instance, it defines the logic for concurrency and result aggregation/display
-for this particular routing test.
-
-```python
-async def run_clients(
-    url: str, n_clients: int, seconds: float, sticky: bool
-) -> list[ClientResult]:
-    tasks = [client(url, c, seconds, sticky) for c in range(n_clients)]
-    return list(await asyncio.gather(*tasks))
-
-def aggregate_results(results: list[ClientResult]) -> dict[str, Any]:
-    total_ok = sum(r.requests_ok for r in results)
-    total_err = sum(r.requests_err for r in results)
-    multi = {
-        r.client_id: r.containers_seen for r in results if len(r.containers_seen) > 1
-    }
-
-    per_client = [(r.client_id, r.containers_seen) for r in results]
-
-    return {
-        "total_ok": total_ok,
-        "total_err": total_err,
-        "multi": multi,
-        "per_client": per_client,
-    }
-
-def print_summary(
-    url: str,
-    sticky: bool,
-    n_clients: int,
-    seconds: float,
-    stats: dict[str, Any],
-    console: Console | None = None,
-) -> None:
-    if not console:
-        console = Console()
-    console.print()
-    console.print(
-        f"[bold]url=[/]{url} [bold]sticky=[/]{sticky} [bold]clients=[/]{n_clients} [bold]duration_s=[/]{seconds}"
-    )
-    console.print(
-        f"[green]total_ok={stats['total_ok']}[/] [red]total_err={stats['total_err']}[/]"
-    )
-
-    for c, seen in stats["per_client"]:
-        console.print(f"  client={c} containers={list(seen)}")
-    console.print(
-        f"Clients with multiple containers: [yellow]{len(stats['multi'])}/{n_clients}[/]"
-    )
-
-```
-
 ### Image Embeddings Infinity
 
 # Modal Cookbook: Recipe for Inference Throughput Maximization
-
 In certain applications, the bottom line comes to throughput: process a set of inputs as fast as possible.
 Let's explore how to maximize throughput by using Modal on an embedding example, and see just how fast
 we can encode the [Microsoft Cats & Dogs dataset](https://huggingface.co/datasets/microsoft/cats_vs_dogs)
 using the [Infinity inference engine](https://github.com/michaelfeil/infinity "github/michaelfeil/infinity").
 
 ## Conclusions
-
 ### BLUF (Bottom Line Up Front)
-
 Set concurrency (`max_concurrent_inputs`) to 4, and set `batch_size` between 50-500.
 To set `max_containers`, divide the total number of inputs by `max_concurrent_inputs*batchsize`
 (note: if you have a massive dataset, keep an eye out for diminishing returns on `max_containers`; but
@@ -33608,7 +33753,6 @@ out the GPU (but keep concurrency, `max_concurrent_inputs`, capped around 4). Th
 upward of 750 images / second overall throughput (not including initial Volume setup time).
 
 ### Why?
-
 While batchsize maximizes GPU utilization, the time to form a batch (ie reading images)
 will ultimately overtake inference, whether due to I/O, sending data across a wire, etc.
 We can make up for this by using idle GPU cores to store additional copies of the model:
@@ -33620,7 +33764,6 @@ achieves upward of 750 images / second, and that will increase for larger datase
 time becomes increasingly negligable.
 
 ## Local env imports
-
 Import everything we need for the locally-run Python (everything in our local_entrypoint function at the bottom).
 
 ```python
@@ -33636,18 +33779,17 @@ import modal
 ```
 
 ## Key Parameters
-
 There are three ways to parallelize inference for this usecase: via batching (which happens internal to Infinity),
 by packing individual GPU(s) with multiple copies of the model, and by fanning out across multiple containers.
 Here are some parameters for controlling these factors:
-- `max_concurrent_inputs` sets the [@modal.concurrent(max_inputs:int)](https://modal.com/docs/guide/concurrent-inputs#input-concurrency "Modal: input concurrency") argument for the inference app. This takes advantage of the asynchronous nature of the Infinity embedding inference app.
-- `gpu` is a string specifying the GPU to be used.
-- `max_containers` caps the number of containers allowed to spin-up.
-- `memory_request` amount of RAM requested per container
-- `core_request` number of logical cores requested per container
-- `threads_per_core` oversubscription factor for parallelized I/O (image reading)
-- `batch_size` is a parameter passed to the [Infinity inference engine](https://github.com/michaelfeil/infinity "github/michaelfeil/infinity"), and it means the usual thing for machine learning inference: a group of images are processed through the neural network together.
-- `image_cap` caps the number of images used in this example (e.g. for debugging/testing)
+* `max_concurrent_inputs` sets the [@modal.concurrent(max_inputs:int) ](https://modal.com/docs/guide/concurrent-inputs#input-concurrency "Modal: input concurrency") argument for the inference app. This takes advantage of the asynchronous nature of the Infinity embedding inference app.
+* `gpu` is a string specifying the GPU to be used.
+* `max_containers` caps the number of containers allowed to spin-up.
+* `memory_request` amount of RAM requested per container
+* `core_request` number of logical cores requested per container
+* `threads_per_core` oversubscription factor for parallelized I/O (image reading)
+* `batch_size` is a parameter passed to the [Infinity inference engine](https://github.com/michaelfeil/infinity "github/michaelfeil/infinity"), and it means the usual thing for machine learning inference: a group of images are processed through the neural network together.
+* `image_cap` caps the number of images used in this example (e.g. for debugging/testing)
 
 ```python
 max_concurrent_inputs: int = 4
@@ -33672,7 +33814,6 @@ timeout_seconds: int = 10 * 60
 ```
 
 ## Data and Model Specification
-
 This model parameter should point to a model on HuggingFace that is supported by Infinity.
 Note that your selected model might require specialized imports when
 designing the image in the next section. This [OpenAI model](https://huggingface.co/openai/clip-vit-base-patch16 "OpenAI ViT")
@@ -33774,7 +33915,6 @@ with infinity_image.imports():
 ```
 
 ## Data setup
-
 We use a [Modal Volume](https://modal.com/docs/guide/volumes#volumes "Modal.Volume")
 to store images we want to encode. We download them from Huggingface into a Volume and then preprocess
 them to 224 x 224 JPEGs. The selected model, `openai/clip-vit-base-patch16`, was trained on 224 x 224
@@ -33902,7 +34042,6 @@ def chunked(seq: list[T], subseq_size: int) -> Iterator[list[T]]:
 ```
 
 ## Inference app
-
 Here we define an app.cls that wraps Infinity's AsyncEmbeddingEngine.
 Note that the variable `max_concurrent_inputs` is used to set `max_inputs`
 in (1) the [modal.concurrent](https://modal.com/docs/guide/concurrent-inputs#input-concurrency)
@@ -34009,7 +34148,6 @@ class InfinityEngine:
 ```
 
 ## Local Entrypoint
-
 This backbone code is run on your machine. It starts up the app,
 catalogs the data, and via the remote `map` call, parses the data
 with the Infinity embedding engine. The embedder.embed executions
@@ -34865,7 +35003,6 @@ if __name__ == "__main__":
 # Example (import_torch.py)
 
 This is the source code for **06_gpu_and_ml.import_torch**.
-
 ```python
 import modal
 
@@ -34902,7 +35039,6 @@ def main():
 # Example (inference.py)
 
 This is the source code for **01_getting_started.inference**.
-
 ```python
 from pathlib import Path
 
@@ -35059,7 +35195,6 @@ if __name__ == "__main__":
 # Example (inference_map.py)
 
 This is the source code for **01_getting_started.inference_map**.
-
 ```python
 from pathlib import Path
 
@@ -35244,7 +35379,6 @@ def main():
 FlashAttention is an optimized CUDA library for Transformer
 scaled-dot-product attention. Dao AI Lab now publishes pre-compiled
 wheels, which makes installation quick.  This script shows how to
-
 1. Pin an exact wheel that matches CUDA 12 / PyTorch 2.6 / Python 3.13.
 2. Build a Modal image that installs torch, numpy, and FlashAttention.
 3. Launch a GPU function to confirm the kernel runs on a GPU.
@@ -35880,7 +36014,7 @@ https://laion.ai/blog/laion-400-open-dataset/
 LAION-400 is a large dataset of 400M English (image, text) pairs.
 
 As described on the dataset's homepage, it consists of 32 .parquet files
-containing dataset metadata _but not_ the image data itself.
+containing dataset metadata *but not* the image data itself.
 
 After downloading the .parquet files, this script fans out 32 worker jobs
 to process a single .parquet file. Processing involves fetch and transform
@@ -36135,14 +36269,12 @@ This example demonstrates how to train mathematical reasoning models on Modal us
 The [verifiers library](https://github.com/willccbb/verifiers) is a set of tools and abstractions for training LLMs with reinforcement learning in verifiable multi-turn environments via [GRPO](https://arxiv.org/abs/2402.03300).
 
 This example demonstrates how to:
-
 - Launch a distributed GRPO training job on Modal with 4× H100 GPUs.
 - Use vLLM for inference during training.
 - Cache HuggingFace, vLLM, and store the model weights in [Volumes](https://modal.com/docs/guide/volumes).
 - Run inference by loading the trained model from Volumes.
 
 ## Setup
-
 We start by importing modal and the dependencies from the verifiers library. Then, we create a Modal App and an image with a NVIDIA CUDA base image.
 We install the dependencies for the `verifiers` and `flash-attn` libraries, following the verifiers [README](https://github.com/willccbb/verifiers?tab=readme-ov-file#getting-started).
 
@@ -36184,10 +36316,8 @@ image = (
 ```
 
 ## Caching HuggingFace, vLLM, and storing model weights. For more on storing model weights on Modal, see
-
 [this guide](https://modal.com/docs/guide/model-weights).
 We create Modal Volumes to persist:
-
 - HuggingFace downloads
 - vLLM cache
 - Model weights
@@ -36215,7 +36345,6 @@ TOOL_DESCRIPTIONS = """
 ```
 
 ## Training
-
 Following the [verifiers example](https://github.com/willccbb/verifiers/blob/main/verifiers/examples/math_python.py), we will need a training script and a config file.
 For sandboxed code execution, we will use [this training script](/docs/examples/trainer_script_grpo) and the config file defined [here](https://github.com/willccbb/verifiers/blob/main/configs/zero3.yaml).
 
@@ -36302,7 +36431,6 @@ def math_group_verifier(trainer_script: str, config_file: str, run_id: str = Non
 ```
 
 ## Inference
-
 We define an `inference` Modal function that runs on a single GPU and mounts the weights volume.
 Then, we load the trained model from the volume, falling back to the base model if necessary.
 To build the prompt, we apply `DEFAULT_TOOL_PROMPT_TEMPLATE` with `TOOL_DESCRIPTIONS` and the problem text.
@@ -36381,27 +36509,20 @@ def inference(prompt: str, run_id: str = None):
 ```
 
 ## Usage
-
 We create a main function that serves as the entrypoint for the app.
 It supports two modes:
-
 - train: kick off math_group_verifier with the provided training script and config file
 - inference: invoke inference with prompt string or prompt file
 
 To run the training, we can use the following command:
-
 ```bash
 modal run learn_math.py --mode=train --trainer-script=trainer_script_grpo.py --config-file=config_grpo.yaml
 ```
-
 To run the inference with a custom prompt, we can use the following command after setting the model path inside our volume:
-
 ```bash
 modal run learn_math.py --mode=inference --prompt "Find the value of x that satisfies the equation: 2x + 5 = 17" --model-path "test_run"
 ```
-
 To run the inference with a custom prompt from a file, we can use the following command:
-
 ```bash
 modal run learn_math.py --mode=inference --prompt-file "prompt.txt"
 ```
@@ -36455,563 +36576,450 @@ def main(
 
 ```
 
-### Lfm Snapshot
+### Llama Cpp
 
-# Low Latency, Serverless LFM2 with vLLM and Modal
+# Run large and small language models with llama.cpp (DeepSeek-R1, Phi-4)
 
-In this example, we show how to serve Liquid AI's [LFM2 models](https://www.liquid.ai/liquid-foundation-models)
-with [vLLM](https://docs.vllm.ai) with low latency and fast cold starts on Modal.
+This example demonstrates how to run small (Phi-4) and large (DeepSeek-R1)
+language models on Modal with [`llama.cpp`](https://github.com/ggerganov/llama.cpp).
 
-The LFM2 models are not vanilla Transformers -- they have a hybrid architecture,
-discovered via an architecture search that optimized for quality, latency, and memory footprint.
-Check out their [technical report](https://arxiv.org/abs/2511.23404v1)
-for more details.
+By default, this example uses DeepSeek-R1 to produce a "Flappy Bird" game in Python --
+see the video below. The code used in the video is [here](https://gist.github.com/charlesfrye/a3788c61019c32cb7947f4f5b1c04818),
+along with the model's raw outputs.
+Note that getting the game to run required a small bugfix from a human --
+our jobs are still safe, for now.
 
-Here, we run the [24B-A2B variant](https://huggingface.co/LiquidAI/LFM2-24B-A2B) of LFM2,
-described [here](https://www.liquid.ai/blog/lfm2-24b-a2b). This variant is designed
-for efficient inference and includes instruction tuning.
-It is released under the weights-available [LFM 1.0 License](https://huggingface.co/LiquidAI/LFM2-24B-A2B/blob/main/LICENSE),
-which restricts commercial use for entities with over $10M in revenue.
-
-This example demonstrates techniques to run inference at high efficiency,
-including advanced features of both vLLM and Modal.
-For a simpler introduction to LLM serving, see
-[this example](https://modal.com/docs/examples/llm_inference).
-
-To minimize routing overheads, we use `@modal.experimental.http_server`,
-which uses a new, low-latency routing service on Modal designed for latency-sensitive inference workloads.
-This gives us more control over routing, but with increased power comes increased responsibility.
-
-We also include instructions for cutting cold start times using Modal's
-[CPU + GPU memory snapshots](https://modal.com/docs/guide/memory-snapshot).
-
-Fast cold starts are particularly useful for LLM inference applications
-that have highly "bursty" workloads, like document processing.
-See [this guide](https://modal.com/docs/guide/high-performance-llm-inference)
-for a breakdown of different LLM inference workloads and how to optimize them.
-
-## Set up the container image
-
-Our first order of business is to define the environment our server will run in:
-the [container `Image`](https://modal.com/docs/guide/images).
-We'll use the [vLLM inference server](https://docs.vllm.ai).
-
-While we're at it, we import the dependencies we'll need both remotely and locally (for deployment).
+<center>
+<a href="https://gist.github.com/charlesfrye/a3788c61019c32cb7947f4f5b1c04818" aria-label="View the generated code"> <video controls autoplay loop muted> <source src="https://modal-cdn.com/example-flap-py.mp4" type="video/mp4"> </video> </a>
+</center>
 
 ```python
-import asyncio
-import json
-import os
-import subprocess
-import time
+from pathlib import Path
+from typing import Optional
 
-import aiohttp
 import modal
-import modal.experimental
 
+```
+
+## What GPU can run DeepSeek-R1? What GPU can run Phi-4?
+
+Our large model is a real whale:
+[DeepSeek-R1](https://api-docs.deepseek.com/news/news250120),
+which has 671B total parameters and so consumes over 100GB of storage,
+even when [quantized down to one ternary digit (1.58 bits)](https://unsloth.ai/blog/deepseekr1-dynamic)
+per parameter.
+
+To make sure we have enough room for it and its activations/KV cache,
+we select four L40S GPUs, which together have 192 GB of memory.
+
+[Phi-4](https://huggingface.co/microsoft/phi-4),
+on the other hand, is a svelte 14B total parameters,
+or roughly 5 GB when quantized down to
+[two bits per parameter](https://huggingface.co/unsloth/phi-4-GGUF).
+
+That's small enough that it can be comfortably run on a CPU,
+especially for a single-user setup like the one we'll build here.
+
+```python
+GPU_CONFIG = "L40S:4"  # for DeepSeek-R1, literal `None` for phi-4
+
+```
+
+## Calling a Modal Function from the command line
+
+To start, we define our `main` function --
+the Python function that we'll run locally to
+trigger our inference to run on Modal's cloud infrastructure.
+
+This function, like the others that form our inference service
+running on Modal, is part of a Modal [App](https://modal.com/docs/guide/apps).
+Specifically, it is a `local_entrypoint`.
+Any Python code can call Modal Functions remotely,
+but local entrypoints get a command-line interface for free.
+
+```python
+app = modal.App("example-llama-cpp")
+
+@app.local_entrypoint()
+def main(
+    prompt: Optional[str] = None,
+    model: str = "DeepSeek-R1",  # or "phi-4"
+    n_predict: int = -1,  # max number of tokens to predict, -1 is infinite
+    args: Optional[str] = None,  # string of arguments to pass to llama.cpp's cli
+):
+    """Run llama.cpp inference on Modal for phi-4 or deepseek r1."""
+    import shlex
+
+    org_name = "unsloth"
+    # two sample models: the diminutive phi-4 and the chonky deepseek r1
+    if model.lower() == "phi-4":
+        model_name = "phi-4-GGUF"
+        quant = "Q2_K"
+        model_entrypoint_file = f"phi-4-{quant}.gguf"
+        model_pattern = f"*{quant}*"
+        revision = None
+        parsed_args = DEFAULT_PHI_ARGS if args is None else shlex.split(args)
+    elif model.lower() == "deepseek-r1":
+        model_name = "DeepSeek-R1-GGUF"
+        quant = "UD-IQ1_S"
+        model_entrypoint_file = (
+            f"{model}-{quant}/DeepSeek-R1-{quant}-00001-of-00003.gguf"
+        )
+        model_pattern = f"*{quant}*"
+        revision = "02656f62d2aa9da4d3f0cdb34c341d30dd87c3b6"
+        parsed_args = DEFAULT_DEEPSEEK_R1_ARGS if args is None else shlex.split(args)
+    else:
+        raise ValueError(f"Unknown model {model}")
+
+    repo_id = f"{org_name}/{model_name}"
+    download_model.remote(repo_id, [model_pattern], revision)
+
+    # call out to a `.remote` Function on Modal for inference
+    result = llama_cpp_inference.remote(
+        model_entrypoint_file,
+        prompt,
+        n_predict,
+        parsed_args,
+        store_output=model.lower() == "deepseek-r1",
+    )
+    output_path = Path("/tmp") / f"llama-cpp-{model}.txt"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    print(f"🦙 writing response to {output_path}")
+    output_path.write_text(result)
+
+```
+
+You can trigger inference from the command line with
+
+```bash
+modal run llama_cpp.py
+```
+
+To try out Phi-4 instead, use the `--model` argument:
+
+```bash
+modal run llama_cpp.py --model="phi-4"
+```
+
+Note that this will run for up to 30 minutes, which costs ~$5.
+To allow it to proceed even if your local terminal fails,
+add the `--detach` flag after `modal run`.
+See below for details on getting the outputs.
+
+You can pass prompts with the `--prompt` argument and set the maximum number of tokens
+with the `--n-predict` argument.
+
+Additional arguments for `llama-cli` are passed as a string like `--args="--foo 1 --bar"`.
+
+For convenience, we set a number of sensible defaults for DeepSeek-R1,
+following the suggestions by the team at unsloth,
+who [quantized the model to 1.58 bit](https://unsloth.ai/blog/deepseekr1-dynamic).
+
+```python
+DEFAULT_DEEPSEEK_R1_ARGS = [  # good default llama.cpp cli args for deepseek-r1
+    "--cache-type-k",
+    "q4_0",
+    "--threads",
+    "12",
+    "-no-cnv",
+    "--prio",
+    "2",
+    "--temp",
+    "0.6",
+    "--ctx-size",
+    "8192",
+]
+
+DEFAULT_PHI_ARGS = [  # good default llama.cpp cli args for phi-4
+    "--threads",
+    "16",
+    "-no-cnv",
+    "--ctx-size",
+    "16384",
+]
+
+```
+
+## Compiling llama.cpp with CUDA support
+
+In order to run inference, we need the model's weights
+and we need code to run inference with those weights.
+
+[`llama.cpp`](https://github.com/ggerganov/llama.cpp)
+is a no-frills C++ library for running large language models.
+It supports highly-quantized versions of models ideal for running
+single-user language modeling services on CPU or GPU.
+
+We compile it, with CUDA support, and add it to a Modal
+[container image](https://modal.com/docs/guide/images)
+using the code below.
+
+For more details on using CUDA on Modal, including why
+we need to use the `nvidia/cuda` registry image in this case
+(hint: it's for the [`nvcc` compiler](https://modal.com/gpu-glossary/host-software/nvcc)),
+see the [Modal guide to using CUDA](https://modal.com/docs/guide/cuda).
+
+```python
+LLAMA_CPP_RELEASE = "b4568"
 MINUTES = 60
 
-MODEL_NAME = os.environ.get("MODEL_NAME", "LiquidAI/LFM2-24B-A2B")
-print(f"Running deployment script for model: {MODEL_NAME}")
+cuda_version = "12.4.0"  # should be no greater than host CUDA version
+flavor = "devel"  #  includes full CUDA toolkit
+operating_sys = "ubuntu22.04"
+tag = f"{cuda_version}-{flavor}-{operating_sys}"
 
-vllm_image = (
-    modal.Image.from_registry("vllm/vllm-openai:v0.15.1")
-    .entrypoint([])
-    .run_commands("ln -s $(which python3) /usr/bin/python")
-    .pip_install("transformers==5.1.0")
-    .env(
-        {
-            "HF_HUB_CACHE": "/root/.cache/huggingface",
-            "HF_XET_HIGH_PERFORMANCE": "1",
-            "VLLM_SERVER_DEV_MODE": "1",
-            "TORCH_CPP_LOG_LEVEL": "FATAL",
-            "MODEL_NAME": MODEL_NAME,
-        }
+image = (
+    modal.Image.from_registry(f"nvidia/cuda:{tag}", add_python="3.12")
+    .apt_install("git", "build-essential", "cmake", "curl", "libcurl4-openssl-dev")
+    .run_commands("git clone https://github.com/ggerganov/llama.cpp")
+    .run_commands(
+        "cmake llama.cpp -B llama.cpp/build "
+        "-DBUILD_SHARED_LIBS=OFF -DGGML_CUDA=ON -DLLAMA_CURL=ON "
     )
+    .run_commands(  # this one takes a few minutes!
+        "cmake --build llama.cpp/build --config Release -j --clean-first --target llama-quantize llama-cli"
+    )
+    .run_commands("cp llama.cpp/build/bin/llama-* llama.cpp")
+    .entrypoint([])  # remove NVIDIA base container entrypoint
 )
 
 ```
 
-### Selecting the GPU
+## Storing models on Modal
 
-We choose the [H100 GPU](https://modal.com/blog/introducing-h100),
-which offers excellent price-performance and has sufficient VRAM to store the models.
+To make the model weights available on Modal,
+we download them from Hugging Face.
 
-```python
-N_GPU = 1
-GPU = "H100"
+Modal is serverless, so disks are by default ephemeral.
+To make sure our weights don't disappear between runs,
+which would trigger a long download, we store them in a
+Modal [Volume](https://modal.com/docs/guide/volumes).
 
-```
-
-### Loading and caching the model weights
-
-We don't want to load the model from the Hub every time we start the server.
-We can load it much faster from a [Modal Volume](https://modal.com/docs/guide/volumes).
-Typical speeds are around one to two GB/s.
+For more on how to use Modal Volumes to store model weights,
+see [this guide](https://modal.com/docs/guide/model-weights).
 
 ```python
-hf_cache_vol = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
+model_cache = modal.Volume.from_name("llamacpp-cache", create_if_missing=True)
+cache_dir = "/root/.cache/llama.cpp"
 
-```
-
-In addition to pointing the Hugging Face Hub at the path
-where we mount the Volume, we also
-[turn on "high performance" downloads](https://huggingface.co/docs/hub/en/models-downloading#faster-downloads),
-which can fully saturate our network bandwidth,
-and provide an `HF_TOKEN` via a [Modal Secret](https://modal.com/docs/guide/secrets)
-so that our downloads aren't throttled.
-You'll need to create a Secret named `huggingface-secret`
-with your token [here](https://modal.com/apps/secrets).
-
-```python
-hf_secret = modal.Secret.from_name("huggingface-secret")
-
-```
-
-### Caching compilation artifacts
-
-Model weights aren't the only thing we want to cache.
-vLLM also produces compilation artifacts that we want to persist across restarts.
-
-```python
-vllm_cache_vol = modal.Volume.from_name("vllm-cache", create_if_missing=True)
-
-```
-
-## Define the inference server and infrastructure
-
-### Selecting infrastructure to minimize latency
-
-Minimizing latency requires geographic co-location of clients and servers.
-
-So for low latency LLM inference services on Modal, you must select a
-[cloud region](https://modal.com/docs/guide/region-selection)
-for both the GPU-accelerated containers running inference
-and for the internal Modal proxies that forward requests to them
-as part of defining a `modal.experimental.http_server`.
-
-Here, we assume users are mostly in the northern half of the Americas
-and select the `us-east` cloud region to serve them.
-This should result in at most a few dozen milliseconds of round-trip time.
-
-```python
-REGION = "us-east"
-
-```
-
-For production-scale LLM inference services, there are generally
-enough requests to justify keeping at least one replica running at all times.
-Having a "warm" or "live" replica reduces latency by skipping slow initialization work
-that occurs when new replica boots up (a ["cold start"](https://modal.com/docs/guide/cold-start)).
-For LLM inference servers, that latency runs from seconds to minutes.
-
-However, since this is documentation code, we'll set the `min_containers` of our Modal Function
-to `0` to avoid surprise bills during casual use.
-
-```python
-MIN_CONTAINERS = 0
-
-```
-
-Finally, we need to decide how we will scale up and down replicas
-in response to load. Without autoscaling, users' requests will queue
-when the server becomes overloaded. Even apart from queueing, responses
-generally become slower per user above a certain minimum number of
-concurrent requests.
-
-So we set a target for the number of inputs to run on a single container
-with [`modal.concurrent`](https://modal.com/docs/reference/modal.concurrent).
-For details, see [the guide](https://modal.com/docs/guide/concurrent-inputs).
-
-Generally, this choice needs to be made as part of
-[LLM inference engine benchmarking](https://modal.com/llm-almanac/how-to-benchmark).
-
-```python
-TARGET_INPUTS = 32
-MAX_INPUTS = 100
-
-```
-
-## Speed up cold starts with GPU snapshotting
-
-Modal is a serverless compute platform, so all of your
-inference services automatically scale up and down to handle
-variable load.
-
-Scaling up a new replica requires quite a bit of work --
-loading up Python and system packages, loading model weights,
-setting up the inference engine, and so on.
-
-We can skip over and speed up a bunch of this work
-when spinning up new replicas after the first
-by directly booting from a [memory snapshot](https://modal.com/docs/guide/memory-snapshot),
-which contains the exact in-memory representation of our server just before it begins taking requests.
-
-Most applications can be snapshot and experience substantial speedups (2x to 10x,
-see [our initial benchmarks here](https://modal.com/blog/gpu-mem-snapshots)).
-However, it generally requires some extra work to adapt the application code.
-
-vLLM supports a sleep mode that allows us to leverage Modal's
-[CPU + GPU memory snapshots](https://modal.com/docs/guide/memory-snapshot)
-for dramatically faster cold starts.
-
-When `enable_memory_snapshot=True` and `experimental_options={"enable_gpu_snapshot": True}`
-are set on the class, Modal captures both CPU and GPU memory state.
-The `@modal.enter(snap=True)` method runs before the snapshot is taken:
-we start vLLM, wait for it to be ready, warm it up, then put it to sleep.
-The `@modal.enter(snap=False)` method runs after restoring from snapshot:
-we wake vLLM back up so it can serve requests immediately.
-
-### Sleeping and waking a vLLM server
-
-We prepare our vLLM inference server for snapshotting by first sending
-a few requests to "warm it up", ensuring that it is fully ready to process requests.
-Then we "put it to sleep", moving non-essential data out of GPU memory,
-with a request to `/sleep`. At this point, we can take a memory snapshot.
-Upon snapshot restoration, we "wake up" the server with a request to `/wake_up`.
-
-We use the [`requests` library](https://requests.readthedocs.io/en/latest/)
-to send ourselves these HTTP requests on
-[`localhost`/`127.0.0.1`](https://superuser.com/questions/31824/why-is-localhost-ip-127-0-0-1).
-
-```python
-VLLM_PORT = 8000
-
-with vllm_image.imports():
-    import requests
-
-def wait_ready(process: subprocess.Popen, timeout: int = 15 * MINUTES):
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            check_running(process)
-            requests.get(f"http://127.0.0.1:{VLLM_PORT}/health").raise_for_status()
-            return
-        except (
-            subprocess.CalledProcessError,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-        ):
-            time.sleep(5)
-    raise TimeoutError(f"vLLM server not ready within {timeout} seconds")
-
-def check_running(p: subprocess.Popen):
-    if (rc := p.poll()) is not None:
-        raise subprocess.CalledProcessError(rc, cmd=p.args)
-
-def warmup():
-    payload = {
-        "model": "llm",
-        "messages": [{"role": "user", "content": "Hello, how are you?"}],
-        "max_tokens": 16,
-    }
-    for _ in range(3):
-        requests.post(
-            f"http://127.0.0.1:{VLLM_PORT}/v1/chat/completions",
-            json=payload,
-            timeout=60,
-        ).raise_for_status()
-
-def sleep(level: int = 1):
-    requests.post(
-        f"http://127.0.0.1:{VLLM_PORT}/sleep?level={level}"
-    ).raise_for_status()
-
-def wake_up():
-    requests.post(f"http://127.0.0.1:{VLLM_PORT}/wake_up").raise_for_status()
-
-```
-
-### Controlling container lifecycles with `modal.Cls`
-
-We wrap up all of the choices we made about the infrastructure
-of our inference server into a number of Python decorators
-that we apply to a Python class that encapsulates the logic
-to run our server.
-
-The key decorators are:
-
-- [`@app.cls`](https://modal.com/docs/guide/lifecycle-functions) to define the core of our service.
-We attach our Image, request a GPU, attach our cache Volumes, specify the region, and configure auto-scaling.
-See [the reference documentation](https://modal.com/docs/reference/modal.App#cls) for details.
-
-- `@modal.experimental.http_server` to turn our Python code into an HTTP server
-(i.e. fronting all of our containers with a proxy with a URL). The wrapped code
-needs to eventually listen for HTTP connections on the provided `port`.
-
-- [`@modal.concurrent`](https://modal.com/docs/guide/concurrent-inputs) to specify how many
-requests our server can handle before we need to scale up.
-
-- [`@modal.enter` and `@modal.exit`](https://modal.com/docs/guide/lifecycle-functions) to indicate
-which methods of the class should be run when starting the server and shutting it down.
-The `snap=True`/`snap=False` distinction controls which methods run before/after a memory snapshot.
-
-Modal considers a new replica ready to receive inputs once the `modal.enter` methods have exited
-and the container accepts connections.
-
-With all this in place, we are ready to define our high-performance, low-latency
-LFM 2 inference server.
-
-```python
-app = modal.App("example-lfm-snapshot")
-
-@app.cls(
-    image=vllm_image,
-    gpu=GPU,
-    scaledown_window=5 * MINUTES,
-    timeout=15 * MINUTES,
-    volumes={
-        "/root/.cache/huggingface": hf_cache_vol,
-        "/root/.cache/vllm": vllm_cache_vol,
-    },
-    secrets=[hf_secret],
-    enable_memory_snapshot=True,
-    experimental_options={"enable_gpu_snapshot": True},
-    region=REGION,
-    min_containers=MIN_CONTAINERS,
+download_image = (
+    modal.Image.debian_slim(python_version="3.11")
+    .uv_pip_install("huggingface-hub==0.36.0")
+    .env({"HF_XET_HIGH_PERFORMANCE": "1"})
 )
-@modal.experimental.http_server(
-    port=VLLM_PORT,
-    proxy_regions=[REGION],
-    exit_grace_period=5,
+
+@app.function(
+    image=download_image, volumes={cache_dir: model_cache}, timeout=30 * MINUTES
 )
-@modal.concurrent(target_inputs=TARGET_INPUTS)
-class LfmVllmInference:
-    @modal.enter(snap=True)
-    def startup(self):
-        """Start the vLLM server and block until it is healthy, then warm it up and put it to sleep."""
-        cmd = [
-            "vllm",
-            "serve",
-            MODEL_NAME,
-            "--served-model-name",
-            MODEL_NAME,
-            "--served-model-name",
-            "llm",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            f"{VLLM_PORT}",
-            "--dtype",
-            "bfloat16",
-            "--gpu-memory-utilization",
-            "0.8",
-            "--max-num-seqs",
-            f"{MAX_INPUTS}",
-            "--max-cudagraph-capture-size",
-            f"{MAX_INPUTS}",
-            "--enable-sleep-mode",
-        ]
+def download_model(repo_id, allow_patterns, revision: Optional[str] = None):
+    from huggingface_hub import snapshot_download
 
-        print(*cmd)
-        self.process = subprocess.Popen(cmd)
-        wait_ready(self.process)
-        warmup()
-        sleep(level=1)
+    print(f"🦙 downloading model from {repo_id} if not present")
 
-    @modal.enter(snap=False)
-    def restore(self):
-        """Wake vLLM from sleep mode after restoring from a memory snapshot."""
-        wake_up()
+    snapshot_download(
+        repo_id=repo_id,
+        revision=revision,
+        local_dir=cache_dir,
+        allow_patterns=allow_patterns,
+    )
 
-    @modal.exit()
-    def stop(self):
-        self.process.terminate()
+    model_cache.commit()  # ensure other Modal Functions can see our writes before we quit
+
+    print("🦙 model loaded")
 
 ```
 
-## Deploy the server
+## Storing model outputs on Modal
 
-To deploy the server on Modal, just run
+Contemporary large reasoning models are slow --
+for the sample "flappy bird" prompt we provide,
+results are sometimes produced only after several (or even tens of) minutes.
+
+That makes their outputs worth storing.
+In addition to sending them back to clients,
+like our local command line,
+we'll store the results on a Modal Volume for safe-keeping.
+
+```python
+results = modal.Volume.from_name("llamacpp-results", create_if_missing=True)
+results_dir = "/root/results"
+
+```
+
+You can retrieve the results later in a number of ways.
+
+You can use the Volume CLI:
 
 ```bash
-modal deploy lfm_snapshot.py
+modal volume ls llamacpp-results
 ```
 
-This will create a new App on Modal and build the container image for it if it hasn't been built yet.
-
-## Interact with the server
-
-Once it is deployed, you'll see a URL appear in the command line,
-something like `https://your-workspace-name--example-lfm-snapshot-lfmvllminference.us-east.modal.direct`.
-
-You can find [interactive Swagger UI docs](https://swagger.io/tools/swagger-ui/)
-at the `/docs` route of that URL, i.e. `https://your-workspace-name--example-lfm-snapshot-lfmvllminference.us-east.modal.direct/docs`.
-These docs describe each route and indicate the expected input and output
-and translate requests into `curl` commands.
-For simple routes, you can even send a request directly from the docs page.
-
-Note: when no replicas are available, Modal will respond with
-the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503).
-In your browser, you can just hit refresh until the docs page appears.
-You can see the status of the application and its containers on your [Modal dashboard](https://modal.com/apps).
-
-## Test the server
-
-To make it easier to test the server setup, we also include a `local_entrypoint`
-that hits the server with a simple client.
-
-If you execute the command
+You can attach the Volume to a Modal `shell`
+to poke around in a familiar terminal environment:
 
 ```bash
-modal run lfm_snapshot.py
+modal shell --volume llamacpp-results
+# then cd into /mnt
 ```
 
-a fresh replica of the server will be spun up on Modal while
-the code below executes on your local machine.
-
-Think of this like writing simple tests inside of the `if __name__ == "__main__"`
-block of a Python script, but for cloud deployments!
+Or you can access it from any other Python environment
+by using the same `modal.Volume` call as above to instantiate it:
 
 ```python
-@app.local_entrypoint()
-async def test(test_timeout=10 * MINUTES, prompt=None, twice=True):
-    url = (await LfmVllmInference._experimental_get_flash_urls.aio())[0]
+results = modal.Volume.from_name("llamacpp-results")
+print(dir(results))  # show methods
+```
+
+## Running llama.cpp as a Modal Function
+
+Now, let's put it all together.
+
+At the top of our `llama_cpp_inference` function,
+we add an `app.function` decorator to attach all of our infrastructure:
+
+- the `image` with the dependencies
+- the `volumes` with the weights and where we can put outputs
+- the `gpu` we want, if any
+
+We also specify a `timeout` after which to cancel the run.
+
+Inside the function, we call the `llama.cpp` CLI
+with `subprocess.Popen`. This requires a bit of extra ceremony
+because we want to both show the output as we run
+and store the output to save and return to the local caller.
+For details, see the [Addenda section](#addenda) below.
+
+Alternatively, you might set up an OpenAI-compatible server
+using base `llama.cpp` or its [Python wrapper library](https://github.com/abetlen/llama-cpp-python)
+along with one of [Modal's decorators for web hosting](https://modal.com/docs/guide/webhooks).
+
+```python
+@app.function(
+    image=image,
+    volumes={cache_dir: model_cache, results_dir: results},
+    gpu=GPU_CONFIG,
+    timeout=30 * MINUTES,
+)
+def llama_cpp_inference(
+    model_entrypoint_file: str,
+    prompt: Optional[str] = None,
+    n_predict: int = -1,
+    args: Optional[list[str]] = None,
+    store_output: bool = True,
+):
+    import subprocess
+    from uuid import uuid4
 
     if prompt is None:
-        prompt = "List every country and its capital."
+        prompt = DEFAULT_PROMPT  # see end of file
+    if "deepseek" in model_entrypoint_file.lower():
+        prompt = "<｜User｜>" + prompt + "<think>"
+    if args is None:
+        args = []
 
-    messages = [
-        {"role": "user", "content": prompt},
-    ]
+    # set layers to "off-load to", aka run on, GPU
+    if GPU_CONFIG is not None:
+        n_gpu_layers = 9999  # all
+    else:
+        n_gpu_layers = 0
 
-    await probe(url, messages, timeout=test_timeout)
-    if twice:
-        messages = [
-            {
-                "role": "user",
-                "content": "List every country and its capital in Chinese.",
-            }
-        ]
-        print(f"Sending messages to {url}:", *messages, sep="\n\t")
-        await probe(url, messages, timeout=1 * MINUTES)
+    if store_output:
+        result_id = str(uuid4())
+        print(f"🦙 running inference with id:{result_id}")
+
+    command = [
+        "/llama.cpp/llama-cli",
+        "--model",
+        f"{cache_dir}/{model_entrypoint_file}",
+        "--n-gpu-layers",
+        str(n_gpu_layers),
+        "--prompt",
+        prompt,
+        "--n-predict",
+        str(n_predict),
+    ] + args
+
+    print("🦙 running command:", command, sep="\n\t")
+    p = subprocess.Popen(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=False
+    )
+
+    stdout, stderr = collect_output(p)
+
+    if p.returncode != 0:
+        raise subprocess.CalledProcessError(p.returncode, command, stdout, stderr)
+
+    if store_output:  # save results to a Modal Volume if requested
+        print(f"🦙 saving results for {result_id}")
+        result_dir = Path(results_dir) / result_id
+        result_dir.mkdir(
+            parents=True,
+        )
+        (result_dir / "out.txt").write_text(stdout)
+        (result_dir / "err.txt").write_text(stderr)
+
+    return stdout
 
 ```
 
-This test relies on the `probe` helper function below,
-which ping the server and wait for a valid response to stream.
+# Addenda
 
-The `probe` helper function specifically ignores
-two types of errors that can occur while a replica
-is starting up -- timeouts on the client and 5XX responses from the server.
-Modal returns the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503)
-when an `experimental.http_server` has no live replicas.
+The remainder of this code is less interesting from the perspective
+of running LLM inference on Modal but necessary for the code to run.
 
-We include a header with each request --
-`Modal-Session-ID`.
-The value associated with this key
-is used to map requests onto containers such that
-while the set of containers is fixed, requests with the same value
-are sent to the same container.
-Set this to a different value per multi-turn interaction
-(prototypically, a user conversation thread with a chatbot)
-to improve KV cache hit rates.
-Note that this header is only compatible with
-Modal `http_server`s.
+For example, it includes the default "Flappy Bird in Python" prompt included in
+[unsloth's announcement](https://unsloth.ai/blog/deepseekr1-dynamic)
+of their 1.58 bit quantization of DeepSeek-R1.
 
 ```python
-async def probe(url, messages=None, timeout=5 * MINUTES):
-    if messages is None:
-        messages = [{"role": "user", "content": "Tell me a joke."}]
+DEFAULT_PROMPT = """Create a Flappy Bird game in Python. You must include these things:
 
-    client_id = str(0)  # set this yourself based on KV cache hit-rate
-    headers = {"Modal-Session-ID": client_id}
-    deadline = time.time() + timeout
-    async with aiohttp.ClientSession(base_url=url, headers=headers) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request_streaming(session, messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-            except aiohttp.client_exceptions.ClientResponseError as e:
-                if e.status == 503:
-                    await asyncio.sleep(1)
-                    continue
-                raise e
-    raise TimeoutError(f"No response from server within {timeout} seconds")
+    You must use pygame.
+    The background color should be randomly chosen and is a light shade. Start with a light blue color.
+    Pressing SPACE multiple times will accelerate the bird.
+    The bird's shape should be randomly chosen as a square, circle or triangle. The color should be randomly chosen as a dark color.
+    Place on the bottom some land colored as dark brown or yellow chosen randomly.
+    Make a score shown on the top right side. Increment if you pass pipes and don't hit them.
+    Make randomly spaced pipes with enough space. Color them randomly as dark green or light brown or a dark gray shade.
+    When you lose, show the best score. Make the text inside the screen. Pressing q or Esc will quit the game. Restarting is pressing SPACE again.
 
-async def _send_request_streaming(
-    session: aiohttp.ClientSession, messages: list, timeout: int | None = None
-) -> None:
-    payload = {"model": "llm", "messages": messages, "stream": True}
-    headers = {"Accept": "text/event-stream"}
+The final game should be inside a markdown section in Python. Check your code for errors and fix them before the final markdown section."""
 
-    async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers, timeout=timeout
-    ) as resp:
-        resp.raise_for_status()
-        full_text = ""
+def stream_output(stream, queue, write_stream):
+    """Reads lines from a stream and writes to a queue and a write stream."""
+    for line in iter(stream.readline, b""):
+        line = line.decode("utf-8", errors="replace")
+        write_stream.write(line)
+        write_stream.flush()
+        queue.put(line)
+    stream.close()
 
-        async for raw in resp.content:
-            line = raw.decode("utf-8", errors="ignore").strip()
-            if not line:
-                continue
+def collect_output(process):
+    """Collect up the stdout and stderr of a process while still streaming it out."""
+    import sys
+    from queue import Queue
+    from threading import Thread
 
-            if not line.startswith("data:"):
-                continue
+    stdout_queue = Queue()
+    stderr_queue = Queue()
 
-            data = line[len("data:") :].strip()
-            if data == "[DONE]":
-                break
+    stdout_thread = Thread(
+        target=stream_output, args=(process.stdout, stdout_queue, sys.stdout)
+    )
+    stderr_thread = Thread(
+        target=stream_output, args=(process.stderr, stderr_queue, sys.stderr)
+    )
+    stdout_thread.start()
+    stderr_thread.start()
 
-            try:
-                evt = json.loads(data)
-            except json.JSONDecodeError:
-                continue
+    stdout_thread.join()
+    stderr_thread.join()
+    process.wait()
 
-            delta = (evt.get("choices") or [{}])[0].get("delta") or {}
-            chunk = delta.get("content")
+    stdout_collected = "".join(stdout_queue.queue)
+    stderr_collected = "".join(stderr_queue.queue)
 
-            if chunk:
-                print(chunk, end="", flush="\n" in chunk or "." in chunk)
-                full_text += chunk
-        print()
-
-```
-
-### Test memory snapshotting
-
-Using `modal run` creates an ephemeral Modal App,
-rather than a deployed Modal App.
-Ephemeral Modal Apps are short-lived,
-so they turn off snapshotting.
-
-To test the memory snapshot version of the server,
-first deploy it with `modal deploy`
-and then hit it with a client.
-
-You should observe startup improvements
-after a handful of cold starts
-(usually less than five).
-If you want to see the speedup during a test,
-we recommend heading to the deployed App in your
-[Modal dashboard](https://modal.com/apps)
-and manually stopping containers after they have served a request.
-
-You can use the client code below to test the endpoint.
-It can be run with the command
-
-```
-python lfm_snapshot.py
-```
-
-```python
-if __name__ == "__main__":
-    LfmVllmInference = modal.Cls.from_name("example-lfm-snapshot", "LfmVllmInference")
-
-    async def main():
-        url = (await LfmVllmInference._experimental_get_flash_urls.aio())[0]
-        messages = [{"role": "user", "content": "Tell me ten jokes."}]
-        await probe(url, messages, timeout=10 * MINUTES)
-
-    try:
-        print("calling inference server")
-        asyncio.run(main())
-    except modal.exception.NotFoundError as e:
-        raise Exception(
-            f"To take advantage of GPU snapshots, deploy first with modal deploy {__file__}"
-        ) from e
+    return stdout_collected, stderr_collected
 
 ```
 
@@ -37189,7 +37197,6 @@ It's important to use `.spawn(...).get()` because `.remote` created Function Cal
 expire after 24 hours.
 
 You can run this with
-
 ```bash
 modal run --detach 06_gpu_and_ml/long-training.py
 ```
@@ -37560,207 +37567,6 @@ def slugify(prompt):
 
 ```
 
-### Ltx2 Two Stage
-
-# High-quality text-to-video with LTX-2
-
-[LTX-2](https://github.com/Lightricks/LTX-2) is a 19B-parameter diffusion model
-that generates video with synchronized audio from a text prompt.
-This example runs LTX-2's two-stage production-grade pipeline on Modal: stage 1
-generates video at half resolution, then stage 2 upscales by 2x and refines with
-a distilled LoRA. Output is a 1024x1536 MP4 with audio.
-
-## Setup
-
-The text encoder uses Gemma 3 weights that require accepting a license.
-Visit https://huggingface.co/google/gemma-3-12b-it-qat-q4_0-unquantized,
-click "Agree and access repository", then create a token at
-https://huggingface.co/settings/tokens and add it as a
-[Modal Secret](https://modal.com/secrets) named `huggingface-secret`
-with key `HF_TOKEN`.
-
-Generate a video with:
-
-```bash
-modal run ltx2_two_stage.py --prompt "A cathedral made of ice, northern lights overhead"
-```
-
-Retrieve the output from the Modal Volume:
-
-```bash
-modal volume ls ltx2-outputs
-modal volume get ltx2-outputs <filename>
-```
-
-## Environment setup
-
-```python
-import time
-from pathlib import Path
-
-import modal
-
-```
-
-We pin an LTX-2 commit and install its three subpackages.
-Torch is installed first to ensure compatibility with Flash-Attention 3.
-
-```python
-ltx2_commit = "28c3c73"
-
-image = (
-    modal.Image.from_registry("nvidia/cuda:12.6.1-devel-ubuntu24.04", add_python="3.12")
-    .apt_install("git", "ffmpeg")
-    .uv_pip_install(
-        "torch==2.7.0",
-        "torchaudio==2.7.0",
-        extra_index_url="https://download.pytorch.org/whl/cu128",
-    )
-    .uv_pip_install(
-        "transformers>=4.52,<5",
-        f"git+https://github.com/Lightricks/LTX-2.git@{ltx2_commit}#subdirectory=packages/ltx-core",
-        f"git+https://github.com/Lightricks/LTX-2.git@{ltx2_commit}#subdirectory=packages/ltx-pipelines",
-        f"git+https://github.com/Lightricks/LTX-2.git@{ltx2_commit}#subdirectory=packages/ltx-trainer",
-        "https://huggingface.co/alexnasa/flash-attn-3/resolve/main/128/flash_attn_3-3.0.0b1-cp39-abi3-linux_x86_64.whl",
-    )
-    .env(
-        {
-            "HF_XET_HIGH_PERFORMANCE": "1",
-            "PYTORCH_ALLOC_CONF": "expandable_segments:True",
-        }
-    )
-    .entrypoint([])
-)
-
-```
-
-## Volumes
-
-Model weights are cached to a Volume at HuggingFace's default cache path.
-Generated videos are saved to a separate output Volume.
-
-```python
-model_volume = modal.Volume.from_name("ltx2-models", create_if_missing=True)
-output_volume = modal.Volume.from_name("ltx2-outputs", create_if_missing=True)
-
-OUTPUT_DIR = Path("/output-videos")
-
-with image.imports():
-    import torch
-    from huggingface_hub import hf_hub_download, snapshot_download
-    from ltx_core.loader import LTXV_LORA_COMFY_RENAMING_MAP, LoraPathStrengthAndSDOps
-    from ltx_core.model.video_vae import TilingConfig, get_video_chunks_number
-    from ltx_pipelines.ti2vid_two_stages import TI2VidTwoStagesPipeline
-    from ltx_pipelines.utils.constants import (
-        DEFAULT_AUDIO_GUIDER_PARAMS,
-        DEFAULT_NEGATIVE_PROMPT,
-        DEFAULT_VIDEO_GUIDER_PARAMS,
-    )
-    from ltx_pipelines.utils.media_io import encode_video
-
-app = modal.App(
-    "example-ltx2-two-stage",
-    image=image,
-    volumes={
-        "/root/.cache/huggingface": model_volume,
-        OUTPUT_DIR: output_volume,
-    },
-    secrets=[modal.Secret.from_name("huggingface-secret")],
-)
-
-```
-
-## Inference
-
-```python
-NUM_FRAMES = 121  # ~5s at 24 fps
-FRAME_RATE = 24
-WIDTH = 1536
-HEIGHT = 1024
-
-@app.cls(gpu="H200", timeout=30 * 60, scaledown_window=15 * 60)
-class LTX2TwoStage:
-    @modal.enter()
-    def setup(self):
-        """Download model weights and initialize the two-stage pipeline."""
-        torch.set_float32_matmul_precision("high")
-
-        repo = "Lightricks/LTX-2"
-        checkpoint_path = hf_hub_download(repo, "ltx-2-19b-dev.safetensors")
-        upsampler_path = hf_hub_download(
-            repo, "ltx-2-spatial-upscaler-x2-1.0.safetensors"
-        )
-        distilled_lora_path = hf_hub_download(
-            repo, "ltx-2-19b-distilled-lora-384.safetensors"
-        )
-        gemma_dir = snapshot_download("google/gemma-3-12b-it-qat-q4_0-unquantized")
-        model_volume.commit()
-
-        distilled_lora = [
-            LoraPathStrengthAndSDOps(
-                distilled_lora_path, 1.0, LTXV_LORA_COMFY_RENAMING_MAP
-            )
-        ]
-
-        self.tiling_config = TilingConfig.default()
-        self.pipeline = TI2VidTwoStagesPipeline(
-            checkpoint_path=checkpoint_path,
-            distilled_lora=distilled_lora,
-            spatial_upsampler_path=upsampler_path,
-            gemma_root=gemma_dir,
-            loras=[],
-        )
-
-    @modal.method()
-    def generate(self, prompt: str) -> None:
-        """Generate a video from a text prompt and save it to the output Volume."""
-        print(f"Generating {NUM_FRAMES} frames ({NUM_FRAMES / FRAME_RATE:.0f}s) ...")
-        print(f"Prompt: {prompt}")
-        start = time.time()
-
-        with torch.no_grad():
-            video, audio = self.pipeline(
-                prompt=prompt,
-                negative_prompt=DEFAULT_NEGATIVE_PROMPT,
-                seed=42,
-                height=HEIGHT,
-                width=WIDTH,
-                num_frames=NUM_FRAMES,
-                frame_rate=FRAME_RATE,
-                num_inference_steps=40,
-                video_guider_params=DEFAULT_VIDEO_GUIDER_PARAMS,
-                audio_guider_params=DEFAULT_AUDIO_GUIDER_PARAMS,
-                images=[],
-                tiling_config=self.tiling_config,
-                enhance_prompt=True,
-            )
-            print(f"Generated in {time.time() - start:.0f}s")
-
-            safe = "".join(c if c.isalnum() or c == " " else "-" for c in prompt)
-            filename = f"{int(time.time())}_{safe[:80].strip().replace(' ', '_')}.mp4"
-            output_path = OUTPUT_DIR / filename
-
-            encode_video(
-                video=video,
-                fps=FRAME_RATE,
-                audio=audio,
-                audio_sample_rate=24_000,
-                output_path=str(output_path),
-                video_chunks_number=get_video_chunks_number(
-                    NUM_FRAMES, self.tiling_config
-                ),
-            )
-        output_volume.commit()
-        print(f"Saved to Volume `ltx2-outputs` at {filename}")
-
-@app.local_entrypoint()
-def main(
-    prompt: str = "A cathedral made of ice, northern lights dancing overhead, camera slowly pushing forward through the nave",
-):
-    LTX2TwoStage().generate.remote(prompt=prompt)
-
-```
-
 ### Mcp Server Stateless
 
 # Deploy a remote, stateless MCP server on Modal with FastMCP
@@ -37961,12 +37767,12 @@ VLLM_PORT = 8000
 app = modal.App("example-ministral3-inference")
 
 vllm_image = (
-    modal.Image.from_registry("nvidia/cuda:12.9.0-devel-ubuntu22.04", add_python="3.12")
+    modal.Image.from_registry("nvidia/cuda:12.8.0-devel-ubuntu22.04", add_python="3.12")
     .entrypoint([])
     .uv_pip_install(
-        "vllm==0.13.0",
+        "vllm~=0.11.2",
         "huggingface-hub==0.36.0",
-        "flashinfer-python==0.5.3",
+        "flashinfer-python==0.5.2",
     )
 )
 
@@ -38003,7 +37809,7 @@ MODEL_NAME = "mistralai/Ministral-3-8B-Instruct-2512"
 
 Native hardware support for FP8 formats in [Tensor Cores](https://modal.com/gpu-glossary/device-hardware/tensor-core)
 is limited to the latest [Streaming Multiprocessor architectures](https://modal.com/gpu-glossary/device-hardware/streaming-multiprocessor-architecture),
-like those of Modal's [Hopper H100/H200 and Blackwell B200 GPUs](https://modal.com/blog/introducing-b200-h200).
+like those of Modal's [Hopper H100/H200 and Blackwell B200 GPUs](https://modal.com/blog/announcing-h200-b200).
 
 At 80 GB VRAM, a single H100 GPU has enough space to store the 8B FP8 model weights (~8 GB)
 and a very large KV cache. A single H100 is also enough to serve the 14B model in full precision,
@@ -38243,7 +38049,6 @@ class VllmServer:
 ## Deploy the server
 
 To deploy the API on Modal, just run
-
 ```bash
 modal deploy ministral3_inference.py
 ```
@@ -38401,10 +38206,10 @@ if __name__ == "__main__":
     try:
         print("calling inference server")
         asyncio.run(test(server.serve.get_web_url()))
-    except modal.exception.NotFoundError as e:
+    except modal.exception.NotFoundError:
         raise Exception(
             f"To take advantage of GPU snapshots, deploy first with modal deploy {__file__}"
-        ) from e
+        )
 
 ```
 
@@ -38598,19 +38403,16 @@ spins up a new replica to generate a video, also saved remotely,
 and then downloads the video to the local machine.
 
 You can trigger it with:
-
 ```bash
 modal run --detach mochi
 ```
 
 Optional command line flags can be viewed with:
-
 ```bash
 modal run mochi --help
 ```
 
 Using these flags, you can tweak your generation from the command line:
-
 ```bash
 modal run --detach mochi --prompt="a cat playing drums in a jazz ensemble" --num-inference-steps=64
 ```
@@ -39169,474 +38971,135 @@ In order to deploy this as a persistent cron job, you can run `modal deploy mult
 Once the job is deployed, visit the [apps page](https://modal.com/apps) page to see
 its execution history, logs and other stats.
 
-### Nemotron Inference
+### Nsys
 
-# Low latency Nemotron 3 with SGLang and Modal
+# Trace and profile GPU-accelerated applications with Nsight Systems
 
-In this example, we show how to serve Nvidia's [Nemotron](https://www.nvidia.com/en-us/ai-data-science/foundation-models/nemotron/) models
-on Modal at low latency with [SGLang](https://github.com/sgl-project/sglang).
+This example demonstrates how to use
+NVIDIA's [Nsight Systems](https://developer.nvidia.com/nsight-systems)
+profiling tool on Modal.
 
-The Nemotron models use MoE matmuls and hybrid attention
-(mixing Transformer and Mamba layers) to deliver
-powerful capabilities in a model that's efficient to run.
-You can read more in the paper [here](https://arxiv.org/abs/2512.20856).
+Nsight Systems traces and profiles GPU-accelerated applications at the _systems_ level --
+that is, it correlates events across the host and the device(s), aka the CPU(s) and GPU(s).
 
-This example is intended to demonstrate everything required to run
-inference at the highest performance and with the lowest latency possible,
-and so it includes advanced features of both SGLang and Modal.
-For a simpler introduction to LLM serving, see
-[this example](https://modal.com/docs/examples/llm_inference).
-It also runs a small and efficient model, as far as LLMs go.
-For more on serving very large language models, see
-[this example](https://modal.com/docs/examples/very_large_models).
+To run Nsight Systems, you will need to use a different version of Modal's Function runtime
+that allows user code to perform additional syscalls.
+This is made available to select users on Modal's [Enterprise Plan](https://modal.com/pricing).
+Users on that plan can request access by contacting Modal Support.
 
-To minimize routing overheads, we use `@modal.experimental.http_server`,
-which uses a new, low-latency routing service on Modal designed for latency-sensitive inference workloads.
-This gives us more control over routing, but with increased power comes increased responsibility.
+Note that the PyTorch profiler captures similar metrics to Nsight Systems but
+does not require elevated permissions. You can find sample code for that [here](https://modal.com/docs/examples/torch_profiling).
 
-## Set up the container image
+## Install Nsight Systems and the CUDA Toolkit
 
-Our first order of business is to define the environment our server will run in:
-the [container `Image`](https://modal.com/docs/guide/images).
-
-We start from a container image provided
-[by the SGLang team via Dockerhub](https://hub.docker.com/r/lmsysorg/sglang/tags).
-
-While we're at it, we import the dependencies we'll need both remotely and locally (for deployment).
+First, we need to install the software into our
+[container Image](https://modal.com/docs/guide/images).
 
 ```python
-import asyncio
-import json
-import subprocess
-import time
+from pathlib import Path
 
-import aiohttp
 import modal
-import modal.experimental
 
-MINUTES = 60  # seconds
+app = modal.App("example-nsys")
+here = Path(__file__).parent  # directory of this script
 
-sglang_image = modal.Image.from_registry(
-    "lmsysorg/sglang:v0.5.9-cu129-amd64-runtime"
-).entrypoint(
-    []  # silence chatty logs on container start
+image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .run_commands(
+        # install system packages required to install Nsight Systems
+        "apt update",
+        "apt install -y --no-install-recommends gnupg wget software-properties-common",
+        # add NVIDIA's GPG keys
+        "wget https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/cuda-keyring_1.1-1_all.deb",
+        "dpkg -i cuda-keyring_1.1-1_all.deb",
+        # add the contrib APT repository that distributes CUDA software on Debian Linux
+        "add-apt-repository contrib",
+        # install Nsight Systems and the CUDA Toolkit
+        "apt update",
+        "apt install -y cuda-nsight-systems-12-8 cuda-toolkit-12-8",
+    )
+    # update the PATH so that the CUDA software can be found
+    .env({"PATH": "/usr/local/cuda-12/bin:${PATH}"})
+    # add local files for use in `modal shell`, see discussion below
+    .add_local_file(here / "toy.cu", remote_path="/root/toy.cu")
 )
 
 ```
 
-We also choose a [GPU](https://modal.com/docs/guide/gpu) to deploy our inference server onto.
-We choose the [B200 GPU](https://modal.com/blog/introducing-b200),
-which offers excellent price-performance
-and supports both 8 bit and 4 bit [quantized floating point](https://quant.exposed)
-operations.
+## Run Nsight Systems on Modal
+
+Now we can use the `nsys` command-line tool on Modal.
+
+As a simple demonstration, we can pass in code directly as a string,
+compile it with `nvcc`, and then profile it with `nsys`.
+
+We both return the generated profile to the caller
+and persist the profile to a [Modal Volume](https://modal.com/docs/guide/volumes).
 
 ```python
-GPU_TYPE, N_GPUS = "B200", 1
-GPU = f"{GPU_TYPE}:{N_GPUS}"
+profile_volume = modal.Volume.from_name("example-nsys-traces", create_if_missing=True)
+
+@app.function(image=image, gpu="A10", volumes={"/traces": profile_volume})
+def compile_and_profile(code: str, output_path: str = "profile.nsys-rep"):
+    import subprocess
+
+    Path("kernel.cu").write_text(code)
+
+    subprocess.run(["nvcc", "-arch=sm_75", "kernel.cu"], check=True)
+
+    output_path = f"/traces/{output_path}"
+
+    subprocess.run(["nsys", "profile", "--output", output_path, "./a.out"], check=True)
+
+    return Path(output_path).read_bytes()
 
 ```
 
-### Loading and cacheing the model weights
-
-We'll serve [NVIDIA's Nemotron 3 Nano](https://arxiv.org/abs/2512.20856).
-For lower latency, we pick a smaller model (30B params quantized to [4-bit floating point](https://quant.exposed)).
-This reduces the amount of data that needs to be loaded
-[from GPU RAM into SM SRAM](https://modal.com/gpu-glossary/perf/memory-bandwidth)
-in each forward pass.
-Loading fewer bytes of model weights also speeds up [cold starts](https://modal.com/docs/guide/cold-start)
-of our inference server.
-
-```python
-MODEL_NAME = "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4"
-
-```
-
-We load the model [from the Hugging Face Hub](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4),
-so we'll need their Python package.
-
-```python
-sglang_image = sglang_image.uv_pip_install("huggingface-hub==0.36.0")
-
-```
-
-We don't want to load the model from the Hub every time we start the server.
-We can load it much faster from a [Modal Volume](https://modal.com/docs/guide/volumes).
-Typical speeds are around one to two GB/s.
-
-```python
-HF_CACHE_VOL = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-HF_CACHE_PATH = "/root/.cache/huggingface"
-MODEL_PATH = f"{HF_CACHE_PATH}/{MODEL_NAME}"
-
-```
-
-In addition to pointing the Hugging Face Hub at the path
-where we mount the Volume, we also
-[turn on "high performance" downloads](https://huggingface.co/docs/hub/en/models-downloading#faster-downloads),
-which can fully saturate our network bandwidth.
-
-```python
-sglang_image = sglang_image.env(
-    {"HF_HUB_CACHE": HF_CACHE_PATH, "HF_XET_HIGH_PERFORMANCE": "1"}
-)
-
-```
-
-## Define the inference server and infrastructure
-
-### Selecting infrastructure to minimize latency
-
-Minimizing latency requires geographic co-location of clients and servers.
-
-So for low latency LLM inference services on Modal, you must select a
-[cloud region](https://modal.com/docs/guide/region-selection)
-for both the GPU-accelerated containers running inference
-and for the internal Modal proxies that forward requests to them
-as part of defining a `modal.experimental.http_server`.
-
-Here, we assume users are mostly in the northern half of the Americas
-and select the `us-east` cloud region serve them.
-This should result in at most a few dozen milliseconds of round-trip time.
-
-```python
-REGION = "us-east"
-
-```
-
-Latencies for multi-turn interactions with LLMs are
-substantially cut when previous interaction turns are in the KV cache.
-KV caches are stored in [GPU RAM](https://modal.com/gpu-glossary/device-hardware/gpu-ram),
-so they aren't shared across replicas.
-To improve cache hit rate, `modal.experimental.http_server`
-includes sticky routing based on a client-provided header.
-See the client code below for details.
-
-For production-scale LLM inference services, there are generally
-enough requests to justify keeping at least one replica running at all times.
-Having a "warm" or "live" replica reduces latency by skipping slow initialization work
-that occurs when new replica boots up (a ["cold start"](https://modal.com/docs/guide/cold-start)).
-For LLM inference servers, that latency runs from seconds to minutes.
-
-To ensure at least one container is always available,
-we can set the `min_containers` of our Modal Function
-to `1` or more.
-
-However, since this is documentation code, we'll set it to `0`
-to avoid surprise bills during casual use.
-
-```python
-MIN_CONTAINERS = 0  # set to 1 to ensure one replica is always ready
-
-```
-
-Finally, we need to decide how we will scale up and down replicas
-in response to load. Without autoscaling, users' requests will queue
-when the server becomes overloaded. Even apart from queueing, responses
-generally become slower per user above a certain minimum number of
-concurrent requests.
-
-So we set a target for the number of inputs to run on a single container
-with [`modal.concurrent`](https://modal.com/docs/reference/modal.concurrent).
-For details, see [the guide](https://modal.com/docs/guide/concurrent-inputs).
-
-```python
-TARGET_INPUTS = 10
-
-```
-
-Generally, this choice needs to be made as part of
-[LLM inference engine benchmarking](https://modal.com/llm-almanac/how-to-benchmark).
-
-### Controlling container lifecycles with `modal.Cls`
-
-We wrap up all of the choices we made about the infrastructure
-of our inference server into a number of Python decorators
-that we apply to a Python class that encapsulates the logic
-to run our server.
-
-The key decorators are:
-
-- [`@app.cls`](https://modal.com/docs/guide/lifecycle-functions) to define the core of our service.
-We attach our Image, request a GPU, attach our cache Volumes, specify the region, and configure auto-scaling.
-See [the reference documentation](https://modal.com/docs/reference/modal.App#cls) for details.
-
-- `@modal.experimental.http_server` to turn our Python code into an HTTP server
-(i.e. fronting all of our containers with a proxy with a URL). The wrapped code
-needs to eventually listen for HTTP connections on the provided `port`.
-
-- [`@modal.concurrent`](https://modal.com/docs/guide/concurrent-inputs) to specify how many
-requests our server can handle before we need to scale up.
-
-- [`@modal.enter` and `@modal.exit`](https://modal.com/docs/guide/lifecycle-functions) to indicate
-which methods of the class should be run when starting the server and shutting it down.
-
-Modal considers a new replica ready to receive inputs once the `modal.enter` methods have exited
-and the container accepts connections.
-To ensure that we actually finish setting up our server before we are marked ready for inputs,
-we define a helper function to check whether the server is finished setting up and to
-send it a few test inputs.
-
-We use the [`requests` library](https://requests.readthedocs.io/en/latest/)
-to send ourselves these HTTP requests on
-[`localhost`/`127.0.0.1`](https://superuser.com/questions/31824/why-is-localhost-ip-127-0-0-1).
-
-```python
-with sglang_image.imports():
-    import requests
-
-def wait_ready(process: subprocess.Popen, timeout: int = 5 * MINUTES):
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            check_running(process)
-            requests.get(f"http://127.0.0.1:{PORT}/health").raise_for_status()
-            return
-        except (
-            subprocess.CalledProcessError,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-        ):
-            time.sleep(5)
-    raise TimeoutError(f"SGLang server not ready within {timeout} seconds")
-
-def check_running(p: subprocess.Popen):
-    if (rc := p.poll()) is not None:
-        raise subprocess.CalledProcessError(rc, cmd=p.args)
-
-def warmup():
-    payload = {
-        "messages": [{"role": "user", "content": "Hello, how are you?"}],
-        "max_tokens": 16,
-    }
-    for _ in range(3):
-        requests.post(
-            f"http://127.0.0.1:{PORT}/v1/chat/completions", json=payload, timeout=10
-        ).raise_for_status()
-
-```
-
-With all this in place, we are ready to define our high-performance, low-latency
-Nemotron inference server.
-
-```python
-app = modal.App(name="example-nemotron-inference")
-PORT = 8000
-
-@app.cls(
-    image=sglang_image,
-    gpu=GPU,
-    volumes={HF_CACHE_PATH: HF_CACHE_VOL},
-    region=REGION,
-    min_containers=MIN_CONTAINERS,
-    secrets=[modal.Secret.from_name("huggingface-secret")],
-)
-@modal.experimental.http_server(
-    port=PORT,  # wrapped code must listen on this port
-    proxy_regions=[REGION],  # location of proxies, should be same as Cls region
-    exit_grace_period=15,  # seconds, time to finish up requests when closing down
-)
-@modal.concurrent(target_inputs=TARGET_INPUTS)
-class Server:
-    @modal.enter()
-    def startup(self):
-        """Start the SGLang server and block until it is healthy, then warm it up."""
-
-        cmd = [
-            "python",
-            "-m",
-            "sglang.launch_server",
-            "--model-path",
-            MODEL_NAME,
-            "--served-model-name",
-            MODEL_NAME,
-            "--host",
-            "0.0.0.0",
-            "--port",
-            f"{PORT}",
-            "--tp",  # use all GPUs to split up tensor-parallel operations
-            f"{N_GPUS}",
-            "--cuda-graph-max-bs",  # only capture CUDA graphs for batch sizes we're likely to observe
-            f"{TARGET_INPUTS * 2}",
-            "--enable-metrics",  # expose metrics endpoints for telemetry
-            "--decode-log-interval",  # how often to log during decoding, in tokens
-            "100",
-            "--trust-remote-code",
-            "--tool-call-parser",
-            "qwen3_coder",
-            "--reasoning-parser",
-            "nano_v3",
-        ]
-
-        self.process = subprocess.Popen(cmd)
-        wait_ready(self.process)
-        warmup()
-
-    @modal.exit()
-    def stop(self):
-        self.process.terminate()
-
-```
-
-## Deploy the server
-
-To deploy the server on Modal, just run
+To confirm everything's working, we can pass the code directly to our Modal Function
+from the terminal and write the response into a local file:
 
 ```bash
-modal deploy nemotron_inference.py
+modal run -w profile.nsys-rep nsys.py::compile_and_profile --code $'#include <iostream>\nint main() { std::cout << "Hello, World!" << std::endl; return 0; }'
 ```
 
-This will create a new App on Modal and build the container image for it if it hasn't been built yet.
+If you [install the Nsight Systems GUI on your local machine](https://developer.nvidia.com/nsight-systems/get-started),
+you can view the trace and profiler report -- no NVIDIA GPUs or CUDA Toolkit required.
 
-## Interact with the server
-
-Once it is deployed, you'll see a URL appear in the command line,
-something like `https://your-workspace-name--example-nemotron-inference-server.us-east.modal.direct`.
-
-You can find [interactive Swagger UI docs](https://swagger.io/tools/swagger-ui/)
-at the `/docs` route of that URL, i.e. `https://your-workspace-name--example-nemotron-inference-server.us-east.modal.direct/docs`.
-These docs describe each route and indicate the expected input and output
-and translate requests into `curl` commands.
-For simple routes, you can even send a request directly from the docs page.
-
-Note: when no replicas are available, Modal will respond with
-the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503).
-In your browser, you can just hit refresh until the docs page appears.
-You can see the status of the application and its containers on your [Modal dashboard](https://modal.com/apps).
-
-## Test the server
-
-To make it easier to test the server setup, we also include a `local_entrypoint`
-that hits the server with a simple client.
-
-If you execute the command
+The `local_entrypoint` below shows a slightly more realistic pattern,
+based on passing in a path to a CUDA program.
 
 ```bash
-modal run nemotron_inference.py
+modal run nsys.py --input-path toy.cu
 ```
-
-a fresh replica of the server will be spun up on Modal while
-the code below executes on your local machine.
-
-Think of this like writing simple tests inside of the `if __name__ == "__main__"`
-block of a Python script, but for cloud deployments!
 
 ```python
 @app.local_entrypoint()
-async def test(test_timeout=10 * MINUTES, prompt=None, twice=True):
-    url = (await Server._experimental_get_flash_urls.aio())[0]
+def main(input_path: str | None = None, output_path: str | None = None):
+    if not input_path:
+        input_path = here / "toy.cu"
+    code = Path(input_path).read_text()
 
-    system_prompt = {
-        "role": "system",
-        "content": "You are a pirate who can't help but drop sly reminders that he went to Harvard.",
-    }
-    if prompt is None:
-        prompt = "Explain the Singular Value Decomposition."
+    profile = compile_and_profile.remote(code)
 
-    content = [{"type": "text", "text": prompt}]
+    (path := Path(output_path or here / "profile.nsys-rep")).write_bytes(profile)
 
-    messages = [  # OpenAI chat format
-        system_prompt,
-        {"role": "user", "content": content},
-    ]
-
-    await probe(url, messages, timeout=test_timeout)
-    if twice:
-        messages[0]["content"] = "You are Jar Jar Binks."
-        print(f"Sending messages to {url}:", *messages, sep="\n\t")
-        await probe(url, messages, timeout=1 * MINUTES)
+    print(f"profile saved at {path}")
 
 ```
 
-This test relies on the two helper functions below,
-which ping the server and wait for a valid response to stream.
+For multi-file compilation and profiling, we recommend using
+[`Image.add_local_file`](https://modal.com/docs/reference/modal.Image#add_local_file) and
+[`Image.add_local_dir`](https://modal.com/docs/reference/modal.Image#add_local_dir)
+to add your source code to the Image and then either editing the `nvcc` command directly
+or profiling in an interactive shell with
 
-The `probe` helper function specifically ignores
-two types of errors that can occur while a replica
-is starting up -- timeouts on the client and 5XX responses from the server.
-Modal returns the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503)
-when an `experimental.http_server` has no live replicas.
-
-We include a header with each request --
-`Modal-Session-ID`.
-This is header is used by clients of `http_server`s on Modal
-to identify which requests should be routed to the same container
-(with caveats explained below).
-
-The value associated with this key
-is used to map requests onto containers such that
-while the set of containers is fixed, requests with the same value
-are sent to the same container.
-Set this to a different value per distinct multi-turn interaction
-(prototypically, a user conversation thread with a chatbot)
-to improve KV cache hit rates.
-Additionally, when the set of containers changes (e.g. due to autoscaling),
-sessions are rebalanced such that load is approximately evenly spread,
-much like in [RAID rebalancing](https://cordero.me/understanding-raid-rebalance-ensuring-optimal-performance-and-data-protection/).
-This ensures no container ends up as a "hot spot" handling too many client requests.
-
-```python
-async def probe(url, messages=None, timeout=5 * MINUTES):
-    if messages is None:
-        messages = [{"role": "user", "content": "Tell me a joke."}]
-
-    client_id = str(0)  # set this to some string per multi-turn interaction
-    # often a UUID per "conversation"
-    headers = {"Modal-Session-ID": client_id}
-    deadline = time.time() + timeout
-    async with aiohttp.ClientSession(base_url=url, headers=headers) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request_streaming(session, messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-            except aiohttp.client_exceptions.ClientResponseError as e:
-                if e.status == 503:
-                    await asyncio.sleep(1)
-                    continue
-                raise e
-    raise TimeoutError(f"No response from server within {timeout} seconds")
-
-async def _send_request_streaming(
-    session: aiohttp.ClientSession, messages: list, timeout: int | None = None
-) -> None:
-    payload = {"messages": messages, "stream": True}
-    headers = {"Accept": "text/event-stream"}
-
-    async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers, timeout=timeout
-    ) as resp:
-        resp.raise_for_status()
-        full_text = ""
-
-        async for raw in resp.content:
-            line = raw.decode("utf-8", errors="ignore").strip()
-            if not line:
-                continue
-
-            # Server-Sent Events format: "data: ...."
-            if not line.startswith("data:"):
-                continue
-
-            data = line[len("data:") :].strip()
-            if data == "[DONE]":
-                break
-
-            try:
-                evt = json.loads(data)
-            except json.JSONDecodeError:
-                # ignore any non-JSON keepalive
-                continue
-
-            delta = (evt.get("choices") or [{}])[0].get("delta") or {}
-            chunk = delta.get("content") or delta.get("reasoning_content")
-
-            if chunk:
-                print(chunk, end="", flush="\n" in chunk or "." in chunk)
-                full_text += chunk
-        print()  # newline after stream completes
-
+```bash
+modal shell nsys.py
 ```
+
+Profiles saved to `/traces/` will be persisted in a Modal Volume.
+See [the guide](https://modal.com/docs/guide/volumes)
+for details on how to retrieve them for local review.
 
 ### Ollama
 
@@ -39748,7 +39211,6 @@ model_volume = modal.Volume.from_name("ollama-models-store", create_if_missing=T
 
 We define an OllamaServer class to manage the Ollama process.
 This class handles:
-
 - Starting the Ollama server
 - Downloading required models
 - Exposing the API via Modal's web_server
@@ -39944,7 +39406,6 @@ class OllamaServer:
 
 This local entrypoint function provides a simple way to test the Ollama server.
 When you run `modal run ollama.py`, this function will:
-
 1. Start an OllamaServer instance in the cloud
 2. Run test prompts against each configured model
 3. Print a summary of the results
@@ -40009,322 +39470,6 @@ You can then use this endpoint with any OpenAI-compatible client by setting:
 ```
 OPENAI_API_BASE=https://your-endpoint-url
 OPENAI_API_KEY=any-value  # Ollama doesn't require authentication
-```
-
-### Opencode Server
-
-# Run OpenCode in a Modal Sandbox
-
-This example demonstrates how to run [OpenCode](https://opencode.ai/docs)
-remotely and connect to it from your local terminal or browser.
-
-Combine self-hosted OpenCode with [serving a big, smart model](https://modal.com/docs/examples/very_large_models)
-on Modal and you've got "coding agents at home"!
-
-Coding agents are most useful when they have context and tools.
-By default, this script clones the [Modal examples repo](https://github.com/modal-labs/modal-examples)
-and gives the agent access to your Modal credentials,
-so it can run and debug examples (including this one!).
-Meta.
-
-![A screenshot of the OpenCode Web UI showing this coding agent running its own code](https://modal-cdn.com/examples-opencode-server-webui.png)
-
-## Set up OpenCode on Modal
-
-```python
-import argparse
-import os
-from pathlib import Path
-
-import modal
-
-MINUTES = 60
-HOURS = 60 * MINUTES
-OPENCODE_PORT = 4096
-DEFAULT_GITHUB_REPO = "modal-labs/modal-examples"
-
-```
-
-First, we define a Modal container [Image](https://modal.com/docs/guide/images)
-with OpenCode installed.
-
-```python
-def define_base_image() -> modal.Image:
-    image = (
-        modal.Image.debian_slim()
-        .apt_install("curl", "git", "gh")
-        .run_commands("curl -fsSL https://opencode.ai/install | bash")
-        .env({"PATH": "/root/.opencode/bin:${PATH}"})
-    )
-
-    # We also bring the global default OpenCode configuration along for the ride.
-
-    CONFIG_PATH = Path("~/.config/opencode/opencode.json").expanduser()
-    if CONFIG_PATH.exists():
-        print("🏖️  Including config from", CONFIG_PATH)
-        image = image.add_local_file(
-            CONFIG_PATH, "/root/.config/opencode/opencode.json", copy=True
-        )
-
-    return image
-
-```
-
-## Clone a GitHub repository
-
-Next, we clone the code we want the agent to work on.
-The repository is cloned into the container image at build time,
-so it's available when the Sandbox starts.
-
-```python
-def clone_github_repo(
-    image: modal.Image, repo: str, ref: str, token: str | None = None
-) -> modal.Image:
-    git_config = "git config --global advice.detachedHead false"
-
-    # For private repositories, pass a GitHub personal access token via `--github-token`.
-    # For public repositories, no token is needed.
-
-    if token:
-        clone_cmd = f"GIT_ASKPASS=echo git clone --quiet --depth 1 --branch {ref} --no-single-branch https://oauth2:{token}@github.com/{repo}.git /root/code"
-    else:
-        clone_cmd = f"GIT_TERMINAL_PROMPT=0 git clone --quiet --depth 1 --branch {ref} --no-single-branch https://github.com/{repo}.git /root/code"
-
-    print(f"🏖️  Cloning {repo}@{ref} to /root/code")
-    return image.run_commands(git_config, clone_cmd, force_build=True)
-
-```
-
-## Grant Modal credentials
-
-Since the agent is working with Modal code, we also make it easy to provide Modal access.
-Examples in this repo should run with nothing more than `modal` installed --
-except for a few that use `fastapi`.
-
-```python
-def add_modal_access(image: modal.Image) -> modal.Image:
-    image = image.uv_pip_install("modal", "fastapi~=0.128.0")
-
-    # We grant the agent our Modal permissions,
-    # either via environment variables or the local credentials file.
-
-    modal_token_id = os.environ.get("MODAL_TOKEN_ID")
-    modal_token_secret = os.environ.get("MODAL_TOKEN_SECRET")
-
-    if modal_token_id and modal_token_secret:
-        return image.env(
-            {"MODAL_TOKEN_ID": modal_token_id, "MODAL_TOKEN_SECRET": modal_token_secret}
-        )
-
-    MODAL_PATH = Path("~/.modal.toml").expanduser()
-    if MODAL_PATH.exists():
-        print("🏖️  Including Modal auth from", MODAL_PATH)
-        return image.add_local_file(MODAL_PATH, "/root/.modal.toml", copy=True)
-
-    raise EnvironmentError(
-        "No Modal credentials found. "
-        "Either set MODAL_TOKEN_ID and MODAL_TOKEN_SECRET environment variables, "
-        "or ensure ~/.modal.toml exists."
-    )
-
-```
-
-## Start the Sandbox
-
-Now, we create a [Modal Sandbox](https://modal.com/docs/guide/sandboxes)
-to run our coding agent session.
-This Sandbox has our environment Image and a password for authentication.
-
-We open up the `OPENCODE_PORT` so that the server can be accessed over the Internet.
-
-```python
-def create_sandbox(
-    image: modal.Image,
-    timeout: int,
-    app: modal.App,
-    secrets: list[modal.Secret],
-    working_dir: str | None = None,
-) -> modal.Sandbox:
-    print("🏖️  Creating sandbox")
-
-    with modal.enable_output():
-        return modal.Sandbox.create(
-            "opencode",
-            "serve",
-            "--hostname=0.0.0.0",
-            f"--port={OPENCODE_PORT}",
-            "--log-level=DEBUG",
-            "--print-logs",
-            encrypted_ports=[OPENCODE_PORT],
-            secrets=secrets,
-            timeout=timeout,
-            image=image,
-            app=app,
-            workdir=working_dir,
-        )
-
-```
-
-OpenCode is truly open -- there are many interfaces to the underlying
-coding agent server.
-Here we print information for:
-
-- directly accessing the underlying Modal Sandbox for debugging or "pair coding" with the agent
-- accessing the Web UI from a local browser (with authentication!)
-- accessing the TUI from your local terminal
-
-```python
-def print_access_info(sandbox: modal.Sandbox, password_secret_name: str):
-    print(
-        "🏖️  Access the sandbox directly:",
-        f"modal shell {sandbox.object_id}",
-        sep="\n\t",
-    )
-
-    tunnel = sandbox.tunnels()[OPENCODE_PORT]
-    print(
-        "🏖️  Access the WebUI:",
-        tunnel.url,
-        "Username: opencode",
-        sep="\n\t",
-    )
-    print(
-        "🏖️  Access the TUI:",
-        f"OPENCODE_SERVER_PASSWORD=YOUR_PASSWORD opencode attach {tunnel.url}",
-        sep="\n\t",
-    )
-    print(
-        "🏖️  Display the password:",
-        f"modal shell --secret {password_secret_name} --cmd 'env | grep OPENCODE_SERVER_PASSWORD='",
-        sep="\n\t",
-    )
-
-```
-
-The server is secured via a password in a [Modal Secret](https://modal.com/docs/guide/secrets).
-You can create one by heading to the [Secrets Dashboard](https://modal.com/secrets)
-and creating a new "Custom" Secret. Use `OPENCODE_SERVER_PASSWORD` as the key
-and the password as the value.
-
-The CLI will also give you a helpful one-liner you can use to recover the password
-with your Modal credentials in case you forget it.
-
-## Putting it all together
-
-```python
-def main(
-    timeout: int,
-    app_name: str,
-    allow_modal_access: bool,
-    github_repo: str,
-    github_ref: str,
-    github_token: str | None,
-    password_secret_name: str,
-):
-    app = modal.App.lookup(app_name, create_if_missing=True)
-    image = define_base_image()
-
-    if allow_modal_access:
-        image = add_modal_access(image)
-
-    image = clone_github_repo(image, github_repo, github_ref, github_token)
-
-    password_secret = modal.Secret.from_name(password_secret_name)
-
-    sandbox_secrets = [password_secret]
-    if github_token:
-        sandbox_secrets.append(modal.Secret.from_dict({"GH_TOKEN": github_token}))
-
-    sandbox = create_sandbox(image, timeout, app, sandbox_secrets, "/root/code")
-    print_access_info(sandbox, password_secret_name)
-
-```
-
-## Command-line options
-
-This script supports configuration via command-line arguments.
-Run with `--help` to see all options.
-
-To grant the agent the same GitHub permissions you have, you can pass a GitHub personal access token.
-If you use the `gh` CLI, you can use shell command substitution to pass your current auth:
-
-```bash
-    python 13_sandboxes/opencode_server.py --github-token $(gh auth token)
-```
-
-```python
-def parse_timeout(timeout_str: str) -> int:
-    if timeout_str.endswith("h"):
-        minutes = int(timeout_str[:-1]) * 60
-    elif timeout_str.endswith("m"):
-        minutes = int(timeout_str[:-1])
-    else:
-        minutes = int(timeout_str) * 60
-
-    if minutes < 1:
-        raise argparse.ArgumentTypeError("Timeout must be at least 1 minute")
-    if minutes > 24 * 60:
-        raise argparse.ArgumentTypeError("Timeout cannot exceed 24 hours")
-
-    return minutes * MINUTES
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Launch OpenCode server on Modal")
-    parser.add_argument(
-        "--timeout",
-        type=str,
-        default="12",
-        help="Server timeout (e.g. 2h, 90m). No suffix -> hours. Default: 12",
-    )
-    parser.add_argument(
-        "--app-name",
-        type=str,
-        default="example-opencode-server",
-        help="Modal app name. Default: example-opencode-server",
-    )
-    parser.add_argument(
-        "--no-modal-access",
-        action="store_false",
-        dest="allow_modal_access",
-        help="Disable Modal credential access",
-    )
-    parser.add_argument(
-        "--password-secret",
-        dest="password_secret_name",
-        help="Name",
-        default="opencode-secret",
-    )
-    parser.add_argument(
-        "--github-repo",
-        type=str,
-        default=DEFAULT_GITHUB_REPO,
-        help=f"GitHub repo in owner/repo format. Default: {DEFAULT_GITHUB_REPO}",
-    )
-    parser.add_argument(
-        "--github-ref",
-        type=str,
-        default="main",
-        help="Git ref to checkout (branch, tag, SHA). Default: main",
-    )
-    parser.add_argument(
-        "--github-token",
-        type=str,
-        default=None,
-        help="GitHub PAT for private repos and gh CLI auth. Tip: use $(gh auth token)",
-    )
-
-    args = parser.parse_args()
-
-    main(
-        parse_timeout(args.timeout),
-        args.app_name,
-        args.allow_modal_access,
-        args.github_repo,
-        args.github_ref,
-        args.github_token,
-        args.password_secret_name,
-    )
-
 ```
 
 ### Outlines Generate
@@ -40990,7 +40135,6 @@ import modal
 ## Define a container image
 
 We start with Modal's baseline `debian_slim` image and install the required packages.
-
 - `openai`: PlayDiffusion requires a transcript as input. You can either provide the transcript yourself as input, or use a transcription model to transcribe the audio on the fly. In this case we use openai's whisper api, but you can use any model of your choice.
 
 ```python
@@ -41263,16 +40407,11 @@ retriever = None  # embedding index that's relatively expensive to compute, so c
 
 ## Scraping the speech
 
-It's super easy to scrape the transcript of Biden's speech using `httpx` and `BeautifulSoup`.
+It's super easy to scrape the transcipt of Biden's speech using `httpx` and `BeautifulSoup`.
 This speech is just one document and it's relatively short, but it's enough to demonstrate
 the question-answering capability of the LLM chain.
 
-Since we're fetching from an external server, we use Modal's built-in
-[`Retries`](https://modal.com/docs/reference/modal.Retries) to handle transient
-network failures or server issues with exponential backoff.
-
 ```python
-@app.function(retries=modal.Retries(max_retries=3, backoff_coefficient=2.0))
 def scrape_state_of_the_union() -> str:
     import httpx
     from bs4 import BeautifulSoup
@@ -41283,7 +40422,7 @@ def scrape_state_of_the_union() -> str:
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9"
     }
-    response = httpx.get(url, headers=headers, timeout=30.0)
+    response = httpx.get(url, headers=headers)
     soup = BeautifulSoup(response.text, "lxml")
 
     # locate the div containing the speech
@@ -41325,7 +40464,7 @@ def qanda_langchain(query: str) -> tuple[str, list[str]]:
         state_of_the_union = speech_file_path.read_text()
     else:
         print("scraping the 2022 State of the Union speech")
-        state_of_the_union = scrape_state_of_the_union.remote()
+        state_of_the_union = scrape_state_of_the_union()
         speech_file_path.write_text(state_of_the_union)
 
     # Questions about a document can often be answered
@@ -41423,7 +40562,7 @@ def cli(query: str, show_sources: bool = False):
 ## Test run the CLI
 
 ```bash
-modal run potus_speech_qanda.py::cli --query "What did the president say about Justice Breyer"
+modal run potus_speech_qanda.py --query "What did the president say about Justice Breyer"
 🦜 ANSWER:
 The president thanked Justice Breyer for his service and mentioned his legacy of excellence. He also nominated Ketanji Brown Jackson to continue in Justice Breyer's legacy.
 ```
@@ -41431,7 +40570,7 @@ The president thanked Justice Breyer for his service and mentioned his legacy of
 To see the text of the sources the model chain used to provide the answer, set the `--show-sources` flag.
 
 ```bash
-modal run potus_speech_qanda.py::cli \
+modal run potus_speech_qanda.py \
    --query "How many oil barrels were released from reserves?" \
    --show-sources
 ```
@@ -41638,7 +40777,6 @@ and alerts based on these metrics!
 # Example (qdrant.py)
 
 This is the source code for **06_gpu_and_ml.embeddings.qdrant**.
-
 ```python
 from typing import Optional
 
@@ -42194,14 +41332,12 @@ and examine files.
 
 ```python
 import modal
-from modal.container_process import ContainerProcess
 
 app = modal.App.lookup("example-sandbox-agent", create_if_missing=True)
 
 ```
 
-First, we create a custom [Image](https://modal.com/docs/guide/images) that has Claude Code
-and git installed.
+First we create a custom Image that has Claude Code installed.
 
 ```python
 image = (
@@ -42213,44 +41349,28 @@ image = (
     )
 )
 
-```
-
-Then we create our Sandbox.
-
-```python
 with modal.enable_output():
     sandbox = modal.Sandbox.create(app=app, image=image)
 print(f"Sandbox ID: {sandbox.object_id}")
 
 ```
 
-Next we'll clone the repository that Claude Code will work on.
-We'll use [the Modal examples repo](https://github.com/modal-labs/modal-examples)
-that this example is a part of.
-
-We trigger the clone by [`exec`](https://modal.com/docs/reference/modal.Sandbox#exec)uting
-`git` as a process inside the Sandbox. We then `.wait` for it to finish.
-You can read more about the interface for managing
-`ContainerProcess`es in Sandboxes [here](https://modal.com/docs/reference/modal.container_process).
+Next we'll clone a repository that Claude Code will work on.
 
 ```python
 repo_url = "https://github.com/modal-labs/modal-examples"
-git_ps: ContainerProcess = sandbox.exec(
-    "git", "clone", "--depth", "1", repo_url, "/repo"
-)
+git_ps = sandbox.exec("git", "clone", "--depth", "1", repo_url, "/repo")
 git_ps.wait()
 print(f"Cloned '{repo_url}' into /repo.")
 
 ```
 
-Finally we'll use `exec` again to run Claude Code to analyze the repository.
-Here, we pass the `pty` flag to give the process a
-[pseudo-terminal](https://unix.stackexchange.com/questions/21147/what-are-pseudo-terminals-pty-tty).
+Finally we'll run Claude Code to analyze the repository.
 
 ```python
 claude_cmd = ["claude", "-p", "What is in this repository?"]
 
-print("\nRunning command:", *claude_cmd)
+print("\nRunning command:", claude_cmd)
 
 claude_ps = sandbox.exec(
     *claude_cmd,
@@ -42262,11 +41382,6 @@ claude_ps = sandbox.exec(
 )
 claude_ps.wait()
 
-```
-
-Once the command finishes, we read the `stdout` and `stderr`.
-
-```python
 print("\nAgent stdout:\n")
 print(claude_ps.stdout.read())
 
@@ -42297,7 +41412,6 @@ The pool keeps track of the time to live for each Sandbox, and will always retur
 a Sandbox with enough time left.
 
 It's structured into two Apps:
-
 - `example-sandbox-pool` is the main App that contains all the control logic for maintaining
   the pool, exposing ways to claim Sandboxes, etc.
 - `example-sandbox-pool-sandboxes` houses all the actual Sandboxes, and nothing else.
@@ -42447,7 +41561,6 @@ def add_sandbox_to_queue() -> None:
         raise Exception("Health check failed")
 
     pool_queue.put(SandboxReference(id=sb.object_id, url=url, expires_at=expires_at))
-    sb.detach()
 
 ```
 
@@ -42460,7 +41573,6 @@ def terminate_sandboxes(sandbox_ids: list[str]) -> int:
     for id in sandbox_ids:
         sb = modal.Sandbox.from_id(id)
         sb.terminate()
-        sb.detach()
         num_terminated += 1
 
     print(f"Terminated {num_terminated} Sandboxes")
@@ -42484,6 +41596,8 @@ the same process as the web endpoint.
 
 The Function can be called using the Modal SDK for [Python][1], [Go, or JS][2].
 
+[1]: https://github.com/modal-labs/modal-client
+[2]: https://github.com/modal-labs/libmodal
 [3]: https://modal.com/docs/guide/webhook-urls
 
 ```python
@@ -42630,7 +41744,7 @@ def claim() -> None:
 
 ```
 
-### Run a demo of the Sandbox pool
+### Run a demo of the Sandbox pool.
 
 This is implemented as if you wanted to call the Function from a Python backend
 application using the Modal SDK, i.e. using `.from_name()` to get the Function, etc.
@@ -43119,417 +42233,332 @@ modal deploy serve_streamlit.py
 If successful, this will print a URL for your app that you can navigate to from
 your browser 🎉 .
 
-### Sglang Kitchen Sink
+### Sgl Vlm
 
-# Fast-booting, low-latency Qwen 3 8B with SGLang, GPU snapshots, and speculative decoding
+# Run Qwen2-VL on SGLang for Visual QA
 
-This is a bare-bones "kitchen-sink" demo of all of the tips and tricks
-you can use to make Qwen 3 8B go brrt.
+Vision-Language Models (VLMs) are like LLMs with eyes:
+they can generate text based not just on other text,
+but on images as well.
 
-Unlike our other examples, this demo includes limited explanation of the code.
-For a detailed guide to the principles and practices implemented here,
-see [this guide](https://modal.com/docs/guide/high-performance-llm-inference).
+This example shows how to run a VLM on Modal using the
+[SGLang](https://github.com/sgl-project/sglang) library.
 
-## Set up the container image
+Here's a sample inference, with the image rendered directly (and at low resolution) in the terminal:
+
+![Sample output answering a question about a photo of the Statue of Liberty](https://modal-public-assets.s3.amazonaws.com/sgl_vlm_qa_sol.png)
+
+## Setup
+
+First, we'll import the libraries we need locally
+and define some constants.
 
 ```python
-import asyncio
-import json
-import subprocess
+import os
 import time
+import warnings
+from pathlib import Path
+from typing import Optional
+from uuid import uuid4
 
-import aiohttp
 import modal
-import modal.experimental
+
+```
+
+VLMs are generally larger than LLMs with the same cognitive capability.
+LLMs are already hard to run effectively on CPUs, so we'll use a GPU here.
+We find that inference for a single input takes about 3-4 seconds on an A10G.
+
+You can customize the GPU type and count using the `GPU_TYPE` and `GPU_COUNT` environment variables.
+If you want to see the model really rip, try an `"a100-80gb"` or an `"h100"`
+on a large batch.
+
+```python
+GPU_TYPE = os.environ.get("GPU_TYPE", "l40s")
+GPU_COUNT = os.environ.get("GPU_COUNT", 1)
+
+GPU_CONFIG = f"{GPU_TYPE}:{GPU_COUNT}"
+
+SGL_LOG_LEVEL = "error"  # try "debug" or "info" if you have issues
 
 MINUTES = 60  # seconds
 
-sglang_image = (
-    modal.Image.from_registry(
-        "modalresearch/sglang:v0.5.7-fa4-dflash-preview"  # bleeding-edge custom SGLang build
-    ).entrypoint([])  # silence chatty logs on container start
+```
+
+We use the [Qwen2-VL-7B-Instruct](https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct)
+model by Alibaba.
+
+```python
+MODEL_PATH = "Qwen/Qwen2-VL-7B-Instruct"
+MODEL_REVISION = "a7a06a1cc11b4514ce9edcde0e3ca1d16e5ff2fc"
+TOKENIZER_PATH = "Qwen/Qwen2-VL-7B-Instruct"
+MODEL_CHAT_TEMPLATE = "qwen2-vl"
+
+```
+
+We download it from the Hugging Face Hub using the Python function below.
+We'll store it in a [Modal Volume](https://modal.com/docs/guide/volumes)
+so that it's not downloaded every time the container starts.
+
+```python
+MODEL_VOL_PATH = Path("/models")
+MODEL_VOL = modal.Volume.from_name("sgl-cache", create_if_missing=True)
+volumes = {MODEL_VOL_PATH: MODEL_VOL}
+
+def download_model():
+    from huggingface_hub import snapshot_download
+
+    snapshot_download(
+        MODEL_PATH,
+        local_dir=str(MODEL_VOL_PATH / MODEL_PATH),
+        revision=MODEL_REVISION,
+        ignore_patterns=["*.pt", "*.bin"],
+    )
+
+```
+
+Modal runs Python functions on containers in the cloud.
+The environment those functions run in is defined by the container's `Image`.
+The block of code below defines our example's `Image`.
+
+```python
+cuda_version = "12.8.0"  # should be no greater than host CUDA version
+flavor = "devel"  #  includes full CUDA toolkit
+operating_sys = "ubuntu22.04"
+tag = f"{cuda_version}-{flavor}-{operating_sys}"
+
+vlm_image = (
+    modal.Image.from_registry(f"nvidia/cuda:{tag}", add_python="3.11")
+    .entrypoint([])  # removes chatty prints on entry
+    .apt_install("libnuma-dev")  # Add NUMA library for sgl_kernel
+    .uv_pip_install(  # add sglang and some Python dependencies
+        "transformers==4.54.1",
+        "numpy<2",
+        "fastapi[standard]==0.115.4",
+        "pydantic==2.9.2",
+        "requests==2.32.3",
+        "starlette==0.41.2",
+        "torch==2.7.1",
+        "sglang[all]==0.4.10.post2",
+        "sgl-kernel==0.2.8",
+        "hf-xet==1.1.5",
+        pre=True,
+    )
+    .env(
+        {
+            "HF_HOME": str(MODEL_VOL_PATH),
+            "HF_XET_HIGH_PERFORMANCE": "1",
+        }
+    )
+    .run_function(  # download the model by running a Python function
+        download_model, volumes=volumes
+    )
+    .uv_pip_install(  # add an optional extra that renders images in the terminal
+        "term-image==0.7.1"
+    )
 )
 
-sglang_image.env(
-    {  # bleeding-edge SGLang perf opt settings
-        "SGLANG_ENABLE_SPEC_V2": "1",
-        "SGLANG_ENABLE_DFLASH_SPEC_V2": "1",
-        "SGLANG_ENABLE_OVERLAP_PLAN_STREAM": "1",
-    }
-)
-
 ```
 
-## Choose a GPU
+## Defining a Visual QA service
+
+Running an inference service on Modal is as easy as writing inference in Python.
+
+The code below adds a modal `Cls` to an `App` that runs the VLM.
+
+We define a method `generate` that takes a URL for an image and a question
+about the image as inputs and returns the VLM's answer.
+
+By decorating it with `@modal.fastapi_endpoint`, we expose it as an HTTP endpoint,
+so it can be accessed over the public Internet from any client.
 
 ```python
-GPU_TYPE, N_GPUS = "B200", 1
-GPU = f"{GPU_TYPE}:{N_GPUS}"
-
-```
-
-### Loading and cacheing the model weights
-
-```python
-MODEL_NAME = "Qwen/Qwen3-8B-FP8"
-MODEL_REVISION = (  # pin revision id to avoid nasty surprises!
-    "220b46e3b2180893580a4454f21f22d3ebb187d3"  # latest commit as of 2026-01-29, from 2025-07-25
-)
-
-sglang_image = sglang_image.uv_pip_install("huggingface-hub==0.36.0")
-
-HF_CACHE_VOL = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-HF_CACHE_PATH = "/root/.cache/huggingface"
-MODEL_PATH = f"{HF_CACHE_PATH}/{MODEL_NAME}"
-
-sglang_image = sglang_image.env(
-    {"HF_HUB_CACHE": HF_CACHE_PATH, "HF_XET_HIGH_PERFORMANCE": "1"}
-)
-
-```
-
-### Cacheing compilation artifacts
-
-JIT DeepGEMM kernels are on by default, but we explicitly enable them via an environment variable.
-
-```python
-DG_CACHE_VOL = modal.Volume.from_name("deepgemm-cache", create_if_missing=True)
-DG_CACHE_PATH = "/root/.cache/deepgemm"
-
-sglang_image = sglang_image.env({"SGLANG_ENABLE_JIT_DEEPGEMM": "1"})
-
-def compile_deep_gemm():
-    import os
-
-    if int(os.environ.get("SGLANG_ENABLE_JIT_DEEPGEMM", "1")):
-        subprocess.run(
-            f"python3 -m sglang.compile_deep_gemm --model-path {MODEL_NAME} --revision {MODEL_REVISION} --tp {N_GPUS}",
-            shell=True,
-        )
-
-sglang_image = sglang_image.run_function(
-    compile_deep_gemm,
-    volumes={DG_CACHE_PATH: DG_CACHE_VOL, HF_CACHE_PATH: HF_CACHE_VOL},
-    gpu=GPU,
-)
-
-```
-
-## Configure SGLang for minimal latency
-
-```python
-speculative_config = {  # use bleeding-edge speculative decoding method
-    "speculative-algorithm": "DFLASH",
-    "speculative-draft-model-path": "z-lab/Qwen3-8B-DFlash-b16",
-}
-
-```
-
-## Speed up cold starts with GPU snapshotting
-
-```python
-sglang_image = sglang_image.env({"TORCHINDUCTOR_COMPILE_THREADS": "1"})
-
-```
-
-### Sleeping and waking an SGLang server
-
-```python
-with sglang_image.imports():
-    import requests
-
-def warmup():
-    payload = {
-        "messages": [{"role": "user", "content": "Hello, how are you?"}],
-        "max_tokens": 16,
-    }
-    for _ in range(3):
-        requests.post(
-            f"http://127.0.0.1:{PORT}/v1/chat/completions", json=payload, timeout=10
-        ).raise_for_status()
-
-def sleep():
-    requests.post(
-        f"http://127.0.0.1:{PORT}/release_memory_occupation", json={}
-    ).raise_for_status()
-
-def wake_up():
-    requests.post(
-        f"http://127.0.0.1:{PORT}/resume_memory_occupation", json={}
-    ).raise_for_status()
-
-```
-
-## Define the inference server and infrastructure
-
-### Selecting infrastructure to minimize latency
-
-```python
-REGION = "us"
-PROXY_REGION = "us-west"
-
-MIN_CONTAINERS = 0  # set to 1 to ensure one replica is always ready
-
-```
-
-### Determining autoscaling policy with `@modal.concurrent`
-
-```python
-TARGET_INPUTS = 10
-
-```
-
-### Controlling container lifecycles with `modal.Cls`
-
-```python
-def wait_ready(process: subprocess.Popen, timeout: int = 5 * MINUTES):
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            check_running(process)
-            requests.get(f"http://127.0.0.1:{PORT}/health").raise_for_status()
-            return
-        except (
-            subprocess.CalledProcessError,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-        ):
-            time.sleep(5)
-    raise TimeoutError(f"SGLang server not ready within {timeout} seconds")
-
-def check_running(p: subprocess.Popen):
-    if (rc := p.poll()) is not None:
-        raise subprocess.CalledProcessError(rc, cmd=p.args)
-
-app = modal.App(name="example-sglang-kitchen-sink")
-PORT = 8000
+app = modal.App("example-sgl-vlm")
 
 @app.cls(
-    image=sglang_image,
-    gpu=GPU,
-    volumes={DG_CACHE_PATH: DG_CACHE_VOL, HF_CACHE_PATH: HF_CACHE_VOL},
-    region=REGION,
-    min_containers=MIN_CONTAINERS,
-    enable_memory_snapshot=True,
-    experimental_options={"enable_gpu_snapshot": True},
+    gpu=GPU_CONFIG,
+    timeout=20 * MINUTES,
+    scaledown_window=20 * MINUTES,
+    image=vlm_image,
+    volumes=volumes,
 )
-@modal.experimental.http_server(
-    port=PORT,  # wrapped code must listen on this port
-    proxy_regions=[PROXY_REGION],  # location of proxies, should be same as Cls region
-    exit_grace_period=15,  # seconds, time to finish up requests when closing down
-)
-@modal.concurrent(target_inputs=TARGET_INPUTS)
-class SGLang:
-    @modal.enter(snap=True)
-    def startup(self):
-        """Start the SGLang server and block until it is healthy, then warm it up and put it to sleep."""
-        cmd = [
-            "python",
-            "-m",
-            "sglang.launch_server",
-            "--model-path",
-            MODEL_NAME,
-            "--revision",
-            MODEL_REVISION,
-            "--served-model-name",
-            MODEL_NAME,
-            "--host",
-            "0.0.0.0",
-            "--port",
-            f"{PORT}",
-            "--tp",  # use all GPUs to split up tensor-parallel operations
-            f"{N_GPUS}",
-            "--cuda-graph-max-bs",  # capture CUDA graphs up to batch sizes we're likely to observe
-            f"{TARGET_INPUTS * 2}",
-            "--max-running-requests",
-            f"{TARGET_INPUTS * 4}",
-            "--enable-metrics",  # expose metrics endpoints for telemetry
-            "--enable-memory-saver",  # enable offload, for snapshotting
-            "--enable-weights-cpu-backup",  # enable offload, for snapshotting
-            "--decode-log-interval",  # how often to log during decoding, in tokens
-            "100",
-            "--mem-fraction",  # leave space for speculative model
-            "0.8",
-            "--attention-backend",
-            "fa4",  # use bleeding-edge attention backend
-        ]
+@modal.concurrent(max_inputs=100)
+class Model:
+    @modal.enter()  # what should a container do after it starts but before it gets input?
+    def start_runtime(self):
+        """Starts an SGL runtime to execute inference."""
+        import sglang as sgl
 
-        cmd += [  # add speculative config
-            item for k, v in speculative_config.items() for item in (f"--{k}", str(v))
-        ]
+        self.runtime = sgl.Runtime(
+            model_path=MODEL_PATH,
+            tokenizer_path=TOKENIZER_PATH,
+            tp_size=GPU_COUNT,  # t_ensor p_arallel size, number of GPUs to split the model over
+            log_level=SGL_LOG_LEVEL,
+        )
+        self.runtime.endpoint.chat_template = sgl.lang.chat_template.get_chat_template(
+            MODEL_CHAT_TEMPLATE
+        )
+        sgl.set_default_backend(self.runtime)
 
-        self.process = subprocess.Popen(cmd, start_new_session=True)
-        wait_ready(self.process)
-        warmup()
-        sleep()  # release GPU memory occupation before snapshot
+    @modal.fastapi_endpoint(method="POST", docs=True)
+    def generate(self, request: dict) -> str:
+        from pathlib import Path
 
-    @modal.enter(snap=False)
-    def restore(self):
-        """After snapshot restoration, resume GPU memory occupation."""
-        wake_up()
+        import requests
+        import sglang as sgl
+        from term_image.image import from_file
 
-    @modal.exit()
-    def stop(self):
-        self.process.terminate()
+        start = time.monotonic_ns()
+        request_id = uuid4()
+        print(f"Generating response to request {request_id}")
+
+        image_url = request.get("image_url")
+        if image_url is None:
+            image_url = (
+                "https://modal-public-assets.s3.amazonaws.com/golden-gate-bridge.jpg"
+            )
+
+        response = requests.get(image_url)
+        response.raise_for_status()
+
+        image_filename = image_url.split("/")[-1]
+        image_path = Path(f"/tmp/{uuid4()}-{image_filename}")
+        image_path.write_bytes(response.content)
+
+        @sgl.function
+        def image_qa(s, image_path, question):
+            s += sgl.user(sgl.image(str(image_path)) + question)
+            s += sgl.assistant(sgl.gen("answer"))
+
+        question = request.get("question")
+        if question is None:
+            question = "What is this?"
+
+        state = image_qa.run(
+            image_path=image_path, question=question, max_new_tokens=128
+        )
+        # show the question and image in the terminal for demonstration purposes
+        print(Colors.BOLD, Colors.GRAY, "Question: ", question, Colors.END, sep="")
+        terminal_image = from_file(image_path)
+        terminal_image.draw()
+        print(
+            f"request {request_id} completed in {round((time.monotonic_ns() - start) / 1e9, 2)} seconds"
+        )
+
+        return state["answer"]
+
+    @modal.exit()  # what should a container do before it shuts down?
+    def shutdown_runtime(self):
+        self.runtime.shutdown()
 
 ```
 
-## Deploy the server
+## Asking questions about images via POST
+
+Now, we can send this Modal Function a POST request with an image and a question
+and get back an answer.
+
+The code below will start up the inference service
+so that it can be run from the terminal as a one-off,
+like a local script would be, using `modal run`:
 
 ```bash
-modal deploy sglang_kitchen_sink.py
+modal run sgl_vlm.py
 ```
 
-## Test the server
-
-```bash
-modal run sglang_kitchen_sink.py
-```
+By default, we hit the endpoint twice to demonstrate how much faster
+the inference is once the server is running.
 
 ```python
 @app.local_entrypoint()
-async def test(test_timeout=10 * MINUTES, prompt=None, twice=True):
-    url = SGLang._experimental_get_flash_urls()[0]
+def main(
+    image_url: Optional[str] = None, question: Optional[str] = None, twice: bool = True
+):
+    import json
+    import urllib.request
 
-    system_prompt = {
-        "role": "system",
-        "content": "You are a pirate who can't help but drop sly reminders that he went to Harvard.",
-    }
-    if prompt is None:
-        prompt = "Explain the Singular Value Decomposition."
+    model = Model()
 
-    content = [{"type": "text", "text": prompt}]
+    payload = json.dumps(
+        {
+            "image_url": image_url,
+            "question": question,
+        },
+    )
 
-    messages = [  # OpenAI chat format
-        system_prompt,
-        {"role": "user", "content": content},
-    ]
+    req = urllib.request.Request(
+        model.generate.get_web_url(),
+        data=payload.encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
 
-    await probe(url, messages, timeout=test_timeout)
+    with urllib.request.urlopen(req) as response:
+        assert response.getcode() == 200, response.getcode()
+        print(json.loads(response.read().decode()))
+
     if twice:
-        messages[0]["content"] = "You are Jar Jar Binks."
-        print(f"Sending messages to {url}:", *messages, sep="\n\t")
-        await probe(url, messages, timeout=1 * MINUTES)
-
-async def probe(url, messages=None, timeout=5 * MINUTES):
-    if messages is None:
-        messages = [
-            {
-                "role": "user",
-                "content": "Write me five very different programs, repeated in Python and Rust.",
-            }
-        ]
-
-    client_id = str(0)  # set this to some string per multi-turn interaction
-    # often a UUID per "conversation"
-    headers = {"Modal-Session-ID": client_id}
-    deadline = time.time() + timeout
-    async with aiohttp.ClientSession(base_url=url, headers=headers) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request_streaming(session, messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-            except aiohttp.client_exceptions.ClientResponseError as e:
-                if e.status == 503:
-                    await asyncio.sleep(1)
-                    continue
-                raise e
-    raise TimeoutError(f"No response from server within {timeout} seconds")
-
-async def _send_request_streaming(
-    session: aiohttp.ClientSession, messages: list, timeout: int | None = None
-) -> None:
-    payload = {"messages": messages, "stream": True}
-    headers = {"Accept": "text/event-stream"}
-
-    async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers, timeout=timeout
-    ) as resp:
-        resp.raise_for_status()
-        full_text = ""
-
-        async for raw in resp.content:
-            line = raw.decode("utf-8", errors="ignore").strip()
-            if not line:
-                continue
-
-            # Server-Sent Events format: "data: ...."
-            if not line.startswith("data:"):
-                continue
-
-            data = line[len("data:") :].strip()
-            if data == "[DONE]":
-                break
-
-            try:
-                evt = json.loads(data)
-            except json.JSONDecodeError:
-                # ignore any non-JSON keepalive
-                continue
-
-            delta = (evt.get("choices") or [{}])[0].get("delta") or {}
-            chunk = delta.get("content")
-
-            if chunk:
-                print(chunk, end="", flush="\n" in chunk or "." in chunk)
-                full_text += chunk
-        print()  # newline after stream completes
-        print(full_text)
+        # second response is faster, because the Function is already running
+        with urllib.request.urlopen(req) as response:
+            assert response.getcode() == 200, response.getcode()
+            print(json.loads(response.read().decode()))
 
 ```
 
-### Test memory snapshotting
+## Deployment
+
+To set this up as a long-running, but serverless, service, we can deploy it to Modal:
 
 ```bash
-python sglang_kitchen_sink.py
+modal deploy sgl_vlm.py
 ```
 
-```python
-if __name__ == "__main__":
-    # after deployment, we can use the class from anywhere
-    SGLang = modal.Cls.from_name("example-sglang-kitchen-sink", "SGLang")
+And then send requests from anywhere. See the [docs](https://modal.com/docs/guide/webhook-urls)
+for details on the `web_url` of the function, which also appears in the terminal output
+when running `modal deploy`.
 
-    print("calling inference server")
-    try:
-        asyncio.run(probe(SGLang._experimental_get_flash_urls()[0]))
-    except modal.exception.NotFoundError as e:
-        raise Exception(
-            f"To take advantage of GPU snapshots, deploy first with modal deploy {__file__}"
-        ) from e
+You can also find interactive documentation for the endpoint at the `/docs` route of the web endpoint URL.
+
+## Addenda
+
+The rest of the code in this example is just utility code.
+
+```python
+warnings.filterwarnings(  # filter warning from the terminal image library
+    "ignore",
+    message="It seems this process is not running within a terminal. Hence, some features will behave differently or be disabled.",
+    category=UserWarning,
+)
+
+class Colors:
+    """ANSI color codes"""
+
+    GREEN = "\033[0;32m"
+    BLUE = "\033[0;34m"
+    GRAY = "\033[0;90m"
+    BOLD = "\033[1m"
+    END = "\033[0m"
 
 ```
 
 ### Sglang Low Latency
 
-# Low latency Qwen 3 8B with SGLang and Modal
+# Low Latency Qwen 3-8B with SGLang and Modal
 
-In this example, we show how to serve [SGLang](https://github.com/sgl-project/sglang) at low latency on Modal.
+In this example, we show how to serve Qwen 3-8B with SGLang on Modal using @modal.experimental.http_server.
+This is a new low latency routing service on Modal which offers significantly reduced overheads, higher throughput, and session based routing.
+These features make `http_server` especially useful for inference workloads.
 
-This example is intended to demonstrate everything required to run
-inference at the highest performance and with the lowest latency possible,
-and so it includes advanced features of both SGLang and Modal.
-For a simpler introduction to LLM serving, see
-[this example](https://modal.com/docs/examples/llm_inference).
-
-To minimize routing overheads, we use `@modal.experimental.http_server`,
-which uses a new, low-latency routing service on Modal designed for latency-sensitive inference workloads.
-This gives us more control over routing, but with increased power comes increased responsibility.
+We also include instructions for cutting cold start times by an order of magnitude using Modal's [CPU + GPU memory snapshots](https://modal.com/docs/guide/memory-snapshot).
 
 ## Set up the container image
 
 Our first order of business is to define the environment our server will run in:
-the [container `Image`](https://modal.com/docs/guide/images).
-
-We start from a container image provided
-[by the SGLang team via Dockerhub](https://hub.docker.com/r/lmsysorg/sglang/tags).
-
-While we're at it, we import the dependencies we'll need both remotely and locally (for deployment).
+the [container `Image`](https://modal.com/docs/guide/custom-container).
+We'll use the [SGLang inference server](https://github.com/sgl-project/sglang).
+Note that we need to build the SGLang image from source since the official image does not support the `--enable-cpu-backup` flag.
 
 ```python
-import asyncio
-import json
 import subprocess
 import time
 
@@ -43537,386 +42566,61 @@ import aiohttp
 import modal
 import modal.experimental
 
-MINUTES = 60  # seconds
-
-sglang_image = (
-    modal.Image.from_registry(
-        "lmsysorg/sglang:v0.5.6.post2-cu129-amd64-runtime"
-    ).entrypoint([])  # silence chatty logs on container start
+APP_NAME = "example-sglang-low-latency"
+MODEL_NAME = "Qwen/Qwen3-8B"
+MODEL_REVISION = (
+    "b968826d9c46dd6066d109eabc6255188de91218"  # Latest commit as of 2025-12-16
 )
 
-```
+PORT = 8000
+MIN_CONTAINERS = 1
+MINUTE = 60
 
-We also choose a [GPU](https://modal.com/docs/guide/gpu) to deploy our inference server onto.
-We choose the [H100 GPU](https://modal.com/blog/introducing-h100),
-which offers excellent price-performance
-and supports 8bit floating point operations, which are the
-lowest precision well-supported in the relevant [GPU kernels](https://modal.com/gpu-glossary/device-software/kernel)
-across a variety of model architectures.
-
-Below, we discuss the choice of GPU count.
-
-```python
-GPU_TYPE, N_GPUS = "H100!", 2
-GPU = f"{GPU_TYPE}:{N_GPUS}"
-
-```
-
-### Loading and cacheing the model weights
-
-We'll serve [Alibaba's Qwen 3 LLM](https://www.alibabacloud.com/blog/alibaba-introduces-qwen3-setting-new-benchmark-in-open-source-ai-with-hybrid-reasoning_602192).
-For lower latency, we pick a smaller model (8B params)
-in a lower precision floating point format (FP8).
-This reduces the amount of data that needs to be loaded
-[from GPU RAM into SM SRAM](https://modal.com/gpu-glossary/perf/memory-bandwidth)
-in each forward pass.
-
-```python
-MODEL_NAME = "Qwen/Qwen3-8B-FP8"
-MODEL_REVISION = (  # pin revision id to avoid nasty surprises!
-    "220b46e3b2180893580a4454f21f22d3ebb187d3"  # latest commit as of 2026-01-20, from 2025-07-25
+HF_CACHE_VOL: modal.Volume = modal.Volume.from_name(
+    "huggingface-cache", create_if_missing=True
+)
+HF_CACHE_PATH: str = "/root/.cache/huggingface"
+MODEL_PATH: str = f"{HF_CACHE_PATH}/{MODEL_NAME}"
+sglang_image: modal.Image = (
+    modal.Image.from_registry("lmsysorg/sglang:v0.5.6.post2-cu129-amd64-runtime")
+    .uv_pip_install("huggingface-hub==0.36.0")
+    .env(
+        {
+            "HF_HUB_CACHE": HF_CACHE_PATH,
+            "HF_XET_HIGH_PERFORMANCE": "1",
+            "TORCHINDUCTOR_COMPILE_THREADS": "1",
+            "TMS_INIT_ENABLE_CPU_BACKUP": "1",
+            "TORCHINDUCTOR_CACHE_DIR": "/root/.cache/torch/",
+        }
+    )
 )
 
-```
-
-We load the model [from the Hugging Face Hub](https://huggingface.co/collections/Qwen/qwen3),
-so we'll need their Python package.
-
-```python
-sglang_image = sglang_image.uv_pip_install("huggingface-hub==0.36.0")
-
-```
-
-We don't want to load the model from the Hub every time we start the server.
-We can load it much faster from a [Modal Volume](https://modal.com/docs/guide/volumes).
-Typical speeds are around one to two GB/s.
-
-```python
-HF_CACHE_VOL = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-HF_CACHE_PATH = "/root/.cache/huggingface"
-MODEL_PATH = f"{HF_CACHE_PATH}/{MODEL_NAME}"
-
-```
-
-In addition to pointing the Hugging Face Hub at the path
-where we mount the Volume, we also
-[turn on "high performance" downloads](https://huggingface.co/docs/hub/en/models-downloading#faster-downloads),
-which can fully saturate our network bandwidth.
-
-```python
-sglang_image = sglang_image.env(
-    {"HF_HUB_CACHE": HF_CACHE_PATH, "HF_XET_HIGH_PERFORMANCE": "1"}
-)
-
-```
-
-### Cacheing compilation artifacts
-
-Model weights aren't the only thing we want to cache.
-
-As a rule, LLM inference servers like SGLang don't directly provide their own kernels.
-They draw high-performance kernels from a variety of sources.
-
-As of version `0.5.6`, SGLang's default kernel backend
-for FP8 matrix multiplications (`fp8-gemm-backend`)
-on Hopper [SM architecture](https://modal.com/gpu-glossary/device-hardware/streaming-multiprocessor-architecture)
-GPUs like the H100 is
-[DeepGEMM](https://github.com/deepseek-ai/DeepGEMM)
-by DeepSeek.
-
-The binaries of these kernels are not included in the SGLang Docker image and so
-must be [JIT-compiled](https://modal.com/gpu-glossary/host-software/nvrtc).
-We store these in a Modal Volume as well.
-
-```python
-DG_CACHE_VOL = modal.Volume.from_name("deepgemm-cache", create_if_missing=True)
-DG_CACHE_PATH = "/root/.cache/deepgemm"
-
-```
-
-JIT DeepGEMM kernels are on by default, but we explicitly enable them via an environment variable.
-
-```python
-sglang_image = sglang_image.env({"SGLANG_ENABLE_JIT_DEEPGEMM": "1"})
-
-```
-
-We trigger the compilation by running `sglang.compile_deep_gemm` in a `subprocess`
-kicked off from a Python function.
-
-```python
-def compile_deep_gemm():
-    import os
-
-    if int(os.environ.get("SGLANG_ENABLE_JIT_DEEPGEMM", "1")):
-        subprocess.run(
-            f"python3 -m sglang.compile_deep_gemm --model-path {MODEL_NAME} --revision {MODEL_REVISION} --tp {N_GPUS}",
-            shell=True,
-        )
-
-```
-
-We run this Python function on Modal as part of building the Image
-so that it has access to the appropriate GPU and the caches for our model and compilaton artifacts.
-
-```python
-sglang_image = sglang_image.run_function(
-    compile_deep_gemm,
-    volumes={DG_CACHE_PATH: DG_CACHE_VOL, HF_CACHE_PATH: HF_CACHE_VOL},
-    gpu=GPU,
-)
-
-```
-
-## Configure SGLang for minimal latency
-
-LLM inference engines like SGLang come with a wide variety of "knobs" to tune performance.
-
-To determine the appropriate configuration to hit latency and throughput service objectives,
-we recommend [application-specific benchmarking](https://modal.com/llm-almanac/how-to-benchmark)
-guided by [published generic benchmarks](https://modal.com/llm-almanac/advisor).
-
-Here, we assume that the primary goal is to minimize per-request latency, with less regard to throughput
-(and so to cost) and walk through some of the key choices.
-
-The primary contributor to per-request latency is the time to move all of the model's weights (multiple gigabytes)
-from [GPU RAM](https://modal.com/gpu-glossary/device-hardware/gpu-ram)
-into [SRAM in the Streaming Multiprocessors](https://modal.com/gpu-glossary/device-hardware/streaming-multiprocessor),
-which must be done at least once in the course of processing a request --
-naively, once per token per request.
-The time taken is limited by the
-[memory bandwidth](https://modal.com/gpu-glossary/perf/memory-bandwidth)
-between those two stores, which is on the order of terabytes per second on modern data center GPUs.
-With models at the scale of gigabytes, a token will take milliseconds to generate --
-or whole seconds for the kilotoken responses users are accustomed to.
-
-We use two strategies to cut latency in our [memory-bound](https://modal.com/gpu-glossary/perf/memory-bound) workload:
-
-- operate across multiple GPUs for more aggregate bandwidth and faster loads, with tensor parallelism
-
-- generate more tokens per load, with speculative decoding
-
-### Increasing effective memory bandwidth with tensor parallelism
-
-Running SGLang on two H100s will double our effective
-[memory bandwidth](https://modal.com/gpu-glossary/perf/memory-bandwidth)
-during large matrix multiplications.
-
-Matrices are also known as tensors, and so this strategy that takes advantage
-of the inherent parallelism within matrix multiplication is known as _tensor parallelism_.
-
-Actual speedups are generally less than what you get from "napkin math" based on available bandwidths --
-we observed a speedup of about 30% moving from one to two H100s when developing this example, rather than 100%.
-
-### Parallelizing token generation with speculative decoding
-
-Transformer and recurrent language models generate text sequentially:
-the model's output at step `i` is part of the input at step `i+1`.
-Per Amdahl's Law, that sequential work becomes the bottleneck
-as other steps get faster from increased parallelism.
-
-The solution is to generate more tokens on each step.
-The primary technique to do so without changing model behavior is known as
-[_speculative decoding_](https://developer.nvidia.com/blog/an-introduction-to-speculative-decoding-for-reducing-latency-in-ai-inference/),
-which "speculates" a number of draft tokens and verifies them in parallel with the primary model.
-
-Speculative decoding techniques themselves have a number of parameters, the most important
-of which is the technique to use to generate draft tokens.
-Simple techniques based on n-grams are a good place to start.
-But in our experience, the [EAGLE-3](https://arxiv.org/abs/2503.01840)
-technique gives enough of a performance boost to be worth
-the overhead of maintaining an extra model for speculation.
-
-And for popular models, you can often find a high-quality EAGLE-3 draft model
-with open weights. For Qwen 3-8B, we like
-[`Tengyunw`'s model](https://huggingface.co/Tengyunw/qwen3_8b_eagle3).
-
-```python
-speculative_config = {
-    "speculative-algorithm": "EAGLE3",
-    "speculative-draft-model-path": "Tengyunw/qwen3_8b_eagle3",
-}
-
-```
-
-We adopt the default configuration for this model from the documentation.
-With these settings, we observed an ~30% boost in throughput for a single user
-during the development of this sample code.
-
-```python
-speculative_config |= {
-    "speculative-num-steps": 6,
-    "speculative-eagle-topk": 10,
-    "speculative-num-draft-tokens": 32,
-}
-
-```
-
-Note that unlike tensor parallelism,
-speculative decoding is not good for
-[compute-bound](https://modal.com/gpu-glossary/perf/compute-bound)
-workloads, since it generally increases demand for
-[arithmetic bandwidth](https://modal.com/gpu-glossary/perf/arithmetic-bandwidth).
-So for workloads that admit larger batch sizes for requests,
-on the scale of dozens to hundreds, speculative decoding is not recommended.
-
-## Define the inference server and infrastructure
-
-### Selecting infrastructure to minimize latency
-
-Minimizing latency requires geographic co-location of clients and servers.
-
-So for low latency LLM inference services on Modal, you must select a
-[cloud region](https://modal.com/docs/guide/region-selection)
-for both the GPU-accelerated containers running inference
-and for the internal Modal proxies that forward requests to them
-as part of defining a `modal.experimental.http_server`.
-
-Here, we assume users are mostly in the northern half of the Americas
-and select the `us-east` cloud region serve them.
-This should result in at most a few dozen milliseconds of round-trip time.
-
-```python
-REGION = "us-east"
-
-```
-
-Latencies for mutli-turn interactions with LLMs are
-substantially cut when previous interaction turns are in the KV cache.
-KV caches are stored in [GPU RAM](https://modal.com/gpu-glossary/device-hardware/gpu-ram),
-so they aren't shared across replicas.
-To improve cache hit rate, `modal.experimental.http_server`
-includes sticky routing based on a client-provided header.
-See the client code below for details.
-
-For production-scale LLM inference services, there are generally
-enough requests to justify keeping at least one replica running at all times.
-Having a "warm" or "live" replica reduces latency by skipping slow initialization work
-that occurs when new replica boots up (a ["cold start"](https://modal.com/docs/guide/cold-start)).
-For LLM inference servers, that latency runs from seconds to minutes.
-
-To ensure at least one container is always available,
-we can set the `min_containers` of our Modal Function
-to `1` or more.
-
-However, since this is documentation code, we'll set it to `0`
-to avoid surprise bills during casual use.
-
-```python
-MIN_CONTAINERS = 0  # set to 1 to ensure one replica is always ready
-
-```
-
-Finally, we need to decide how we will scale up and down replicas
-in response to load. Without autoscaling, users' requests will queue
-when the server becomes overloaded. Even apart from queueing, responses
-generally become slower per user above a certain minimum number of
-concurrent requests.
-
-So we set a target for the number of inputs to run on a single container
-with [`modal.concurrent`](https://modal.com/docs/reference/modal.concurrent).
-For details, see [the guide](https://modal.com/docs/guide/concurrent-inputs).
-
-```python
-TARGET_INPUTS = 10
-
-```
-
-Generally, this choice needs to be made as part of
-[LLM inference engine benchmarking](https://modal.com/llm-almanac/how-to-benchmark).
-
-### Controlling container lifecycles with `modal.Cls`
-
-We wrap up all of the choices we made about the infrastructure
-of our inference server into a number of Python decorators
-that we apply to a Python class that encapsulates the logic
-to run our server.
-
-The key decorators are:
-
-- [`@app.cls`](https://modal.com/docs/guide/lifecycle-functions) to define the core of our service.
-We attach our Image, request a GPU, attach our cache Volumes, specify the region, and configure auto-scaling.
-See [the reference documentation](https://modal.com/docs/reference/modal.App#cls) for details.
-
-- `@modal.experimental.http_server` to turn our Python code into an HTTP server
-(i.e. fronting all of our containers with a proxy with a URL). The wrapped code
-needs to eventually listen for HTTP connections on the provided `port`.
-
-- [`@modal.concurrent`](https://modal.com/docs/guide/concurrent-inputs) to specify how many
-requests our server can handle before we need to scale up.
-
-- [`@modal.enter` and `@modal.exit`](https://modal.com/docs/guide/lifecycle-functions) to indicate
-which methods of the class should be run when starting the server and shutting it down.
-
-Modal considers a new replica ready to receive inputs once the `modal.enter` methods have exited
-and the container accepts connections.
-To ensure that we actually finish setting up our server before we are marked ready for inputs,
-we define a helper function to check whether the server is finished setting up and to
-send it a few test inputs.
-
-We use the [`requests` library](https://requests.readthedocs.io/en/latest/)
-to send ourselves these HTTP requests on
-[`localhost`/`127.0.0.1`](https://superuser.com/questions/31824/why-is-localhost-ip-127-0-0-1).
-
-```python
 with sglang_image.imports():
     import requests
 
-def wait_ready(process: subprocess.Popen, timeout: int = 5 * MINUTES):
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            check_running(process)
-            requests.get(f"http://127.0.0.1:{PORT}/health").raise_for_status()
-            return
-        except (
-            subprocess.CalledProcessError,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-        ):
-            time.sleep(5)
-    raise TimeoutError(f"SGLang server not ready within {timeout} seconds")
-
-def check_running(p: subprocess.Popen):
-    if (rc := p.poll()) is not None:
-        raise subprocess.CalledProcessError(rc, cmd=p.args)
-
-def warmup():
-    payload = {
-        "messages": [{"role": "user", "content": "Hello, how are you?"}],
-        "max_tokens": 16,
-    }
-    for _ in range(3):
-        requests.post(
-            f"http://127.0.0.1:{PORT}/v1/chat/completions", json=payload, timeout=10
-        ).raise_for_status()
-
-```
-
-With all this in place, we are ready to define our high-performance, low-latency
-LLM inference server.
-
-```python
-app = modal.App(name="example-sglang-low-latency")
-PORT = 8000
+app = modal.App(name=APP_NAME)
 
 @app.cls(
     image=sglang_image,
-    gpu=GPU,
-    volumes={HF_CACHE_PATH: HF_CACHE_VOL, DG_CACHE_PATH: DG_CACHE_VOL},
-    region=REGION,
+    gpu="H100",
+    volumes={HF_CACHE_PATH: HF_CACHE_VOL},
+    enable_memory_snapshot=True,
+    experimental_options={"enable_gpu_snapshot": True},
+    region="us-east",
     min_containers=MIN_CONTAINERS,
+    timeout=4 * MINUTE,
 )
 @modal.experimental.http_server(
-    port=PORT,  # wrapped code must listen on this port
-    proxy_regions=[REGION],  # location of proxies, should be same as Cls region
-    exit_grace_period=15,  # seconds, time to finish up requests when closing down
+    port=PORT, proxy_regions=["us-east"], exit_grace_period=5
 )
-@modal.concurrent(target_inputs=TARGET_INPUTS)
+@modal.concurrent(target_inputs=20)
 class SGLang:
-    @modal.enter()
-    def startup(self):
-        """Start the SGLang server and block until it is healthy, then warm it up and put it to sleep."""
+    """Serve a HuggingFace model via SGLang with readiness check."""
+
+    @modal.enter(snap=True)
+    def startup(self) -> None:
+        """Start the SGLang server and block until it is healthy."""
+
         cmd = [
             "python",
             "-m",
@@ -43931,61 +42635,110 @@ class SGLang:
             "0.0.0.0",
             "--port",
             f"{PORT}",
-            "--tp",  # use all GPUs to split up tensor-parallel operations
-            f"{N_GPUS}",
-            "--cuda-graph-max-bs",  # only capture CUDA graphs for batch sizes we're likely to observe
-            f"{TARGET_INPUTS * 2}",
-            "--enable-metrics",  # expose metrics endpoints for telemetry
-            "--decode-log-interval",  # how often to log during decoding, in tokens
-            "100",
-            "--mem-fraction",  # leave space for speculative model
-            "0.8",
-        ]
-
-        cmd += [  # add speculative config
-            item for k, v in speculative_config.items() for item in (f"--{k}", str(v))
+            "--enable-metrics",
+            "--enable-memory-saver",
+            "--enable-weights-cpu-backup",
         ]
 
         self.process = subprocess.Popen(cmd)
-        wait_ready(self.process)
-        warmup()
+        self._wait_ready(self.process)
+        self._warmup()
+        self._sleep()
+
+    @modal.enter(snap=False)
+    def wake_up(self):
+        self._wake_up()
 
     @modal.exit()
     def stop(self):
         self.process.terminate()
 
-```
+    @staticmethod
+    def _warmup():
+        payload = {
+            "model": MODEL_NAME,
+            "messages": [{"role": "user", "content": "Hello, how are you?"}],
+            "max_tokens": 16,
+        }
+        for _ in range(3):
+            requests.post(
+                f"http://127.0.0.1:{PORT}/v1/chat/completions", json=payload, timeout=10
+            ).raise_for_status()
+
+    @staticmethod
+    def _wait_ready(process: subprocess.Popen, timeout: int = 3 * MINUTE):
+        def check_process_is_running() -> Exception | None:
+            if process is not None and process.poll() is not None:
+                return Exception(
+                    f"Process {process.pid} exited with code {process.returncode}"
+                )
+            return None
+
+        deadline: float = time.time() + timeout
+        while time.time() < deadline:
+            try:
+                if error := check_process_is_running():
+                    raise error
+                response = requests.get(f"http://127.0.0.1:{PORT}/health")
+                if response.status_code == 200:
+                    print("Server is healthy")
+                    break
+            except Exception:
+                pass
+
+    @staticmethod
+    def _sleep():
+        headers = {"Content-Type": "application/json"}
+        requests.post(
+            f"http://127.0.0.1:{PORT}/release_memory_occupation",
+            headers=headers,
+            json={},
+        ).raise_for_status()
+
+    @staticmethod
+    def _wake_up():
+        headers = {"Content-Type": "application/json"}
+        requests.post(
+            f"http://127.0.0.1:{PORT}/resume_memory_occupation",
+            headers=headers,
+            json={},
+        ).raise_for_status()
 
 ## Deploy the server
 
-To deploy the server on Modal, just run
+```
 
+To deploy the API on Modal, just run
 ```bash
 modal deploy sglang_low_latency.py
 ```
 
-This will create a new App on Modal and build the container image for it if it hasn't been built yet.
+This will create a new app on Modal, build the container image for it if it hasn't been built yet,
+and deploy the app.
 
+```python
 ## Interact with the server
 
+```
+
 Once it is deployed, you'll see a URL appear in the command line,
-something like `https://your-workspace-name--example-sglang-low-latency-sglang.us-east.modal.direct`.
+something like `https://your-workspace-name--example-sglang-low-latency-serve.us-east.modal.direct`.
 
 You can find [interactive Swagger UI docs](https://swagger.io/tools/swagger-ui/)
-at the `/docs` route of that URL, i.e. `https://your-workspace-name--example-sglang-low-latency-sglang.us-east.modal.direct/docs`.
+at the `/docs` route of that URL, i.e. `https://your-workspace-name--example-sglang-low-latency-serve.us-east.modal.direct/docs`.
 These docs describe each route and indicate the expected input and output
 and translate requests into `curl` commands.
-For simple routes, you can even send a request directly from the docs page.
 
-Note: when no replicas are available, Modal will respond with
-the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503).
-In your browser, you can just hit refresh until the docs page appears.
-You can see the status of the applicaton and its containers on your [Modal dashboard](https://modal.com/apps).
+For simple routes like `/health`, which checks whether the server is responding,
+you can even send a request directly from the docs.
 
+```python
 ## Test the server
 
+```
+
 To make it easier to test the server setup, we also include a `local_entrypoint`
-that hits the server with a simple client.
+that does a healthcheck and then hits the server.
 
 If you execute the command
 
@@ -44001,1043 +42754,69 @@ block of a Python script, but for cloud deployments!
 
 ```python
 @app.local_entrypoint()
-async def test(test_timeout=10 * MINUTES, prompt=None, twice=True):
-    url = (await SGLang._experimental_get_flash_urls.aio())[0]
+async def test(test_timeout=10 * MINUTE, content=None, twice=True):
+    url = SGLang._experimental_get_flash_urls()[0]
 
     system_prompt = {
         "role": "system",
         "content": "You are a pirate who can't help but drop sly reminders that he went to Harvard.",
     }
-    if prompt is None:
-        prompt = "Explain the Singular Value Decomposition."
-
-    content = [{"type": "text", "text": prompt}]
-
-    messages = [  # OpenAI chat format
-        system_prompt,
-        {"role": "user", "content": content},
-    ]
-
-    await probe(url, messages, timeout=test_timeout)
-    if twice:
-        messages[0]["content"] = "You are Jar Jar Binks."
-        print(f"Sending messages to {url}:", *messages, sep="\n\t")
-        await probe(url, messages, timeout=1 * MINUTES)
-
-```
-
-This test relies on the two helper functions below,
-which ping the server and wait for a valid response to stream.
-
-The `probe` helper function specifically ignores
-two types of errors that can occur while a replica
-is starting up -- timeouts on the client and 5XX responses from the server.
-Modal returns the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503)
-when an `experimental.http_server` has no live replicas.
-
-We include a header with each request --
-`Modal-Session-ID`.
-This is header is used by clients of `http_server`s on Modal
-to identify which requests should be routed to the same container
-(with caveats explained below).
-
-The value associated with this key
-is used to map requests onto containers such that
-while the set of containers is fixed, requests with the same value
-are sent to the same container.
-Set this to a different value per distinct multi-turn interaction
-(prototypically, a user conversation thread with a chatbot)
-to improve KV cache hit rates.
-Additionally, when the set of containers changes (e.g. due to autoscaling),
-sessions are rebalanced such that load is approximately evenly spread,
-much like in [RAID rebalancing](https://cordero.me/understanding-raid-rebalance-ensuring-optimal-performance-and-data-protection/).
-This ensures no container ends up as a "hot spot" handling too many client requests.
-
-```python
-async def probe(url, messages=None, timeout=5 * MINUTES):
-    if messages is None:
-        messages = [{"role": "user", "content": "Tell me a joke."}]
-
-    client_id = str(0)  # set this to some string per multi-turn interaction
-    # often a UUID per "conversation"
-    headers = {"Modal-Session-ID": client_id}
-    deadline = time.time() + timeout
-    async with aiohttp.ClientSession(base_url=url, headers=headers) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request_streaming(session, messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-            except aiohttp.client_exceptions.ClientResponseError as e:
-                if e.status == 503:
-                    await asyncio.sleep(1)
-                    continue
-                raise e
-    raise TimeoutError(f"No response from server within {timeout} seconds")
-
-async def _send_request_streaming(
-    session: aiohttp.ClientSession, messages: list, timeout: int | None = None
-) -> None:
-    payload = {"messages": messages, "stream": True}
-    headers = {"Accept": "text/event-stream"}
-
-    async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers, timeout=timeout
-    ) as resp:
-        resp.raise_for_status()
-        full_text = ""
-
-        async for raw in resp.content:
-            line = raw.decode("utf-8", errors="ignore").strip()
-            if not line:
-                continue
-
-            # Server-Sent Events format: "data: ...."
-            if not line.startswith("data:"):
-                continue
-
-            data = line[len("data:") :].strip()
-            if data == "[DONE]":
-                break
-
-            try:
-                evt = json.loads(data)
-            except json.JSONDecodeError:
-                # ignore any non-JSON keepalive
-                continue
-
-            delta = (evt.get("choices") or [{}])[0].get("delta") or {}
-            chunk = delta.get("content")
-
-            if chunk:
-                print(chunk, end="", flush="\n" in chunk or "." in chunk)
-                full_text += chunk
-        print()  # newline after stream completes
-        print(full_text)
-
-```
-
-### Sglang Snapshot
-
-# Serverless Qwen 3-8B with SGLang and Modal Snapshots
-
-In this example, we show how to serve [SGLang](https://github.com/sgl-project/sglang) on Modal
-with ~10x faster cold starts.
-
-Fast cold starts are particularly useful for LLM inference applications
-that have highly "bursty" workloads, like document processing.
-See [this guide](https://modal.com/docs/guide/high-performance-llm-inference)
-for a breakdown of different LLM inference workloads and how to optimize them.
-
-The key technique is
-[CPU + GPU memory snapshotting](https://modal.com/docs/guide/memory-snapshot),
-which saves and restores the SGLang server directly from its in-memory state.
-
-This adds some complexity to the deployment.
-If you just want to get started running a basic LLM server on Modal, see
-[this example](https://modal.com/docs/examples/llm_inference).
-
-## Set up the container image
-
-Our first order of business is to define the environment our server will run in:
-the [container `Image`](https://modal.com/docs/guide/images).
-
-We start from a container image provided
-[by the SGLang team via Dockerhub](https://hub.docker.com/r/lmsysorg/sglang/tags).
-
-While we're at it, we import the dependencies we'll need both remotely and locally (for deployment).
-
-```python
-import asyncio
-import subprocess
-import time
-
-import aiohttp
-import modal
-import modal.experimental
-
-MINUTES = 60  # seconds
-
-sglang_image = (
-    modal.Image.from_registry(
-        "lmsysorg/sglang:v0.5.6.post2-cu129-amd64-runtime"
-    ).entrypoint([])  # silence chatty logs on container start
-)
-
-```
-
-We also choose a GPU to deploy our inference server onto.
-We choose the [H100 GPU](https://modal.com/blog/introducing-h100),
-which offers excellent price-performance
-and supports 8bit floating point operations, which are the
-lowest precision well-supported in the relevant
-[GPU kernels](https://modal.com/gpu-glossary/device-software/kernel)
-across a variety of model architectures.
-
-```python
-N_GPUS = 1
-GPU = f"H100!:{N_GPUS}"
-
-```
-
-Actual speedups are generally less than what you get from "napkin math" based on available bandwidths --
-we observed a speedup of about 30% moving from one to two H100s when developing this example.
-We recommend [application-specific benchmarking](https://modal.com/llm-almanac/how-to-benchmark)
-guided by [published generic benchmarks](https://modal.com/llm-almanac/advisor).
-
-### Loading and cacheing the model weights
-
-We'll serve
-[Alibaba's Qwen 3 LLM](https://www.alibabacloud.com/blog/alibaba-introduces-qwen3-setting-new-benchmark-in-open-source-ai-with-hybrid-reasoning_602192).
-For lower latency and faster cold starts, we pick a smaller model (8B params)
-in a lower precision floating point format (FP8).
-This reduces the amount of data that needs to be loaded
-[from GPU RAM into SM SRAM](https://modal.com/gpu-glossary/perf/memory-bandwidth)
-in each forward pass.
-
-```python
-MODEL_NAME = "Qwen/Qwen3-8B-FP8"
-MODEL_REVISION = (
-    "220b46e3b2180893580a4454f21f22d3ebb187d3"  # latest commit as of 2026-01
-)
-
-```
-
-We load the model [from the Hugging Face Hub](https://huggingface.co/collections/Qwen/qwen3),
-so we'll need their Python package.
-
-```python
-sglang_image = sglang_image.uv_pip_install("huggingface-hub==0.36.0")
-
-```
-
-We don't want to load the model from the Hub every time we start the server.
-We can load it much faster from a [Modal Volume](https://modal.com/docs/guide/volumes).
-Typical speeds are around one to two GB/s.
-
-```python
-HF_CACHE_VOL = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-HF_CACHE_PATH = "/root/.cache/huggingface"
-MODEL_PATH = f"{HF_CACHE_PATH}/{MODEL_NAME}"
-
-```
-
-In addition to pointing the Hugging Face Hub at the path
-where we mount the Volume, we also
-[turn on "high performance" downloads](https://huggingface.co/docs/hub/en/models-downloading#faster-downloads),
-which can fully saturate our network bandwidth.
-
-```python
-sglang_image = sglang_image.env(
-    {"HF_HUB_CACHE": HF_CACHE_PATH, "HF_XET_HIGH_PERFORMANCE": "1"}
-)
-
-```
-
-### Cacheing compilation artifacts
-
-Model weights aren't the only thing we want to cache.
-
-As a rule, LLM inference servers like SGLang don't directly provide their own kernels.
-They draw high-performance kernels from a variety of sources.
-
-As of version `0.5.6`, SGLang's default kernel backend
-for FP8 matrix multiplications (`fp8-gemm-backend`)
-on Hopper [SM architecture](https://modal.com/gpu-glossary/device-hardware/streaming-multiprocessor-architecture)
-GPUs like the H100 is
-[DeepGEMM](https://github.com/deepseek-ai/DeepGEMM)
-by DeepSeek.
-
-The binaries of these kernels are not included in the SGLang Docker image and so
-must be [JIT-compiled](https://modal.com/gpu-glossary/host-software/nvrtc).
-We store these in a Modal Volume as well.
-
-```python
-DG_CACHE_VOL = modal.Volume.from_name("deepgemm-cache", create_if_missing=True)
-DG_CACHE_PATH = "/root/.cache/deepgemm"
-
-```
-
-JIT DeepGEMM kernels are on by default, but we explicitly enable them via an environment variable.
-
-```python
-sglang_image = sglang_image.env({"SGLANG_ENABLE_JIT_DEEPGEMM": "1"})
-
-```
-
-We trigger the compilation by running `sglang.compile_deep_gemm` in a `subprocess`
-kicked off from a Python function.
-
-```python
-def compile_deep_gemm():
-    import os
-
-    if int(os.environ.get("SGLANG_ENABLE_JIT_DEEPGEMM", "1")):
-        subprocess.run(
-            f"python3 -m sglang.compile_deep_gemm --model-path {MODEL_NAME} --revision {MODEL_REVISION} --tp {N_GPUS}",
-            shell=True,
-        )
-
-```
-
-We run this Python function on Modal as part of building the Image
-so that it has access to the appropriate GPU and the caches for our model and compilaton artifacts.
-
-```python
-sglang_image = sglang_image.run_function(
-    compile_deep_gemm,
-    volumes={DG_CACHE_PATH: DG_CACHE_VOL, HF_CACHE_PATH: HF_CACHE_VOL},
-    gpu=GPU,
-)
-
-```
-
-## Speed up cold starts with GPU snapshotting
-
-Modal is a serverless compute platform, so all of your
-inference services automatically scale up and down to handle
-variable load.
-
-Scaling up a new replica requires quite a bit of work --
-loading up Python and system packages, loading model weights,
-setting up the inference engine, and so on.
-
-We can skip over and speed up a bunch of this work
-when spinning up new replicas after the first
-by directly booting from a [memory snapshot](https://modal.com/docs/guide/memory-snapshot),
-which contains the exact in-memory representation of our server just before it begins taking requests.
-
-Most applications can be snapshot and experience substantial speedups (2x to 10x,
-see [our initial benchmarks here](https://modal.com/blog/gpu-mem-snapshots)).
-However, it generally requires some extra work to adapt the application code.
-
-For instance, we here set an environment variable that improves the compatibility of
-the [Torch Inductor compiler](https://dev-discuss.pytorch.org/t/torchinductor-a-pytorch-native-compiler-with-define-by-run-ir-and-symbolic-shapes/747)
-with GPU snapshotting.
-
-```python
-sglang_image = sglang_image.env({"TORCHINDUCTOR_COMPILE_THREADS": "1"})
-
-```
-
-Below, we walk through the additional steps required to make an SGLang server compatible with snapshots.
-
-### Sleeping and waking an SGLang server
-
-We prepare our SGLang inference server for snapshotting by first sending
-a few requests to "warm it up", ensuring that it is fully ready to process requests.
-Then we "put it to sleep", moving non-essential data out of GPU memory,
-with a request to `/release_memory_occupation`.
-At this point, we can take a memory snapshot.
-Upon snapshot restoration, we "wake up" the server
-with a request to `/resume_memory_occupation`.
-
-We use the [`requests` library](https://requests.readthedocs.io/en/latest/)
-to send ourselves these HTTP requests on
-[`localhost`/`127.0.0.1`](https://superuser.com/questions/31824/why-is-localhost-ip-127-0-0-1).
-
-```python
-with sglang_image.imports():
-    import requests
-
-def warmup():
-    payload = {
-        "messages": [{"role": "user", "content": "Hello, how are you?"}],
-        "max_tokens": 16,
-    }
-    for _ in range(3):
-        requests.post(
-            f"http://127.0.0.1:{PORT}/v1/chat/completions", json=payload, timeout=10
-        ).raise_for_status()
-
-def sleep():
-    requests.post(
-        f"http://127.0.0.1:{PORT}/release_memory_occupation", json={}
-    ).raise_for_status()
-
-def wake_up():
-    requests.post(
-        f"http://127.0.0.1:{PORT}/resume_memory_occupation", json={}
-    ).raise_for_status()
-
-```
-
-## Define the inference server and infrastructure
-
-We wrap up all of the choices we made about the infrastructure
-of our inference server into a number of Python decorators
-that we apply to a Python class that encapsulates the logic
-to run our server.
-
-The key decorators are:
-
-- [`@app.cls`](https://modal.com/docs/guide/lifecycle-functions) to define the core of our service.
-We attach our Image, request a GPU, attach our cache Volumes, specify the region, and configure auto-scaling.
-See [the reference documentation](https://modal.com/docs/reference/modal.App#cls) for details.
-
-- `@modal.web_server` to turn our Python code into an HTTP server.
-The wrapped code needs to eventually listen for HTTP connections on the provided `port`.
-
-- [`@modal.concurrent`](https://modal.com/docs/guide/concurrent-inputs) to specify how many
-requests our server can handle before we need to scale up.
-
-- [`@modal.enter` and `@modal.exit`](https://modal.com/docs/guide/lifecycle-functions) to indicate
-which methods of the class should be run when starting the server and shutting it down. The `enter`
-methods also define what code is run before memory snapshot creation (`snap=True`) and after memory snapshot restoration (`snap=False`).
-
-The `modal.concurrent` decorator and the lifecycle management are particular important
-for bursty workloads and for snapshotting, respectively, so let's discuss them in detail.
-
-### Determining autoscaling policy with `@modal.concurrent`
-
-To handle bursty workloads, we need to decide how we will scale up and down replicas
-in response to load. Without autoscaling, users' requests will queue
-when the server becomes overloaded.
-
-We can set two values with the
-[`@modal.concurrent`](https://modal.com/docs/guide/concurrent-inputs) decorator.
-`max_inputs` should be set to the maximum number of inputs a replica can handle concurrently
-without internal queueing -- the `max-running-requests` in SGLang.
-`target_inputs` can be left unset or, if the per-request latency
-degrades too much when handling the maximum batch size,
-it can be set to a lower value.
-
-```python
-TARGET_INPUTS = 10
-MAX_INPUTS = 1000
-
-```
-
-Generally, this choice needs to be made as part of
-[LLM inference engine benchmarking](https://modal.com/llm-almanac/how-to-benchmark)
-in reference to a particular application's latency and throughput targets.
-
-### Controlling container lifecycles with `@modal.enter`
-
-Modal considers a new replica ready to receive inputs once the `@modal.enter` methods have exited
-and the container accepts connections.
-To ensure that we actually finish setting up our server before we are marked ready for inputs,
-we define a helper function to check whether the server is finished setting up.
-
-```python
-def wait_ready(process: subprocess.Popen, timeout: int = 5 * MINUTES):
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            check_running(process)
-            requests.get(f"http://127.0.0.1:{PORT}/health").raise_for_status()
-            return
-        except (
-            subprocess.CalledProcessError,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-        ):
-            time.sleep(1)
-    raise TimeoutError(f"SGLang server not ready within timeout of {timeout} seconds")
-
-def check_running(p: subprocess.Popen):
-    if (rc := p.poll()) is not None:
-        raise subprocess.CalledProcessError(rc, cmd=p.args)
-
-```
-
-With all this in place, we are ready to define our high-performance, low-latency
-LLM inference server.
-
-```python
-app = modal.App(name="example-sglang-snapshot")
-PORT = 8000
-
-@app.cls(
-    image=sglang_image,
-    gpu=GPU,
-    volumes={HF_CACHE_PATH: HF_CACHE_VOL, DG_CACHE_PATH: DG_CACHE_VOL},
-    enable_memory_snapshot=True,
-    experimental_options={"enable_gpu_snapshot": True},
-)
-@modal.concurrent(target_inputs=TARGET_INPUTS, max_inputs=MAX_INPUTS)
-class SGLang:
-    @modal.enter(snap=True)
-    def startup(self):
-        """Start the SGLang server and block until it is healthy, then warm it up and put it to sleep."""
-
-        cmd = [
-            "python",
-            "-m",
-            "sglang.launch_server",
-            "--model-path",
-            MODEL_NAME,
-            "--revision",
-            MODEL_REVISION,
-            "--served-model-name",
-            MODEL_NAME,
-            "--host",
-            "0.0.0.0",
-            "--port",
-            f"{PORT}",
-            "--tp",  # use all GPUs to split up tensor-parallel operations
-            f"{N_GPUS}",
-            "--cuda-graph-max-bs",  # capture CUDA graphs up to batch sizes we're likely to observe
-            f"{MAX_INPUTS}",
-            "--max-running-requests",
-            f"{MAX_INPUTS}",
-            "--enable-metrics",  # expose metrics endpoints for telemetry
-            "--enable-memory-saver",  # enable offload, for snapshotting
-            "--enable-weights-cpu-backup",  # enable offload, for snapshotting
+    if content is None:
+        image_url = "https://static.wikia.nocookie.net/essentialsdocs/images/7/70/Battle.png/revision/latest?cb=20220523172438"
+
+        content = [
+            {
+                "type": "text",
+                "text": "What action do you think I should take in this situation?"
+                " List all the possible actions and explain why you think they are good or bad.",
+            },
+            {"type": "image_url", "image_url": {"url": image_url}},
         ]
 
-        self.process = subprocess.Popen(cmd)
-        wait_ready(self.process)
-        warmup()  # for snapshotting
-        sleep()
-
-    @modal.enter(snap=False)
-    def wake_up(self):
-        wake_up()
-
-    @modal.web_server(
-        port=PORT,  # wrapped code must listen on this port
-        startup_timeout=10 * MINUTES,  # how long can server startup take?
-    )
-    def serve(self):
-        pass
-
-    @modal.exit()
-    def stop(self):
-        self.process.terminate()
-
-```
-
-## Deploy the server
-
-To deploy the server on Modal, just run
-
-```bash
-modal deploy sglang_snapshot.py
-```
-
-This will create a new App on Modal and build the container image for it if it hasn't been built yet.
-
-## Interact with the server
-
-Once it is deployed, you'll see a URL appear in the command line,
-something like `https://your-workspace-name--example-sglang-snapshot-sglang.modal.run`.
-
-You can find [interactive Swagger UI docs](https://swagger.io/tools/swagger-ui/)
-at the `/docs` route of that URL, i.e. `https://your-workspace-name--example-sglang-snapshot-sglang.modal.direct/docs`.
-These docs describe each route and indicate the expected input and output
-and translate requests into `curl` commands.
-For simple routes, you can even send a request directly from the docs page.
-
-## Test the server
-
-To make it easier to test the server setup, we also include a `local_entrypoint`
-that hits the server with a simple client.
-
-If you execute the command
-
-```bash
-modal run sglang_snapshot.py
-```
-
-a fresh replica of the server will be spun up on Modal while
-the code below executes on your local machine.
-
-Think of this like writing simple tests inside of the `if __name__ == "__main__"`
-block of a Python script, but for cloud deployments!
-
-```python
-@app.local_entrypoint()
-async def test(test_timeout=10 * MINUTES, prompt=None, twice=True):
-    url = SGLang().serve.get_web_url()
-
-    system_prompt = {
-        "role": "system",
-        "content": "You are a pirate who can't help but drop sly reminders that he went to Harvard.",
-    }
-    if prompt is None:
-        prompt = "Explain the Singular Value Decomposition."
-
-    content = [{"type": "text", "text": prompt}]
-
     messages = [  # OpenAI chat format
         system_prompt,
         {"role": "user", "content": content},
     ]
 
-    await probe(url, messages, timeout=test_timeout)
-    if twice:
-        messages[0]["content"] = "You are Jar Jar Binks."
-        print(f"Sending messages to {url}:", *messages, sep="\n\t")
-        await probe(url, messages, timeout=1 * MINUTES)
-
-```
-
-This test relies on the two helper functions below,
-which ping the server and wait for a valid response.
-
-```python
-async def probe(url, messages=None, timeout=5 * MINUTES):
-    if messages is None:
-        messages = [{"role": "user", "content": "Tell me a joke."}]
-
-    deadline = time.time() + timeout
+    start_time = time.time()
     async with aiohttp.ClientSession(base_url=url) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request(session, "llm", messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-    raise TimeoutError(f"No response from server within {timeout} seconds")
+        while time.time() - start_time < test_timeout:
+            print(f"Running health check for server at {url}")
+            async with session.get(
+                "/health", timeout=test_timeout - 1 * MINUTE
+            ) as resp:
+                if resp.status == 200:
+                    print(f"Successful health check for server at {url}")
+                    break
+                time.sleep(10)
+        print(f"Sending messages to {url}:", *messages, sep="\n\t")
+        await _send_request(session, "llm", messages, timeout=1 * MINUTE)
 
 async def _send_request(
-    session: aiohttp.ClientSession,
-    model: str,
-    messages: list,
-    timeout: int | None = None,
+    session: aiohttp.ClientSession, model: str, messages: list, timeout: int
 ) -> None:
     async with session.post(
         "/v1/chat/completions",
-        json={"messages": messages, "model": model},
+        json={"messages": messages, "model": model, "temperature": 0.15},
         timeout=timeout,
     ) as resp:
         resp.raise_for_status()
         print((await resp.json())["choices"][0]["message"]["content"])
 
-```
-
-### Test memory snapshotting
-
-Using `modal run` creates an ephemeral Modal App, rather than a deployed Modal App.
-Ephemeral Modal Apps are short-lived, so they turn off memory snapshotting.
-
-To test the memory snapshot version of the server,
-first deploy it with `modal deploy`
-and then hit it with a client.
-
-You should observe startup improvements
-after a handful of cold starts
-(usually less than five).
-If you want to see the speedup during a test,
-we recommend heading to the deployed App in your
-[Modal dashboard](https://modal.com/apps)
-and manually stopping containers after they have served a request
-to ensure turnover.
-
-You can use the client code below to test the endpoint.
-
-```python
 if __name__ == "__main__":
+    import asyncio
+
     # after deployment, we can use the class from anywhere
-    SGLang = modal.Cls.from_name("example-sglang-snapshot", "SGLang")
+    sglang_server = modal.Cls.from_name("example-sglang-low-latency", "SGLang")
+
+    async def test(url):
+        messages = [{"role": "user", "content": "Tell me a joke."}]
+        async with aiohttp.ClientSession(base_url=url) as session:
+            await _send_request(session, MODEL_NAME, messages, timeout=10 * MINUTE)
 
     print("calling inference server")
-    try:
-        asyncio.run(probe(SGLang().serve.get_web_url()))
-    except modal.exception.NotFoundError as e:
-        raise Exception(
-            f"To take advantage of GPU snapshots, deploy first with modal deploy {__file__}"
-        ) from e
+    asyncio.run(test(sglang_server._experimental_get_flash_urls()[0]))
 
-```
-
-It can be run with the command
-
-```bash
-python sglang_snapshot.py
-```
-
-### Sglang Vlm
-
-# Serve the Qwen3.5 Vision-Language Model with SGLang
-
-Vision-Language Models (VLMs) are like LLMs with eyes:
-they can generate text based not just on other text,
-but on images as well.
-
-This example shows how to serve a VLM on Modal using the
-[SGLang](https://github.com/sgl-project/sglang) library
-with an OpenAI-compatible API server.
-
-## Setup and container image definition
-
-First, we import our global dependencies
-and define constants.
-
-```python
-import asyncio
-import json
-import subprocess
-import time
-
-import aiohttp
-import modal
-import modal.experimental
-
-MINUTES = 60
-
-```
-
-To define the container [Image](https://modal.com/docs/guide/images)
-with our server's dependencies,
-we build off of the official SGLang Docker image with CUDA 12.9.
-
-```python
-sglang_image = (
-    modal.Image.from_registry("lmsysorg/sglang:v0.5.9-cu129-amd64-runtime")
-    .entrypoint([])
-    .uv_pip_install("huggingface-hub==0.36.0")
-)
-
-```
-
-## Configure the model
-
-[Qwen3.5-35B-A3B-FP8](https://huggingface.co/Qwen/Qwen3.5-35B-A3B-FP8)
-is a vision-language reasoning foundational model with 35B total parameters,
-of which only 3B are activated per input sequence per forward pass.
-We use the [8bit quantized floating point](https://quant.exposed)
-version of the model for faster [cold starts](https://modal.com/docs/guide/cold-start)
-and faster inference with negligible behavior differences.
-
-```python
-MODEL_NAME = "Qwen/Qwen3.5-35B-A3B-FP8"
-MODEL_REVISION = "0b2752837483aa34b3db6e83e151b150c0e00e49"
-
-```
-
-## Configure GPU
-
-We use a single H100 GPU. The 35 GB of model weights fits comfortably in this GPU's 80GB of
-[high-bandwidth memory](https://modal.com/gpu-glossary/device-hardware/gpu-ram).
-
-```python
-GPU = "H100!:1"
-N_GPUS = 1
-
-```
-
-## Cacheing in Modal Volumes
-
-Modal Apps typically cache some artifacts in a [Modal Volume](https://modal.com/docs/guide/volumes)
-for faster cold starts.
-Here, we cache the model weights and the JIT-compiled DeepGEMM kernels.
-
-```python
-HF_CACHE_VOL = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-HF_CACHE_PATH = "/root/.cache/huggingface"
-
-DG_CACHE_VOL = modal.Volume.from_name("deepgemm-cache", create_if_missing=True)
-DG_CACHE_PATH = "/root/.cache/deepgemm"
-
-sglang_image = sglang_image.env(
-    {
-        "HF_HUB_CACHE": HF_CACHE_PATH,
-        "HF_XET_HIGH_PERFORMANCE": "1",
-        "SGLANG_ENABLE_JIT_DEEPGEMM": "1",
-    }
-)
-
-```
-
-We additionally compile the DeepGEMM kernels as part of building the container
-[Image](https://modal.com/docs/guide/images).
-This can take tens of minutes the first time, but only takes seconds when reading from cache.
-
-```python
-def compile_deep_gemm():
-    import os
-    import subprocess
-
-    if int(os.environ.get("SGLANG_ENABLE_JIT_DEEPGEMM", "1")):
-        subprocess.run(
-            f"python3 -m sglang.compile_deep_gemm --model-path {MODEL_NAME} --revision {MODEL_REVISION} --tp {N_GPUS}",
-            shell=True,
-            check=True,
-        )
-
-sglang_image = sglang_image.run_function(
-    compile_deep_gemm,
-    volumes={DG_CACHE_PATH: DG_CACHE_VOL, HF_CACHE_PATH: HF_CACHE_VOL},
-    gpu=GPU,
-)
-
-```
-
-## Define the inference server
-
-With environment setup out of the way, we're ready to define our inference server.
-We use a [Modal Cls](https://modal.com/docs/guide/lifecycle-functions)
-to separate container startup logic from input processing
-(as part of `modal.enter`-decorated methods).
-We use a Modal HTTP Server to create a low latency edge deployment
-in the `us` served by a proxy in `us-east`.
-We also handle clean teardown of the server in a `modal.exit` method.
-
-```python
-REGION = "us"
-PROXY_REGION = "us-east"
-
-PORT = 8000
-TARGET_INPUTS = 10
-
-app = modal.App(name="example-sglang-vlm")
-
-@app.cls(
-    image=sglang_image,
-    gpu=GPU,
-    volumes={HF_CACHE_PATH: HF_CACHE_VOL, DG_CACHE_PATH: DG_CACHE_VOL},
-    region=REGION,
-    timeout=15 * MINUTES,
-)
-@modal.experimental.http_server(port=PORT, proxy_regions=[PROXY_REGION])
-@modal.concurrent(target_inputs=TARGET_INPUTS)
-class VlmServer:
-    @modal.enter()
-    def startup(self):
-        self.process = _start_server()
-        wait_ready(self.process)
-        warmup()
-
-    @modal.exit()
-    def stop(self):
-        self.process.terminate()
-        self.process.wait()
-
-```
-
-### Setting up the server
-
-The server configuration is based on the information in the
-[Hugging Face repo](https://huggingface.co/Qwen/Qwen3.5-35B-A3B-FP8).
-It includes speculative decoding via multi-token prediction
-for improved performance at low to moderate concurrency.
-For more on optimizing the performance of VLMs and LLMs,
-see [this guide](https://modal.com/docs/guide/high-performance-llm-inference).
-
-```python
-def _start_server() -> subprocess.Popen:
-    """Start SGLang server in a subprocess"""
-    cmd = [
-        "python",
-        "-m",
-        "sglang.launch_server",
-        "--model-path",
-        MODEL_NAME,
-        "--revision",
-        MODEL_REVISION,
-        "--served-model-name",
-        MODEL_NAME,
-        "--host",
-        "0.0.0.0",
-        "--port",
-        f"{PORT}",
-        "--tp",
-        f"{N_GPUS}",
-        "--cuda-graph-max-bs",
-        f"{TARGET_INPUTS * 2}",
-        "--enable-metrics",
-        "--mem-fraction-static",
-        "0.8",
-        "--context-length",
-        "131_072",
-        "--reasoning-parser",
-        "qwen3",
-        "--tool-call-parser",
-        "qwen3_coder",
-        "--speculative-algo",
-        "NEXTN",
-        "--speculative-num-steps",
-        "3",
-        "--speculative-eagle-topk",
-        "1",
-        "--speculative-num-draft-tokens",
-        "4",
-    ]
-
-    print("Starting SGLang server with command:")
-    print(*cmd)
-
-    return subprocess.Popen(" ".join(cmd), shell=True, start_new_session=True)
-
-```
-
-Before returning from our `modal.enter` method,
-we wait for the server to finish spinning up, which can take several minutes.
-
-```python
-def wait_ready(process: subprocess.Popen, timeout: int = 10 * MINUTES):
-    import requests
-
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            check_running(process)
-            requests.get(f"http://127.0.0.1:{PORT}/health").raise_for_status()
-            return
-        except (
-            subprocess.CalledProcessError,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-        ):
-            time.sleep(5)
-    raise TimeoutError(f"SGLang server not ready within {timeout} seconds")
-
-def check_running(p: subprocess.Popen):
-    if (rc := p.poll()) is not None:
-        raise subprocess.CalledProcessError(rc, cmd=p.args)
-
-```
-
-We also send a few warmup requests to ensure
-that the server is fully ready to service requests --
-otherwise the first few requests to a new replica might be
-substantially slower.
-
-```python
-SAMPLE_PAYLOAD = {
-    "messages": [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "image_url",
-                    "image_url": {
-                        "url": "https://modal-cdn.com/golden-gate-bridge.jpg"
-                    },
-                },
-                {"type": "text", "text": "What is this?"},
-            ],
-        }
-    ],
-    "max_tokens": 16,
-}
-
-def warmup():
-    import requests
-
-    for _ in range(2):
-        requests.post(
-            f"http://127.0.0.1:{PORT}/v1/chat/completions",
-            json=SAMPLE_PAYLOAD,
-            timeout=120,
-        ).raise_for_status()
-
-```
-
-## Test the server
-
-We can test the entire server creation, from soup to nuts,
-by running the file with `modal run`.
-We just need to add a `local_entrypoint` that exercises the server.
-
-```python
-@app.local_entrypoint()
-async def main():
-    url = (await VlmServer._experimental_get_flash_urls.aio())[0]
-
-    messages = SAMPLE_PAYLOAD["messages"]
-    print(f"Sending image at {messages[0]['content'][0]['image_url']} to the server")
-
-    await probe(url, messages, timeout=10 * MINUTES)
-
-```
-
-The client logic is normally handled by your preferred interface --
-a coding agent harness like [OpenCode](https://modal.com/docs/examples/opencode_server),
-a chat UI in the browser. Our server uses the standard OpenAI-compatible API format,
-so most of these clients should work out of the box.
-We replicate the minimum amount of its functionality we need for a test below.
-
-Note that in the `probe` we include a `Modal-Session-Id` header for sticky routing
-between Modal HTTP Server replicas and ignore 503s that occur
-when no Modal HTTP Server replicas are available.
-
-```python
-async def probe(url: str, messages: list, timeout: int = 5 * MINUTES):
-    headers = {"Modal-Session-Id": "test-session"}
-    deadline = time.time() + timeout
-
-    async with aiohttp.ClientSession(base_url=url, headers=headers) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request_streaming(session, messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-            except aiohttp.client_exceptions.ClientResponseError as e:
-                if e.status == 503:
-                    await asyncio.sleep(1)
-                    continue
-                raise
-    raise TimeoutError(f"No response from server within {timeout} seconds")
-
-async def _send_request_streaming(
-    session: aiohttp.ClientSession, messages: list, timeout: int | None = None
-) -> None:
-    payload = {
-        "messages": messages,
-        "stream": True,
-        "top_k": 20,
-    }
-    headers = {"Accept": "text/event-stream"}
-
-    async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers, timeout=timeout
-    ) as resp:
-        resp.raise_for_status()
-        full_text = ""
-
-        chunk = ""
-        async for raw in resp.content:
-            line = raw.decode("utf-8", errors="ignore").strip()
-            if not line:
-                continue
-
-            if not line.startswith("data:"):
-                continue
-
-            data = line[len("data:") :].strip()
-            if data == "[DONE]":
-                break
-
-            try:
-                evt = json.loads(data)
-            except json.JSONDecodeError:
-                continue
-
-            delta = (evt.get("choices") or [{}])[0].get("delta") or {}
-            chunk += delta.get("content") or delta.get("reasoning_content") or ""
-
-            if chunk and ("." in chunk or "\n" in chunk):
-                print(chunk, end="", flush=True)
-                full_text += chunk
-                chunk = ""
-
-        if chunk:
-            print(chunk, end="", flush=True)
-            full_text += chunk
-
-        print()
-        return full_text
-
-```
-
-You can kick off a test run with the command
-
-```bash
-modal run sglang_vlm.py
-```
-
-## Deploy the server
-
-When you're ready to deploy the server,
-replace `modal run` with `modal deploy`:
-
-```bash
-modal deploy sglang_vlm.py
 ```
 
 ### Simple Code Interpreter
@@ -45939,7 +43718,7 @@ and the high latency configuration is used for non-real-time diarization with hi
 
 ## Using WebSockets to stream audio and diarization results
 
-We use a Modal [ASGI](https://modal.com/docs/guide/webhooks) app to serve the diarization results
+We use a Modal [ASGI](https://modal.com/docs/guide/asgi) app to serve the diarization results
 over WebSockets. This allows us to stream the diarization results to the client in real-time.
 
 We use a simple queue-based architecture to handle the audio and diarization results.
@@ -46167,7 +43946,7 @@ def fastapi_app():
 
 ```
 
-This `hook` web endpoint Modal function calls _another_ Modal function,
+This `hook` web endpoint Modal function calls *another* Modal function,
 and it just works!
 
 ```python
@@ -46606,8 +44385,8 @@ async def test(
 
     print("Starting transcription")
     start_time = time.monotonic_ns()
-    async with modal.Queue.ephemeral() as q:
-        await STT().transcribe_queue.spawn.aio(q)
+    with modal.Queue.ephemeral() as q:
+        STT().transcribe_queue.spawn(q)
         send = asyncio.create_task(send_audio(audio_bytes, q, chunk_size, rtf))
         recv = asyncio.create_task(receive_text(q))
         await asyncio.gather(send, recv)
@@ -46842,7 +44621,7 @@ image = (
     .uv_pip_install(
         "hf_transfer==0.1.9",
         "huggingface-hub==0.36.0",
-        "nemo_toolkit[asr]==2.3.2",
+        "nemo_toolkit[asr]==2.3.0",
         "cuda-python==12.8.0",
         "fastapi==0.115.12",
         "numpy<2",
@@ -46863,7 +44642,6 @@ Now we're ready to implement transcription. We wrap inference in a [`modal.Cls`]
 ensures models are loaded and then moved to the GPU once when a new container starts.
 
 A couple of notes about this code:
-
 - The `transcribe` method takes bytes of audio data and returns the transcribed text.
 - The `web` method creates a FastAPI app using [`modal.asgi_app`](https://modal.com/docs/reference/modal.asgi_app#modalasgi_app) that serves a
 [WebSocket](https://modal.com/docs/guide/webhooks#websockets) endpoint for streaming audio transcription and a browser frontend for transcribing audio from your microphone.
@@ -47066,8 +44844,8 @@ async def main(audio_url: str = AUDIO_URL):
     audio_data = preprocess_audio(audio_bytes)
 
     print("🎤 Starting Transcription")
-    async with modal.Queue.ephemeral() as q:
-        await ParakeetModel().run_with_queue.spawn.aio(q)
+    with modal.Queue.ephemeral() as q:
+        ParakeetModel().run_with_queue.spawn(q)
         send = asyncio.create_task(send_audio(q, audio_data))
         recv = asyncio.create_task(receive_text(q))
         await asyncio.gather(send, recv)
@@ -47455,12 +45233,12 @@ LOGDIR = "/tensorboard"
 This is basically the same code as [the official example](https://www.tensorflow.org/tutorials/images/classification) from the TensorFlow docs.
 A few Modal-specific things are worth pointing out:
 
-- We attach the Volume for sharing data with TensorBoard in the `app.function`
+* We attach the Volume for sharing data with TensorBoard in the `app.function`
   decorator.
 
-- We also annotate this function with `gpu="T4"` to make sure it runs on a GPU.
+* We also annotate this function with `gpu="T4"` to make sure it runs on a GPU.
 
-- We put all the TensorFlow imports inside the function body.
+* We put all the TensorFlow imports inside the function body.
   This makes it possible to run this example even if you don't have TensorFlow installed on your local computer -- a key benefit of Modal!
 
 You may notice some warnings in the logs about certain CPU performance optimizations (NUMA awareness and AVX/SSE instruction set support) not being available.
@@ -47634,6 +45412,367 @@ def main(just_run: bool = False):
                 time.sleep(1)
         except KeyboardInterrupt:
             print("Terminating app")
+
+```
+
+### Test Case Generator
+
+```python
+import subprocess
+import time
+
+import modal
+
+app = modal.App(
+    name="sandbox-test-case-generator",
+)
+model_volume = modal.Volume.from_name("deepseek-model-volume", create_if_missing=True)
+files_volume = modal.Volume.from_name("files-volume", create_if_missing=True)
+
+MODEL_NAME = "deepseek-ai/deepseek-coder-6.7b-instruct"
+MODEL_REVISION = "e5d64addd26a6a1db0f9b863abf6ee3141936807"
+
+model_image = (
+    modal.Image.from_registry("lmsysorg/sglang:v0.4.9.post3-cu126", add_python="3.12")
+    .uv_pip_install(
+        "sglang[all]==0.4.9.post3",
+        "accelerate==1.8.1",
+        "hf_transfer==0.1.9",
+    )
+    .env(
+        {
+            "HF_HUB_ENABLE_HF_TRANSFER": "1",
+            "HF_HOME": "/cache",
+        }
+    )
+    .entrypoint([])  # silence noisy logs
+)
+
+@app.cls(
+    image=model_image,
+    volumes={
+        "/cache": model_volume,
+        "/data": files_volume,
+    },
+    gpu="L40S",
+    timeout=600,
+)
+@modal.concurrent(max_inputs=3)  # Each container runs up to 3 requests at once.
+class TestCaseServer:
+    @modal.enter()
+    def download_model(self):
+        from huggingface_hub import snapshot_download
+
+        snapshot_download(
+            MODEL_NAME,
+            local_dir=f"/cache/{MODEL_NAME}",  # similar to cache_dir, but with less unused metadata
+            revision=MODEL_REVISION,
+            ignore_patterns=["*.pt", "*.bin"],
+        )
+
+    @modal.enter()
+    def start_model_server(self):
+        import subprocess
+
+        serve_params = {
+            "host": "0.0.0.0",
+            "port": 8000,
+            "model": f"/cache/{MODEL_NAME}",
+            "log-level": "error",
+        }
+        serve_cmd = "python -m sglang.launch_server " + " ".join(
+            [f"--{k} {v}" for k, v in serve_params.items()]
+        )
+
+        self.serve_process = subprocess.Popen(serve_cmd, shell=True)
+        wait_for_port(self.serve_process, 8000)
+
+        print("SGLang server is ready!")
+
+    @modal.web_server(port=8000, startup_timeout=240)
+    def serve(self):
+        return
+
+@app.cls(
+    image=modal.Image.debian_slim(python_version="3.12").uv_pip_install(
+        "openai==1.97.1"
+    ),
+    volumes={
+        "/data": files_volume,
+    },
+)
+class TestCaseClient:
+    url: str = modal.parameter()
+
+    def load_inputs(self, file_name: str) -> tuple[str, str]:
+        import os
+
+        if not os.path.exists("/data/inputs"):
+            raise Exception(
+                "Inputs directory does not exist. Make sure to run download_files_to_volume first."
+            )
+
+        with open(f"/data/inputs/{file_name}", "r") as f:
+            file_contents = f.read()
+
+        with open(f"/data/inputs/test_{file_name}", "r") as f:
+            test_file_contents = f.read()
+        return file_contents, test_file_contents
+
+    def write_outputs(self, output_file_name: str, output_contents: str) -> str:
+        import os
+
+        os.makedirs("/data/outputs", exist_ok=True)
+        with open(f"/data/outputs/{output_file_name}", "w") as f:
+            f.write(output_contents)
+        return output_file_name
+
+    @modal.method()
+    def generate(self, file_name: str) -> str:
+        import json
+
+        import openai
+
+        file_contents, test_file_contents = self.load_inputs(file_name)
+
+        system_prompt = get_system_prompt()
+        user_prompt = get_user_prompt(file_contents, test_file_contents)
+
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ]
+
+        client = openai.Client(base_url=f"{self.url}/v1", api_key="EMPTY")
+
+        json_schema = {
+            "type": "object",
+            "properties": {"file_contents": {"type": "string"}},
+            "required": ["file_contents"],
+        }
+
+        response = client.chat.completions.create(
+            model="default",
+            messages=messages,
+            temperature=0,
+            max_tokens=1024,
+            response_format={
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "test_file",
+                    "schema": json_schema,
+                },
+            },
+        )
+        output = response.choices[0].message.content
+        try:
+            output_contents = json.loads(output)["file_contents"]
+            return self.write_outputs(f"test_{file_name}", output_contents)
+        except Exception as e:
+            print(f"Error generating test file: {e}")
+            return None
+
+@app.function(
+    image=modal.Image.debian_slim(python_version="3.12").uv_pip_install(
+        "requests==2.32.3"
+    ),
+    volumes={"/data": files_volume},
+)
+def download_files_to_volume(
+    folder_paths: list[str],
+    gh_owner: str,
+    gh_repo_name: str,
+    gh_branch: str,
+) -> list[str]:
+    import os
+
+    import requests
+
+    os.makedirs("/data/inputs", exist_ok=True)
+    all_files = []
+    for folder_path in folder_paths:
+        response = requests.get(
+            f"https://api.github.com/repos/{gh_owner}/{gh_repo_name}/contents/{folder_path}?ref={gh_branch}"
+        )
+        files = response.json()
+        all_files.extend(files)
+
+    file_to_download_urls = []
+    for _file in all_files:
+        if (
+            _file["type"] == "file"
+            and _file["name"].endswith(".py")
+            and _file["name"] != "__init__.py"
+        ):
+            file_to_download_urls.append((_file["name"], _file["download_url"]))
+
+    file_to_text = {}
+    for name, url in file_to_download_urls:
+        response = requests.get(url)
+        file_to_text[name] = response.text
+
+    for name, text in file_to_text.items():
+        with open(f"/data/inputs/{name}", "w") as f:
+            f.write(text)
+    print("Files downloaded to volume!")
+    return [name for name in file_to_text.keys() if not name.startswith("test_")]
+
+def get_sandbox_image(gh_owner: str, gh_repo_name: str):
+    ALLURE_VERSION = "2.34.1"
+    MODULE_URL = f"https://github.com/{gh_owner}/{gh_repo_name}"
+
+    image = (
+        modal.Image.debian_slim()
+        .apt_install("git", "curl", "tar", "default-jre")
+        .uv_pip_install("webdiff")
+        .run_commands(
+            f"git clone {MODULE_URL}",
+            "curl -sSL https://install.python-poetry.org | python3 -",
+            "mkdir -p /opt/allure",
+            f"curl -sL https://github.com/allure-framework/allure2/releases/download/{ALLURE_VERSION}/allure-{ALLURE_VERSION}.tgz | tar xz -C /opt/allure --strip-components=1",
+        )
+        .env({"PATH": "$PATH:/root/.local/bin:/opt/allure/bin"})
+    )
+
+    return image
+
+def run_sandbox(image: modal.Image, file_name: str):
+    new_file_name = file_name.replace(".py", "_llm.py")
+
+    cmd = (
+        f"webdiff password-analyzer/tests/{file_name} /data/outputs/{file_name}  --host 0.0.0.0 --port 8001 &&"
+        + "cd password-analyzer && "
+        + "poetry install --no-root && "
+        + "poetry run pytest --alluredir allure-results || true && "
+        + f"cp /data/outputs/{file_name} tests/{new_file_name} && "
+        + "poetry run pytest --alluredir allure-results || true && "
+        + "allure serve allure-results --host 0.0.0.0 --port 8000"
+    )
+
+    sb = modal.Sandbox.create(
+        "sh",
+        "-c",
+        cmd,
+        app=app,
+        image=image,
+        volumes={
+            "/data": files_volume,
+        },
+        encrypted_ports=[8000, 8001],
+        timeout=300,  # 5 minutes
+    )
+    return sb
+
+@app.local_entrypoint()
+async def main(
+    gh_owner: str,
+    gh_repo_name: str,
+    gh_module_path: str,
+    gh_tests_path: str,
+    gh_branch: str,
+):
+    import asyncio
+
+    # Start server
+    sg_lang_server = TestCaseServer()
+
+    # Download files to volume
+    input_files = download_files_to_volume.remote(
+        folder_paths=[gh_module_path, gh_tests_path],
+        gh_owner=gh_owner,
+        gh_repo_name=gh_repo_name,
+        gh_branch=gh_branch,
+    )
+
+    # Initialize client and generate test files
+    generator = TestCaseClient(url=sg_lang_server.serve.get_web_url())  # type: ignore
+    output_generator = generator.generate.map.aio(input_files)
+    output_files = []
+    async for f in output_generator:
+        if f is not None:
+            output_files.append(f)
+    print("Test case files generated successfully! Creating sandboxes...")
+
+    # Create sandboxes to run the generated test files
+    sandboxes = create_sandboxes(output_files, gh_owner, gh_repo_name)
+    await asyncio.gather(
+        *[sb.wait.aio(raise_on_termination=False) for sb in sandboxes],
+        return_exceptions=True,
+    )
+
+```
+
+# Addenda
+The below functions are utility functions.
+
+```python
+def create_sandboxes(filenames: list[str], gh_owner: str, gh_repo_name: str):
+    file_to_sandbox: dict[str, modal.Sandbox] = {}
+    for filename in filenames:
+        print(f"Running sandbox for {filename}")
+        image = get_sandbox_image(gh_owner, gh_repo_name)
+        sb = run_sandbox(image, filename)
+        file_to_sandbox[filename] = sb
+    time.sleep(20)  # Hack to make sure URLs show up at the very end
+
+    for filename, sb in file_to_sandbox.items():
+        tunnel1 = sb.tunnels()[8000]
+        tunnel2 = sb.tunnels()[8001]
+        print(f"Sandbox created and run for generated test file: {filename}")
+        print(f"✨ View diff: {tunnel2.url}")
+        print(f"✨ View test results: {tunnel1.url}\n")
+
+    return file_to_sandbox.values()
+
+def get_user_prompt(file_text: str, test_file_text: str) -> str:
+    return f"""
+    Your task is to improve an existing test file using `pytest`.
+
+    Step-by-step:
+    1. Carefully read the existing test file (below) and understand the current test cases.
+    2. Then read the source file (also below) and understand the function behavior, focusing on docstrings, edge cases, and argument types.
+    3. Based on that understanding, **add** new test cases to the test file to increase coverage—especially edge cases, boundary conditions, and untested branches.
+    4. Use `pytest` idioms, but do **not** add or change import statements—**use only what is already imported**.
+    5. Do **not** explain your reasoning—just return the final modified test file.
+
+    ### Requirements:
+    - Your output must be a valid, complete Python file with the added test cases.
+    - Do not modify existing test logic unless necessary to support your new test cases.
+    - Do not import any additional modules.
+    - Limit each line to a maximum of 100 characters to avoid output truncation or formatting errors.
+    - Limit your output to around 25 lines. Make sure to complete any functions or blocks you start.
+
+    --- BEGIN TEST FILE ---
+    {test_file_text}
+    --- END TEST FILE ---
+
+    --- BEGIN SOURCE FILE ---
+    {file_text}
+    --- END SOURCE FILE ---
+    """
+
+def get_system_prompt():
+    return (
+        "You are a senior software engineer with expertise in test-driven development and Python unit testing. "
+        "Your task is to enhance an existing test file by adding more test cases. "
+        "Do not change or add import statements. Do not explain your reasoning. Output only a complete, valid Python file. "
+        "Do not change existing code and only add new test cases that follow the same formatting as the existing test cases. "
+        "Limit each line to a maximum of 100 characters to avoid output truncation or formatting errors."
+        "Limit your output to around 25 lines. Make sure to complete any functions or blocks you start."
+    )
+
+def wait_for_port(process: subprocess.Popen, port: int):
+    import socket
+
+    while True:
+        try:
+            with socket.create_connection(("0.0.0.0", port), timeout=1):
+                break
+        except (ConnectionRefusedError, OSError):
+            if process.poll() is not None:
+                raise Exception(
+                    f"Process {process.pid} exited with code {process.returncode}"
+                )
 
 ```
 
@@ -48337,16 +46476,14 @@ async def benchmark(seed: int = 42, limit: int = 16, num_few_shot: int = 4):
     import asyncio
 
     print("Loading dataset")
-    dataset = await load_dataset.remote.aio(
-        seed=seed, num_few_shot=num_few_shot, limit=limit
-    )
+    dataset = load_dataset.remote(seed=seed, num_few_shot=num_few_shot, limit=limit)
     print(f"Total number of items to process: {len(dataset)}")
 
-    await serve.update_autoscaler.aio(
+    serve.update_autoscaler(
         max_containers=1  # prevent concurrent execution when benchmarking
     )
 
-    url = await serve.get_web_url.aio()
+    url = serve.get_web_url()
     async with aiohttp.ClientSession(
         base_url=url, headers={"Accept-Encoding": "gzip, deflate, br"}
     ) as session:
@@ -48545,7 +46682,6 @@ that repeatedly multiplies a random matrix with itself.
 
 The logic is simple, but it demonstrates two common issues with
 GPU-accelerated Python code that are relatively easily fixed:
-
 1. Slowing down the issuance of work to the GPU
 2. Providing insufficient work for the GPU to complete
 
@@ -48706,7 +46842,6 @@ You can view the trace in the free online [Perfetto UI](https://ui.perfetto.dev)
 ### Improving the performance of our dummy test code
 
 The `underutilize` demonstrates two common patterns that leads to unnecessarily low GPU utilization:
-
 1. Slowing down the issuance of work to the GPU
 2. Providing insufficient work for the GPU to complete
 
@@ -48763,7 +46898,6 @@ class VolumeMiddleware:
 ```
 
 You can deploy the TensorBoard server defined below with the following command:
-
 ```bash
 modal deploy torch_profiling
 ```
@@ -49934,7 +48068,6 @@ To run our `Model`'s `.generate` method from Python, we just need to call it --
 with `.remote` appended to run it on Modal.
 
 We wrap that logic in a `local_entrypoint` so you can run it from the command line with
-
 ```bash
 modal run trtllm_throughput.py
 ```
@@ -50284,7 +48417,6 @@ with train_image.imports():
 Modal [Volumes](https://modal.com/docs/guide/volumes) provide storage that persists
 between function invocations. We use separate volumes for different types of data to
 enable efficient caching and sharing:
-
 - A cache for [pretrained model weights](https://modal.com/docs/guide/model-weights) - reused across all experiments
 - A cache for processed datasets - reused when using the same dataset
 - Storage for training checkpoints and final models
@@ -50412,7 +48544,6 @@ def load_or_cache_model(config: "TrainingConfig", paths: dict):
 ```
 
 ## Training Configuration
-
 First we'll define what layers our LoRA modules should target.
 Generally, it's advisable to LoRA finetune every linear layer in the model,
 so we target every projection matrix of each attention layer.
@@ -50586,14 +48717,12 @@ our code. This allows us to do things like tweak hyperparameters directly
 from the command line without modifying our source code.
 
 To try this example, checkout the examples repo, install the Modal client, and run
-
 ```bash
 modal run 06_gpu_and_ml/unsloth_finetune.py
 ```
 
 You can also customize the training process by tweaking hyperparameters with command line
 flags, e.g.
-
 ```bash
 modal run 06_gpu_and_ml/unsloth_finetune.py --max-steps 10000
 ```
@@ -50787,595 +48916,28 @@ def check_for_existing_checkpoint(paths: dict):
 
 ```
 
-### Very Large Models
-
-# Serve very large language models (DeepSeek V3, Kimi-K2, GLM 4.7/5)
-
-This example demonstrates the basic patterns for serving language models on Modal
-whose weights consume hundreds of gigabytes of storage.
-
-In short:
-
-- load weights into a Modal Volume ahead of server launch
-- use random "dummy" weights when iteratively developing your server
-- use two, four, or eight H200 or B200 GPUs
-- use lower-precision weight formats (FP4 on Blackwell, FP8 on Hopper)
-- default to using speculative decoding, especially if batches are in the few tens of sequences
-
-For more tips on how to serve specific types of LLM inference at high performance,
-see [this guide](https://modal.com/docs/guide/high-performance-llm-inference).
-For a gentler introduction to LLM serving,
-see [this example](https://modal.com/docs/examples/llm_inference).
-
-```python
-import asyncio
-import json
-import os
-import subprocess
-import time
-from pathlib import Path
-
-import aiohttp
-import modal
-import modal.experimental
-
-here = Path(__file__).parent
-
-```
-
-## Set up the container image
-
-We start by creating a Modal Image based on the Docker image
-provided by the SGLang team.
-This contains our Python and system dependencies.
-Add more by chaining `.apt_install` and `.uv_pip_install`
-or `.pip_install`  method calls, as we do below with
-`.entrypoint`.
-See the [Modal Image guide](https://modal.com/docs/guide/images)
-for details.
-
-```python
-image = modal.Image.from_registry("lmsysorg/sglang:v0.5.7").entrypoint(
-    []  # silence chatty logs on entry
-)
-
-```
-
-### Load model weights
-
-Large model weights take a long time to move around.
-Model weight servers like Hugging Face will send weights
-at a few hundred megabytes per second. For large models,
-with weight sizes in the hundreds of gigabytes,
-that means thousands of seconds (tens of minutes)
-of model loading time.
-
-After loading them we can cache these weights in a Modal
-[Volume](https://modal.com/docs/guide/volumes)
-so that they are loaded about 10x faster --
-about one to three gigabytes per second.
-
-```python
-hf_cache_vol = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-
-```
-
-That still means minutes of startup time.
-Both of these latencies kill productivity when you're iterating
-on aspects besides model behavior, like server configuration.
-
-For this reason, we recommend skipping model loading while you're developing
-a server or configuration -- even when benchmarking, if you can!
-You can still exercise the same code paths if you use the `dummy` model
-loading format. In this sample code, we add an `APP_USE_DUMMY_WEIGHTS` environment variable
-to control this behavior from the command line during iteration.
-
-```python
-USE_DUMMY_WEIGHTS = os.environ.get("APP_USE_DUMMY_WEIGHTS", "0").lower() in (
-    "1",
-    "true",
-)
-
-image = image.env(
-    {
-        "HF_XET_HIGH_PERFORMANCE": "1",  # faster downloads
-        "APP_USE_DUMMY_WEIGHTS": str(int(USE_DUMMY_WEIGHTS)),
-    }
-)
-
-```
-
-We download the model weights from Hugging Face by
-running a Python function as part of the Modal Image build.
-Note that command-line logging will be somewhat limited.
-
-```python
-def download_model(repo_id, revision=None):
-    from huggingface_hub import snapshot_download
-
-    snapshot_download(repo_id=repo_id, revision=revision)
-
-```
-
-To run the function, we need to pick a specific model to download.
-We'll use Z.ai's GLM 4.7 in eight bit
-[floating point quantization](https://quant.exposed).
-This model takes about thirty minutes to an hour to download from Hugging Face.
-
-```python
-REPO_ID = "zai-org/GLM-4.7-FP8"
-
-if not USE_DUMMY_WEIGHTS:  # skip download if we don't need real weights
-    image = image.run_function(
-        download_model,
-        volumes={"/root/.cache/huggingface": hf_cache_vol},
-        args=(REPO_ID,),
-    )
-
-```
-
-### Configure the inference engine
-
-Running large models efficiently requires specialized inference engines like SGLang.
-These engines are generally highly configurable.
-
-For SGLang, there are three main sources of configuration values:
-
-- _Environment variables_ for the process running `sglang`.
-- _Command-line arguments_ for the command to launch the `sglang` process.
-- _Configuration files_ loaded by the `sglang` process.
-
-For deployments, we prefer to put information in configuration files where possible.
-CLI arguments and configuration files can typically be interchanged.
-CLI arguments are convenient when iterating, but configuration files are easier to share.
-We use environment variables only as a last resort, typically to activate new or experimental features.
-
-**Environment variables**
-
-SGLang environment variables are prefixed with `SGL_` or `SGLANG_`.
-The `SGL_` prefix is deprecated.
-
-The snippet below adds any such environment variables
-present during deployment to the Modal Image.
-
-```python
-def is_sglang_env_var(key):
-    return key.startswith("SGL_") or key.startswith("SGLANG_")
-
-image = image.env(
-    {key: value for key, value in os.environ.items() if is_sglang_env_var(key)}
-)
-
-```
-
-**YAML**
-
-Configuration files can be passed in YAML format.
-
-We include a default config in-line in the code here for ease of use.
-It's designed to run GLM 4.7 FP8 at low to moderate concurrency.
-In particular, it uses that model's built-in multi-token prediction speculative decoding to improve
-[time per output token](https://modal.com/llm-almanac/how-to-benchmark).
-
-```python
-default_config = """\
- # General Config
- host: 0.0.0.0
- log-level: debug  # very noisy
-
- # Model Config
- tool-call-parser: glm47
- reasoning-parser: glm45
- trust-remote-code: true
-
- # Memory
- mem-fraction-static: 0.85
- chunked-prefill-size: 32768
- kv-cache-dtype: fp8_e4m3
-
- # Observability
- enable-metrics: true
- collect-tokens-histogram: true
-
- # Batching
- max-running-requests: 32
- cuda-graph-max-bs: 32
-
- # SpecDec (speed up low/moderate concurrency)
- speculative-algorithm: EAGLE  # built into GLM 4.7, is just multi-token prediction
-"""
-
-```
-
-You'll want to provide your own configuration file for other settings,
-in particular if you change the model.
-
-We add an environment variable, `APP_LOCAL_CONFIG_PATH`,
-to change the loaded configuration.
-
-```python
-local_config_path = os.environ.get("APP_LOCAL_CONFIG_PATH")
-
-if modal.is_local():
-    if local_config_path is None:
-        local_config_path = here / "config_very_large_models.yaml"
-
-        if not local_config_path.exists():
-            local_config_path.write_text(default_config)
-
-        print(
-            f"Using default config from {local_config_path.relative_to(here)}:",
-            default_config,
-            sep="\n",
-        )
-
-    image = image.add_local_file(local_config_path, "/root/config.yaml")
-
-```
-
-**Command-line arguments**
-
-We launch our server by kicking off a subprocess.
-The convenience function below encapsulates the command
-and its arguments.
-
-We pass a few key bits of configuration that are consumed
-by other code here, rather than in a configuration file,
-so that values stay in sync.
-
-That includes:
-
-- Model information, which is also used during weight cacheing
-- GPU count, which is also used below when defining our Modal deployment
-- the port to serve on, which is also used to connect up Modal networking
-
-We also pass the `HF_HUB_OFFLINE` environment variable here,
-so that our server will crash when trying to load the real model
-if those weights are not in cache.
-For smaller models, we can instead load weights dynamically on
-server start (and cache them so later starts are faster).
-But for large models, weight loading extends the first start latency
-so much that downstream timeouts are triggered --
-or need to be extended so much that they are no longer tight enough
-on the happy path.
-
-```python
-def _start_server() -> subprocess.Popen:
-    """Start SGLang server in a subprocess"""
-    cmd = [
-        f"HF_HUB_OFFLINE={0 if USE_DUMMY_WEIGHTS else 1}",
-        "python",
-        "-m",
-        "sglang.launch_server",
-        "--host",
-        "0.0.0.0",
-        "--port",
-        str(SGLANG_PORT),
-        "--model-path",
-        REPO_ID,
-        "--tp-size",
-        str(GPU_COUNT),
-        "--config",
-        "/root/config.yaml",
-    ]
-
-    if USE_DUMMY_WEIGHTS:
-        cmd.extend(["--load-format", "dummy"])
-
-    print("Starting SGLang server with command:")
-    print(*cmd)
-
-    return subprocess.Popen(" ".join(cmd), shell=True, start_new_session=True)
-
-```
-
-Lastly, we import the `sglang` library as part of loading the Image on Modal.
-This is a minor optimization, but it can shave a few seconds off cold start latencies
-by providing better prefetching hints, and every second counts!
-
-```python
-with image.imports():
-    import sglang  # noqa
-
-```
-
-## Configure infrastructure
-
-Now, we wrap our configured SGLang server for our large model
-in the infrastructure required to run and interact with it.
-Infrastrucure in Modal is generally attached to an App.
-Here, we'll attach our Modal Image as the default for
-Modal Functions that run in the App.
-
-```python
-app = modal.App("example-serve-very-large-models", image=image)
-
-```
-
-Most importantly, we need to decide what hardware to run on.
-[H200 and B200 GPUs](https://modal.com/blog/introducing-b200-h200)
-have over 100 GB of [GPU RAM](https://modal.com/gpu-glossary/device-hardware/gpu-ram) --
-141 GB and 180 GB, respectively.
-The model's weights will be stored in this memory,
-and they consume several hundred gigabytes of space,
-so we will generally want several of these accelerators.
-We also need space for the model's KV cache of activations
-on input sequences.
-
-In eight-bit precision, GLM 4.7 consumes ~350 GB of space,
-so we use four H200s for 564 GB of RAM.
-
-```python
-GPU_TYPE = "H200"
-GPU_COUNT = 4
-
-```
-
-We'll use a Modal `experimental.http_server` to serve our model.
-This reduces client latencies and provides for regionalized deployment.
-You can read more about it in [this example](https://modal.com/docs/examples/sglang_low_latency).
-To configure it, we need to pass in region information for the GPU workers
-and for the load-balancing proxy.
-
-```python
-REGION = "us"
-PROXY_REGIONS = ["us-east"]
-
-```
-
-Lastly, we need to configure autoscaling parameters.
-By default, Modal is fully serverless, and applications
-scale to zero when there is no load.
-But booting up inference engines for large models takes minutes,
-which is generally longer than clients can tolerate waiting.
-
-So a production deployment of large models that has clients with
-per-request SLAs in the few or tens of seconds
-generally needs to keep one replica up at all times.
-In Modal, we achieve this with the `min_containers` parameter
-of `App.cls` or `App.function`.
-
-This can trigger substantial costs, so we leave the value at `0`
-in this sample code.
-
-```python
-MIN_CONTAINERS = 0  # Set to 1 for production to keep a warm replica
-
-```
-
-Deployments of large models with a single node per replica can generally handle a few tens of requests
-without queueing. When a particular replica has more requests than it can handle, we want to scale it up.
-This behavior is configured by passing the `target_inputs` parameter to `modal.concurrent`.
-
-```python
-TARGET_INPUTS = 10  # Concurrent requests per replica before scaling
-
-```
-
-### Define the server
-
-Now we're ready to put all of our infrastructure configuration
-together into a Modal Cls.
-
-The Modal Cls allows us to control
-[container lifecycle](https://modal.com/docs/guide/lifecycle-functions).
-In particular, it lets us define work that a replica should do before
-and after it handles requests in methods decorated with `modal.enter`
-and `modal.exit`, respectively.
-
-```python
-SGLANG_PORT = 8000
-MINUTES = 60  # seconds
-
-@app.cls(
-    image=image,
-    gpu=f"{GPU_TYPE}:{GPU_COUNT}",
-    scaledown_window=20 * MINUTES,  # how long should we stay up with no requests?
-    timeout=30 * MINUTES,  # how long should we wait for container start?
-    volumes={"/root/.cache/huggingface": hf_cache_vol},
-    region=REGION,
-    min_containers=MIN_CONTAINERS,
-)
-@modal.experimental.http_server(
-    port=SGLANG_PORT,
-    proxy_regions=["us-east"],
-    exit_grace_period=25,  # time to finish requests on shutdown (seconds)
-)
-@modal.concurrent(target_inputs=TARGET_INPUTS)
-class Server:
-    @modal.enter()
-    def start(self):
-        """Start SGLang server process and wait for it to be ready"""
-        self.proc = _start_server()
-        wait_for_server_ready()
-
-    @modal.exit()
-    def stop(self):
-        """Terminate the SGLang server process"""
-        self.proc.terminate()
-        self.proc.wait()
-
-```
-
-We called a `wait_for_server_ready` function in our `modal.enter` method.
-That's defined below. It pings the `/health` endpoint until the server responds.
-
-```python
-def wait_for_server_ready():
-    """Wait for SGLang server to be ready"""
-    import requests
-
-    url = f"http://localhost:{SGLANG_PORT}/health"
-    print(f"Waiting for server to be ready at {url}")
-
-    while True:
-        try:
-            resp = requests.get(url, timeout=5)
-            if resp.status_code == 200:
-                print("Server is ready!")
-                return
-        except requests.exceptions.RequestException:
-            pass
-        time.sleep(5)
-
-```
-
-## Test the server
-
-You can deploy a fresh replica and test it
-using the command
-
-```bash
-APP_USE_DUMMY_WEIGHTS=1 modal run very_large_models.py
-```
-
-which will create an ephemeral Modal App
-and execute the `local_entrypoint` code below.
-
-Because the weights are randomized, the outputs are also random.
-Remove the `APP_USE_DUMMY_WEIGHTS` flag to test the trained model.
-
-```python
-@app.local_entrypoint()
-async def test(test_timeout=20 * MINUTES, content=None, twice=True):
-    """Test the model serving endpoint"""
-    url = (await Server._experimental_get_flash_urls.aio())[0]
-
-    if USE_DUMMY_WEIGHTS:
-        system_prompt = {"role": "system", "content": "This system produces gibberish."}
-    else:
-        system_prompt = {"role": "system", "content": "You are a helpful AI assistant."}
-
-    if content is None:
-        content = "Explain the transformer architecture in one paragraph."
-
-    messages = [system_prompt, {"role": "user", "content": content}]
-
-    print(f"Sending messages to {url}:", *messages, sep="\n\t")
-    await probe(url, messages, timeout=test_timeout)
-
-    if twice:
-        messages[1]["content"] = "What is the capital of France?"
-        print(f"Sending second request to {url}:", *messages, sep="\n\t")
-        await probe(url, messages, timeout=1 * MINUTES)
-
-```
-
-The unique client logic for Modal deployments is in the `probe` function below.
-Specifically, when a Modal `experimental.http_server` is spinning up,
-i.e. before the `modal.enter` finishes for at least one replica,
-clients will see a `503 Service Unavailable` status
-and so should retry.
-
-```python
-async def probe(url, messages, timeout=20 * MINUTES):
-    """Send request with retry logic for startup delays"""
-    deadline = time.time() + timeout
-    async with aiohttp.ClientSession(base_url=url) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request_streaming(session, messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-            except aiohttp.client_exceptions.ClientResponseError as e:
-                if e.status == 503:  # Service Unavailable during startup
-                    await asyncio.sleep(1)
-                    continue
-                raise e
-    raise TimeoutError(f"No response from server within {timeout} seconds")
-
-```
-
-## Deploy the server
-
-When you're ready, you can create a persistent deployment with
-
-```bash
-APP_USE_DUMMY_WEIGHTS=0 modal deploy very_large_models.py
-```
-
-And hit it with any OpenAI API-compatible client!
-
-## Addenda
-
-The `probe` function above uses this helper function
-to stream response tokens as they become available.
-
-```python
-async def _send_request_streaming(
-    session: aiohttp.ClientSession, messages: list, timeout: int | None = None
-):
-    """Stream response from chat completions endpoint"""
-    payload = {
-        "messages": messages,
-        "stream": True,
-        "max_tokens": 1024 if USE_DUMMY_WEIGHTS else None,
-    }
-    headers = {"Accept": "text/event-stream"}
-
-    async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers, timeout=timeout
-    ) as resp:
-        resp.raise_for_status()
-        full_text = ""
-
-        async for raw in resp.content:
-            line = raw.decode("utf-8", errors="ignore").strip()
-            if not line:
-                continue
-
-            if not line.startswith("data:"):
-                continue
-
-            data = line[len("data:") :].strip()
-            if data == "[DONE]":
-                break
-
-            try:
-                evt = json.loads(data)
-            except json.JSONDecodeError:
-                continue
-
-            delta = (evt.get("choices") or [{}])[0].get("delta") or {}
-            chunk = delta.get("content") or delta.get("reasoning_content")
-
-            if chunk:
-                print(
-                    chunk,
-                    end="",
-                    flush="\n" in chunk or "." in chunk or len(chunk) > 100,
-                )
-                full_text += chunk
-        print()
-
-```
-
 ### Vllm Inference
 
-# Run OpenAI-compatible LLM inference with Qwen and vLLM
-
-In this example, we show how to run a vLLM server in OpenAI-compatible mode on Modal.
+# Run OpenAI-compatible LLM inference with Qwen3-8B and vLLM
 
 LLMs do more than just model language: they chat, they produce JSON and XML, they run code, and more.
 This has complicated their interface far beyond "text-in, text-out".
 OpenAI's API has emerged as a standard for that interface,
 and it is supported by open source LLM serving frameworks like [vLLM](https://docs.vllm.ai/en/latest/).
 
-This example is intended to demonstrate the basics of deploying LLM inference on Modal.
-For more on how to optimize performance, see
-[this guide](https://modal.com/docs/guide/high-performance-llm-inference)
-and check out our
-[LLM Engineer's Almanac](https://modal.com/llm-almanac).
+In this example, we show how to run a vLLM server in OpenAI-compatible mode on Modal.
 
 Our examples repository also includes scripts for running clients and load-testing for OpenAI-compatible APIs
 [here](https://github.com/modal-labs/modal-examples/tree/main/06_gpu_and_ml/llm-serving/openai_compatible).
+
+You can find a (somewhat out-of-date) video walkthrough of this example and the related scripts on the Modal YouTube channel
+[here](https://www.youtube.com/watch?v=QmY_7ePR1hM).
 
 ## Set up the container image
 
 Our first order of business is to define the environment our server will run in:
 the [container `Image`](https://modal.com/docs/guide/custom-container).
-vLLM can be installed with `uv pip`, since Modal [provides the CUDA drivers](https://modal.com/docs/guide/cuda).
+vLLM can be installed with `pip`, since Modal [provides the CUDA drivers](https://modal.com/docs/guide/cuda).
 
 ```python
 import json
@@ -51388,8 +48950,9 @@ vllm_image = (
     modal.Image.from_registry("nvidia/cuda:12.8.0-devel-ubuntu22.04", add_python="3.12")
     .entrypoint([])
     .uv_pip_install(
-        "vllm==0.13.0",
+        "vllm==0.11.2",
         "huggingface-hub==0.36.0",
+        "flashinfer-python==0.5.2",
     )
     .env({"HF_XET_HIGH_PERFORMANCE": "1"})  # faster model transfers
 )
@@ -51398,23 +48961,22 @@ vllm_image = (
 
 ## Download the model weights
 
-We'll be running a pretrained foundation model --
-[Alibaba's Qwen 3 4B](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507-FP8).
+We'll be running a pretrained foundation model -- Qwen's Qwen3-8B.
 It is trained with reasoning capabilities, which allow it to
 enhance the quality of its generated responses.
 
-We'll use an FP8 (eight-bit floating-point) post-training-quantized variant: `Qwen/Qwen3-4B-Thinking-2507-FP8`.
+We'll use an FP8 (eight-bit floating-point) post-training-quantized variant: Qwen/Qwen3-8B-FP8.
 Native hardware support for FP8 formats in [Tensor Cores](https://modal.com/gpu-glossary/device-hardware/tensor-core)
 is limited to the latest [Streaming Multiprocessor architectures](https://modal.com/gpu-glossary/device-hardware/streaming-multiprocessor-architecture),
-like those of Modal's [Hopper H100/H200 and Blackwell B200 GPUs](https://modal.com/blog/introducing-b200-h200).
+like those of Modal's [Hopper H100/H200 and Blackwell B200 GPUs](https://modal.com/blog/announcing-h200-b200).
 
 You can swap this model out for another by changing the strings below.
-A single H100 GPU has enough VRAM to store a 4,000,000,000 parameter model,
-like Qwen3 4B, in eight bit precision, along with a very large KV cache.
+A single H100 GPU has enough VRAM to store an 8,000,000,000 parameter model,
+like Qwen3-8B, in eight bit precision, along with a very large KV cache.
 
 ```python
-MODEL_NAME = "Qwen/Qwen3-4B-Thinking-2507-FP8"
-MODEL_REVISION = "953532f942706930ec4bb870569932ef63038fdf"  # avoid nasty surprises when repos update!
+MODEL_NAME = "Qwen/Qwen3-8B-FP8"
+MODEL_REVISION = "220b46e3b2180893580a4454f21f22d3ebb187d3"  # avoid nasty surprises when repos update!
 
 ```
 
@@ -51516,7 +49078,7 @@ def serve():
     # assume multiple GPUs are for splitting up large matrix multiplications
     cmd += ["--tensor-parallel-size", str(N_GPU)]
 
-    print(*cmd)
+    print(cmd)
 
     subprocess.Popen(" ".join(cmd), shell=True)
 
@@ -51525,7 +49087,6 @@ def serve():
 ## Deploy the server
 
 To deploy the API on Modal, just run
-
 ```bash
 modal deploy vllm_inference.py
 ```
@@ -51577,7 +49138,7 @@ block of a Python script, but for cloud deployments!
 ```python
 @app.local_entrypoint()
 async def test(test_timeout=10 * MINUTES, content=None, twice=True):
-    url = await serve.get_web_url.aio()
+    url = serve.get_web_url()
 
     system_prompt = {
         "role": "system",
@@ -51614,7 +49175,7 @@ async def _send_request(
     headers = {"Content-Type": "application/json", "Accept": "text/event-stream"}
 
     async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers
+        "/v1/chat/completions", json=payload, headers=headers, timeout=1 * MINUTES
     ) as resp:
         async for raw in resp.content:
             resp.raise_for_status()
@@ -51643,35 +49204,22 @@ modal run openai_compatible/load_test.py
 
 ### Vllm Low Latency
 
-# Low latency Qwen 3 8B with vLLM and Modal
+# Low Latency Qwen 3-8B with vLLM and Modal
 
-In this example, we show how to serve [vLLM](https://docs.vllm.ai) at low latency on Modal.
+In this example, we show how to serve Qwen 3-8B with vLLM on Modal using @modal.experimental.http_server.
+This is a new low latency routing service on Modal which offers significantly reduced overheads, higher throughput, and session based routing.
+These features make `http_server` especially useful for inference workloads.
 
-This example is intended to demonstrate everything required to run
-inference at the highest performance and with the lowest latency possible,
-and so it includes advanced features of both vLLM and Modal.
-For a simpler introduction to LLM serving, see
-[this example](https://modal.com/docs/examples/llm_inference).
-
-To minimize routing overheads, we use `@modal.experimental.http_server`,
-which uses a new, low-latency routing service on Modal designed for latency-sensitive inference workloads.
-This gives us more control over routing, but with increased power comes increased responsibility.
-
-We also include instructions for cutting cold start times by an order of magnitude using Modal's
-[CPU + GPU memory snapshots](https://modal.com/docs/guide/memory-snapshot).
+We also include instructions for cutting cold start times by an order of magnitude using Modal's [CPU + GPU memory snapshots](https://modal.com/docs/guide/memory-snapshot).
 
 ## Set up the container image
 
 Our first order of business is to define the environment our server will run in:
-the [container `Image`](https://modal.com/docs/guide/images).
+the [container `Image`](https://modal.com/docs/guide/custom-container).
 We'll use the [vLLM inference server](https://docs.vllm.ai).
 vLLM can be installed with `uv pip`, since Modal [provides the CUDA drivers](https://modal.com/docs/guide/cuda).
 
-While we're at it, we import the dependencies we'll need both remotely and locally (for deployment).
-
 ```python
-import asyncio
-import json
 import subprocess
 import time
 
@@ -51679,256 +49227,61 @@ import aiohttp
 import modal
 import modal.experimental
 
-MINUTES = 60  # seconds
+APP_NAME = "example-vllm-low-latency"
+MODEL_NAME = "Qwen/Qwen3-8B"
+MODEL_REVISION = (
+    "b968826d9c46dd6066d109eabc6255188de91218"  # Latest commit as of 2025-12-16
+)
 
-vllm_image = (
+PORT = 8000
+MIN_CONTAINERS = 1
+MINUTE = 60
+
+HF_CACHE_VOL: modal.Volume = modal.Volume.from_name(
+    "huggingface-cache", create_if_missing=True
+)
+HF_CACHE_PATH: str = "/root/.cache/huggingface"
+MODEL_PATH: str = f"{HF_CACHE_PATH}/{MODEL_NAME}"
+vllm_image: modal.Image = (
     modal.Image.from_registry("nvidia/cuda:12.4.0-devel-ubuntu22.04", add_python="3.11")
     .uv_pip_install("vllm==0.11.2", "huggingface-hub==0.36.0")
     .env(
         {
+            "HF_HUB_CACHE": HF_CACHE_PATH,
+            "HF_XET_HIGH_PERFORMANCE": "1",
             "VLLM_SERVER_DEV_MODE": "1",
             "TORCH_CPP_LOG_LEVEL": "FATAL",
         }
     )
 )
 
-```
-
-We also choose a [GPU](https://modal.com/docs/guide/gpu) to deploy our inference server onto.
-We choose the [H100 GPU](https://modal.com/blog/introducing-h100),
-which offers excellent price-performance
-and supports 8bit floating point operations, which are the
-lowest precision well-supported in the relevant [GPU kernels](https://modal.com/gpu-glossary/device-software/kernel)
-across a variety of model architectures.
-
-```python
-GPU = "H100"
-
-```
-
-### Loading and caching the model weights
-
-We'll serve [Alibaba's Qwen 3 LLM](https://www.alibabacloud.com/blog/alibaba-introduces-qwen3-setting-new-benchmark-in-open-source-ai-with-hybrid-reasoning_602192).
-For lower latency, we pick a smaller model (8B params).
-
-```python
-MODEL_NAME = "Qwen/Qwen3-8B"
-MODEL_REVISION = (  # pin revision id to avoid nasty surprises!
-    "b968826d9c46dd6066d109eabc6255188de91218"  # latest commit as of 2025-12-16
-)
-
-```
-
-We load the model [from the Hugging Face Hub](https://huggingface.co/collections/Qwen/qwen3),
-so we'll need their Python package.
-
-We don't want to load the model from the Hub every time we start the server.
-We can load it much faster from a [Modal Volume](https://modal.com/docs/guide/volumes).
-Typical speeds are around one to two GB/s.
-
-```python
-HF_CACHE_VOL = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-HF_CACHE_PATH = "/root/.cache/huggingface"
-MODEL_PATH = f"{HF_CACHE_PATH}/{MODEL_NAME}"
-
-```
-
-In addition to pointing the Hugging Face Hub at the path
-where we mount the Volume, we also
-[turn on "high performance" downloads](https://huggingface.co/docs/hub/en/models-downloading#faster-downloads),
-which can fully saturate our network bandwidth.
-
-```python
-vllm_image = vllm_image.env(
-    {"HF_HUB_CACHE": HF_CACHE_PATH, "HF_XET_HIGH_PERFORMANCE": "1"}
-)
-
-```
-
-## Define the inference server and infrastructure
-
-### Selecting infrastructure to minimize latency
-
-Minimizing latency requires geographic co-location of clients and servers.
-
-So for low latency LLM inference services on Modal, you must select a
-[cloud region](https://modal.com/docs/guide/region-selection)
-for both the GPU-accelerated containers running inference
-and for the internal Modal proxies that forward requests to them
-as part of defining a `modal.experimental.http_server`.
-
-Here, we assume users are mostly in the northern half of the Americas
-and select the `us-east` cloud region to serve them.
-This should result in at most a few dozen milliseconds of round-trip time.
-
-```python
-REGION = "us-east"
-
-```
-
-Latencies for multi-turn interactions with LLMs are
-substantially cut when previous interaction turns are in the KV cache.
-KV caches are stored in [GPU RAM](https://modal.com/gpu-glossary/device-hardware/gpu-ram),
-so they aren't shared across replicas.
-To improve cache hit rate, `modal.experimental.http_server`
-includes sticky routing based on a client-provided header.
-See the client code below for details.
-
-For production-scale LLM inference services, there are generally
-enough requests to justify keeping at least one replica running at all times.
-Having a "warm" or "live" replica reduces latency by skipping slow initialization work
-that occurs when new replica boots up (a ["cold start"](https://modal.com/docs/guide/cold-start)).
-For LLM inference servers, that latency runs from seconds to minutes.
-
-To ensure at least one container is always available,
-we can set the `min_containers` of our Modal Function
-to `1` or more.
-
-However, since this is documentation code, we'll set it to `0`
-to avoid surprise bills during casual use.
-
-```python
-MIN_CONTAINERS = 0  # set to 1 to ensure one replica is always ready
-
-```
-
-Finally, we need to decide how we will scale up and down replicas
-in response to load. Without autoscaling, users' requests will queue
-when the server becomes overloaded. Even apart from queueing, responses
-generally become slower per user above a certain minimum number of
-concurrent requests.
-
-So we set a target for the number of inputs to run on a single container
-with [`modal.concurrent`](https://modal.com/docs/reference/modal.concurrent).
-For details, see [the guide](https://modal.com/docs/guide/concurrent-inputs).
-
-```python
-TARGET_INPUTS = 20
-
-```
-
-Generally, this choice needs to be made as part of
-[LLM inference engine benchmarking](https://modal.com/llm-almanac/how-to-benchmark).
-
-### Cutting cold starts with GPU memory snapshots
-
-vLLM supports a sleep mode that allows us to leverage Modal's
-[CPU + GPU memory snapshots](https://modal.com/docs/guide/memory-snapshot)
-for dramatically faster cold starts.
-
-When `enable_memory_snapshot=True` and `experimental_options={"enable_gpu_snapshot": True}`
-are set on the class, Modal captures both CPU and GPU memory state.
-The `@modal.enter(snap=True)` method runs before the snapshot is taken:
-we start vLLM, wait for it to be ready, warm it up, then put it to sleep.
-The `@modal.enter(snap=False)` method runs after restoring from snapshot:
-we wake vLLM back up so it can serve requests immediately.
-
-### Controlling container lifecycles with `modal.Cls`
-
-We wrap up all of the choices we made about the infrastructure
-of our inference server into a number of Python decorators
-that we apply to a Python class that encapsulates the logic
-to run our server.
-
-The key decorators are:
-
-- [`@app.cls`](https://modal.com/docs/guide/lifecycle-functions) to define the core of our service.
-We attach our Image, request a GPU, attach our cache Volumes, specify the region, and configure auto-scaling.
-See [the reference documentation](https://modal.com/docs/reference/modal.App#cls) for details.
-
-- `@modal.experimental.http_server` to turn our Python code into an HTTP server
-(i.e. fronting all of our containers with a proxy with a URL). The wrapped code
-needs to eventually listen for HTTP connections on the provided `port`.
-
-- [`@modal.concurrent`](https://modal.com/docs/guide/concurrent-inputs) to specify how many
-requests our server can handle before we need to scale up.
-
-- [`@modal.enter` and `@modal.exit`](https://modal.com/docs/guide/lifecycle-functions) to indicate
-which methods of the class should be run when starting the server and shutting it down.
-The `snap=True`/`snap=False` distinction controls which methods run before/after a memory snapshot.
-
-Modal considers a new replica ready to receive inputs once the `modal.enter` methods have exited
-and the container accepts connections.
-To ensure that we actually finish setting up our server before we are marked ready for inputs,
-we define a helper function to check whether the server is finished setting up and to
-send it a few test inputs.
-
-We use the [`requests` library](https://requests.readthedocs.io/en/latest/)
-to send ourselves these HTTP requests on
-[`localhost`/`127.0.0.1`](https://superuser.com/questions/31824/why-is-localhost-ip-127-0-0-1).
-
-```python
 with vllm_image.imports():
     import requests
 
-PORT = 8000
-
-def wait_ready(process: subprocess.Popen, timeout: int = 5 * MINUTES):
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            check_running(process)
-            requests.get(f"http://127.0.0.1:{PORT}/health").raise_for_status()
-            return
-        except (
-            subprocess.CalledProcessError,
-            requests.exceptions.ConnectionError,
-            requests.exceptions.HTTPError,
-        ):
-            time.sleep(5)
-    raise TimeoutError(f"vLLM server not ready within {timeout} seconds")
-
-def check_running(p: subprocess.Popen):
-    if (rc := p.poll()) is not None:
-        raise subprocess.CalledProcessError(rc, cmd=p.args)
-
-def warmup():
-    payload = {
-        "model": MODEL_NAME,
-        "messages": [{"role": "user", "content": "Hello, how are you?"}],
-        "max_tokens": 16,
-    }
-    for _ in range(3):
-        requests.post(
-            f"http://127.0.0.1:{PORT}/v1/chat/completions", json=payload, timeout=10
-        ).raise_for_status()
-
-def sleep(level: int = 1):
-    requests.post(f"http://127.0.0.1:{PORT}/sleep?level={level}").raise_for_status()
-
-def wake_up():
-    requests.post(f"http://127.0.0.1:{PORT}/wake_up").raise_for_status()
-
-```
-
-With all this in place, we are ready to define our high-performance, low-latency
-LLM inference server.
-
-```python
-APP_NAME = "example-vllm-low-latency"
 app = modal.App(name=APP_NAME)
 
 @app.cls(
     image=vllm_image,
-    gpu=GPU,
+    gpu="H100",
     volumes={HF_CACHE_PATH: HF_CACHE_VOL},
     enable_memory_snapshot=True,
     experimental_options={"enable_gpu_snapshot": True},
-    region=REGION,
+    region="us-east",
     min_containers=MIN_CONTAINERS,
-    timeout=10 * MINUTES,
+    timeout=6 * 60,
 )
 @modal.experimental.http_server(
-    port=PORT,  # wrapped code must listen on this port
-    proxy_regions=[REGION],  # location of proxies, should be same as Cls region
-    exit_grace_period=5,  # seconds, time to finish up requests when closing down
+    port=PORT, proxy_regions=["us-east"], exit_grace_period=5
 )
-@modal.concurrent(target_inputs=TARGET_INPUTS)
+@modal.concurrent(target_inputs=20)
 class VLLM:
+    """Serve a HuggingFace model via VLLM with readiness check."""
+
     @modal.enter(snap=True)
-    def startup(self):
-        """Start the vLLM server and block until it is healthy, then warm it up and put it to sleep."""
-        cmd = [
+    def startup(self) -> None:
+        """Start the VLLM server and block until it is healthy."""
+
+        cmd: list[str] = [
             "vllm",
             "serve",
             "--uvicorn-log-level",
@@ -51948,56 +49301,99 @@ class VLLM:
         ]
 
         self.process = subprocess.Popen(cmd)
-        wait_ready(self.process)
-        warmup()
-        sleep(1)
+        self._wait_ready(self.process)
+        self._warmup()
+        self._sleep(1)
 
     @modal.enter(snap=False)
-    def restore(self):
-        """Wake vLLM from sleep mode after restoring from a memory snapshot."""
-        wake_up()
+    def wake_up(self):
+        self._wake_up()
 
     @modal.exit()
     def stop(self):
         self.process.terminate()
 
-```
+    @staticmethod
+    def _warmup():
+        payload = {
+            "model": MODEL_NAME,
+            "messages": [{"role": "user", "content": "Hello, how are you?"}],
+            "max_tokens": 16,
+        }
+        for _ in range(3):
+            requests.post(
+                f"http://127.0.0.1:{PORT}/v1/chat/completions", json=payload, timeout=10
+            ).raise_for_status()
+
+    @staticmethod
+    def _wait_ready(process: subprocess.Popen, timeout: int = 5 * 60):
+        def check_process_is_running() -> Exception | None:
+            if process is not None and process.poll() is not None:
+                return Exception(
+                    f"Process {process.pid} exited with code {process.returncode}"
+                )
+            return None
+
+        deadline: float = time.time() + timeout
+        while time.time() < deadline:
+            try:
+                if error := check_process_is_running():
+                    raise error
+                response = requests.get(f"http://127.0.0.1:{PORT}/health")
+                if response.status_code == 200:
+                    print("Server is healthy")
+                    break
+            except Exception:
+                pass
+
+    @staticmethod
+    def _sleep(level: int = 1):
+        requests.post(f"http://127.0.0.1:{PORT}/sleep?level={level}").raise_for_status()
+
+    @staticmethod
+    def _wake_up():
+        requests.post(f"http://127.0.0.1:{PORT}/wake_up").raise_for_status()
 
 ## Deploy the server
 
-To deploy the server on Modal, just run
-
-```bash
-modal deploy vllm_low_latency.py
 ```
 
-This will create a new App on Modal and build the container image for it if it hasn't been built yet.
+To deploy the API on Modal, just run
+```bash
+modal deploy sglang_low_latency.py
+```
 
+This will create a new app on Modal, build the container image for it if it hasn't been built yet,
+and deploy the app.
+
+```python
 ## Interact with the server
 
+```
+
 Once it is deployed, you'll see a URL appear in the command line,
-something like `https://your-workspace-name--example-vllm-low-latency-vllm.us-east.modal.direct`.
+something like `https://your-workspace-name--example-sglang-low-latency-serve.us-east.modal.direct`.
 
 You can find [interactive Swagger UI docs](https://swagger.io/tools/swagger-ui/)
-at the `/docs` route of that URL, i.e. `https://your-workspace-name--example-vllm-low-latency-vllm.us-east.modal.direct/docs`.
+at the `/docs` route of that URL, i.e. `https://your-workspace-name--example-sglang-low-latency-serve.us-east.modal.direct/docs`.
 These docs describe each route and indicate the expected input and output
 and translate requests into `curl` commands.
-For simple routes, you can even send a request directly from the docs page.
 
-Note: when no replicas are available, Modal will respond with
-the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503).
-In your browser, you can just hit refresh until the docs page appears.
-You can see the status of the application and its containers on your [Modal dashboard](https://modal.com/apps).
+For simple routes like `/health`, which checks whether the server is responding,
+you can even send a request directly from the docs.
 
+```python
 ## Test the server
 
+```
+
 To make it easier to test the server setup, we also include a `local_entrypoint`
-that hits the server with a simple client.
+that does a healthcheck and then hits the server.
 
 If you execute the command
 
 ```bash
-modal run vllm_low_latency.py
+modal run sglang_low_latency.py
 ```
 
 a fresh replica of the server will be spun up on Modal while
@@ -52008,796 +49404,68 @@ block of a Python script, but for cloud deployments!
 
 ```python
 @app.local_entrypoint()
-async def test(test_timeout=10 * MINUTES, prompt=None, twice=True):
-    url = VLLM._experimental_get_flash_urls()[0]
+async def test(test_timeout=10 * MINUTE, content=None, twice=True):
+    url = VLLM()._experimental_get_flash_urls()[0]
 
     system_prompt = {
         "role": "system",
         "content": "You are a pirate who can't help but drop sly reminders that he went to Harvard.",
     }
-    if prompt is None:
-        prompt = "Explain the Singular Value Decomposition."
+    if content is None:
+        image_url = "https://static.wikia.nocookie.net/essentialsdocs/images/7/70/Battle.png/revision/latest?cb=20220523172438"
 
-    content = [{"type": "text", "text": prompt}]
+        content = [
+            {
+                "type": "text",
+                "text": "What action do you think I should take in this situation?"
+                " List all the possible actions and explain why you think they are good or bad.",
+            },
+            {"type": "image_url", "image_url": {"url": image_url}},
+        ]
 
     messages = [  # OpenAI chat format
         system_prompt,
         {"role": "user", "content": content},
     ]
 
-    await probe(url, messages, timeout=test_timeout)
-    if twice:
-        messages[0]["content"] = "You are Jar Jar Binks."
+    start_time = time.time()
+    async with aiohttp.ClientSession(base_url=url) as session:
+        while time.time() - start_time < test_timeout:
+            print(f"Running health check for server at {url}")
+            async with session.get(
+                "/health", timeout=test_timeout - 1 * MINUTE
+            ) as resp:
+                if resp.status == 200:
+                    print(f"Successful health check for server at {url}")
+                    break
+                time.sleep(10)
         print(f"Sending messages to {url}:", *messages, sep="\n\t")
-        await probe(url, messages, timeout=1 * MINUTES)
+        await _send_request(session, "llm", messages, timeout=1 * MINUTE)
 
-```
-
-This test relies on the two helper functions below,
-which ping the server and wait for a valid response to stream.
-
-The `probe` helper function specifically ignores
-two types of errors that can occur while a replica
-is starting up -- timeouts on the client and 5XX responses from the server.
-Modal returns the [503 Service Unavailable status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503)
-when an `experimental.http_server` has no live replicas.
-
-We include a header with each request --
-`Modal-Session-ID`.
-The value associated with this key
-is used to map requests onto containers such that
-while the set of containers is fixed, requests with the same value
-are sent to the same container.
-Set this to a different value per multi-turn interaction
-(prototypically, a user conversation thread with a chatbot)
-to improve KV cache hit rates.
-Note that this header is only compatible with
-Modal `http_server`s.
-
-```python
-async def probe(url, messages=None, timeout=5 * MINUTES):
-    if messages is None:
-        messages = [{"role": "user", "content": "Tell me a joke."}]
-
-    client_id = str(0)  # set this to some string per multi-turn interaction
-    # often a UUID per "conversation"
-    headers = {"Modal-Session-ID": client_id}
-    deadline = time.time() + timeout
-    async with aiohttp.ClientSession(base_url=url, headers=headers) as session:
-        while time.time() < deadline:
-            try:
-                await _send_request_streaming(session, messages)
-                return
-            except asyncio.TimeoutError:
-                await asyncio.sleep(1)
-            except aiohttp.client_exceptions.ClientResponseError as e:
-                if e.status == 503:
-                    await asyncio.sleep(1)
-                    continue
-                raise e
-    raise TimeoutError(f"No response from server within {timeout} seconds")
-
-async def _send_request_streaming(
-    session: aiohttp.ClientSession, messages: list, timeout: int | None = None
+async def _send_request(
+    session: aiohttp.ClientSession, model: str, messages: list, timeout: int
 ) -> None:
-    payload = {"model": MODEL_NAME, "messages": messages, "stream": True}
-    headers = {"Accept": "text/event-stream"}
-
     async with session.post(
-        "/v1/chat/completions", json=payload, headers=headers, timeout=timeout
+        "/v1/chat/completions",
+        json={"messages": messages, "model": model, "temperature": 0.15},
+        timeout=timeout,
     ) as resp:
         resp.raise_for_status()
-        full_text = ""
-
-        async for raw in resp.content:
-            line = raw.decode("utf-8", errors="ignore").strip()
-            if not line:
-                continue
-
-            # Server-Sent Events format: "data: ...."
-            if not line.startswith("data:"):
-                continue
-
-            data = line[len("data:") :].strip()
-            if data == "[DONE]":
-                break
-
-            try:
-                evt = json.loads(data)
-            except json.JSONDecodeError:
-                # ignore any non-JSON keepalive
-                continue
-
-            delta = (evt.get("choices") or [{}])[0].get("delta") or {}
-            chunk = delta.get("content")
-
-            if chunk:
-                print(chunk, end="", flush="\n" in chunk or "." in chunk)
-                full_text += chunk
-        print()  # newline after stream completes
-        print(full_text)
+        print((await resp.json())["choices"][0]["message"]["content"])
 
 if __name__ == "__main__":
-    # after deployment, we can use the class from anywhere
-    vllm_server = modal.Cls.from_name(APP_NAME, "VLLM")
+    import asyncio
 
-    async def main(url):
+    # after deployment, we can use the class from anywhere
+    vllm_server = modal.Cls.from_name("example-vllm-low-latency", "VLLM")
+
+    async def test(url):
         messages = [{"role": "user", "content": "Tell me a joke."}]
-        await probe(url, messages, timeout=10 * MINUTES)
+        async with aiohttp.ClientSession(base_url=url) as session:
+            await _send_request(session, MODEL_NAME, messages, timeout=10 * MINUTE)
 
     print("calling inference server")
-    asyncio.run(main(vllm_server._experimental_get_flash_urls()[0]))
-
-```
-
-### Vllm Throughput
-
-# Run LLM inference at maximum throughput
-
-This example demonstrates some techniques for running LLM inference
-at the highest possible throughput on Modal.
-
-For more on other aspects of maximizing the performance of LLM inference, see
-[our guide](https://modal.com/docs/guide/high-performance-llm-inference).
-For a simpler introduction to LLM serving, see
-[this example](https://modal.com/docs/examples/llm_inference).
-
-As our sample application, we use an LLM to summarize thousands of filings with
-the U.S. federal government's Securities and Exchange Commission (SEC),
-made available to the public for free in daily data dumps
-via the SEC's Electronic Data Gathering, Analysis, and Retrieval System
-([EDGAR](https://www.sec.gov/submit-filings/about-edgar)).
-We like to check out the [Form 4s](https://www.sec.gov/files/form4data.pdf),
-which detail (legal) insider trading.
-
-Using the Qwen 3 8B parameter LLM on this task,
-which has inputs that average a few thousand tokens
-and outputs that average a few hundred tokens,
-we observe processing speeds of ~30,000 input tok/s
-and ~2,000 output tok/s per H100 GPU,
-as in the sample Modal Dashboard screenshot below.
-Note the [100% GPU utilization](https://modal.com/blog/gpu-utilization-guide),
-indicating the absence of [host overhead](https://modal.com/blog/host-overhead-inference-efficiency),
-and the high [GPU power utilization](https://modal.com/docs/guide/gpu-metrics),
-further indicating we are close to the hardware's physical limits.
-
-![Modal Dashboard indicating 30k tok/s input and 2k tok/s output on a single H100 GPU](https://modal-cdn.com/example-vllm-throughput-dashboard.png)
-
-At Modal's [current rates](https://modal.com/pricing) as of early 2026,
-that comes out to roughly 4¢ per million tokens.
-[According to Artificial Analysis](https://artificialanalysis.ai/models/qwen3-8b-instruct),
-API providers charge roughly five times as much for the same workload.
-
-## Organizing a batch job on Modal
-
-We start by defining a Modal [App](https://modal.com/docs/guide/apps),
-which collects together the Modal resources our batch job uses.
-While we're at it, we import a bunch of the libraries we will need later.
-
-```python
-import datetime as dt
-import time
-from dataclasses import dataclass
-from datetime import datetime
-from pathlib import Path
-from zoneinfo import ZoneInfo
-
-import modal
-
-MINUTES = 60  # seconds
-
-app = modal.App("example-vllm-throughput")
-
-```
-
-Many batch jobs work nicely as scripts -- code that is run
-from a shell, ad hoc, rather than deployed.
-For that, we define a `local_entrypoint` with code that runs
-locally, when we pass our script to `modal run`,
-and triggers/orchestrates remote execution.
-
-We demonstrate two techniques for collecting the results of a batch job,
-toggled by passing the `--wait-for-results`/`--no-wait-for-results`
-flag via the command line.
-
-When we `--wait-for-results`, we pass the `modal.FunctionCall` IDs
-that make up our batch job to `FunctionCall.gather`, which
-returns once our job is done. Here, we just print the results,
-but in a more realistic setting you might save them to disk.
-
-Instead of waiting for results, we can retrieve them asynchronously
-based on the `FunctionCall` ID -- a simple string.
-Results are stored in Modal for one week.
-In the `local_entrypoint` below, these IDs are printed,
-but you might store them in a file on disk, add them to your database,
-or put them in a Modal
-[Queue](https://modal.com/docs/guide/queues)
-or [Dict](https://modal.com/docs/guide/dicts)
-for later retrieval.
-
-```python
-@app.local_entrypoint()
-def main(lookback: int = 5, wait_for_results: bool = True):
-    jobs = orchestrate.remote(lookback=lookback)  # trigger remote job orchestration
-
-    if wait_for_results:
-        print("Collecting results locally")
-        batches = modal.FunctionCall.gather(*jobs)
-        for batch in batches:
-            print(*(result.summary for result in batch if result.form == "4"), sep="\n")
-            print("\n")
-        print("Done")
-    else:
-        print("Collect results asynchronously with modal.FunctionCall.from_id")
-        print("FunctionCall IDs:", *[job.object_id for job in jobs], sep="\n\t")
-
-```
-
-The meat of the work is done in our `orchestrate` function.
-It manages the overall pipeline of execution,
-starting with `extract`ing data from the raw data source,
-followed by `transform`ing it into a cleaner format
-and then `process`ing it with the LLM.
-
-For both extraction and transformation, we use
-[`.map`](https://modal.com/docs/guide/scale),
-which fans out inputs over containers in parallel.
-Each invocation handles at most 1,500 rows,
-which leads to runtimes of about five minutes per call
-By parallelizing the calls, we finish processing everything in about five minutes.
-
-"Rechunking" our data from a list of filings by day
-into a list of filings of fixed size requires a little
-helper function:
-
-```python
-def rechunk(lists, size: int = 1_500):
-    from itertools import chain, islice
-
-    it = iter(chain.from_iterable(lists))
-    while chunk := list(islice(it, size)):
-        yield chunk
-
-```
-
-For the LLM call, we use
-[`.spawn`](https://modal.com/docs/guide/job-queue),
-which triggers asynchronous execution of the LLM, immediately
-returning the `FunctionCall` that can later be used to `.get` the result
-(or `.gather` several results).
-
-We run it as a `.remote` Modal Function call
-so that it can keep running even after our local client disconnects
-(so long as we use `modal run --detach`).
-In that case, we dump the `FunctionCall` IDs into the logs,
-but you might also write them to an external store for later retrieval.
-
-The `app.function` decorator below is all we need to set turn this Python function
-into a remote Modal Function!
-
-```python
-@app.function(timeout=30 * MINUTES)
-def orchestrate(lookback: int) -> list[modal.FunctionCall]:
-    llm = Vllm()
-
-    today = datetime.now(tz=ZoneInfo("America/New_York")).date()  # Eastern Time
-    print(f"Loading SEC filing data for the last {lookback} days")
-    folders = list(extract.map(today - dt.timedelta(days=ii) for ii in range(lookback)))
-    folders = list(
-        filter(  # drop days with no data (weekends, holidays)
-            lambda f: f is not None, folders
-        )
-    )
-
-    print("Transforming raw SEC filings for these dates:", *folders)
-    filing_batches = list(transform.map(folders))
-    n_filings = sum(map(len, filing_batches))
-    submission_batches_gen = rechunk(filing_batches)
-
-    print(f"Submitting {n_filings} SEC filings to LLM for summarization")
-    jobs = list(llm.process.spawn(batch) for batch in submission_batches_gen)
-    if jobs:
-        print("FunctionCall IDs:", *[job.object_id for job in jobs], sep="\n\t")
-
-    return jobs
-
-```
-
-Before going any further, we should agree on the format that our
-`transform` and `llm.process` functions will use to communicate
-individual elements.
-
-We'll use a lightweight Python `dataclass` to represent
-each SEC `Filing`.
-
-For our task, we're going to take the `text` of a filing and produce
-a `summary`. So the `text` is mandatory and the `summary` starts out empty (`None`),
-to be filled in by the LLM.
-
-We'll also keep a bit of metadata that should be included.
-But we're not sure all of these fields will exist (API data is messy!),
-so we reserve the right to set them to `None`.
-
-```python
-@dataclass
-class Filing:
-    accession_number: str | None
-    form: str | None
-    cik: str | None
-    text: str
-    summary: str | None = None
-
-```
-
-With the basic orchestration set up,
-let's implement each component in turn.
-
-## Serving tokens at maximum throughput
-
-First, the LLM service.
-
-### Configuring vLLM for maximum throughput
-
-We choose the [vLLM](https://vllm.ai)
-inference engine. You might alternatively use [SGLang](https://docs.sglang.io).
-In our experience, new models and other features
-are implemented first in vLLM, and vLLM has a small edge in throughput
-over SGLang, but either can work well.
-
-```python
-vllm_image = (
-    modal.Image.from_registry("nvidia/cuda:12.9.0-devel-ubuntu22.04", add_python="3.13")
-    .entrypoint([])
-    .uv_pip_install("vllm==0.13.0", "huggingface-hub==0.36.0")
-    .env({"HF_XET_HIGH_PERFORMANCE": "1"})  # faster model transfers
-)
-
-```
-
-vLLM will automatically download the model for us and produce some compilation artifacts,
-all of which are saved to disk.
-Modal Functions are serverless and disks are ephemeral,
-so we attach a [Modal Volume](https://modal.com/docs/guide/volumes)
-to the locations where vLLM saves these files to ensure that they persist.
-
-```python
-hf_cache_vol = modal.Volume.from_name("huggingface-cache", create_if_missing=True)
-vllm_cache_vol = modal.Volume.from_name("vllm-cache", create_if_missing=True)
-
-```
-
-Like a database or web server, an LLM inference engine
-typically has a few knobs to twiddle to adjust performance
-on different workloads.
-
-First and foremost, you need to pick the hardware it will run on.
-We'll be running a smaller model in 8bit floating point format.
-Hopper and later GPUs have native support for this format.
-To maximize throughput, we want to ensure our inference is
-[compute-bound](https://modal.com/gpu-glossary/perf/compute-bound):
-the bottleneck is not loading weights/KV cache from memory,
-it's performing computations on those values.
-Roughly speaking, we want to be able to put together a batch
-whose size is within an order of magnitude of the
-[ridge point arithmetic intensity](https://modal.com/gpu-glossary/perf/roofline-model)
-of the GPU for our floating point format, which is
-[~600 for an H100 SXM Tensor Code on FP8 data](https://modal.com/gpu-glossary/perf/arithmetic-intensity).
-
-A single H100 GPU has enough
-[GPU RAM](https://modal.com/gpu-glossary/device-hardware/gpu-ram)
-for pretty large batches of this data for this model,
-so we stick with one of those -- and just one!
-Deploying onto multiple GPUs would increase throughput _per replica_,
-but not throughput _per GPU_ and so not throughput _per dollar_.
-
-```python
-GPU = "h100"
-
-```
-
-The dictionary of arguments below cover the knobs we found it
-important to tune in this case. Specifically, we
-set a maximum sequence length, based on the data,
-to give the engine more hints about how to pack batches.
-We select [FlashInfer](https://github.com/flashinfer-ai/flashinfer)
-as the provider of the attention kernels, which vLLM recommends
-for higher throughput in offline serving. Finally, we
-turn on the asynchronous batch scheduler, which gives a small boost
-to throughput.
-
-```python
-vllm_throughput_kwargs = {
-    "max_model_len": 4096 * 4,  # based on data
-    "attention_backend": "flashinfer",  # best for throughput
-    "async_scheduling": True,  # usually faster, but not all features supported
-}
-
-```
-
-For details on these and other arguments, we recommend checking out the [vLLM docs](https://vllm.ai),
-which include lots of recipes and recommendations for different workloads and models.
-
-### Deploying vLLM on Modal
-
-For offline, throughput-oriented serving,
-we can use the `LLM` interface of the vLLM SDK.
-This interface processes batches of inputs synchronously,
-unlike the `AsyncLLM` or HTTP serving interfaces.
-Dumping a large batch all at once exposes
-the maximum amount of parallelism to the engine
-and adds the least request management overhead,
-so we can expect it to maximize throughput.
-Critically, though, this means we don't get any results
-until all of them are finished -- a key engineering degree of freedom
-for throughput-oriented offline/batch jobs!
-
-We use a Modal [Cls](https://modal.com/docs/guide/lifecycle-functions)
-to control the spinup and shutdown logic for the `LLM` engine.
-Specifically, we create it (and warm it up with a test request)
-in a method decorated with `modal.enter`
-and we shut it down in a method decorated with `modal.exit`.
-The code in these methods will run only once per replica,
-when it is created and destroyed, respectively.
-
-In between, we run a batch of `Filings` through the engine,
-adding the model's output text to the `summary` field.
-
-```python
-@app.cls(
-    image=vllm_image,
-    gpu=GPU,
-    timeout=10 * MINUTES,
-    volumes={
-        "/root/.cache/huggingface": hf_cache_vol,
-        "/root/.cache/vllm": vllm_cache_vol,
-    },
-)
-class Vllm:
-    @modal.enter()
-    def start(self):
-        import vllm
-
-        self.llm = vllm.LLM(model="Qwen/Qwen3-8B-FP8", **vllm_throughput_kwargs)
-        self.sampling_params = self.llm.get_default_sampling_params()
-        self.sampling_params.max_tokens = 1000
-
-        self.llm.chat([{"role": "user", "content": "Is this thing on?"}])
-
-    @modal.method()
-    def process(self, filings: list[Filing]) -> list[Filing]:
-        messages = [
-            [
-                {
-                    "role": "user",
-                    "content": f"/no_think Summarize this SEC filing in a single, short paragraph.\n\n{filing.text}",
-                }
-            ]
-            for filing in filings
-        ]
-
-        start = time.time()
-        responses = self.llm.chat(messages, sampling_params=self.sampling_params)
-        duration_s = time.time() - start
-
-        in_token_count = sum(len(response.prompt_token_ids) for response in responses)
-        out_token_count = sum(
-            len(response.outputs[0].token_ids) for response in responses
-        )
-
-        print(f"processed {in_token_count} prompt tokens in {int(duration_s)} seconds")
-        print(f"generated {out_token_count} output tokens in {int(duration_s)} seconds")
-
-        for response, filing in zip(responses, filings):
-            filing.summary = response.outputs[0].text
-
-        return filings
-
-    @modal.exit()
-    def stop(self):
-        del self.llm
-
-```
-
-And that's it for the LLM portion of the pipeline!
-The remainder of this document is code and explanation
-for the data loading and processing steps.
-The details are mostly specific to this dataset,
-but there are a few general Modal tips and tricks
-for batch processing along the way.
-
-## Transforming SEC filings for batch processing
-
-We can avoid having to deal directly with the low-level
-details of the SEC's data format by using the
-[`edgartools` library](https://pypi.org/project/edgartools/).
-And we can avoid worrying about compatibility with the other libraries
-in our project by putting it in a separate container Image.
-
-```python
-data_proc_image = modal.Image.debian_slim(python_version="3.13").uv_pip_install(
-    # pin transitive deps to avoid surprises like this one:
-    # https://www.edgartools.io/pandas-3-0-and-edgartools/
-    "edgartools==5.8.3",
-    "httpx==0.28.1",
-    "httpxthrottlecache==0.3.0",
-    "pandas<3",
-    "pyrate-limiter==3.9.0",
-)
-
-```
-
-Instead of hitting the SEC's EDGAR Feed API every time we want to run a job,
-we'll cache the results for each day in a Modal Volume.
-We use Modal's [v2 Volumes](https://modal.com/docs/guide/volumes#volumes-v2-overview),
-which have no limit on the number of total stored files.
-
-```python
-sec_edgar_feed = modal.Volume.from_name(
-    "example-sec-edgar-daily", create_if_missing=True, version=2
-)
-data_root = Path("/data")
-
-```
-
-Note that v2 Volumes are still in beta, so data loss may be possible.
-This is acceptable for most batch jobs, which extract data from an external
-source of truth.
-
-The `transform` function below operates on a folder containing data
-with one filing per file
-(in [NetCDF](https://en.wikipedia.org/wiki/NetCDF)/`.nc` format).
-
-Loading thousands of filings with `edgartools` takes tens of seconds.
-We can speed it up by running in parallel on Modal instead!
-But running each file in a separate container would add too much overhead.
-So we group up the files into `chunks` of ~100 and pass those to
-the Modal Function that actually does the work.
-Again, we use `map` to transparently scale out across containers.
-
-```python
-@app.function(
-    volumes={data_root: sec_edgar_feed}, timeout=10 * MINUTES, scaledown_window=5
-)
-def transform(folder: str | None) -> list[Filing]:
-    if folder is None:
-        return []
-
-    folder_path = data_root / folder
-    paths = [p for p in folder_path.iterdir() if p.is_file() and p.suffix == ".nc"]
-
-    print(f"Processing {len(paths)} filings")
-
-    chunks: list[list[Path]] = [paths[i : i + 100] for i in range(0, len(paths), 100)]
-
-    batches = list(_transform_filing_batch.map(chunks))
-
-    filings = [f for batch in batches for f in batch if f is not None]
-
-    print(f"Found documents for {len(filings)} filings out of {len(paths)}")
-
-    return filings
-
-@app.function(
-    volumes={data_root: sec_edgar_feed},
-    scaledown_window=5,
-    image=data_proc_image,
-    timeout=10 * MINUTES,
-)
-def _transform_filing_batch(raw_filing_paths: list[Path]) -> list[Filing | None]:
-    from edgar.sgml import FilingSGML
-
-    out = []
-    for raw_filing_path in raw_filing_paths:
-        sgml = FilingSGML.from_source(raw_filing_path)
-        text = extract_text(sgml)
-        if text is None:
-            out.append(None)
-            continue
-        out.append(
-            Filing(
-                accession_number=sgml.accession_number,
-                form=sgml.form,
-                cik=sgml.cik,
-                text=text,
-            )
-        )
-    return out
-
-```
-
-Because these containers are cheap to scale up and are only needed for
-a brief burst during the pipeline, we set the `scaledown_window` for the containers
-to a much lower value than the default of five minutes -- here, five seconds.
-
-## Loading filings from the SEC EDGAR Feed
-
-We complete our reverse tour of the pipeline by loading the data from the original source:
-the [SEC EDGAR Feed](https://www.sec.gov/Archives/edgar/Feed/),
-an archive of daily filings going back over three decades.
-
-We use the `requests` library to pull data from the API.
-We'll be downloading large (maybe megabytes to few gigabytes)
-files with low concurrency, so there's little benefit to running an asynchronous web client.
-
-```python
-scraper_image = modal.Image.debian_slim(python_version="3.13").uv_pip_install(
-    "requests==2.32.5"
-)
-
-```
-
-Our concurrency is limited by the policies of the SEC EDGAR API.
-The limit is 10 RPS, which we aim to stay under by setting the `max` number of `containers`
-running our extraction to 10.
-
-We add [retries](https://modal.com/docs/guide/retries)
-via our Modal decorator as well, so that we can tolerate temporary outages or rate limits.
-
-Note that we also attach the same Volume used in the `transform` Functions above
-and we explicitly [`.commit`](https://modal.com/docs/reference/modal.Volume#commit) our writes
-so that they will be visible to future containers running `transform`.
-
-```python
-@app.function(
-    max_containers=10,
-    volumes={data_root: sec_edgar_feed},
-    retries=5,
-    image=scraper_image,
-    scaledown_window=5,
-)
-def extract(day: dt.date) -> str | None:
-    target_folder = str(day)
-    day_dir = data_root / target_folder
-    daily_name = f"{day:%Y%m%d}.nc.tar.gz"
-    tar_path = day_dir / daily_name
-
-    # If the folder doesn't exist yet, try downloading the day's tarball
-    if not tar_path.exists():
-        print(f"Looking for data for {day} in SEC EDGAR Feed")
-        ok = _download_from_sec_edgar(day, day_dir)
-        if not ok:
-            return None
-
-    if not any(p.suffix == ".nc" for p in day_dir.iterdir()):
-        print(f"Loading data for {day} from {tar_path}")
-        _extract_tarfile(tar_path, day_dir)
-
-    sec_edgar_feed.commit()
-    print(f"Data for {day} loaded")
-
-    return target_folder
-
-```
-
-## Addenda
-
-The remainder of this code consists of utility functions and boiler plate used in the
-main code above.
-
-### Utilities for transforming SEC Filings
-
-The code in this section is used to transform, normalize, and otherwise munge
-the raw filings downloaded from the SEC.
-
-For LLM serving, the most important piece here is the function to truncate
-documents. A maximum document length can be used to set a loose bound
-on the sequence length in the LLM engine configuration.
-
-```python
-def normalize_text(text: str) -> str:
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
-    text = clean_xml(text)
-    return text
-
-def clean_xml(xml: str) -> str:
-    import re
-
-    _XMLNS_ATTR_RE = re.compile(r'\s+xmlns(:\w+)?="[^"]*"', re.I)
-    _XML_DECL_RE = re.compile(r"^\s*<\?xml[^>]*\?>\s*", re.I)
-    _EMPTY_TAG_RE = re.compile(r"<(\w+)([^>]*)>\s*</\1>", re.S)
-    _BETWEEN_TAG_WS_RE = re.compile(r">\s+<")
-
-    xml = xml.replace("\r\n", "\n").replace("\r", "\n").strip()
-
-    # drop xml declaration, remove xmlns attributes
-    xml = _XML_DECL_RE.sub("", xml)
-    xml = _XMLNS_ATTR_RE.sub("", xml)
-
-    # replace whitespace between tags with a single newline
-    xml = _BETWEEN_TAG_WS_RE.sub("><", xml).replace("><", ">\n<")
-
-    return xml.strip()
-
-def truncate_head_tail(text: str, head: int = 13_000, tail: int = 2_000) -> str:
-    if len(text) <= head + tail:
-        return text
-    return text[:head].rstrip() + "\n\n[...TRUNCATED...]\n\n" + text[-tail:].lstrip()
-
-def extract_text(sgml) -> str | None:
-    doc = sgml.xml()
-    return truncate_head_tail(normalize_text(doc)) if doc else None
-
-```
-
-### Utilities for loading filings from the SEC EDGAR Feed
-
-The code in this section is used to load raw data from the Feed
-section of SEC EDGAR.
-
-Daily dumps are stored in [tar](https://www.math.utah.edu/docs/info/tar_4.html)
-archives, which the code below extracts.
-Archives for particular days are located by searching the SEC EDGAR Feed indices
-for the appropriate URL.
-
-For full compliance with SEC EDGAR etiquette,
-we recommend updating the `SEC_USER_AGENT` environment variable
-below with your name and email.
-
-```python
-def _download_from_sec_edgar(day: dt.date, day_dir: Path) -> bool:
-    import os
-
-    import requests
-
-    SEC_UA = os.environ.get("SEC_USER_AGENT", "YourName your.email@example.com")
-    session = requests.Session()
-    session.headers.update({"User-Agent": SEC_UA, "Accept-Encoding": "gzip, deflate"})
-
-    base = "https://www.sec.gov/Archives/edgar/Feed"
-
-    def quarter(d: dt.date) -> str:
-        return f"QTR{(d.month - 1) // 3 + 1}"
-
-    qtr = quarter(day)
-    daily_name = f"{day:%Y%m%d}.nc.tar.gz"
-    qtr_index = f"{base}/{day.year}/{qtr}/index.json"
-
-    if not check_index(session, qtr_index, daily_name):
-        print(f"no data for {day} in SEC EDGAR Feed")
-        return False
-
-    day_dir.mkdir(parents=True, exist_ok=True)
-
-    tar_path = day_dir / daily_name
-    if not tar_path.exists() or tar_path.stat().st_size == 0:
-        url = f"{base}/{day.year}/{qtr}/{daily_name}"
-        print(f"Downloading from {url}")
-        print("This can take several minutes")
-        _download_tar(session, url, tar_path)
-
-    return True
-
-def _extract_tarfile(from_tar_path, to_dir):
-    import tarfile
-
-    with tarfile.open(from_tar_path, "r:gz") as tf:
-        for member in tf:
-            if not (member.isfile() and member.name.endswith(".nc")):
-                continue
-            dest = to_dir / Path(member.name).name
-            if dest.exists() and dest.stat().st_size > 0:
-                continue
-            f = tf.extractfile(member)
-            if f is None:
-                continue
-            dest.write_bytes(f.read())
-
-def check_index(session, index_url, name) -> bool:
-    r = session.get(index_url, timeout=30)
-    if r.status_code == 404:
-        return False
-    r.raise_for_status()
-    for it in r.json().get("directory", {}).get("item", []):
-        if it.get("type") == "file" and it.get("name") == name:
-            return True
-    return False
-
-def _download_tar(session, url, tar_path):
-    resp = session.get(url, timeout=500)
-    resp.raise_for_status()
-    tmp = tar_path.with_suffix(tar_path.suffix + ".part")
-    tmp.write_bytes(resp.content)
-    tmp.replace(tar_path)
+    asyncio.run(test(vllm_server._experimental_get_flash_urls()[0]))
 
 ```
 
@@ -52890,13 +49558,11 @@ def web_endpoint():
 ```
 
 To test this you can do:
-
 ```bash
 modal serve web_job_queue_wrapper.py
 ```
 
 Or run the test locally:
-
 ```bash
 modal run web_job_queue_wrapper.py::test_polling
 ```
@@ -52986,7 +49652,6 @@ We'll build our app using Python's [`aiortc`](https://aiortc.readthedocs.io/en/l
 ### What makes up a WebRTC application?
 
 A simple WebRTC app generally consists of three players:
-
 1. a peer that initiates the connection,
 2. a peer that responds to the connection, and
 3. a server that passes some initial messages between the two peers.
@@ -53088,7 +49753,7 @@ video_processing_image = (
     .apt_install("python3-opencv", "ffmpeg")
     # install Python dependencies
     .uv_pip_install(
-        "aiortc==1.14.0",
+        "aiortc==1.11.0",
         "fastapi==0.115.12",
         "huggingface-hub[hf_xet]==0.30.2",
         "onnxruntime-gpu==1.21.0",
@@ -53234,14 +49899,21 @@ We'll use these to add a frontend which uses the WebRTC JavaScript API to stream
 The JavaScript and HTML files are alongside this example in the [Github repo](https://github.com/modal-labs/modal-examples/tree/main/07_web_endpoints/webrtc/frontend).
 
 ```python
-this_directory = Path(__file__).parent.resolve()
-server_image = (
+base_image = (
     modal.Image.debian_slim(python_version="3.12")
+    .apt_install("python3-opencv", "ffmpeg")
     .uv_pip_install(
         "fastapi[standard]==0.115.4",
+        "aiortc==1.11.0",
+        "opencv-python==4.11.0.86",
         "shortuuid==1.0.13",
     )
-    .add_local_dir(this_directory / "frontend", remote_path="/frontend")
+)
+
+this_directory = Path(__file__).parent.resolve()
+
+server_image = base_image.add_local_dir(
+    this_directory / "frontend", remote_path="/frontend"
 )
 
 @app.cls(image=server_image)
@@ -53374,6 +50046,7 @@ from .webrtc_yolo import (
     CACHE_PATH,
     WebcamObjDet,
     app,
+    base_image,
     cache,
 )
 
@@ -53406,18 +50079,7 @@ That said, using these classes does require us to manually `start` and `stop` st
 For example, we'll need to override the `run_streams` method to start the source stream, and we'll make use of the `on_ended` callback to stop the recording.
 
 ```python
-test_image = (
-    modal.Image.debian_slim(python_version="3.12")
-    .apt_install("python3-opencv")
-    .uv_pip_install(
-        "fastapi[standard]==0.115.4",
-        "shortuuid==1.0.13",
-        "opencv-python==4.11.0.86",
-        "aiortc==1.14.0",
-    )
-)
-
-@app.cls(image=test_image, volumes=cache)
+@app.cls(image=base_image, volumes=cache)
 class TestPeer(ModalWebRtcPeer):
     TEST_VIDEO_SOURCE_URL = "https://modal-cdn.com/cliff_jumping.mp4"
     TEST_VIDEO_RECORD_FILE = CACHE_PATH / "test_video.mp4"
@@ -53683,22 +50345,12 @@ function to make use of the new tools.
 ```python
 @app.function(image=playwright_image)
 async def get_links(cur_url: str) -> list[str]:
-    from playwright.async_api import (
-        TimeoutError as PlaywrightTimeoutError,
-        async_playwright,
-    )
+    from playwright.async_api import async_playwright
 
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page()
-
-        try:
-            await page.goto(cur_url, timeout=10_000)  # ten seconds
-        except PlaywrightTimeoutError:
-            print(f"Timeout loading {cur_url}, skipping")
-            await browser.close()
-            return []
-
+        await page.goto(cur_url)
         links = await page.eval_on_selector_all(
             "a[href]", "elements => elements.map(element => element.href)"
         )
@@ -54088,7 +50740,6 @@ class WhisperX:
 
 We expose a [local entrypoint](https://modal.com/docs/reference/modal.App#local_entrypoint)
 so you can run:
-
 - using a local audio file
 - using a link to an audio file
 
