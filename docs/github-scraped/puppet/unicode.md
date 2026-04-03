@@ -1,15 +1,17 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/unicode.md
+
 # UTF-8 Handling #
 
 Now that Puppet only supports Ruby 1.9+, developers should be aware
-of how Ruby handles Strings and Regexp objects. Specifically, every
+of how Ruby handles Strings and Regexp objects. Specifically, every 
 instance of these two classes will have an encoding attribute determined
 in a number of ways.
 
-* If the source file has an encoding specified in the magic comment at the
+ * If the source file has an encoding specified in the magic comment at the
    top, the instance will take on that encoding.
-* Otherwise, the encoding will be determined by the LC\_LANG or LANG
+ * Otherwise, the encoding will be determined by the LC\_LANG or LANG
    environment variables.
-* Otherwise, the encoding will default to ASCII-8BIT
+ * Otherwise, the encoding will default to ASCII-8BIT
 
 ## Encodings of Regexp and String instances ##
 

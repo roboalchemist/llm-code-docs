@@ -1,5 +1,3 @@
-# Source: https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
-
 ---
 title: "Gopls: Analyzers"
 ---
@@ -2782,12 +2780,13 @@ Go allows importing the same package multiple times, as long as different import
 	    "fmt"
 	    fumpt "fmt"
 	    format "fmt"
-	    _ "fmt"
 	)
 
 However, this is very rarely done on purpose. Usually, it is a sign of code that got refactored, accidentally adding duplicate import statements. It is also a rarely known feature, which may contribute to confusion.
 
 Do note that sometimes, this feature may be used intentionally (see for example [https://github.com/golang/go/commit/3409ce39bfd7584523b7a8c150a310cea92d879d](https://github.com/golang/go/commit/3409ce39bfd7584523b7a8c150a310cea92d879d)) – if you want to allow this pattern in your code base, you're advised to disable this check.
+
+It is acceptable to import the same package twice if one of the imports uses the blank identifier. This is allowed in order to increase resilience against erroneous changes when using the same package for its side effects as well as its exported API.
 
 Available since
 
@@ -2946,6 +2945,26 @@ Package documentation: [atomic](https://pkg.go.dev/golang.org/x/tools/go/analysi
 Default: on.
 
 Package documentation: [atomicalign](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/atomicalign)
+
+<a id='atomictypes'></a>
+## `atomictypes`: replace basic types in sync/atomic calls with atomic types
+
+The atomictypes analyzer suggests replacing the primitive sync/atomic functions with the strongly typed atomic wrapper types introduced in Go1.19 (e.g. atomic.Int32). For example,
+
+	var x int32
+	atomic.AddInt32(&x, 1)
+
+would become
+
+	var x atomic.Int32
+	x.Add(1)
+
+The atomic types are safer because they don't allow non-atomic access, which is a common source of bugs. These types also resolve memory alignment issues that plagued the old atomic functions on 32-bit architectures.
+
+
+Default: on.
+
+Package documentation: [atomictypes](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/modernize#atomictypes)
 
 <a id='bloop'></a>
 ## `bloop`: replace for-range over b.N with b.Loop
@@ -3123,6 +3142,37 @@ The fix is only offered if the var declaration has the form shown and there are 
 Default: on.
 
 Package documentation: [errorsastype](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/modernize#errorsastype)
+
+<a id='fieldalignment'></a>
+## `fieldalignment`: find structs that would use less memory if their fields were sorted
+
+This analyzer finds structs that can be rearranged to use less memory, and provides a suggested edit with the most compact order.
+
+Note that there are two different diagnostics reported. One checks struct size, and the other reports "pointer bytes" used. Pointer bytes is how many bytes of the object that the garbage collector has to potentially scan for pointers, for example:
+
+	struct { uint32; string }
+
+have 16 pointer bytes because the garbage collector has to scan up through the string's inner pointer.
+
+	struct { string; *uint32 }
+
+has 24 pointer bytes because it has to scan further through the \*uint32.
+
+	struct { string; uint32 }
+
+has 8 because it can stop immediately after the string pointer.
+
+Be aware that the most compact order is not always the most efficient. In rare cases it may cause two variables each updated by its own goroutine to occupy the same CPU cache line, inducing a form of memory contention known as "false sharing" that slows down both goroutines.
+
+Unlike most analyzers, which report likely mistakes, the diagnostics produced by fieldanalyzer very rarely indicate a significant problem, so the analyzer is not included in typical suites such as vet or gopls. Use this standalone command to run it on your code:
+
+	$ go install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@latest
+	$ fieldalignment [packages]
+
+
+Default: off. Enable by setting `"analyses": {"fieldalignment": true}`.
+
+Package documentation: [fieldalignment](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/fieldalignment)
 
 <a id='fillreturns'></a>
 ## `fillreturns`: suggest fixes for errors due to an incorrect number of return values
@@ -3734,9 +3784,13 @@ This analyzer suggests fixes to replace uses of reflect.TypeOf(x) with reflect.T
 	reflect.TypeOf(uint32(0))        -> reflect.TypeFor[uint32]()
 	reflect.TypeOf((*ast.File)(nil)) -> reflect.TypeFor[*ast.File]()
 
-It also offers a fix to simplify the construction below, which uses reflect.TypeOf to return the runtime type for an interface type,
+It also offers a fix to simplify the constructions below, which use reflect.TypeOf to return the runtime type for an interface type,
 
 	reflect.TypeOf((*io.Reader)(nil)).Elem()
+
+or:
+
+	reflect.TypeOf([]io.Reader(nil)).Elem()
 
 to:
 
@@ -4039,9 +4093,9 @@ is replaced by:
 
 This avoids quadratic memory allocation and improves performance.
 
-The analyzer requires that all references to s except the final one are += operations. To avoid warning about trivial cases, at least one must appear within a loop. The variable s must be a local variable, not a global or parameter.
+The analyzer requires that all references to s before the final uses are += operations. To avoid warning about trivial cases, at least one must appear within a loop. The variable s must be a local variable, not a global or parameter.
 
-The sole use of the finished string must be the last reference to the variable s. (It may appear within an intervening loop or function literal, since even s.String() is called repeatedly, it does not allocate memory.)
+All uses of the finished string must come after the last += operation. Each such use will be replaced by a call to strings.Builder's String method. (These may appear within an intervening loop or function literal, since even if s.String() is called repeatedly, it does not allocate memory.)
 
 Often the addend is a call to fmt.Sprintf, as in this example:
 
@@ -4404,10 +4458,10 @@ Default: on.
 
 Package documentation: [waitgroup](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/waitgroup)
 
-<a id='waitgroup'></a>
-## `waitgroup`: replace wg.Add(1)/go/wg.Done() with wg.Go
+<a id='waitgroupgo'></a>
+## `waitgroupgo`: replace wg.Add(1)/go/wg.Done() with wg.Go
 
-The waitgroup analyzer simplifies goroutine management with \`sync.WaitGroup\`. It replaces the common pattern
+The waitgroupgo analyzer simplifies goroutine management with \`sync.WaitGroup\`. It replaces the common pattern
 
 	wg.Add(1)
 	go func() {
@@ -4424,7 +4478,36 @@ which was added in Go 1.25.
 
 Default: on.
 
-Package documentation: [waitgroup](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/modernize#waitgroup)
+Package documentation: [waitgroupgo](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/modernize#waitgroupgo)
+
+<a id='writestring'></a>
+## `writestring`: detect inefficient string concatenation in uses of WriteString
+
+The writestring analyzer offers to replace a call to WriteString(x + y) by two calls WriteString(x); WriteString(y). This is more efficient because it avoids the additional memory allocation produced by string concatenation; instead we just write each string into the buffer directly.
+
+It explicitly looks for calls to certain well-known writers such as bytes.Buffer, strings.Builder and bufio.Writer. The analyzer will not suggest a fix for calls to, say, (\*os.File).WriteString, because for certain kinds of file such as a UDP socket, it could split a single message into two. Similarly it does not offer fixes when the type of the writer is unknown (as in calls to io.WriteString).
+
+For example:
+
+	func f(a string, b string) string {
+		 var s strings.Builder
+		 s.WriteString(a+b)
+		 return s.String()
+	}
+
+would become:
+
+	func f(a string, b string) string {
+		var s strings.Builder
+		s.WriteString(a)
+		s.WriteString(b)
+		return s.String()
+	}
+
+
+Default: on.
+
+Package documentation: [writestring](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/writestring)
 
 <a id='yield'></a>
 ## `yield`: report calls to yield where the result is ignored

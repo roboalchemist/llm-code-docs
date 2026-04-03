@@ -1,5 +1,0 @@
-Examples
-===================
-
-.. literalinclude:: ../examples.py
-

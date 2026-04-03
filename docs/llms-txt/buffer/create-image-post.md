@@ -7,8 +7,7 @@ mutation CreatePost {
     text: "Hello there, this is another one!",
     channelId: "some_channel_id",
     schedulingType: automatic,
-    mode: customSchedule,
-    dueAt: "2026-03-26T10:28:47.545Z"
+    mode: addToQueue
     assets: {
       images:[
         {

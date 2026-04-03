@@ -1,8 +1,0 @@
----
----
-title: Integrations
-description: "Sentry provides additional integrations designed to change configuration or add instrumentation to your application."
----
-
-The Sentry SDK uses integrations to hook into the functionality of popular libraries to automatically capture errors and collect additional context.
-

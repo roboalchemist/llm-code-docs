@@ -1,33 +1,35 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/http.md
+
 # HTTP Client
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
 - [HTTP Client](#http-client)
-  - [Problems](#problems)
-    - [REST Client](#rest-client)
-    - [Persistent connections](#persistent-connections)
-    - [Routing](#routing)
-    - [Inconsistencies](#inconsistencies)
-    - [Error Handling](#error-handling)
-    - [SSL Trust Stores](#ssl-trust-stores)
-  - [Proposal](#proposal)
-    - [Goals](#goals)
-    - [Non-Goals](#non-goals)
-  - [Design](#design)
-    - [Classes](#classes)
-      - [Client](#client)
-      - [Connection Pool](#connection-pool)
-      - [Route](#route)
-      - [Service](#service)
-      - [Resolvers](#resolvers)
-      - [Session](#session)
-    - [Routing](#routing-1)
-      - [DNS SRV](#dns-srv)
-      - [Server List](#server-list)
-      - [Default Puppet Settings](#default-puppet-settings)
-    - [Generic HTTP(S) Requests](#generic-https-requests)
-    - [Puppetserver](#puppetserver)
+    - [Problems](#problems)
+        - [REST Client](#rest-client)
+        - [Persistent connections](#persistent-connections)
+        - [Routing](#routing)
+        - [Inconsistencies](#inconsistencies)
+        - [Error Handling](#error-handling)
+        - [SSL Trust Stores](#ssl-trust-stores)
+    - [Proposal](#proposal)
+        - [Goals](#goals)
+        - [Non-Goals](#non-goals)
+    - [Design](#design)
+        - [Classes](#classes)
+            - [Client](#client)
+            - [Connection Pool](#connection-pool)
+            - [Route](#route)
+            - [Service](#service)
+            - [Resolvers](#resolvers)
+            - [Session](#session)
+        - [Routing](#routing-1)
+            - [DNS SRV](#dns-srv)
+            - [Server List](#server-list)
+            - [Default Puppet Settings](#default-puppet-settings)
+        - [Generic HTTP(S) Requests](#generic-https-requests)
+        - [Puppetserver](#puppetserver)
 
 <!-- markdown-toc end -->
 
@@ -98,21 +100,21 @@ with the following goals:
 
 ### Goals
 
-- Implement a REST client in puppet capable of serializing/deserializing puppet
+* Implement a REST client in puppet capable of serializing/deserializing puppet
   objects like Catalog, Report, etc.
-- Reuse the existing networking code as much as possible, such as
+* Reuse the existing networking code as much as possible, such as
   `Puppet::Network::HTTP::Pool`, but restructure it with a clear API.
-- Always use persistent connections unless the caller explicitly opts out.
-- Handle server resolution (via DNS SRV, etc) in a consistent way.
-- Define an exception hierarchy for the API so that `Net::HTTP` specific
+* Always use persistent connections unless the caller explicitly opts out.
+* Handle server resolution (via DNS SRV, etc) in a consistent way.
+* Define an exception hierarchy for the API so that `Net::HTTP` specific
   exceptions don't leak out.
-- Make it possible to use the system trust store for a single HTTPS request.
+* Make it possible to use the system trust store for a single HTTPS request.
 
 ### Non-Goals
 
-- Ruby's builtin `Net::HTTP` library is fairly buggy, however, we're not switching
+* Ruby's builtin `Net::HTTP` library is fairly buggy, however, we're not switching
   away from it right now. We may in the future, but it's out of scope.
-- Serialization of puppet domain objects requires pops, rich data and loaders.
+* Serialization of puppet domain objects requires pops, rich data and loaders.
   As a result, creating a standalone puppet-http gem is out of scope.
 
 ## Design
@@ -188,9 +190,9 @@ configuration, such as `puppet agent -t --server foo.example.com`, then the
 
 Otherwise, the session will walk the list of resolvers in priority order:
 
-- DNS SRV
-- Server list
-- Puppet server/port settings
+* DNS SRV
+* Server list
+* Puppet server/port settings
 
 If the `route_to` method attempts to connect to a service, but it results in an
 exception, such as "connection refused", then the session will attempt the next

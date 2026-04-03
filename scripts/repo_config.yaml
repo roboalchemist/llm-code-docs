@@ -3,6 +3,12 @@ settings:
   clone_timeout: 300
   temp_dir_base: null
 repositories:
+- name: Puppet
+  description: Puppet - Server automation framework and application for infrastructure management, configuration, and deployment
+  repo_url: https://github.com/puppetlabs/puppet.git
+  source_folder: docs
+  target_folder: docs/github-scraped/puppet
+  branch: main
 - name: APScheduler
   description: APScheduler - Advanced Python Scheduler for scheduling jobs to run
     at specific times or intervals with support for multiple schedulers, job stores,
@@ -37,6 +43,14 @@ repositories:
   source_folder: docs/source
   target_folder: docs/github-scraped/tensorrt-llm
   branch: main
+- name: Terrascan
+  description: Terrascan - Infrastructure as Code (IaC) security scanner supporting
+    Terraform, CloudFormation, Kubernetes, Docker, and more with policies and compliance
+    checks
+  repo_url: https://github.com/tenable/terrascan.git
+  source_folder: docs
+  target_folder: docs/github-scraped/terrascan
+  branch: master
 - name: Text Embeddings Inference
   description: HuggingFace Text Embeddings Inference (TEI) - High-performance inference
     server for text embeddings, re-ranking, and sequence classification with optimized
@@ -232,6 +246,13 @@ repositories:
   repo_url: https://github.com/golang/website.git
   source_folder: _content
   target_folder: docs/github-scraped/go-docs
+  branch: master
+- name: Godot Engine
+  description: Godot Engine - Free and open-source 2D and 3D game engine with comprehensive
+    documentation covering the editor, API reference, tutorials, and best practices
+  repo_url: https://github.com/godotengine/godot-docs.git
+  source_folder: .
+  target_folder: docs/github-scraped/godot-engine
   branch: master
 - name: Gunicorn
   description: Gunicorn - Python WSGI HTTP Server with pre-forked worker model, multiple
@@ -1116,6 +1137,13 @@ repositories:
   repo_url: https://github.com/PaloAltoNetworks/prisma-cloud-docs.git
   source_folder: docs
   target_folder: docs/github-scraped/prisma-cloud
+  branch: master
+- name: PagerDuty
+  description: PagerDuty - Incident response platform with comprehensive REST API,
+    webhooks, integrations, and operational guides
+  repo_url: https://github.com/PagerDuty/developer-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pagerduty
   branch: master
 - name: WasmEdge
   description: WasmEdge - High-performance WebAssembly runtime for edge computing
@@ -2515,4 +2543,22 @@ repositories:
   repo_url: https://github.com/neptune-ai/docs.git
   source_folder: docs
   target_folder: docs/github-scraped/neptune
+  branch: main
+- name: tornado
+  description: Tornado - Python web framework and asynchronous networking library
+  repo_url: https://github.com/tornadoweb/tornado.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tornado
+  branch: stable
+- name: owasp-dependency-check
+  description: OWASP Dependency-Check - Software security vulnerability scanner
+  repo_url: https://github.com/jeremylong/DependencyCheck.git
+  source_folder: docs
+  target_folder: docs/github-scraped/owasp-dependency-check
+  branch: main
+- name: kube-bench
+  description: kube-bench - Kubernetes security benchmark compliance checker
+  repo_url: https://github.com/aquasecurity/kube-bench.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kube-bench
   branch: main

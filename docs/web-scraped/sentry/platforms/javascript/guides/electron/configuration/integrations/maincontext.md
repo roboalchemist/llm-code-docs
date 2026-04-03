@@ -1,7 +1,0 @@
----
----
-title: MainContext
-description: "Adds app, operating system and runtime context to all events. (default)"
----
-
-Adds app, operating system, and runtime context to all events.

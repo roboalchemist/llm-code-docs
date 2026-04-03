@@ -1,3 +1,5 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/rspec_tutorial.md
+
 # A brief introduction to testing in Puppet
 
 Puppet relies heavily on automated testing to ensure that Puppet behaves as
@@ -48,18 +50,18 @@ found in the project Gemfile.
 
 ## Puppet Continuous integration
 
-* GitHub Actions (spec tests only): https://github.com/puppetlabs/puppet/actions
-* Jenkins (spec and acceptance tests): https://jenkins.puppetlabs.com/view/Puppet%20FOSS/
+  * GitHub Actions (spec tests only): https://github.com/puppetlabs/puppet/actions
+  * Jenkins (spec and acceptance tests): https://jenkins.puppetlabs.com/view/Puppet%20FOSS/
 
 ## RSpec
 
 Puppet uses RSpec to perform unit and integration tests. RSpec handles a number
 of concerns to make testing easier:
 
-* Executing examples and ensuring the actual behavior matches the expected behavior (examples)
-* Grouping tests (describe and contexts)
-* Setting up test environments and cleaning up afterwards (before and after blocks)
-* Isolating tests (mocks and stubs)
+  * Executing examples and ensuring the actual behavior matches the expected behavior (examples)
+  * Grouping tests (describe and contexts)
+  * Setting up test environments and cleaning up afterwards (before and after blocks)
+  * Isolating tests (mocks and stubs)
 
 #### Examples and expectations
 
@@ -266,7 +268,6 @@ describe "mocking an object" do
   end
 end
 ```
-
 ### Writing tests without side effects
 
 When properly written each test should be able to run in isolation, and tests
@@ -384,5 +385,6 @@ rspec ./test.rb:16 # fixture data using instance variables should not keep state
 
 ### RSpec references
 
-* RSpec core docs: https://www.relishapp.com/rspec/rspec-core/docs
-* RSpec guidelines with Ruby: http://betterspecs.org/
+  * RSpec core docs: https://www.relishapp.com/rspec/rspec-core/docs
+  * RSpec guidelines with Ruby: http://betterspecs.org/
+

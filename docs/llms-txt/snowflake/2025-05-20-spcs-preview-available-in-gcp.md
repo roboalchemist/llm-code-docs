@@ -1,6 +1,0 @@
-# Source: https://docs.snowflake.com/en/release-notes/2025/other/2025-05-20-spcs-preview-available-in-gcp.md
-
-# May 20, 2025: Snowpark Container Services preview available in Google Cloud (*Preview*)
-
-Snowpark Container Services preview is now available to Snowflake accounts in Google Cloud. For more information,
-see [Snowpark Container Services](../../../developer-guide/snowpark-container-services/overview.md).

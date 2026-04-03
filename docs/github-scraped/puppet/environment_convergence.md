@@ -1,3 +1,5 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/environment_convergence.md
+
 # Environment Convergence
 
 The term "environment" as used in this document refers to a directory on the server, such as `/etc/puppetlabs/code/environments/<name>`, containing puppet manifests, hiera data, custom facts, etc.
@@ -54,12 +56,12 @@ When running in an agent-specified context, i.e. the server **allows** the agent
 
 1. If the environment exists on the server, then the agent will use that for the duration of the run, even if it needs to download facts and plugins from the server.
 2. If the environment doesn't exist on the server:
-3. By default, switch to the server-specified environment, typically the value of `Puppet[:environment]` on the server.
-4. Otherwise, if `strict_enviroment_mode` is enabled, then fail the run, because the user wants to strictly use the requested environment.
+  1. By default, switch to the server-specified environment, typically the value of `Puppet[:environment]` on the server.
+  2. Otherwise, if `strict_enviroment_mode` is enabled, then fail the run, because the user wants to strictly use the requested environment.
 
 ## Last Used Environment
 
-Prior to 6.25.0 and 7.10.0, the agent used to make a node request at the beginning of the run to determine which environment to start off in. This was changed in [PUP-10216](https://tickets.puppet.com/browse/PUP-10216) so the agent will start off in the environment it used last time. This information is stored in `Puppet[:lastrunfile]`. Doing so eliminates the agent's node request and several requests among server, classifier, puppetdb and postgres.
+Prior to 6.25.0 and 7.10.0, the agent used to make a node request at the beginning of the run to determine which environment to start off in. This was changed in [PUP-10216](https://tickets.puppet.com/browse/PUP-10216) so the agent will start off in the environment it used last time. This information is stored in `Puppet[:lastrunfile]`. Doing so eliminates the agent's node request and several requests among server, classifier, puppetdb and postgres. 
 
 The old behavior can be enabled using the `Puppet[:use_last_environment]=false` setting or specifying `--no-use_last_environment` on the command line.
 

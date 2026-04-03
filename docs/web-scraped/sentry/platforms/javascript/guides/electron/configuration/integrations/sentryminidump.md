@@ -1,7 +1,0 @@
----
----
-title: SentryMinidump
-description: "Captures minidumps and sends them with full context to the Sentry Envelope endpoint using a custom uploader. (default)"
----
-
-Captures minidumps and sends them to the Sentry Envelope endpoint with full context using a custom uploader.

@@ -1,9 +1,0 @@
-webrtc
-# Module stats 
-Source 
-## Modules§
-stats_collector
-## Structs§
-CertificateStatsCodecStatsDataChannelStatsICECandidatePairStatsICECandidateStatsICETransportStatsInboundRTPStatsOutboundRTPStatsPeerConnectionStatsRemoteInboundRTPStatsRemoteOutboundRTPStatsStatsReport
-## Enums§
-RTCStatsTypeSourceStatsTypeStatsReportType

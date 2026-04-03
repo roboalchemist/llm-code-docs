@@ -1,5 +1,0 @@
-# Source: https://docs.silabs.com/openthread/3.0.0/mfg-test-overview/05-radio-frequency-regulatory-and-compliance-testing.md
-
-# Radio Frequency Regulatory and Compliance Testing
-
-Customers need to perform RF measurements to validate and certify the product’s compliance with the regulatory rules. The level of testing depends on the Silicon Labs product. For example, the SoC/IC-level wireless components cannot be pre-certified because they do not have a fixed RF path and antenna. Customers therefore must conduct the full set of radio tests to certify their product. The test tools referenced in section [Embedded Software Tools](04-embedded-software-tools) should be used to validate the RF performance of the device. For more information on RF Regulatory requirements for various regions, refer to _AN1048: Regulatory RF Module Certifications_.

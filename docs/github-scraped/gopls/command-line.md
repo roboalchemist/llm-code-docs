@@ -1,5 +1,3 @@
-# Source: https://github.com/golang/tools/blob/master/gopls/doc/command-line.md
-
 ---
 title: "Gopls: Command-line interface"
 ---

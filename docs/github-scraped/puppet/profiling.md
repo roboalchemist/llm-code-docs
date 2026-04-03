@@ -1,3 +1,5 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/profiling.md
+
 # Profiling Puppet
 
 Puppet is a beast. Puppet is at times a very *slow* beast. Maybe we can find

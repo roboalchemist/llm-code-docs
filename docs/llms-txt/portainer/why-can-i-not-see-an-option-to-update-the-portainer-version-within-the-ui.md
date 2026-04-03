@@ -1,9 +1,0 @@
-# Source: https://docs.portainer.io/sts/faqs/troubleshooting/ui-and-features/why-can-i-not-see-an-option-to-update-the-portainer-version-within-the-ui.md
-
-# Source: https://docs.portainer.io/faqs/troubleshooting/ui-and-features/why-can-i-not-see-an-option-to-update-the-portainer-version-within-the-ui.md
-
-# Why can I not see an option to update the Portainer version within the UI?
-
-If you are running any form of ad blocking, DNS filtering, or network proxy between the Portainer Server and the internet, Portainer may be unable to reach the update service. When this happens, Portainer cannot check for the latest available version, and the update option is not shown in the UI.
-
-Refer to the [update documentation](https://docs.portainer.io/start/upgrade) for the available options on how to update Portainer in your environment.

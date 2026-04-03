@@ -1,7 +1,0 @@
-# Source: https://docs.fiddler.ai/api/rest-api/rest-api/fiddler-trust-service-guide.md
-
-# Fiddler Trust Service REST API Guide
-
-<mark style="color:green;">`POST`</mark> `undefined/v3/guardrails/ftl-response-faithfulness`
-
-<mark style="color:green;">`POST`</mark> `undefined/v3/guardrails/ftl-safety`

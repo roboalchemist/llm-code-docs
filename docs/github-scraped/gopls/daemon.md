@@ -1,5 +1,3 @@
-# Source: https://github.com/golang/tools/blob/master/gopls/doc/daemon.md
-
 ---
 title: "Gopls: Running as a daemon"
 ---

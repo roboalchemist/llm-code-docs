@@ -1,3 +1,5 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/catalogs.md
+
 # Two Types of Catalogs
 
 When working on subsystems of Puppet that deal with the catalog it is important

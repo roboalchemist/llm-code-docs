@@ -1,1 +1,0 @@
-Sauce Visual Binding allows to configure which kinds of changes should be effective on snapshot.

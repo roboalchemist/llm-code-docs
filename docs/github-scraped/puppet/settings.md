@@ -1,3 +1,5 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/settings.md
+
 Settings
 ========
 
@@ -10,11 +12,11 @@ Settings
 - [Dashes & Underscores](#dashes--underscores)
 - [Setting Types](#setting-types)
 - [Setting Values](#setting-values)
-  - [Duration & TTL Settings](#duration--ttl-settings)
-  - [File/Directory Settings](#filedirectory-settings)
+    - [Duration & TTL Settings](#duration--ttl-settings)
+    - [File/Directory Settings](#filedirectory-settings)
 - [Hooks](#hooks)
 - [Run Mode](#run-mode)
-  - [Preferred Run Mode](#preferred-run-mode)
+    - [Preferred Run Mode](#preferred-run-mode)
 - [Precedence](#precedence)
 - [File Watcher](#file-watcher)
 - [RSpec](#rspec)
@@ -183,7 +185,6 @@ switched, then it changes how settings are resolved. For example, given
 [server]
 node_terminus=exec
 ```
-
 Then calling `Puppet[:node_terminus]` will return either `nil` or `exec`
 depending on the current run mode.
 
@@ -203,12 +204,12 @@ Puppet settings can be defined in multiple sources (command line, puppet.conf,
 etc). When looking up a value, puppet searches based on the precedence of each
 source, roughly in order of high to low:
 
-- memory
-- command line
-- current environment.conf
-- section for the current run mode
-- main section
-- defaults
+* memory
+* command line
+* current environment.conf
+* section for the current run mode
+* main section
+* defaults
 
 It is important to note that both the current environment and run mode change
 how the value is resolved.

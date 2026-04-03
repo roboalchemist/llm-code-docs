@@ -1,5 +1,3 @@
-# Source: https://github.com/golang/tools/blob/master/gopls/doc/workspace.md
-
 ---
 title: "Gopls: Setting up your workspace"
 ---

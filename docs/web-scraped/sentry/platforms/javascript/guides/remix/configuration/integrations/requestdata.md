@@ -1,6 +1,0 @@
----
----
-title: RequestData
-description: "Adds data from incoming requests to transaction and error events that occur during request handling done by the backend. (default)"
----
-

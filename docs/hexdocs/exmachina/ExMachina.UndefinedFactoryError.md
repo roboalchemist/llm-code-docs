@@ -1,1 +1,0 @@
-Error raised when trying to build or create a factory that is undefined.

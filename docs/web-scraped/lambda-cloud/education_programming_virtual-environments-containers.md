@@ -4,21 +4,21 @@ Source: https://docs.lambda.ai/education/programming/virtual-environments-contai
 
 ---
 
-[Virtualization](../../../tags/#tag:virtualization)
+[Virtualization ](../../../tags/#tag:virtualization)
+# Virtual environments and Docker containers [# ](#virtual-environments-and-docker-containers)
 
-# Virtual environments and Docker containers
+## What are virtual environments? [# ](#what-are-virtual-environments)
 
-## What are virtual environments?
+Virtual environments allow you to create and maintain development environments that are isolated from each other. Lambda recommends using either: 
 
-Virtual environments allow you to create and maintain development environments that are isolated from each other. Lambda recommends using either:
+- [Python venv ](#creating-a-python-virtual-environment)
+- [conda ](#creating-a-conda-virtual-environment)
+### Creating a Python virtual environment [# ](#creating-a-python-virtual-environment)
 
-- [Python venv](#creating-a-python-virtual-environment)
-- [conda](#creating-a-conda-virtual-environment)
+- 
+Create a Python virtual environment using the `venv`module by running: 
 
-### Creating a Python virtual environment
-
-Create a Python virtual environment using the `venv` module by running:
-
-```bash
-python -m venv --system-site-packages NAME
+```
+`[](#__codelineno-0-1)python -m venv --system-site-packages NAME
+`
 ```

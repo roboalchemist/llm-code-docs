@@ -1,7 +1,0 @@
-mozjpeg
-# Module qtable 
-Source 
-## Structs§
-QTable
-## Statics§
-ALL_TABLESAhumadaWatsonPetersonAnnexK_ChromaAnnexK_LumaFlatKleinSilversteinCarneyMSSSIM_ChromaMSSSIM_LumaNRobidouxPSNRHVS_ChromaPSNRHVS_LumaPetersonAhumadaWatsonWatsonTaylorBorthwick

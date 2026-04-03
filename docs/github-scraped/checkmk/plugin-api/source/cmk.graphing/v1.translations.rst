@@ -1,6 +1,0 @@
-============================
-cmk.graphing.v1.translations
-============================
-
-.. automodule:: cmk.graphing.v1.translations
-   :members:

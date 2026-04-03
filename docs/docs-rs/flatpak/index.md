@@ -1,4 +1,0 @@
-# Crate flatpak 
-Source 
-## Modules§
-applicationarchitecturearchivebuild_systemfilenameformatmanifest_typemodulereverse_dnssource

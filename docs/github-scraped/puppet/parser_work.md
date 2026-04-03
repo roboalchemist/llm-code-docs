@@ -1,3 +1,5 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/parser_work.md
+
 Working on Parser Logic
 ===
 
@@ -5,7 +7,6 @@ This document contains advice related to doing grammar / parser work.
 
 From Grammar to Ruby
 ---
-
 The grammar is described in a `.ra` (racc) file. For the "future parser", this is in
 lib/puppet/pops/parser/egrammar.ra and it is combined with the parser_support.rb file in the
 same directory and processed by race. The output is the resulting parser (in eparser.rb).
@@ -14,7 +15,6 @@ Never modify the `parser.rb` by hand.
 
 Merge conflicts
 ---
-
 Simply touch the `egrammar.ra` (unless it was changed by resolving merge conflicts), and
 then rebuild the parser by running make in the same directory.
 
@@ -22,7 +22,6 @@ The resulting `eparser.rb` should be checked in.
 
 The eparser.rb and Racc runtime
 ---
-
 If you look inside the `eparser.rb` file, you see several tables and a set of methods.
 The tables are used by the racc runtime (written n C and part of Ruby), and it calls back to
 the methods that implement the actions that were expressed in the grammar.
@@ -32,7 +31,6 @@ that runtime exceptions appear to come from the grammar file (as they should).
 
 Grammar Ambiguities
 ---
-
 If you are working with grammar changes, you may run into ambiguity problems. There are two kinds of conflicts:
 
 * shift/reduce
@@ -119,10 +117,11 @@ Say if there was a conflict on the COMMA, it may be shown as:
       COMMA         reduce using rule 666 (the_trouble_rule)
       $default      reduce using rule 7 (syntactic_statements)
 
+
 ### How to find where the problem is
 
 Each conflicting token/rule-pair is displayed in the output (as shown above), thus if the
-same COMMA is involved in 3 conflicts, you will see 6 entries. The valuable piece of information is the name of the reduction rule in conflict. At this point, try to manually construct the sequence of input tokens that would lead up to the ambiguity.
+same COMMA is involved in 3 conflicts, you will see 6 entries. The valuable piece of information is the name of the reduction rule in conflict. At this point, try to manually construct the sequence of input tokens that would lead up to the ambiguity. 
 It may be that the problem in the grammar is "before" reaching the ambiguity
 on the COMMA. Once you understand the sequence, you need to apply reasoning to find the resolution
 of the problem.
@@ -196,7 +195,7 @@ The associativity tells racc how to group input with the same precedence; i.e. s
 times in a row, e.g. an unary minus can not occur in a sequence and --1 is an error.
 
 The example above shows two pseudo tokens HIGH and LOW that can be used in the grammar to
-make a rule have a certain precedence.
+make a rule have a certain precedence. 
 
 We can now express an otherwise ambiguous grammar like this:
 
@@ -225,7 +224,7 @@ Optionally, we can deal with precedence by grouping the expressions having the s
       : NUMBER
       
 This has the same effect as setting the precedence and associativity in the precedence
-table.
+table. 
 
 I named this "Decent Precedence" since this mimics the behavior of a "recursive decent parser",
 the type of parser that is usually written by hand.
@@ -242,7 +241,7 @@ would be given the precedence of MINUS.
 
 Other options for fixing problems
 ---
-
+    
 ### Creating look ahead / look behind in the lexer
 
 Sometimes it is possible to solve an issue by doing a bit more work in the lexer. As an example,
@@ -254,6 +253,7 @@ the information sent to the parser). (This is actually an example of "look behin
 Beware that any lookahead in the lexer is very expensive since it visits each and every
 character in the source file. Look-behinds are cheap in comparison.
   
+  
 Literature
 ===
 
@@ -261,3 +261,5 @@ There is almost no documentation for racc. Luckily, it is a Ruby port of Yacc, a
 written in Ruby, and that the runtime methods are slightly different).
 
 The best book on the topic is "O'Reilly Yacc & Lex". If you want to learn more about parsers, see "Compilers, Principles, Techniques and Tools" (Aho et.al), also known as 'the dragon book').
+
+

@@ -1,1 +1,0 @@
-This directory is where all RFCs should live, with other directories symlinking in. This allows for link stability even if an RFC switches category.

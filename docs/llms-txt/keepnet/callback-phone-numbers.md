@@ -1,9 +1,0 @@
-# Source: https://doc.keepnetlabs.com/next-generation-product/platform/callback-simulator/settings/callback-phone-numbers.md
-
-# Callback Phone Numbers
-
-This page lists the phone numbers available for callback campaigns provided by the platform. If no numbers are available, [contact the support team](https://doc.keepnetlabs.com/resources/keepnet-support-help-desk), as numbers are allocated based on the customer's license.
-
-Click the "**Select Phone Number"** button to add the available phone numbers to your list to use in the new campaign.
-
-<table><thead><tr><th width="196"></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td>Callback Phone Number</td><td>The phone number digits.</td><td></td></tr><tr><td>Region</td><td>The region of the phone number.</td><td></td></tr><tr><td>Status</td><td><p>The status of the phone number:</p><ul><li><strong>In Use:</strong> The phone number is currently used in a campaign.</li><li><strong>Not in Use:</strong> The phone number is currently not in use by any campaign.</li></ul></td><td></td></tr><tr><td>Campaign Name</td><td>The name of the campaign that the related phone number is in use.</td><td></td></tr><tr><td>Scenario Name</td><td>The name of the scenario that the related phone number is in use.</td><td></td></tr><tr><td>Frees On Date</td><td>The date and time that the phone number will be released, and you can use the phone umber for other new campaigns.</td><td></td></tr><tr><td>Actions > Exchange</td><td>Exchange the selected callback phone number with another one from the list.</td><td></td></tr><tr><td>Actions > Deselect</td><td>Remove the phone number from the list in order to prevent being used in the simulation campaign. You can add the phone number later by clicking the Select Phone Numbers button.</td><td></td></tr></tbody></table>

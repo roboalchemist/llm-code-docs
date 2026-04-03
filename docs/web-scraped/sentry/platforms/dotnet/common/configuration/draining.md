@@ -1,9 +1,0 @@
----
----
-title: Shutdown and Draining
-description: "Learn more about the default behavior of our SDK if the application shuts down unexpectedly."
----
-
-The default behavior of most SDKs is to send out events over the network
-asynchronously in the background. This means that some events might be lost if the application shuts down unexpectedly. The SDKs provide mechanisms to cope with this.
-

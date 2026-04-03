@@ -1,5 +1,3 @@
-# Source: https://github.com/golang/tools/blob/master/gopls/doc/codelenses.md
-
 ---
 title: "Gopls: Code lenses"
 ---

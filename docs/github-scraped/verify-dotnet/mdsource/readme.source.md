@@ -1,3 +1,0 @@
-# Documentation
-
-include: doc-index

@@ -1,3 +1,5 @@
+# Source: https://github.com/puppetlabs/puppet/blob/main/docs/indirector.md
+
 # Indirector
 
 > This document describes Puppet's indirector subsystem, but it has a number of limitations described below. As a result, don't introduce any new indirections or termini.
@@ -25,17 +27,14 @@ At startup, each indirection is configured with a terminus. In most cases, this 
 Indirections can also have a cache, represented by a second terminus. This is a write-through cache: modifications are written both to the cache and to the primary terminus. Values fetched from the terminus are written to the cache.
 
 ## Interaction with REST
-
 REST endpoints have the form /{prefix}/{version}/{indirection}/{key}?environment={environment}, where the indirection can be singular or plural, following normal English spelling rules. However, like most things in the English language, there are [exceptions](https://github.com/puppetlabs/puppet/blob/359ca36977e7a096385f6ea9cc0a10c03df5a7e9/lib/puppet/network/http/api/indirected_routes.rb#L269-L287). On the server side, REST responses are generated from the locally-configured endpoints.
 
 ## Indirections and Termini
-
 Below is the list of all indirections, their associated terminus classes, and how you select between them.
 
 In general, the appropriate terminus class is selected by the application for you (e.g., puppet agent would always use the rest terminus for most of its indirected classes), but some classes are tunable via normal settings. These will have terminus setting documentation listed with them.
 
 ### catalog
-
 Indirected Class: `Puppet::Resource::Catalog`
 Terminus Setting: `catalog_terminus`
 
@@ -58,7 +57,6 @@ Part of the "storeconfigs" feature. Should not be directly set by end users.
 Store catalogs as flat files, serialized using YAML.
 
 ### data_binding
-
 Where to find external data bindings.
 
 Indirected Class: `Puppet::DataBinding`
@@ -71,7 +69,6 @@ Retrieve data using Hiera.
 A Dummy terminus that always throws :no_such_key for data lookups.
 
 ### facts
-
 Indirected Class: `Puppet::Node::Facts`
 Terminus Setting: `facts_terminus`
 
@@ -91,7 +88,6 @@ Part of the "storeconfigs" feature. Should not be directly set by end users.
 Store client facts as flat files, serialized using YAML, or return deserialized facts from disk.
 
 ### file_bucket_file
-
 Indirected Class: `Puppet::FileBucket::File`
 
 `file` terminus
@@ -104,7 +100,6 @@ This is a REST based mechanism to send/retrieve file to/from the filebucket
 Select the terminus based on the request
 
 ### file_content
-
 Indirected Class: `Puppet::FileServing::Content`
 
 `file` terminus
@@ -123,7 +118,6 @@ Retrieve file contents via a REST HTTP interface.
 Select the terminus based on the request
 
 ### file_metadata
-
 Indirected Class: `Puppet::FileServing::Metadata`
 
 `file` terminus
@@ -142,7 +136,6 @@ Retrieve file metadata via a REST HTTP interface.
 Select the terminus based on the request
 
 ### node
-
 Where to find node information. A node is composed of its name, its facts, and its environment.
 
 Indirected Class: `Puppet::Node`
@@ -175,7 +168,6 @@ Part of the "storeconfigs" feature. Should not be directly set by end users.
 Store node information as flat files, serialized using YAML, or deserialize stored YAML nodes.
 
 ### report
-
 Indirected Class: `Puppet::Transaction::Report`
 
 `msgpack` terminus
@@ -191,7 +183,6 @@ Get server report over HTTP via REST.
 Store last report as a flat file, serialized using YAML.
 
 ### resource
-
 Indirected Class: `Puppet::Resource`
 `ral` terminus
 Manipulate resources with the resource abstraction layer. Only used internally.

@@ -1,0 +1,242 @@
+[
+  {
+    "source": "llms-txt",
+    "library": "mailcatcher",
+    "label": "ok",
+    "min_score": 0,
+    "max_score": 5,
+    "reason": "HTML dump masquerading as .md"
+  },
+  {
+    "source": "github-scraped",
+    "library": "rake",
+    "label": "weak",
+    "min_score": 45,
+    "max_score": 75,
+    "reason": "rake RST docs with examples, 10KB but well-structured"
+  },
+  {
+    "source": "llms-txt",
+    "library": "lettuce",
+    "label": "ok",
+    "min_score": 0,
+    "max_score": 5,
+    "reason": "HTML dump masquerading as .md"
+  },
+  {
+    "source": "llms-txt",
+    "library": "pycryptodome",
+    "label": "ok",
+    "min_score": 0,
+    "max_score": 5,
+    "reason": "HTML dump masquerading as .md"
+  },
+  {
+    "source": "github-scraped",
+    "library": "phpmailer",
+    "label": "poor",
+    "min_score": 0,
+    "max_score": 25,
+    "reason": "redirect stub ~1KB"
+  },
+  {
+    "source": "web-scraped",
+    "library": "godot-ui",
+    "label": "poor",
+    "min_score": 0,
+    "max_score": 25,
+    "reason": "index-only nav page 2KB"
+  },
+  {
+    "source": "github-scraped",
+    "library": "veevalidate",
+    "label": "poor",
+    "min_score": 0,
+    "max_score": 20,
+    "reason": "changelog only, no real docs"
+  },
+  {
+    "source": "github-scraped",
+    "library": "ristretto",
+    "label": "poor",
+    "min_score": 0,
+    "max_score": 25,
+    "reason": "API reference placeholders, no content"
+  },
+  {
+    "source": "web-scraped",
+    "library": "ineffassign",
+    "label": "ok",
+    "min_score": 45,
+    "max_score": 65,
+    "reason": "close to old range, actual quality is solid for small linter docs"
+  },
+  {
+    "source": "web-scraped",
+    "library": "varcheck",
+    "label": "ok",
+    "min_score": 35,
+    "max_score": 55,
+    "reason": "comprehensive tool docs with examples"
+  },
+  {
+    "source": "web-scraped",
+    "library": "eslint-plugin-performance",
+    "label": "ok",
+    "min_score": 50,
+    "max_score": 75,
+    "reason": "3KB but 22% code ratio 12 headings - rich for size"
+  },
+  {
+    "source": "web-scraped",
+    "library": "assertj",
+    "label": "good",
+    "min_score": 45,
+    "max_score": 70,
+    "reason": "432KB with only 4 headings and 0 code blocks - heuristic limit"
+  },
+  {
+    "source": "web-scraped",
+    "library": "corebluetooth",
+    "label": "dead",
+    "min_score": 0,
+    "max_score": 15,
+    "reason": "docs.rs build failed, almost no content"
+  },
+  {
+    "source": "llms-txt",
+    "library": "pgvector",
+    "label": "good",
+    "min_score": 65,
+    "max_score": 85,
+    "reason": "dense complete vector search reference"
+  },
+  {
+    "source": "web-scraped",
+    "library": "marker",
+    "label": "good",
+    "min_score": 70,
+    "max_score": 90,
+    "reason": "4 files 39KB, high signal practical tool"
+  },
+  {
+    "source": "llms-txt",
+    "library": "wireit",
+    "label": "dead",
+    "min_score": 0,
+    "max_score": 5,
+    "reason": "534KB raw GitHub HTML, not markdown"
+  },
+  {
+    "source": "llms-txt",
+    "library": "physx",
+    "label": "dead",
+    "min_score": 0,
+    "max_score": 5,
+    "reason": "318KB raw HTML, not docs"
+  },
+  {
+    "source": "llms-txt",
+    "library": "sourcegraph",
+    "label": "poor",
+    "min_score": 10,
+    "max_score": 30,
+    "reason": "marketing overview, no technical implementation docs"
+  },
+  {
+    "source": "llms-txt",
+    "library": "apache-spark",
+    "label": "poor",
+    "min_score": 25,
+    "max_score": 45,
+    "reason": "3KB link index, 6 nav headings inflate score"
+  },
+  {
+    "source": "web-scraped",
+    "library": "alembic",
+    "label": "good",
+    "min_score": 75,
+    "max_score": 100,
+    "reason": "comprehensive Alembic API ref, aggregated content is rich"
+  },
+  {
+    "source": "web-scraped",
+    "library": "sonarr",
+    "label": "good",
+    "min_score": 80,
+    "max_score": 100,
+    "reason": "sonarr is good docs with API + install guides"
+  },
+  {
+    "source": "github-scraped",
+    "library": "express",
+    "label": "great",
+    "min_score": 80,
+    "max_score": 100,
+    "reason": "express is excellent routing docs, RST-based"
+  },
+  {
+    "source": "llms-txt",
+    "library": "three.js",
+    "label": "great",
+    "min_score": 80,
+    "max_score": 100,
+    "reason": "125KB single file 87 headings 115 code blocks"
+  },
+  {
+    "source": "llms-txt",
+    "library": "env0",
+    "label": "poor",
+    "min_score": 60,
+    "max_score": 100,
+    "reason": "582 files x 10.8KB avg - real Terraform provider docs, high structural quality"
+  },
+  {
+    "source": "llms-txt",
+    "library": "debricked",
+    "label": "poor",
+    "min_score": 60,
+    "max_score": 100,
+    "reason": "302KB main file + real per-topic pages, strong structural signals"
+  },
+  {
+    "source": "web-scraped",
+    "library": "mapkit",
+    "label": "poor",
+    "min_score": 65,
+    "max_score": 100,
+    "reason": "95 files x 27KB Apple API reference - substantial real content per file"
+  },
+  {
+    "source": "github-scraped",
+    "library": "bridgecrew",
+    "label": "weak",
+    "min_score": 45,
+    "max_score": 85,
+    "reason": "auto-generated Terraform schemas, has real headings+code+examples"
+  },
+  {
+    "source": "llms-txt",
+    "library": "bullmq",
+    "label": "great",
+    "min_score": 85,
+    "max_score": 100,
+    "reason": "1100KB 110 files real job queue architecture docs"
+  },
+  {
+    "source": "llms-txt",
+    "library": "i18next",
+    "label": "great",
+    "min_score": 80,
+    "max_score": 100,
+    "reason": "643KB 33 files substantive i18n docs with examples"
+  },
+  {
+    "source": "github-scraped",
+    "library": "wasmedge",
+    "label": "great",
+    "min_score": 80,
+    "max_score": 100,
+    "reason": "2092KB 189 files multilingual platform docs"
+  }
+]

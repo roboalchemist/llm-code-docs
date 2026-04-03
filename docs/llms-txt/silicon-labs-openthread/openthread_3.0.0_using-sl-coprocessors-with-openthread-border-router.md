@@ -1,9 +1,0 @@
-# Source: https://docs.silabs.com/openthread/3.0.0/using-sl-coprocessors-with-openthread-border-router/index.md
-
-# Using the Silicon Labs Co-Processors with the OpenThread Border Router
-
-**NOTE: This section replaces _AN1256: Using the Silicon Labs RCP with the OpenThread Border Router_. Further updates to this application note will be provided here.**
-
-A Thread Border Router connects a Thread Network to other IP-based networks, such as Wi-Fi® or Ethernet®. A Thread Network requires a Border Router to connect to other networks. The Border Router provides services for devices within the Thread Network, including routing services for off-network operations, bidirectional connectivity over IPv6 infrastructure links, and service registry to enable DNS-based service discovery. Silicon Labs provides a Border Router Add-On Kit containing a Raspberry Pi device and an example Radio Co-Processor (RCP) application required to build Border Router software.
-
-Refer to the OpenThread release notes for the stable version commits of OpenThread (openthread) and OpenThread Border Router (ot-br-posix) repos supported by a Silicon Labs release. OpenThread release notes are installed with the SDK and are also available within the [OpenThread documentation site](https://docs.silabs.com/openthread/latest/sisdk-ot-release-notes/). This applies to all default containers provided by Silicon Labs for the release, and the copies of these repos included in the release. While we support building using any commit on GitHub (using the [ot-efr32](https://github.com/openthread/ot-efr32) repo), note that the latest public code on GitHub can be unstable.
