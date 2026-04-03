@@ -1,0 +1,13 @@
+name: apple-developer-docs
+primary_source: web
+sources:
+  - type: web
+    url: https://developer.apple.com/documentation/
+    last_fetched: "2026-03-30T14:08:00Z"
+description: >
+  Apple Developer Documentation covering the full breadth of Apple platform SDKs and
+  frameworks across iOS, macOS, watchOS, tvOS, and visionOS. Includes reference docs
+  for UIKit, SwiftUI, Foundation, AVFoundation, CoreData, Metal, ARKit, HealthKit,
+  and hundreds of other first-party frameworks. Also covers Swift language documentation,
+  Xcode tooling, App Store Connect APIs, and developer program guides.
+quality_score: 88

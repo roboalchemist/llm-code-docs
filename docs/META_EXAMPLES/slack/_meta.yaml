@@ -1,0 +1,12 @@
+name: slack
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.slack.dev/
+    last_fetched: "2026-03-30T14:08:00Z"
+description: >
+  Slack developer platform documentation covering the Slack API, Block Kit UI framework,
+  bot and app development, OAuth flows, webhooks, and event subscriptions. Includes
+  reference documentation for Web API methods, Events API payloads, and interactive
+  components.
+quality_score: 82
