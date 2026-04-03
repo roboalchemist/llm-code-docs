@@ -2555,8 +2555,8 @@ llms_txt:
   url: https://instructor.com/
   path: docs/llms-txt/instructor/
   status: fetched
-  file_count: 65
-  size: 455.9KB
+  file_count: 71
+  size: 504.5KB
   last_updated: 2026-04-02 20:48
 - name: intelligems
   description: Shopify's Universal Commerce Protocol (UCP) Compatibility
