@@ -1,0 +1,26 @@
+# Xata  
+> Xata is a serverless PostgreSQL platform with instant copy-on-write branching, data anonymization, scale-to-zero and AI-powered database optimization.
+
+## Platform Features  
+- [Realistic Staging Environments](https://xata.io/realistic-staging-dev)  
+- [Postgres Schema Changes](https://xata.io/postgres-schema-changes)  
+- [Postgres Data Masking](https://xata.io/postgres-data-masking)  
+- [Postgres Branching](https://xata.io/postgres-branching)  
+- [Postgres Performance](https://xata.io/postgres-performance)  
+- [Postgres Storage](https://xata.io/postgres-storage)  
+- [Database Agent](https://xata.io/database-agent)  
+- [Bring Your Own Cloud (BYOC)](https://xata.io/byoc)  
+- [Postgres Analytics](https://xata.io/postgres-analytics)  
+- [Postgres for Platforms](https://xata.io/postgres-for-platforms)  
+
+## Company & Access  
+- [Get Early Access](https://xata.io/get-access)  
+- [About Xata](https://xata.io/about)  
+- [Xata vs Neon](https://xata.io/versus-neon)  
+
+## Optional  
+- [Pricing](https://xata.io/pricing)  
+- [Blog](https://xata.io/blog)
+
+## Version
+Last updated: 2025 
