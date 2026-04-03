@@ -1,0 +1,10 @@
+name: searxng
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/searxng/searxng
+    last_fetched: "2026-04-03T20:08:36Z"
+description: >
+  SearXNG - Privacy-respecting, hackable metasearch engine that aggregates
+  results from various search services
+quality_score: 0

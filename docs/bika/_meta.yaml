@@ -1,0 +1,9 @@
+name: bika
+primary_source: llms
+sources:
+  - type: llms
+    url: https://bika.ai/
+    last_fetched: "2026-04-03T20:08:30Z"
+description: >
+  bika documentation
+quality_score: 0

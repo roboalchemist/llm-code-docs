@@ -1,0 +1,8 @@
+name: owasp-dependency-check
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T20:08:35Z"
+description: >
+  OWASP Dependency-Check - Software security vulnerability scanner
+quality_score: 0

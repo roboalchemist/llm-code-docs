@@ -1,0 +1,8 @@
+name: apache-atlas
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T20:08:05Z"
+description: >
+  apache-atlas documentation
+quality_score: 0

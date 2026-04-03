@@ -1,0 +1,9 @@
+name: jfrog-artifactory
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.jfrog.com/docs/
+    last_fetched: "2026-04-03T20:08:33Z"
+description: >
+  jfrog-artifactory documentation
+quality_score: 0

@@ -1,0 +1,8 @@
+name: physx
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T20:08:35Z"
+description: >
+  physx documentation
+quality_score: 0

@@ -1,0 +1,10 @@
+name: mobx
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/mobxjs/mobx
+    last_fetched: "2026-04-03T20:08:34Z"
+description: >
+  MobX - Simple, scalable state management library for JavaScript with
+  transparent reactive programming
+quality_score: 0
