@@ -2038,12 +2038,12 @@ llms_txt:
   size: 151.9KB
   last_updated: 2026-04-03 01:51
 - name: glide
-  description: Glide
+  description: Glide Full Reference
   url: https://glide.com/
   path: docs/llms-txt/glide/
   status: fetched
-  file_count: 1
-  size: 5.2KB
+  file_count: 2
+  size: 14.9KB
   last_updated: 2026-04-03 01:51
 - name: glow
   description: Glow Documentation
@@ -2527,11 +2527,11 @@ llms_txt:
   size: 6.5MB
   last_updated: 2026-04-03 01:51
 - name: jfrog-xray
-  description: Get Federated Repository Status (v2)
+  description: Import Repository Content
   url: https://jfrog-xray.com/
   path: docs/llms-txt/jfrog-xray/
   status: fetched
-  file_count: 116
+  file_count: 124
   size: 2.5MB
   last_updated: 2026-04-03 01:51
 - name: jina
@@ -4757,7 +4757,7 @@ llms_txt:
   path: docs/llms-txt/stedi/
   status: fetched
   file_count: 55
-  size: 66.5MB
+  size: 66.6MB
   last_updated: 2026-04-03 01:51
 - name: stencil
   description: Stencil Documentation
