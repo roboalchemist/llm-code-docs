@@ -1,9 +1,3 @@
-# Glide Documentation
-
-Source: https://www.glideapps.com/llms-full.txt
-
----
-
 # Glide Full Reference
 
 > Glide is a no-code platform for operations teams to build custom business apps, workflows, and AI agents from their data. Apps are responsive by default, secure, and trusted by over 100,000 organizations worldwide.
