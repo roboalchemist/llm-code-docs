@@ -10,29 +10,538 @@
 #   - pending: Library registered but not yet fetched
 
 metadata:
-  last_updated: 2026-04-03 19:41
-  total_libraries: 3
-  total_files: 331215
+  last_updated: 2026-04-03 20:57
+  total_libraries: 46
+  total_files: 331216
   schema_version: '2'
 libraries:
-- name: github-scraped
-  description: github-scraped documentation
-  path: docs/github-scraped/
+- name: ansible-runner
+  description: ansible-runner documentation
+  path: docs/ansible-runner/
   status: fetched
-  file_count: 3556
-  size: 806.2MB
-  last_updated: 2026-04-03 19:41
-- name: llms-txt
-  description: llms-txt documentation
-  path: docs/llms-txt/
+  file_count: 18
+  size: 72.8KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:05Z'
+- name: apache-atlas
+  description: apache-atlas documentation
+  path: docs/apache-atlas/
   status: fetched
-  file_count: 234
-  size: 8.6MB
-  last_updated: 2026-04-03 19:41
-- name: web-scraped
-  description: web-scraped documentation
-  path: docs/web-scraped/
+  file_count: 1
+  size: 21.1KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:05Z'
+- name: apple-developer-docs
+  description: apple-developer-docs documentation
+  path: docs/apple-developer-docs/
   status: fetched
-  file_count: 327425
-  size: 399.0MB
-  last_updated: 2026-04-03 19:41
+  file_count: 327340
+  size: 398.1MB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:29Z'
+- name: arduino
+  description: Arduino - Open-source electronics platform with documentation for hardware, software, tutorials, and cloud
+    services
+  path: docs/arduino/
+  status: fetched
+  file_count: 331
+  size: 788.4MB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/arduino/docs-content
+    last_fetched: '2026-04-03T20:08:30Z'
+- name: base44
+  description: base44 documentation
+  path: docs/base44/
+  status: fetched
+  file_count: 1
+  size: 6.6KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.base44.com/
+    last_fetched: '2026-04-03T20:08:30Z'
+- name: beyondtrust-password-safe
+  description: beyondtrust-password-safe documentation
+  path: docs/beyondtrust-password-safe/
+  status: fetched
+  file_count: 1
+  size: 8.7KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T20:08:30Z'
+- name: bika
+  description: bika documentation
+  path: docs/bika/
+  status: fetched
+  file_count: 1
+  size: 24.3KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://bika.ai/
+    last_fetched: '2026-04-03T20:08:30Z'
+- name: buffer
+  description: buffer documentation
+  path: docs/buffer/
+  status: fetched
+  file_count: 36
+  size: 360.8KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://developers.buffer.com/
+    last_fetched: '2026-04-03T20:08:31Z'
+- name: chroma
+  description: Chroma - Open-source vector database for AI applications with embeddings support
+  path: docs/chroma/
+  status: fetched
+  file_count: 6
+  size: 104.9KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/chroma-core/chroma
+    last_fetched: '2026-04-03T20:08:31Z'
+- name: cloud-run
+  description: cloud-run documentation
+  path: docs/cloud-run/
+  status: fetched
+  file_count: 1
+  size: 3.0KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:31Z'
+- name: dat1
+  description: dat1 documentation
+  path: docs/dat1/
+  status: fetched
+  file_count: 1
+  size: 5.1KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://dat1.co/
+    last_fetched: '2026-04-03T20:08:31Z'
+- name: desearch
+  description: Decentralized AI-powered search API on Bittensor (web, X/Twitter, deep research)
+  path: docs/desearch/
+  status: fetched
+  file_count: 4
+  size: 104.2KB
+  last_updated: 2026-04-03 19:42
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://desearch.ai/
+    last_fetched: '2026-04-03T19:42:55Z'
+- name: docetl
+  description: docetl documentation
+  path: docs/docetl/
+  status: fetched
+  file_count: 81
+  size: 7.9MB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:32Z'
+- name: fastify
+  description: fastify documentation
+  path: docs/fastify/
+  status: fetched
+  file_count: 1
+  size: 45.1KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T20:08:32Z'
+- name: giselles
+  description: giselles documentation
+  path: docs/giselles/
+  status: fetched
+  file_count: 1
+  size: 319.1KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.giselles.ai/
+    last_fetched: '2026-04-03T20:08:32Z'
+- name: go-docs
+  description: Go Programming Language - Official documentation website
+  path: docs/go-docs/
+  status: fetched
+  file_count: 11
+  size: 802.5KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/golang/website
+    last_fetched: '2026-04-03T20:08:32Z'
+- name: gopls
+  description: 'gopls - Official Go language server providing IDE features (LSP) to all editors: auto-completion, diagnostics,
+    go-to-definition, refactoring, and formatting'
+  path: docs/gopls/
+  status: fetched
+  file_count: 11
+  size: 199.7KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/golang/tools
+    last_fetched: '2026-04-03T20:08:33Z'
+- name: jfrog-artifactory
+  description: jfrog-artifactory documentation
+  path: docs/jfrog-artifactory/
+  status: fetched
+  file_count: 1
+  size: 457.2KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.jfrog.com/docs/
+    last_fetched: '2026-04-03T20:08:33Z'
+- name: kube-bench
+  description: kube-bench - Kubernetes security benchmark compliance checker
+  path: docs/kube-bench/
+  status: fetched
+  file_count: 15
+  size: 612.8KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/aquasecurity/kube-bench
+    last_fetched: '2026-04-03T20:08:33Z'
+- name: lambda-cloud
+  description: lambda-cloud documentation
+  path: docs/lambda-cloud/
+  status: fetched
+  file_count: 56
+  size: 103.8KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:33Z'
+- name: liam
+  description: liam documentation
+  path: docs/liam/
+  status: fetched
+  file_count: 14
+  size: 437.9KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:33Z'
+- name: miragejs
+  description: miragejs documentation
+  path: docs/miragejs/
+  status: fetched
+  file_count: 1
+  size: 3.0KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:33Z'
+- name: mobx
+  description: MobX - Simple, scalable state management library for JavaScript with transparent reactive programming
+  path: docs/mobx/
+  status: fetched
+  file_count: 2
+  size: 494.2KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/mobxjs/mobx
+    last_fetched: '2026-04-03T20:08:34Z'
+- name: mockserver
+  description: mockserver documentation
+  path: docs/mockserver/
+  status: fetched
+  file_count: 1
+  size: 319.2KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:34Z'
+- name: neverbounce
+  description: neverbounce documentation
+  path: docs/neverbounce/
+  status: fetched
+  file_count: 1
+  size: 595B
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://developers.neverbounce.com/
+    last_fetched: '2026-04-03T20:08:34Z'
+- name: notion
+  description: notion documentation
+  path: docs/notion/
+  status: fetched
+  file_count: 169
+  size: 7.2MB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://developers.notion.com/
+    last_fetched: '2026-04-03T20:08:34Z'
+- name: octopus-deploy
+  description: octopus-deploy documentation
+  path: docs/octopus-deploy/
+  status: fetched
+  file_count: 2631
+  size: 5.9MB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:34Z'
+- name: opsnet-gazelle
+  description: opsnet-gazelle documentation
+  path: docs/opsnet-gazelle/
+  status: fetched
+  file_count: 15
+  size: 49.9KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:35Z'
+- name: owasp-dependency-check
+  description: OWASP Dependency-Check - Software security vulnerability scanner
+  path: docs/owasp-dependency-check/
+  status: fetched
+  file_count: 7
+  size: 40.2KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:35Z'
+- name: physx
+  description: physx documentation
+  path: docs/physx/
+  status: fetched
+  file_count: 2
+  size: 6.6KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:35Z'
+- name: puppet
+  description: Puppet - Server automation framework and application for infrastructure management, configuration, and deployment
+  path: docs/puppet/
+  status: fetched
+  file_count: 14
+  size: 169.7KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/puppetlabs/puppet
+    last_fetched: '2026-04-03T20:08:35Z'
+- name: rtorrent
+  description: rtorrent documentation
+  path: docs/rtorrent/
+  status: fetched
+  file_count: 77
+  size: 389.2KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:35Z'
+- name: rutorrent
+  description: rutorrent documentation
+  path: docs/rutorrent/
+  status: fetched
+  file_count: 63
+  size: 84.9KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T20:08:36Z'
+- name: searxng
+  description: SearXNG - Privacy-respecting, hackable metasearch engine that aggregates results from various search services
+  path: docs/searxng/
+  status: fetched
+  file_count: 150
+  size: 256.3KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/searxng/searxng
+    last_fetched: '2026-04-03T20:08:36Z'
+- name: skypack
+  description: skypack documentation
+  path: docs/skypack/
+  status: fetched
+  file_count: 1
+  size: 1.3KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.skypack.dev/
+    last_fetched: '2026-04-03T20:08:36Z'
+- name: smtp2go
+  description: smtp2go documentation
+  path: docs/smtp2go/
+  status: fetched
+  file_count: 1
+  size: 16.0KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T20:08:36Z'
+- name: sonatype-nexus-repository
+  description: sonatype-nexus-repository documentation
+  path: docs/sonatype-nexus-repository/
+  status: fetched
+  file_count: 10
+  size: 309.1KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:37Z'
+- name: statuscake
+  description: statuscake documentation
+  path: docs/statuscake/
+  status: fetched
+  file_count: 1
+  size: 2.7KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:37Z'
+- name: stedi
+  description: stedi documentation
+  path: docs/stedi/
+  status: fetched
+  file_count: 1
+  size: 12.8KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://www.stedi.com/docs/
+    last_fetched: '2026-04-03T20:08:37Z'
+- name: swiftdata
+  description: swiftdata documentation
+  path: docs/swiftdata/
+  status: fetched
+  file_count: 4
+  size: 89.4KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:37Z'
+- name: swiftui
+  description: swiftui documentation
+  path: docs/swiftui/
+  status: fetched
+  file_count: 2
+  size: 73.7KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:37Z'
+- name: tempo
+  description: tempo documentation
+  path: docs/tempo/
+  status: fetched
+  file_count: 1
+  size: 2.2KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:38Z'
+- name: tornado
+  description: Tornado - Python web framework and asynchronous networking library
+  path: docs/tornado/
+  status: fetched
+  file_count: 114
+  size: 316.5KB
+  last_updated: 2026-04-03 20:08
+  primary_source: github
+  sources:
+  - type: github
+    url: https://github.com/tornadoweb/tornado
+    last_fetched: '2026-04-03T20:08:38Z'
+- name: valibot
+  description: valibot documentation
+  path: docs/valibot/
+  status: fetched
+  file_count: 14
+  size: 39.3KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://www.valibot.dev/
+    last_fetched: '2026-04-03T20:08:38Z'
+- name: xata
+  description: xata documentation
+  path: docs/xata/
+  status: fetched
+  file_count: 1
+  size: 1.1KB
+  last_updated: 2026-04-03 20:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://xata.io/
+    last_fetched: '2026-04-03T20:08:38Z'
+- name: zincsearch
+  description: zincsearch documentation
+  path: docs/zincsearch/
+  status: fetched
+  file_count: 1
+  size: 1.3KB
+  last_updated: 2026-04-03 20:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T20:08:38Z'
