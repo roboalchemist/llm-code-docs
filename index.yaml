@@ -8,14 +8,14 @@
 
 metadata:
   last_updated: 2026-04-03 01:56
-  total_sources: 1858
-  total_fetched: 1858
-  llms_txt_count: 714
-  llms_txt_fetched: 714
+  total_sources: 1860
+  total_fetched: 1860
+  llms_txt_count: 715
+  llms_txt_fetched: 715
   github_count: 532
   github_fetched: 532
-  web_scraped_count: 612
-  web_scraped_fetched: 612
+  web_scraped_count: 613
+  web_scraped_fetched: 613
 llms_txt:
 - name: '0'
   description: 'Option 2: CLI for automation'
@@ -1108,7 +1108,7 @@ llms_txt:
   last_updated: 2026-04-03 01:56
 - name: cloud-run
   description: Google Cloud Run Documentation
-  url: https://cloud-run.com/
+  url: https://cloud.google.com/run
   path: docs/llms-txt/cloud-run/
   status: fetched
   file_count: 1
@@ -2523,8 +2523,8 @@ llms_txt:
   url: https://jfrog-xray.com/
   path: docs/llms-txt/jfrog-xray/
   status: fetched
-  file_count: 151
-  size: 2.8MB
+  file_count: 185
+  size: 3.2MB
   last_updated: 2026-04-03 01:56
 - name: jina
   description: Example solutions
@@ -3086,6 +3086,14 @@ llms_txt:
   status: fetched
   file_count: 284
   size: 6.3MB
+  last_updated: 2026-04-03 01:56
+- name: masstransit
+  description: MassTransit Agent Instructions
+  url: https://masstransit.com/
+  path: docs/llms-txt/masstransit/
+  status: fetched
+  file_count: 1
+  size: 2.4KB
   last_updated: 2026-04-03 01:56
 - name: mastercard
   description: Account Catalog Services
@@ -5001,7 +5009,7 @@ llms_txt:
   last_updated: 2026-04-03 01:56
 - name: tempo
   description: Grafana Tempo Documentation
-  url: https://tempo.com/
+  url: https://grafana.com/docs/tempo/latest/
   path: docs/llms-txt/tempo/
   status: fetched
   file_count: 1
@@ -12233,6 +12241,13 @@ web_scraped:
   status: fetched
   file_count: 15
   size: 100.8KB
+  last_updated: 2026-04-03 01:56
+- name: pega
+  description: pega documentation
+  path: docs/web-scraped/pega/
+  status: fetched
+  file_count: 1
+  size: 1.4KB
   last_updated: 2026-04-03 01:56
 - name: percy
   description: percy documentation

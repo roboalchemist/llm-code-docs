@@ -11,7 +11,7 @@
   </div>
 </div>
 
-Zapier supercharges Buffer with 5,000+ no-code integrations to automate your entire workflow. Picture this: auto-post Buffer updates to Discord communities, pipe engagement stats into Looker Studio dashboards for real-time insights, or instantly transform Trello card updates into ready-to-schedule Buffer drafts — unlocking pro-level efficiency!
+Zapier connects Buffer with thousands of apps so you can automate your workflow without writing code. For example, you could auto-post to Discord when you publish, send engagement stats to a spreadsheet, or turn Trello card updates into scheduled Buffer drafts.
 
 ## Setup
 

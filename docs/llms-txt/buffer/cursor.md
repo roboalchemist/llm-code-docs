@@ -11,7 +11,7 @@
   </div>
 </div>
 
-Use the Buffer MCP server within Cursor to manage social media content directly from your AI-powered code editor. Schedule posts, check your queue, and draft content — all without leaving your IDE.
+Use the Buffer MCP server within Cursor to manage social media content directly from your AI-powered code editor. Schedule posts, check your queue, and draft content - all without leaving your IDE.
 
 ## Setup
 

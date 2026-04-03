@@ -13,158 +13,1088 @@ Authentication: Bearer token via Authorization header
 
 ## Guides
 
-### Getting Started
+### Introduction
 
-Buffer's API is built using GraphQL. If you are new to GraphQL, its worth checking out the [official GraphQL documentation](https://graphql.org/learn/) and [tutorial offered by Apollo's](https://www.apollographql.com/tutorials/) to learn the foundations for building for our API.
+# Introduction
 
-## Register for API Access
+## What is the Buffer API?
 
-To access our API you'll need a Buffer Account and an API token. If you don't have an account yet, you can sign up for one [here](https://buffer.com/signup).
+The Buffer API gives you programmatic access to your Buffer account. Create and schedule posts, manage content ideas, pull data on your connected channels, and build custom integrations, all through our GraphQL API.
 
-Once you have an Account, you can create an API Key in the [API settings](https://publish.buffer.com/settings/api) of your account.
+## What can the API do?
 
-## What the API supports
+- **Create posts:** Schedule text and image posts to any connected channel
+- **Delete posts:** Remove scheduled or sent posts
+- **Create ideas:** Save content ideas for later
+- **Retrieve channels:** List and filter your connected social media profiles
+- **Retrieve posts:** Fetch scheduled, sent, and draft posts
+- **Retrieve organizations:** Access organization and account data
 
-Your API Key can be used to perform actions against **your own Buffer account**. Through this we currently support the following operations:
+## How is the API built?
 
-- Post Creation
-- Post Retrieval
-- Idea Creations
-- Account Retrieval
-- Organizations Retrieval
-- Channels Retrieval
-
-## Endpoint
-
-Our GraphQL API can be accessed via the following endpoint:
+We use [GraphQL](https://graphql.org/), which lets you request exactly the data you need in a single request. The main difference from REST is that instead of hitting different URLs for different resources, you send queries to a single endpoint:
 
 ```
 https://api.buffer.com
 ```
 
-If you are looking to make GraphQL calls using postman or any other HTTP request tool, you direct requests to the above endpoint and follow [this](https://learning.postman.com/docs/sending-requests/graphql/graphql-overview/) guide.
+## Next steps
+
+- [Quick Start](getting-started.html): Make your first API request in 5 minutes
+- [Data Model](data-model.html): Understand how organizations, channels, and posts relate to each other
+- [Examples](../examples/): See working code for common tasks
+
+### Quick Start
+
+Buffer's API is built with GraphQL. If you're new to GraphQL, we'd recommend the [official GraphQL documentation](https://graphql.org/learn/) to get familiar with the basics before diving in.
+
+## Register for API Access
+
+To get started with the Buffer API, you'll need a Buffer account and an API key. If you don't have an account yet, you can [sign up here](https://buffer.com/signup).
+
+Once you have an account, head to [API settings](https://publish.buffer.com/settings/api) to create your API key.
+
+## What the API supports
+
+Your API key lets you perform actions against **your own Buffer account**. We currently support the following operations:
+
+- Post Creation
+- Post Deletion
+- Post Retrieval
+- Idea Creation
+- Account Retrieval
+- Organization Retrieval
+- Channel Retrieval
+
+## Endpoint
+
+The Buffer GraphQL API is available at:
+
+```
+https://api.buffer.com
+```
+
+If you'd like to use a tool like Postman or another HTTP client, point your requests to the endpoint above and follow [Postman's GraphQL guide](https://learning.postman.com/docs/sending-requests/graphql/graphql-overview/) for setup.
 
 ## Authorization
 
-Requests must be authenticated via the `Authorization` header. You will need to provide your API token with the correct permissions using the `Bearer` formatting.
+Every request must include an `Authorization` header with your API key using the `Bearer` format.
 
 <!-- AUTH_CODE_EXAMPLES -->
 
 ## Making your first request
 
-To make your first request, you can use the following example query to fetch your account and Organization:
+Here's a quick query to fetch your account and organization:
 
 <!-- FIRST_REQUEST_CODE_EXAMPLES -->
 
-Once you have your organizations, you can use the desired organization ID to make further requests to fetch profiles, posts, and other data associated with your organization.
+Once you have your organization ID, you can use it to fetch channels, posts, and other data for that organization.
 
-### API Limits
+### Authentication
 
-Rate limits are applied using a dual-layer strategy to ensure fair usage across all accounts and clients.
+# Authentication
 
-### Rate Limits by Client Type
+Every request to the Buffer API needs an API key. Here's how to get one and start using it.
 
-- **Third-party Clients**: 100 requests per 15 minutes
-- **Unknown/Unauthenticated**: 50 requests per 15 minutes
-- **Account Overall** (all clients combined): 2000 requests per 15 minutes
+## Getting your API key
 
-### How It Works
+1. Log in to your [Buffer](https://buffer.com) account
+2. Go to [Settings → API](https://publish.buffer.com/settings/api)
+3. Create a new API key
+4. Copy the key
 
-Rate limits are applied in two layers:
+## Using your API key
 
-1. **Client + Account**: Limits requests per client and account combination. This prevents a single client from overwhelming the API for a specific account.
-2. **Account Overall**: Limits total requests per account across all clients. This prevents bypassing limits by using multiple clients simultaneously.
+Include your key in the `Authorization` header of every request:
 
-### Response Headers
+<!-- AUTH_CODE_EXAMPLES -->
 
-Rate limit information is included in the response headers:
+Every request to `https://api.buffer.com` must include this header. Requests without a valid key will return a `401 Unauthorized` error.
 
-```http
-RateLimit-Limit: 1000
-RateLimit-Remaining: 850
-RateLimit-Reset: 2024-01-01T12:00:00.000Z
+## Key permissions and scope
+
+- Your API key acts on behalf of **your account only**
+- It can access all organizations and channels in your account
+- There is no per-organization scoping at this time
+- The key is account-based, not organization-based
+
+If you belong to multiple organizations, your key gives you access to all of them. Use the organization ID in your queries to target a specific one.
+
+## Security best practices
+
+- **Never commit your API key to version control.** Add it to `.gitignore` or use a secrets manager.
+- **Don't expose it in client-side code.** API calls should be made from your server, not from a browser or mobile app.
+- **Use environment variables.** Store the key in an environment variable like `BUFFER_API_KEY` and reference it in your code.
+- **Rotate your key if compromised.** Generate a new one in [Settings → API](https://publish.buffer.com/settings/api) and update your applications.
+
+```javascript
+// Good: read from environment variable
+const apiKey = process.env.BUFFER_API_KEY;
+
+// Not advised: hardcoded in source code
+const apiKey = "buf_abc123...";
 ```
 
-### Error Response
+## OAuth (coming soon)
 
-When a rate limit is exceeded, you will receive an HTTP `429 Too Many Requests` response:
+We're working on OAuth support for third-party apps. Check the [Roadmap](../roadmap.html) for updates. This will let you build apps that access other people's Buffer accounts with their permission.
+
+For now, the API is designed for first-party use: automating your own account or building internal tools for your team.
+
+## Next steps
+
+- [Quick Start](getting-started.html): Make your first API request
+- [Your First Post](your-first-post.html): Go from authenticated to a scheduled post
+
+### Your First Post
+
+# Your First Post
+
+Let's walk through creating your first post with the Buffer API. By the end, you'll have a post scheduled in your queue.
+
+**Prerequisites:** A Buffer account with at least one connected channel, and an API key. See [Authentication](authentication.html) if you don't have a key yet.
+
+**Time:** ~5 minutes
+
+## Step 1: Get your organization ID
+
+First, query your account to find your organization ID:
+
+<!-- TABBED_CODE -->
+```graphql
+query GetOrganizations {
+  account {
+    organizations {
+      id
+      name
+    }
+  }
+}
+```
+
+You'll get a response like this:
 
 ```json
 {
-  "errors": [
-    {
-      "message": "Too many requests from this client. Please try again later.",
-      "extensions": {
-        "code": "RATE_LIMIT_EXCEEDED",
-        "limitType": "CLIENT_ACCOUNT",
-        "retryAfter": 900
+  "data": {
+    "account": {
+      "organizations": [
+        { "id": "your_org_id", "name": "My Company" }
+      ]
+    }
+  }
+}
+```
+
+Copy the `id` from the response. You'll need it in the next step.
+
+## Step 2: Get your channel ID
+
+Now query your channels using the organization ID from Step 1:
+
+<!-- TABBED_CODE -->
+```graphql
+query GetChannels {
+  channels(input: { organizationId: "your_org_id" }) {
+    id
+    name
+    service
+  }
+}
+```
+
+This returns all your connected social profiles:
+
+```json
+{
+  "data": {
+    "channels": [
+      { "id": "your_channel_id", "name": "My Twitter", "service": "twitter" },
+      { "id": "your_other_channel_id", "name": "My Instagram", "service": "instagram" }
+    ]
+  }
+}
+```
+
+Pick the channel you want to post to and copy its `id`.
+
+## Step 3: Create your post
+
+Now create a post using the channel ID from Step 2:
+
+<!-- TABBED_CODE -->
+```graphql
+mutation CreateFirstPost {
+  createPost(input: {
+    text: "Hello from the Buffer API!",
+    channelId: "your_channel_id",
+    schedulingType: automatic,
+    mode: addToQueue
+  }) {
+    ... on PostActionSuccess {
+      post {
+        id
+        text
+        dueAt
       }
     }
-  ]
+    ... on MutationError {
+      message
+    }
+  }
 }
 ```
 
-Use the `retryAfter` value (in seconds) to determine when you can make requests again.
+A successful response looks like this:
 
-## Query Limits
+```json
+{
+  "data": {
+    "createPost": {
+      "post": {
+        "id": "your_post_id",
+        "text": "Hello from the Buffer API!",
+        "dueAt": "2026-03-05T14:30:00.000Z"
+      }
+    }
+  }
+}
+```
 
-In addition to rate limits, the API enforces query-level limits to protect against overly complex or expensive GraphQL queries.
+## Step 4: Verify in Buffer
 
-### Query Complexity
+Open your [Buffer dashboard](https://publish.buffer.com). You should see your new post in the queue for the channel you selected. With `mode: addToQueue`, we've assigned it to the next available time slot.
 
-Each query is assigned a cost based on the fields it requests:
+## Scheduling options
 
-- **Scalar fields** (e.g., `id`, `name`): 1 point each
-- **Object fields** (e.g., `organization`, `channel`): 2 points each
-- **Nesting multiplier**: Nested fields are multiplied by a factor of 1.5x per level of depth
+The example above used `mode: addToQueue`, which adds the post to the next available time slot. You can also schedule a post for a specific time:
 
-The maximum allowed query cost is **175,000 points**. If your query exceeds this, you will receive an error asking you to simplify it.
+<!-- TABBED_CODE -->
+```graphql
+mutation CreateScheduledPost {
+  createPost(input: {
+    text: "Scheduled for a specific time",
+    channelId: "your_channel_id",
+    schedulingType: automatic,
+    mode: customScheduled,
+    dueAt: "2026-03-10T15:00:00.000Z"
+  }) {
+    ... on PostActionSuccess {
+      post {
+        id
+        text
+        dueAt
+      }
+    }
+    ... on MutationError {
+      message
+    }
+  }
+}
+```
 
-### Query Depth
+The `dueAt` field accepts an ISO 8601 datetime string in UTC.
 
-Queries are limited to a maximum depth of **25 levels**. Deeply nested queries can cause exponential resource consumption, so keep your queries as flat as possible.
+## Handling errors
 
-### Aliases
+If something goes wrong, the response includes a `MutationError` with a `message` field instead of `PostActionSuccess`:
 
-A maximum of **30 aliases** are allowed per query. Aliases let you rename fields in a response, but excessive use can be used to amplify query cost.
+```json
+{
+  "data": {
+    "createPost": {
+      "message": "Channel not found"
+    }
+  }
+}
+```
 
-### Directives
+Common issues:
 
-Queries are limited to a maximum of **50 directives**.
+- **Invalid `channelId`** - double-check you copied the right ID from Step 2
+- **Missing required fields** - `text` and `channelId` are always required
+- **Queue limit reached**: your channel's queue is full
 
-### Tokens
+Always include `... on MutationError { message }` in your mutations to catch errors. See [Error Handling](error-handling.html) for more details.
 
-Queries are limited to a maximum of **15,000 tokens**. This is a parser-level limit on the overall size of the query document.
+## Next steps
 
-### Query Limit Error Responses
+- [Create posts with images](../examples/create-image-post.html): add images to your posts
+- [Posts & Scheduling](posts-and-scheduling.html): learn about scheduling types and post lifecycle
+- [Data Model](data-model.html): understand the full object hierarchy
 
-When a query limit is exceeded, you will receive a GraphQL error response:
+### GraphQL for REST Devs
+
+# GraphQL for REST Developers
+
+If you've worked with REST APIs before, GraphQL will feel a bit different. Here's a quick rundown of the key differences.
+
+## One endpoint, many queries
+
+With REST, you use different URLs for different resources:
+
+```
+GET /posts
+GET /channels
+GET /organizations
+```
+
+With GraphQL, everything goes to one endpoint:
+
+```
+POST https://api.buffer.com
+```
+
+Instead of choosing a URL, you write a **query** that describes what you want. The endpoint is always the same.
+
+## You choose what comes back
+
+With REST, the server decides what's in the response. You might get 30 fields back when you only need 2. With GraphQL, you pick exactly which fields you want:
+
+```graphql
+query {
+  channels(input: { organizationId: "your_org_id" }) {
+    id
+    name
+  }
+}
+```
+
+This returns only `id` and `name`, nothing extra.
+
+## Queries read, mutations write
+
+REST uses HTTP verbs to indicate intent: `GET` to read, `POST` to create, `PUT` to update, `DELETE` to remove.
+
+GraphQL uses **operation types**:
+
+- **`query`** - read data (like GET)
+- **`mutation`** - create or change data (like POST/PUT/DELETE)
+
+Both are sent as POST requests to the same endpoint. The operation type inside the request body tells the server what you're doing.
+
+```graphql
+# Reading data
+query {
+  account { id }
+}
+
+# Writing data
+mutation {
+  createPost(input: { text: "Hello!", channelId: "your_channel_id", schedulingType: automatic, mode: addToQueue }) {
+    ... on PostActionSuccess { post { id } }
+  }
+}
+```
+
+## Errors work differently
+
+REST uses HTTP status codes: 404 for not found, 401 for unauthorized, 500 for server error.
+
+GraphQL always returns HTTP 200. Errors are in the response body, in two places:
+
+**1. The `errors` array** - for non-recoverable problems (bad auth, server error):
 
 ```json
 {
   "errors": [
     {
-      "message": "Query exceeds maximum allowed complexity. Please simplify your query."
+      "message": "Not authorized",
+      "extensions": { "code": "UNAUTHORIZED" }
     }
   ]
 }
 ```
 
-The error message will indicate which limit was exceeded (complexity, depth, aliases, directives, or tokens).
+**2. Typed errors in the data** for recoverable problems (validation, limits):
 
-These limits may change as we continue to evolve the API, so please ensure you monitor your usage accordingly.
+```graphql
+mutation {
+  createPost(input: { ... }) {
+    ... on PostActionSuccess { post { id } }
+    ... on MutationError { message }
+  }
+}
+```
+
+Buffer uses typed union errors so you can handle specific error cases in your code. See [Error Handling](error-handling.html) for details.
+
+## Tools for exploring
+
+- **[Buffer API Explorer](../explorer.html)**: try queries right in your browser
+- **[API Reference](../reference.html)**: browse all available queries, mutations, and types
+- **Any GraphQL client**: tools like Postman or Insomnia work great too
+
+## Further reading
+
+- [Quick Start](getting-started.html): make your first Buffer API request
+- [Official GraphQL docs](https://graphql.org/learn/): learn GraphQL fundamentals
+
+### REST API Migration
+
+# Migrating from the REST API
+
+If you've been using our REST API (`api.bufferapp.com/1/`), this guide will help you move over to the GraphQL API. It's faster to work with, returns only the data you need, and supports the core functionality of the legacy API offering.
+
+## What's changing
+
+| | REST API | GraphQL API |
+|---|---|---|
+| **Base URL** | `https://api.bufferapp.com/1/` | `https://api.buffer.com` |
+| **HTTP method** | GET, POST per endpoint | Always POST |
+| **Endpoints** | One per resource (`/profiles.json`, `/updates/:id.json`) | Single endpoint for everything |
+| **Auth** | OAuth 2.0 access token | API key via `Authorization: Bearer` header |
+| **Response shape** | Fixed - server decides what fields to return | You choose exactly which fields you need |
+| **Pagination** | Offset-based (`page=1&count=10`) | Cursor-based (`first`, `after`) |
+| **Errors** | HTTP status codes (401, 404, etc.) | Typed error unions in the response body |
+
+## Authentication
+
+The REST API used OAuth 2.0 with a client ID/secret flow. For automating your own workflows, our GraphQL API uses a simpler API key approach. OAuth support for third-party apps is coming soon.
+
+**REST (before):**
+```
+GET https://api.bufferapp.com/1/user.json?access_token=YOUR_TOKEN
+```
+
+**GraphQL (now):**
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+Get your API key from [Settings > API](https://publish.buffer.com/settings/api). Every request to `https://api.buffer.com` must include:
+
+- **`Authorization: Bearer YOUR_API_KEY`**
+
+The body is always a JSON object with a `query` field. See the [Authentication guide](authentication.html) for more details.
+
+## Endpoint mapping
+
+### User / Account
+
+**REST:** `GET /user.json`
+**GraphQL:**
+
+<!-- TABBED_CODE -->
+```graphql
+query {
+  account {
+    id
+    email
+    name
+    organizations {
+      id
+      name
+    }
+  }
+}
+```
+
+The REST API returned `plan` and `activity_at`. With GraphQL, you get richer account data including all your organizations in a single request - no separate calls needed.
+
+### Profiles -> Channels
+
+Profiles are now called **channels**. The concept is the same, a connected social media account.
+
+**REST:** `GET /profiles.json`
+**GraphQL:**
+
+<!-- TABBED_CODE -->
+```graphql
+query {
+  channels(input: { organizationId: "your_org_id" }) {
+    id
+    name
+    service
+    avatar
+    isQueuePaused
+  }
+}
+```
+
+**REST:** `GET /profiles/:id.json`
+**GraphQL:**
+
+<!-- TABBED_CODE -->
+```graphql
+query {
+  channel(input: { id: "your_channel_id" }) {
+    id
+    name
+    service
+    displayName
+    avatar
+  }
+}
+```
+
+> **Key difference:** You now need an `organizationId` to list channels. Query your account first to get it.
+
+### Updates -> Posts
+
+Updates are now called **posts**.
+
+#### List queued posts
+
+**REST:** `GET /profiles/:id/updates/pending.json?count=10&page=1`
+**GraphQL:**
+
+<!-- TABBED_CODE -->
+```graphql
+query {
+  posts(
+    first: 10
+    input: {
+      organizationId: "your_org_id"
+      filter: {
+        status: [scheduled]
+        channelIds: ["your_channel_id"]
+      }
+      sort: [{ field: dueAt, direction: asc }]
+    }
+  ) {
+    edges {
+      node {
+        id
+        text
+        status
+        dueAt
+        channelId
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+#### List sent posts
+
+**REST:** `GET /profiles/:id/updates/sent.json?count=10`
+**GraphQL:**
+
+<!-- TABBED_CODE -->
+```graphql
+query {
+  posts(
+    first: 10
+    input: {
+      organizationId: "your_org_id"
+      filter: {
+        status: [sent]
+        channelIds: ["your_channel_id"]
+      }
+      sort: [{ field: createdAt, direction: desc }]
+    }
+  ) {
+    edges {
+      node {
+        id
+        text
+        sentAt
+        externalLink
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+#### Create a post
+
+**REST:** `POST /updates/create.json` with `profile_ids[]`, `text`, `scheduled_at`, `media[photo]`, etc.
+**GraphQL:**
+
+<!-- TABBED_CODE -->
+```graphql
+mutation {
+  createPost(input: {
+    text: "Hello from the new API!"
+    channelId: "your_channel_id"
+    schedulingType: automatic
+    mode: addToQueue
+  }) {
+    ... on PostActionSuccess {
+      post {
+        id
+        text
+        status
+      }
+    }
+    ... on MutationError {
+      message
+    }
+  }
+}
+```
+
+> **Key differences:**
+> - Posts are created for a single `channelId` instead of an array of `profile_ids`. To post to multiple channels, send one mutation per channel.
+> - Use `mode: addToQueue` to add to the queue, or set `dueAt` for a specific time.
+> - Errors are returned as typed unions in the response, not as HTTP status codes.
+
+### Scheduling
+
+**REST:** `GET /profiles/:id/schedules.json` and `POST /profiles/:id/schedules/update.json`
+
+The GraphQL API handles scheduling differently. Instead of managing recurring time slots, you control scheduling per post:
+
+- **Add to queue:** Set `mode: addToQueue`
+- **Custom time:** Set `dueAt` to an ISO 8601 timestamp
+- **Post now:** Set `mode: now`
+
+### Links
+
+**REST:** `GET /links/shares.json?url=https://example.com`
+
+This endpoint has no direct equivalent in the GraphQL API. If you were using it for analytics, Buffer's analytics features are available in the dashboard.
+
+### Configuration
+
+**REST:** `GET /info/configuration.json`
+
+Platform configuration (character limits, supported media types, etc.) is no longer exposed as a standalone endpoint. These constraints are enforced server-side - if you exceed a limit, you'll get an `InvalidInputError` with a clear message.
+
+## Pagination
+
+The REST API used offset-based pagination (`page=1&count=10`). Our GraphQL API uses cursor-based pagination, which is more reliable when data changes between requests.
+
+**REST (before):**
+```
+GET /profiles/:id/updates/sent.json?page=2&count=20
+```
+
+**GraphQL (now):**
+
+<!-- TABBED_CODE -->
+```graphql
+query {
+  posts(
+    first: 20
+    after: "cursor_from_previous_page"
+    input: { organizationId: "your_org_id" }
+  ) {
+    edges {
+      node { id, text }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+To paginate, pass the `endCursor` from the previous response as the `after` argument in your next query. See the [Pagination guide](pagination.html) for more details.
+
+## Error handling
+
+The REST API used HTTP status codes (401, 404, 429, etc.) and numeric error codes in the body. Our GraphQL API always returns HTTP 200 and uses typed error unions instead.
+
+**REST (before):**
+```json
+HTTP 403
+{
+  "code": 1023,
+  "error": "Profile update quota exceeded."
+}
+```
+
+**GraphQL (now):**
+```json
+{
+  "data": {
+    "createPost": {
+      "message": "Queue limit reached",
+      "limit": 100
+    }
+  }
+}
+```
+
+Always include `... on MutationError { message }` as a catch-all in your mutations. See [Error Handling](error-handling.html) for the full guide.
+
+## Concepts that don't carry over
+
+A few REST API features work differently or aren't yet available in our GraphQL API:
+
+- **`/updates/:id/share.json`** (post immediately) - Use `mode: now` on `createPost` instead
+- **`/updates/:id/move_to_top.json`** and **reorder/shuffle** - Queue management is handled through scheduling
+- **`/user/deauthorize.json`** - API keys can be revoked from your account settings
+- **`/links/shares.json`** - Share counts are not available via the API
+- **`/info/configuration.json`** - Platform limits are enforced server-side with clear validation errors
+
+### Data Model
+
+# Data Model
+
+Buffer's API is organized around a few core objects. Here's how they fit together.
+
+## Overview
+
+```
+Account
+  └── Organizations (one or more)
+        ├── Channels (one or more per org)
+        │     └── Posts (belong to a channel)
+        └── Ideas (belong to an organization)
+```
+
+Your **account** contains one or more **organizations**. Each organization has **channels** (connected social media profiles) and **ideas** (draft content). **Posts** are created on specific channels.
+
+## Account
+
+Your account represents your Buffer login. When you authenticate with the API, you're acting as your account. Each account can belong to one or more organizations.
+
+```graphql
+query {
+  account {
+    id
+    organizations {
+      id
+      name
+    }
+  }
+}
+```
+
+## Organization
+
+An organization is a workspace in Buffer. Most people have one, but if you're managing multiple brands you might have several. Each organization contains channels and ideas.
+
+You'll need an organization ID for most operations. Retrieve it first:
+
+```graphql
+query {
+  account {
+    organizations {
+      id
+      name
+    }
+  }
+}
+```
+
+## Channel
+
+A channel is a connected social media profile, like your company's X account or your personal Instagram. Channels belong to an organization.
+
+```graphql
+query {
+  channels(input: { organizationId: "your_org_id" }) {
+    id
+    name
+    service
+  }
+}
+```
+
+The `service` field tells you which platform the channel is on (e.g., twitter, instagram, facebook, linkedin).
+
+## Post
+
+A post is a piece of content scheduled or published through Buffer. Every post belongs to a channel. When creating a post, you specify the channel ID and the scheduling behavior.
+
+```graphql
+mutation {
+  createPost(input: {
+    text: "Hello world"
+    channelId: "your_channel_id"
+    schedulingType: automatic
+    mode: addToQueue
+  }) {
+    ... on PostActionSuccess {
+      post {
+        id
+        text
+      }
+    }
+  }
+}
+```
+
+## Idea
+
+An idea is a piece of draft content saved for later. Ideas belong to an organization (not a channel) because they haven't been assigned to a specific platform yet.
+
+```graphql
+mutation {
+  createIdea(input: {
+    organizationId: "your_org_id"
+    content: {
+      text: "Blog post concept: ..."
+    }
+  }) {
+    ... on Idea {
+      id
+      content {
+        text
+      }
+    }
+  }
+}
+```
+
+## Common patterns
+
+### The typical API flow
+
+1. **Authenticate** with your API key
+2. **Query your account** to get organization IDs
+3. **Query channels** for your target organization
+4. **Create posts** on specific channels, or **create ideas** on the organization
+
+## Next steps
+
+- [Your First Post](your-first-post.html): Walk through the full flow from authentication to a published post
+- [Posts & Scheduling](posts-and-scheduling.html): Deep dive into scheduling options and post types
+
+### Posts & Scheduling
+
+# Posts & Scheduling
+
+Posts are the core content type in Buffer. Here's how they work, from creation through delivery.
+
+## What is a post?
+
+A post is a piece of content scheduled or published through Buffer. Every post belongs to a specific [channel](data-model.html#channel) (a connected social media profile) and goes through a lifecycle from creation to delivery.
+
+Key fields on a post:
+
+- **`id`** - unique identifier
+- **`text`** - the post content
+- **`channelId`** - which channel this post belongs to
+- **`dueAt`** - when the post is scheduled to publish
+- **`status`** - current lifecycle state (scheduled, sent, etc.)
+- **`assets`** - attached images or media
+
+## Scheduling types
+
+When creating a post, you choose how it should be scheduled:
+
+### `addToQueue`
+
+We'll add the post to the next available time slot from your posting schedule. This is the simplest option.
+
+```graphql
+mutation {
+  createPost(input: {
+    text: "Automatically scheduled post",
+    channelId: "your_channel_id",
+    schedulingType: automatic,
+    mode: addToQueue
+  }) {
+    ... on PostActionSuccess { post { id dueAt } }
+    ... on MutationError { message }
+  }
+}
+```
+
+### `customScheduled`
+
+You specify an exact date and time using the `dueAt` field in ISO 8601 format (UTC):
+
+```graphql
+mutation {
+  createPost(input: {
+    text: "Scheduled for a specific time",
+    channelId: "your_channel_id",
+    schedulingType: automatic,
+    mode: customScheduled,
+    dueAt: "2026-03-10T15:00:00.000Z"
+  }) {
+    ... on PostActionSuccess { post { id dueAt } }
+    ... on MutationError { message }
+  }
+}
+```
+
+## Post status lifecycle
+
+A post moves through the following states:
+
+- **Scheduled** the post is in the queue, waiting for its `dueAt` time
+- **Sent** the post was successfully published to the social platform
+- **Error** the post could not be published (e.g., the channel was disconnected)
+
+## Creating posts
+
+Use the `createPost` mutation. Required fields:
+
+- **`text`** - the post content
+- **`channelId`** - the target channel
+- **`schedulingType`** - how to schedule (`automatic`)
+
+Always include both `PostActionSuccess` and `MutationError` in your response:
+
+```graphql
+mutation {
+  createPost(input: {
+    text: "Hello from the API",
+    channelId: "your_channel_id",
+    schedulingType: automatic,
+    mode: addToQueue
+  }) {
+    ... on PostActionSuccess {
+      post {
+        id
+        text
+        dueAt
+        assets { id mimeType }
+      }
+    }
+    ... on MutationError {
+      message
+    }
+  }
+}
+```
+
+See [Create a Text Post](../examples/create-text-post.html) and [Create an Image Post](../examples/create-image-post.html) for complete examples.
+
+## Retrieving posts
+
+Query posts for a specific organization, filtered by channel and status:
+
+```graphql
+query {
+  posts(
+    first: 20,
+    input: {
+      organizationId: "your_org_id",
+      filter: {
+        status: [sent],
+        channelIds: ["your_channel_id"]
+      }
+    }
+  ) {
+    edges {
+      node {
+        id
+        text
+        dueAt
+        channelId
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+Posts are returned using [cursor-based pagination](pagination.html). Use `first` and `after` to page through results.
+
+See [Get Posts for Channels](../examples/get-posts-for-channels.html) and [Get Paginated Posts](../examples/get-paginated-posts.html) for more examples.
+
+## Supported platforms
+
+The API can create posts for the following platforms:
+
+- Instagram
+- Threads
+- LinkedIn
+- X (Twitter)
+- Facebook
+- Google Business Profiles
+- Mastodon
+- YouTube
+- Pinterest
+- Bluesky
+
+The `service` field on a [Channel](data-model.html#channel) tells you which platform it's connected to.
+
+## Next steps
+
+- [Create a Text Post](../examples/create-text-post.html): basic post creation example
+- [Create an Image Post](../examples/create-image-post.html): attach images to posts
+- [Ideas](ideas.html): save content for later
+- [Pagination](pagination.html): iterate through all your posts
+
+### Ideas
+
+# Ideas
+
+Ideas let you capture content thoughts and plan ahead before scheduling to a specific channel.
+
+## Ideas vs. posts
+
+The key difference:
+
+- **Posts** belong to a **channel**. They're assigned to a specific social media profile and have a scheduled time.
+- **Ideas** belong to an **organization**. They're not tied to any channel or schedule yet.
+
+Think of ideas as your content backlog. When you're ready to publish, you create a post from an idea by assigning it to a channel.
+
+## Creating an idea
+
+Use the `createIdea` mutation with your organization ID:
+
+```graphql
+mutation {
+  createIdea(input: {
+    organizationId: "your_org_id",
+    content: {
+      title: "Blog post announcement",
+      text: "We just published our guide to social media automation. Share it across all channels this week."
+    }
+  }) {
+    ... on Idea {
+      id
+      content {
+        title
+        text
+      }
+    }
+    ... on MutationError {
+      message
+    }
+  }
+}
+```
+
+The `content` object supports:
+
+- **`title`** - a short heading for the idea (optional)
+- **`text`** - the body content of the idea
+
+See [Create an Idea](../examples/create-idea.html) for a complete example.
+
+## Why ideas belong to organizations
+
+Ideas are organization-level because they haven't been assigned to a platform yet. A single idea might eventually become:
+
+- A tweet on X
+- A carousel on Instagram
+- A post on LinkedIn
+
+Since you haven't decided which channel (or channels) to use, the idea lives at the organization level where all your channels are.
+
+When you're ready to publish, create a [Post](posts-and-scheduling.html) on the appropriate channel using the idea's content.
+
+## Next steps
+
+- [Create an Idea](../examples/create-idea.html): working example
+- [Posts & Scheduling](posts-and-scheduling.html): publish content to channels
+- [Data Model](data-model.html): understand how ideas, posts, channels, and organizations relate
 
 ### API Standards
 
 # API Standards
 
-The Buffer API follows a set of design principles rooted in GraphQL best practices. These standards ensure the schema remains stable, predictable, and easy to consume as it evolves over time.
+We've designed the Buffer API around a set of principles that keep things stable and predictable as we evolve the schema.
 
 ## Always Add, Never Modify or Remove
 
-The API follows an additive evolution model. Existing fields and types will not be modified or removed, ensuring that your queries and mutations continue to work as the schema evolves. New fields and types are added alongside existing ones, so you do not need to worry about breaking changes from schema updates.
+We only add to the schema. We won't modify or remove existing fields and types. Your queries and mutations will keep working as we ship updates. New fields and types are added alongside existing ones, so you don't need to worry about breaking changes.
 
-Fields may be deprecated using the `@deprecated` annotation, which indicates that a field should no longer be used. Deprecated fields include a `reason` string that describes the replacement and when the field will be removed.
+When we plan to retire a field, we mark it with the `@deprecated` annotation. Deprecated fields include a `reason` that describes the replacement and when the field will be removed.
 
 ```jsx
 type ExampleType {
@@ -173,11 +1103,11 @@ type ExampleType {
 }
 ```
 
-When a field is deprecated, you will have advance notice before it is removed. Monitor the `@deprecated` annotations in the schema to stay informed of upcoming changes and migrate to the recommended replacements before the removal date.
+You'll always have advance notice before a field is removed. Keep an eye on the `@deprecated` annotations in the schema, our [Changelog](../changelog.html), and migrate to the recommended replacements before the removal date.
 
 ## Using Input Objects for Operation Arguments
 
-Operations use input objects rather than inline arguments. This keeps the argument surface flexible as the API evolves. For example, instead of passing individual scalars:
+We use input objects rather than inline arguments. This keeps things flexible as the API evolves. For example, instead of passing individual scalars:
 
 ```jsx
 type Mutation {
@@ -202,7 +1132,7 @@ This means new fields can be added to the input type without affecting existing 
 
 ## Returning Typed Responses
 
-Operations return typed response objects rather than scalar values. This allows responses to evolve over time — for example, adding new fields — without breaking the contract. It also enables the use of union types for error handling.
+Our operations return typed response objects rather than scalar values. This lets responses evolve over time. For example, adding new fields, without breaking the contract. It also enables union types for error handling.
 
 ```jsx
 type Mutation {
@@ -210,7 +1140,7 @@ type Mutation {
 }
 ```
 
-Instead, the API uses typed responses that can include additional data and error states:
+Instead, we use typed responses that can include additional data and error states:
 
 ```jsx
 type PostActionSuccess {
@@ -230,9 +1160,9 @@ type Mutation {
 
 ## Being Specific with Nullability
 
-The schema uses nullability to communicate exactly what you can expect from each field. A non-null field (marked with `!`) guarantees a value will always be present. A nullable field may return `null`, and your client should handle that case.
+We use nullability to communicate exactly what you can expect from each field. A non-null field (marked with `!`) guarantees a value will always be present. A nullable field may return `null`, and your client should handle that case.
 
-Here is an example:
+Here's an example:
 
 ```jsx
 type Post {
@@ -243,13 +1173,13 @@ type Post {
 
 For this type, there are two states:
 
-- **Non-null** — a value will always be provided. You do not need to handle a null state. For example, a post always has a `PostStatus`:
+- **Non-null** - a value will always be provided. You don't need to handle a null state. For example, a post always has a `PostStatus`:
 
 ```jsx
 type: PostStatus!
 ```
 
-- **Nullable** — a null value may be returned, and your client should handle it. For example, a post only has a `sentAt` for when a post has been published:
+- **Nullable** - a null value may be returned, and your client should handle it. For example, a post only has a `sentAt` for when a post has been published:
 
 ```jsx
 sentAt: DateTime
@@ -259,7 +1189,7 @@ sentAt: DateTime
 
 Nullability applies to both the array itself and the type contained within it.
 
-**In short**: if an array will never contain null entries, the entry type is marked as non-null. If the array itself can never be null, it is also marked as non-null.
+**In short**: if an array will never contain null entries, the entry type is marked as non-null. If the array itself can never be null, it's also marked as non-null.
 
 ```jsx
 posts: [Post]
@@ -293,7 +1223,7 @@ Boolean fields are always non-null. You will always receive either `true` or `fa
 
 ## Returning Contextual Responses to Clients
 
-Mutation responses return meaningful data related to the action performed, rather than generic status flags. For example, instead of:
+Our mutation responses return meaningful data related to the action performed, rather than generic status flags. For example, instead of:
 
 ```kotlin
 type PostActionSuccess  {
@@ -309,13 +1239,13 @@ type PostActionSuccess {
 }
 ```
 
-This provides you with immediately useful data and avoids redundant checks. For example, if you are using Apollo Client, the local cache will automatically update when it receives a response that matches the `id` and `__typename` of an already-cached object.
+This gives you immediately useful data and avoids redundant checks. If you're using Apollo Client, the local cache will automatically update when it receives a response matching the `id` and `__typename` of an already-cached object.
 
 ## Maintaining Input Type Ordering
 
-New fields are always appended to the end of input types. This is important because some code-generated clients send arguments positionally. If a new field were inserted in the middle, existing positional arguments would shift and map to the wrong fields.
+We always append new fields to the end of input types. This matters because some code-generated clients send arguments positionally. If a new field were inserted in the middle, existing positional arguments would shift and map to the wrong fields.
 
-Here is an example. Given this input type:
+Here's an example. Given this input type:
 
 ```kotlin
 input IdeaCreationInput {
@@ -400,7 +1330,7 @@ The input filter. The top level includes static, required fields (typically the 
 - `organizationId`: The organization ID for the request.
 - `filter`: Filtering criteria applied to results and counts.
   - Filter values are typically lists of string IDs.
-  - Fields are nullable — omitting a filter field means no filtering is applied for that criterion.
+  - Fields are nullable - omitting a filter field means no filtering is applied for that criterion.
   - Filtering logic uses an **AND** operation between all defined items.
 
 **first**
@@ -409,7 +1339,7 @@ The maximum number of items to return (synonymous with "limit").
 
 **after**
 
-The cursor to start fetching from. Cursors are opaque strings — do not parse or construct them yourself.
+The cursor to start fetching from. Cursors are opaque strings. Do not parse or construct them yourself.
 
 ### Response Fields
 
@@ -426,26 +1356,26 @@ The total number of results matching the query filters, consistent with [GraphQL
 
 ## Error Handling
 
-The API uses two categories of errors:
+We use two categories of errors:
 
-- **Non-recoverable errors** appear in the standard GraphQL `errors` array. These represent issues that are not caused by user input — such as authentication failures, missing resources, or server errors. Non-recoverable errors include an error `code` in the `extensions` object (e.g. `NOT_FOUND`, `FORBIDDEN`, `UNAUTHORIZED`, `UNEXPECTED`).
+- **Non-recoverable errors** appear in the standard GraphQL `errors` array. These represent issues outside your control - authentication failures, missing resources, or server errors. They include an error `code` in the `extensions` object (e.g. `NOT_FOUND`, `FORBIDDEN`, `UNAUTHORIZED`, `UNEXPECTED`).
 
-- **Recoverable errors** (user errors) are returned as typed data in the response payload. These represent situations the user can act on — such as input validation failures or account limits being reached.
+- **Recoverable errors** (user errors) are returned as typed data in the response payload. These are situations you can act on, like input validation failures or account limits being reached.
 
 ### Mutations
 
 #### Modelling Errors
 
-Every mutation returns a payload union, allowing it to return both its success state and any user-facing errors. The payload follows the naming convention `{MutationName}Payload`.
+Every mutation returns a payload union that includes both the success state and any user-facing errors. The payload follows the naming convention `{MutationName}Payload`.
 
 ```graphql
-union PostCreatePayload = PostCreateSuccess | ...
+union PostActionPayload = PostActionSuccess | ...
 ```
 
 You can query for the specific error types you need to handle. New error types may be added to a payload over time.
 
 ```graphql
-union PostCreatePayload = PostCreateSuccess | QueueLimitReached | PostValidationFailed
+union PostActionPayload = PostActionSuccess | LimitReachedError | InvalidInputError
 ```
 
 Every typed error implements the `MutationError` interface:
@@ -456,51 +1386,34 @@ interface MutationError {
 }
 ```
 
-Each error type includes the `message` field from the interface, and may also include additional fields specific to that error. For example, a `QueueLimitError` includes the account's queue limit, and a `PostAlreadyExistsError` returns the existing post:
+Each error type includes the `message` field from the interface:
 
 ```graphql
-type QueueLimitError implements MutationError {
+type LimitReachedError implements MutationError {
     message: String!
-    limit: Int!
 }
 
-type PostAlreadyExistsError implements MutationError {
+type InvalidInputError implements MutationError {
     message: String!
-    post: Post!
 }
 ```
 
-Error types can contain more complex data. For example, a `ValidationError` includes a list of field-level errors:
-
-```graphql
-type FieldError {
-    validationError: String!
-    field: String!
-}
-
-type ValidationError implements MutationError {
-    message: String!
-    errors: [FieldError!]!
-}
-```
-
-The `message` field contains a human-readable string suitable for display. In most cases you will use the error type itself to determine what to show, but the `message` provides a sensible default (see **Future Proofing Error Responses** below).
+The `message` field contains a human-readable string suitable for display. In most cases you'll use the error type itself to determine what to show, but the `message` provides a sensible default (see **Future Proofing Error Responses** below).
 
 #### Consuming Errors
 
-To consume typed errors, use the `... on` pattern to match specific error types in the response. This lets you handle each error differently — for example, showing a specific recovery path to the user.
+To consume typed errors, use the `... on` pattern to match specific error types in the response. This lets you handle each error differently - for example, showing a specific recovery path to the user.
 
-You only need to match the specific error types you care about. For everything else, use `... on MutationError` as a catch-all to display the generic error message:
+You only need to match the error types you care about. For everything else, use `... on MutationError` as a catch-all:
 
 ```graphql
 mutation CreatePost {
   createPost {
-    ... on PostCreateSuccess {
+    ... on PostActionSuccess {
       // handle fields
     }
-    ... on QueueLimitError {
+    ... on LimitReachedError {
       message
-      limit
     }
     ... on MutationError {
       message
@@ -509,12 +1422,12 @@ mutation CreatePost {
 }
 ```
 
-If you do not need to handle specific error types, you can rely entirely on the `MutationError` interface:
+If you don't need to handle specific error types, you can rely entirely on the `MutationError` interface:
 
 ```graphql
 mutation CreatePost {
   createPost {
-    ... on PostCreateSuccess {
+    ... on PostActionSuccess {
       // handle fields
     }
     ... on MutationError {
@@ -526,17 +1439,17 @@ mutation CreatePost {
 
 #### Future Proofing Error Responses
 
-Some mutations may not have specific typed errors defined initially. To ensure your client handles any errors that may be added in the future, every mutation payload includes a `VoidMutationError` type:
+Some mutations may not have specific typed errors defined yet. To make sure your client handles any errors we add in the future, every mutation payload includes a `VoidMutationError` type:
 
 ```graphql
 type VoidMutationError implements MutationError {
   message: String!
 }
 
-union PostCreatePayload = PostCreateSuccess | VoidMutationError
+union PostActionPayload = PostActionSuccess | VoidMutationError
 ```
 
-The API will never explicitly return a `VoidMutationError`, but its presence in the union means that if you include `... on MutationError` in your query, your client will automatically receive the `message` for any new error types added later — without requiring any code changes.
+We'll never explicitly return a `VoidMutationError`, but its presence in the union means that if you include `... on MutationError` in your query, your client will automatically receive the `message` for any new error types we add later - no code changes needed.
 
 ```graphql
 ... on MutationError {
@@ -548,14 +1461,14 @@ For this reason, **always include `... on MutationError`** in your mutation quer
 
 #### Non-Recoverable Errors
 
-Non-recoverable errors are returned in the standard GraphQL `errors` array. These include an error `code` in the `extensions` object to provide additional context. Common error codes include:
+Non-recoverable errors are returned in the standard GraphQL `errors` array. These include an error `code` in the `extensions` object for additional context. Common error codes include:
 
-- `NOT_FOUND` — the requested resource does not exist
-- `FORBIDDEN` — you do not have permission for this action
-- `UNAUTHORIZED` — authentication is required or invalid
-- `UNEXPECTED` — an unexpected server error occurred
+- `NOT_FOUND` - the requested resource doesn't exist
+- `FORBIDDEN` - you don't have permission for this action
+- `UNAUTHORIZED` - authentication is required or invalid
+- `UNEXPECTED` - an unexpected server error occurred
 
-If you need to display error details to users, use typed errors (as described above) instead of relying on the `errors` array.
+If you need to show error details to users, use typed errors (as described above) instead of the `errors` array.
 
 ### Queries
 
@@ -567,9 +1480,9 @@ type Query {
 }
 ```
 
-A successful result returns the list of `Channel` types. If an error occurs, it will appear in the `errors` array.
+A successful result returns the list of `Channel` types. If an error occurs, it appears in the `errors` array.
 
-In rare cases, a query may need to return a user-recoverable error. When this applies, the query uses a union payload, the same pattern as mutations. For example, if fetching a post requires the user to reconnect their channel, the response includes a typed error:
+In rare cases, a query may need to return a recoverable error. When this applies, we use a union payload, the same pattern as mutations. For example, if fetching a post requires reconnecting a channel, the response includes a typed error:
 
 ```graphql
 type PostSuccess {
@@ -589,6 +1502,414 @@ type Query {
 ```
 
 This pattern is uncommon for queries but provides a way to surface recoverable errors when needed.
+
+### Error Handling
+
+# Error Handling
+
+The Buffer API uses two categories of errors. Here's how they work and how to handle them in your code.
+
+## Two types of errors
+
+| Type | Where | When | HTTP Status |
+|:-----|:------|:-----|:------------|
+| **Typed mutation errors** | In the response `data` | User-fixable problems (validation, limits) | 200 |
+| **Non-recoverable errors** | In the `errors` array | System problems (auth, not found, server) | 200 |
+
+GraphQL always returns HTTP 200. Check the response body to determine success or failure.
+
+## Typed mutation errors
+
+Mutations return a **union type** that includes both the success case and possible error cases. This lets you handle each error type differently in your code.
+
+### Basic pattern
+
+Always include `... on MutationError` in every mutation:
+
+```graphql
+mutation {
+  createPost(input: {
+    text: "Hello world",
+    channelId: "your_channel_id",
+    schedulingType: automatic,
+    mode: addToQueue
+  }) {
+    ... on PostActionSuccess {
+      post {
+        id
+        text
+      }
+    }
+    ... on MutationError {
+      message
+    }
+  }
+}
+```
+
+If the mutation succeeds, you get `PostActionSuccess`. If it fails, you get a `MutationError` with a human-readable `message`.
+
+### Handling specific error types
+
+Some mutations return specific error types with additional data. You can match on these for more precise handling:
+
+```graphql
+mutation {
+  createPost(input: { ... }) {
+    ... on PostActionSuccess {
+      post { id }
+    }
+    ... on LimitReachedError {
+      message
+    }
+    ... on InvalidInputError {
+      message
+    }
+    ... on MutationError {
+      message
+    }
+  }
+}
+```
+
+The `... on MutationError` at the end acts as a catch-all. Because all error types implement the `MutationError` interface, any error type you don't explicitly handle will still return a `message`.
+
+### InvalidInputError
+
+When input validation fails, you get an error message:
+
+```json
+{
+  "data": {
+    "createPost": {
+      "message": "Text is required"
+    }
+  }
+}
+```
+
+### Future-proofing with VoidMutationError
+
+Some mutations include a `VoidMutationError` in their union. The API never explicitly returns this type, but it ensures that if new error types are added later, your `... on MutationError` catch-all will still receive the `message` - no code changes needed.
+
+**This is why you should always include `... on MutationError` in every mutation.**
+
+## Non-recoverable errors
+
+System-level errors appear in the GraphQL `errors` array. These indicate problems you typically can't fix by changing your input.
+
+### Error codes
+
+| Code | Meaning | What to do |
+|------|---------|------------|
+| `UNAUTHORIZED` | Missing or invalid API key | Check your `Authorization` header and API key |
+| `FORBIDDEN` | Valid key, but no permission | Verify you're accessing resources in your own account |
+| `NOT_FOUND` | Resource doesn't exist | Check the ID you're using is correct |
+| `UNEXPECTED` | Server error | Retry after a short delay; contact support if persistent |
+| `RATE_LIMIT_EXCEEDED` | Too many requests | Wait and retry; see [Rate Limits](api-limits.html) |
+
+### Example error response
+
+```json
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Not authorized",
+      "extensions": {
+        "code": "UNAUTHORIZED"
+      }
+    }
+  ]
+}
+```
+
+## Error handling snippet
+
+Here's a reusable pattern for handling both error types:
+
+```javascript
+async function bufferRequest(query, variables = {}) {
+  const response = await fetch('https://api.buffer.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.BUFFER_API_KEY}`,
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+
+  const result = await response.json();
+
+  // Check for non-recoverable errors
+  if (result.errors) {
+    const error = result.errors[0];
+    const code = error.extensions?.code;
+
+    if (code === 'RATE_LIMIT_EXCEEDED') {
+      // Wait and retry
+      throw new Error('Rate limited, try again later');
+    }
+    throw new Error(`API error (${code}): ${error.message}`);
+  }
+
+  return result.data;
+}
+```
+
+For mutations, check the response type:
+
+```javascript
+const data = await bufferRequest(`
+  mutation CreatePost($input: CreatePostInput!) {
+    createPost(input: $input) {
+      ... on PostActionSuccess { post { id } }
+      ... on MutationError { message }
+    }
+  }
+`, { input: postInput });
+
+if (data.createPost.post) {
+  // Success
+  console.log('Created post:', data.createPost.post.id);
+} else if (data.createPost.message) {
+  // Typed error
+  console.error('Mutation error:', data.createPost.message);
+}
+```
+
+## Best practices
+
+- **Always include `... on MutationError { message }` in every mutation.** This catches current and future error types.
+- **Check the `errors` array on every response.** Even successful mutations can include warnings.
+- **Don't display raw error messages to end users.** Use the error type to decide what to show.
+- **Log the full error response for debugging.** Include the query, variables, and complete response.
+- **Handle `RATE_LIMIT_EXCEEDED` with exponential backoff.** See [Rate Limits](api-limits.html) for details on limits and retry headers.
+
+## Next steps
+
+- [API Standards](api-standards.html): full details on the API's error design philosophy
+- [Rate Limits](api-limits.html): understand request limits and throttling
+- [Your First Post](your-first-post.html): see error handling in action
+
+### Rate Limits
+
+We apply rate limits using a dual-layer approach to keep things fair for everyone.
+
+### Rate Limits by Client Type
+
+- **Third-party Clients**: 100 requests per 15 minutes
+- **Unknown/Unauthenticated**: 50 requests per 15 minutes
+- **Account Overall** (all clients combined): 2000 requests per 15 minutes
+
+### How It Works
+
+Rate limits are applied in two layers:
+
+1. **Client + Account**: Limits requests per client and account combination. This prevents a single client from overwhelming the API for a specific account.
+2. **Account Overall**: Limits total requests per account across all clients. This prevents bypassing limits by using multiple clients simultaneously.
+
+### Response Headers
+
+Rate limit information is included in the response headers:
+
+```http
+RateLimit-Limit: 1000
+RateLimit-Remaining: 850
+RateLimit-Reset: 2024-01-01T12:00:00.000Z
+```
+
+### Error Response
+
+When a rate limit is exceeded, you will receive an HTTP `429 Too Many Requests` response:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Too many requests from this client. Please try again later.",
+      "extensions": {
+        "code": "RATE_LIMIT_EXCEEDED",
+        "limitType": "CLIENT_ACCOUNT",
+        "retryAfter": 900
+      }
+    }
+  ]
+}
+```
+
+Use the `retryAfter` value (in seconds) to determine when you can make requests again.
+
+## Query Limits
+
+In addition to rate limits, we enforce query-level limits to protect against overly complex or expensive GraphQL queries.
+
+### Query Complexity
+
+Each query is assigned a cost based on the fields it requests:
+
+- **Scalar fields** (e.g., `id`, `name`): 1 point each
+- **Object fields** (e.g., `organization`, `channel`): 2 points each
+- **Nesting multiplier**: Nested fields are multiplied by a factor of 1.5x per level of depth
+
+The maximum allowed query cost is **175,000 points**. If your query exceeds this, you will receive an error asking you to simplify it.
+
+### Query Depth
+
+Queries are limited to a maximum depth of **25 levels**. Deeply nested queries can cause exponential resource consumption, so keep your queries as flat as possible.
+
+### Aliases
+
+A maximum of **30 aliases** are allowed per query. Aliases let you rename fields in a response, but excessive use can be used to amplify query cost.
+
+### Directives
+
+Queries are limited to a maximum of **50 directives**.
+
+### Tokens
+
+Queries are limited to a maximum of **15,000 tokens**. This is a parser-level limit on the overall size of the query document.
+
+### Query Limit Error Responses
+
+When a query limit is exceeded, you will receive a GraphQL error response:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Query exceeds maximum allowed complexity. Please simplify your query."
+    }
+  ]
+}
+```
+
+The error message will indicate which limit was exceeded (complexity, depth, aliases, directives, or tokens).
+
+These limits may change as we evolve the API, so keep an eye on your usage.
+
+### Pagination
+
+# Pagination
+
+The Buffer API uses **cursor-based pagination** for queries that return lists of items. Here's how to page through results.
+
+## How it works
+
+Rather than using page numbers, the Buffer API uses cursor strings to track your position in a result set. You request a batch of items, receive a cursor pointing to the last item, then pass that cursor to fetch the next batch.
+
+This means you won't skip or duplicate results if new items are added between requests.
+
+## Basic query structure
+
+Paginated queries use three key arguments:
+
+- **`first`** - how many items to return (the page size)
+- **`after`** - the cursor to start from (omit for the first page)
+- **`input`** - filters for the query
+
+And the response includes:
+
+- **`edges`** - the list of items, each wrapped in a `node`
+- **`pageInfo`** - pagination metadata
+
+```graphql
+query {
+  posts(
+    first: 20,
+    input: {
+      organizationId: "your_org_id",
+      filter: { status: [sent] }
+    }
+  ) {
+    edges {
+      node {
+        id
+        text
+        dueAt
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+## Reading the response
+
+The `pageInfo` object tells you about pagination state:
+
+- **`hasNextPage`** - `true` if there are more items after this batch
+- **`endCursor`** - the cursor of the last item, used to fetch the next page
+- **`startCursor`** - the cursor of the first item
+- **`hasPreviousPage`** - currently always `false` (only forward pagination is supported)
+
+## Fetching the next page
+
+To get the next page, pass the `endCursor` from the previous response as the `after` argument:
+
+```graphql
+query {
+  posts(
+    first: 20,
+    after: "cursor_from_previous_response",
+    input: {
+      organizationId: "your_org_id",
+      filter: { status: [sent] }
+    }
+  ) {
+    edges {
+      node {
+        id
+        text
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+```
+
+## Tips
+
+- **Choose an appropriate page size.** A `first` value of 20–50 works well for most use cases. Larger pages mean fewer requests but larger responses.
+- **Don't parse cursors.** Cursors are opaque strings. Store them and pass them back as-is.
+- **Respect rate limits.** When fetching many pages, be mindful of the [rate limits](api-limits.html). Consider adding a small delay between requests if needed.
+
+
+## Filtering
+
+Most paginated queries support filtering via the `input.filter` object. Filters are combined with **AND** logic - all conditions must match.
+
+```graphql
+query {
+  posts(
+    first: 20,
+    input: {
+      organizationId: "your_org_id",
+      filter: {
+        status: [scheduled],
+        channelIds: ["your_channel_id", "your_other_channel_id"]
+      }
+    }
+  ) {
+    edges { node { id text channelId } }
+    pageInfo { hasNextPage endCursor }
+  }
+}
+```
+
+This returns only scheduled posts from the specified channels.
+
+## Next steps
+
+- [Get Paginated Posts](../examples/get-paginated-posts.html): working pagination example
+- [API Limits](api-limits.html): rate limiting and query constraints
+- [Posts & Scheduling](posts-and-scheduling.html): more about working with posts
 
 ### Integrations
 
@@ -698,7 +2019,7 @@ Connect Buffer with your favorite tools and AI assistants. Browse our integratio
   </div>
 </div>
 
-Zapier supercharges Buffer with 5,000+ no-code integrations to automate your entire workflow. Picture this: auto-post Buffer updates to Discord communities, pipe engagement stats into Looker Studio dashboards for real-time insights, or instantly transform Trello card updates into ready-to-schedule Buffer drafts — unlocking pro-level efficiency!
+Zapier connects Buffer with thousands of apps so you can automate your workflow without writing code. For example, you could auto-post to Discord when you publish, send engagement stats to a spreadsheet, or turn Trello card updates into scheduled Buffer drafts.
 
 ## Setup
 
@@ -1112,7 +2433,7 @@ Copy any of these example prompts to get started with MCP:
   </div>
 </div>
 
-Use the Buffer MCP server within Cursor to manage social media content directly from your AI-powered code editor. Schedule posts, check your queue, and draft content — all without leaving your IDE.
+Use the Buffer MCP server within Cursor to manage social media content directly from your AI-powered code editor. Schedule posts, check your queue, and draft content - all without leaving your IDE.
 
 ## Setup
 
@@ -1560,8 +2881,7 @@ mutation CreatePost {
     text: "Hello there, this is another one!",
     channelId: "some_channel_id",
     schedulingType: automatic,
-    mode: customSchedule,
-    dueAt: "2026-03-26T10:28:47.545Z"
+    mode: addToQueue
     assets: {
       images:[
         {
@@ -1569,6 +2889,48 @@ mutation CreatePost {
         }
       ]
     }
+  }) {
+    ... on PostActionSuccess {
+      post {
+        id
+        text
+        assets {
+          id
+          mimeType
+        }
+      }
+    }
+    ... on MutationError {
+      message
+    }
+  }
+}
+```
+
+### Create Scheduled Post
+
+Scheduled posts can be created using the createPost mutation with the `customScheduled` mode and a `dueAt` timestamp. When creating a scheduled post, there are several required arguments:
+
+- The channel ID that the post is being created for
+
+- The scheduling type to be used for the post (automatic or notification)
+
+- The sharing mode set to `customScheduled` to schedule the post for a specific time
+
+- The `dueAt` timestamp for when the post should be published
+
+- The text to be used when creating the Post
+
+When performing the mutation, the PostActionSuccess type can be used to retrieve the information for the Post that was created. Similarly, the MutationError will provide you with information on the error that was triggered when trying to create the post.
+
+```graphql
+mutation CreatePost {
+  createPost(input: {
+    text: "Hello there, this is another one!",
+    channelId: "some_channel_id",
+    schedulingType: automatic,
+    mode: customScheduled,
+    dueAt: "2026-03-26T10:28:47.545Z"
   }) {
     ... on PostActionSuccess {
       post {
@@ -1607,8 +2969,7 @@ mutation CreatePost {
     text: "Hello there, this is another one!",
     channelId: "some_channel_id",
     schedulingType: automatic,
-    mode: customSchedule,
-    dueAt: "2026-03-26T10:28:47.545Z"
+    mode: addToQueue
   }) {
     ... on PostActionSuccess {
       post {
@@ -1833,6 +3194,15 @@ Fetch all channels for the organization taking into account the current's user p
 **Arguments:**
 - `input`: `ChannelsInput!` - Query's input.
 
+#### dailyPostingLimits
+
+Returns daily posting limit status for the given channels on the specified date.
+
+**Returns:** `[DailyPostingLimitStatus!]!`
+
+**Arguments:**
+- `input`: `DailyPostingLimitsInput!` - Query's input.
+
 #### post
 
 Fetches a post by PostID for the given organization: first and last can be set for forward pagination using Relay convention
@@ -1872,6 +3242,15 @@ Create post for channel
 
 **Arguments:**
 - `input`: `CreatePostInput!` - The mutation's input
+
+#### deletePost
+
+Delete a post by id.
+
+**Returns:** `DeletePostPayload!`
+
+**Arguments:**
+- `input`: `DeletePostInput!`
 
 ### Object Types
 
@@ -2033,6 +3412,24 @@ Connected App
 - `description`: `String!` - A brief description of the connected app.
 - `website`: `String!` - The website URL of the connected app.
 - `createdAt`: `DateTime!` - The date and time when the connected app was created.
+
+#### DailyPostingLimitStatus
+
+Status of daily posting limits for a channel on a given day.
+
+**Fields:**
+- `channelId`: `ChannelId!` - The channel ID this status refers to.
+- `sent`: `Int!` - Number of posts already sent on this day.
+- `scheduled`: `Int!` - Number of posts scheduled for this day.
+- `limit`: `Int` - The network daily posting limit. Null means unlimited.
+- `isAtLimit`: `Boolean!` - Whether the channel has reached its daily posting limit.
+
+#### DeletePostSuccess
+
+deletePost success response returns the post id that was deleted.
+
+**Fields:**
+- `id`: `PostId!` - Post id that was delete.
 
 #### DocumentAsset
 
@@ -2887,6 +4284,14 @@ When saving as draft:
 - Posting limits are not checked
 - The post will not be published until explicitly scheduled
 
+#### DailyPostingLimitsInput
+
+Input for the dailyPostingLimits query.
+
+**Fields:**
+- `channelIds`: `[ChannelId!]!` - List of channel IDs to check limits for. All channels must belong to the same organization.
+- `date`: `DateTime` - The date to check limits for. Defaults to today if not provided.
+
 #### DateTimeComparator
 
 Comparator for filtering by date
@@ -2896,6 +4301,13 @@ Comparator for filtering by date
 the specified date
 - `end`: `DateTime` - Include results with dates equal to or before
 the specified date
+
+#### DeletePostInput
+
+deletePost mutation deletes a post by id.
+
+**Fields:**
+- `id`: `PostId!` - Post id to delete.
 
 #### DocumentAssetInput
 
@@ -3365,6 +4777,12 @@ createIdea response (including errors)
 
 **Possible types:** Idea | IdeaResponse | InvalidInputError | UnauthorizedError | UnexpectedError | LimitReachedError
 
+#### DeletePostPayload
+
+All possible response types for the deletePost mutation.
+
+**Possible types:** DeletePostSuccess | VoidMutationError
+
 #### GoogleBusinessPostDetails
 
 GoogleBusiness Metadata details
@@ -3524,6 +4942,9 @@ List of possible actions that can be performed on a Post
 - `updatePostTags`
 - `addPostNote`
 - `updateShopGridLink`
+- `createPostRecurrence`
+- `editPostRecurrence`
+- `cancelPostRecurrence`
 
 #### PostingGoalStatus
 

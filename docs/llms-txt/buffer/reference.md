@@ -33,6 +33,15 @@ Fetch all channels for the organization taking into account the current's user p
 **Arguments:**
 - `input`: `ChannelsInput!` - Query's input.
 
+#### dailyPostingLimits
+
+Returns daily posting limit status for the given channels on the specified date.
+
+**Returns:** `[DailyPostingLimitStatus!]!`
+
+**Arguments:**
+- `input`: `DailyPostingLimitsInput!` - Query's input.
+
 #### post
 
 Fetches a post by PostID for the given organization: first and last can be set for forward pagination using Relay convention
@@ -72,6 +81,15 @@ Create post for channel
 
 **Arguments:**
 - `input`: `CreatePostInput!` - The mutation's input
+
+#### deletePost
+
+Delete a post by id.
+
+**Returns:** `DeletePostPayload!`
+
+**Arguments:**
+- `input`: `DeletePostInput!`
 
 ## Object Types
 
@@ -233,6 +251,24 @@ Connected App
 - `description`: `String!` - A brief description of the connected app.
 - `website`: `String!` - The website URL of the connected app.
 - `createdAt`: `DateTime!` - The date and time when the connected app was created.
+
+#### DailyPostingLimitStatus
+
+Status of daily posting limits for a channel on a given day.
+
+**Fields:**
+- `channelId`: `ChannelId!` - The channel ID this status refers to.
+- `sent`: `Int!` - Number of posts already sent on this day.
+- `scheduled`: `Int!` - Number of posts scheduled for this day.
+- `limit`: `Int` - The network daily posting limit. Null means unlimited.
+- `isAtLimit`: `Boolean!` - Whether the channel has reached its daily posting limit.
+
+#### DeletePostSuccess
+
+deletePost success response returns the post id that was deleted.
+
+**Fields:**
+- `id`: `PostId!` - Post id that was delete.
 
 #### DocumentAsset
 
@@ -1087,6 +1123,14 @@ When saving as draft:
 - Posting limits are not checked
 - The post will not be published until explicitly scheduled
 
+#### DailyPostingLimitsInput
+
+Input for the dailyPostingLimits query.
+
+**Fields:**
+- `channelIds`: `[ChannelId!]!` - List of channel IDs to check limits for. All channels must belong to the same organization.
+- `date`: `DateTime` - The date to check limits for. Defaults to today if not provided.
+
 #### DateTimeComparator
 
 Comparator for filtering by date
@@ -1096,6 +1140,13 @@ Comparator for filtering by date
 the specified date
 - `end`: `DateTime` - Include results with dates equal to or before
 the specified date
+
+#### DeletePostInput
+
+deletePost mutation deletes a post by id.
+
+**Fields:**
+- `id`: `PostId!` - Post id to delete.
 
 #### DocumentAssetInput
 
@@ -1565,6 +1616,12 @@ createIdea response (including errors)
 
 **Possible types:** Idea | IdeaResponse | InvalidInputError | UnauthorizedError | UnexpectedError | LimitReachedError
 
+#### DeletePostPayload
+
+All possible response types for the deletePost mutation.
+
+**Possible types:** DeletePostSuccess | VoidMutationError
+
 #### GoogleBusinessPostDetails
 
 GoogleBusiness Metadata details
@@ -1724,6 +1781,9 @@ List of possible actions that can be performed on a Post
 - `updatePostTags`
 - `addPostNote`
 - `updateShopGridLink`
+- `createPostRecurrence`
+- `editPostRecurrence`
+- `cancelPostRecurrence`
 
 #### PostingGoalStatus
 

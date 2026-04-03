@@ -1,6 +1,6 @@
 # Source: https://developers.buffer.com/guides/api-limits.md
 
-Rate limits are applied using a dual-layer strategy to ensure fair usage across all accounts and clients.
+We apply rate limits using a dual-layer approach to keep things fair for everyone.
 
 ### Rate Limits by Client Type
 
@@ -48,7 +48,7 @@ Use the `retryAfter` value (in seconds) to determine when you can make requests 
 
 ## Query Limits
 
-In addition to rate limits, the API enforces query-level limits to protect against overly complex or expensive GraphQL queries.
+In addition to rate limits, we enforce query-level limits to protect against overly complex or expensive GraphQL queries.
 
 ### Query Complexity
 
@@ -92,4 +92,4 @@ When a query limit is exceeded, you will receive a GraphQL error response:
 
 The error message will indicate which limit was exceeded (complexity, depth, aliases, directives, or tokens).
 
-These limits may change as we continue to evolve the API, so please ensure you monitor your usage accordingly.
+These limits may change as we evolve the API, so keep an eye on your usage.
