@@ -1,0 +1,97 @@
+# SMTP2GO-API-Docs Documentation
+
+## Guides
+- [Adding Attachments](https://developers.smtp2go.com/docs/adding-attachments.md)
+- [Getting started with Templates](https://developers.smtp2go.com/docs/getting-started-with-templates.md)
+- [Bounce Report & Statistics](https://developers.smtp2go.com/docs/report-on-email-delivery.md): Quickly retrieve statistics to help monitor your deliverability
+- [Send an Email](https://developers.smtp2go.com/docs/send-an-email.md): Learn how to send a standard email using the API.
+- [View Account Activity](https://developers.smtp2go.com/docs/view-account-activity.md)
+- [cPanel/WHM Automation Plugin](https://developers.smtp2go.com/docs/cpanelwhm-automation-plugin.md)
+- [Official Libraries](https://developers.smtp2go.com/docs/official-libraries.md)
+- [Slack App](https://developers.smtp2go.com/docs/slack-app.md)
+- [SMTP Relay](https://developers.smtp2go.com/docs/smtp-relay.md)
+- [WordPress Plugin](https://developers.smtp2go.com/docs/wordpress-plugin.md)
+- [Setup a Webhook](https://developers.smtp2go.com/docs/setup-a-webhook.md)
+- [Webhooks Overview](https://developers.smtp2go.com/docs/webhooks-overview.md)
+- [API Features Overview](https://developers.smtp2go.com/docs/api-features-guide.md): What can you do with the SMTP2GO API?
+- [Endpoints](https://developers.smtp2go.com/docs/endpoints.md)
+- [Getting Started with the API](https://developers.smtp2go.com/docs/getting-started.md): A quick start guide covering authentication, sender verification, technical details and important concepts about the API.
+- [Introduction](https://developers.smtp2go.com/docs/introduction-guide.md)
+- [Rate Limiting](https://developers.smtp2go.com/docs/rate-limiting.md)
+- [Response Codes](https://developers.smtp2go.com/docs/response-codes.md)
+
+## API Reference
+- [Search activity](https://developers.smtp2go.com/reference/search-activity.md): Returns events (such as opens, unsubscribes) which match the filters passed. A count of events matching the filter is also included, as this may surpass the maximum of 1,000 items included within the response.<br /><i>This endpoint is rate-limited to 60 requests per minute.</i>
+- [Add allowed recipients](https://developers.smtp2go.com/reference/add-allowed-recipients.md): Add one or more email addresses and domain names to your Allowed Recipients List. Further details of the associated setting are found in the SMTP2GO Guides.
+- [Remove allowed recipients](https://developers.smtp2go.com/reference/remove-allowed-recipients.md): Remove one or more emails addresses or domain names stored in your Allowed Recipients List. <strong>Note: In the event that any of the email addresses or domains do not feature in the list, no error will be raised.</strong>
+- [Update allowed recipients](https://developers.smtp2go.com/reference/update-allowed-recipients.md): Replace the email addresses and domain names on your Allowed Recipients List using this endpoint. Further details of these modes are found in the SMPT2GO Guides. Note that a post to this endpoint will return a success, even if the setting is not in use.
+- [View allowed recipients](https://developers.smtp2go.com/reference/view-allowed-recipients.md): Returns the email addresses and domain names on your Allowed Recipients list.
+- [Add allowed senders](https://developers.smtp2go.com/reference/add-allowed-senders.md): Add one or more email addresses and domain names to your Allowed or Restricted Senders List. How this list of email addresses and domain names are used is shown by the current 'mode' value; if the Restrict Senders setting is on, they will form either a whitelist or blacklist. If the setting is off, the list will be disabled. Further details of the associated setting are found in the SMTP2GO Guides. Details of how this mode can be set via the update end-point, are given further in the documentation. A post to this endpoint will return a success, even if the Restrict Senders setting is not in use.
+- [Remove allowed senders](https://developers.smtp2go.com/reference/remove-allowed-senders.md): Remove one or more emails addresses or domain names stored in your Allowed or Restricted Senders List. <strong>Note: In the event that any of the email addresses or domains do not feature in the list, no error will be raised.</strong>
+- [Update allowed senders](https://developers.smtp2go.com/reference/update-allowed-senders.md): Replace the email addresses and domain names on your Allowed or Restricted Senders List using this endpoint. How the email addresses and domain names are used is defined in the current 'mode' value - further details of these modes are found in the SMPT2GO Guides. Note that a post to this endpoint will return a success, even if the setting is not in use.
+- [View allowed senders](https://developers.smtp2go.com/reference/view-allowed-senders.md): Returns the email addresses and domain names on your Allowed or Restricted Senders list, as well as the Restrict Senders setting, which dictates how they are interpreted.
+- [Add a new API key](https://developers.smtp2go.com/reference/add-api-key.md): Add a new API key to your account<br /><i>This endpoint is rate-limited to 5 requests per minute.</i>
+- [Edit an API key](https://developers.smtp2go.com/reference/edit-api-key.md): Edit an existing API key
+- [Patch an API key](https://developers.smtp2go.com/reference/patch-api-key.md): Patch an existing API key ignoring missing properties
+- [Remove an API key](https://developers.smtp2go.com/reference/remove-api-key.md): Remove an existing API key
+- [View Permissions](https://developers.smtp2go.com/reference/view-api-key-permissions.md): Retrieve a list of endpoints this API Key can use
+- [View API Keys](https://developers.smtp2go.com/reference/view-api-keys.md): Retrieve a list of API keys on this account
+- [View Dedicated IP Addresses](https://developers.smtp2go.com/reference/view-dedicated-ips.md): Retrieve a list of Dedicated IP addresses on this account
+- [Adjusting archives](https://developers.smtp2go.com/reference/email-archive.md)
+- [Search archived content](https://developers.smtp2go.com/reference/search-archived-pages.md): Retrieve a list of up to 5,000 archived emails matching the supplied parameters.
+- [View an archived email](https://developers.smtp2go.com/reference/view-an-archived-email.md): Fetch an archived email using the email_id
+- [Remove a scheduled email](https://developers.smtp2go.com/reference/remove-scheduled-emails.md): Removes a scheduled email by ID
+- [Search schedule emails](https://developers.smtp2go.com/reference/search-scheduled-emails.md): Allows searching of scheduled emails
+- [Send a batch of emails](https://developers.smtp2go.com/reference/send-email-batch.md): Send a batch of emails
+- [Send a MIME email](https://developers.smtp2go.com/reference/send-mime-email.md): Send an email by supplying a pre-encoded MIME string
+- [Send a standard email](https://developers.smtp2go.com/reference/send-standard-email.md): Send an email by passing a JSON email object
+- [View and search sent emails](https://developers.smtp2go.com/reference/view-sent-emails.md): Retrieve a list of up to 5,000 sent emails matching the supplied parameters.<br><br>The filter_query field can be used to create complex filters to make your searching more efficient. Find full details in the Email and Email Archive Guide.<br><br><strong>Note:<strong> Allow around two minutes after delivery for recently sent emails to be included in a search result.<br /><br />This endpoint is deprecated and will not be accessible in future API versions. Please use the <a href='https://developers.smtp2go.com/reference/search-activity'>Activity Search</a> endpoint instead.<i>This endpoint is rate-limited to 20 requests per minute.</i>
+- [Patch an IP Auth](https://developers.smtp2go.com/reference/patch-ip-auth.md): Patch an existing IP Auth ignoring missing properties
+- [Remove an IP Auth](https://developers.smtp2go.com/reference/remove-ip-auth.md): Removes an existing IP Auth
+- [View IP Auth](https://developers.smtp2go.com/reference/view-ip-auth.md): Retreive IP Auth information
+- [Add a sender domain](https://developers.smtp2go.com/reference/add-sender-domain.md): Add a sender domain to your account. Note that you must own any domains you wish to include in this list, as you will be required to verify and authenticate the emails sent via that domain. Find full details in the Sender Domains Guide.
+- [Edit the return-path subdomain](https://developers.smtp2go.com/reference/edit-return-path-domain.md): A Return Path Subdomain is used to instruct the server where to return emails that are not deliverable (ie. Bounces).  This endpoint allows you to edit a Return Path Subdomain for a particular sender domain. Full details can be found in the Sender Domain Guide.
+- [Edit subaccount access](https://developers.smtp2go.com/reference/edit-subaccount-access.md): Allow subaccounts to send from verified sender domains on the master account.
+- [Edit the tracking subdomain](https://developers.smtp2go.com/reference/edit-tracking-domain.md): A Tracking Subdomain is used to monitor your email opens and clicks. This endpoint allows you to edit a tracking subdomain for a particular sender domain. Full details can be found in the Sender Domain Guide.
+- [Remove a sender domain](https://developers.smtp2go.com/reference/remove-sender-domain.md): Remove a sender domain from your account
+- [Verify a sender domain](https://developers.smtp2go.com/reference/verify-a-sender-domain.md): Verify a sender domain on your account removing the need to wait for the periodic verification every 7 minutes.
+- [View sender domains](https://developers.smtp2go.com/reference/view-sender-domains.md): Returns a list of sender domains on your account
+- [Add a single sender email](https://developers.smtp2go.com/reference/add-a-single-sender-email.md): Use the API to add a single sender email address to your account, to use from which to send mail. If the email address has previously been added and not yet verified, this action will simply resend the verification email.
+- [Remove a single sender email](https://developers.smtp2go.com/reference/remove-a-single-sender-email.md): Remove a single sender email address from your account. Include the address to remove as the email_address parameter.
+- [View single sender emails](https://developers.smtp2go.com/reference/view-all-single-sender-emails.md): Returns a list of single sender email addresses on your account, along with their verification status. If you include a email_address, the response will only include items matching this search.
+- [Send SMS](https://developers.smtp2go.com/reference/send-sms.md): Send an SMS message to one or more numbers, up to a maximum of 100 numbers.
+- [SMS Summary](https://developers.smtp2go.com/reference/sms-summary.md): Retrieve a summary of SMS messages within a certain time range.
+- [View received SMS](https://developers.smtp2go.com/reference/view-received-sms.md): View received SMS messages.
+- [View sent SMS](https://developers.smtp2go.com/reference/view-sent-sms.md): View sent SMS messages.
+- [Add an SMTP user](https://developers.smtp2go.com/reference/add-an-smtp-user.md): Add a new SMTP user to your account. Full details of the available options for new user accounts can be found in the SMTP User Guide.
+- [Edit SMTP user details](https://developers.smtp2go.com/reference/edit-an-smtp-user.md): Update an SMTP user's details with the parameters passed. Full details of the available options for SMTP user accounts is found in the SMTP User Guide.
+- [Patch an SMTP user](https://developers.smtp2go.com/reference/patch-an-smtp-user.md): Patch an existing SMTP user ignoring missing properties
+- [Remove an SMTP user](https://developers.smtp2go.com/reference/remove-an-smtp-user.md): Remove an SMTP user from your account
+- [View SMTP users](https://developers.smtp2go.com/reference/view-smtp-users.md): Returns a list of all SMTP users that are managed by this account, or details of a specific user, when you include the [username] in your request. If no users are available, this will return an empty list.
+- [Authentication](https://developers.smtp2go.com/reference/authentication.md)
+- [Changelog](https://developers.smtp2go.com/reference/changelog.md)
+- [General API Resources](https://developers.smtp2go.com/reference/general-api-resources.md)
+- [Email bounces](https://developers.smtp2go.com/reference/email-bounces.md): Retrieve a summary of bounces and rejects, for the last 30 days.
+- [Email cycle](https://developers.smtp2go.com/reference/email-cycle.md): Retrieve a summary of your Account activity, including the start and end date of your monthly plan, the number of emails sent this cycle, the number of emails remaining and the number of emails in your monthly allowance.
+- [Email history](https://developers.smtp2go.com/reference/email-history.md): Retrieve a summary of activity from a specified date range (defaults to last 30 days), per sender email address, SMTP username, domain or subaccount.
+- [Email spam](https://developers.smtp2go.com/reference/email-spam.md): Retrieve a summary of spam complaints and rejects, for the last 30 days.
+- [Email summary](https://developers.smtp2go.com/reference/email-summary.md): Retrieve a combination of the email_bounces, email_cycle, email_spam, and email_unsubs calls in one report. Note this call may take longer to complete.
+- [Email unsubscribes](https://developers.smtp2go.com/reference/email-unsubscribes.md): Retrieve a summary of unsubscribes and rejects, for the last 30 days.
+- [Add a subaccount](https://developers.smtp2go.com/reference/add-subaccount.md): Adds a new subaccount on your master account.<strong> Note:</strong> This end-point is rate limited to 10 calls per hour.
+- [Close a subaccount](https://developers.smtp2go.com/reference/close-a-subaccount.md): Changes the status of an Active subaccount to Closed
+- [Reopen a closed subaccount](https://developers.smtp2go.com/reference/reopen-a-closed-subaccount.md): Changes the status of a Closed subaccount back to Active
+- [Resend subaccount invitation](https://developers.smtp2go.com/reference/resend-subaccount-invitation.md): In the event that a subaccount didn't receive the invite you can resend it
+- [View subaccounts](https://developers.smtp2go.com/reference/search-subaccounts.md): Returns any subaccounts that match search criteria
+- [Update a subaccount](https://developers.smtp2go.com/reference/update-a-subaccount.md): Changes the details on an existing subaccount
+- [Add a suppression](https://developers.smtp2go.com/reference/add-a-suppression.md): Suppresses the specified email address or domain
+- [Remove a suppression](https://developers.smtp2go.com/reference/remove-a-suppression.md): Removes the suppression on the specified email address or domain
+- [View suppressions](https://developers.smtp2go.com/reference/view-suppressions.md): Returns your suppressed email addresses and domains
+- [Add an email template](https://developers.smtp2go.com/reference/add-an-email-template.md): Adds a new email template that you can use to format your emails.
+- [Remove an email template](https://developers.smtp2go.com/reference/remove-an-email-template.md): Deletes the specified email template.
+- [View email templates](https://developers.smtp2go.com/reference/search-email-templates.md): Search your collection of email templates. Returns any templates that match your search criteria.
+- [Update an email template](https://developers.smtp2go.com/reference/update-an-email-template.md): Changes details of an existing email template.
+- [View template details](https://developers.smtp2go.com/reference/view-template-details.md): Returns details of the email template with the specified ID.
+- [Add a new Webhook](https://developers.smtp2go.com/reference/add-webhook.md): Add a new webhook with the given configuration. Setup of webhooks can be done on the Settings > Webhooks page in your SMTP2GO control panel.
+- [Edit a specified Webhook](https://developers.smtp2go.com/reference/edit-webhook.md): Make changes to a specific webhook using its unique ID.
+- [Remove a specified Webhook](https://developers.smtp2go.com/reference/remove-webhook.md): Remove a specific webhook using its unique ID.
+- [View Webhooks](https://developers.smtp2go.com/reference/view-webhook.md): Returns information for configured webhooks.

@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2026-04-03 02:08
-  total_sources: 20
-  total_fetched: 20
-  llms_txt_count: 1
-  llms_txt_fetched: 1
+  last_updated: 2026-04-03 02:09
+  total_sources: 22
+  total_fetched: 22
+  llms_txt_count: 3
+  llms_txt_fetched: 3
   github_count: 10
   github_fetched: 10
   web_scraped_count: 9
@@ -24,7 +24,23 @@ llms_txt:
   status: fetched
   file_count: 36
   size: 360.8KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
+- name: neverbounce
+  description: Developers | NeverBounce Documentation
+  url: https://neverbounce.com/
+  path: docs/llms-txt/neverbounce/
+  status: fetched
+  file_count: 1
+  size: 595B
+  last_updated: 2026-04-03 02:09
+- name: smtp2go
+  description: SMTP2GO-API-Docs Documentation
+  url: https://smtp2go.com/
+  path: docs/llms-txt/smtp2go/
+  status: fetched
+  file_count: 1
+  size: 16.0KB
+  last_updated: 2026-04-03 02:09
 github_scraped:
 - name: apache-atlas
   description: apache-atlas from GitHub
@@ -32,70 +48,70 @@ github_scraped:
   status: fetched
   file_count: 1
   size: 21.1KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: chroma
   description: chroma from GitHub
   path: docs/github-scraped/chroma/
   status: fetched
   file_count: 6
   size: 104.9KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: docetl
   description: docetl from GitHub
   path: docs/github-scraped/docetl/
   status: fetched
   file_count: 67
   size: 474.8KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: gopls
   description: gopls from GitHub
   path: docs/github-scraped/gopls/
   status: fetched
   file_count: 11
   size: 199.7KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: kube-bench
   description: kube-bench from GitHub
   path: docs/github-scraped/kube-bench/
   status: fetched
   file_count: 8
   size: 52.5KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: liam
   description: liam from GitHub
   path: docs/github-scraped/liam/
   status: fetched
   file_count: 14
   size: 437.9KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: octopus-deploy
   description: octopus-deploy from GitHub
   path: docs/github-scraped/octopus-deploy/
   status: fetched
   file_count: 2143
   size: 4.3MB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: physx
   description: physx from GitHub
   path: docs/github-scraped/physx/
   status: fetched
   file_count: 2
   size: 6.6KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: puppet
   description: puppet from GitHub
   path: docs/github-scraped/puppet/
   status: fetched
   file_count: 12
   size: 76.2KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: searxng
   description: searxng from GitHub
   path: docs/github-scraped/searxng/
   status: fetched
   file_count: 150
   size: 256.3KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 web_scraped:
 - name: cloud-run
   description: cloud-run documentation
@@ -103,60 +119,60 @@ web_scraped:
   status: fetched
   file_count: 1
   size: 3.0KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: miragejs
   description: miragejs documentation
   path: docs/web-scraped/miragejs/
   status: fetched
   file_count: 1
   size: 3.0KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: mockserver
   description: mockserver documentation
   path: docs/web-scraped/mockserver/
   status: fetched
   file_count: 1
   size: 319.2KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: owasp-dependency-check
   description: owasp-dependency-check documentation
   path: docs/web-scraped/owasp-dependency-check/
   status: fetched
   file_count: 7
   size: 40.2KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: python-social-auth
   description: python-social-auth documentation
   path: docs/web-scraped/python-social-auth/
   status: fetched
   file_count: 4
   size: 6.8KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: sonatype-nexus-repository
   description: sonatype-nexus-repository documentation
   path: docs/web-scraped/sonatype-nexus-repository/
   status: fetched
   file_count: 10
   size: 309.1KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: statuscake
   description: statuscake documentation
   path: docs/web-scraped/statuscake/
   status: fetched
   file_count: 1
   size: 2.7KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: tempo
   description: tempo documentation
   path: docs/web-scraped/tempo/
   status: fetched
   file_count: 1
   size: 2.2KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
 - name: zincsearch
   description: zincsearch documentation
   path: docs/web-scraped/zincsearch/
   status: fetched
   file_count: 1
   size: 1.3KB
-  last_updated: 2026-04-03 02:08
+  last_updated: 2026-04-03 02:09
