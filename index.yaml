@@ -4736,13 +4736,13 @@ llms_txt:
   size: 8.4MB
   last_updated: 2026-04-03 02:03
 - name: stedi
-  description: stedi documentation
-  url: https://stedi.com/
+  description: Stedi Healthcare Documentation
+  url: https://www.stedi.com/docs/
   path: docs/llms-txt/stedi/
   status: fetched
-  file_count: 55
-  size: 66.4MB
-  last_updated: 2026-04-03 02:03
+  file_count: 1
+  size: 13.1KB
+  last_updated: 2026-04-03 02:11
 - name: stencil
   description: Stencil Documentation
   url: https://stencil.com/
