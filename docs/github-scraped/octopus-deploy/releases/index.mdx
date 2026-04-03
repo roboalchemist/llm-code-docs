@@ -1,0 +1,32 @@
+---
+layout: src/layouts/Default.astro
+pubDate: 2023-01-01
+modDate: 2024-05-24
+title: Releases
+subtitle: A snapshot of the deployment process and associated assets
+icon: fa-solid fa-camera
+navTitle: Overview
+navSection: Releases
+description: Releases allow you to capture everything required to deploy a project in a repeatable and reliable manner.
+navOrder: 70
+---
+import Releases from 'src/shared-content/concepts/releases.include.md';
+
+<Releases />
+
+:::figure
+![Octopus releases overview](/docs/img/releases/octopus-releases-overview.png)
+:::
+
+After you define your deployment steps and create a new release to snapshot the process, you then use that same process consistently across your environments. The process, scripts, package references, and variables remain consistent each time the release gets deployed. If you make changes to these assets, it won't affect releases you've already created. This is a crucial part of repeatable deployments.
+
+Each release gets assigned a version number. You can deploy releases as often as necessary, even if the deployment process has since changed for newer releases. 
+
+Tenant variables aren't included in the release snapshot. This makes it easier to onboard new tenants without creating a new release. Changes to tenant variables are effective straight away.
+
+:::div{.success}
+To include common variables for a tenant, you must add the variable set in the tenant connected project.
+:::
+
+## Next steps
+Learn how to [create a release](/docs/releases/creating-a-release) and the role of [lifecycles](/docs/releases/lifecycles) and [channels](/docs/releases/channels) when releasing your software.
