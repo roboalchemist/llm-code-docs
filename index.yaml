@@ -2903,14 +2903,6 @@ llms_txt:
   file_count: 1
   size: 208.0KB
   last_updated: 2026-04-03 01:34
-- name: lettuce
-  description: lettuce documentation
-  url: https://lettuce.com/
-  path: docs/llms-txt/lettuce/
-  status: fetched
-  file_count: 1
-  size: 52.6KB
-  last_updated: 2026-04-03 01:34
 - name: liam-erd
   description: 'Modified: https://liambx.com/erd/p/github.com/user/repo/blob/master/db/schema.rb'
   url: https://liam-erd.com/
