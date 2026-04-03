@@ -233,6 +233,13 @@ repositories:
   source_folder: _content
   target_folder: docs/github-scraped/go-docs
   branch: master
+- name: Godot Engine
+  description: Godot Engine - Free and open-source 2D and 3D game engine with comprehensive
+    documentation covering the editor, API reference, tutorials, and best practices
+  repo_url: https://github.com/godotengine/godot-docs.git
+  source_folder: .
+  target_folder: docs/github-scraped/godot-engine
+  branch: master
 - name: Gunicorn
   description: Gunicorn - Python WSGI HTTP Server with pre-forked worker model, multiple
     worker types, and comprehensive configuration options for deploying Python web
