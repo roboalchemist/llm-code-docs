@@ -1,70 +1,41 @@
-# Source: https://beanie-odm.dev/
+# Beanie ODM Documentation Index
 
-Title: Beanie Documentation
+**Beanie** is an asynchronous Python Object-Document Mapper (ODM) for MongoDB. It provides a Pydantic-based interface for building modern async MongoDB applications.
 
-URL Source: https://beanie-odm.dev/
+## Documentation Contents
 
-Markdown Content:
-Overview
---------
+This documentation archive contains the following sections:
 
-[![Image 1: Beanie](https://raw.githubusercontent.com/roman-right/beanie/main/assets/logo/white_bg.svg)](https://github.com/roman-right/beanie)
+### Getting Started
+- **04-getting-started.md** - Installation and initialization guide
+- **05-index.md** - Overview and introduction to Beanie
 
-[![Image 2: shields badge](https://shields.io/badge/-docs-blue)](https://beanie-odm.dev/)[![Image 3: pypi](https://img.shields.io/pypi/v/beanie.svg)](https://pypi.python.org/pypi/beanie)
+### Tutorials
+- **09-tutorial_finding-documents.md** - Querying and finding documents
+- **16-tutorial_indexes.md** - Creating and managing indexes
+- **18-tutorial_migrations.md** - Data schema migrations
+- **20-tutorial_relations.md** - Document relationships and references
 
-📢 Important Update 📢
-----------------------
+### Changelog
+- **changelog.md** - Complete version history and release notes
 
-We are excited to announce that Beanie is transitioning from solo development to a team-based approach! This move will help us enhance the project with new features and more collaborative development.
+## Key Features
 
-At this moment we are establishing a board of members that will decide all the future steps of the project. We are looking for contributors and maintainers to join the board.
+- **Asynchronous** - Built on PyMongo with Motor for full async/await support
+- **Pydantic Integration** - Use Pydantic models for data validation and serialization
+- **MongoDB Native** - Full MongoDB query syntax support with pythonic API
+- **Type Hints** - Complete type annotations for IDE support and type checking
+- **Relations** - Define relationships between documents
+- **Migrations** - Out-of-the-box schema migration support
+- **Indexes** - Declarative index definitions
 
-### Join Us
+## Quick Start
 
-If you are interested in contributing or want to stay updated, please join our Discord channel. We're looking forward to your ideas and contributions!
-
-[Join our Discord](https://discord.gg/AwwTrbCASP)
-
-Let’s make Beanie better, together!
-
-Overview
---------
-
-[Beanie](https://github.com/roman-right/beanie) - is an asynchronous Python object-document mapper (ODM) for MongoDB. Data models are based on [Pydantic](https://pydantic-docs.helpmanual.io/).
-
-When using Beanie each database collection has a corresponding `Document` that is used to interact with that collection. In addition to retrieving data, Beanie allows you to add, update, or delete documents from the collection as well.
-
-Beanie saves you time by removing boilerplate code, and it helps you focus on the parts of your app that actually matter.
-
-Data and schema migrations are supported by Beanie out of the box.
-
-There is a synchronous version of Beanie ODM - [Bunnet](https://github.com/roman-right/bunnet)
-
-Installation
-------------
-
-### PIP
-
-```
-pip install beanie
-```
-
-### Poetry
-
-```
-poetry add beanie
-```
-
-Example
--------
-
-```
+```python
 import asyncio
 from typing import Optional
-
 from pymongo import AsyncMongoClient
 from pydantic import BaseModel
-
 from beanie import Document, Indexed, init_beanie
 
 class Category(BaseModel):
@@ -72,66 +43,48 @@ class Category(BaseModel):
     description: str
 
 class Product(Document):
-    name: str                          # You can use normal types just like in pydantic
+    name: str
     description: Optional[str] = None
-    price: Indexed(float)              # You can also specify that a field should correspond to an index
-    category: Category                 # You can include pydantic models as well
+    price: Indexed(float)
+    category: Category
 
-# This is an asynchronous example, so we will access it from an async function
-async def example():
-    # Beanie uses PyMongo async client under the hood 
-    client = AsyncMongoClient("mongodb://user:pass@host:27017")
+async def main():
+    client = AsyncMongoClient("mongodb://localhost:27017")
+    await init_beanie(
+        database=client.db_name,
+        document_models=[Product]
+    )
+    
+    # Create
+    product = Product(
+        name="Widget",
+        price=9.99,
+        category=Category(name="Tools", description="Hand tools")
+    )
+    await product.insert()
+    
+    # Query
+    found = await Product.find_one(Product.price < 10)
+    
+    # Update
+    await found.set({Product.name: "Premium Widget"})
+    
+    # Delete
+    await found.delete()
 
-    # Initialize beanie with the Product document class
-    await init_beanie(database=client.db_name, document_models=[Product])
-
-    chocolate = Category(name="Chocolate", description="A preparation of roasted and ground cacao seeds.")
-    # Beanie documents work just like pydantic models
-    tonybar = Product(name="Tony's", price=5.95, category=chocolate)
-    # And can be inserted into the database
-    await tonybar.insert() 
-
-    # You can find documents with pythonic syntax
-    product = await Product.find_one(Product.price < 10)
-
-    # And update them
-    await product.set({Product.name:"Gold bar"})
-
-if __name__ == "__main__":
-    asyncio.run(example())
+asyncio.run(main())
 ```
 
-Links
------
+## Source
 
-### Documentation
+This documentation was extracted from the official Beanie documentation at https://beanie-odm.dev/
 
-*   **[Doc](https://beanie-odm.dev/)** - Tutorial, API documentation, and development guidelines.
+For the latest updates and additional resources, visit:
+- Documentation: https://beanie-odm.dev/
+- GitHub: https://github.com/BeanieODM/beanie
+- Discord: https://discord.gg/AwwTrbCASP
+- PyPI: https://pypi.org/project/beanie/
 
-### Example Projects
+---
 
-*   **[fastapi-cosmos-beanie](https://github.com/tonybaloney/ants-azure-demos/tree/master/fastapi-cosmos-beanie)** - FastAPI + Beanie ODM + Azure Cosmos Demo Application by [Anthony Shaw](https://github.com/tonybaloney)
-*   **[fastapi-beanie-jwt](https://github.com/flyinactor91/fastapi-beanie-jwt)** - Sample FastAPI server with JWT auth and Beanie ODM by [Michael duPont](https://github.com/flyinactor91)
-*   **[Shortify](https://github.com/IHosseini083/Shortify)** - URL shortener RESTful API (FastAPI + Beanie ODM + JWT & OAuth2) by [Iliya Hosseini](https://github.com/IHosseini083)
-*   **[LCCN Predictor](https://github.com/baoliay2008/lccn_predictor)** - Leetcode contest rating predictor (FastAPI + Beanie ODM + React) by [L. Bao](https://github.com/baoliay2008)
-
-### Articles
-
-*   **[Announcing Beanie - MongoDB ODM](https://dev.to/romanright/announcing-beanie-mongodb-odm-56e)**
-*   **[Build a Cocktail API with Beanie and MongoDB](https://developer.mongodb.com/article/beanie-odm-fastapi-cocktails/)**
-*   **[MongoDB indexes with Beanie](https://dev.to/romanright/mongodb-indexes-with-beanie-43e8)**
-*   **[Beanie Projections. Reducing network and database load.](https://dev.to/romanright/beanie-projections-reducing-network-and-database-load-3bih)**
-*   **[Beanie 1.0 - Query Builder](https://dev.to/romanright/announcing-beanie-1-0-mongodb-odm-with-query-builder-4mbl)**
-*   **[Beanie 1.8 - Relations, Cache, Actions and more!](https://dev.to/romanright/announcing-beanie-odm-18-relations-cache-actions-and-more-24ef)**
-
-### Resources
-
-*   **[GitHub](https://github.com/roman-right/beanie)** - GitHub page of the project
-*   **[Changelog](https://beanie-odm.dev/changelog)** - list of all the valuable changes
-*   **[Discord](https://discord.gg/AwwTrbCASP)** - ask your questions, share ideas or just say `Hello!!`
-
-* * *
-
-Supported by [JetBrains](https://jb.gg/OpenSource)
-
-[![Image 4: JetBrains](https://raw.githubusercontent.com/roman-right/beanie/main/assets/logo/jetbrains.svg)](https://jb.gg/OpenSource)
+Last updated: 2026-04-02
