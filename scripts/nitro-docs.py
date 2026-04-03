@@ -256,7 +256,7 @@ def main():
     print(f"Output: {output_dir}")
 
     # Calculate total size
-    total_size = sum(f.stat().st_size for f in output_dir.glob("*.md"))
+    total_size = sum(f.stat().st_size for f in output_dir.rglob("*.md"))
     print(f"Total size: {total_size:,} bytes ({total_size/1024:.1f} KB)")
 
     print()
