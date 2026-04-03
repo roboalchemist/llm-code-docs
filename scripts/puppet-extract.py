@@ -102,7 +102,7 @@ def main():
 
     # Output directory
     script_dir = Path(__file__).parent.parent
-    output_dir = script_dir / "docs" / "github-scraped" / "puppet"
+    output_dir = script_dir / "docs" / "puppet" / "github"
 
     print(f"Repository: {REPO_URL}")
     print(f"Branch: {REPO_BRANCH}")

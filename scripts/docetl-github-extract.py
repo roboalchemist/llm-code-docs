@@ -102,7 +102,7 @@ def main():
 
     # Get script directory
     script_dir = Path(__file__).resolve().parent
-    output_dir = script_dir.parent / "docs" / "github-scraped" / "docetl"
+    output_dir = script_dir.parent / "docs" / "docetl" / "github"
 
     # Create temporary directory for cloning
     with tempfile.TemporaryDirectory() as temp_dir:

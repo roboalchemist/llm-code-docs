@@ -12,7 +12,7 @@ import re
 from html.parser import HTMLParser
 from html import unescape
 
-OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "web-scraped" / "sonatype-nexus-repository"
+OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "sonatype-nexus-repository" / "web"
 
 # Key documentation pages to scrape
 PAGES_TO_SCRAPE = [

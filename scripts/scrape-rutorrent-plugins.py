@@ -9,7 +9,7 @@ from pathlib import Path
 from html import unescape
 
 BASE_URL = "https://raw.githubusercontent.com/wiki/Novik/ruTorrent/{page}.md"
-TARGET_DIR = Path(__file__).parent.parent / "docs" / "github-scraped" / "rutorrent" / "plugins"
+TARGET_DIR = Path(__file__).parent.parent / "docs" / "rutorrent" / "github" / "plugins"
 
 # Mapping of wiki page names to filenames
 PLUGIN_MAP = {

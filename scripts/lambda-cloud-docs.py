@@ -3,7 +3,7 @@
 Scraper for Lambda Labs/Lambda Cloud documentation.
 Fetches all documentation from docs.lambda.ai/sitemap.xml
 
-Output: docs/web-scraped/lambda-cloud/
+Output: docs/lambda-cloud/web/
 """
 
 import urllib.request
@@ -15,7 +15,7 @@ from html.parser import HTMLParser
 from urllib.error import HTTPError, URLError
 import time
 
-OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "web-scraped" / "lambda-cloud"
+OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "lambda-cloud" / "web"
 
 class HTMLToMarkdown(HTMLParser):
     """Convert HTML to Markdown with basic formatting."""

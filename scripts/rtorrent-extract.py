@@ -2,7 +2,7 @@
 """
 Extract comprehensive documentation from rTorrent GitHub repositories.
 
-This script extracts from 4 GitHub repos into docs/github-scraped/rtorrent/:
+This script extracts from 4 GitHub repos into docs/rtorrent/github/:
   1. rakshasa/rtorrent           -> rakshasa-rtorrent/  (configs, scripts, FAQ, man pages)
   2. rtorrent-community/rtorrent-docs -> rtorrent-community/  (handbook RST -> MD)
   3. rakshasa/rtorrent-doc      -> rakshasa-rtorrent-doc/ (wiki docs)

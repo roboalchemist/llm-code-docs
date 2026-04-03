@@ -3,10 +3,10 @@
 Comprehensive rTorrent documentation extractor.
 
 Extracts from 4 GitHub repos:
-1. rakshasa/rtorrent        -> docs/github-scraped/rtorrent/rakshasa-rtorrent/
-2. rtorrent-community/rtorrent-docs -> docs/github-scraped/rtorrent/rtorrent-community/
-3. rakshasa/rtorrent-doc   -> docs/github-scraped/rtorrent/rakshasa-rtorrent-doc/
-4. pyroscope/rtorrent-ps   -> docs/github-scraped/rtorrent/rtorrent-ps/
+1. rakshasa/rtorrent        -> docs/rtorrent/github/rakshasa-rtorrent/
+2. rtorrent-community/rtorrent-docs -> docs/rtorrent/github/rtorrent-community/
+3. rakshasa/rtorrent-doc   -> docs/rtorrent/github/rakshasa-rtorrent-doc/
+4. pyroscope/rtorrent-ps   -> docs/rtorrent/github/rtorrent-ps/
 
 Converts:
 - doc/faq.xml (DocBook XML) -> FAQ markdown
@@ -22,7 +22,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent.parent
-OUTPUT_BASE = BASE_DIR / "docs" / "github-scraped" / "rtorrent"
+OUTPUT_BASE = BASE_DIR / "docs" / "rtorrent" / "github"
 
 REPOS = {
     "rakshasa-rtorrent": {
