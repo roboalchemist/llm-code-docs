@@ -1,0 +1,10 @@
+name: chroma
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/chroma-core/chroma
+    last_fetched: "2026-04-03T20:08:31Z"
+description: >
+  Chroma - Open-source vector database for AI applications with embeddings
+  support
+quality_score: 0

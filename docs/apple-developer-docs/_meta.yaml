@@ -1,0 +1,8 @@
+name: apple-developer-docs
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T20:08:29Z"
+description: >
+  apple-developer-docs documentation
+quality_score: 0

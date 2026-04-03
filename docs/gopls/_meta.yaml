@@ -1,0 +1,11 @@
+name: gopls
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/golang/tools
+    last_fetched: "2026-04-03T20:08:33Z"
+description: >
+  gopls - Official Go language server providing IDE features (LSP) to all
+  editors: auto-completion, diagnostics, go-to-definition, refactoring, and
+  formatting
+quality_score: 0

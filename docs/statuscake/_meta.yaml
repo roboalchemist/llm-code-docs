@@ -1,0 +1,8 @@
+name: statuscake
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T20:08:37Z"
+description: >
+  statuscake documentation
+quality_score: 0

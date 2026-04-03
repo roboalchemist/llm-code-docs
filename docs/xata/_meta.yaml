@@ -1,0 +1,9 @@
+name: xata
+primary_source: llms
+sources:
+  - type: llms
+    url: https://xata.io/
+    last_fetched: "2026-04-03T20:08:38Z"
+description: >
+  xata documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: go-docs
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/golang/website
+    last_fetched: "2026-04-03T20:08:32Z"
+description: >
+  Go Programming Language - Official documentation website
+quality_score: 0

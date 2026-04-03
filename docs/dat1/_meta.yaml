@@ -1,0 +1,9 @@
+name: dat1
+primary_source: llms
+sources:
+  - type: llms
+    url: https://dat1.co/
+    last_fetched: "2026-04-03T20:08:31Z"
+description: >
+  dat1 documentation
+quality_score: 0

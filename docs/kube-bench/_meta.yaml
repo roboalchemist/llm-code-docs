@@ -1,0 +1,9 @@
+name: kube-bench
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/aquasecurity/kube-bench
+    last_fetched: "2026-04-03T20:08:33Z"
+description: >
+  kube-bench - Kubernetes security benchmark compliance checker
+quality_score: 0

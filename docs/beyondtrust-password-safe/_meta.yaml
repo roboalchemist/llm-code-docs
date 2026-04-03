@@ -1,0 +1,8 @@
+name: beyondtrust-password-safe
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T20:08:30Z"
+description: >
+  beyondtrust-password-safe documentation
+quality_score: 0

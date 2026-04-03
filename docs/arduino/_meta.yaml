@@ -1,0 +1,10 @@
+name: arduino
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/arduino/docs-content
+    last_fetched: "2026-04-03T20:08:30Z"
+description: >
+  Arduino - Open-source electronics platform with documentation for
+  hardware, software, tutorials, and cloud services
+quality_score: 0
