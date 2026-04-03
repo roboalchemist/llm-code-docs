@@ -1,8 +1,0 @@
-# Crate lipgloss 
-Source 
-## Re-exports§
-`pub use blending::blend_1d;``pub use blending::blend_2d;``pub use gradient::bilinear_interpolation_grid;``pub use gradient::gradient;``pub use gradient::gradient_rgb;``pub use utils::get_lines;``pub use utils::get_lines_visible;``pub use utils::new_range;``pub use utils::strip_ansi;``pub use utils::style_ranges;``pub use utils::style_runes;``pub use utils::which_sides_bool;``pub use utils::which_sides_color;``pub use utils::which_sides_int;``pub use utils::width_visible;``pub use utils::NewRange;``pub use utils::Range;``pub use utils::StyleRanges;``pub use utils::StyleRunes;``pub use align::*;``pub use border::*;``pub use color::*;``pub use join::*;``pub use position::*;``pub use renderer::*;``pub use size::*;``pub use style::*;`
-## Modules§
-alignText alignment utilities for terminal user interfaces.blendingColor blending functionality for creating gradients and color transitions.borderTerminal border drawing and box-drawing character definitions.colorColor handling and terminal color representation.gradientFunctions for creating color gradients and grids for terminal styling.joinText joining utilities for combining multiple strings with alignment.positionPositioning and alignment utilities for placing text within boxes.rendererRendering engine with terminal color profile detection and background detection.securityMemory safety and security utilities for the lipgloss library.sizeString size measurement utilities for terminal display.styleTerminal text styling with comprehensive formatting capabilities.utilsUtility functions for text measurement, ANSI handling, and style ranges.whitespace
-## Constants§
-NO_TAB_CONVERSIONSpecial value for `Style::tab_width` to disable tab conversion entirely.

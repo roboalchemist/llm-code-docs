@@ -1,9 +1,0 @@
-# Source: https://docs.qodo.ai/qodo-documentation/qodo-gen/agent/workflows/available-workflows.md
-
-# Available Workflows
-
-Qodo includes **five built-in workflows,** tailored to common developer workflows.
-
-All Workflows are invoked through **slash commands** and can be customized with their own **plan mode** setting and **output schema**.
-
-<table><thead><tr><th width="236.55078125">Name</th><th>Description</th></tr></thead><tbody><tr><td><a href="../../code-review/review-uncommitted-changes"><strong>review-uncommitted</strong></a></td><td>Before you commit your code, review your uncommitted changes, get description of the changes and walkthrough, and code suggestions with one-click resolution</td></tr><tr><td><a href="../../code-review/review-committed-changes">review-committed</a></td><td>Right before you open the pull request, review your uncommitted changes, get description of the changes and walkthrough, and code suggestions with one-click resolution</td></tr><tr><td><strong>cleanup</strong></td><td>Remove dead code, debug leftovers, and apply DRY and style fixes with test validation.</td></tr><tr><td><strong>docs</strong></td><td>Add or update concise, consistent docstrings and comments based on project style and structure.</td></tr><tr><td><strong>fix</strong></td><td>Reviews code for issues and suggests fixes for the user to apply.</td></tr><tr><td>g<strong>enerate best practices</strong></td><td>Create a structured <a href="../../code-intelligence/best-practices">best practices file</a> with style, patterns, and examples per language.</td></tr><tr><td><strong>review</strong></td><td>Reviews Git changes, flags issues by severity, and offers fix suggestions.</td></tr><tr><td><strong>unit-test</strong></td><td>Generate a set of unit tests for a specific piece of code.</td></tr></tbody></table>

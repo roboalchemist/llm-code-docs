@@ -1,7 +1,0 @@
-# Source: https://docs.pentaho.com/pdia-data-integration/9.3-data-integration/data-integration-perspective-in-the-pdi-client/virtual-file-system-browser/vfs-browser-connecting-to-virtual-file-systems/configure-vfs-options.md
-
-# Source: https://docs.pentaho.com/pdia-data-integration/10.2-data-integration/data-integration-perspective-in-the-pdi-client/virtual-file-system-browser/vfs-browser-connecting-to-virtual-file-systems/configure-vfs-options.md
-
-# Configure VFS options
-
-The VFS browser can be configured to set variables as parameters for use at runtime. A `VFS Configuration Sample.ktr` sample transformation containing some examples of the parameters you can set is located in the `data-integration/samples/transformations` directory. For more information on setting variables, see [Specifying VFS properties as parameters](https://github.com/pentaho/documentation/blob/main/PDIA/10.2/PDI/Data%20Integration%20Perspective/Data%20Integration%20perspective%20in%20the%20PDI%20client/Advanced%20topics%20\(PDI%20perspective\)/PDI%20run%20modifiers/Parameters/VFS%20properties/Specifying%20VFS%20properties%20as%20parameters=GUID-1AFFCB92-45CC-43DB-BFB5-9F50E8451FB7=3=en=.md). For an example of configuring an SFTP VFS connection, see [Configure SFTP VFS](https://docs.pentaho.com/pdia-data-integration/10.2-data-integration/data-integration-perspective-in-the-pdi-client/virtual-file-system-browser/vfs-browser-connecting-to-virtual-file-systems/broken-reference).

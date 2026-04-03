@@ -1,1 +1,0 @@
-# Thanos General Documents:

@@ -1,8 +1,0 @@
-liquid::model
-# Function to_value
-Source 
-
-```
-pub fn to_value<T>(value: &T) -> Result<Value, Error>where
-    T: Serialize,
-```

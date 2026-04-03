@@ -1,8 +1,0 @@
----
----
-title: Frameworks on Cloudflare
-description: "Learn how to set up the Cloudflare SDK with popular Frameworks like Astro, SvelteKit, Remix, and Hono."
----
-
-You can use the Sentry Cloudlare SDK in combination with Sentry meta-framework SDKs like SvelteKit or Remix to instrument your Cloudflare Pages applications that use these frameworks.
-

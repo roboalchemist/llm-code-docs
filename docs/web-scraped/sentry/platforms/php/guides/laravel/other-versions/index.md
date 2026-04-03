@@ -1,6 +1,0 @@
----
----
-title: Other Versions
-description: "Learn about using Sentry with Laravel Lumen or Laravel 4.x/5.x/6.x/7.x."
----
-

@@ -1,5 +1,0 @@
-description: |
-  Empty array. No properties are available for this object.
-  *Handlebars Expression*: {{remote_api_scripts}}
-type: object
-items: {}

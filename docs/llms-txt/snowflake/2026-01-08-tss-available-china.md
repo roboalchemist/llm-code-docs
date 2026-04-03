@@ -1,8 +1,0 @@
-# Source: https://docs.snowflake.com/en/release-notes/2026/other/2026-01-08-tss-available-china.md
-
-# Jan 08, 2026: Tri-Secret Secure in China (*General availability*)
-
-Tri-Secret Secure is now generally available in the China region.
-Please note that external key stores are not supported in the China region.
-
-For more information, see [Tri-Secret Secure in Snowflake](../../../user-guide/security-encryption-tss.md).

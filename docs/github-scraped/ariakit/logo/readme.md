@@ -1,1 +1,0 @@
-# Ariakit logo

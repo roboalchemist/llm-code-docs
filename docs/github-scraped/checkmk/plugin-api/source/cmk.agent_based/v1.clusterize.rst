@@ -1,7 +1,0 @@
-=============================
-cmk.agent_based.v1.clusterize
-=============================
-
-.. automodule:: cmk.agent_based.v1.clusterize
-   :members:
-   :show-inheritance:

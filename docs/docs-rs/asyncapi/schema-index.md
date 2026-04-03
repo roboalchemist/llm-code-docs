@@ -1,7 +1,0 @@
-asyncapi
-# Module schema 
-Source 
-## Structs§
-AnySchemaArrayTypeIntegerTypeNumberTypeObjectTypeSchemaSchemaDataStringType
-## Enums§
-AdditionalPropertiesIntegerFormatNumberFormatSchemaKindStringFormatType

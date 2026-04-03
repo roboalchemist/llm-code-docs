@@ -1,7 +1,0 @@
-# Source: https://www.apollographql.com/docs/apollo-mcp-server/licensing.md
-
-# Apollo MCP Server Licensing
-
-Source code for Apollo MCP Server in GitHub is covered by the MIT License. All files in the Apollo MCP Server repository are licensed under MIT, unless explicitly stated otherwise in a file header or license file in a subdirectory.
-
-See the repository [LICENSE](https://github.com/apollographql/apollo-mcp-server/blob/main/LICENSE) for the full license text.

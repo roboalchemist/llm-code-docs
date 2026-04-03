@@ -1,7 +1,0 @@
-# Source: https://docs.pentaho.com/install/9.3-install/pentaho-installation-overview-cp/manual-installation/manual-installation-process/prepare-jboss-connections-and-web-app-servers/prepare-jboss-web-application-servers/step-5-configure-pentaho-settings-for-jboss/add-jboss-logging/configure-and-start-the-pentaho-server-after-manual-installation/configure-the-pentaho-server-for-linux/step-3-start-the-pentaho-server.md
-
-# Source: https://docs.pentaho.com/install/10.2-install/pentaho-installation-overview-cp/manual-installation/manual-installation-process/configure-and-start-the-pentaho-server-after-manual-installation/configure-the-pentaho-server-for-linux/step-3-start-the-pentaho-server.md
-
-# Step 4: Start the Pentaho Server
-
-See [Starting the Pentaho Server](https://docs.pentaho.com/install/10.2-install/pentaho-installation-overview-cp/manual-installation/manual-installation-process/configure-and-start-the-pentaho-server-after-manual-installation/starting-the-pentaho-server) for further instructions.

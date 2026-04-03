@@ -1,9 +1,0 @@
----
----
-title: Debug Symbols
----
-
-Sentry currently does not support symbolication or debug symbol uploads for pure Dart applications. 
-This feature is being tracked in our GitHub issue: [sentry-dart/#1508](https://github.com/getsentry/sentry-dart/issues/1508).
-
-See the [Flutter debug symbols documentation](/platforms/dart/guides/flutter/debug-symbols/) for Flutter applications. 
