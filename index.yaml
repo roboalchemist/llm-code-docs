@@ -8,12 +8,12 @@
 
 metadata:
   last_updated: 2026-04-03 01:48
-  total_sources: 1862
-  total_fetched: 1862
-  llms_txt_count: 726
-  llms_txt_fetched: 726
-  github_count: 527
-  github_fetched: 527
+  total_sources: 1857
+  total_fetched: 1857
+  llms_txt_count: 720
+  llms_txt_fetched: 720
+  github_count: 528
+  github_fetched: 528
   web_scraped_count: 609
   web_scraped_fetched: 609
 llms_txt:
@@ -746,14 +746,6 @@ llms_txt:
   file_count: 11
   size: 119.3KB
   last_updated: 2026-04-03 01:48
-- name: axonius
-  description: NAVEX - Create User
-  url: https://axonius.com/
-  path: docs/llms-txt/axonius/
-  status: fetched
-  file_count: 2554
-  size: 18.7MB
-  last_updated: 2026-04-03 01:48
 - name: back4app
   description: Query Cookbook for ParseSwift
   url: https://back4app.com/
@@ -1049,14 +1041,6 @@ llms_txt:
   status: fetched
   file_count: 442
   size: 6.5MB
-  last_updated: 2026-04-03 01:48
-- name: cherrypy
-  description: Cherrypy Documentation
-  url: https://cherrypy.com/
-  path: docs/llms-txt/cherrypy/
-  status: fetched
-  file_count: 1
-  size: 478.3KB
   last_updated: 2026-04-03 01:48
 - name: chromadb
   description: Concepts
@@ -1892,14 +1876,6 @@ llms_txt:
   status: fetched
   file_count: 89
   size: 670.1KB
-  last_updated: 2026-04-03 01:48
-- name: firehydrant
-  description: Google Auth for Status Pages
-  url: https://firehydrant.com/
-  path: docs/llms-txt/firehydrant/
-  status: fetched
-  file_count: 729
-  size: 8.3MB
   last_updated: 2026-04-03 01:48
 - name: fireworks
   description: Zero Data Retention
@@ -3087,14 +3063,6 @@ llms_txt:
   file_count: 1
   size: 512.5KB
   last_updated: 2026-04-03 01:48
-- name: mailerlite
-  description: Language
-  url: https://mailerlite.com/
-  path: docs/llms-txt/mailerlite/
-  status: fetched
-  file_count: 57
-  size: 1.2MB
-  last_updated: 2026-04-03 01:48
 - name: mailgun
   description: API Management and Security
   url: https://mailgun.com/
@@ -3150,14 +3118,6 @@ llms_txt:
   status: fetched
   file_count: 284
   size: 6.3MB
-  last_updated: 2026-04-03 01:48
-- name: masstransit
-  description: Masstransit Documentation
-  url: https://masstransit.com/
-  path: docs/llms-txt/masstransit/
-  status: fetched
-  file_count: 1
-  size: 379.1KB
   last_updated: 2026-04-03 01:48
 - name: mastercard
   description: Account Catalog Services
@@ -5198,14 +5158,6 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 8.8KB
-  last_updated: 2026-04-03 01:48
-- name: tinybird
-  description: Created topic sample-topic.
-  url: https://tinybird.com/
-  path: docs/llms-txt/tinybird/
-  status: fetched
-  file_count: 365
-  size: 80.9MB
   last_updated: 2026-04-03 01:48
 - name: tldraw
   description: tldraw SDK
@@ -7610,6 +7562,13 @@ github_scraped:
   status: fetched
   file_count: 104
   size: 306.1KB
+  last_updated: 2026-04-03 01:48
+- name: mailcatcher
+  description: mailcatcher from GitHub
+  path: docs/github-scraped/mailcatcher/
+  status: fetched
+  file_count: 4
+  size: 17.2KB
   last_updated: 2026-04-03 01:48
 - name: maplibre-gl
   description: maplibre-gl from GitHub
