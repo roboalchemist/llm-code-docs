@@ -10095,8 +10095,8 @@ web_scraped:
   description: beanie documentation
   path: docs/web-scraped/beanie/
   status: fetched
-  file_count: 6
-  size: 96.0KB
+  file_count: 7
+  size: 98.6KB
   last_updated: 2026-04-02 21:01
 - name: beartype
   description: beartype documentation
@@ -13022,7 +13022,7 @@ web_scraped:
   path: docs/web-scraped/serilog/
   status: fetched
   file_count: 20
-  size: 130.3KB
+  size: 107.7KB
   last_updated: 2026-04-02 21:01
 - name: serpapi
   description: serpapi documentation
