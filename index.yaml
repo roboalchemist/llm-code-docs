@@ -11635,8 +11635,8 @@ web_scraped:
   description: logscale documentation
   path: docs/web-scraped/logscale/
   status: fetched
-  file_count: 292
-  size: 174.5KB
+  file_count: 310
+  size: 185.0KB
   last_updated: 2026-04-03 01:40
 - name: loguru
   description: loguru documentation
