@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2026-04-03 02:09
-  total_sources: 22
-  total_fetched: 22
-  llms_txt_count: 3
-  llms_txt_fetched: 3
+  last_updated: 2026-04-03 02:11
+  total_sources: 23
+  total_fetched: 23
+  llms_txt_count: 4
+  llms_txt_fetched: 4
   github_count: 10
   github_fetched: 10
-  web_scraped_count: 9
-  web_scraped_fetched: 9
+  web_scraped_count: 10
+  web_scraped_fetched: 10
 llms_txt:
 - name: buffer
   description: buffer documentation
@@ -41,6 +41,14 @@ llms_txt:
   file_count: 1
   size: 16.0KB
   last_updated: 2026-04-03 02:09
+- name: stedi
+  description: Stedi Healthcare Documentation
+  url: https://www.stedi.com/docs/
+  path: docs/llms-txt/stedi/
+  status: fetched
+  file_count: 1
+  size: 13.1KB
+  last_updated: 2026-04-03 02:11
 github_scraped:
 - name: apache-atlas
   description: apache-atlas from GitHub
