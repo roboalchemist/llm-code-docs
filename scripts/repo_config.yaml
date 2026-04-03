@@ -3,6 +3,12 @@ settings:
   clone_timeout: 300
   temp_dir_base: null
 repositories:
+- name: Puppet
+  description: Puppet - Server automation framework and application for infrastructure management, configuration, and deployment
+  repo_url: https://github.com/puppetlabs/puppet.git
+  source_folder: docs
+  target_folder: docs/github-scraped/puppet
+  branch: main
 - name: APScheduler
   description: APScheduler - Advanced Python Scheduler for scheduling jobs to run
     at specific times or intervals with support for multiple schedulers, job stores,
