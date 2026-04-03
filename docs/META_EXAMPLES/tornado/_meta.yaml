@@ -1,0 +1,12 @@
+name: tornado
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/tornadoweb/tornado
+    last_fetched: "2026-03-30T14:08:00Z"
+description: >
+  Tornado is a Python web framework and asynchronous networking library. It uses
+  non-blocking network I/O to scale to tens of thousands of open connections, making
+  it well suited for long polling, WebSockets, and other applications that require
+  a long-lived connection to each user.
+quality_score: 71
