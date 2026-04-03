@@ -1,9 +1,5 @@
 # Source: https://docs.together.ai/docs/batch-inference.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.together.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 > Process jobs asynchronously with the Batch API.
 
 # Batch
@@ -313,11 +309,12 @@ At any time, you can see all your batches.
 
 ## Model availability & Pricing
 
-All models on serverless are supported for batch processing. The following selected models offer a discount:
+The following models are supported for batch processing:
 
 | Model ID                                          | Discount |
 | ------------------------------------------------- | -------- |
 | deepseek-ai/DeepSeek-R1-0528-tput                 | 50%      |
+| deepseek-ai/DeepSeek-V3                           | 50%      |
 | meta-llama/Llama-3-70b-chat-hf                    | 50%      |
 | meta-llama/Llama-3.3-70B-Instruct-Turbo           | 50%      |
 | meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8 | 50%      |
@@ -331,12 +328,18 @@ All models on serverless are supported for batch processing. The following selec
 | Qwen/Qwen2.5-7B-Instruct-Turbo                    | 50%      |
 | Qwen/Qwen3-235B-A22B-fp8-tput                     | 50%      |
 | openai/whisper-large-v3                           | 50%      |
+| google/gemma-3n-E4B-it                            | 0%       |
+| marin-community/marin-8b-instruct                 | 0%       |
 | meta-llama/Meta-Llama-3-70B-Instruct-Turbo        | 50%      |
 | Qwen/Qwen2.5-VL-72B-Instruct                      | 50%      |
+| Qwen/Qwen3-235B-A22B-Instruct-2507-tput           | 0%       |
+| togethercomputer/Refuel-Llm-V2                    | 0%       |
+| togethercomputer/Refuel-Llm-V2-Small              | 0%       |
+| Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8           | 0%       |
+| openai/gpt-oss-120b                               | 0%       |
 | zai-org/GLM-4.5-Air-FP8                           | 50%      |
 | Qwen/Qwen3-235B-A22B-Thinking-2507                | 50%      |
-
-For models not listed here, batch processing is available without any discount.
+| openai/gpt-oss-20b                                | 0%       |
 
 ## Rate limits
 
@@ -418,4 +421,6 @@ A: Yes, uploaded files can be reused for multiple batch jobs.
 A: Batch requests are billed when a succesful response is returned. If a batch job terminates early, or is cancelled, you will still be billed for all successful responses up to that point. You can find all successful responses are included in the resulting output\_file.
 
 
-Built with [Mintlify](https://mintlify.com).
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.together.ai/llms.txt

@@ -1,9 +1,5 @@
 # Source: https://docs.together.ai/docs/adapter-upload.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.together.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Upload a LoRA Adapter
 
 > Bring Your Own Adapter: Upload your own LoRA adapter and run inference on Together AI
@@ -23,10 +19,13 @@ Together AI supports uploading and running inference on custom [LoRA (Low-Rank A
 
 Currently, LoRA inference is supported for adapters based on the following base models in Together API. Whether using pre-fine-tuned models or bringing your own adapters, these are the only compatible models:
 
-| Organization | Base Model Name               | Base Model String                             | Quantization |
-| :----------- | :---------------------------- | :-------------------------------------------- | :----------- |
-| Meta         | Llama 4 Maverick Instruct     | meta-llama/Llama-4-Maverick-17B-128E-Instruct | FP8          |
-| Alibaba      | Qwen3 235B A22B Instruct 2507 | Qwen/Qwen3-235B-A22B-Instruct-2507-tput       | FP8          |
+| Organization | Base Model Name           | Base Model String                                | Quantization |
+| :----------- | :------------------------ | :----------------------------------------------- | :----------- |
+| Meta         | Llama 4 Maverick Instruct | meta-llama/Llama-4-Maverick-17B-128E-Instruct    | FP8          |
+| Meta         | Llama 3.1 8B Instruct     | meta-llama/Meta-Llama-3.1-8B-Instruct-Reference  | BF16         |
+| Meta         | Llama 3.1 70B Instruct    | meta-llama/Meta-Llama-3.1-70B-Instruct-Reference | BF16         |
+| Alibaba      | Qwen2.5 14B Instruct      | Qwen/Qwen2.5-14B-Instruct                        | FP8          |
+| Alibaba      | Qwen2.5 72B Instruct      | Qwen/Qwen2.5-72B-Instruct                        | FP8          |
 
 ## Implemenation guide
 
@@ -76,12 +75,12 @@ Make sure that the adapter contains `adapter_config.json` and `adapter_model.saf
 <CodeGroup>
   ```curl cURL theme={null}
   # From the Hugging Face Hub
-  HF_URL="https://huggingface.co/your-adapter-repo"
+  HF_URL="https://huggingface.co/reissbaker/llama-3.1-8b-abliterated-lora"
 
   MODEL_TYPE="adapter"
-  BASE_MODEL="meta-llama/Llama-4-Maverick-17B-128E-Instruct"
-  DESCRIPTION="test_lora"
-  ADAPTER_MODEL_NAME=test-lora-model-creation
+  BASE_MODEL="meta-llama/Meta-Llama-3.1-8B-Instruct-Reference"
+  DESCRIPTION="test_lora_8B"
+  ADAPTER_MODEL_NAME=test-lora-model-creation-8b
   HF_TOKEN=hf_token
   TOGETHER_API_KEY=together-api-key
 
@@ -246,6 +245,12 @@ Expected response:
 
 ### FAQs
 
+#### Q: What are the adapter limits based on my tier?
+
+<Frame>
+    <img src="https://mintcdn.com/togetherai-52386018/msWWavplJrEZR36N/images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png?fit=max&auto=format&n=msWWavplJrEZR36N&q=85&s=f27e607b8a55dfa1016c1954168ed2cd" alt="" data-og-width="1210" width="1210" data-og-height="800" height="800" data-path="images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/togetherai-52386018/msWWavplJrEZR36N/images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png?w=280&fit=max&auto=format&n=msWWavplJrEZR36N&q=85&s=5a87885e453221fd1c1916bffa8fa683 280w, https://mintcdn.com/togetherai-52386018/msWWavplJrEZR36N/images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png?w=560&fit=max&auto=format&n=msWWavplJrEZR36N&q=85&s=d9b1785fa2d5bb1ff45b88abd4ba4d31 560w, https://mintcdn.com/togetherai-52386018/msWWavplJrEZR36N/images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png?w=840&fit=max&auto=format&n=msWWavplJrEZR36N&q=85&s=c3bd41e1355239974123600a03114b7c 840w, https://mintcdn.com/togetherai-52386018/msWWavplJrEZR36N/images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png?w=1100&fit=max&auto=format&n=msWWavplJrEZR36N&q=85&s=d96222e04affc12d32d58c64c4b2cd71 1100w, https://mintcdn.com/togetherai-52386018/msWWavplJrEZR36N/images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png?w=1650&fit=max&auto=format&n=msWWavplJrEZR36N&q=85&s=72eeecb9e1a069c700ce19539a7ab5c8 1650w, https://mintcdn.com/togetherai-52386018/msWWavplJrEZR36N/images/docs/bc98169540fb29568558f6882c1a1ac8d2fb988269c49742b26a91afa1241094-image.png?w=2500&fit=max&auto=format&n=msWWavplJrEZR36N&q=85&s=a188a9c10919e3006d5adfb866bb5a0e 2500w" />
+</Frame>
+
 #### Q: Can I upload adapters trained on platforms other than Together AI?
 
 A: Yes, as long as the adapter is compatible with one of our supported base models and includes the required files
@@ -255,4 +260,6 @@ A: Yes, as long as the adapter is compatible with one of our supported base mode
 A: Currently, you need to upload with a new model name. Adapter versioning is not yet supported.
 
 
-Built with [Mintlify](https://mintlify.com).
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.together.ai/llms.txt

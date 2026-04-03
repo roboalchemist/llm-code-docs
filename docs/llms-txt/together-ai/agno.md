@@ -1,9 +1,5 @@
 # Source: https://docs.together.ai/docs/agno.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.together.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Agno
 
 > Using Agno with Together AI
@@ -54,4 +50,6 @@ Below is a simple agent with access to web search.
 </Info>
 
 
-Built with [Mintlify](https://mintlify.com).
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.together.ai/llms.txt

@@ -1,9 +1,5 @@
 # Source: https://docs.together.ai/reference/audio-transcriptions.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.together.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Create an Audio Transcription
 
 > Transcribes audio into text
@@ -68,109 +64,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorData'
-      x-codeSamples:
-        - lang: Python
-          label: Together AI SDK (v2)
-          source: |
-            # Docs for v1 can be found by changing the above selector ^
-            from together import Together
-
-            client = Together(
-                api_key=os.environ.get("TOGETHER_API_KEY"),
-            )
-
-            file = open("audio.wav", "rb")
-
-            response = client.audio.transcriptions.create(
-                model="openai/whisper-large-v3",
-                file=file,
-            )
-
-            print(response.text)
-        - lang: Python
-          label: Together AI SDK (v1)
-          source: |
-            from together import Together
-
-            client = Together(
-                api_key=os.environ.get("TOGETHER_API_KEY"),
-            )
-
-            file = open("audio.wav", "rb")
-
-            response = client.audio.transcriptions.create(
-                model="openai/whisper-large-v3",
-                file=file,
-            )
-
-            print(response.text)
-        - lang: TypeScript
-          label: Together AI SDK (TypeScript)
-          source: >
-            import Together from "together-ai";
-
-            import { readFileSync } from "fs";
-
-            import { join } from "path";
-
-
-            const client = new Together({
-              apiKey: process.env.TOGETHER_API_KEY,
-            });
-
-
-            const audioFilePath = join(process.cwd(), "audio.wav");
-
-            const audioBuffer = readFileSync(audioFilePath);
-
-            const audioFile = new File([audioBuffer], "audio.wav", { type:
-            "audio/wav" });
-
-
-            const response = await client.audio.transcriptions.create({
-              model: "openai/whisper-large-v3",
-              file: audioFile,
-            });
-
-
-            console.log(response.text);
-        - lang: JavaScript
-          label: Together AI SDK (JavaScript)
-          source: >
-            import Together from "together-ai";
-
-            import { readFileSync } from "fs";
-
-            import { join } from "path";
-
-
-            const client = new Together({
-              apiKey: process.env.TOGETHER_API_KEY,
-            });
-
-
-            const audioFilePath = join(process.cwd(), "audio.wav");
-
-            const audioBuffer = readFileSync(audioFilePath);
-
-            const audioFile = new File([audioBuffer], "audio.wav", { type:
-            "audio/wav" });
-
-
-            const response = await client.audio.transcriptions.create({
-              model: "openai/whisper-large-v3",
-              file: audioFile,
-            });
-
-
-            console.log(response.text);
-        - lang: Shell
-          label: cURL
-          source: |
-            curl -X POST "https://api.together.xyz/v1/audio/transcriptions" \
-                 -H "Authorization: Bearer $TOGETHER_API_KEY" \
-                 -F "file=@audio.wav" \
-                 -F "model=openai/whisper-large-v3"
 components:
   schemas:
     AudioTranscriptionRequest:
@@ -464,4 +357,6 @@ components:
 
 ````
 
-Built with [Mintlify](https://mintlify.com).
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.together.ai/llms.txt

@@ -1,9 +1,5 @@
 # Source: https://docs.together.ai/docs/autogen.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.together.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # AutoGen(AG2)
 
 > Using AutoGen(AG2) with Together AI
@@ -127,4 +123,6 @@ This code defines a helper function `is_prime(n)` to check if a number `n` is pr
 ````
 
 
-Built with [Mintlify](https://mintlify.com).
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.together.ai/llms.txt

@@ -1,9 +1,5 @@
 # Source: https://docs.together.ai/reference/audio-speech.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.together.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Create Audio Generation Request
 
 > Generate audio from input text
@@ -73,103 +69,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorData'
-      x-codeSamples:
-        - lang: Python
-          label: Together AI SDK (v2)
-          source: |
-            # Docs for v1 can be found by changing the above selector ^
-            from together import Together
-            import os
-
-            client = Together(
-                api_key=os.environ.get("TOGETHER_API_KEY"),
-            )
-
-            response = client.audio.speech.with_streaming_response.create(
-                model="cartesia/sonic-2",
-                input="The quick brown fox jumps over the lazy dog.",
-                voice="laidback woman",
-            )
-
-            with response as stream:
-              stream.stream_to_file("audio.wav")
-        - lang: Python
-          label: Together AI SDK (v1)
-          source: |
-            from together import Together
-            import os
-
-            client = Together(
-                api_key=os.environ.get("TOGETHER_API_KEY"),
-            )
-
-            response = client.audio.speech.create(
-                model="cartesia/sonic-2",
-                input="The quick brown fox jumps over the lazy dog.",
-                voice="laidback woman",
-            )
-
-            response.stream_to_file("audio.wav")
-        - lang: TypeScript
-          label: Together AI SDK (TypeScript)
-          source: |
-            import Together from "together-ai";
-            import { createWriteStream } from "fs";
-            import { join } from "path";
-            import { pipeline } from "stream/promises";
-
-            const client = new Together({
-              apiKey: process.env.TOGETHER_API_KEY,
-            });
-
-            const response = await client.audio.speech.create({
-              model: "cartesia/sonic-2",
-              input: "The quick brown fox jumps over the lazy dog.",
-              voice: "laidback woman",
-            });
-
-            const filepath = join(process.cwd(), "audio.wav");
-            const writeStream = createWriteStream(filepath);
-
-            if (response.body) {
-              await pipeline(response.body, writeStream);
-            }
-        - lang: JavaScript
-          label: Together AI SDK (JavaScript)
-          source: |
-            import Together from "together-ai";
-            import { createWriteStream } from "fs";
-            import { join } from "path";
-            import { pipeline } from "stream/promises";
-
-            const client = new Together({
-              apiKey: process.env.TOGETHER_API_KEY,
-            });
-
-            const response = await client.audio.speech.create({
-              model: "cartesia/sonic-2",
-              input: "The quick brown fox jumps over the lazy dog.",
-              voice: "laidback woman",
-            });
-
-            const filepath = join(process.cwd(), "audio.wav");
-            const writeStream = createWriteStream(filepath);
-
-            if (response.body) {
-              await pipeline(response.body, writeStream);
-            }
-        - lang: Shell
-          label: cURL
-          source: |
-            curl -X POST "https://api.together.xyz/v1/audio/speech" \
-                 -H "Authorization: Bearer $TOGETHER_API_KEY" \
-                 -H "Content-Type: application/json" \
-                 -d '{
-                   "model": "cartesia/sonic-2",
-                   "input": "The quick brown fox jumps over the lazy dog.",
-                   "voice": "laidback woman"
-                 }' \
-                 --output audio.wav
 components:
   schemas:
     AudioSpeechRequest:
@@ -317,8 +216,9 @@ components:
         - b64
       properties:
         object:
-          description: The object type, which is always `audio.tts.chunk`.
-          const: audio.tts.chunk
+          type: string
+          enum:
+            - audio.tts.chunk
         model:
           type: string
           example: cartesia/sonic
@@ -334,4 +234,6 @@ components:
 
 ````
 
-Built with [Mintlify](https://mintlify.com).
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.together.ai/llms.txt
