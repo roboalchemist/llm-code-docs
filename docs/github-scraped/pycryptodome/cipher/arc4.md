@@ -1,7 +1,7 @@
 ARC4
 ====
 
-> **Warning:**
+.. warning::
    ARC4 is not secure.
    Use :doc:`chacha20_poly1305` or :doc:`aes` (AEX or GCM mode) instead.
    This module is provided only for legacy purposes.

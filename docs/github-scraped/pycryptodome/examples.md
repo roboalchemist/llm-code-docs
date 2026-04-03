@@ -12,7 +12,7 @@ With CTR alone, the receiver is not able to detect if the *ciphertext* (i.e., th
 data) was modified while in transit. To address that risk, we also attach
 a MAC authentication tag (HMAC with SHA256), made with a second key.
 
-``` python
+.. code-block:: python
 
     from Crypto.Cipher import AES
     from Crypto.Hash import HMAC, SHA256
@@ -40,7 +40,7 @@ a MAC authentication tag (HMAC with SHA256), made with a second key.
 At the other end, the receiver can securely load the piece of data back (if they know the two keys!).
 Note that the code generates a ``ValueError`` exception when tampering is detected.
 
-``` python
+.. code-block:: python
 
     import sys
     from Crypto.Cipher import AES
@@ -77,7 +77,7 @@ modes have been created such as, the :ref:`OCB mode <ocb_mode>`
 (see also other :ref:`authenticated encryption modes <modern_cipher_modes>`
 like :ref:`EAX <eax_mode>`, :ref:`GCM <gcm_mode>`, :ref:`CCM <ccm_mode>`, :ref:`SIV <siv_mode>`).
 
-``` python
+.. code-block:: python
 
     from Crypto.Cipher import AES
     from Crypto.Random import get_random_bytes
@@ -100,7 +100,7 @@ like :ref:`EAX <eax_mode>`, :ref:`GCM <gcm_mode>`, :ref:`CCM <ccm_mode>`, :ref:`
 
 Decryption is also simpler:
 
-``` python
+.. code-block:: python
 
     import sys
     from Crypto.Cipher import AES
@@ -129,7 +129,7 @@ The following code generates a new RSA key pair (secret) and saves it into a fil
 We use the :ref:`scrypt <scrypt_func>` key derivation function to thwart dictionary attacks.
 At the end, the code prints our the RSA public key in ASCII/PEM format:
 
-``` python
+.. code-block:: python
 
     from Crypto.PublicKey import RSA
 
@@ -146,7 +146,7 @@ At the end, the code prints our the RSA public key in ASCII/PEM format:
 
 The following code reads the private RSA key back in, and then prints again the public key:
 
-``` python
+.. code-block:: python
 
     from Crypto.PublicKey import RSA
 
@@ -162,7 +162,7 @@ Generate public key and private key
 
 The following code generates public key stored in ``receiver.pem`` and private key stored in ``private.pem``. These files will be used in the examples below. Every time, it generates different public key and private key pair.
 
-``` python
+.. code-block:: python
 
     from Crypto.PublicKey import RSA
 
@@ -187,7 +187,7 @@ The session key can then be used to encrypt all the actual data.
 
 As in the first example, we use the EAX mode to allow detection of unauthorized modifications.
 
-``` python
+.. code-block:: python
 
     from Crypto.PublicKey import RSA
     from Crypto.Random import get_random_bytes
@@ -217,7 +217,7 @@ As in the first example, we use the EAX mode to allow detection of unauthorized 
 The receiver has the private RSA key. They will use it to decrypt the session key
 first, and with that the rest of the file:
 
-``` python
+.. code-block:: python
 
     from Crypto.PublicKey import RSA
     from Crypto.Cipher import AES, PKCS1_OAEP

@@ -1,7 +1,7 @@
 Blowfish
 ========
 
-> **Warning:**
+.. warning::
     Use :doc:`aes`. This module is provided only for legacy purposes.
 
 Blowfish_ is a symmetric block cipher designed by Bruce Schneier.

@@ -307,7 +307,7 @@ Example (decryption)::
     >>> except (ValueError, KeyError):
     >>>     print("Incorrect decryption")
 
-> **Note:**
+.. note::
   GCM is most commonly used with 96-bit (12-byte) nonces, which is also the length recommended by NIST SP 800-38D.
 
   If interoperability is important, one should take into account that the library default
@@ -428,7 +428,7 @@ OCB was patented in USA but the author eventually `abandoned the patents <https:
 The :func:`new` function at the module level under ``Crypto.Cipher`` instantiates
 a new OCB cipher object for the relevant base algorithm.
 
-> **Note:**
+.. note::
 
     The OCB state machine is slightly different compared to other modes:
     if you encrypt (or decrypt) multiple chunks,

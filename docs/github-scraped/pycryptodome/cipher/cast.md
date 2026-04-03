@@ -1,7 +1,7 @@
 CAST-128
 ========
 
-> **Warning:**
+.. warning::
     Use :doc:`aes`. This module is provided only for legacy purposes.
 
 CAST-128_ (or CAST5) is a symmetric block cipher specified in RFC2144_.

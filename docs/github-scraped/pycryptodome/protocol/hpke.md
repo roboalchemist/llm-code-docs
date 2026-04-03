@@ -48,7 +48,7 @@ secret key (at least 32 random bytes), and contribute that to both encryption an
 
 Finally, the two authentication modes can also be combined together (*AuthPSK* mode).
 
-> **Note:**
+.. note::
 
    The PSK is only used to authenticate the messages; it is not a replacement
    for the asymmetric key that the receiver must provide to the sender.

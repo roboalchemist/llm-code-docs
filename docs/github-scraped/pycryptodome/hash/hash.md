@@ -42,7 +42,7 @@ A first piece of message to hash can be passed to :func:`new` with the :attr:`da
     >>
     >> hash_object = SHA256.new(data=b'First')
 
-> **Note:**
+.. note::
     You can only hash *byte strings* or *byte arrays* (no Python 2 Unicode strings
     or Python 3 strings).
 

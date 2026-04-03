@@ -24,7 +24,7 @@ And this is how you would decrypt it:
     >>> cipher = Salsa20.new(key=secret, nonce=msg_nonce)
     >>> plaintext = cipher.decrypt(ciphertext)
 
-> **Warning:**
+.. warning::
 
     ``Salsa20`` does not guarantee authenticity of the data you decrypt!
     In other words, an attacker may manipulate the data in transit.

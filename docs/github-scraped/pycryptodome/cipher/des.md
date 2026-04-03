@@ -1,7 +1,7 @@
 Single DES
 ==========
 
-> **Warning:**
+.. warning::
     Use :doc:`aes` instead. This module is provided only for legacy purposes.
 
 DES `(Data Encryption Standard)`__ is a symmetric block cipher standardized

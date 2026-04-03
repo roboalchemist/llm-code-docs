@@ -13,10 +13,10 @@ For example:
 MD5 stand for Message Digest version 5, and it was invented by Rivest in 1991.
 
 
-> **Warning:**
+.. warning::
     This algorithm is not considered secure. Do not use it for new designs.
 
-> **Warning:**
+.. warning::
     MD5 is vulnerable to `length-extension attacks <https://crypto.stackexchange.com/questions/3978/understanding-the-length-extension-attack>`_,
     which are relevant if you are computing the hash of a secret message.
     

@@ -60,7 +60,7 @@ The base API of a cipher is fairly simple:
     For most algorithms, you may call :func:`decrypt` multiple times
     (i.e. once for each piece of ciphertext).
 
-> **Note:**
+.. note::
 
     Plaintexts and ciphertexts (input/output) can only be ``bytes``,
     ``bytearray`` or ``memoryview``.

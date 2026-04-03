@@ -59,7 +59,7 @@ you need to explicitly generate and pass a 96 bit (12 byte) ``nonce`` parameter 
     nonce_rfc7539 = get_random_bytes(12)
     cipher = ChaCha20.new(key=key, nonce=nonce_rfc7539)
 
-> **Warning:**
+.. warning::
 
     ``ChaCha20`` does not guarantee authenticity of the data you decrypt!
     In other words, an attacker may manipulate the data in transit.

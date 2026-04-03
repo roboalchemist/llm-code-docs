@@ -175,7 +175,7 @@ PBKDF1
 
 PBKDF1 is an old key derivation function defined in version 2.0 of the PKCS#5 standard (v1.5) or in `RFC2898 <https://www.ietf.org/rfc/rfc2898.txt>`_.
 
-> **Warning:**
+.. warning::
     Newer applications should use the more secure and versatile :ref:`scrypt <scrypt_func>` instead.
 
 .. autofunction:: Crypto.Protocol.KDF.PBKDF1

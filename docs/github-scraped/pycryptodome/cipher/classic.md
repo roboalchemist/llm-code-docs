@@ -48,7 +48,7 @@ ECB mode
 The most basic but also the weakest mode of operation.
 Each block of plaintext is encrypted independently of any other block.
 
-> **Warning:**
+.. warning::
  The ECB mode should not be used because it is `semantically insecure <https://en.wikipedia.org/wiki/Semantic_security>`_.
  For one, it exposes correlation between blocks.
 

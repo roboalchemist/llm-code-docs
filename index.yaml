@@ -8,10 +8,10 @@
 
 metadata:
   last_updated: 2026-04-03 01:41
-  total_sources: 1855
-  total_fetched: 1855
-  llms_txt_count: 726
-  llms_txt_fetched: 726
+  total_sources: 1856
+  total_fetched: 1856
+  llms_txt_count: 727
+  llms_txt_fetched: 727
   github_count: 523
   github_fetched: 523
   web_scraped_count: 606
@@ -2317,6 +2317,14 @@ llms_txt:
   file_count: 261
   size: 31.5MB
   last_updated: 2026-04-03 01:41
+- name: huggingface-accelerate
+  description: huggingface-accelerate documentation
+  url: https://huggingface-accelerate.com/
+  path: docs/llms-txt/huggingface-accelerate/
+  status: fetched
+  file_count: 2
+  size: 1.2MB
+  last_updated: 2026-04-03 01:41
 - name: huggingface-diffusers
   description: diffusers/CODE_OF_CONDUCT.md at main · huggingface/diffusers · GitHub
   url: https://huggingface-diffusers.com/
@@ -3324,8 +3332,8 @@ llms_txt:
   url: https://mlflow.com/
   path: docs/llms-txt/mlflow/
   status: fetched
-  file_count: 35
-  size: 418.5KB
+  file_count: 55
+  size: 886.1KB
   last_updated: 2026-04-03 01:41
 - name: mlrun
   description: MLRun
@@ -8301,8 +8309,8 @@ github_scraped:
   description: pycryptodome from GitHub
   path: docs/github-scraped/pycryptodome/
   status: fetched
-  file_count: 76
-  size: 180.5KB
+  file_count: 77
+  size: 180.9KB
   last_updated: 2026-04-03 01:41
 - name: pytermgui
   description: pytermgui from GitHub
@@ -11627,8 +11635,8 @@ web_scraped:
   description: logscale documentation
   path: docs/web-scraped/logscale/
   status: fetched
-  file_count: 351
-  size: 210.4KB
+  file_count: 375
+  size: 228.1KB
   last_updated: 2026-04-03 01:41
 - name: loguru
   description: loguru documentation

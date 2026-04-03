@@ -12,7 +12,7 @@ For example::
 
 MD2 stand for Message Digest version 2, and it was invented by Rivest in 1989.
 
-> **Warning:**
+.. warning::
     This algorithm is not considered secure. Do not use it for new designs.
 
 .. _RFC1319: http://tools.ietf.org/html/rfc1319

@@ -13,10 +13,10 @@ For example::
 RIPEMD-160 stands for RACE Integrity Primitives Evaluation Message Digest
 with a 160 bit digest. It was invented by Dobbertin, Bosselaers, and Preneel.
 
-> **Warning:**
+.. warning::
     This algorithm is not considered secure. Do not use it for new designs.
 
-> **Warning:**
+.. warning::
     RIPEMD-160 is vulnerable to `length-extension attacks <https://crypto.stackexchange.com/questions/3978/understanding-the-length-extension-attack>`_,
     which are relevant if you are computing the hash of a secret message.
     

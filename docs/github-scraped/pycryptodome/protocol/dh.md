@@ -18,7 +18,7 @@ and use those to encrypt and authenticate subsequent messages.
     :align: center
 
 
-> **Note:**
+.. note::
 
   The Diffie-Hellman protocol is fairly generic and it can be implemented
   in many ways.

@@ -29,13 +29,13 @@ We assume the key is stored in a file called ``private.pem``::
         >>> cipher = PKCS1_OAEP.new(key)
         >>> message = cipher.decrypt(ciphertext)
 
-> **Warning:**
+.. warning::
    PKCS#1 OAEP does not guarantee authenticity of the message you decrypt.
    Since the public key is not secret, everybody could have created
    the encrypted message.
    Asymmetric encryption is typically paired with a digital signature.
 
-> **Note:**
+.. note::
    This module does not generate nor load RSA keys.
    Refer to the :mod:`Crypto.PublicKey.RSA` module.
 

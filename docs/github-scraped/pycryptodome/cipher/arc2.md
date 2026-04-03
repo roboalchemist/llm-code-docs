@@ -1,7 +1,7 @@
 RC2
 ===
 
-> **Warning:**
+.. warning::
     Use :doc:`aes` instead. This module is provided only for legacy purposes.
 
 RC2_ (Rivest's Cipher version 2)  is a symmetric block cipher designed

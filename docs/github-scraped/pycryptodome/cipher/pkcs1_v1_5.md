@@ -1,7 +1,7 @@
 PKCS#1 v1.5 encryption (RSA)
 ============================
 
-> **Warning:**
+.. warning::
     Use :doc:`oaep` instead. This module is provided only for legacy purposes.
 
 See RFC8017__ or the `original RSA Labs specification`__ .

@@ -12,10 +12,10 @@ For example::
 
 *SHA* stands for Secure Hash Algorithm.
 
-> **Warning:**
+.. warning::
     This algorithm is not considered secure. Do not use it for new designs.
 
-> **Warning:**
+.. warning::
     SHA-1 is vulnerable to `length-extension attacks <https://crypto.stackexchange.com/questions/3978/understanding-the-length-extension-attack>`_,
     which are relevant if you are computing the hash of a secret message.
     

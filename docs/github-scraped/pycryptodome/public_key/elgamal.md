@@ -1,7 +1,7 @@
 El Gamal
 ========
 
-> **Warning:**
+.. warning::
     Even though ElGamal algorithms are in theory reasonably secure,
     in practice there are no real good reasons to prefer them to :doc:`rsa`
     instead.

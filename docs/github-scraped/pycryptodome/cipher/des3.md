@@ -1,7 +1,7 @@
 Triple DES
 ==========
 
-> **Warning:**
+.. warning::
     Use :doc:`aes` instead. This module is provided only for legacy purposes.
 
 `Triple DES`__ (or TDES or TDEA or 3DES) is a symmetric block cipher
