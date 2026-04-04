@@ -1,0 +1,239 @@
+# Source: https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge.md
+
+---
+title: LLM-as-a-Judge Evaluation
+sidebarTitle: LLM-as-a-Judge
+description: Configure, run, and monitor LLM-powered evaluators on observations, traces, and experiments.
+---
+
+# LLM-as-a-Judge
+
+Use an LLM to automatically score your application outputs. For this evaluation method, the LLM is presented with an observation, trace or experiment item and asked to score and reason about the output. It will then produce a [`score`](/docs/evaluation/core-concepts#scores) including a comment with chain-of-thought reasoning.
+
+<Video
+  src="https://static.langfuse.com/docs-videos/2025-12-19-llm-as-a-judge-overview.mp4"
+  aspectRatio={16 / 9}
+  gifStyle
+/>
+
+## Why use LLM-as-a-judge?
+
+- **Scalable:** Judge thousands of outputs quickly versus human annotators.
+- **Human‑like:** Captures nuance (e.g. helpfulness, toxicity, relevance) better than simple metrics, especially when rubric‑guided.
+- **Repeatable:** With a fixed rubric, you can rerun the same prompts to get consistent scores.
+
+## Set up step-by-step
+
+<Steps>
+
+### Create a new LLM-as-a-Judge evaluator
+
+Navigate to the Evaluators page and click on the `+ Set up Evaluator` button.
+
+<Frame fullWidth>![Evaluator create](/images/docs/evaluator-create.png)</Frame>
+
+### Set the default model
+
+Next, define the default model used for the evaluations. This step requires an LLM Connection to be set up. Please see [LLM Connections](/docs/administration/llm-connection) for more information.
+
+<Callout type="info">
+  It's crucial that the chosen default model supports structured output. This is
+  essential for our system to correctly interpret the evaluation results from
+  the LLM judge.
+</Callout>
+
+### Pick an Evaluator
+
+<Frame fullWidth>![Evaluator select](/images/docs/evaluator-select.png)</Frame>
+
+Next, select an evaluator. There are two main ways:
+
+<Tabs items={["Managed Evaluator", "Custom Evaluator"]}>
+<Tab>
+
+Langfuse ships a growing catalog of evaluators built and maintained by us and partners like **Ragas**. Each evaluator captures best-practice evaluation prompts for a specific quality dimension—e.g. _Hallucination_, _Context-Relevance_, _Toxicity_, _Helpfulness_.
+
+- **Ready to use**: no prompt writing required.
+- **Continuously expanded**: by adding OSS partner-maintained evaluators and more evaluator types in the future (e.g. regex-based).
+
+</Tab>
+<Tab>
+
+When the library doesn't fit your specific needs, add your own:
+
+1. Draft an evaluation prompt with `{{variables}}` placeholders (`input`, `output`, `ground_truth` …).
+2. Optional: Customize the **score** (0-1) and **reasoning** prompts to guide the LLM in scoring.
+3. Optional: Pin a custom dedicated model for this evaluator. If no custom model is specified, it will use the default evaluation model (see Section 2).
+4. Save → the evaluator can now be reused across your project.
+
+</Tab>
+</Tabs>
+
+### Choose which Data to Evaluate
+
+With your evaluator and model selected, you now specify which data to run the evaluations on. You can choose between scoring **live tracing data** or **offline experiments**.
+
+<Tabs items={["Live Data", "Experiments"]}>
+<Tab>
+
+Evaluating live production traffic allows you to monitor the performance of your LLM application in real-time.
+
+<Tabs items={["Observations (Recommended)", "Traces (Deprecated)"]}>
+<Tab>
+
+**Live Observations (Recommended)**
+
+Run evaluators on individual observations such as LLM calls, tool invocations, or agent steps. This provides:
+
+- **Granular control**: Target specific observations in your trace
+- **Performant system**: Optimized architecture for high-volume evaluation
+- **Flexible filtering**: Apply a combination of trace and observation filters
+
+<Callout type="info">
+**SDK Requirements**
+
+| Requirement | Python | JS/TS |
+|-------------|--------|-------|
+| **Minimum SDK version** | v3+ (OTel-based) | v4+ (OTel-based) |
+| **Migration guide** | [Python v2 → v3](/docs/observability/sdk/upgrade-path#python-sdk-v2--v3) | [JS/TS v3 → v4](/docs/observability/sdk/upgrade-path#jsts-sdk-v3--v4) |
+
+**Filtering by trace attributes**: To filter observations by trace-level attributes (`userId`, `sessionId`, `version`, `tags`, `metadata`, `trace_name`), you must use [`propagate_attributes()`](/docs/observability/sdk/instrumentation#add-attributes-to-observations) in your instrumentation code. Without this, trace attributes will not be available on observations.
+</Callout>
+
+**How it works**:
+
+1. Select "Live Observations" as your evaluation target
+2. Narrow down the evaluation to a specific subset of data you're interested in (`observation type`, `trace name`, `trace tags`, `userId`, `sessionId`, `metadata` etc.)
+3. To manage costs and evaluation throughput, you can configure the evaluator to run on a percentage (e.g., 5%) of the matched observations.
+
+</Tab>
+
+<Tab>
+
+**Live Traces (Deprecated)**
+
+<Callout type="warning">
+**Deprecated**: We recommend using evaluators on observations for better performance and reliability. Evaluators running on traces will continue to work but won't receive new features.
+
+**When to use**:
+
+- You're on a legacy SDK version (Python v2 or JS/TS v3) and cannot upgrade
+- You have existing trace-level evals that work for your use case
+- You need to evaluate aggregate trace-level data
+
+**Important**: If you're using the OTel-based SDKs (Python v3+ or JS/TS v4+), you must call `update_trace()` to populate trace input/output, or migrate to observation-level evaluators.
+
+**Migration Path**: Use our [migration guide](/faq/all/llm-as-a-judge-migration) to upgrade your evaluators to run on observations.
+
+</Callout>
+
+Run evaluators on complete traces. This legacy approach:
+
+- Evaluates entire trace execution
+- Limited to trace-level filtering
+
+**How it works**:
+
+1. Select "Live Traces" as your evaluation target
+2. Narrow down the evaluation to a specific subset of data you're interested in. You can filter by trace name, tags, `userId` and more. Combine filters freely.
+3. Choose whether to run on _new_ traces only and/or _existing_ traces once (for backfilling). When in doubt, we recommend running on _new_ traces.
+4. To manage costs and evaluation throughput, you can configure the evaluator to run on a percentage (e.g., 5%) of the matched traces.
+5. Langfuse shows a sample of traces from the last 24 hours that match your current filters, allowing you to sanity-check your selection.
+
+<Frame fullWidth>
+  ![Production tracing data](/images/docs/evaluator-trace-filter.png)
+</Frame>
+
+</Tab>
+</Tabs>
+
+</Tab>
+<Tab>
+
+LLM-as-a-Judge evaluators can score the results of your Experiments.
+
+**[Experiments via UI](/docs/evaluation/experiments/experiments-via-ui)**: When running Experiments via UI, you can simply select which evaluators you want to run. These selected evaluators will then automatically execute on the data generated by your next run.
+
+**[Experiments via SDK](/docs/evaluation/experiments/experiments-via-sdk)**: You can configure evaluators directly in the code by using the [Experiment Runner SDK](/docs/evaluation/experiments/experiments-via-sdk#advanced-features).
+
+<Callout type="info">
+**SDK Requirements for Experiments via SDK**
+
+| Requirement | Python | JS/TS |
+|-------------|--------|-------|
+| **Minimum SDK version** | >= 3.9.0 | >= 4.4.0 |
+| **Required function** | [`run_experiment()`](/docs/evaluation/experiments/experiments-via-sdk) | [`experiment.run()`](/docs/evaluation/experiments/experiments-via-sdk) |
+
+You must use the experiment runner SDK functions listed above. Simply having the correct SDK version is not sufficient.
+</Callout>
+
+</Tab>
+</Tabs>
+
+### Map Variables & preview Evaluation Prompt
+
+You now need to teach Langfuse _which properties_ of your observation, trace, or experiment item represent the actual data to populate these variables for a sensible evaluation. For instance, you might map your system's logged observation input to the prompt's `{{input}}` variable, and the LLM response (observation output) to the prompt's `{{output}}` variable. This mapping is crucial for ensuring the evaluation is sensible and relevant.
+
+<Tabs items={["Live Data", "Experiments"]}>
+<Tab>
+
+- **Prompt Preview**: As you configure the mapping, Langfuse shows a **live preview of the evaluation prompt populated with actual data**. This preview uses historical data from the last 24 hours that matched your filters. You can navigate through several examples to see how their respective data fills the prompt, helping you build confidence that the mapping is correct.
+- **JSONPath**: If the data is nested (e.g., within a JSON object), you can use a JSONPath expression (like `$.choices[0].message.content`) to precisely locate it.
+
+<Frame fullWidth>![Filter preview](/images/docs/evaluator-mapping.png)</Frame>
+
+</Tab>
+<Tab>
+
+- **Suggested mappings**: The system will often be able to autocomplete common mappings based on typical field names in experiments. For example, if you're evaluating for correctness, and your prompt includes `{{input}}`, `{{output}}`, and `{{ground_truth}}` variables, we would likely suggest mapping these to the experiment item's input, output, and expected_output respectively.
+- **Edit mappings**: You can easily edit these suggestions if your experiment schema differs. You can map any properties of your experiment item (e.g., `input`, `expected_output`). Further, as experiments create traces under the hood, using the trace input/output as the evaluation input/output is a common pattern. Think of the trace output as your experiment run's output.
+
+</Tab>
+</Tabs>
+
+### Trigger the evaluation
+
+To see your evaluator in action, you need to either [send traces](/docs/observability/get-started) (fastest) or trigger an experiment run (takes longer to setup) via the [UI](/docs/evaluation/experiments/experiments-via-ui) or [SDK](/docs/evaluation/experiments/experiments-via-sdk). Make sure to set the correct target data in the evaluator settings according to how you want to trigger the evaluation.
+
+</Steps>
+
+✨ Done! You have successfully set up an evaluator which will run on your data.
+
+<Callout type="info">
+  Need custom logic? Use the SDK instead—see [Custom
+  Scores](/docs/evaluation/evaluation-methods/custom-scores) or an [external
+  pipeline example](/docs/scores/external-evaluation-pipelines).
+</Callout>
+
+## Debug LLM-as-a-Judge Executions
+
+Every LLM-as-a-Judge evaluator execution creates a full trace, giving you complete visibility into the evaluation process. This allows you to debug prompt issues, inspect model responses, monitor token usage, and trace evaluation history.
+
+You can show the LLM-as-a-Judge execution traces by filtering for the environment `langfuse-llm-as-a-judge` in the tracing table:
+
+<Frame fullWidth>
+  ![Tracing table filtered to langfuse-llm-as-a-judge
+  environment](/images/docs/evaluation/llm-as-a-judge-debug-traces.png)
+</Frame>
+
+<details>
+<summary>LLM-as-a-Judge Execution Status</summary>
+
+- **Completed**: Evaluation finished successfully.
+- **Error**: Evaluation failed (click execution trace ID for details).
+- **Delayed**: Evaluation hit rate limits by the LLM provider and is being retried with exponential backoff.
+- **Pending**: Evaluation is queued and waiting to run.
+
+</details>
+
+## Advanced Topics
+
+### Migrating from Trace-Level to Observation-Level Evaluators
+
+If you have existing evaluators running on traces and want to upgrade to running on observations for better performance and reliability, check out our comprehensive [Evaluator Migration Guide](/faq/all/llm-as-a-judge-migration).
+
+## GitHub Discussions
+
+import { GhDiscussionsPreview } from "@/components/gh-discussions/GhDiscussionsPreview";
+
+<GhDiscussionsPreview labels={["feat-evals"]} />

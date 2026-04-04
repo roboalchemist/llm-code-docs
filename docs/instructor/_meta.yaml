@@ -1,0 +1,9 @@
+name: instructor
+primary_source: llms
+sources:
+  - type: llms
+    url: https://python.useinstructor.com/
+    last_fetched: "2026-04-03T23:09:09Z"
+description: >
+  instructor documentation
+quality_score: 0

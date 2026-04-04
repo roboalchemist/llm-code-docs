@@ -1,0 +1,9 @@
+name: lynx
+primary_source: llms
+sources:
+  - type: llms
+    url: https://lynxjs.org/
+    last_fetched: "2026-04-03T23:09:19Z"
+description: >
+  lynx documentation
+quality_score: 0

@@ -1,0 +1,952 @@
+# Source: https://lingui.dev/ref/macro.md
+
+# Macros
+
+Lingui Macro provides powerful macros to transform JavaScript objects and JSX elements into [ICU MessageFormat](/guides/message-format.md) messages at compile time. It provides a more efficient and developer-friendly way to handle internationalization in your project.
+
+The benefits of using macros:
+
+* You don't have to learn ICU MessageFormat syntax. You always use familiar JS and JSX code.
+* Components and functions are type checked.
+* Short IDs are generated for your messages.
+* Additional validation of plural rules is performed during transformation.
+* Non-essential data is removed from the production build (e.g. comments and default messages) to save a few bytes.
+
+There are two types of macros: [Core Macros](#core-macros) (JS) and [React Macros](#react-macros) (JSX).
+
+## Core Macros[​](#core-macros "Direct link to Core Macros")
+
+Core (JS) Macros can be used in any JavaScript context (e.g. outside JSX). All JS macros are transformed into a *Message Descriptor* wrapped inside of [`i18n._`](/ref/core.md#i18n._) call:
+
+```
+import { t } from "@lingui/core/macro";
+t`Attachment ${name} saved`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+i18n._(
+  /*i18n*/ {
+    id: "nwR43V",
+    message: "Attachment {name} saved",
+    values: { name },
+  }
+);
+```
+
+`/*i18n*/` comment
+
+In the example above you may notice the `/*i18n*/` comment in the macro output. This comment tells the extract plugin that the following object should be collected into the message catalog.
+
+*Message Descriptor* is an object with a message ID, default message and other parameters:
+
+```
+type MessageDescriptor = {
+  id: string;
+  message?: string;
+  values?: Record<string, any>;
+  comment?: string;
+};
+```
+
+The `id` is the message ID and is the only parameter required. The `id` and `message` are extracted into the message catalog. Only `id` and `values` are used at runtime, all other attributes are removed from the production code for size optimization.
+
+You don't need to specify the ID manually. By default, Macro will automatically create a short ID from your message. However, you can explicitly specify a custom ID. Read more about [Explicit vs Generated IDs](/guides/explicit-vs-generated-ids.md).
+
+### `t`[​](#t "Direct link to t")
+
+The most common macro for messages. It transforms tagged template literal into message in ICU MessageFormat:
+
+```
+import { t } from "@lingui/core/macro";
+const message = t`Hello World`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "mY42CM",
+    message: "Hello World",
+  }
+);
+```
+
+Message variables are supported:
+
+```
+import { t } from "@lingui/core/macro";
+const message = t`My name is ${name}`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "mVmaLu",
+    message: "My name is {name}",
+    values: { name },
+  }
+);
+```
+
+In fact, any expression can be used inside template literal. However, only simple variables are referenced by name in a transformed message. All other expressions are referenced by their numeric index:
+
+```
+import { t } from "@lingui/core/macro";
+const message = t`Today is ${new Date()}`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+
+const message = i18n._(
+  /*i18n*/ {
+    id: "2aJT27",
+    message: "Today is {0}",
+    values: { 0: new Date() },
+  }
+);
+```
+
+info
+
+By default the `i18n` object is imported from [`@lingui/core`](/ref/core.md). If you are using a custom instance of the `i18n` object, you need to set [`runtimeConfigModule`](/ref/conf.md#runtimeconfigmodule) or pass a custom instance to [`t`](/ref/macro.md#t).
+
+It's also possible to pass custom `id` and `comment` for translators by calling `t` macro with a message descriptor:
+
+```
+import { t } from "@lingui/core/macro";
+const message = t({
+  id: "msg.hello",
+  comment: "Greetings at the homepage",
+  message: `Hello ${name}`,
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "msg.hello",
+    comment: "Greetings at the homepage",
+    message: "Hello {name}",
+    values: { name },
+  }
+);
+```
+
+In this case, `message` is used as the default message, and it's transformed as if it were wrapped in a `t` macro. `message` also accepts any other macros:
+
+```
+import { t } from "@lingui/core/macro";
+const message = t({
+  id: "msg.plural",
+  message: plural(value, { one: "...", other: "..." }),
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "msg.plural",
+    message: "{value, plural, one {...} other {...}}",
+    values: { value },
+  }
+);
+```
+
+### `plural`[​](#plural "Direct link to plural")
+
+Pluralization is a common problem in i18n. Different languages have different rules for plural form (e.g. English has only `one` and `other`, while Czech has `one`, `few`, `many` and `other`). The `plural` macro is used to handle this.
+
+```
+plural(value: string | number, options: Object)
+```
+
+The `value` specifies the plural form or cardinal number. The second argument, `options`, is an object with available plural forms:
+
+```
+import { plural } from "@lingui/core/macro";
+const message = plural(count, {
+  one: "# Book",
+  other: "# Books",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "V/M0Vc",
+    message: "{count, plural, one {# Book} other {# Books}}",
+    values: { count },
+  }
+);
+```
+
+tip
+
+Choose the plural forms used in your source code based on the pluralization rules of your source locale.
+
+If you need to add variables in plural form, you can use template string literals. This time you don't need the [`t`](/ref/macro.md#t) macro, because template strings are transformed automatically:
+
+```
+import { plural } from "@lingui/core/macro";
+const message = plural(count, {
+  one: `${name} has # friend`,
+  other: `${name} has # friends`,
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "CvuUwE",
+    message: "{count, plural, one {{name} has # friend} other {{name} has # friends}}",
+    values: { count, name },
+  }
+);
+```
+
+Plurals can also be nested to form complex messages. Here's an example using two counters:
+
+```
+import { plural } from "@lingui/core/macro";
+const message = plural(numBooks, {
+  one: plural(numArticles, {
+    one: `1 book and 1 article`,
+    other: `1 book and ${numArticles} articles`,
+  }),
+  other: plural(numArticles, {
+    one: `${numBooks} books and 1 article`,
+    other: `${numBooks} books and ${numArticles} articles`,
+  }),
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+// Generated message was wrapped for better readability
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "XnUh4j",
+    message: `{numBooks, plural,
+         one {{numArticles, plural,
+            one {1 book and 1 article}
+            other {1 book and {numArticles} articles}
+         }}
+         other {{numArticles, plural,
+            one {{numBooks} books and 1 article}
+            other {{numBooks} books and {numArticles} articles}
+         }}
+      }`,
+    values: { numBooks, numArticles },
+  }
+);
+```
+
+This is just one example of how macros can be combined to create a complex message. However, simple is better, because in the end it's the translator who has to translate these long and complex strings.
+
+tip
+
+Use `plural` inside [`t`](#t) or [`defineMessage`](#definemessage) macro if you want to add custom `id`, `context` or `comment` for translators.
+
+```
+const message = t({
+  id: "my.custom.id",
+  comment: "My Comment",
+  message: plural(count, {
+    one: "# Book",
+    other: "# Books",
+  }),
+});
+```
+
+### `selectOrdinal`[​](#selectordinal "Direct link to selectordinal")
+
+SelectOrdinal is a variation of the [`plural`](#plural) macro. It's used to handle ordinal numbers (e.g. 1st, 2nd, 3rd, 4th, etc.).
+
+```
+selectOrdinal(value: string | number, options: Object)
+```
+
+The `value` specifies the ordinal number. The second argument, `options`, is an object with available ordinal forms:
+
+```
+import { selectOrdinal } from "@lingui/core/macro";
+const message = selectOrdinal(count, {
+  one: "#st",
+  two: "#nd",
+  few: "#rd",
+  other: "#th",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+const message = i18n._(
+  /*i18n*/ {
+    id: "V8xI3w",
+    message: "{count, selectOrdinal, one {#st} two {#nd} few {#rd} other {#th}}",
+    values: { count },
+  }
+);
+```
+
+tip
+
+Use `selectOrdinal` inside [`t`](#t) or [`defineMessage`](#definemessage) macro if you want to add custom `id`, `context` or `comment` for translators.
+
+```
+const message = t({
+  id: "my.custom.id",
+  comment: "My Comment",
+  message: selectOrdinal(count, {
+    one: "#st",
+    two: "#nd",
+    few: "#rd",
+    other: "#th",
+  }),
+});
+```
+
+### `select`[​](#select "Direct link to select")
+
+The `select` macro is used to handle different forms of a message based on a value.
+
+```
+select(value: string | number, options: Object)
+```
+
+It works like a switch statement - it selects one of the forms provided in the `options` object based on the `value`:
+
+```
+import { select } from "@lingui/core/macro";
+const message = select(gender, {
+  male: "he",
+  female: "she",
+  other: "they",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+
+const message = i18n._(
+  /*i18n*/ {
+    id: "VRptzI",
+    message: "{gender, select, male {he} female {she} other {they}}",
+    values: { gender },
+  }
+);
+```
+
+tip
+
+Use `select` inside [`t`](#t) or [`defineMessage`](#definemessage) macro if you want to add custom `id`, `context` or `comment` for translators.
+
+```
+const message = t({
+  id: "my.custom.id",
+  comment: "My Comment",
+  message: select(gender, {
+    male: "he",
+    female: "she",
+    other: "they",
+  }),
+});
+```
+
+### `defineMessage` / `msg`[​](#definemessage "Direct link to definemessage")
+
+The `defineMessage` (alias: `msg`) macro allows to define a message for later use. It has the same signature as `t` and returns a `MessageDescriptor` that you can pass to `i18n._` to get a translated string at any time later. This is useful for [Lazy Translations](/guides/lazy-translations.md).
+
+In other words, `t` returns a translated string at the time when it's called, while `msg` returns a `MessageDescriptor` that can produce translated strings later:
+
+```
+import { i18n } from "@lingui/core";
+import { defineMessage } from "@lingui/core/macro";
+
+// define message
+const message = defineMessage`Hello World`;
+
+// use it later
+i18n._(message);
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { i18n } from "@lingui/core";
+
+const message = /*i18n*/ {
+  id: "mY42CM",
+  message: "Hello World",
+};
+
+// use it later
+i18n._(message);
+```
+
+You can also use a shorter alias of the `defineMessage` macro:
+
+```
+import { msg } from "@lingui/core/macro";
+const message = msg`Hello World`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const message = /*i18n*/ {
+  id: "mY42CM",
+  message: "Hello World",
+};
+```
+
+The `defineMessage` macro also supports a `MacroMessageDescriptor` object as input. This can be used to provide additional information for the message such as comment or context:
+
+```
+type MacroMessageDescriptor = {
+  id?: string;
+  message?: string;
+  comment?: string;
+  context?: string;
+};
+```
+
+Either the `id` or `message` property is required. `id` is a custom message ID. If it isn't set, the `message` (and `context` if present) will be used to generate an ID. Read more about [Explicit vs Generated IDs](/guides/explicit-vs-generated-ids.md).
+
+```
+import { defineMessage } from "@lingui/core/macro";
+const message = defineMessage({
+  id: "Navigation / About",
+  message: "About us",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const message = /*i18n*/ {
+  id: "Navigation / About",
+  message: "About us",
+};
+```
+
+The `message` is a default message. Any JS macro can be used here. Template string literals don't need to be tagged with [`t`](#t).
+
+```
+import { defineMessage } from "@lingui/core/macro";
+const name = "Joe";
+const message = defineMessage({
+  message: `Welcome, ${name}!`,
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const message = /*i18n*/ {
+  id: "dgJjNB",
+  message: "Welcome, {name}",
+  values: {
+    name,
+  },
+};
+```
+
+The `comment` is a comment for translators. It's extracted into the message catalog, and it gives translators additional information about the message. It's removed from the production code:
+
+```
+import { defineMessage } from "@lingui/core/macro";
+const message = defineMessage({
+  comment: "Link in navigation pointing to About page",
+  message: "About us",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const message = /*i18n*/ {
+  id: "+mNwru",
+  comment: "Link in navigation pointing to About page",
+  message: "About us",
+};
+```
+
+Note
+
+In the production build, the macro is stripped of `message`, `comment` and `context` properties:
+
+```
+import { defineMessage } from "@lingui/core/macro";
+const message = defineMessage({
+  id: "msg.navigation.about",
+  comment: "Link in navigation pointing to About page",
+  message: "About us",
+  context: "Context about the link",
+});
+
+// process.env.NODE_ENV === "production"
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const message = /*i18n*/ {
+  id: "msg.navigation.about",
+};
+```
+
+`message` and `comment` are used in message catalogs only. `context` is used only for generating ID and is stripped from the output.
+
+## React Macros[​](#react-macros "Direct link to React Macros")
+
+React (JSX) Macros are used in JSX elements and are transformed into the [`Trans`](/ref/react.md#trans) component imported from the [`@lingui/react`](/ref/react.md) package.
+
+### `Trans`[​](#trans "Direct link to trans")
+
+The `Trans` macro is used to translate static messages, messages with variables and messages with inline markup:
+
+```
+import { Trans } from "@lingui/react/macro";
+<Trans>Refresh inbox</Trans>;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { Trans } from "@lingui/react";
+<Trans id="EsCV2T" message="Refresh inbox" />;
+```
+
+Available Props:
+
+| Prop Name | Type   | Description                                            |
+| --------- | ------ | ------------------------------------------------------ |
+| `id`      | string | Custom message ID                                      |
+| `comment` | string | Comment for translators                                |
+| `context` | string | Allows to extract the same messages with different IDs |
+| `render`  | func   | Custom render callback to render translation           |
+
+#### `id`[​](#id "Direct link to id")
+
+Each message in the catalog is identified by a message ID. While macro uses message (and `context` property if provided) to generate the ID, it's possible to provide custom ID. Read more about [Explicit vs Generated IDs](/guides/explicit-vs-generated-ids.md).
+
+```
+import { Trans } from "@lingui/react/macro";
+<Trans id="message.attachment_saved">Attachment {name} saved.</Trans>;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { Trans } from "@lingui/react";
+<Trans id="message.attachment_saved" message="Attachment {name} saved." />;
+```
+
+#### `comment`[​](#comment "Direct link to comment")
+
+Comment for translators to give them additional information about the message. It will be visible in the [TMS](/tools/introduction.md) if it is supported, and in the [catalog format](/ref/catalog-formats.md). It will be removed from production code.
+
+#### `context`[​](#context "Direct link to context")
+
+Allows to extract the same messages with different IDs. It is useful when the same message has different meanings in different contexts. See [Context](/guides/explicit-vs-generated-ids.md#context) for more details.
+
+Similarly to [`comment`](#comment), it will be added to the message catalog, visible in TMS and will be removed from the production code:
+
+```
+import { Trans } from "@lingui/react/macro";
+<Trans context="direction">right</Trans>;
+<Trans context="correctness">right</Trans>;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { Trans } from "@lingui/react";
+<Trans id={"d1wX4r"} message="right" />;
+<Trans id={"16eaSK"} message="right" />;
+```
+
+This macro is particularly useful if the message contains inline markup:
+
+```
+import { Trans } from "@lingui/react/macro";
+
+<Trans>
+  Read the <a href="/docs">docs</a>.
+</Trans>;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { Trans } from "@lingui/react";
+<Trans id={"mk8bSG"} message="Read the <0>docs</0>." components={{ 0: <a href="/docs" /> }} />;
+```
+
+Components and HTML tags are replaced by dummy indexed tags (`<0></0>`) which has several advantages:
+
+* Both custom React components and built-in HTML tags are supported.
+* Changing component props doesn't break translation.
+* The message is extracted as a whole sentence (this seems to be obvious, but most i18n libs simply split the message into pieces by tags and translate them separately).
+
+#### `render`[​](#render "Direct link to render")
+
+Custom render callback to render translation. This prop is passed directly to the [`Trans`](/ref/react.md#trans) component from the [`@lingui/react`](/ref/react.md) package.
+
+### `Plural`[​](#plural-1 "Direct link to plural-1")
+
+The `Plural` JSX macro is used to handle plural forms. It's similar to the [`plural`](#plural) core macro, but is used in JSX elements.
+
+```
+import { Plural } from "@lingui/react/macro";
+<Plural value={numBooks} one="Book" other="Books" />;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { Trans } from "@lingui/react";
+<Trans id={"is7n96"} message="{numBooks, plural, one {Book} other {Books}}" values={{ numBooks }} />;
+```
+
+Available Props:
+
+| Prop name   | Type           | Description                                                                                                                                             |
+| ----------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `other`     | string         | *(required)* general *plural* form                                                                                                                      |
+| `value`     | number         | *(required)* Value is mapped to plural form below                                                                                                       |
+| `format`    | string\|Object | Number format passed as options to [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) |
+| `offset`    | number         | Offset of value when calculating plural forms                                                                                                           |
+| `zero`      | string         | Form for empty `value`                                                                                                                                  |
+| `one`       | string         | *Singular* form                                                                                                                                         |
+| `two`       | string         | *Dual* form                                                                                                                                             |
+| `few`       | string         | *Paucal* form                                                                                                                                           |
+| `many`      | string         | *Plural* form                                                                                                                                           |
+| `_<number>` | string         | Exact match form, corresponds to `=N` rule                                                                                                              |
+| `id`        | string         | Custom message ID                                                                                                                                       |
+| `comment`   | string         | Comment for translators                                                                                                                                 |
+| `context`   | string         | Allows to extract the same messages with different IDs                                                                                                  |
+| `render`    | func           | Custom render callback to render translation                                                                                                            |
+
+Exact matches in MessageFormat syntax are expressed as `=int` (e.g. `=0`), but in React this isn't a valid prop name. Therefore, exact matches are expressed as `_int` prop (e.g. `_0`). This is commonly used in combination with `offset` prop. `offset` affects only plural forms, not exact matches.
+
+```
+import { Plural } from "@lingui/react/macro";
+
+<Plural
+  value={count}
+  offset={1}
+  // when value == 0
+  _0="Nobody arrived"
+  // when value == 1
+  _1="Only you arrived"
+  // when value == 2
+  // value - offset = 1 -> `one` plural form
+  one="You and # other guest arrived"
+  // when value >= 3
+  other="You and # other guests arrived"
+/>;
+
+/*
+  This is transformed to Trans component with ID:
+  {count, plural, offset:1 _0    {Nobody arrived}
+                           _1    {Only you arrived}
+                           one   {You and # other guest arrived}
+                           other {You and # other guests arrived}}
+*/
+```
+
+### `SelectOrdinal`[​](#selectordinal-1 "Direct link to selectordinal-1")
+
+The `SelectOrdinal` JSX macro is used to handle ordinal numbers. It's similar to the [`selectOrdinal`](#selectordinal) core macro, but is used in JSX elements.
+
+```
+import { SelectOrdinal } from "@lingui/react/macro";
+
+// count == 1 -> 1st
+// count == 2 -> 2nd
+// count == 3 -> 3rd
+// count == 4 -> 4th
+<SelectOrdinal value={count} one="#st" two="#nd" few="#rd" other="#th" />;
+```
+
+Available Props:
+
+| Prop name   | Type           | Description                                                                                                                                             |
+| ----------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`     | number         | *(required)* Value is mapped to plural form below                                                                                                       |
+| `other`     | string         | *(required)* general *plural* form                                                                                                                      |
+| `offset`    | number         | Offset of value for plural forms                                                                                                                        |
+| `zero`      | string         | Form for empty `value`                                                                                                                                  |
+| `one`       | string         | *Singular* form                                                                                                                                         |
+| `two`       | string         | *Dual* form                                                                                                                                             |
+| `few`       | string         | *Paucal* form                                                                                                                                           |
+| `many`      | string         | *Plural* form                                                                                                                                           |
+| `_<number>` | string         | Exact match form, correspond to `=N` rule. (e.g: `_0`, `_1`)                                                                                            |
+| `format`    | string\|Object | Number format passed as options to [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) |
+
+### `Select`[​](#select-1 "Direct link to select-1")
+
+The `Select` JSX macro is used to handle different forms of a message based on a value. It's similar to the [`select`](#select) core macro, but is used in JSX elements.
+
+```
+import { Select } from "@lingui/react/macro";
+
+// gender == "female"      -> Her book
+// gender == "male"        -> His book
+// gender == "non-binary"  -> Their book
+<Select value={gender} _male="His book" _female="Her book" other="Their book" />;
+```
+
+Available Props:
+
+| Prop name | Type   | Description                                            |
+| --------- | ------ | ------------------------------------------------------ |
+| `value`   | number | *(required)* Value determines which form is output     |
+| `other`   | number | *(required)* Default, catch-all form                   |
+| `_<case>` | string | Form for specific case                                 |
+| `id`      | string | Custom message ID                                      |
+| `comment` | string | Comment for translators                                |
+| `context` | string | Allows to extract the same messages with different IDs |
+| `render`  | func   | Custom render callback to render translation           |
+
+The select cases except `other` should be prefixed with underscore: `_male` or `_female`.
+
+### `useLingui`[​](#uselingui "Direct link to uselingui")
+
+The `useLingui` React macro gives access to a [`t`](/ref/macro.md#t) macro that is bound to the local `i18n` object passed from the React context.
+
+It returns an object with the following content:
+
+| Key                | Type                  | Description                                                       |
+| ------------------ | --------------------- | ----------------------------------------------------------------- |
+| `i18n`             | `I18n`                | The `I18n` object instance passed to `I18nProvider`               |
+| `t`                | `t`                   | Reference to the `t` macro described above                        |
+| `defaultComponent` | `React.ComponentType` | the same `defaultComponent` passed to `I18nProvider`, if provided |
+
+Example usage:
+
+```
+import { useLingui } from "@lingui/react/macro";
+
+function MyComponent() {
+  const { t } = useLingui();
+  const a = t`Text`;
+}
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useLingui } from "@lingui/react";
+
+function MyComponent() {
+  const { _ } = useLingui();
+  const a = _(
+    /*i18n*/
+    {
+      id: "xeiujy",
+      message: "Text",
+    }
+  );
+}
+```
+
+caution
+
+The `useLingui` React macro is available from **Lingui v5**.
+
+## Important Notes[​](#important-notes "Direct link to Important Notes")
+
+### Using Macros[​](#using-macros "Direct link to Using Macros")
+
+All Core Macros cannot be used at the module level:
+
+```
+import { t } from "@lingui/core/macro";
+
+// ❌ Bad! This won't work because the `t` macro is used at the module level.
+// The `t` macro returns a string, and once this string is assigned, it won't react to locale changes.
+const colors = [t`Red`, t`Orange`, t`Yellow`, t`Green`];
+
+// ✅ Good! Every time the function is executed, the `t` macro will be re-executed as well,
+// and the correctly translated color labels will be returned.
+function getColors() {
+  return [t`Red`, t`Orange`, t`Yellow`, t`Green`];
+}
+```
+
+tip
+
+There is an [ESLint Plugin](/ref/eslint-plugin.md) rule designed to check for this misuse: [`t-call-in-function`](https://github.com/lingui/eslint-plugin/blob/main/docs/rules/t-call-in-function.md).
+
+A better option would be to use the [Lazy Translations](/guides/lazy-translations.md) pattern.
+
+### Global `i18n` Instance[​](#global-i18n-instance "Direct link to global-i18n-instance")
+
+When you use the [`t`](#t) macro (or [`plural`](#plural), [`select`](#select), [`selectOrdinal`](#selectordinal)), it uses a global [`i18n`](/ref/core.md#i18n) instance. While this generally works, there are situations, such as server-side rendering (SSR) applications, where it may not be the best solution.
+
+For better control and flexibility, it's a good idea to avoid the global `i18n` instance and instead use a specific instance tailored to your needs:
+
+```
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
+
+export function showAlert(i18n) {
+  alert(i18n._(msg`...`));
+}
+
+function MyComponent() {
+  // Get i18n instance from React Context
+  const { i18n } = useLingui();
+
+  // Pass the instance from outside
+  showAlert(i18n);
+}
+```
+
+## More Examples[​](#more-examples "Direct link to More Examples")
+
+### Examples of JS macros[​](#examples-of-js-macros "Direct link to Examples of JS macros")
+
+```
+t`Refresh inbox`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+i18n._(
+  /*i18n*/ {
+    id: "EsCV2T",
+    message: "Refresh inbox",
+  }
+);
+```
+
+```
+customI18n._(msg(`Refresh inbox`));
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+customI18n._(
+  /*i18n*/ {
+    id: "EsCV2T",
+    message: "Refresh inbox",
+  }
+);
+```
+
+```
+t(customI18n)`Attachment ${name} saved`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+customI18n._(
+  /*i18n*/ {
+    id: "nwR43V",
+    message: "Attachment {name} saved",
+    values: { name },
+  }
+);
+```
+
+```
+plural(count, {
+  one: "# Message",
+  other: "# Messages",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+i18n._(
+  /*i18n*/ {
+    id: "4w2nim",
+    message: "{count, plural, one {# Message} other {# Messages}}",
+    values: { count },
+  }
+);
+```
+
+```
+t({
+  id: "msg.refresh",
+  message: "Refresh inbox",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+i18n._(
+  /*i18n*/ {
+    id: "msg.refresh",
+    message: "Refresh inbox",
+  }
+);
+```
+
+```
+const msg = defineMessage`Refresh inbox`;
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const msg = /*i18n*/ {
+  id: "EsCV2T",
+  message: "Refresh inbox",
+};
+```
+
+```
+const msg = defineMessage({
+  id: "msg.refresh",
+  message: "Refresh inbox",
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const msg = /*i18n*/ {
+  id: "msg.refresh",
+  message: "Refresh inbox",
+};
+```
+
+```
+const msg = defineMessage({
+  id: "msg.plural",
+  message: plural(count, {
+    one: "# Message",
+    other: "# Messages",
+  }),
+});
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+const msg = /*i18n*/ {
+  id: "msg.plural",
+  message: "{count, plural, one {# Message} other {# Messages}}",
+  values: { count },
+};
+```
+
+### Examples of JSX macros[​](#examples-of-jsx-macros "Direct link to Examples of JSX macros")
+
+```
+<Trans>Attachment {name} saved</Trans>
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+<Trans
+   id={"nwR43V"}
+   message="Attachment {name} saved"
+   values={{ name }}
+/>
+```
+
+```
+<Plural
+   value={count}
+   one="# Message"
+   other="# Messages"
+/>
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+<Trans
+   id={"4w2nim"}
+   message="{count, plural, one {# Message} other {# Messages}}"
+   values={{ count }}
+/>
+```
+
+```
+<Trans id="msg.refresh">
+   Refresh inbox
+</Trans>
+
+// ↓ ↓ ↓ ↓ ↓ ↓
+
+<Trans
+   id="msg.refresh"
+   message="Refresh inbox"
+/>
+```

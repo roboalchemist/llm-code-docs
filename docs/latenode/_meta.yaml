@@ -1,0 +1,9 @@
+name: latenode
+primary_source: llms
+sources:
+  - type: llms
+    url: https://documentation.latenode.com/
+    last_fetched: "2026-04-03T23:09:16Z"
+description: >
+  latenode documentation
+quality_score: 0

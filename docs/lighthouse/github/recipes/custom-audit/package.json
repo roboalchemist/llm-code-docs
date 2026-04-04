@@ -1,0 +1,11 @@
+# Source: https://github.com/GoogleChrome/lighthouse/blob/main/docs/recipes/custom-audit/package.json
+
+{
+  "name": "custom-lighthouse-recipe",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "devDependencies": {
+    "lighthouse": "file:../../../dist/lighthouse.tgz"
+  }
+}

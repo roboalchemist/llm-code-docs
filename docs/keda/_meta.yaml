@@ -1,0 +1,8 @@
+name: keda
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:13Z"
+description: >
+  keda documentation
+quality_score: 0

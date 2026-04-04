@@ -1,0 +1,9 @@
+name: litellm
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.litellm.ai/
+    last_fetched: "2026-04-03T23:09:17Z"
+description: >
+  litellm documentation
+quality_score: 0

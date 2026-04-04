@@ -1,0 +1,9 @@
+name: karate-dsl
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.karatelabs.io/
+    last_fetched: "2026-04-03T23:09:13Z"
+description: >
+  karate-dsl documentation
+quality_score: 0

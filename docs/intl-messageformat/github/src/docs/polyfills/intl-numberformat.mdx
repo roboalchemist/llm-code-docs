@@ -1,0 +1,334 @@
+A polyfill for ESNext [`Intl.NumberFormat`][numberformat] and [`Number.prototype.toLocaleString`][tolocalestring].
+
+[numberformat]: https://tc39.es/ecma402/#numberformat-objects
+[tolocalestring]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
+
+[![npm Version](https://img.shields.io/npm/v/@formatjs/intl-numberformat.svg?style=flat-square)](https://www.npmjs.org/package/@formatjs/intl-numberformat)
+![size](https://badgen.net/bundlephobia/minzip/@formatjs/intl-numberformat)
+
+## ECMA-402 Spec Compliance
+
+This package is **fully compliant** with the ECMA-402 specification for `Intl.NumberFormat`, including all finalized proposals up through **Intl.NumberFormat v3**.
+
+### ✅ All Features Implemented
+
+#### Core Methods
+
+- **`format(number)`** - Format a single number
+- **`formatToParts(number)`** - Format a number and return parts array
+- **`formatRange(start, end)`** - Format a number range ([NumberFormat v3](https://github.com/tc39/proposal-intl-numberformat-v3))
+- **`formatRangeToParts(start, end)`** - Format a number range and return parts array with source attribution
+- **`resolvedOptions()`** - Return resolved formatting options
+
+#### Formatting Styles
+
+- **`'decimal'`** - Plain number format (default)
+- **`'currency'`** - Currency formatting (e.g., "$1,234.56")
+- **`'percent'`** - Percentage formatting (e.g., "12.34%")
+- **`'unit'`** - Unit formatting (e.g., "12.34 meters")
+
+#### NumberFormat v3 Features
+
+All features from the [Intl.NumberFormat v3 proposal](https://github.com/tc39/proposal-intl-numberformat-v3) are implemented:
+
+**1. formatRange & formatRangeToParts**
+
+```js
+const nf = new Intl.NumberFormat('en', {style: 'currency', currency: 'USD'})
+nf.formatRange(100, 200) // "$100.00 – $200.00"
+```
+
+**2. Enhanced useGrouping**
+
+- `'always'` - Always use grouping separators
+- `'auto'` (default) - Use grouping based on locale
+- `'min2'` - Group only if there are at least 2 digits
+- `false` - Never use grouping
+
+**3. Comprehensive Rounding Options**
+
+- **roundingIncrement** - Round to specific increments (1, 2, 5, 10, 20, 25, 50, 100, ...)
+- **roundingMode** - Nine rounding modes:
+  - `'ceil'`, `'floor'`, `'expand'`, `'trunc'`, `'halfCeil'`, `'halfFloor'`, `'halfExpand'`, `'halfTrunc'`, `'halfEven'`
+- **roundingPriority** - Control rounding with significant vs fraction digits
+  - `'auto'`, `'morePrecision'`, `'lessPrecision'`
+- **trailingZeroDisplay** - Control trailing zeros
+  - `'auto'` (default), `'stripIfInteger'`
+
+**4. String Decimal Support**
+
+```js
+// Preserve precision for very large/small numbers
+nf.format('12345678901234567890')
+```
+
+**5. Enhanced signDisplay**
+
+- `'auto'` (default), `'always'`, `'never'`, `'exceptZero'`, `'negative'`
+
+#### Notation Styles
+
+- **`'standard'`** - Plain notation (default)
+- **`'scientific'`** - Scientific notation (e.g., "1.234E3")
+- **`'engineering'`** - Engineering notation (e.g., "1.234E3")
+- **`'compact'`** - Compact notation (e.g., "1.2K", "1.2M")
+  - `compactDisplay`: `'short'` or `'long'`
+
+#### Currency Options
+
+- **currencyDisplay**: `'symbol'`, `'narrowSymbol'`, `'code'`, `'name'`
+- **currencySign**: `'standard'`, `'accounting'`
+- All ISO 4217 currency codes supported (150+ currencies)
+
+#### Unit Support
+
+All **42 ECMA-402 sanctioned units** are fully supported:
+
+**Digital (11 units)**
+
+- `bit`, `byte`, `kilobit`, `kilobyte`, `megabit`, `megabyte`, `gigabit`, `gigabyte`, `terabit`, `terabyte`, `petabyte`
+
+**Duration (8 units)**
+
+- `year`, `month`, `week`, `day`, `hour`, `minute`, `second`, `millisecond`
+
+**Length (8 units)**
+
+- `centimeter`, `meter`, `kilometer`, `millimeter`, `foot`, `inch`, `yard`, `mile`, `mile-scandinavian`
+
+**Mass (5 units)**
+
+- `gram`, `kilogram`, `ounce`, `pound`, `stone`
+
+**Volume (4 units)**
+
+- `liter`, `milliliter`, `gallon`, `fluid-ounce`
+
+**Area (2 units)**
+
+- `acre`, `hectare`
+
+**Temperature (2 units)**
+
+- `celsius`, `fahrenheit`
+
+**Angle (1 unit)**
+
+- `degree`
+
+**Concentration (1 unit)**
+
+- `percent`
+
+**Compound units** are also supported (e.g., `'meter-per-second'`, `'kilogram-per-square-meter'`)
+
+#### Unit Display Options
+
+- `'long'` - Full unit name (e.g., "12.34 meters")
+- `'short'` - Abbreviated unit (e.g., "12.34 m")
+- `'narrow'` - Most compact (e.g., "12.34m")
+
+### Example Usage
+
+#### Global import
+
+```js
+import '@formatjs/intl-numberformat/polyfill.js'
+
+// Currency with accounting sign
+const currency = new Intl.NumberFormat('en', {
+  style: 'currency',
+  currency: 'USD',
+  currencySign: 'accounting',
+})
+currency.format(-100) // "($100.00)"
+
+// Unit formatting
+const unit = new Intl.NumberFormat('en', {
+  style: 'unit',
+  unit: 'kilometer-per-hour',
+  unitDisplay: 'long',
+})
+unit.format(100) // "100 kilometers per hour"
+
+// Rounding with increment
+const rounded = new Intl.NumberFormat('en', {
+  style: 'currency',
+  currency: 'USD',
+  roundingIncrement: 5,
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+})
+rounded.format(10.03) // "$10.05" (rounded to nearest 0.05)
+
+// Format range
+const range = new Intl.NumberFormat('en', {style: 'percent'})
+range.formatRange(20, 30) // "20%–30%"
+```
+
+<Admonition type="info">
+    The global import does not include TypeScript type declarations.
+    For TypeScript projects, we recommend using ES module imports instead.
+
+    If you choose to use the global import, in order to prevent type errors, you must manually include the corresponding type declaration files (.d.ts) in your project.
+
+</Admonition>
+
+#### ES Modules
+
+```js
+import {NumberFormat} from '@formatjs/intl-numberformat'
+
+// Currency with accounting sign
+const currency = new NumberFormat('en', {
+  style: 'currency',
+  currency: 'USD',
+  currencySign: 'accounting',
+})
+currency.format(-100) // "($100.00)"
+```
+
+## Installation
+
+<Tabs
+groupId="npm"
+defaultValue="npm"
+values={[
+{label: 'npm', value: 'npm'},
+{label: 'yarn', value: 'yarn'},
+{label: 'pnpm', value: 'pnpm'},
+]}>
+<TabItem value="npm">
+
+```sh
+npm i @formatjs/intl-numberformat
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```sh
+yarn add @formatjs/intl-numberformat
+```
+
+</TabItem>
+<TabItem value="pnpm">
+
+```sh
+pnpm add @formatjs/intl-numberformat
+```
+
+</TabItem>
+</Tabs>
+
+## Requirements
+
+This package requires the following capabilities:
+
+- [`Intl.getCanonicalLocales`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/getCanonicalLocales) or [polyfill](intl-getcanonicallocales)
+- [`Intl.Locale`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) or [polyfill](intl-locale).
+- [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/PluralRules) or [polyfill](intl-pluralrules).
+
+## Features
+
+Everything in the ES2020 Internationalization API spec (https://tc39.es/ecma402).
+
+## Usage
+
+### Via polyfill-fastly.io
+
+You can use [polyfill-fastly.io URL Builder](https://polyfill-fastly.io/) to create a polyfill script tag for `Intl.NumberFormat`. By default the created URL does not come with any locale data. In order to add locale data, append `Intl.NumberFormat.~locale.<locale>`, as well as locale data for any required polyfills, to your list of features. For example:
+
+```html
+<!-- Polyfill Intl.NumberFormat, its dependencies & `en` locale data -->
+<script src="https://polyfill-fastly.io/v3/polyfill.min.js?features=Intl.NumberFormat,Intl.NumberFormat.~locale.en"></script>
+```
+
+Or if `Intl.PluralRules` needs to be polyfilled as well:
+
+```html
+<!-- Polyfill Intl.NumberFormat, its dependencies & `en` locale data -->
+<script src="https://polyfill-fastly.io/v3/polyfill.min.js?features=Intl.NumberFormat,Intl.NumberFormat.~locale.en,Intl.PluralRules.~locale.en"></script>
+```
+
+### Simple
+
+```tsx
+import '@formatjs/intl-numberformat/polyfill.js'
+import '@formatjs/intl-numberformat/locale-data/en.js' // locale-data for en
+```
+
+### Dynamic import + capability detection
+
+```tsx
+async function polyfill(locale: string) {
+  const unsupportedLocale = shouldPolyfill(locale)
+  // This locale is supported
+  if (!unsupportedLocale) {
+    return
+  }
+  // Load the polyfill 1st BEFORE loading data
+  await import('@formatjs/intl-numberformat/polyfill-force.js')
+  await import(
+    `@formatjs/intl-numberformat/locale-data/${unsupportedLocale}.js`
+  )
+}
+```
+
+## Supported Units
+
+### Simple Units
+
+Currently, [the spec](https://tc39.es/ecma402/#sec-issanctionedsimpleunitidentifier) defines a list of sanctioned units as below.
+
+```tsx
+type Unit =
+  | 'acre'
+  | 'bit'
+  | 'byte'
+  | 'celsius'
+  | 'centimeter'
+  | 'day'
+  | 'degree'
+  | 'fahrenheit'
+  | 'fluid-ounce'
+  | 'foot'
+  | 'gallon'
+  | 'gigabit'
+  | 'gigabyte'
+  | 'gram'
+  | 'hectare'
+  | 'hour'
+  | 'inch'
+  | 'kilobit'
+  | 'kilobyte'
+  | 'kilogram'
+  | 'kilometer'
+  | 'liter'
+  | 'megabit'
+  | 'megabyte'
+  | 'meter'
+  | 'mile'
+  | 'mile-scandinavian'
+  | 'millimeter'
+  | 'milliliter'
+  | 'millisecond'
+  | 'minute'
+  | 'month'
+  | 'ounce'
+  | 'percent'
+  | 'petabyte'
+  | 'pound'
+  | 'second'
+  | 'stone'
+  | 'terabit'
+  | 'terabyte'
+  | 'week'
+  | 'yard'
+  | 'year'
+```
+
+### Compound Units
+
+You can specify `X-per-Y` unit, where `X` and `Y` are sanctioned simple units (e.g. `kilometer-per-hour`).
+The library will choose the best-fit localized pattern to format this compound unit.

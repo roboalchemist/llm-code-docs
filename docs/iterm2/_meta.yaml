@@ -1,0 +1,9 @@
+name: iterm2
+primary_source: llms
+sources:
+  - type: llms
+    url: https://iterm2.com/docs/
+    last_fetched: "2026-04-03T23:09:10Z"
+description: >
+  iterm2 documentation
+quality_score: 0

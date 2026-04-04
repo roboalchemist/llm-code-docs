@@ -1,0 +1,9 @@
+name: localstack
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.localstack.cloud/
+    last_fetched: "2026-04-03T23:09:18Z"
+description: >
+  localstack documentation
+quality_score: 0

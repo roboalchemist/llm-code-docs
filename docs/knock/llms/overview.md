@@ -1,0 +1,205 @@
+# Source: https://docs.knock.app/tutorials/overview.md
+
+# Source: https://docs.knock.app/developer-tools/agent-toolkit/overview.md
+
+# Source: https://docs.knock.app/developer-tools/outbound-webhooks/overview.md
+
+# Source: https://docs.knock.app/developer-tools/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/expo/sdk/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/flutter/sdk/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/flutter/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/android/sdk/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/android/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/ios/sdk/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/ios/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/react-native/sdk/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/react-native/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/angular/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/javascript/sdk/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/javascript/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/react/sdk/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/react/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/message-types/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/guides/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/feeds/overview.md
+
+# Source: https://docs.knock.app/in-app-ui/overview.md
+
+# Source: https://docs.knock.app/integrations/extensions/overview.md
+
+# Source: https://docs.knock.app/integrations/webhook/overview.md
+
+# Source: https://docs.knock.app/integrations/sms/overview.md
+
+# Source: https://docs.knock.app/integrations/push/overview.md
+
+# Source: https://docs.knock.app/integrations/in-app/overview.md
+
+# Source: https://docs.knock.app/integrations/chat/microsoft-teams/overview.md
+
+# Source: https://docs.knock.app/integrations/chat/slack/overview.md
+
+# Source: https://docs.knock.app/integrations/chat/overview.md
+
+# Source: https://docs.knock.app/integrations/email/overview.md
+
+# Source: https://docs.knock.app/integrations/sources/overview.md
+
+# Source: https://docs.knock.app/integrations/overview.md
+
+# Source: https://docs.knock.app/preferences/overview.md
+
+# Source: https://docs.knock.app/managing-recipients/overview.md
+
+# Source: https://docs.knock.app/send-notifications/triggering-workflows/overview.md
+
+# Source: https://docs.knock.app/template-editor/partials/overview.md
+
+# Source: https://docs.knock.app/template-editor/overview.md
+
+# Source: https://docs.knock.app/designing-workflows/overview.md
+
+# Source: https://docs.knock.app/concepts/overview.md
+
+---
+title: Core concepts
+description: Learn about the key concepts in Knock.
+tags: ["how knock works"]
+section: Concepts
+---
+
+## Workflows
+
+Workflows are triggered journeys that send notifications to your recipients. They can be triggered via an API call, an event, on a schedule for a recipient, or when a user enters a specific audience. Workflows consists of channel and function steps.
+
+Workflows are useful for transactional notifications and lifecycle-based messaging such as onboarding flows.
+
+[Learn more →](/concepts/workflows)
+
+## Broadcasts
+
+Broadcasts are a way to send one-time, cross-channel notifications to your users through Knock. They use the Knock workflow engine, but are configured in the Knock dashboard to run once.
+
+Broadcasts are useful for one-time notifications such as email announcements or system status updates.
+
+[Learn more →](/concepts/broadcasts)
+
+## Guides
+
+Guides enable you to power in-product messaging using your own components. Unlike workflows which have to be triggered, guides are rendered when eligible users visit relevant pages in your application.
+
+Guides are useful for announcements, paywalls, nudges, banners, and other in-product messaging that doesn't fit into a feed-based notification center.
+[Learn more →](/concepts/guides)
+
+## Channels
+
+A channel in Knock represents a configured provider, such as Sendgrid for email, to send notifications to your recipients. Most providers within Knock use credentials that you supply to deliver notifications on your behalf. These credentials and other settings are what make a configured channel.
+
+[Learn more →](/concepts/channels)
+
+## Commits
+
+Knock uses a commit model to version changes that you make to all of your Knock resources. When you make a change to a workflow or a layout in the Knock dashboard, you'll need to commit it to your development environment before those changes will appear in workflows triggered via the API.
+
+[Learn more →](/concepts/commits)
+
+## Environments
+
+Knock uses the concept of environments to ensure logical separation of your data and configuration. This means that users and preferences created in one environment are **never** accessible to another. Environments usually map to the environments you have in your software development life cycle (SDLC).
+
+[Learn more →](/concepts/environments)
+
+## Recipients
+
+A Recipient within Knock is any [User](#users) or [Object](#objects) that may wish to receive notifications.
+
+[Learn more →](/concepts/recipients)
+
+## Users
+
+A user in Knock represents an individual who should receive a message. A user's profile information contains important attributes about the user that will be used in messages (name, email). The user object can contain other key-value pairs that can be used to further personalize your messages.
+
+[Learn more →](/concepts/users)
+
+## Preferences
+
+Preferences enable your users to opt-out of the notifications you send using Knock.
+
+[Learn more →](/concepts/preferences)
+
+## Objects
+
+An object represents a resource in your system that you want to map into Knock. Objects are a powerful and flexible way to ensure Knock always has the most up-to-date information required to send your notifications. They also enable you to send notifications to non-user recipients.
+
+You can use objects to:
+
+- send in-app notifications to non-user resources in your product (the activity feed you see on a Notion page is a good example)
+- send out-of-app notifications to non-user recipients (such as a Slack channels)
+- reference mutable data in your notification templates (such as when a user edits a comment before a notification is sent)
+
+[Learn more →](/concepts/objects)
+
+## Subscriptions
+
+A subscription represents a relationship between a non-user entity (an Object) and a Recipient (the subscriber). Subscriptions are used to model pub/sub behavior and lists of recipients that Knock will automatically fan out a workflow trigger to on your behalf.
+
+[Learn more →](/concepts/subscriptions)
+
+## Schedules
+
+A schedule allows you to automatically trigger a workflow at a given time for one or more recipients. You can think of a schedule as a managed, recipient-timezone-aware cron job that Knock will run on your behalf.
+
+[Read more →](/concepts/schedules)
+
+## Tenants
+
+Tenants represent segments your users belong to. You might call these "accounts," "organizations," "workspaces," or similar. This is a common pattern in many SaaS applications: users have a single login joined to multiple tenants to represent their membership within each. Within Knock you can model your tenant objects as first-class entities and use them to scope features.
+
+[Learn more →](/concepts/tenants)
+
+## Messages
+
+A message in Knock represents a notification delivered to a recipient on a particular channel. Messages contain information about the request that triggered its delivery, a view of the data sent to the recipient, and a timeline of its lifecycle events.
+
+[Learn more →](/concepts/messages)
+
+## Translations
+
+Translations support localization in Knock. They hold the translated content for a given locale, which you can reference in your message templates with the `t` Liquid function filter.
+
+[Learn more →](/template-editor/translations)
+
+## Conditions
+
+Knock uses conditions to model checks that determine variations in your workflow runs. They provide a powerful way to create more advanced notification logic flows.
+
+[Learn more →](/concepts/conditions)
+
+## Variables
+
+Variables within Knock let you set shared constants or secrets that you can use in all of the workflows and templates under your account. Variables can be overridden at the environment level to set per environment constants.
+
+[Learn more →](/concepts/variables)
+
+## Audiences
+
+Audiences are user segments that you can notify. You can bring audiences into Knock programmatically with our API or a supported reverse-ETL source.
+
+[Learn more →](/concepts/audiences)

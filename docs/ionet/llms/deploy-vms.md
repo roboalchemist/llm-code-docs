@@ -1,0 +1,178 @@
+# Source: https://io.net/docs/reference/vmaas/deploy-vms.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Deploy a VM
+
+
+
+## OpenAPI
+
+````yaml openapi/vmaas/deploy-vms.json post /enterprise/v1/io-cloud/vmaas/deploy
+openapi: 3.1.0
+info:
+  title: IO API
+  version: '1.0'
+servers:
+  - url: https://api.io.solutions/
+security: []
+paths:
+  /enterprise/v1/io-cloud/vmaas/deploy:
+    post:
+      tags:
+        - enterprise-io-cloud-vmaas
+      summary: Deploy VMs
+      operationId: deploy_vms_enterprise_v1_io_cloud_vmaas_deploy_post
+      parameters:
+        - name: x-api-key
+          in: header
+          required: false
+          schema:
+            type: string
+            description: io.net provided API Key
+            title: X-Api-Key
+          description: io.net provided API Key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/io_cloud__schemas__request__enterprise__vmaas__VMaasDeployRequest
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: 2550bb82-89ff-40c2-98ac-893c4a177e4c
+components:
+  schemas:
+    io_cloud__schemas__request__enterprise__vmaas__VMaasDeployRequest:
+      properties:
+        ssh_keys:
+          anyOf:
+            - additionalProperties:
+                type: string
+              type: object
+            - type: 'null'
+          title: SSH Keys
+        resource_private_name:
+          type: string
+          title: Resource Private Name
+        node_pool_id:
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          title: Node Pool Id
+          description: ID of private node pool. Can't be used if location_ids are provided.
+        duration_hours:
+          type: integer
+          maximum: 8760
+          exclusiveMinimum: 0
+          title: Duration Hours
+        gpus_per_vm:
+          type: integer
+          maximum: 8
+          minimum: 1
+          title: Gpus Per Vm
+        hardware_id:
+          anyOf:
+            - type: integer
+            - type: string
+          title: Hardware Id
+        location_ids:
+          anyOf:
+            - items:
+                anyOf:
+                  - type: integer
+                  - type: string
+              type: array
+              maxItems: 1
+              minItems: 1
+            - type: 'null'
+          title: Location Ids
+          description: Only single locations is supported for now
+          examples:
+            - - CA
+              - US
+        vms_qty:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Vms Qty
+          description: How many VMs should be deployed. (deprecated)
+          deprecated: true
+        github_ids:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Github Ids
+        vm_image_type:
+          $ref: '#/components/schemas/VmImageType'
+          default: general
+        network_services:
+          additionalProperties:
+            $ref: '#/components/schemas/NetworkService'
+          type: object
+          title: Network Services
+      additionalProperties: false
+      type: object
+      required:
+        - resource_private_name
+        - duration_hours
+        - gpus_per_vm
+        - hardware_id
+      title: VMaasDeployRequest
+    VmImageType:
+      type: string
+      enum:
+        - general
+        - datascience
+      title: VmImageType
+    NetworkService:
+      properties:
+        port:
+          type: integer
+          maximum: 65535
+          minimum: 1
+          title: Port
+        protocol:
+          $ref: >-
+            #/components/schemas/io_cloud__schemas__response__enterprise__vmaas__NetworkProtocol
+        whitelist:
+          items:
+            type: string
+            format: ipvanynetwork
+          type: array
+          minItems: 1
+          title: Whitelist
+          description: >-
+            List of IP networks to allow access from. 0.0.0.0/0 for whitelisting
+            all the IPs
+      type: object
+      required:
+        - port
+        - protocol
+        - whitelist
+      title: NetworkService
+    io_cloud__schemas__response__enterprise__vmaas__NetworkProtocol:
+      type: string
+      enum:
+        - tcp
+        - udp
+      title: NetworkProtocol
+
+````

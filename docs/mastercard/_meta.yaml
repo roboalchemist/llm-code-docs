@@ -1,0 +1,9 @@
+name: mastercard
+primary_source: llms
+sources:
+  - type: llms
+    url: https://developer.mastercard.com/
+    last_fetched: "2026-04-03T23:09:20Z"
+description: >
+  mastercard documentation
+quality_score: 0

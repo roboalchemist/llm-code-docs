@@ -1,0 +1,61 @@
+# Source: https://docs.knock.app/manage-your-account/saml-sso.md
+
+---
+title: SAML SSO
+description: How to configure SAML SSO on your account.
+tags: ["authentication", "SAML", "SSO"]
+section: Manage your account
+---
+
+<Callout
+  type="enterprise"
+  style={{ alignItems: "center" }}
+  title="Enterprise plan feature."
+  text={
+    <>
+      SAML SSO is only available on our{" "}
+      <a href="https://knock.app/pricing">Enterprise plan.</a>
+    </>
+  }
+/>
+
+## SSO configuration
+
+To configure SAML SSO, an **account owner** will need to complete the following steps:
+
+1. Log in to your Knock dashboard
+2. Navigate to the **Security** page under the account settings section of your dashboard
+3. Locate the "Enable SAML SSO" panel
+4. Click on the "Connect SSO provider" button to begin the configuration process. This will launch our SAML SSO configuration wizard where you can select and configure your identity provider.
+
+<figure>
+  <Image
+    src="/images/manage-your-account/sso-configuration.png"
+    width={500}
+    height={514}
+    className="rounded-md mx-auto border border-gray-200"
+    alt="SAML SSO configuration wizard"
+  />
+  <figcaption>SAML SSO configuration wizard</figcaption>
+</figure>
+After completing the steps of the configuration walkthrough, SAML will be successfully
+configured for your account. This will allow users with emails under your domain
+to be able to log in successfully through the provider you have configured.
+
+<Callout
+  emoji="🌠"
+  title="Domains."
+  text={
+    <>
+      Self-service SAML SSO configuration will allow users to authenticate using
+      emails under the same domain as your own. If your setup requires support
+      for more than one domain, contact support.
+    </>
+  }
+/>
+
+## SSO authentication
+
+Once SAML SSO is configured on your account, all members will be required to log in using the provider you
+configured. When visiting the login screen, users must use the email field to start the authentication flow.
+Users will **not be allowed to authenticate** using other authentication methods while SAML SSO is enabled on your account.

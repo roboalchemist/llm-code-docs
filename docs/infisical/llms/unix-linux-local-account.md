@@ -1,0 +1,193 @@
+# Source: https://infisical.com/docs/documentation/platform/secret-rotation/unix-linux-local-account.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Unix/Linux Local Account Rotation
+
+> Learn how to automatically rotate Unix/Linux local account passwords.
+
+<Note>
+  Due to how Unix/Linux local account passwords are rotated, retired credentials will not be able to
+  authenticate with the SSH provider during their [inactive period](./overview#how-rotation-works).
+
+  This is a limitation of the SSH provider and cannot be
+  rectified by Infisical.
+</Note>
+
+## Prerequisites
+
+* Create an [SSH Connection](/integrations/app-connections/ssh) with the **Secret Rotation** requirements
+* Ensure your network security policies allow incoming requests from Infisical to this rotation provider, if network restrictions apply.
+
+## Create a Unix/Linux Local Account Rotation in Infisical
+
+<Tabs>
+  <Tab title="Infisical UI">
+    1. Navigate to your Secret Manager Project's Dashboard and select **Add Secret Rotation** from the actions dropdown.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/generic/add-secret-rotation.png" alt="Secret Manager Dashboard" />
+
+    2. Select the **Unix/Linux Local Account** option.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/select-unix-linux-local-account-option.png" alt="Select Unix/Linux Local Account" />
+
+    3. Select the **SSH Connection** to use and configure the rotation behavior. Then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-configuration.png" alt="Rotation Configuration" />
+
+       * **SSH Connection** - the connection that will perform the rotation of the configured user's password.
+       * **Rotation Interval** - the interval, in days, that once elapsed will trigger a rotation.
+       * **Rotate At** - the local time of day when rotation should occur once the interval has elapsed.
+       * **Auto-Rotation Enabled** - whether secrets should automatically be rotated once the rotation interval has elapsed. Disable this option to manually rotate secrets or pause secret rotation.
+
+       <Note>
+         Due to Unix/Linux Local Account Rotations rotating a single credential set, auto-rotation may result in service interruptions. If you need to ensure service continuity, we recommend disabling this option.
+       </Note>
+
+    4. Configure the required Parameters for your rotation. Then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-parameters.png" alt="Rotation Parameters" />
+
+    * **Rotation Method** - The method to use when rotating the target user's password.
+      * **Login as Target** - Infisical will use the provided SSH username and password to log in and rotate its own password.
+      * **Login as Root** - Infisical will use the SSH Connection's credentials to log in and rotate the provided user's password.
+    * **Username** - The target SSH username whose password will be rotated.
+    * **Current Password** - The current password of the target user (required when **Rotation Method** is set to **Login as Target**).
+    * **Password Requirements** - The constraints to apply when generating new passwords.
+
+    5. Specify the secret names that the Unix/Linux credentials should be mapped to. Then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-secrets-mapping.png" alt="Rotation Secrets Mapping" />
+
+       * **Username** - the name of the secret that the Unix/Linux username will be stored in.
+       * **Password** - the name of the secret that the rotated password will be stored in.
+
+    6. Give your rotation a name and description (optional). Then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-details.png" alt="Rotation Details" />
+
+       * **Name** - the name of the secret rotation configuration. Must be slug-friendly.
+       * **Description** (optional) - a description of this rotation configuration.
+
+    7. Review your configuration, then click **Create Secret Rotation**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-confirm.png" alt="Rotation Review" />
+
+    8. Your **Unix/Linux Local Account** credentials are now available for use via the mapped secrets.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-created.png" alt="Rotation Created" />
+
+    ### Reconcile Unix/Linux Local Account
+
+    If you suspect the credentials are out of sync (for example, after a manual password change on the server), you can regain access by using **Reconcile**. This will use the configured SSH App Connection's root account to reset the target user's password and sync it with Infisical.
+
+    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-reconcile.png" alt="Reconcile Option" />
+    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/unix-linux-local-account/unix-linux-local-account-reconcile-confirm.png" alt="Reconcile Confirmation" />
+  </Tab>
+
+  <Tab title="API">
+    To create a Unix/Linux Local Account Rotation, make an API request to the [Create Unix/Linux
+    Local Account Rotation](/api-reference/endpoints/secret-rotations/unix-linux-local-account/create) API endpoint.
+
+    ### Sample request
+
+    ```bash Request theme={"dark"}
+    curl --request POST \
+    --url https://us.infisical.com/api/v2/secret-rotations/unix-linux-local-account \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "name": "my-unix-linux-rotation",
+        "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "description": "my unix/linux local account rotation",
+        "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "environment": "dev",
+        "secretPath": "/",
+        "isAutoRotationEnabled": false,
+        "rotationInterval": 30,
+        "rotateAtUtc": {
+            "hours": 0,
+            "minutes": 0
+        },
+        "parameters": {
+            "rotationMethod": "login-as-root",
+            "username": "appuser",
+            "passwordRequirements": {
+                "length": 48,
+                "required": {
+                    "digits": 2,
+                    "lowercase": 2,
+                    "uppercase": 2,
+                    "symbols": 2
+                },
+                "allowedSymbols": "-_.~!*"
+            }
+        },
+        "secretsMapping": {
+            "username": "UNIX_USERNAME",
+            "password": "UNIX_PASSWORD"
+        }
+    }'
+    ```
+
+    <Note>
+      Due to Unix/Linux Local Account Rotations rotating a single credential set, auto-rotation may result in service interruptions. If you need to ensure service continuity, we recommend disabling this option.
+    </Note>
+
+    ### Sample response
+
+    ```bash Response theme={"dark"}
+    {
+        "secretRotation": {
+            "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "name": "my-unix-linux-rotation",
+            "description": "my unix/linux local account rotation",
+            "secretsMapping": {
+                "username": "UNIX_USERNAME",
+                "password": "UNIX_PASSWORD"
+            },
+            "isAutoRotationEnabled": false,
+            "activeIndex": 0,
+            "folderId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "createdAt": "2023-11-07T05:31:56Z",
+            "updatedAt": "2023-11-07T05:31:56Z",
+            "rotationInterval": 30,
+            "rotationStatus": "success",
+            "lastRotationAttemptedAt": "2023-11-07T05:31:56Z",
+            "lastRotatedAt": "2023-11-07T05:31:56Z",
+            "lastRotationJobId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "nextRotationAt": "2023-11-07T05:31:56Z",
+            "connection": {
+                "app": "ssh",
+                "name": "my-ssh-connection",
+                "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+            },
+            "environment": {
+                "slug": "dev",
+                "name": "Development",
+                "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
+            },
+            "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "folder": {
+                "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+                "path": "/"
+            },
+            "rotateAtUtc": {
+                "hours": 0,
+                "minutes": 0
+            },
+            "lastRotationMessage": null,
+            "type": "unix-linux-local-account",
+            "parameters": {
+                "rotationMethod": "login-as-root",
+                "username": "appuser",
+                "passwordRequirements": {
+                    "length": 48,
+                    "required": {
+                        "digits": 2,
+                        "lowercase": 2,
+                        "uppercase": 2,
+                        "symbols": 2
+                    },
+                    "allowedSymbols": "-_.~!*"
+                }
+            }
+        }
+    }
+    ```
+  </Tab>
+</Tabs>

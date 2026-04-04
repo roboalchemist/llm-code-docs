@@ -1,0 +1,9 @@
+name: liam-erd
+primary_source: llms
+sources:
+  - type: llms
+    url: https://liambx.com/docs/
+    last_fetched: "2026-04-03T23:09:16Z"
+description: >
+  liam-erd documentation
+quality_score: 0

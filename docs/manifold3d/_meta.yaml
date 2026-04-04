@@ -1,0 +1,8 @@
+name: manifold3d
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:20Z"
+description: >
+  manifold3d documentation
+quality_score: 0

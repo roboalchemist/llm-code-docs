@@ -1,0 +1,9 @@
+name: likec4
+primary_source: llms
+sources:
+  - type: llms
+    url: https://likec4.dev/
+    last_fetched: "2026-04-03T23:09:16Z"
+description: >
+  likec4 documentation
+quality_score: 0

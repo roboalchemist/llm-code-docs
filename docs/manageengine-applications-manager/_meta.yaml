@@ -1,0 +1,8 @@
+name: manageengine-applications-manager
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:09:19Z"
+description: >
+  manageengine-applications-manager documentation
+quality_score: 0

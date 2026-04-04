@@ -1,0 +1,174 @@
+# Source: https://docs.infrahub.app/sync/adapters/aci.md
+
+# Cisco ACI adapter
+
+## What is Cisco ACI?[​](#what-is-cisco-aci "Direct link to What is Cisco ACI?")
+
+The *Cisco ACI* is a software-defined networking (SDN) solution that provides a policy-based, application-centric approach to managing and orchestrating network infrastructure. It is commonly used in data centers for scalable, policy-driven networking.
+
+## Sync direction[​](#sync-direction "Direct link to Sync direction")
+
+Cisco ACI → Infrahub
+
+note
+
+Currently, the Cisco ACI adapter supports only **one-way synchronization** from ACI to Infrahub. Syncing data back into ACI is not yet supported.
+
+## Configuration[​](#configuration "Direct link to Configuration")
+
+The adapter reads connection settings from the synchronization configuration and can be overridden by environment variables. Credentials should be provided via a secret manager or environment variables in production.
+
+### Configuration parameters[​](#configuration-parameters "Direct link to Configuration parameters")
+
+```
+---
+name: from-cisco-aci
+source:
+  name: aci
+  settings:
+    url: "https://<APIC_CONTROLLER>"
+    username: "<USER>"
+    password: "<PASSWORD>"
+    api_endpoint: "api"   # optional, default: api
+    verify: true          # boolean or string ("false","0") accepted
+```
+
+### Environment variables[​](#environment-variables "Direct link to Environment variables")
+
+* CISCO\_APIC\_URL: overrides settings.url
+* CISCO\_APIC\_USERNAME: overrides settings.username
+* CISCO\_APIC\_PASSWORD: overrides settings.password
+* CISCO\_APIC\_VERIFY: overrides settings.verify; accepts true/false/0/1 (strings are normalized)
+
+Notes:
+
+* Credentials must come from environment variables or a secret manager in production. Never commit secrets.
+* The adapter normalizes verify to a boolean (strings like false, 0, no are treated as False).
+* The adapter records login timestamps in UTC to avoid timezone related issues and ensure correct token refresh behavior.
+
+### Schema mapping examples[​](#schema-mapping-examples "Direct link to Schema mapping examples")
+
+#### Basic device mapping[​](#basic-device-mapping "Direct link to Basic device mapping")
+
+```
+- name: DcimPhysicalDevice
+  mapping: "class/fabricNode.json"
+  identifiers: ["name"]
+  fields:
+    - name: name
+      mapping: "fabricNode.attributes.name"
+    - name: serial
+      mapping: "fabricNode.attributes.serial"
+    - name: role
+      mapping: "fabricNode.attributes.role"
+  filters:
+    - field: "fabricNode.attributes.fabricSt"
+      operation: "=="
+      value: "active"
+```
+
+#### Interface mapping with ACI Jinja filter[​](#interface-mapping-with-aci-jinja-filter "Direct link to Interface mapping with ACI Jinja filter")
+
+```
+- name: DcimPhysicalInterface
+  mapping: "class/l1PhysIf.json"
+  identifiers: ["device", "name"]
+  fields:
+    - name: name
+      mapping: "l1PhysIf.attributes.id"
+    - name: device
+      mapping: "l1PhysIf.attributes.dn"
+      reference: DcimPhysicalDevice
+    - name: description
+      mapping: "l1PhysIf.attributes.descr"
+  transforms:
+    - field: device
+      expression: "{{ l1PhysIf.attributes.dn.split('/')[2].replace('node-', '') | aci_device_name }}"
+    - field: status
+      expression: "{{ 'active' if l1PhysIf.attributes.adminSt == 'up' else 'free' }}"
+  filters:
+    - field: "l1PhysIf.attributes.id"
+      operation: "contains"
+      value: "eth"
+```
+
+## ACI-specific Jinja filters[​](#aci-specific-jinja-filters "Direct link to ACI-specific Jinja filters")
+
+The ACI adapter provides custom Jinja filters for data transformation:
+
+### `aci_device_name` filter[​](#aci_device_name-filter "Direct link to aci_device_name-filter")
+
+The `aci_device_name` filter resolves ACI node IDs to device names automatically. This is particularly useful when mapping physical interfaces to their parent devices.
+
+**Usage:**
+
+```
+{{ node_id | aci_device_name }}
+```
+
+**Example:**
+
+* Input: `"102"` (ACI node ID)
+* Output: `"spine-102"` (actual device name from ACI)
+
+**Common use case in transforms:**
+
+```
+transforms:
+  - field: device
+    expression: "{{ l1PhysIf.attributes.dn.split('/')[2].replace('node-', '') | aci_device_name }}"
+```
+
+This transform:
+
+1. Extracts the node ID from the ACI Distinguished Name (DN)
+2. Removes the `"node-"` prefix (for example: `"node-102"` → `"102"`)
+3. Uses the `aci_device_name` filter to resolve the node ID to the actual device name
+
+**How it works:**
+
+* The adapter automatically queries the ACI `fabricNode` class during initialization
+* Builds a mapping of node IDs to device names
+* The filter performs a lookup with a fallback to the original node ID if not found
+
+## Generating the models[​](#generating-the-models "Direct link to Generating the models")
+
+Use the generate command to produce models from the schema mapping and examples:
+
+```
+poetry run infrahub-sync generate --name from-cisco-aci --directory examples/
+```
+
+## Common issues and troubleshooting[​](#common-issues-and-troubleshooting "Direct link to Common issues and troubleshooting")
+
+### Authentication and connectivity[​](#authentication-and-connectivity "Direct link to Authentication and connectivity")
+
+* If you see token refresh errors, ensure the APIC response includes refreshTimeoutSeconds; the adapter forces re-login when refresh data is unavailable.
+* For TLS verification problems, set CISCO\_APIC\_VERIFY to false in a secure environment (use with caution).
+
+### Device reference resolution[​](#device-reference-resolution "Direct link to Device reference resolution")
+
+* **Interface-device relationship errors**: If you see "Unable to locate the node device" errors, ensure:
+
+  <!-- -->
+
+  * The `DcimPhysicalDevice` mapping runs before `DcimPhysicalInterface` in the `order` configuration
+  * The device transform uses the `aci_device_name` filter correctly: `{{ node_id | aci_device_name }}`
+  * The ACI fabric node query succeeds (check logs for "Built ACI device mapping" messages)
+
+### Jinja filter issues[​](#jinja-filter-issues "Direct link to Jinja filter issues")
+
+* **`aci_device_name` filter not found**: Ensure you're using the ACI adapter and the filter is correctly spelled
+
+* **Filter returns node ID instead of device name**: Check that the fabric node query succeeded during adapter initialization
+
+* **Transform expression errors**: Verify the DN parsing logic extracts the correct node ID:
+
+  ```
+  expression: "{{ l1PhysIf.attributes.dn.split('/')[2].replace('node-', '') | aci_device_name }}"
+  ```
+
+### General debugging[​](#general-debugging "Direct link to General debugging")
+
+* Enable DEBUG logging for the adapter to see raw fetched objects and mapping decisions. Logs will not include secrets.
+* Check the device mapping build process in logs: look for "Built ACI device mapping with X entries"

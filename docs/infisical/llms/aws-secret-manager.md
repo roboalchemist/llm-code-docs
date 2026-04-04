@@ -1,0 +1,9 @@
+# Source: https://infisical.com/docs/integrations/cloud/aws-secret-manager.md
+
+# AWS Secrets Manager
+
+> Learn how to sync secrets from Infisical to AWS Secrets Manager.
+
+<Note>
+  The AWS Secrets Manager Native Integration will be deprecated in 2026. Please migrate to our new [AWS Secrets Manager Sync](../secret-syncs/aws-secrets-manager).
+</Note>

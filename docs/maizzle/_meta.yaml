@@ -1,0 +1,9 @@
+name: maizzle
+primary_source: llms
+sources:
+  - type: llms
+    url: https://maizzle.com/
+    last_fetched: "2026-04-03T23:09:19Z"
+description: >
+  maizzle documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: hypermode
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.hypermode.com/
+    last_fetched: "2026-04-03T23:09:08Z"
+description: >
+  hypermode documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: mantine
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.mantine.dev/
+    last_fetched: "2026-04-03T23:09:20Z"
+description: >
+  mantine documentation
+quality_score: 0

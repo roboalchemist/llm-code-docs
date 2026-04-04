@@ -1,0 +1,8 @@
+name: ibm-carbon-design-system
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:09:08Z"
+description: >
+  ibm-carbon-design-system documentation
+quality_score: 0

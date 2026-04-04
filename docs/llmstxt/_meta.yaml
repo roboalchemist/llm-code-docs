@@ -1,0 +1,9 @@
+name: llmstxt
+primary_source: llms
+sources:
+  - type: llms
+    url: https://llmstxt.org/
+    last_fetched: "2026-04-03T23:09:17Z"
+description: >
+  llmstxt documentation
+quality_score: 0

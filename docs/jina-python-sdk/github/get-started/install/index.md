@@ -1,0 +1,1 @@
+# Source: https://github.com/jina-ai/jina/blob/master/docs/get-started/install/index.md```{include} ../install.md``````{toctree}:hidden:dockerapple-silicon-m1-m2windowstroubleshooting```

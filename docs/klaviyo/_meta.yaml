@@ -1,0 +1,9 @@
+name: klaviyo
+primary_source: llms
+sources:
+  - type: llms
+    url: https://developers.klaviyo.com/
+    last_fetched: "2026-04-03T23:09:13Z"
+description: >
+  klaviyo documentation
+quality_score: 0

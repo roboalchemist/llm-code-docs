@@ -1,0 +1,42 @@
+# Source: https://docs.hypermode.com/create-project.md
+
+# Create Project
+
+> Initialize your Modus app with Hypermode
+
+A Hypermode project represents your Modus app and associated models. You can
+create a project through the Hypermode Console or Hyp CLI.
+
+## Create with Hypermode Console
+
+<Note>
+  Hypermode relies on Git as a source for project deployment. Through the
+  project creation flow, you'll connect Hypermode to your GitHub account.
+</Note>
+
+From your organization home, click **New Project**. Set a name for the project
+and click **Create**.
+
+Once you have created a project, Hypermode prompts you to finish setting up your
+project using the CLI.
+
+First, install the Modus CLI and initialize your app. For more information on
+creating your first Modus app, visit the
+[Modus quickstart](modus/first-modus-agent).
+
+Next, initialize the app with Hypermode through the [Hyp CLI](/hyp-cli) and link
+your GitHub repo with your Modus app to Hypermode using:
+
+```sh
+hyp link
+```
+
+This command adds a default GitHub Actions workflow to build your Modus app and
+a Hypermode GitHub app for auto-deployment. Once initialized, each commit to the
+target branch triggers a deployment.
+
+You can also connect to an existing GitHub repository.
+
+The last step is triggering your first deployment. If you linked your project
+through the Hyp CLI, make sure to push your changes first to trigger a
+deployment.

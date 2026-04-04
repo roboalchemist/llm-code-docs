@@ -1,0 +1,8 @@
+name: lanterna
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:09:15Z"
+description: >
+  lanterna documentation
+quality_score: 0

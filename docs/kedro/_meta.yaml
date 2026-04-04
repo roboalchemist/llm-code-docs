@@ -1,0 +1,9 @@
+name: kedro
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.kedro.org/
+    last_fetched: "2026-04-03T23:09:13Z"
+description: >
+  kedro documentation
+quality_score: 0

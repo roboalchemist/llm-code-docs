@@ -1,0 +1,9 @@
+name: kong
+primary_source: llms
+sources:
+  - type: llms
+    url: https://developer.konghq.com/
+    last_fetched: "2026-04-03T23:09:14Z"
+description: >
+  kong documentation
+quality_score: 0

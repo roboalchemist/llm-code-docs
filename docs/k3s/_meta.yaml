@@ -1,0 +1,8 @@
+name: k3s
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:09:12Z"
+description: >
+  k3s documentation
+quality_score: 0

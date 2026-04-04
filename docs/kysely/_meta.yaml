@@ -1,0 +1,9 @@
+name: kysely
+primary_source: llms
+sources:
+  - type: llms
+    url: https://kysely.dev/
+    last_fetched: "2026-04-03T23:09:15Z"
+description: >
+  kysely documentation
+quality_score: 0

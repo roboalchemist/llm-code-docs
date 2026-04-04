@@ -1,0 +1,109 @@
+# Source: https://docs.infrahub.app/topics/local-demo-environment.md
+
+# Local demo environment
+
+A local environment based on Docker Compose is available for demo and testing. It's designed to be controlled by `invoke` using a list of predefined commands.
+
+| Command                  | Description                                                        |
+| ------------------------ | ------------------------------------------------------------------ |
+| `demo.pull`              | Pull external containers from registry.                            |
+| `demo.start`             | Start a local instance of Infrahub within Docker Compose.          |
+| `demo.stop`              | Stop the running instance of Infrahub.                             |
+| `demo.restart`           | Restart Infrahub API Server and Task worker within Docker Compose. |
+| `demo.destroy`           | Destroy all containers and volumes.                                |
+| `demo.migrate`           | Apply the latest database migrations.                              |
+| `demo.cli-git`           | Launch a bash shell inside the running Infrahub container.         |
+| `demo.cli-server`        | Launch a bash shell inside the running Infrahub container.         |
+| `demo.status`            | Display the status of all containers.                              |
+| `demo.load-infra-schema` | Load the `infrastructure_base` schema into Infrahub.               |
+| `demo.load-infra-data`   | Generate some data representing a small network with 6 devices.    |
+| `demo.load-infra-menu`   | Generate some data representing a small network with 6 devices.    |
+
+## Topology[​](#topology "Direct link to Topology")
+
+| Container Name      | Image                        | Description                                                                               |
+| ------------------- | ---------------------------- | ----------------------------------------------------------------------------------------- |
+| **database**        | `neo4j:2025.10.1-enterprise` | Graph Database                                                                            |
+| **message-queue**   | `rabbitmq:4.2.1-management`  | Message bus based on RabbitMQ                                                             |
+| **cache**           | `redis:8.4.0`                | Cache based on Redis, mainly used for distributed lock                                    |
+| **infrahub-server** | Dockerfile                   | Instance of the API server, running GraphQL                                               |
+| **task-worker**     | Dockerfile                   | Instance of the Task worker, executing specific tasks such as managing the Git Repository |
+| **task-manager**    | Dockerfile                   | Task orchestrator                                                                         |
+| **task-manger-db**  | `postgres:18-alpine`         | Task orchestrator state database                                                          |
+
+[Check the architecture diagram to have more information about each component./architecture](/topics/architecture.md)
+
+## Getting started[​](#getting-started "Direct link to Getting started")
+
+### Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+
+The system that you want to use to run the demo environment has to meet the [hardware requirements](/topics/hardware-requirements.md).
+
+In order to run the demo environment, the following applications must be installed on the systems:
+
+* [pyinvoke](https://www.pyinvoke.org/)
+* Docker & Docker Compose
+
+info
+
+On a Laptop, both Docker & Docker Compose can be installed by installing [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+### First utilization[​](#first-utilization "Direct link to First utilization")
+
+Initialize the database and start the application
+
+```
+invoke demo.start
+```
+
+### Load some data[​](#load-some-data "Direct link to Load some data")
+
+Once you have an environment up and running you can load your own schema or you can explore the one provided with the project using the following commands.
+
+```
+invoke demo.load-infra-schema
+invoke demo.load-infra-data
+```
+
+### Control the local environment[​](#control-the-local-environment "Direct link to Control the local environment")
+
+* `invoke demo.start` : Start all the containers in detached mode.
+* `invoke demo.stop` : Stop All the containers
+* `invoke demo.destroy` : Destroy all containers and volumes.
+
+info
+
+`invoke demo.debug` can be used as an alternative to `invoke demo.start`, the main difference is that it will stay *attached* to the containers and all the logs will be displayed in real time in the CLI.
+
+## Advanced settings[​](#advanced-settings "Direct link to Advanced settings")
+
+### Support for `sudo`[​](#support-for-sudo "Direct link to support-for-sudo")
+
+On a Linux system, the system will try to automatically detect if `sudo` is required to run the Docker command or not.
+
+It's possible to control this setting with the environment variable: `INVOKE_SUDO`
+
+```
+export INVOKE_SUDO=1 to force sudo
+export INVOKE_SUDO=0 to disable it completely
+```
+
+### Support for `pty`[​](#support-for-pty "Direct link to support-for-pty")
+
+On Linux and MacOS, all commands will be executed with PTY enabled by default.
+
+It's possible to control this setting with the environment variable: `INVOKE_PTY`
+
+```
+export INVOKE_PTY=1 to force pty
+export INVOKE_PTY=0 to disable it completely
+```
+
+## Troubleshooting[​](#troubleshooting "Direct link to Troubleshooting")
+
+It's recommended to check if all containers are still running using `invoke demo.status`. The 5 containers should be running and be present.
+
+* If one is not running, you can try to restart it with `invoke demo.start`.
+* If the container is still not coming up, you can watch the logs with `docker logs <container name>` (the container name will include the name of the project and a number, i.e., `infrahub-task-worker-1` ).
+
+If some containers are still not coming up, it's recommended to start from a fresh install with `invoke demo.destroy`.

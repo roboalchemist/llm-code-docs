@@ -1,0 +1,184 @@
+# Source: https://docs.knock.app/integrations/sms/twilio.md
+
+---
+title: How to send SMS messages with Twilio
+description: Get started sending SMS notifications with Twilio and Knock.
+section: Integrations > SMS
+layout: integrations
+---
+
+Knock integrates with <a href="https://twilio.com/" target="_blank">Twilio</a> to send SMS notifications to your recipients.
+
+## Features
+
+- Delivery tracking
+- Bounce Support
+- Knock link tracking
+- Per environment configuration
+- Sandbox mode
+
+## Getting started
+
+You can create a new Twilio channel in the dashboard under the **Channels and sources** page in your account settings. From there, you'll need to take some steps in Twilio before you can configure your Twilio channel within Knock.
+
+<Steps titleSize="h3">
+  <Step title="Sign up for Twilio">
+    <a href="https://www.twilio.com/try-twilio" target="_blank">Sign up</a> for a Twilio account if you haven't already.
+  </Step>
+  <Step title="Get a Twilio phone number">
+    <a href="https://www.twilio.com/docs/messaging/guides/how-to-use-your-free-trial-account#get-your-free-twilio-phone-number" target="_blank">Get your first SMS-enabled phone number</a> in Twilio. You'll use this as the "From" phone number in your channel configuration within Knock.
+
+    (We also support Twilio <a href="https://www.twilio.com/sms/short-codes" target="_blank">short codes</a> and <a href="https://www.twilio.com/docs/messaging/services" target="_blank">messaging services</a>.)
+
+  </Step>
+  <Step title="Verify phone numbers (trial accounts only)">
+    If your Twilio account is in trial mode, you'll need to <a href="https://www.twilio.com/docs/messaging/guides/how-to-use-your-free-trial-account#appendix-one-adding-more-verified-personal-phone-numbers-to-your-account" target="_blank">pre-verify any phone numbers</a> that you plan to send SMS messages to during testing with Knock.
+  </Step>
+  <Step title="Configuring Twilio in Knock">
+    Now that you have your **Twilio phone number**, **account ID** and **auth token**, you're ready to configure your Twilio channel in the Knock dashboard under the **Channels and sources** page in your account settings.
+  </Step>
+</Steps>
+
+## Channel configuration
+
+The following channel settings should be configured per [environment](/concepts/environments). Navigate to **Channels and sources** in your dashboard account settings, select your Twilio [channel](/concepts/channels), then click "Manage configuration" under the environment that you'd like to configure.
+
+<AccordionGroup>
+  <Accordion title="Settings">
+    Fields marked with an `*` are required.
+    
+    **Knock settings**
+    <Attributes>
+      <Attribute
+        name="Sandbox mode"
+        type="boolean"
+        nameSlug="/integrations/overview#sandbox-mode"
+        description="Whether to enable sandbox mode for your Twilio channel."
+      />
+      <Attribute
+        name="Knock link tracking"
+        type="boolean"
+        nameSlug="/send-notifications/tracking#link-click-tracking"
+        description="Whether to enable Knock link-click tracking."
+      />
+    </Attributes>
+
+    **Provider settings for Twilio**
+    <Attributes>
+      <Attribute
+        name="Account ID"
+        type="string*"
+        description="The account ID from Twilio."
+      />
+      <Attribute
+        name="Auth token"
+        type="string*"
+        description="The auth token from Twilio."
+      />
+      <Attribute
+        name="From"
+        type="enum*"
+        description="The method used to send your SMS messages. One of Phone number, Short code, or Messaging Service SID."
+      />
+      <Attribute
+        name="Phone number"
+        type="string*"
+        description="The phone number to send messages from. Required when From is set to Phone number."
+      />
+      <Attribute
+        name="Short code"
+        type="string*"
+        description="The short code to send messages from. Required when From is set to Short code."
+      />
+      <Attribute
+        name="Messaging Service SID"
+        type="string*"
+        description="The Messaging Service SID to send messages from. Required when From is set to Messaging Service SID."
+      />
+    </Attributes>
+
+  </Accordion>
+  <Accordion title="Conditions">
+    Set optional per-environment [conditions](/integrations/overview#channel-conditions) for this channel. These conditions are evaluated each time a workflow run encounters a step that uses this channel in the configured environment. If the conditions are not met, the step will be skipped.
+  </Accordion>
+</AccordionGroup>
+
+## Recipient data requirements
+
+In order to send an SMS notification you'll need a valid `phone_number` property set on your recipient.
+
+## Delivery status webhooks
+
+When enabled, Twilio will send delivery status updates directly to Knock via webhooks, allowing you to track the full lifecycle of your SMS messages in real-time.
+
+### Prerequisites
+
+Before enabling delivery status webhooks, you need:
+
+1. A Twilio account with an SMS-enabled phone number, short code, or messaging service
+2. A Twilio channel configured in Knock (see the [getting started](#getting-started) section above)
+3. Access to your Twilio phone number or messaging service configuration
+
+### Setting up delivery status webhooks
+
+<Steps titleSize="h3">
+  <Step title="Enable delivery status webhooks in Knock">
+    1. Navigate to **Channels and sources** in your Knock dashboard
+    2. Select your Twilio channel
+    3. Click "Manage configuration" for the environment you want to configure
+    4. Scroll to the "Incoming message status updates" section and enable incoming webhooks
+    5. Copy the generated webhook URL - you'll need this in the next step
+  </Step>
+
+  <Step title="Configure status callback in Twilio">
+    The setup process depends on whether you're using a phone number/short code or a messaging service:
+
+    **For phone numbers or short codes:**
+
+    1. Go to the <a href="https://console.twilio.com/us1/develop/phone-numbers/manage/incoming" target="_blank">Phone Numbers</a> page in your Twilio Console
+    2. Select the phone number or short code you're using with Knock
+    3. Scroll to the "Messaging" section
+    4. Under "Status Callback URL", paste the webhook URL from Knock
+    5. Click "Save" to apply the changes
+
+    **For messaging services:**
+
+    1. Go to the <a href="https://console.twilio.com/us1/develop/sms/services" target="_blank">Messaging Services</a> page in your Twilio Console
+    2. Select the messaging service you're using with Knock
+    3. Go to the "Integration" settings
+    4. Under "Status Callback URL", paste the webhook URL from Knock
+    5. Click "Save" to apply the changes
+
+  </Step>
+</Steps>
+
+### Supported delivery statuses
+
+When delivery status webhooks are enabled for Twilio, Knock will update message statuses based on these Twilio status callback events:
+
+| Twilio Status | Knock Status  | Description                                                     |
+| ------------- | ------------- | --------------------------------------------------------------- |
+| delivered     | `delivered`   | The SMS was successfully delivered to the recipient's device    |
+| failed        | `bounced`     | The SMS failed due to invalid phone number or carrier rejection |
+| undelivered   | `undelivered` | The SMS could not be delivered due to a temporary error         |
+
+### Troubleshooting
+
+If delivery status updates aren't appearing in Knock:
+
+1. **Check status callback URL.** Verify the Status Callback URL is correctly configured in your Twilio phone number or messaging service settings.
+2. **Verify phone number format.** Ensure recipients have valid phone numbers in E.164 format (e.g., +1234567890).
+3. **Check trial account limits.** If using a trial account, verify the recipient phone number has been verified in Twilio.
+4. **Review Twilio logs.** Check the Messaging Logs in Twilio Console to see if messages are being sent and if status callbacks are being triggered.
+5. **Test with a real number.** Send a test SMS to a real phone number to verify the full delivery flow.
+
+<Callout
+  type="info"
+  title="Need help?"
+  text={
+    <>
+      If you're having trouble setting up delivery status webhooks, contact our
+      support team at <a href="mailto:support@knock.app">support@knock.app</a>.
+    </>
+  }
+/>

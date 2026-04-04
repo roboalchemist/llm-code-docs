@@ -1,0 +1,37 @@
+# Source: https://getlago.com/docs/guide/billable-metrics/rounding.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Rounding
+
+> Lago aggregates your events in real time. You can add rounding rules to the final result.
+
+## Rounding options
+
+When creating or editing a billable metric, you have the option to apply rounding to the final aggregated value. By default, no rounding is applied. If you choose to enable rounding, you can select from the following options:
+
+* **Ceil**: Rounds up to the nearest integer;
+* **Floor**: Rounds down to the nearest integer; or
+* **Round**: Rounds to the nearest integer based on standard rounding rules.
+
+## Precision types
+
+### No precision
+
+Omitting precision rounds to the nearest whole number (integer). By default, no specific precision is set for your rounding option.
+
+👉 *Example: 123.4567 rounded with no precision → `123`.*
+
+### Positive precision
+
+Adding a positive precision rounds to a specific number of decimal places.
+
+👉 *Example: 123.4567 rounded with precision 2 → `123.46` (two decimal places retained).*
+
+### Negative precision
+
+Adding a negative precision rounds to a specific position to the left of the decimal.
+
+👉 *Example: 123.4567 rounded with precision -1 → `120` (rounds to the nearest ten).*

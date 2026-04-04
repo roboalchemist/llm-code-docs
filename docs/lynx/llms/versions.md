@@ -1,0 +1,27 @@
+# Source: https://lynxjs.org/versions.md
+
+# Lynx versions
+
+In 2025, Lynx plan to publish 5 stable releases. You can find Lynx [release schedule](/blog/lynx-open-source-roadmap-2025.md) here.
+
+## Next version (unreleased)
+
+Developers can check out the new features currently in development in this release.
+
+<VersionTable type="developing" />
+
+## Release candidate version
+
+Before the official release, the Lynx version undergoes comprehensive testing in various complex application scenarios. You can find current release candidate here.
+
+<VersionTable type="release_candidate" />
+
+## Latest version
+
+It is recommended that new applications using Lynx adopt the latest version.
+
+<VersionTable type="latest" />
+
+## Previous versions
+
+<VersionTable type="previous" />

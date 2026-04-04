@@ -1,0 +1,8 @@
+name: mantis-bug-tracker
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:20Z"
+description: >
+  mantis-bug-tracker documentation
+quality_score: 0

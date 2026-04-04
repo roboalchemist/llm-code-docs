@@ -1,0 +1,52 @@
+# Source: https://docs.kedro.org/en/stable/tutorials/settings/index.md
+
+# Project settings
+
+## Application settings
+
+A Kedro project's `settings.py` file contains the application settings for the project, including registration of Hooks and library components. This page explains how settings work, and which settings are available.
+
+Note
+
+Application settings differ from [runtime configuration](https://docs.kedro.org/en/stable/configure/configuration_basics/index.md), which lives in the `conf` folder and varies by environment. They also differ from [pyproject.toml](#project-metadata), which provides project metadata and build configuration.
+
+By default, all code in `settings.py` is commented out. When settings are not supplied, Kedro chooses sensible default values. Edit `settings.py` if you wish to change to values other than the defaults.
+
+| Setting                     | Default value                                      | Use                                                                                                                                                   |
+| --------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `HOOKS`                     | `tuple()`                                          | Inject additional behaviour into the execution timeline with [project Hooks](https://docs.kedro.org/en/stable/extend/hooks/introduction/index.md).    |
+| `DISABLE_HOOKS_FOR_PLUGINS` | `tuple()`                                          | Disable [auto-registration of Hooks from plugins](https://docs.kedro.org/en/stable/extend/hooks/introduction/#disable-auto-registered-plugins-hooks). |
+| `SESSION_STORE_CLASS`       | `kedro.framework.session.session.BaseSessionStore` | Customise how [session data](https://docs.kedro.org/en/stable/extend/session/index.md) is stored.                                                     |
+| `SESSION_STORE_ARGS`        | `dict()`                                           | Keyword arguments for the `SESSION_STORE_CLASS` constructor.                                                                                          |
+| `CONTEXT_CLASS`             | `kedro.framework.context.KedroContext`             | Customise how Kedro library components are managed.                                                                                                   |
+| `CONF_SOURCE`               | `"conf"`                                           | Directory that holds [configuration](https://docs.kedro.org/en/stable/configure/configuration_basics/index.md).                                       |
+| `CONFIG_LOADER_CLASS`       | `kedro.config.ConfigLoader`                        | Customise how project configuration is handled.                                                                                                       |
+| `CONFIG_LOADER_ARGS`        | `dict()`                                           | Keyword arguments for the `CONFIG_LOADER_CLASS` constructor.                                                                                          |
+| `DATA_CATALOG_CLASS`        | `kedro.io.DataCatalog`                             | Customise how the [Data Catalog](https://docs.kedro.org/en/stable/catalog-data/data_catalog/index.md) is handled.                                     |
+
+## Project metadata
+
+The `pyproject.toml` file is the standard way to store build metadata and tool settings for Python projects. Every Kedro project comes with a default pre-populated `pyproject.toml` file in your project root directory with the following keys specified under the `[tool.kedro]` section:
+
+```
+[tool.kedro]
+package_name = "package_name"
+project_name = "project_name"
+kedro_init_version = "kedro_version"
+tools = ""
+example_pipeline = "False"
+source_dir = "src"
+```
+
+The `package_name` should be a [valid Python package name](https://peps.python.org/pep-0423/) and the `project_name` should be a human-readable name. They are both mandatory keys for your project. `kedro_init_version` specifies the version of Kedro the project was created with. When you upgrade to a newer Kedro version, this value should also be updated.
+
+You can also store the settings for the other tools you've used in your project, such as [`pytest` for automated testing](https://docs.kedro.org/en/stable/develop/automated_testing/index.md). Consult the respective documentation for the tools you have used to check how you can configure the settings with the `pyproject.toml` file for your project.
+
+### Use Kedro without the `src` folder
+
+Kedro uses the `src` layout by default. It is possible to change this, for example, to use a [flat layout](https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/#src-layout-vs-flat-layout), you can change the `pyproject.toml` as follow.
+
+```
++++ source_dir = ""
+--- source_dir = "src"
+```

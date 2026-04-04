@@ -1,0 +1,42 @@
+# Source: https://docs.mage.ai/data-integrations/sources/google_ads.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Google Ads
+
+![Google](https://hellomidia.com.br/wp-content/uploads/2018/06/google-ads.png)
+
+<br />
+
+## INCREMENTAL Sync
+
+This source handles state internally, meaning **INCREMENTAL sync selection is not supported**.
+
+<br />
+
+## Configuration
+
+To set up the Google Ads source, provide the following configuration parameters:
+
+| Key                   | Description                                                                                                         | Sample Value                                                                            | Required |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------- |
+| `login_customer_ids`  | A list containing both `customerId` and `loginCustomerId` from Google Ads.                                          | `"login_customer_ids": [{"customerId": "1234567890", "loginCustomerId": "0987654321"}]` | ✅        |
+| `oauth_client_id`     | OAuth client ID from Google Cloud.                                                                                  | `XXXXXXXXXXXX-YYYYYYYYYYYYYYYYYYYYYY.apps.googleusercontent.com`                        | ✅        |
+| `oauth_client_secret` | OAuth client secret from Google Cloud.                                                                              | `abc...`                                                                                | ✅        |
+| `refresh_token`       | Google API refresh token, obtainable from [Google OAuth Playground](https://developers.google.com/oauthplayground). | `abc...`                                                                                | ✅        |
+| `developer_token`     | Google Ads developer token.                                                                                         | `abc...`                                                                                | ✅        |
+| `start_date`          | Fetch data newer than the specified `start_date`. Format: ISO8601 (`YYYY-MM-DDTHH:MM:SSZ`).                         | `2022-01-01T00:00:00Z`                                                                  | ✅        |
+
+<br />
+
+## Generating Credentials
+
+Check out [this article](https://articles.wesionary.team/how-to-implement-google-ads-api-ff69f628d4ac)\
+by **Sudeep Timalsina** for a great guide on generating credentials for Google Ads API access.
+
+<br />
+
+
+Built with [Mintlify](https://mintlify.com).

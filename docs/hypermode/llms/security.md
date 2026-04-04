@@ -1,0 +1,62 @@
+# Source: https://docs.hypermode.com/security.md
+
+# Security
+
+> Data handling, privacy, and security best practices
+
+At Hypermode, we take security seriously. This document outlines our approach to
+data handling, privacy, and security best practices to ensure your projects are
+safe and secure.
+
+## System description
+
+Hypermode is a fully managed AI development platform that's designed to offer
+easy integration of data and AI models, code-first agents and inferences, and
+end-to-end visibility. The platform includes production hosting and
+automatically created branch-based environments for apps and graphs, powered by
+Modus and Dgraph.
+
+Hypermode Inc. is responsible for the development and maintenance of the
+service. Services leverage cloud-hosted infrastructure and we make some
+components available as open source software under the Apache 2.0 License.
+Relevant code repositories are available publicly through GitHub, and we welcome
+contributions by the community, subject to a public code of conduct and GitHub
+terms of service.
+
+## Data handling and privacy
+
+Hypermode maintains a strong commitment to protecting your data and privacy. For
+detailed information on our data handling and privacy policies, please refer to
+our [Privacy Policy](https://hypermode.com/privacy).
+
+## Security best practices
+
+Security is a shared responsibility. To help you keep your projects secure, we
+recommend the following best practices:
+
+* **Use strong passwords**: ensure that all user accounts use strong, unique
+  passwords
+* **Develop secure apps**: implement security and quality coding best practices
+  in the code you write and deploy
+* **Regularly update dependencies**: keep your project dependencies up-to-date
+  to avoid vulnerabilities
+* **Monitor for security alerts**: use tools to monitor your codebase for
+  security vulnerabilities and address them promptly
+* **Manage roles and permissions**: add and remove users from your organization
+  as your team members change
+
+## Reporting security issues
+
+We take the security of Hypermode and our open source projects very seriously.
+If you believe you have found a security vulnerability, we encourage you to let
+us know right away.
+
+We investigate all legitimate reports and do our best to quickly fix the
+problem. Please report any issues or vulnerabilities via GitHub Security
+Advisories instead of posting a public issue in GitHub. You can also send
+security communications to [security@hypermode.com](mailto:security@hypermode.com).
+
+Please include the version identifier and details on how the you can exploit the
+vulnerability.
+
+We appreciate your help in keeping Hypermode secure.

@@ -1,0 +1,8 @@
+name: lozad.js
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:18Z"
+description: >
+  lozad.js documentation
+quality_score: 0

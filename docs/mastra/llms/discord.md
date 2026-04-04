@@ -1,0 +1,11 @@
+# Source: https://mastra.ai/docs/community/discord
+
+# Discord Community
+
+The Discord server has over 1000 members and serves as the main discussion forum for Mastra. The Mastra team monitors Discord during North American and European business hours, with community members active across other time zones.
+
+[Join the Discord server](https://discord.gg/BTYqqHKUrf)
+
+## Discord MCP Bot
+
+In addition to community members, we've an (experimental!) Discord bot that can also help answer questions. It uses [Model Context Protocol (MCP)](https://mastra.ai/docs/mcp/overview). You can ask it a question with `/ask` (either in public channels or DMs) and clear history (in DMs only) with `/cleardm`.

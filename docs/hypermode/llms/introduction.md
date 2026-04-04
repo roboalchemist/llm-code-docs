@@ -1,0 +1,92 @@
+# Source: https://docs.hypermode.com/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/to-do-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/message-board-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/get-started-with-dgraph/introduction.md
+
+# Source: https://docs.hypermode.com/agents/introduction.md
+
+# Source: https://docs.hypermode.com/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/to-do-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/message-board-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/get-started-with-dgraph/introduction.md
+
+# Source: https://docs.hypermode.com/agents/introduction.md
+
+# Source: https://docs.hypermode.com/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/to-do-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/message-board-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/get-started-with-dgraph/introduction.md
+
+# Source: https://docs.hypermode.com/agents/introduction.md
+
+# Source: https://docs.hypermode.com/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/to-do-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/message-board-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/get-started-with-dgraph/introduction.md
+
+# Source: https://docs.hypermode.com/agents/introduction.md
+
+# Hypermode Agents
+
+> Build AI agents that act—from natural language toproduction-ready code
+
+Hypermode Agents is the complete solution for defining, iterating, and working
+with agents. Built on the latest AI advances, Hypermode Agents provide an agent
+workbench that allows for quick iteration. The workbench includes:
+
+* [**Threads**](work) is a conversational interface that lets you build, train,
+  and refine AI agents through natural language—no coding required.
+* [**Connections**](connections) establishes secure access for agent tools and
+  your data. By leveraging Model Context Protocol (MCP) servers, Hypermode
+  Agents can understand and interact with their environment.
+* **Tasks** are repeatable sets of instructions that you can save and use later
+  with your agent. Think of a task as a learned skill for your agent.
+* [**Model Router**](model-selection) makes it easy to access the most popular
+  models to power your agent.
+* [**Agent building**](create-agent#build-a-new-agent-with-concierge) is through
+  Hypermode's AI-powered agents that transforms natural language descriptions
+  into fully functional agents. No coding experience required.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_h2SBvv41GU?si=gGZk1xsDXtn83rxC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+## How Hypermode Agents are different
+
+* **Conversational interface** to build and refine agents in a live, interactive
+  session using natural language.
+* **Real-time control** for a view to which tools an agent can access and adjust
+  its behavior while tasks are running.
+* **Reduced handoffs** and minimize back-and-forth communication with technical
+  teams by directly shaping agent behavior.
+* **Exploration vs. production.** Develop and test agents freely in an
+  exploratory environment, then lock configurations when ready for production.
+* **Streamlined iteration** of creating and modifying agents that require only a
+  few clicks, making it as simple to build your first agent as it is to manage
+  thousands.
+
+## Where to start
+
+<CardGroup cols={3}>
+  <Card title="Quickstart" icon="play" href="/first-hypermode-agent">
+    Get hands-on with building your first Hypermode agent
+  </Card>
+
+  <Card title="Explore connections" icon="link" href="/available-connections">
+    Browse available connections to power your agent
+  </Card>
+
+  <Card title="Why natural language" icon="book-open-cover" href="https://hypermode.com/blog/stay-in-language-natural-agentic-development">
+    Read about the fastest way to production-ready agents
+  </Card>
+</CardGroup>

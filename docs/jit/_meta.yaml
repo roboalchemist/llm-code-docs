@@ -1,0 +1,9 @@
+name: jit
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.jit.io/
+    last_fetched: "2026-04-03T23:09:11Z"
+description: >
+  jit documentation
+quality_score: 0

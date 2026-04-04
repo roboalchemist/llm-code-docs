@@ -1,0 +1,147 @@
+# Source: https://lynxjs.org/react/data-fetching.md
+
+# Data Fetching
+
+Whether fetching static content from a remote server or interacting with a REST API, ReactLynx applications often need to retrieve data from external sources. For example, you might want to load user posts in a social media app or fetch the latest product listings in an e-commerce application.
+
+Lynx provides the [Fetch API](/api/lynx-api/global/fetch.md), enabling you to make network requests. You can refer to the [Networking](/guide/interaction/networking.md) chapter for more details. The Fetch API provided by Lynx can be used together with server state management libraries from the React ecosystem, such as [TanStack Query (React Query)](https://tanstack.com/query), to simplify data fetching and state management.
+
+It is important to note that Lynx's Fetch API has subtle differences compared to the [Web Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). You can check the [Fetch API Reference - Compatibility](/api/lynx-api/global/fetch.md#compatibility) section to learn more about these differences. As a result, you may need to adapt libraries from the React ecosystem to ensure compatibility. If you encounter any issues on Lynx Fetch API, you are welcome to submit feature requests or [contribute](https://github.com/lynx-family/lynx/blob/develop/CONTRIBUTING.md) to help Lynx better support the React ecosystem.
+
+## Using TanStack Query
+
+TanStack Query is a popular server state management library in the React ecosystem, helping developers easily manage data fetching and caching.
+
+### Installing Dependencies
+
+<PackageManagerTabs command="install @tanstack/react-query" />
+
+### Example
+
+The following example application shows how to use TanStack Query with the Fetch API in ReactLynx to fetch, display, and delete user posts provided by the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/).
+
+The application first uses the [`useQuery`](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) hook from TanStack Query to call `fetchPosts`, fetching and displaying the first 10 posts. When the user clicks the "Delete Post 1" button, it triggers an [Optimistic Update](https://tanstack.com/query/v4/docs/framework/react/guides/optimistic-updates) using the [`useMutation`](https://tanstack.com/query/latest/docs/framework/react/reference/useMutation) hook: the post with `id` 1 is immediately removed from the list, and the `deletePost` function calls the Fetch API to send a delete request. If the request fails, the state will roll back to its original state.
+
+
+**This is an example below:  networking**
+
+**Entry:** `src/react-query`
+**Bundle:** `dist/react-query.lynx.bundle`
+
+```tsx
+import { root } from "@lynx-js/react";
+import { QueryClient, QueryClientProvider, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import "./index.scss";
+
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+const queryClient = new QueryClient();
+
+const fetchPosts = async (): Promise<Post[]> => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  if (!response.ok) {
+    throw new Error("Failed to fetch posts");
+  }
+  const data = await response.json();
+  return data.slice(0, 10); // Only show the first 10 posts
+};
+
+const deletePost = async (postId: number) => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${postId}`,
+    {
+      method: "DELETE",
+    },
+  );
+  if (!response.ok) {
+    throw new Error("Failed to delete post");
+  }
+  return postId;
+};
+
+const App = () => {
+  const queryClient = useQueryClient();
+
+  // Fetch posts
+  const {
+    data: posts,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchPosts,
+  });
+
+  // Mutation to delete post optimistically
+  const mutation = useMutation({
+    mutationFn: () => deletePost(1),
+    onMutate: async () => {
+      await queryClient.cancelQueries({ queryKey: ["posts"] });
+
+      // Snapshot current state
+      const previousPosts = queryClient.getQueryData<Post[]>(["posts"]);
+
+      // Optimistically remove post with ID 1
+      queryClient.setQueryData(["posts"], (oldPosts: Post[] | undefined) => {
+        return oldPosts ? oldPosts.filter((post) => post.id !== 1) : [];
+      });
+
+      // Return previous state to OnError for rolling back optimistic update
+      return { previousPosts };
+    },
+    onError: (err, variables, context) => {
+      // Rollback to previous state
+      if (context?.previousPosts) {
+        queryClient.setQueryData(["posts"], context.previousPosts);
+      }
+    },
+  });
+
+  const deleteFirstPost = () => {
+    "background only";
+    mutation.mutate();
+  };
+
+  return (
+    <view className="container">
+      {isLoading ? <text className="container__loading">Loading...</text> : isError
+        ? (
+          <text className="container__error">
+            {error?.message || "Error fetching posts"}
+          </text>
+        )
+        : (
+          posts?.map((post) => (
+            <view key={post.id} className="container__post">
+              <text className="container__post-text">{`${post.id} : ${post.title}`}</text>
+            </view>
+          ))
+        )}
+
+      {/* Button to trigger mutation */}
+      <view bindtap={deleteFirstPost} className="container__button">
+        <text className="container__button-text">Delete Post 1</text>
+      </view>
+    </view>
+  );
+};
+
+root.render(
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>,
+);
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept();
+}
+
+```
+
+

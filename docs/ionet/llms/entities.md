@@ -1,0 +1,25 @@
+# Source: https://io.net/docs/reference/rag/graphs/entities.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Entities
+
+### Entity management endpoints
+
+Entities are basic building blocks of a graph. They can be automatically extracted from a document and then added to a graph.
+
+To manage entities extracted from a document, you can use the following endpoints:
+
+| Method | Endpoint                                                                           | Description                                   |
+| ------ | ---------------------------------------------------------------------------------- | --------------------------------------------- |
+| GET    | [/documents/\{id}/entities](/reference/rag/graphs/entities/get-extracted-entities) | List *Entities* identified within a document. |
+
+Once entities are added to a graph by a POST to “/graphs/\{id}/\{object\_type}” endpoint, you can manage them using the following endpoints:
+
+| Method | Endpoint                                                                                                     | Description                                 |
+| ------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------- |
+| GET    | [/graphs/\{collection\_id}/entities](/reference/rag/graphs/entities/list-graph-entities)                     | List entities (/\[r2r-docs.sciphi.ai]/\[1]) |
+| POST   | [/graphs/\{collection\_id}/entities](/reference/rag/graphs/entities/add-new-entities)                        | Create entity                               |
+| GET    | [/graphs/\{collection\_id}/entities/\{entity\_id}](/reference/rag/graphs/entities/get-single-entity-details) | Get entity details                          |

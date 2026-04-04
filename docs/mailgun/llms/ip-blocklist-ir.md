@@ -1,0 +1,292 @@
+# Source: https://documentation.mailgun.com/docs/inboxready/ip-blocklist-ir.md
+
+# IP Blocklist Monitoring
+
+[Blocklist Monitoring](https://www.mailgun.com/products/inbox/deliverability/blocklist-monitoring-service/) enables you to keep an eye on your reputation. Monitor every IP address you have against our curated list of blocklist providers to make sure you aren't being blocked.
+
+Monitored blocklists include:
+
+- SpamCop
+- CBL
+- Spamhaus SBL
+- Spamhaus PBL
+- Spamhaus XBL
+- Barracuda
+- Senderscore BL
+
+
+## Add IP
+
+This endpoint allows IP addresses to be registered for blocklist monitoring.
+
+
+```
+POST /v1/inboxready/ip\_addresses
+```
+
+The available JSON request fields are as follows:
+
+| Field | Description |
+|  --- | --- |
+| ip | Required. The IP address you wish to add. Note that only IPv4 format is supported. |
+| ip_pool | Optional. Use this field to specify an IP pool. |
+| description | Optional. Use this field to provide a description for you IP address. |
+
+
+Example 201 response:
+
+
+```JSON
+{
+  "ip": "127.0.0.1",
+  "ip_pool": "",
+  "description": "",
+  "state": "healthy",
+  "listed": []
+}
+```
+
+## Read IP
+
+This endpoint allows you to retrieve the current health status of a single IP address.
+
+
+```
+GET /v1/inboxready/ip\_addresses/{ip}
+```
+
+Example 200 response:
+
+
+```JSON
+{
+  "ip": "127.0.0.1",
+  "ip_pool": "",
+  "description": "",
+  "state": "listed",
+  "listed": [
+    {
+      "list":"cbl.abuseat.org",
+      "name":"CBL",
+      "first_seen":"2022-06-24T04:19:43.212Z",
+      "last_seen":"2022-06-28T16:43:38.954Z",
+      "delist_requested_at":"0001-01-01T00:00:00Z",
+      "comments":["https://www.spamhaus.org/query/ip/127.0.0.1"]
+    },
+    ...
+  ]
+}
+```
+
+See below for an explanation of the health details returned in the response body:
+
+| Field | Description |
+|  --- | --- |
+| state | This field describes IP's current state of health. Possible values include "healthy" and "listed". If the IP exists on any monitored blocklists, state will be "listed". |
+| listed | This field contains a list of blocklists where your IP is currently listed. |
+
+
+## List IPs
+
+This endpoint allows you to retrieve a list of monitored IP addresses including their information about their health statuses.
+
+
+```
+GET /v1/inboxready/ip\_addresses
+```
+
+Example 200 response:
+
+
+```JSON
+{
+  "items": [
+    {
+      "ip": "127.0.0.1",
+      "ip_pool": "",
+      "description": "",
+      "state": "listed",
+      "listed": [
+        {
+          "list":"cbl.abuseat.org",
+          "name":"CBL",
+          "first_seen":"2022-06-24T04:19:43.212Z",
+          "last_seen":"2022-06-28T16:43:38.954Z",
+          "delist_requested_at":"0001-01-01T00:00:00Z",
+          "comments":["https://www.spamhaus.org/query/ip/127.0.0.1"]
+        },
+        ...
+      ]
+    },
+    {
+      "ip": "124.124.124.124",
+      "ip_pool": "",
+      "description": "",
+      "state": "healthy",
+      "listed": []
+    },
+    ...
+  ]
+}
+```
+
+See below for an explanation of the health details returned in the response body:
+
+| Field | Description |
+|  --- | --- |
+| state | This field describes IP's current state of health. Possible values include "healthy" and "listed". If the IP exists on any monitored blocklists, state will be "listed". |
+| listed | This field contains a list of blocklists where your IP is currently listed. |
+
+
+## Update IP
+
+Use this endpoint to update IP address attributes.
+
+
+```
+PUT /v1/inboxready/ip\_addresses/{ip}
+```
+
+The available JSON request fields are as follows:
+
+| Field | Description |
+|  --- | --- |
+| ip_pool | Optional. Use this field to specify an IP pool. |
+| description | Optional. Use this field to provide a description for you IP address. |
+
+
+Example 200 response:
+
+
+```JSON
+{
+  "ip": "127.0.0.1",
+  "ip_pool": "",
+  "description": "",
+  "state": "healthy",
+  "listed": []
+}
+```
+
+## Remove IP
+
+Use this endpoint to remove an IP address from blocklist monitoring. A 204/No-Content response will be returned on success.
+
+
+```
+DELETE /v1/inboxready/ip\_addresses/{ip}
+```
+
+## Blocklist Events
+
+This endpoint returns blocklisted and delisted event data for your monitored IP addresses.
+
+
+```
+GET /v1/blocklist-monitoring/events
+```
+
+The available filter parameters are as follows:
+
+| Field | Description |
+|  --- | --- |
+| timerangeStart | Optional. An ISO8601 format timestamp specifying the start of your desired timerange. |
+| timerangeEnd | Optional. An ISO8601 format timestamp specifying the end of your desired timerange. |
+| ip | Optional. Use to filter events by specific IP address. |
+| blocklist | Optional. Use to filter events by specific blocklist. |
+| event | Optional. Use to filter events by event type. Accepted values include [ip_listed, ip_delisted]. |
+| limit | Optional. Defaults to 10. Minimum accepted value is 10 and maximum accepted value is 50. |
+
+
+Example 200 response:
+
+
+```JSON
+{
+
+"items":[
+
+{
+
+"ip":"123.123.123.123",
+
+"ip\_pool":"",
+
+"timestamp":"2022-01-01T12:14:16-04:00",
+
+"event":"ip\_delisted",
+
+"blocklist":"pbl.spamhaus.org",
+
+},
+
+{
+
+"ip":"123.123.123.123",
+
+"ip\_pool":"",
+
+"timestamp":"2022-01-01T12:12:12-04:00",
+
+"event":"ip\_listed",
+
+"blocklist":"pbl.spamhaus.org",
+
+},
+
+...
+
+],
+
+"paging":{
+
+...
+
+}
+
+}
+```
+
+## Monitored Blocklists
+
+This endpoint returns the blocklists monitored by InboxReady.
+
+
+```
+GET /v1/blocklist-monitoring/blocklists
+```
+
+Example 200 response:
+
+
+```JSON
+{
+
+"items":[
+
+{
+
+"blocklist":"b.barracudacentral.org",
+
+"name":"Barracuda",
+
+},
+
+{
+
+"blocklist":"bl.score.senderscore.com",
+
+"name":"Senderscore BL",
+
+},
+
+...
+
+],
+
+}
+```
+
+## Alerts
+
+Use our alerting platform to be notified when your monitored IPs are blocklisted. To learn more, see the [alerting documentation](/docs/inboxready/alerts-ir)

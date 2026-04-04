@@ -1,0 +1,9 @@
+name: infrahub
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.infrahub.app/
+    last_fetched: "2026-04-03T23:09:09Z"
+description: >
+  infrahub documentation
+quality_score: 0

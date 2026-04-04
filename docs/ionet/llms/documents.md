@@ -1,0 +1,43 @@
+# Source: https://io.net/docs/reference/rag/documents.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Overview
+
+> The R2R Documents API handles ingestion, management, and enrichment of digital content. It enables transforming files, text, and media into structured, searchable knowledge objects for RAG, semantic retrieval, and AI-driven workflows.
+
+A **Document** in R2R is the system’s **digital representation of any ingested content**—including PDFs, text files, web pages, images, and audio. It serves as the **central container** for all downstream data objects such as **Chunks**, **Entities**, and **Relationships**, forming the foundation for R2R’s knowledge processing pipeline.
+
+Documents transform raw content into structured, searchable, and analyzable knowledge that powers **Retrieval-Augmented Generation (RAG)** and **agentic workflows**.
+
+### Key Processes
+
+Documents in R2R support several key stages of processing:
+
+* **Ingestion** — Accepts multiple input formats (`.pdf`, `.docx`, `.txt`, `.png`, `.mp3`, etc.) via file upload, raw text, or predefined chunks.
+* **Chunking** — Splits document content into smaller, retrievable **Chunks** for semantic search and analysis.
+* **Metadata & Collections** — Associates documents with descriptive metadata (e.g., title, source) and organizes them into **Collections** for access control and sharing.
+* **Enrichment (Optional)** — Extracts **Entities** and **Relationships** to build knowledge graphs or generates **embeddings** for semantic search.
+* **Status Tracking** — Monitors ingestion, enrichment, and extraction progress for transparency and error handling.
+
+## API Endpoints
+
+| Method   | Endpoint                                                                              | Description                                                              |
+| -------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `POST`   | [/documents](/reference/rag/documents/list-all-documents)                             | Ingest new information (file, text, or chunks) as a document.            |
+| `GET`    | [/documents](/reference/rag/documents/upload-and-ingest-a-document)                   | List existing documents with pagination and filtering.                   |
+| `GET`    | [/documents/](/reference/rag/documents/get-document-by-id)                            | Retrieve metadata, ingestion status, or details for a specific document. |
+| `GET`    | [/documents/{id}/download](/reference/rag/documents/download-original-file)           | Download the original source file of a document.                         |
+| `GET`    | [/documents/{id}/chunks](/reference/rag/documents/get-document-chunks)                | List the text *Chunks* generated from a document’s content.              |
+| `PATCH`  | [/documents/{id}/metadata](/reference/rag/documents/update-document-metadata-partial) | Add or update metadata for a document.                                   |
+| `PUT`    | [/documents/{id}/metadata](/reference/rag/documents/replace-document-metadata)        | Replace all metadata for a document.                                     |
+| `DELETE` | [/documents/](/reference/rag/documents/delete-document-by-id)                         | Delete a document and its associated data.                               |
+| `DELETE` | [/documents/by-filter](/reference/rag/documents/delete-documents-by-filter)           | Delete multiple documents that match a filter.                           |
+| `POST`   | [/documents/search](/reference/rag/documents/search-documents)                        | Search across generated document summaries.                              |
+| `GET`    | [/documents/download\_zip](/reference/rag/documents/download-documents-as-zip)        | Download multiple original document files as a zip archive.              |
+| `POST`   | [/documents/{id}/extract](/reference/rag/documents/extract-entities)                  | Start entity and relationship extraction for a document.                 |
+| `GET`    | [/documents/{id}/entities](/reference/rag/documents/get-extracted-entities)           | List *Entities* identified within a document.                            |
+| `GET`    | [/documents/{id}/relationship](/reference/rag/documents/get-relationships)            | List *Relationships* identified within a document.                       |
+| `POST`   | [/documents/{id}/deduplicate](/reference/rag/documents/deduplicate-document)          | Start entity deduplication for a document.                               |

@@ -1,0 +1,9 @@
+name: imgly-react-native
+primary_source: llms
+sources:
+  - type: llms
+    url: https://img.ly/docs/pesdk/react-native/
+    last_fetched: "2026-04-03T23:09:08Z"
+description: >
+  imgly-react-native documentation
+quality_score: 0

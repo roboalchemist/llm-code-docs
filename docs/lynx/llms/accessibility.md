@@ -1,0 +1,210 @@
+# Source: https://lynxjs.org/guide/inclusion/accessibility.md
+
+# Accessibility
+
+
+Accessibility (A11y) refers to the design concept of building accessibility through technical means to ensure that mobile applications can be equally accessed by all kinds of people.
+
+Its core goal is to break down usage barriers, allowing users with different physical conditions, perceptual abilities, and cognitive levels to smoothly obtain information and services.
+
+Mainstream mobile platforms provide a complete accessibility support system: iOS and Android not only natively integrate APIs for users with disabilities but also come equipped with standardized assistive technology toolchains, such as screen readers (VoiceOver / TalkBack) designed specifically for visually impaired users.
+
+On this basis, the Lynx framework encapsulates cross-platform accessibility interfaces, enabling developers to integrate accessibility features in their apps and build an information-accessible mobile ecosystem.
+
+:::info
+Different platforms have distinct designs and norms regarding accessibility; therefore, implementation and experience with Lynx may vary across platforms.
+:::
+
+## Default Accessibility Behavior
+
+Only one accessibility element can be successfully accessed and focused by screen readers (VoiceOver on iOS and TalkBack on Android).
+
+However, `<text>` and `<image>` are default accessibility elements and can be recognized without any further action.
+
+**This is an example below:  accessibility**
+
+**Entry:** `src/Default.tsx`
+**Bundle:** `dist/main.lynx.bundle` | Web: `dist/main.web.bundle`
+
+```tsx {4-5}
+export const Default = ({ src }: { src: string }) => {
+  return (
+    <view>
+      <text>Hello world</text>
+      <image auto-size style="width:100px" src={src} />
+    </view>
+  );
+};
+
+```
+
+
+
+## Tagging Accessibility Elements
+
+Sometimes, you might want to control the size of accessibility elements or aggregate some accessibility information, requiring control over which elements are accessibility nodes.
+
+Use [`accessibility-element`](/api/elements/built-in/view.md#accessibility-element) to tag an element as an accessibility element; nested elements are allowed.
+
+In the example below, there will be only one accessibility focus point and it will be read as "Hello world".
+
+**This is an example below:  accessibility**
+
+**Entry:** `src/Customized.tsx`
+**Bundle:** `dist/main.lynx.bundle` | Web: `dist/main.web.bundle`
+
+```tsx {5,8,9}
+export const Customized = ({ src }: { src: string }) => {
+  return (
+    <view
+      style={{ padding: "10px" }}
+      accessibility-element={true}
+      accessibility-label={"Hello world"}
+    >
+      <text accessibility-element={false}>Hello</text>
+      <text accessibility-element={false}>world</text>
+    </view>
+  );
+};
+
+```
+
+
+
+:::info
+On `<text>` and `<image>`, this property is set to `true` by default.
+:::
+
+## Specifying the Characteristics and Content of Accessibility Elements
+
+Use [`accessibility-trait`](/api/elements/built-in/view.md#accessibility-trait) to mark the characteristics of an accessibility element, which can be any of image, button, or text.
+
+Use [`accessibility-label`](/api/elements/built-in/view.md#accessibility-label) to adjust the content that screen readers will read for an accessibility element.
+
+:::info
+On `<text>`, the default is to read the content of the text.
+:::
+
+In the example below, the elements will be read as "Hello lynx" and "I am an image displaying the Lynx icon," respectively.
+
+**This is an example below:  accessibility**
+
+**Entry:** `src/LabelAndTraits.tsx`
+**Bundle:** `dist/main.lynx.bundle` | Web: `dist/main.web.bundle`
+
+```tsx {6,7,16,17}
+export const LabelAndTraits = ({ src }: { src: string }) => {
+  return (
+    <view
+      style={{ padding: "10px" }}
+      accessibility-element={true}
+      accessibility-trait="button"
+      accessibility-label={"Hello world"}
+    >
+      <text accessibility-element={false}>Hello</text>
+      <text accessibility-element={false}>world</text>
+      <image
+        auto-size
+        style={{ width: "100px" }}
+        src={src}
+        accessibility-element={true}
+        accessibility-trait="image"
+        accessibility-label="I am an image displaying the Lynx icon"
+      />
+    </view>
+  );
+};
+
+```
+
+
+
+## Adjusting the Reading Order of Accessibility Elements
+
+iOS and Android systems default to arranging accessibility elements from top to bottom and left to right so they can be accessed sequentially by screen readers.
+
+Use [`accessibility-elements`](/api/elements/built-in/view.md#accessibility-elements) to manually adjust this order. Note that each id should be separated by a comma.
+
+Furthermore, if a parent node sets the [`accessibility-elements`](/api/elements/built-in/view.md#accessibility-elements) property, only child nodes specified by the [`accessibility-elements`](/api/elements/built-in/view.md#accessibility-elements) attribute can be accessed, while other child nodes cannot be focused.
+
+In the example below, the order of accessibility elements will be adjusted, and they will be read as "Lynx" and "Hello" sequentially.
+
+**This is an example below:  accessibility**
+
+**Entry:** `src/ReOrder.tsx`
+**Bundle:** `dist/main.lynx.bundle` | Web: `dist/main.web.bundle`
+
+```tsx {3,5,6}
+export const ReOrder = ({ src }: { src: string }) => {
+  return (
+    <view style={{ padding: "10px" }} accessibility-element={true} accessibility-elements="second,first">
+      <view>
+        <text id="first">Hello</text>
+        <text id="second">Lynx</text>
+      </view>
+    </view>
+  );
+};
+
+```
+
+
+
+## Listening to Focus Changes of Accessibility Elements
+
+When the focus of accessibility elements changes, a global event `activeElement` notifies the information of the newly focused node.
+
+```tsx
+export default class App extends Component<Props, State> {
+  componentDidMount() {
+    // Listen for focus changes
+    this.getJSModule('GlobalEventEmitter').addListener(
+      'activeElement',
+      this.handleActiveElement,
+      this,
+    );
+  }
+
+  handleActiveElement(info: any) {
+    this.setState({
+      activeElementJsonStr: JSON.stringify(info),
+    });
+  }
+}
+```
+
+## Actively Focusing on an Accessibility Element
+
+Use [`requestAccessibilityFocus`](/api/elements/built-in/view.md#requestaccessibilityfocus) to provide the capability to actively focus on an accessibility element.
+
+```ts
+lynx
+  .createSelectorQuery()
+  .select('#customId')
+  .invoke({
+    method: 'requestAccessibilityFocus',
+    params: {},
+    success: function (res) {
+      console.log(res);
+    },
+    fail: function (res) {
+      console.log(res);
+    },
+  })
+  .exec();
+```
+
+## Make Screen Readers Announce Specified Text Content
+
+Use [`accessibilityAnnounce`](/api/lynx-api/lynx/lynx-accessibility-announce.md#accessibilityAnnounce) to make screen readers announce the specified text content, helping visually impaired users perceive interface state changes or operation results.
+
+```jsx
+lynx.accessibilityAnnounce(
+  {
+    content: 'hello lynx',
+  },
+  (res) => {
+    console.log('test: ' + JSON.stringify(res));
+  },
+);
+```

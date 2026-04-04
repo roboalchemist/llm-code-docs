@@ -1,0 +1,16 @@
+# Source: https://github.com/GoogleChrome/lighthouse/blob/main/docs/recipes/custom-gatherer-puppeteer/package.json
+
+{
+  "name": "custom-lighthouse-pptr-recipe",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bash test.sh"
+  },
+  "devDependencies": {
+    "lighthouse": "file:../../../dist/lighthouse.tgz"
+  },
+  "dependencies": {
+    "puppeteer-core": "^2.0.0"
+  }
+}

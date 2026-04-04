@@ -1,0 +1,126 @@
+# Source: https://infisical.com/docs/integrations/app-connections/smb.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# SMB
+
+> Learn how to configure an SMB Connection for Infisical.
+
+The SMB Connection allows Infisical to connect to Windows servers using the SMB (Server Message Block) protocol for remote management operations such as password rotation.
+
+## Prerequisites
+
+You will need the following information to establish an SMB connection:
+
+* **Host** - The hostname or IP address of the Windows server
+* **Port** - The SMB port (default is 445)
+* **Username** - A Windows administrator account with permissions to manage local accounts
+* **Password** - The password for the administrator account
+* **Domain** (optional) - The Windows domain name for domain-joined servers
+
+### Windows Server Requirements
+
+* **SMB3 Support** - This connection uses SMB3 with encryption enabled for secure communication with Windows servers.
+* **Firewall Configuration** - The server must be accessible from Infisical or from the Infisical Gateway if using it.
+
+<Accordion title="Open firewall on Windows Defender for SMB connection">
+  Run the following PowerShell command as Administrator on the Windows server to allow inbound SMB connections:
+
+  ```powershell  theme={"dark"}
+  New-NetFirewallRule -DisplayName "Allow SMB Inbound" -Direction Inbound -Protocol TCP -LocalPort 445 -Action Allow
+  ```
+
+  To verify the rule was created:
+
+  ```powershell  theme={"dark"}
+  Get-NetFirewallRule -DisplayName "Allow SMB Inbound"
+  ```
+</Accordion>
+
+## Setup SMB Connection in Infisical
+
+<Tabs>
+  <Tab title="Infisical UI">
+    <Steps>
+      <Step title="Navigate to App Connections">
+        Navigate to the **App Connections** tab in your Organization Settings.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
+      </Step>
+
+      <Step title="Select SMB Connection">
+        Click the **+ Add Connection** button and select **SMB** from the available options.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/smb/smb-app-connection-option.png" alt="Select SMB Connection" />
+      </Step>
+
+      <Step title="Fill out the SMB Connection Modal">
+        Complete the SMB Connection form by entering:
+
+        * A descriptive name for the connection
+        * An optional description for future reference
+        * The Windows server host (hostname or IP address)
+        * The SMB port (default is 445)
+        * The domain name (optional, for domain-joined servers)
+        * The administrator username
+        * The administrator password
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/smb/smb-app-connection-form.png" alt="SMB Connection Modal" />
+      </Step>
+
+      <Step title="Connection Created">
+        After clicking Create, your **SMB Connection** is established and ready to use with your Infisical project.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/smb/smb-app-connection-generated.png" alt="SMB Connection Created" />
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="API">
+    To create an SMB Connection, make an API request to the [Create SMB
+    Connection](/api-reference/endpoints/app-connections/smb/create) API endpoint.
+
+    ### Sample request
+
+    ```bash Request theme={"dark"}
+    curl --request POST \
+        --url https://app.infisical.com/api/v1/app-connections/smb \
+        --header 'Content-Type: application/json' \
+        --data '{
+            "name": "my-windows-connection",
+            "method": "credentials",
+            "credentials": {
+                "host": "192.168.1.100",
+                "port": 445,
+                "username": "Administrator",
+                "password": "your-admin-password",
+                "domain": "MYDOMAIN"
+            }
+        }'
+    ```
+
+    ### Sample response
+
+    ```bash Response theme={"dark"}
+    {
+        "appConnection": {
+            "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "name": "my-windows-connection",
+            "version": 1,
+            "orgId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "createdAt": "2023-11-07T05:31:56Z",
+            "updatedAt": "2023-11-07T05:31:56Z",
+            "app": "smb",
+            "method": "credentials",
+            "credentials": {
+                "host": "192.168.1.100",
+                "port": 445,
+                "username": "Administrator",
+                "domain": "MYDOMAIN"
+            }
+        }
+    }
+    ```
+  </Tab>
+</Tabs>

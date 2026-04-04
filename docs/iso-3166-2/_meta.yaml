@@ -1,0 +1,8 @@
+name: iso-3166-2
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:10Z"
+description: >
+  iso-3166-2 documentation
+quality_score: 0

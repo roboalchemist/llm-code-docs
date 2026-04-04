@@ -1,0 +1,134 @@
+# Plugins (127)
+
+Source: https://knip.dev/reference/plugins
+
+- Angular
+- Astro
+- Astro DB
+- Ava
+- Babel
+- Biome
+- bumpp
+- Bun
+- c8
+- Capacitor
+- Changelogen
+- Changelogithub
+- Changesets
+- Commitizen
+- commitlint
+- Convex
+- create-typescript-app
+- CSpell
+- Cucumber
+- Cypress
+- Danger
+- dependency-cruiser
+- Docusaurus
+- dotenv
+- Drizzle
+- Eleventy
+- ESLint
+- Expo
+- Gatsby
+- GitHub Action
+- GitHub Actions
+- glob
+- GraphQL Codegen
+- Hardhat
+- husky
+- i18next Parser
+- Jest
+- Karma
+- Knex
+- Ladle
+- Lefthook
+- lint-staged
+- LintHTML
+- lockfile-lint
+- Lost Pixel
+- markdownlint
+- MDX
+- mdxlint
+- Metro
+- Mocha
+- moonrepo
+- Mock Service Worker
+- Nano Staged
+- Nest
+- Netlify
+- Next.js
+- next-intl
+- Next.js MDX
+- Node.js
+- node-modules-inspector
+- nodemon
+- npm-package-json-lint
+- Nuxt
+- Nx
+- nyc
+- oclif
+- Oxlint
+- Parcel
+- Playwright
+- Playwright for components
+- playwright-test
+- Plop
+- pnpm
+- PostCSS
+- Preconstruct
+- Prettier
+- Prisma
+- React Cosmos
+- React Router
+- Relay
+- Release It!
+- Remark
+- Remix
+- Rollup
+- Rsbuild
+- Rslib
+- Rspack
+- Rstest
+- Semantic Release
+- Sentry
+- simple-git-hooks
+- size-limit
+- SST
+- Starlight
+- Storybook
+- Stryker
+- Stylelint
+- Svelte
+- SVGO
+- SVGR
+- SWC
+- Syncpack
+- Tailwind
+- TanStack Router
+- Taskfile
+- Travis CI
+- ts-node
+- tsdown
+- tsup
+- tsx
+- TypeDoc
+- TypeScript
+- unbuild
+- UnoCSS
+- Vercel OG
+- Vike
+- Vite
+- VitePress
+- Vitest
+- Vue
+- WebdriverIO
+- webpack
+- Wireit
+- Wrangler
+- xo
+- Yarn
+- yorkie
+
+ISC License© 2024Lars Kappert
+

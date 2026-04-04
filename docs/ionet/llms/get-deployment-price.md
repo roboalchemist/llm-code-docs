@@ -1,0 +1,183 @@
+# Source: https://io.net/docs/reference/vmaas/get-deployment-price.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Get Deployment Price
+
+> Calculate or retrieve the pricing details for a deployment based on selected resources (CPUs, GPUs, memory, and duration).
+
+
+
+## OpenAPI
+
+````yaml openapi/vmaas/get-deployment-price.json get /enterprise/v1/io-cloud/vmaas/price
+openapi: 3.1.0
+info:
+  title: IO API
+  version: '1.0'
+servers:
+  - url: https://api.io.solutions/
+security: []
+paths:
+  /enterprise/v1/io-cloud/vmaas/price:
+    get:
+      tags:
+        - enterprise-io-cloud-vmaas
+      summary: Get Deployment Price
+      operationId: get_deployment_price_enterprise_v1_io_cloud_vmaas_price_get
+      parameters:
+        - name: location_ids
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Location Ids
+        - name: hardware_id
+          in: query
+          required: true
+          schema:
+            anyOf:
+              - type: integer
+              - type: string
+            title: Hardware Id
+        - name: currency
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/ClusterCurrency'
+        - name: duration_hours
+          in: query
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            title: Duration Hours
+        - name: gpus_per_vm
+          in: query
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            title: Gpus Per Vm
+        - name: replica_count
+          in: query
+          required: true
+          schema:
+            type: integer
+            title: Replica Count
+        - name: x-api-key
+          in: header
+          required: false
+          schema:
+            type: string
+            description: io.net provided API Key
+            title: X-Api-Key
+          description: io.net provided API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVmaasPriceResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ClusterCurrency:
+      type: string
+      enum:
+        - usdc
+        - iocoin
+      title: ClusterCurrency
+    GetVmaasPriceResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/GetVmaasPriceData-Output'
+      type: object
+      required:
+        - data
+      title: GetVmaasPriceResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    GetVmaasPriceData-Output:
+      properties:
+        replica_count:
+          type: integer
+          title: Replica Count
+        gpus_per_vm:
+          type: integer
+          title: Gpus Per Vm
+        available_replica_count:
+          items:
+            type: integer
+          type: array
+          title: Available Replica Count
+        discount:
+          type: number
+          title: Discount
+        ionet_fee:
+          type: number
+          title: Ionet Fee
+        ionet_fee_percent:
+          type: number
+          title: Ionet Fee Percent
+        currency_conversion_fee:
+          type: number
+          title: Currency Conversion Fee
+        currency_conversion_fee_percent:
+          type: number
+          title: Currency Conversion Fee Percent
+        total_cost_usdc:
+          type: number
+          title: Total Cost Usdc
+      type: object
+      required:
+        - replica_count
+        - gpus_per_vm
+        - available_replica_count
+        - discount
+        - ionet_fee
+        - ionet_fee_percent
+        - currency_conversion_fee
+        - currency_conversion_fee_percent
+        - total_cost_usdc
+      title: GetVmaasPriceData
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+
+````

@@ -1,0 +1,9 @@
+name: imgly-vue
+primary_source: llms
+sources:
+  - type: llms
+    url: https://img.ly/docs/cesdk/vue/
+    last_fetched: "2026-04-03T23:09:08Z"
+description: >
+  imgly-vue documentation
+quality_score: 0

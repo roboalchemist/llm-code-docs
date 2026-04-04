@@ -1,0 +1,335 @@
+# Source: https://docs.infrahub.app/development.md
+
+# Source: https://docs.infrahub.app/sync/development.md
+
+# Development
+
+This guide covers how to set up a development environment for `infrahub-sync`, contribute to the project, and publish releases.
+
+## Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+
+* Python 3.10–3.13 (3.12 recommended)
+* [uv](https://docs.astral.sh/uv/) for dependency management
+* Git
+
+## Setting up your development environment[​](#setting-up-your-development-environment "Direct link to Setting up your development environment")
+
+### Clone the repository[​](#clone-the-repository "Direct link to Clone the repository")
+
+```
+git clone https://github.com/opsmill/infrahub-sync.git
+cd infrahub-sync
+```
+
+### Install uv[​](#install-uv "Direct link to Install uv")
+
+If you don't have uv installed, you can install it with:
+
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Or see the [uv installation guide](https://docs.astral.sh/uv/getting-started/installation/) for other options.
+
+### Install dependencies[​](#install-dependencies "Direct link to Install dependencies")
+
+```
+uv sync --group dev
+```
+
+This installs all runtime and development dependencies defined in `pyproject.toml`.
+
+### Verify your setup[​](#verify-your-setup "Direct link to Verify your setup")
+
+```
+uv run infrahub-sync --help
+uv run infrahub-sync list --directory examples/
+```
+
+## Development workflow[​](#development-workflow "Direct link to Development workflow")
+
+Before committing any changes, run the following commands in order:
+
+```
+uv run invoke format    # Format code with ruff
+uv run invoke lint      # Lint code with ruff and pylint
+uv run mypy infrahub_sync/ --ignore-missing-imports
+```
+
+### Validate the CLI[​](#validate-the-cli "Direct link to Validate the CLI")
+
+After making changes, verify the CLI still works:
+
+```
+uv run infrahub-sync --help
+uv run infrahub-sync list --directory examples/
+uv run infrahub-sync generate --name from-netbox --directory examples/
+```
+
+### Running tests[​](#running-tests "Direct link to Running tests")
+
+```
+uv run pytest -q
+```
+
+## Code standards[​](#code-standards "Direct link to Code standards")
+
+### Python style[​](#python-style "Direct link to Python style")
+
+* Python 3.10–3.13 compatible
+* Type hints on new or changed code
+* Ruff-formatted and lint-clean
+* Mypy-checked (do not increase existing error count)
+* Public functions and classes require documentation strings
+* Raise specific exceptions; avoid broad `except Exception:`
+
+### Line length[​](#line-length "Direct link to Line length")
+
+* Maximum line length: 120 characters (configured in `pyproject.toml`)
+
+## Documentation[​](#documentation "Direct link to Documentation")
+
+If you make user-facing changes (CLI flags, configuration options, new adapters), update the documentation.
+
+### Generate command-line documentation[​](#generate-command-line-documentation "Direct link to Generate command-line documentation")
+
+```
+uv run invoke docs.generate
+```
+
+### Build documentation site[​](#build-documentation-site "Direct link to Build documentation site")
+
+First-time setup (requires Node.js):
+
+```
+cd docs && npm install
+```
+
+Build the site:
+
+```
+uv run invoke docs.docusaurus
+```
+
+### Lint markdown files[​](#lint-markdown-files "Direct link to Lint markdown files")
+
+```
+npx markdownlint-cli "docs/docs/**/*.{md,mdx}"
+npx markdownlint-cli --fix "docs/docs/**/*.{md,mdx}"
+```
+
+## Adding a new adapter[​](#adding-a-new-adapter "Direct link to Adding a new adapter")
+
+1. Create `infrahub_sync/adapters/<name>.py` following existing adapter patterns
+2. Add connection configuration schema and an example under `examples/`
+3. Provide `list` and `diff` pathways before enabling `sync`
+4. Document required environment variables and expected error cases
+5. Create a documentation page in `docs/docs/adapters/`
+6. Add the adapter to the sidebar in `docs/sidebars.ts`
+
+## Invoke tasks[​](#invoke-tasks "Direct link to Invoke tasks")
+
+View all available tasks:
+
+```
+uv run invoke --list
+```
+
+Common tasks:
+
+| Task                 | Description                   |
+| -------------------- | ----------------------------- |
+| `linter.format-ruff` | Format Python code with ruff  |
+| `linter.lint-ruff`   | Lint Python code with ruff    |
+| `linter.lint-pylint` | Lint Python code with pylint  |
+| `linter.lint-yaml`   | Lint YAML files with yamllint |
+| `docs.generate`      | Generate CLI documentation    |
+| `docs.docusaurus`    | Build documentation website   |
+| `format`             | Alias for ruff format         |
+| `lint`               | Run all linters               |
+
+## Publishing a release[​](#publishing-a-release "Direct link to Publishing a release")
+
+This section documents how to publish new releases of `infrahub-sync` to PyPI.
+
+### Overview[​](#overview "Direct link to Overview")
+
+The project uses an automated release system powered by GitHub Actions. There are three ways to publish a release:
+
+1. **Automated release** (recommended for regular releases)
+2. **Manual GitHub release** (for controlled releases)
+3. **Manual workflow dispatch** (for emergency or custom releases)
+
+### Prerequisites[​](#prerequisites-1 "Direct link to Prerequisites")
+
+Before publishing, ensure:
+
+* You have write access to the repository
+* The `PYPI_TOKEN` secret is configured in repository settings
+* The `GH_INFRAHUB_BOT_TOKEN` secret is configured (for automated releases)
+
+### Method 1: Automated release (recommended)[​](#method-1-automated-release-recommended "Direct link to Method 1: Automated release (recommended)")
+
+This is the standard release flow. Releases are triggered automatically when PRs are merged to `main` or `stable` branches.
+
+#### Step 1: Label your pull requests[​](#step-1-label-your-pull-requests "Direct link to Step 1: Label your pull requests")
+
+Apply appropriate labels to PRs before merging. Labels determine the version bump:
+
+| Label                                                                  | Version Bump          | Use When                     |
+| ---------------------------------------------------------------------- | --------------------- | ---------------------------- |
+| `changes/major`, `type/breaking-change`                                | Major (1.0.0 → 2.0.0) | Breaking API changes         |
+| `changes/minor`, `type/feature`, `type/refactoring`                    | Minor (1.0.0 → 1.1.0) | New features, refactoring    |
+| `changes/patch`, `type/bug`, `type/housekeeping`, `type/documentation` | Patch (1.0.0 → 1.0.1) | Bug fixes, docs, maintenance |
+
+Auto-labeling rules are configured in `.github/release-drafter.yml` but require a separate workflow trigger to activate. For now, apply labels manually:
+
+| PR Title Pattern                         | Recommended Label   |
+| ---------------------------------------- | ------------------- |
+| Contains `fix`                           | `type/bug`          |
+| Contains `enhance`, `improve`, `feature` | `type/feature`      |
+| Contains `chore`                         | `ci/skip-changelog` |
+| Contains `deprecat`                      | `type/deprecated`   |
+
+#### Step 2: Merge to main[​](#step-2-merge-to-main "Direct link to Step 2: Merge to main")
+
+Merge your labeled PR to the `main` branch. The automation will:
+
+1. Calculate the next version based on PR labels
+2. Update `pyproject.toml` with the new version (and regenerate `uv.lock`)
+3. Commit changes as `chore(release): v{VERSION} [skip ci]`
+4. Create/update a draft GitHub Release with auto-generated release notes
+
+#### Step 3: Publish the GitHub release[​](#step-3-publish-the-github-release "Direct link to Step 3: Publish the GitHub release")
+
+1. Navigate to the repository's **Releases** page
+2. Find the draft release created by Release Drafter
+3. Review the auto-generated release notes
+4. Edit if needed (add context, highlights, migration notes)
+5. Click **Publish release**
+
+Publishing the release triggers the PyPI upload automatically.
+
+### Method 2: Manual GitHub release[​](#method-2-manual-github-release "Direct link to Method 2: Manual GitHub release")
+
+Use this method when you want full control over the release timing and notes.
+
+#### Step 1: Update the version[​](#step-1-update-the-version "Direct link to Step 1: Update the version")
+
+Update the version in `pyproject.toml`:
+
+```
+# Edit pyproject.toml and update the version field
+uv lock
+```
+
+Commit and push the changes:
+
+```
+git add pyproject.toml uv.lock
+git commit -m "chore(release): vX.Y.Z"
+git push origin main
+```
+
+#### Step 2: Create a GitHub release[​](#step-2-create-a-github-release "Direct link to Step 2: Create a GitHub release")
+
+1. Go to **Releases** → **Draft a new release**
+2. Click **Choose a tag** and create a new tag matching your version (for example, `1.6.0`)
+3. Set the target to `main` branch
+4. Add a release title (for example, `1.6.0`)
+5. Write release notes describing the changes
+6. Click **Publish release**
+
+This triggers the `trigger-release.yml` workflow, which publishes to PyPI.
+
+### Method 3: Manual workflow dispatch[​](#method-3-manual-workflow-dispatch "Direct link to Method 3: Manual workflow dispatch")
+
+Use this for emergency releases or when you need to bypass the standard flow.
+
+#### Using the GitHub UI[​](#using-the-github-ui "Direct link to Using the GitHub UI")
+
+1. Go to **Actions** → **Publish Infrahub Sync Package**
+
+2. Click **Run workflow**
+
+3. Configure the inputs:
+
+   <!-- -->
+
+   * `version`: The version string (for example, `1.6.0`) - optional, for labeling
+   * `publish`: Set to `true` to publish to PyPI (default: `false`)
+   * `runs-on`: OS for the runner (default: `ubuntu-22.04`)
+
+4. Click **Run workflow**
+
+#### Using the GitHub CLI[​](#using-the-github-cli "Direct link to Using the GitHub CLI")
+
+```
+gh workflow run workflow-publish.yml \
+  --field version="1.6.0" \
+  --field publish=true
+```
+
+**Important:** When using workflow dispatch, ensure `pyproject.toml` already has the correct version, as this method builds from the current code state.
+
+### Release notes[​](#release-notes "Direct link to Release notes")
+
+Release notes are auto-generated based on merged PRs and their labels:
+
+| Category             | Labels                                              |
+| -------------------- | --------------------------------------------------- |
+| Breaking Changes     | `changes/major`                                     |
+| Minor Changes        | `changes/minor`, `type/feature`, `type/refactoring` |
+| Patch & Bug Fixes    | `type/bug`, `changes/patch`                         |
+| Documentation Change | `type/documentation`                                |
+
+PRs with these labels are excluded from release notes:
+
+* `ci/skip-changelog`
+* `type/duplicate`
+
+### Verifying a release[​](#verifying-a-release "Direct link to Verifying a release")
+
+After publishing:
+
+1. **Check PyPI**: Visit [pypi.org/project/infrahub-sync](https://pypi.org/project/infrahub-sync/) to confirm the new version is available
+2. **Check GitHub Actions**: Ensure the publish workflow completed successfully
+3. **Test Installation**:
+
+```
+pip install infrahub-sync==<new-version>
+infrahub-sync --version
+```
+
+### Troubleshooting[​](#troubleshooting "Direct link to Troubleshooting")
+
+#### Release workflow skipped[​](#release-workflow-skipped "Direct link to Release workflow skipped")
+
+The automated release is skipped when:
+
+* The commit author is `opsmill-bot` with a `chore` prefix (prevents recursive releases)
+* No version bump is detected (no labeled PRs since last release)
+* Changes are only in the `docs/` directory
+
+#### The PyPI upload failed[​](#the-pypi-upload-failed "Direct link to The PyPI upload failed")
+
+Common causes:
+
+* `PYPI_TOKEN` secret is missing or invalid
+* Version already exists on PyPI (versions cannot be overwritten)
+* Network issues during upload
+
+To retry, use the manual workflow dispatch method.
+
+#### Version not bumped correctly[​](#version-not-bumped-correctly "Direct link to Version not bumped correctly")
+
+Ensure PRs have appropriate labels before merging. If labels are missing, the version drafter may not calculate a new version.
+
+### Workflow files reference[​](#workflow-files-reference "Direct link to Workflow files reference")
+
+| Workflow                       | Type                           | Purpose                                                                |
+| ------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
+| `trigger-push-stable.yml`      | Push to `main`/`stable`        | Calculates version, bumps `pyproject.toml`, triggers release draft     |
+| `workflow-release-drafter.yml` | Reusable (`workflow_call`)     | Creates/updates GitHub Release draft; invoked by `trigger-release.yml` |
+| `trigger-release.yml`          | GitHub Release published       | Orchestrates release: invokes release drafter and publish workflows    |
+| `workflow-publish.yml`         | Reusable (`workflow_dispatch`) | Builds and publishes package to PyPI; invoked by `trigger-release.yml` |

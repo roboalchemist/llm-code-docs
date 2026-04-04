@@ -1,0 +1,19 @@
+# Source: https://docs.hypermode.com/dgraph/concepts/namespace-tenant.md
+
+# Namespace and Tenant
+
+<Info>
+  We're overhauling Dgraph's docs to make them clearer and more approachable. If
+  you notice any issues during this transition or have suggestions, please
+  [let us know](https://github.com/hypermodeinc/docs/issues).
+</Info>
+
+A Dgraph `Namespace` (or tenant) is a logical separation for data within a
+Dgraph cluster. A Dgraph cluster can host many Namespaces. Each user must then
+into their own namespace using namespace-specific own credentials, and sees only
+their own data. Note that this usually requires an extra or specific login.
+
+There is no mechanism to query in a way that combines data from two namespaces,
+which simplifies and enforces security in use cases where this is the
+requirement. An API layer or client would have to pull data from multiple
+namespaces using different authenticated queries if data needed to be combined.

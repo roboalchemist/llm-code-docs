@@ -1,0 +1,103 @@
+# Source: https://getlago.com/docs/guide/invoicing/fees.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Fees
+
+> A fee is a line item in an invoice.
+
+There are few types of fees:
+
+* **Subscription fees** which correspond to the plan’s base amount;
+* **Fixed charge fees** which apply fixed recurring amounts defined by add-ons in plans;
+* **Charge fees** which represent usage-based costs tied to billable metrics in plans and can be linked to a true-up fee;
+* **Add-on fees** which appear as line items on one-off invoices;
+* **Credits** which reflect the purchase of prepaid credits.
+
+Information about fees includes (but is not limited to):
+
+* Type;
+* Amount;
+* Currency; and
+* Taxes.
+
+The fee object is embedded within an invoice or credit note object, making it retrievable on its own.
+This is illustrated below.:
+
+```json  theme={"dark"}
+{
+  "lago_id": "294e38f1-898b-49c1-9f85-ce1178388c8b",
+  "lago_charge_id": null,
+  "lago_charge_filter_id": null,
+  "lago_fixed_charge_id": null,
+  "lago_invoice_id": "4d6b7c5a-ad44-44de-af30-755e4c0470f1",
+  "lago_true_up_fee_id": null,
+  "lago_true_up_parent_fee_id": null,
+  "lago_subscription_id": "c65448a6-a7ed-4037-8ad0-97140fa1a46e",
+  "external_subscription_id": "34f9febb-f501-4904-8f28-790bdb7c114a",
+  "lago_customer_id": "42a8e1ff-4518-4c19-aa7a-93299e87cd14",
+  "external_customer_id": "cus_fixed_charge",
+  "item": {
+    "type": "subscription",
+    "code": "Standard",
+    "name": "Standard",
+    "description": "",
+    "invoice_display_name": null,
+    "filters": null,
+    "filter_invoice_display_name": null,
+    "lago_item_id": "c65448a6-a7ed-4037-8ad0-97140fa1a46e",
+    "item_type": "Subscription",
+    "grouped_by": {}
+  },
+  "pay_in_advance": true,
+  "invoiceable": true,
+  "amount_cents": 355,
+  "amount_currency": "USD",
+  "precise_amount": "3.548387096774193",
+  "precise_total_amount": "3.903225806451612",
+  "taxes_amount_cents": 36,
+  "taxes_precise_amount": "0.3548387096774193",
+  "taxes_rate": 10.0,
+  "total_aggregated_units": null,
+  "total_amount_cents": 391,
+  "total_amount_currency": "USD",
+  "units": "1.0",
+  "description": null,
+  "precise_unit_amount": "3.55",
+  "precise_coupons_amount_cents": "0.0",
+  "events_count": null,
+  "payment_status": "pending",
+  "created_at": "2026-01-22T09:37:03Z",
+  "succeeded_at": null,
+  "failed_at": null,
+  "refunded_at": null,
+  "amount_details": {
+    "plan_amount_cents": 1000
+  },
+  "self_billed": false,
+  "pricing_unit_details": null,
+  "from_date": "2026-01-21T12:00:00+00:00",
+  "to_date": "2026-02-01T11:59:59+00:00"
+}
+```
+
+## Update fee payment status
+
+<Info>
+  The `payment_status` of a fee can only be configured if `lago_invoice_id` is
+  `null`.
+</Info>
+
+This option allows you to define the payment status of a fee yourself. The available options are: `pending`, `succeeded`, `failed`, and `refunded`.
+
+Note that `payment_status` is used to group fees with a `succeeded` status into a specific invoice if `regroup_paid_fee` is set to `invoice`. Outside of this process, the `payment_status` is for your internal use.
+
+## Delete a fee
+
+<Info>
+  The deletion of a fee can only be doable if `lago_invoice_id` is `null`.
+</Info>
+
+This option allows you to delete a fee that is not linked to any invoice. Please refer to charge [invoiceable or not](/guide/plans/charges/invoiceable-vs-noninvoiceable) for more details.

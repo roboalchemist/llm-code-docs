@@ -1,0 +1,187 @@
+# Source: https://docs.knock.app/integrations/email/resend.md
+
+---
+title: How to send email with Resend
+description: How to send transactional email notifications to Resend with Knock.
+section: Integrations > Email
+layout: integrations
+---
+
+Knock integrates with <a href="https://resend.com/" target="_blank">Resend</a> to send email notifications to your users. This page describes how to get started with Resend in Knock, including necessary provider configurations and additional data you can pass through to Resend.
+
+## Features
+
+- Attachments support
+- Delivery tracking
+- Bounce support
+- Knock link and open tracking
+- Per environment configuration
+- Sandbox mode
+
+## Getting started
+
+You can create a new Resend channel in the dashboard under the **Channels and sources** page in your account settings. From there, you'll need to configure the channel for each environment you have.
+
+## Channel configuration
+
+The following channel settings should be configured per [environment](/concepts/environments). Navigate to **Channels and sources** in your dashboard account settings, select your Resend [channel](/concepts/channels), then click "Manage configuration" under the environment that you'd like to configure.
+
+<AccordionGroup>
+  <Accordion title="Settings">
+    Fields marked with an `*` are required.
+    
+    **Knock settings**
+    <Attributes>
+      <Attribute
+        name="Sandbox mode"
+        type="boolean"
+        nameSlug="/integrations/overview#sandbox-mode"
+        description="Whether to enable sandbox mode for your Resend channel."
+      />
+      <Attribute
+        name="Knock open tracking"
+        nameSlug="/send-notifications/tracking#email-open-tracking"
+        type="boolean"
+        description="Whether to enable Knock email-open tracking."
+      />
+      <Attribute
+        name="Knock link tracking"
+        nameSlug="/send-notifications/tracking#link-click-tracking"
+        type="boolean"
+        description="Whether to enable Knock link-click tracking."
+      />
+    </Attributes>
+
+    **Provider settings for Resend**
+    <Attributes>
+      <Attribute
+        name="API key"
+        type="string*"
+        description="The API key for your Resend account, available from your Resend dashboard."
+      />
+      <Attribute
+        name="From email address"
+        type="string | liquid*"
+        description="The default sender email address (can use Liquid tags)."
+      />
+      <Attribute
+        name="From name"
+        type="string | liquid"
+        description="The default sender name (can use Liquid tags)."
+      />
+    </Attributes>
+
+  </Accordion>
+  <Accordion title="Overrides">
+    When configured, these optional overrides will apply to all emails sent from this channel in the configured environment. Learn more about email channel overrides [here](/integrations/email/settings).
+    
+    <Attributes>
+      <Attribute
+        name="To"
+        type="string | liquid"
+        description="The To email address that email notifications will be sent to (can use Liquid tags). This value will override the designated recipient's email address."
+      />
+      <Attribute
+        name="Cc"
+        type="string | liquid"
+        description="The CC email address that email notifications will be sent to (can use Liquid tags)."
+      />
+      <Attribute
+        name="Bcc"
+        type="string | liquid"
+        description="The BCC email address that email notifications will be sent to (can use Liquid tags)."
+      />
+      <Attribute
+        name="Reply-to"
+        type="string | liquid"
+        description="The reply-to email address that will be included on email notifications (can use Liquid tags)."
+      />
+      <Attribute
+        name="Payload overrides"
+        nameSlug="/integrations/email/settings#provider-json-overrides"
+        type="JSON (string) | liquid"
+        description="Provide a JSON object to merge into the API payload that is sent to the downstream provider."
+      />
+    </Attributes>
+  </Accordion>
+  <Accordion title="Conditions">
+    Set optional per-environment [conditions](/integrations/overview#channel-conditions) for this channel. These conditions are evaluated each time a workflow run encounters a step that uses this channel in the configured environment. If the conditions are not met, the step will be skipped.
+  </Accordion>
+</AccordionGroup>
+
+## Recipient data requirements
+
+To send an email notification you'll need a valid `email` property set on your recipient.
+
+## Debugging common errors
+
+### `Identity not found`
+
+If you see an `Identity not found` error in your delivery logs this is because you need to verify your sending domain with Resend (the `From email address`).
+
+## Delivery status webhooks
+
+When enabled, Resend will send delivery status updates directly to Knock via webhooks, allowing you to track the full lifecycle of your email messages in real-time.
+
+### Prerequisites
+
+Before enabling delivery status webhooks, you need:
+
+1. A verified domain in Resend
+2. A Resend channel configured in Knock (see the [getting started](#getting-started) section above)
+3. Access to your Resend dashboard webhook settings
+
+### Setting up delivery status webhooks
+
+<Steps titleSize="h3">
+  <Step title="Enable delivery status webhooks in Knock">
+    1. Navigate to **Channels and sources** in your Knock dashboard
+    2. Select your Resend channel
+    3. Click "Manage configuration" for the environment you want to configure
+    4. Scroll to the "Incoming message status updates" section and enable incoming webhooks
+    5. Copy the generated webhook URL - you'll need this in the next step
+  </Step>
+
+  <Step title="Add webhook endpoint in Resend">
+    In the Resend dashboard, configure webhooks to send delivery events to Knock:
+
+    1. Go to the <a href="https://resend.com/webhooks" target="_blank">Webhooks section</a> in your Resend dashboard
+    2. Click "Add Endpoint"
+    3. Paste the webhook URL from Knock
+    4. Select the events you want to track:
+       - **email.delivered** - Tracks successful delivery
+       - **email.bounced** - Tracks bounce events
+    5. Click "Add Endpoint" to save
+    6. Resend will automatically verify the endpoint
+
+  </Step>
+</Steps>
+
+### Supported delivery statuses
+
+When delivery status webhooks are enabled for Resend, Knock will update message statuses based on these Resend webhook events:
+
+| Resend Event Type | Knock Status | Description                                                         |
+| ----------------- | ------------ | ------------------------------------------------------------------- |
+| email.delivered   | `delivered`  | The email was successfully delivered to the recipient's mail server |
+| email.bounced     | `bounced`    | The email bounced due to invalid recipient or domain                |
+
+### Troubleshooting
+
+If delivery status updates aren't appearing in Knock:
+
+1. **Check webhook endpoint status.** Verify the endpoint shows as "Active" in the Resend webhooks dashboard.
+2. **Verify event selection.** Ensure you've enabled both `email.delivered` and `email.bounced` events.
+3. **Test with verified domains.** Ensure you're sending from a verified domain in Resend.
+4. **Check webhook payload.** Review webhook delivery logs in Resend to ensure events are being sent.
+
+<Callout
+  type="info"
+  title="Need help?"
+  text={
+    <>
+      If you're having trouble setting up delivery status webhooks, contact our
+      support team at <a href="mailto:support@knock.app">support@knock.app</a>.
+    </>
+  }
+/>

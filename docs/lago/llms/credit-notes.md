@@ -1,0 +1,196 @@
+# Source: https://getlago.com/docs/guide/credit-notes.md
+
+# Credit notes
+
+<Info>
+  **PREMIUM FEATURE** ✨
+
+  Lago may automatically generate a credit note when a subscription is upgraded or
+  downgraded. However, only users with a premium license can manually generate
+  credit notes via the user interface or the API. Please
+  **[contact us](mailto:hello@getlago.com)** to get access to Lago Cloud and Lago
+  Self-Hosted Premium.
+</Info>
+
+Issue a credit note to refund or credit a `finalized` invoice back to your customer’s account.
+Credit notes can be issued for all types of invoices. However, please note that credit notes cannot be issued for prepaid credit purchases that have already been consumed or are linked to a terminated wallet.
+
+## Access credit notes creation flow[](#create-credit-notes "Direct link to heading")
+
+<Info>
+  Credit notes can only be issued for invoices with the status `finalized` and
+  an amount greater than zero.
+</Info>
+
+To create a credit note through the user interface:
+
+1. Go to the **"Customers"** section;
+2. Select a customer to open the customer view;
+3. Open the **"Invoices"** tab;
+4. Click an invoice to see its details; and
+5. Select **"Issue a credit note"** from the **"Actions"** dropdown (upper right corner).
+
+The credit note creation process varies depending on the payment status of the
+invoice:
+
+* If the payment status of the invoice is `pending` or `failed`, the credit note
+  will allow you to credit back the customer's account; and
+* If the payment status of the invoice is `succeeded`, the credit note will
+  allow you to credit back the customer's account and/or refund them.
+
+<Info>
+  For prepaid credits invoices, credit notes can only be issued for invoices with a `succeeded` payment status. These credit notes are refundable only for this type of invoice and will directly void prepaid credits in the associated wallet.
+</Info>
+
+<Info>
+  On subscription invoices, prepaid credits and credit notes applied cannot be refunded. These can only be credited back to the customer's account balance. Coupons are non-refundable and cannot be credited back to the customer's account.
+</Info>
+
+## Issue a credit note
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Select a reason from the list (e.g. duplicate charge, order cancelation,
+       etc.);
+    2. Add an internal note (optional);
+    3. Select the item(s) and enter the amount(s) you want to credit;
+    4. Select the credit method(s) (only available for paid invoices -
+       [learn more](#credit-methods)); and
+    5. Click **"Issue credit note"** to confirm.
+
+    <Info>
+      For each item, you must enter a credit amount equal to or less than the
+      initial amount of the item, excluding tax. The total amount of the credit note
+      cannot exceed the total amount of the invoice.
+    </Info>
+  </Tab>
+
+  <Tab title="API">
+    ```bash Create a credit note theme={"dark"}
+    LAGO_URL="https://api.getlago.com"
+    API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request POST "$LAGO_URL/api/v1/credit_notes" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "credit_note": {
+          "invoice_id": "**LAGO_INVOICE_ID**",
+          "reason": "duplicated_charge",
+          "credit_amount_cents": 10,
+          "refund_amount_cents": 5,
+          "items": [
+            {
+              "fee_id": "__LAGO_FEE_ID__",
+              "amount_cents": 10
+            },
+            {
+              "fee_id": "__LAGO_FEE_ID__",
+              "amount_cents": 5
+            }
+          ]
+        }
+      }'
+
+    ```
+  </Tab>
+</Tabs>
+
+When the credit note is created, it will appear below the original invoice on
+the invoice details page and in the **"Credit notes"** tab of the customer view.
+In addition to this, a `credit_note.created` [webhook](/api-reference/webhooks/messages)
+will automatically be sent by Lago.
+
+You can link several credit notes to an invoice. Like invoices, credit notes
+have a unique number and can be downloaded in PDF format.
+
+<Frame caption="Credit note detail">
+  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9b12ac4c555177c15d4810fae1751943" data-og-width="2880" width="2880" data-og-height="1568" height="1568" data-path="guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=fbdf29488833bfe20d9c0ae7d0fa0501 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=2dfb48347bdf6260df6f3f851daeb755 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=daba25976c384364ddc86aa7455f034e 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=163271dbe716c9b295920f8b48d14e02 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7fbb395051d1537656990be232af75a6 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=05df009ae57f6497e68dd6c458fbcf0f 2500w" />
+</Frame>
+
+## Credit methods[](#credit-methods "Direct link to heading")
+
+### Refund[](#refund "Direct link to heading")
+
+When a credit note involves a refund, the amount of the refund will be included in the `credit_note.created` [webhook](/api-reference/webhooks/messages), which allows you to proceed with the payment.
+
+The credit note will also contain a `refund_status` field, which can be set to `pending`, `succeeded`, or `failed`. You can update the refund status via the API.
+
+Refunding a prepaid credit invoice will automatically void the corresponding prepaid credits in the active wallet.
+
+<Tip>
+  If you use one of our native payment integrations, the refund process will
+  automatically be triggered by Lago.
+</Tip>
+
+### Credit note wallet[](#credit-note-wallet "Direct link to heading")
+
+The amount of the credit note that is not refunded is credited to the customer's
+account via a credit note wallet. The credit amount is included in the
+`credit_note.created` [webhook](/api-reference/webhooks/messages) and displayed on the
+credit note details page.
+
+<Info>
+  A credit note wallet is linked to a single credit note and therefore, to a
+  single invoice. If there are several credit notes linked to the customer's
+  account, Lago will create a credit note wallet for each of them.
+
+  Credit note wallets are different from wallets associated with [prepaid credits](/guide/wallet-and-prepaid-credits).
+</Info>
+
+The total amount available in the credit note wallets will be deducted from the
+subtotal of the customer's next invoice(s), after tax (see below).
+
+```
+## EXAMPLE OF INVOICE
+
+All subscriptions fee    $50.00
+All usage-based fees     $20.00
+Coupons                 -$10.00
+-------------------------------
+Subtotal (excl. tax)     $60.00
+Tax (10%)                $ 6.00
+-------------------------------
+Subtotal (incl. tax)     $66.00
+Credit notes             $20.00
+Prepaid credits          $30.00
+-------------------------------
+Total                    $16.00
+```
+
+When the credit note wallet is created, the initial `credit_status` is
+`available`. Then when the amount of the credit note wallet is zero, the status
+switches to `consumed`.
+
+## Void available credit[](#void-credit-note "Direct link to heading")
+
+You can void the available credit linked to a specific credit note. To do so:
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Go to the **"Customers"** section;
+    2. Select a customer to open the customer view;
+    3. Open the **"Credit notes"** tab;
+    4. Click a credit note to see its details; and
+    5. Select **"Void credit available"** from the **"Actions"** dropdown (upper
+       right corner).
+
+    <Warning>
+      When voiding a credit note wallet, the remaining credit amount will be lost
+      and the `credit_status` will switch to `voided`. This action cannot be
+      canceled.
+    </Warning>
+  </Tab>
+
+  <Tab title="API">
+    ```bash Void a credit note theme={"dark"}
+    LAGO_URL="https://api.getlago.com"
+    CREDIT_NOTE_ID="__YOU_CREDIT_NOTE_ID__"
+    API_KEY="__YOUR_API_KEY__"
+
+    curl --location --request PUT "$LAGO_URL/api/v1/credit_notes/$CREDIT_NOTE_ID/void" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json'
+    ```
+  </Tab>
+</Tabs>
