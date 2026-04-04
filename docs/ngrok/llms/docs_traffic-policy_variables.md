@@ -1,0 +1,31 @@
+# Source: https://ngrok.com/docs/traffic-policy/variables/index.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Variables
+
+> Reference documentation for Traffic Policy variables used in expressions and CEL interpolation to access traffic and connection metadata.
+
+ngrok provides a set of variables that you can use in Traffic Policy to:
+
+* **Conditionally handle traffic** through [Expressions](/traffic-policy/concepts/expressions).
+* **Dynamically configure actions** using [CEL interpolation](/traffic-policy/concepts/cel-interpolation).
+* **Debug traffic flows** via actions like [`log`](/traffic-policy/actions/log) or [`custom-response`](/traffic-policy/actions/custom-response).
+
+### Available variables:
+
+* [Action Variables](/traffic-policy/variables/action)
+* [Connection Variables](/traffic-policy/variables/connection)
+  * [GeoIP Variables](/traffic-policy/variables/connection#connection-geo-variables)
+  * [IP Intelligence Variables](/traffic-policy/variables/ip-intel)
+    * [IP Categories](/traffic-policy/variables/ip-intel/#ip-categories)
+  * [TLS Variables](/traffic-policy/variables/connection#connection-tls-variables)
+* [Endpoint Variables](/traffic-policy/variables/endpoint)
+* [Request Variables](/traffic-policy/variables/req)
+* [Response Variables](/traffic-policy/variables/res)
+* [Time Variables](/traffic-policy/variables/time)
+
+
+Built with [Mintlify](https://mintlify.com).

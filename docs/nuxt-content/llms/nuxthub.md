@@ -1,0 +1,23 @@
+# Source: https://content.nuxt.com/raw/docs/deploy/nuxthub.md
+
+# NuxtHub
+
+> Deploy your Content app to NuxtHub
+
+Nuxt Content module has a built-in integration with [NuxtHub](https://hub.nuxt.com) to deploy your content.
+
+To enable NuxtHub integration, you need to install the `@nuxthub/core` module and register it in your `nuxt.config.ts`. More efficiently, you can use `nuxi module` command to do both at once.
+
+```bash [Terminal]
+npx nuxi module add hub
+```
+
+That's it 🎉
+
+<callout>
+
+Nuxt Content module automatically reads the NuxtHub database options in order to share the same database to store the Nuxt Content data.
+
+</callout>
+
+Checkout the [NuxtHub documentation](https://hub.nuxt.com) for more information.

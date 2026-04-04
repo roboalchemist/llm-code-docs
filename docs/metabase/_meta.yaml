@@ -1,0 +1,11 @@
+name: metabase
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.metabase.com/docs/
+    last_fetched: "2026-04-03T23:09:22Z"
+  - type: github
+    last_fetched: "2026-04-03T23:09:22Z"
+description: >
+  metabase documentation
+quality_score: 0

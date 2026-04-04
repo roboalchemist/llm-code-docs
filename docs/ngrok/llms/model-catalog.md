@@ -1,0 +1,382 @@
+# Source: https://ngrok.com/docs/ai-gateway/reference/model-catalog.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Model Catalog
+
+> Built-in providers and models in the AI Gateway.
+
+The AI Gateway maintains a catalog of known providers and models. This catalog enables automatic provider inference, model validation, and rich metadata for selection strategies.
+
+## How the catalog works
+
+When you send a request with a model name like `gpt-4o`, the gateway:
+
+1. Looks up the model in the catalog
+2. Identifies the provider (OpenAI)
+3. Routes the request to the appropriate provider endpoint and injects the API key
+4. Applies any configured selection strategies
+
+You can also explicitly specify providers using the `provider:model` format (for example, `openai:gpt-4o`).
+
+## Providers
+
+<Note>
+  **OpenAI** and **Anthropic** are available with [AI Gateway API Keys](/ai-gateway/concepts/api-keys)—no provider account needed. All other providers require you to [bring your own key](/ai-gateway/concepts/bring-your-own-keys).
+</Note>
+
+### OpenAI
+
+| Field             | Value                             |
+| ----------------- | --------------------------------- |
+| **Provider ID**   | `openai`                          |
+| **Aliases**       | `openAI`, `open-ai`, `open-AI`    |
+| **Base URL**      | `https://api.openai.com/v1/`      |
+| **Website**       | [openai.com](https://openai.com/) |
+| **BYOK Required** | No                                |
+
+[How to use OpenAI →](/ai-gateway/providers/openai)
+
+#### OpenAI models
+
+| Model ID                | Display Name                                             | Context Window | Output Tokens | Modalities         |
+| ----------------------- | -------------------------------------------------------- | -------------- | ------------- | ------------------ |
+| `gpt-5.4-pro`           | GPT-5.4 Pro                                              | 1,050,000      | 128,000       | text, image        |
+| `gpt-5.4`               | GPT-5.4                                                  | 1,050,000      | 128,000       | text, image        |
+| `gpt-5.3-codex`         | GPT-5.3-Codex                                            | 400,000        | 128,000       | text, image        |
+| `gpt-5.2-pro`           | GPT-5.2 Pro                                              | 400,000        | 100,000       | text, image        |
+| `gpt-5.2`               | GPT-5.2                                                  | 400,000        | 128,000       | text, image        |
+| `gpt-5.1`               | GPT-5.1                                                  | 400,000        | 128,000       | text, image        |
+| `gpt-5`                 | GPT-5                                                    | 400,000        | 128,000       | text, image        |
+| `gpt-5-mini`            | GPT-5 Mini                                               | 400,000        | 128,000       | text, image        |
+| `gpt-5-nano`            | GPT-5 Nano                                               | 400,000        | 128,000       | text, image        |
+| `gpt-5-chat-latest`     | GPT-5 Chat                                               | 400,000        | 128,000       | text, image        |
+| `gpt-4.1`               | GPT-4.1                                                  | 1,000,000      | -             | text, image        |
+| `gpt-4.1-mini`          | GPT-4.1 mini                                             | 1,000,000      | -             | text, image        |
+| `gpt-4.1-nano`          | GPT-4.1 nano                                             | 1,000,000      | -             | text, image        |
+| `gpt-4o`                | GPT-4o                                                   | 128,000        | 16,384        | text, image, audio |
+| `gpt-4o-mini`           | GPT-4o Mini                                              | 128,000        | 16,384        | text, image        |
+| `o4-mini`               | O4-Mini                                                  | 200,000        | 100,000       | text               |
+| `o4-mini-deep-research` | O4-Mini-Deep-Research                                    | 200,000        | 100,000       | text               |
+| `o3-pro`                | O3-Pro                                                   | 128,000        | 100,000       | text               |
+| `o3`                    | O3                                                       | 128,000        | 100,000       | text               |
+| `o3-mini`               | O3 Mini                                                  | 200,000        | 100,000       | text               |
+| `o3-deep-research`      | O3-Deep-Research                                         | 200,000        | 100,000       | text               |
+| `o1-pro`                | O1-Pro                                                   | 200,000        | 100,000       | text               |
+| `o1`                    | O1                                                       | 128,000        | 100,000       | text               |
+| `gpt-4-turbo`           | GPT-4 Turbo                                              | 128,000        | 4,096         | text, image        |
+| `gpt-4`                 | GPT-4                                                    | 8,192          | 8,192         | text               |
+| `gpt-3.5-turbo`         | GPT-3.5 Turbo *(deprecated, retires September 28, 2026)* | 16,385         | 4,096         | text               |
+
+***
+
+### Anthropic
+
+| Field             | Value                                   |
+| ----------------- | --------------------------------------- |
+| **Provider ID**   | `anthropic`                             |
+| **Aliases**       | `Anthropic`                             |
+| **Base URL**      | `https://api.anthropic.com/v1/`         |
+| **Website**       | [anthropic.com](https://anthropic.com/) |
+| **BYOK Required** | No                                      |
+
+[How to use Anthropic →](/ai-gateway/providers/anthropic)
+
+#### Anthropic models
+
+| Model ID                  | Display Name                                          | Context Window | Output Tokens | Modalities  |
+| ------------------------- | ----------------------------------------------------- | -------------- | ------------- | ----------- |
+| `claude-opus-4-6`         | Claude Opus 4.6                                       | 1,000,000      | 128,000       | text, image |
+| `claude-sonnet-4-6`       | Claude Sonnet 4.6                                     | 1,000,000      | 64,000        | text, image |
+| `claude-haiku-4-5`        | Claude Haiku 4.5                                      | 200,000        | 64,000        | text, image |
+| `claude-sonnet-4-5`       | Claude Sonnet 4.5                                     | 1,000,000      | 64,000        | text, image |
+| `claude-opus-4-5`         | Claude Opus 4.5                                       | 200,000        | 64,000        | text, image |
+| `claude-opus-4-1`         | Claude Opus 4.1                                       | 200,000        | 32,000        | text, image |
+| `claude-sonnet-4-0`       | Claude Sonnet 4                                       | 1,000,000      | 64,000        | text, image |
+| `claude-opus-4-0`         | Claude Opus 4                                         | 200,000        | 32,000        | text, image |
+| `claude-3-haiku-20240307` | Claude Haiku 3 *(deprecated, retires April 20, 2026)* | 200,000        | 4,096         | text, image |
+
+***
+
+### Google
+
+| Field             | Value                                                      |
+| ----------------- | ---------------------------------------------------------- |
+| **Provider ID**   | `google`                                                   |
+| **Aliases**       | `Google`, `gemini`                                         |
+| **Base URL**      | `https://generativelanguage.googleapis.com/v1beta/openai/` |
+| **Website**       | [aistudio.google.com](https://aistudio.google.com/)        |
+| **BYOK Required** | Yes                                                        |
+
+[How to use Google →](/ai-gateway/providers/google)
+
+#### Google models
+
+| Model ID                | Display Name          | Context Window | Output Tokens | Modalities                      |
+| ----------------------- | --------------------- | -------------- | ------------- | ------------------------------- |
+| `gemini-2.5-pro`        | Gemini 2.5 Pro        | 1,048,576      | 65,535        | text, image, audio, video, file |
+| `gemini-2.5-flash`      | Gemini 2.5 Flash      | 1,048,576      | 65,535        | text, image, audio, video, file |
+| `gemini-2.5-flash-lite` | Gemini 2.5 Flash-Lite | 1,048,576      | 65,535        | text, image, audio, video, file |
+| `gemini-2.0-flash`      | Gemini 2.0 Flash      | 1,048,576      | 8,192         | text, image, audio, video, file |
+| `gemini-2.0-flash-lite` | Gemini 2.0 Flash-Lite | 1,048,576      | 8,192         | text, image, audio, video, file |
+| `gemini-3-pro-preview`  | Gemini 3 Pro Preview  | 1,000,000      | 65,536        | text, image, audio, video, file |
+
+***
+
+### DeepSeek
+
+| Field             | Value                                     |
+| ----------------- | ----------------------------------------- |
+| **Provider ID**   | `deepseek`                                |
+| **Aliases**       | `DeepSeek`, `deep-seek`                   |
+| **Base URL**      | `https://api.deepseek.com`                |
+| **Website**       | [deepseek.com](https://www.deepseek.com/) |
+| **BYOK Required** | Yes                                       |
+
+[How to use DeepSeek →](/ai-gateway/providers/deepseek)
+
+#### DeepSeek models
+
+| Model ID            | Display Name      | Context Window | Output Tokens | Modalities |
+| ------------------- | ----------------- | -------------- | ------------- | ---------- |
+| `deepseek-reasoner` | deepseek-reasoner | 128,000        | 64,000        | text       |
+| `deepseek-chat`     | deepseek-chat     | 128,000        | 8,192         | text       |
+
+***
+
+### Groq
+
+| Field             | Value                            |
+| ----------------- | -------------------------------- |
+| **Provider ID**   | `groq`                           |
+| **Base URL**      | `https://api.groq.com/openai/v1` |
+| **Website**       | [groq.com](https://groq.com/)    |
+| **BYOK Required** | Yes                              |
+
+[How to use Groq →](/ai-gateway/providers/groq)
+
+Groq provides AI inference powered by their custom LPU (Language Processing Unit) hardware.
+
+#### Groq models
+
+| Model ID                                        | Display Name                       | Context Window | Output Tokens | Modalities  |
+| ----------------------------------------------- | ---------------------------------- | -------------- | ------------- | ----------- |
+| `meta-llama/llama-3.1-8b-instant`               | Llama 3.1 8B Instant               | 131,072        | 131,072       | text        |
+| `meta-llama/llama-3.3-70b-versatile`            | Llama 3.3 70B Versatile            | 131,072        | 32,768        | text        |
+| `meta-llama/llama-prompt-guard-2-22m`           | Llama Prompt Guard 2 22M           | 512            | 512           | text        |
+| `meta-llama/llama-prompt-guard-2-86m`           | Llama Prompt Guard 2 86M           | 512            | 512           | text        |
+| `meta-llama/llama-guard-4-12b`                  | Llama Guard 4 12B                  | 131,072        | 1,024         | text, image |
+| `meta-llama/llama-4-maverick-17b-128e-instruct` | Llama 4 Maverick 17B 128E Instruct | 131,072        | 8,192         | text, image |
+| `meta-llama/llama-4-scout-17b-16e-instruct`     | Llama 4 Scout 17B 16E Instruct     | 131,072        | 8,192         | text, image |
+| `moonshotai/kimi-k2-instruct-0905`              | Kimi K2                            | 262,144        | 16,384        | text        |
+| `openai/gpt-oss-120b`                           | GPT OSS 120B                       | 131,072        | 131,072       | text        |
+| `openai/gpt-oss-20b`                            | GPT OSS 20B                        | 131,072        | 131,072       | text        |
+| `openai/gpt-oss-safeguard-20b`                  | Safety GPT OSS 20B                 | 131,072        | 65,536        | text        |
+| `qwen/qwen3-32b`                                | Qwen3-32B                          | 131,072        | 40,960        | text        |
+
+***
+
+### OpenRouter
+
+| Field             | Value                                   |
+| ----------------- | --------------------------------------- |
+| **Provider ID**   | `openrouter`                            |
+| **Base URL**      | `https://openrouter.ai/api/v1/`         |
+| **Website**       | [openrouter.ai](https://openrouter.ai/) |
+| **BYOK Required** | Yes                                     |
+
+[How to use OpenRouter →](/ai-gateway/providers/openrouter)
+
+OpenRouter is a unified API that provides access to multiple AI models from various providers through a single endpoint.
+
+***
+
+### Hyperbolic
+
+| Field             | Value                                     |
+| ----------------- | ----------------------------------------- |
+| **Provider ID**   | `hyperbolic`                              |
+| **Base URL**      | `https://api.hyperbolic.xyz/v1/`          |
+| **Website**       | [hyperbolic.xyz](https://hyperbolic.xyz/) |
+| **BYOK Required** | Yes                                       |
+
+[How to use Hyperbolic →](/ai-gateway/providers/hyperbolic)
+
+Hyperbolic provides high-performance inference for open-source models.
+
+***
+
+### InceptionLabs
+
+| Field             | Value                                             |
+| ----------------- | ------------------------------------------------- |
+| **Provider ID**   | `inceptionlabs`                                   |
+| **Website**       | [inceptionlabs.ai](https://www.inceptionlabs.ai/) |
+| **BYOK Required** | Yes                                               |
+
+[How to use InceptionLabs →](/ai-gateway/providers/inceptionlabs)
+
+InceptionLabs develops diffusion-based language models for fast, efficient text generation.
+
+***
+
+### Inference.net
+
+| Field             | Value                                   |
+| ----------------- | --------------------------------------- |
+| **Provider ID**   | `inference-net`                         |
+| **Base URL**      | `https://api.inference.net/v1/`         |
+| **Website**       | [inference.net](https://inference.net/) |
+| **BYOK Required** | Yes                                     |
+
+[How to use Inference.net →](/ai-gateway/providers/inference-net)
+
+Inference.net provides a distributed inference network for running AI models at scale.
+
+***
+
+## Using models from the catalog
+
+### Simple model reference
+
+Reference models directly by their ID:
+
+```json  theme={null}
+{
+  "model": "gpt-4o",
+  "messages": [{"role": "user", "content": "Hello"}]
+}
+```
+
+### Explicit provider
+
+Use the `provider:model` format for explicit routing:
+
+```json  theme={null}
+{
+  "model": "openai:gpt-4o",
+  "messages": [{"role": "user", "content": "Hello"}]
+}
+```
+
+## Custom providers and models
+
+You can extend the catalog by configuring custom providers in your Traffic Policy. See [Custom Providers](/ai-gateway/concepts/custom-providers) for configuration details.
+
+```yaml  theme={null}
+providers:
+  - id: "custom-ollama"
+    base_url: "https://ollama.internal"
+    models:
+      - id: "llama3"
+      - id: "mistral"
+```
+
+## Catalog updates
+
+The model catalog is updated periodically to include new models and providers. For immediate access to models not yet in the catalog, add them explicitly to your provider configuration.
+
+***
+
+## Aliases reference
+
+Model and provider names are not case-sensitive. For example, `gpt-4o`, `GPT-4o`, and `Gpt-4O` all resolve to the same model.
+
+The following aliases are available in addition to the primary IDs listed above.
+
+### Provider aliases
+
+| Provider ID     | Aliases                          |
+| --------------- | -------------------------------- |
+| `openai`        | `openAI`, `open-ai`, `open-AI`   |
+| `anthropic`     | `Anthropic`                      |
+| `google`        | `gemini`                         |
+| `deepseek`      | `deep-seek`                      |
+| `openrouter`    | `open-router`                    |
+| `inceptionlabs` | `inception-labs`, `inception`    |
+| `inference.net` | `inference-net`, `inference_net` |
+| `groq`          | `groqcloud`                      |
+
+### OpenAI model aliases
+
+| Alias                              | Resolves to             |
+| ---------------------------------- | ----------------------- |
+| `gpt-4-omni`                       | `gpt-4o`                |
+| `gpt-4o-2024-05-13`                | `gpt-4o`                |
+| `gpt-4o-2024-08-06`                | `gpt-4o`                |
+| `gpt-4o-2024-11-20`                | `gpt-4o`                |
+| `chatgpt-4o-latest`                | `gpt-4o`                |
+| `gpt-4o-mini-2024-07-18`           | `gpt-4o-mini`           |
+| `gpt-4-turbo-2024-04-09`           | `gpt-4-turbo`           |
+| `gpt-4-turbo-preview`              | `gpt-4-turbo`           |
+| `gpt-4-1106-preview`               | `gpt-4-turbo`           |
+| `gpt-4-0125-preview`               | `gpt-4-turbo`           |
+| `gpt-4-0613`                       | `gpt-4`                 |
+| `gpt-4-0314`                       | `gpt-4`                 |
+| `gpt-4-32k`                        | `gpt-4`                 |
+| `gpt-4.1-2025-04-14`               | `gpt-4.1`               |
+| `gpt-4.1-mini-2025-04-14`          | `gpt-4.1-mini`          |
+| `gpt-4.1-nano-2025-04-14`          | `gpt-4.1-nano`          |
+| `gpt-5.1-2025-11-13`               | `gpt-5.1`               |
+| `gpt-5.4-2026-03-05`               | `gpt-5.4`               |
+| `gpt-5.4-pro-2026-03-05`           | `gpt-5.4-pro`           |
+| `gpt-5.2-pro-2025-12-11`           | `gpt-5.2-pro`           |
+| `GPT-5.3-Codex`                    | `gpt-5.3-codex`         |
+| `gpt-5.3-Codex`                    | `gpt-5.3-codex`         |
+| `gpt5.3-codex`                     | `gpt-5.3-codex`         |
+| `GPT-5 mini`                       | `gpt-5-mini`            |
+| `GPT-5 nano`                       | `gpt-5-nano`            |
+| `GPT-5 Chat`                       | `gpt-5-chat-latest`     |
+| `gpt-3.5-turbo-0125`               | `gpt-3.5-turbo`         |
+| `gpt-3.5-turbo-16k`                | `gpt-3.5-turbo`         |
+| `o4-mini-2025-04-16`               | `o4-mini`               |
+| `o4-mini-deep-research-2025-06-26` | `o4-mini-deep-research` |
+| `o3-pro-2025-06-10`                | `o3-pro`                |
+| `o3-2025-04-16`                    | `o3`                    |
+| `o3-mini-2025-01-31`               | `o3-mini`               |
+
+### Anthropic model aliases
+
+| Alias                        | Resolves to               |
+| ---------------------------- | ------------------------- |
+| `claude-opus-4-6-20260205`   | `claude-opus-4-6`         |
+| `claude-sonnet-4-6-20260217` | `claude-sonnet-4-6`       |
+| `claude-haiku-4-5-20251001`  | `claude-haiku-4-5`        |
+| `claude-sonnet-4-5-20250929` | `claude-sonnet-4-5`       |
+| `claude-opus-4-5-20251101`   | `claude-opus-4-5`         |
+| `claude-opus-4-1-20250805`   | `claude-opus-4-1`         |
+| `claude-opus-4.1`            | `claude-opus-4-1`         |
+| `claude-sonnet-4-20250514`   | `claude-sonnet-4-0`       |
+| `claude-sonnet-4`            | `claude-sonnet-4-0`       |
+| `claude-opus-4-20250514`     | `claude-opus-4-0`         |
+| `claude-opus-4`              | `claude-opus-4-0`         |
+| `claude-haiku-3`             | `claude-3-haiku-20240307` |
+
+### Google model aliases
+
+| Alias          | Resolves to            |
+| -------------- | ---------------------- |
+| `gemini-3`     | `gemini-3-pro-preview` |
+| `gemini-3-pro` | `gemini-3-pro-preview` |
+
+### Meta model aliases
+
+| Alias                       | Resolves to                          |
+| --------------------------- | ------------------------------------ |
+| `llama-3.1-8b`              | `llama-3.1-8b-instant`               |
+| `llama-3.3-70b`             | `llama-3.3-70b-versatile`            |
+| `llama-4-maverick-17b-128e` | `llama-4-maverick-17b-128e-instruct` |
+| `llama-4-scout-17b-16e`     | `llama-4-scout-17b-16e-instruct`     |
+
+### Moonshot AI model aliases
+
+| Alias                              | Resolves to |
+| ---------------------------------- | ----------- |
+| `kimi-k2-instruct`                 | `kimi-k2`   |
+| `kimi-k2-instruct-0905`            | `kimi-k2`   |
+| `moonshotai/kimi-k2-instruct-0905` | `kimi-k2`   |
+
+
+Built with [Mintlify](https://mintlify.com).

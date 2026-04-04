@@ -1,0 +1,9 @@
+name: openpipe
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.openpipe.ai/
+    last_fetched: "2026-04-03T23:10:25Z"
+description: >
+  openpipe documentation
+quality_score: 0

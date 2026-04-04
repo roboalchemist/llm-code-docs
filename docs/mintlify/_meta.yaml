@@ -1,0 +1,9 @@
+name: mintlify
+primary_source: llms
+sources:
+  - type: llms
+    url: https://mintlify.com/docs/
+    last_fetched: "2026-04-03T23:09:23Z"
+description: >
+  mintlify documentation
+quality_score: 0

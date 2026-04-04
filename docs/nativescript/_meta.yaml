@@ -1,0 +1,9 @@
+name: nativescript
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.nativescript.org/
+    last_fetched: "2026-04-03T23:09:43Z"
+description: >
+  nativescript documentation
+quality_score: 0

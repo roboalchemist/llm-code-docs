@@ -1,0 +1,183 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/grouped-accessor-pairs.md
+
+---
+url: /docs/guide/usage/linter/rules/eslint/grouped-accessor-pairs.md
+---
+
+### What it does
+
+Require grouped accessor pairs in object literals and classes
+
+### Why is this bad?
+
+While it is allowed to define the pair for a getter or a setter anywhere in an object or class definition,
+it’s considered a best practice to group accessor functions for the same property.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```js
+const foo = {
+  get a() {
+    return this.val;
+  },
+  b: 1,
+  set a(value) {
+    this.val = value;
+  },
+};
+```
+
+Examples of **correct** code for this rule:
+
+```js
+const foo = {
+  get a() {
+    return this.val;
+  },
+  set a(value) {
+    this.val = value;
+  },
+  b: 1,
+};
+```
+
+Examples of **incorrect** code for this rule with the `getBeforeSet` option:
+
+```js
+const foo = {
+  set a(value) {
+    this.val = value;
+  },
+  get a() {
+    return this.val;
+  },
+};
+```
+
+Examples of **correct** code for this rule with the `getBeforeSet` option:
+
+```js
+const foo = {
+  get a() {
+    return this.val;
+  },
+  set a(value) {
+    this.val = value;
+  },
+};
+```
+
+Examples of **incorrect** code for this rule with the `setBeforeGet` option:
+
+```js
+const foo = {
+  get a() {
+    return this.val;
+  },
+  set a(value) {
+    this.val = value;
+  },
+};
+```
+
+Examples of **correct** code for this rule with the `setBeforeGet` option:
+
+```js
+const foo = {
+  set a(value) {
+    this.val = value;
+  },
+  get a() {
+    return this.val;
+  },
+};
+```
+
+## Configuration
+
+### The 1st option
+
+type: `"anyOrder" | "getBeforeSet" | "setBeforeGet"`
+
+#### `"anyOrder"`
+
+Accessors can be in any order. This is the default.
+
+#### `"getBeforeSet"`
+
+Getters must come before setters.
+
+#### `"setBeforeGet"`
+
+Setters must come before getters.
+
+### The 2nd option
+
+This option is an object with the following properties:
+
+#### enforceForTSTypes
+
+type: `boolean`
+
+default: `false`
+
+When `enforceForTSTypes` is enabled, this rule also applies to TypeScript interfaces
+and type aliases.
+
+Examples of **incorrect** TypeScript code:
+
+```ts
+interface Foo {
+  get a(): string;
+  someProperty: string;
+  set a(value: string);
+}
+
+type Bar = {
+  get b(): string;
+  someProperty: string;
+  set b(value: string);
+};
+```
+
+Examples of **correct** TypeScript code:
+
+```ts
+interface Foo {
+  get a(): string;
+  set a(value: string);
+  someProperty: string;
+}
+
+type Bar = {
+  get b(): string;
+  set b(value: string);
+  someProperty: string;
+};
+```
+
+## How to use
+
+To **enable** this rule using the config file or in the CLI, you can use:
+
+::: code-group
+
+```json [Config (.oxlintrc.json)]
+{
+  "rules": {
+    "grouped-accessor-pairs": "error"
+  }
+}
+```
+
+```bash [CLI]
+oxlint --deny grouped-accessor-pairs
+```
+
+:::
+
+## References
+
+* Rule Source

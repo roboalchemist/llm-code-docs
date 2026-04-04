@@ -1,0 +1,13 @@
+# Source: https://docs.pentaho.com/pdia-data-integration/9.3-data-integration/pdi-transformation-steps-reference-overview/orc-output/select-an-engine-orc-output-step/using-orc-output-step-on-pentaho-engine/general-orc-output-kettle.md
+
+# Source: https://docs.pentaho.com/pdia-data-integration/10.2-data-integration/pdi-transformation-steps-reference-overview/orc-output/general-orc-output-kettle.md
+
+# General
+
+Enter the following information in the transformation step fields:
+
+| Option                             | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Step name**                      | Specify the unique name of the ORC Output step on the canvas. You can customize the name or leave it as the default.                                                                                                                                                                                                                                                                                                 |
+| **Folder/File name**               | Specify the location and name of the file or folder. Click **Browse** to display the **Open File** window and navigate to the destination file or folder. For the supported file system types, see [Connecting to Virtual File Systems](https://docs.pentaho.com/pdia-data-integration/10.2-data-integration/data-integration-perspective-in-the-pdi-client/virtual-file-system-browser). The ORC files are created. |
+| **Overwrite existing output file** | Select to overwrite an existing file that has the same file name and extension.                                                                                                                                                                                                                                                                                                                                      |

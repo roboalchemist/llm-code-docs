@@ -1,0 +1,9 @@
+name: novel
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.novel.sh/docs/
+    last_fetched: "2026-04-03T23:10:06Z"
+description: >
+  novel documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: mistral
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.mistral.ai/
+    last_fetched: "2026-04-03T23:09:23Z"
+description: >
+  mistral documentation
+quality_score: 0

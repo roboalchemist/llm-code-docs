@@ -1,0 +1,42 @@
+---
+title: Deployment Guide
+---
+
+# Deployment Guide
+
+Deployment works the same way for ZkApps on Mina, Devnet, and Zeko.  All Smart Contracts have a `deploy()` method that must be called to create the account on chain.  The example code below shows an example of how to properly configure a Mina network and generate a deploy transaction.
+
+Deploying a ZkApp on Mina implies creating a brand new account on chain.  That means that you need to generate a private key for the account, and pay an account creation fee, just like any other account.  The private key that you generate will have some default permissions (review the [Permissions](/docs/zkapps/permissions.mdx) documentation for a refresher).  Any permissions that are controlled by a signature will be possible to control by the private key holder of the Smart Contract.  However, if you deploy a Smart Contract with proof permissions for every operation, then the private key will not be able to perform those operations.  
+
+:::warning
+Currently, the only exception is the `setVerificationKey` permission, which can only be set to `impossibleDuringCurrentVersion()`, because in the event of a proof system upgrade to the entire chain, a smart contract will not be able to produce valid proofs until it is upgraded to the new proof system.
+:::
+
+## Network Configuration
+
+Configure your deployment target with the appropriate network:
+
+```ts file=../snippets/zkapps/deployment/deployment.ts start=start_network_configs end=end_network_configs
+```
+
+## Deploying a ZkApp
+
+Here's how to deploy a zkApp to any network:
+
+```ts file=../snippets/zkapps/deployment/deployment.ts start=start_devnet_deployment end=end_devnet_deployment
+```
+
+
+## Network Comparison
+
+| Network | Purpose | Tokens | Transaction Inclusion |
+|---------|---------|--------|----------|
+| Mainnet | Production L1 | Real MINA | ~3-5 min |
+| Devnet | Testing L1 | Test MINA | ~5-10 min |
+| Zeko Testnet | Testing L2 | Test MINA | ~10 sec |
+
+## API Reference
+
+For detailed deployment information, see:
+- [Mina Network](/docs/api-reference/namespaces/Mina/functions/Network.mdx)
+- [Transaction](/docs/api-reference/namespaces/Mina/functions/transaction.mdx)

@@ -1,0 +1,8 @@
+name: openapi-swagger
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:21Z"
+description: >
+  openapi-swagger documentation
+quality_score: 0

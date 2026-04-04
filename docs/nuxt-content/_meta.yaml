@@ -1,0 +1,9 @@
+name: nuxt-content
+primary_source: llms
+sources:
+  - type: llms
+    url: https://content.nuxt.com/
+    last_fetched: "2026-04-03T23:10:10Z"
+description: >
+  nuxt-content documentation
+quality_score: 0

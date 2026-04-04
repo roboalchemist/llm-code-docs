@@ -1,0 +1,9 @@
+name: nuget
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.nuget.org/
+    last_fetched: "2026-04-03T23:10:07Z"
+description: >
+  nuget documentation
+quality_score: 0

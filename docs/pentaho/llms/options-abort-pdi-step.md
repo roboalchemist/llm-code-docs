@@ -1,0 +1,14 @@
+# Source: https://docs.pentaho.com/pdia-data-integration/9.3-data-integration/pdi-transformation-steps-reference-overview/abort/options-abort-pdi-step.md
+
+# Options
+
+![PDI Abort step dialog](https://3411831820-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAYwCj9fPr1B2pjC11IOQ%2Fuploads%2Fgit-blob-fe709b97a6036ee89fcb875e5895b79f55583bd0%2FPDI_TransStep_Abort_Dialog.png?alt=media)
+
+The Abort step features the following options:
+
+| Option                               | Description                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Abort the running transformation** | Select to stop the transformation when the **Abort threshold** is reached.                                                                                                                                                                                                                                                                                        |
+| **Abort and log as an error**        | Select to log an error report when the Abort step stops the transformation. This option is useful when a parent step (such as the Kafka Consumer step) executes a sub-transformation containing the Abort step, where the Abort step will cause the parent step to stop.                                                                                          |
+| **Stop input processing**            | Select to stop the input steps to the transformation when the **Abort threshold** is reached, while allowing any records already retrieved or initiated to be processed.                                                                                                                                                                                          |
+| **Abort threshold**                  | Specify the number of rows at which to abort the transformation after an error is detected. For example, if the threshold is set to `0`, the Abort step will stop the transformation after the first row is processed. If the threshold is set to `5`, then the Abort step will stop the transformation after the sixth row is processed. The default value is 0. |

@@ -1,0 +1,9 @@
+name: ollama
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.ollama.com/
+    last_fetched: "2026-04-03T23:10:15Z"
+description: >
+  ollama documentation
+quality_score: 0

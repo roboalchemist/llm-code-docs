@@ -1,0 +1,61 @@
+# Source: https://ngrok.com/docs/using-ngrok-with/godaddy.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Configuring GoDaddy DNS for ngrok Reserved Domains
+
+> Step-by-step guide for configuring GoDaddy DNS records to work with ngrok reserved domains using CNAME records.
+
+This guide explains how to configure a custom domain in GoDaddy to work with ngrok.
+
+<Note>
+  GoDaddy does not support CNAMEs as apex records.
+  An apex record is a DNS record at the root (or apex) of a DNS zone.
+  For example, in the DNS zone `example.com`, an apex record also has the fully qualified name `example.com` (this is sometimes called a naked domain).
+  By convention, the relative name `@` is used to represent apex records.
+</Note>
+
+## What you'll need
+
+* A [custom domain added in ngrok](../universal-gateway/custom-domains/) with a subdomain (for example, `myapp.example.com`).
+  GoDaddy requires a subdomain because it does not support CNAMEs as apex records.
+* A GoDaddy account with a domain.
+
+## 1. Find your reserved domain in ngrok
+
+In your ngrok dashboard, go to [**Domains**](https://dashboard.ngrok.com/domains) and click the domain you want to use.
+Click **DNS Targets**.
+This provides you with the relevant CNAME values to use in later steps.
+
+## 2. Access GoDaddy DNS management
+
+Go to [GoDaddy](https://www.godaddy.com) and log in with your credentials.
+Click on your username in the upper right corner and select **My Products**.
+Find your domain in the list and click **DNS** or **Manage DNS** next to it.
+
+## 3. Add a CNAME record
+
+In the DNS Management page, scroll down to the **Records** section.
+Click **Add** to create a new record.
+Select **CNAME** from the **Type** dropdown menu.
+In the **Host** field, enter the subdomain you want to use (for example, `www` if your domain in ngrok is `www.example.com`).
+In the **Points to** field, enter the CNAME provided by ngrok (for example, `ptenvq2ejdlptgyr.5mql8tts8aeqxhrtv.ngrok-cname.com`).
+Set the TTL to your desired value (default is fine).
+Click **Save** to add the record.
+
+For more details, refer to [GoDaddy's guide on adding a CNAME record](https://www.godaddy.com/help/add-a-cname-record-19236).
+
+## 4. Verify DNS status in ngrok
+
+Once you've configured the DNS records in GoDaddy, return to the ngrok dashboard and click the **Check Status** button on the bottom of the DNS Details page.
+It may take a few minutes to an hour for the DNS records to propagate.
+ngrok will continue to check at a regular interval.
+Once you see a green checkmark, your domain is configured.
+
+To use your new domain in the ngrok agent, add `--url your.domain.com` to the end of any command.
+For example: `ngrok http 80 --url your.domain.com`.
+
+
+Built with [Mintlify](https://mintlify.com).

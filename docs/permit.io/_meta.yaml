@@ -1,0 +1,8 @@
+name: permit.io
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:10:33Z"
+description: >
+  permit.io documentation
+quality_score: 0

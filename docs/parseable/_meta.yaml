@@ -1,0 +1,9 @@
+name: parseable
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.parseable.com/docs/
+    last_fetched: "2026-04-03T23:10:31Z"
+description: >
+  parseable documentation
+quality_score: 0

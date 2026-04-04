@@ -1,0 +1,628 @@
+# Source: https://content.nuxt.com/raw/docs/getting-started/configuration.md
+
+# Configuration
+
+> Nuxt Content is configured with sensible defaults.
+
+To configure the content module and customize its behavior, you can use the `content` property in your `nuxt.config`:
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    // Options
+  }
+})
+```
+
+<note to="https://github.com/nuxt-modules/mdc#configurations">
+
+In addition to configuring via `content.markdown`, you can use Markdown Components (MDC) to customize the rendering of Markdown elements with `mdc` property.
+
+</note>
+
+## `build`
+
+Nuxt Content read and parse all the available contents at build time. This option gives you control over parsing contents.
+
+### `markdown`
+
+Configure markdown parser.
+
+#### `toc`
+
+<code-group>
+
+```ts [Default]
+toc: {
+  depth: 2,
+  searchDepth: 2
+}
+```
+
+```ts [Signature]
+type Toc = {
+  depth: number
+  searchDepth: number
+}
+```
+
+</code-group>
+
+Control behavior of Table of Contents generation.
+
+Value:
+
+- `depth`: Maximum heading depth to include in the table of contents.
+- `searchDepth`: Maximum depth of nested tags to search for heading.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          depth: 3, // include h3 headings
+        }
+      }
+    }
+  }
+})
+```
+
+#### `remarkPlugins`
+
+<code-group>
+
+```ts [Default]
+remarkPlugins: {}
+```
+
+```ts [Signature]
+type RemarkPlugins = Record<string, false | MarkdownPlugin>
+```
+
+</code-group>
+
+A list of [remark](https://github.com/remarkjs/remark) plugins to use.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        // Object syntax can be used to override default options
+        remarkPlugins: {
+          // Override remark-emoji options
+          'remark-emoji': {
+            options: {
+              emoticon: true
+            }
+          },
+          // Disable remark-gfm
+          'remark-gfm': false,
+          // Add remark-oembed
+          'remark-oembed': {
+            // Options
+          }
+        },
+      }
+    }
+  }
+})
+```
+
+#### `rehypePlugins`
+
+<code-group>
+
+```ts [Default]
+rehypePlugins: {}
+```
+
+```ts [Signature]
+type RehypePlugins = object
+```
+
+</code-group>
+
+A list of [rehype](https://github.com/remarkjs/remark-rehype) plugins to use.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        // Object syntax can be used to override default options
+        rehypePlugins: {
+          'rehype-figure': {
+
+          }
+        },
+      }
+    }
+  }
+})
+```
+
+#### `contentHeading`
+
+<code-group>
+
+```ts [Default]
+contentHeading: true
+```
+
+```ts [Signature]
+type ContentHeading = boolean
+```
+
+</code-group>
+
+Setting this option to `false` disables the automatic generation of `title` and `description` fields that are normally extracted from the first H1 heading and the paragraphs that follow it.
+
+#### `highlight`
+
+<code-group>
+
+```ts [Default]
+highlight: false
+```
+
+```ts [Signature]
+type Highlight = false | object
+```
+
+</code-group>
+
+Nuxt Content uses [Shiki](https://github.com/shikijs/shiki) to provide syntax highlighting for [`ProsePre`](/docs/components/prose#prosepre) and [`ProseCode`](/docs/components/prose#prosecode).
+
+<table>
+<thead>
+  <tr>
+    <th>
+      Option
+    </th>
+    
+    <th>
+      Type
+    </th>
+    
+    <th>
+      Description
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <code>
+        theme
+      </code>
+    </td>
+    
+    <td>
+      <code>
+        ShikiTheme
+      </code>
+      
+       or <code>
+        Record<string, ShikiTheme>
+      </code>
+    </td>
+    
+    <td>
+      The <a href="https://github.com/shikijs/shiki/blob/main/docs/themes.md" rel="nofollow">
+        color theme
+      </a>
+      
+       to use.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code>
+        langs
+      </code>
+    </td>
+    
+    <td>
+      <code>
+        ShikiLang[]
+      </code>
+    </td>
+    
+    <td>
+      The <a href="https://github.com/shikijs/shiki/blob/main/docs/languages.md" rel="nofollow">
+        loaded languages
+      </a>
+      
+       available for highlighting.
+    </td>
+  </tr>
+</tbody>
+</table>
+
+- `highlight.theme`
+
+Theme can be specified by a single string but also supports an object with multiple themes.
+
+This option is compatible with [Color Mode module](https://color-mode.nuxtjs.org/).
+
+If you are using multiple themes, it's recommended to always have a `default` theme specified.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          // Theme used in all color schemes.
+          theme: 'github-light',
+          // OR
+          theme: {
+            // Default theme (same as single string)
+            default: 'github-light',
+            // Theme used if `html.dark`
+            dark: 'github-dark',
+            // Theme used if `html.sepia`
+            sepia: 'monokai'
+          }
+        }
+      }
+    }
+  }
+})
+```
+
+- `highlight.langs`
+
+By default, the module loads a couple of languages for syntax highlighting:
+
+```ts [Default]
+['json', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'mdc', 'md', 'yaml']
+```
+
+If you plan to use code samples of other languages, you need to define the language in these options.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          langs: [
+            'c',
+            'cpp',
+            'java'
+          ]
+        }
+      }
+    }
+  }
+})
+```
+
+If you wish to add highlighting for an unsupported language, you can do so by loading the grammar file for the language.
+
+```ts [nuxt.config.ts]
+import { readFileSync } from 'node:fs'
+
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          langs: [
+            // Read more about Shiki languages: https://shiki.style/guide/load-lang
+            JSON.parse(
+              readFileSync('./shiki/languages/gdscript.tmLanguage.json', 'utf-8'),
+            ),
+          ]
+        }
+      }
+    }
+  }
+})
+```
+
+Read more about adding languages in the [Shiki documentation](https://github.com/shikijs/shiki/blob/main/docs/languages.md#adding-grammar).
+
+### `pathMeta`
+
+Content module uses files path to generate the slug, default title and content order, you can customize this behavior with `pathMeta` option.
+
+#### `pathMeta.forceLeadingSlash`
+
+If set to `true`, the path will be prefixed with a leading slash. Default value is `true`.
+
+#### `pathMeta.slugifyOptions`
+
+Content module uses [slugify](https://github.com/simov/slugify) to generate the slug, you can customize the behavior of slugify with this option.
+
+Checkout [slugify options](https://github.com/simov/slugify#options) for more information.
+
+### `transformers`
+
+Nuxt Content has specific transformers for each content type to parse the raw content and prepare it for querying and rendering. Using this option you can define custom transformers to support new content types or improve functionalities of supported content types.
+
+<code-group>
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    build: {
+      transformers: [
+        '~/transformers/title-suffix',
+      ],
+    },
+  },
+})
+```
+
+```ts [~/transformers/title-suffix.ts]
+import { defineTransformer } from '@nuxt/content'
+
+export default defineTransformer({
+  name: 'title-suffix',
+  extensions: ['.md'],
+  transform(file) {
+    return {
+      ...file,
+      title: file.title + ' (suffix)',
+    }
+  },
+})
+```
+
+</code-group>
+
+Read more about transformers in the [Transformers](/docs/advanced/transformers) documentation.
+
+## `database`
+
+By default Nuxt Content uses a local SQLite database to store and query content. If you like to use another database or you plan to deploy on Cloudflare Workers, you can modify this option.
+
+Here is the list of supported database adapters:
+
+### `SQLite`
+
+If you want to change the default database location and move it to elsewhere you can use `sqlite` adapter to do so. This is the default value to the `database` option. Depending on your runtime-environment different sqlite adapters will be used (Node: better-sqlite-3, Bun: bun:sqlite).
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'sqlite',
+      filename: 'SQLITE_DB_LOCATION'
+    }
+  }
+})
+```
+
+If you can't use a normal file-backed SQLite database (for example due to read-only filesystems or platform limitations), you can run SQLite entirely in memory. Nuxt Content will restore the database from the generated dump on first query. On serverless platforms this database will be recreated on each cold start; prerender as many routes as possible to avoid repeated runtime initialization.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'sqlite',
+      filename: ':memory:'
+    }
+  }
+})
+```
+
+### `D1`
+
+If you plan to deploy your application to Cloudflare workers, you need to use the `d1` database adapter. Create a `d1` binding in the Cloudflare dashboard and fill in the `bindingName` field.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'd1',
+      bindingName: 'CF_BINDING_NAME'
+    }
+  }
+})
+```
+
+### `Postgres`
+
+If you plan to deploy your application using PostgreSQL database you need to use the `postgresql` database adapter.
+
+First, make sure to install the `pg` package:
+
+```bash [Terminal]
+npm i pg
+```
+
+Then, configure the `postgresql` adapter in your `nuxt.config.ts`:
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'postgresql',
+      url: process.env.POSTGRES_URL,
+      /* Other options for `pg` */
+    }
+  }
+})
+```
+
+### `LibSQL`
+
+If you plan to deploy your application using a LibSQL database you need to use the `libsql` database adapter.
+
+First, make sure to install the `@libsql/client` package:
+
+```bash [Terminal]
+npm i @libsql/client
+```
+
+Then, configure the `libsql` adapter in your `nuxt.config.ts`:
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'libsql',
+      url: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    }
+  }
+})
+```
+
+<note>
+
+The most popular LibSQL hosting services is [Turso](https://turso.tech/).
+
+</note>
+
+### `PGlite`
+
+If you plan to deploy your application using a PGlite database you need to use the `pglite` database adapter.
+
+First, make sure to install the `@electric-sql/pglite` package:
+
+```bash [Terminal]
+npm i @electric-sql/pglite
+```
+
+Then, configure the `pglite` adapter in your `nuxt.config.ts`:
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'pglite',
+      dataDir: '.data/content/pglite'
+    }
+  }
+})
+```
+
+<note>
+
+We recommend to only use PGlite in development.
+
+</note>
+
+## `renderer`
+
+Configure content renderer.
+
+### `anchorLinks`
+
+<code-group>
+
+```ts [Default]
+{ h2: true, h3: true, h4: true }
+```
+
+```ts [Signature]
+type AnchorLinks = boolean | Record<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', boolean>
+```
+
+</code-group>
+
+Control anchor link generation, by default it generates anchor links for `h2`, `h3` and `h4` heading
+
+Value:
+
+- `false`: will disable link generation.
+- `true`: will enable link generation for all headings.
+
+### `alias`
+
+<code-group>
+
+```ts [Default]
+alias: {}
+```
+
+```ts [Signature]
+type Alias = Record<string, string>
+```
+
+</code-group>
+
+Aliases will be used to replace markdown components and render custom components instead of default ones.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    renderer: {
+      alias: {
+        p: 'MyCustomParagraph'
+      }
+    }
+  }
+})
+```
+
+## `watch`
+
+```ts [Default]
+watch: {
+  enabled: true
+}
+```
+
+Controls whether content hot reloading is enabled during development.
+
+**Options:**
+
+- `enabled` (`boolean`): Enable or disable hot reloading when editing content files.
+
+  - `true` (default): Automatically reloads content changes in your application during development.
+  - `false`: Disables hot reloading; changes require a manual refresh.
+
+<callout>
+
+The content watcher only runs in development and leverages the Vite dev server to detect content updates and send events to your application for live updates.
+
+</callout>
+
+## `experimental`
+
+Experimental features that are not yet stable.
+
+### `experimental.sqliteConnector`
+
+SQLite connectors have limitations in different environments. Some work in serverless environments, while others do not. Nuxt Content supports three different SQLite connectors to cover all environments:
+
+- `better-sqlite3`: Works in all Node environments, GitHub CI, Vercel CI and production, Cloudflare CI pipelines, etc. (Does **not** work in WebContainers and StackBlitz)
+- `sqlite3`: Works in Node environments, GitHub CI, and StackBlitz. (Does **not** work in Vercel or Cloudflare)
+- `native`: As of Node.js v22.5.0, the `node:sqlite` module is available natively in Node.js. This connector works in all Node environments with Node.js version 22.5.0 or newer.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    experimental: { sqliteConnector: 'native' },
+  },
+});
+```
+
+### `experimental.nativeSqlite` (deprecated, use `sqliteConnector`)
+
+As of Node.js v22.5.0, the `node:sqlite` module is available natively in Node.js.
+This allows Nuxt Content to use SQLite as a database without the need for an external package.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    experimental: { nativeSqlite: true },
+  },
+});
+```
+
+<prose-note>
+
+This feature is only available in Node.js v22.5.0 and above. Enabling this feature in older version will not do anything.
+
+</prose-note>

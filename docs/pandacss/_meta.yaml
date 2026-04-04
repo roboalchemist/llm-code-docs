@@ -1,0 +1,9 @@
+name: pandacss
+primary_source: llms
+sources:
+  - type: llms
+    url: https://panda-css.com/
+    last_fetched: "2026-04-03T23:10:30Z"
+description: >
+  pandacss documentation
+quality_score: 0

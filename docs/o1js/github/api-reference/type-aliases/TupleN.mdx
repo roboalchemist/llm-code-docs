@@ -1,0 +1,17 @@
+```ts
+type TupleN<T, N> = N extends N ? number extends N ? [...T[]] : [...TupleRec<T, N, []>] : never;
+```
+
+Defined in: [lib/util/types.ts:25](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/util/types.ts#L25)
+
+tuple type that has the length as generic parameter
+
+## Type Parameters
+
+### T
+
+`T`
+
+### N
+
+`N` *extends* `number`

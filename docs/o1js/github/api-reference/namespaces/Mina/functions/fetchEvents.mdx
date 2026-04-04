@@ -1,0 +1,61 @@
+```ts
+function fetchEvents(
+   publicKey: PublicKey, 
+   tokenId: Field, 
+   filterOptions: EventActionFilterOptions, 
+   headers?: HeadersInit): Promise<{
+  blockHash: string;
+  blockHeight: UInt32;
+  chainStatus: string;
+  events: {
+     data: string[];
+     transactionInfo: {
+        hash: string;
+        memo: string;
+        status: string;
+     };
+  }[];
+  globalSlot: UInt32;
+  parentBlockHash: string;
+}[]>;
+```
+
+Defined in: [lib/mina/v1/mina-instance.ts:181](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/mina-instance.ts#L181)
+
+## Parameters
+
+### publicKey
+
+[`PublicKey`](../../../../classes/PublicKey.mdx)
+
+### tokenId
+
+[`Field`](../../../../classes/Field.mdx)
+
+### filterOptions
+
+`EventActionFilterOptions` = `{}`
+
+### headers?
+
+`HeadersInit`
+
+## Returns
+
+`Promise`\<\{
+  `blockHash`: `string`;
+  `blockHeight`: [`UInt32`](../../../../classes/UInt32.mdx);
+  `chainStatus`: `string`;
+  `events`: \{
+     `data`: `string`[];
+     `transactionInfo`: \{
+        `hash`: `string`;
+        `memo`: `string`;
+        `status`: `string`;
+     \};
+  \}[];
+  `globalSlot`: [`UInt32`](../../../../classes/UInt32.mdx);
+  `parentBlockHash`: `string`;
+\}[]\>
+
+A list of emitted events associated to the given public key.

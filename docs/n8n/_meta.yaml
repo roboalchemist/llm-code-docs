@@ -1,0 +1,9 @@
+name: n8n
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.n8n.io/
+    last_fetched: "2026-04-03T23:09:39Z"
+description: >
+  n8n documentation
+quality_score: 0

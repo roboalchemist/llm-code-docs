@@ -1,0 +1,9 @@
+name: openai-platform
+primary_source: llms
+sources:
+  - type: llms
+    url: https://platform.openai.com/.well-known/
+    last_fetched: "2026-04-03T23:10:20Z"
+description: >
+  openai-platform documentation
+quality_score: 0

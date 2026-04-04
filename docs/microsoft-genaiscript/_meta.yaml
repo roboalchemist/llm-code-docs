@@ -1,0 +1,9 @@
+name: microsoft-genaiscript
+primary_source: llms
+sources:
+  - type: llms
+    url: https://microsoft.github.io/genaiscript/
+    last_fetched: "2026-04-03T23:09:22Z"
+description: >
+  microsoft-genaiscript documentation
+quality_score: 0

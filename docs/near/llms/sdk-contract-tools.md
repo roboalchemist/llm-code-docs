@@ -1,0 +1,246 @@
+# Source: https://docs.near.org/primitives/ft/sdk-contract-tools.md
+
+---
+id: sdk-contract-tools
+title: Create FT using Contract Tools
+sidebar_label: Create FT using Contract Tools
+description: "Learn how to create a fungible token (FT) using Contract Tools package"
+---
+
+
+
+In this tutorial, we will create a fungible token (FT) using the [NEAR SDK Contract Tools](https://github.com/near/near-sdk-contract-tools) package. This package is a collection of common tools and patterns to simplify smart contract development, including:
+
+- Storage fee management
+- Escrow pattern and derive macro
+- Owner pattern and derive macro
+- Pause pattern and derive macro
+- Role-based access control
+- Derive macros for [NEP standards](./standard.md)
+  - NEP-141 (fungible token), extension NEP-148
+  - NEP-145 (storage management), and integrations for the fungible token and non-fungible token standards
+  - NEP-171 (non-fungible token), extensions NEP-177, NEP-178, NEP-181
+  - NEP-297 (events)
+
+---
+
+## Introduction
+
+While one can create a fungible token (FT) contract from scratch using only the `near-sdk` and `near_contract_standards` (e.g. [FT contract](https://github.com/near-examples/FT)), a simpler approach is to use `near-sdk-contract-tools`.
+
+`near-sdk-contract-tools` allows us implement the logic for minting/burning logic, access control, and other FT standards by simply deriving macros on our contract struct, as `OpenZeppelin` does for Ethereum contracts.
+
+---
+
+## Basic FT Methods
+
+To derive basic FT methods to our contract, we need to derive `FungibleToken` macro to our contract struct:
+
+```
+#[derive(Default, Owner, FungibleToken)]
+#[fungible_token(transfer_hook = "TransferHook")]
+#[near(contract_state)]
+pub struct MyFtContract {}
+
+```
+
+This will bring all the basic FT methods defined in NEP-141 standard to our contract:
+- `new`
+- `contract_source_metadata`
+- `ft_balance_of`
+- `ft_metadata`
+- `ft_total_supply`
+- `storage_balance_bounds`
+- `storage_balance_of`
+- `ft_resolve_transfer`
+- `ft_transfer`
+- `ft_transfer_call`
+- `storage_deposit`
+- `storage_unregister`
+- `storage_withdraw`
+
+To bring basic owner methods to our contract, we can also derive the `Owner` macro which adds the following methods:
+- `own_get_owner`
+- `own_get_proposed_owner`
+- `own_accept_owner`
+- `own_propose_owner`
+- `own_renounce_owner`
+
+---
+
+## Initialization
+
+To initialize the basic FT contract with custom owner, metadata and storage bounds implement `new` method:
+
+```
+#[near]
+impl MyFtContract {
+    #[init]
+    pub fn new(
+        owner_id: AccountId,
+        /* total_supply: U128, */
+        metadata: ContractMetadata,
+    ) -> Self {
+        let mut contract = Self {};
+
+        // Set metadata
+        contract.set_metadata(&metadata);
+
+        // Initialize owner
+        Owner::init(&mut contract, &owner_id);
+
+        contract.set_storage_balance_bounds(&StorageBalanceBounds {
+            min: NearToken::from_yoctonear(2500000000000000000000),
+            max: Some(NearToken::from_yoctonear(2500000000000000000000)),
+        });
+
+        /*
+          This contract wraps the deposited NEAR tokens, so it should have an initial supply of 0.
+          However, if you want your contract to start with an initial FT supply,
+          you can uncomment the following line and pass total_supply to the new method.
+
+          let _ = contract.deposit_unchecked(&owner_id, total_supply.0);
+        */
+
+        contract
+    }
+}
+
+```
+
+---
+
+## Transfer Hook
+
+If we want to customize how the transfer of tokens work (i.e. modify the `ft_transfer` method), we need to implement a hook. Hooks are a way to **wrap (inject code before and after)** component functions:
+
+```
+pub struct TransferHook;
+
+impl Hook<MyFtContract, Nep141Transfer<'_>> for TransferHook {
+    fn hook<R>(
+        contract: &mut MyFtContract,
+        transfer: &Nep141Transfer<'_>,
+        f: impl FnOnce(&mut MyFtContract) -> R,
+    ) -> R {
+        // Log, check preconditions, save state, etc.
+        log!(
+            "NEP-141 transfer from {} to {} of {} tokens",
+            transfer.sender_id,
+            transfer.receiver_id,
+            transfer.amount
+        );
+
+        let storage_usage_before = env::storage_usage();
+
+        let r = f(contract); // execute wrapped function
+
+        let storage_usage_after = env::storage_usage();
+        log!(
+            "Storage delta: {}",
+            storage_usage_after - storage_usage_before
+        );
+
+        r
+    }
+}
+
+```
+
+Then derive it to our contract struct:
+
+```
+#[derive(Default, Owner, FungibleToken)]
+#[fungible_token(transfer_hook = "TransferHook")]
+#[near(contract_state)]
+pub struct MyFtContract {}
+
+```
+
+---
+
+## Minting
+
+By default, the FT standards do not include a minting method. However, we can easily mint tokens for the owner by implementing a `mint` method, which only the owner can call:
+
+```
+#[near]
+impl MyFtContract {
+    #[payable]
+    pub fn mint(&mut self) {
+        let mut amount_to_mint = env::attached_deposit();
+
+        // Check account's storage balance and deposit if necessary
+        let storage_balance_bounds = self.get_storage_balance_bounds();
+        let storage_balance = self
+            .get_storage_balance(&env::predecessor_account_id())
+            .unwrap_or_else(|_| StorageBalance::default());
+        if storage_balance.total < storage_balance_bounds.min {
+            // Deposit storage if necessary
+            self.storage_deposit(Some(env::predecessor_account_id()), None);
+            amount_to_mint = amount_to_mint.saturating_sub(storage_balance_bounds.min);
+        }
+
+        // Mint tokens
+        Nep141Controller::mint(
+            self,
+            &Nep141Mint {
+                amount: amount_to_mint.as_yoctonear(),
+                receiver_id: env::predecessor_account_id().into(),
+                memo: None,
+            },
+        )
+        .unwrap_or_else(|e| env::panic_str(&e.to_string()));
+    }
+}
+
+```
+
+:::tip
+
+You can modify this method as you need, for example, to allow minting only when the contract is not paused (requires deriving [`Pausable`](https://github.com/near/near-sdk-contract-tools/tree/develop?tab=readme-ov-file#macro-combinations) hook), or to allow minting only to specific accounts with a certain role or from whitelist with custom limitations
+
+:::
+
+---
+
+## Burning
+
+In the same way that minting is not included in the FT standards, burning is also not included. However, we can also easily implement it.
+
+To burn tokens from the owner's account, we can add a `burn` method which is also only callable by the owner:
+
+```
+#[near]
+impl MyFtContract {
+    #[payable]
+    pub fn burn(&mut self, amount: U128) {
+        // Assert that the attached deposit is exactly 1 yocto NEAR
+        assert_one_yocto();
+        // Burn tokens
+        Nep141Controller::burn(
+            self,
+            &Nep141Burn {
+                amount: amount.0,
+                owner_id: env::predecessor_account_id().into(),
+                memo: None,
+            },
+        )
+        .unwrap_or_else(|e| env::panic_str(&e.to_string()));
+
+        let amount_to_refund = NearToken::from_yoctonear(amount.0);
+        Promise::new(env::predecessor_account_id()).transfer(amount_to_refund);
+    }
+}
+
+```
+
+---
+
+## Conclusion
+
+Using `near-sdk-contract-tools` is a very simple and flexible way to create FT contract with minimal boilerplate which allows us to focus on the business logic.
+
+You can further extend this contract with more features like pausing, role-based access control, escrow pattern, and more by deriving corresponding macros from the package.
+
+<MovingForwardSupportSection />

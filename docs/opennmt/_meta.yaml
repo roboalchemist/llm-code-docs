@@ -1,0 +1,8 @@
+name: opennmt
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:10:24Z"
+description: >
+  opennmt documentation
+quality_score: 0

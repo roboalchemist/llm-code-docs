@@ -1,0 +1,132 @@
+# Source: https://ngrok.com/docs/ai-gateway/sdks/other.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Other SDKs
+
+> Use the ngrok AI Gateway with any SDK that supports OpenAI API or Anthropic Claude API format.
+
+<Note>
+  **Prerequisite**: You need an AI Gateway endpoint before continuing. Create one using the [dashboard quickstart](/ai-gateway/quickstart) or follow the [manual setup guide](/ai-gateway/guides/creating-endpoints).
+</Note>
+
+The AI Gateway works with any SDK or HTTP client that supports OpenAI API or Anthropic Claude API format. If your language or framework isn't covered in the dedicated guides, you can still use the gateway.
+
+## Requirements
+
+For any SDK or client to work with the AI Gateway, it must:
+
+1. Support the OpenAI API or Anthropic Claude API format
+2. Allow customizing the base URL / endpoint
+3. Send requests with proper authorization headers (for OpenAI API, `Authorization`; for Anthropic Claude API, `x-api-key`)
+
+## Which API key do I use?
+
+* **AI Gateway API Keys** (recommended): Use your [AI Gateway API Key](/ai-gateway/concepts/api-keys) (format: `ng-xxxxx-g1-xxxxx`). ngrok handles provider keys for you.
+* **BYOK (passthrough mode)**: Use your provider API key (for example, `sk-...` from OpenAI). See [Bring Your Own Keys](/ai-gateway/concepts/bring-your-own-keys).
+
+## cURL
+
+For testing or shell scripts:
+
+<CodeGroup>
+  ```bash OpenAI API theme={null}
+  curl https://your-ai-gateway.ngrok.app/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer ng-xxxxx-g1-xxxxx" \  # Your AI Gateway API Key
+    -d '{
+      "model": "gpt-4o",
+      "messages": [{"role": "user", "content": "Hello!"}]
+    }'
+  ```
+
+  ```bash Anthropic Claude API theme={null}
+  curl https://your-ai-gateway.ngrok.app/v1/messages \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: ng-xxxxx-g1-xxxxx" \  # Your AI Gateway API Key
+    -H "anthropic-version: 2023-06-01" \
+    -d '{
+      "model": "claude-sonnet-4-20250514",
+      "max_tokens": 1024,
+      "messages": [{"role": "user", "content": "Hello!"}]
+    }'
+  ```
+</CodeGroup>
+
+## HTTP request format
+
+Any HTTP client can call the AI Gateway:
+
+<CodeGroup>
+  ```http OpenAI API theme={null}
+  POST /v1/chat/completions HTTP/1.1
+  Host: your-ai-gateway.ngrok.app
+  Content-Type: application/json
+  Authorization: Bearer ng-xxxxx-g1-xxxxx
+
+  {
+    "model": "gpt-4o",
+    "messages": [
+      {"role": "user", "content": "Hello!"}
+    ]
+  }
+  ```
+
+  ```http Anthropic Claude API theme={null}
+  POST /v1/messages HTTP/1.1
+  Host: your-ai-gateway.ngrok.app
+  Content-Type: application/json
+  x-api-key: ng-xxxxx-g1-xxxxx
+  anthropic-version: 2023-06-01
+
+  {
+    "model": "claude-sonnet-4-20250514",
+    "max_tokens": 1024,
+    "messages": [
+      {"role": "user", "content": "Hello!"}
+    ]
+  }
+  ```
+</CodeGroup>
+
+## Using provider prefixes
+
+All clients support routing to specific providers using model prefixes:
+
+```
+# OpenAI
+model: "openai:gpt-4o"
+
+# Anthropic
+model: "anthropic:claude-3-5-sonnet-latest"
+
+# Self-hosted
+model: "ollama:llama3.2"
+
+# Auto-select based on your strategy
+model: "ngrok/auto"
+```
+
+## Supported endpoints
+
+The AI Gateway supports these endpoints:
+
+| Endpoint               | API Format | Description           |
+| ---------------------- | ---------- | --------------------- |
+| `/v1/chat/completions` | OpenAI     | Chat completions      |
+| `/v1/completions`      | OpenAI     | Legacy completions    |
+| `/v1/embeddings`       | OpenAI     | Text embeddings       |
+| `/v1/models`           | OpenAI     | List available models |
+| `/v1/messages`         | Anthropic  | Messages              |
+
+## Next steps
+
+* [OpenAI SDK](/ai-gateway/sdks/openai) - Official Python, TypeScript, Go, Java, and .NET guide
+* [Vercel AI SDK](/ai-gateway/sdks/vercel-ai-sdk) - For Next.js and React applications
+* [LangChain](/ai-gateway/sdks/langchain) - For LangChain applications
+* [Model Selection Strategies](/ai-gateway/guides/model-selection-strategies) - Configure routing
+
+
+Built with [Mintlify](https://mintlify.com).

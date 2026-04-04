@@ -1,0 +1,84 @@
+# MJML Documentation
+# Source: https://raw.githubusercontent.com/mjmlio/mjml/master/doc/getting_started.md
+# Path: doc/getting_started.md
+
+## Getting Started
+
+This is a responsive email:
+
+<figure>
+  <img width="300px" src="https://static.mailjet.com/mjml-website/documentation/getting-started-1.png" alt="layout">
+</figure>
+
+Like a regular HTML template, we can split this one into different parts to fit in a grid.
+
+The body of your email, represented by the `mj-body` tag contains the entire content of your document:
+
+<figure>
+  <img width="300px" src="https://static.mailjet.com/mjml-website/documentation/getting-started-2.png" alt="the body is overlaid with a semi opaque orange color">
+</figure>
+
+From here, you can first define your sections:
+
+<figure>
+  <img width="300px" src="https://static.mailjet.com/mjml-website/documentation/getting-started-3.png" alt="each section is overlaid with various semi opaque colors">
+</figure>
+
+Inside any section, there should be columns (even if you need only one column). Columns are what makes MJML responsive.
+
+<figure>
+  <img width="300px" src="https://static.mailjet.com/mjml-website/documentation/getting-started-4.png" alt="each column is overlaid with various semi opaque colors">
+</figure>
+
+Below, you'll find some basic rules of MJML to keep in mind for later. We'll remind them when useful but better start learning them early on.
+
+### Column sizing
+
+#### Auto sizing
+
+The default behavior of the MJML translation engine is to divide the section space (600px by default, but it can be changed with the `width` attribute on `mj-body`) in as many columns as you declare.
+
+<div class="alert alert-note" role="alert">
+  <p>Note</p>
+  <p>Any MJML component included in a column will have a width equivalent to 100% of this column's width.</p>
+</div>
+
+Let's take the following layout to illustrate this:
+
+```html
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <!-- First column content -->
+      </mj-column>
+      <mj-column>
+        <!-- Second column content -->
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+```
+
+Since the first section defines only 2 columns, the engine will translate that in a layout where each column takes 50% of the total space (300px each). If we add a third one, it goes down to 33%, and with a fourth one to 25%.
+
+#### Manual sizing
+
+You can also manually set the size of your columns, in pixels or percentage, by using the `width` attribute on `mj-column`.
+
+Let's take the following layout to illustrate this:
+
+```html
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column width="200px">
+        <!-- First column content -->
+      </mj-column>
+      <mj-column width="400px">
+        <!-- Second column content -->
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+```

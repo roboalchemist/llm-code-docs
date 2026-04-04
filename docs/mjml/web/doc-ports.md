@@ -1,0 +1,68 @@
+# MJML Documentation
+# Source: https://raw.githubusercontent.com/mjmlio/mjml/master/doc/ports.md
+# Path: doc/ports.md
+
+## Ports and Language Bindings
+
+MJML is also available for other platforms to use. The community has created ports to these and wrappers for the official Node implementation.
+
+Note: These contributions are not directly supported by the MJML team.
+
+### Rust: MRML
+
+This project is a reimplementation of the nice MJML markup language in Rust.
+
+[https://github.com/jdrouet/mrml](https://github.com/jdrouet/mrml)
+
+#### Missing implementations / components:
+
+- `mj-style set to inline`: not yet implemented. It requires parsing the generated HTML to apply the inline styles afterward (that's how it's done in MJML) which would kill the performance. Applying it at render time would improve the performance but it would still require it to parse the CSS.
+
+### .NET: MJML.NET
+
+A blazingly-fast unofficial port of MJML 4 to .NET 6.
+
+[https://github.com/SebastianStehle/mjml-net](https://github.com/SebastianStehle/mjml-net)
+
+### Elixir: MJML (Rust NIFs for Elixir)
+
+Native Implemented Function (NIF) bindings for the MJML Rust implementation (mrml).
+
+[https://github.com/adoptoposs/mjml_nif](https://github.com/adoptoposs/mjml_nif)
+
+### Ruby: MRML Ruby
+
+Ruby wrapper for MRML, the MJML markup language implementation in Rust.
+
+[https://github.com/hardpixel/mrml-ruby](https://github.com/hardpixel/mrml-ruby)
+
+### React: mjml-react
+
+React components for MJML components.
+
+[https://github.com/faire/mjml-react#readme](https://github.com/faire/mjml-react#readme)
+
+### Python: mjml-python
+
+Python wrapper for MRML, the MJML markup language implementation in Rust.
+
+[https://github.com/mgd020/mjml-python](https://github.com/mgd020/mjml-python)
+
+### Python: mjml-python
+
+Python implementation for MJML.
+
+[https://github.com/FelixSchwarz/mjml-python](https://github.com/FelixSchwarz/mjml-python)
+
+### Python / Django: django-mjml
+
+The simplest way to use MJML in Django templates.
+
+[https://github.com/liminspace/django-mjml](https://github.com/liminspace/django-mjml)
+
+### PHP / Laravel: Laravel MJML
+
+Build responsive e-mails easily using MJML and Laravel Mailables.
+
+- [https://github.com/EvanSchleret/lara-mjml](https://github.com/EvanSchleret/lara-mjml)
+- [https://github.com/asahasrabuddhe/laravel-mjml](https://github.com/asahasrabuddhe/laravel-mjml) (not maintained)

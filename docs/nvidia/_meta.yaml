@@ -1,0 +1,9 @@
+name: nvidia
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.nvidia.com/
+    last_fetched: "2026-04-03T23:10:10Z"
+description: >
+  nvidia documentation
+quality_score: 0

@@ -1,0 +1,12 @@
+# Source: https://nx.dev/docs/reference/remote-cache-plugins/azure-cache.md
+
+---
+
+title: Azure Cache
+sidebar:
+  hidden: true
+description: Azure Blob Storage cache plugin
+pagefind: false
+---
+
+{% index_page_cards path="reference/remote-cache-plugins/azure-cache" /%}

@@ -1,0 +1,1059 @@
+# Source: https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2
+
+Title: Managing OAuth 2.0 Authorization :: Open Identity Platform Documentation
+
+URL Source: https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2
+
+Markdown Content:
+This chapter covers OpenAM support for the OAuth 2.0 authorization framework. The chapter begins by showing where OpenAM fits into the OAuth 2.0 authorization framework, and then shows how to configure the functionality.
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#about-oauth2-support)About OAuth 2.0 Support in OpenAM
+-----------------------------------------------------------------------------------------------------------------------------
+
+RFC 6749, [The OAuth 2.0 Authorization Framework](http://tools.ietf.org/html/rfc6749), provides a standard way for _resource owners_ to grant _client_ applications access to the owners' web-based resources. The canonical example involves a user (resource owner) granting access to a printing service (client) to print photos that the user has stored on a photo-sharing server.
+
+The section describes how OpenAM supports the OAuth 2.0 authorization framework in terms of the roles that OpenAM plays.[[1](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#_footnotedef_1 "View footnote.")] The following sequence diagram indicates the primary roles OpenAM can play in the OAuth 2.0 protocol flow.
+
+![Image 1: oauth2 flow](https://doc.openidentityplatform.org/openam/_images/oauth2-flow.svg)
+
+### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#openam-oauth2-authz-server)OpenAM as OAuth 2.0 Authorization Server
+
+OpenAM can function as an OAuth 2.0 _authorization server_. In this role, OpenAM authenticates resource owners and obtains their authorization in order to return access tokens to clients.
+
+When using OpenAM as authorization server, you can register clients in OpenAM console alongside policy agent profiles under the OAuth 2.0 Client tab. OpenAM supports both confidential and public clients.
+
+OpenAM supports the four main grants for obtaining authorization described in RFC 6749: the authorization code grant, the implicit grant, the resource owner password credentials grant, and the client credentials grant. See RFC 6749 for details on the authorization grant process, and for details on how clients should make authorization requests and handle authorization responses. OpenAM also supports the [SAML v2.0 Bearer Assertion Profiles for OAuth 2.0](http://tools.ietf.org/html/draft-ietf-oauth-saml2-bearer), described in the Internet-Draft.
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-authz)OAuth 2.0 Authorization Grant
+
+The authorization code grant starts with the client, such as a web-based service, redirecting the resource owner’s user-agent to the OpenAM authorization service. After authenticating the resource owner and obtaining the resource owner’s authorization, OpenAM redirects the resource owner’s user-agent back to the client with an authorization code that the client uses to request the access token. The following sequence diagram outlines a successful process from initial client redirection through to the client accessing the protected resource.
+
+![Image 2: oauth2 authz](https://doc.openidentityplatform.org/openam/_images/oauth2-authz.svg)
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-implicit)OAuth 2.0 Implicit Grant
+
+The implicit grant is designed for clients implemented to run inside the resource-owner user agent. Instead of providing an authorization code that the client must use to retrieve an access token, OpenAM returns the access token directly in the fragment portion of the redirect URI. The following sequence diagram outlines the successful process.
+
+![Image 3: oauth2 implicit](https://doc.openidentityplatform.org/openam/_images/oauth2-implicit.svg)
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-ropc)OAuth 2.0 Resource Owner Password Credentials Grant
+
+The resource owner password credentials grant lets the client use the resource owner’s user name and password to get an access token directly. Although this grant might seem to conflict with an original OAuth goal of not having to share resource owner credentials with the client, it can makes sense in a secure context where other authorization grant types are not available, such as a client that is part of a device operating system using the resource owner credentials once and thereafter using refresh tokens to continue accessing resources. The following sequence diagram shows the successful process.
+
+![Image 4: oauth2 ropc](https://doc.openidentityplatform.org/openam/_images/oauth2-ropc.svg)
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-client-cred)OAuth 2.0 Client Credentials Grant
+
+The client credentials grant uses client credentials as an authorization grant. This grant makes sense when the client is also the resource owner, for example. The following sequence diagram shows the successful process.
+
+![Image 5: oauth2 client cred](https://doc.openidentityplatform.org/openam/_images/oauth2-client-cred.svg)
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#sec-oauth2-device-flow)OAuth 2.0 Device Flow
+
+The OAuth 2.0 Device Flow is designed for client devices that have limited user interfaces, such as a set-top box, streaming radio, or a server process running on a headless operating system.
+
+Rather than logging in by using the client device itself, you can authorize the client to access protected resources on your behalf by logging in with a different user agent, such as an Internet browser on a PC or smartphone, and entering a code displayed on the client device.
+
+The sequence diagram below demonstrates the OAuth 2.0 Devlice Flow:
+
+![Image 6: oauth2 device flow](https://doc.openidentityplatform.org/openam/_images/oauth2-device-flow.svg)
+
+The steps in the diagram are described below:
+
+1.   The client device requests a device code from OpenAM by using a REST call.
+
+2.   OpenAM returns a device code, a user code, a URL for entering the user code, and an interval, in seconds.
+
+3.   The client device provides instructions to the user to enter the user code. The client may choose an appropriate method to convey the instructions, for example text instructions on screen, or a QR code.
+
+4.   The client device begins to continuously poll OpenAM to see if authorization has been completed.
+
+5.   If the user has not yet completed the authorization, OpenAM returns an HTTP 403 status code, with an `authorization_pending` message.
+
+6.   The user follows the instructions from the client device to enter the user code by using a separate device.
+
+7.   If the user code is valid OpenAM will ask the user to authenticate.
+
+8.   Upon authentication the user can authorize the client device. The OpenAM consent page also displays the requested scopes, and their values:
+
+![Image 7: oauth2 device consent](https://doc.openidentityplatform.org/openam/_images/oauth2-device-consent.png)
+
+1.   Upon authorization, OpenAM responds to the client device’s polling with an HTTP 200 status, and an access token, giving the client device access to the requested resources.
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-jwt-bearer)JWT Bearer Profile
+
+The Internet-Draft, [JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants](http://self-issued.info/docs/draft-ietf-oauth-jwt-bearer.html) describes a means to use a JWT for client authentication or to use a JWT to request an access token. When clients are also resource owners, the profile allows clients to issue JWTs to obtain access tokens rather than use the resource owner password credentials grant.
+
+OpenAM implements both features of the profile. Both involve HTTP POST requests to the access token endpoint.
+
+When the client bearing the JWT uses it for authentication, then in the POST data the client sets `client_assertion_type` to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` and `client_assertion` to the JWT string.
+
+![Image 8: oauth2 jwt bearer authn](https://doc.openidentityplatform.org/openam/_images/oauth2-jwt-bearer-authn.svg)
+
+The HTTP POST to OpenAM looks something like the following, where the assertion value is the JWT:
+
+```
+POST /openam/oauth2/access_token HTTP/1.1
+Host: openam.example.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+code=362ad374-735c-4f69-aa8e-bf384f8602de&
+client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3A
+ client-assertion-type%3Ajwt-bearer&
+client_assertion=eyAiYWxnIjogIlJTMjU2IiB9.eyAic3ViIjogImp3...
+```
+
+httprequest
+
+In the above profile, OpenAM must be able to validate the JWT, which must include the following claims:
+
+*   "iss" (issuer) whose value identifies the JWT issuer.
+
+*   "sub" (subject) whose value identifies the principal who is the subject of the JWT.
+
+For client authentication, the "sub" value must be the same as the value of the "client_id".
+
+*   "aud" (audience) whose value identifies the authorization server that is the intended audience of the JWT.
+
+When the JWT is used for authentication, this is the OpenAM access token endpoint.
+
+*   "exp" (expiration) whose value specifies the time of expiration.
+
+Also for validation, the issuer must digitally sign the JWT or apply a keyed message digest. When the issuer is also the client, the client can sign the JWT by using a private key, and include the public key in its profile registered with OpenAM.
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-saml2-bearer)SAML v2.0 Bearer Assertion Profiles
+
+At present OpenAM implements the profile to request access tokens.
+
+In both profiles, the issuer must sign the assertion. The client communicates the assertion over a channel protected with transport layer security by performing an HTTP POST to the OpenAM’s access token endpoint. OpenAM as OAuth 2.0 authorization server uses the issuer ID to validate the signature on the assertion.
+
+In the profile to request an access token, the OAuth 2.0 client bears a SAML v2.0 assertion that was issued to the resource owner on successful authentication. A valid assertion in this case is equivalent to an authorization grant by the resource owner to the client. OAuth 2.0 clients must make it clear to the resource owner that by authenticating to the identity provider who issues the assertion, they are granting the client permission to access the protected resources.
+
+![Image 9: oauth2 saml2 bearer](https://doc.openidentityplatform.org/openam/_images/oauth2-saml2-bearer.svg)
+
+The HTTP POST to OpenAM to request an access token looks something like this:
+
+```
+POST /openam/oauth2/access_token HTTP/1.1
+    Host: openam.example.com
+    Content-Type: application/x-www-form-urlencoded
+
+    grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Asaml2-bearer&
+    assertion=PHNhbWxwOl...[base64url encoded assertion]...ZT4&
+    client_id=[ID registered with OpenAM]
+```
+
+httprequest
+
+If OpenAM is already a SAML v2.0 service provider, you can configure OpenAM as OAuth 2.0 authorization server as well, and set an adapter class name in the service provider configuration that lets OpenAM POST the assertion from the service provider to the authorization server. See ["Configuring OpenAM as a SAML Service Provider and OAuth2 Authorization Server"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-sp-and-authz) for details.
+
+#### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-endpoints)OpenAM OAuth 2.0 Endpoints
+
+In addition to the standard authorization and token endpoints described in RFC 6749, OpenAM also exposes a token information endpoint for resource servers to get information about access tokens so they can determine how to respond to requests for protected resources, and an introspection endpoint to retrieve metadata about a token, such as approved scopes and the context in which the token was issued. OpenAM as authorization server exposes the following endpoints for clients and resource servers.
+
+`/oauth2/authorize`
+Authorization endpoint defined in RFC 6749, used to obtain an authorization grant from the resource owner.
+
+The `/oauth2/authorize` endpoint is protected by the policy you created after OAuth 2.0 authorization server configuration, which grants all authenticated users access.
+
+The following is an example URL for obtaining consent:
+
+`https://openam.example.com:8443/openam/oauth2/realms/root/authorize\ ?client_id=myClient\ &response_type=code\ &scope=profile\ &redirect_uri=https://www.example.com`
+
+After logging in, the URL above presents the OAuth 2.0 consent screen, similar to the following:
+
+![Image 10: oauth2 authz page xui](https://doc.openidentityplatform.org/openam/_images/oauth2-authz-page-xui.png)
+
+If creating your own consent page, you can create a POST request to the endpoint with the following additional parameters:
+
+`decision`
+Whether the resource owner consents to the requested access, or denies consent.
+
+Valid values are `allow` or `deny`.
+
+`save_consent`
+Updates the resource owner’s profile to avoid having to prompt the resource owner to grant authorization when the client issues subsequent authorization requests.
+
+To save consent, set the `save_consent` property to `on`.
+
+You must provide the _Saved Consent Attribute Name_ property with a profile attribute in which to store the resource owner’s consent decision.
+
+For more information on setting this property in the OAuth2 Provider service, see ["OAuth2 Provider"](https://doc.openidentityplatform.org/openam/reference/chap-config-ref#oauth2-provider-configuration) in the _Reference_.
+
+`csrf`
+Duplicates the contents of the `iPlanetDirectoryPro` cookie, which contains the SSO token of the resource owner giving consent.
+
+Duplicating the cookie value helps prevent against Cross-Site Request Forgery (CSRF) attacks.
+
+Example:
+
+```
+$ curl \
+ --request POST \
+ --header  "Content-Type: application/x-www-form-urlencoded" \
+ --Cookie "iPlanetDirectoryPro=AQIC5w...*" \
+ --data "redirect_uri=http://www.example.net" \
+ --data "scope=profile" \
+ --data "response_type=code" \
+ --data "client_id=myClient" \
+ --data "csrf=AQIC5w...*" \
+ --data "decision=allow" \
+ --data "save_consent=on" \
+ "https://openam.example.com:8443/openam/oauth2/authorize?response_type=code&client_id=myClient"\
+ "&realm=/&scope=profile&redirect_uri=http://www.example.net"
+```
+
+You must specify the realm if the OpenAM OAuth 2.0 provider is configured for a subrealm rather than the top-level realm. For example, if the OAuth 2.0 provider is configured for the `/customers` realm, then use `/oauth2/customers/authorize`.
+
+The `/oauth2/authorize` endpoint can take additional parameters, such as:
+
+*   `module` and `service`. Use either as described in ["Authenticating To OpenAM"](https://doc.openidentityplatform.org/openam/admin-guide/chap-auth-services#authn-from-browser), where `module` specifies the authentication module instance to use or `service` specifies the authentication chain to use when authenticating the resource owner.
+
+*   `response_mode=form_post`. Use this parameter to return a self-submitting form that contains the code instead of redirecting to the redirect URL with the code as a string parameter. For more information, see the [OAuth 2.0 Form Post Response Mode](https://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html) spec.
+
+*   `code_challenge`. Use this parameter when _Proof Key for Code Exchange_ (PKCE) support is enabled in the OAuth2 Provider service. To configure it, navigate to Realms >_Realm Name_> Services > OAuth2 Provider > Advanced and enable the Code Verifier Parameter Required property. For more information about the PKCE support, see [Proof Key for Code Exchange by OAuth Public Clients](https://tools.ietf.org/html/rfc7636) - _RFC 7636_.
+
+`/oauth2/access_token`
+Token endpoint defined in RFC 6749, used to obtain an access token from the authorization server.
+
+Example: `https://openam.example.com:8443/openam/oauth2/access_token`
+
+The `/oauth2/access_token` endpoint can take an additional parameter, `auth_chain=authentication-chain`, which allows client to specify the authentication chain to use for Password Grant Type.
+
+The following example shows how a client can specify the authentication chain, `myAuthChain`:
+
+```
+$ curl \
+--request POST \
+--user "myClientID:password" \
+--data "grant_type=password&username=amadmin&password=cangetinam&scope=profile&auth_chain=myAuthChain" \
+https://openam.example.com:8443/openam/oauth2/access_token
+```
+
+The `/oauth2/access_token` endpoint can take additional parameters. In particular, you must specify the realm if the OpenAM OAuth 2.0 provider is configured for a subrealm rather than the top-level realm.
+
+For example, if the OAuth 2.0 provider is configured for the `/customers` realm, then use `/oauth2/customers/access_token`.
+
+`/oauth2/device`
+Device flow endpoint as defined by the [Internet-Draft OAuth 2.0 Device Flow](https://datatracker.ietf.org/doc/draft-denniss-oauth-device-flow/), used by a client device to obtain a device code or an access token.
+
+Example: `https://openam.example.com:8443/openam/oauth2/device/code`
+
+`/oauth2/token/revoke`
+When a user logs out of an application, the application revokes any OAuth 2.0 tokens (access and refresh tokens) that are associated with the user. The client can also revoke a token without the need of an `SSOToken` by sending a request to the `/oauth2/token/revoke` endpoint as follows:
+
+```
+$ curl \
+--request POST \
+--data "token=d06ab31e-9cdb-403e-855f-bd77652add84" \
+--data "client_id=MyClientID" \
+--data "client_secret=password" \
+https://openam.example.com:8443/openam/oauth2/token/revoke
+```
+
+If you are revoking an access token, then that token will be revoked. If you are revoking a refresh token, then both the refresh token and any other associated access tokens will also be revoked. _Associated access tokens_ means that any other tokens that have come out of the same authorization grant will also be revoked. For cases where a client has multiple access tokens for a single user that were obtained via different authorization grants, then the client will have to make multiple calls to the `/oauth2/token/revoke` endpoint to invalidate each token.
+
+`/oauth2/tokeninfo`
+Endpoint _not_ defined in RFC 6749, used to validate tokens, and to retrieve information, such as scopes.
+
+The `/oauth2/tokeninfo` endpoint takes an HTTP GET on `/oauth2/tokeninfo?access_token=token-id`, and returns information about the token.
+
+Resource servers — or any party having the token ID — can get token information through this endpoint without authenticating. This means any application or user can validate the token without having to be registered with OpenAM.
+
+Given an access token, a resource server can perform an HTTP GET on `/oauth2/tokeninfo?access_token=token-id` to retrieve a JSON object indicating `token_type`, `expires_in`, `scope`, and the `access_token` ID.
+
+Example: `https://openam.example.com:8443/openam/oauth2/tokeninfo`
+
+The following example shows OpenAM issuing an access token, and then returning token information:
+
+```
+$ curl \
+--request POST \
+--user "myClientID:password" \
+--data "grant_type=password&username=demo&password=changeit&scope=cn%20mail" \
+https://openam.example.com:8443/openam/oauth2/access_token
+    {
+     "expires_in": 599,
+     "token_type": "Bearer",
+     "refresh_token": "f6dcf133-f00b-4943-a8d4-ee939fc1bf29",
+     "access_token": "f9063e26-3a29-41ec-86de-1d0d68aa85e9"
+     }
+
+$ curl https://openam.example.com:8443/openam/oauth2/tokeninfo\
+  ?access_token=f9063e26-3a29-41ec-86de-1d0d68aa85e9
+    {
+  "mail": "demo@example.com",
+  "grant_type":"password",
+  "scope": [
+     "mail",
+     "cn"
+  ],
+  "cn": "demo",
+  "realm": "/",
+  "cnf": {
+     "jwk": {
+        "alg": "RS512",
+        "e": "AQAB",
+        "n": "k7qLlj...G2oucQ",
+        "kty": "RSA",
+        "use": "sig",
+        "kid": "myJWK"
+     }
+  }
+  "token_type": "Bearer",
+  "expires_in": 577,
+  "client_id": "MyClientID",
+  "access_token": "f9063e26-3a29-41ec-86de-1d0d68aa85e9"
+}
+```
+
+Running a GET method to the `/oauth2/tokeninfo` endpoint as shown in the previous example writes the token ID to the access log. To not expose the token ID in the logs, send the OAuth 2.0 access token as part of the authorization bearer header:
+
+```
+$ curl \
+--request GET \
+--header "Authorization Bearer aec6b050-b0a4-4ece-a86f-bd131decbb9c" \
+"https://openam.example.com:8443/openam/oauth2/tokeninfo"
+```
+
+The resource server making decisions about whether the token is valid can thus use the `/oauth2/tokeninfo` endpoint to retrieve expiration information about the token. Depending on the scopes implementation, the JSON response about the token can also contain scope information. As described in ["Using Your Own Client and Resource Server"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-byo-client), the default scopes implementation in OpenAM considers scopes to be names of attributes in the resource owner’s user profile. Notice that the JSON response contains the values for those attributes from the user’s profile, as in the preceding example, with scopes set to `mail` and `cn`.
+
+`/oauth2/introspect`
+Endpoint defined in [draft-ietf-oauth-introspection-04](http://tools.ietf.org/html/draft-ietf-oauth-introspection-04), used to retrieve metadata about a token, such as approved scopes and the context in which the token was issued.
+
+Given an access token, a client can perform an HTTP POST on `/oauth2/introspect?token=access_token` to retrieve a JSON object indicating the following:
+
+`active`
+Is the token active.
+
+`scope`
+A space-separated list of the scopes associated with the token.
+
+`client_id`
+Client identifier of the client that requested the token.
+
+`user_id`
+The user who authorized the token.
+
+`token_type`
+The type of token.
+
+`exp`
+When the token expires, in seconds since January 1 1970 UTC.
+
+`sub`
+Subject of the token.
+
+`iss`
+Issuer of the token.
+
+The `/oauth2/introspect` endpoint requires authentication, and supports basic authorization (a base64-encoded string of `client_id:client_secret`), `client_id` and `client_secret` passed as header values, or a JWT bearer token.
+
+The following example demonstrates the `/oauth2/introspect` endpoint with basic authorization:
+
+```
+$ curl \
+ --request POST \
+ --header "Authorization: Basic ZGVtbzpjaGFuZ2VpdA==" \
+ https://openam.example.com:8443/openam/oauth2/introspect \
+ ?token=f9063e26-3a29-41ec-86de-1d0d68aa85e9
+ {
+  "active": true,
+  "scope": "mail cn",
+  "client_id": "myOAuth2Client",
+  "user_id": "demo",
+  "token_type": "Bearer",
+  "exp": 1419356238,
+  "sub": "https://resources.example.com/",
+  "iss": "https://openam.example.com/"
+  }
+```
+
+Running a POST method to the `/oauth2/introspect` endpoint as shown in the previous example writes the token ID to the access log. To hide the token ID in the logs, send the OAuth 2.0 access token as part of the POST body:
+
+```
+$ curl \
+--request POST \
+--header "Authorization Basic ZGVtbzpjaGFuZ2VpdA==" \
+--data "token=f9063e26-3a29-41ec-86de-1d0d68aa85e9" \
+"https://openam.example.com:8443/openam/oauth2/introspect"
+```
+
+For examples, and information about OAuth 2.0 token administration and client administration endpoints that are specific to OpenAM, see ["OAuth 2.0"](https://doc.openidentityplatform.org/openam/dev-guide/chap-client-dev#rest-api-oauth2) in the _Developer’s Guide_.
+
+### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#openam-oauth2-client)OpenAM as OAuth 2.0 Client and Resource Server Solution
+
+OpenAM can function as an OAuth 2.0 client for installations where the web resources are protected by OpenAM. To configure OpenAM as an OAuth 2.0 client, you set up an OpenAM OAuth 2.0 / OpenID Connect authentication module instance, and then integrate the authentication module into your authentication chains as necessary.
+
+When OpenAM functions as an OAuth 2.0 client, OpenAM provides an OpenAM SSO session after successfully authenticating the resource owner and obtaining authorization. This means the client can then access resources protected by policy agents. In this respect the OpenAM OAuth 2.0 client is just like any other authentication module, one that relies on an OAuth 2.0 authorization server to authenticate the resource owner and obtain authorization. The following sequence diagram shows how the client gains access to protected resources in the scenario where OpenAM functions as both authorization server and client for example.
+
+![Image 11: oauth2 openam client](https://doc.openidentityplatform.org/openam/_images/oauth2-openam-client.svg)
+
+As the OAuth 2.0 client functionality is implemented as an OpenAM authentication module, you do not need to deploy your own resource server implementation when using OpenAM as an OAuth 2.0 client. Instead, use policy agents or OpenIG to protect resources.
+
+### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-byo-client)Using Your Own Client and Resource Server
+
+OpenAM returns bearer tokens as described in RFC 6750, [The OAuth 2.0 Authorization Framework: Bearer Token Usage](http://tools.ietf.org/html/rfc6750). Notice in the following example JSON response to an access token request that OpenAM returns a refresh token with the access token. The client can use the refresh token to get a new access token as described in RFC 6749:
+
+```
+{
+    "expires_in": 599,
+    "token_type": "Bearer",
+    "refresh_token": "f6dcf133-f00b-4943-a8d4-ee939fc1bf29",
+    "access_token": "f9063e26-3a29-41ec-86de-1d0d68aa85e9"
+}
+```
+
+javascript
+
+In addition to implementing your client, the resource server must also implement the logic for handling access tokens. The resource server can use the `/oauth2/tokeninfo` endpoint to determine whether the access token is still valid, and to retrieve the scopes associated with the access token.
+
+The default OpenAM implementation of OAuth 2.0 scopes assumes that the space-separated (%20 when URL-encoded) list of scopes in an access token request correspond to names of attributes in the resource owner’s profile.
+
+To take a concrete example, consider an access token request where `scope=mail%20cn` and where the resource owner is the default OpenAM demo user. (The demo user has no email address by default, but you can add one, such as `demo@example.com` to the demo user’s profile.) When the resource server performs an HTTP GET on the token information endpoint, `/oauth2/tokeninfo?access_token=token-id`, OpenAM populates the `mail` and `cn` scopes with the email address (`demo@example.com`) and common name (`demo`) from the demo user’s profile. The result is something like the following token information response:
+
+```
+{
+    "mail": "demo@example.com",
+    "scope": [
+        "mail",
+        "cn"
+    ],
+    "cn": "demo",
+    "realm": "/",
+    "token_type": "Bearer",
+    "expires_in": 577,
+    "client_id": "MyClientID",
+    "access_token": "f9063e26-3a29-41ec-86de-1d0d68aa85e9"
+}
+```
+
+javascript
+
+OpenAM is designed to allow you to plug in your own scopes implementation if the default implementation does not do what your deployment requires. See ["Customizing OAuth 2.0 Scope Handling"](https://doc.openidentityplatform.org/openam/dev-guide/chap-customizing#sec-oauth2-scopes) in the _Developer’s Guide_ for an example.
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#configure-oauth2-authz)Configuring the OAuth 2.0 Authorization Service
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+You configure the OAuth 2.0 authorization service for a particular realm from the Realms >_Realm Name_> Dashboard page of the OpenAM console.
+
+To Set Up the OAuth 2.0 Authorization Service
+
+Follow the steps in this procedure to set up the service with the Configure OAuth Provider wizard:
+
+When you create the service with the Configure OAuth Provider wizard, the wizard also creates a standard policy in the Top Level Realm (/) to protect the authorization endpoint. In this configuration, OpenAM serves the resources to protect, and no separate application is involved. OpenAM therefore acts both as the policy decision point and also as the policy enforcement point that protects the OAuth 2.0 authorization endpoint.
+
+There is no requirement to use the wizard or to create the policy in the Top Level Realm. However, if you create the OAuth 2.0 authorization service without the wizard, then you must set up the policy independently as well. The policy must appear in a policy set of type `iPlanetAMWebAgentService`, which is the default in the OpenAM policy editor. When configuring the policy allow all authenticated users to perform HTTP GET and POST requests on the authorization endpoint. The authorization endpoint is described in ["OAuth 2.0 Client and Resource Server Endpoints"](https://doc.openidentityplatform.org/openam/dev-guide/chap-client-dev#rest-api-oauth2-client-endpoints) in the _Developer’s Guide_. For details on creating policies, see ["Defining Authorization Policies"](https://doc.openidentityplatform.org/openam/admin-guide/chap-authz-policy#chap-authz-policy).
+
+1.   In the OpenAM console, select Realms >_Realm Name_> Dashboard > Configure OAuth Provider > Configure OAuth 2.0.
+
+2.   On the Configure OAuth 2.0 page, select the Realm for the authorization service.
+
+3.   (Optional) If necessary, adjust the lifetimes for authorization codes (a lifetime of 10 minutes or less is [recommended in RFC 6749](http://tools.ietf.org/html/rfc6749#section-4.1.2)), access tokens, and refresh tokens.
+
+4.   (Optional) Select Issue Refresh Tokens unless you do not want the authorization service to supply a refresh token when returning an access token.
+
+5.   (Optional) Select Issue Refresh Tokens on Refreshing Access Tokens if you want the authorization service to supply a refresh token when refreshing an access token.
+
+6.   (Optional) If you want to use the default scope implementation, whereby scopes are taken to be resource owner profile attribute names, then keep the default setting.
+
+If you have a custom scope validator implementation, put it on the OpenAM classpath, and provide the class name as Scope Implementation Class. For an example, see ["Customizing OAuth 2.0 Scope Handling"](https://doc.openidentityplatform.org/openam/dev-guide/chap-customizing#sec-oauth2-scopes) in the _Developer’s Guide_.
+
+7.   Click Create to complete the process.
+
+To access the authorization server configuration in OpenAM console, browse to Realms >_Realm Name_> Services, and then click OAuth2 Provider.
+
+As mentioned at the outset of this procedure, the wizard sets up a policy in the Top Level Realm to protect the authorization endpoint. The policy appears in the `iPlanetAMWebAgentService` policy set. Its name is `OAuth2ProviderPolicy`.
+
+8.   (Optional) If your provider has a custom response type plugin, put it on the OpenAM classpath, and then add the custom response types and the plugin class names to the list of Response Type Plugins.
+
+9.   (Optional) If you use an external identity repository where resource owners log in not with their user ID, but instead with their mail address or some other profile attribute, then complete this step.
+
+The following steps describe how to configure OpenAM authentication so OAuth 2.0 resource owners can log in using their email address, stored on the LDAP profile attribute, `mail`. Adapt the names if you use a different LDAP profile attribute, such as `cn`:
+
+    1.   When configuring the data store for the LDAP identity repository, make sure that you select Load schema when saved, and that you set the Authentication Naming Attribute to `mail`. You can find the data store configuration under Realms >_Realm Name_> Data Stores.
+
+    2.   Add the `mail` profile attribute name to the list of attributes that can be used for authentication.
+
+To make the change, navigate to Realms >_Realm Name_> Services, click OAuth2 Provider, add the profile attributes to the list titled User Profile Attribute(s) the Resource Owner is Authenticated On, and then click Save Changes.
+
+    3.   Create an LDAP authentication module to use with the external directory:
+
+        1.   In OpenAM console under Realms >_Realm Name_> Authentication > Modules, create a module to access the LDAP identity repository, such as `LDAPAuthUsingMail`.
+
+        2.   In the Attribute Used to Retrieve User Profile field, set the attribute to `mail`.
+
+        3.   In the Attributes Used to Search for a User to be Authenticated list, remove the default `uid` attribute and add the `mail` attribute.
+
+        4.   Click Save.
+
+    4.   Create an authentication chain to include the module, such as `authUsingMail`.
+
+        1.   When creating the authentication chain, choose the `LDAPAuthUsingMail` module in the Instance drop-down list, and set the criteria to REQUIRED.
+
+        2.   Click Save.
+
+    5.   Set Organization Authentication Configuration to use the new chain, `authUsingMail`, and then click Save.
+
+At this point OAuth 2.0 resource owners can authenticate using their email address rather than their user ID.
+
+10.   Add a multi-valued string syntax profile attribute to your identity repository. OpenAM stores resource owners' consent to authorize client access in this profile attribute. On subsequent requests from the same client for the same scopes, the resource owner no longer sees the authorization page.
+
+You are not likely to find a standard profile attribute for this. For evaluation purposes only, you might try an unused existing profile attribute, such as `description`.
+
+When moving to production, however, use a dedicated, multi-valued, string syntax profile attribute that clearly is not used for other purposes. For example, you might call the attribute `oAuth2SavedConsent`.
+
+Adding a profile attribute involves updating the identity repository to support use of the attribute, updating the AMUser Service for the attribute, and optionally allowing users to edit the attribute. The process is described in ["Customizing Profile Attributes"](https://doc.openidentityplatform.org/openam/dev-guide/chap-customizing#sec-custom-attr) in the _Developer’s Guide_, which demonstrates adding a custom attribute when using OpenDJ directory services to store user profiles.
+
+11.   Navigate to Realms >_Realm Name_> Services, click OAuth2 Provider, and then specify the name of the attribute created in the previous step in the Saved Consent Attribute Name field.
+
+12.   Click Save Changes.
+
+To further adjust the authorization server configuration after you create it, in the OpenAM console navigate to Realms >_Realm Name_> Services, and then click OAuth2 Provider.
+
+To adjust global defaults, in the OpenAM console navigate to Configure > Global Services, and then click OAuth2 Provider.
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#register-oauth2-client)Registering OAuth 2.0 Clients With the Authorization Service
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+You register an OAuth 2.0 client with the OpenAM OAuth 2.0 authorization service by creating and configuring an OAuth 2.0 Client agent profile.
+
+At minimum you must have the client identifier and client password in order to register your OAuth 2.0 client.
+
+To Create an OAuth 2.0 Client Agent Profile
+
+*   Use either of these two facilities:
+
+    *   In the OpenAM console, access the client registration endpoint at `/oauth2/registerClient.jsp`.
+
+The full URL depends on where you deployed OpenAM. For example, `https://openam.example.com:8443/openam/oauth2/registerClient.jsp`.
+
+The Register a Client page lets you quickly create and configure an OAuth 2.0 client in a simple web page without inline help.
+
+    *   In the OpenAM console under Realms >_Realm Name_> Agents > OAuth 2.0/OpenID Connect Client > Agent, click New, then provide the client identifier and client password, and finally click Create to create the profile.
+
+This page requires that you perform additional configuration separately.
+
+To Configure an OAuth 2.0 Client Agent Profile
+
+After initially registering or creating a client agent profile as necessary.
+
+1.   In the OpenAM console, browse to Realms >_Realm Name_> Agents > OAuth 2.0/OpenID Connect Client > Agent >_Client Name_ to open the Edit _Client Name_ page.
+
+2.   Adjust the configuration as needed using the inline help for hints, and also the documentation section ["Configuring OAuth 2.0 and OpenID Connect 1.0 Clients"](https://doc.openidentityplatform.org/openam/admin-guide/chap-agents#configure-oauth2-client).
+
+Examine the client type option. An important decision to make at this point is whether your client is a confidential client or a public client. This depends on whether your client can keep its credentials confidential, or whether its credentials can be exposed to the resource owner or other parties. If your client is a web-based application running on a server, such as the OpenAM OAuth 2.0 client, then you can keep its credentials confidential. If your client is a user-agent based client, such as a JavaScript client running in a browser, or a native application installed on a device used by the resource owner, then yours is a public client.
+
+3.   When finished, save your work.
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-manage-tokens)Managing OAuth 2.0 Tokens
+---------------------------------------------------------------------------------------------------------------------
+
+OpenAM exposes a RESTful API that lets administrators read, list, and delete OAuth 2.0 tokens. OAuth 2.0 clients can also manage their own tokens. For details, see ["OAuth 2.0 Token Administration Endpoint"](https://doc.openidentityplatform.org/openam/dev-guide/chap-client-dev#rest-api-oauth2-token-admin-endpoint) in the _Developer’s Guide_.
+
+### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-client-plus-authz)Configuring OpenAM as Authorization Server and Client
+
+This section takes a high-level look at how to set up OpenAM both as an OAuth 2.0 authorization server and also as an OAuth 2.0 client in order to protect resources on a resource server by using an OpenAM policy agent.
+
+![Image 12: oauth2 end to end example](https://doc.openidentityplatform.org/openam/_images/oauth2-end-to-end-example.png)
+
+The example in this section uses three servers, `http://authz.example.com:8080/openam` as the OAuth 2.0 authorization server, `http://client.example.com:8080/openam` as the OAuth 2.0 client, which also handles policy, `http://www.example.com:8080/` as the OAuth 2.0 resource server protected with an OpenAM policy agent where the resources to protect are deployed in Apache Tomcat. The two OpenAM servers communicate using OAuth 2.0. The policy agent on the resource server communicates with OpenAM as policy agents normally do, using OpenAM specific requests. The resource server in this example does not need to support OAuth 2.0.
+
+The high-level configuration steps are as follows:
+
+1.   On the OpenAM server that you will configure to act as an OAuth 2.0 client, configure a policy agent profile, and the policy used to protect the resources.
+
+On the web server or application container that will act as an OAuth 2.0 resource server, install and configure the OpenAM policy agent.
+
+Make sure that you can access the resources when you log in through an authentication module that you know to be working, such as the default DataStore authentication module.
+
+In this example, you would try to access `http://www.example.com:8080/examples/`. The policy agent should redirect you to the OpenAM login page. After you log in successfully as a user with access rights to the resource, OpenAM should redirect you back to `http://www.example.com:8080/examples/`, and the policy agent should allow access.
+
+Fix any problems you have in accessing the resources before you try to set up access through the OAuth 2.0 / OpenID Connect authentication module.
+
+2.   Configure one OpenAM server as an OAuth 2.0 authorization service, which is described in ["Configuring the OAuth 2.0 Authorization Service"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#configure-oauth2-authz).
+
+3.   Configure the other OpenAM server with the policy agent profile and policy as an OAuth 2.0 client, by setting up an OAuth 2.0 / OpenID Connect authentication module according to the section ["Hints for the OAuth 2.0/OpenID Connect Authentication Module"](https://doc.openidentityplatform.org/openam/admin-guide/chap-auth-services#oauth2-module-conf-hints).
+
+4.   On the authorization server, register the OAuth 2.0 / OpenID Connect authentication module as an OAuth 2.0 client, which is described in ["Registering OAuth 2.0 Clients With the Authorization Service"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#register-oauth2-client).
+
+5.   Log out and access the protected resources to see the process in action.
+
+Web Site Protected With OAuth 2.0
+
+This example pulls everything together (except security considerations), using OpenAM servers both as the OAuth 2.0 authorization server, and also as the OAuth 2.0 client, with an OpenAM policy agent on the resource server requesting policy decisions from OpenAM as OAuth 2.0 client. In this way, any server protected by a policy agent that is connected to an OpenAM OAuth 2.0 client can act as an OAuth 2.0 resource server:
+
+1.   On the OpenAM server that will be configured as an OAuth 2.0 client, set up an OpenAM policy agent and policy in the Top Level Realm, `/`, to protect resources.
+
+See the [Web Policy Agent User’s Guide](https://doc.openidentityplatform.org/openam-web-policy-agents/web-users-guide/#web-users-guide) or the [Java EE Policy Agent User’s Guide](https://doc.openidentityplatform.org/openam-jee-policy-agents/jee-users-guide/#jee-users-guide) for instructions on installing a policy agent. This example relies on the Apache Tomcat Java EE policy agent, configured to protect resources in Apache Tomcat (Tomcat) at `http://www.example.com:8080/`.
+
+The policies for this example protect the Tomcat examples under `http://www.example.com:8080/examples/`, allowing GET and POST operations by all authenticated users. For more information, see ["Defining Authorization Policies"](https://doc.openidentityplatform.org/openam/admin-guide/chap-authz-policy#chap-authz-policy).
+
+After setting up the policy agent and the policy, you can make sure everything is working by attempting to access a protected resource, in this case, `http://www.example.com:8080/examples/`. The policy agent should redirect you to OpenAM to authenticate with the default authentication module, where you can login as user `demo` password `changeit`. After successful authentication, OpenAM redirects your browser back to the protected resource and the policy agent lets you get the protected resource, in this case, the Tomcat examples top page.
+
+![Image 13: oauth2 examples](https://doc.openidentityplatform.org/openam/_images/oauth2-examples.png)
+
+1.   On the OpenAM server to be configured as an OAuth 2.0 authorization server, configure OpenAM’s OAuth 2.0 authorization service as described in ["Configuring the OAuth 2.0 Authorization Service"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#configure-oauth2-authz).
+
+The authorization endpoint to protect in this example is at `http://authz.example.com:8080/openam/oauth2/authorize`.
+
+2.   On the OpenAM server to be configured as an OAuth 2.0 client, configure an OpenAM OAuth 2.0 / OpenID Connect authentication module instance for the Top Level Realm:
+
+Under Realms > Top Level Realm > Authentication > Modules, click Add Module. Name the module `OAuth2`, and select the OAuth 2.0 / OpenID Connect type, then click Create. The OAuth 2.0 client configuration page appears. This page offers numerous options. The key settings for this example are the following:
+
+Client Id
+This is the client identifier used to register your client with OpenAM’s authorization server, and then used when your client must authenticate to OpenAM.
+
+Set this to `myClientID` for this example.
+
+Client Secret
+This is the client password used to register your client with OpenAM’s authorization server, and then used when your client must authenticate to OpenAM.
+
+Set this to `password` for this example. Make sure you use strong passwords when you actually deploy OAuth 2.0.
+
+Authentication Endpoint URL
+In this example, `http://authz.example.com:8080/openam/oauth2/authorize`.
+
+This OpenAM endpoint can take additional parameters. In particular, you must specify the realm if the OpenAM OAuth 2.0 provider is configured for a subrealm rather than for the Top Level Realm.
+
+For example, if the OAuth 2.0 provider is configured for the realm `/customers`, then use the following URL: `http://authz.example.com:8080/openam/oauth2/authorize?realm=/customers`.
+
+The `/oauth2/authorize` endpoint can also take `module` and `service` parameters. Use either as described in ["Authenticating To OpenAM"](https://doc.openidentityplatform.org/openam/admin-guide/chap-auth-services#authn-from-browser), where `module` specifies the authentication module instance to use or `service` specifies the authentication chain to use when authenticating the resource owner.
+
+Access Token Endpoint URL
+In this example, `http://authz.example.com:8080/openam/oauth2/access_token`.
+
+This OpenAM endpoint can take additional parameters. In particular, you must specify the realm if the OpenAM OAuth 2.0 provider is configured for a subrealm rather than the Top Level Realm (/).
+
+For example, if the OAuth 2.0 provider is configured for the realm `/customers`, then use the following URL: `http://authz.example.com:8080/openam/oauth2/access_token?realm=/customers`.
+
+User Profile Service URL
+In this example, `http://authz.example.com:8080/openam/oauth2/tokeninfo`.
+
+Scope
+In this example, `cn`.
+
+The demo user has common name `demo` by default, so by setting this to `cn|Read your user name`, OpenAM can get the value of the attribute without the need to create additional subjects, or to update existing subjects. The description, `Read your user name`, is shown to the resource owner in the consent page.
+
+OAuth2 Access Token Profile Service Parameter name
+Identifies the parameter that contains the access token value, which in this example is `access_token`.
+
+Proxy URL
+The client redirect URL, which in this example is `http://client.example.com:8080/openam/oauth2c/OAuthProxy.jsp`.
+
+Account Mapper
+In this example, `org.forgerock.openam.authentication.modules.oauth2.DefaultAccountMapper`.
+
+Account Mapper Configuration
+In this example, `cn=cn`.
+
+Attribute Mapper
+In this example, `org.forgerock.openam.authentication.modules.oauth2.DefaultAttributeMapper`.
+
+Attribute Mapper Configuration
+In this example, `cn=cn`.
+
+Create account if it does not exist
+In this example, disable this functionality.
+
+OpenAM can create local accounts based on the account information returned by the authorization server. 
+3.   On the OpenAM server configured to act as an OAuth 2.0 authorization server, register the OAuth 2.0 / OpenID Connect authentication module as an OAuth 2.0 confidential client, which is described in ["Registering OAuth 2.0 Clients With the Authorization Service"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#register-oauth2-client).
+
+Under Realms > Top Level Realm > Agents > OAuth 2.0/OpenID Connect Client > Agents >`myClientID`, adjust the following settings:
+
+Client type
+In this example, `confidential`. OpenAM protects its credentials as an OAuth 2.0 client.
+
+Redirection URIs
+In this example, `http://client.example.com:8080/openam/oauth2c/OAuthProxy.jsp`.
+
+Scopes
+In this example, `cn`. 
+4.   Before you try it out, on the OpenAM server configured to act as an OAuth 2.0 client, you must make the following additional change to the configuration.
+
+Your OpenAM OAuth 2.0 client authentication module is not part of the default chain, and therefore OpenAM does not call it unless you specifically request the OAuth 2.0 client authentication module.
+
+To cause the policy agent to request your OAuth 2.0 client authentication module explicitly, browse in OpenAM console to your _policy agent profile configuration_, in this case Realms > Top Level Realm > Agents > J2EE > Agents >_Agent Name_> OpenAM Services > OpenAM Login URL, and add `http://client.example.com:8080/openam/UI/Login?module=OAuth2`, moving it to the top of the list.
+
+Save your work.
+
+This ensures that the policy agent directs the resource owner to OpenAM with the instruction to authenticate using the `OAuth2` authentication module.
+
+5.   Try it out.
+
+First make sure you are logged out of OpenAM, for example by browsing to the logout URL, in this case `http://client.example.com:8080/openam/UI/Logout`.
+
+Next attempt to access the protected resource, in this case `http://www.example.com:8080/examples/`.
+
+If everything is set up properly, the policy agent redirects your browser to the login page of OpenAM with `module=OAuth2` among other query string parameters. After you authenticate, for example as user `demo`, password `changeit`, OpenAM presents you with an authorization decision page.
+
+![Image 14: oauth2 authz page](https://doc.openidentityplatform.org/openam/_images/oauth2-authz-page.png)
+
+When you click Allow, the authorization service creates an SSO session, and redirects the client back to the resource, thus allowing the client to access the protected resource. If you configured an attribute on which to store the saved consent decision, and you choose to save the consent decision for this authorization, then OpenAM can use that saved decision to avoid prompting you for authorization next time the client accesses the resource, but only ensure that you have authenticated and have a valid session.
+
+![Image 15: oauth2 examples](https://doc.openidentityplatform.org/openam/_images/oauth2-examples.png)
+
+### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-sp-and-authz)Configuring OpenAM as a SAML Service Provider and OAuth2 Authorization Server
+
+As described in ["SAML v2.0 Bearer Assertion Profiles"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-saml2-bearer), OpenAM as OAuth 2.0 authorization server can handle the profile where a SAML v2.0 assertion borne by the client functions as an authorization grant to get an access token. This lets a client get an access token when a resource owner completes SAML v2.0 Web Single Sign-On.
+
+You can configure OpenAM as both SAML v2.0 service provider and OAuth 2.0 authorization server, using a built-in adapter class to POST assertions returned to the service provider to the access token endpoint of the authorization server. This allows clients to send a resource owner to the identity provider for SAML v2.0 web SSO, get an assertion at the service provider, and retrieve an access token from the authorization server. In other words, once this scenario is configured, the client must only direct the resource owner to start web SSO as described in ["JSP Pages for SSO and SLO"](https://doc.openidentityplatform.org/openam/admin-guide/chap-federation#using-saml2-sso-slo), and then retrieve the access token on success or handle the error condition on failure.
+
+To Get an Access Token From SAML v2.0 Web SSO
+
+For this scenario to work, the following conditions must be met:
+
+*   The client must make the resource owner understand that by authenticating to the SAML v2.0 identity provider the resource owner grants the client access to the protected resources. OpenAM does not present the resource owner with an authorization decision.
+
+*   The SAML v2.0 identity provider issuing the assertion must sign the assertion, and must correctly handle the name ID for the subject.
+
+*   OpenAM as relying party must request that assertions are signed, must verify the signatures on assertions, must correctly handle name IDs from the issuer, and must use the built-in `org.forgerock.openam.oauth2.saml2.core.OAuth2Saml2GrantSPAdapter` adapter class in the service provider configuration to POST assertions to the OAuth 2.0 authorization service.
+
+*   The OAuth 2.0 authorization service and SAML v2.0 service provider must be configured together on the same OpenAM server.
+
+*   An OAuth 2.0 client configuration on OpenAM with the same name as the service provider entity ID must be set up on OpenAM.
+
+*   The OAuth 2.0 client initiating the process must be able to consume the access token and to handle errors if necessary.
+
+*   Default scopes must be set up in the OAuth 2.0 client profile.
+
+Follow these steps. The test configuration hints in this procedure let you prepare configuration to test with the demo user created in OpenAM by default.
+
+1.   Make sure the SAML v2.0 identity provider signs assertions and that name IDs are correctly configured to map resource owner accounts.
+
+When configuring OpenAM as a hosted identity provider follow these steps:
+
+    1.   Make sure the Signing Key is properly configured on setup.
+
+For a test configuration, select the `test` certificate shown in the Realms >_Realm Name_> Dashboard > Configure SAMLv2 Providers > Create Identity Provider wizard.
+
+    2.   Make sure name IDs are properly configured.
+
+For a test configuration, in the OpenAM console under Federation > Entity Providers >_IdP Name_> NameID Value Map, add `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified=cn` and then Save your work.
+
+2.   Configure OpenAM as service provider.
+
+    1.   Set up a hosted service provider in OpenAM console under Realms >_Realm Name_> Dashboard > Configure SAMLv2 Providers > Create Hosted Service Provider, keeping track of the name, such as `https://www.sp.example:8443/openam`, and selecting Use default attribute mapping from Identity Provider.
+
+    2.   Under Federation > Entity Providers >_SP Name_> Assertion Content > Request/Response Signing, check Assertions Signed.
+
+    3.   For a test configuration, in Federation > Entity Providers >_SP Name_> Assertion Content > NameID Format List, remove all but `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`, and then Save your work.
+
+    4.   In Federation > Entity Providers >_SP Name_> Assertion Processing > Adapter, add `org.forgerock.openam.oauth2.saml2.core.OAuth2Saml2GrantSPAdapter`, and then Save your work.
+
+This is the adapter class that POSTs the SAML v2.0 assertion to the OAuth 2.0 access token endpoint.
+
+    5.   Use the wizard under Realms >_Realm Name_> Dashboard > Configure SAMLv2 Providers > Configure Remote Identity Provider to import the identity provider metadata.
+
+3.   Make sure the identity provider imports the metadata for your service provider.
+
+If your service provider is at `https://www.sp.example:8443/openam`, then the metadata can be accessed at `https://www.sp.example:8443/openam/saml2/jsp/exportmetadata.jsp`.
+
+4.   On the service provider OpenAM server, set up the OAuth 2.0 authorization server as described in ["Configuring the OAuth 2.0 Authorization Service"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#configure-oauth2-authz).
+
+For a test configuration, set the realm to `/`, and accept the defaults.
+
+5.   On the service provider and authorization server OpenAM server, set up an OAuth 2.0 client profile with the same name as the service provider under Realms >_Realm Name_> Agents > OAuth 2.0/OpenID Connect Client > New. For example, if the service provider name is `https://www.sp.example:8443/openam`, then make that the name of the OAuth 2.0 client profile.
+
+On the OAuth 2.0/OpenID Connect Client page, click the service provider name, for example, _[https://www.sp.example:8443/openam](https://www.sp.example:8443/openam)_. On the Edit page, scroll down to the Scope(s) section, enter your default scopes (for example, `cn`, `mail`) in the New Value field, and then click Add.
+
+You can make additional changes to the client profile if necessary. See ["Registering OAuth 2.0 Clients With the Authorization Service"](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#register-oauth2-client) for details.
+
+Click Save to apply your settings.
+
+6.   Test your configuration.
+
+    1.   Log out of all OpenAM servers.
+
+    2.   Initiate SAML v2.0 Web SSO.
+
+For example, if your identity provider is at `https://www.idp.example:8443/openam` with meta alias `/idp` and your service provider is at `https://www.sp.example:8443/openam`, then browse to the following URL (without line breaks or spaces):
+
+```
+http://www.idp.example:8443/openam/saml2/jsp/idpSSOInit.jsp
+ ?metaAlias=/idp&spEntityID=http://www.sp.example:8443/openam
+``` 
+    3.   Log in to the identity provider.
+
+For OpenAM, login with user name `demo` and password `changeit`.
+
+    4.   Log in to the service provider.
+
+For OpenAM, login with user name `demo` and password `changeit`.
+
+    5.   See the resulting access token on successful login.
+
+The result looks something like this, all on one line:
+
+```
+{
+    "expires_in": 59,
+    "token_type": "Bearer",
+    "access_token": "f0f731e0-6013-47e3-9c07-da598157a85f"
+}
+```
+
+javascript 
+
+### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-user-consent)User Consent Management
+
+Users of OAuth 2.0 clients can now manage their authorized applications on their user page in the OpenAM console. For example, the user logs in to the OpenAM console as `demo`, and then clicks the Dashboard link on the Profile page. In the Authorized Apps section, the users can view their OAuth 2.0 tokens or remove them by clicking the Revoke Access button, effectively removing their consent to the application.
+
+![Image 16: xui oauth2 self service](https://doc.openidentityplatform.org/openam/_images/xui-oauth2-self-service.png)
+
+### [](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#allowing-clients-to-skip-consent)Allowing Clients To Skip Consent
+
+Companies that have internal applications that use OAuth 2.0 or OpenID Connect 1.0 can allows clients to skip consent and make consent confirmation optional so as not to disrupt their online experience.
+
+To Allow Client To Skip Consent
+
+1.   Start the OpenAM console. Under Realms, select the realm that you are working with.
+
+2.   First, create or update your OAuth2 provider:
+
+    1.   Select Dashboard > Configure OAuth Provider, then select Configure OpenID Connect, then click Create.
+
+    2.   Click Services > OAuth2 Provider.
+
+    3.   Enable Allow clients to skip consent.
+
+    4.   Click Save Changes.
+
+3.   Next, create or update an OpenID Connect client. Click Agents > OAuth 2.0/OpenID Connect Client.
+
+    1.   Under Agent, click New, enter a name and password for the agent, and then click Create.
+
+    2.   Click the agent you just created.
+
+    3.   Click the Enabled checkbox for Implied consent.
+
+    4.   Click Save.
+
+When both settings are set on the OAuth2 provider and OAuth 2.0 Client (agent) settings, OpenAM will treat the requests as if the client has already saved its consent and will suppress any user consent pages to the client.
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#stateless-oauth2)Stateless OAuth 2.0 Access and Refresh Tokens
+-------------------------------------------------------------------------------------------------------------------------------------
+
+OpenAM supports _stateless_ access and refresh tokens for OAuth 2.0. Stateless access and refresh tokens allow clients to directly validate the tokens without storing session information in server memory. The stateless token is a JWT, which is stored in the `iPlanetDirectoryPro` cookie if accessed through a web browser or in the `tokenid` response header if accessed over REST.
+
+The stateless access token allows any OpenAM instance in the issuing cluster to validate an OAuth 2.0 token without the need for cross-server communication.
+
+To Configure Stateless OAuth 2.0 Access and Refresh Tokens
+
+1.   Open the OpenAM console.
+
+2.   Under Realms, select the realm that you are working with.
+
+3.   Click Services, and then select OAuth2 Provider.
+
+4.   For Use Stateless Access & Refresh Tokens, slide the toggle button to the right to enable the feature.
+
+5.   Optional. For Issue Refresh Tokens, slide the toggle button to the right to enable the feature.
+
+6.   For Issue Refresh Tokens on Refreshing Access Tokens, slide the toggle button to the right to enable the feature.
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#configuring-stateless-oauth-blacklisting)Configuring Stateless OAuth 2.0 Token Blacklisting
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+OpenAM provides a blacklisting feature that prevents stateless OAuth v2.0 tokens from being reused if the authorization code has been replayed or tokens have been revoked by either the client or resource owner.
+
+To Configure Stateless OAuth 2.0 Token Blacklisting
+
+1.   On the OpenAM console, navigate to Configure > Global Services > Global > OAuth2 Provider.
+
+2.   Under Global Attributes, enter the number of blacklisted tokens in the Token Blacklisting Cache Size field.
+
+Token Blacklisting Cache Size determines the number of blacklisted tokens to cache in memory to speed up blacklist checks. You can enter a number based on the estimated number of token revocations that a client will issue (for example, when the user gives up access or an administrator revokes a client’s access).
+
+Default: 10000
+
+3.   In the Blacklist Poll Interval field, enter the interval in seconds for OpenAM to check for token blacklist changes from the CTS data store.
+
+The longer the polling interval, the more time a malicious user has to connect to other OpenAM servers in a cluster and make use of a stolen OAuth v2.0 access and refresh token. Shortening the polling interval improves the security for revoked tokens but might incur a minimal decrease in overall OpenAM performance due to increased network activity.
+
+Default: 60 seconds
+
+4.   In the Blacklist Purge Delay field, enter the length of time in minutes that blacklist tokens can exist before being purged beyond their expiration time.
+
+When stateless blacklisting is enabled, OpenAM tracks OAuth v2.0 access and refresh tokens over the configured lifetime of those tokens plus the blacklist purge delay. For example, if the access token lifetime is set to 6000 seconds and the blacklist purge delay is one minute, the OpenAM tracks the access token for 101 minutes. You can increase the blacklist purge delay if you expect system clock skews in an OpenAM server cluster to be greater than one minute. There is no need to increase the blacklist purge delay for servers running a clock synchronization protocol, such as Network Time Protocol.
+
+Default: 1 minute
+
+5.   Click Save to apply your changes.
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-oidc-digital-signatures)Configuring Digital Signatures
+------------------------------------------------------------------------------------------------------------------------------------
+
+OpenAM supports digital signature algorithms that secure the integrity of its JSON payload, which is outlined in the JSON Web Algorithm specification ([RFC 7518](https://tools.ietf.org/html/rfc7518)).
+
+OpenAM supports signing algorithms listed in _JSON Web Algorithms (JWA)_: [alg](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms#section-3.1):
+
+*   • HS256 - HMAC with SHA-256
+
+*   • HS384 - HMAC with SHA-384
+
+*   • HS512 - HMAC with SHA-512
+
+*   • RS256 - RSA using SHA-256
+
+*   • ES256 - ECDSA with SHA-256 and NIST standard P-256 elliptic curve
+
+*   • ES384 - ECDSA with SHA-384 and NIST standard P-384 elliptic curve
+
+*   • ES512 - ECDSA with SHA-512 and NIST standard P-521 elliptic curve If you intend to use an ECDSA signing algorithm, you must generate a public/private key pair for use with ECDSA. To generate the public and private key pair, see step 1 in ["Configuring Elliptic Curve Digital Signature Algorithms"](https://doc.openidentityplatform.org/openam/admin-guide/chap-session-state#session-state-configure-ecdsa-signing).
+
+To Configure Digital Signatures
+
+1.   Start the OpenAM console. Under Realms, select the realm that you are working with.
+
+2.   First, create or update your OAuth2 provider:
+
+    1.   Select Dashboard > Configure OAuth Provider, then select Configure OpenID Connect, then click Create.
+
+    2.   Click Services > OAuth2 Provider.
+
+    3.   On the OAuth2 Token Signing Algorithm drop-down list, select the signing algorithm to use for your digital signatures.
+
+    4.   Take one of the following actions depending on the token signing algorithm:
+
+        1.   If you are using an HMAC signing algorithm, enter the Base64-encoded key used by HS256, HS384 and HS512 in the Token Signing HMAC Shared Secret field.
+
+        2.   If you are using RS256, enter the public/private key pair used by RS256 in the Token Signing RSA public/private key pair field. The public/private key pair will be retrieved from the keystore referenced by the property `com.sun.identity.saml.xmlsig.keystore`.
+
+        3.   If you are using an ECDSA signing algorithm, enter the list of public/private key pairs used for the elliptic curve algorithms (ES256/ES384/ES512) In the Token Signing ECDSA public/private key pair alias field. For example, `ES256|es256test`. Each of the public/private key pairs will be retrieved from the keystore referenced by the property `com.sun.identity.saml.xmlsig.keystore`.
+
+        4.   Click Save Changes.
+
+3.   Next, update the OpenID Connect client:
+
+    1.   Under Agent, click New, enter a Name and Password for the agent, and then click Create.
+
+    2.   In the ID Token Signing Algorithm field, enter the signing algorithm that the ID token for this client must be signed with. Default: `RS256`.
+
+        *   • HS256 (HMAC with SHA-256)
+
+        *   • HS384 (HMAC with SHA-384)
+
+        *   • HS512 (HMAC with SHA-512)
+
+        *   • RS256 (RSA using SHA-256)
+
+        *   • ES256 (ECDSA with SHA-256 and NIST standard P-256 elliptic curve)
+
+        *   • ES384 (ECDSA with SHA-384 and NIST standard P-384 elliptic curve)
+
+        *   • ES512 (ECDSA with SHA-512 and NIST standard P-521 elliptic curve)
+
+    3.   Click Save.
+
+To Obtain the OAuth 2.0/OpenID Connect 1.0 Public Signing Key
+
+OpenAM exposes the public keys used to digitally sign OAuth 2.0 and OpenID Connect 1.0 access and refresh tokens at a JWK (JSON Web Key) URI endpoint, which is exposed from all realms for an OAuth2 provider. The following steps show how to access the public keys:
+
+1.   To find the JWK URI, perform an HTTP GET at `/oauth2/.well-known/openid-configuration`.
+
+```
+curl http://openam.example.com:8080/openam/oauth2/.well-known/openid-configuration
+{
+"id_token_encryption_alg_values_supported":[
+   "RSA1_5"
+ ],
+"response_types_supported":[
+   "token id_token",
+   "code token",
+   "code token id_token",
+   "token",
+   "code id_token",
+   "code",
+   "id_token"
+ ],
+"registration_endpoint":"http://openam.example.com:8080/openam/oauth2/connect/register",
+"token_endpoint":"http://openam.example.com:8080/openam/oauth2/access_token",
+"end_session_endpoint":"http://openam.example.com:8080/openam/oauth2/connect/endSession",
+"scopes_supported":[
+   "phone",
+   "address",
+   "email",
+   "openid",
+   "profile"
+ ],
+"acr_values_supported":[
+ ],
+"version":"3.0",
+"userinfo_endpoint":"http://openam.example.com:8080/openam/oauth2/userinfo",
+"token_endpoint_auth_methods_supported":[
+   "client_secret_post",
+   "private_key_jwt",
+   "client_secret_basic"
+ ],
+"subject_types_supported":[
+   "public"
+ ],
+"issuer":"http://openam.example.com:8080/openam/oauth2",
+"id_token_encryption_enc_values_supported":[
+   "A256CBC-HS512",
+   "A128CBC-HS256"
+ ],
+"claims_parameter_supported":true,
+"jwks_uri":"http://openam.example.com:8080/openam/oauth2/connect/jwk_uri",
+"id_token_signing_alg_values_supported":[
+   "ES384",
+   "ES256",
+   "ES512",
+   "HS256",
+   "HS512",
+   "RS256",
+   "HS384"
+ ],
+"check_session_iframe":"http://openam.example.com:8080/openam/oauth2/connect/
+ checkSession",
+"claims_supported":[
+   "zoneinfo",
+   "phone_number",
+   "address",
+   "email",
+   "locale",
+   "name",
+   "family_name",
+   "given_name",
+   "profile"
+ ],
+"authorization_endpoint":"http://openam.example.com:8080/openam/oauth2/authorize"
+}
+```
+
+json 
+2.   Perform an HTTP GET at the JWKS URI to get the public signing key:
+
+```
+$ curl http://openam.example.com:8080/openam/oauth2/connect/jwk_uri
+{
+  "keys":
+    [
+      {
+        "kty":"RSA",
+        "kid":"SylLC6Njt1KGQktD9Mt+0zceQSU=",
+        "use":"sig",
+        "alg":"RS256",
+        "n":"AK0kHP1O-RgdgLSoWxkuaYoi5Jic6hLKeuKw8WzCfsQ68ntBDf6tVOTn_kZA7Gjf4oJ
+       AL1dXLlxIEy-kZWnxT3FF-0MQ4WQYbGBfaW8LTM4uAOLLvYZ8SIVEXmxhJsSlvaiTWCbNFaOf
+       iII8bhFp4551YB07NfpquUGEwOxOmci_",
+        "e":"AQAB"
+      }
+    ]
+}
+``` 
+
+[](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#oauth2-security-considerations)Security Considerations
+-----------------------------------------------------------------------------------------------------------------------------
+
+OAuth 2.0 messages involve credentials and access tokens that allow the bearer to retrieve protected resources. Therefore, do not let an attacker capture requests or responses. Protect the messages going across the network.
+
+RFC 6749 includes a number of [Security Considerations](http://tools.ietf.org/html/rfc6749#section-10), and also requires Transport Layer Security (TLS) to protect sensitive messages. Make sure you read the section covering _Security Considerations_, and that you can implement them in your deployment.
+
+Also, especially when deploying a mix of other clients and resource servers, take into account the points covered in the Internet-Draft, [OAuth 2.0 Threat Model and Security Considerations](http://tools.ietf.org/html/draft-ietf-oauth-v2-threatmodel), before putting your service into production.
+
+* * *
+
+[1](https://doc.openidentityplatform.org/openam/admin-guide/chap-oauth2#_footnoteref_1). Read[RFC 6749](http://tools.ietf.org/html/rfc6749)to understand the authorization framework itself.

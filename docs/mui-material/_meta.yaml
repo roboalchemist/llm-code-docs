@@ -1,0 +1,9 @@
+name: mui-material
+primary_source: llms
+sources:
+  - type: llms
+    url: https://mui.com/material-ui/
+    last_fetched: "2026-04-03T23:09:35Z"
+description: >
+  mui-material documentation
+quality_score: 0

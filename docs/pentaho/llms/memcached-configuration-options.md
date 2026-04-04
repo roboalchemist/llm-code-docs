@@ -1,0 +1,17 @@
+# Source: https://docs.pentaho.com/install/9.3-install/multidimensional-data-modeling-in-pentaho/mondrian-cache-control/switch-to-memcached-cp/switch-from-the-infinispan-cache-framework/memcached-configuration-options.md
+
+# Source: https://docs.pentaho.com/install/10.2-install/multidimensional-data-modeling-in-pentaho/mondrian-cache-control/switch-to-memcached-cp/switch-from-the-infinispan-cache-framework/memcached-configuration-options.md
+
+# Memcached Configuration Options
+
+These properties control Memcached settings, and are set in the `memcached-config.xml` file in the `/WEB-INF/classes/` directory inside of your deployed `pentaho.war` or Mondrian engine.
+
+These properties control Memcached settings, and are set in the `memcached-config.xml` file in the `/WEB-INF/classes/` directory inside of your deployed `pentaho.war` or Mondrian engine.
+
+**Note:** This is not a comprehensive list of the potential Memcached settings; the options explained below are the ones most critical to Memcached configuration for Pentaho Analyzer.
+
+| Property    | Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SERVERS** | A comma-separated list of servers and port numbers representing the Memcached nodes usable by the plugin.                                                                                                                                                                                                                                                                                                                                                                                       |
+| **WEIGHTS** | A comma-separated list of numbers representing the relative caching capacity of the servers defined in the **SERVERS** property. There must be exactly as many values of **WEIGHTS** as there are values of **SERVERS**. As an example, if the first server has a capacity of 128 megabytes, and the second has a capacity of 256 megabytes, the correct values for the **WEIGHTS** property should be *'1,2'*, indicating that the first server has a relative size of half of the second one. |
+| **SALT**    | A secret key prefix to be used when saving and loading segment data from the Memcached nodes. This property must be the same for all Mondrian nodes that share their caches. If the **SALT** value is different from one node to the next, the nodes will not be able to share their cache data.                                                                                                                                                                                                |

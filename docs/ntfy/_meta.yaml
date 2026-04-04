@@ -1,0 +1,8 @@
+name: ntfy
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:07Z"
+description: >
+  ntfy documentation
+quality_score: 0

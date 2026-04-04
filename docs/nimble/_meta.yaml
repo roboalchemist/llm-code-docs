@@ -1,0 +1,9 @@
+name: nimble
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.nimbleway.io/
+    last_fetched: "2026-04-03T23:09:57Z"
+description: >
+  nimble documentation
+quality_score: 0

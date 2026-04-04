@@ -1,0 +1,10 @@
+# Source: https://docs.pentaho.com/install/9.3-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-pentaho-server-to-connect-to-a-hadoop-cluster/additional-configurations-for-specific-distributions-connecting-to-a-cluster/advanced-settings-for-connecting-to-google-dataproc/connect-other-pentaho-components-to-dataproc.md
+
+# Source: https://docs.pentaho.com/install/10.2-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-pentaho-server-to-connect-to-a-hadoop-cluster/additional-configurations-for-specific-distributions-connecting-to-a-cluster/advanced-settings-for-connecting-to-google-dataproc/connect-other-pentaho-components-to-dataproc.md
+
+# Connect other Pentaho components to Dataproc
+
+The following sections explain how to create and test a connection to the cluster in the Pentaho Server, Pentaho Report Designer, and Pentaho Metadata Editor. Creating and testing a connection to the cluster in the PDI client includes the following tasks:
+
+* Install a driver for the Pentaho Server. For instructions, see [Set up Pentaho to connect to a Hadoop cluster](https://docs.pentaho.com/install/10.2-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-pentaho-server-to-connect-to-a-hadoop-cluster).
+* Create and test the cluster connections.

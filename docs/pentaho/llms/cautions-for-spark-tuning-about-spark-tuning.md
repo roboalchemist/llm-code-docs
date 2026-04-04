@@ -1,0 +1,7 @@
+# Source: https://docs.pentaho.com/install/9.3-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-adaptive-execution-layer-ael/advanced-topics/spark-tuning-landing-page-cp/about-spark-tuning-in-pdi-cp/cautions-for-spark-tuning-about-spark-tuning.md
+
+# Cautions for Spark tuning
+
+When approaching Spark tuning in PDI, you should consider that one tuning solution may not work for all your PDI transformations. Effective tuning depends on knowing how your environment changes, how your data sizes change, which PDI steps require more resources, and how tuning those steps impacts the execution of the transformation. As a best practice, you should know how your data **skews**. Balanced partitions increase stability, but skewing data too much may cause executors to overflow and fail.
+
+The Spark engine in PDI runs on the Adaptive Execution Layer (AEL), which does not safeguard against incorrect tuning. Some tuning may cause executors and applications to fail, and may reduce performance instead of improving it. See [Optimizing Spark tuning](https://docs.pentaho.com/install/9.3-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-adaptive-execution-layer-ael/advanced-topics/spark-tuning-landing-page-cp/configuring-application-tuning-parameters-for-spark/optimizing-spark-tuning) to learn how to use PDI and Spark logging to monitor changes to application and step tuning parameters, and how those changes affect the execution of your transformation and its related Spark memory model.

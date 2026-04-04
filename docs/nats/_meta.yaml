@@ -1,0 +1,9 @@
+name: nats
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.nats.io/
+    last_fetched: "2026-04-03T23:09:44Z"
+description: >
+  nats documentation
+quality_score: 0

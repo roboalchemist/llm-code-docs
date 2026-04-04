@@ -1,0 +1,9 @@
+name: nemo-framework
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.nvidia.com/nemo-framework/
+    last_fetched: "2026-04-03T23:09:46Z"
+description: >
+  nemo-framework documentation
+quality_score: 0

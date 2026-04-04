@@ -1,0 +1,112 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/react/state-in-constructor.md
+
+---
+url: /docs/guide/usage/linter/rules/react/state-in-constructor.md
+---
+
+### What it does
+
+Enforces the state initialization style to be either in a
+constructor or with a class property.
+
+This rule is not relevant for function components, and so can potentially be
+disabled for modern React codebases.
+
+### Why is this bad?
+
+Inconsistent state initialization styles can make the codebase harder to maintain and understand.
+This rule enforces a consistent pattern across React class components.
+
+### Examples
+
+Examples of **incorrect** code for this rule by default, with `"always"` mode:
+
+```jsx
+class Foo extends React.Component {
+  state = { bar: 0 };
+  render() {
+    return <div>Foo</div>;
+  }
+}
+```
+
+Examples of **correct** code for this rule by default, with `"always"` mode:
+
+```jsx
+class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { bar: 0 };
+  }
+  render() {
+    return <div>Foo</div>;
+  }
+}
+```
+
+#### `"never"` mode
+
+Will enforce the state initialization style to be with a class property.
+
+Examples of **incorrect** code for this rule with `"never"` mode:
+
+```jsx
+class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { bar: 0 };
+  }
+  render() {
+    return <div>Foo</div>;
+  }
+}
+```
+
+Examples of **correct** code for this rule with `"never"` mode:
+
+```jsx
+class Foo extends React.Component {
+  state = { bar: 0 };
+  render() {
+    return <div>Foo</div>;
+  }
+}
+```
+
+## Configuration
+
+This rule accepts one of the following string values:
+
+### `"always"`
+
+Enforce state initialization in the constructor.
+This is the default mode.
+
+### `"never"`
+
+Enforce state initialization with a class property.
+
+## How to use
+
+To **enable** this rule using the config file or in the CLI, you can use:
+
+::: code-group
+
+```json [Config (.oxlintrc.json)]
+{
+  "plugins": ["react"],
+  "rules": {
+    "react/state-in-constructor": "error"
+  }
+}
+```
+
+```bash [CLI]
+oxlint --deny react/state-in-constructor --react-plugin
+```
+
+:::
+
+## References
+
+* Rule Source

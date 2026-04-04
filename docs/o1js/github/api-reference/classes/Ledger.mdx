@@ -1,0 +1,116 @@
+Defined in: [bindings.d.ts:505](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/bindings.d.ts#L505)
+
+Represents the Mina ledger.
+
+## Constructors
+
+### Constructor
+
+```ts
+new Ledger(): Ledger;
+```
+
+#### Returns
+
+`Ledger`
+
+## Methods
+
+### addAccount()
+
+```ts
+addAccount(publicKey: MlPublicKey, balance: string): void;
+```
+
+Defined in: [bindings.d.ts:514](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/bindings.d.ts#L514)
+
+Adds an account and its balance to the ledger.
+
+#### Parameters
+
+##### publicKey
+
+`MlPublicKey`
+
+##### balance
+
+`string`
+
+#### Returns
+
+`void`
+
+***
+
+### applyJsonTransaction()
+
+```ts
+applyJsonTransaction(
+   txJson: string, 
+   accountCreationFee: string, 
+   networkState: string): void;
+```
+
+Defined in: [bindings.d.ts:519](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/bindings.d.ts#L519)
+
+Applies a JSON transaction to the ledger.
+
+#### Parameters
+
+##### txJson
+
+`string`
+
+##### accountCreationFee
+
+`string`
+
+##### networkState
+
+`string`
+
+#### Returns
+
+`void`
+
+***
+
+### getAccount()
+
+```ts
+getAccount(publicKey: MlPublicKey, tokenId: FieldConst): undefined | Account;
+```
+
+Defined in: [bindings.d.ts:528](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/bindings.d.ts#L528)
+
+Returns an account.
+
+#### Parameters
+
+##### publicKey
+
+`MlPublicKey`
+
+##### tokenId
+
+`FieldConst`
+
+#### Returns
+
+`undefined` \| `Account`
+
+***
+
+### create()
+
+```ts
+static create(): Ledger;
+```
+
+Defined in: [bindings.d.ts:509](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/bindings.d.ts#L509)
+
+Creates a fresh ledger.
+
+#### Returns
+
+`Ledger`

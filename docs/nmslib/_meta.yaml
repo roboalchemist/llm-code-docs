@@ -1,0 +1,8 @@
+name: nmslib
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:01Z"
+description: >
+  nmslib documentation
+quality_score: 0

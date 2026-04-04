@@ -1,0 +1,745 @@
+# Source: https://mikro-orm.io/api/core/class/MetadataError.md
+
+# MetadataError<!-- --> \<T>
+
+### Hierarchy
+
+* [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<T>
+  * *MetadataError*
+
+## Index[**](#Index)
+
+### Constructors
+
+* [**constructor](#constructor)
+
+### Properties
+
+* [**cause](#cause)
+* [**entity](#entity)
+* [**message](#message)
+* [**name](#name)
+* [**stack](#stack)
+* [**stackTraceLimit](#stackTraceLimit)
+
+### Methods
+
+* [**getEntity](#getEntity)
+* [**cannotCommit](#cannotCommit)
+* [**cannotModifyInverseCollection](#cannotModifyInverseCollection)
+* [**cannotModifyReadonlyCollection](#cannotModifyReadonlyCollection)
+* [**cannotRemoveFromCollectionWithoutOrphanRemoval](#cannotRemoveFromCollectionWithoutOrphanRemoval)
+* [**cannotUseGlobalContext](#cannotUseGlobalContext)
+* [**cannotUseGroupOperatorsInsideScalars](#cannotUseGroupOperatorsInsideScalars)
+* [**cannotUseOperatorsInsideEmbeddables](#cannotUseOperatorsInsideEmbeddables)
+* [**captureStackTrace](#captureStackTrace)
+* [**duplicateEntityDiscovered](#duplicateEntityDiscovered)
+* [**duplicateFieldName](#duplicateFieldName)
+* [**entityNotFound](#entityNotFound)
+* [**entityNotManaged](#entityNotManaged)
+* [**fromCollectionNotInitialized](#fromCollectionNotInitialized)
+* [**fromInversideSidePrimary](#fromInversideSidePrimary)
+* [**fromMergeWithoutPK](#fromMergeWithoutPK)
+* [**fromMissingOption](#fromMissingOption)
+* [**fromMissingPrimaryKey](#fromMissingPrimaryKey)
+* [**fromUnknownEntity](#fromUnknownEntity)
+* [**fromWrongForeignKey](#fromWrongForeignKey)
+* [**fromWrongOwnership](#fromWrongOwnership)
+* [**fromWrongPropertyType](#fromWrongPropertyType)
+* [**fromWrongReference](#fromWrongReference)
+* [**fromWrongReferenceKind](#fromWrongReferenceKind)
+* [**fromWrongRepositoryType](#fromWrongRepositoryType)
+* [**fromWrongTypeDefinition](#fromWrongTypeDefinition)
+* [**invalidCompositeIdentifier](#invalidCompositeIdentifier)
+* [**invalidEmbeddableQuery](#invalidEmbeddableQuery)
+* [**invalidManyToManyWithPivotEntity](#invalidManyToManyWithPivotEntity)
+* [**invalidPrimaryKey](#invalidPrimaryKey)
+* [**invalidPropertyName](#invalidPropertyName)
+* [**invalidType](#invalidType)
+* [**invalidVersionFieldType](#invalidVersionFieldType)
+* [**missingMetadata](#missingMetadata)
+* [**multipleDecorators](#multipleDecorators)
+* [**multipleVersionFields](#multipleVersionFields)
+* [**noEntityDiscovered](#noEntityDiscovered)
+* [**nonPersistentCompositeProp](#nonPersistentCompositeProp)
+* [**notDiscoveredEntity](#notDiscoveredEntity)
+* [**notEntity](#notEntity)
+* [**onlyAbstractEntitiesDiscovered](#onlyAbstractEntitiesDiscovered)
+* [**prepareStackTrace](#prepareStackTrace)
+* [**propertyRequired](#propertyRequired)
+* [**propertyTargetsEntityType](#propertyTargetsEntityType)
+* [**targetIsAbstract](#targetIsAbstract)
+* [**transactionRequired](#transactionRequired)
+* [**unknownIndexProperty](#unknownIndexProperty)
+
+## Constructors<!-- -->[**](#Constructors)
+
+### [**](#constructor)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L6)constructor
+
+* ****new MetadataError**\<T>(message, entity): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<T>
+
+- Inherited from ValidationError.constructor
+
+  #### Parameters
+
+  * ##### message: string
+  * ##### optionalentity: T
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<T>
+
+## Properties<!-- -->[**](#Properties)
+
+### [**](#cause)[**](https://undefined/mikro-orm/mikro-orm/blob/master/docs/node_modules/typescript/src/lib.es2022.error.d.ts#L26)optionalinheritedcause
+
+**cause?
+
+<!-- -->
+
+: unknown
+
+Inherited from ValidationError.cause
+
+### [**](#entity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L6)optionalreadonlyinheritedentity
+
+**entity?
+
+<!-- -->
+
+: T
+
+Inherited from ValidationError.entity
+
+### [**](#message)[**](https://undefined/mikro-orm/mikro-orm/blob/master/docs/node_modules/typescript/src/lib.es5.d.ts#L1077)inheritedmessage
+
+**message: string
+
+Inherited from ValidationError.message
+
+### [**](#name)[**](https://undefined/mikro-orm/mikro-orm/blob/master/docs/node_modules/typescript/src/lib.es5.d.ts#L1076)inheritedname
+
+**name: string
+
+Inherited from ValidationError.name
+
+### [**](#stack)[**](https://undefined/mikro-orm/mikro-orm/blob/master/docs/node_modules/typescript/src/lib.es5.d.ts#L1078)optionalinheritedstack
+
+**stack?
+
+<!-- -->
+
+: string
+
+Inherited from ValidationError.stack
+
+### [**](#stackTraceLimit)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/globals.d.ts#L68)staticinheritedstackTraceLimit
+
+**stackTraceLimit: number
+
+Inherited from ValidationError.stackTraceLimit
+
+The `Error.stackTraceLimit` property specifies the number of stack frames collected by a stack trace (whether generated by `new Error().stack` or `Error.captureStackTrace(obj)`).
+
+The default value is `10` but may be set to any valid JavaScript number. Changes will affect any stack trace captured *after* the value has been changed.
+
+If set to a non-number value, or set to a negative number, stack traces will not capture any frames.
+
+## Methods<!-- -->[**](#Methods)
+
+### [**](#getEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L17)inheritedgetEntity
+
+* ****getEntity**(): undefined | Partial\<any>
+
+- Inherited from ValidationError.getEntity
+
+  Gets instance of entity that caused this error.
+
+  ***
+
+  #### Returns undefined | Partial\<any>
+
+### [**](#cannotCommit)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L116)staticinheritedcannotCommit
+
+* ****cannotCommit**(): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.cannotCommit
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#cannotModifyInverseCollection)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L90)staticinheritedcannotModifyInverseCollection
+
+* ****cannotModifyInverseCollection**(owner, property): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.cannotModifyInverseCollection
+
+  #### Parameters
+
+  * ##### owner: Partial\<any>
+  * ##### property: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#cannotModifyReadonlyCollection)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L99)staticinheritedcannotModifyReadonlyCollection
+
+* ****cannotModifyReadonlyCollection**(owner, property): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.cannotModifyReadonlyCollection
+
+  #### Parameters
+
+  * ##### owner: Partial\<any>
+  * ##### property: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#cannotRemoveFromCollectionWithoutOrphanRemoval)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L103)staticinheritedcannotRemoveFromCollectionWithoutOrphanRemoval
+
+* ****cannotRemoveFromCollectionWithoutOrphanRemoval**(owner, property): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.cannotRemoveFromCollectionWithoutOrphanRemoval
+
+  #### Parameters
+
+  * ##### owner: Partial\<any>
+  * ##### property: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#cannotUseGlobalContext)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L120)staticinheritedcannotUseGlobalContext
+
+* ****cannotUseGlobalContext**(): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.cannotUseGlobalContext
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#cannotUseGroupOperatorsInsideScalars)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L128)staticinheritedcannotUseGroupOperatorsInsideScalars
+
+* ****cannotUseGroupOperatorsInsideScalars**(className, propName, payload): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.cannotUseGroupOperatorsInsideScalars
+
+  #### Parameters
+
+  * ##### className: string
+  * ##### propName: string
+  * ##### payload: unknown
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#cannotUseOperatorsInsideEmbeddables)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L124)staticinheritedcannotUseOperatorsInsideEmbeddables
+
+* ****cannotUseOperatorsInsideEmbeddables**(className, propName, payload): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.cannotUseOperatorsInsideEmbeddables
+
+  #### Parameters
+
+  * ##### className: string
+  * ##### propName: string
+  * ##### payload: unknown
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#captureStackTrace)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/globals.d.ts#L52)staticinheritedcaptureStackTrace
+
+* ****captureStackTrace**(targetObject, constructorOpt): void
+
+- Inherited from ValidationError.captureStackTrace
+
+  Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called.
+
+  ```
+  const myObject = {};
+  Error.captureStackTrace(myObject);
+  myObject.stack;  // Similar to `new Error().stack`
+  ```
+
+  The first line of the trace will be prefixed with `${myObject.name}: ${myObject.message}`.
+
+  The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
+
+  The `constructorOpt` argument is useful for hiding implementation details of error generation from the user. For instance:
+
+  ```
+  function a() {
+    b();
+  }
+
+  function b() {
+    c();
+  }
+
+  function c() {
+    // Create an error without stack trace to avoid calculating the stack trace twice.
+    const { stackTraceLimit } = Error;
+    Error.stackTraceLimit = 0;
+    const error = new Error();
+    Error.stackTraceLimit = stackTraceLimit;
+
+    // Capture the stack trace above function b
+    Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace
+    throw error;
+  }
+
+  a();
+  ```
+
+  ***
+
+  #### Parameters
+
+  * ##### targetObject: object
+  * ##### optionalconstructorOpt: Function
+
+  #### Returns void
+
+### [**](#duplicateEntityDiscovered)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L243)staticduplicateEntityDiscovered
+
+* ****duplicateEntityDiscovered**(paths, subject): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### paths: string\[]
+  * ##### subject: string = <!-- -->'entity names'
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#duplicateFieldName)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L247)staticduplicateFieldName
+
+* ****duplicateFieldName**(className, names): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### className: string
+  * ##### names: \[string, string]\[]
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#entityNotFound)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L214)staticentityNotFound
+
+* ****entityNotFound**(name, path): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### name: string
+  * ##### path: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#entityNotManaged)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L49)staticinheritedentityNotManaged
+
+* ****entityNotManaged**(entity): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.entityNotManaged
+
+  #### Parameters
+
+  * ##### entity: Partial\<any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#fromCollectionNotInitialized)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L34)staticinheritedfromCollectionNotInitialized
+
+* ****fromCollectionNotInitialized**(entity, prop): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.fromCollectionNotInitialized
+
+  #### Parameters
+
+  * ##### entity: Partial\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#fromInversideSidePrimary)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L209)staticfromInversideSidePrimary
+
+* ****fromInversideSidePrimary**(meta, owner, prop): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### owner: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromMergeWithoutPK)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L41)staticinheritedfromMergeWithoutPK
+
+* ****fromMergeWithoutPK**(meta): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.fromMergeWithoutPK
+
+  #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#fromMissingOption)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L283)staticfromMissingOption
+
+* ****fromMissingOption**(meta, prop, option): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### option: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromMissingPrimaryKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L174)staticfromMissingPrimaryKey
+
+* ****fromMissingPrimaryKey**(meta): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromUnknownEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L231)staticfromUnknownEntity
+
+* ****fromUnknownEntity**(className, source): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### className: string
+  * ##### source: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromWrongForeignKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L186)staticfromWrongForeignKey
+
+* ****fromWrongForeignKey**(meta, prop, key): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### key: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromWrongOwnership)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L198)staticfromWrongOwnership
+
+* ****fromWrongOwnership**(meta, prop, key): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### key: inversedBy | mappedBy
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromWrongPropertyType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L21)staticinheritedfromWrongPropertyType
+
+* ****fromWrongPropertyType**(entity, property, expectedType, givenType, givenValue): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.fromWrongPropertyType
+
+  #### Parameters
+
+  * ##### entity: Partial\<any>
+  * ##### property: string
+  * ##### expectedType: string
+  * ##### givenType: string
+  * ##### givenValue: string
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#fromWrongReference)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L178)staticfromWrongReference
+
+* ****fromWrongReference**(meta, prop, key, owner): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### key: inversedBy | mappedBy
+  * ##### optionalowner: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromWrongReferenceKind)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L205)staticfromWrongReferenceKind
+
+* ****fromWrongReferenceKind**(meta, owner, prop): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### owner: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#fromWrongRepositoryType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L28)staticinheritedfromWrongRepositoryType
+
+* ****fromWrongRepositoryType**(entityName, repoType, method): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.fromWrongRepositoryType
+
+  #### Parameters
+
+  * ##### entityName: string
+  * ##### repoType: string
+  * ##### method: string
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#fromWrongTypeDefinition)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L190)staticfromWrongTypeDefinition
+
+* ****fromWrongTypeDefinition**(meta, prop): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#invalidCompositeIdentifier)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L112)staticinheritedinvalidCompositeIdentifier
+
+* ****invalidCompositeIdentifier**(meta): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.invalidCompositeIdentifier
+
+  #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#invalidEmbeddableQuery)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L132)staticinheritedinvalidEmbeddableQuery
+
+* ****invalidEmbeddableQuery**(className, propName, embeddableType): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.invalidEmbeddableQuery
+
+  #### Parameters
+
+  * ##### className: string
+  * ##### propName: string
+  * ##### embeddableType: string
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#invalidManyToManyWithPivotEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L263)staticinvalidManyToManyWithPivotEntity
+
+* ****invalidManyToManyWithPivotEntity**(meta1, prop1, meta2, prop2): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta1: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop1: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### meta2: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop2: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#invalidPrimaryKey)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L259)staticinvalidPrimaryKey
+
+* ****invalidPrimaryKey**(meta, prop, requiredName): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### requiredName: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#invalidPropertyName)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L71)staticinheritedinvalidPropertyName
+
+* ****invalidPropertyName**(entityName, invalid): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.invalidPropertyName
+
+  #### Parameters
+
+  * ##### entityName: string
+  * ##### invalid: string
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#invalidType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L75)staticinheritedinvalidType
+
+* ****invalidType**(type, value, mode): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.invalidType
+
+  #### Parameters
+
+  * ##### type: [Constructor](https://mikro-orm.io/api/core.md#Constructor)\<any>
+  * ##### value: any
+  * ##### mode: string
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#invalidVersionFieldType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L226)staticinvalidVersionFieldType
+
+* ****invalidVersionFieldType**(meta): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#missingMetadata)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L255)staticmissingMetadata
+
+* ****missingMetadata**(entity): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### entity: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#multipleDecorators)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L251)staticmultipleDecorators
+
+* ****multipleDecorators**(entityName, propertyName): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### entityName: string
+  * ##### propertyName: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#multipleVersionFields)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L222)staticmultipleVersionFields
+
+* ****multipleVersionFields**(meta, fields): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### fields: string\[]
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#noEntityDiscovered)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L235)staticnoEntityDiscovered
+
+* ****noEntityDiscovered**(): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#nonPersistentCompositeProp)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L273)staticnonPersistentCompositeProp
+
+* ****nonPersistentCompositeProp**(meta, prop): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#notDiscoveredEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L58)staticinheritednotDiscoveredEntity
+
+* ****notDiscoveredEntity**(data, meta, action): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.notDiscoveredEntity
+
+  #### Parameters
+
+  * ##### data: any
+  * ##### optionalmeta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### action: string = <!-- -->'persist'
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#notEntity)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L53)staticinheritednotEntity
+
+* ****notEntity**(owner, prop, data): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.notEntity
+
+  #### Parameters
+
+  * ##### owner: Partial\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### data: any
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#onlyAbstractEntitiesDiscovered)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L239)staticonlyAbstractEntitiesDiscovered
+
+* ****onlyAbstractEntitiesDiscovered**(): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#prepareStackTrace)[**](https://undefined/mikro-orm/mikro-orm/blob/master/node_modules/@types/node/globals.d.ts#L56)staticinheritedprepareStackTrace
+
+* ****prepareStackTrace**(err, stackTraces): any
+
+- Inherited from ValidationError.prepareStackTrace
+
+  * **@see**
+
+    <https://v8.dev/docs/stack-trace-api#customizing-stack-traces>
+
+  ***
+
+  #### Parameters
+
+  * ##### err: Error
+  * ##### stackTraces: CallSite\[]
+
+  #### Returns any
+
+### [**](#propertyRequired)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L85)staticinheritedpropertyRequired
+
+* ****propertyRequired**(entity, property): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.propertyRequired
+
+  #### Parameters
+
+  * ##### entity: Partial\<any>
+  * ##### property: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#propertyTargetsEntityType)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L277)staticpropertyTargetsEntityType
+
+* ****propertyTargetsEntityType**(meta, prop, target): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+  * ##### target: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#targetIsAbstract)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L269)statictargetIsAbstract
+
+* ****targetIsAbstract**(meta, prop): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+### [**](#transactionRequired)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L45)staticinheritedtransactionRequired
+
+* ****transactionRequired**(): [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+- Inherited from ValidationError.transactionRequired
+
+  #### Returns [ValidationError](https://mikro-orm.io/api/core/class/ValidationError.md)\<Partial\<any>>
+
+### [**](#unknownIndexProperty)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/errors.ts#L218)staticunknownIndexProperty
+
+* ****unknownIndexProperty**(meta, prop, type): [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>
+
+- #### Parameters
+
+  * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
+  * ##### prop: string
+  * ##### type: string
+
+  #### Returns [MetadataError](https://mikro-orm.io/api/core/class/MetadataError.md)\<Partial\<any>>

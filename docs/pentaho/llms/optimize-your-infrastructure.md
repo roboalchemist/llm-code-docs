@@ -1,0 +1,31 @@
+# Source: https://docs.pentaho.com/pdia-admin/9.3-administer/optimize-the-pentaho-system/performance-tuning/mondrian-performance-tips/optimize-your-infrastructure.md
+
+# Source: https://docs.pentaho.com/pdia-admin/10.2-admin/optimize-the-pentaho-system/performance-tuning/mondrian-performance-tips/optimize-your-infrastructure.md
+
+# Optimize your infrastructure
+
+The guidelines and advice in this section are specific to changes that you can make with your in-house infrastructure. None of the performance-tuning tips in this section have specifically to do with modifying Pentaho software. Before you get to the point where you can confidently tune the Analysis engine and Pentaho Analyzer, you must ensure that everything on your side of the equation is properly optimized.
+
+## Redesign your data warehouse
+
+**Note:** The advice in this section applies to building and optimizing data warehouses in general and is not specific to Analyzer. However, since poor data warehouse design is so frequently a significant source of performance loss for Pentaho Analyzer, it is listed in this section.
+
+A data warehouse exists to consolidate and partition transactional data into one streamlined, organized, canonical source for reporting and analysis. Some guidelines to follow in data warehouse design are:
+
+* Be open to modifying the original design to meet adjusted requirements from business users (iterative design).
+* Remove data that is not actually used by business users.
+* Optimize for the right purpose. There are basically two use cases to consider: analysis (slice/dice/pivot) and static reporting. You could also use a data warehouse to cleanse and consolidate transactional data for data mining, but this model would almost certainly be inappropriate for analysis or reporting.
+* Avoid creating high-cardinality dimensions (putting too many records into fact tables). High-cardinality dimensions will never perform well.
+* If there is a lot of unrelated information in your data warehouse, consider breaking it up into more topic-specific data marts.
+* Create indexes for large fact tables.
+* Create aggregate tables for frequently-computed views.
+
+## Switch to analytic database
+
+Some databases are better than others for data warehouses and standalone data marts. Databases that are designed for query speed -- not insert speed -- are optimal for storing data for analysis. For this reason, such databases are often referred to as analytic databases. Examples include Netezza, InfoBright, Teradata, and Greenplum, though Pentaho does not specifically endorse or recommend any specific analytic database.
+
+If you are not currently using an analytic database as your ROLAP data source, and you are experiencing poor query performance, then switching to an analytic database should be among your first considerations for improving Pentaho Analyzer performance.
+
+## Query optimization
+
+Indexing is a major factor in query performance, and is one valid way of solving the high-cardinality dimension problem without redesigning the data warehouse. Have your database administrator review your database configuration and ensure that large dimensions and measures are properly indexed.

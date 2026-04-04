@@ -1,0 +1,8 @@
+name: msw-(mock-service-worker)
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:34Z"
+description: >
+  msw-(mock-service-worker) documentation
+quality_score: 0

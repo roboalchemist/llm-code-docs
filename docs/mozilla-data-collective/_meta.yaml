@@ -1,0 +1,9 @@
+name: mozilla-data-collective
+primary_source: llms
+sources:
+  - type: llms
+    url: https://datacollective.mozillafoundation.org/
+    last_fetched: "2026-04-03T23:09:33Z"
+description: >
+  mozilla-data-collective documentation
+quality_score: 0

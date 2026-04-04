@@ -1,0 +1,69 @@
+# Source: https://ngrok.com/docs/integrations/cli-credentials/1password.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# How to secure your ngrok CLI credentials with 1Password
+
+> Use the 1Password CLI and ngrok shell extension to store authtokens and switch credentials at runtime.
+
+This guide walks you through setting up the 1Password CLI with the ngrok shell extension to store and access your ngrok credentials via 1Password.
+This combination gives you the speed and simplicity of ngrok protected by the power of 1Password's vault.
+
+By integrating ngrok with 1Password, you can:
+
+* Store your credentials in one place and avoid outdated tokens across environments after a reset
+* Share credentials between environments securely without copy-pasting or reusing them across projects
+* Switch between credentials at runtime to test different ngrok configurations, feature sets, or accounts
+
+## What you'll need
+
+* A 1Password account.
+* [1Password desktop app](https://support.1password.com/get-the-apps/) (v8 or later) and [1Password CLI](https://app-updates.agilebits.com/product_history/CLI2) (v2.14.0 or later) installed on your machine.
+* [ngrok](https://download.ngrok.com) installed on your machine.
+* Basic familiarity with the command line.
+
+<Tip>
+  One of the easiest mistakes is failing to connect the app to the CLI.
+  In the 1Password app, go to **Settings** > **Developer** and select **Connect with the 1Password CLI**.
+</Tip>
+
+## 1. Initialize the 1Password ngrok shell plugin
+
+To configure the ngrok shell extension, open a terminal and run this command:
+
+```bash  theme={null}
+op plugin init ngrok
+```
+
+If you're logged into the 1Password app, you'll be presented with a permission request.
+Otherwise you'll need to authenticate first, then you'll see the request.
+Select **Allow Access** and you'll see a command line option.
+
+For initialization, select **Import into 1Password**, copy and paste your ngrok authtoken into the command line, and press **Enter**.
+Next, give it a memorable name.
+Finally, choose when you want to use it.
+
+## 2. Clean up your ngrok.yml file
+
+Now that your credentials are in your 1Password vault, you can remove them from your local environment.
+Use your text editor to update `.ngrok2/ngrok.yml` and remove the authtoken value:
+
+```bash  theme={null}
+vim .ngrok2/ngrok.yml
+```
+
+You can delete the entire authtoken line, or to test safely, prefix the line with a pound sign (`#`).
+Either way, ngrok will no longer find and use that value.
+
+## 3. Start your tunnel
+
+Now that the environment is configured, start the tunnel.
+1Password will intercept the request, determine which credential to use, and start a tunnel as requested.
+
+By following this guide, you've integrated the 1Password CLI with ngrok.
+You can securely manage your ngrok credentials and choose between multiple credentials at runtime to demonstrate and test under different configurations.
+
+
+Built with [Mintlify](https://mintlify.com).

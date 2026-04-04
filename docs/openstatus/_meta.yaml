@@ -1,0 +1,9 @@
+name: openstatus
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.openstatus.dev/
+    last_fetched: "2026-04-03T23:10:26Z"
+description: >
+  openstatus documentation
+quality_score: 0

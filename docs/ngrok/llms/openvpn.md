@@ -1,0 +1,49 @@
+# Source: https://ngrok.com/docs/using-ngrok-with/openvpn.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Using ngrok with OpenVPN Connect
+
+> Learn how to tunnel an OpenVPN server through CGNAT using ngrok TCP endpoints on port 443.
+
+This guide explains how to tunnel an OpenVPN server through CGNAT using an ngrok TCP endpoint on port `443`.
+It covers starting the endpoint, downloading your `.ovpn` profile, and updating it to use the ngrok TCP address and port.
+
+For a detailed community walkthrough, see [Tunneling an OpenVPN server out from behind CGNAT](https://forums.openvpn.net/viewtopic.php?p=116476#p116476).
+
+## What you'll need
+
+* An OpenVPN server running behind CGNAT.
+* OpenVPN Connect installed.
+* [ngrok](https://download.ngrok.com) installed.
+* Your [ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
+
+## 1. Start a TCP endpoint on port 443
+
+Open a TCP endpoint to port `443`:
+
+```bash  theme={null}
+ngrok tcp 443
+```
+
+<Warning>
+  TCP endpoints are only available on a free plan after [adding a valid payment method](https://dashboard.ngrok.com/settings#id-verification) to your account.
+</Warning>
+
+## 2. Download your OpenVPN profile
+
+Open the TCP address shown in the ngrok agent output in your browser.
+Download the `.ovpn` profile you use with OpenVPN Connect.
+
+## 3. Update the profile to use the ngrok port
+
+Open the downloaded `.ovpn` file in a text editor.
+Update the profile to use the TCP address and port shown by ngrok instead of `443`.
+
+Import the updated profile into OpenVPN Connect.
+You should be able to connect to your VPN as normal.
+
+
+Built with [Mintlify](https://mintlify.com).

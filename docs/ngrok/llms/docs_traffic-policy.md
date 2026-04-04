@@ -1,0 +1,78 @@
+# Source: https://ngrok.com/docs/traffic-policy/index.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Traffic Policy Overview
+
+> Learn about ngrok's Traffic Policy for authenticating requests, rate limiting traffic, rewriting URLs, and applying security controls.
+
+ngrok's Traffic Policy is a configuration language that offers you the flexibility to filter, match, manage, and orchestrate traffic to your endpoints.
+
+* Validate incoming traffic, block malicious traffic, rewrite URLs, and respond with custom content.
+* Forward traffic to your agents running across the globe and orchestrate traffic across your infrastructure.
+* Add Traffic Policies to any type of ngrok endpoint to scope traffic management for each of your endpoints.
+
+## Concepts
+
+<Columns cols={1}>
+  <Card title="Phases" href="/traffic-policy/concepts/phases" horizontal>
+    Defined points in the lifecycle of a request to your endpoint where you can use Traffic Policy to modify request headers, transform response bodies, and more.
+  </Card>
+
+  <Card title="Phase Rules" href="/traffic-policy/concepts/phase-rules" horizontal>
+    Conditions and actions you configure to filter, manipulate, or manage traffic at specific phases, such as blocking requests from certain IPs or adding authentication headers.
+  </Card>
+
+  <Card title="Expressions" href="/traffic-policy/concepts/expressions" horizontal>
+    Conditions used in Phase Rules to determine when an action should be applied, such as checking if a request header matches a value or if an IP address is in a blocklist.
+  </Card>
+
+  <Card title="Actions" href="/traffic-policy/concepts/actions" horizontal>
+    Operations that execute when a Phase Rule condition is met, such as adding headers, rate limiting requests, or redirecting traffic.
+  </Card>
+
+  <Card title="CEL Interpolation" href="/traffic-policy/concepts/cel-interpolation" horizontal>
+    Dynamically evaluate variables and macros in configuration values, such as inserting request headers into URLs or using timestamps in response headers.
+  </Card>
+</Columns>
+
+## Features
+
+* [Actions](/traffic-policy/actions/) - Transform, redirect, and manage traffic flow with actions like `add-headers`, `rate-limit`, and `jwt-validation`.
+* [Variables](/traffic-policy/variables/) - Filter, segment, and dynamically configure traffic rules and actions based on specific conditions.
+* [Macros](/traffic-policy/macros/) - Apply macros in rule conditions to refine traffic segmentation and configure actions with dynamic precision.
+
+## Use cases
+
+<Columns cols={2}>
+  <Card title="Block unwanted requests" icon="shield" href="/traffic-policy/examples/block-unwanted-requests/">
+    Block malicious traffic, Tor exit nodes, bots, and specific IP addresses
+    from accessing your endpoints.
+  </Card>
+
+  <Card title="Add authentication" icon="key" href="/traffic-policy/examples/add-authentication/">
+    Add JWT validation, OAuth, OIDC, and basic authentication to secure
+    your endpoints.
+  </Card>
+
+  <Card title="Rate limit requests" icon="gauge" href="/traffic-policy/examples/rate-limit-requests/">
+    Rate limit requests based on endpoint, IP address, or API key to
+    protect your services.
+  </Card>
+
+  <Card title="Rewrite URLs" icon="pencil" href="/traffic-policy/examples/url-rewrites/">
+    Rewrite URLs and paths to route traffic to different backend services
+    or endpoints.
+  </Card>
+</Columns>
+
+## What's next?
+
+* Get started by applying a Traffic Policy to your app with the [ngrok agent](/traffic-policy/getting-started/agent-endpoints/cli/).
+* Learn the [key concepts](/traffic-policy/concepts/) that make up a Traffic Policy and how it works.
+* Explore [practical examples](/traffic-policy/examples/) to see Traffic Policies in action.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,9 @@
+name: perplexity
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.perplexity.ai/
+    last_fetched: "2026-04-03T23:10:33Z"
+description: >
+  perplexity documentation
+quality_score: 0
