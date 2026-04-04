@@ -1,0 +1,112 @@
+# Source: https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio/factory-guide.md
+
+# Factory guide
+
+You can access Snyk Studio, including Snyk's MCP server, in Factory to secure code generated with agentic workflows through an LLM. This can be achieved in several ways. When you use it for the first time, the MCP server will ask for trust and trigger authentication if necessary.
+
+## Prerequisites
+
+* [Install Factory](#install-factory)
+* [Install the Snyk CLI](https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli)
+* [Install the Snyk MCP](#install-the-snyk-mcp-server-in-factory)
+
+### Install Factory
+
+Add the Factory extension to your IDE. For more details, see the [Factory official documentation](https://docs.factory.ai/user-guides/factory-bridge/installation-and-usage).
+
+### Install the Snyk MCP Server in Factory
+
+Install the Snyk MCP Server using the method suited to your OS and environment.
+
+#### Install with pre-installed Snyk CLI
+
+Create or edit the MCP configuration file `~/Library/Application Support/Factory Bridge/mcp.json` .
+
+```
+{
+  "mcpServers": { 
+    "Snyk": {
+    "command": "/absolute/path/to/snyk",
+    "args": [
+      "mcp",
+      "-t",
+      "stdio"
+    ],
+    "env": {}
+  }
+}
+}
+```
+
+If the `snyk` command is not available, add it by following the instructions on the [Installing or updating the Snyk CLI](https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli) page.
+
+#### Install with Node.js and `npx`
+
+```
+{
+  "mcpServers": { 
+    "Snyk": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "snyk@latest",
+      "mcp",
+      "-t",
+      "stdio"
+    ],
+    "env": {}
+  }
+}
+}
+```
+
+The following example shows a Snyk MCP Server that was successfully configured and started.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-b55a23c5a2b28bba939556be82f03aa64ad4f0c3%2Fimage%20(409).png?alt=media" alt=""><figcaption></figcaption></figure>
+
+This json file can also be found by clicking on the Factory icon on the top toolbar and then selecting "Open MCP Config File".
+
+### Setting up the Snyk MCP Server <a href="#setting-up-the-snyk-mcp-server" id="setting-up-the-snyk-mcp-server"></a>
+
+The MCP Server attempts to start automatically. The following example shows a Snyk MCP Server that was successfully configured and started.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-4828dd1f6f66f6b31b27d58081e06c8b01e53f88%2Fimage%20(410).png?alt=media" alt=""><figcaption></figcaption></figure>
+
+As a one-time setup, authenticate and trust the current Project directory. If required, the agentic workflow will likely manage this automatically.
+
+If you are already authenticated with the Snyk CLI installed on your system path, or through a prior interaction, then proceed to work with the Snyk MCP Server.
+
+## Examples
+
+### Scanning for security vulnerabilities
+
+In the chat, you can tag specific files or functions and ask Factory to scan your code for safe deployment to production.
+
+{% code title="prompt" overflow="wrap" %}
+
+```
+Scan this directory for code security & dependency vulnerabilities and security issues
+```
+
+{% endcode %}
+
+Factory indicates that this request is related to security vulnerability scanning and calls the Snyk MCP Server for various scans.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-466e0432c06d79b3493f36349259fbcfd4e5ad0a%2Fimage%20(411).png?alt=media" alt=""><figcaption></figcaption></figure>
+
+Factory is then able to gather all the security scanning results, both code (SAST) and dependencies (SCA), and based on recommendations and contextual information provided by the Snyk MCP Server, it is now able to provide code changes that address some or all of the security vulnerabilities that were found:
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-0ef7bec60c9ade4494710c25027a99e40d9d19df%2Fimage%20(412).png?alt=media" alt=""><figcaption></figcaption></figure>
+
+### "Secure at inception" rules <a href="#secure-at-inception-rules" id="secure-at-inception-rules"></a>
+
+To practice [Secure at Inception](https://docs.snyk.io/discover-snyk/getting-started/glossary#secure-at-inception), Snyk recommends adopting rules that align the LLM for secure code generation and workflows.
+
+The following is a suggested instruction for [creating memories with Factory](https://docs.factory.ai/user-guides/memory/understanding-memory#adding-new-facts):
+
+```
+- Always run **snyk_code_scan** tool for new first party code that is generated in a Snyk-supported language.
+- If any security issues are found based on newly introduced or modified code or dependencies, attempt to fix the issues using the results context from **Snyk**.
+- Rescan the code after fixing the issues to ensure that the issues were fixed and that there are no newly introduced issues.
+- Repeat this process until no new issues are found.
+```

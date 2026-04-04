@@ -1,0 +1,66 @@
+# Source: https://docs.startree.ai/thirdeye/operators/post-processor/events.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://docs.startree.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# EVENTS
+
+Adds an `EVENT` label to anomalies that happen during an event. Events are provided by an [eventFetcher](/thirdeye/operators/event-fetcher). Used to filter anomalies that happen on holidays.
+
+## Inputs
+
+The info source is the output of the detector. Labels are applied to the anomalies of this input.
+
+```json  theme={null}
+{
+  "sourcePlanNode": "anomalyDetector"
+}
+```
+
+The output of an [eventFetcher](/thirdeye/operators/event-fetcher). It contains the events to use for labelling.
+
+```json  theme={null}
+{
+  "targetProperty": "current_events",
+  "sourcePlanNode": "eventsDataFetcher",
+  "sourceProperty": "events"
+}
+```
+
+## Parameters
+
+| name                            | description                                                                                                                                                                                                                                                        | default value     |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- |
+| `component.beforeHolidayMargin` | A period in ISO-8601 format that corresponds to a period that is also impacted by the event. Eg if beforeEventMargin is P1D, if event happens on \[Dec 24 0:00, Dec 25 0:00\[, the label will be applied to anomalies happening on \[Dec 23 0:00 and Dec 25 0:00\[ | `P0D` (no margin) |
+| `component.afterHolidayMargin`  | Same as `beforeHolidayMargin` at the end of the event.                                                                                                                                                                                                             | `P0D` (no margin) |
+
+## Example
+
+```json  theme={null}
+{
+  "name": "root",
+  "type": "PostProcessor",
+  "params": {
+    "type": "EVENT",
+    "component.ignore": "true",
+    "component.beforeHolidayMargin": "PT4H",
+    "component.afterHolidayMargin": "PT4H"
+  },
+  "inputs": [
+    {
+      "sourcePlanNode": "anomalyDetector"
+    },
+    {
+      "targetProperty": "current_events",
+      "sourcePlanNode": "eventsDataFetcher",
+      "sourceProperty": "events"
+    }
+  ]
+}
+```
+
+[iso-8601](https://en.wikipedia.org/wiki/ISO_8601#Durations)
+
+Built with [Mintlify](https://mintlify.com).

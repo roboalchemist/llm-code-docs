@@ -1,0 +1,14 @@
+# Source: https://docs.syncfusion.com/maui/liquid-glass-ui/glassy-controls.md
+
+# Liquid glass integration with SyncfusionÂ® .NET MAUI controls
+
+The **Liquid Glass visual effect** brings a modern, frosted-glass aesthetic to your .NET MAUI applications, adding depth and elegance to your UI. SyncfusionÂ® controls make it easy to enable and customize this effect, ensuring clarity, accessibility, and smooth performance across platforms.
+ 
+For detailed usage guidelines, customization options, and code examples, refer to the documentation for each control:
+ 
+* [SfImageEditor](https://help.syncfusion.com/maui/imageeditor/liquid-glass-effect)
+* [SfKanban](https://help.syncfusion.com/maui/kanban-board/liquid-glass-effect)
+* [SfLinearProgressBar](https://help.syncfusion.com/maui/linearprogressbar/liquid-glass-effect)
+* [SfStepProgressBar](https://help.syncfusion.com/maui/stepprogressbar/liquid-glass-effect)
+ 
+N> View sample in [GitHub](https://github.com/syncfusion/maui-demos).

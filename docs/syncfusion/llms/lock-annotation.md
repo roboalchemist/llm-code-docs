@@ -1,0 +1,42 @@
+# Source: https://docs.syncfusion.com/document-processing/pdf/pdf-viewer/react/how-to/lock-annotation.md
+
+# Lock annotation in React Pdfviewer component
+
+The PDF Viewer supports locking annotations to prevent users from moving, resizing, or removing them. Locking can be applied via annotation settings or by handling viewer events and updating annotation metadata.
+
+**Step 1:** Follow the steps provided in the [link](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/react/getting-started/) to create simple PDF Viewer sample in React.
+
+**Step 2:** Add the following code snippet to lock the rectangle or square annotations.
+
+{% tabs %}
+{% highlight js tabtitle="Standalone" %}
+{% raw %}
+
+     <PdfViewerComponent
+      id="container"
+       documentPath="https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf"
+       resourceUrl="https://cdn.syncfusion.com/ej2/31.2.2/dist/ej2-pdfviewer-lib"
+      // lock annotation
+      rectangleSettings={{ isLock: true }}
+      style={{ height: '640px' }}>
+      </PdfViewerComponent>
+
+{% endraw %}
+{% endhighlight %}
+{% highlight js tabtitle="Server-Backed" %}
+{% raw %}
+
+     <PdfViewerComponent
+      id="container"
+       documentPath="https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf"
+       serviceUrl="https://document.syncfusion.com/web-services/pdf-viewer/api/pdfviewer"
+      // lock annotation
+      rectangleSettings={{ isLock: true }}
+      style={{ height: '640px' }}>
+      </PdfViewerComponent>
+
+{% endraw %}
+{% endhighlight %}
+{% endtabs %}
+
+Find the Sample [how to lock square or rectangle annotations](https://stackblitz.com/edit/react-yxp8kz?file=src%2Findex.js)

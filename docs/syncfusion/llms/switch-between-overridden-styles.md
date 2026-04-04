@@ -1,0 +1,98 @@
+# Source: https://docs.syncfusion.com/wpf/classic/skin-storage/how-to/switch-between-overridden-styles.md
+
+# Switch between Overridden Styles in WPF SkinStorage (Classic)
+
+Switching between the overridden styles should be done manually. The overridden styles should be merged into the Resource Dictionary. 
+
+The following steps explain how to switch between the overridden styles.
+
+1. Add the corresponding Resource Dictionaries in the sample.
+
+{% capture codesnippet1 %}
+{% tabs %}
+{% highlight xaml %}
+
+<ResourceDictionary>
+<ResourceDictionary.MergedDictionaries>
+<ResourceDictionary Source="/Syncfusion.Shared.WPF;Component/Controls/Calendar/themes/ShinyRedStyle.xaml"/>
+<ResourceDictionary Source="/Syncfusion.Shared.WPF;Component/Controls/Calendar/themes/BlendStyle.xaml"/>
+</ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
+
+{% endhighlight %}
+{% endtabs %}
+{% endcapture %}
+{{ codesnippet1 | OrderList_Indent_Level_1 }}
+
+2. Define the new styles using the BasedOn property. 
+
+
+
+   The following code snippet explains how to override the Syncfusion style for the Calendar Control.
+
+{% capture codesnippet2 %}
+{% tabs %}
+{% highlight xaml %}
+
+<Grid Name="grid">
+<Grid.Resources>
+<Style x:Key="ShinyRedStyle" TargetType="syncfusion:CalendarEdit" BasedOn="{StaticResource ShinyRedCalendarEditStyle}" >
+<Setter Property="Background" Value="PaleGoldenRod"/>
+</Style>
+<Style x:Key="BlendStyle" TargetType="syncfusion:CalendarEdit" BasedOn="{StaticResource BlendCalendarEditStyle}" >
+<Setter Property=" Background" Value="Green"/>
+</Style>
+</Grid.Resources>
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="*"/>
+<ColumnDefinition Width="*"/>
+</Grid.ColumnDefinitions>
+<ComboBox Name="themecombobox" Grid.Column="0" SelectionChanged="ComboBox_SelectionChanged">
+<ComboBoxItem>ShinyRed</ComboBoxItem>
+<ComboBoxItem>Blend</ComboBoxItem>
+</ComboBox>
+<syncfusion:CalendarEdit Name="calendar" Grid.Column="1"></syncfusion:CalendarEdit>        
+</Grid>
+
+{% endhighlight %}
+{% endtabs %}
+{% endcapture %}
+{{ codesnippet2 | OrderList_Indent_Level_1 }}
+
+3. On ComboBox SelectionChanged event, particular overridden style should be set to the control depending on the current visual style. 
+
+   The following code snippet explains how to set the overridden styles to the controls.
+
+{% capture codesnippet3 %}
+{% tabs %}
+{% highlight xaml %}
+
+Private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+	if (themecombobox.SelectedIndex == 0)
+	{
+    	SkinStorage.SetVisualStyle(this, "ShinyRed");
+		System.Windows.Style style = grid.Resources["ShinyRedStyle"] as Style;
+		calendar.Style = style;
+	}
+	else
+	{
+		SkinStorage.SetVisualStyle(this, "Blend");
+		System.Windows.Style style = grid.Resources["BlendStyle"] as Style;
+		calendar.Style = style;
+	}
+}
+
+{% endhighlight %}
+{% endtabs %}
+{% endcapture %}
+{{ codesnippet3 | OrderList_Indent_Level_1 }}
+
+The output is displayed as shown below.
+
+![Switch between overriden styles](Switch-between-Overridden-Styles_images/Switch-between-Overridden-Styles_img1.png)
+
+
+
+
+

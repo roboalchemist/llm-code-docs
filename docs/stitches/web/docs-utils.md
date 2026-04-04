@@ -1,0 +1,64 @@
+# Source: https://stitches.dev/docs/utils
+
+Title: Utils — Stitches
+
+URL Source: https://stitches.dev/docs/utils
+
+Markdown Content:
+Create custom utils for a smoother developer experience.
+
+Create your own CSS properties in the `utils` object. Add as many utils as you need. Below are a few examples:
+
+```
+export const { styled, css } = createStitches({
+  utils: {
+// Abbreviated margin properties
+m: (value) => ({
+      margin: value,
+}),
+mt: (value) => ({
+      marginTop: value,
+}),
+mr: (value) => ({
+      marginRight: value,
+}),
+mb: (value) => ({
+      marginBottom: value,
+}),
+ml: (value) => ({
+      marginLeft: value,
+}),
+mx: (value) => ({
+      marginLeft: value,
+      marginRight: value,
+}),
+my: (value) => ({
+      marginTop: value,
+      marginBottom: value,
+}),
+// A property for applying width/height together
+size: (value) => ({
+      width: value,
+      height: value,
+}),
+// A property to apply linear gradient
+linearGradient: (value) => ({
+      backgroundImage: `linear-gradient(${value})`,
+}),
+// An abbreviated property for border-radius
+br: (value) => ({
+      borderRadius: value,
+}),
+},
+});
+```
+
+`value` will be the value passed in via the CSS property.
+
+```
+const Box = styled('div', {
+  size: '200px',
+  linearGradient: '19deg, #21D4FD 0%, #B721FF 100%',
+  br: '$round',
+});
+```

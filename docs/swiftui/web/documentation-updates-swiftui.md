@@ -1,8 +1,8 @@
-# Source: https://developer.apple.com/documentation/updates/swiftui
+# Source: https://developer.apple.com/documentation/Updates/SwiftUI
 
 Title: SwiftUI updates | Apple Developer Documentation
 
-URL Source: https://developer.apple.com/documentation/updates/swiftui
+URL Source: https://developer.apple.com/documentation/Updates/SwiftUI
 
 Markdown Content:
 [Overview](https://developer.apple.com/documentation/updates/swiftui#Overview)

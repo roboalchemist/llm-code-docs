@@ -1,0 +1,8 @@
+name: swift-argument-parser
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:11:07Z"
+description: >
+  swift-argument-parser documentation
+quality_score: 0

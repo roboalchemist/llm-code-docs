@@ -1,14 +1,14 @@
-# Source: https://developer.apple.com/documentation/swiftdata
+# Source: https://developer.apple.com/documentation/SwiftData
 
 Title: SwiftData | Apple Developer Documentation
 
-URL Source: https://developer.apple.com/documentation/swiftdata
+URL Source: https://developer.apple.com/documentation/SwiftData
 
 Markdown Content:
 SwiftData | Apple Developer Documentation
 ===============
 
-[Skip Navigation](https://developer.apple.com/documentation/swiftdata#app-main)
+[Skip Navigation](https://developer.apple.com/documentation/SwiftData#app-main)
 
 *   [Apple Developer](https://developer.apple.com/)
 *   
@@ -173,11 +173,11 @@ Quick Links
 
 [Documentation](https://developer.apple.com/documentation)
 
-[Open Menu](https://developer.apple.com/documentation/swiftdata#)
+[Open Menu](https://developer.apple.com/documentation/SwiftData#)
 
 *   Language:  Swift 
 
-[](https://developer.apple.com/documentation/swiftdata#)
+[](https://developer.apple.com/documentation/SwiftData#)
 
  All Technologies 
 
@@ -198,127 +198,27 @@ Quick Links
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 1 of 56 symbols inside <root>
-### Essentials
+ 37 of 56 symbols inside <root>[Building a document-based app using SwiftData](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 2 of 56 symbols inside <root>[Preserving your app’s model data across launches](https://developer.apple.com/documentation/swiftdata/preserving-your-apps-model-data-across-launches)
+36 of 56 symbols inside <root> containing 8 symbols[HistoryProviding](https://developer.apple.com/documentation/swiftdata/historyproviding)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 3 of 56 symbols inside <root>[Adding and editing persistent data in your app](https://developer.apple.com/documentation/swiftdata/adding-and-editing-persistent-data-in-your-app)
+35 of 56 symbols inside <root> containing 3 symbols[DataStoreBatching](https://developer.apple.com/documentation/swiftdata/datastorebatching)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 4 of 56 symbols inside <root>[Adopting SwiftData for a Core Data app](https://developer.apple.com/documentation/coredata/adopting-swiftdata-for-a-core-data-app)
+34 of 56 symbols inside <root> containing 28 symbols[DataStore](https://developer.apple.com/documentation/swiftdata/datastore)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 5 of 56 symbols inside <root>[SwiftData updates](https://developer.apple.com/documentation/updates/swiftdata)
+33 of 56 symbols inside <root> containing 6 symbols[DefaultStore](https://developer.apple.com/documentation/swiftdata/defaultstore)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 6 of 56 symbols inside <root>[Adopting inheritance in SwiftData](https://developer.apple.com/documentation/swiftdata/adopting-inheritance-in-swiftdata)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 7 of 56 symbols inside <root>
-### Model definition
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 8 of 56 symbols inside <root>[macro Model()](https://developer.apple.com/documentation/swiftdata/model())
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 9 of 56 symbols inside <root>[macro Attribute(Schema.Attribute.Option..., originalName: String?, hashModifier: String?)](https://developer.apple.com/documentation/swiftdata/attribute(_:originalname:hashmodifier:))
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 10 of 56 symbols inside <root>[macro Unique<T>([PartialKeyPath<T>]...)](https://developer.apple.com/documentation/swiftdata/unique(_:))
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 11 of 56 symbols inside <root>[macro Index<T>([PartialKeyPath<T>]...)](https://developer.apple.com/documentation/swiftdata/index(_:)-74ia2)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 12 of 56 symbols inside <root>[macro Index<T>(Schema.Index<T>.Types<T>...)](https://developer.apple.com/documentation/swiftdata/index(_:)-7d4z0)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 13 of 56 symbols inside <root>[Defining data relationships with enumerations and model classes](https://developer.apple.com/documentation/swiftdata/defining-data-relationships-with-enumerations-and-model-classes)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 14 of 56 symbols inside <root>[macro Relationship(Schema.Relationship.Option..., deleteRule: Schema.Relationship.DeleteRule, minimumModelCount: Int?, maximumModelCount: Int?, originalName: String?, inverse: AnyKeyPath?, hashModifier: String?)](https://developer.apple.com/documentation/swiftdata/relationship(_:deleterule:minimummodelcount:maximummodelcount:originalname:inverse:hashmodifier:))
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 15 of 56 symbols inside <root>[macro Transient()](https://developer.apple.com/documentation/swiftdata/transient())
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 16 of 56 symbols inside <root>
-### Model life cycle
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
-17 of 56 symbols inside <root> containing 21 symbols[ModelContainer](https://developer.apple.com/documentation/swiftdata/modelcontainer)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
-18 of 56 symbols inside <root> containing 47 symbols[ModelContext](https://developer.apple.com/documentation/swiftdata/modelcontext)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 19 of 56 symbols inside <root>[Fetching and filtering time-based model changes](https://developer.apple.com/documentation/swiftdata/fetching-and-filtering-time-based-model-changes)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
-20 of 56 symbols inside <root> containing 7 symbols[HistoryDescriptor](https://developer.apple.com/documentation/swiftdata/historydescriptor)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 21 of 56 symbols inside <root>[Deleting persistent data from your app](https://developer.apple.com/documentation/swiftdata/deleting-persistent-data-from-your-app)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 22 of 56 symbols inside <root>[Reverting data changes using the undo manager](https://developer.apple.com/documentation/swiftdata/reverting-data-changes-using-the-undo-manager)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 23 of 56 symbols inside <root>[Syncing model data across a person’s devices](https://developer.apple.com/documentation/swiftdata/syncing-model-data-across-a-persons-devices)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
-24 of 56 symbols inside <root> containing 7 symbols[Concurrency support](https://developer.apple.com/documentation/swiftdata/concurrencysupport)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 25 of 56 symbols inside <root>
-### Model fetch
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 26 of 56 symbols inside <root>[Filtering and sorting persistent data](https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
- 27 of 56 symbols inside <root>[macro Query()](https://developer.apple.com/documentation/swiftdata/query())
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
-28 of 56 symbols inside <root> containing 13 symbols[Additional query macros](https://developer.apple.com/documentation/swiftdata/additionalquerymacros)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
-29 of 56 symbols inside <root> containing 14 symbols[Query](https://developer.apple.com/documentation/swiftdata/query)
-
- To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
-
-30 of 56 symbols inside <root> containing 13 symbols[FetchDescriptor](https://developer.apple.com/documentation/swiftdata/fetchdescriptor)
+ 32 of 56 symbols inside <root>[Maintaining a local copy of server data](https://developer.apple.com/documentation/swiftdata/maintaining-a-local-copy-of-server-data)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
@@ -327,27 +227,127 @@ Quick Links
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 32 of 56 symbols inside <root>[Maintaining a local copy of server data](https://developer.apple.com/documentation/swiftdata/maintaining-a-local-copy-of-server-data)
+30 of 56 symbols inside <root> containing 13 symbols[FetchDescriptor](https://developer.apple.com/documentation/swiftdata/fetchdescriptor)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
-33 of 56 symbols inside <root> containing 6 symbols[DefaultStore](https://developer.apple.com/documentation/swiftdata/defaultstore)
+29 of 56 symbols inside <root> containing 14 symbols[Query](https://developer.apple.com/documentation/swiftdata/query)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
-34 of 56 symbols inside <root> containing 28 symbols[DataStore](https://developer.apple.com/documentation/swiftdata/datastore)
+28 of 56 symbols inside <root> containing 13 symbols[Additional query macros](https://developer.apple.com/documentation/swiftdata/additionalquerymacros)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
-35 of 56 symbols inside <root> containing 3 symbols[DataStoreBatching](https://developer.apple.com/documentation/swiftdata/datastorebatching)
+ 27 of 56 symbols inside <root>[macro Query()](https://developer.apple.com/documentation/swiftdata/query())
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
-36 of 56 symbols inside <root> containing 8 symbols[HistoryProviding](https://developer.apple.com/documentation/swiftdata/historyproviding)
+ 26 of 56 symbols inside <root>[Filtering and sorting persistent data](https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data)
 
  To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
 
- 37 of 56 symbols inside <root>[Building a document-based app using SwiftData](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata)
+ 25 of 56 symbols inside <root>
+### Model fetch
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+24 of 56 symbols inside <root> containing 7 symbols[Concurrency support](https://developer.apple.com/documentation/swiftdata/concurrencysupport)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 23 of 56 symbols inside <root>[Syncing model data across a person’s devices](https://developer.apple.com/documentation/swiftdata/syncing-model-data-across-a-persons-devices)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 22 of 56 symbols inside <root>[Reverting data changes using the undo manager](https://developer.apple.com/documentation/swiftdata/reverting-data-changes-using-the-undo-manager)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 21 of 56 symbols inside <root>[Deleting persistent data from your app](https://developer.apple.com/documentation/swiftdata/deleting-persistent-data-from-your-app)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+20 of 56 symbols inside <root> containing 7 symbols[HistoryDescriptor](https://developer.apple.com/documentation/swiftdata/historydescriptor)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 19 of 56 symbols inside <root>[Fetching and filtering time-based model changes](https://developer.apple.com/documentation/swiftdata/fetching-and-filtering-time-based-model-changes)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+18 of 56 symbols inside <root> containing 47 symbols[ModelContext](https://developer.apple.com/documentation/swiftdata/modelcontext)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+17 of 56 symbols inside <root> containing 21 symbols[ModelContainer](https://developer.apple.com/documentation/swiftdata/modelcontainer)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 16 of 56 symbols inside <root>
+### Model life cycle
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 15 of 56 symbols inside <root>[macro Transient()](https://developer.apple.com/documentation/swiftdata/transient())
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 14 of 56 symbols inside <root>[macro Relationship(Schema.Relationship.Option..., deleteRule: Schema.Relationship.DeleteRule, minimumModelCount: Int?, maximumModelCount: Int?, originalName: String?, inverse: AnyKeyPath?, hashModifier: String?)](https://developer.apple.com/documentation/swiftdata/relationship(_:deleterule:minimummodelcount:maximummodelcount:originalname:inverse:hashmodifier:))
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 13 of 56 symbols inside <root>[Defining data relationships with enumerations and model classes](https://developer.apple.com/documentation/swiftdata/defining-data-relationships-with-enumerations-and-model-classes)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 12 of 56 symbols inside <root>[macro Index<T>(Schema.Index<T>.Types<T>...)](https://developer.apple.com/documentation/swiftdata/index(_:)-7d4z0)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 11 of 56 symbols inside <root>[macro Index<T>([PartialKeyPath<T>]...)](https://developer.apple.com/documentation/swiftdata/index(_:)-74ia2)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 10 of 56 symbols inside <root>[macro Unique<T>([PartialKeyPath<T>]...)](https://developer.apple.com/documentation/swiftdata/unique(_:))
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 9 of 56 symbols inside <root>[macro Attribute(Schema.Attribute.Option..., originalName: String?, hashModifier: String?)](https://developer.apple.com/documentation/swiftdata/attribute(_:originalname:hashmodifier:))
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 8 of 56 symbols inside <root>[macro Model()](https://developer.apple.com/documentation/swiftdata/model())
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 7 of 56 symbols inside <root>
+### Model definition
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 6 of 56 symbols inside <root>[Adopting inheritance in SwiftData](https://developer.apple.com/documentation/swiftdata/adopting-inheritance-in-swiftdata)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 5 of 56 symbols inside <root>[SwiftData updates](https://developer.apple.com/documentation/updates/swiftdata)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 4 of 56 symbols inside <root>[Adopting SwiftData for a Core Data app](https://developer.apple.com/documentation/coredata/adopting-swiftdata-for-a-core-data-app)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 3 of 56 symbols inside <root>[Adding and editing persistent data in your app](https://developer.apple.com/documentation/swiftdata/adding-and-editing-persistent-data-in-your-app)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 2 of 56 symbols inside <root>[Preserving your app’s model data across launches](https://developer.apple.com/documentation/swiftdata/preserving-your-apps-model-data-across-launches)
+
+ To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow 
+
+ 1 of 56 symbols inside <root>
+### Essentials
 
  56 items were found. Tab back to navigate through them. 
 

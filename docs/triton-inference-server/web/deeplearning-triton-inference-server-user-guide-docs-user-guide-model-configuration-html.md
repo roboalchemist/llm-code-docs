@@ -1,0 +1,805 @@
+# Source: https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html
+
+Title: Model Configuration — NVIDIA Triton Inference Server
+
+URL Source: https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html
+
+Published Time: Sat, 28 Feb 2026 01:07:52 GMT
+
+Markdown Content:
+Model Configuration — NVIDIA Triton Inference Server
+===============
+
+[Skip to main content](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#main-content)
+
+Back to top- [x] - [x] 
+
+Ctrl+K
+
+[![Image 1: NVIDIA Triton Inference Server - Home](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_static/nvidia-logo-horiz-rgb-blk-for-screen.svg) NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/contents.html)
+
+*   [GitHub](https://github.com/triton-inference-server/server "GitHub")
+
+[![Image 2: NVIDIA Triton Inference Server - Home](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_static/nvidia-logo-horiz-rgb-blk-for-screen.svg) NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/contents.html)
+
+*   [GitHub](https://github.com/triton-inference-server/server "GitHub")
+
+Table of Contents
+
+*   [Home](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/introduction/index.html)
+*   [Release notes](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/introduction/release_notes.html)
+*   [Compatibility matrix](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/introduction/compatibility.html)
+
+Getting Started
+
+*   [Quick Deployment Guide by backend](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quick_deployment.html)
+
+    *   [Quickstart](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html)
+    *   [TRT-LLM](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/llm.html)
+    *   [vLLM](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Popular_Models_Guide/Llama2/vllm_guide.html)
+    *   [Python with HuggingFace](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Quick_Deploy/HuggingFaceTransformers/README.html)
+    *   [PyTorch](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Quick_Deploy/PyTorch/README.html)
+    *   [ONNX](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Quick_Deploy/ONNX/README.html)
+    *   [Openvino](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Quick_Deploy/OpenVINO/README.html)
+
+*   [LLM With TensorRT-LLM](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/trtllm_user_guide.html)
+*   [Multimodal model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Popular_Models_Guide/Llava1.5/llava_trtllm_guide.html)
+*   [Stable diffusion](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Popular_Models_Guide/StableDiffusion/README.html)
+
+Scaling guide
+
+*   [Multi-Node (AWS)](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Deployment/Kubernetes/EKS_Multinode_Triton_TRTLLM/README.html)
+*   [Multi-Instance](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Deployment/Kubernetes/TensorRT-LLM_Autoscaling_and_Load_Balancing/README.html)
+
+LLM Features
+
+*   [Constrained Decoding](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Feature_Guide/Constrained_Decoding/README.html)
+*   [Function Calling](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Feature_Guide/Function_Calling/README.html)
+*   [Speculative Decoding](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/llm_features/speculative_decoding.html)
+
+    *   [Overview](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Feature_Guide/Speculative_Decoding/README.html)
+    *   [TRT-LLM](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Feature_Guide/Speculative_Decoding/TRT-LLM/README.html)
+    *   [vLLM](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Feature_Guide/Speculative_Decoding/vLLM/README.html)
+
+Client
+
+*   [API Reference](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_guide/api_reference.html)
+
+    *   [OpenAI API](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_guide/openai_readme.html)
+    *   [KServe API](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_guide/kserve.html)
+
+        *   [HTTP/REST and GRPC Protocol](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/inference_protocols.html)
+        *   [Extensions](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_guide/kserve_extension.html)
+
+            *   [Binary tensor data extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_binary_data.html)
+            *   [Classification extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_classification.html)
+            *   [Schedule policy extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_schedule_policy.html)
+            *   [Sequence extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_sequence.html)
+            *   [Shared-memory extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_shared_memory.html)
+            *   [Model configuration extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_model_configuration.html)
+            *   [Model repository extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_model_repository.html)
+            *   [Statistics extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_statistics.html)
+            *   [Trace extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_trace.html)
+            *   [Logging extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_logging.html)
+            *   [Parameters extension](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_parameters.html)
+
+*   [In-Process Triton Server API](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_guide/in_process.html)
+
+    *   [C/C++](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/inprocess_c_api.html)
+    *   [Python](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_guide/python.html)
+
+        *   [Overview](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Triton_Inference_Server_Python_API/README.html)
+        *   [Kafka I/O](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Triton_Inference_Server_Python_API/examples/kafka-io/README.html)
+        *   [Rayserve](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Triton_Inference_Server_Python_API/examples/rayserve/README.html)
+
+    *   [Java](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/inprocess_java_api.html)
+
+*   [Client Libraries](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client/README.html)
+*   [Python tritonclient Package API](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient_api.html)
+
+    *   [tritonclient](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.html)
+
+        *   [tritonclient.grpc](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.grpc.html)
+
+            *   [tritonclient.grpc.aio](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.grpc.aio.html)
+            *   [tritonclient.grpc.auth](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.grpc.auth.html)
+
+        *   [tritonclient.http](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.http.html)
+
+            *   [tritonclient.http.aio](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.http.aio.html)
+            *   [tritonclient.http.auth](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.http.auth.html)
+
+        *   [tritonclient.utils](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.utils.html)
+
+            *   [tritonclient.utils.cuda_shared_memory](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.utils.cuda_shared_memory.html)
+            *   [tritonclient.utils.shared_memory](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_reference/tritonclient/tritonclient.utils.shared_memory.html)
+
+Server
+
+*   [Concurrent Model Execution](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_execution.html)
+*   [Scheduler](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/scheduler.html)
+*   [Batcher](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html)
+*   [Model Pipelines](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/server_guide/model_pipelines.html)
+
+    *   [Ensemble](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/ensemble_models.html)
+    *   [Business Logic Scripting](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/bls.html)
+
+*   [State Management](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/server_guide/state_management.html)
+
+    *   [Implicit State Management](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/implicit_state_management.html)
+
+*   [Request Cancellation](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/request_cancellation.html)
+*   [Rate Limiter](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/rate_limiter.html)
+*   [Caching](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/response_cache.html)
+*   [Metrics](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/metrics.html)
+*   [Tracing](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/trace.html)
+
+Model Management
+
+*   [Repository](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html)
+*   [Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#)
+*   [Optimization](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/optimization.html)
+*   [Controls](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_management.html)
+*   [Decoupled models](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/decoupled_models.html)
+*   [Custom operators](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/custom_operations.html)
+
+Backends
+
+*   [TensorRT-LLM](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tensorrtllm_backend/README.html)
+*   [vLLM](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/backend_guide/vllm.html)
+
+    *   [vLLM Backend](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/vllm_backend/README.html)
+    *   [Multi-LoRA](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/vllm_backend/docs/llama_multi_lora_tutorial.html)
+
+*   [Python Backend](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/python_backend/README.html)
+*   [PyTorch](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/pytorch_backend/README.html)
+*   [ONNX Runtime](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/onnxruntime_backend/README.html)
+*   [TensorRT](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tensorrt_backend/README.html)
+*   [FIL](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/fil_backend/README.html)
+*   [DALI](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/dali_backend/README.html)
+*   [Custom](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/backend/README.html)
+
+Performance benchmarking and tuning
+
+*   [GenAI Perf Analyzer](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_benchmark/genai_perf.html)
+
+    *   [Overview](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/README.html)
+    *   [Large language models](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/docs/tutorial.html)
+    *   [Visual language models](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/docs/multi_modal.html)
+    *   [Embedding models](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/docs/embeddings.html)
+    *   [Ranking models](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/docs/rankings.html)
+    *   [Multiple LoRA adapters](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/docs/lora.html)
+
+*   [Performance Analyzer](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_benchmark/perf_analyzer.html)
+
+    *   [Triton Performance Analyzer](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/README.html)
+    *   [Documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/README.html)
+    *   [Quick Start](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/quick_start.html)
+    *   [Recommended Installation Method](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/install.html)
+    *   [CLI Reference](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/cli.html)
+    *   [Inference Load Modes](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/inference_load_modes.html)
+    *   [Input Data](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/input_data.html)
+    *   [Measurement Modes](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/measurements_metrics.html)
+    *   [Benchmarking Triton via HTTP or gRPC endpoint](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/docs/benchmarking.html)
+
+*   [Model Analyzer](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_benchmark/model_analyzer.html)
+
+    *   [Triton Model Analyzer](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/README.html)
+    *   [Documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/README.html)
+    *   [Quick Start](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/quick_start.html)
+    *   [Recommended Installation Method](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/install.html)
+    *   [CLI Reference](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/cli.html)
+    *   [Launch Modes](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/launch_modes.html)
+    *   [Table of Contents](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/config.html)
+    *   [Table of Contents](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/config_search.html)
+    *   [Metrics](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/metrics.html)
+    *   [Checkpointing](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/checkpoints.html)
+    *   [Reports](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/report.html)
+    *   [Kubernetes](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/kubernetes_deploy.html)
+    *   [Model Types](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/model_types.html)
+    *   [Ensemble Model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/ensemble_quick_start.html)
+    *   [BLS Model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/bls_quick_start.html)
+    *   [Multi-Model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_analyzer/docs/mm_quick_start.html)
+
+*   [Model Navigator](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_navigator/README.html)
+
+Debugging
+
+*   [Guide](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/debugging_guide.html)
+
+*   [](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/contents.html)
+*   Model Configuration
+
+Model Configuration[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#model-configuration "Link to this heading")
+===================================================================================================================================================================================
+
+**Is this your first time writing a config file?** Check out [this guide](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_1-model_deployment/README.html#model-configuration) or this [example](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/HuggingFace/README.html#examples)!
+
+Each model in a [model repository](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html) must include a model configuration that provides required and optional information about the model. Typically, this configuration is provided in a config.pbtxt file specified as [ModelConfig protobuf](https://github.com/triton-inference-server/common/blob/main/protobuf/model_config.proto). In some cases, discussed in [Auto-Generated Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#auto-generated-model-configuration), the model configuration can be generated automatically by Triton and so does not need to be provided explicitly.
+
+This section describes the most important model configuration properties but the documentation in the [ModelConfig protobuf](https://github.com/triton-inference-server/common/blob/main/protobuf/model_config.proto) should also be consulted.
+
+Minimal Model Configuration[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#minimal-model-configuration "Link to this heading")
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A minimal model configuration must specify the [_platform_ and/or _backend_ properties](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/backend/README.html#backends), the _max\_batch\_size_ property, and the input and output tensors of the model.
+
+As an example consider a TensorRT model that has two inputs, _input0_ and _input1_, and one output, _output0_, all of which are 16 entry float32 tensors. The minimal configuration is:
+
+  platform: "tensorrt_plan"
+  max_batch_size: 8
+  input [
+    {
+      name: "input0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    },
+    {
+      name: "input1"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+  output [
+    {
+      name: "output0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+
+### Name, Platform and Backend[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#name-platform-and-backend "Link to this heading")
+
+The model configuration _name_ property is optional. If the name of the model is not specified in the configuration it is assumed to be the same as the model repository directory containing the model. If _name_ is specified it must match the name of the model repository directory containing the model. The required values for _platform_ and _backend_ are described in the [backend documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/backend/README.html#backends).
+
+### Model Transaction Policy[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#model-transaction-policy "Link to this heading")
+
+The _model\_transaction\_policy_ property describes the nature of transactions expected from the model.
+
+#### Decoupled[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#decoupled "Link to this heading")
+
+This boolean setting indicates whether responses generated by the model are [decoupled](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/decoupled_models.html) with the requests issued to it. Using decoupled means the number of responses generated by the model may differ from number of requests issued, and the responses may be out of order relative to the order of requests. The default is false, which means the model will generate exactly one response for each request.
+
+### Maximum Batch Size[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#maximum-batch-size "Link to this heading")
+
+The _max\_batch\_size_ property indicates the maximum batch size that the model supports for the [types of batching](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#models-and-schedulers) that can be exploited by Triton. If the model’s batch dimension is the first dimension, and all inputs and outputs to the model have this batch dimension, then Triton can use its [dynamic batcher](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html#dynamic-batcher) or [sequence batcher](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html#sequence-batcher) to automatically use batching with the model. In this case _max\_batch\_size_ should be set to a value greater-or-equal-to 1 that indicates the maximum batch size that Triton should use with the model.
+
+For models that do not support batching, or do not support batching in the specific ways described above, _max\_batch\_size_ must be set to zero.
+
+### Inputs and Outputs[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#inputs-and-outputs "Link to this heading")
+
+Each model input and output must specify a name, datatype, and shape. The name specified for an input or output tensor must match the name expected by the model.
+
+#### Special Conventions for PyTorch Backend[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#special-conventions-for-pytorch-backend "Link to this heading")
+
+**Naming Convention:**
+
+Due to the absence of sufficient metadata for inputs/outputs in TorchScript model files, the “name” attribute of inputs/outputs in the configuration must follow specific naming conventions. These are detailed below.
+
+1.   [Only for Inputs] When the input is not a Dictionary of Tensors, the input names in the configuration file should mirror the names of the input arguments to the forward function in the model’s definition.
+
+For example, if the forward function for the Torchscript model was defined as `forward(self, input0, input1)`, the first and second inputs should be named “input0” and “input1” respectively.
+
+2.   `<name>__<index>`: Where <name> can be any string and <index> is an integer index that refers to the position of the corresponding input/output.
+
+This means that if there are two inputs and two outputs, the first and second inputs can be named “INPUT__0” and “INPUT__1” and the first and second outputs can be named “OUTPUT__0” and “OUTPUT__1” respectively.
+
+3.   If all inputs (or outputs) do not follow the same naming convention, then we enforce strict ordering from the model configuration i.e. we assume the order of inputs (or outputs) in the configuration is the true ordering of these inputs.
+
+_**Dictionary of Tensors as Input:**_
+
+The PyTorch backend supports passing of inputs to the model in the form of a Dictionary of Tensors. This is only supported when there is a _single_ input to the model of type Dictionary that contains a mapping of string to tensor. As an example, if there is a model that expects the input of the form:
+
+{'A': tensor1, 'B': tensor2}
+
+The input names in the configuration in this case must not follow the above naming conventions `<name>__<index>`. Instead, the names of the inputs in this case must map to the string value ‘key’ for that specific tensor. For this case, the inputs would be “A” and “B”, where input “A” refers to value corresponding to tensor1 and “B” refers to the value corresponding to tensor2.
+
+The datatypes allowed for input and output tensors varies based on the type of the model. Section [Datatypes](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#datatypes) describes the allowed datatypes and how they map to the datatypes of each model type.
+
+An input shape indicates the shape of an input tensor expected by the model and by Triton in inference requests. An output shape indicates the shape of an output tensor produced by the model and returned by Triton in response to an inference request. Both input and output shape must have rank greater-or-equal-to 1, that is, the empty shape **[ ]** is not allowed.
+
+Input and output shapes are specified by a combination of _max\_batch\_size_ and the dimensions specified by the input or output _dims_ property. For models with _max\_batch\_size_ greater-than 0, the full shape is formed as [ -1 ] + _dims_. For models with _max\_batch\_size_ equal to 0, the full shape is formed as _dims_. For example, for the following configuration the shape of “input0” is [-1, 16 ] and the shape of “output0” is [ -1, 4 ].
+
+  platform: "tensorrt_plan"
+  max_batch_size: 8
+  input [
+    {
+      name: "input0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+  output [
+    {
+      name: "output0"
+      data_type: TYPE_FP32
+      dims: [ 4 ]
+    }
+  ]
+
+For a configuration that is identical except that _max\_batch\_size_ equal to 0, the shape of “input0” is [ 16 ] and the shape of “output0” is [ 4 ].
+
+  platform: "tensorrt_plan"
+  max_batch_size: 0
+  input [
+    {
+      name: "input0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+  output [
+    {
+      name: "output0"
+      data_type: TYPE_FP32
+      dims: [ 4 ]
+    }
+  ]
+
+For models that support input and output tensors with variable-size dimensions, those dimensions can be listed as -1 in the input and output configuration. For example, if a model requires a 2-dimensional input tensor where the first dimension must be size 4 but the second dimension can be any size, the model configuration for that input would include _dims: [ 4, -1 ]_. Triton would then accept inference requests where that input tensor’s second dimension was any value greater-or-equal-to 0. The model configuration can be more restrictive than what is allowed by the underlying model. For example, even though the framework model itself allows the second dimension to be any size, the model configuration could be specified as _dims: [ 4, 4 ]_. In this case, Triton would only accept inference requests where the input tensor’s shape was exactly _[ 4, 4 ]_.
+
+The [_reshape_ property](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#reshape) must be used if there is a mismatch between the input shape that Triton receives in an inference request and the input shape expected by the model. Similarly, the _reshape_ property must be used if there is a mismatch between the output shape produced by the model and the shape that Triton returns in a response to an inference request.
+
+Model inputs can specify `allow_ragged_batch` to indicate that the input is a [ragged input](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/ragged_batching.html#ragged-batching). The field is used with [dynamic batcher](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#default-max-batch-size-and-dynamic-batcher) to allow batching without enforcing the input to have the same shape in all requests.
+
+Auto-Generated Model Configuration[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#auto-generated-model-configuration "Link to this heading")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The model configuration file containing the required settings must be available with each model to be deployed on Triton. In some cases the required portions of the model configuration can be generated automatically by Triton. The required portion of the model configuration are the settings shown in the [Minimal Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#minimal-model-configuration). By default, Triton will try to complete these sections. However, by starting Triton with `--disable-auto-complete-config` option, Triton can be configured to not auto-complete model configuration on the backend side. However, even with this option Triton will fill in missing [`instance_group`](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#instance-groups) settings with default values.
+
+Triton can derive all the required settings automatically for most of the TensorRT saved-model, ONNX models, and OpenVINO models. For Python models, [`auto_complete_config`](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/python_backend/README.html#auto-complete-config) function can be implemented in Python backend to provide [`max_batch_size`](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#maximum-batch-size), [`input`](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#inputs-and-outputs) and [`output`](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#inputs-and-outputs) properties using `set_max_batch_size`, `add_input`, and `add_output` functions. These properties will allow Triton to load the Python model with [Minimal Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#minimal-model-configuration) in absence of a configuration file. All other model types _must_ provide a model configuration file.
+
+When developing a custom backend, you can populate required settings in the configuration and call `TRITONBACKEND_ModelSetConfig` API to update completed configuration with Triton core. You can take a look at [Onnxruntime](https://github.com/triton-inference-server/onnxruntime_backend) backends as examples of how to achieve this. Currently, only [inputs, outputs](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#inputs-and-outputs), [max_batch_size](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#maximum-batch-size) and [dynamic batching](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#default-max-batch-size-and-dynamic-batcher) settings can be populated by backend. For custom backends, your config.pbtxt file must include a `backend` field or your model name must be in the form `<model_name>.<backend_name>`.
+
+You can also see the model configuration generated for a model by Triton using the [model configuration endpoint](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/protocol/extension_model_configuration.html). The easiest way to do this is to use a utility like _curl_:
+
+$ curl localhost:8000/v2/models/<model name>/config
+
+This will return a JSON representation of the generated model configuration. From this you can take the max_batch_size, inputs, and outputs sections of the JSON and convert it to a config.pbtxt file. Triton only generates the [minimal portion of the model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#minimal-model-configuration). You must still provide the optional portions of the model configuration by editing the config.pbtxt file.
+
+Custom Model Configuration[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#custom-model-configuration "Link to this heading")
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Sometimes when multiple devices running Triton instances that share one model repository, it is necessary to have models configured differently on each platform in order to achieve the best performance. Triton allows users to pick the custom model configuration name by setting `--model-config-name` option.
+
+For example, when running `./tritonserver --model-repository=</path/to/model/repository> --model-config-name=h100`, the server will search the custom configuration file `h100.pbtxt` under `/path/to/model/repository/<model-name>/configs` directory for each model that is loaded. If `h100.pbtxt` exists, it will be used as the configuration for this model. Otherwise, the default configuration `/path/to/model/repository/<model-name>/config.pbtxt` or [auto-generated model configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#auto-generated-model-configuration) will be selected based on the settings.
+
+Custom model configuration also works with `Explicit` and `Poll` model control modes. Users may delete or add new custom configurations and the server will pick the configuration file for each loaded model dynamically.
+
+Note: custom model configuration name should not contain any space character.
+
+Example 1: –model-config-name=h100
+
+.
+└── model_repository/
+    ├── model_a/
+    │   ├── configs/
+    │   │   ├── v100.pbtxt
+    │   │   └── **h100.pbtxt**
+    │   └── config.pbtxt
+    ├── model_b/
+    │   ├── configs/
+    │   │   └── v100.pbtxt
+    │   └── **config.pbtxt**
+    └── model_c/
+        ├── configs/
+        │   └── config.pbtxt
+        └── **config.pbtxt**
+
+Example 2: –model-config-name=config
+
+.
+└── model_repository/
+    ├── model_a/
+    │   ├── configs/
+    │   │   ├── v100.pbtxt
+    │   │   └── h100.pbtxt
+    │   └── **config.pbtxt**
+    ├── model_b/
+    │   ├── configs/
+    │   │   └── v100.pbtxt
+    │   └── **config.pbtxt**
+    └── model_c/
+        ├── configs/
+        │   └── **config.pbtxt**
+        └── config.pbtxt
+
+Example 3: –model-config-name not set
+
+.
+└── model_repository/
+    ├── model_a/
+    │   ├── configs/
+    │   │   ├── v100.pbtxt
+    │   │   └── h100.pbtxt
+    │   └── **config.pbtxt**
+    ├── model_b/
+    │   ├── configs/
+    │   │   └── v100.pbtxt
+    │   └── **config.pbtxt**
+    └── model_c/
+        ├── configs/
+        │   └── config.pbtxt
+        └── **config.pbtxt**
+
+### Default Max Batch Size and Dynamic Batcher[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#default-max-batch-size-and-dynamic-batcher "Link to this heading")
+
+When a model is using the auto-complete feature, a default maximum batch size may be set by using the `--backend-config=default-max-batch-size=<int>` command line argument. This allows all models which are capable of batching and which make use of [Auto Generated Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#auto-generated-model-configuration) to have a default maximum batch size. This value is set to 4 by default. Backend developers may make use of this default-max-batch-size by obtaining it from the TRITONBACKEND_BackendConfig api. Currently, the following backends which utilize these default batch values and turn on dynamic batching in their generated model configurations are:
+
+1.   [Onnxruntime backend](https://github.com/triton-inference-server/onnxruntime_backend)
+
+2.   [TensorRT backend](https://github.com/triton-inference-server/tensorrt_backend)
+
+    1.   TensorRT models store the maximum batch size explicitly and do not make use of the default-max-batch-size parameter. However, if max_batch_size > 1 and no scheduler is provided, the dynamic batch scheduler will be enabled.
+
+If a value greater than 1 for the maximum batch size is set for the model, the [dynamic_batching](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html#dynamic-batcher) config will be set if no scheduler is provided in the configuration file.
+
+Datatypes[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#datatypes "Link to this heading")
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The following table shows the tensor datatypes supported by Triton. The first column shows the name of the datatype as it appears in the model configuration file. The next four columns show the corresponding datatype for supported model frameworks. If a model framework does not have an entry for a given datatype, then Triton does not support that datatype for that model. The sixth column, labeled “API”, shows the corresponding datatype for the TRITONSERVER C API, TRITONBACKEND C API, HTTP/REST protocol and GRPC protocol. The last column shows the corresponding datatype for the Python numpy library.
+
+| Model Config | TensorRT | ONNX Runtime | PyTorch | API | NumPy |
+| --- | --- | --- | --- | --- | --- |
+| TYPE_BOOL | kBOOL | BOOL | kBool | BOOL | bool |
+| TYPE_UINT8 | kUINT8 | UINT8 | kByte | UINT8 | uint8 |
+| TYPE_UINT16 |  | UINT16 |  | UINT16 | uint16 |
+| TYPE_UINT32 |  | UINT32 |  | UINT32 | uint32 |
+| TYPE_UINT64 |  | UINT64 |  | UINT64 | uint64 |
+| TYPE_INT8 | kINT8 | INT8 | kChar | INT8 | int8 |
+| TYPE_INT16 |  | INT16 | kShort | INT16 | int16 |
+| TYPE_INT32 | kINT32 | INT32 | kInt | INT32 | int32 |
+| TYPE_INT64 | kINT64 | INT64 | kLong | INT64 | int64 |
+| TYPE_FP16 | kHALF | FLOAT16 |  | FP16 | float16 |
+| TYPE_FP32 | kFLOAT | FLOAT | kFloat | FP32 | float32 |
+| TYPE_FP64 |  | DOUBLE | kDouble | FP64 | float64 |
+| TYPE_STRING |  | STRING |  | BYTES | dtype(object) |
+| TYPE_BF16 | kBF16 |  |  | BF16 |  |
+
+For TensorRT each value is in the nvinfer1::DataType namespace. For example, nvinfer1::DataType::kFLOAT is the 32-bit floating-point datatype.
+
+For ONNX Runtime each value is prepended with ONNX_TENSOR_ELEMENT_DATA_TYPE_. For example, ONNX_TENSOR_ELEMENT_DATA_TYPE_FLOAT is the 32-bit floating-point datatype.
+
+For PyTorch each value is in the torch namespace. For example, torch::kFloat is the 32-bit floating-point datatype.
+
+For Numpy each value is in the numpy module. For example, numpy.float32 is the 32-bit floating-point datatype.
+
+Reshape[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#reshape "Link to this heading")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The _ModelTensorReshape_ property on a model configuration input or output is used to indicate that the input or output shape accepted by the inference API differs from the input or output shape expected or produced by the underlying framework model or custom backend.
+
+For an input, _reshape_ can be used to reshape the input tensor to a different shape expected by the framework or backend. A common use-case is where a model that supports batching expects a batched input to have shape _[ batch-size ]_, which means that the batch dimension fully describes the shape. For the inference API the equivalent shape _[ batch-size, 1 ]_ must be specified since each input must specify a non-empty _dims_. For this case the input should be specified as:
+
+  input [
+    {
+      name: "in"
+      dims: [ 1 ]
+      reshape: { shape: [ ] }
+    }
+  ]
+
+For an output, _reshape_ can be used to reshape the output tensor produced by the framework or backend to a different shape that is returned by the inference API. A common use-case is where a model that supports batching expects a batched output to have shape _[ batch-size ]_, which means that the batch dimension fully describes the shape. For the inference API the equivalent shape _[ batch-size, 1 ]_ must be specified since each output must specify a non-empty _dims_. For this case the output should be specified as:
+
+  output [
+    {
+      name: "in"
+      dims: [ 1 ]
+      reshape: { shape: [ ] }
+    }
+  ]
+
+Shape Tensors[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#shape-tensors "Link to this heading")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For models that support shape tensors, the _is\_shape\_tensor_ property must be set appropriately for inputs and outputs that are acting as shape tensors. The following shows an example configuration that specifies shape tensors.
+
+  name: "myshapetensormodel"
+  platform: "tensorrt_plan"
+  max_batch_size: 8
+  input [
+    {
+      name: "input0"
+      data_type: TYPE_FP32
+      dims: [ 1 , 3]
+    },
+    {
+      name: "input1"
+      data_type: TYPE_INT32
+      dims: [ 2 ]
+      is_shape_tensor: true
+    }
+  ]
+  output [
+    {
+      name: "output0"
+      data_type: TYPE_FP32
+      dims: [ 1 , 3]
+    }
+  ]
+
+As discussed above, Triton assumes that batching occurs along the first dimension which is not listed in in the input or output tensor _dims_. However, for shape tensors, batching occurs at the first shape value. For the above example, an inference request must provide inputs with the following shapes.
+
+  "input0": [ x, 1, 3]
+  "input1": [ 3 ]
+  "output0": [ x, 1, 3]
+
+Where _x_ is the batch size of the request. Triton requires the shape tensors to be marked as shape tensors in the model when using batching. Note that “input1” has shape _[ 3 ]_ and not _[ 2 ]_, which is how it is described in model configuration. As `myshapetensormodel` model is a batching model, the batch size should be provided as an additional value. Triton will accumulate all the shape values together for “input1” in batch dimension before issuing the request to model.
+
+For example, assume the client sends following three requests to Triton with following inputs:
+
+Request1:
+input0: [[[1,2,3]]] <== shape of this tensor [1,1,3]
+input1: [1,4,6] <== shape of this tensor [3]
+
+Request2:
+input0: [[[4,5,6]], [[7,8,9]]] <== shape of this tensor [2,1,3]
+input1: [2,4,6] <== shape of this tensor [3]
+
+Request3:
+input0: [[[10,11,12]]] <== shape of this tensor [1,1,3]
+input1: [1,4,6] <== shape of this tensor [3]
+
+Assuming these requests get batched together would be delivered to the model as:
+
+Batched Requests to model:
+input0: [[[1,2,3]], [[4,5,6]], [[7,8,9]], [[10,11,12]]] <== shape of this tensor [4,1,3]
+input1: [4, 4, 6] <== shape of this tensor [3]
+
+Currently, only TensorRT supports shape tensors. Read [Shape Tensor I/O](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#shape_tensor_io) to learn more about shape tensors.
+
+Non-Linear I/O Formats[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#non-linear-i-o-formats "Link to this heading")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For models that process input or output data in non-linear formats, the _is\_non\_linear\_format\_io_ property must be set. The following example model configuration shows how to specify that INPUT0 and INPUT1 use non-linear I/O data formats.
+
+  name: "mytensorrtmodel"
+  platform: "tensorrt_plan"
+  max_batch_size: 8
+  input [
+    {
+      name: "INPUT0"
+      data_type: TYPE_FP16
+      dims: [ 3,224,224 ]
+      is_non_linear_format_io: true
+    },
+    {
+      name: "INPUT1"
+      data_type: TYPE_FP16
+      dims: [ 3,224,224 ]
+      is_non_linear_format_io: true
+    }
+  ]
+  output [
+    {
+      name: "OUTPUT0"
+      data_type: TYPE_FP16
+      dims: [ 1,3 ]
+     }
+  ]
+
+Currently, only TensorRT supports this property. To learn more about I/O formats, refer to the [I/O Formats documentation](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#reformat-free-network-tensors).
+
+Version Policy[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#version-policy "Link to this heading")
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Each model can have one or more [versions](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html#model-versions). The _ModelVersionPolicy_ property of the model configuration is used to set one of the following policies.
+
+*   _All_: All versions of the model that are available in the model repository are available for inferencing. `version_policy: { all: {}}`
+
+*   _Latest_: Only the latest ‘n’ versions of the model in the repository are available for inferencing. The latest versions of the model are the numerically greatest version numbers. `version_policy: { latest: { num_versions: 2}}`
+
+*   _Specific_: Only the specifically listed versions of the model are available for inferencing. `version_policy: { specific: { versions: [1,3]}}`
+
+If no version policy is specified, then _Latest_ (with n=1) is used as the default, indicating that only the most recent version of the model is made available by Triton. In all cases, the [addition or removal of version subdirectories](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_management.html) from the model repository can change which model version is used on subsequent inference requests.
+
+The following configuration specifies that all versions of the model will be available from the server.
+
+  platform: "tensorrt_plan"
+  max_batch_size: 8
+  input [
+    {
+      name: "input0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    },
+    {
+      name: "input1"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+  output [
+    {
+      name: "output0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+  version_policy: { all { }}
+
+Instance Groups[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#instance-groups "Link to this heading")
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Triton can provide multiple [instances of a model](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#concurrent-model-execution) so that multiple inference requests for that model can be handled simultaneously. The model configuration _ModelInstanceGroup_ property is used to specify the number of execution instances that should be made available and what compute resource should be used for those instances.
+
+### Multiple Model Instances[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#multiple-model-instances "Link to this heading")
+
+By default, a single execution instance of the model is created for each GPU available in the system. The instance-group setting can be used to place multiple execution instances of a model on every GPU or on only certain GPUs. For example, the following configuration will place two execution instances of the model to be available on each system GPU.
+
+  instance_group [
+    {
+      count: 2
+      kind: KIND_GPU
+    }
+  ]
+
+And the following configuration will place one execution instance on GPU 0 and two execution instances on GPUs 1 and 2.
+
+  instance_group [
+    {
+      count: 1
+      kind: KIND_GPU
+      gpus: [ 0 ]
+    },
+    {
+      count: 2
+      kind: KIND_GPU
+      gpus: [ 1, 2 ]
+    }
+  ]
+
+For a more detailed example of using instance groups, see [this guide](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html#concurrent-model-execution).
+
+### CPU Model Instance[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#cpu-model-instance "Link to this heading")
+
+The instance group setting is also used to enable execution of a model on the CPU. A model can be executed on the CPU even if there is a GPU available in the system. The following places two execution instances on the CPU.
+
+  instance_group [
+    {
+      count: 2
+      kind: KIND_CPU
+    }
+  ]
+
+If no `count` is specified for a KIND_CPU instance group, then the default instance count will be 2 for selected backends (Onnxruntime). All other backends will default to 1.
+
+### Host Policy[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#host-policy "Link to this heading")
+
+The instance group setting is associated with a host policy. The following configuration will associate all instances created by the instance group setting with host policy “policy_0”. By default the host policy will be set according to the device kind of the instance, for instance, KIND_CPU is “cpu”, KIND_MODEL is “model”, and KIND_GPU is “gpu_<gpu_id>”.
+
+  instance_group [
+    {
+      count: 2
+      kind: KIND_CPU
+      host_policy: "policy_0"
+    }
+  ]
+
+### Rate Limiter Configuration[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#rate-limiter-configuration "Link to this heading")
+
+Instance group optionally specifies [rate limiter](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/rate_limiter.html) configuration which controls how the rate limiter operates on the instances in the group. The rate limiter configuration is ignored if rate limiting is off. If rate limiting is on and if an instance_group does not provide this configuration, then the execution on the model instances belonging to this group will not be limited in any way by the rate limiter. The configuration includes the following specifications:
+
+#### Resources[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#resources "Link to this heading")
+
+The set of [resources](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/rate_limiter.html#resources) required to execute a model instance. The “name” field identifies the resource and “count” field refers to the number of copies of the resource that the model instance in the group requires to run. The “global” field specifies whether the resource is per-device or shared globally across the system. Loaded models can not specify a resource with the same name both as global and non-global. If no resources are provided then triton assumes the execution of model instance does not require any resources and will start executing as soon as model instance is available.
+
+#### Priority[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#priority "Link to this heading")
+
+Priority serves as a weighting value to be used for prioritizing across all the instances of all the models. An instance with priority 2 will be given 1/2 the number of scheduling chances as an instance with priority 1.
+
+The following example specifies the instances in the group requires four “R1” and two “R2” resources for execution. Resource “R2” is a global resource. Additionally, the rate-limiter priority of the instance_group is 2.
+
+  instance_group [
+    {
+      count: 1
+      kind: KIND_GPU
+      gpus: [ 0, 1, 2 ]
+      rate_limiter {
+        resources [
+          {
+            name: "R1"
+            count: 4
+          },
+          {
+            name: "R2"
+            global: True
+            count: 2
+          }
+        ]
+        priority: 2
+      }
+    }
+  ]
+
+The above configuration creates 3 model instances, one on each device (0, 1 and 2). The three instances will not contend for “R1” among themselves as “R1” is local for their own device, however, they will contend for “R2” because it is specified as a global resource which means “R2” is shared across the system. Though these instances don’t contend for “R1” among themselves, but they will contend for “R1” with other model instances which includes “R1” in their resource requirements and run on the same device as them.
+
+### Ensemble Model Instance Groups[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#ensemble-model-instance-groups "Link to this heading")
+
+[Ensemble models](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/architecture.html#ensemble-models) are an abstraction Triton uses to execute a user-defined pipeline of models. Since there is no physical instance associated with an ensemble model, the `instance_group` field can not be specified for it.
+
+However, each composing model that makes up an ensemble can specify `instance_group` in its config file and individually support parallel execution as described above when the ensemble receives multiple requests.
+
+CUDA Compute Capability[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#cuda-compute-capability "Link to this heading")
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Similar to the `default_model_filename` field, you can optionally specify the `cc_model_filenames` field to map the GPU’s [CUDA Compute Capability](https://developer.nvidia.com/cuda-gpus) to a corresponding model filename at model load time. This is particularly useful for TensorRT models, since they are generally tied to a specific compute capability.
+
+cc_model_filenames [
+  {
+    key: "7.5"
+    value: "resnet50_T4.plan"
+  },
+  {
+    key: "8.0"
+    value: "resnet50_A100.plan"
+  }
+]
+
+Optimization Policy[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#optimization-policy "Link to this heading")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The model configuration _ModelOptimizationPolicy_ property is used to specify optimization and prioritization settings for a model. These settings control if/how a model is optimized by the backend and how it is scheduled and executed by Triton. See the [ModelConfig protobuf](https://github.com/triton-inference-server/common/blob/main/protobuf/model_config.proto) and [optimization](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/optimization.html#framework-specific-optimization) documentation for the currently available settings.
+
+Model Warmup[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#model-warmup "Link to this heading")
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+When a model is loaded by Triton the corresponding [backend](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/backend/README.html) initializes for that model. For some backends, some or all of this initialization is deferred until the model receives its first inference request (or first few inference requests). As a result, the first (few) inference requests can be significantly slower due to deferred initialization.
+
+To avoid these initial, slow inference requests, Triton provides a configuration option that enables a model to be “warmed up” so that it is completely initialized before the first inference request is received. When the _ModelWarmup_ property is defined in a model configuration, Triton will not show the model as being ready for inference until model warmup has completed.
+
+The model configuration _ModelWarmup_ is used to specify warmup settings for a model. The settings define a series of inference requests that Triton will create to warm-up each model instance. A model instance will be served only if it completes the requests successfully. Note that the effect of warming up models varies depending on the framework backend, and it will cause Triton to be less responsive to model update, so the users should experiment and choose the configuration that suits their need. See the [ModelWarmup protobuf](https://github.com/triton-inference-server/common/blob/main/protobuf/model_config.proto) documentation for the currently available settings, and [L0_warmup](https://github.com/triton-inference-server/server/blob/main/qa/L0_warmup/test.sh) for examples on specifying different variants of warmup samples.
+
+Response Cache[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#response-cache "Link to this heading")
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The model configuration `response_cache` section has an `enable` boolean used to enable the Response Cache for this model.
+
+response_cache {
+  enable: true
+}
+
+In addition to enabling the cache in the model config, a `--cache-config` must be specified when starting the server to enable caching on the server-side. See the [Response Cache](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/response_cache.html) doc for more details on enabling server-side caching.
+
+[previous Model Repository](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html "previous page")[next Optimization](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/optimization.html "next page")
+
+ On this page 
+
+*   [Minimal Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#minimal-model-configuration)
+    *   [Name, Platform and Backend](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#name-platform-and-backend)
+    *   [Model Transaction Policy](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#model-transaction-policy)
+        *   [Decoupled](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#decoupled)
+
+    *   [Maximum Batch Size](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#maximum-batch-size)
+    *   [Inputs and Outputs](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#inputs-and-outputs)
+        *   [Special Conventions for PyTorch Backend](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#special-conventions-for-pytorch-backend)
+
+*   [Auto-Generated Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#auto-generated-model-configuration)
+*   [Custom Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#custom-model-configuration)
+    *   [Default Max Batch Size and Dynamic Batcher](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#default-max-batch-size-and-dynamic-batcher)
+
+*   [Datatypes](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#datatypes)
+*   [Reshape](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#reshape)
+*   [Shape Tensors](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#shape-tensors)
+*   [Non-Linear I/O Formats](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#non-linear-i-o-formats)
+*   [Version Policy](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#version-policy)
+*   [Instance Groups](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#instance-groups)
+    *   [Multiple Model Instances](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#multiple-model-instances)
+    *   [CPU Model Instance](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#cpu-model-instance)
+    *   [Host Policy](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#host-policy)
+    *   [Rate Limiter Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#rate-limiter-configuration)
+        *   [Resources](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#resources)
+        *   [Priority](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#priority)
+
+    *   [Ensemble Model Instance Groups](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#ensemble-model-instance-groups)
+
+*   [CUDA Compute Capability](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#cuda-compute-capability)
+*   [Optimization Policy](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#optimization-policy)
+*   [Model Warmup](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#model-warmup)
+*   [Response Cache](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#response-cache)
+
+[![Image 3: NVIDIA](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg)![Image 4: NVIDIA](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg)](https://www.nvidia.com/)
+
+[Privacy Policy](https://www.nvidia.com/en-us/about-nvidia/privacy-policy/) | [Your Privacy Choices](https://www.nvidia.com/en-us/about-nvidia/privacy-center/) | [Terms of Service](https://www.nvidia.com/en-us/about-nvidia/terms-of-service/) | [Accessibility](https://www.nvidia.com/en-us/about-nvidia/accessibility/) | [Corporate Policies](https://www.nvidia.com/en-us/about-nvidia/company-policies/) | [Product Security](https://www.nvidia.com/en-us/product-security/) | [Contact](https://www.nvidia.com/en-us/contact/)
+
+Copyright © 2018-2026, NVIDIA Corporation.

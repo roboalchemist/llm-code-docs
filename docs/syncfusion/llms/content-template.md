@@ -1,0 +1,29 @@
+# Source: https://docs.syncfusion.com/uwp/radial-slider/content-template.md
+
+# Content Template in UWP Radial Slider (SfRadialSlider)
+
+The ContentTemplate  property can be used to customize the content of the SfRadialSlider. 
+
+{% highlight xaml %}
+
+  <syncfusion:SfRadialSlider
+
+            Content="{Binding RelativeSource={RelativeSource Self}, Path=Value}"
+
+            x:Name="rSlider1">
+
+            <syncfusion:SfRadialSlider.ContentTemplate>
+
+                <DataTemplate>
+
+                  <TextBlock Text="{Binding}" FontSize="24" Foreground="LightSkyBlue"/>
+
+                </DataTemplate>
+
+            </syncfusion:SfRadialSlider.ContentTemplate>
+
+  </syncfusion:SfRadialSlider>
+
+{% endhighlight %}
+
+![Concepts--and-Features_img4](Concepts--and-Features_images/Concepts--and-Features_img4.png)

@@ -1,0 +1,11 @@
+# Source: https://docs.snyk.io/manage-risk/reporting/legacy-reports/legacy-reports-dependencies-tab.md
+
+# Legacy reports dependencies tab
+
+The **Dependencies** tab acts as a Bill Of Materials (BOM) for all the direct dependencies in all of the Projects in the selected Organization. This allows you to quickly and easily identify which Projects have a specific version of a dependency.
+
+Dependencies information is available from the **Dependencies** menu option - see [View dependencies](https://docs.snyk.io/manage-risk/reporting/dependencies-and-licenses/view-dependencies) for more details.
+
+{% hint style="info" %}
+For systems using legacy reporting, this information is available from the **Reports** menu option.
+{% endhint %}

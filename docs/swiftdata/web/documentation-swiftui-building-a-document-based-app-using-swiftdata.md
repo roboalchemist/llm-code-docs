@@ -1,11 +1,11 @@
-# Source: https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata
+# Source: https://developer.apple.com/documentation/SwiftUI/Building-a-document-based-app-using-SwiftData
 
 Title: Building a document-based app using SwiftData | Apple Developer Documentation
 
-URL Source: https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata
+URL Source: https://developer.apple.com/documentation/SwiftUI/Building-a-document-based-app-using-SwiftData
 
 Markdown Content:
-[Skip Navigation](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata#app-main)
+[Skip Navigation](https://developer.apple.com/documentation/SwiftUI/Building-a-document-based-app-using-SwiftData#app-main)
 
 *   [Apple Developer](https://developer.apple.com/)
 *   
@@ -166,90 +166,90 @@ Quick Links
 
 [Documentation](https://developer.apple.com/documentation)
 
-[Open Menu](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata#)
+[Open Menu](https://developer.apple.com/documentation/SwiftUI/Building-a-document-based-app-using-SwiftData#)
 
 *   Language: 
 
 Language:
 
     *    Swift 
-    *   [Objective-C](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata#)
+    *   [Objective-C](https://developer.apple.com/documentation/SwiftUI/Building-a-document-based-app-using-SwiftData#)
 
 [SwiftUI -------](https://developer.apple.com/documentation/swiftui)
 
-[DefaultDocumentGroupLaunchActions](https://developer.apple.com/documentation/swiftui/defaultdocumentgrouplaunchactions)
-
-[DocumentLaunchGeometryProxy](https://developer.apple.com/documentation/swiftui/documentlaunchgeometryproxy)
-
-[DocumentLaunchView](https://developer.apple.com/documentation/swiftui/documentlaunchview)
-
-[DocumentGroupLaunchScene](https://developer.apple.com/documentation/swiftui/documentgrouplaunchscene)
-
-### Configuring the document launch experience
-
-[OpenDocumentAction](https://developer.apple.com/documentation/swiftui/opendocumentaction)
-
-[var openDocument: OpenDocumentAction](https://developer.apple.com/documentation/swiftui/environmentvalues/opendocument)
-
-[NewDocumentAction](https://developer.apple.com/documentation/swiftui/newdocumentaction)
-
-[var newDocument: NewDocumentAction](https://developer.apple.com/documentation/swiftui/environmentvalues/newdocument)
-
-### Opening a document programmatically
-
-[FileDocumentWriteConfiguration](https://developer.apple.com/documentation/swiftui/filedocumentwriteconfiguration)
-
-[FileDocumentReadConfiguration](https://developer.apple.com/documentation/swiftui/filedocumentreadconfiguration)
-
-### Reading and writing documents
-
-[DocumentConfiguration](https://developer.apple.com/documentation/swiftui/documentconfiguration)
-
-[var documentConfiguration: DocumentConfiguration?](https://developer.apple.com/documentation/swiftui/environmentvalues/documentconfiguration)
-
-### Accessing document configuration
-
-[var undoManager: UndoManager?](https://developer.apple.com/documentation/swiftui/environmentvalues/undomanager)
-
-[ReferenceFileDocumentConfiguration](https://developer.apple.com/documentation/swiftui/referencefiledocumentconfiguration)
-
-[ReferenceFileDocument](https://developer.apple.com/documentation/swiftui/referencefiledocument)
-
-### Storing document data in a class instance
-
-[FileDocumentConfiguration](https://developer.apple.com/documentation/swiftui/filedocumentconfiguration)
-
-[FileDocument](https://developer.apple.com/documentation/swiftui/filedocument)
-
-### Storing document data in a structure instance
-
-[DocumentGroup](https://developer.apple.com/documentation/swiftui/documentgroup)
-
-[Building a document-based app using SwiftData](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata)
-
-[Building a document-based app with SwiftUI](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-with-swiftui)
-
-### Creating a document
-
-[Documents](https://developer.apple.com/documentation/swiftui/documents)
-
-[Immersive spaces](https://developer.apple.com/documentation/swiftui/immersive-spaces)
-
-[Windows](https://developer.apple.com/documentation/swiftui/windows)
-
-[Scenes](https://developer.apple.com/documentation/swiftui/scenes)
-
-[App organization](https://developer.apple.com/documentation/swiftui/app-organization)
-
-### App structure
-
-[Landmarks: Building an app with Liquid Glass](https://developer.apple.com/documentation/swiftui/landmarks-building-an-app-with-liquid-glass)
-
-[SwiftUI updates](https://developer.apple.com/documentation/updates/swiftui)
+### Essentials
 
 [Adopting Liquid Glass](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass)
 
-### Essentials
+[SwiftUI updates](https://developer.apple.com/documentation/updates/swiftui)
+
+[Landmarks: Building an app with Liquid Glass](https://developer.apple.com/documentation/swiftui/landmarks-building-an-app-with-liquid-glass)
+
+### App structure
+
+[App organization](https://developer.apple.com/documentation/swiftui/app-organization)
+
+[Scenes](https://developer.apple.com/documentation/swiftui/scenes)
+
+[Windows](https://developer.apple.com/documentation/swiftui/windows)
+
+[Immersive spaces](https://developer.apple.com/documentation/swiftui/immersive-spaces)
+
+[Documents](https://developer.apple.com/documentation/swiftui/documents)
+
+### Creating a document
+
+[Building a document-based app with SwiftUI](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-with-swiftui)
+
+[Building a document-based app using SwiftData](https://developer.apple.com/documentation/swiftui/building-a-document-based-app-using-swiftdata)
+
+[DocumentGroup](https://developer.apple.com/documentation/swiftui/documentgroup)
+
+### Storing document data in a structure instance
+
+[FileDocument](https://developer.apple.com/documentation/swiftui/filedocument)
+
+[FileDocumentConfiguration](https://developer.apple.com/documentation/swiftui/filedocumentconfiguration)
+
+### Storing document data in a class instance
+
+[ReferenceFileDocument](https://developer.apple.com/documentation/swiftui/referencefiledocument)
+
+[ReferenceFileDocumentConfiguration](https://developer.apple.com/documentation/swiftui/referencefiledocumentconfiguration)
+
+[var undoManager: UndoManager?](https://developer.apple.com/documentation/swiftui/environmentvalues/undomanager)
+
+### Accessing document configuration
+
+[var documentConfiguration: DocumentConfiguration?](https://developer.apple.com/documentation/swiftui/environmentvalues/documentconfiguration)
+
+[DocumentConfiguration](https://developer.apple.com/documentation/swiftui/documentconfiguration)
+
+### Reading and writing documents
+
+[FileDocumentReadConfiguration](https://developer.apple.com/documentation/swiftui/filedocumentreadconfiguration)
+
+[FileDocumentWriteConfiguration](https://developer.apple.com/documentation/swiftui/filedocumentwriteconfiguration)
+
+### Opening a document programmatically
+
+[var newDocument: NewDocumentAction](https://developer.apple.com/documentation/swiftui/environmentvalues/newdocument)
+
+[NewDocumentAction](https://developer.apple.com/documentation/swiftui/newdocumentaction)
+
+[var openDocument: OpenDocumentAction](https://developer.apple.com/documentation/swiftui/environmentvalues/opendocument)
+
+[OpenDocumentAction](https://developer.apple.com/documentation/swiftui/opendocumentaction)
+
+### Configuring the document launch experience
+
+[DocumentGroupLaunchScene](https://developer.apple.com/documentation/swiftui/documentgrouplaunchscene)
+
+[DocumentLaunchView](https://developer.apple.com/documentation/swiftui/documentlaunchview)
+
+[DocumentLaunchGeometryProxy](https://developer.apple.com/documentation/swiftui/documentlaunchgeometryproxy)
+
+[DefaultDocumentGroupLaunchActions](https://developer.apple.com/documentation/swiftui/defaultdocumentgrouplaunchactions)
 
 95 items were found. Tab back to navigate through them.
 

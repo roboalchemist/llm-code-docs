@@ -1,0 +1,18 @@
+{
+  "title": "SqueezeLLM Documentation",
+  "description": "Post-training quantization framework using Dense-and-Sparse Quantization for efficient LLM serving",
+  "source": "https://github.com/SqueezeAILab/SqueezeLLM",
+  "github_url": "https://github.com/SqueezeAILab/SqueezeLLM",
+  "paper_url": "https://arxiv.org/abs/2306.07629",
+  "huggingface_hub": "https://huggingface.co/squeeze-ai-lab",
+  "license": "MIT",
+  "generated": "2026-01-01T07:38:04.739710",
+  "documentation_files": [
+    "overview.md",
+    "installation.md",
+    "quickstart.md",
+    "quantization-guide.md",
+    "model-zoo.md",
+    "metadata.json"
+  ]
+}

@@ -1,0 +1,24 @@
+# ts-morph Documentation
+# Source: https://raw.githubusercontent.com/dsherret/ts-morph/latest/docs/details/literals.md
+# Path: docs/details/literals.md
+
+---
+title: Literals
+---
+
+## Literals
+
+Literals:
+
+- `StringLiteral` (ex. `"some string"`)
+- `NumericLiteral` (ex. `5`, `10.53`)
+- `TrueLiteral` / `FalseLiteral` (ex. `true` / `false`)
+- `NoSubstitutionTemplateLiteral` (ex. `` `some string` ``)
+- `RegularExpressionLiteral` (ex. `/pattern/gi`)
+
+Methods:
+
+- `.getLiteralValue()` - Returns the string, number, boolean, or RegExp value.
+- `.setLiteralValue(...)` - Allows setting the literal value.
+- `isTerminated()` - If the literal is terminated.
+- `hasExtendedUnicodeEscape()` - If the literal has a unicode escape (ex. `\u{20bb7}`)

@@ -1,0 +1,8 @@
+name: skywalking
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:11:00Z"
+description: >
+  skywalking documentation
+quality_score: 0

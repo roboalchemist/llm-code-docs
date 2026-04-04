@@ -1,0 +1,11 @@
+name: stylex
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.stylexjs.com/
+    last_fetched: "2026-04-03T23:11:06Z"
+  - type: web
+    last_fetched: "2026-04-03T23:11:06Z"
+description: >
+  stylex documentation
+quality_score: 0

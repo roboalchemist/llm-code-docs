@@ -1,0 +1,5 @@
+# Source: https://typescript-eslint.io/blog/tags/emit-decorator-metadata
+
+# One post tagged with "emitDecoratorMetadata"[View All Tags](/blog/tags)## [Changes to `consistent-type-imports` with Legacy Decorators and Decorator Metadata
+](/blog/changes-to-consistent-type-imports-with-decorators)March 25, 2024 · 7 min read[](https://github.com/bradzacher)[Brad Zacher](https://github.com/bradzacher)typescript-eslint MaintainerWe&#x27;ve made some changes to the [`consistent-type-imports` rule](/rules/consistent-type-imports) to fix some long-standing issues when used alongside `experimentalDecorators: true` and `emitDecoratorMetadata: true`. These changes increase safety and prevent invalid fixes when using decorator metadata.
+**Tags:**- [consistent-type-imports](/blog/tags/consistent-type-imports)- [experimentalDecorators](/blog/tags/experimental-decorators)- [emitDecoratorMetadata](/blog/tags/emit-decorator-metadata)- [typescript-eslint](/blog/tags/typescript-eslint)[**Read more**](/blog/changes-to-consistent-type-imports-with-decorators)

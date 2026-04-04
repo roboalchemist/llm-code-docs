@@ -1,0 +1,151 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/manage/versioning.md
+
+# SDK versioning
+
+Speakeasy-generated SDKs are automatically versioned using Semantic Versioning ([SemVer](https://semver.org/)). With each new generation, the SDK version is bumped up.
+
+## Versioning logic
+
+The SDK version will be automatically incremented in the following cases.
+
+### Generator version changes
+
+When Speakeasy releases a new generator version, it compares the features changed in the new generator to those used in the SDK:
+
+- If multiple used features in the SDK change, the largest version bump (major, minor, patch) across all used features determines the version increment.
+- Features unaffected by the new generator version maintain the current version.
+
+### Configuration changes
+
+- Changes to the `gen.yaml` file will bump the patch version.
+- Changes to the checksum will also bump the patch version.
+
+### OpenAPI document changes
+
+- If the `info.version` section of the OpenAPI document is SemVer compliant, major or minor changes to the OpenAPI document will bump the major or minor version of SDKs correspondingly.
+- _Coming Soon_: Speakeasy will detect changes to the OpenAPI document (for example, adding a breaking change to the parameters of an operation) and bump versions accordingly.
+
+## Pre-release version bumps
+
+Speakeasy supports any SemVer-compatible string as a valid version, including pre-release versions such as `X.X.X-alpha` or `X.X.X-alpha.X`.
+
+- Pre-release versioning continues until manual removal.
+- Automated bumps increment pre-release versions. For example, `1.0.0-alpha`, `1.0.0-alpha.1`, `1.0.0-alpha.2`.
+- To exit pre-release versioning, set a new version or run `speakeasy bump graduate`.
+
+## Major version bumps
+
+New SDKs start at version `0.0.1`. Automatic major version bumps begin after reaching version `1.0.0`. Breaking changes trigger major version increments after `1.0.0`.
+
+Major version changes affect the Golang SDK migration path.
+
+### Golang major version bumps
+
+Golang module versions above `1.0.0` require import path changes to include the major version. For example:
+
+- Version `1.2.3`: `github.com/speakeasy/speakeasy-go`
+- Version `2.0.0`: `github.com/speakeasy/speakeasy-go/v2`
+
+Consider Golang SDK major version changes carefully due to migration path impacts. The SDK maintainer determines when to increment major versions.
+
+## Disabling automatic versioning
+
+To permanently disable automatic version bumping, set `versioningStrategy` to `manual` in the `generation` section of your `gen.yaml` file:
+
+```yaml
+generation:
+  versioningStrategy: manual
+```
+
+When set to `manual`, the SDK version will only change when you explicitly update the `version` field in your language-specific configuration or use `speakeasy bump` commands. This is useful when you want full control over SDK versioning and don't want versions to change automatically based on spec, config, or generator changes.
+
+## Manual version bumps
+
+Speakeasy supports manual control of SDK versioning through multiple methods.
+
+### Via gen.yaml
+
+To override the automatic versioning logic for the next generation, set the `version` field in the `gen.yaml` file.
+
+- The Speakeasy generator detects manual version settings when the `releaseVersion` field in the `gen.lock` file differs from the `version` field in the `gen.yaml` file.
+- Automatic versioning will resume when the version values in both files match (unless `versioningStrategy` is set to `manual`).
+
+### Via CLI commands
+
+There are two CLI commands you can use to manage SDK versions:
+
+1. **Using `speakeasy run --set-version=...`**:
+   This command allows you to specify a SemVer-compatible version when generating an SDK without modifying the gen.yaml file directly. This is a local change that will need to be pushed to GitHub to take effect.
+
+   Examples:
+   - `speakeasy run --set-version=1.2.3` - Sets the version to a standard release
+   - `speakeasy run --set-version=1.2.3-rc.1` - Sets the version to a release candidate
+
+2. **Using `speakeasy bump`**:
+   Use the Speakeasy CLI `bump` command to set the SDK version without manually editing the `gen.yaml` file. This is a local change that will need to be pushed to GitHub to take effect.
+
+   Examples:
+   - `speakeasy bump patch` - Bumps the target's version by one patch version
+   - `speakeasy bump -v 1.2.3` - Sets the target's version to 1.2.3
+   - `speakeasy bump -v 1.2.3-rc.1` - Sets the target's version to a release candidate
+   - `speakeasy bump major -t typescript` - Bumps the typescript target's version by one major version
+   - `speakeasy bump graduate` - Current version 1.2.3-alpha.1 sets the target's version to 1.2.3
+
+### Via GitHub Pull Request Labels
+
+Speakeasy supports label-based versioning via GitHub pull request (PR) UI:
+
+1. Automated version detection: The system analyzes changes and suggests the appropriate semantic version bump. The generated PR displays a suggested version label: `major`, `minor`, or `patch`. A `pre-release` label is added for pre-release versions.
+
+2. Manual override option: Override the suggestion by removing the current label and adding a `major`, `minor`, or `patch` label to the PR. Use the bump type `graduate` to move out of pre-release stage. The SDK version updates automatically on the next generation and persists across regenerations until changed.
+
+<Screenshot
+  variant="web"
+  url="https://github.com/speakeasy-sdks/bar-python/pull/8"
+  image={{
+    src: "/assets/docs/labels-location.png",
+    alt: "Screenshot of the publishing tab in the Speakeasy dashboard.",
+  }}
+/>
+
+3. Immediate generation: Label-based versioning is active in all SDK generation workflows. On newer versions of the CLI, the default sdk_generation.yaml already has the labels trigger, so this step may no longer be required. If your workflow file doesn't include this trigger, add the following action trigger to the GitHub workflow file (typically at `.github/workflows/sdk_generation.yaml`):
+
+```yaml
+name: Generate
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+"on":
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Force generation of SDKs
+        type: boolean
+        default: false
+      push_code_samples_only:
+        description: Force push only code samples from SDK generation
+        type: boolean
+        default: false
+      set_version:
+        description: optionally set a specific SDK version
+        type: string
+  pull_request:
+    types: [labeled]
+  schedule:
+    - cron: 0 0 * * *
+```
+
+### Via GitHub Actions
+
+You can set the SDK version by manually running the GitHub workflow:
+
+1. Go to the Actions tab in your GitHub repository
+2. Select the SDK generation workflow
+3. Click "Run workflow"
+4. Use the "set_version" input to specify the desired version
+5. Click "Run workflow" to start the process
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

@@ -1,0 +1,594 @@
+# Source: https://docs.slatejs.org/v0.47/slate-core/commands.md
+
+# Commands
+
+The core `Editor` ships with a bunch of built-in commands that provide common behaviors for rich text editors.
+
+## Current Selection Commands
+
+These commands act on the `document` based on the current `selection`. They are equivalent to calling the [Document Range Commands](#document-range-commands) with the current selection as the `range` argument, but they are there for convenience, since you often want to act with the current selection, as a user would.
+
+### `addMark`
+
+`addMark(mark: Mark) => Editor` \
+&#x20;`addMark(properties: Object) => Editor` \
+&#x20;`addMark(type: String) => Editor`
+
+Add a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) to the characters in the current selection. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) of that type.
+
+### `delete`
+
+`delete() => Editor`
+
+Delete everything in the current selection.
+
+### `insertBlock`
+
+`insertBlock(block: Block) => Editor` \
+&#x20;`insertBlock(properties: Object) => Editor` \
+&#x20;`insertBlock(type: String) => Editor`
+
+Insert a new block at the same level as the current block, splitting the current block to make room if it is non-empty. If the selection is expanded, it will be deleted first.
+
+### `deleteBackward`
+
+`deleteBackward(n: Number) => Editor`
+
+Delete backward `n` characters at the current cursor. If the selection is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
+
+### `deleteForward`
+
+`deleteForward(n: Number) => Editor`
+
+Delete forward `n` characters at the current cursor. If the selection is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
+
+### `insertFragment`
+
+`insertFragment(fragment: Document) => Editor`
+
+Insert a [`fragment`](https://docs.slatejs.org/v0.47/slate-core/document) at the current selection. If the selection is expanded, it will be deleted first.
+
+### `insertInline`
+
+`insertInline(inline: Inline) => Editor` \
+&#x20;`insertInline(properties: Object) => Editor`
+
+Insert a new inline at the current cursor position, splitting the text to make room if it is non-empty. If the selection is expanded, it will be deleted first.
+
+### `insertText`
+
+`insertText(text: String) => Editor`
+
+Insert a string of `text` at the current selection. If the selection is expanded, it will be deleted first.
+
+### `setBlocks`
+
+`setBlocks(properties: Object) => Editor` \
+&#x20;`setBlocks(type: String) => Editor`
+
+Set the `properties` of the [`Blocks`](https://docs.slatejs.org/v0.47/slate-core/block) in the current selection. For convenience, you can pass a `type` string to set the blocks' type only.
+
+### `setInlines`
+
+`setInlines(properties: Object) => Editor` \
+&#x20;`setInlines(type: String) => Editor`
+
+Set the `properties` of the [`Inlines`](https://docs.slatejs.org/v0.47/slate-core/inline) nodes in the current selection. For convenience, you can pass a `type` string to set the inline nodes' type only.
+
+### `splitBlock`
+
+`splitBlock(depth: Number) => Editor`
+
+Split the [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) in the current selection by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `1`.
+
+### `splitInline`
+
+`splitInline(depth: Number) => Editor`
+
+Split the [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) node in the current selection by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `Infinity`.
+
+### `removeMark`
+
+`removeMark(mark: Mark) => Editor` \
+&#x20;`removeMark(properties: Object) => Editor` \
+&#x20;`removeMark(type: String) => Editor`
+
+Remove a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) from the characters in the current selection. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) of that type.
+
+### `replaceMark`
+
+`replaceMark(oldMark: Mark, newMark: Mark) => Editor` \
+&#x20;`replaceMark(oldProperties: Object, newProperties: Object) => Editor` \
+&#x20;`replaceMark(oldType: String, newType: String) => Editor`
+
+Replace a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) in the characters in the current selection. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) of that type.
+
+### `toggleMark`
+
+`toggleMark(mark: Mark) => Editor` \
+&#x20;`toggleMark(properties: Object) => Editor` \
+&#x20;`toggleMark(type: String) => Editor`
+
+Add or remove a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) from the characters in the current selection, depending on it already exists on any or not. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) of that type.
+
+### `unwrapBlock`
+
+`unwrapBlock(type: String) => Editor` \
+&#x20;`unwrapBlock(properties: Object) => Editor` <br>
+
+Unwrap all [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) nodes in the current selection that match a `type` and/or `data`.
+
+### `unwrapInline`
+
+`unwrapInline(type: String) => Editor` \
+&#x20;`unwrapInline(properties: Object) => Editor` <br>
+
+Unwrap all [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) nodes in the current selection that match a `type` and/or `data`.
+
+### `wrapBlock`
+
+`wrapBlock(type: String) => Editor` \
+&#x20;`wrapBlock(properties: Object) => Editor` <br>
+
+Wrap the [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) nodes in the current selection with a new [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) node of `type`, with optional `data`.
+
+### `wrapInline`
+
+`wrapInline(type: String) => Editor` \
+&#x20;`wrapInline(properties: Object) => Editor` <br>
+
+Wrap the [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) nodes in the current selection with a new [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) node of `type`, with optional `data`.
+
+### `wrapText`
+
+`wrapText(prefix: String, [suffix: String]) => Editor`
+
+Surround the text in the current selection with `prefix` and `suffix` strings. If the `suffix` is ommitted, the `prefix` will be used instead.
+
+## Selection Commands
+
+These commands change the current `selection`, without touching the `document`.
+
+### `blur`
+
+`blur() => Editor`
+
+Blur the current selection.
+
+### `deselect`
+
+`deselect() => Editor`
+
+Unset the selection.
+
+### `flip`
+
+`flip() => Editor`
+
+Flip the selection.
+
+### `focus`
+
+`focus() => Editor`
+
+Focus the current selection.
+
+### `move{Point}Backward`
+
+`move{Point}Backward(n: Number) => Editor`
+
+Move the `{Point}` of the selection backward `n` characters. Where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}Forward`
+
+`move{Point}Forward(n: Number) => Editor`
+
+Move the `{Point}` of the selection forward `n` characters. Where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To`
+
+`moveTo(path: List, offset: Number) => Editor` `moveTo(key: String, offset: Number) => Editor` `moveTo(offset: Number) => Editor`
+
+Move the `{Point}` of the selection to a new `path` or `key` and `offset`. Where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `moveTo{Point}`
+
+`moveTo{Point}() => Editor`
+
+Collapse the current selection to one of its points. Where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`.
+
+### `move{Point}To{Edge}OfBlock`
+
+`move{Point}To{Edge}OfBlock() => Editor`
+
+Move the current selection to the `{Edge}` of the closest block parent. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To{Edge}OfDocument`
+
+`move{Point}To{Edge}OfDocument() => Editor`
+
+Move the current selection to the `{Edge}` of the document. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To{Edge}OfInline`
+
+`move{Point}To{Edge}OfInline() => Editor`
+
+Move the current selection to the `{Edge}` of the closest inline parent. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To{Edge}OfNode`
+
+`move{Point}To{Edge}OfNode(node: Node) => Editor`
+
+Move the current selection to the `{Edge}` of a `node`. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To{Edge}OfText`
+
+`move{Point}To{Edge}OfText() => Editor`
+
+Move the current selection to the `{Edge}` of the current text node. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To{Edge}Of{Direction}Block`
+
+`move{Point}To{Edge}Of{Direction}Block() => Editor`
+
+Move the current selection to the `{Edge}` of the closest block parent. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To{Edge}Of{Direction}Inline`
+
+`move{Point}To{Edge}Of{Direction}Inline() => Editor`
+
+Move the current selection to the `{Edge}` of the closest inline parent. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `move{Point}To{Edge}Of{Direction}Text`
+
+`move{Point}To{Edge}Of{Direction}Text() => Editor`
+
+Move the current selection to the `{Edge}` of the current text node. Where `{Edge}` is either `Start` or `End`. And where `{Point}` is either `Anchor`, `Focus`, `Start` or `End`. You can also omit `{Point}` to move both the anchor and focus points at the same time.
+
+### `moveToRangeOfNode`
+
+`moveToRangeOfNode(node: Node) => Editor`
+
+Move the current selection's anchor point to the start of a `node` and its focus point to the end of the `node`.
+
+### `moveToRangeOfDocument`
+
+`moveToRangeOfDocument() => Editor`
+
+Move the current selection's anchor point to the start of the document and its focus point to the end of the document, selecting everything.
+
+### `select`
+
+`select(properties: Range || Object) => Editor`
+
+Set the current selection to a range with merged `properties`. The `properties` can either be a [`Range`](https://docs.slatejs.org/v0.47/slate-core/range) object or a plain JavaScript object of selection properties.
+
+## Document Range Commands
+
+These commands act on a specific [`Range`](https://docs.slatejs.org/v0.47/slate-core/range) of the document.
+
+### `addMarkAtRange`
+
+`addMarkAtRange(range: Range, mark: Mark) => Editor` \
+&#x20;`addMarkAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`addMarkAtRange(range: Range, type: String) => Editor`
+
+Add a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) to the characters in a `range`. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) of that type.
+
+### `deleteAtRange`
+
+`deleteAtRange(range: Range, ) => Editor`
+
+Delete everything in a `range`.
+
+### `deleteBackwardAtRange`
+
+`deleteBackwardAtRange(range: Range, n: Number) => Editor`
+
+Delete backward `n` characters at a `range`. If the `range` is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
+
+### `deleteForwardAtRange`
+
+`deleteForwardAtRange(range: Range, n: Number) => Editor`
+
+Delete forward `n` characters at a `range`. If the `range` is expanded, this method is equivalent to a regular [`delete()`](#delete). `n` defaults to `1`.
+
+### `insertBlockAtRange`
+
+`insertBlockAtRange(range: Range, block: Block) => Editor` \
+&#x20;`insertBlockAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`insertBlockAtRange(range: Range, type: String) => Editor`
+
+Insert a new block at the same level as the leaf block at a `range`, splitting the current block to make room if it is non-empty. If the selection is expanded, it will be deleted first.
+
+### `insertFragmentAtRange`
+
+`insertFragmentAtRange(range: Range, fragment: Document) => Editor`
+
+Insert a [`fragment`](https://docs.slatejs.org/v0.47/slate-core/document) at a `range`. If the selection is expanded, it will be deleted first.
+
+### `insertInlineAtRange`
+
+`insertInlineAtRange(range: Range, inline: Inline) => Editor` \
+&#x20;`insertInlineAtRange(range: Range, properties: Object) => Editor`
+
+Insert a new inline at a `range`, splitting the text to make room if it is non-empty. If the selection is expanded, it will be deleted first.
+
+### `insertTextAtRange`
+
+`insertTextAtRange(range: Range, text: String) => Editor`
+
+Insert a string of `text` at a `range`. If the selection is expanded, it will be deleted first.
+
+### `setBlocksAtRange`
+
+`setBlocksAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`setBlocks(range: Range, type: String) => Editor`
+
+Set the `properties` of the [`Blocks`](https://docs.slatejs.org/v0.47/slate-core/block) in a `range`. For convenience, you can pass a `type` string to set the blocks' type only.
+
+### `setInlinesAtRange`
+
+`setInlinesAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`setInlines(range: Range, type: String) => Editor`
+
+Set the `properties` of the [`Inlines`](https://docs.slatejs.org/v0.47/slate-core/inline) nodes in a `range`. For convenience, you can pass a `type` string to set the inline nodes' type only.
+
+### `splitBlockAtRange`
+
+`splitBlockAtRange(range: Range, depth: Number) => Editor`
+
+Split the [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) in a `range` by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `1`.
+
+### `splitInlineAtRange`
+
+`splitInlineAtRange(range: Range, depth: Number) => Editor`
+
+Split the [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) node in a `range` by `depth` levels. If the selection is expanded, it will be deleted first. `depth` defaults to `Infinity`.
+
+### `removeMarkAtRange`
+
+`removeMarkAtRange(range: Range, mark: Mark) => Editor` \
+&#x20;`removeMarkAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`removeMarkAtRange(range: Range, type: String) => Editor`
+
+Remove a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) from the characters in a `range`. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) of that type.
+
+### `toggleMarkAtRange`
+
+`toggleMarkAtRange(range: Range, mark: Mark) => Editor` \
+&#x20;`toggleMarkAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`toggleMarkAtRange(range: Range, type: String) => Editor`
+
+Add or remove a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) from the characters in a `range`, depending on whether any of them already have the mark. For convenience, you can pass a `type` string or `properties` object to implicitly create a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) of that type.
+
+### `unwrapBlockAtRange`
+
+`unwrapBlockAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`unwrapBlockAtRange(range: Range, type: String) => Editor`
+
+Unwrap all [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) nodes in a `range` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `unwrapInlineAtRange`
+
+`unwrapInlineAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`unwrapInlineAtRange(range: Range, type: String) => Editor`
+
+Unwrap all [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) nodes in a `range` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapBlockAtRange`
+
+`wrapBlockAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`wrapBlockAtRange(range: Range, type: String) => Editor`
+
+Wrap the [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) nodes in a `range` with a new [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) node with `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapInlineAtRange`
+
+`wrapInlineAtRange(range: Range, properties: Object) => Editor` \
+&#x20;`wrapInlineAtRange(range: Range, type: String) => Editor`
+
+Wrap the [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) nodes in a `range` with a new [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) node with `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapTextAtRange`
+
+`wrapTextAtRange(range: Range, prefix: String, [suffix: String]) => Editor`
+
+Surround the text in a `range` with `prefix` and `suffix` strings. If the `suffix` is ommitted, the `prefix` will be used instead.
+
+## Node Commands
+
+These commands are lower-level, and act on a specific node by its `key` or `path`. They're often used in your custom components because you'll have access to `props.node`.
+
+### `addMarkByKey/Path`
+
+`addMarkByKey(key: String, offset: Number, length: Number, mark: Mark) => Editor` `addMarkByPath(path: List, offset: Number, length: Number, mark: Mark) => Editor`
+
+Add a `mark` to `length` characters starting at an `offset` in a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`.
+
+### `insertNodeByKey/Path`
+
+`insertNodeByKey(key: String, index: Number, node: Node) => Editor` `insertNodeByPath(path: List, index: Number, node: Node) => Editor`
+
+Insert a `node` at `index` inside a parent [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`.
+
+### `insertFragmentByKey/Path`
+
+`insertFragmentByKey(key: String, index: Number, fragment: Fragment) => Transform` `insertFragmentByPath(path: list, index: Number, fragment: Fragment) => Transform`
+
+Insert a [`Fragment`](https://github.com/ianstormtaylor/slate/tree/a0b7976cb9a2812d8d96361e9993fe8853a2cc64/docs/reference/slate/fragment.md) at `index` inside a parent [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`.
+
+### `insertTextByKey/Path`
+
+`insertTextByKey(key: String, offset: Number, text: String, [marks: Set]) => Editor` `insertTextByPath(path: List, offset: Number, text: String, [marks: Set]) => Editor`
+
+Insert `text` at an `offset` in a [`Text Node`](https://docs.slatejs.org/v0.47/slate-core/text) by its `key` with optional `marks`.
+
+### `mergeNodeByKey/Path`
+
+`mergeNodeByKey(key: String) => Editor` `mergeNodeByPath(path: List) => Editor`
+
+Merge a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path` with its previous sibling.
+
+### `moveNodeByKey/Path`
+
+`moveNodeByKey(key: String, newKey: String, newIndex: Number) => Editor` `moveNodeByPath(path: List, newKey: String, newIndex: Number) => Editor`
+
+Move a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path` to a new parent node with its `newKey` and at a `newIndex`.
+
+### `removeMarkByKey/Path`
+
+`removeMarkByKey(key: String, offset: Number, length: Number, mark: Mark) => Editor` `removeMarkByPath(path: List, offset: Number, length: Number, mark: Mark) => Editor`
+
+Remove a `mark` from `length` characters starting at an `offset` in a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`.
+
+### `removeNodeByKey/Path`
+
+`removeNodeByKey(key: String) => Editor` `removeNodeByPath(path: List) => Editor`
+
+Remove a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) from the document by its `key` or `path`.
+
+### `replaceNodeByKey/Path`
+
+`replaceNodeByKey(key: String, node: Node) => Editor` `replaceNodeByPath(path: List, node: Node) => Editor`
+
+Replace a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) in the document with a new [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`.
+
+### `removeTextByKey/Path`
+
+`removeTextByKey(key: String, offset: Number, length: Number) => Editor` `removeTextByPath(path: List, offset: Number, length: Number) => Editor`
+
+Remove `length` characters of text starting at an `offset` in a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`.
+
+### `setMarkByKey/Path`
+
+`setMarkByKey(key: String, offset: Number, length: Number, properties: Object, newProperties: Object) => Editor` `setMarkByPath(path: List, offset: Number, length: Number, properties: Object, newProperties: Object) => Editor`
+
+Set a dictionary of `newProperties` on a [`Mark`](https://docs.slatejs.org/v0.47/slate-core/mark) on a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`.
+
+### `setNodeByKey/Path`
+
+`setNodeByKey(key: String, properties: Object) => Editor` \
+&#x20;`setNodeByKey(key: String, type: String) => Editor` `setNodeByPath(path: List, properties: Object) => Editor` \
+&#x20;`setNodeByPath(path: List, type: String) => Editor`
+
+Set a dictionary of `properties` on a [`Node`](https://docs.slatejs.org/v0.47/slate-core/node) by its `key` or `path`. For convenience, you can pass a `type` string or `properties` object.
+
+### `splitNodeByKey/Path`
+
+`splitNodeByKey(key: String, offset: Number) => Editor` `splitNodeByPath(path: List, offset: Number) => Editor`
+
+Split a node by its `key` or `path` at an `offset`.
+
+### `unwrapInlineByKey/Path`
+
+`unwrapInlineByKey(key: String, properties: Object) => Editor` \
+&#x20;`unwrapInlineByKey(key: String, type: String) => Editor` `unwrapInlineByPath(path: List, properties: Object) => Editor` \
+&#x20;`unwrapInlineByPath(path: List, type: String) => Editor`
+
+Unwrap all inner content of an [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) node by its `key` or `path` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `unwrapBlockByKey/Path`
+
+`unwrapBlockByKey(key: String, properties: Object) => Editor` \
+&#x20;`unwrapBlockByKey(key: String, type: String) => Editor` `unwrapBlockByPath(path: List, properties: Object) => Editor` \
+&#x20;`unwrapBlockByPath(path: List, type: String) => Editor`
+
+Unwrap all inner content of a [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) node by its `key` or `path` that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `unwrapNodeByKey/Path`
+
+`unwrapNodeByKey(key: String) => Editor` `unwrapNodeByPath(path: List) => Editor`
+
+Unwrap a single node from its parent. If the node is surrounded with siblings, its parent will be split. If the node is the only child, the parent is removed, and simply replaced by the node itself. Cannot unwrap a root node.
+
+### `wrapBlockByKey/Path`
+
+`wrapBlockByKey(key: String, properties: Object) => Editor` \
+&#x20;`wrapBlockByKey(key: String, type: String) => Editor` `wrapBlockByPath(path: List, properties: Object) => Editor` \
+&#x20;`wrapBlockByPath(path: List, type: String) => Editor`
+
+Wrap the given node in a [`Block`](https://docs.slatejs.org/v0.47/slate-core/block) node that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapInlineByKey/Path`
+
+`wrapInlineByKey(key: String, properties: Object) => Editor` \
+&#x20;`wrapInlineByKey(key: String, type: String) => Editor` `wrapInlineByPath(path: List, properties: Object) => Editor` \
+&#x20;`wrapInlineByPath(path: List, type: String) => Editor`
+
+Wrap the given node in a [`Inline`](https://docs.slatejs.org/v0.47/slate-core/inline) node that match `properties`. For convenience, you can pass a `type` string or `properties` object.
+
+### `wrapNodeByKey/Path`
+
+`wrapNodeByKey(key: String, parent: Node) => Editor` \
+&#x20;`wrapNodeByPath(path: List, parent: Node) => Editor` <br>
+
+Wrap the node with the specified key with the parent [`Node`](https://docs.slatejs.org/v0.47/slate-core/node). This will clear all children of the parent.
+
+## History Commands
+
+These commands use the history to undo/redo previously made changes.
+
+### `redo`
+
+`redo() => Editor`
+
+Move forward one step in the history.
+
+### `undo`
+
+`undo() => Editor`
+
+Move backward one step in the history.
+
+### `snapshotSelection`
+
+`snapshotSelection() => Editor`
+
+Snapshot `value.selection` for `undo` purposes, useful with delete operations like `editor.removeNodeByKey(focusBlock.key).undo()`.
+
+## Miscellaneous Commands
+
+### `normalize`
+
+`normalize() => Editor`
+
+This method normalizes the document with the value's schema. This should run automatically-you should not need to call this method unless you have manually disabled normalization (and you should rarely, if ever, need to manually disable normalization). The vast majority of changes, whether by the user or invoked programmatically, will run `normalize` by default to ensure the document is always in adherence to its schema.
+
+> 🤖 If you must use this method, use it sparingly and strategically. Calling this method can be very expensive as it will run normalization on all of the nodes in your document.
+
+### `withoutNormalizing`
+
+`withoutNormalizing(fn: Function) => Editor`
+
+This method calls the provided function with the current instance of the `Change` object as the first argument. Normalization does not occur while the fuction is executing, and is instead deferred to be be run immediately after it completes.
+
+This method can be used to allow a sequence of change operations that should not be interrupted by normalization. For example:
+
+```javascript
+editor.withoutNormalizing(() => {
+  node.nodes.filter(n => n.object != 'block').forEach(child => {
+    editor.removeNodeByKey(child.key)
+  })
+})
+```
+
+### `withoutSaving`
+
+`withoutSaving(fn: Function) => Editor`
+
+By default all new operations are saved to the editor's history. If you have changes that you don't want to show up in the history when the user presses cmd+z, you can use `withoutSaving` to skip those changes.
+
+```javascript
+editor.withoutSaving(() => {
+  editor.setDecorations(decorations)
+})
+```
+
+However, be sure you know what you are doing because this will create changes that cannot be undone by the user, and might result in confusing behaviors.
+
+### `withoutMerging`
+
+`withoutMerging(fn: Function) => Editor`
+
+Usually, all of the operations in a `Change` are grouped into a single save point in the editor's history. However, sometimes you may want more control over this, to be able to create distinct save points in a single change. To do that, you can use the `withoutMerging` helper.

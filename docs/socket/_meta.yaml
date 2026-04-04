@@ -1,0 +1,9 @@
+name: socket
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.socket.dev/
+    last_fetched: "2026-04-03T23:11:01Z"
+description: >
+  socket documentation
+quality_score: 0

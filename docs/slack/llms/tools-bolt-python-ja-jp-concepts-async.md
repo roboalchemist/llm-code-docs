@@ -1,0 +1,27 @@
+Source: https://docs.slack.dev/tools/bolt-python/ja-jp/concepts/async
+
+# Async（asyncio）の使用
+
+非同期バージョンの Bolt を使用する場合は、`App` の代わりに `AsyncApp` インスタンスをインポートして初期化します。`AsyncApp` では [AIOHTTP](https://docs.aiohttp.org/) を使って API リクエストを行うため、`aiohttp` をインストールする必要があります（`requirements.txt` に追記するか、`pip install aiohttp` を実行します）。
+
+非同期バージョンのプロジェクトのサンプルは、リポジトリの [`examples` フォルダ](https://github.com/slackapi/bolt-python/tree/main/examples)にあります。
+
+```python
+# aiohttp のインストールが必要ですfrom slack_bolt.async_app import AsyncAppapp = AsyncApp()@app.event("app_mention")async def handle_mentions(event, client, say):  # 非同期関数    api_response = await client.reactions_add(        channel=event["channel"],        timestamp=event["ts"],        name="eyes",    )    await say("What's up?")if __name__ == "__main__":    app.start(3000)
+```
+
+## 他のフレームワークを使用する {#他のフレームワークを使用する}
+
+`AsyncApp#start()` では内部的に [`AIOHTTP`](https://docs.aiohttp.org/) のWebサーバーが実装されています。必要に応じて、受信リクエストの処理に `AIOHTTP` 以外のフレームワークを使用することができます。
+
+この例では [Sanic](https://sanicframework.org/) を使用しています。すべてのアダプターのリストについては、[`adapter` フォルダ](https://github.com/slackapi/bolt-python/tree/main/slack_bolt/adapter) を参照してください。
+
+以下のコマンドを実行すると、必要なパッケージをインストールして、Sanic サーバーをポート 3000 で起動します。
+
+```text
+# 必要なパッケージをインストールしますpip install slack_bolt sanic uvicorn# ソースファイルを async_app.py として保存しますuvicorn async_app:api --reload --port 3000 --log-level debug
+```
+
+```python
+from slack_bolt.async_app import AsyncAppapp = AsyncApp()# ここには Sanic に固有の記述はありません# AsyncApp はフレームワークやランタイムに依存しません@app.event("app_mention")async def handle_app_mentions(say):    await say("What's up?")import osfrom sanic import Sanicfrom sanic.request import Requestfrom slack_bolt.adapter.sanic import AsyncSlackRequestHandler# App のインスタンスから Sanic 用のアダプターを作成しますapp_handler = AsyncSlackRequestHandler(app)# Sanic アプリを作成しますapi = Sanic(name="awesome-slack-app")@api.post("/slack/events")async def endpoint(req: Request):    # app_handler では内部的にアプリのディスパッチメソッドが実行されます    return await app_handler.handle(req)if __name__ == "__main__":    api.run(host="0.0.0.0", port=int(os.environ.get("PORT", 3000)))
+```

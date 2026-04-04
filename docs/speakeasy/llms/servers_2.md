@@ -1,0 +1,123 @@
+# Source: https://www.speakeasy.com/md/openapi/servers.md
+
+# OpenAPI Servers
+
+The servers section of OpenAPI is a straightforward yet powerful way to communicate the base URLs of API across different stages of the API lifecycle, or in different environments the end-users might be interested in. There may only be one API, but there is a development server, testing server, maybe a mocking server, or a sandbox for interacting with the API without real-world consequences, as well as the production API. People need to be able to find these servers and guessing is not a fun or productive solution.
+
+Here is an example of defining API servers in OpenAPI:
+
+```yaml
+servers:
+  - url: https://speakeasy.bar
+    description: Production
+
+  - url: https://sandbox.speakeasy.bar
+    description: Sandbox
+
+  - url: http://localhost:8088
+    description: Development
+    x-internal: true
+```
+
+Servers can be defined at the [Document](/openapi#openapi-document-structure) level, the [Path](/openapi/paths) level, or the [Operation](/openapi/paths/operations) level, and since OpenAPI v3.0 can be a combination of domain names, subdirectories, ports, protocols, and even variables. This all gives flexibility in how everything "before the path" is defined, especially helping APIs that might have multiple domains, or dynamic domains.
+
+## Server Object in OpenAPI
+
+A Server Object describes a single server that is available for the API.
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `url` | String | ✅ | A URL to the server. This can be an absolute URL or a relative URL to the hosted location of the OpenAPI document. The URL also supports variable substitutions via [Templating](/openapi/servers/server-variables). |
+| `description` | String |  | A description of the server. [CommonMark syntax](https://spec.commonmark.org/) can be used to provide a rich description. |
+| `variables` | [Server Variables](/openapi/servers/server-variables) |  | A map of variable names to [Server Variable Objects](/openapi/servers/server-variables#server-variable-object) that can be used for variable substitution via [Templating](/openapi/servers/server-variables). |
+| `x-*` | [Extensions](/openapi/extensions) |  | Any number of extension fields can be added to the Server Object ([for example, `x-speakeasy-server-id`](/docs/customize-sdks/servers#managing-multiple-servers-with-ids) that allows IDs to be assigned to each server for easier selection via Speakeasy SDKs) that can be used by tooling and vendors. |
+
+## Absolute or relative
+
+The server URL can be a full URL or it could be a relative path.
+
+If the URL is an absolute path, it **_must_** conform to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986) (`schema://host{:port}{/path}`) and not include the query string, and **_must_** be URL encoded (except for the templating delimiters `{}` if not part of the URL).
+
+The URL can also be a relative path to where the OpenAPI document is hosted (`/api`), at which point it will take the server from wherever the OpenAPI is hosted. For a document hosted at `https://speakeasy.bar/openapi.yaml`, the resulting URL will be `https://speakeasy.bar/api`.
+
+## Path or operation servers
+
+If a list of servers is provided at the `paths` level, the servers will override any servers provided at the document level. If a list of servers is provided at the `operation` level, the servers will override any servers provided at the `paths` and document levels.
+
+```yaml
+openapi: 3.1.0
+servers:
+  - url: https://speakeasy.bar
+    description: Production
+paths:
+  /drinks/{id}/image:
+    servers:
+      - url: https://uploads.speakeasy.bar
+        description: Upload server
+    put:
+      summary: Upload an image for a drink
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the drink to upload an image for.
+          schema:
+            type: string
+      requestBody:
+        content:
+          image/png:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: Image uploaded successfully.
+```
+
+In this example, the `servers` defined at the operation level will override the `servers` defined at the document level. The server URL for the operation will be `https://uploads.speakeasy.bar`, while the rest of the API will still use `https://speakeasy.bar`.
+
+Splitting out functionality like this can happen as [APIs evolve](/api-design/versioning), especially in this case of an [upload operation](/api-design/file-uploads) moving a dedicated endpoint to avoid spamming the main API server with large files.
+
+## Server variables
+
+Server variables offer a convenient way to modify server URLs, covering simple patterns such as environment names, geographical regions, or covering wildcards like user-generated subdomains. These variables are part of the server object, and allow for more flexible API configurations without hardcoding every possible server option.
+
+For instance, consider an API that is deployed across multiple regions, such as the United States, Europe, and Asia. Instead of listing each server URL separately, use a server variable to represent the region.
+
+```yaml
+servers:
+  - url: "https://{region}.api.speakeasy.bar"
+    description: Edge Server
+    variables:
+      region:
+        default: us
+        description: Please select the appropriate server.
+        enum:
+          - us
+          - eu
+          - asia
+```
+
+In this example, `{region}` is a server variable, and the `enum` restricts this to three possible values: `us`, `eu`, and `asia`. The default value is `us`, which means if the region is not specified, tooling can know which value to use. This setup allows clients to dynamically select the appropriate regional server by substituting the `{region}` variable in the URL template, resulting in `https://asia.api.example.com`.
+
+**Learn more about [server variables in OpenAPI](/openapi/servers/server-variables).**
+
+## Best practices
+
+### Best server first
+
+Depending on what tools are being used, servers can be used to do different things. For documentation the first server in the list is usually considered to be the default server to use, with logic to select other servers to use left up to tooling or the API consumer.
+
+### Use x-internal to hide internal servers
+
+The `x-internal` attribute is not officially part of the specification, but it is a popular extension supported by many tools. Setting `x-internal: true` will hide these servers from public facing documentation for example. This allow them to be displayed for development and testing information in OpenAPI, but avoids confusing end-users with details about the internal setup.
+
+```yaml
+servers:
+  - url: http://localhost:8088
+    description: Development
+    x-internal: true
+```
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

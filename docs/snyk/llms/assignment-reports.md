@@ -1,0 +1,29 @@
+# Source: https://docs.snyk.io/discover-snyk/snyk-learn/snyk-learn-reports/assignment-reports.md
+
+# Assignment reports
+
+{% hint style="info" %}
+Snyk Learn assignment reporting is available only in the Learning Management add-on offering. For more information, contact your Snyk account team.
+{% endhint %}
+
+After you have created your first [Assignments](https://docs.snyk.io/discover-snyk/snyk-learn/snyk-learn-assignments) with Snyk Learn, you can use the Assignment reporting to track progress at an organization level. This is useful for team managers, security champions, AppSec engineers and compliance team members to follow up on detailed progress, and to extract reports for compliance usage.
+
+## Assignment Report
+
+By navigating to your [assignment](https://learn.snyk.io/admin/assignments/) dashboard, you can find reports showing your organizational progress against assignments.
+
+You can also use the filter to drill down further, and the buttons below the filter allow you to change the due date, delete assignments, and also trigger email reminders for your users.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-54354ef23c87b69d1a0b24c27cb571aa40156d1b%2FScreenshot%202025-09-29%20at%2019.00.09.png?alt=media" alt=""><figcaption></figcaption></figure>
+
+### Changing the due date
+
+First select the assignments you would like to change the due date for, and then press the icon highlighted in the image below. You will then be asked to pick a new date. This updates the due date, and also updates the users Learning Progress dashboard.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-5195c3a74c517c3575eb7bc431c02181c4d543e2%2FScreenshot%202025-09-29%20at%2019.04.26.png?alt=media" alt=""><figcaption></figcaption></figure>
+
+### Sending a reminder email
+
+By selecting an assignment and then pressing the button highlighted you can trigger a reminder email to be sent. You will be offered the chance to add a custom message before the reminder is sent.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-6fa3741d2b2d719a11a6b807abe2468b19941a01%2FScreenshot%202025-09-29%20at%2019.06.40.png?alt=media" alt=""><figcaption></figcaption></figure>

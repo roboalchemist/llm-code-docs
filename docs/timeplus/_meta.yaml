@@ -1,0 +1,9 @@
+name: timeplus
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.timeplus.com/
+    last_fetched: "2026-04-03T23:11:12Z"
+description: >
+  timeplus documentation
+quality_score: 0

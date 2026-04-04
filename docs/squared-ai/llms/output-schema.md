@@ -1,0 +1,75 @@
+# Source: https://docs.squared.ai/activation/ai-modelling/output-schema.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Output Schema
+
+> Define how to handle and structure your AI/ML model's responses.
+
+The **Output Schema** defines the structure of the response returned by your AI/ML model. This ensures that predictions or insights received from the model are properly formatted, mapped, and usable within downstream components like Data Apps, feedback mechanisms, or automation triggers.
+
+AI Squared allows you to specify each expected field and its data type so the platform can interpret and surface the response correctly.
+
+***
+
+## Why Output Schema Matters
+
+* Standardizes how model results are parsed and displayed
+* Enables seamless integration into Data Apps or embedded tools
+* Ensures feedback mechanisms are correctly tied to model responses
+* Supports chaining outputs to downstream actions
+
+***
+
+## Defining Output Fields
+
+Each field you expect from the model response must be described in the schema:
+
+| Field          | Description                                           |
+| -------------- | ----------------------------------------------------- |
+| **Field Name** | The key name returned in the model’s response payload |
+| **Type**       | Data type: `String`, `Integer`, `Float`, `Boolean`    |
+
+📸 *Placeholder for: Screenshot of output schema configuration UI*
+
+***
+
+## Example Output Payload
+
+```json  theme={null}
+{
+  "churn_risk_score": 0.92,
+  "prediction_label": "High Risk",
+  "confidence": 0.88
+}
+```
+
+Your output schema should include:
+
+churn\_risk\_score → Float
+
+prediction\_label → String
+
+confidence → Float
+
+This structure ensures consistent formatting across visualizations and workflows.
+
+## Tips for Defining Output Fields
+
+Make sure field names exactly match the keys returned by the model.
+
+Use descriptive names that make the output easy to understand in UI or downstream logic.
+
+Choose the right type — AI Squared uses this for formatting (e.g., number rounding, boolean flags, etc.).
+
+## What's Next
+
+You’ve now connected your source, defined inputs, optionally transformed them, and configured the expected output. Next, you can:
+
+* Test Your Model with sample payloads
+
+* Embed the output into Data Apps
+
+* Set up Feedback Capture

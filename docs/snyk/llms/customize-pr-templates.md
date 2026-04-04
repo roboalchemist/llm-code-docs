@@ -1,0 +1,22 @@
+# Source: https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/customize-pr-templates.md
+
+# Customize PR templates
+
+When you fix or upgrade Snyk Open Source and Snyk Container Projects imported using the [SCM integrations](https://docs.snyk.io/developer-tools/scm-integrations/organization-level-integrations), Snyk raises pull requests (PRs) against your repository.
+
+Snyk has default PR templates for the title, description, and commit message. These indicate what packages are being changed, which issues are being fixed, and many other details.
+
+You may have your own standards and practices for submitting pull requests. For instance, if a pull request comes from Snyk, you may require the title to begin with `SNYK:`.
+
+You can set custom PR templates using the following methods:
+
+* API request - set all PRs in the Group to the custom template that is uploaded. Refer to [Create an API request with a Custom template](https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/apply-a-custom-pr-template#create-and-manage-a-custom-pr-template-using-the-api) on the [Apply a Custom PR template](https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/customize-pr-templates/apply-a-custom-pr-template) page.
+* [YAML upload ](https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/apply-a-custom-pr-template#customize-using-a-yaml-pr-template-file)- set the custom template for a specific repository
+
+After the template is set, the custom PR template feature is enabled.
+
+PR templates are opened with a custom template in the following order of precedence:
+
+* First, Snyk applies anything that is set for the specific repository, that is, the YAML upload.
+* If there is anything missing from that template or the Project does not have a YAML file, Snyk checks for your Group template uploaded and set using the API request.
+* If anything is missing in the Group template or no custom template is found, Snyk applies the default template.

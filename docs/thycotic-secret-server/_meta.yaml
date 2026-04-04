@@ -1,0 +1,8 @@
+name: thycotic-secret-server
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:11:12Z"
+description: >
+  thycotic-secret-server documentation
+quality_score: 0

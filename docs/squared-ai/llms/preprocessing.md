@@ -1,0 +1,66 @@
+# Source: https://docs.squared.ai/activation/ai-modelling/preprocessing.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Preprocessing
+
+> Configure transformations on input data before sending it to your AI/ML model.
+
+**Preprocessing** allows you to transform or enrich the input data before it is sent to your AI/ML model endpoint. This is useful when your source data requires formatting, restructuring, or enhancement to match the model's expected input.
+
+With AI Squared, preprocessing is fully configurable through a no-code interface or optional custom logic for more advanced cases.
+
+***
+
+## When to Use Preprocessing
+
+* Format inputs to match the model schema (e.g., convert a date to ISO format)
+* Add additional metadata required by the model
+* Clean raw input (e.g., remove special characters from text)
+* Combine or derive fields (e.g., full name = first + last)
+
+***
+
+## How Preprocessing Works
+
+Each input field can be passed through one or more transformations before being sent to the model. These transformations are applied in the order defined in the UI.
+
+> ⚠️ Preprocessing does not modify your original data — it only adjusts the payload sent to the model for that request.
+
+***
+
+## Common Use Cases
+
+| Example Use Case              | Transformation                |
+| ----------------------------- | ----------------------------- |
+| Format `created_at` timestamp | Convert to ISO 8601           |
+| Combine first and last name   | Join with space               |
+| Normalize text input          | Lowercase, remove punctuation |
+| Apply static fallback         | Use default if no value found |
+
+📸 *Placeholder for: Screenshot of preprocessing config screen*
+
+***
+
+## Dynamic Input + Preprocessing
+
+Preprocessing is often used alongside **Dynamic Input Values** to shape data pulled from apps like Salesforce, ServiceNow, or custom web tools.
+
+📘 Example:\
+If you're harvesting a value like `deal_amount` from a CRM, you might want to round it or convert it into another currency before sending it to the model.
+
+***
+
+## Optional Scripting (Advanced)
+
+In upcoming versions, advanced users may have the option to inject lightweight transformation scripts for more customized logic. Contact support to learn more about enabling this feature.
+
+***
+
+## What’s Next
+
+Now that your inputs are prepared, it’s time to define how your model’s **responses** are structured.
+
+👉 Proceed to [Output Schema](./output-schema) to configure your response handling.

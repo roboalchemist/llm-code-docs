@@ -1,0 +1,8 @@
+name: ts-node
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:11:15Z"
+description: >
+  ts-node documentation
+quality_score: 0

@@ -1,0 +1,28 @@
+# Source: https://docs.syncfusion.com/windowsforms/hub-tile/faq/how-to-modify-hubtile-image-transition-direction-in-runtime.md
+
+# How to modify HubTile image transition direction in runtime?
+
+You can set HubTile [SlideTransition](https://help.syncfusion.com/cr/windowsforms/Syncfusion.Windows.Forms.Tools.HubTile.html#Syncfusion_Windows_Forms_Tools_HubTile_SlideTransition) property to achieve this.
+
+{% tabs %}
+{% highlight C# %} 
+// Sets Image transition direction as RightToLeft
+this.HubTile1.SlideTransition = TransitionDirection.RightToLeft;
+// Sets Image transition direction as LeftToRight
+this.HubTile1.SlideTransition = TransitionDirection.LeftToRight;
+// Sets Image transition direction as TopToBottom
+this.HubTile1.SlideTransition = TransitionDirection.TopToBottom;
+// Sets Image transition direction as BottomToTop
+this.HubTile1.SlideTransition= TransitionDirection.BottomToTop;
+{% endhighlight %}
+{% highlight VB %}
+âSets Image transition direction as RightToLeft
+Me.HubTile1.SlideTransition = TransitionDirection.RightToLeft
+âSets Image transition direction as LeftToRight
+Me.HubTile1.SlideTransition = TransitionDirection.LeftToRight
+âSets Image transition direction as TopToBottom
+Me.HubTile1.SlideTransition = TransitionDirection.TopToBottom
+âSets Image transition direction as BottomToTop
+Me.HubTile1.SlideTransition= TransitionDirection.BottomToTop
+{% endhighlight %}
+{% endtabs %}

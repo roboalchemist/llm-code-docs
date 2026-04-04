@@ -1,0 +1,33 @@
+---
+title: Accessing form reference
+description: Learn to access a form reference using Unform
+---
+
+Unform exposes various helper functions through the form ref.
+
+```jsx lineNumbers=true
+export default function MyForm() {
+  const formRef = useRef(null)
+
+  // Use formRef.current to access all methods
+
+  return <Form ref={formRef}>...</Form>
+}
+```
+
+## Methods
+
+| Function                                        | Description                             |
+| ----------------------------------------------- | --------------------------------------- |
+| submitForm()                                    | Trigger onSubmit function               |
+| reset(data?: object)                            | Reset (and maybe replace) all form data |
+| getData()                                       | Returns all form data                   |
+| setData(data: object)                           | Set multiple fields data                |
+| getErrors()                                     | Returns all field errors                |
+| setErrors(errors: object)                       | Set multiple field errors               |
+| clearField(fieldName: string)                   | Clear single field value                |
+| getFieldValue(fieldName: string)                | Get single field value                  |
+| setFieldValue(fieldName: string, value: string) | Set single field value                  |
+| getFieldError(fieldName: string)                | Get single field error                  |
+| setFieldError(fieldName: string, error: string) | Set single field error                  |
+| getFieldRef(fieldName: string)                  | Get single field reference              |

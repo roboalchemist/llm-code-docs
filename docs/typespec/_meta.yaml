@@ -1,0 +1,9 @@
+name: typespec
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.typespec.io/docs/
+    last_fetched: "2026-04-03T23:11:16Z"
+description: >
+  typespec documentation
+quality_score: 0

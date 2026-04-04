@@ -1,0 +1,52 @@
+# Source: https://docs.squared.ai/activation/data-apps/visualizations/embed.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Embed in Business Apps
+
+> Learn how to embed Data Apps into tools like CRMs, support platforms, or internal web apps.
+
+Once your Data App is configured and saved, you can embed it within internal or third-party business tools where your users work—such as CRMs, support platforms, or internal dashboards.
+
+AI Squared supports multiple embedding options for flexibility across environments.
+
+***
+
+## Option 1: Embed via IFrame
+
+1. Go to **Data Apps**.
+2. Select the Data App you want to embed.
+3. Click on **Embed Options** > **IFrame**.
+4. Copy the generated `<iframe>` snippet.
+5. Paste this into your target application (e.g., internal dashboard, web app).
+
+> Note: Ensure the host application supports iframe embedding and cross-origin requests.
+
+***
+
+## Option 2: Embed using Browser Extension
+
+1. Install the AI Squared browser extension (Chrome/Edge).
+2. Navigate to the target business app (e.g., Salesforce).
+3. Use the extension to “pin” a Data App to a specific screen.
+   * Example: Pin a churn score Data App on a Salesforce account details page.
+4. Configure visibility rules if needed (e.g., user role, page section).
+
+This option does not require modifying the application code.
+
+***
+
+## Best Practices
+
+* Embed Data Apps near where decisions happen—sales records, support tickets, lead workflows.
+* Keep layout minimal for seamless user experience.
+* Use feedback capture where helpful for continual model improvement.
+
+***
+
+## Next Steps
+
+* 👉 [Feedback & Ratings](../feedback-and-ratings): Set up qualitative or quantitative feedback mechanisms.
+* 👉 [Monitor Usage](../data-apps-reports): Track adoption and model performance.

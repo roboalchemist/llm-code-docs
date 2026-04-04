@@ -1,0 +1,12 @@
+# Source: https://docs.snowflake.com/en/connectors/google/gaad/gaad-connector-prereqs.md
+
+# Preparing your Google Analytics and Google Cloud accounts
+
+Before installing Snowflake Connector for Google Analytics Aggregate Data:
+
+* Ensure that your Google Analytics properties are migrated to Google Analytics 4 (GA4). The Snowflake Connector for Google Analytics Aggregate Data does not support Universal Analytics.
+* Ensure that the Google Analytics Admin API and Google Analytics Data API are enabled for your Google Cloud project.
+* Do one of the following:
+
+  > * Create a service account key for your Google Cloud project. The Snowflake Connector for Google Analytics Aggregate Data uses the service account to authenticate against the GA4 API. For more information, see [Configure service account authentication for Google Cloud](gaad-connector-create-service-account-key.md).
+  > * Alternatively, configure the OAuth consent screen and client ID in your Google Cloud project. The Snowflake Connector for Google Analytics Aggregate Data uses the OAuth consent screen and the client ID to authenticate against the GA4 API. For more information, see [Configure OAuth authentication for Google Cloud](gaad-connector-create-client-id.md).

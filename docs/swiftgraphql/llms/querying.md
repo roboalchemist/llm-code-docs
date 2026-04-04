@@ -1,0 +1,163 @@
+# Source: https://swift-graphql.com/querying.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://swift-graphql.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Creating GraphQL Selection
+
+SwiftGraphQL lets you query data, perform mutations and even listen for subscriptions. Even though each method does something different, they all share the principle of query building. This section shows how to create a query using SwiftGraphQL query builder.
+
+> If you are interested in more in-depth overview of how selection works, check out [selection documentation](/advanced/selection).
+
+## Simple Queries
+
+To kick things off, let's start with a simple Hello World query:
+
+```swift  theme={null}
+let hello = Selection.Query<String> { builder in
+    try builder.world()
+}
+```
+
+One by one we
+
+1. first create a `Selection.Query` since we are going to select a field in the root `Query`. This is a generic type that can be used to query any type of data. In this case, we're querying a `String` value, that's why we particularize the generic to return a string.
+2. Second, we create a closure that will be called to create a selection and to decode returned value. That closure will receive a `QueryBuilder` as the only argument which lets us select fields available in that type - in our case `world` field in the `Query` type.
+3. Lastly, we assign the selection to a value `hello` so we can reuse it in many places.
+
+## Reusing Selection
+
+Once we've create a selection, we can reuse it in any other query just like a GraphQL fragment. This way, we can compose complex queries from simple ones and keep track of all the selections we've created.
+
+```swift  theme={null}
+let picture = Selection.Picture<Picture> {
+    let id = try $0.id()
+    let url = try $0.url()
+
+    return Picture(id: id, url: url)
+}
+
+let user = Selection.User<User> {
+    let id = try $0.id()
+    let name = try $0.name()
+    let avatar = try $0.picture(selection: picture.nullable)
+
+    return User(id: id, name: name, avatar: avatar)
+}
+
+let message = Selection.Message<Message> {
+    let id = try $0.id()
+    let createdAt = try $0.createdAt()
+    let text = try $0.text()
+    let author = try $0.author(selection: user)
+
+    return Message(id: id, createdAt: createdAt, text: text, author: author)
+}
+
+let feed = Selection.Query<[Message]> {
+    try $0.feed(selection: message.list)
+}
+```
+
+> Notice that instead of always relying on `builder` argument, we use `$0` to refer to the `QueryBuilder` instance.
+
+## Decoding Values
+
+Since selection is just another Swift function, we can add custom logic to how we decode values. For example,
+
+* we might want to make sure that each message has an author even if schema doesn't enforce it,
+* we could convert a `String` value to an `URL` and fail if it's not a valid URL,
+* we could convert an object into a discriminated union, or
+* we could even filter out the data from a list that doesn't fit our needs.
+
+```swift  theme={null}
+enum FeedItem {
+    case ad(url: URL)
+    case message(text: String)
+    case post(message: String, photo: URL)
+}
+
+let item = Selection.Item<FeedItem> {
+    let kind = try $0.kind()
+
+    let url = try $0.url()
+    let text = try $0.text()
+    let message = try $0.message()
+    let photo = try $0.photo()
+
+    switch kind {
+    case .ad:
+        guard let url = URL(string: url) else {
+            throw GraphQLError.invalidURL(url)
+        }
+        return .ad(url: url)
+    case .message:
+        guard let message = message else {
+            throw GraphQLError.missingMessageContent
+        }
+        return .message(text: text)
+    case .post:
+        guard let message = message, let photo = photo else {
+            throw GraphQLError.missingPostContent
+        }
+        return .post(message: message, photo: photo)
+    }
+}
+
+```
+
+> It's important that you always make selection before any logical operation on it. Otherwise, it could happen that some fields are missing from the selection.
+
+## Adding Arguments
+
+GraphQL operations often require arguments. SwiftGraphQL lets you pass arguments to your selections as arguments to selected fields. Furthermore, if you want to make your query dynamic, you can create a function that returns selection instead of creating a variable.
+
+```swift  theme={null}
+let date = Selection.Query<Date> {
+    try $0.date(format: "yyyy-MM-dd")
+}
+
+func login(email: String, password: String) -> Selection.Mutation<String?> {
+    Selection.Mutation<String?> {
+        try $0.login(email: email, password: password)
+    }
+}
+```
+
+### Optional Arguments
+
+GraphQL differentiates between different kinds of absent variables when dealing with inputs. A variable may be
+
+* present (e.g. "21 years old")
+* null (e.g. "we don't know how old a person is")
+* missing (e.g. "we shouldn't change the current value").
+
+To present all cases, SwiftGraphQL uses `OptionalArgument` enumerator.
+
+```swift  theme={null}
+enum OptionalArgument<Value> {
+	case present(Value?)
+	case absent
+}
+```
+
+> NOTE: Every nullable argument is by default absent so you don't have to write boilerplate code.
+
+Because writing `OptionalArgument` is cumbersome, SwiftGraphQL provides a convenience operator `~` that transforms scalar values into present optional arguments.
+
+```swift  theme={null}
+let variable: OptionalArgument<Int> = ~21
+
+let query = Selection.Query<String?> {
+	let user = $0.user(id: ~"uid-17032000", selection: User.selection)
+	return user.name
+}
+
+let mutation = Selection.Mutation<Void> {
+	try $0.createUser(name: ~"John Doe", age: ~nil)
+}
+```
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,148 @@
+# Source: https://docs.startree.ai/thirdeye/how-tos/alert/manage-missing-data.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://docs.startree.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Manage Missing Data
+
+Most of the time(^1), to create buckets of a given granularity, the data fetching step will query with `GROUP BY timeBucket`. Let's consider a granularity of 1 day. What happens if there is no data on a Sunday? There will be no line for this Sunday. There is a great chance this will make things break later. After all, you expect your detection pipeline to know when there is no data. This case can seem non-likely to happen, but as soon as you filter on specific dimensions, the probability of this happening skyrockets.
+
+To manage missing data, use a `TimeIndexFiller` node. A usual pipeline will look like this:
+
+<img src="https://mintcdn.com/startree/zMiJ17Ik7Xto2JoM/img/thirdeye/_missing_data_index_filler.png?fit=max&auto=format&n=zMiJ17Ik7Xto2JoM&q=85&s=f1f41c2357cdc3b71426b6bde89bd6f0" width="20%" data-path="img/thirdeye/_missing_data_index_filler.png" />
+
+Here is the corresponding configuration:
+
+```json  theme={null}
+{
+  "name": "simple-threshold-template",
+  "description": "Sample threshold alert. Runs every hour. Change the template properties to run on your data",
+  "cron": "0 * * * * ? *",
+  "template": {
+    "nodes": [
+      {
+        "name": "root",
+        "type": "AnomalyDetector",
+        "params": {
+          "type": "THRESHOLD",
+          "component.monitoringGranularity": "${monitoringGranularity}",
+          "component.timestamp": "ts",
+          "component.metric": "met",
+          "component.max": "${max}",
+          "component.min": "${min}",
+          "anomaly.metric": "${aggregateFunction}(${metric})"
+        },
+        "inputs": [
+          {
+            "targetProperty": "current",
+            "sourcePlanNode": "missingDataManager",
+            "sourceProperty": "currentData"
+          }
+        ]
+      },
+      {
+        "name": "missingDataManager",
+        "type": "TimeIndexFiller",
+        "params": {
+          "component.timestamp": "ts"
+        },
+        "inputs": [
+          {
+            "sourcePlanNode": "currentDataFetcher",
+            "sourceProperty": "currentData"
+          }
+        ],
+        "outputs": [
+          {
+            "outputName": "currentData"
+          }
+        ]
+      },
+      {
+        "name": "currentDataFetcher",
+        "type": "DataFetcher",
+        "params": {
+          "component.dataSource": "${dataSource}",
+          "component.query": "SELECT __timeGroup(\"${timeColumn}\", '${timeColumnFormat}', '${monitoringGranularity}') as ts, ${aggregateFunction}(${metric}) as met FROM ${dataset} WHERE __timeFilter(\"${timeColumn}\", '${timeColumnFormat}') GROUP BY ts ORDER BY ts LIMIT 1000"
+        },
+        "outputs": [
+          {
+            "outputKey": "pinot",
+            "outputName": "currentData"
+          }
+        ]
+      }
+    ]
+  },
+  "templateProperties": {
+    "dataSource": "pinotQuickStartAzure",
+    "dataset": "pageviews",
+    "aggregateFunction": "sum",
+    "metric": "views",
+    "monitoringGranularity": "P1D",
+    "timeColumn": "date",
+    "timeColumnFormat": "yyyyMMdd",
+    "max": "850000",
+    "min": "250000"
+  }
+}
+```
+
+*threshold\_with\_missing\_data\_management.json*
+
+By default, missing buckets are created with a value of 0.
+
+## Configuration and behavior
+
+The `TimeIndexFiller` takes an input and returns it with the time index filled.
+
+```json  theme={null}
+  {
+    "name": "missingDataManager",
+    "type": "TimeIndexFiller",
+    "params": {
+      "component.timestamp": "ts"
+    },
+    "inputs": [
+      {
+        "sourcePlanNode": "currentDataFetcher",
+        "sourceProperty": "currentData"
+      }
+    ],
+    "outputs": [
+      {
+        "outputName": "currentData"
+      }
+    ]
+  }
+```
+
+**Notice there is only one parameter.**
+
+Because the `DataFetcher` uses the ThirdEye macros `__timeGroup(...)` and `__timeFilter(...)`, metadata about the granularity and the time predicate is directly given to the `TimeIndexFiller`.
+
+## Manual configuration
+
+If the input does not use macros, the `TimeIndexFiller` requires the following parameters:
+
+* `component.monitoringGranularity`: the granularity in ISO 8601 format. Eg: `P1D`.
+* `component.metric`: the name of the metric column.
+* `component.timestamp`: the name of the time column.
+* `component.minTimeInference`: the strategy to infer the minimum time.
+* `component.maxTimeInference`: the strategy to infer the maximum time.
+* `component.lookback`: Used when time inference uses a lookback time. In ISO 8601 format.
+
+The possible strategies are:
+
+* `FROM_DATA`: the minimum (resp maximum) time is the minimum (resp maximum) time observed in the input. Does not work well if data is missing at the beginning or at the end.
+* `FROM_DETECTION_TIME`: the minimum (resp maximum) time is the the minimum (resp maximum) of the analysis timeframe
+* `FROM_DETECTION_TIME_WITH_LOOKBACK`: same as the previous one, with an offset applied of value `component.lookback`.
+
+***
+
+(^1) For classic SQL databases. Timeseries-focused database often introduce group-by-time-bucket capabilities, with empty buckets materialized.
+Still these bucketings require a range, or use the first and last value as range, which is not correct in our case.
+
+Built with [Mintlify](https://mintlify.com).

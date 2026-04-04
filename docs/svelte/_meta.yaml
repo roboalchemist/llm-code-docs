@@ -1,0 +1,9 @@
+name: svelte
+primary_source: llms
+sources:
+  - type: llms
+    url: https://svelte.dev/
+    last_fetched: "2026-04-03T23:11:07Z"
+description: >
+  svelte documentation
+quality_score: 0

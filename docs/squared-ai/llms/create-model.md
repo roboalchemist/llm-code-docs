@@ -1,0 +1,102 @@
+# Source: https://docs.squared.ai/api-reference/models/create-model.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Create Model
+
+
+
+## OpenAPI
+
+````yaml POST /api/v1/models
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
+paths:
+  /api/v1/models:
+    post:
+      tags:
+        - Models
+      summary: Creates a model
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    query:
+                      type: string
+                    query_type:
+                      type: string
+                    configuration:
+                      type: object
+                    primary_key:
+                      type: string
+                    connector_id:
+                      type: integer
+                  required:
+                    - connector_id
+                    - name
+                    - query_type
+      responses:
+        '201':
+          description: Model created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          query:
+                            type: string
+                          query_type:
+                            type: string
+                          configuration:
+                            type: object
+                          primary_key:
+                            type: string
+                          connector_id:
+                            type: integer
+                          created_at:
+                            type: string
+                            format: date-time
+                          updated_at:
+                            type: string
+                            format: date-time
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+````

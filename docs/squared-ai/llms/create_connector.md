@@ -1,0 +1,104 @@
+# Source: https://docs.squared.ai/api-reference/connectors/create_connector.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Create Connector
+
+
+
+## OpenAPI
+
+````yaml POST /api/v1/connectors
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
+paths:
+  /api/v1/connectors:
+    post:
+      tags:
+        - Connectors
+      summary: Creates a connector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    connector_type:
+                      type: string
+                      enum:
+                        - source
+                        - destination
+                    connector_name:
+                      type: string
+                    configuration:
+                      type: object
+                      description: >-
+                        Configuration details for the connector. Structure
+                        depends on the connector definition.
+                      additionalProperties: true
+                  required:
+                    - name
+                    - connector_type
+                    - connector_name
+                    - configuration
+      responses:
+        '201':
+          description: Connector created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          connector_type:
+                            type: string
+                          workspace_id:
+                            type: integer
+                          created_at:
+                            type: string
+                            format: date-time
+                          updated_at:
+                            type: string
+                            format: date-time
+                          configuration:
+                            type: object
+                            description: Specific configuration of the created connector.
+                            additionalProperties: true
+                          connector_name:
+                            type: string
+                          icon:
+                            type: string
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+````

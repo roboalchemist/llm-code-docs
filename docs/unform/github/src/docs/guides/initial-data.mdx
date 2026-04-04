@@ -1,0 +1,44 @@
+---
+title: Initial data
+description: Providing initial data on Unform
+---
+
+To provide initial custom data to inputs, you can provide an `initialData` prop 
+to the `Form` component:
+
+```jsx lineNumbers=true
+export default function MyForm() {
+  return (
+    <Form initialData={{ email: 'test@example.com' }}>
+      <Input name="email" />
+    </Form>
+  );
+}
+```
+
+## Set initial data asynchronously
+
+Most of the time, Unform uses the `defaultValue` prop of inputs to set the 
+initial data. When you get the data from an API request or an asynchronous call, 
+the `initialData` may not work, as the `defaultValue` doesn't reflect changes.
+
+```jsx lineNumbers=true
+export default function MyForm() {
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    someApiCall().then(user => {
+      formRef.current.setData({ email: user.email });
+    });
+  }, []);
+
+  return (
+    <Form ref={formRef}>
+      <Input name="email" />
+    </Form>
+  );
+}
+```
+
+The `setData` function exposed by Unform API will replace input data based on 
+the property name provided in the object received as a parameter.

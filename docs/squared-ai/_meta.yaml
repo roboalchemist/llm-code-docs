@@ -1,0 +1,9 @@
+name: squared-ai
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.squared.ai/
+    last_fetched: "2026-04-03T23:11:03Z"
+description: >
+  squared-ai documentation
+quality_score: 0

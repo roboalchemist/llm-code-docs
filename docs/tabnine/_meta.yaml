@@ -1,0 +1,9 @@
+name: tabnine
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.tabnine.com/
+    last_fetched: "2026-04-03T23:11:08Z"
+description: >
+  tabnine documentation
+quality_score: 0

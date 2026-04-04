@@ -1,0 +1,8 @@
+name: system.commandline
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:11:08Z"
+description: >
+  system.commandline documentation
+quality_score: 0

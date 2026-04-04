@@ -1,0 +1,108 @@
+# Source: https://docs.snowflake.com/en/connectors/postgres6/email-notifications.md
+
+# Source: https://docs.snowflake.com/en/connectors/mysql6/email-notifications.md
+
+# Source: https://docs.snowflake.com/en/user-guide/notifications/email-notifications.md
+
+# Sending email notifications
+
+To send an email notification:
+
+1. Make sure that the intended recipients verify their email addresses.
+2. Create a notification integration.
+3. Call a stored procedure to send the notification.
+
+## Verify the email addresses of the email notification recipients
+
+You can send email notifications only to Snowflake users within the same account.
+
+Users can verify their own email addresses through [Snowsight (the Snowflake web interface)](../ui-snowsight-profile.md).
+
+Administrators can verify the email address of other users by calling the [SYSTEM$START_USER_EMAIL_VERIFICATION](../../sql-reference/functions/system_start_user_email_verification.md) function.
+
+## Create an email notification integration
+
+To send email notifications, use an email notification integration that you create with the
+[CREATE NOTIFICATION INTEGRATION](../../sql-reference/sql/create-notification-integration-email.md) command.
+
+> **Note:**
+>
+> You must use a role that has the global CREATE INTEGRATION privilege to run this command.
+
+For example, to create an email notification integration named `my_email_int`, execute the following statement:
+
+```sqlexample
+CREATE NOTIFICATION INTEGRATION my_email_int
+  TYPE=EMAIL
+  ENABLED=TRUE;
+```
+
+> **Note:**
+>
+> Email notifications are processed through Snowflake’s Amazon Web Services (AWS) deployments, using AWS Simple Email Service
+> (SES). The content of an email message sent using AWS may be retained by Snowflake for up to thirty days to manage the delivery
+> of the message. After this period, the message content is deleted.
+
+### Restrict the list of email addresses that can receive notifications
+
+If you want to restrict the list of email addresses that can receive notifications through this integration, set
+ALLOWED_RECIPIENTS to the list of those email addresses. If you do not set ALLOWED_RECIPIENTS, the integration can be used to
+send notifications to any user in the account, provided that the
+email address has been verified.
+
+> **Note:**
+>
+> For each email address in ALLOWED_RECIPIENTS, make sure that the email address has been verified. If you specify an email
+> address that hasn’t been verified, the CREATE NOTIFICATION INTEGRATION command fails with an error.
+
+For example, to restrict the notification integration so that email messages can be sent only to `first.last@example.com` and
+`first2.last2@example.com`, set ALLOWED_RECIPIENTS to the list of those addresses:
+
+```sqlexample
+CREATE NOTIFICATION INTEGRATION my_email_int
+  TYPE=EMAIL
+  ENABLED=TRUE
+  ALLOWED_RECIPIENTS=('first.last@example.com','first2.last2@example.com');
+```
+
+For details about the syntax of this command, see [CREATE NOTIFICATION INTEGRATION (email)](../../sql-reference/sql/create-notification-integration-email.md).
+
+### Specify a default list of recipients and a default subject line
+
+If you are using the [SYSTEM$SEND_SNOWFLAKE_NOTIFICATION](snowflake-notifications.md) stored
+procedure to send email notifications, you can configure the notification integration with a default list of email addresses
+and a default subject line to use. You can override the default list and subject line when you call the stored procedure.
+
+* To specify a default list of email addresses, set the DEFAULT_RECIPIENTS property of the notification integration.
+* To specify a default subject line, set the DEFAULT_SUBJECT property of the notification integration.
+
+For example, suppose that you want to set up an email notification integration for the following purpose:
+
+* You want to send most email notifications to `person_a@example.com` and `person_b@example.com`, but you also want the
+  ability to send the notifications to the validated email addresses of any users in your account.
+* You want most messages to use the subject line “Service status”, but you want to be able to use a different subject line for
+  specific messages.
+
+To create an email notification for this purpose, execute the following command:
+
+```sqlexample
+CREATE NOTIFICATION INTEGRATION my_email_int
+  TYPE=EMAIL
+  ENABLED=TRUE
+  DEFAULT_RECIPIENTS = ('person_a@example.com','person_b@example.com')
+  DEFAULT_SUBJECT = 'Service status';
+```
+
+When sending the notification, you can override the list of default recipients and the default subject line. See
+[Override the default values in the email notification integration](snowflake-notifications.md).
+
+## Send the email notification
+
+You can call one of the following stored procedures to send an email notification:
+
+* [SYSTEM$SEND_SNOWFLAKE_NOTIFICATION](../../sql-reference/stored-procedures/system_send_snowflake_notification.md)
+
+  For details, see [Using SYSTEM$SEND_SNOWFLAKE_NOTIFICATION to send notifications](snowflake-notifications.md).
+* [SYSTEM$SEND_EMAIL](../../sql-reference/stored-procedures/system_send_email.md)
+
+  For details, see [Using SYSTEM$SEND_EMAIL to send email notifications](email-stored-procedures.md).

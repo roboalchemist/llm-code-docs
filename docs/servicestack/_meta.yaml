@@ -1,0 +1,9 @@
+name: servicestack
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.servicestack.net/
+    last_fetched: "2026-04-03T23:10:58Z"
+description: >
+  servicestack documentation
+quality_score: 0

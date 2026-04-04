@@ -1,0 +1,11 @@
+name: tanstack-router
+primary_source: llms
+sources:
+  - type: llms
+    url: https://tanstack.com/router/
+    last_fetched: "2026-04-03T23:11:09Z"
+  - type: web
+    last_fetched: "2026-04-03T23:11:09Z"
+description: >
+  tanstack-router documentation
+quality_score: 0

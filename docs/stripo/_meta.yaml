@@ -1,0 +1,9 @@
+name: stripo
+primary_source: llms
+sources:
+  - type: llms
+    url: https://stripo.io/
+    last_fetched: "2026-04-03T23:11:05Z"
+description: >
+  stripo documentation
+quality_score: 0

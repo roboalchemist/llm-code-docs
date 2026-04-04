@@ -1,0 +1,9 @@
+name: thundercompute
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.thundercompute.com/docs/
+    last_fetched: "2026-04-03T23:11:12Z"
+description: >
+  thundercompute documentation
+quality_score: 0

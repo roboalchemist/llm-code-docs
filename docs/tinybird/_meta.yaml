@@ -1,0 +1,9 @@
+name: tinybird
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.tinybird.co/docs/
+    last_fetched: "2026-04-03T23:11:13Z"
+description: >
+  tinybird documentation
+quality_score: 0

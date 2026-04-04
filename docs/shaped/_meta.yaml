@@ -1,0 +1,8 @@
+name: shaped
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:58Z"
+description: >
+  shaped documentation
+quality_score: 0

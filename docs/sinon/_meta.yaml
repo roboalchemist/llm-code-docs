@@ -1,0 +1,8 @@
+name: sinon
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:10:59Z"
+description: >
+  sinon documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: supabase-auth
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.supabase.com/
+    last_fetched: "2026-04-03T23:11:06Z"
+description: >
+  supabase-auth documentation
+quality_score: 0

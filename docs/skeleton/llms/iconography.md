@@ -1,0 +1,51 @@
+# Source: https://www.skeleton.dev/docs/svelte/design/iconography.md
+
+# Source: https://www.skeleton.dev/docs/react/design/iconography.md
+
+# Iconography
+
+Learn how to integrate Lucide for iconography in Skeleton.
+
+Skeleton takes an agnostic approach to icons, allowing you to use any combination of SVGs, emoji, unicode, or dedicated icon libraries. Mix and match to fulfill your project's unique requirements.
+
+## Lucide
+
+<figure class="linker bg-noise">
+  <div class="flex gap-4">
+    <HeartIcon class="size-12" />
+
+    <UserRoundIcon class="size-12" />
+
+    <TriangleIcon class="size-12" />
+  </div>
+</figure>
+
+While Skeleton does not bundle an official icon library, we highly recommend the use of [Lucide](https://lucide.dev/). This provides a huge selection of icons that are available to all popular frameworks, while featuring a clean and modern aesthetic. All code examples within this Skeleton documentation site have been implement using **Lucide**, but feel free to replace with any alternative of your choice.
+
+## Installation
+
+Follow the official instructions to install [Lucide for React](https://lucide.dev/guide/packages/lucide-react).
+
+## Usage
+
+```tsx
+import { SkullIcon } from 'lucide-react';
+
+export default function App() {
+	return <SkullIcon stroke="pink" className="size-8" />;
+}
+```
+
+## Alternatives
+
+Looking for something a bit different? Check out these other popular alternatives.
+
+{/* prettier-ignore */}
+
+{/* prettier-ignore */}
+
+* [Radix Icons](https://www.radix-ui.com/icons): features modern styles and a large selection, supports React only.
+* [Iconify](https://iconify.design/): provides a vast array of icon sets supported by popular icon libraries.
+* [Font Awesome](https://fontawesome.com/): provides a huge variety of icons in their free tier.
+* [HeroIcons](https://heroicons.com/): from the makers of Tailwind CSS, supports React and Vue.
+* [SimpleIcons](https://simpleicons.org/): provides an excellent selection of brand icons.

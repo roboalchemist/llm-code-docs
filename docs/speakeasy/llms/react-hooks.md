@@ -1,0 +1,356 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/customize/typescript/react-hooks.md
+
+# Generating React Hooks from OpenAPI
+
+Speakeasy can optionally generate React Hooks as part of your TypeScript SDK. React Hooks are built from your OpenAPI document using TanStack Query (formerly React Query), making it easier to build web applications that interact with your API.
+
+> **Availability**
+> Generated React Query hooks are available as part of the Speakeasy [business
+> tier](/pricing).
+
+## How to generate React Hooks from an OpenAPI document
+
+Follow these steps to generate React Hooks from your OpenAPI document:
+
+### Install the Speakeasy CLI
+
+If you haven't already, install the Speakeasy CLI:
+
+Homebrew:
+```bash
+# Homebrew (macOS)
+brew install speakeasy-api/tap/speakeasy
+```
+
+Script:
+```bash
+# Script Installation (macOS and Linux)
+curl -fsSL https://go.speakeasy.com/cli-install.sh | sh
+```
+
+Winget:
+```bash
+# Windows Installation
+# Using winget:
+winget install speakeasy
+```
+
+Chocolatey:
+```bash
+# Using Chocolatey:
+choco install speakeasy
+```
+
+### Generate a TypeScript SDK
+
+If you haven't already generated a TypeScript SDK, run this command:
+
+```bash
+# For first-time SDK generation
+speakeasy quickstart
+```
+
+Then, follow the prompts to select TypeScript as your target language and complete the SDK configuration.
+
+### Enable React Hooks
+
+Open the `.speakeasy/gen.yaml` file in your SDK directory and add the `enableReactQuery` flag to it:
+
+```yaml
+typescript:
+  version: x.y.z
+  # ... other options
+  enableReactQuery: true # Add this line to enable React hooks
+```
+
+### Regenerate your SDK with React Hooks
+
+Navigate to the folder that holds the generated SDK and run the following command:
+
+```bash
+speakeasy run
+```
+
+This adds a new `src/react-query` directory, which contains all the generated React Hooks, to your SDK.
+
+### Install the SDK in your application
+
+Once you've generated your SDK with React Hooks, you need to install it in your React application.
+
+- If you've published your SDK to a package registry like npm, install it directly:
+
+npm:
+```bash
+npm install your-sdk-package
+```
+
+yarn:
+```bash
+yarn add your-sdk-package
+```
+
+pnpm:
+```bash
+pnpm add your-sdk-package
+```
+
+- Alternatively, if you're working with a local SDK, use the package manager's local path installation feature:
+
+npm:
+```bash
+npm install ../path/to/your-sdk
+```
+
+yarn:
+```bash
+yarn add ../path/to/your-sdk
+```
+
+pnpm:
+```bash
+pnpm add ../path/to/your-sdk
+```
+
+## How to use the generated React Hooks
+
+Before using React Hooks, you need to install their dependencies and configure your React Query provider.
+
+### Install required dependencies
+
+The generated SDK with React Hooks has TanStack Query as a dependency that should be listed in the SDK's `package.json`. Zod is bundled with the SDK. However, you might need to install TanStack Query explicitly in your application:
+
+npm:
+```bash
+npm install @tanstack/react-query
+```
+
+yarn:
+```bash
+yarn add @tanstack/react-query
+```
+
+pnpm:
+```bash
+pnpm add @tanstack/react-query
+```
+
+> **Note**
+> The Speakeasy-generated TypeScript SDK bundles Zod for runtime type validation, and TanStack Query powers the React hooks. TanStack Query is required for the React hooks to function correctly.
+
+### Set up the providers
+
+The generated React hooks require two providers to be set up in your application:
+
+1. **QueryClientProvider** from TanStack Query for managing query state
+2. **SDK Provider** from your generated SDK for providing the API client instance
+
+Add both providers to your React application:
+
+```tsx
+import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+// Import the SDK core class and provider from your generated SDK
+import { YourSDKCore } from "your-sdk-package";
+import { YourSDKProvider } from "your-sdk-package/react-query";
+
+// Create a TanStack Query client
+const queryClient = new QueryClient();
+
+// Create an instance of your SDK with any required configuration
+const sdkClient = new YourSDKCore({
+  // Add your SDK configuration here, such as:
+  // apiKey: process.env.API_KEY,
+});
+
+// Optionally disable TanStack Query's built-in retries since the SDK handles retries
+queryClient.setQueryDefaults(["your-sdk-package"], { retry: false });
+queryClient.setMutationDefaults(["your-sdk-package"], { retry: false });
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <YourSDKProvider client={sdkClient}>
+        <App />
+      </YourSDKProvider>
+    </QueryClientProvider>
+  </React.StrictMode>,
+);
+```
+
+The SDK provider makes the API client available to all hooks in your component tree. Replace `your-sdk-package`, `YourSDKCore`, and `YourSDKProvider` with the actual names from your generated SDK.
+
+## Basic usage
+
+You can use the generated Hooks in your components as follows:
+
+```tsx
+import { useProductsGetById } from "your-sdk/react-query";
+
+function ProductDetail({ productId }) {
+  const { data, isLoading, error } = useProductsGetById(productId);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.description}</p>
+      <p>${data.price}</p>
+    </div>
+  );
+}
+```
+
+## How to customize React Hooks
+
+The default naming convention for React Hooks follows the standalone function naming convention. For example, a standalone function called `productsGetById` will have a corresponding React Hook called `useProductsGetById`.
+
+Sometimes, these names are not ideal for React Hooks. In those instances, you can use the `x-speakeasy-react-hook` OpenAPI extension to override the default name:
+
+```yaml filename="openapi.yaml"
+paths:
+  /products/{id}:
+    get:
+      operationId: getById
+      tags: [products]
+      x-speakeasy-react-hook:
+        name: Product
+      # ...
+```
+
+With the example above, the React Hook will be called by `useProduct` and, under the hood, it will use the `productsGetById` standalone function.
+
+### Generate queries and mutations
+
+By default, the `GET`, `HEAD`, and `QUERY` operations generate React Query hooks, while other operations generate mutation hooks. This isn't always correct, since certain operations may be "read" operations exposed under the `POST` endpoint. A great example of this is the complex search APIs that take a request body with filters and other arguments.
+
+You can override these OpenAPI operations with the `x-speakeasy-react-hook` extension so that they come out as React Query hooks:
+
+```yaml filename="openapi.yaml"
+paths:
+  /search/products:
+    post:
+      operationId: productsSearch
+      x-speakeasy-react-hook:
+        name: Search
+        type: query
+      # ...
+```
+
+### Disable React Hooks for an operation
+
+React Hooks may not be useful or relevant for all operations in the API. Disable React Hook generation for an operation by setting the `disabled` flag under the `x-speakeasy-react-hook` extension:
+
+```yaml filename="openapi.yaml"
+paths:
+  /admin/reports:
+    post:
+      operationId: generateReport
+      x-speakeasy-react-hook:
+        disabled: true
+      # ...
+```
+
+## Advanced usage
+
+You can also use React Hooks for more advanced purposes.
+
+### Implement optimistic updates
+
+When using mutation hooks, you can use TanStack Query's optimistic update capabilities:
+
+```tsx
+import { useQueryClient } from "@tanstack/react-query";
+import {
+  useProductsGetById,
+  useProductsUpdate,
+} from "your-sdk-package/dist/react-query";
+
+function EditProduct({ productId }) {
+  const queryClient = useQueryClient();
+  const { data: product } = useProductsGetById(productId);
+  const { mutate, isLoading } = useProductsUpdate({
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries(["products", productId]);
+    },
+  });
+
+  const handleSubmit = (updatedData) => {
+    // Optimistically update to the new value
+    queryClient.setQueryData(["products", productId], updatedData);
+
+    // Then update on the server
+    mutate({
+      id: productId,
+      data: updatedData,
+    });
+  };
+
+  // Component implementation
+}
+```
+
+### Customize configurations
+
+You can pass custom TanStack Query options to your hooks:
+
+```tsx
+const { data } = useProductsGetById(productId, {
+  // Query options
+  refetchInterval: 5000, // Refetch every 5 seconds
+  staleTime: 1000 * 60 * 5, // Consider data fresh for 5 minutes
+  retry: 3, // Retry failed requests 3 times
+});
+```
+
+### Use infinite queries for pagination
+
+For paginated endpoints, you can use infinite React Query hooks:
+
+```tsx
+import { useProductsListInfinite } from "your-sdk-package/dist/react-query";
+
+function ProductsList() {
+  const { data, fetchNextPage, hasNextPage, isFetching } =
+    useProductsListInfinite({ limit: 10 });
+
+  return (
+    <div>
+      {data?.pages.map((page, i) => (
+        <React.Fragment key={i}>
+          {page.products.map((product) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
+        </React.Fragment>
+      ))}
+
+      <button
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetching}
+      >
+        {isFetching
+          ? "Loading more..."
+          : hasNextPage
+            ? "Load More"
+            : "No more results"}
+      </button>
+    </div>
+  );
+}
+```
+
+## Next steps
+
+Visit the following resources to:
+
+- Learn about [customizing your TypeScript SDK](/docs/customize/typescript/additional-index-exports)
+- Explore how to set up your [SDK documentation](/docs/sdk-docs/edit-readme)
+- Check out the [TanStack Query documentation](https://tanstack.com/query/latest/docs/react/overview) for advanced use cases
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md
