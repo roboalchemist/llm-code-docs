@@ -1,0 +1,42 @@
+# Source: https://docs.gitguardian.com/self-hosting/troubleshoot/topology.md
+
+# Application topology
+
+> Overview of GitGuardian self-hosted Kubernetes resources, including deployment names, types, and their roles.
+
+GitGuardian application consists of several Kubernetes resources. Each `nginx` pod runs an `nginx` container serving the dashboard frontend and acting as a proxy for the backend, and a number of different containers serving all backend tasks.
+
+| Kind       | Deployment Name                 | Usage                                                                                                                                                                                                          |
+| ---------- |---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Front      | `nginx`                         | Dashboard Frontend and proxy for backend                                                                                                                                                                       |
+| Backend    | `internal-api`                  | Backend for the Dashboard                                                                                                                                                                                      |
+| Backend    | `internal-api-long`             | Backend for the Dashboard (long requests, no timeout)                                                                                                                                                          |
+| Backend    | `public-api`                    | Public API and ggshield scans                                                                                                                                                                                  |
+| Backend    | `hook`                          | VCS webhooks events receiver                                                                                                                                                                                   |
+| Backend    | `app-exporter`                  | Prometheus exporter for applicative metrics                                                                                                                                                                    |
+| Backend    | `ml-secret-engine`              | Machine Learning secret engine                                                                                                                                                                                 |
+| Backend    | `apache-tika`                   | File scanner for non-VCS sources scanning                                                                                                                                                                      |
+| Scheduler  | `beat`                          | Celery Beat task scheduler                                                                                                                                                                                     |
+| Worker     | `worker-worker`                 | General-purpose worker managing real-time scans, retries, honeytoken tasks, reports (queues: `celery`, `check_run`, `realtime`, `realtime_retry`, `honeytoken`, `reports`, `core_default`, `background_validity_check`). |
+| Worker     | `worker-check-runs`             | Optional dedicated worker for check run processing (queue: `check_run`). Disabled by default; enable to offload `check_run` from `worker-worker`.                                                              |
+| Worker     | `worker-email`                  | Handles email notifications and messaging (queues: `email`, `notifier`).                                                                                                                                       |
+| Worker     | `worker-scanners`               | Performs historical scans for repositories (queues: `basic_repo_scan`, `premium_repo_scan`, `manual_repo_scan`).                                                                                               |
+| Worker     | `worker-long`                   | Processes long-running tasks such as validity checks and NHI ingestion (queues: `celery_long`, `automatic_severities`, `update_sources_state`, `nhi_ingestion`, `core_long`).                                  |
+| Worker     | `worker-realtime-ods`           | Handles real-time processing for non-VCS sources like Slack and Jira (queues: `realtime_ods`, `realtime_retry_ods`).                                                                                           |
+| Worker     | `worker-long-ods`               | Processes long-running tasks for non-VCS sources (queue: `long_ods`).                                                                                                                                          |
+| Worker     | `worker-long-ods-io`            | Focuses on IO-intensive long-running tasks for non-VCS sources (queue: `long_ods_io`).                                                                                                                         |
+| Worker     | `worker-scanners-ods`           | Executes non-VCS historical scans for Jira, Confluence, etc. (queue: `ods_scan`).                                                                                                                              |
+| Worker     | `worker-scanners-ods-highdisk`  | Handles high storage tasks for non-VCS sources (queue: `ods_scan_highdisk`).                                                                                                                                   |
+| Worker     | `worker-scanners-slack`         | Executes Slack historical scans (queue: `slack_scan`).                                                                                                                                                         |
+| Worker     | `worker-container-registries`   | Handles secret scanning in Container registries (queue: `container_registries`).                                                                                                                               |
+| Worker     | `worker-business-contribution`  | Handles business contribution tasks (queue: `business_contribution`).                                                                                                                                          |
+| Worker     | `worker-ml-api-priority`        | Prioritizes machine learning API-related tasks (queue: `ml_api_priority`).                                                                                                                                     |
+| Job        | `inapp-analytics`               | Computes metrics and aggregates data for [Advanced Analytics](../../platform/analytics/internal-monitoring) dashboards.                                                                                        |
+| Job        | `pre-deploy`                    | Pre-deployment job performing database migrations                                                                                                                                                              |
+| Job        | `post-deploy`                   | Post-deployment job performing long data migrations                                                                                                                                                            |
+| Replicated | `replicated`                    | License management and [usage data collection](../management/application-management/metrics#usage-data)                                                                                                        |
+| Replicated | `kotsadm`                       | [KOTS Admin Console](../management/infrastructure-management/admin-console) (KOTS-based installation only)                                                                                                     |
+
+:::info
+We have set a 30-days TTL (Time To Live) for `pre-deploy` and `post-deploy` jobs to allow for log retrieval if needed. It is recommended not to delete these pods, as they can be useful for troubleshooting.
+:::

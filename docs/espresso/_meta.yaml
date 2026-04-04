@@ -1,0 +1,9 @@
+name: espresso
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.espressosys.com/
+    last_fetched: "2026-04-03T23:08:57Z"
+description: >
+  espresso documentation
+quality_score: 0

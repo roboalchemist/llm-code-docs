@@ -1,0 +1,18 @@
+# Source: https://firebase.google.com/docs/firestore/reference/rest/v1beta1/OperationState.md.txt
+
+# Source: https://firebase.google.com/docs/firestore/reference/rest/Shared.Types/OperationState.md.txt
+
+# OperationState
+
+Describes the state of the operation.
+
+|                                                                             Enums                                                                             ||
+|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `OPERATION_STATE_UNSPECIFIED` | Unspecified.                                                                                                                   |
+| `INITIALIZING`                | Request is being prepared for processing.                                                                                      |
+| `PROCESSING`                  | Request is actively being processed.                                                                                           |
+| `CANCELLING`                  | Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation. |
+| `FINALIZING`                  | Request has been processed and is in its finalization stage.                                                                   |
+| `SUCCESSFUL`                  | Request has completed successfully.                                                                                            |
+| `FAILED`                      | Request has finished being processed, but encountered an error.                                                                |
+| `CANCELLED`                   | Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation.                          |

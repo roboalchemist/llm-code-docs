@@ -1,0 +1,8 @@
+name: go-critic
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:09:02Z"
+description: >
+  go-critic documentation
+quality_score: 0

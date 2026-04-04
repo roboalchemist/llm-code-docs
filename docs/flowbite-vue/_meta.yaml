@@ -1,0 +1,8 @@
+name: flowbite-vue
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:59Z"
+description: >
+  flowbite-vue documentation
+quality_score: 0

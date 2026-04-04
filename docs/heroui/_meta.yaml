@@ -1,0 +1,9 @@
+name: heroui
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.heroui.com/
+    last_fetched: "2026-04-03T23:09:06Z"
+description: >
+  heroui documentation
+quality_score: 0

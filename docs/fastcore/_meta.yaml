@@ -1,0 +1,9 @@
+name: fastcore
+primary_source: llms
+sources:
+  - type: llms
+    url: https://fastcore.fast.ai/
+    last_fetched: "2026-04-03T23:08:57Z"
+description: >
+  fastcore documentation
+quality_score: 0

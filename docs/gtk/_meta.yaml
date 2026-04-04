@@ -1,0 +1,8 @@
+name: gtk
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:05Z"
+description: >
+  gtk documentation
+quality_score: 0

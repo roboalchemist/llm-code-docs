@@ -1,0 +1,9 @@
+name: gsap
+primary_source: llms
+sources:
+  - type: llms
+    url: https://gsap.com/
+    last_fetched: "2026-04-03T23:09:05Z"
+description: >
+  gsap documentation
+quality_score: 0

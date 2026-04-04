@@ -1,0 +1,8 @@
+name: hot-chocolate
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:07Z"
+description: >
+  hot-chocolate documentation
+quality_score: 0

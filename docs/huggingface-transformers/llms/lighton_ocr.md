@@ -1,0 +1,476 @@
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/lighton_ocr.md
+
+# LightOnOcr
+
+**LightOnOcr** is a compact, end-to-end vision–language model for Optical Character Recognition (OCR) and document understanding. It achieves state-of-the-art accuracy in its weight class while being several times faster and cheaper than larger general-purpose VLMs.
+
+📝 **[Read the full blog post](https://huggingface.co/blog/lightonai/lightonocr/)** | 📓 **[Finetuning notebook](https://colab.research.google.com/drive/1WjbsFJZ4vOAAlKtcCauFLn_evo5UBRNa?usp=sharing)**
+
+**Model Overview**
+
+LightOnOcr combines a Vision Transformer encoder (Pixtral-based) with a lightweight text decoder (Qwen3-based) distilled from high-quality open VLMs. It is optimized for document parsing tasks, producing accurate, layout-aware text extraction from high-resolution pages.
+
+## Usage
+
+```python
+import torch
+
+from transformers import LightOnOcrForConditionalGeneration, LightOnOcrProcessor
+
+device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
+dtype = torch.float32 if device == "mps" else torch.bfloat16
+
+model = LightOnOcrForConditionalGeneration.from_pretrained("lightonai/LightOnOCR-1B-1025", dtype=dtype).to(
+    device
+)
+processor = LightOnOcrProcessor.from_pretrained("lightonai/LightOnOCR-1B-1025")
+
+url = "https://huggingface.co/datasets/hf-internal-testing/fixtures_ocr/resolve/main/SROIE-receipt.jpeg"
+
+conversation = [{"role": "user", "content": [{"type": "image", "url": url}]}]
+
+inputs = processor.apply_chat_template(
+    conversation,
+    add_generation_prompt=True,
+    tokenize=True,
+    return_dict=True,
+    return_tensors="pt",
+)
+inputs = {k: v.to(device=device, dtype=dtype) if v.is_floating_point() else v.to(device) for k, v in inputs.items()}
+
+output_ids = model.generate(**inputs, max_new_tokens=1024)
+generated_ids = output_ids[0, inputs["input_ids"].shape[1] :]
+output_text = processor.decode(generated_ids, skip_special_tokens=True)
+print(output_text)
+```
+
+## LightOnOcrConfig[[transformers.LightOnOcrConfig]]
+
+#### transformers.LightOnOcrConfig[[transformers.LightOnOcrConfig]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/configuration_lighton_ocr.py#L26)
+
+This is the configuration class to store the configuration of a [LightOnOcrForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrForConditionalGeneration). It is used to instantiate a
+LightOnOcr model according to the specified arguments, defining the model architecture.
+
+Configuration objects inherit from [PretrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PretrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information. Instantiating a configuration with the defaults will yield
+a similar configuration to that of the LightOnOcr [lightonocr-hf/lightonocr-9b](https://huggingface.co/lightonocr-hf/lightonocr-9b) architecture.
+
+Example:
+
+```python
+>>> from transformers import LightOnOcrConfig, LightOnOcrForConditionalGeneration
+
+>>> # Initializing a LightOnOcr configuration
+>>> configuration = LightOnOcrConfig()
+
+>>> # Initializing a model from the configuration
+>>> model = LightOnOcrForConditionalGeneration(configuration)
+
+>>> # Accessing the model configuration
+>>> configuration = model.config
+```
+
+**Parameters:**
+
+spatial_merge_size (`int`, *optional*, defaults to 2) : The size of spatial merging for image patches.
+
+image_token_id (`int`, *optional*, defaults to 151655) : The id of the image token in the vocabulary.
+
+tie_word_embeddings (`bool`, *optional*, defaults to `True`) : Whether the model's input and output word embeddings should be tied.
+
+vision_config (`dict` or `LightOnOcrVisionConfig`, *optional*) : Custom vision configuration or dictionary with vision configuration values.
+
+text_config (`dict` or `LightOnOcrTextConfig`, *optional*) : Custom text configuration or dictionary with text configuration values.
+
+## LightOnOcrProcessor[[transformers.LightOnOcrProcessor]]
+
+#### transformers.LightOnOcrProcessor[[transformers.LightOnOcrProcessor]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/processing_lighton_ocr.py#L103)
+
+__call__transformers.LightOnOcrProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/processing_lighton_ocr.py#L130[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": str | list[str] | list[list[str]] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.lighton_ocr.processing_lighton_ocr.LightOnOcrProcessorKwargs]"}]
+
+## LightOnOcrModel[[transformers.LightOnOcrModel]]
+
+#### transformers.LightOnOcrModel[[transformers.LightOnOcrModel]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/modeling_lighton_ocr.py#L157)
+
+The LightOnOcr model which consists of a vision backbone and a language model, without a language modeling head.
+
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
+etc.)
+
+This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/nn.html#torch.nn.Module) subclass.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
+and behavior.
+
+forwardtransformers.LightOnOcrModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/modeling_lighton_ocr.py#L215[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "image_sizes", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+  Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
+
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+
+  [What are input IDs?](../glossary#input-ids)
+- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+  The tensors corresponding to the input images. Pixel values can be obtained using
+  [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast). See [PixtralImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LightOnOcrProcessor](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrProcessor) uses
+  [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast) for processing images).
+- **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+  Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
+
+  - 1 for tokens that are **not masked**,
+  - 0 for tokens that are **masked**.
+
+  [What are attention masks?](../glossary#attention-mask)
+- **position_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+  Indices of positions of each input sequence tokens in the position embeddings. Selected in the range `[0, config.n_positions - 1]`.
+
+  [What are position IDs?](../glossary#position-ids)
+- **past_key_values** (`~cache_utils.Cache`, *optional*) --
+  Pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
+  blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
+  returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
+
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+
+  The model will output the same cache format that is fed as input.
+
+  If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't
+  have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids`
+  of shape `(batch_size, sequence_length)`.
+- **inputs_embeds** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) --
+  Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
+  is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
+  model's internal embedding lookup matrix.
+- **use_cache** (`bool`, *optional*) --
+  If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see
+  `past_key_values`).
+- **output_attentions** (`bool`, *optional*) --
+  Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
+  tensors for more detail.
+- **output_hidden_states** (`bool`, *optional*) --
+  Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
+  more detail.
+- **return_dict** (`bool`, *optional*) --
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+- **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
+  Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
+  this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
+  the complete sequence length.
+- **image_sizes** (`torch.Tensor` of shape `(batch_size, 2)`, *optional*) --
+  The sizes of the images in the batch, being (height, width) for each image.0`transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrModelOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrModelOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
+  `past_key_values` input) to speed up sequential decoding.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_images, sequence_length, hidden_size)`.
+  image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+The [LightOnOcrModel](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrModel) forward method, overrides the `__call__` special method.
+
+Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
+instance afterwards instead of this since the former takes care of running the pre and post processing steps while
+the latter silently ignores them.
+
+**Parameters:**
+
+config ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+
+**Returns:**
+
+``transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrModelOutputWithPast` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrModelOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
+  `past_key_values` input) to speed up sequential decoding.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_images, sequence_length, hidden_size)`.
+  image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+#### get_image_features[[transformers.LightOnOcrModel.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/modeling_lighton_ocr.py#L174)
+
+**Parameters:**
+
+pixel_values (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images. Pixel values can be obtained using [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast). See [PixtralImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LightOnOcrProcessor](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrProcessor) uses [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast) for processing images).
+
+image_sizes (`Union[torch.Tensor, list]` of shape `(batch_size, 2)`) : The sizes of the images in the batch, being (height, width) for each image.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+
+## LightOnOcrForConditionalGeneration[[transformers.LightOnOcrForConditionalGeneration]]
+
+#### transformers.LightOnOcrForConditionalGeneration[[transformers.LightOnOcrForConditionalGeneration]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/modeling_lighton_ocr.py#L312)
+
+The LIGHTON_OCR model which consists of a vision backbone and a language model.
+
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
+etc.)
+
+This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/nn.html#torch.nn.Module) subclass.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
+and behavior.
+
+forwardtransformers.LightOnOcrForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/modeling_lighton_ocr.py#L337[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "image_sizes", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+  Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
+
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+
+  [What are input IDs?](../glossary#input-ids)
+- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+  The tensors corresponding to the input images. Pixel values can be obtained using
+  [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast). See [PixtralImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LightOnOcrProcessor](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrProcessor) uses
+  [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast) for processing images).
+- **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+  Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
+
+  - 1 for tokens that are **not masked**,
+  - 0 for tokens that are **masked**.
+
+  [What are attention masks?](../glossary#attention-mask)
+- **position_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+  Indices of positions of each input sequence tokens in the position embeddings. Selected in the range `[0, config.n_positions - 1]`.
+
+  [What are position IDs?](../glossary#position-ids)
+- **past_key_values** (`~cache_utils.Cache`, *optional*) --
+  Pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
+  blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
+  returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
+
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+
+  The model will output the same cache format that is fed as input.
+
+  If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't
+  have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids`
+  of shape `(batch_size, sequence_length)`.
+- **inputs_embeds** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) --
+  Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
+  is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
+  model's internal embedding lookup matrix.
+- **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+  Labels for computing the masked language modeling loss. Indices should either be in `[0, ...,
+  config.vocab_size]` or -100 (see `input_ids` docstring). Tokens with indices set to `-100` are ignored
+  (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`.
+- **use_cache** (`bool`, *optional*) --
+  If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see
+  `past_key_values`).
+- **output_attentions** (`bool`, *optional*) --
+  Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
+  tensors for more detail.
+- **output_hidden_states** (`bool`, *optional*) --
+  Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
+  more detail.
+- **return_dict** (`bool`, *optional*) --
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+- **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
+  Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
+  this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
+  the complete sequence length.
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
+  If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
+  `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
+  token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
+  If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
+  This is useful when using packed tensor format (single dimension for batch and sequence length).
+- **image_sizes** (`torch.Tensor` of shape `(batch_size, 2)`, *optional*) --
+  The sizes of the images in the batch, being (height, width) for each image.0`transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrCausalLMOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrCausalLMOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) and inputs.
+
+- **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
+- **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
+  `past_key_values` input) to speed up sequential decoding.
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_images, sequence_length, hidden_size)`.
+  image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+The [LightOnOcrForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrForConditionalGeneration) forward method, overrides the `__call__` special method.
+
+Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
+instance afterwards instead of this since the former takes care of running the pre and post processing steps while
+the latter silently ignores them.
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> import httpx
+>>> from io import BytesIO
+>>> from transformers import AutoProcessor, LightOnOcrForConditionalGeneration
+
+>>> model = LightOnOcrForConditionalGeneration.from_pretrained("mistralai/Mistral-Small-3.1-24B-Instruct-2503")
+>>> processor = AutoProcessor.from_pretrained("mistralai/Mistral-Small-3.1-24B-Instruct-2503")
+
+>>> prompt = "[INST][IMG]What is the image?[/INST]"
+>>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
+
+>>> inputs = processor(images=image, text=prompt, return_tensors="pt")
+
+>>> # Generate
+>>> generate_ids = model.generate(**inputs, max_new_tokens=15)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
+"What is the image?The image depicts two cats lying on a pink blanket."
+```
+
+**Parameters:**
+
+config ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+
+**Returns:**
+
+``transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrCausalLMOutputWithPast` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.lighton_ocr.modeling_lighton_ocr.LightOnOcrCausalLMOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) and inputs.
+
+- **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
+- **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
+  `past_key_values` input) to speed up sequential decoding.
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_images, sequence_length, hidden_size)`.
+  image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+#### get_image_features[[transformers.LightOnOcrForConditionalGeneration.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lighton_ocr/modeling_lighton_ocr.py#L331)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, LightOnOcrForConditionalGeneration
+
+>>> model = LightOnOcrForConditionalGeneration.from_pretrained("lightonocr-hf/lightonocr-9b")
+>>> processor = AutoProcessor.from_pretrained("lightonocr-hf/lightonocr-9b")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images. Pixel values can be obtained using [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast). See [PixtralImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LightOnOcrProcessor](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrProcessor) uses [PixtralImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.PixtralImageProcessorFast) for processing images).
+
+image_sizes (`torch.Tensor` of shape `(batch_size, 2)`) : The sizes of the images in the batch, being (height, width) for each image.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LightOnOcrConfig](/docs/transformers/v5.0.0/en/model_doc/lighton_ocr#transformers.LightOnOcrConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+

@@ -1,0 +1,63 @@
+# Source: https://fly.io/docs/apps/overview/
+
+Title: Fly Apps overview
+
+URL Source: https://fly.io/docs/apps/overview/
+
+Markdown Content:
+[Docs](https://fly.io/docs/)[Apps on Fly.io](https://fly.io/docs/apps)Fly Apps overview
+A Fly App is an abstraction for a group of Fly Machines running your code on Fly.io. You can create and manage your app as a whole using [Fly Launch](https://fly.io/docs/launch/), but you can also have a Fly App with individual Machines running tasks or user code.
+
+For a quick primer on Fly Launch, Fly Machines, and Fly Apps, see [Fly.io essentials](https://fly.io/docs/getting-started/essentials/).
+
+[](https://fly.io/docs/apps/overview/#a-fly-app-can-be-almost-anything)A Fly App can be almost anything
+-------------------------------------------------------------------------------------------------------
+
+From an admin point of view, a Fly App is just a group of Machines (with optional attached volumes) that belongs to one organization.
+
+From a developer point of view, a Fly App might be:
+
+*   a fullstack application (or just part of one) 
+*   a database 
+*   a few Machines running tasks, or a bunch of Machines, all with different configs, doing things you want them to do 
+*   anything you can think of doing with fast-launching Machines, including [GPU Machines](https://fly.io/docs/gpus/) for AI/ML workloads 
+
+All the apps in your organization can communicate over a [private network](https://fly.io/docs/networking/private-networking/), so it’s also possible to have multiple apps working together as one system.
+
+[](https://fly.io/docs/apps/overview/#components-of-a-fly-app)Components of a Fly App
+-------------------------------------------------------------------------------------
+
+Fly Apps include:
+
+*   app configuration 
+*   provisioned resources 
+*   Anycast IP addresses 
+*   certificates 
+*   custom domains 
+*   secrets 
+*   Fly Volumes (optional) 
+
+Fly Apps run on flyd. Learn more about how flyd works and how it came to be in the blog post: [Carving the Scheduler Out of Our Orchestrator](https://fly.io/blog/carving-the-scheduler-out-of-our-orchestrator/).
+
+[](https://fly.io/docs/apps/overview/#ways-to-create-an-app)Ways to create an app
+---------------------------------------------------------------------------------
+
+There might be an infinite number of potential apps you can run on Fly.io, but there are only a few ways to create one.
+
+### [](https://fly.io/docs/apps/overview/#create-and-deploy-with-fly-launch)Create and deploy with Fly Launch
+
+Fly Launch is perfect for most apps and databases. Use Fly Launch to create your app and then manage the whole lifecycle, from starting to scaling to changing and redeploying. [Get started](https://fly.io/docs/getting-started/) with Fly Launch or learn more about using [Fly Launch](https://fly.io/docs/launch/) to create, configure, deploy, and scale your app.
+
+### [](https://fly.io/docs/apps/overview/#create-an-app-manually)Create an app manually
+
+Most of the time, all you need is [Fly Launch](https://fly.io/docs/launch/) to create and manage your app. But you can skip all the handy launch scanners and resource provisioning Fly Launch offers and use the `fly apps create` command or the Machines API to create an app and then piece it together.
+
+You can get a [`fly.toml` config file](https://fly.io/docs/reference/configuration/) from an example app or hand-craft one yourself. Or if you don’t need app-wide config, you can use the Fly App to hold the Machines you plan to spin up individually based on a particular image.
+
+Using the `fly apps create` command is useful when deploying our [autoscaler app](https://fly.io/docs/launch/autoscale-by-metric/), or example apps created by others, that already have `fly.toml` and Dockerfiles ready to go.
+
+Creating apps with the Machines API might be the right choice if you want to create apps for your own users with pre-defined or custom `fly.toml` files.
+
+For more information, see the [`fly apps create` docs](https://fly.io/docs/flyctl/apps-create/) and the [create App resource docs](https://fly.io/docs/machines/api/apps-resource/#create-a-fly-app).
+
+**Tip:** When you [create a Machine with `fly machine run`](https://fly.io/docs/machines/flyctl/fly-machine-run/) without specifying an app to put it in, you automatically get a new app at the same time. This scenario might be useful when you’re spinning up individual Machines on-demand for multiple users or tasks.

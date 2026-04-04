@@ -1,0 +1,107 @@
+# Source: https://helm.sh/docs/faq/
+
+Title: Frequently Asked Questions | Helm
+
+URL Source: https://helm.sh/docs/faq/
+
+Markdown Content:
+Frequently Asked Questions | Helm
+===============
+
+[Skip to main content](https://helm.sh/docs/faq/#__docusaurus_skipToContent_fallback)
+
+🎉 Helm v4.0.0 is out! See the [Helm 4 Overview](https://helm.sh/docs/overview) for details!
+
+[![Image 1: Helm Logo](https://helm.sh/img/helm.svg) **Helm**](https://helm.sh/)[Docs](https://helm.sh/docs)[Community](https://helm.sh/community)[Blog](https://helm.sh/blog)[Charts](https://artifacthub.io/)
+
+[4.0.0](https://helm.sh/docs/faq/)
+*   [4.0.0](https://helm.sh/docs/faq/)
+*   [3.19.0](https://helm.sh/docs/v3/faq/)
+*   [2.17.0](https://helm.sh/docs/v2/)
+
+[English](https://helm.sh/docs/faq/#)
+*   [English](https://helm.sh/docs/faq/)
+*   [Deutsch (German)](https://helm.sh/de/docs/faq/)
+*   [Ελληνικά (Greek)](https://helm.sh/el/docs/faq/)
+*   [Español (Spanish)](https://helm.sh/es/docs/faq/)
+*   [Français (French)](https://helm.sh/fr/docs/faq/)
+*   [日本語 (Japanese)](https://helm.sh/ja/docs/faq/)
+*   [한국어 (Korean)](https://helm.sh/ko/docs/faq/)
+*   [Português (Portuguese)](https://helm.sh/pt/docs/faq/)
+*   [Русский (Russian)](https://helm.sh/ru/docs/faq/)
+*   [Українська (Ukrainian)](https://helm.sh/uk/docs/faq/)
+*   [中文 (Chinese)](https://helm.sh/zh/docs/faq/)
+
+Search
+
+*   [Docs Home](https://helm.sh/docs/)
+*   [Helm 4 Overview](https://helm.sh/docs/overview)
+*   [Full Changelog](https://helm.sh/docs/changelog)
+*   [Introduction](https://helm.sh/docs/intro/) 
+*   [How-to](https://helm.sh/docs/howto/) 
+*   [Topics](https://helm.sh/docs/topics/) 
+*   [Best Practices](https://helm.sh/docs/chart_best_practices/) 
+*   [Chart Template Guide](https://helm.sh/docs/chart_template_guide/) 
+*   [Plugins](https://helm.sh/docs/plugins/) 
+*   [Helm Commands](https://helm.sh/docs/helm/) 
+*   [Go SDK](https://helm.sh/docs/sdk/) 
+*   [Frequently Asked Questions](https://helm.sh/docs/faq/) 
+    *   [Installing](https://helm.sh/docs/faq/installing)
+    *   [Uninstalling](https://helm.sh/docs/faq/uninstalling)
+
+*   [Glossary](https://helm.sh/docs/glossary/)
+
+*   [](https://helm.sh/)
+*   [Docs](https://helm.sh/docs/)
+*   Frequently Asked Questions
+
+Version: 4.0.0
+
+Frequently Asked Questions
+==========================
+
+> This section provides help with the most common questions.
+
+**We'd love your help** making this document better. To add, correct, or remove information, [file an issue](https://github.com/helm/helm-www/issues) or send us a pull request.
+
+[📄️Installing ------------- Installing](https://helm.sh/docs/faq/installing)[📄️Uninstalling --------------- Uninstalling](https://helm.sh/docs/faq/uninstalling)
+
+[Edit this page](https://github.com/helm/helm-www/blob/main/docs/faq/index.mdx)
+
+[Previous Examples](https://helm.sh/docs/sdk/examples)[Next Installing](https://helm.sh/docs/faq/installing)
+
+Helm Project
+
+*   [Source code](https://github.com/helm/helm)
+*   [Blog](https://helm.sh/blog)
+*   [Events](https://www.cncf.io/community/kubecon-cloudnativecon-events/)
+*   [Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md)
+
+Charts
+
+*   [Introduction](https://helm.sh/docs/intro)
+*   [Chart tips & tricks](https://helm.sh/docs/howto/charts_tips_and_tricks)
+*   [Developing Charts](https://helm.sh/docs/topics/charts)
+*   [Search 800+ Charts](https://artifacthub.io/)
+
+Development
+
+*   [Slack (#helm-dev)](https://kubernetes.slack.com/messages/C51E88VDG)
+*   [Contribution Guide](https://github.com/helm/helm/blob/main/CONTRIBUTING.md)
+*   [Maintainers](https://github.com/helm/helm/blob/main/OWNERS)
+*   [Weekly Meetings](https://github.com/helm/community/blob/main/communication.md#meetings)
+
+Community
+
+*   [GitHub Community](https://github.com/helm/community)
+*   [Slack (#helm-users)](https://kubernetes.slack.com/)
+*   [Stack Overflow](https://stackoverflow.com/questions/tagged/kubernetes-helm)
+*   [X](https://x.com/helmpack)
+
+![Image 2: CNCF Logo](https://helm.sh/img/cncf-white.png)
+
+We are a [Cloud Native Computing Foundation](https://www.cncf.io/) graduated project.
+
+© Helm Authors 2026. Documentation distributed under [CC-BY-4.0.](https://creativecommons.org/licenses/by/4.0)
+
+© 2026 The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our [Trademark Usage page](https://www.linuxfoundation.org/trademark-usage/).

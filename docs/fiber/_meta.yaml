@@ -1,0 +1,9 @@
+name: fiber
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.gofiber.io/
+    last_fetched: "2026-04-03T23:08:58Z"
+description: >
+  fiber documentation
+quality_score: 0

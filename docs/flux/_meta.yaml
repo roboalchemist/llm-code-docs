@@ -1,0 +1,10 @@
+name: flux
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:09:00Z"
+  - type: github
+    last_fetched: "2026-04-03T23:09:00Z"
+description: >
+  flux documentation
+quality_score: 0

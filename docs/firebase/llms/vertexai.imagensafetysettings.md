@@ -1,0 +1,40 @@
+# Source: https://firebase.google.com/docs/reference/js/vertexai.imagensafetysettings.md.txt
+
+# ImagenSafetySettings interface
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Settings for controlling the aggressiveness of filtering out sensitive content.
+
+See the [documentation](http://firebase.google.com/docs/vertex-ai/generate-images) for more details.
+
+**Signature:**  
+
+    export interface ImagenSafetySettings 
+
+## Properties
+
+|                                                                 Property                                                                  |                                                     Type                                                     |                                                       Description                                                       |
+|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| [personFilterLevel](https://firebase.google.com/docs/reference/js/vertexai.imagensafetysettings.md#imagensafetysettingspersonfilterlevel) | [ImagenPersonFilterLevel](https://firebase.google.com/docs/reference/js/vertexai.md#imagenpersonfilterlevel) | ***(Public Preview)*** A filter level controlling whether generation of images containing people or faces is allowed.   |
+| [safetyFilterLevel](https://firebase.google.com/docs/reference/js/vertexai.imagensafetysettings.md#imagensafetysettingssafetyfilterlevel) | [ImagenSafetyFilterLevel](https://firebase.google.com/docs/reference/js/vertexai.md#imagensafetyfilterlevel) | ***(Public Preview)*** A filter level controlling how aggressive to filter out sensitive content from generated images. |
+
+## ImagenSafetySettings.personFilterLevel
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+A filter level controlling whether generation of images containing people or faces is allowed.
+
+**Signature:**  
+
+    personFilterLevel?: ImagenPersonFilterLevel;
+
+## ImagenSafetySettings.safetyFilterLevel
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+A filter level controlling how aggressive to filter out sensitive content from generated images.
+
+**Signature:**  
+
+    safetyFilterLevel?: ImagenSafetyFilterLevel;

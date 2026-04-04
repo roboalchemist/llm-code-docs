@@ -1,0 +1,11 @@
+name: huggingface-accelerate
+primary_source: llms
+sources:
+  - type: llms
+    url: https://huggingface-projects-docs-llms-txt.hf.space/accelerate/
+    last_fetched: "2026-04-03T23:09:08Z"
+  - type: github
+    last_fetched: "2026-04-03T23:09:08Z"
+description: >
+  huggingface-accelerate documentation
+quality_score: 0

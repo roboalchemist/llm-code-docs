@@ -1,0 +1,9 @@
+name: heroku
+primary_source: llms
+sources:
+  - type: llms
+    url: https://devcenter.heroku.com/
+    last_fetched: "2026-04-03T23:09:06Z"
+description: >
+  heroku documentation
+quality_score: 0

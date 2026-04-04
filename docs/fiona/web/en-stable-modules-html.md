@@ -1,0 +1,423 @@
+# Source: https://fiona.readthedocs.io/en/stable/modules.html
+
+Title: fiona — Fiona documentation
+
+URL Source: https://fiona.readthedocs.io/en/stable/modules.html
+
+Markdown Content:
+fiona — Fiona documentation
+===============
+
+[Fiona](https://fiona.readthedocs.io/en/stable/index.html)
+
+ stable 
+
+*   [Project Information](https://fiona.readthedocs.io/en/stable/README.html)
+*   [Installation](https://fiona.readthedocs.io/en/stable/install.html)
+*   [User Manual](https://fiona.readthedocs.io/en/stable/manual.html)
+*   [API Documentation](https://fiona.readthedocs.io/en/stable/modules.html#)
+    *   [fiona package](https://fiona.readthedocs.io/en/stable/fiona.html)
+
+*   [CLI Documentation](https://fiona.readthedocs.io/en/stable/cli.html)
+
+[Fiona](https://fiona.readthedocs.io/en/stable/index.html)
+
+*   [](https://fiona.readthedocs.io/en/stable/index.html)
+*   fiona
+*   [Edit on GitHub](https://github.com/Toblerity/Fiona/blob/f285ccb45a3769b28aff0282b84475b93a153cf7/docs/modules.rst)
+
+* * *
+
+fiona[](https://fiona.readthedocs.io/en/stable/modules.html#fiona "Link to this heading")
+==========================================================================================
+
+*   [fiona package](https://fiona.readthedocs.io/en/stable/fiona.html)
+    *   [Subpackages](https://fiona.readthedocs.io/en/stable/fiona.html#subpackages)
+        *   [fiona.fio package](https://fiona.readthedocs.io/en/stable/fiona.fio.html)
+            *   [Submodules](https://fiona.readthedocs.io/en/stable/fiona.fio.html#submodules)
+            *   [fiona.fio.bounds module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.bounds)
+            *   [fiona.fio.calc module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.calc)
+            *   [fiona.fio.cat module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.cat)
+            *   [fiona.fio.collect module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.collect)
+            *   [fiona.fio.distrib module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.distrib)
+            *   [fiona.fio.dump module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.dump)
+            *   [fiona.fio.env module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.env)
+            *   [fiona.fio.filter module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona-fio-filter-module)
+            *   [fiona.fio.helpers module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.helpers)
+                *   [`eval_feature_expression()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.helpers.eval_feature_expression)
+                *   [`id_record()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.helpers.id_record)
+                *   [`make_ld_context()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.helpers.make_ld_context)
+                *   [`nullable()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.helpers.nullable)
+                *   [`obj_gen()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.helpers.obj_gen)
+                *   [`recursive_round()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.helpers.recursive_round)
+
+            *   [fiona.fio.info module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.info)
+            *   [fiona.fio.insp module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.insp)
+            *   [fiona.fio.load module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.load)
+            *   [fiona.fio.ls module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.ls)
+            *   [fiona.fio.main module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.main)
+                *   [`configure_logging()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.main.configure_logging)
+
+            *   [fiona.fio.options module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.options)
+                *   [`cb_key_val()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.options.cb_key_val)
+                *   [`cb_layer()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.options.cb_layer)
+                *   [`cb_multilayer()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.options.cb_multilayer)
+                *   [`validate_multilayer_file_index()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.options.validate_multilayer_file_index)
+
+            *   [fiona.fio.rm module](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio.rm)
+            *   [Module contents](https://fiona.readthedocs.io/en/stable/fiona.fio.html#module-fiona.fio)
+                *   [`with_context_env()`](https://fiona.readthedocs.io/en/stable/fiona.fio.html#fiona.fio.with_context_env)
+
+    *   [Submodules](https://fiona.readthedocs.io/en/stable/fiona.html#submodules)
+    *   [fiona.collection module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.collection)
+        *   [`BytesCollection`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.BytesCollection)
+            *   [`BytesCollection.close()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.BytesCollection.close)
+
+        *   [`Collection`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection)
+            *   [`Collection.bounds`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.bounds)
+            *   [`Collection.close()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.close)
+            *   [`Collection.closed`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.closed)
+            *   [`Collection.crs`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.crs)
+            *   [`Collection.crs_wkt`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.crs_wkt)
+            *   [`Collection.driver`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.driver)
+            *   [`Collection.filter()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.filter)
+            *   [`Collection.flush()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.flush)
+            *   [`Collection.get()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.get)
+            *   [`Collection.get_tag_item()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.get_tag_item)
+            *   [`Collection.guard_driver_mode()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.guard_driver_mode)
+            *   [`Collection.items()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.items)
+            *   [`Collection.keys()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.keys)
+            *   [`Collection.meta`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.meta)
+            *   [`Collection.next()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.next)
+            *   [`Collection.profile`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.profile)
+            *   [`Collection.schema`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.schema)
+            *   [`Collection.tags()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.tags)
+            *   [`Collection.update_tag_item()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.update_tag_item)
+            *   [`Collection.update_tags()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.update_tags)
+            *   [`Collection.validate_record()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.validate_record)
+            *   [`Collection.validate_record_geometry()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.validate_record_geometry)
+            *   [`Collection.values()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.values)
+            *   [`Collection.write()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.write)
+            *   [`Collection.writerecords()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.Collection.writerecords)
+
+        *   [`get_filetype()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.collection.get_filetype)
+
+    *   [fiona.compat module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.compat)
+        *   [`strencode()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.compat.strencode)
+
+    *   [fiona.crs module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.crs)
+        *   [`CRS`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS)
+            *   [`CRS.data`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.data)
+            *   [`CRS.from_authority()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.from_authority)
+            *   [`CRS.from_dict()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.from_dict)
+            *   [`CRS.from_epsg()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.from_epsg)
+            *   [`CRS.from_proj4()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.from_proj4)
+            *   [`CRS.from_string()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.from_string)
+            *   [`CRS.from_user_input()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.from_user_input)
+            *   [`CRS.from_wkt()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.from_wkt)
+            *   [`CRS.get()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.get)
+            *   [`CRS.is_epsg_code`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.is_epsg_code)
+            *   [`CRS.is_geographic`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.is_geographic)
+            *   [`CRS.is_projected`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.is_projected)
+            *   [`CRS.is_valid`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.is_valid)
+            *   [`CRS.items()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.items)
+            *   [`CRS.keys()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.keys)
+            *   [`CRS.linear_units`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.linear_units)
+            *   [`CRS.linear_units_factor`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.linear_units_factor)
+            *   [`CRS.to_authority()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.to_authority)
+            *   [`CRS.to_dict()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.to_dict)
+            *   [`CRS.to_epsg()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.to_epsg)
+            *   [`CRS.to_proj4()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.to_proj4)
+            *   [`CRS.to_string()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.to_string)
+            *   [`CRS.to_wkt()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.to_wkt)
+            *   [`CRS.units_factor`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.units_factor)
+            *   [`CRS.values()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.values)
+            *   [`CRS.wkt`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.CRS.wkt)
+
+        *   [`epsg_treats_as_latlong()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.epsg_treats_as_latlong)
+        *   [`epsg_treats_as_northingeasting()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.epsg_treats_as_northingeasting)
+        *   [`from_epsg()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.from_epsg)
+        *   [`from_string()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.from_string)
+        *   [`to_string()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.crs.to_string)
+
+    *   [fiona.drvsupport module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.drvsupport)
+        *   [`driver_from_extension()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.drvsupport.driver_from_extension)
+        *   [`vector_driver_extensions()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.drvsupport.vector_driver_extensions)
+
+    *   [fiona.env module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.env)
+        *   [`Env`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.Env)
+            *   [`Env.credentialize()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.Env.credentialize)
+            *   [`Env.default_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.Env.default_options)
+            *   [`Env.drivers()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.Env.drivers)
+            *   [`Env.from_defaults()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.Env.from_defaults)
+
+        *   [`GDALVersion`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.GDALVersion)
+            *   [`GDALVersion.at_least()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.GDALVersion.at_least)
+            *   [`GDALVersion.major`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.GDALVersion.major)
+            *   [`GDALVersion.minor`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.GDALVersion.minor)
+            *   [`GDALVersion.parse()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.GDALVersion.parse)
+            *   [`GDALVersion.runtime()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.GDALVersion.runtime)
+
+        *   [`NullContextManager`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.NullContextManager)
+        *   [`ThreadEnv`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.ThreadEnv)
+        *   [`defenv()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.defenv)
+        *   [`delenv()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.delenv)
+        *   [`ensure_env()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.ensure_env)
+        *   [`ensure_env_with_credentials()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.ensure_env_with_credentials)
+        *   [`env_ctx_if_needed()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.env_ctx_if_needed)
+        *   [`getenv()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.getenv)
+        *   [`hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.hascreds)
+        *   [`hasenv()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.hasenv)
+        *   [`require_gdal_version()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.require_gdal_version)
+        *   [`setenv()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.env.setenv)
+
+    *   [fiona.errors module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.errors)
+        *   [`AttributeFilterError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.AttributeFilterError)
+        *   [`CRSError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.CRSError)
+        *   [`DataIOError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.DataIOError)
+        *   [`DatasetDeleteError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.DatasetDeleteError)
+        *   [`DriverError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.DriverError)
+        *   [`DriverIOError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.DriverIOError)
+        *   [`DriverSupportError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.DriverSupportError)
+        *   [`EnvError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.EnvError)
+        *   [`FeatureWarning`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.FeatureWarning)
+        *   [`FieldNameEncodeError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.FieldNameEncodeError)
+        *   [`FionaDeprecationWarning`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.FionaDeprecationWarning)
+        *   [`FionaError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.FionaError)
+        *   [`FionaValueError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.FionaValueError)
+        *   [`GDALVersionError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.GDALVersionError)
+        *   [`GeometryTypeValidationError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.GeometryTypeValidationError)
+        *   [`OpenerRegistrationError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.OpenerRegistrationError)
+        *   [`PathError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.PathError)
+        *   [`ReduceError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.ReduceError)
+        *   [`SchemaError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.SchemaError)
+        *   [`TransactionError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.TransactionError)
+        *   [`TransformError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.TransformError)
+        *   [`UnsupportedGeometryTypeError`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.UnsupportedGeometryTypeError)
+        *   [`UnsupportedOperation`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.errors.UnsupportedOperation)
+
+    *   [fiona.inspector module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.inspector)
+        *   [`main()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.inspector.main)
+
+    *   [fiona.io module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.io)
+        *   [`MemoryFile`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.io.MemoryFile)
+            *   [`MemoryFile.listdir()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.io.MemoryFile.listdir)
+            *   [`MemoryFile.listlayers()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.io.MemoryFile.listlayers)
+            *   [`MemoryFile.open()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.io.MemoryFile.open)
+
+        *   [`ZipMemoryFile`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.io.ZipMemoryFile)
+            *   [`ZipMemoryFile.open()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.io.ZipMemoryFile.open)
+
+    *   [fiona.logutils module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.logutils)
+        *   [`FieldSkipLogFilter`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.logutils.FieldSkipLogFilter)
+            *   [`FieldSkipLogFilter.filter()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.logutils.FieldSkipLogFilter.filter)
+
+        *   [`LogFiltering`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.logutils.LogFiltering)
+
+    *   [fiona.ogrext module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.ogrext)
+        *   [`AbstractField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.AbstractField)
+        *   [`BinaryField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.BinaryField)
+        *   [`BooleanField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.BooleanField)
+        *   [`DateField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.DateField)
+        *   [`DateTimeField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.DateTimeField)
+        *   [`FeatureBuilder`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.FeatureBuilder)
+            *   [`FeatureBuilder.OGRPropertyGetter`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.FeatureBuilder.OGRPropertyGetter)
+
+        *   [`Int16Field`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Int16Field)
+        *   [`Integer64Field`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Integer64Field)
+        *   [`IntegerField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.IntegerField)
+        *   [`ItemsIterator`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.ItemsIterator)
+        *   [`Iterator`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Iterator)
+        *   [`JSONField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.JSONField)
+        *   [`KeysIterator`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.KeysIterator)
+        *   [`MemoryFileBase`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase)
+            *   [`MemoryFileBase.close()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase.close)
+            *   [`MemoryFileBase.exists()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase.exists)
+            *   [`MemoryFileBase.getbuffer()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase.getbuffer)
+            *   [`MemoryFileBase.read()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase.read)
+            *   [`MemoryFileBase.seek()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase.seek)
+            *   [`MemoryFileBase.tell()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase.tell)
+            *   [`MemoryFileBase.write()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.MemoryFileBase.write)
+
+        *   [`OGRFeatureBuilder`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.OGRFeatureBuilder)
+            *   [`OGRFeatureBuilder.OGRPropertySetter`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.OGRFeatureBuilder.OGRPropertySetter)
+
+        *   [`RealField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.RealField)
+        *   [`Session`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session)
+            *   [`Session.OGRFieldGetter`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.OGRFieldGetter)
+            *   [`Session.get()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get)
+            *   [`Session.get_crs()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_crs)
+            *   [`Session.get_crs_wkt()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_crs_wkt)
+            *   [`Session.get_driver()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_driver)
+            *   [`Session.get_extent()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_extent)
+            *   [`Session.get_feature()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_feature)
+            *   [`Session.get_fileencoding()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_fileencoding)
+            *   [`Session.get_length()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_length)
+            *   [`Session.get_schema()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_schema)
+            *   [`Session.get_tag_item()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.get_tag_item)
+            *   [`Session.has_feature()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.has_feature)
+            *   [`Session.isactive()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.isactive)
+            *   [`Session.start()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.start)
+            *   [`Session.stop()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.stop)
+            *   [`Session.tags()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.Session.tags)
+
+        *   [`StringField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.StringField)
+        *   [`StringListField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.StringListField)
+        *   [`TZ`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.TZ)
+            *   [`TZ.utcoffset()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.TZ.utcoffset)
+
+        *   [`TimeField`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.TimeField)
+        *   [`WritingSession`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.WritingSession)
+            *   [`WritingSession.start()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.WritingSession.start)
+            *   [`WritingSession.sync()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.WritingSession.sync)
+            *   [`WritingSession.update_tag_item()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.WritingSession.update_tag_item)
+            *   [`WritingSession.update_tags()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.WritingSession.update_tags)
+            *   [`WritingSession.writerecs()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.WritingSession.writerecs)
+
+        *   [`buffer_to_virtual_file()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.buffer_to_virtual_file)
+        *   [`featureRT()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.featureRT)
+        *   [`remove_virtual_file()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.ogrext.remove_virtual_file)
+
+    *   [fiona.path module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.path)
+    *   [fiona.rfc3339 module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.rfc3339)
+        *   [`group_accessor`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.rfc3339.group_accessor)
+            *   [`group_accessor.group()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.rfc3339.group_accessor.group)
+
+        *   [`parse_date()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.rfc3339.parse_date)
+        *   [`parse_datetime()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.rfc3339.parse_datetime)
+        *   [`parse_time()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.rfc3339.parse_time)
+
+    *   [fiona.schema module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.schema)
+        *   [`FionaBinaryType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaBinaryType)
+            *   [`FionaBinaryType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaBinaryType.names)
+            *   [`FionaBinaryType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaBinaryType.type)
+
+        *   [`FionaBooleanType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaBooleanType)
+            *   [`FionaBooleanType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaBooleanType.names)
+            *   [`FionaBooleanType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaBooleanType.type)
+
+        *   [`FionaDateTimeType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaDateTimeType)
+            *   [`FionaDateTimeType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaDateTimeType.names)
+            *   [`FionaDateTimeType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaDateTimeType.type)
+
+        *   [`FionaDateType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaDateType)
+            *   [`FionaDateType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaDateType.names)
+            *   [`FionaDateType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaDateType.type)
+
+        *   [`FionaInt16Type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaInt16Type)
+            *   [`FionaInt16Type.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaInt16Type.names)
+            *   [`FionaInt16Type.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaInt16Type.type)
+
+        *   [`FionaInteger64Type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaInteger64Type)
+            *   [`FionaInteger64Type.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaInteger64Type.names)
+            *   [`FionaInteger64Type.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaInteger64Type.type)
+
+        *   [`FionaIntegerType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaIntegerType)
+            *   [`FionaIntegerType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaIntegerType.names)
+            *   [`FionaIntegerType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaIntegerType.type)
+
+        *   [`FionaJSONType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaJSONType)
+            *   [`FionaJSONType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaJSONType.names)
+            *   [`FionaJSONType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaJSONType.type)
+
+        *   [`FionaRealType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaRealType)
+            *   [`FionaRealType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaRealType.names)
+            *   [`FionaRealType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaRealType.type)
+
+        *   [`FionaStringListType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaStringListType)
+            *   [`FionaStringListType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaStringListType.names)
+            *   [`FionaStringListType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaStringListType.type)
+
+        *   [`FionaStringType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaStringType)
+            *   [`FionaStringType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaStringType.names)
+            *   [`FionaStringType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaStringType.type)
+
+        *   [`FionaTimeType`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaTimeType)
+            *   [`FionaTimeType.names`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaTimeType.names)
+            *   [`FionaTimeType.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.FionaTimeType.type)
+
+        *   [`normalize_field_type()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.schema.normalize_field_type)
+
+    *   [fiona.session module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.session)
+        *   [`AWSSession`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AWSSession)
+            *   [`AWSSession.credentials`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AWSSession.credentials)
+            *   [`AWSSession.get_credential_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AWSSession.get_credential_options)
+            *   [`AWSSession.hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AWSSession.hascreds)
+
+        *   [`AzureSession`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AzureSession)
+            *   [`AzureSession.credentials`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AzureSession.credentials)
+            *   [`AzureSession.get_credential_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AzureSession.get_credential_options)
+            *   [`AzureSession.hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.AzureSession.hascreds)
+
+        *   [`DummySession`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.DummySession)
+            *   [`DummySession.credentials`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.DummySession.credentials)
+            *   [`DummySession.get_credential_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.DummySession.get_credential_options)
+            *   [`DummySession.hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.DummySession.hascreds)
+
+        *   [`GSSession`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.GSSession)
+            *   [`GSSession.credentials`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.GSSession.credentials)
+            *   [`GSSession.get_credential_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.GSSession.get_credential_options)
+            *   [`GSSession.hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.GSSession.hascreds)
+
+        *   [`OSSSession`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.OSSSession)
+            *   [`OSSSession.credentials`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.OSSSession.credentials)
+            *   [`OSSSession.get_credential_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.OSSSession.get_credential_options)
+            *   [`OSSSession.hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.OSSSession.hascreds)
+
+        *   [`Session`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session)
+            *   [`Session.credentials`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.credentials)
+            *   [`Session.aws_or_dummy()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.aws_or_dummy)
+            *   [`Session.cls_from_path()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.cls_from_path)
+            *   [`Session.from_environ()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.from_environ)
+            *   [`Session.from_foreign_session()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.from_foreign_session)
+            *   [`Session.from_path()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.from_path)
+            *   [`Session.get_credential_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.get_credential_options)
+            *   [`Session.hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.Session.hascreds)
+
+        *   [`SwiftSession`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.SwiftSession)
+            *   [`SwiftSession.credentials`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.SwiftSession.credentials)
+            *   [`SwiftSession.get_credential_options()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.SwiftSession.get_credential_options)
+            *   [`SwiftSession.hascreds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.session.SwiftSession.hascreds)
+
+    *   [fiona.transform module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.transform)
+        *   [`transform()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.transform.transform)
+        *   [`transform_geom()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.transform.transform_geom)
+
+    *   [fiona.vfs module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona.vfs)
+        *   [`is_remote()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.vfs.is_remote)
+        *   [`parse_paths()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.vfs.parse_paths)
+        *   [`valid_vsi()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.vfs.valid_vsi)
+        *   [`vsi_path()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.vfs.vsi_path)
+
+    *   [fiona module](https://fiona.readthedocs.io/en/stable/fiona.html#module-fiona)
+        *   [`Feature`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Feature)
+            *   [`Feature.from_dict()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Feature.from_dict)
+            *   [`Feature.geometry`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Feature.geometry)
+            *   [`Feature.id`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Feature.id)
+            *   [`Feature.properties`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Feature.properties)
+            *   [`Feature.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Feature.type)
+
+        *   [`Geometry`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Geometry)
+            *   [`Geometry.coordinates`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Geometry.coordinates)
+            *   [`Geometry.from_dict()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Geometry.from_dict)
+            *   [`Geometry.geometries`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Geometry.geometries)
+            *   [`Geometry.type`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Geometry.type)
+
+        *   [`Properties`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Properties)
+            *   [`Properties.from_dict()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.Properties.from_dict)
+
+        *   [`bounds()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.bounds)
+        *   [`listdir()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.listdir)
+        *   [`listlayers()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.listlayers)
+        *   [`open()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.open)
+        *   [`prop_type()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.prop_type)
+        *   [`prop_width()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.prop_width)
+        *   [`remove()`](https://fiona.readthedocs.io/en/stable/fiona.html#fiona.remove)
+
+[Previous](https://fiona.readthedocs.io/en/stable/manual.html "1 The Fiona User Manual")[Next](https://fiona.readthedocs.io/en/stable/fiona.html "fiona package")
+
+* * *
+
+© Copyright 2011, Sean Gillies. Revision `f285ccb4`.
+
+ Built with [Sphinx](https://www.sphinx-doc.org/) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided by [Read the Docs](https://readthedocs.org/).

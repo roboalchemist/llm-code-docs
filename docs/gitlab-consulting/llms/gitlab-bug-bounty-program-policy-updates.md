@@ -1,0 +1,13 @@
+# Source: https://gitlab.consulting/en-gb/blog/2026/01/20/gitlab-bug-bounty-program-policy-updates.md
+
+
+# GitLab Bug Bounty Policy Updated to Encourage Secure Contributions
+<h2 id="gitlab-enhances-bug-bounty-policy-to-strengthen-open-source-security">GitLab Enhances Bug Bounty Policy to Strengthen Open Source Security</h2>
+<p>As part of its continued dedication to transparency, security, and fostering a stronger open source ecosystem, GitLab has introduced several key updates to its Bug Bounty Program Policy. These changes are designed to better support security researchers, promote responsible disclosure, and ensure the integrity of GitLab&rsquo;s product offerings.</p>
+<p>The updated policy provides clearer guidance on scope, testing environments, and eligibility, helping ethical hackers and security researchers navigate the program more efficiently. In particular, GitLab is now offering <strong>increased reward payouts</strong> based on vulnerability severity under the Bugcrowd platform, further incentivising responsible reporting of critical issues.</p>
+<p>New guidelines encourage researchers to test in GitLab&rsquo;s dedicated sandbox environment and advise against testing production systems, minimising the risk of disruptions. Furthermore, clarifications around in-scope assets, sample projects, and account creation reduce ambiguity for participants engaging with the platform.</p>
+<p>Alongside these updates, GitLab continues to work closely with the security community to evolve its practices, fix vulnerabilities swiftly, and maintain user trust. This reflects GitLab’s core belief in “everyone can contribute”—including to the safety of its DevSecOps platform.</p>
+<p>If you operate in <strong>Czechia, Slovakia, Croatia, Serbia, Slovenia, North Macedonia, the United Kingdom</strong>, or have DevSecOps requirements in <strong>Israel, South Africa</strong>, or <strong>Paraguay</strong>, our team at <a href="https://gitlab.consulting/en-gb/?mtm_campaign=internal-blog-link&amp;mtm_kwd=en-gb:gitlab-bug-bounty-program-policy-updates">IDEA GitLab Solutions</a> is here to help. We offer professional GitLab consulting, training, and licensing tailored to your needs. Our local expertise ensures you get the most out of GitLab’s innovative features, including up-to-date security practices like this one.</p>
+<p>Stay ahead of threats, improve CI/CD security, and contribute to a safer open source world—contact <a href="https://gitlab.consulting/en-gb/?mtm_campaign=internal-blog-link&amp;mtm_kwd=en-gb:gitlab-bug-bounty-program-policy-updates">IDEA GitLab Solutions</a> today.</p>
+
+

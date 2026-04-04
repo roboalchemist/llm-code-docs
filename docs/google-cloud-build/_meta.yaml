@@ -1,0 +1,11 @@
+name: google-cloud-build
+primary_source: llms
+sources:
+  - type: llms
+    url: https://cloud.google.com/python/docs/reference/cloudbuild/latest/
+    last_fetched: "2026-04-03T23:09:03Z"
+  - type: web
+    last_fetched: "2026-04-03T23:09:03Z"
+description: >
+  google-cloud-build documentation
+quality_score: 0

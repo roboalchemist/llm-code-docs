@@ -1,0 +1,9 @@
+name: huggingface-docs-hub
+primary_source: llms
+sources:
+  - type: llms
+    url: https://huggingface.co/docs/hub/
+    last_fetched: "2026-04-03T23:09:08Z"
+description: >
+  huggingface-docs-hub documentation
+quality_score: 0

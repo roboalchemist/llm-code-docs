@@ -1,0 +1,63 @@
+# Source: https://docs.giselles.ai/en/models/providers/anthropic.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Anthropic
+
+> Available Anthropic AI Models Overview.
+
+## Claude Models
+
+The following Claude models are available in the Anthropic workspace. Each model offers specific capabilities and features tailored to match your use case requirements. The "Reasoning" (Extended Thinking) capability is supported in Giselle for applicable models.
+
+| Models                | Generate Text | Web Search | Reasoning | Input PDF | Input Image | Context Window | Max Output | Plan\@Giselle |
+| :-------------------- | :------------ | :--------- | :-------- | :-------- | :---------- | :------------- | :--------- | :------------ |
+| **claude-opus-4.5**   | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 32k tokens | Pro           |
+| **claude-sonnet-4.5** | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 64k tokens | Pro           |
+| **claude-haiku-4.5**  | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 64k tokens | Free          |
+
+Please note that some features may not be available within Giselle even if they are offered in the official API. Extended thinking mode and other Anthropic API features will be gradually implemented within Giselle.
+
+### claude-opus-4.5
+
+Claude Opus 4.5 is Anthropic's newest and most capable model, described as "intelligent, efficient, and the best model in the world for coding, agents, and computer use." It achieves state-of-the-art performance on SWE-bench Verified and leads on 7 of 8 programming languages in SWE-bench Multilingual, with a 10.6% improvement over Sonnet 4.5 on Aider Polyglot benchmarks. The model excels at multi-step reasoning tasks that combine information retrieval, tool use, and deep analysis. With improved vision, mathematics skills, and agentic capabilities, Opus 4.5 handles ambiguity and reasons about tradeoffs effectively. It features a 200k token context window and supports text, PDF, and image inputs.
+
+### claude-sonnet-4.5
+
+Claude Sonnet 4.5 is one of Anthropic's latest and most powerful models, offering balanced high performance. It excels at complex coding tasks, advanced reasoning, and content generation, delivering frontier-level performance with an optimal cost-performance balance. It features a 200k token context window, can output up to 64k tokens, and supports text, PDF, and image inputs. The reasoning capability makes it particularly powerful for tasks requiring multi-step thought processes.
+
+### claude-haiku-4.5
+
+Claude Haiku 4.5 is optimized for speed and cost-efficiency while also supporting reasoning capabilities. It handles rapid text generation, PDF and image inputs, making it ideal for scenarios requiring real-time responsiveness. With a 200k token context window and the ability to output up to 64k tokens, it balances fast interactions with detailed responses. The extended thinking capability enables it to handle complex tasks as well.
+
+## Model Selection Guide
+
+Guidelines for selecting the optimal Claude model:
+
+* **For the best coding, agents, and complex reasoning**: `claude-opus-4.5`
+* **For balanced high-performance, everyday coding, and cost-effective workflows**: `claude-sonnet-4.5`
+* **For speed, cost-efficiency, with reasoning capabilities**: `claude-haiku-4.5`
+
+## Practices for Giselle
+
+We recommend `claude-opus-4.5` or `claude-sonnet-4.5` as your primary models in Giselle, especially for tasks involving advanced coding, complex problem-solving, and in-depth analysis. These models feature hybrid reasoning modes, automatically switching between instant responses and extended thinking based on task complexity.
+
+`claude-haiku-4.5` excels at speed and cost-efficiency while also supporting reasoning capabilities, making it capable of handling complex thought processes even when fast responses are needed. These models excel not only at code generation, architectural design, and technical reviews but also produce remarkably natural text. Their "Reasoning" (Extended Thinking) capability, supported in Giselle, makes them particularly powerful for tasks requiring multi-step thought processes. These versatile models can be effectively utilized across a broad spectrum of tasks, from creating engaging blog articles to writing complex code implementations and performing detailed analytical work.
+
+### Anthropic Web Search Tool
+
+For supported Claude models, Giselle integrates the Anthropic Web Search tool, which can be configured directly from a Generator Node's **Tools** tab. This feature allows Claude to access real-time information from the web, enabling it to answer questions and generate content based on the most up-to-date data, complete with source citations.
+
+#### Configuration
+
+In the Generator Node, navigate to the **Tools** tab and click **Configure** next to "Anthropic Web Search." You can then:
+
+* **Enable Tool**: Toggle the web search functionality on or off.
+* **Set Maximum Uses**: Limit the number of web searches the model can perform in a single run (from 1 to 10).
+* **Filter Domains**: Control the search scope by either:
+  * **Allowing Specific Domains**: Restricting searches to a whitelist of trusted sources.
+  * **Blocking Specific Domains**: Excluding certain websites from the search results.
+
+For detailed specifications, performance benchmarks, or additional assistance, please refer to the [Anthropic API Documentation](https://docs.anthropic.com/en/docs/about-claude/models/all-models) and the [Claude 4 announcement](https://www.anthropic.com/news/claude-4).

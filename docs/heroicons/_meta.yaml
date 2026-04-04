@@ -1,0 +1,10 @@
+name: heroicons
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:09:06Z"
+  - type: github
+    last_fetched: "2026-04-03T23:09:06Z"
+description: >
+  heroicons documentation
+quality_score: 0

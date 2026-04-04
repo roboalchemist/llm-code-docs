@@ -1,0 +1,8 @@
+name: google-cloud-storage
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:09:03Z"
+description: >
+  google-cloud-storage documentation
+quality_score: 0

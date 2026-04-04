@@ -1,0 +1,73 @@
+# Source: https://firebase.google.com/docs/reference/apphosting/rest/v1/projects.locations.backends.traffic.md.txt
+
+# Source: https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic.md.txt
+
+# REST Resource: projects.locations.backends.traffic
+
+## Resource: Traffic
+
+Controls traffic configuration for the backend.
+
+|                                                                                                                                                                                                                                                                                                                                                                                     JSON representation                                                                                                                                                                                                                                                                                                                                                                                     |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ``` { "name": string, "current": { object (https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#TrafficSet) }, "reconciling": boolean, "createTime": string, "updateTime": string, "labels": { string: string, ... }, "annotations": { string: string, ... }, "etag": string, "uid": string, // Union field `traffic_management` can be only one of the following: "target": { object (https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#TrafficSet) }, "rolloutPolicy": { object (https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#RolloutPolicy) } // End of list of possible types for union field `traffic_management`. } ``` |
+
+|                                                                                                                                                                                                                   Fields                                                                                                                                                                                                                    ||
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`          | `string` Identifier. The resource name of the backend's traffic. Format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.                                                                                                                                                                                                                                                                         |
+| `current`       | `object (`[TrafficSet](https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#TrafficSet)`)` Output only. Current state of traffic allocation for the backend. When setting `target`, this field may differ for some time until the desired state is reached.                                                                                                               |
+| `reconciling`   | `boolean` Output only. A field that, if true, indicates that the system is working to make the backend's `current` match the requested `target` list.                                                                                                                                                                                                                                                                      |
+| `createTime`    | `string (`[Timestamp](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)` format)` Output only. Time at which the backend was created. Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`.      |
+| `updateTime`    | `string (`[Timestamp](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)` format)` Output only. Time at which the backend was last updated. Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`. |
+| `labels`        | `map (key: string, value: string)` Optional. Unstructured key value map that can be used to organize and categorize objects. An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.                                                                                                                                                                          |
+| `annotations`   | `map (key: string, value: string)` Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.                                                                                     |
+| `etag`          | `string` Output only. Server-computed checksum based on other values; may be sent on update or delete to ensure operation is done on expected resource.                                                                                                                                                                                                                                                                    |
+| `uid`           | `string` Output only. System-assigned, unique identifier.                                                                                                                                                                                                                                                                                                                                                                  |
+| Union field `traffic_management`. `traffic_management` can be only one of the following:                                                                                                                                                                                                                                                                                                                                                    ||
+| `target`        | `object (`[TrafficSet](https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#TrafficSet)`)` Set to manually control the desired traffic for the backend. This will cause `current` to eventually match this value. The percentages must add up to 100%.                                                                                                                    |
+| `rolloutPolicy` | `object (`[RolloutPolicy](https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#RolloutPolicy)`)` A rollout policy specifies how new builds and automatic deployments are created.                                                                                                                                                                                         |
+
+## TrafficSet
+
+A list of traffic splits that together represent where traffic is being routed.
+
+|                                                                    JSON representation                                                                    |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ``` { "splits": [ { object (https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#TrafficSplit) } ] } ``` |
+
+|                                                                                              Fields                                                                                               ||
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `splits[]` | `object (`[TrafficSplit](https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic#TrafficSplit)`)` Required. The list of traffic splits. |
+
+## TrafficSplit
+
+The traffic allocation for the backend.
+
+|               JSON representation               |
+|-------------------------------------------------|
+| ``` { "build": string, "percent": integer } ``` |
+
+|                                                    Fields                                                    ||
+|-----------|---------------------------------------------------------------------------------------------------|
+| `build`   | `string` Required. The build that traffic is being routed to.                                     |
+| `percent` | `integer` Required. The percentage of traffic to send to the build. Currently must be 100% or 0%. |
+
+## RolloutPolicy
+
+The policy for how builds and rollouts are triggered and rolled out.
+
+|                                                                                           JSON representation                                                                                            |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ``` { "disabled": boolean, "disabledTime": string, // Union field `trigger` can be only one of the following: "codebaseBranch": string // End of list of possible types for union field `trigger`. } ``` |
+
+|                                                                                                                                                                                                                                Fields                                                                                                                                                                                                                                ||
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `disabled`       | `boolean` Optional. A flag that, if true, prevents rollouts from being created via this RolloutPolicy.                                                                                                                                                                                                                                                                                                                                             |
+| `disabledTime`   | `string (`[Timestamp](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)` format)` Output only. If `disabled` is set, the time at which the rollouts were disabled. Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`. |
+| Union field `trigger`. Specifies the type of codebase event that can trigger a new build. `trigger` can be only one of the following:                                                                                                                                                                                                                                                                                                                                ||
+| `codebaseBranch` | `string` If set, specifies a branch that triggers a new build to be started with this policy. Otherwise, no automatic rollouts will happen.                                                                                                                                                                                                                                                                                                        |
+
+|                                                                              ## Methods                                                                               ||
+|--------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| ### [get](https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic/get)     | Gets information about a backend's traffic. |
+| ### [patch](https://firebase.google.com/docs/reference/apphosting/rest/v1beta/projects.locations.backends.traffic/patch) | Updates a backend's traffic.                |

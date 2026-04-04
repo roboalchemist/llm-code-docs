@@ -1,0 +1,10 @@
+name: fail2ban
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:08:57Z"
+  - type: github
+    last_fetched: "2026-04-03T23:08:57Z"
+description: >
+  fail2ban documentation
+quality_score: 0

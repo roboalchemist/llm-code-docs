@@ -1,0 +1,11 @@
+name: huggingface-diffusers
+primary_source: llms
+sources:
+  - type: llms
+    url: https://huggingface-projects-docs-llms-txt.hf.space/diffusers/
+    last_fetched: "2026-04-03T23:09:08Z"
+  - type: github
+    last_fetched: "2026-04-03T23:09:08Z"
+description: >
+  huggingface-diffusers documentation
+quality_score: 0

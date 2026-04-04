@@ -1,0 +1,123 @@
+# Source: https://docs.giselles.ai/en/glossary/trigger-node.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Trigger Node
+
+> Learn about Trigger Nodes, the starting points for workflows in Giselle. Use GitHub Triggers to initiate your AI workflow sequences.
+
+## Trigger Node in Giselle
+
+The **Trigger Node** is the starting point for running the workflow built in the Giselle App. It initiates the execution of the connected nodes in a sequence.
+
+### GitHub Trigger Node
+
+The **GitHub Trigger Node** enables you to automatically start your Giselle workflows based on specific events occurring in your GitHub repositories. This allows for seamless integration between your code management and AI-powered tasks.
+
+#### Setting up a GitHub Trigger
+
+#### 1. Select GitHub Account/Organization
+
+When you add a GitHub Trigger node, you'll first need to choose the GitHub account or organization where your target repository resides (e.g., `giselles-ai`, `liam-hq`).
+
+If you're missing a GitHub account connection or need to adjust permissions, click on "Adjust GitHub App Permissions".
+
+#### 2. Choose a Repository
+
+A list of repositories available under the selected account/organization will be displayed (e.g., `docs`, `giselle`).
+
+Click the **Set up** button next to the desired repository (e.g., `giselle`).
+
+If your repository isn't listed, you might need to "Adjust GitHub App Permissions" to grant Giselle access to it.
+
+#### 3. Configure the Trigger Event
+
+Once a repository is selected (e.g., `giselles-ai/giselle`), you need to specify which GitHub event will trigger the workflow.
+
+Click on the dropdown menu labeled "Choose when you want to trigger the flow."
+
+Select an event from the list, such as:
+
+* **Issue Created**: Triggers the flow when a new issue is created in the repository.
+* **Issue Closed**: Triggers when an issue is closed.
+* **Issue Labeled**: Triggers when a specific label is added to an issue.
+* **Issue Comment Created**: Triggers when a new comment is made on an issue.
+* **Pull Request Comment Created**: Triggers on a new pull request comment.
+* **Pull Request Opened**: Triggers when a new pull request is opened.
+* **Pull Request Ready for Review**: Triggers when a pull request is marked as ready for review.
+* **Pull Request Closed**: Triggers when a pull request is closed.
+* **Pull Request Labeled**: Triggers when a specific label is added to a pull request.
+
+#### 4. Configure Callsign (for Comment Events)
+
+For some events, like "Issue Comment Created" or "Pull Request Comment Created," you can specify a **Callsign**.
+
+A Callsign is a specific string or command (e.g., `/code-review`, `/deep-research`) that must be present in the comment for the trigger to activate. This prevents the flow from running on every single comment.
+
+Enter your desired Callsign in the provided field. The example shows `/code-review`.
+
+Click **Set up** after configuring the Callsign.
+
+#### 5. Configure Labels (for Label Events)
+
+For some events, like "Issue Labeled" or "Pull Request Labeled," you can specify one or more **Labels**.
+
+When multiple labels are added, the workflow will trigger if *any* of the specified labels are added to the issue or pull request (OR condition). This allows for flexible triggering based on labeling conventions.
+
+Enter your desired labels in the provided input fields. You can add multiple labels using the "Add label" button.
+
+Click **Set up** after configuring the Labels.
+
+#### 6. Enable the Trigger
+
+After configuring the event and any associated options (like Callsign or Labels), the trigger will initially be in a "Disabled" state. The node on the canvas will show "Requires Setup" or display the repository and event type with a "Disabled" status.
+
+On the configuration panel for the trigger (e.g., "On Issue Created" or "On Issue Comment Created"), you will see the current **State** as "Disable".
+
+Click on **Enable** to activate the trigger.
+
+Once enabled, the **State** will change to "Enable", and you will see an option to **Disable Trigger**. The node on the canvas will also reflect its "Enabled" status.
+
+#### 7. Configure In-Progress Comment (Optional)
+
+Once your trigger is set up, you can configure whether Giselle posts an "in-progress" comment to GitHub when the workflow starts executing.
+
+By default, this option is **enabled**, meaning Giselle will automatically post a comment to the issue or pull request indicating that the workflow is running.
+
+To disable in-progress comments, toggle off the **Post In-Progress Comment** option in the trigger's properties panel.
+
+This setting is useful when you want to reduce noise in GitHub discussions or prefer silent workflow execution.
+
+#### 8. Run in the Workspace
+
+For GitHub Trigger Nodes, clicking the "Run" button allows you to test your workflow without waiting for an actual GitHub webhook. You can enter values in a form that simulates the GitHub event, enabling you to verify that your workflow functions correctly before enabling it for real GitHub events.
+
+**Example Workflow after Setup:**
+
+On Issue Created:
+
+* **Trigger**: "On Issue Created" for repository `giselles-ai/giselle`.
+* **State**: Enabled.
+* **Action**: When a new issue is created in the `giselles-ai/giselle` repository, this Giselle workflow will automatically start.
+
+On Pull Request Comment Created:
+
+* **Trigger**: "On Pull Request Comment Created" for repository `giselles-ai/giselle` with Callsign `/code-review`.
+* **State**: Enabled.
+* **Action**: When a comment containing `/code-review [enter your request...]` is posted on a pull request in `giselles-ai/giselle`, this workflow will start. The subsequent nodes can then access information like the comment body, pull request number, the pull request's diff content, etc.
+
+On Issue Labeled:
+
+* **Trigger**: "On Issue Labeled" for repository `giselles-ai/giselle` with label `bug`.
+* **State**: Enabled.
+* **Action**: When the label `bug` is added to an issue in `giselles-ai/giselle`, this Giselle workflow will automatically start. The subsequent nodes can access information like the issue number, title, body, and the name of the label that triggered the event.
+
+On Pull Request Labeled:
+
+* **Trigger**: "On Pull Request Labeled" for repository `giselles-ai/giselle` with labels `feature` or `enhancement`.
+* **State**: Enabled.
+* **Action**: When either the `feature` or `enhancement` label is added to a pull request in `giselles-ai/giselle`, this workflow will start. The subsequent nodes can access information like the pull request number, title, body, and the name of the label that triggered the event.
+
+Stay tuned for more updates and functionalities for Giselle's nodes!

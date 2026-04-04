@@ -1,0 +1,14 @@
+# Source: https://gofastmcp.com/python-sdk/fastmcp-server-providers-wrapped_provider.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# wrapped_provider
+
+# `fastmcp.server.providers.wrapped_provider`
+
+WrappedProvider for immutable transform composition.
+
+This module provides `_WrappedProvider`, an internal class that wraps a provider
+with an additional transform. Created by `Provider.wrap_transform()`.

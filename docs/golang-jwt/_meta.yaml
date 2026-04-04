@@ -1,0 +1,8 @@
+name: golang-jwt
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:02Z"
+description: >
+  golang-jwt documentation
+quality_score: 0

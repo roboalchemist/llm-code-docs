@@ -1,0 +1,8 @@
+name: go.uber.org
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:09:02Z"
+description: >
+  go.uber.org documentation
+quality_score: 0

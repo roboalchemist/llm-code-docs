@@ -1,0 +1,9 @@
+name: gaianet
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.gaianet.ai/
+    last_fetched: "2026-04-03T23:09:00Z"
+description: >
+  gaianet documentation
+quality_score: 0

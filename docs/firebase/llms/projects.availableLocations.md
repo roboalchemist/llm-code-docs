@@ -1,0 +1,11 @@
+# Source: https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.availableLocations.md.txt
+
+# REST Resource: projects.availableLocations
+
+## Resource
+
+There is no persistent data associated with this resource.
+
+|                                                                                                                                                                                                                                                                                                                                                  ## Methods                                                                                                                                                                                                                                                                                                                                                  ||
+|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ### [list](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.availableLocations/list)` ` **(deprecated)** | **DECOMMISSIONED.** **If called, this endpoint will return a 404 error.** *Instead, use the applicable resource-specific REST API (or associated documentation, as needed) to determine valid locations for each resource used in your Project.* Lists the valid ["locations for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location) for the specified Project (including a [FirebaseProject](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject)). |

@@ -1,0 +1,213 @@
+# Source: https://firebase.google.com/docs/firestore/security/rules-structure.md.txt
+
+<br />
+
+Cloud FirestoreSecurity Rulesallow you to control access to documents and collections in your database. The flexible rules syntax allows you to create rules that match anything, from all writes to the entire database to operations on a specific document.
+
+This guide describes the basic syntax and structure of security rules. Combine this syntax with[security rules conditions](https://firebase.google.com/docs/firestore/security/rules-conditions)to create complete rulesets.
+| **Note:** The server client libraries bypass allCloud FirestoreSecurity Rulesand instead authenticate through[Google Application Default Credentials](https://cloud.google.com/docs/authentication/production). If you're using the server client libraries or the REST or RPC APIs, make sure to set up[Identity and Access Management (IAM) forCloud Firestore](https://cloud.google.com/firestore/docs/security/iam).
+
+## Service and database declaration
+
+Cloud FirestoreSecurity Rulesalways begin with the following declaration:  
+
+    service cloud.firestore {
+      // The {database} wildcard allows the rules to reference any database,
+      // but these rules are only active on databases where they are explicitly deployed.
+      match /databases/{database}/documents {
+        // ...
+      }
+    }
+
+The`service cloud.firestore`declaration scopes the rules toCloud Firestore, preventing conflicts betweenCloud FirestoreSecurity Rulesand rules for other products such as Cloud Storage.
+
+The`match /databases/{database}/documents`declaration specifies that rules should match anyCloud Firestoredatabase in the project. While a project can contain up to 100 databases, only the first database created is designated as the default.
+
+Cloud FirestoreSecurity Rulesare applied separately for each named database in your project. This means that if you create multiple databases, you must manage and deploy rules for each one individually. For detailed instructions on deploying your updates, see[Deploy your updates](https://firebase.google.com/docs/rules/manage-deploy#deploy_your_updates).
+
+## Basic read/write rules
+
+Basic rules consist of a`match`statement specifying a document path and an`allow`expression detailing when reading the specified data is allowed:  
+
+    service cloud.firestore {
+      match /databases/{database}/documents {
+
+        // Match any document in the 'cities' collection
+        match /cities/{city} {
+          allow read: if <condition>;
+          allow write: if <condition>;
+        }
+      }
+    }
+
+All match statements should point to documents, not collections. A match statement can point to a specific document, as in`match /cities/SF`or use wildcards to point to any document in the specified path, as in`match /cities/{city}`.
+
+In the example above, the match statement uses the`{city}`wildcard syntax. This means the rule applies to any document in the`cities`collection, such as`/cities/SF`or`/cities/NYC`. When the`allow`expressions in the match statement are evaluated, the`city`variable will resolve to the city document name, such as`SF`or`NYC`.
+| **Note:** You can only access documents that your security rules specifically allow you to access. For example, the rules shown above allow access only to documents in the`cities`collection; as a result, they also deny access to documents in all other collections.
+
+## Granular operations
+
+In some situations, it's useful to break down`read`and`write`into more granular operations. For example, your app may want to enforce different conditions on document creation than on document deletion. Or you may want to allow single document reads but deny large queries.
+
+A`read`rule can be broken into`get`and`list`, while a`write`rule can be broken into`create`,`update`, and`delete`:  
+
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // A read rule can be divided into get and list rules
+        match /cities/{city} {
+          // Applies to single document read requests
+          allow get: if <condition>;
+
+          // Applies to queries and collection read requests
+          allow list: if <condition>;
+        }
+
+        // A write rule can be divided into create, update, and delete rules
+        match /cities/{city} {
+          // Applies to writes to nonexistent documents
+          allow create: if <condition>;
+
+          // Applies to writes to existing documents
+          allow update: if <condition>;
+
+          // Applies to delete operations
+          allow delete: if <condition>;
+        }
+      }
+    }
+
+## Hierarchical data
+
+Data inCloud Firestoreis organized into collections of documents, and each document may extend the hierarchy through subcollections. It is important to understand how security rules interact with hierarchical data.
+
+Consider the situation where each document in the`cities`collection contains a`landmarks`subcollection. Security rules apply only at the matched path, so the access controls defined on the`cities`collection do not apply to the`landmarks`subcollection. Instead, write explicit rules to control access to subcollections:  
+
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /cities/{city} {
+          allow read, write: if <condition>;
+
+            // Explicitly define rules for the 'landmarks' subcollection
+            match /landmarks/{landmark} {
+              allow read, write: if <condition>;
+            }
+        }
+      }
+    }
+
+When nesting`match`statements, the path of the inner`match`statement is always relative to the path of the outer`match`statement. The following rulesets are therefore equivalent:  
+
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /cities/{city} {
+          match /landmarks/{landmark} {
+            allow read, write: if <condition>;
+          }
+        }
+      }
+    }
+
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /cities/{city}/landmarks/{landmark} {
+          allow read, write: if <condition>;
+        }
+      }
+    }
+
+### Recursive wildcards
+
+If you want rules to apply to an arbitrarily deep hierarchy, use the recursive wildcard syntax,`{name=**}`. For example:  
+
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Matches any document in the cities collection as well as any document
+        // in a subcollection.
+        match /cities/{document=**} {
+          allow read, write: if <condition>;
+        }
+      }
+    }
+
+When using the recursive wildcard syntax, the wildcard variable will contain the entire matching path segment, even if the document is located in a deeply nested subcollection. For example, the rules listed above would match a document located at`/cities/SF/landmarks/coit_tower`, and the value of the`document`variable would be`SF/landmarks/coit_tower`.
+
+Note, however, that the behavior of recursive wildcards depends on the rules version.  
+
+### Version 1
+
+Security rules use version 1 by default. In version 1, recursive wildcards match one or more path items. They do not match an empty path, so`match /cities/{city}/{document=**}`matches documents in subcollections but not in the`cities`collection, whereas`match /cities/{document=**}`matches both documents in the`cities`collection and subcollections.
+
+Recursive wildcards must come at the end of a match statement.
+
+### Version 2
+
+In version 2 of the security rules, recursive wildcards match zero or more path items.`match/cities/{city}/{document=**}`matches documents in any subcollections as well as documents in the`cities`collection.
+
+You must opt-in to version 2 by adding`rules_version = '2';`at the top of your security rules:  
+
+    rules_version = '2';
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Matches any document in the cities collection as well as any document
+        // in a subcollection.
+        match /cities/{city}/{document=**} {
+          allow read, write: if <condition>;
+        }
+      }
+    }
+
+You can have at most one recursive wildcard per match statement, but in version 2, you can place this wildcard anywhere in the match statement. For example:  
+
+    rules_version = '2';
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Matches any document in the songs collection group
+        match /{path=**}/songs/{song} {
+          allow read, write: if <condition>;
+        }
+      }
+    }
+
+If you use[collection group queries](https://firebase.google.com/docs/firestore/query-data/queries#collection-group-query), you must use version 2, see[securing collection group queries](https://firebase.google.com/docs/firestore/security/rules-query#secure_and_query_documents_based_on_collection_groups).
+
+## Overlapping match statements
+
+It's possible for a document to match more than one`match`statement. In the case where multiple`allow`expressions match a request, the access is allowed if**any** of the conditions is`true`:  
+
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Matches any document in the 'cities' collection.
+        match /cities/{city} {
+          allow read, write: if false;
+        }
+
+        // Matches any document in the 'cities' collection or subcollections.
+        match /cities/{document=**} {
+          allow read, write: if true;
+        }
+      }
+    }
+
+In the example above, all reads and writes to the`cities`collection will be allowed because the second rule is always`true`, even though the first rule is always`false`.
+
+## Security rule limits
+
+As you work with security rules, note the following limits:
+
+|                                          Limit                                           |                                                                                                                                                                                                                                                                                                            Details                                                                                                                                                                                                                                                                                                            |
+|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Maximum number of`exists()`,`get()`, and`getAfter()`calls per request                    | - 10 for single-document requests and query requests. - 20 for multi-document reads, transactions, and batched writes. The previous limit of 10 also applies to each operation. For example, imagine you create a batched write request with 3 write operations and that your security rules use 2 document access calls to validate each write. In this case, each write uses 2 of its 10 access calls and the batched write request uses 6 of its 20 access calls. Exceeding either limit results in a permission denied error. Some document access calls may be cached, and cached calls do not count towards the limits. |
+| Maximum nested`match`statement depth                                                     | 10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Maximum path length, in path segments, allowed within a set of nested`match`statements   | 100                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Maximum number of path capture variables allowed within a set of nested`match`statements | 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Maximum function call depth                                                              | 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Maximum number of function arguments                                                     | 7                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Maximum number of`let`variable bindings per function                                     | 10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Maximum number of recursive or cyclical function calls                                   | 0 (not permitted)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Maximum number of expressions evaluated per request                                      | 1,000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Maximum size of a ruleset                                                                | Rulesets must obey two size limits: - a 256 KB limit on the size of the ruleset text source published from theFirebaseconsole or from the CLI using`firebase deploy`. - a 250 KB limit on the size of the compiled ruleset that results when Firebase processes the source and makes it active on the back-end.                                                                                                                                                                                                                                                                                                               |
+
+## Next steps
+
+- Write[custom security rules conditions](https://firebase.google.com/docs/firestore/security/rules-conditions).
+- Read the[security rules reference](https://firebase.google.com/docs/reference/rules/rules).

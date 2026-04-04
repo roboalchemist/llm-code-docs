@@ -1,0 +1,9 @@
+name: frigade
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.frigade.com/
+    last_fetched: "2026-04-03T23:09:00Z"
+description: >
+  frigade documentation
+quality_score: 0

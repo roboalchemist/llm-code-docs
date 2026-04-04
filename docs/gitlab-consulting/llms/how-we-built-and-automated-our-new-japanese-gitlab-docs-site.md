@@ -1,0 +1,13 @@
+# Source: https://gitlab.consulting/en-gb/blog/2025/12/11/how-we-built-and-automated-our-new-japanese-gitlab-docs-site.md
+
+
+# How GitLab Built and Automated its New Japanese Documentation Site
+<h2 id="behind-the-scenes-launching-and-automating-the-japanese-gitlab-docs-site">Behind the Scenes: Launching and Automating the Japanese GitLab Docs Site</h2>
+<p>As GitLab’s global user base continues to grow, ensuring accessible documentation in local languages becomes increasingly important. One of the most recent milestones in this mission is the release of the new Japanese GitLab Docs site—a fully automated, synchronised, and community-supported solution that brings clarity and usability to Japanese-speaking users.</p>
+<p>To make this possible, GitLab engineers undertook the challenge of simplifying how translated content is delivered while preserving the meticulous standards of the English documentation. This project isn’t just about language—it’s about process efficiency, technological scalability, and putting user experience front and centre.</p>
+<p>The Japanese documentation site is powered by <strong>Sphinx</strong>, a Python-based documentation generator, and enhanced with localisation support via <strong>po4a</strong> for seamless content translation. GitLab leaned on their CI/CD pipeline to automate translations, testing, and deployment, keeping the content synchronised with the ever-evolving English version via scheduled pipelines.</p>
+<p>GitLab’s team also integrated feedback from the local Japanese community, demonstrating the power of collaboration and open source contribution at its finest. Every update, every minor improvement, and every automation script contributes to speeding up access to high-quality documentation for developers across Japan.</p>
+<p>For organisations across <strong>Czech Republic, Slovakia, Croatia, Serbia, Slovenia, Macedonia, United Kingdom</strong>, and beyond, this transformation showcases a model for scaling documentation globally. Whether you&rsquo;re operating locally or internationally, ensuring product accessibility through native content is key to adoption and efficiency.</p>
+<p>Looking to implement similar DevOps transformation or need assistance with <strong>GitLab consulting, licences, or deployments</strong> in your region? <a href="https://gitlab.consulting/en-gb/?mtm_campaign=internal-blog-link&amp;mtm_kwd=en-gb:how-we-built-and-automated-our-new-japanese-gitlab-docs-site">IDEA GitLab Solutions</a> is your trusted partner across Europe and globally. Let’s build the future of software development together!</p>
+
+

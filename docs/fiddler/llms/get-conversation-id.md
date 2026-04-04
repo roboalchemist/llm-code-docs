@@ -1,0 +1,19 @@
+# Source: https://docs.fiddler.ai/api/fiddler-strands-agents-sdk/attributes/get-conversation-id.md
+
+# get\_conversation\_id
+
+Get the conversation ID for the current agent invocation.
+
+Retrieves the conversation ID that was previously set using set\_conversation\_id(). Works in both synchronous and asynchronous contexts automatically.
+
+## Parameters
+
+| Parameter | Type    | Required | Default | Description                                                     |
+| --------- | ------- | -------- | ------- | --------------------------------------------------------------- |
+| `agent`   | `Agent` | ✗        | `None`  | The Strands Agent instance to retrieve the conversation ID from |
+
+## Returns
+
+The conversation ID string, or empty string if none has been set
+
+**Return type:** str

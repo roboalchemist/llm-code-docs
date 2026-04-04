@@ -1,0 +1,11 @@
+# Source: https://gofastmcp.com/python-sdk/fastmcp-cli-__init__.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# __init__
+
+# `fastmcp.cli`
+
+FastMCP CLI package.

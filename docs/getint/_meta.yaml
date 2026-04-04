@@ -1,0 +1,8 @@
+name: getint
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:09:01Z"
+description: >
+  getint documentation
+quality_score: 0

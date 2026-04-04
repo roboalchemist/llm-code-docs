@@ -1,0 +1,59 @@
+# Source: https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIException.md.txt
+
+# FirebaseAIException
+
+# FirebaseAIException
+
+
+```
+public abstract class FirebaseAIException extends RuntimeException
+```
+
+<br />
+
+|---|---|---|---|---|
+| [java.lang.Object](https://developer.android.com/reference/kotlin/java/lang/Object.html) |||||
+| ↳ | [kotlin.Throwable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html) ||||
+|   | ↳ | [java.lang.Exception](https://developer.android.com/reference/kotlin/java/lang/Exception.html) |||
+|   |   | ↳ | [java.lang.RuntimeException](https://developer.android.com/reference/kotlin/java/lang/RuntimeException.html) ||
+|   |   |   | ↳ | [com.google.firebase.ai.type.FirebaseAIException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIException) |
+
+Known direct subclasses [APINotConfiguredException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/APINotConfiguredException), [AudioRecordInitializationFailedException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/AudioRecordInitializationFailedException), [ContentBlockedException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ContentBlockedException), [FirebaseAIOnDeviceInvalidRequestException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIOnDeviceInvalidRequestException), [FirebaseAIOnDeviceNotAvailableException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIOnDeviceNotAvailableException), [FirebaseAIOnDeviceUnknownException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIOnDeviceUnknownException), [FirebaseAutoFunctionException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAutoFunctionException), [InvalidAPIKeyException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/InvalidAPIKeyException), [InvalidLocationException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/InvalidLocationException), [InvalidStateException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/InvalidStateException), [PermissionMissingException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/PermissionMissingException), [PromptBlockedException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/PromptBlockedException), [QuotaExceededException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/QuotaExceededException), [RequestTimeoutException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/RequestTimeoutException), [ResponseStoppedException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ResponseStoppedException), [SerializationException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/SerializationException), [ServerException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ServerException), [ServiceConnectionHandshakeFailedException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ServiceConnectionHandshakeFailedException), [ServiceDisabledException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ServiceDisabledException), [SessionAlreadyReceivingException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/SessionAlreadyReceivingException), [UnknownException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/UnknownException), [UnsupportedUserLocationException](https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/UnsupportedUserLocationException)
+
+|---|---|
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/APINotConfiguredException` | The Firebase project has not been configured and enabled for the selected API. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/AudioRecordInitializationFailedException` | Audio record initialization failures for audio streaming |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ContentBlockedException` |   |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIOnDeviceInvalidRequestException` | The parameters used in the request are not valid. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIOnDeviceNotAvailableException` | An operation has been requested, but device doesn't support local models, or they are not available. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAIOnDeviceUnknownException` | Catch all case for exceptions not explicitly expected. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/FirebaseAutoFunctionException` | Thrown when a function invoked by the model has an error that should be returned to the model |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/InvalidAPIKeyException` | The provided API Key is not valid. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/InvalidLocationException` | The specified Vertex AI location is invalid. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/InvalidStateException` | Some form of state occurred that shouldn't have. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/PermissionMissingException` | The request is missing a permission that is required to perform the requested operation. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/PromptBlockedException` | A request was blocked. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/QuotaExceededException` | The request has hit a quota limit. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/RequestTimeoutException` | A request took too long to complete. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ResponseStoppedException` | A request was stopped during generation for some reason. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/SerializationException` | Something went wrong while trying to deserialize a response from the server. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ServerException` | The server responded with a non 200 response code. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ServiceConnectionHandshakeFailedException` | Handshake failed with the server |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/ServiceDisabledException` | The service is not enabled for this Firebase project. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/SessionAlreadyReceivingException` | Streaming session already receiving. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/UnknownException` | Catch all case for exceptions not explicitly expected. |
+| `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/type/UnsupportedUserLocationException` | The user's location (region) is not supported by the API. |
+
+*** ** * ** ***
+
+Parent class for any errors that occur from the `https://firebase.google.com/docs/reference/android/com/google/firebase/ai/FirebaseAI` SDK.
+
+## Summary
+
+| ### Inherited fields |
+|---|
+| From [kotlin.Throwable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html) |---|---| | `https://developer.android.com/reference/kotlin/java/lang/Throwable.html` | `https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/cause.html` | | `https://developer.android.com/reference/kotlin/java/lang/String.html` | `https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/message.html` | |
+
+| ### Inherited methods |
+|---|
+| From [kotlin.Throwable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html) |---|---| | `final void` | `https://developer.android.com/reference/kotlin/java/lang/Throwable.html#addSuppressed-kotlin.Throwable-(@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html @https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html p0)` | | `@https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html` | `@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html#fillInStackTrace--()` | | `@https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html https://developer.android.com/reference/kotlin/java/lang/String.html` | `@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNullable.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html#getLocalizedMessage--()` | | `@https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html StackTraceElement[]` | `@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html#getStackTrace--()` | | `final @https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html Throwable[]` | `@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html#getSuppressed--()` | | `@https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html` | `@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html#initCause-kotlin.Throwable-(@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNullable.html @https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html https://developer.android.com/reference/kotlin/java/lang/Throwable.html p0)` | | `void` | `https://developer.android.com/reference/kotlin/java/lang/Throwable.html#printStackTrace--()` | | `void` | `https://developer.android.com/reference/kotlin/java/lang/Throwable.html#printStackTrace-java.io.PrintStream-(@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html @https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html https://developer.android.com/reference/kotlin/java/io/PrintStream.html p0)` | | `void` | `https://developer.android.com/reference/kotlin/java/lang/Throwable.html#printStackTrace-java.io.PrintWriter-(@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html @https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html https://developer.android.com/reference/kotlin/java/io/PrintWriter.html p0)` | | `void` | `https://developer.android.com/reference/kotlin/java/lang/Throwable.html#setStackTrace-kotlin.Array[java.lang.StackTraceElement]-(@https://developer.android.com/reference/kotlin/androidx/annotation/RecentlyNonNull.html @https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html StackTraceElement[] p0)` | |

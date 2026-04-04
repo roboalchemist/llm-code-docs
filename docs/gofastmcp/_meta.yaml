@@ -1,0 +1,9 @@
+name: gofastmcp
+primary_source: llms
+sources:
+  - type: llms
+    url: https://gofastmcp.com/
+    last_fetched: "2026-04-03T23:09:02Z"
+description: >
+  gofastmcp documentation
+quality_score: 0
