@@ -1,0 +1,21 @@
+---
+---
+title: Filtering
+description: "Learn more about how to configure your SDK to filter events reported to Sentry."
+---
+
+When you add Sentry to your app, you get a lot of valuable information about errors and performance. And lots of information is good -- as long as it's the right information, at a reasonable volume.
+
+The Sentry SDKs have several configuration options to help you filter out events.
+
+We also offer [Inbound Filters](/concepts/data-management/filtering/) to filter events in sentry.io. We recommend filtering at the client level though, because it removes the overhead of sending events you don't actually want. Learn more about the [fields available in an event](https://develop.sentry.dev/sdk/data-model/event-payloads/).
+
+## Filtering Error Events
+
+Configure your SDK to filter error events by using the  callback method and configuring, enabling, or disabling integrations.
+
+### Using 
+
+All Sentry SDKs support the  callback method. Because it's called immediately before the event is sent to the server, this is your last chance to decide not to send data or to edit it.  receives the event object as a parameter, which you can use to either modify the event’s data or drop it completely by returning `null`, based on custom logic and the data available on the event.
+
+Note also that breadcrumbs can be filtered, as discussed in [our Breadcrumbs documentation](/product/error-monitoring/breadcrumbs/).

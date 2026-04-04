@@ -1,0 +1,9 @@
+name: scout-apm
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.scoutapm.com/
+    last_fetched: "2026-04-03T23:10:56Z"
+description: >
+  scout-apm documentation
+quality_score: 0

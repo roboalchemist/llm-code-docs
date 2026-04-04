@@ -1,0 +1,9 @@
+name: react-i18next
+primary_source: llms
+sources:
+  - type: llms
+    url: https://react.i18next.com/
+    last_fetched: "2026-04-03T23:10:49Z"
+description: >
+  react-i18next documentation
+quality_score: 0

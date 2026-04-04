@@ -1,0 +1,192 @@
+# Source: https://docs.prefect.io/v3/api-ref/python/prefect-server-api-server.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# server
+
+# `prefect.server.api.server`
+
+Defines the Prefect REST API FastAPI app.
+
+## Functions
+
+### `validation_exception_handler` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L198" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+validation_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse
+```
+
+Provide a detailed message for request validation errors.
+
+### `integrity_exception_handler` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L214" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+integrity_exception_handler(request: Request, exc: Exception) -> JSONResponse
+```
+
+Capture database integrity errors.
+
+### `is_client_retryable_exception` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L229" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+is_client_retryable_exception(exc: Exception) -> bool
+```
+
+### `replace_placeholder_string_in_files` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L258" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+replace_placeholder_string_in_files(directory: str, placeholder: str, replacement: str, allowed_extensions: list[str] | None = None) -> None
+```
+
+Recursively loops through all files in the given directory and replaces
+a placeholder string.
+
+### `copy_directory` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L285" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+copy_directory(directory: str, path: str) -> None
+```
+
+### `custom_internal_exception_handler` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L305" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+custom_internal_exception_handler(request: Request, exc: Exception) -> JSONResponse
+```
+
+Log a detailed exception for internal server errors before returning.
+
+Send 503 for errors clients can retry on.
+
+### `prefect_object_not_found_exception_handler` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L330" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+prefect_object_not_found_exception_handler(request: Request, exc: ObjectNotFoundError) -> JSONResponse
+```
+
+Return 404 status code on object not found exceptions.
+
+### `create_api_app` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L342" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+create_api_app(dependencies: list[Any] | None = None, health_check_path: str = '/health', version_check_path: str = '/version', fast_api_app_kwargs: dict[str, Any] | None = None, final: bool = False, ignore_cache: bool = False) -> FastAPI
+```
+
+Create a FastAPI app that includes the Prefect REST API
+
+**Args:**
+
+* `dependencies`: a list of global dependencies to add to each Prefect REST API router
+* `health_check_path`: the health check route path
+* `fast_api_app_kwargs`: kwargs to pass to the FastAPI constructor
+* `final`: whether this will be the last instance of the Prefect server to be
+  created in this process, so that additional optimizations may be applied
+* `ignore_cache`: if set, a new app will be created even if the settings and fast\_api\_app\_kwargs match
+  an existing app in the cache
+
+**Returns:**
+
+* a FastAPI app that serves the Prefect REST API
+
+### `create_ui_app` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L457" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+create_ui_app(ephemeral: bool) -> FastAPI
+```
+
+### `create_app` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L631" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+create_app(settings: Optional[prefect.settings.Settings] = None, ephemeral: bool = False, webserver_only: bool = False, final: bool = False, ignore_cache: bool = False) -> FastAPI
+```
+
+Create a FastAPI app that includes the Prefect REST API and UI
+
+**Args:**
+
+* `settings`: The settings to use to create the app. If not set, settings are pulled
+  from the context.
+* `ephemeral`: If set, the application will be treated as ephemeral. The UI
+  and services will be disabled.
+* `webserver_only`: If set, the webserver and UI will be available but all background
+  services will be disabled.
+* `final`: whether this will be the last instance of the Prefect server to be
+  created in this process, so that additional optimizations may be applied
+* `ignore_cache`: If set, a new application will be created even if the settings
+  match. Otherwise, an application is returned from the cache.
+
+## Classes
+
+### `SPAStaticFiles` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L165" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Implementation of `StaticFiles` for serving single page applications.
+
+Adds `get_response` handling to ensure that when a resource isn't found the
+application still returns the index.
+
+**Methods:**
+
+#### `get_response` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L173" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_response(self, path: str, scope: Any) -> Response
+```
+
+### `RequestLimitMiddleware` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L180" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+A middleware that limits the number of concurrent requests handled by the API.
+
+This is a blunt tool for limiting SQLite concurrent writes which will cause failures
+at high volume. Ideally, we would only apply the limit to routes that perform
+writes.
+
+### `SubprocessASGIServer` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L835" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+**Methods:**
+
+#### `address` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L878" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+address(self) -> str
+```
+
+#### `api_url` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L882" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+api_url(self) -> str
+```
+
+#### `find_available_port` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L857" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+find_available_port(self) -> int
+```
+
+#### `is_port_available` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L867" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+is_port_available(port: int) -> bool
+```
+
+#### `start` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L885" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+start(self, timeout: Optional[int] = None) -> None
+```
+
+Start the server in a separate process. Safe to call multiple times; only starts
+the server once.
+
+**Args:**
+
+* `timeout`: The maximum time to wait for the server to start
+
+#### `stop` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/server.py#L979" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+stop(self) -> None
+```
+
+
+Built with [Mintlify](https://mintlify.com).

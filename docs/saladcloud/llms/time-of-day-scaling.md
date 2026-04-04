@@ -1,0 +1,951 @@
+# Source: https://docs.salad.com/container-engine/how-to-guides/autoscaling/time-of-day-scaling.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Scheduled Scaling (Time of Day)
+
+> Configure scheduled time-based autoscaling for SaladCloud container groups using the Portal, the API, or scheduled serverless functions for advanced use cases.
+
+*Last Updated: January 28, 2026*
+
+Scheduled scaling (time of day) is now a native SaladCloud feature. You can configure schedules directly in the Portal
+or via the Salad API to adjust replica counts on a fixed timetable. If you need custom logic or integrations, the
+serverless approach is still available and covered below.
+
+## Choose Your Approach
+
+* **SaladCloud Native Scheduled Scaling (recommended)**: Configure cron schedules in the Portal or API. Best for fixed
+  schedules and the simplest operational setup.
+* **Serverless Scheduled Scaling (advanced)**: Run scheduled functions (AWS Lambda, Cloudflare Workers, or Google Cloud
+  Functions) that call the Salad API. Best for conditional logic, external signals, or coordinating multiple container
+  groups.
+
+## SaladCloud Scheduled Scaling (Portal and API)
+
+Scheduled scaling lets you set replica counts at specific times using cron expressions. It works best for predictable
+usage patterns, such as business hours or nightly batch windows.
+
+This approach is ideal for:
+
+* **Business hours scaling**: Scale up during work hours, down during nights/weekends
+* **Batch processing windows**: Prepare resources before scheduled jobs
+* **Global applications**: Adjust capacity based on regional peak times
+* **Cost optimization**: Predictably scale to zero during known low-usage periods
+
+### Plan Your Scaling Schedule
+
+Before implementing, define your scaling schedule:
+
+#### Example Scaling Patterns
+
+**Business Hours Pattern:**
+
+```
+Mon-Fri 8:00 AM - 6:00 PM: 10 replicas
+Mon-Fri 6:00 PM - 8:00 AM: 2 replicas
+Weekends: 1 replica
+```
+
+**Global Coverage Pattern:**
+
+```
+00:00-06:00 UTC: 5 replicas  (APAC peak)
+06:00-12:00 UTC: 2 replicas  (Low traffic)
+12:00-18:00 UTC: 8 replicas  (EMEA peak)
+18:00-24:00 UTC: 10 replicas (Americas peak)
+```
+
+**Batch Processing Pattern:**
+
+```
+Daily 2:00 AM: Scale to 20 replicas for overnight processing
+Daily 8:00 AM: Scale to 15 replicas for business hours
+Daily 10:00 PM: Scale to 0 replicas (overnight shutdown)
+```
+
+#### Key Considerations
+
+* **Time Zones**: Use UTC in cron schedules
+* **Startup Time**: Account for SaladCloud's container startup time (5-15 minutes)
+* **Overlap Periods**: Plan transitions to handle workload handoffs smoothly
+* **Emergency Scaling**: Keep manual override capabilities for unexpected load
+
+### SaladCloud Portal
+
+You can set a schedule while creating a container group or by editing an existing one.
+
+To add scheduled scaling when creating a container group:
+
+1. On the "Container Configuration" page, find "Scheduled Scaling" just below "Replicas".
+2. Click "Add Scaling Event".
+
+To add scheduled scaling to an existing container group:
+
+1. Open the container group and click "Edit".
+2. Scroll to the bottom of the page to "Scheduled Scaling" and click "Edit".
+
+Make sure the "Enable Scheduled Scaling" checkbox is selected.
+
+### Salad API
+
+You can also configure scheduled scaling through the Salad API when creating or updating a container group. See
+[Create Container Group](/reference/saladcloud-api/container-groups/create-container-group) and
+[Update Container Group](/reference/saladcloud-api/container-groups/update-container-group) for the request details.
+
+### Add Scaling Events
+
+Enter a cron expression and the desired replica count, and SaladCloud will scale the container group on schedule.
+
+<Note>Scaling is not immediate. Plan ahead for instances to download the image and start.</Note>
+
+You can add multiple cron expressions in the portal in two ways:
+
+* Add them one by one and click "Add Scaling Event" after each entry.
+* Click "Bulk Edit" and add one entry per line using the format `cron_expression=replica_count`.
+
+Example bulk entries:
+
+```
+0 8 * * 1-5=10
+0 18 * * 1-5=2
+0 2 * * *=20
+```
+
+Once you click "Configure", you will also see explanations of the cron expressions you entered.
+
+### Cron Expression Examples
+
+* `0 8 * * 1-5` - Weekdays at 08:00.
+* `0 18 * * 1-5` - Weekdays at 18:00.
+* `0 0 1 * *` - First day of every month at 00:00.
+* `0 2 * * *` - Daily at 02:00.
+
+For help building cron expressions, see [https://crontab.guru](https://crontab.guru).
+
+## Serverless Scheduled Scaling (Advanced)
+
+Use this approach when you need conditional logic, external signals, or custom integrations. It relies on scheduled
+serverless functions that call the Salad API at specific times.
+
+### Serverless Prerequisites
+
+Before you begin, ensure you have:
+
+* ✅ **SaladCloud API Key**: You'll need a valid API key with permissions to manage container groups
+* ✅ **Organization and Project**: An active organization and project in SaladCloud
+* ✅ **Container Group**: An existing container group that you want to scale on a schedule
+* ✅ **Serverless Platform Access**: Account on one of the supported platforms (AWS Lambda, Cloudflare Workers, etc.)
+* ✅ **Time Zone Planning**: Clear understanding of your scaling schedule and time zones
+
+<Tip>
+  **Cost Optimization**: Time-of-day scaling is particularly effective for workloads with predictable patterns, allowing
+  you to scale to zero during off-hours and scale up before peak demand, optimizing both cost and performance.
+</Tip>
+
+### Serverless Approach Overview
+
+Serverless scheduled scaling works by scheduling functions to run at specific times when you want to change your replica
+count:
+
+1. **Schedule functions** to trigger at exact times when scaling is needed
+2. **Execute scaling actions** directly without checking current time
+3. **Call the SaladCloud API** to set the desired replica count
+4. **Handle state transitions** (starting/stopping container groups as needed)
+
+### Choose Your Serverless Implementation
+
+Select one of the following serverless platforms for implementing serverless scheduled scaling:
+
+#### **Option A: AWS Lambda + EventBridge**
+
+* **Best for**: AWS-heavy environments, complex logic, integration with other AWS services
+* **Scheduling**: EventBridge with cron expressions and event payloads
+* **Cost**: Pay-per-invocation, very cost-effective for periodic scaling
+
+#### **Option B: Cloudflare Workers + Cron Triggers**
+
+* **Best for**: Global distribution, simple logic, edge computing integration
+* **Scheduling**: Built-in cron triggers with environment-based configuration
+* **Cost**: Generous free tier, low latency execution
+
+#### **Option C: Google Cloud Functions + Cloud Scheduler**
+
+* **Best for**: Google Cloud environments, integration with GCP services
+* **Scheduling**: Cloud Scheduler with flexible cron expressions
+* **Cost**: Pay-per-invocation with generous free tier
+
+***
+
+### AWS Lambda Implementation
+
+Here's a complete AWS Lambda implementation for serverless scheduled scaling:
+
+#### **Lambda Function Code**
+
+```python  theme={null}
+import json
+import urllib.request
+import os
+from typing import Dict, Any, Optional
+
+# Configuration from environment variables
+SALAD_API_KEY = os.environ['SALAD_API_KEY']
+SALAD_ORG = os.environ['SALAD_ORG']
+SALAD_PROJECT = os.environ['SALAD_PROJECT']
+CONTAINER_GROUP_NAME = os.environ['CONTAINER_GROUP_NAME']
+
+SALAD_BASE_URL = "https://api.salad.com/api/public"
+
+def make_salad_request(method: str, path: str, data: Optional[Dict] = None) -> Dict[str, Any]:
+    """Make a request to the SaladCloud API"""
+    url = f"{SALAD_BASE_URL}{path}"
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Salad-Api-Key': SALAD_API_KEY
+    }
+
+    if method == 'PATCH':
+        headers['Content-Type'] = 'application/merge-patch+json'
+
+    req_data = None
+    if data:
+        req_data = json.dumps(data).encode('utf-8')
+
+    request = urllib.request.Request(url, data=req_data, headers=headers, method=method)
+
+    try:
+        with urllib.request.urlopen(request) as response:
+            return json.loads(response.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode('utf-8')
+        raise Exception(f"SaladCloud API error {e.code}: {error_body}")
+
+def get_container_group() -> Dict[str, Any]:
+    """Get current container group status"""
+    path = f"/organizations/{SALAD_ORG}/projects/{SALAD_PROJECT}/containers/{CONTAINER_GROUP_NAME}"
+    return make_salad_request('GET', path)
+
+def start_container_group():
+    """Start the container group"""
+    path = f"/organizations/{SALAD_ORG}/projects/{SALAD_PROJECT}/containers/{CONTAINER_GROUP_NAME}/start"
+    return make_salad_request('POST', path)
+
+def stop_container_group():
+    """Stop the container group"""
+    path = f"/organizations/{SALAD_ORG}/projects/{SALAD_PROJECT}/containers/{CONTAINER_GROUP_NAME}/stop"
+    return make_salad_request('POST', path)
+
+def set_replicas(replicas: int):
+    """Set the number of replicas for the container group"""
+    path = f"/organizations/{SALAD_ORG}/projects/{SALAD_PROJECT}/containers/{CONTAINER_GROUP_NAME}"
+    return make_salad_request('PATCH', path, {'replicas': replicas})
+
+def lambda_handler(event, context):
+    """Main Lambda handler function"""
+    try:
+        # Get desired replicas from the event (passed by EventBridge rule)
+        desired_replicas = event.get('replicas', 0)
+        action = event.get('action', 'scale')  # 'scale', 'start', or 'stop'
+
+        print(f"Scaling action: {action}, desired replicas: {desired_replicas}")
+
+        # Get current container group status
+        container_group = get_container_group()
+        current_replicas = container_group['replicas']
+        current_state = container_group['current_state']['status']
+
+        print(f"Current replicas: {current_replicas}")
+        print(f"Current state: {current_state}")
+
+        # Apply scaling logic based on action
+        if action == 'stop' or desired_replicas == 0:
+            if current_state == 'running':
+                print("Stopping container group...")
+                stop_container_group()
+            else:
+                print("Container group already stopped")
+
+        elif action == 'start' or desired_replicas > 0:
+            if current_state == 'stopped':
+                print("Starting container group...")
+                start_container_group()
+
+            # Set replicas if different from current
+            if desired_replicas != current_replicas:
+                print(f"Setting replicas to {desired_replicas}")
+                set_replicas(desired_replicas)
+            else:
+                print("Replicas already at desired count")
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps({
+                'message': 'Scaling operation completed successfully',
+                'action': action,
+                'desired_replicas': desired_replicas,
+                'current_replicas': current_replicas,
+                'current_state': current_state
+            })
+        }
+
+    except Exception as e:
+        print(f"Error during scaling operation: {str(e)}")
+        return {
+            'statusCode': 500,
+            'body': json.dumps({
+                'error': str(e),
+                'message': 'Scaling operation failed'
+            })
+        }
+```
+
+#### **Deployment Configuration**
+
+1. **Create the Lambda Function**:
+   * Runtime: Python 3.9 or later
+   * Timeout: 30 seconds
+   * Memory: 128 MB (sufficient for API calls)
+
+2. **Set Environment Variables**:
+
+   ```
+   SALAD_API_KEY=your_salad_api_key
+   SALAD_ORG=your_organization_name
+   SALAD_PROJECT=your_project_name
+   CONTAINER_GROUP_NAME=your_container_group_name
+   ```
+
+3. **Create Multiple EventBridge Rules for Your Schedule**:
+
+   **Business Hours Start (8 AM Monday-Friday)**:
+
+   ```bash  theme={null}
+   aws events put-rule \
+     --name salad-scale-business-start \
+     --schedule-expression "cron(0 8 ? * MON-FRI *)"
+
+   aws events put-targets \
+     --rule salad-scale-business-start \
+     --targets "Id"="1","Arn"="arn:aws:lambda:region:account:function:function-name","Input"='{"action":"scale","replicas":15}'
+   ```
+
+   **Business Hours End (6 PM Monday-Friday)**:
+
+   ```bash  theme={null}
+   aws events put-rule \
+     --name salad-scale-business-end \
+     --schedule-expression "cron(0 18 ? * MON-FRI *)"
+
+   aws events put-targets \
+     --rule salad-scale-business-end \
+     --targets "Id"="1","Arn"="arn:aws:lambda:region:account:function:function-name","Input"='{"action":"scale","replicas":3}'
+   ```
+
+   **Batch Processing Start (2 AM Daily)**:
+
+   ```bash  theme={null}
+   aws events put-rule \
+     --name salad-scale-batch-start \
+     --schedule-expression "cron(0 2 * * ? *)"
+
+   aws events put-targets \
+     --rule salad-scale-batch-start \
+     --targets "Id"="1","Arn"="arn:aws:lambda:region:account:function:function-name","Input"='{"action":"scale","replicas":25}'
+   ```
+
+   **Batch Processing End (6 AM Daily)**:
+
+   ```bash  theme={null}
+   aws events put-rule \
+     --name salad-scale-batch-end \
+     --schedule-expression "cron(0 6 * * ? *)"
+
+   aws events put-targets \
+     --rule salad-scale-batch-end \
+     --targets "Id"="1","Arn"="arn:aws:lambda:region:account:function:function-name","Input"='{"action":"scale","replicas":15}'
+   ```
+
+   **Weekend Scale Down (Saturday 12 AM)**:
+
+   ```bash  theme={null}
+   aws events put-rule \
+     --name salad-scale-weekend \
+     --schedule-expression "cron(0 0 ? * SAT *)"
+
+   aws events put-targets \
+     --rule salad-scale-weekend \
+     --targets "Id"="1","Arn"="arn:aws:lambda:region:account:function:function-name","Input"='{"action":"scale","replicas":1}'
+   ```
+
+**Alternative: Infrastructure as Code (CloudFormation/Terraform)**
+
+```yaml  theme={null}
+# CloudFormation template snippet
+Resources:
+  BusinessHoursStartRule:
+    Type: AWS::Events::Rule
+    Properties:
+      ScheduleExpression: 'cron(0 8 ? * MON-FRI *)'
+      Targets:
+        - Arn: !GetAtt ScalingFunction.Arn
+          Id: 'BusinessHoursStart'
+          Input: '{"action":"scale","replicas":15}'
+
+  BusinessHoursEndRule:
+    Type: AWS::Events::Rule
+    Properties:
+      ScheduleExpression: 'cron(0 18 ? * MON-FRI *)'
+      Targets:
+        - Arn: !GetAtt ScalingFunction.Arn
+          Id: 'BusinessHoursEnd'
+          Input: '{"action":"scale","replicas":3}'
+```
+
+#### **Testing Your Lambda Implementation**
+
+**Unit Testing**:
+
+```python  theme={null}
+def test_scaling_events():
+    """Test your scaling logic with different events"""
+    test_events = [
+        {'action': 'scale', 'replicas': 15},  # Business hours start
+        {'action': 'scale', 'replicas': 3},   # Business hours end
+        {'action': 'scale', 'replicas': 25},  # Batch processing start
+        {'action': 'stop', 'replicas': 0},    # Overnight shutdown
+    ]
+
+    for event in test_events:
+        print(f"Testing event: {event}")
+        # Simulate the lambda_handler call
+        result = lambda_handler(event, {})
+        print(f"Result: {result['statusCode']}")
+        print("---")
+
+# Run tests
+test_scaling_events()
+```
+
+**Manual Testing**:
+
+```bash  theme={null}
+# Test scaling to 15 replicas
+aws lambda invoke \
+  --function-name your-scaling-function \
+  --payload '{"action":"scale","replicas":15}' \
+  response.json
+
+# Test stopping the container group
+aws lambda invoke \
+  --function-name your-scaling-function \
+  --payload '{"action":"stop","replicas":0}' \
+  response.json
+```
+
+**Dry-Run Mode**:
+
+Add a dry-run mode for testing without actual scaling:
+
+```python  theme={null}
+DRY_RUN = os.environ.get('DRY_RUN', 'false').lower() == 'true'
+
+def apply_scaling_action(action_type, *args):
+    """Apply scaling action with dry-run support"""
+    if DRY_RUN:
+        print(f"DRY RUN: Would execute {action_type} with args: {args}")
+        return
+
+    if action_type == 'start':
+        start_container_group()
+    elif action_type == 'stop':
+        stop_container_group()
+    elif action_type == 'scale':
+        set_replicas(args[0])
+```
+
+***
+
+### Cloudflare Workers Implementation
+
+Cloudflare Workers provides a clean single-worker approach where all scaling configuration is defined in the
+`wrangler.toml` file through environment variables:
+
+### **Worker Script (`src/index.js`)**
+
+```javascript  theme={null}
+export default {
+  async scheduled(event, env, ctx) {
+    try {
+      const scalingConfig = {
+        action: env.SCALING_ACTION,
+        replicas: parseInt(env.SCALING_REPLICAS || '0'),
+        name: env.SCALING_NAME || 'Unknown scaling action',
+      }
+
+      console.log(`Executing: ${scalingConfig.name}`)
+      await executeScalingAction(env, scalingConfig)
+    } catch (error) {
+      console.error('Scaling operation failed:', error)
+    }
+  },
+}
+
+async function executeScalingAction(env, config) {
+  const { action, replicas, name } = config
+
+  const containerGroup = await getContainerGroup(env)
+  const currentReplicas = containerGroup.replicas
+  const currentState = containerGroup.current_state.status
+
+  console.log(`Current: ${currentReplicas} replicas, state: ${currentState}`)
+
+  if (action === 'stop' || replicas === 0) {
+    if (currentState === 'running') {
+      await stopContainerGroup(env)
+      console.log(`${name}: Container group stopped`)
+    }
+  } else if (action === 'scale') {
+    if (currentState === 'stopped') {
+      await startContainerGroup(env)
+    }
+
+    if (replicas !== currentReplicas) {
+      await setReplicas(env, replicas)
+      console.log(`${name}: Scaled to ${replicas} replicas`)
+    }
+  }
+}
+
+async function getContainerGroup(env) {
+  const url = `https://api.salad.com/api/public/organizations/${env.SALAD_ORG}/projects/${env.SALAD_PROJECT}/containers/${env.CONTAINER_GROUP_NAME}`
+  const response = await fetch(url, {
+    headers: { 'Salad-Api-Key': env.SALAD_API_KEY },
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to get container group: ${response.status} ${await response.text()}`)
+  }
+
+  return response.json()
+}
+
+async function startContainerGroup(env) {
+  const url = `https://api.salad.com/api/public/organizations/${env.SALAD_ORG}/projects/${env.SALAD_PROJECT}/containers/${env.CONTAINER_GROUP_NAME}/start`
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Salad-Api-Key': env.SALAD_API_KEY },
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to start container group: ${response.status} ${await response.text()}`)
+  }
+}
+
+async function stopContainerGroup(env) {
+  const url = `https://api.salad.com/api/public/organizations/${env.SALAD_ORG}/projects/${env.SALAD_PROJECT}/containers/${env.CONTAINER_GROUP_NAME}/stop`
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Salad-Api-Key': env.SALAD_API_KEY },
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to stop container group: ${response.status} ${await response.text()}`)
+  }
+}
+
+async function setReplicas(env, replicas) {
+  const url = `https://api.salad.com/api/public/organizations/${env.SALAD_ORG}/projects/${env.SALAD_PROJECT}/containers/${env.CONTAINER_GROUP_NAME}`
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Salad-Api-Key': env.SALAD_API_KEY,
+      'Content-Type': 'application/merge-patch+json',
+    },
+    body: JSON.stringify({ replicas }),
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to set replicas: ${response.status} ${await response.text()}`)
+  }
+}
+```
+
+#### **Wrangler Configuration**
+
+The key is to deploy the same worker multiple times with different names and environment variables. Create separate
+`wrangler.toml` files for each scaling action:
+
+**Business Hours Start (`wrangler-business-start.toml`)**:
+
+```toml  theme={null}
+name = "salad-business-start"
+main = "src/index.js"
+compatibility_date = "2024-07-01"
+
+[triggers]
+crons = ["0 8 * * 1-5"]  # 8 AM Monday-Friday
+
+[vars]
+SALAD_ORG = "your-organization"
+SALAD_PROJECT = "your-project"
+CONTAINER_GROUP_NAME = "your-container-group"
+SCALING_ACTION = "scale"
+SCALING_REPLICAS = "15"
+SCALING_NAME = "Business hours start"
+```
+
+**Business Hours End (`wrangler-business-end.toml`)**:
+
+```toml  theme={null}
+name = "salad-business-end"
+main = "src/index.js"
+compatibility_date = "2024-07-01"
+
+[triggers]
+crons = ["0 18 * * 1-5"]  # 6 PM Monday-Friday
+
+[vars]
+SALAD_ORG = "your-organization"
+SALAD_PROJECT = "your-project"
+CONTAINER_GROUP_NAME = "your-container-group"
+SCALING_ACTION = "scale"
+SCALING_REPLICAS = "3"
+SCALING_NAME = "Business hours end"
+```
+
+**Batch Processing Start (`wrangler-batch-start.toml`)**:
+
+```toml  theme={null}
+name = "salad-batch-start"
+main = "src/index.js"
+compatibility_date = "2024-07-01"
+
+[triggers]
+crons = ["0 2 * * *"]  # 2 AM daily
+
+[vars]
+SALAD_ORG = "your-organization"
+SALAD_PROJECT = "your-project"
+CONTAINER_GROUP_NAME = "your-container-group"
+SCALING_ACTION = "scale"
+SCALING_REPLICAS = "25"
+SCALING_NAME = "Batch processing start"
+```
+
+**Overnight Shutdown (`wrangler-shutdown.toml`)**:
+
+```toml  theme={null}
+name = "salad-overnight-shutdown"
+main = "src/index.js"
+compatibility_date = "2024-07-01"
+
+[triggers]
+crons = ["0 22 * * *"]  # 10 PM daily
+
+[vars]
+SALAD_ORG = "your-organization"
+SALAD_PROJECT = "your-project"
+CONTAINER_GROUP_NAME = "your-container-group"
+SCALING_ACTION = "stop"
+SCALING_REPLICAS = "0"
+SCALING_NAME = "Overnight shutdown"
+```
+
+**Weekend Scale Down (`wrangler-weekend.toml`)**:
+
+```toml  theme={null}
+name = "salad-weekend-scale"
+main = "src/index.js"
+compatibility_date = "2024-07-01"
+
+[triggers]
+crons = ["0 0 * * 6"]  # Saturday midnight
+
+[vars]
+SALAD_ORG = "your-organization"
+SALAD_PROJECT = "your-project"
+CONTAINER_GROUP_NAME = "your-container-group"
+SCALING_ACTION = "scale"
+SCALING_REPLICAS = "1"
+SCALING_NAME = "Weekend scale down"
+```
+
+#### **Deployment Commands**
+
+Deploy each worker with its specific configuration:
+
+```bash  theme={null}
+# Install Wrangler CLI
+npm install -g wrangler
+
+# Login to Cloudflare
+wrangler login
+
+# Set your API key as a secret for each worker
+wrangler secret put SALAD_API_KEY --config wrangler-business-start.toml
+wrangler secret put SALAD_API_KEY --config wrangler-business-end.toml
+wrangler secret put SALAD_API_KEY --config wrangler-batch-start.toml
+wrangler secret put SALAD_API_KEY --config wrangler-shutdown.toml
+wrangler secret put SALAD_API_KEY --config wrangler-weekend.toml
+
+# Deploy all workers
+wrangler deploy --config wrangler-business-start.toml
+wrangler deploy --config wrangler-business-end.toml
+wrangler deploy --config wrangler-batch-start.toml
+wrangler deploy --config wrangler-shutdown.toml
+wrangler deploy --config wrangler-weekend.toml
+```
+
+#### **Simplified Deployment Script**
+
+Create a `deploy.sh` script to automate the process:
+
+```bash  theme={null}
+#!/bin/bash
+set -e
+
+echo "Setting up SaladCloud time-of-day scaling workers..."
+
+# Array of worker configurations
+workers=("business-start" "business-end" "batch-start" "shutdown" "weekend")
+
+# Set API key for all workers
+for worker in "${workers[@]}"; do
+    echo "Setting API key for $worker..."
+    wrangler secret put SALAD_API_KEY --config "wrangler-$worker.toml"
+done
+
+# Deploy all workers
+for worker in "${workers[@]}"; do
+    echo "Deploying $worker..."
+    wrangler deploy --config "wrangler-$worker.toml"
+done
+
+echo "All workers deployed successfully!"
+echo "Your time-of-day scaling is now active."
+```
+
+Make it executable and run:
+
+```bash  theme={null}
+chmod +x deploy.sh
+./deploy.sh
+```
+
+#### **Testing Your Cloudflare Workers Implementation**
+
+**Manual Trigger Testing**:
+
+```bash  theme={null}
+# Trigger a specific worker manually (bypasses cron schedule)
+wrangler triggers deploy --config wrangler-business-start.toml
+
+# View worker logs in real-time
+wrangler tail salad-business-start
+
+# View logs for a specific worker
+wrangler tail salad-business-end --format pretty
+```
+
+**Testing with Dry-Run Mode**:
+
+Add a `DRY_RUN` environment variable to your `wrangler.toml` for testing:
+
+```toml  theme={null}
+# Add to any wrangler-*.toml file for testing
+[vars]
+SALAD_ORG = "your-organization"
+SALAD_PROJECT = "your-project"
+CONTAINER_GROUP_NAME = "your-container-group"
+SCALING_ACTION = "scale"
+SCALING_REPLICAS = "15"
+SCALING_NAME = "Business hours start"
+DRY_RUN = "true"  # Add this for testing
+```
+
+Then update your worker code to support dry-run:
+
+```javascript  theme={null}
+async function executeScalingAction(env, config) {
+  const { action, replicas, name } = config
+  const isDryRun = env.DRY_RUN === 'true'
+
+  if (isDryRun) {
+    console.log(`DRY RUN: ${name} - Would ${action} to ${replicas} replicas`)
+    return
+  }
+
+  // ... rest of your scaling logic
+}
+```
+
+**Testing Individual Workers**:
+
+```bash  theme={null}
+# Test each worker configuration
+wrangler deploy --config wrangler-business-start.toml --dry-run
+wrangler deploy --config wrangler-business-end.toml --dry-run
+wrangler deploy --config wrangler-batch-start.toml --dry-run
+
+# Deploy in test mode first
+wrangler deploy --config wrangler-business-start.toml --env staging
+```
+
+***
+
+### Serverless Best Practices
+
+#### **Scheduling Considerations**
+
+1. **Account for Startup Time**: SaladCloud containers can take 5-15 minutes to start
+   * Schedule scale-up 15-30 minutes before you need the capacity
+   * Use multiple scaling events rather than trying to predict exact timing
+
+2. **Minimize Unnecessary Executions**:
+   * Only schedule functions when you need to change replica counts
+   * Each cron trigger should have a specific scaling purpose
+   * Avoid overlapping schedules that might conflict
+
+3. **Handle Time Zones Properly**:
+   * Use UTC in your cron expressions to avoid daylight saving issues
+   * Convert business hours to UTC when setting up schedules
+   * Document your schedule clearly for future maintenance
+
+#### **Error Handling and Reliability**
+
+```python  theme={null}
+import time
+from functools import wraps
+
+def retry_on_failure(max_retries=3, delay=5):
+    """Decorator to retry failed operations"""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            for attempt in range(max_retries):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    if attempt == max_retries - 1:
+                        raise
+                    print(f"Attempt {attempt + 1} failed: {e}. Retrying in {delay}s...")
+                    time.sleep(delay)
+            return None
+        return wrapper
+    return decorator
+
+@retry_on_failure(max_retries=3, delay=5)
+def reliable_set_replicas(replicas):
+    """Set replicas with automatic retry on failure"""
+    return set_replicas(replicas)
+```
+
+#### **Cost Optimization**
+
+1. **Scale to Zero**: Use `0` replicas during guaranteed low-usage periods
+2. **Gradual Scaling**: Implement stepped scaling instead of jumping to max replicas
+3. **Weekend Patterns**: Reduce capacity during weekends unless needed
+
+```python  theme={null}
+def calculate_stepped_replicas(base_replicas, current_replicas):
+    """Implement gradual scaling to avoid sudden cost spikes"""
+    max_step = 5  # Maximum replicas to add/remove at once
+
+    if base_replicas > current_replicas:
+        return min(base_replicas, current_replicas + max_step)
+    elif base_replicas < current_replicas:
+        return max(base_replicas, current_replicas - max_step)
+
+    return current_replicas
+```
+
+### Troubleshooting
+
+#### **Common Issues**
+
+1. **Function Not Triggering**:
+   * Verify cron expressions are correct
+   * Check function permissions and environment variables
+   * Review platform-specific logs
+
+2. **API Authentication Errors**:
+   * Ensure API key is correctly set as environment variable
+   * Verify API key has necessary permissions
+   * Check for trailing spaces in environment variables
+
+3. **Incorrect Scaling**:
+   * Test your time calculation logic with various dates
+   * Verify timezone handling (use UTC consistently)
+   * Check for off-by-one errors in hour comparisons
+
+4. **Container Group Not Responding**:
+   * Allow 5-15 minutes for scaling operations to complete
+   * Check container group status in SaladCloud portal
+   * Verify container group name matches exactly
+
+#### **Debugging Tools**
+
+```python  theme={null}
+def debug_scaling_decision(current_time, desired_replicas):
+    """Print detailed debugging information"""
+    print(f"Debug Info:")
+    print(f"  Current UTC time: {current_time}")
+    print(f"  Weekday: {current_time.weekday()} (Monday=0)")
+    print(f"  Hour: {current_time.hour}")
+    print(f"  Desired replicas: {desired_replicas}")
+
+    # Test each schedule rule
+    for name, schedule in SCALING_SCHEDULE.items():
+        weekday = current_time.weekday()
+        hour = current_time.hour
+
+        if weekday in schedule['days']:
+            start = schedule['start_hour']
+            end = schedule['end_hour']
+
+            if start > end:  # Overnight
+                matches = hour >= start or hour < end
+            else:
+                matches = start <= hour < end
+
+            print(f"  Rule '{name}': {'MATCHES' if matches else 'no match'}")
+            print(f"    Days: {schedule['days']}, Hours: {start}-{end}, Replicas: {schedule['replicas']}")
+```
+
+### Integration with Existing Autoscaling
+
+You can combine serverless scheduled scaling with queue-based autoscaling:
+
+```python  theme={null}
+def hybrid_scaling_logic(current_time, queue_length=None):
+    """Combine time-based and queue-based scaling"""
+    # Get base replicas from time-of-day schedule
+    base_replicas = calculate_desired_replicas(current_time)
+
+    # If queue data is available, adjust based on demand
+    if queue_length is not None:
+        # Scale up if queue is growing
+        if queue_length > 10:
+            queue_replicas = min(queue_length // 2, 20)  # 2 jobs per replica, max 20
+            return max(base_replicas, queue_replicas)
+
+    return base_replicas
+```
+
+### Next Steps
+
+* 📊 **Monitor Performance**: Set up dashboards to track scaling effectiveness
+* 🔧 **Optimize Schedule**: Adjust timing based on actual usage patterns
+* 🚨 **Add Alerting**: Implement notifications for scaling failures
+* 📈 **Cost Analysis**: Track cost savings from optimized scaling
+* 🔄 **Backup Strategy**: Consider hybrid queue-based scaling for unexpected load
+
+### Related Guides
+
+* 📖 [Job Queue Autoscaling](/container-engine/how-to-guides/autoscaling/enable-autoscaling)
+* 🔧 [SQS-based Autoscaling](/container-engine/how-to-guides/job-processing/sqs#autoscaling)
+* 📊 [RabbitMQ Autoscaling](/container-engine/how-to-guides/job-processing/rabbitmq#autoscaling)
+* 🔗 [SaladCloud API Reference](/reference/saladcloud-api/container-groups/update-container-group)

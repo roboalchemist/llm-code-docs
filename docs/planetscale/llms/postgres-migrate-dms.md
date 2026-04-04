@@ -1,0 +1,863 @@
+# Source: https://planetscale.com/docs/postgres/imports/postgres-migrate-dms.md
+
+# Postgres Imports - Amazon DMS
+
+[Amazon Database Migration Service (DMS)](https://aws.amazon.com/dms/) provides a managed migration service that can handle complex database migrations with built-in monitoring, error handling, and data validation. This method is ideal for large, complex databases that require robust migration capabilities.
+
+## Overview
+
+This migration method involves:
+
+<Steps>
+  <Step>
+    **Pre-migration schema setup** (strongly recommended for production)
+  </Step>
+
+  <Step>
+    Setting up AWS DMS replication instance and endpoints
+  </Step>
+
+  <Step>
+    Configuring source and target database connections
+  </Step>
+
+  <Step>
+    Creating and running migration tasks with full load and CDC
+  </Step>
+
+  <Step>
+    Monitoring migration progress and performing cutover
+  </Step>
+</Steps>
+
+<Warning>
+  **Critical: AWS DMS Schema Object Limitations**
+
+  AWS DMS **only migrates table data and primary keys**. All other PostgreSQL schema objects must be handled separately:
+
+  * Secondary indexes
+  * Sequences and their current values
+  * Views, functions, and stored procedures
+  * Constraints (foreign keys, unique, check)
+  * Triggers and custom data types
+
+  Deploy your complete schema to PlanetScale BEFORE starting DMS migration to preserve performance and avoid application errors.
+</Warning>
+
+<Note>
+  This method requires an AWS account and will incur AWS DMS charges. Review [AWS DMS pricing](https://aws.amazon.com/dms/pricing/) before proceeding.
+</Note>
+
+<Note>
+  **For Aurora users**: Consider the [Aurora to PlanetScale CloudFormation & DMS tutorial](/docs/postgres/imports/aurora-dms) for a fully automated approach using CloudFormation templates and Step Functions workflows instead of manual DMS setup.
+</Note>
+
+## Prerequisites
+
+Before starting the migration:
+
+* Active AWS account with appropriate DMS permissions
+* Source PostgreSQL database accessible from AWS (consider VPC configuration)
+* Connection details for your PlanetScale Postgres database from the console
+* Ensure the disk on your PlanetScale database has at least 150% of the capacity of your source database.
+  If you are migrating to a PlanetScale database backed by network-attached storage, you can [resize](https://planetscale.com/docs/postgres/cluster-configuration/cluster-storage) your disk manually by setting the "Minimum disk size."
+  If you are using Metal, you will need to select a size when first creating your database.
+  For example, if your source database is 330GB, you should have at least 500GB of storage available on PlanetScale.
+* Understanding of your data transformation requirements (if any)
+* Network connectivity between AWS and both source and target databases
+
+## Step 1: Pre-Migration Schema Setup
+
+Deploy your complete schema to PlanetScale BEFORE starting DMS migration. This ensures optimal performance and prevents application errors.
+
+### Extract and Apply Schema
+
+<Steps>
+  <Step>
+    Extract your complete schema from the source PostgreSQL database:
+
+    ```bash  theme={null}
+    pg_dump -h your-postgres-host -p 5432 -U username -d database \
+            --schema-only --no-owner --no-privileges \
+            --exclude-table-data='*' -f schema_objects.sql
+    ```
+  </Step>
+
+  <Step>
+    Apply the schema to PlanetScale:
+
+    ```bash  theme={null}
+    psql -h your-planetscale-host -p 5432 -U username -d database -f schema_objects.sql
+    ```
+  </Step>
+</Steps>
+
+<Note>
+  **Foreign Key Constraints**
+
+  If the schema application fails due to foreign key constraint issues, you can temporarily remove them from the schema file and apply them after DMS completes the data migration.
+</Note>
+
+### Verify Schema Application
+
+Quickly verify your schema was applied successfully:
+
+```sql  theme={null}
+-- Check that tables and sequences exist
+SELECT
+    (SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public') as tables,
+    (SELECT COUNT(*) FROM information_schema.sequences WHERE sequence_schema = 'public') as sequences,
+    (SELECT COUNT(*) FROM pg_indexes WHERE schemaname = 'public') as indexes;
+```
+
+## Step 2: Set Up AWS DMS
+
+### Create DMS Replication Instance
+
+<Steps>
+  <Step>
+    Navigate to the [AWS DMS Console](https://console.aws.amazon.com/dms/)
+  </Step>
+
+  <Step>
+    Click "Create replication instance"
+  </Step>
+
+  <Step>
+    Configure the instance:
+
+    ```yaml  theme={null}
+    Name: planetscale-postgres-migration
+    Description: Migration to PlanetScale Postgres
+    Instance class: dms.t3.medium (adjust based on your needs)
+    Engine version: Latest available
+    VPC: Select appropriate VPC
+    Multi-AZ: No (for cost savings, Yes for production)
+    Publicly accessible: Yes (if needed for connectivity)
+    ```
+  </Step>
+</Steps>
+
+### Configure Security Groups
+
+Ensure your replication instance can connect to:
+
+* Source PostgreSQL database (port 5432)
+* PlanetScale Postgres (port 5432)
+* Internet for PlanetScale connectivity
+
+## Step 3: Create Source Endpoint
+
+### Configure PostgreSQL source endpoint:
+
+<Steps>
+  <Step>
+    In DMS Console, go to "Endpoints" > "Create endpoint"
+  </Step>
+
+  <Step>
+    Configure source endpoint:
+
+    ```yaml  theme={null}
+    Endpoint type: Source endpoint
+    Endpoint identifier: postgres-source
+    Source engine: postgres
+    Server name: your-postgres-host
+    Port: 5432
+    Database name: your-database-name
+    Username: your-username
+    Password: your-password
+    ```
+  </Step>
+</Steps>
+
+### Advanced settings for PostgreSQL:
+
+```yaml  theme={null}
+Extra connection attributes:
+pluginName=test_decoding;
+slotName=dms_slot_planetscale;
+captureDDLs=false;
+maxFileSize=32768;
+```
+
+## Step 4: Create Target Endpoint
+
+### Configure PlanetScale Postgres target endpoint:
+
+<Steps>
+  <Step>
+    Create target endpoint with PlanetScale connection details:
+
+    ```yaml  theme={null}
+    Endpoint type: Target endpoint
+    Endpoint identifier: planetscale-target
+    Target engine: postgres
+    Server name: [from PlanetScale console]
+    Port: [from PlanetScale console]
+    Database name: [from PlanetScale console]
+    Username: [from PlanetScale console]
+    Password: [from PlanetScale console]
+    ```
+  </Step>
+</Steps>
+
+### SSL Configuration:
+
+```yaml  theme={null}
+SSL mode: require
+```
+
+## Step 5: Test Endpoints
+
+<Steps>
+  <Step>
+    Select your source endpoint and click "Test connection"
+  </Step>
+
+  <Step>
+    Select your target endpoint and click "Test connection"
+  </Step>
+
+  <Step>
+    Ensure both tests pass before proceeding
+  </Step>
+</Steps>
+
+## Step 6: Create Migration Task
+
+### Configure the migration task:
+
+<Steps>
+  <Step>
+    Go to "Database migration tasks" > "Create task"
+  </Step>
+
+  <Step>
+    Configure task settings:
+
+    ```yaml  theme={null}
+    Task identifier: postgres-to-planetscale
+    Replication instance: planetscale-postgres-migration
+    Source database endpoint: postgres-source
+    Target database endpoint: planetscale-target
+    Migration type: Migrate existing data and replicate ongoing changes
+    ```
+  </Step>
+</Steps>
+
+### Task Settings
+
+**Option 1: Schema-first approach** (recommended for production):
+
+```json expandable theme={null}
+{
+  "TargetMetadata": {
+    "TargetSchema": "",
+    "SupportLobs": true,
+    "FullLobMode": true,
+    "LobChunkSize": 32,
+    "LimitedSizeLobMode": false,
+    "LobMaxSize": 0,
+    "InlineLobMaxSize": 32,
+    "BatchApplyEnabled": true,
+    "TaskRecoveryTableEnabled": false
+  },
+  "FullLoadSettings": {
+    "TargetTablePrepMode": "DO_NOTHING",
+    "CreatePkAfterFullLoad": false,
+    "StopTaskCachedChangesApplied": false,
+    "MaxFullLoadSubTasks": 8,
+    "TransactionConsistencyTimeout": 600,
+    "CommitRate": 10000,
+    "FullLoadIgnoreConflicts": true
+  },
+  "ValidationSettings": {
+    "EnableValidation": true,
+    "ValidationMode": "ROW_LEVEL",
+    "ThreadCount": 5,
+    "FailureMaxCount": 10000,
+    "TableFailureMaxCount": 1000
+  },
+  "ChangeProcessingTuning": {
+    "StatementCacheSize": 50,
+    "CommitTimeout": 5,
+    "BatchApplyPreserveTransaction": true,
+    "BatchApplyTimeoutMin": 1,
+    "BatchApplyTimeoutMax": 30,
+    "MinTransactionSize": 5000,
+    "MemoryKeepTime": 60,
+    "BatchApplyMemoryLimit": 1000,
+    "MemoryLimitTotal": 2048
+  },
+  "Logging": {
+    "EnableLogging": true,
+    "LogComponents": [
+      {
+        "Id": "TRANSFORMATION",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "SOURCE_UNLOAD",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "TARGET_LOAD",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "SOURCE_CAPTURE",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "TARGET_APPLY",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      }
+    ]
+  },
+  "ControlTablesSettings": {
+    "historyTimeslotInMinutes": 5,
+    "ControlSchema": "",
+    "HistoryTableEnabled": false,
+    "SuspendedTablesTableEnabled": false,
+    "StatusTableEnabled": false,
+    "FullLoadExceptionTableEnabled": false
+  }
+}
+```
+
+**Option 2: Standard approach** (matches CloudFormation template):
+
+```json expandable theme={null}
+{
+  "TargetMetadata": {
+    "SupportLobs": true,
+    "FullLobMode": true,
+    "LobChunkSize": 32,
+    "BatchApplyEnabled": true,
+    "TaskRecoveryTableEnabled": false
+  },
+  "FullLoadSettings": {
+    "TargetTablePrepMode": "DROP_AND_CREATE",
+    "CreatePkAfterFullLoad": false,
+    "MaxFullLoadSubTasks": 8,
+    "TransactionConsistencyTimeout": 600,
+    "CommitRate": 10000,
+    "FullLoadIgnoreConflicts": true
+  },
+  "ValidationSettings": {
+    "EnableValidation": true,
+    "ValidationMode": "ROW_LEVEL",
+    "ThreadCount": 5,
+    "FailureMaxCount": 10000,
+    "TableFailureMaxCount": 1000
+  },
+  "Logging": {
+    "EnableLogging": true,
+    "LogComponents": [
+      {
+        "Id": "SOURCE_UNLOAD",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "SOURCE_CAPTURE",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "TARGET_LOAD",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "TARGET_APPLY",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      },
+      {
+        "Id": "TASK_MANAGER",
+        "Severity": "LOGGER_SEVERITY_DEFAULT"
+      }
+    ]
+  }
+}
+```
+
+**Configuration Comparison:**
+
+| Setting                | Schema-First | Standard          | Notes                               |
+| ---------------------- | ------------ | ----------------- | ----------------------------------- |
+| TargetTablePrepMode    | DO\_NOTHING  | DROP\_AND\_CREATE | Schema-first uses existing schema   |
+| ChangeProcessingTuning | Included     | Not needed        | Extra optimization for manual setup |
+| Logging Components     | 5 components | 5 components      | Both include all DMS components     |
+| ValidationSettings     | Same         | Same              | Both use row-level validation       |
+
+**When to use each approach:**
+
+* **Schema-First**: Production systems, complex schemas, performance-critical applications
+* **Standard**: Simple migrations, dev/test environments, when schema objects aren't critical during migration
+
+## Step 7: Configure Table Mappings
+
+### Basic table mapping (migrate all tables):
+
+```json  theme={null}
+{
+  "rules": [
+    {
+      "rule-type": "selection",
+      "rule-id": "1",
+      "rule-name": "1",
+      "object-locator": {
+        "schema-name": "public",
+        "table-name": "%"
+      },
+      "rule-action": "include",
+      "filters": []
+    }
+  ]
+}
+```
+
+### Advanced table mapping with transformations:
+
+```json expandable theme={null}
+{
+  "rules": [
+    {
+      "rule-type": "selection",
+      "rule-id": "1",
+      "rule-name": "1",
+      "object-locator": {
+        "schema-name": "public",
+        "table-name": "%"
+      },
+      "rule-action": "include"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "2",
+      "rule-name": "2",
+      "rule-target": "schema",
+      "object-locator": {
+        "schema-name": "public"
+      },
+      "rule-action": "rename",
+      "value": "public"
+    }
+  ]
+}
+```
+
+## Step 8: Start Migration Task
+
+<Steps>
+  <Step>
+    Review all task configurations
+  </Step>
+
+  <Step>
+    Click "Create task" to start the migration
+  </Step>
+
+  <Step>
+    Monitor the task status in the DMS console
+  </Step>
+</Steps>
+
+## Step 9: Monitor Migration Progress
+
+### Key metrics to monitor:
+
+* **Full load progress**: Percentage of tables loaded
+* **CDC lag**: Latency between source and target
+* **Error count**: Any migration errors
+* **Throughput**: Records per second
+
+### Using CloudWatch:
+
+Set up [CloudWatch alarms](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Monitoring.html) for:
+
+* High CDC latency
+* Migration errors
+* Task failures
+
+```bash  theme={null}
+# CLI command to check task status
+aws dms describe-replication-tasks \
+    --filters Name=replication-task-id,Values=your-task-id
+```
+
+## Step 10: Verify Data Migration
+
+### Check table counts and data integrity:
+
+```sql  theme={null}
+-- Run on both source and target databases
+SELECT
+    schemaname,
+    tablename,
+    n_tup_ins as estimated_rows,
+    n_tup_upd as updated_rows,
+    n_tup_del as deleted_rows
+FROM pg_stat_user_tables
+ORDER BY schemaname, tablename;
+```
+
+### Validate specific data:
+
+```sql  theme={null}
+-- Compare checksums for critical tables
+SELECT count(*), md5(string_agg(column_name::text, ''))
+FROM your_important_table
+ORDER BY primary_key;
+```
+
+## Step 11: Prepare for Cutover
+
+### Monitor CDC lag:
+
+Ensure CDC latency is minimal (under 5 seconds) before cutover:
+
+```sql  theme={null}
+-- Check DMS validation status
+SELECT * FROM awsdms_validation_failures_v1;
+```
+
+### Test application connectivity:
+
+1. Create a read-only connection to PlanetScale Postgres
+2. Test critical application queries with EXPLAIN ANALYZE
+3. Verify performance matches expectations (indexes should be working)
+4. Test sequence-dependent operations (INSERT operations)
+
+## Step 12: Post-Migration Sequence Synchronization
+
+After DMS completes, sequences need their values synchronized:
+
+<Warning>
+  **Critical: Sequence Synchronization**
+
+  Sequence values must be set ahead of source database values to prevent duplicate key errors when applications start using PlanetScale.
+</Warning>
+
+### Get Current Sequence Values from Source
+
+```sql  theme={null}
+-- Run on source database to get all current sequence values
+SELECT
+    sequence_name,
+    last_value,
+    'SELECT setval(''' || sequence_name || ''', ' || (last_value + 1000) || ');' as update_command
+FROM information_schema.sequences
+WHERE sequence_schema = 'public'
+ORDER BY sequence_name;
+```
+
+### Update Sequences in PlanetScale
+
+```sql  theme={null}
+-- For each sequence, run the update command from above
+-- Example commands (values set ahead of source):
+SELECT setval('users_id_seq', 16234);  -- Source value + 1000
+SELECT setval('orders_id_seq', 99765);  -- Source value + 1000
+SELECT setval('products_id_seq', 6432);  -- Source value + 1000
+
+-- Verify sequence values are ahead of source
+SELECT sequence_name, last_value
+FROM information_schema.sequences
+WHERE sequence_schema = 'public'
+ORDER BY sequence_name;
+```
+
+### Apply Remaining Constraints
+
+Now apply foreign key constraints that were deferred:
+
+```sql  theme={null}
+-- Apply foreign key constraints
+\i constraints.sql
+
+-- Verify constraints were applied successfully
+SELECT conname, contype, conrelid::regclass AS table_name
+FROM pg_constraint
+WHERE connamespace = 'public'::regnamespace
+  AND contype = 'f'  -- foreign key constraints
+ORDER BY conrelid::regclass::text;
+```
+
+## Step 13: Comprehensive Pre-Cutover Validation
+
+<Warning>
+  **Complete Validation Required**
+
+  Validate ALL schema objects and data integrity before cutover. Missing objects will cause application failures.
+</Warning>
+
+```sql  theme={null}
+-- Validate table row counts match source
+SELECT
+    schemaname,
+    tablename,
+    n_tup_ins as estimated_rows
+FROM pg_stat_user_tables
+WHERE schemaname = 'public'
+ORDER BY tablename;
+```
+
+## Step 14: Perform Cutover
+
+When ready to switch to PlanetScale Postgres:
+
+<Steps>
+  <Step>
+    **Stop application writes** to source database
+  </Step>
+
+  <Step>
+    **Wait for CDC to catch up** (monitor lag in DMS console)
+  </Step>
+
+  <Step>
+    **Verify final data consistency**
+  </Step>
+
+  <Step>
+    **Update application connection strings** to point to PlanetScale
+  </Step>
+
+  <Step>
+    **Start application** with new connections
+  </Step>
+
+  <Step>
+    **Stop DMS task** once satisfied with cutover
+  </Step>
+</Steps>
+
+### Stop the migration task:
+
+```bash  theme={null}
+aws dms stop-replication-task \
+    --replication-task-arn arn:aws:dms:region:account:task:task-id
+```
+
+## Step 15: Cleanup
+
+The task configuration above is already optimized for schema-first migrations. Key settings:
+
+* **DO\_NOTHING** prep mode preserves your existing schema
+* **Row-level validation** ensures data integrity
+* **Batch processing** optimizations improve performance
+* **Memory tuning** handles large datasets efficiently
+
+<Note>
+  **Automated vs Manual Configuration**
+
+  For Aurora migrations, consider using the [automated CloudFormation approach](/docs/postgres/imports/aurora-dms) which includes these optimized settings and additional automation features.
+</Note>
+
+After successful cutover and schema migration:
+
+<Steps>
+  <Step>
+    **Delete DMS task**
+  </Step>
+
+  <Step>
+    **Delete replication instance** (to stop charges)
+  </Step>
+
+  <Step>
+    **Remove source and target endpoints**
+  </Step>
+
+  <Step>
+    **Clean up security groups** if created specifically for migration
+  </Step>
+</Steps>
+
+```bash  theme={null}
+# Cleanup commands
+aws dms delete-replication-task --replication-task-arn your-task-arn
+aws dms delete-replication-instance --replication-instance-arn your-instance-arn
+aws dms delete-endpoint --endpoint-arn your-source-endpoint-arn
+aws dms delete-endpoint --endpoint-arn your-target-endpoint-arn
+```
+
+## Troubleshooting
+
+### Common Issues:
+
+**Connectivity problems:**
+
+* Check security groups and network ACLs
+* Verify endpoint configurations
+* Test network connectivity from replication instance
+
+**Performance issues:**
+
+* Increase replication instance size
+* Adjust parallel load settings
+* Monitor source database performance
+
+**Data type mapping issues:**
+
+* Review [DMS data type mapping](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Reference.DataTypes.html)
+* Use transformation rules for custom mappings
+
+**Large object (LOB) handling:**
+
+```json  theme={null}
+{
+  "TargetMetadata": {
+    "SupportLobs": true,
+    "FullLobMode": true,
+    "LobChunkSize": 32768,
+    "LimitedSizeLobMode": false
+  }
+}
+```
+
+### Schema-Related Troubleshooting:
+
+**"sequence does not exist" errors:**
+
+```sql  theme={null}
+-- Check if sequence exists
+SELECT * FROM information_schema.sequences WHERE sequence_name = 'your_sequence';
+
+-- Recreate missing sequence
+CREATE SEQUENCE your_sequence START WITH 1;
+SELECT setval('your_sequence', (SELECT MAX(id) FROM your_table));
+```
+
+**Missing indexes causing performance issues:**
+
+```sql  theme={null}
+-- Find missing indexes by comparing to source
+-- Run on source database to get index list
+SELECT indexname, indexdef FROM pg_indexes WHERE schemaname = 'public';
+
+-- Check query performance
+EXPLAIN (ANALYZE, BUFFERS) SELECT * FROM your_table WHERE indexed_column = 'value';
+```
+
+**Foreign key constraint violations:**
+
+```sql  theme={null}
+-- Check for constraint violations before applying
+SELECT COUNT(*) FROM child_table c
+WHERE NOT EXISTS (SELECT 1 FROM parent_table p WHERE p.id = c.parent_id);
+
+-- Apply constraints one by one to isolate issues
+ALTER TABLE child_table ADD CONSTRAINT fk_name FOREIGN KEY (parent_id) REFERENCES parent_table(id);
+```
+
+**Functions/views with dependency errors:**
+
+```sql  theme={null}
+-- Check dependencies
+SELECT * FROM pg_depend WHERE objid = 'your_function'::regproc;
+
+-- Apply in dependency order: functions before views that use them
+```
+
+**Permission errors during schema application:**
+
+* Ensure PlanetScale database user has CREATE permissions
+* Check if objects already exist and need DROP statements
+* Verify user has permissions on referenced objects
+
+**Sequence values too low causing duplicate key errors:**
+
+```sql  theme={null}
+-- Check current sequence value vs max table value
+SELECT last_value FROM your_sequence;
+SELECT MAX(id) FROM your_table;
+
+-- Update sequence to safe value
+SELECT setval('your_sequence', (SELECT MAX(id) FROM your_table));
+```
+
+### Performance Optimization:
+
+1. **Parallel loading**: Increase `MaxFullLoadSubTasks`
+2. **Batch apply**: Enable for better target performance
+3. **Memory allocation**: Increase replication instance size
+4. **Network optimization**: Use placement groups for better network performance
+
+## Cost Optimization
+
+* **Instance sizing**: Start with smaller instances and scale up if needed
+* **Multi-AZ**: Disable for dev/test migrations
+* **Task lifecycle**: Delete resources immediately after successful migration
+* **Data transfer**: Consider AWS region placement to minimize transfer costs
+
+## Schema Considerations
+
+Before migration, review:
+
+<Columns cols={2}>
+  <Card title="PostgreSQL version compatibility" icon="database" horizontal href="/docs/vitess/imports/postgres#postgresql-version-compatibility" />
+
+  <Card title="Extension support limitations" icon="battery-exclamation" horizontal href="/docs/vitess/imports/postgres#extension-support" />
+
+  <Card title="Third-party enhancement restrictions" icon="circle-xmark" horizontal href="/docs/vitess/imports/postgres#third-party-enhancements-and-tools" />
+</Columns>
+
+**Important:** Plan additional time for post-migration schema object setup. Complex databases may require several hours for index recreation and sequence synchronization.
+
+**Performance Impact Note:** Large indexes can take hours to rebuild on populated tables. Consider the schema-first approach to avoid this performance penalty.
+
+## Next Steps
+
+After successful migration and schema setup:
+
+<Steps>
+  <Step>
+    **Run comprehensive post-cutover validation** using all verification queries above
+  </Step>
+
+  <Step>
+    **Monitor application logs** for any sequence or constraint errors
+  </Step>
+
+  <Step>
+    **Performance baseline comparison** - compare query performance to source database
+  </Step>
+
+  <Step>
+    **Test critical business workflows** end-to-end
+  </Step>
+
+  <Step>
+    Set up monitoring and alerting for PlanetScale Postgres
+  </Step>
+
+  <Step>
+    Plan for ongoing maintenance and backup strategies
+  </Step>
+
+  <Step>
+    Consider implementing additional PlanetScale features
+  </Step>
+</Steps>
+
+**Success Criteria:**
+
+* ✅ All schema objects validated and functional
+* ✅ Sequence values synchronized and tested
+* ✅ Query performance matches or exceeds source database
+* ✅ No application errors in logs for 24+ hours
+* ✅ All foreign key constraints working correctly
+
+For simpler migrations, consider [pg\_dump/restore](./postgres-migrate-dumprestore) or [WAL streaming](./postgres-migrate-walstream) methods.
+
+If you encounter issues during migration, please [reach out to support](https://planetscale.com/contact?initial=support) for assistance.
+
+## Need help?
+
+Get help from [the PlanetScale Support team](https://support.planetscale.com/), or join our [GitHub discussion board](https://github.com/planetscale/discussion/discussions) to see how others are using PlanetScale.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://planetscale.com/llms.txt

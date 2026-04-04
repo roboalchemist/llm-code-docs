@@ -1,0 +1,23 @@
+# Source: https://www.plain.com/docs/graphql/companies/get-companies.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Get companies
+
+You can get all companies you've interacted with in your workspace using the `companies` query. This endpoint supports [Pagination](/graphql/pagination).
+
+For this query you need the following permissions:
+
+* `company:read`
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/get-companies.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/get-companies.mdx" />
+  </Tab>
+</Tabs>

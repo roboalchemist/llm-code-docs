@@ -1,0 +1,16 @@
+---
+---
+title: CommonJS (CJS)
+description: "Learn about running Sentry in an CJS application."
+---
+
+  Are you unsure if you should use this installation method? Review our
+  [installation methods](../).
+
+Most node applications today are either written in CommonJS (CJS), or compiled to CJS before running them.
+CommonJS uses `require()` to load modules. Our recommended installation method when using CommonJS is to require the `instrument.js` file at the top of your application.
+
+You need to create a file named `instrument.js` that imports and initializes Sentry:
+
+You need to require or import the `instrument.js` file before requiring any other modules in your application. This is necessary to ensure that Sentry can automatically instrument all modules in your application:
+

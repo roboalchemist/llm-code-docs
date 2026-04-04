@@ -1,0 +1,769 @@
+
+
+# Pulumi
+
+> Infrastructure as code using real programming languages. Build, deploy, and manage cloud infrastructure on AWS, Azure, GCP, Kubernetes, and 150+ providers with TypeScript, Python, Go, C#, Java, or YAML.
+
+This file provides a curated guide to Pulumi's documentation, organized by product area. Each section includes nested pages with descriptions to help you navigate topics from high-level concepts to detailed reference material. For a complete list of all pages, see sitemap.xml.
+
+## Getting Started
+- [Get Started](https://www.pulumi.com/docs/get-started/): Step-by-step guides for creating, deploying, and managing infrastructure with Pulumi on the cloud using your favorite language.
+  - [Download & Install Pulumi](https://www.pulumi.com/docs/get-started/download-install/): This page contains detailed instructions for downloading and installing Pulumi.
+
+## Infrastructure as Code
+- [Infrastructure as Code](https://www.pulumi.com/docs/iac/): Learn how to create, deploy, and manage infrastructure on any cloud using Pulumi's open source infrastructure as code SDK.
+    - [AWS](https://www.pulumi.com/docs/iac/get-started/aws/): This page provides an overview and guide on how to get started with AWS.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/aws/begin/): This page provides an overview on how to get started with Pulumi when starting an AWS project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/aws/configure/): This page provides an overview on how to get started with Pulumi when starting an AWS project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/aws/create-project/): This page provides an overview of how to create a new AWS + Pulumi project.
+      - [Deploy to AWS](https://www.pulumi.com/docs/iac/get-started/aws/deploy-stack/): Learn how to deploy your stack to an AWS project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/aws/modify-program/): This page provides an overview on how to update an AWS project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/aws/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/aws/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of an AWS project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/aws/next-steps/): This page provides a list of tutorials that take a deeper dive into AWS cloud resources.
+    - [Azure](https://www.pulumi.com/docs/iac/get-started/azure/): This page provides an overview and guide on how to get started with Azure.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/azure/begin/): This page provides an overview on how to get started with Pulumi when starting an Azure project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/azure/configure/): This page provides an overview on how to get started with Pulumi when starting an Azure project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/azure/create-project/): This page provides an overview of how to create a new Azure + Pulumi project.
+      - [Deploy to Azure](https://www.pulumi.com/docs/iac/get-started/azure/deploy-stack/): Learn how to deploy your stack to an Azure project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/azure/modify-program/): This page provides an overview on how to update an Azure project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/azure/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/azure/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of an Azure project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/azure/next-steps/): This page provides a list of tutorials that take a deeper dive into Azure cloud resources.
+    - [Google Cloud](https://www.pulumi.com/docs/iac/get-started/gcp/): This page provides an overview and guide on how to get started with Google Cloud.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/gcp/begin/): This page provides an overview on how to get started with Pulumi when starting a Google Cloud project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/gcp/configure/): This page provides an overview on how to get started with Pulumi when starting a Google Cloud project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/gcp/create-project/): This page provides an overview of how to create a new Google Cloud + Pulumi project.
+      - [Deploy to Google Cloud](https://www.pulumi.com/docs/iac/get-started/gcp/deploy-stack/): Learn how to deploy your stack to a Google Cloud project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/gcp/modify-program/): This page provides an overview on how to update a Google Cloud project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/gcp/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/gcp/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of a Google Cloud project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/gcp/next-steps/): This page provides a list of tutorials that take a deeper dive into Google Cloud cloud resources.
+    - [Kubernetes](https://www.pulumi.com/docs/iac/get-started/kubernetes/): This page provides an overview and guide on how to get started with Kubernetes.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/kubernetes/begin/): This page provides an overview of how to get started with Pulumi when starting a Kubernetes project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/kubernetes/configure/): This page provides an overview on how to get started with Pulumi when starting a Kubernetes project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/kubernetes/create-project/): This page provides an overview of how to create a new Kubernetes + Pulumi project.
+      - [Deploy to Kubernetes](https://www.pulumi.com/docs/iac/get-started/kubernetes/deploy-stack/): Learn how to deploy your stack to a Kubernetes project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/kubernetes/modify-program/): This page provides an overview on how to update a Kubernetes project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/kubernetes/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/kubernetes/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of a Kubernetes project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/kubernetes/next-steps/): This page provides a list of tutorials that take a deeper dive into Kubernetes across all major cloud providers.
+    - [Pulumi for Terraform Users](https://www.pulumi.com/docs/iac/get-started/terraform/): A comprehensive guide for Terraform users to learn Pulumi through coexistence patterns and integration strategies.
+      - [Install and Configure](https://www.pulumi.com/docs/iac/get-started/terraform/begin/): This page provides setup instructions for Pulumi alongside existing Terraform infrastructure.
+      - [First Look - Terraform HCL vs Pulumi Programs](https://www.pulumi.com/docs/iac/get-started/terraform/first-look/): Compare Terraform HCL to Pulumi programs with a basic example showing key differences in infrastructure as code approaches.
+      - [Reference Terraform State](https://www.pulumi.com/docs/iac/get-started/terraform/reference-state/): Learn how to read from existing Terraform state files in Pulumi for seamless coexistence.
+      - [Import Terraform Modules](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-modules/): Learn how to use existing Terraform modules directly in Pulumi programs, leveraging the Terraform Registry ecosystem.
+      - [Use Terraform Providers](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-providers/): Learn how to use any Terraform provider in Pulumi programs for accessing the full ecosystem of 3000+ providers.
+      - [Convert HCL Code](https://www.pulumi.com/docs/iac/get-started/terraform/convert-hcl/): Learn when and how to convert existing Terraform HCL code to Pulumi programs using automated tools and manual techniques.
+      - [Orchestrate Together](https://www.pulumi.com/docs/iac/get-started/terraform/orchestrate/): Learn advanced patterns for orchestrating Terraform and Pulumi deployments together in production environments.
+      - [Store Terraform State in Pulumi Cloud](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-state-backend/): Use Pulumi Cloud as your Terraform state backend for update history, state locking, RBAC, audit policies, and unified resource visibility.
+      - [Next Steps](https://www.pulumi.com/docs/iac/get-started/terraform/next-steps/): Explore advanced Pulumi features and resources for Terraform users ready to deepen their integration or consider migration.
+  - [Concepts](https://www.pulumi.com/docs/iac/concepts/): Learn about what Pulumi is, how it works, and how its components work together to deliver a robust platform for creating and managing cloud infrastructure.
+    - [How Pulumi works](https://www.pulumi.com/docs/iac/concepts/how-pulumi-works/): This page provides an overview of how Pulumi works and interacts with different Cloud Providers like AWS, Azure, Kubernetes, and more.
+    - [Pulumi Cloud and Open Source Pulumi](https://www.pulumi.com/docs/iac/concepts/pulumi-cloud/): Learn how Pulumi Cloud relates to the open source Pulumi infrastructure as code tool.
+    - [Projects](https://www.pulumi.com/docs/iac/concepts/projects/): A Pulumi project is any folder which contains a Pulumi.yaml file. Learn about how to use Pulumi projects, as well as example use cases.
+      - [Project file reference](https://www.pulumi.com/docs/iac/concepts/projects/project-file/): Documentation of the settings that are valid for the Pulumi project file.
+      - [Stack settings file reference](https://www.pulumi.com/docs/iac/concepts/projects/stack-settings-file/): Documentation of the settings that are valid for Pulumi stack configuration files (Pulumi..yaml).
+    - [Stacks](https://www.pulumi.com/docs/iac/concepts/stacks/): Every Pulumi program is deployed to a stack and a project can have as many stacks as you need. Learn more about Pulumi stacks and how to use them.
+    - [Stash](https://www.pulumi.com/docs/iac/concepts/stash/): The Stash resource allows you to save values to state for retrieval in later deployments. Learn more about the Pulumi Stash resource and how to use it.
+    - [Configuration](https://www.pulumi.com/docs/iac/concepts/config/): This page provides an overview of how Pulumi manages cloud application configuration settings.
+    - [Resources](https://www.pulumi.com/docs/iac/concepts/resources/): Resources represent the fundamental units that make up your cloud infrastructure. Learn how Pulumi resources work and how to use them in this guide.
+      - [Names](https://www.pulumi.com/docs/iac/concepts/resources/names/): A resource in Pulumi has a logical name (in Pulumi) and a physical name (in the cloud provider). Learn more about resource names and how to use them here.
+      - [Resource options](https://www.pulumi.com/docs/iac/concepts/resources/options/): Resource options can be used to configure how all Pulumi resources are managed. Learn more about the types of resource options and how to use them here.
+        - [additionalSecretOutputs](https://www.pulumi.com/docs/iac/concepts/resources/options/additionalsecretoutputs/): The additionalSecretOutputs resource option specifies a list of named output properties that should be treated as secrets.
+        - [aliases](https://www.pulumi.com/docs/iac/concepts/resources/options/aliases/): The aliases resource option is commonly used when refactoring Pulumi programs.
+        - [customTimeouts](https://www.pulumi.com/docs/iac/concepts/resources/options/customtimeouts/): The customTimeouts resource option specifies the default retry/timeout behavior for resource provisioning.
+        - [deleteBeforeReplace](https://www.pulumi.com/docs/iac/concepts/resources/options/deletebeforereplace/): Setting the deleteBeforeReplace option to true means that Pulumi will delete the existing resource before creating its replacement.
+        - [deletedWith](https://www.pulumi.com/docs/iac/concepts/resources/options/deletedwith/): The deletedWith resource option allows you to skip running resource deletion if another resource is being deleted as well.
+        - [dependsOn](https://www.pulumi.com/docs/iac/concepts/resources/options/dependson/): The dependsOn resource option specifies additional resource dependencies in addition to those in the dependency graph.
+        - [envVarMappings](https://www.pulumi.com/docs/iac/concepts/resources/options/envvarmappings/): The envVarMappings resource option remaps environment variables to custom keys for provider authentication.
+        - [hideDiffs](https://www.pulumi.com/docs/iac/concepts/resources/options/hidediffs/): The hideDiffs resource option controls how property diffs are displayed in the CLI.
+        - [hooks](https://www.pulumi.com/docs/iac/concepts/resources/options/hooks/): The hooks resource option provides a set of resource hooks linked to a resource.
+        - [ignoreChanges](https://www.pulumi.com/docs/iac/concepts/resources/options/ignorechanges/): The ignoreChanges resource option declares that changes to certain properties should be ignored during a diff.
+        - [import](https://www.pulumi.com/docs/iac/concepts/resources/options/import/): The import resource option brings an existing cloud resource into Pulumi.
+        - [parent](https://www.pulumi.com/docs/iac/concepts/resources/options/parent/): The parent resource option establishes an explicit parent/child relationship between resources.
+        - [protect](https://www.pulumi.com/docs/iac/concepts/resources/options/protect/): The protect resource option prevents accidental deletion of a resource by marking it as protected.
+        - [provider](https://www.pulumi.com/docs/iac/concepts/resources/options/provider/): The provider resource option passes an explicitly configured provider to be used instead of the global or ambient provider.
+        - [providers](https://www.pulumi.com/docs/iac/concepts/resources/options/providers/): The providers resource option specifies a set of explicitly configured providers to be used for a resource and all of its children.
+        - [replacementTrigger](https://www.pulumi.com/docs/iac/concepts/resources/options/replacementtrigger/): The replacementTrigger resource option allows finer control over when resources are replaced.
+        - [replaceOnChanges](https://www.pulumi.com/docs/iac/concepts/resources/options/replaceonchanges/): The replaceOnChanges resource option indicates that changes to properties on a resource should force a replacement instead of an in-place update.
+        - [replacewith](https://www.pulumi.com/docs/iac/concepts/resources/options/replacewith/): The replacewith resource option allows for explicit replace dependencies to be declared between resources.
+        - [retainOnDelete](https://www.pulumi.com/docs/iac/concepts/resources/options/retainondelete/): The `retainOnDelete` resource option marks a resource to be retained during a delete operation.
+        - [transformations](https://www.pulumi.com/docs/iac/concepts/resources/options/transformations/): The transformations resource option provides a list of transformations to apply to a resource and all of its children.
+        - [transforms](https://www.pulumi.com/docs/iac/concepts/resources/options/transforms/): The transforms resource option provides a list of transforms to apply to a resource and all of its children.
+        - [version](https://www.pulumi.com/docs/iac/concepts/resources/options/version/): The version resource option specifies a provider version to use when operating on a resource.
+    - [Providers](https://www.pulumi.com/docs/iac/concepts/providers/): A resource provider handles communications with a cloud service to create, read, update, and delete the resources you define in your Pulumi programs.
+      - [Any Terraform Provider](https://www.pulumi.com/docs/iac/concepts/providers/any-terraform-provider/): Learn how to use any Terraform or OpenTofu provider with Pulumi by generating local packages in your preferred programming language.
+      - [Dynamic providers](https://www.pulumi.com/docs/iac/concepts/providers/dynamic-providers/): Dynamic resource providers are providers that can be written inside your Pulumi program. Learn how to use dynamic providers and use cases for them.
+    - [Inputs & outputs](https://www.pulumi.com/docs/iac/concepts/inputs-outputs/): Resource properties are treated specially in Pulumi, both for purposes of input and output. Learn how to work with inputs and outputs in this guide.
+      - [Accessing single outputs with Apply](https://www.pulumi.com/docs/iac/concepts/inputs-outputs/apply/): Learn how to access a single output value using the apply method in Pulumi.
+      - [Accessing multiple outputs with All](https://www.pulumi.com/docs/iac/concepts/inputs-outputs/all/): Learn how to access multiple output values using the All method in Pulumi.
+      - [Using Output Helpers](https://www.pulumi.com/docs/iac/concepts/inputs-outputs/helpers/): Learn how to use Pulumi's built-in output helper functions for string interpolation and JSON serialization.
+    - [State & backends](https://www.pulumi.com/docs/iac/concepts/state-and-backends/): Learn about how Pulumi manages infrastructure state, supported backend options, and how to use pulumi refresh to synchronize state with your cloud provider.
+    - [Secrets Handling](https://www.pulumi.com/docs/iac/concepts/secrets/): This page provides an overview of how Pulumi manages sensitive configuration data using secrets.
+      - [Write-only Fields](https://www.pulumi.com/docs/iac/concepts/secrets/write-only-fields/): This page provides an overview of write-only fields in Pulumi secrets handling.
+    - [Functions](https://www.pulumi.com/docs/iac/concepts/functions/): Learn about the three types of functions available in Pulumi programs - provider functions, get functions, and resource methods.
+      - [Provider functions](https://www.pulumi.com/docs/iac/concepts/functions/provider-functions/): A provider may make functions ("provider functions") available in its SDK as well as resource types. Learn how these provider functions work in this guide.
+      - [Get functions](https://www.pulumi.com/docs/iac/concepts/functions/get-functions/): Each Pulumi resource has a `get` function to get a reference to an existing instance of the resource. Learn more about these `get` functions in this guide.
+      - [Resource methods](https://www.pulumi.com/docs/iac/concepts/functions/resource-methods/): Learn about resource methods - functions attached to resource types that return computed values from resources you are managing with Pulumi.
+      - [Function serialization](https://www.pulumi.com/docs/iac/concepts/functions/function-serialization/): Learn how to use Pulumi's Node.js SDK to serialize JavaScript functions into an artifact that can be used at runtime in the cloud.
+    - [Components](https://www.pulumi.com/docs/iac/concepts/components/): A component resource is a logical grouping of resources. Learn how to author a new component resource, create child resources, and more in this guide.
+      - [Cross-language Components](https://www.pulumi.com/docs/iac/concepts/components/cross-language-components/): Learn how to create Pulumi components that can be consumed in any language with auto-generated SDKs.
+    - [Pulumi glossary](https://www.pulumi.com/docs/iac/concepts/glossary/): A list of common terms and their definitions relating to Pulumi.
+    - [Pulumi packages](https://www.pulumi.com/docs/iac/concepts/packages/): Pulumi Packages enable you to write infrastructure abstractions once in TypeScript, C#, Go, or Python and make them available for use in any Pulumi language.
+    - [Assets & archives](https://www.pulumi.com/docs/iac/concepts/assets-archives/): The Pulumi SDK provides two classes for working with files: Asset and Archive. Learn about the different object types for each class and how to use them.
+    - [Plugins](https://www.pulumi.com/docs/iac/concepts/plugins/): Learn about Pulumi plugins, the core extensibility mechanism that enables Pulumi to work with cloud providers, languages, and tools.
+    - [Converters](https://www.pulumi.com/docs/iac/concepts/converters/): Learn about Pulumi converters, which translate IaC written in other tools into Pulumi programs in any supported language.
+    - [Basics](https://www.pulumi.com/docs/iac/guides/basics/): Learn fundamental practices for organizing Pulumi projects, securing your infrastructure, and managing deployments.
+      - [Least Privilege Security for Pulumi IaC and ESC](https://www.pulumi.com/docs/iac/guides/basics/iac-least-privileges/): An overview of best practices to use Pulumi IaC and ESC in a least privilege environment
+      - [Organizing projects](https://www.pulumi.com/docs/iac/guides/basics/organizing-projects-stacks/): An overview of best practices when organizing and structuring cloud projects and stacks.
+      - [Update plans](https://www.pulumi.com/docs/iac/guides/basics/update-plans/): Learn about Pulumi update plans and how they can be used.
+    - [Building & Extending](https://www.pulumi.com/docs/iac/guides/building-extending/): Learn how to build custom components, providers, and packages to extend Pulumi's capabilities.
+        - [Build a Component](https://www.pulumi.com/docs/iac/guides/building-extending/components/build-a-component/): Learn the process for building a custom Pulumi Component.
+        - [Testing Pulumi Components](https://www.pulumi.com/docs/iac/guides/building-extending/components/testing-components/): Learn strategies and tools for testing Pulumi Components during development and in CI/CD workflows.
+        - [Packaging Components](https://www.pulumi.com/docs/iac/guides/building-extending/components/packaging-components/): Learn how to package and distribute Pulumi components using single-language, cross-language, and provider-based approaches.
+        - [Provider architecture](https://www.pulumi.com/docs/iac/guides/building-extending/providers/provider-architecture/): Understand the layered architecture of Pulumi providers and choose the right level of abstraction for your needs.
+        - [Build a Provider](https://www.pulumi.com/docs/iac/guides/building-extending/providers/build-a-provider/): Learn the process for building a Pulumi Provider that can be packaged and published in the Pulumi Registry.
+        - [Provider SDKs](https://www.pulumi.com/docs/iac/guides/building-extending/providers/sdks/): High-level SDKs for building Pulumi providers with less boilerplate.
+          - [Pulumi Go Provider SDK](https://www.pulumi.com/docs/iac/guides/building-extending/providers/sdks/pulumi-go-provider-sdk/): Learn about the Pulumi Go Provider SDK to create your own Pulumi providers.
+        - [Direct provider implementation](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/): Implement Pulumi providers directly using gRPC bindings, without higher-level SDKs.
+          - [Provider protocol reference](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/protocol-reference/): Complete reference for the Pulumi provider gRPC protocol, including all RPC methods and their semantics.
+          - [Implement a provider in Python](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/python/): Build a Pulumi provider in Python using the gRPC bindings directly.
+          - [Implement a provider in Go](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/go/): Build a Pulumi provider in Go using the gRPC bindings directly, without the higher-level SDK.
+          - [Implement a provider in TypeScript](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/typescript/): Build a Pulumi provider in TypeScript using the gRPC bindings directly.
+        - [Publishing packages](https://www.pulumi.com/docs/iac/guides/building-extending/packages/publishing-packages/): Learn how to create and publish a Pulumi Package to share a custom component, provider, or bridge an existing Terraform provider into the Pulumi ecosystem.
+        - [Local Packages](https://www.pulumi.com/docs/iac/guides/building-extending/packages/local-packages/): This page provides an overview of working with locally generated Pulumi packages.
+        - [Schema](https://www.pulumi.com/docs/iac/guides/building-extending/packages/schema/): This page describes the schema for a Pulumi Package, describing the resources, functions and types that define a Pulumi Package.
+        - [Use a Terraform Module in Pulumi](https://www.pulumi.com/docs/iac/guides/building-extending/using-existing-tools/use-terraform-module/): Learn how to use existing Terraform modules directly in your Pulumi programs.
+      - [Creating Templates](https://www.pulumi.com/docs/iac/guides/building-extending/creating-templates/): Learn how to create Pulumi templates that can be used with pulumi new to bootstrap new projects.
+    - [Continuous Delivery](https://www.pulumi.com/docs/iac/guides/continuous-delivery/): Pulumi's approach to infrastructure as code is great for CI/CD because it uses source code to model cloud resources and integrates into any CI/CD system.
+      - [AWS Code Services](https://www.pulumi.com/docs/iac/guides/continuous-delivery/aws-code-services/): This page provides an overview of how to use Pulumi with Amazon Code Services CI/CD tools.
+      - [Azure DevOps Task Extension](https://www.pulumi.com/docs/iac/guides/continuous-delivery/azure-devops/): The Pulumi Task Extension for Azure Pipelines installs the Pulumi CLI and runs commands in your pipeline without scripts.
+      - [ArgoCD](https://www.pulumi.com/docs/iac/guides/continuous-delivery/argocd/): This page details how to use ArgoCD with the Pulumi Kubernetes Operator to deploy infrastructure and applications through GitOps workflows.
+      - [Buildkite](https://www.pulumi.com/docs/iac/guides/continuous-delivery/buildkite/): This page details how to use Buildkite pipelines to deploy infrastructure implemented using Pulumi.
+      - [Bitbucket Pipelines](https://www.pulumi.com/docs/iac/guides/continuous-delivery/bitbucket/): This page details how to use Bitbucket Pipelines to manage deploying staging and production stacks based on commits to specific Git branches.
+      - [CircleCI](https://www.pulumi.com/docs/iac/guides/continuous-delivery/circleci/): This page details how to use CircleCI CI/CD to deploy Pulumi stacks.
+      - [Codefresh](https://www.pulumi.com/docs/iac/guides/continuous-delivery/codefresh/): This page will walk you through setting up Codefresh CI/CD with a Pulumi program.
+      - [GitHub Actions](https://www.pulumi.com/docs/iac/guides/continuous-delivery/github-actions/): Pulumi's Github Actions help you deploy apps and infrastructure to your cloud of choice, using nothing but code in your favorite language and GitHub.
+      - [Harness](https://www.pulumi.com/docs/iac/guides/continuous-delivery/harness/): This page details how to use Harness CI/CD to deploy infrastructure with Pulumi and manage Harness resources using the Pulumi Harness provider.
+      - [GitLab CI](https://www.pulumi.com/docs/iac/guides/continuous-delivery/gitlab-ci/): This page details how to use GitLab CI to manage deploying staging and production stacks based on commits to specific Git branches.
+      - [Google Cloud Build](https://www.pulumi.com/docs/iac/guides/continuous-delivery/google-cloud-build/): This page gives an overview of how to integrate Google Cloud Build with a Pulumi program.
+      - [Jenkins](https://www.pulumi.com/docs/iac/guides/continuous-delivery/jenkins/): This document will help you setup a Jenkins Pipeline to deploy a sample app to Azure using Pulumi.
+      - [Octopus Deploy](https://www.pulumi.com/docs/iac/guides/continuous-delivery/octopus-deploy/): This page gives an overview of how to integrate Octopus Deploy with a Pulumi program.
+      - [Pulumi Kubernetes Operator](https://www.pulumi.com/docs/iac/guides/continuous-delivery/pulumi-kubernetes-operator/): This page details how to use the Pulumi Kubernetes Operator to manage deploying stacks based on commits in git, Kubernetes objects, or Flux sources.
+      - [Travis CI](https://www.pulumi.com/docs/iac/guides/continuous-delivery/travis/): This page details how to use Travis CI to manage deploying staging and production stacks based on commits to specific Git branches.
+      - [Spinnaker](https://www.pulumi.com/docs/iac/guides/continuous-delivery/spinnaker/): This page provides an overview of how to use Pulumi Plugin for Spinnaker to run Pulumi apps.
+      - [JetBrains TeamCity](https://www.pulumi.com/docs/iac/guides/continuous-delivery/teamcity/): This page provides an overview of how to use Pulumi with JetBrains TeamCity.
+      - [Adding CI/CD support](https://www.pulumi.com/docs/iac/guides/continuous-delivery/add-support-for-cicd-systems/): This guide walks you through how you can configure your CI/CD environment manually to surface data in Pulumi Cloud.
+    - [Migration](https://www.pulumi.com/docs/iac/guides/migration/): Learn how Pulumi compares to other solutions, how to migrate to Pulumi, use converters to convert your code to Pulumi, and import resources to Pulumi.
+        - [Terraform](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-terraform/): Migrate your existing Terraform HCL and/or coexist with existing workspaces.
+        - [AWS CDK](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-cdk/): Migrate your existing AWS CDK TypeScript application
+          - [Migrating existing AWS CDK applications](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/migrating-from-cdk/migrating-existing-cdk-app/): Migrate your existing AWS CDK applications to Pulumi, including converting code and importing existing resources.
+          - [Using Pulumi with AWS CDK](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/migrating-from-cdk/using-pulumi-cdk/): Use the Pulumi CDK adapter to run your existing AWS CDK applications with Pulumi.
+        - [AWS CloudFormation](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-cloudformation/): Migrate your existing AWS CloudFormation JSON/YAML and/or coexist with existing stacks.
+        - [Azure Resource Manager](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-arm/): Modernize Azure infrastructure by replacing or coexisting with ARM templates using Pulumi in C#, Python, Go, or TypeScript.
+        - [Kubernetes YAML & Helm Charts](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-kubernetes/): Migrate your existing Kubernetes YAML or Helm Charts and/or coexist with existing templates.
+      - [Import resources](https://www.pulumi.com/docs/iac/guides/migration/import/): Learn how to import existing cloud infrastructure into Pulumi no matter how it was provisioned.
+      - [Convert code](https://www.pulumi.com/docs/iac/guides/migration/converters/): Pulumi convert allows you to convert ARM, CloudFormation, Kubernetes CustomResources, Kubernetes YAML, and Terraform to Pulumi.
+      - [AWS import IDs and special cases](https://www.pulumi.com/docs/iac/guides/migration/aws-import-ids/): Learn how to find AWS resource IDs and handle CloudFormation-specific edge cases when importing resources into Pulumi.
+    - [Testing](https://www.pulumi.com/docs/iac/guides/testing/): Guide to automated testing of Pulumi programs: unit testing, property testing, integration testing.
+      - [Unit Testing](https://www.pulumi.com/docs/iac/guides/testing/unit/): Guide to unit testing of Pulumi programs: mock-based tests across Node.js, Python, Go, .NET, and Java.
+      - [Integration testing](https://www.pulumi.com/docs/iac/guides/testing/integration/): Guide to integration testing of Pulumi programs with various testing frameworks and approaches.
+        - [Integration testing framework](https://www.pulumi.com/docs/iac/guides/testing/integration/framework/): Learn how to use Pulumi's Go-based integration testing framework to validate infrastructure deployments.
+        - [Automation API testing](https://www.pulumi.com/docs/iac/guides/testing/integration/automation-api/): Learn how to use Pulumi's Automation API to write integration tests in your preferred programming language.
+  - [Languages & SDKs](https://www.pulumi.com/docs/iac/languages-sdks/): An overview of how to use Node.js, Python, Go, .NET, Java, and YAML when writing cloud applications for AWS, Azure, Google Cloud, Kubernetes, etc.
+    - [TypeScript (Node.js)](https://www.pulumi.com/docs/iac/languages-sdks/javascript/): Learn to use Node.js languages like JavaScript and TypeScript with Pulumi for infrastructure as code on any cloud (AWS, Azure, Google Cloud, Kubernetes, etc.).
+      - [Provider package version management](https://www.pulumi.com/docs/iac/languages-sdks/javascript/provider-package-versions/): Learn how to manage provider package versions when building Pulumi components in TypeScript and JavaScript.
+    - [Python](https://www.pulumi.com/docs/iac/languages-sdks/python/): An overview of how to use Python with Pulumi for infrastructure as code on any cloud (AWS, Azure, Google Cloud, Kubernetes, etc.).
+      - [Blocking and Async](https://www.pulumi.com/docs/iac/languages-sdks/python/python-blocking-async/): An overview of how to use Python with Pulumi for infrastructure as code on any cloud (AWS, Azure, Google Cloud, Kubernetes, etc.).
+    - [C#, VB, F# (.NET)](https://www.pulumi.com/docs/iac/languages-sdks/dotnet/): An overview of how to use .NET languages like C# and F# with Pulumi for infrastructure as code on any cloud (AWS, Azure, Google Cloud, Kubernetes, etc.).
+    - [Go](https://www.pulumi.com/docs/iac/languages-sdks/go/): An overview of how to use the Go language with Pulumi for infrastructure as code on any cloud (AWS, Azure, Google Cloud, Kubernetes, etc.).
+    - [Java](https://www.pulumi.com/docs/iac/languages-sdks/java/): An overview of how to use the Java language with Pulumi for infrastructure as code on any cloud (AWS, Azure, Google Cloud, Kubernetes, etc.).
+    - [YAML](https://www.pulumi.com/docs/iac/languages-sdks/yaml/): An overview of how to use Pulumi YAML for infrastructure as code on any cloud (AWS, Azure, Google Cloud, Kubernetes, etc.).
+      - [Component Reference](https://www.pulumi.com/docs/iac/languages-sdks/yaml/yaml-component-reference/): Specification for the Pulumi YAML component format
+      - [Reference](https://www.pulumi.com/docs/iac/languages-sdks/yaml/yaml-language-reference/): Specification for the Pulumi YAML format and built-in functions
+  - [Clouds](https://www.pulumi.com/docs/iac/clouds/): Pulumi supports AWS, Azure, Google Cloud, Kubernetes, and over 100 other packages.
+    - [AWS](https://www.pulumi.com/docs/iac/clouds/aws/): Provision and manage AWS infrastructure using TypeScript, Python, Go, C#, Java, or YAML with Pulumi's AWS providers, components, and guides.
+      - [Guides](https://www.pulumi.com/docs/iac/clouds/aws/guides/): Guides for working with AWS services using Pulumi's AWS providers and component packages.
+        - [API Gateway](https://www.pulumi.com/docs/iac/clouds/aws/guides/api-gateway/): The AWS API Gateway component for Pulumi provides an easier way to create and manage API Gateway resources.
+        - [Pulumi CDK Adapter](https://www.pulumi.com/docs/iac/clouds/aws/guides/cdk/): Using CDK Constructs with Pulumi provides a significantly easier way of creating infrastructure for AWS. Here is how.
+        - [ECR](https://www.pulumi.com/docs/iac/clouds/aws/guides/ecr/): The AWSx ECR components simplify provisioning ECR repositories, building and publishing container images, and managing image lifecycle policies.
+        - [ECS](https://www.pulumi.com/docs/iac/clouds/aws/guides/ecs/): Pulumi's AWSX library simplifies deploying containerized applications into ECS and managing all of the associated resources.
+        - [EKS](https://www.pulumi.com/docs/iac/clouds/aws/guides/eks/): Pulumi simplifies the creation, configuration, and management of EKS clusters, offering a single programming model and deployment workflow.
+        - [ELB](https://www.pulumi.com/docs/iac/clouds/aws/guides/elb/): Pulumi Crosswalk for AWS ELB provides easy provisioning Application and Network Load Balancers, and easily integrates with functionality of AWS other services.
+        - [IAM](https://www.pulumi.com/docs/iac/clouds/aws/guides/iam/): Pulumi Crosswalk for AWS makes it easy to create, update, and otherwise manage AWS users, groups, and roles securely.
+        - [Lambda](https://www.pulumi.com/docs/iac/clouds/aws/guides/lambda/): Pulumi Crosswalk for AWS brings a more natural, and easier to use, way of building serverless applications using AWS Lambda.
+        - [VPC](https://www.pulumi.com/docs/iac/clouds/aws/guides/vpc/): Pulumi Crosswalk for AWS provides simple, out of the box VPC functionality that follows widely accepted best practices.
+    - [Azure](https://www.pulumi.com/docs/iac/clouds/azure/): Pulumi offers full support for Azure, with two providers, 4+ components, and several templates.
+    - [Google Cloud](https://www.pulumi.com/docs/iac/clouds/gcp/): Pulumi offers full support for Google Cloud, with two providers, 2 components, and multiple templates.
+    - [Kubernetes](https://www.pulumi.com/docs/iac/clouds/kubernetes/): Pulumi offers full support for Kubernetes, with a provider, an operator, 3+ components, multiple templates, and several guides.
+      - [crd2pulumi](https://www.pulumi.com/docs/iac/clouds/kubernetes/crd2pulumi/): crd2pulumi generates typed Pulumi SDK classes from Kubernetes CustomResourceDefinition (CRD) YAML schemas, enabling IDE autocompletion and type checking.
+      - [Guides](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/): Production-ready Kubernetes guides for teams. Work together to deliver Kubernetes to AWS, Azure, Google Cloud, or private.
+        - [Playbooks](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/playbooks/): The Kubernetes playbooks are a collection of industry standard best-practices for managing Kubernetes in production.
+        - [Control Plane](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/control-plane/): This page will walk you through how to create on a Kubernetes Control Pane on AWS, Azure, and Google Cloud.
+        - [Worker node creation](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/worker-nodes/): This page provides a guide on how to create Kubernetes Worker Nodes with Pulumi.
+        - [Access clusters](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/try-out-the-cluster/): This page provides a guide on how to try out a newly created Kubernetes cluster.
+        - [Cluster defaults](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/configure-defaults/): This page will walk you through how to configure Kubernetes Cluster Defaults on AWS, Azure, and Google Cloud.
+        - [Access control](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/configure-access-control/): This page will walk you through how to configure Kubernetes access control on AWS, Azure, and Google Cloud.
+        - [Cluster services](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/cluster-services/): This page will provide an overview on how to deploy Kubernetes Cluster Services.
+        - [App services](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/app-services/): This page provides an overview of how to deploy Kubernetes App services to different cloud providers.
+        - [Updating worker nodes](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/update-worker-nodes/): This page provides a guide on how to update Kubernetes Worker Nodes with Pulumi.
+        - [IAM](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/identity/): An overview of cloud identity and access management providers when using Kubernetes.
+        - [Apps](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/apps/): This page gives you an overview on how to deploy Kubernetes applications to different cloud providers.
+        - [Infra services](https://www.pulumi.com/docs/iac/clouds/kubernetes/guides/managed-infra/): This page provides an overview of Managed Infrastructure services that support and complement Kubernetes clusters and workloads.
+  - [Pulumi CLI](https://www.pulumi.com/docs/iac/cli/): An overview of the Pulumi CLI and common commands used to deploy cloud applications.
+    - [Commands](https://www.pulumi.com/docs/iac/cli/commands/): The Pulumi CLI offers many commands to execute from your command-line.
+    - [Environment variables](https://www.pulumi.com/docs/iac/cli/environment-variables/): A list of different environment variables the Pulumi CLI supports.
+    - [Command-line completion](https://www.pulumi.com/docs/iac/cli/command-line-completion/): Information about command-line completion while using the Pulumi CLI.
+    - [Pulumi CLI versions](https://www.pulumi.com/docs/get-started/download-install/versions/): This page provides an list of available versions of the Pulumi CLI.
+  - [Automation API](https://www.pulumi.com/docs/iac/automation-api/): The Pulumi Automation API is a programmatic interface for running Pulumi programs without the Pulumi CLI. View our Automation API guides here.
+    - [Get started](https://www.pulumi.com/docs/iac/automation-api/getting-started-automation-api/): This page contains a getting started guide for Automation API.
+    - [Concepts](https://www.pulumi.com/docs/iac/automation-api/concepts-terminology/): This page contains an overview of core concepts when using Automation API.
+  - [Comparisons](https://www.pulumi.com/docs/iac/comparisons/): Learn how Pulumi compares with alternative infrastructure as code solutions that may share overlapping capabilities.
+    - [Terraform](https://www.pulumi.com/docs/iac/comparisons/terraform/): Pulumi IaC and Terraform have many similarities, and yet they differ in many key ways. This page helps provide a rundown of Pulumi's advantages.
+      - [OpenTofu vs. Terraform](https://www.pulumi.com/docs/iac/comparisons/terraform/opentofu/): Compare and contrast OpenTofu and Terraform across key features. Learn how they differ and why many teams are migrating to Pulumi.
+      - [Pulumi equivalents](https://www.pulumi.com/docs/iac/comparisons/terraform/terminology/): Many of the terms you may know from working with Terraform have direct equivalents in Pulumi. Here is a list of common terms and how they relate to Pulumi.
+    - [Cloud Templates](https://www.pulumi.com/docs/iac/comparisons/cloud-templates/): Learn about the major differences between Pulumi and cloud templating solutions like AWS CloudFormation and Microsoft Azure Resource Manager (ARM).
+      - [AWS CloudFormation](https://www.pulumi.com/docs/iac/comparisons/cloud-templates/cloudformation/): Pulumi and AWS CloudFormation share some similarities, but there are many key differences. Learn about these major differences here.
+    - [Cloud SDKs](https://www.pulumi.com/docs/iac/comparisons/cloud-sdks/): Learn about the major differences between Pulumi and cloud SDKs like AWS Boto and more.
+    - [Cloud Template Transpilers](https://www.pulumi.com/docs/iac/comparisons/cloud-template-transpilers/): Learn about the major differences between Pulumi and cloud template transpiler solutions like AWS CDK and Troposphere.
+      - [Pulumi vs. AWS Cloud Development Kit (CDK)](https://www.pulumi.com/docs/iac/comparisons/cloud-template-transpilers/aws-cdk/): Pulumi and AWS Cloud Development Kit (CDK) share some similarities, but there are many key differences. Learn about these major differences here.
+      - [Pulumi vs. CDK for Terraform (CDKTF)](https://www.pulumi.com/docs/iac/comparisons/cloud-template-transpilers/cdktf/): Pulumi and CDKTF share some similarities, but also key differences. Learn more about how Pulumi compares to CDKTF and how to migrate your projects to Pulumi.
+    - [Serverless Framework](https://www.pulumi.com/docs/iac/comparisons/serverless/): Learn about the major differences between Pulumi and the Serverless Framework, and how Pulumi offers a more holistic approach to writing applications.
+    - [OpenTofu](https://www.pulumi.com/docs/iac/comparisons/opentofu/): Pulumi and OpenTofu have a few similarities, but they differ in many key ways. This page helps provide a rundown of these major differences.
+    - [Kubernetes YAML](https://www.pulumi.com/docs/iac/comparisons/k8s-yaml-dsls/): Learn about the major differences between Pulumi and Kubernetes YAML & DSLs.
+    - [Chef & Puppet](https://www.pulumi.com/docs/iac/comparisons/chef-puppet-etc/): Learn about the major differences between Pulumi and configuration management tools like Chef, Puppet, Ansible, Salt, and more.
+    - [Crossplane](https://www.pulumi.com/docs/iac/comparisons/crossplane/): Learn about the major differences between Pulumi and configuration management tools like Chef, Puppet, Ansible, Salt, and more.
+    - [Custom Solutions](https://www.pulumi.com/docs/iac/comparisons/custom/): Learn about the major differences between Pulumi and custom infrastructure as code solutions.
+
+## Deployments & Workflows
+- [Deployments & Workflows](https://www.pulumi.com/docs/deployments/): Cloud-hosted deployment automation, drift detection, and workflow management for infrastructure as code.
+  - [Get started with Pulumi Cloud](https://www.pulumi.com/docs/deployments/get-started/): How to set up an account and get started with Pulumi Cloud.
+  - [Projects & stacks](https://www.pulumi.com/docs/deployments/projects-and-stacks/): Learn how to manage projects and stacks in the Pulumi Cloud, including creating a project and managing stack permissions.
+  - [Deployments](https://www.pulumi.com/docs/deployments/deployments/): Pulumi Deployments is the fast way for individuals, teams, enterprises, and platforms to go from code to cloud.
+    - [Get Started Guides](https://www.pulumi.com/docs/deployments/deployments/get-started/): A list of guides to get started using Pulumi Deployments
+      - [Use Pulumi Deployments with the New Project Wizard](https://www.pulumi.com/docs/deployments/deployments/get-started/deployments-using-new-project-wizard/): Learn how to use Pulumi Deployments with the New Project Wizard
+      - [Use Pulumi Deployments with the Pulumi and GitHub CLIs](https://www.pulumi.com/docs/deployments/deployments/get-started/deployments-using-cli/): Learn how to use Pulumi Deployments the Pulumi and GitHub CLIs
+    - [Using Deployments](https://www.pulumi.com/docs/deployments/deployments/using/): Learn how to configure and use Pulumi Deployments to automate your infrastructure deployments
+      - [Deployments Settings](https://www.pulumi.com/docs/deployments/deployments/using/settings/): Learn how to configure Deployment Settings for Pulumi Deployments
+      - [Deployment Triggers](https://www.pulumi.com/docs/deployments/deployments/using/triggers/): Learn how to configure and use Deployment Triggers for Pulumi Deployments
+      - [Private Git Repositories](https://www.pulumi.com/docs/deployments/deployments/using/private-repositories/): Learn how to configure Pulumi Deployments to access private Git repositories
+      - [Post-Deployment Automation](https://www.pulumi.com/docs/deployments/deployments/using/post-automation/): Learn how to configure post-deployment automation with Pulumi Deployments
+    - [Supplying Cloud Credentials to Pulumi Deployments](https://www.pulumi.com/docs/deployments/deployments/cloud-credentials/): This page explains the options for supplying cloud credentials to a Pulumi Deployment
+    - [Deployment Permissions](https://www.pulumi.com/docs/deployments/deployments/permissions/): Learn how to configure and manage permissions for Pulumi Deployments
+    - [Customer-managed workflow runners](https://www.pulumi.com/docs/deployments/deployments/customer-managed-agents/): Self-host workflow runners and get all the power and flexibility of Pulumi Deployments in your isolated environments.
+    - [Drift detection](https://www.pulumi.com/docs/deployments/deployments/drift/): Track changes in your cloud infrastructure compared to your Pulumi state.
+    - [OIDC Setup](https://www.pulumi.com/docs/deployments/deployments/oidc/): This page provides an overview of how to set up OIDC for Pulumi Deployments to obtain cloud provider credentials
+      - [AWS](https://www.pulumi.com/docs/deployments/deployments/oidc/aws/): This page describes how to configure OIDC token exchange in AWS for use with Pulumi Deployments
+      - [Azure](https://www.pulumi.com/docs/deployments/deployments/oidc/azure/): This page describes how to configure OIDC token exchange in Azure for use with Pulumi Deployments
+      - [Google Cloud](https://www.pulumi.com/docs/deployments/deployments/oidc/gcp/): This page describes how to configure OIDC token exchange in Google Cloud for use with Pulumi Deployments
+    - [Review stacks](https://www.pulumi.com/docs/deployments/deployments/review-stacks/): Pull request environments that deploy application and infrastructure code changes.
+    - [Time-to-live stacks](https://www.pulumi.com/docs/deployments/deployments/ttl/): Set a time-to-live on a stack, automatically destroying it when the one time schedule is set for.
+    - [Schedules](https://www.pulumi.com/docs/deployments/deployments/schedules/): Schedule any Pulumi operation to occur at any time.
+    - [Security and operations](https://www.pulumi.com/docs/deployments/deployments/security-and-operations/): Security and operational considerations for Pulumi Deployments including isolation, deployment queues, dependency caching, and operational details.
+    - [Vs. Traditional CI/CD](https://www.pulumi.com/docs/deployments/deployments/versus/): Learn how Pulumi Deployments differs from traditional CI/CD systems and why it's uniquely suited for infrastructure as code.
+    - [CI/CD assistant](https://www.pulumi.com/docs/deployments/deployments/ci-cd-integration-assistant/): The CI/CD integration assistant helps you integrate Pulumi into CI/CD systems for automatically deploying stacks. Learn more about the assistant here.
+  - [Webhooks](https://www.pulumi.com/docs/deployments/webhooks/): Pulumi Cloud Webhooks allow you to notify external services of events happening within your Pulumi organization. Learn how to create and manage webhooks here.
+  - [Deploy with Pulumi button](https://www.pulumi.com/docs/deployments/pulumi-button/): The "Deploy with Pulumi" button lets you easily create new Pulumi projects from the browser. Learn how to create this deployment button in this guide.
+
+## Version Control
+- [Version Control](https://www.pulumi.com/docs/version-control/): Connect Pulumi with your version control system using Pulumi-maintained integrations for GitHub, GitLab, and Azure DevOps.
+  - [Pulumi GitHub App](https://www.pulumi.com/docs/version-control/github-app/): Pulumi's GitHub app integrates the results of Pulumi stack updates. It will show you any potential infrastructure changes on Pull Requests and commit Checks.
+  - [GitLab](https://www.pulumi.com/docs/version-control/gitlab/): Pulumi integrates with GitLab for merge request previews, CI/CD pipelines, OIDC authentication, template sources, and automated deployments.
+  - [Azure DevOps Integration](https://www.pulumi.com/docs/version-control/azure-devops-integration/): Connect Azure DevOps repositories to Pulumi Cloud Deployments to deploy on push, preview pull requests, and post PR summaries.
+
+## Secrets & Configuration (ESC)
+- [Secrets & Configuration](https://www.pulumi.com/docs/esc/): Learn how to tame secrets sprawl and configuration complexity securely across all your cloud infrastructure and applications.
+  - [Get Started](https://www.pulumi.com/docs/esc/get-started/): Get started with Pulumi ESC in 5 minutes. Create an environment, store a secret, and retrieve it programmatically.
+  - [Concepts](https://www.pulumi.com/docs/esc/concepts/): Learn the core concepts of Pulumi ESC including environments, providers, composition, and the evaluation model.
+    - [How Pulumi ESC works](https://www.pulumi.com/docs/esc/concepts/how-esc-works/): An overview of how Pulumi ESC works and discussion of core concepts.
+  - [Guides](https://www.pulumi.com/docs/esc/guides/): Step-by-step guides for common Pulumi ESC tasks including IaC integration, OIDC setup, and secrets management.
+    - [Integrate with Pulumi IaC](https://www.pulumi.com/docs/esc/guides/integrate-with-pulumi-iac/): Learn how to use Pulumi ESC environments in your Pulumi infrastructure as code projects to centralize secrets and configuration.
+    - [Configure OpenID Connect](https://www.pulumi.com/docs/esc/guides/configuring-oidc/): This page describes how to configure OIDC token exchange with Pulumi ESC
+      - [AWS](https://www.pulumi.com/docs/esc/guides/configuring-oidc/aws/): This page describes how to configure OIDC token exchange in AWS for use with Pulumi Cloud
+      - [Azure](https://www.pulumi.com/docs/esc/guides/configuring-oidc/azure/): This page describes how to configure OIDC token exchange in Azure for use with Pulumi
+      - [Doppler](https://www.pulumi.com/docs/esc/guides/configuring-oidc/doppler/): This page describes how to configure OIDC token exchange in Doppler for use with Pulumi
+      - [Google Cloud](https://www.pulumi.com/docs/esc/guides/configuring-oidc/gcp/): This page describes how to configure OIDC token exchange in Google Cloud for use with Pulumi ESC
+      - [Infisical](https://www.pulumi.com/docs/esc/guides/configuring-oidc/infisical/): This page describes how to configure OIDC token exchange in Infisical for use with Pulumi
+      - [Vault](https://www.pulumi.com/docs/esc/guides/configuring-oidc/vault/): This page describes how to configure OIDC token exchange in Vault for use with Pulumi ESC
+    - [Managing Secrets](https://www.pulumi.com/docs/esc/guides/managing-secrets/): Learn how to store, retrieve, and organize secrets in Pulumi ESC environments using the CLI and Pulumi Cloud console.
+    - [Running Commands with esc run](https://www.pulumi.com/docs/esc/guides/running-commands-with-esc/): Learn how to use esc run to inject secrets and configuration from Pulumi ESC into any command or script.
+    - [Importing Environments](https://www.pulumi.com/docs/esc/guides/importing-environments/): Learn how to import and compose Pulumi ESC environments to share configuration across teams and projects.
+  - [Environments](https://www.pulumi.com/docs/esc/environments/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets called environments and consume them in various ways.
+    - [Working with environments](https://www.pulumi.com/docs/esc/environments/working-with-environments/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+    - [Environment Definition Syntax](https://www.pulumi.com/docs/esc/environments/syntax/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Top-Level Keys](https://www.pulumi.com/docs/esc/environments/syntax/top-level-keys/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [imports](https://www.pulumi.com/docs/esc/environments/syntax/top-level-keys/imports/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [values](https://www.pulumi.com/docs/esc/environments/syntax/top-level-keys/values/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Interpolations and References](https://www.pulumi.com/docs/esc/environments/syntax/interpolations-and-references/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Built-in Functions](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::concat](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-concat/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::fromBase64](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-from-base64/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::validate](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-validate/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::fromJSON](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-from-json/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::join](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-join/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::open](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-open/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::split](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-split/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::rotate](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-rotate/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::secret](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-secret/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::toBase64](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-to-base64/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::toJSON](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-to-json/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [fn::toString](https://www.pulumi.com/docs/esc/environments/syntax/builtin-functions/fn-to-string/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Built-in Properties](https://www.pulumi.com/docs/esc/environments/syntax/builtin-properties/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [context](https://www.pulumi.com/docs/esc/environments/syntax/builtin-properties/context/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [environments](https://www.pulumi.com/docs/esc/environments/syntax/builtin-properties/environments/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [imports](https://www.pulumi.com/docs/esc/environments/syntax/builtin-properties/imports/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Providers](https://www.pulumi.com/docs/esc/environments/syntax/providers/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Rotators](https://www.pulumi.com/docs/esc/environments/syntax/rotators/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Reserved Properties](https://www.pulumi.com/docs/esc/environments/syntax/reserved-properties/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [environmentVariables](https://www.pulumi.com/docs/esc/environments/syntax/reserved-properties/environment-variables/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [files](https://www.pulumi.com/docs/esc/environments/syntax/reserved-properties/files/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+        - [pulumiConfig](https://www.pulumi.com/docs/esc/environments/syntax/reserved-properties/pulumi-config/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+      - [Sample Environment Definition](https://www.pulumi.com/docs/esc/environments/syntax/sample-environment-definition/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+    - [Importing other environments](https://www.pulumi.com/docs/esc/environments/imports/): Pulumi ESC allows you to import and compose configurations from multiple environments, reducing duplication and ensuring consistency.
+    - [Versioning](https://www.pulumi.com/docs/esc/environments/versioning/): Pulumi ESC allows you to manage, track and audit changes to your secrets and configurations with versioning.
+    - [Rotating secrets](https://www.pulumi.com/docs/esc/environments/rotation/): Pulumi ESC allows you to rotate secrets on a pre-defined schedule.
+      - [AWS Lambda Rotation Connector](https://www.pulumi.com/docs/esc/environments/rotation/aws-lambda/): The `aws-lambda` connector enables you to rotate credentials inside of a private AWS VPC.
+      - [Database User Setup](https://www.pulumi.com/docs/esc/environments/rotation/db-user-setup/): Explanation on how to prepare the database for credentials rotation
+    - [Dynamic environment variables](https://www.pulumi.com/docs/esc/environments/dynamic-environment-variables/): Pulumi ESC allows you to securely run commands with managed environment variables using the esc run command, without exporting them to your shell.
+    - [Webhooks](https://www.pulumi.com/docs/esc/environments/webhooks/): ESC Webhooks allow you to notify external services of events happening within your ESC environments. Learn how to create and manage webhooks here.
+  - [Integrations](https://www.pulumi.com/docs/esc/integrations/): Explore Pulumi ESC integrations and providers that help you securely manage cloud resources, configurations, and secrets.
+    - [Dynamic login credentials](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/): Pulumi ESC integrates with dynamic login providers, allowing you to securely log in using OpenID Connect (OIDC) to access resources and secrets.
+      - [aws-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/aws-login/): The aws-login Pulumi ESC Provider enables you to log in to AWS using OIDC or static credentials.
+      - [azure-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/azure-login/): The azure-login Pulumi ESC Provider enables you to log in to Azure using OIDC or static credentials.
+      - [doppler-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/doppler-login/): The doppler-login Pulumi ESC Provider enables you to log in to Doppler using OIDC.
+      - [gcp-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/gcp-login/): The gcp-login Pulumi ESC Provider enables you to log in to Google Cloud using OIDC or by providing static credentials.
+      - [gh-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/gh-login/): The gh-login Pulumi ESC Provider enables you to log in to GitHub using app credentials.
+      - [infisical-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/infisical-login/): The infisical-login Pulumi ESC Provider enables you to log in to Infisical using OIDC or static credentials.
+      - [snowflake-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/snowflake-login/): The `snowflake-login` provider enables OIDC authentication to Snowflake for use with Pulumi ESC.
+      - [vault-login](https://www.pulumi.com/docs/esc/integrations/dynamic-login-credentials/vault-login/): The vault-login Pulumi ESC Provider enables you to log in to HashiCorp Vault using OpenID Connect or by providing static credentials.
+    - [Dynamic secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/): Pulumi ESC enables integration with secrets providers like 1Password, AWS, Azure, Google Cloud, and Vault, to securely manage secrets in your environments.
+      - [1password-secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/1password-secrets/): The `1password-secrets` provider enables you to dynamically import Secrets from 1Password into your Pulum ESC environment.
+      - [aws-parameter-store](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/aws-parameter-store/): The `aws-parameter-store` provider enables you to dynamically import parameters from AWS Systems Manager - Parameter Store.
+      - [aws-secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/aws-secrets/): The aws-secrets Pulumi ESC Provider enables you to dynamically import Secrets from AWS Secrets Manager.
+      - [azure-secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/azure-secrets/): The azure-secrets Pulumi ESC Provider enables you to dynamically import secrets from Azure Key Vault into your environment.
+      - [doppler-secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/doppler-secrets/): The doppler-secrets Pulumi ESC Provider enables you to dynamically import secrets from Doppler into your environment.
+      - [gcp-secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/gcp-secrets/): The gcp-secrets Pulumi ESC provider enables you to dynamically import secrets from Google Cloud Secrets Manager into your environment.
+      - [infisical-secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/infisical-secrets/): The infisical-secrets Pulumi ESC Provider enables you to dynamically import secrets from Infisical into your environment.
+      - [vault-secrets](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/vault-secrets/): The `vault-secrets` provider enables you to dynamically import secrets from HashiCorp Vault into your environment.
+      - [external](https://www.pulumi.com/docs/esc/integrations/dynamic-secrets/external/): The `external` Pulumi ESC provider enables you to dynamically import values from custom secret sources.
+    - [Rotated secrets](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/): Pulumi ESC enables credential rotation for various external services.
+      - [aws-iam](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/aws-iam/): The `aws-iam` rotator enables you to rotate access credentials for an AWS IAM User.
+      - [mysql](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/mysql/): The `mysql` rotator enables you to rotate credentials for MySQL database.
+      - [passphrase](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/passphrase/): The `passphrase` rotator enables you to rotate any user defined key by generating memorable passphrases.
+      - [password](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/password/): The `password` rotator enables you to rotate any user defined key by generating random passwords.
+      - [postgres](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/postgres/): The `postgres` rotator enables you to rotate credentials for Postgres.
+      - [snowflake-user](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/snowflake-user/): The `snowflake-user` rotator enables you to rotate RSA keypairs for a Snowflake database user.
+      - [external](https://www.pulumi.com/docs/esc/integrations/rotated-secrets/external/): The `external` rotator enables you to rotate credentials using a custom adapter service.
+    - [Dev tools](https://www.pulumi.com/docs/esc/integrations/dev-tools/): Pulumi ESC integrates with popular developer tools like Cloudflare, Docker, and Terraform, for management of environment variables, secrets, and configurations.
+      - [Direnv](https://www.pulumi.com/docs/esc/integrations/dev-tools/direnv/): This page provides an overview on how to use Pulumi ESC with Direnv.
+      - [Docker](https://www.pulumi.com/docs/esc/integrations/dev-tools/docker/): This page provides an overview on how to use Pulumi ESC with Docker.
+      - [GitHub](https://www.pulumi.com/docs/esc/integrations/dev-tools/github/): This page provides an overview of how to use Pulumi ESC with GitHub.
+    - [Infrastructure](https://www.pulumi.com/docs/esc/integrations/infrastructure/): Pulumi ESC integrates with infrastructure tools like Pulumi IaC, Cloudflare, and Terraform for management of environment variables, secrets, and configurations.
+      - [Pulumi IaC](https://www.pulumi.com/docs/esc/integrations/infrastructure/pulumi-iac/): Pulumi ESC integrates with Pulumi IaC to expose environment settings and secrets to Pulumi stacks, simplifying configuration management.
+        - [pulumi-stacks](https://www.pulumi.com/docs/esc/integrations/infrastructure/pulumi-iac/pulumi-stacks/): The pulumi-stacks provider enables you to import Stack outputs from Pulumi into your Environment.
+      - [Terraform](https://www.pulumi.com/docs/esc/integrations/infrastructure/terraform/): This page provides an overview on how to use Pulumi ESC with Terraform.
+        - [terraform-state](https://www.pulumi.com/docs/esc/integrations/infrastructure/terraform/terraform-state/): The terraform-state provider enables you to read outputs from Terraform state files stored in S3 or Terraform Cloud.
+      - [Cloudflare](https://www.pulumi.com/docs/esc/integrations/infrastructure/cloudflare/): This page provides an overview of how to use Pulumi ESC with Cloudflare.
+    - [Kubernetes](https://www.pulumi.com/docs/esc/integrations/kubernetes/): Pulumi ESC integrates with Kubernetes to manage configurations, credentials, and kubeconfig files.
+      - [External Secrets Operator (ESO)](https://www.pulumi.com/docs/esc/integrations/kubernetes/external-secrets-operator/): Pulumi ESC integrates with the External Secrets Operator (ESO) to manage and deliver secrets in Kubernetes clusters.
+      - [Kubernetes Cluster Access](https://www.pulumi.com/docs/esc/integrations/kubernetes/kubernetes/): Pulumi ESC integrates with Kubernetes to manage configurations, credentials, and kubeconfig files, with kubectl and helm, and Pulumi Kubernetes provider.
+      - [Secrets Store CSI Driver](https://www.pulumi.com/docs/esc/integrations/kubernetes/secret-store-csi-driver/): Integrate Pulumi ESC with Kubernetes Secrets Store CSI Driver to securely mount ESC secrets directly into pods following K8s security best practices.
+  - [ESC CLI](https://www.pulumi.com/docs/esc/cli/): An overview of the Pulumi ESC (Environments, Secrets, and Configuration) CLI.
+    - [Download & Install](https://www.pulumi.com/docs/esc/cli/download-install/): Detailed instructions for downloading and installing Pulumi ESC (Environments, Secrets and Configuration).
+    - [Commands](https://www.pulumi.com/docs/esc/cli/commands/): The Pulumi ESC CLI offers many commands to execute from your command-line.
+    - [Command-line completion](https://www.pulumi.com/docs/esc/cli/command-line-completion/): Information about command-line completion while using the Pulumi CLI.
+  - [Development](https://www.pulumi.com/docs/esc/development/): Pulumi ESC allows you to compose and manage hierarchical collections of configuration and secrets and consume them in various ways.
+    - [Automation API](https://www.pulumi.com/docs/esc/development/automation-api/): Pulumi Automation API allows you to interact with ESC resources like environments, permissions and version tags.
+    - [ESC VS Code Extension](https://www.pulumi.com/docs/esc/development/vs-code-extension/): Pulumi This page provides an overview on how to use the Pulumi VS Code extension to manage your Pulumi Environments, Secrets, and Configuration
+    - [Pulumi Service Provider](https://www.pulumi.com/docs/esc/development/psp/): Pulumi Service Provider allows you to create and manage ESC resources like environments, permissions and version tags using a Pulumi program.
+    - [Languages & SDKs](https://www.pulumi.com/docs/esc/development/languages-sdks/): An overview of how to use Node.js, Go, and Python when using Pulumi ESC in your application and infrastructure code.
+      - [TypeScript (Node.js)](https://www.pulumi.com/docs/esc/development/languages-sdks/javascript/): This page provides an overview on how to use Pulumi ESC TypeScript/JavaScript SDK.
+      - [Python](https://www.pulumi.com/docs/esc/development/languages-sdks/python/): This page provides an overview on how to use Pulumi ESC Python SDK.
+      - [Go](https://www.pulumi.com/docs/esc/development/languages-sdks/go/): This page provides an overview on how to use Pulumi ESC Go SDK.
+  - [Administration](https://www.pulumi.com/docs/esc/administration/): Learn about managing Pulumi ESC organizations, self-hosting options, audit logs, and identity and access management features.
+    - [Access control](https://www.pulumi.com/docs/esc/administration/access-control/): Pulumi ESC provides granular access control to manage permissions with roles like reader, opener, and editor.
+    - [Audit Logs](https://www.pulumi.com/docs/esc/administration/audit-logs/): Pulumi ESC audit logs allow you to account for user activity within your organization.
+    - [Approvals](https://www.pulumi.com/docs/esc/administration/approvals/): Require explicit review and sign-off before applying changes or opening ESC-managed environments.
+    - [Customer Managed Keys](https://www.pulumi.com/docs/esc/administration/customer-managed-keys/): Bring your own encryption keys to protect data within Pulumi Cloud for enhanced security and compliance.
+    - [Configure OpenID authentication with ESC](https://www.pulumi.com/docs/esc/administration/oidc-authentication/): This page provides an overview of how Pulumi ESC can be configured for OIDC authentication with a trusted identity provider.
+    - [Self-hosting](https://www.pulumi.com/docs/esc/administration/self-hosting/): Pulumi Business Critical Edition gives you the option to self-host Pulumi within your organization's infrastructure.
+    - [Deletion protection](https://www.pulumi.com/docs/esc/administration/deletion-protection/): Prevent accidental deletion of critical environments with deletion protection.
+  - [Comparisons](https://www.pulumi.com/docs/esc/vs/): Learn how Pulumi ESC compares with alternative Environments, Secrets, and Configurations solutions.
+    - [Pulumi ESC vs HashiCorp Vault](https://www.pulumi.com/docs/esc/vs/vault/): Learn about the major differences between Pulumi ESC and HashiCorp Vault.
+    - [Pulumi ESC vs Infisical](https://www.pulumi.com/docs/esc/vs/infisical/): Learn about the major differences between Pulumi ESC and Infisical.
+    - [Pulumi ESC vs Doppler](https://www.pulumi.com/docs/esc/vs/doppler/): Learn about the major differences between Pulumi ESC and Doppler.
+
+## Insights & Governance
+- [Insights & Governance](https://www.pulumi.com/docs/insights/): Discover, secure, and govern cloud infrastructure with comprehensive visibility and policy enforcement across all your resources.
+  - [Discovery](https://www.pulumi.com/docs/insights/discovery/): Discover and manage all your cloud infrastructure with Pulumi Insights Discoveryâscan accounts, explore resources, and gain complete visibility.
+    - [Get Started](https://www.pulumi.com/docs/insights/discovery/get-started/): Learn how to set up and manage Pulumi Insights accounts to gain visibility into your cloud infrastructure.
+      - [Before You Begin](https://www.pulumi.com/docs/insights/discovery/get-started/begin/): This page provides an overview on how to get started with Pulumi Insights Accounts.
+      - [Create an Insights Account](https://www.pulumi.com/docs/insights/discovery/get-started/create-accounts/): This page provides an overview on how to get started with Pulumi Insights Accounts.
+      - [Manage Accounts and Scans](https://www.pulumi.com/docs/insights/discovery/get-started/account-management/): This page provides an overview on how to manage Pulumi Insights Accounts.
+      - [Using Insights Resource Explorer](https://www.pulumi.com/docs/insights/discovery/get-started/using-resource-explorer/): This page provides an overview on how to get started with Pulumi Insights Accounts.
+      - [Using Insights Policies](https://www.pulumi.com/docs/insights/discovery/get-started/add-policies/): Learn how to use Pulumi Policy policies to evaluate cloud resources discovered through Pulumi Insights account discovery.
+    - [Accounts](https://www.pulumi.com/docs/insights/discovery/accounts/): This page describes how to create accounts used by Pulumi Insights to scan provider resources for use within Pulumi Cloud.
+    - [Resource Search](https://www.pulumi.com/docs/insights/discovery/search/): Documentation and query syntax for the Pulumi Insights search feature.
+    - [Visual Import](https://www.pulumi.com/docs/insights/discovery/visual-import/): Use Pulumi Visual Import to convert discovered cloud resources into clean IaC code with a guided 5-step workflowâno manual setup required..
+    - [Data Export](https://www.pulumi.com/docs/insights/discovery/data-export/): Documentation and schema for the Pulumi Insights CSV Data Export feature.
+  - [Policies](https://www.pulumi.com/docs/insights/policy/): Enforce compliance and security across all cloud infrastructure using policy as code with Pulumi Policies, for both IaC stacks and discovered resources.
+    - [Get Started](https://www.pulumi.com/docs/insights/policy/get-started/): Pulumi Policies is a product that provides gated deployments via Policy as Code. Enforce best practices and security compliance when creating cloud resources.
+    - [Policy Packs](https://www.pulumi.com/docs/insights/policy/policy-packs/): Learn how to use Policy Packs to enforce organizational standards and best practices across your Pulumi infrastructure as code.
+      - [Pre-Built Packs](https://www.pulumi.com/docs/insights/policy/policy-packs/pre-built-packs/): Use pre-built policy packs to apply industry-standard compliance and security controls to your cloud infrastructure as code.
+      - [Write your own](https://www.pulumi.com/docs/insights/policy/policy-packs/authoring/): Learn how to write custom policy packs to enforce organization-specific compliance and security controls.
+      - [Policy Metadata](https://www.pulumi.com/docs/insights/policy/policy-packs/metadata/): Policies include metadata that describes their purpose, behavior, and how violations are handled within Pulumi.
+    - [Policy Groups](https://www.pulumi.com/docs/insights/policy/policy-groups/): Learn how to organize and apply policy packs using policy groups to enforce compliance across stacks and cloud accounts.
+    - [Policy Findings](https://www.pulumi.com/docs/insights/policy/policy-findings/): Learn about Policy Findings in Pulumi Policies and how to manage compliance in your cloud infrastructure.
+      - [Snyk Container Scanning](https://www.pulumi.com/docs/insights/policy/integrations/snyk-policy/): Snyk container scanning helps you ensure that your Docker images are secure.
+      - [AWS Organizations Tag Policies](https://www.pulumi.com/docs/insights/policy/integrations/aws-organizations-tag-policies/): Enforce AWS Organizations Tag Policies on infrastructure as code, blocking deployments with missing required tags.
+    - [CLI Reference](https://www.pulumi.com/docs/insights/policy/cli/): Use the pulumi policy CLI commands to create, publish, install, enable, and manage policy packs and policy groups from the command line.
+    - [CI/CD Integration](https://www.pulumi.com/docs/insights/policy/ci-cd/): Enforce Pulumi policies in CI/CD pipelines to automatically block non-compliant infrastructure changes before deployment.
+    - [API & SDK Reference](https://www.pulumi.com/docs/insights/policy/api-reference/): Reference documentation for the Pulumi Policy SDK (TypeScript, Python) and the Pulumi Cloud REST API endpoints for managing policy packs, groups, and results.
+  - [Self-hosted Insights](https://www.pulumi.com/docs/insights/self-hosted/): Run Pulumi Insights discovery scans and policy evaluations in your own environment using customer-managed workflow runners.
+
+## Internal Developer Platform
+- [Internal Developer Platform](https://www.pulumi.com/docs/idp/): Build self-service infrastructure workflows with reusable components, templates, and golden pathsâfrom Day 0 to Day 2.
+  - [Concepts](https://www.pulumi.com/docs/idp/concepts/): Learn about the concepts and components of Pulumi IDP.
+    - [Private Registry](https://www.pulumi.com/docs/idp/concepts/private-registry/): Learn about Pulumi Private Registry for managing infrastructure components and templates.
+    - [Organization templates](https://www.pulumi.com/docs/idp/concepts/organization-templates/): Learn how to build template projects and configure them to work with your Pulumi organization.
+    - [New Project Wizard](https://www.pulumi.com/docs/idp/concepts/new-project-wizard/): Learn how to create new projects from Organization Templates, with Pulumi Deployments configured out-of-the-box.
+    - [No-code stacks](https://www.pulumi.com/docs/idp/concepts/no-code-stacks/): Learn about Pulumi's no-code workflow for deploying infrastructure without writing code.
+    - [Services](https://www.pulumi.com/docs/idp/concepts/services/): Learn about Pulumi Services for organizing and managing infrastructure entities.
+    - [Pulumi Backstage plugin](https://www.pulumi.com/docs/idp/concepts/backstage-plugin/): Learn about the Pulumi Backstage plugin for integrating Pulumi with your developer portal.
+  - [Guides](https://www.pulumi.com/docs/idp/guides/): Guides for building secure, scalable, and flexible developer workflows with Pulumi IDP
+    - [Best Practices](https://www.pulumi.com/docs/idp/guides/best-practices/): Best practices for building secure, scalable, and flexible developer workflows with Pulumi IDP
+      - [Four Factors: Templates, Components, Environments, and Policies](https://www.pulumi.com/docs/idp/guides/best-practices/four-factors/): A framework for building with Pulumi IDP using Templates, Components, Environments, and Policies
+      - [IDP Patterns](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/): Best practices patterns for building secure, scalable, and flexible developer workflows with Pulumi IDP
+        - [IDP Pattern: One ESC environment per service](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/one-esc-environment-per-service/): Use one Pulumi ESC environment per service to maintain clear boundaries and improve security isolation in your Pulumi IDP implementation
+        - [IDP Pattern: One ESC environment per team](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/one-esc-environment-per-team/): Use one Pulumi ESC environment per team to align configuration management with organizational structure in your Pulumi IDP implementation
+        - [IDP Pattern: One ESC environment per lifecycle stage](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/one-esc-environment-per-lifecycle-stage/): Use one Pulumi ESC environment per lifecycle stage to manage configuration across development, staging, and production environments
+        - [IDP Pattern: Composable environments](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/composable-environments/): Use composable Pulumi ESC environments to share configuration across services, teams, and lifecycle stages
+        - [IDP Pattern: Multiple workloads on shared infrastructure](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/multiple-workloads-shared-infrastructure/): Separate application deployment from infrastructure management using components for centrally managed shared infrastructure
+        - [IDP Pattern: Policies as tests](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/policies-as-tests/): Implement governance and compliance requirements using Pulumi policies that run as automated tests
+        - [IDP Pattern: Components using other Components](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/components-using-other-components/): Build complex infrastructure patterns by composing Pulumi components that use other components
+        - [IDP Pattern: Validating Component Inputs using Policy functions](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/validating-component-inputs-using-policy-functions/): Use Pulumi policy functions to validate component inputs and enforce constraints at the component level
+        - [IDP Pattern: Cost control using Components, Policies, and constrained inputs](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/cost-control-using-components-policies-constrained-inputs/): Implement cost control through constrained component inputs, policies, and predefined options
+        - [IDP Pattern: Security Updates using Components](https://www.pulumi.com/docs/idp/guides/best-practices/patterns/security-updates-using-components/): Implement security updates and patches through centralized component management
+    - [Publishing Components from GitHub Actions](https://www.pulumi.com/docs/idp/guides/publishing-from-github-actions/): Learn how to set up automated publishing of Pulumi components from GitHub Actions to your Pulumi Cloud private registry.
+
+## Infrastructure AI
+- [Infrastructure AI](https://www.pulumi.com/docs/ai/): Pulumi Neo enables conversational infrastructure management through natural language interactions with purpose-built automation agents.
+  - [Getting started with Neo](https://www.pulumi.com/docs/ai/get-started/): Learn how to set up Pulumi Neo for your organization and run your first infrastructure task through conversational AI.
+  - [Tasks](https://www.pulumi.com/docs/ai/tasks/): Learn about tasks, the primary entity for interacting with Neo to perform infrastructure operations.
+  - [Pull requests](https://www.pulumi.com/docs/ai/pull-requests/): Learn how Neo creates and manages pull requests to implement infrastructure changes through your existing review process.
+  - [Previews](https://www.pulumi.com/docs/ai/running-previews/): Learn how Neo uses Pulumi preview to validate infrastructure changes before creating pull requests.
+  - [Settings](https://www.pulumi.com/docs/ai/settings/): Configure Neo for your organization with Custom Instructions, Repository Instructions (AGENTS.md), Slash Commands, access controls, and task modes.
+  - [Agent Skills](https://www.pulumi.com/docs/ai/skills/): Learn how to use Pulumi Agent Skills to teach AI coding assistants like Claude Code, Cursor, and GitHub Copilot how to work with Pulumi.
+  - [MCP server](https://www.pulumi.com/docs/ai/mcp-server/): Learn how to use Pulumi's Model Context Protocol (MCP) server to integrate AI assistants like Cursor, Claude Code, and Windsurf with your Pulumi Cloud workflow.
+
+## Administration
+- [Administration](https://www.pulumi.com/docs/administration/): Manage organizations, teams, access control, security, and self-hosted deployments.
+  - [Organizations & Teams](https://www.pulumi.com/docs/administration/organizations-teams/): Manage organizations, teams, user accounts, and billing in Pulumi Cloud.
+    - [Accounts](https://www.pulumi.com/docs/administration/organizations-teams/accounts/): Learn how to create and configure accounts in the Pulumi Cloud in this guide.
+    - [Organizations](https://www.pulumi.com/docs/administration/organizations-teams/organizations/): Organizations are a space for you to collaborate on shared projects and stacks. Learn more about how Organizations work in the Pulumi Cloud.
+    - [Billing managers](https://www.pulumi.com/docs/administration/organizations-teams/billing-managers/): The Billing Manager role gives customers the ability to have someone in their Pulumi Organization manage billing operations. Learn more about this role here.
+  - [Setting Up Pulumi for Your Organization](https://www.pulumi.com/docs/administration/onboarding-guide/): Learn how to onboard your entire team to Pulumi, and build out your infrastructure platform, with built-in security, best practices, and compliance.
+    - [Select the right model and subscription](https://www.pulumi.com/docs/administration/onboarding-guide/choose-subscription/): Understanding your deployment options, subscription tiers, and support needs to help you choose the right approach for your organization.
+    - [Ways of working](https://www.pulumi.com/docs/administration/onboarding-guide/ways-of-working/): Key decisions around team structure, project organization, and collaboration workflows.
+    - [Setting up for success](https://www.pulumi.com/docs/administration/onboarding-guide/setting-up-for-success/): Make key decisions about security, testing strategies, and code reusability that will set your team up for success.
+    - [Migrating to Pulumi](https://www.pulumi.com/docs/administration/onboarding-guide/migrating-to-pulumi/): Focus on building momentum with early wins while establishing practices that will scale with your organization.
+  - [Access & Identity](https://www.pulumi.com/docs/administration/access-identity/): Manage access control, authentication, and identity management across Pulumi Cloud.
+    - [Role-Based Access Control (RBAC)](https://www.pulumi.com/docs/administration/access-identity/rbac/): Learn about role-based access control in Pulumi Cloud and how it helps manage access to resources
+      - [Teams](https://www.pulumi.com/docs/administration/access-identity/rbac/teams/): Learn about teams in Pulumi Cloud and how they help manage access to resources
+      - [Roles](https://www.pulumi.com/docs/administration/access-identity/rbac/roles/): Learn about roles in Pulumi Cloud and how they control access to resources
+      - [Permission sets](https://www.pulumi.com/docs/administration/access-identity/rbac/permission-sets/): Learn about permission sets in Pulumi Cloud and how they control access to resources
+      - [Scopes](https://www.pulumi.com/docs/administration/access-identity/rbac/scopes/): Learn about scopes in Pulumi Cloud and how they control access to resources
+        - [RBAC Scopes: Environments](https://www.pulumi.com/docs/administration/access-identity/rbac/scopes/environments/): Learn about the available RBAC scopes in Pulumi Cloud.
+        - [RBAC Scopes: Insights accounts](https://www.pulumi.com/docs/administration/access-identity/rbac/scopes/insights-accounts/): Learn about the available RBAC scopes in Pulumi Cloud.
+        - [RBAC Scopes: Organization settings](https://www.pulumi.com/docs/administration/access-identity/rbac/scopes/org-settings/): Learn about the available RBAC scopes in Pulumi Cloud.
+        - [RBAC Scopes](https://www.pulumi.com/docs/administration/access-identity/rbac/scopes/stacks/): Learn about the available RBAC scopes in Pulumi Cloud.
+    - [Stack permissions](https://www.pulumi.com/docs/administration/access-identity/stack-permissions/): Learn how to manage fine-grained access controls for stacks in the Pulumi Cloud.
+    - [Access tokens](https://www.pulumi.com/docs/administration/access-identity/access-tokens/): Learn about the various types of access tokens for the Pulumi Cloud.
+    - [OpenID client](https://www.pulumi.com/docs/administration/access-identity/oidc-client/): This page provides an overview of how to configure OpenID Connect integration between third party OIDC Providers and Pulumi.
+      - [Github](https://www.pulumi.com/docs/administration/access-identity/oidc-client/github/): This page describes how to configure Pulumi to accept Github OIDC tokens
+      - [Gitlab](https://www.pulumi.com/docs/administration/access-identity/oidc-client/gitlab/): This page describes how to configure Pulumi to accept Gitlab OIDC tokens
+      - [Elastic Kubernetes Service (EKS) | OIDC](https://www.pulumi.com/docs/administration/access-identity/oidc-client/kubernetes-eks/): This page describes how to configure Pulumi to accept Elastic Kubernetes Service (EKS) OIDC tokens
+      - [Google Kubernetes Engine](https://www.pulumi.com/docs/administration/access-identity/oidc-client/kubernetes-gke/): This page describes how to configure Pulumi to accept Google Kubernetes Engine OIDC tokens
+    - [SAML(SSO)](https://www.pulumi.com/docs/administration/access-identity/saml/): This page provides an overview of how to configure any SAML 2.0 identity provider with Pulumi Cloud.
+      - [Using SAML](https://www.pulumi.com/docs/administration/access-identity/saml/sso/): This page provides a walkthrough important aspects of configuring any SAML (Security Assertion Markup Language) 2.0 identity provider.
+      - [Auth0](https://www.pulumi.com/docs/administration/access-identity/saml/auth0/): Configuring Auth0 as a SAML SSO identity provider (IDP).
+      - [Microsoft Entra ID](https://www.pulumi.com/docs/administration/access-identity/saml/entra/): This page provides a walkthrough important aspects of configuring Entra ID as a SAML SSO identity provider (IDP).
+      - [Google Workspace](https://www.pulumi.com/docs/administration/access-identity/saml/gsuite/): This page provides a walkthrough important aspects of configuring Google Workspace as a SAML SSO identity provider (IDP).
+      - [Okta](https://www.pulumi.com/docs/administration/access-identity/saml/okta/): This page provides a walkthrough important aspects of configuring Okta as a SAML SSO identity provider (IdP).
+      - [OneLogin](https://www.pulumi.com/docs/administration/access-identity/saml/onelogin/): This page provides a walkthrough important aspects of configuring OneLogin as a SAML SSO identity provider (IdP).
+      - [SAML admin](https://www.pulumi.com/docs/administration/access-identity/saml/saml-admin/): Learn about the SAML admin role and how to configure it in Pulumi Cloud.
+      - [Troubleshooting](https://www.pulumi.com/docs/administration/access-identity/saml/troubleshooting/): Troubleshooting guide for SAML SSO configuration issues in Pulumi Cloud.
+    - [SCIM](https://www.pulumi.com/docs/administration/access-identity/scim/): This page provides an overview of how to configure any SCIM 2.0 identity provider with the Pulumi Service.
+      - [Microsoft Entra ID](https://www.pulumi.com/docs/administration/access-identity/scim/entra/): This page describes how to support SCIM 2.0 functionality between Pulumi and Entra ID.
+      - [Okta](https://www.pulumi.com/docs/administration/access-identity/scim/okta/): This page describes how to support SCIM 2.0 functionality between Pulumi and Okta.
+      - [OneLogin](https://www.pulumi.com/docs/administration/access-identity/scim/onelogin/): This page describes how to support SCIM 2.0 functionality between Pulumi and OneLogin.
+    - [Access control](https://www.pulumi.com/docs/esc/administration/access-control/): Pulumi ESC provides granular access control to manage permissions with roles like reader, opener, and editor.
+    - [Configure OpenID authentication with ESC](https://www.pulumi.com/docs/esc/administration/oidc-authentication/): This page provides an overview of how Pulumi ESC can be configured for OIDC authentication with a trusted identity provider.
+  - [Security & Compliance](https://www.pulumi.com/docs/administration/security-compliance/): Manage security, compliance, and audit capabilities in Pulumi Cloud.
+    - [Audit Logs](https://www.pulumi.com/docs/administration/security-compliance/audit-logs/): Pulumiâs audit logs allow you to account for user activity within your organization. Learn how to view, interpret, and export audit logs here.
+    - [Customer Managed Keys](https://www.pulumi.com/docs/administration/security-compliance/customer-managed-keys/): Bring your own encryption keys to protect data within Pulumi Cloud for enhanced security and compliance.
+      - [AWS KMS](https://www.pulumi.com/docs/administration/security-compliance/customer-managed-keys/aws-kms/): Learn how to configure AWS KMS for Pulumi Cloud Customer Managed Keys to enhance security and compliance.
+    - [Approvals](https://www.pulumi.com/docs/esc/administration/approvals/): Require explicit review and sign-off before applying changes or opening ESC-managed environments.
+    - [Audit Logs](https://www.pulumi.com/docs/esc/administration/audit-logs/): Pulumi ESC audit logs allow you to account for user activity within your organization.
+    - [Customer Managed Keys](https://www.pulumi.com/docs/esc/administration/customer-managed-keys/): Bring your own encryption keys to protect data within Pulumi Cloud for enhanced security and compliance.
+  - [Self-hosting](https://www.pulumi.com/docs/administration/self-hosting/): Pulumi Business Critical Edition gives you the option to self-host Pulumi within your organization's infrastructure.
+    - [Deployment options](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/): Self-hosted Pulumi Cloud deployment options for your every day needs.
+      - [Docker Compose](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/quickstart-docker-compose/): Quickstart Docker compose installer for testing of the self-hosted Pulumi Cloud.
+      - [ECS](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/ecs-hosted/): Installer and installation instructions for deploying the self-hosted Pulumi Cloud in ECS.
+      - [EKS](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/eks-hosted/): Installer and installation instructions for deploying the self-hosted Pulumi Cloud in EKS.
+      - [AKS](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/aks-hosted/): Installer and installation instructions for deploying the self-hosted Pulumi Cloud in AKS.
+      - [GKE](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/gke-hosted/): Installer and installation instructions for deploying the self-hosted Pulumi Cloud on Google Kubernetes Engine (GKE).
+      - [Local-Docker](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/local-docker/): Installer and installation instructions for deploying the self-hosted Pulumi Cloud in docker.
+      - [Bring-your-own infra](https://www.pulumi.com/docs/administration/self-hosting/deployment-options/byo-infra-hosted/): Installer and installation instructions for deploying the self-hosted Pulumi Cloud on your own K8s, MySQL and S3-compatible infrastructure.
+    - [Components](https://www.pulumi.com/docs/administration/self-hosting/components/): The Pulumi Cloud container images page links and docker hub links.
+      - [Pulumi API](https://www.pulumi.com/docs/administration/self-hosting/components/api/): Pulumi API is one of the components required for self-hosting the Pulumi Cloud. Self-hosting is available as part of the Pulumi Business Critical Edition.
+      - [Pulumi console](https://www.pulumi.com/docs/administration/self-hosting/components/console/): Pulumi console is one of the components required for self-hosting Pulumi. Self-hosting is available as part of the Pulumi Business Critical Edition.
+      - [OpenSearch cluster](https://www.pulumi.com/docs/administration/self-hosting/components/search/): An OpenSearch cluster is required for Resource Search features. Self-hosting is available as part of the Pulumi Business Critical Edition.
+      - [Deployments](https://www.pulumi.com/docs/administration/self-hosting/components/deployments/): Deployments are available on Self-hosting. Self-hosting is available as part of the Pulumi Business Critical Edition.
+    - [Self-hosting](https://www.pulumi.com/docs/esc/administration/self-hosting/): Pulumi Business Critical Edition gives you the option to self-host Pulumi within your organization's infrastructure.
+    - [SAML SSO](https://www.pulumi.com/docs/administration/self-hosting/saml-sso/): Learn how to make the self-hosted Pulumi ready for SAML SSO with any IdP. Self-hosting is available as part of the Enterprise Edition.
+    - [Network reqs](https://www.pulumi.com/docs/administration/self-hosting/network/): The Pulumi Cloud networking ingress and egress information.
+    - [Air-Gapped](https://www.pulumi.com/docs/administration/self-hosting/airgapped/): Learn how to deploy Pulumi self-hosted into air-gapped environments.
+    - [Changelog](https://www.pulumi.com/docs/administration/self-hosting/changelog/): Changes related to the self-hosted version of Pulumi Cloud.
+
+## Reference
+- [Reference](https://www.pulumi.com/docs/reference/): Complete reference documentation for Pulumi CLI, Cloud REST API, language SDKs, and configuration syntax.
+    - [Pulumi CLI](https://www.pulumi.com/docs/iac/cli/): An overview of the Pulumi CLI and common commands used to deploy cloud applications.
+    - [ESC CLI](https://www.pulumi.com/docs/esc/cli/): An overview of the Pulumi ESC (Environments, Secrets, and Configuration) CLI.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/aws/): Complete list of CIS 8.1 compliance policies for AWS.
+      - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/azure/): Complete list of CIS 8.1 compliance policies for Azure.
+      - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/google-cloud/): Complete list of CIS 8.1 compliance policies for Google Cloud.
+      - [AWS (EKS)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/aws/): Complete list of CIS Kubernetes Benchmark compliance policies for AWS EKS.
+      - [Azure (AKS)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/azure/): Complete list of CIS Kubernetes Benchmark compliance policies for Azure AKS.
+      - [Google Cloud (GKE)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/google-cloud/): Complete list of CIS Kubernetes Benchmark compliance policies for Google Cloud GKE.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/aws/): Complete list of HITRUST CSF 11.5 compliance policies for AWS.
+      - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/azure/): Complete list of HITRUST CSF 11.5 compliance policies for Azure.
+      - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/google-cloud/): Complete list of HITRUST CSF 11.5 compliance policies for Google Cloud.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/nist/aws/): Complete list of NIST SP 800-53 compliance policies for AWS.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pci-dss/aws/): Complete list of PCI DSS v4.0.1 compliance policies for AWS.
+    - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/aws-organizations-tag-policies/aws/): AWS Organizations Tag Policies pack enforces tag policies configured in AWS Organizations.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/aws/): Complete list of Pulumi Best Practices compliance policies for AWS.
+      - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/azure/): Complete list of Pulumi Best Practices compliance policies for Azure.
+      - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/google-cloud/): Complete list of Pulumi Best Practices compliance policies for Google Cloud.
+  - [Pulumi Cloud REST API](https://www.pulumi.com/docs/reference/cloud-rest-api/): Learn how to interact with Pulumi Cloud programmatically using the REST API for automation and integration.
+    - [API Basics](https://www.pulumi.com/docs/reference/cloud-rest-api/api-basics/): Learn about the Pulumi Cloud REST API endpoint, authentication, and required headers for making API requests.
+    - [Audit Logs](https://www.pulumi.com/docs/reference/cloud-rest-api/audit-logs/): Learn about the Pulumi Cloud REST API endpoints for retrieving and exporting audit log events.
+    - [Data Export](https://www.pulumi.com/docs/reference/cloud-rest-api/data-export/): Learn about the Pulumi Cloud REST API endpoints for exporting resource data for further analysis or integration.
+    - [Deployment Runners](https://www.pulumi.com/docs/reference/cloud-rest-api/deployment-runners/): Learn about the Pulumi Cloud REST API endpoints for managing deployment runner pools for private environments.
+    - [Deployments](https://www.pulumi.com/docs/reference/cloud-rest-api/deployments/): Learn about the Pulumi Cloud REST API endpoints for configuring and managing Pulumi Deployments to automate infrastructure updates.
+    - [Neo](https://www.pulumi.com/docs/reference/cloud-rest-api/neo/): Learn about the Pulumi Cloud REST API endpoints for initiating and fetch tasks.
+    - [Environments](https://www.pulumi.com/docs/reference/cloud-rest-api/environments/): Learn about the Pulumi Cloud REST API endpoints for managing Pulumi ESC (Environments, Secrets, and Configuration).
+    - [Insights Accounts](https://www.pulumi.com/docs/reference/cloud-rest-api/insight-accounts/): Learn about the Pulumi Cloud REST API endpoints for managing Pulumi Insights accounts and integrations with cloud providers.
+    - [OAuth Token Exchange](https://www.pulumi.com/docs/reference/cloud-rest-api/oauth-token-exchange/): Learn about the Pulumi Cloud REST API endpoints for exchanging external tokens for Pulumi access tokens.
+    - [OIDC Issuers](https://www.pulumi.com/docs/reference/cloud-rest-api/oidc-issuers/): Learn about the Pulumi Cloud REST API endpoints for managing OpenID Connect (OIDC) issuers for authentication with Pulumi Cloud.
+    - [Organizations](https://www.pulumi.com/docs/reference/cloud-rest-api/organizations/): Learn about the Pulumi Cloud REST API endpoints for managing organizations, teams, members, and organization-level access tokens.
+    - [Personal Access Tokens](https://www.pulumi.com/docs/reference/cloud-rest-api/personal-access-tokens/): Learn about the Pulumi Cloud REST API endpoints for managing personal access tokens used for authentication.
+    - [Policy Groups](https://www.pulumi.com/docs/reference/cloud-rest-api/policy-groups/): Learn about the Pulumi Cloud REST API endpoints for managing policy groups that enforce governance rules across stacks.
+    - [Policy Packs](https://www.pulumi.com/docs/reference/cloud-rest-api/policy-packs/): Learn about the Pulumi Cloud REST API endpoints for managing policy packs that define governance rules for infrastructure deployments.
+    - [Policy Results](https://www.pulumi.com/docs/reference/cloud-rest-api/policy-results/): Learn about the Pulumi Cloud REST API endpoints for retrieving and analyzing policy evaluation results.
+    - [Registry](https://www.pulumi.com/docs/reference/cloud-rest-api/registry/): Learn about the Pulumi Cloud REST API endpoints for interacting with the Pulumi Registry to access and publish packages and templates.
+    - [Resource Search](https://www.pulumi.com/docs/reference/cloud-rest-api/resource-search/): Learn about the Pulumi Cloud REST API endpoints for searching and querying resources managed by Pulumi across your organization.
+    - [Resources Under Management](https://www.pulumi.com/docs/reference/cloud-rest-api/resources-under-management/): Learn about the Pulumi Cloud REST API endpoints for retrieving information about the volume and history of resources managed through Pulumi.
+    - [Schedules](https://www.pulumi.com/docs/reference/cloud-rest-api/schedules/): Learn about the Pulumi Cloud REST API endpoints for managing scheduled operations on Pulumi stacks.
+    - [Services](https://www.pulumi.com/docs/reference/cloud-rest-api/services/): Learn about the Pulumi Cloud REST API endpoints for managing services that group related resources together.
+    - [Stack Config](https://www.pulumi.com/docs/reference/cloud-rest-api/stack-config/): Learn about the Pulumi Cloud REST API endpoints for managing stack config.
+    - [Stack Policy](https://www.pulumi.com/docs/reference/cloud-rest-api/stack-policy/): Learn about the Pulumi Cloud REST API endpoints for managing policy enforcement on Pulumi stacks.
+    - [Stack Tags](https://www.pulumi.com/docs/reference/cloud-rest-api/stack-tags/): Learn about the Pulumi Cloud REST API endpoints for managing stack tags and metadata.
+    - [Stack Updates](https://www.pulumi.com/docs/reference/cloud-rest-api/stack-updates/): Learn about the Pulumi Cloud REST API endpoints for managing and monitoring stack update operations.
+    - [Stacks](https://www.pulumi.com/docs/reference/cloud-rest-api/stacks/): Learn about the Pulumi Cloud REST API endpoints for creating, reading, updating, and deleting Pulumi stacks.
+    - [Webhooks](https://www.pulumi.com/docs/reference/cloud-rest-api/webhooks/): Learn about the Pulumi Cloud REST API endpoints for creating and managing webhooks for organizations and stacks.
+  - [Property Paths](https://www.pulumi.com/docs/reference/property-paths/): Property Paths are used to refer to elements in a configuration object.
+
+## Support
+- [Support & Troubleshooting](https://www.pulumi.com/docs/support/): Get help with Pulumi through FAQs, troubleshooting guides, community resources, and support options.
+  - [Troubleshooting](https://www.pulumi.com/docs/support/troubleshooting/): Comprehensive troubleshooting guides for common issues with Pulumi infrastructure, deployments, and configuration.
+    - [CI/CD Troubleshooting](https://www.pulumi.com/docs/support/troubleshooting/ci-cd/): This page walks through the common failures encountered while running Pulumi in CI/CD, as well as tips on how to fix them.
+    - [Common issues](https://www.pulumi.com/docs/support/troubleshooting/common-issues/): Guide to fixing specific problems that may arise in Pulumi programs.
+      - [Update conflicts](https://www.pulumi.com/docs/support/troubleshooting/common-issues/update-conflicts/): Learn how to resolve 409 conflict errors when another update is currently in progress.
+      - [Server errors](https://www.pulumi.com/docs/support/troubleshooting/common-issues/server-errors/): Learn how to handle 500 Internal server errors when using Pulumi Cloud.
+      - [Post-step event errors](https://www.pulumi.com/docs/support/troubleshooting/common-issues/post-step-errors/): Learn how to handle post-step event errors and determine if you've encountered a bug in Pulumi.
+      - [Connection issues](https://www.pulumi.com/docs/support/troubleshooting/common-issues/connection-issues/): Learn how to resolve connection issues when using Pulumi Cloud, including network proxy problems.
+      - [Destroy failures](https://www.pulumi.com/docs/support/troubleshooting/common-issues/destroy-failures/): Learn how to handle scenarios when pulumi destroy fails to delete resources as expected.
+      - [Interrupted updates](https://www.pulumi.com/docs/support/troubleshooting/common-issues/interrupted-updates/): Learn how to recover when the Pulumi CLI is interrupted during a deployment.
+      - [macOS Architecture Mismatch](https://www.pulumi.com/docs/support/troubleshooting/common-issues/architecture-mismatch/): Learn how to diagnose and fix Pulumi crashes or hangs on Apple Silicon Macs caused by x86_64 binaries running under Rosetta 2.
+    - [Editing state files](https://www.pulumi.com/docs/support/troubleshooting/editing-state-files/): Learn how to safely edit Pulumi state files when necessary
+    - [Using Dev Builds for Unreleased Fixes](https://www.pulumi.com/docs/support/troubleshooting/using-dev-builds/): Learn how to install and use Pulumi dev builds to access bug fixes and features that have been merged but not yet released.
+  - [Debugging](https://www.pulumi.com/docs/support/debugging/): Tools and techniques for diagnosing and fixing Pulumi programs.
+    - [Logging](https://www.pulumi.com/docs/support/debugging/logging/): Learn about logging in Pulumi including CLI verbose logging for troubleshooting and program logging for diagnostics.
+    - [Attaching a debugger](https://www.pulumi.com/docs/support/debugging/debugger-attachment/): Guide to attaching a debugger to Pulumi programs and stepping through the code.
+    - [Performance and tracing](https://www.pulumi.com/docs/support/debugging/performance-tracing/): Learn how to trace Pulumi deployments to understand performance bottlenecks and optimize your infrastructure deployments.
+    - [Debugging providers](https://www.pulumi.com/docs/support/debugging/debugging-providers/): Learn the process for debugging Pulumi providers locally.
+  - [Frequently Asked Questions](https://www.pulumi.com/docs/support/faq/): Frequently asked questions about using Pulumi across infrastructure, secrets, policies, and platform features.
+    - [Infrastructure FAQ](https://www.pulumi.com/docs/support/faq/infrastructure/): A collection of Frequently Asked Questions (FAQ) about Pulumi IaC.
+    - [Secrets & Configuration FAQ](https://www.pulumi.com/docs/support/faq/secrets-config/): Frequently asked questions about Pulumi ESC, pricing and roadmap.
+    - [Policies FAQ](https://www.pulumi.com/docs/support/faq/policies/): This page contains Frequently Asked Questions about Pulumi Policies and Policy Packs.
+    - [SCIM FAQ](https://www.pulumi.com/docs/support/faq/scim/): This page describes how to resolve issues that may occur when configuring SCIM provisioning
+    - [Frequently Asked Questions](https://www.pulumi.com/docs/support/pulumi-cloud-faq/): A collection of Frequently Asked Questions (FAQ) about Pulumi Cloud.
+  - [Filing GitHub Issues](https://www.pulumi.com/docs/support/filing-issues/): Learn how to file bugs and feature requests in the correct Pulumi repository for faster resolution.
+
+## Tutorials
+
+- [Abstracting Pulumi Code](https://www.pulumi.com/tutorials/abstraction-encapsulation/abstraction/): In this tutorial, we'll cover the concept of abstraction and how to abstract Pulumi code into reusable classes, models, and objects.
+- [Create a Custom Policy Pack](https://www.pulumi.com/tutorials/custom-policy-pack/create-policy-pack/): Create a custom policy pack using Pulumi Crossguard.
+- [Creating Pulumi Projects](https://www.pulumi.com/tutorials/pulumi-fundamentals/create-a-pulumi-project/): Learn how to get started with Pulumi by creating your first Pulumi project using the Pulumi CLI in this tutorial.
+- [Getting Started](https://www.pulumi.com/tutorials/embedding-pulumi/getting-started/): Learn how to set up your local system to start building a working example of the Pulumi Automation API in this tutorial.
+- [Pulumi Fundamentals](https://www.pulumi.com/tutorials/pulumi-fundamentals/): Learn how to use Pulumi to build, configure, and deploy a real-life, modern application in this starter tutorial.
+- [Understanding Stacks](https://www.pulumi.com/tutorials/building-with-pulumi/understanding-stacks/): Learn what a stack is, how stacks work within Pulumi, and how to create, list, and select stacks in this tutorial.
+- [Building a Custom API](https://www.pulumi.com/tutorials/embedding-pulumi/building-api/): Learn how to use the Pulumi Automation API to create a custom API for your infrastructure in this tutorial.
+- [Building with Pulumi](https://www.pulumi.com/tutorials/building-with-pulumi/): Learn how to create multiple Pulumi programs and work with them interdependently with this tutorial.
+- [Creating Docker Images](https://www.pulumi.com/tutorials/pulumi-fundamentals/create-docker-images/): Learn how to use Pulumi and the Docker provider to create Docker images locally in this tutorial.
+- [Understanding Encapsulation](https://www.pulumi.com/tutorials/abstraction-encapsulation/encapsulation/): Learn what encapsulation is in the context of infrastructure as code, why it is crucial for maintaining good IaC, and what encapsulation looks like in practice.
+- [Understanding Stack Outputs](https://www.pulumi.com/tutorials/building-with-pulumi/stack-outputs/): Learn what stack outputs are, how to retrieve stack outputs using the Pulumi CLI, and how to configure a stack in this tutorial.
+- [Validate a Custom Policy Pack](https://www.pulumi.com/tutorials/custom-policy-pack/validate-policy-pack/): Validate a custom policy pack using Pulumi Crossguard.
+- [Working with Secrets](https://www.pulumi.com/tutorials/building-with-pulumi/secrets/): Learn how secrets work within Pulumi and how to access secrets with this tutorial.
+- [Abstraction and Encapsulation](https://www.pulumi.com/tutorials/abstraction-encapsulation/): In this tutorial, we will explore using Pulumi to abstract and encapsulate your resource definitions as reusable models for others to use.
+- [Building a Component Resource](https://www.pulumi.com/tutorials/abstraction-encapsulation/component-resources/): Learn how to build a component resource, or a logical grouping of code that Pulumi recognizes as a resource, in this tutorial.
+- [Configuring and Provisioning Containers](https://www.pulumi.com/tutorials/pulumi-fundamentals/configure-and-provision/): Learn how to configure and provision your first containers locally with Pulumi in this tutorial.
+- [Publish and Enforce a Custom Policy Pack](https://www.pulumi.com/tutorials/custom-policy-pack/publish-and-enforce-policy-pack/): Publish and enforce a custom policy pack using Pulumi Crossguard.
+- [Understanding Logging and Error Handling](https://www.pulumi.com/tutorials/embedding-pulumi/considerations/): Learn why it is important to consider logging and error handling when using the Automation API in this tutorial.
+- [Understanding Stack References](https://www.pulumi.com/tutorials/building-with-pulumi/stack-references/): Learn what stack references are, how they differ from stack outputs, and how to share stack outputs from one Pulumi program to another in this tutorial.
+- [Embedding Pulumi](https://www.pulumi.com/tutorials/embedding-pulumi/): In this tutorial, we will explore how to use Pulumi to build an infrastructure API for deployment and maintenance.
+- [Using the Custom API](https://www.pulumi.com/tutorials/embedding-pulumi/using-the-api/): Learn how to use the custom API you've built in the previous modules and explore other uses of the Automation API in this tutorial.
+- [Creating a Custom Policy Pack](https://www.pulumi.com/tutorials/custom-policy-pack/): Learn how to enforce compliance and security requirements by creating a custom policy pack with Pulumi Crossguard using Python and TypeScript.
+- [Create Infrastructure with Pulumi Deployments Click-to-Deploy](https://www.pulumi.com/tutorials/pulumi-deployments-click-to-deploy/): In this step-by-step tutorial, learn how to create and manage cloud infrastructure using Pulumi Deployments, the New Project Wizard, and GitHub integration.
+- [Detect and Remediate Infrastructure Drift](https://www.pulumi.com/tutorials/drift-detection-and-remediation/): In this tutorial, learn to detect and remediate infrastructure drift in AWS using Pulumi Deployments and GitHub integration.
+- [ChatGPT clone with Pulumi ESC managed secrets](https://www.pulumi.com/tutorials/esc-managed-chatapp/): Use Pulumi ESC CLI and ESC SDK to manage secrets for a basic OpenAI-based ChatGPT clone.
+- [CLI Authentication](https://www.pulumi.com/tutorials/cli-authentication/): Learn how to authenticare to the Pulumi CLI in this tutorial.
+- [Configure applications dynamically with ESC version tagging](https://www.pulumi.com/tutorials/esc-version-tagging/): Use immutable versioning and dynamic tagging to configure multiple applications safely and easily with Pulumi ESC.
+- [Creating Resources on AWS](https://www.pulumi.com/tutorials/creating-resources-aws/): Learn how to define and provision resources on AWS using Pulumi.
+- [Creating Resources on Azure](https://www.pulumi.com/tutorials/creating-resources-azure/): Learn how to define and provision resources on Azure using Pulumi.
+- [Creating Resources on Google Cloud](https://www.pulumi.com/tutorials/creating-resources-gcp/): Learn how to define and provision resources on Google Cloud using Pulumi.
+- [Creating Resources on Kubernetes](https://www.pulumi.com/tutorials/creating-resources-kubernetes/): Learn how to define and provision resources on Kubernetes using Pulumi.
+- [Evaluate Compliance of Terraform Resources](https://www.pulumi.com/tutorials/eval-compliance-terraform/): Learn how to use Pulumi Insights to evaluate compliance of resources that are deployed with Terraform.
+- [Github actions with Pulumi ESC managed secrets](https://www.pulumi.com/tutorials/esc-github/): Use Pulumi ESC and Github Actions to manage secrets.
+- [Importing AWS Infrastructure](https://www.pulumi.com/tutorials/importing-aws-infrastructure/): Learn how to import existing cloud resources into your Pulumi programs in this tutorial.
+- [Importing Azure Infrastructure](https://www.pulumi.com/tutorials/importing-azure-infrastructure/): Learn how to import existing cloud resources into your Pulumi programs in this tutorial.
+- [Importing Google Cloud Infrastructure](https://www.pulumi.com/tutorials/importing-gcp-infrastructure/): Learn how to import existing cloud resources into your Pulumi programs in this tutorial.
+- [Inspecting Infrastructure](https://www.pulumi.com/tutorials/inspecting-infrastructure/): Learn how to inspect your Pulumi resources in this tutorial.
+- [Install Helm Charts using the Chart resource](https://www.pulumi.com/tutorials/kubernetes-helm-part-two/): Using Pulumi to install Helm Charts on Kubernetes is a great way to manage to install third-party applications on your Kubernetes cluster.
+- [Install Helm Charts using the Release resource](https://www.pulumi.com/tutorials/kubernetes-helm-part-one/): Using Pulumi to install Helm Charts on Kubernetes is a great way to manage to install third-party applications on your Kubernetes cluster.
+- [Integrate Pulumi with Secret Store CSI Driver in Kubernetes](https://www.pulumi.com/tutorials/esc-secret-store-csi-driver/): Learn how to integrate the Secret Store CSI Driver with Pulumi ESC to securely manage your secrets in Kubernetes.
+- [Integrate with External Secrets Operator (ESO)](https://www.pulumi.com/tutorials/esc-external-secret-operator/): Pulumi ESC integrates with the External Secrets Operator (ESO) to manage and deliver secrets in Kubernetes clusters.
+- [Managing Configuration and Secrets](https://www.pulumi.com/tutorials/managing-config-and-secrets/): Learn how to manage plain-text and encrypted configuration values in Pulumi.
+- [Move Resources Between Stacks](https://www.pulumi.com/tutorials/move-resources-between-stacks/): Learn how to move resources between stacks or projects.
+- [Reference AWS Resources Across Stacks](https://www.pulumi.com/tutorials/stack-outputs-refs-aws/): Learn more about exporting and referencing stack outputs in Pulumi.
+- [Reference Azure Resources Across Stacks](https://www.pulumi.com/tutorials/stack-outputs-refs-azure/): Learn more about exporting and referencing stack outputs in Pulumi.
+- [Reference Google Cloud Resources Across Stacks](https://www.pulumi.com/tutorials/stack-outputs-refs-gcp/): Learn more about exporting and referencing stack outputs in Pulumi.
+- [Secure Kubernetes Application Secrets with Pulumi ESC](https://www.pulumi.com/tutorials/secure-kubernetes-app-secrets-with-esc/): Learn how to securely manage application secrets and configurations in a Kubernetes environment using Pulumi ESC.
+- [Setup Pulumi Service Provider using ESC](https://www.pulumi.com/tutorials/esc-setup-psp-creds/): Create an ESC Environment to store your Pulumi Service Provider credentials and easily re-use them across your IaC stacks.
+- [AWS Lambda](https://www.pulumi.com/tutorials/glossary/aws-lambda/): AWS Lambda is a serverless platform that allows for the execution of code or containers without the need to provision infrastructure yourself.
+- [Azure Kubernetes Service](https://www.pulumi.com/tutorials/glossary/msft-aks/): AKS is a managed container orchestration tool on Microsoft Azure, allowing for the deployment and automated management of containerized applications.
+- [Column Oriented Database](https://www.pulumi.com/tutorials/glossary/column-oriented/): A column-oriented database is a type of NoSQL database that stores its data in columns, rather than by columns and rows in a traditional relational database.
+- [Database Cache](https://www.pulumi.com/tutorials/glossary/cache-database/): A database cache is supplementary to your primary database and exists to radically speed up read access to frequently-queried data.
+- [Document Oriented Database](https://www.pulumi.com/tutorials/glossary/document-oriented/): A documented-oriented database is a class of NoSQL database that stores and queries data in the form of documents, usually JSON.
+- [Elastic Container Service](https://www.pulumi.com/tutorials/glossary/aws-ecs/): AWS ECS is a managed container orchestration tool that allows for the deployment and automated management of containerized applications.
+- [Elastic Kubernetes Service](https://www.pulumi.com/tutorials/glossary/aws-eks/): AWS EKS is a managed Kubernetes service that allows you to run your containerized workloads on Kubernetes without the overhead of managing it yourself.
+- [Fargate](https://www.pulumi.com/tutorials/glossary/aws-fargate/): AWS Fargate is a serverless compute product from AWS, designed for use with containerized workloads.
+- [Glossary of Cloud Engineering Terms](https://www.pulumi.com/tutorials/glossary/): Cloud Engineering encompasses many technologies, tools, abbreviations, and abstractions. Here is a list of definitions for common cloud computing terms.
+- [Google Kubernetes Engine](https://www.pulumi.com/tutorials/glossary/gcp-gke/): GKE is a managed container orchestration tool on Google Cloud that allows for the deployment and automated management of containerized applications.
+- [Graph Oriented Database](https://www.pulumi.com/tutorials/glossary/graph-oriented/): A graph-oriented database is a type of NoSQL database that relies on the graph data structure to define and manage relationships between different entries.
+- [Key-Value Oriented Database](https://www.pulumi.com/tutorials/glossary/key-value/): A key-value oriented database is a type of NoSQL database that relies on a key-value structure like a dictionary or hash table to store and retrieve data.
+- [Managed Kubernetes Service](https://www.pulumi.com/tutorials/glossary/managed-kubernetes/): A managed Kubernetes service is a Kubernetes platform where some or all of the responsibility for setup and maintenance lies with a third-party provider.
+- [NoSQL](https://www.pulumi.com/tutorials/glossary/nosql/): NoSQL is a type of database that organizes data into some data structure other than the two-dimensional tables seen in relational databases.
+- [Pulumi Tutorials](https://www.pulumi.com/tutorials/): Hands-on guides to help you get the most out of Pulumi.
+
+## Resources
+
+### Recent Blog Posts
+- [New: Previous Provider Version Docs in Pulumi Registry](https://www.pulumi.com/blog/previous-version-docs-are-now-available-in-the-pulumi-registry/): The Pulumi Registry now includes documentation for previous provider versions, making it easier to find the right docs for the version you're using.
+- [Pulumi Cloud Now Supports Google Sign-In](https://www.pulumi.com/blog/pulumi-cloud-now-supports-google-sign-in/): Pulumi Cloud now supports Google as an identity provider, letting you sign in, sign up, and link your Google account alongside GitHub, GitLab, and Atlassian.
+- [Treating Prompts Like Code: A Content Engineer's AI Workflow](https://www.pulumi.com/blog/treating-prompts-like-code/): How I built a modular AI workflow system to scale a solo docs practice â treating prompts like code, with reusable skills, shared context, and CI/CD.
+- [Expanded Version Control Support in Pulumi Cloud](https://www.pulumi.com/blog/expanded-version-control-support/): Deploy on every push, preview infrastructure on pull requests, and let Neo explain changes, all from Pulumi Cloud, regardless of where your code lives.
+- [Now in Public Preview: Store Terraform State in Pulumi Cloud](https://www.pulumi.com/blog/terraform-state-backend-pulumi-cloud/): Pulumi Cloud now serves as a Terraform state backend with encrypted state, audit policies, and unified resource visibility â no workflow changes required.
+- [Now GA: Up to 20x Faster Pulumi Operations for Everyone](https://www.pulumi.com/blog/journaling-ga/): A major performance enhancement is now on by default for all Pulumi Cloud organizations. Faster operations, less network traffic, no opt-in required.
+- [Token Efficiency vs Cognitive Efficiency: Choosing IaC for AI Agents](https://www.pulumi.com/blog/token-efficiency-vs-cognitive-efficiency-choosing-iac-for-ai-agents/): We benchmarked Terraform HCL and Pulumi TypeScript across two LLMs. HCL uses fewer tokens, but Pulumi's total pipeline cost is 41% lower.
+- [Run Pulumi Insights on Your Own Infrastructure](https://www.pulumi.com/blog/self-hosted-insights/): Run Pulumi Insights discovery scans and policy evaluations on your own infrastructure with customer-managed workflow runners.
+- [How We Built a Distributed Work Scheduling System for Pulumi Cloud](https://www.pulumi.com/blog/how-we-built-a-distributed-work-scheduling-system-for-pulumi-cloud/): A look inside the distributed scheduling system that powers Pulumi Cloud's workflow runners across hosted and self-managed infrastructure.
+- [New in Pulumi IaC: `onError` Resource Hook](https://www.pulumi.com/blog/handling-deployment-errors/): You can now use the `onError` resource hook to control the retry behavior of failing resource registrations
+- [How We Load Data into Snowflake in Seconds with Pulumi](https://www.pulumi.com/blog/near-real-time-data-loading-snowflake-pulumi/): Learn how we load data into Snowflake in seconds using Firehose direct streaming and reusable Pulumi ComponentResources.
+- [GitOps Best Practices I Wish I Had Known Before](https://www.pulumi.com/blog/gitops-best-practices-i-wish-i-had-known-before/): Essential GitOps best practices from production experience. Avoid common pitfalls, bridge IaC with GitOps, and streamline Kubernetes deployments.
+
+- [Passwordless PostgreSQL: IAM Authentication with Pulumi](https://www.pulumi.com/blog/setting-up-iam-authentication-for-postgres-on-aws/): Secure your PostgreSQL databases with IAM authentication. Eliminate password rotation, simplify access control, and build reusable infrastructure.
+- [Introducing the Terraform State Provider for Pulumi ESC](https://www.pulumi.com/blog/esc-terraform-state-provider/): The terraform-state provider for Pulumi ESC lets you read outputs from Terraform state files directly into your ESC environments.
+- [Schema Validation Comes to Pulumi ESC with fn::validate](https://www.pulumi.com/blog/esc-schema-validation-fn-validate/): Validate configuration values against JSON Schema with fn::validate in Pulumi ESC.
+- [Registry usage insights: know which stacks run which versions](https://www.pulumi.com/blog/registry-usage-insights/): See which stacks use which package versions at a glance. Filter by adoption status and track version sprawl across your organization.
+- [Introducing envVarMappings for Provider Credentials](https://www.pulumi.com/blog/new-provider-resource-option-environment-variable-remapping/): Use envVarMappings to run multiple providers with different credentials in the same Pulumi program, no more environment variable conflicts.
+- [How We Built Platybot: An AI-Powered Analytics Assistant](https://www.pulumi.com/blog/how-we-built-platybot-an-ai-powered-analytics-assistant/): How Pulumi built an AI-powered analytics assistant that lets any employee query data using natural language.
+- [The Claude Skills I Actually Use for DevOps](https://www.pulumi.com/blog/top-8-claude-skills-devops-2026/): Skills teach AI agents how to work like experienced practitioners. In this post, we share several skills that can improve how you build cloud infrastructure.
+- [Pulumi Neo Now Supports AGENTS.md](https://www.pulumi.com/blog/pulumi-neo-now-supports-agentsmd/): Neo now reads AGENTS.md files to follow your project conventions automatically, using the same format as Cursor, GitHub Copilot, and other AI coding tools.
+- [Announcing OpenAPI support for the Pulumi Cloud REST API](https://www.pulumi.com/blog/announcing-openapi-support-pulumi-cloud/): The Pulumi Cloud REST API now has an OpenAPI 3.0 specification you can fetch at runtime. Use it for client generation, validation, and discovery.
+- [Neo: Share Tasks for Collaborative AI Infrastructure Operations](https://www.pulumi.com/blog/neo-task-sharing/): Collaborate on infrastructure operations by sharing Neo tasks with teammates for review and assistance.
+- [Pulumi Agent Skills: Best practices and more for AI coding assistants](https://www.pulumi.com/blog/pulumi-agent-skills/): Introducing packaged Pulumi expertise that works across Claude Code, Cursor, GitHub Copilot, and other AI coding assistants.
+- [Manage Cloud Visibility and Governance with Infrastructure as Code](https://www.pulumi.com/blog/pulumi-service-provider-insights-resources/): Discover cloud resources and enforce governance policies with new Pulumi Service Provider resources for visibility and compliance as code.
+- [Deploy OpenClaw on AWS or Hetzner Securely with Pulumi and Tailscale](https://www.pulumi.com/blog/deploy-openclaw-aws-hetzner/): Deploy OpenClaw (formerly Moltbot/Clawdbot), an open-source AI assistant, to AWS and Hetzner using Pulumi with Tailscale for secure private access.
+
+### Templates & Examples
+- [Container Service Templates](https://www.pulumi.com/templates/container-service/): Easily deploy container services on AWS, Azure, or Google Cloud Platform with Pulumi Container Service templates.
+- [Serverless Templates](https://www.pulumi.com/templates/serverless-application/): Easily deploy serverless applications on AWS, Azure, or Google Cloud Platform with Pulumi Serverless Application templates.
+- [Static Website Templates](https://www.pulumi.com/templates/static-website/): Easily deploy static HTML websites on AWS, Azure, or Google Cloud Platform with Pulumi Static Website templates.
+- [Virtual Machine Templates](https://www.pulumi.com/templates/virtual-machine/): Easily deploy virtual machines (VMs) on AWS, Azure, or Google Cloud Platform with Pulumi Virtual Machine templates.
+- [Kubernetes Cluster Templates](https://www.pulumi.com/templates/kubernetes/): Easily deploy Kubernetes clusters and their associated infrastructure on AWS, Azure, or Google Cloud Platform with Pulumi K8s templates.
+- [Kubernetes Application Templates](https://www.pulumi.com/templates/kubernetes-application/): Instantly deploy Kubernetes web applications on AWS, Azure, or Google Cloud Platform with Pulumi Kubernetes Application templates.
+- [AWS Serverless Application](https://www.pulumi.com/templates/serverless-application/aws/): Easily deploy a serverless application on AWS with Pulumi, AWS Lambda, and Amazon API Gateway using this template.
+- [AWS Static Website](https://www.pulumi.com/templates/static-website/aws/): Easily deploy a static HTML website on Amazon Web Services (AWS) with Pulumi, Amazon S3, and Amazon CloudFront using this template.
+- [Azure Serverless Application](https://www.pulumi.com/templates/serverless-application/azure/): Easily deploy a serverless application on Azure with Pulumi, Azure Functions, and Azure Blob Storage using this template.
+- [Azure Static Website](https://www.pulumi.com/templates/static-website/azure/): Easily deploy a static HTML website on Azure with Pulumi, Azure Blob Storage, and Azure CDN using this template.
+- [Container Service on AWS](https://www.pulumi.com/templates/container-service/aws/): Easily deploy a container service on AWS with Pulumi and Amazon Elastic Container Service (ECS) using this template.
+- [Container Service on Azure](https://www.pulumi.com/templates/container-service/azure/): Easily deploy a container service on Azure with Pulumi and Azure Container Instances (ACI) using this template.
+- [Container Service on Google Cloud](https://www.pulumi.com/templates/container-service/gcp/): Easily deploy a container service on Google Cloud with Pulumi and Google Cloud Run using this template.
+- [Google Cloud Serverless Application](https://www.pulumi.com/templates/serverless-application/gcp/): Easily deploy a serverless application on Google Cloud with Pulumi, Google Cloud Functions, and Google Cloud Storage using this template.
+- [Google Cloud Static Website](https://www.pulumi.com/templates/static-website/gcp/): Easily deploy a static HTML website on Google Cloud with Pulumi, Google Cloud Storage, and Google Cloud CDN using this template.
+- [Helm Chart on Kubernetes](https://www.pulumi.com/templates/kubernetes-application/helm-chart/): Easily deploy a Helm chart to an existing Kubernetes cluster with Pulumi and Helm using this template.
+- [Kubernetes Cluster on AWS](https://www.pulumi.com/templates/kubernetes/aws/): Easily deploy a managed Kubernetes cluster on AWS with Pulumi and Amazon EKS using this template.
+- [Kubernetes Cluster on Azure](https://www.pulumi.com/templates/kubernetes/azure/): Easily deploy a managed Kubernetes cluster on Azure with Pulumi and Azure Kubernetes Service (AKS) using this template.
+- [Kubernetes Cluster on Google Cloud](https://www.pulumi.com/templates/kubernetes/gcp/): Easily deploy a managed Kubernetes cluster on Google Cloud with Pulumi and Google Kubernetes Engine (GKE) using this template.
+- [Pulumi Templates](https://www.pulumi.com/templates/): Instantly deploy container services, serverless applications, K8s clusters, and more to AWS, Azure, and Google Cloud with Pulumi templates.
+- [Virtual Machine on AWS](https://www.pulumi.com/templates/virtual-machine/aws/): Easily deploy a virtual machine on Amazon Web Services (AWS) with Pulumi and Amazon EC2 using this template.
+- [Virtual Machine on Azure](https://www.pulumi.com/templates/virtual-machine/azure/): Easily deploy a virtual machine on Azure with Pulumi and Azure Virtual Machines using this template.
+- [Virtual Machine on Google Cloud](https://www.pulumi.com/templates/virtual-machine/gcp/): Easily deploy a virtual machine on Google Cloud with Pulumi and Google Compute Engine using this template.
+- [Web Application on Kubernetes](https://www.pulumi.com/templates/kubernetes-application/web-application/): Easily deploy a web application to an existing Kubernetes cluster with Pulumi using this template.
+
+### Case Studies
+- [XM Cyber: Multi-Cloud Infrastructure Management with Pulumi](https://www.pulumi.com/case-studies/xm_cyber/): XM Cyber partnered with Pulumi on a modern multi-cloud infrastructure management strategy featuring AWS EKS, Python, and an internal developer platform.
+- [WhyLabs: Shifting Infrastructure to the Left](https://www.pulumi.com/case-studies/whylabs/): Learn how WhyLabs worked with Pulumi to enable engineers to continuously and reliably ship new features faster than before for improved time-to-market.
+- [Unity Technologies Modernizes Infrastructure Management](https://www.pulumi.com/case-studies/unity/): By leveraging Pulumi, the Unity Aura team successfully modernized their CI/CD & infrastructure management.
+- [Unified Infrastructure and Application Management](https://www.pulumi.com/case-studies/bmw/): Learn how BMW's Software Factory uses Pulumi to manage 20,000+ cloud resources with Python-based infrastructure code.
+- [Supabase Democratizes Infrastructure Across Every Engineering Team](https://www.pulumi.com/case-studies/supabase/): Open-source Postgres platform scales from single-region manual deployments to 16-region automated infrastructure with 80,000 Pulumi resources.
+- [Starburst:  112x Deployment Acceleration](https://www.pulumi.com/case-studies/starburst/): Starburst switched from Terraform to Pulumi, achieving 112x faster deployments, enhanced developer productivity, improved security, and cost savings.
+- [SST: Moving Away from CDK](https://www.pulumi.com/case-studies/sst/): Read why SST switched to Pulumi and stopped using CDK because of its limitations around speed, error handling, leaky abstractions, non-AWS provider support, and more.
+- [Spear AI: Achieving Government ATO in 3 Months](https://www.pulumi.com/case-studies/spear-ai/): Learn how Spear AI used Pulumi to achieve government Authorization to Operate in 3 months.
+- [Sourcegraph: Deploying GKEs in a Snap with Pulumi](https://www.pulumi.com/case-studies/sourcegraph/): Learn how Pulumi helps Sourcegraph supercharge their Kubernetes deployments, ensuring their team has continuous access to the latest builds.
+- [Snowflake: Testable, Repeatable Infrastructure](https://www.pulumi.com/case-studies/snowflake/): Learn how Snowflake worked with Pulumi to easily develop infrastructure that is repeatable, testable and scalable.
+- [Skai Migrates to AWS with Pulumi](https://www.pulumi.com/case-studies/skai/): Skai selected Pulumi as their IaC framework of choice due to its native programmatic nature, an endless number
+of modules, and the ability to customize the solution.
+
+- [SANS Institute: Reducing Deployment Times by 70%](https://www.pulumi.com/case-studies/sans-institute/): Learn how DevOps team at SANS Institute worked with Pulumi to streamline delivering applications and infrastructure and reduce deployment times by 70%.
+- [Panther Labs: Increasing Velocity & Innovation](https://www.pulumi.com/case-studies/panther-labs/): Learn how Panther Labs worked with Pulumi to increase deployment speeds by 10x and reduce the size of its infrastructure codebase by over 50%.
+- [Nexxiot: Infrastructure Management for IoT Operations](https://www.pulumi.com/case-studies/nexxiot/): Learn how Nexxiot worked with Pulumi to transform their infrastructure management, saving engineering resources and improving reliability.
+- [Modivcare: Self-Service and Governance Create a Competitive Advantage](https://www.pulumi.com/case-studies/modivcare/): See how Modivcare used Pulumi to unify fragmented AWS infrastructure across acquisitions, reducing costs by up to 25%.
+- [Mercedes-Benz: Programming the Cloud](https://www.pulumi.com/case-studies/mercedes-benz/): Learn how Mercedes-Benz Research and Development worked with Pulumi to bring their application and infrastructure teams closer together.
+- [Menta Network: Reducing Operating Costs by 60%](https://www.pulumi.com/case-studies/menta-network/): Learn how Menta Network worked with Pulumi and GitLab to build ephemeral environments in Python and help its customers to get ready for peak traffic.
+- [Materialize Streamlines Multi-Region Kubernetes Operations](https://www.pulumi.com/case-studies/materialize/): Learn how Pulumi supports Materialize in operating multi-cluster Kubernetes environments at scale.
+- [Managing NOAA Open Data across Multiple Clouds with Pulumi](https://www.pulumi.com/case-studies/ncics/): North Carolina Institute of Climate Studies adopted Pulumi to manage the NOAA Open Data Dissemination project across AWS, Azure, and Google Cloud, and simplified deployment and management of multi-cloud architectures with a small team.
+
+- [Lemonade: Accelerating Innovation with Pulumi](https://www.pulumi.com/case-studies/lemonade/): Learn how Lemonade worked with Pulumi to standardize infrastructure components and enforce best practices across its growing team of developers.
+- [Learning Machine: Expediting Customer Deployments](https://www.pulumi.com/case-studies/learning-machine/): See how Learning Machine worked with Pulumi to streamline its DevOps processes and eliminate several hundred thousand lines of configuration code.
+- [Imagine Learning: Modern IDP with Pulumi](https://www.pulumi.com/case-studies/imagine-learning/): Imagine Learning used Pulumi with GitOps to modernize their IDP, reducing deployment times and improving infrastructure visibility.
+- [How Wiz Operates Kubernetes at Global Scale with Pulumi](https://www.pulumi.com/case-studies/wiz/): See how Wiz uses Pulumi to operate thousands of Kubernetes clusters globally, processing hundreds of thousands of infrastructure updates daily.
+- [How ElkjÃ¸p Nordic enables self-service infrastructure](https://www.pulumi.com/case-studies/elkjop-nordic/): To support the companyâs modernization strategy, ElkjÃ¸p developed a self-service infrastructure platform
+that would enable its developers to easily provision cloud infrastructure using approved resources and security
+practices. The goal was to increase development velocity while maintaining cloud
+guardrails that uphold security and compliance.
+
+- [How a Bank Modernized Its Software Engineering With Infrastructure as Code Automation](https://www.pulumi.com/case-studies/washington-trust-bank/): Washington Trust Bank is the largest independently-owned full-service commercial bank in the Northwest. It wanted to maintain secure, reliable, and compliant cloud resources while also empower more agile development teams as it modernized its software development and infrastructure. The bank used Pulumi to automate building and deploying its cloud infrastructure, eliminate infrastructure provisioning as a bottleneck, and empower developers to self-service infrastructure and increase productivity.
+
+- [GreenPark Sports: Increasing Cloud Deployments by 70%](https://www.pulumi.com/case-studies/greenpark-sports/): Learn how GreenPark Sports worked with Pulumi to empower its developers with self-service cloud infrastructure through a âdeveloper-firstâ approach.
+- [Fauna: Building Region Groups with Pulumi](https://www.pulumi.com/case-studies/fauna/): Learn how Fauna worked with Pulumi to develop Region Groups by giving developers the capabilities they needed to build and deploy quickly and safely.
+- [Customers](https://www.pulumi.com/case-studies/): See how our customers are using Pulumi to simplify cloud management, improve operations,
+reduce costs and scale their services.
+
+- [Credijusto: Taming Network Configuration Complexity](https://www.pulumi.com/case-studies/credijusto/): Learn how Credijusto worked with Pulumi to help its development team scale to support rapid growth, while enforcing best practices for their infrastructure.
+- [Case Study: Modernizing Manufacturing with 4IR and Pulumi](https://www.pulumi.com/case-studies/4ir/): Learn how 4IR worked with Pulumi to cut deployment time from days to hours and saved $75k annually on outsourcing costs.
+- [Atlassian: Increasing Developer Productivity](https://www.pulumi.com/case-studies/atlassian/): Learn how Atlassian Bitbucket worked with Pulumi to improve developer productivity and reduce developers' time spent on maintenance by 50%.
+- [Aptos Labs Transforms Development Process](https://www.pulumi.com/case-studies/aptos/): Aptos Labs used Pulumi to transform development, increasing velocity by up to 10x while improving security, compliance, and cost control.

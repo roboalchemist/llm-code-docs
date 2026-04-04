@@ -1,0 +1,158 @@
+# Readthecom Documentation
+
+Source: https://docs.readthedocs.com/llms-full.txt
+
+---
+
+# Read the Docs platform documentation (full context)
+
+> https://docs.readthedocs.com/platform/stable/
+
+Read the Docs hosts documentation for your team with reliable builds, versioning, and integrations.
+
+This file provides comprehensive documentation context for AI assistants.
+
+## Documentation Structure
+
+### Getting Started
+- Tutorial: https://docs.readthedocs.com/platform/stable/tutorial/index.html
+- Adding a documentation project: https://docs.readthedocs.com/platform/stable/intro/add-project.html
+- Popular documentation tools: https://docs.readthedocs.com/platform/stable/intro/doctools.html
+- Example projects: https://docs.readthedocs.com/platform/stable/examples.html
+
+### Project Setup and Configuration
+- Configuration file overview: https://docs.readthedocs.com/platform/stable/config-file/index.html
+- Configuration file reference: https://docs.readthedocs.com/platform/stable/config-file/v2.html
+- Read the Docs Addons: https://docs.readthedocs.com/platform/stable/addons.html
+- Account authentication methods: https://docs.readthedocs.com/platform/stable/intro/accounts.html
+- Automation rules: https://docs.readthedocs.com/platform/stable/automation-rules.html
+- How to create reproducible builds: https://docs.readthedocs.com/platform/stable/guides/reproducible-builds.html
+
+### Build Process
+- Build process overview: https://docs.readthedocs.com/platform/stable/builds.html
+- Build process customization: https://docs.readthedocs.com/platform/stable/build-customization.html
+- Git integration (GitHub, GitLab, Bitbucket): https://docs.readthedocs.com/platform/stable/reference/git-integration.html
+- Pull request previews: https://docs.readthedocs.com/platform/stable/pull-requests.html
+- Build failure notifications: https://docs.readthedocs.com/platform/stable/build-notifications.html
+- Environment variable overview: https://docs.readthedocs.com/platform/stable/environment-variables.html
+- Environment variable reference: https://docs.readthedocs.com/platform/stable/reference/environment-variables.html
+
+### Hosting Documentation
+- Versions: https://docs.readthedocs.com/platform/stable/versions.html
+- Subprojects: https://docs.readthedocs.com/platform/stable/subprojects.html
+- Localization and Internationalization: https://docs.readthedocs.com/platform/stable/localization.html
+- URL versioning schemes: https://docs.readthedocs.com/platform/stable/versioning-schemes.html
+- Custom domains: https://docs.readthedocs.com/platform/stable/custom-domains.html
+- Documentation notifications: https://docs.readthedocs.com/platform/stable/doc-notifications.html
+- Canonical URLs: https://docs.readthedocs.com/platform/stable/canonical-urls.html
+- Content Delivery Network (CDN) and caching: https://docs.readthedocs.com/platform/stable/reference/cdn.html
+- Sitemap support: https://docs.readthedocs.com/platform/stable/reference/sitemaps.html
+- 404 Not Found pages: https://docs.readthedocs.com/platform/stable/reference/404-not-found.html
+- robots.txt support: https://docs.readthedocs.com/platform/stable/reference/robots.html
+- llms.txt support: https://docs.readthedocs.com/platform/stable/reference/llms-txt.html
+
+### Reading Documentation
+- Offline formats (PDF, ePub, HTML): https://docs.readthedocs.com/platform/stable/downloadable-documentation.html
+- Visual diff: https://docs.readthedocs.com/platform/stable/visual-diff.html
+- Link previews: https://docs.readthedocs.com/platform/stable/link-previews.html
+- How to embed content from your documentation: https://docs.readthedocs.com/platform/stable/guides/embedding-content.html
+- Server side search: https://docs.readthedocs.com/platform/stable/server-side-search/index.html
+- Search query syntax: https://docs.readthedocs.com/platform/stable/server-side-search/syntax.html
+- Flyout menu: https://docs.readthedocs.com/platform/stable/flyout-menu.html
+
+### Maintaining Projects
+- Redirects: https://docs.readthedocs.com/platform/stable/user-defined-redirects.html
+- Traffic analytics: https://docs.readthedocs.com/platform/stable/traffic-analytics.html
+- Search analytics: https://docs.readthedocs.com/platform/stable/search-analytics.html
+- Security logs: https://docs.readthedocs.com/platform/stable/security-log.html
+- Status badges: https://docs.readthedocs.com/platform/stable/badges.html
+- How to structure your documentation: https://docs.readthedocs.com/platform/stable/explanation/documentation-structure.html
+- Best practices for linking to your documentation: https://docs.readthedocs.com/platform/stable/guides/best-practice/links.html
+- Security considerations for documentation pages: https://docs.readthedocs.com/platform/stable/security-implications.html
+- Main content detection: https://docs.readthedocs.com/platform/stable/reference/main-content-detection.html
+- Custom script: https://docs.readthedocs.com/platform/stable/custom-script.html
+
+### Business Features
+- Business hosting: https://docs.readthedocs.com/platform/stable/commercial/index.html
+- Organizations: https://docs.readthedocs.com/platform/stable/commercial/organizations.html
+- Single sign-on (SSO): https://docs.readthedocs.com/platform/stable/commercial/single-sign-on.html
+- Sharing private documentation: https://docs.readthedocs.com/platform/stable/commercial/sharing.html
+- How to manage your subscription: https://docs.readthedocs.com/platform/stable/commercial/subscriptions.html
+- Privacy levels: https://docs.readthedocs.com/platform/stable/commercial/privacy-level.html
+
+### How-to Guides
+- Project setup and configuration: https://docs.readthedocs.com/platform/stable/guides/setup/index.html
+- Build process: https://docs.readthedocs.com/platform/stable/guides/build/index.html
+- Upgrading and maintaining projects: https://docs.readthedocs.com/platform/stable/guides/maintenance/index.html
+- Content, themes and SEO: https://docs.readthedocs.com/platform/stable/guides/content/index.html
+- Security and access: https://docs.readthedocs.com/platform/stable/guides/access/index.html
+- Account management: https://docs.readthedocs.com/platform/stable/guides/management/index.html
+- Best practice: https://docs.readthedocs.com/platform/stable/guides/best-practice/index.html
+- Troubleshooting problems: https://docs.readthedocs.com/platform/stable/guides/troubleshooting/index.html
+
+### Reference
+- Public REST API: https://docs.readthedocs.com/platform/stable/api/index.html
+- Frequently asked questions: https://docs.readthedocs.com/platform/stable/faq.html
+- Changelog: https://docs.readthedocs.com/platform/stable/changelog.html
+- About Read the Docs: https://docs.readthedocs.com/platform/stable/about/index.html
+
+## Key Features
+
+### Build System
+- Automatic builds from Git commits
+- Support for Sphinx and MkDocs
+- Multiple Python versions
+- Conda environment support
+- Custom build commands
+
+### Hosting
+- Versioned documentation URLs
+- Custom domains with SSL
+- CDN-backed delivery
+- Public and private documentation
+
+### Team Management
+- Organizations and teams
+- Access control and permissions
+- Single Sign-On (SSO)
+- Audit logs
+
+### Integrations
+- GitHub, GitLab, Bitbucket
+- Pull request previews
+- Webhooks for automation
+- Status badges
+
+### Analytics
+- Search analytics
+- Page view tracking
+- Traffic insights
+- Download metrics
+
+## Configuration
+
+Documentation projects are configured via `.readthedocs.yaml`:
+- Build OS and tools
+- Python version and dependencies
+- Build commands
+- Output formats (HTML, PDF, ePub)
+
+## Metadata Files
+
+- robots.txt: /robots.txt
+- sitemap.xml: /sitemap.xml
+- llms.txt: /llms.txt
+- llms-full.txt: /llms-full.txt
+
+## Support
+
+- Documentation: https://docs.readthedocs.com/
+- Community support: https://docs.readthedocs.com/platform/stable/support.html
+- Status page: https://status.readthedocs.com/
+- Blog: https://about.readthedocs.com/blog/
+
+## About This File
+
+This llms-full.txt provides comprehensive context for AI assistants about the Read the Docs platform documentation, including detailed structure, features, and configuration options.
+
+For information about llms.txt support on Read the Docs, see: https://docs.readthedocs.com/platform/stable/reference/llms-txt.html

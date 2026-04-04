@@ -1,0 +1,9 @@
+name: roc-lang
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.roc-lang.org/
+    last_fetched: "2026-04-03T23:10:52Z"
+description: >
+  roc-lang documentation
+quality_score: 0

@@ -1,0 +1,48 @@
+# Source: https://planetscale.com/docs/postgres/development-environments.md
+
+# Development Environments
+
+> When using development environments, it's important to have a way to work with your database and test schema changes in isolation from production. We have several recommendations for how to accomplish this when using PlanetScale Postgres.
+
+<Note>
+  Schema and code changes must be deployed in the correct sequence. When adding a new column to a table along with a new application feature, you likely want to execute the schema change before deploying the corresponding code changes. In other cases, such as removing a feature and with it a table in your database, you would make your code changes first and then drop the table second.
+
+  We recommend reviewing [this blog post](https://planetscale.com/blog/safely-making-database-schema-changes) for more information about deploying database schema changes alongside application changes.
+</Note>
+
+## Use local Postgres
+
+Since PlanetScale uses standard PostgreSQL, one option is to use locally-running Postgres servers for all of your development work.
+
+In this case, you would create a new local database for each branch a developer is working on. After creating the database, run your database migration scripts to populate it with your project's schema. Optionally, you could have a script to populate your tables with dummy data to improve local testing. When you are ready to commit your code changes, execute the necessary schema changes on your production branch, being [careful about ordering](https://planetscale.com/blog/safely-making-database-schema-changes).
+
+While this is a convenient option in some cases, local databases can make it difficult for multiple developers to collaborate on shared branches, as schema changes must be manually synchronized across each developer's local environment.
+
+## Use PlanetScale branches
+
+PlanetScale Postgres supports [branching](/docs/postgres/branching). This allows you to spin up lightweight Postgres databases separate from production that can be used for development and testing. Creating a new branch produces a completely empty Postgres database. No schema or data is copied to the branch, unless restoring from a backup (more on this later).
+
+Branches can be used similarly to local Postgres instances. The advantage is, since they are hosted by PlanetScale, they can be easily shared amongst development teams.
+
+If using branches for your development environments, you would [create new database branch](/docs/postgres/branching#create-a-branch) for each code branch a developer/team is working on. You would then run your schema migrations and any data loading scripts you need to initialize the branch. When you are ready to commit your code changes, execute the necessary schema changes on your production branch, and then [delete the branch](/docs/postgres/branching#delete-a-branch).
+
+## Use PlanetScale branches + backups
+
+PlanetScale gives you the ability to create new branches that are [initialized from a recent backup](/docs/postgres/branching#from-a-backup). This can be used instead of empty branches to create development environments that are pre-populated with schema and data.
+
+There are some downsides to this approach, however. This approach copies production data to development branches, which may pose security risks if your database contains sensitive customer information.
+
+Another consideration is cost. Each branch is its own, isolated database and uses its own storage separate from production. You will be charged for the storage consumed by both your production branches and your development branches.
+
+## Use branching + schema (coming soon)
+
+We are working on schema-only branching. With this feature, new branches will be created with identical schema to your production database, but with no data. This will allow developers to skip the step of pushing your schema to each created branch. From here, developers can either develop and test with an empty database, or run custom scripts to populate the schema with dummy data.
+
+## Need help?
+
+Get help from [the PlanetScale Support team](https://support.planetscale.com/), or join our [GitHub discussion board](https://github.com/planetscale/discussion/discussions) to see how others are using PlanetScale.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://planetscale.com/llms.txt

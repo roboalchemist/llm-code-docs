@@ -1,0 +1,14 @@
+---
+---
+title: PagerTree
+description: "Learn about Sentry's PagerTree integration, which can be used to send SMS, voice, push, email, and Slack notifications for Sentry issues and errors."
+---
+
+This integration is maintained and supported by the company that created it. For more details, or questions, please feel free to reach out to support@pagertree.com.
+## Install and Configure
+
+Sentry owner, manager, or admin permissions are required to install this integration.
+
+1. Navigate to **Settings > Integrations > PagerTree**
+
+2. Follow the full [PagerTree installation instructions](https://pagertree.com/docs/integration-guides/sentry).

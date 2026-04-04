@@ -1,0 +1,72 @@
+---
+---
+title: Dynamic Import (experimental)
+description: "Learn about how the SolidStart SDK leverages dynamic input() in the build output."
+---
+
+## Understanding the `import()` expression
+
+  This setting is experimental as it is not guaranteed to work with every setup and the underlying functionality could change.
+
+  We recommend reading the guide for installing the SDK with the CLI flag `--import` or limited server tracing
+
+The `import()` expression, or dynamic import, enables flexible, conditional module loading in ESM.
+Node.js will generate a separate module graph for any code wrapped in a dynamic `import()`. This separate graph is evaluated **after** all modules, which are statically `import`ed.
+
+By using the Sentry SolidStart SDK, the server-side application will be wrapped in a dynamic `import()`, while the Sentry instrumentation file will be imported with a static `import`.
+This makes it possible to initialize the Sentry SolidStart SDK at startup, while the Nitro server runtime loads later because it is `import()`ed.
+This early initialization of Sentry is required to correctly set up the SDK's instrumentation of various libraries.
+
+## Scenarios where `import()` doesn't work
+
+Depending on your setup and which version of Vinxi is used (and respectively Nitro, as this runs under the hood), the server-side is sometimes not correctly initialized.
+The build output **must not** include a regular `import` of the Nitro runtime (e.g. `import './chunks/nitro/nitro.mjs'`).
+
+You can also check out the guide for installing the SDK with the CLI flag `--import` or limited-server-tracing.
+
+## Initializing Sentry with Dynamic `import()`
+
+Enable the dynamic `import()` by setting `autoInjectServerSentry`:
+
+```typescript {filename:app.config.ts} {8}
+export default defineConfig(withSentry(
+    {},
+    {
+      autoInjectServerSentry: 'experimental_dynamic-import'
+    })
+ );
+```
+
+After setting this, the Sentry SolidStart SDK will add build-time configuration so that your app will be wrapped with `import()`,
+ensuring that Sentry can be initialized before any other modules.
+
+The SolidStart server entry file will look something like this:
+
+```javascript {filename:.output/server/index.mjs}
+// Note: The file may have some imports and code, related to debug IDs
+Sentry.init({
+  dsn: "..."
+});
+
+import('./chunks/nitro/nitro.mjs').then(function (n) { return n.r; });
+```
+
+## Re-exporting serverless handler functions
+
+Sentry automatically detects serverless handler functions in the build output and re-exports them from the server entry file.
+
+By default, Sentry re-exports functions named `handler`, `server`, and `default` exports. This will work in most cases and no other action is required.
+If your serverless function has a custom name, you can override it with `experimental_entrypointWrappedFunctions`:
+
+```javascript {filename: app.config.ts} {11}
+
+export default defineConfig(withSentry(
+    {},
+    {
+      autoInjectServerSentry: 'experimental_dynamic-import',
+      // Customize detected function names
+      // Default value: ['default', 'handler', 'server']
+      experimental_entrypointWrappedFunctions: ['customFunctionName']
+    })
+ );
+```

@@ -1,0 +1,9 @@
+name: seed-design-breeze
+primary_source: llms
+sources:
+  - type: llms
+    url: https://seed-design.io/breeze/
+    last_fetched: "2026-04-03T23:10:56Z"
+description: >
+  seed-design-breeze documentation
+quality_score: 0

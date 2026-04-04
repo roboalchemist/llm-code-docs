@@ -1,0 +1,9 @@
+name: react-native
+primary_source: llms
+sources:
+  - type: llms
+    url: https://reactnative.dev/
+    last_fetched: "2026-04-03T23:10:49Z"
+description: >
+  react-native documentation
+quality_score: 0

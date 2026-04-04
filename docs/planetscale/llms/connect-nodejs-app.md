@@ -1,0 +1,180 @@
+# Source: https://planetscale.com/docs/vitess/tutorials/connect-nodejs-app.md
+
+# Connect a Node.js application to PlanetScale
+
+> In this tutorial, you'll create a simple Node.js and Express.js application and connect it to a PlanetScale database.
+
+<Tip>
+  Already have a Node.js application and just want to connect to PlanetScale? Check out the [Node.js quick connect repo](https://github.com/planetscale/connection-examples/tree/main/nodejs).
+</Tip>
+
+## Prerequisites
+
+<Card title="Node.js" icon="node" horizontal href="https://nodejs.org/en/download/" />
+
+## Set up the database
+
+First, create a new database with the following command:
+
+```bash  theme={null}
+pscale database create <DATABASE_NAME>
+```
+
+Next, let's add some data to the database. You'll create a new table called `users` and add one record to it.
+
+To do this, use the PlanetScale CLI shell to open a MySQL shell where you can manipulate your database. You may need to [install the MySQL command line client](/docs/cli/planetscale-environment-setup) if you haven't already.
+
+```bash  theme={null}
+pscale shell <DATABASE_NAME> <BRANCH_NAME>
+```
+
+<Note>
+  A branch, `main`, was automatically created when you created your database, so you can use that for `BRANCH_NAME`.
+</Note>
+
+Create the `users` table:
+
+```sql  theme={null}
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `email` varchar(255) NOT NULL,
+  `first_name` varchar(255),
+  `last_name` varchar(255)
+);
+```
+
+Then, add a record to it with:
+
+```sql  theme={null}
+INSERT INTO `users` (email, first_name, last_name)
+VALUES  ('jp@example.com', 'Jean', 'Pixy');
+```
+
+You can verify it was added with:
+
+```sql  theme={null}
+select * from users;
+```
+
+```
++----+----------------+------------+-----------+
+| id | email          | first_name | last_name |
++----+----------------+------------+-----------+
+|  1 | jp@example.com | Jean       | Pixy      |
++----+----------------+------------+-----------+
+```
+
+Next, you'll set up the Express starter application.
+
+## Set up the starter Node.js app
+
+Clone the starter repository:
+
+```bash  theme={null}
+git clone https://github.com/planetscale/express-example.git
+```
+
+Enter into the folder and install the dependencies with:
+
+```bash  theme={null}
+cd express-example
+npm install
+```
+
+Now that your application is set up and the database is ready to be used, let's connect them.
+
+## Connect to PlanetScale with Express.js
+
+There are **two ways to connect** to PlanetScale:
+
+* With an auto-generated username and password
+* Using the PlanetScale proxy with the CLI
+
+Both options are covered below.
+
+### Option 1: Connect with username and password (Recommended)
+
+These instructions show you how to generate a set of credentials with [the PlanetScale CLI](/docs/cli/planetscale-environment-setup).
+
+You can also get these exact values to copy/paste from your [PlanetScale dashboard](https://app.planetscale.com). In the dashboard, click on the database > "**Connect**" > "**Connect with**" language dropdown > "**Node.js**". If the password is blurred, click "**New password**". Skip to step 3 once you have these credentials.
+
+1. Authenticate the CLI with the following command:
+
+   ```bash  theme={null}
+   pscale auth login
+   ```
+
+2. Using the PlanetScale CLI, create a new username and password for the branch of your database:
+
+   ```bash  theme={null}
+   pscale password create <DATABASE_NAME> <BRANCH_NAME> <PASSWORD_NAME>
+   ```
+
+   <Note>
+     The `PASSWORD_NAME` value represents the name of the username and password being generated. You can have multiple credentials for a branch, so this gives you a way to categorize them. To manage your passwords in the dashboard, go to your database dashboard page, click "Settings", and then click "Passwords".
+   </Note>
+
+   Take note of the values returned to you, as you won't be able to see this password again.
+
+   ```
+   Password production-password was successfully created.
+   Please save the values below as they will not be shown again
+
+     NAME                  USERNAME       ACCESS HOST URL                     ROLE               PASSWORD
+    --------------------- -------------- ----------------------------------- ------------------ -------------------------------------------------------
+     production-password   xxxxxxxxxxxxx   xxxxxx.us-east-2.psdb.cloud   Can Read & Write   pscale_pw_xxxxxxx
+   ```
+
+3. Next, create your `.env` file by renaming the `.env.example` file to `.env`:
+
+   ```bash  theme={null}
+   mv .env.example .env
+   ```
+
+4. Use the values from the CLI output in step 1 to construct your connection string that will be used to connect your Node app to your PlanetScale database. Create your connection string in the following format:
+
+   ```
+   mysql://<USERNAME>:<PLAIN_TEXT_PASSWORD>@<ACCESS_HOST_URL>/<DATABASE_NAME>?ssl={"rejectUnauthorized":true}
+   ```
+
+5. In the `.env` file, fill in the `DATABASE_URL` variable with the value you constructed above. It should look something like this:
+
+   ```bash  theme={null}
+   DATABASE_URL=mysql://xxxxxxxxxxxxx:pscale_pw_xxxxxxx@xxxxxx.us-east-2.psdb.cloud/express_database?ssl={"rejectUnauthorized":true}
+   ```
+
+6. Finally, run your Express application with:
+
+   ```bash  theme={null}
+   node app.js
+   ```
+
+Navigate to [http://localhost:3000](http://localhost:3000) and you'll see the data from your `users` table!
+
+### Option 2: Using the PlanetScale proxy with the CLI
+
+Use the following command to create a connection to your database and start the application:
+
+```bash  theme={null}
+pscale connect <DATABASE_NAME> <BRANCH_NAME> --execute 'node app.js'
+```
+
+<Note>
+  Running `pscale connect` with the execute flag will pass a `DATABASE_URL` to the Node application, enabling it to connect to PlanetScale. Don't forget to look in `app.js` to see how the DATABASE\_URL is used.
+</Note>
+
+Navigate to [http://localhost:3000](http://localhost:3000) and you'll see the data from your `users` table!
+
+## What's next?
+
+Learn more about how PlanetScale allows you to make [non-blocking schema changes](/docs/vitess/schema-changes) to your database tables without locking or causing downtime for production databases. If you're interested in learning how to secure your application when connecting to PlanetScale,
+please read [Connecting to PlanetScale securely](/docs/vitess/connecting/secure-connections).
+
+## Need help?
+
+Get help from [the PlanetScale Support team](https://support.planetscale.com/), or join our [GitHub discussion board](https://github.com/planetscale/discussion/discussions) to see how others are using PlanetScale.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://planetscale.com/llms.txt

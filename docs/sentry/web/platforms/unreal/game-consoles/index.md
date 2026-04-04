@@ -1,0 +1,22 @@
+---
+---
+title: Game Consoles
+description: "Learn how to configure your SDK to capture errors on Xbox, PlayStation and Nintendo Switch."
+---
+
+Sentry supports [PlayStation](/platforms/playstation/), [Xbox](/platforms/xbox/) and [Nintendo Switch](/platforms/nintendo-switch/) via the Unreal Engine SDK extensions. Once you submit the middleware verification process, we'll reach out and send you an invite to our private GitHub repositories with console specific code.
+This allows your configuration and custom data set via C++ or Blueprints to show up in non-fatal events as well as crash dumps on these console platforms.
+
+Access to Sentry's error and crash reporting for consoles is a paid feature. We will review the pricing and details with you during the verification process.
+
+## PlayStation
+
+## Xbox
+
+## Nintendo Switch
+
+----
+
+"PlayStation", "PS5" are registered trademarks or trademarks of Sony Interactive Entertainment Inc.
+"Microsoft", "Xbox" are trademarks of the Microsoft group of companies.
+"Nintendo", "Nintendo Switch" are trademarks or registered trademarks of Nintendo.

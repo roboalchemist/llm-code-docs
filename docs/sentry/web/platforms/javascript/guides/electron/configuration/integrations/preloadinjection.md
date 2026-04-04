@@ -1,0 +1,21 @@
+---
+---
+title: PreloadInjection
+description: "Injects a preload script via the Electron. (default)"
+---
+
+This integration injects a preload script via the Electron
+[`session.setPreloads(preloads)`](https://www.electronjs.org/docs/latest/api/session#sessetpreloadspreloads)
+API.
+
+By default, sessions are only injected into the `defaultSession`. If you're using other sessions, you can pass a function as `getSessions` to `init`.
+
+```javascript
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  getSessions: () => [
+    session.defaultSession,
+    session.fromPartition("persist:my-session"),
+  ],
+});
+```

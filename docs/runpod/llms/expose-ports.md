@@ -1,0 +1,196 @@
+# Source: https://docs.runpod.io/pods/configuration/expose-ports.md
+
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
+
+# Expose ports
+
+> Learn how to make your Pod services accessible from the internet using HTTP proxy and TCP port forwarding
+
+Runpod provides flexible options for exposing your Pod services to the internet. This guide explains how to configure port exposure for different use cases and requirements.
+
+## Understanding port mapping
+
+When exposing services from your Pod, it's important to understand that the publicly accessible port usually differs from your internal service port. This mapping ensures security and allows multiple Pods to coexist on the same infrastructure.
+
+For example, if you run a web API inside your Pod on port 4000 like this:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+uvicorn main:app --host 0.0.0.0 --port 4000
+```
+
+The external port users connect to will be different, depending on your chosen exposure method.
+
+## HTTP access via Runpod proxy
+
+Runpod's HTTP proxy provides the easiest way to expose web services from your Pod. This method works well for REST APIs, web applications, and any HTTP-based service.
+
+### Configure external HTTP ports
+
+To configure HTTP ports during Pod deployment, click **Edit Template** and add a comma-separated list of ports to the **Expose HTTP Ports (Max 10)** field.
+
+To configure HTTP ports for an existing Pod, navigate to the [Pod page](https://www.console.runpod.io/pods), expand your Pod, click the hamburger menu on the bottom-left, select **Edit Pod**, then add your port(s) to the **Expose HTTP Ports (Max 10)** field.
+
+You can also configure HTTP ports for a Pod template in the [My Templates](https://www.console.runpod.io/user/templates) section of the console.
+
+### Access your service
+
+Once your Pod is running and your service is active, access it using the proxy URL format:
+
+```bash
+https://[POD_ID]-[INTERNAL_PORT].proxy.runpod.net
+```
+
+Replace `[POD_ID]` with your Pod's unique identifier and `[INTERNAL_PORT]` with your service's internal port. For example:
+
+* Pod ID: `abc123xyz`
+* Internal port: `4000`
+* Access URL: `https://abc123xyz-4000.proxy.runpod.net`
+
+<Warning>
+
+A Pod that's listed as **Running** in the console (with a green dot in the Pod UI) may not be ready to use. The best way to check if your Pod is ready is by checking the **Telemetry** tab in the Pod details page in the Runpod console.
+
+If a Pod is receiving telemetry, it should be ready to use, but individual services (JupyterLab, HTTP services, etc.) may take a few minutes to start up.
+
+</Warning>
+
+### Proxy limitations and behavior
+
+The HTTP proxy route includes several intermediaries that affect connection behavior:
+
+```bash
+User → Cloudflare → Runpod Load Balancer → Your Pod
+```
+
+This architecture introduces important limitations:
+
+* **100-second timeout**: Cloudflare enforces a maximum connection time of 100 seconds. If your service doesn't respond within this time, the connection closes with a `524` error.
+* **HTTPS only**: All connections are secured with HTTPS, even if your internal service uses HTTP.
+* **Public accessibility**: Your service becomes publicly accessible. While the Pod ID provides some obscurity, implement proper authentication in your application.
+
+Design your application with these constraints in mind. For long-running operations, consider:
+
+* Implementing progress endpoints that return status updates.
+* Using background job queues with status polling.
+* Breaking large operations into smaller chunks.
+* Returning immediate responses with job IDs for later retrieval.
+
+## TCP access via public IP
+
+<Warning>
+
+Pods do not support UDP connections. If your application relies on UDP, you'll need to modify your application to use TCP-based communication instead.
+
+</Warning>
+
+For services requiring direct TCP connections, lower latency, or protocols other than HTTP, use TCP port exposure with public IP addresses.
+
+### Configure TCP ports
+
+In your Pod or template configuration, follow the same steps as for [HTTP ports](#configure-external-http-ports), but add ports to the **Expose TCP Ports** field. This enables direct TCP forwarding with a public IP address.
+
+### Find your connection details
+
+After your Pod starts, check the **Connect** menu to find your assigned public IP and external port mapping under **Direct TCP Ports**. For example:
+
+```bash
+TCP port   213.173.109.39:13007 -> :22
+```
+
+<Warning>
+
+Public IP addresses may change for Community Cloud Pods if your Pod is migrated or restarted, but they should remain stable for Secure Cloud Pods.
+
+External port mappings change whenever your Pod resets.
+
+</Warning>
+
+## Symmetrical port mapping
+
+Some applications require the external port to match the internal port. Runpod supports this through a special configuration syntax.
+
+### Requesting symmetrical ports
+
+To request symmetrical mapping, specify port numbers above 70000 in your TCP configuration. These aren't valid port numbers, but signal Runpod to allocate matching internal and external ports.
+
+After Pod creation, check the **Connect** menu to see which symmetrical ports were assigned under **Direct TCP Ports**.
+
+### Accessing port mappings programmatically
+
+Your application can discover assigned ports through environment variables. For example, if you specify `70000` and `70001` in your Pod configuration, you could use the following commands to retrieve the assigned ports:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+echo $RUNPOD_TCP_PORT_70000
+echo $RUNPOD_TCP_PORT_70001
+```
+
+You can use these environment variables in your application configuration to automatically adapt to assigned ports:
+
+**Python example:**
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+import os
+
+# Get the assigned port or use a default
+port = os.environ.get('RUNPOD_TCP_PORT_70000', '8000')
+app.run(host='0.0.0.0', port=int(port))
+```
+
+**Configuration file example:**
+
+```yaml  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+server:
+  host: 0.0.0.0
+  port: ${RUNPOD_TCP_PORT_70000}
+```
+
+## Best practices
+
+When exposing ports from your Pods, follow these guidelines for security and reliability:
+
+### Security considerations
+
+* **Implement authentication**: Both HTTP proxy and TCP access make your services publicly accessible. Always implement proper authentication and authorization in your applications.
+* **Use HTTPS for sensitive data**: While the proxy automatically provides HTTPS, TCP connections do not. Implement TLS in your application when handling sensitive data over TCP.
+* **Validate input**: Public endpoints are targets for malicious traffic. Implement robust input validation and rate limiting.
+
+### Performance optimization
+
+* **Choose the right method**: Use HTTP proxy for web services and TCP for everything else. The proxy adds latency but provides automatic HTTPS and load balancing.
+* **Handle timeouts gracefully**: Design your application to work within the 100-second proxy timeout or use TCP for long-running connections.
+* **Monitor your services**: Implement health checks and monitoring to ensure your exposed services remain accessible.
+
+### Configuration tips
+
+* **Document your ports**: Maintain clear documentation of which services run on which ports, especially in complex deployments.
+* **Use templates**: Define port configurations in templates for consistent deployments across multiple Pods.
+* **Test thoroughly**: Verify your port configurations work correctly before deploying production workloads.
+
+## Common use cases
+
+Different types of applications benefit from different exposure methods:
+
+* **Web APIs and REST services**: Use HTTP proxy for automatic HTTPS and simple configuration.
+* **WebSocket applications**: TCP exposure often works better for persistent connections that might exceed timeout limits.
+* **Database connections**: Use TCP with proper security measures. Consider using Runpod's global networking for internal-only databases.
+* **Development environments**: HTTP proxy works well for web-based IDEs and development servers.
+
+## Troubleshooting
+
+Try these fixes if you're having issues with port exposure:
+
+* **Service not accessible via proxy**: Ensure your service binds to `0.0.0.0` (all interfaces) not just `localhost` or `127.0.0.1`.
+* **524 timeout errors**: If your service takes longer than 100 seconds to respond, consider using TCP or restructuring your application for faster responses.
+* **Connection refused**: Verify your service is running and listening on the correct port inside the Pod.
+* **Port already in use**: Check that no other services in your Pod are using the same port.
+* **Unstable connections**: For Community Cloud Pods, implement reconnection logic to handle IP address changes.
+
+## Next steps
+
+Once you've exposed your ports, consider:
+
+* Setting up [SSH access](/pods/configuration/use-ssh) for secure Pod administration.
+* Implementing [global networking](/pods/networking) for secure Pod-to-Pod communication.
+* Configuring health checks and monitoring for your exposed services.

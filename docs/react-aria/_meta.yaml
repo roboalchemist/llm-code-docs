@@ -1,0 +1,9 @@
+name: react-aria
+primary_source: llms
+sources:
+  - type: llms
+    url: https://react-spectrum.adobe.com/
+    last_fetched: "2026-04-03T23:10:48Z"
+description: >
+  react-aria documentation
+quality_score: 0

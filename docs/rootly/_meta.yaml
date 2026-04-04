@@ -1,0 +1,9 @@
+name: rootly
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.rootly.com/
+    last_fetched: "2026-04-03T23:10:53Z"
+description: >
+  rootly documentation
+quality_score: 0

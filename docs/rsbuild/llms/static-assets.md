@@ -1,0 +1,402 @@
+# Source: https://rsbuild.dev/guide/basic/static-assets.md
+
+# Static assets
+
+Rsbuild supports importing static assets, including images, fonts, audio, and video.
+
+:::tip What are static assets
+Static assets are files that are part of a web application and don't change during use. Examples include images, fonts, media files, stylesheets, and JavaScript files. These assets are typically stored on a web server or CDN and delivered to the user's browser when they access the application. Because they don't change, static assets can be cached by the browser, improving application performance.
+:::
+
+## Asset formats
+
+Rsbuild supports these formats by default:
+
+* **Images**: png, jpg, jpeg, gif, svg, bmp, webp, ico, apng, avif, tif, tiff, jfif, pjpeg, pjp, cur.
+* **Fonts**: woff, woff2, eot, ttf, otf, ttc.
+* **Audio**: mp3, wav, flac, aac, m4a, opus.
+* **Video**: mp4, webm, ogg, mov.
+
+To import assets in other formats, refer to [Extend Asset Types](#extend-asset-types).
+
+:::tip SVG images
+SVG images are a special case. Rsbuild supports converting SVG to React components, so SVG files are processed separately. For details, see [SVGR Plugin](/plugins/list/plugin-svgr.md).
+:::
+
+## Importing assets in JavaScript files
+
+In JavaScript files, import static assets using relative paths:
+
+```tsx
+// Import the logo.png image in the static directory
+import logo from './static/logo.png';
+
+console.log(logo); // "/static/logo.[hash].png"
+
+export default () => <img src={logo} />;
+```
+
+Importing with [alias](/guide/advanced/alias.md) is also supported:
+
+```tsx
+import logo from '@/static/logo.png';
+
+console.log(logo); // "/static/logo.[hash].png"
+
+export default () => <img src={logo} />;
+```
+
+### URL assets
+
+Rsbuild supports using JavaScript's native [URL](https://developer.mozilla.org/docs/Web/API/URL) and [import.meta.url](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import.meta) to import static assets.
+
+```tsx
+const logo = new URL('./static/logo.png', import.meta.url).href;
+
+console.log(logo); // "/static/logo.[hash].png"
+
+export default () => <img src={logo} />;
+```
+
+When using `new URL()` to reference `.js` or `.ts` files, they're treated as URL assets and aren't processed by Rsbuild's built-in SWC loader.
+
+```tsx
+// foo.ts will remain the original content and be output to the dist directory
+const fooTs = new URL('./foo.ts', import.meta.url).href;
+
+console.log(fooTs); // "/static/foo.[hash].ts"
+```
+
+Similarly, when using `new URL()` to reference `.css` or `.scss` files, they're treated as URL assets and aren't processed by Rsbuild's built-in CSS loaders.
+
+```tsx
+// foo.css will remain the original content and be output to the dist directory
+const fooCss = new URL('./foo.css', import.meta.url).href;
+
+console.log(fooCss); // "/static/foo.[hash].css"
+```
+
+## Importing assets in CSS files
+
+In CSS files, you can reference static assets using relative paths:
+
+```css
+.logo {
+  background-image: url('../static/logo.png');
+}
+```
+
+Importing with [alias](/guide/advanced/alias.md) is also supported:
+
+```css
+.logo {
+  background-image: url('@/static/logo.png');
+}
+```
+
+If you want to reference static assets using absolute paths in CSS files:
+
+```css
+@font-face {
+  font-family: DingTalk;
+  src: url('/image/font/foo.ttf');
+}
+```
+
+By default, Rsbuild's built-in `css-loader` will resolve absolute paths in `url()` and look for the specified modules. To skip resolving absolute paths, you can configure [`tools.cssLoader`](/config/tools/css-loader.md#toolscssloader) to filter out specific paths. Filtered paths will remain unchanged in the code.
+
+```ts
+export default {
+  tools: {
+    cssLoader: {
+      url: {
+        filter: (url) => {
+          if (/\/image\/font/.test(url)) {
+            return false;
+          }
+          return true;
+        },
+      },
+    },
+  },
+};
+```
+
+## Inline assets
+
+The result of importing static assets depends on the file size:
+
+* If the file size is less than 4KiB, it will be converted to a base64 string and inlined in the code.
+* If the file size is larger than 4KiB, a URL will be returned and the file will be emitted to the output directory.
+
+```js
+import largeImage from './static/largeImage.png';
+import smallImage from './static/smallImage.png';
+
+console.log(largeImage); // "/static/largeImage.[hash].png"
+console.log(smallImage); // "data:image/png;base64,iVBORw0KGgo..."
+```
+
+Adding the `?url` query parameter ensures the asset is always loaded as a separate file and returns a URL:
+
+```js
+import image from './static/image.png?url';
+
+console.log(image); // "/static/image.[hash].png"
+```
+
+Adding the `?inline` query parameter ensures the asset is always inlined in the code, regardless of file size:
+
+```js
+import image from './static/image.png?inline';
+
+console.log(image); // "data:image/png;base64,iVBORw0KGgo..."
+```
+
+For a more detailed introduction to asset inlining, refer to the [Static Asset Inlining](/guide/optimization/inline-assets.md) section.
+
+## Importing as string
+
+Rsbuild supports using the `?raw` query parameter to import the raw content of static assets as a string in JavaScript.
+
+```ts
+import rawSvg from './static/logo.svg?raw';
+
+console.log(rawSvg); // The raw content of the SVG file
+```
+
+Rsbuild also supports importing the raw content of JavaScript, TypeScript, and JSX files through the `?raw` query parameter.
+
+```ts
+import rawJs from './script1.js?raw';
+import rawTs from './script2.ts?raw';
+import rawJsx from './script3.jsx?raw';
+import rawTsx from './script4.tsx?raw';
+
+console.log(rawJs); // The raw content of the JS file
+console.log(rawTs); // The raw content of the TS file
+console.log(rawJsx); // The raw content of the JSX file
+console.log(rawTsx); // The raw content of the TSX file
+```
+
+You can also use the `?raw` query parameter to import the raw content of CSS files, see [CSS](/guide/styling/css-usage.md#raw).
+
+:::tip
+Rsbuild >= 1.3.0 supports the `?raw` query parameter, and >= 1.4.0 supports importing the raw content of JS and TS files.
+:::
+
+## Output files
+
+When static assets are imported, they will be output to the dist directory. You can:
+
+* Use [output.filename](/config/output/filename.md) to modify the output filename.
+* Use [output.distPath](/config/output/dist-path.md) to modify the output path.
+
+Read [Output Files](/guide/basic/output-files.md) for details.
+
+## URL prefix
+
+The URL returned after importing an asset will automatically include the path prefix:
+
+* In development, use [dev.assetPrefix](/config/dev/asset-prefix.md) to set the path prefix.
+* In production, use [output.assetPrefix](/config/output/asset-prefix.md) to set the path prefix.
+* When either `dev.assetPrefix` or `output.assetPrefix` is not configured, the value of [server.base](/config/server/base.md) will be automatically used as the default prefix.
+
+For example, you can set `output.assetPrefix` to `https://example.com`:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    assetPrefix: 'https://example.com',
+  },
+};
+```
+
+```js
+import logo from './static/logo.png';
+
+console.log(logo); // "https://example.com/static/logo.[hash].png"
+```
+
+## Public folder
+
+The public folder at the project root can be used to place static assets. These assets won't be built by Rsbuild and can be directly referenced via URL.
+
+* When you start the dev server, these assets will be served under the [server.base](/config/server/base.md) path (default `/`).
+* When you perform a production build, these assets will be copied to the [dist directory](/guide/basic/output-files.md).
+
+For example, you can place files such as `robots.txt`, `manifest.json`, or `favicon.ico` in the public folder.
+
+### How to reference
+
+You can reference files in the `public` directory via URL.
+
+For example, in an HTML template, the `./public/favicon.ico` file can be referenced as `/favicon.ico`. [BASE\_URL](/guide/advanced/env-vars.md#processenvpublic_base_path) is the base path of the server.
+
+```html title="index.html"
+<link rel="icon" href="<%= process.env.BASE_URL %>/favicon.ico" />
+```
+
+### Notes
+
+Keep these points in mind when using the `public` folder:
+
+* When referencing assets in the public folder via URL, use absolute paths instead of relative paths to ensure assets can be accessed correctly after deployment.
+
+```html title="src/index.html"
+<!-- Wrong -->
+<link rel="icon" href="../public/favicon.ico" />
+
+<!-- Correct -->
+<link rel="icon" href="/favicon.ico" />
+```
+
+* Avoid importing files from the public directory into your source code. The correct approach is to reference them by URL. You can place static assets that need to be imported into source code in the `/src/assets` directory.
+
+```js title="src/index.js"
+// Wrong
+import logo from '../public/logo.png';
+
+// Correct
+import logo from './assets/logo.png';
+```
+
+* During the production build, files in the public folder are copied to the output folder (default is `dist`). Be careful to avoid name conflicts with output files. When files in the `public` folder have the same name as outputs, the outputs have higher priority and will overwrite the conflicting public folder files. This feature can be disabled by setting [server.publicDir.copyOnBuild](/config/server/public-dir.md) to `false`.
+
+### Custom behavior
+
+Rsbuild provides the [server.publicDir](/config/server/public-dir.md) option which can be used to customize the name and behavior of the public folder, as well as to disable it.
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    publicDir: false,
+  },
+};
+```
+
+## Type declaration
+
+When you import static assets in TypeScript code, TypeScript may prompt that the module is missing a type definition:
+
+```
+TS2307: Cannot find module './logo.png' or its corresponding type declarations.
+```
+
+To fix this, you need to add a type declaration file for the static assets, please create a `src/env.d.ts` file, and add the corresponding type declaration.
+
+* Method 1: If the `@rsbuild/core` package is installed, you can reference the [preset types](/guide/basic/typescript.md#preset-types) provided by `@rsbuild/core`:
+
+```ts
+/// <reference types="@rsbuild/core/types" />
+```
+
+* Method 2: Manually add the required type declarations:
+
+```ts title="src/env.d.ts"
+// Taking png images as an example
+declare module '*.png' {
+  const content: string;
+  export default content;
+}
+```
+
+After adding the type declaration, if the type error still exists, you can try to restart the current IDE, or adjust the directory where `env.d.ts` is located, making sure that TypeScript can correctly identify the type definition.
+
+## Extend asset types
+
+If the built-in asset types in Rsbuild cannot meet your requirements, you can extend additional static asset types in the following ways.
+
+### Use `source.assetsInclude`
+
+By using the [source.assetsInclude](/config/source/assets-include.md) config, you can specify additional file types to be treated as static assets.
+
+```ts title="rsbuild.config.ts"
+export default {
+  source: {
+    assetsInclude: /\.pdf$/,
+  },
+};
+```
+
+After adding the above configuration, you can import `*.pdf` files in your code, for example:
+
+```js
+import myFile from './static/myFile.pdf';
+
+console.log(myFile); // "/static/myFile.[hash].pdf"
+```
+
+### Use `tools.rspack`
+
+You can modify the built-in Rspack configuration and add custom static assets handling rules via [tools.rspack](/config/tools/rspack.md).
+
+For example, to treat `*.pdf` files as assets and output them to the dist directory, you can add the following configuration:
+
+```ts title="rsbuild.config.ts"
+export default {
+  tools: {
+    rspack(config, { addRules }) {
+      addRules([
+        {
+          test: /\.pdf$/,
+          // converts asset to a separate file and exports the URL address.
+          type: 'asset/resource',
+        },
+      ]);
+    },
+  },
+};
+```
+
+For more information about asset modules, please refer to [Rspack - Asset modules](https://rspack.rs/guide/features/asset-module).
+
+### Related configurations
+
+Extended static asset types will be affected by the following configurations:
+
+* [output.filename.assets](/config/output/filename.md): Set the name of extended static assets.
+* [output.distPath.assets](/config/output/dist-path.md): Set the output directory of extended static assets.
+* [output.dataUriLimit.assets](/config/output/data-uri-limit.md): Set the threshold of inlining for extended static assets.
+
+## Custom rules
+
+In some scenarios, you may need to bypass the built-in assets processing rules of Rsbuild and add some custom rules.
+
+Taking PNG image as an example, you need to:
+
+1. Modify the built-in Rspack config via [tools.bundlerChain](/config/tools/bundler-chain.md) to exclude `.png` files using the `exclude` method.
+2. Add custom asset processing rules via [tools.rspack](/config/tools/rspack.md).
+
+```ts title="rsbuild.config.ts"
+export default {
+  tools: {
+    bundlerChain(chain, { CHAIN_ID }) {
+      chain.module
+        // Use `CHAIN_ID.RULE.IMAGE` to locate the built-in image rule
+        .rule(CHAIN_ID.RULE.IMAGE)
+        .exclude.add(/\.png$/);
+    },
+    rspack(config, { addRules }) {
+      addRules([
+        {
+          test: /\.png$/,
+          // Add a custom loader to handle png images
+          loader: 'custom-png-loader',
+        },
+      ]);
+    },
+  },
+};
+```
+
+## Image format
+
+When using image assets, you can choose an appropriate image format according to the pros and cons in the table below.
+
+| Format | Pros                                                                                                      | Cons                                                                                | Scenarios                                                                                                                                              |
+| ------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| PNG    | Lossless compression, no loss of picture details, no distortion, support for translucency                 | Not suitable for pictures with complex color tables                                 | Suitable for pictures with few colors and well-defined borders, suitable for logos, icons, transparent images and other scenes                         |
+| JPG    | Rich colors                                                                                               | Lossy compression, which will cause image distortion, does not support transparency | Suitable for pictures with a large number of colors, gradients, and overly complex pictures, suitable for portrait photos, landscapes and other scenes |
+| WebP   | Supports both lossy and lossless compression, supports transparency, and is much smaller than PNG and JPG | iOS compatibility is not good                                                       | Pixel images of almost any scene, and the hosting environment that supports WebP, should prefer WebP image format                                      |
+| SVG    | Lossless format, no distortion, supports transparency                                                     | Not suitable for complex graphics                                                   | Suitable for vector graphics, suitable for icons                                                                                                       |

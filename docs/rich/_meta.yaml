@@ -1,0 +1,10 @@
+name: rich
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:10:52Z"
+  - type: web
+    last_fetched: "2026-04-03T23:10:52Z"
+description: >
+  rich documentation
+quality_score: 0

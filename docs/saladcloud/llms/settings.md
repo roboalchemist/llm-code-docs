@@ -1,0 +1,72 @@
+# Source: https://docs.salad.com/container-engine/reference/autoscaling/settings.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Job Queue Autoscaling Settings
+
+> Complete reference for Job Queue autoscaling configuration parameters including ranges and examples for SaladCloud container groups.
+
+*Last Updated: July 21, 2025*
+
+To fine-tune how Job Queue autoscaling works in SaladCloud, you can adjust the following settings. These parameters
+control how your container groups automatically scale based on the number of jobs in your SaladCloud job queues:
+
+### **Desired Queue Length**
+
+* **Description**: The target number of jobs per container instance that triggers the Job Queue autoscaler to adjust the
+  number of container instances.
+* **Range**: Must be between 1 and 100.
+* **Example**: If you set this to 20, the system will aim to maintain 20 jobs per instance before scaling up or down.
+
+### **Minimum Replicas**
+
+* **Description**: The minimum number of container instances that the Job Queue autoscaler will scale down to.
+* **Range**: Must be between 0 and 100.
+* **Example**: If you set this to 3, the system will never scale below 3 running instances, even during periods with no
+  jobs in the queue. If set to 0, the system will scale down to zero instances when there are no jobs in the queue,
+  which means you do not pay for any resources when the queue is empty. However, this will result in cold starts when
+  new jobs are added to the queue. A cold start happens when the system needs to start new containers, potentially
+  causing delays as the instances are brought online.
+
+### **Maximum Replicas**
+
+* **Description**: The maximum number of container instances that the Job Queue autoscaler will scale up to.
+* **Range**: Must be between 1 and 500, or the maximum instance quota assigned to the project, whichever is lower.
+* **Note**: The maximum allowed value depends on the project instance quota. Ensure that your quota supports the desired
+  number of replicas.
+* **Example**: If set to 100, the system will never spin up more than 100 instances, even if the job queue continues to
+  grow.
+
+### **Period (Seconds)**
+
+* **Description**: The time interval in seconds during which the Job Queue autoscaler checks the queue length and
+  applies the scaling formula.
+  * **Range**: Must be between 15 and 1800 seconds.
+* **Example**: If set to 30, the job queue is checked every 30 seconds, and scaling decisions are made at that
+  frequency.
+
+### **Maximum Upscale Per Minute (Optional)**
+
+* **Description**: The maximum number of instances that can be added per minute by the Job Queue autoscaler to handle
+  increasing job volume.
+* **Range**: Must be between 1 and 100.
+* **Example**: Setting this to 20 means that the autoscaler can spin up a maximum of 20 new instances each minute to
+  accommodate increasing job load.
+
+### **Maximum Downscale Per Minute (Optional)**
+
+* **Description**: The maximum number of instances that can be removed per minute by the Job Queue autoscaler when job
+  volume decreases.
+* **Range**: Must be between 1 and 100.
+* **Example**: If set to 10, no more than 10 instances will be removed per minute during downscaling, ensuring a smooth
+  reduction in resources.
+* **Note**: When scaling down, the system might remove nodes that are still processing jobs. To prevent job loss, ensure
+  that your application can handle graceful shutdowns and that the Job Queue Worker completes current HTTP requests
+  before termination.
+
+***
+
+Refer back to the [Job Queue Autoscaling Overview](/container-engine/explanation/infrastructure-platform/autoscaling) or
+proceed to [Set Up Job Queue Autoscaling](/container-engine/how-to-guides/autoscaling/enable-autoscaling).

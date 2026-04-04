@@ -1,0 +1,48 @@
+# Source: https://docs.salad.com/container-engine/explanation/infrastructure-platform/autoscaling.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Job Queue Autoscaling Overview
+
+> Learn how SaladCloud Job Queue autoscaling automatically adjusts container instances based on queue depth to optimize performance and cost for batch processing workloads.
+
+*Last Updated: July 21, 2025*
+
+**Job Queue Autoscaling** in SaladCloud dynamically adjusts the number of container instances based on the number of
+jobs in your SaladCloud job queues. This ensures that your infrastructure scales up when job volume increases and scales
+down during low usage periods, optimizing both performance and cost efficiency.
+
+Job Queue autoscaling integrates directly with SaladCloud's managed queue service and the Job Queue Worker to provide
+seamless scaling for batch processing and job-based workloads.
+
+## Prerequisites
+
+Before you can enable Job Queue autoscaling, you must configure the Job Queue:
+
+1. Ensure that [**SaladCloud Job Queues**](/container-engine/explanation/job-processing/job-queues) are enabled for your
+   container group.
+2. Verify that your application can handle scaling with multiple container instances.
+3. Review the [Job Queue Autoscaling Settings](/container-engine/reference/autoscaling/settings) to understand how to
+   fine-tune autoscaling for your workloads.
+
+## Example Use Case
+
+Let's say you run a batch processing workload, but the number of jobs you receive is inconsistent. Sometimes, there are
+no jobs at all, and you want to scale down to zero instances to avoid paying for unused compute resources. By setting
+the **Minimum Replicas** to 0, the Job Queue autoscaler will automatically scale down to zero when the queue is empty,
+which means you don't pay for any resources when there is no workload. However, this will result in cold starts when new
+jobs arrive. Cold starts occur when the system needs to initialize new instances, which can introduce a delay while
+containers are started from an inactive state.
+
+At other times, you might experience a spike where thousands of jobs need to be processed quickly. By setting the
+**Maximum Replicas** to 100, you can scale up and process all the jobs much faster. Even though you're using more
+instances, you're still paying for the same amount of compute hours you would have spent on one instance, but the jobs
+are completed 100 times faster, reducing overall processing time.
+
+***
+
+Ready to configure Job Queue autoscaling? Learn more about the available
+[Settings](/container-engine/reference/autoscaling/settings) or
+[Set Up Job Queue Autoscaling](/container-engine/how-to-guides/autoscaling/enable-autoscaling) in SaladCloud.

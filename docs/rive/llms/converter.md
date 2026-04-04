@@ -1,0 +1,42 @@
+# Source: https://uat.rive.app/docs/scripting/api-reference/interfaces/converter.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://uat.rive.app/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Converter
+
+A scripted converter used for transforming values between ViewModel data
+bindings and Rive properties.
+
+Type parameters:
+T: The converter type
+I: The input type, must be a DataValue type
+(DataValueNumber, DataValueString, DataValueBoolean, DataValueColor, etc)
+O: The output type, must be a DataValue type
+(DataValueNumber, DataValueString, DataValueBoolean, DataValueColor, etc)
+
+For more information, see [Converter Scripts](/scripting/protocols/converter-scripts).
+
+## Methods
+
+### `init`
+
+Called once when the converter is created. Returns true if initialization
+succeeds.
+
+### `convert`
+
+Converts the input value (a view model property) to an output value.
+The input parameter must be a DataValue type.
+
+### `reverseConvert`
+
+Converts the output value back to an input value (a view model property).
+The input parameter must be a DataValue type.
+
+### `advance`
+
+Optional per-frame update. Returns true if the converter should continue
+receiving advance calls.

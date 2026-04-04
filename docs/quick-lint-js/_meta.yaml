@@ -1,0 +1,8 @@
+name: quick-lint-js
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:10:47Z"
+description: >
+  quick-lint-js documentation
+quality_score: 0

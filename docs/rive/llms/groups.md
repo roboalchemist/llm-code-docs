@@ -1,0 +1,43 @@
+# Source: https://uat.rive.app/docs/editor/fundamentals/groups.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://uat.rive.app/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Groups
+
+> Use groups to organize your graphics or to add extra transform spaces.
+
+export const YouTube = ({id, timestamp}) => {
+  const videoSrc = timestamp ? `https://www.youtube.com/embed/${id}?start=${timestamp}` : `https://www.youtube.com/embed/${id}`;
+  return <iframe width="100%" height="400" src={videoSrc} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />;
+};
+
+<YouTube id="FnnZV57Dp3c" />
+
+Activate the Group tool with the `G` shortcut. Click anywhere in an artboard to add a new group. Now drag and drop objects into the group in the Hierarchy.
+
+You can also wrap a selection of shapes into a group with `⌘`+`G` in macOS or `Ctrl`+`G` in Windows.
+
+Unwrap a group with `⌘`+`Shift`+`G` in macOS or `Ctrl`+`Shift` +`G` in Windows.
+
+## Group Style
+
+The Style property of a group can be set to Group or Target.
+
+### Group
+
+Group is the default behavior, which behaves as described in the [Selecting and Navigating Groups](/editor/fundamentals/selecting-and-navigating-groups).
+
+### Target
+
+The Target option draws a different icon on the Stage that is always visible, regardless of whether the group has children (usually a group only displays an icon if it is empty). When a group displays as a Target, it also disables the functionality described in [Selecting and Navigating Groups](/editor/fundamentals/selecting-and-navigating-groups) section. This means you can immediately click through to any child of the group (no need to double-click, enter/esc, or Deep Select).
+
+<img src="https://mintcdn.com/rive/Lwf3q5I_sETfAKaI/images/editor/fundamentals/groups-targets.gif?s=fd9245d507c29e91aed35b03f9e7f23a" alt="Groups change Target" width="1200" height="623" data-path="images/editor/fundamentals/groups-targets.gif" />
+
+The Target option is particularly useful when working with Constraints.
+
+<Card title="Constraints" icon={<svg xmlns="http://www.w3.org/2000/svg" height="100%" fill="none" viewBox="0 0 16 16" class="size-4 text-gray-500/80 dark:text-gray-400" aria-hidden="true"><path fill="currentColor" d="M7.31 7.111 2.406 5.15l4.61-1.844.328-.126a2.3 2.3 0 0 1 1.647 0l.33.126L13.93 5.15 9.024 7.112c-.55.22-1.163.22-1.712 0"></path><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m2.405 10.911 4.906 1.963c.55.22 1.162.22 1.712 0l4.906-1.963M2.405 8.031 7.31 9.992c.55.22 1.162.22 1.712 0l4.906-1.963M2.405 5.15 7.31 7.111c.55.22 1.162.22 1.712 0l4.906-1.962-4.61-1.844-.329-.126a2.3 2.3 0 0 0-1.647 0l-.329.126z"></path></svg>} iconType="solid" href="/editor/constraints/">
+  Constraints are a way to control the properties of an object through another target object. Some constraints can set limits on these properties (and their hierarchical relationships), while others can copy properties from one object to another.
+</Card>

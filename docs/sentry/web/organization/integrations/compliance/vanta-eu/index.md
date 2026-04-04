@@ -1,0 +1,17 @@
+---
+---
+title: Vanta EU
+description: "Learn about Sentry's Vanta EU integration and how it helps automate security compliance."
+---
+
+Sentry's Vanta EU integration automates the process of validating users and their compliance status within an organization. This saves time, reduces manual effort, and enhances the visibility of compliance-related information. Organizations benefit from real-time updates on their compliance state, helping them stay audit-ready and ensuring smoother internal operations.
+
+This integration is maintained and supported by Vanta. For more details, questions, or support, feel free to contact Vanta Support at support@vanta.com.
+
+## Install and Configure
+
+Sentry Owner, Manager, or Admin permissions are required to install this integration.
+
+1. Navigate to **Settings > Integrations > Vanta EU**
+
+2. Follow the full [Vanta installation instructions](https://help.vanta.com/en/articles/11345687-vanta-sentry-integration).

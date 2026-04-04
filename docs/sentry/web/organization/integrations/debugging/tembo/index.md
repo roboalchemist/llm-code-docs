@@ -1,0 +1,15 @@
+---
+---
+title: Tembo
+description: "Learn about Sentry's Tembo integration" 
+---
+
+Tembo is a cloud coding agents platform that offers unified access to claude code, codex, ampcode, cursor cli, and other agentic applications! It autonomously identifies database performance bottlenecks, prioritizes sentry issues, writes optimized code fixes, and submits ready-to-deploy PRs directly to your repos. This integration is maintained and supported by Tembo. For more details, questions, or support feel free to contact support@tembo.io.
+
+## Install and Configure
+
+Sentry Owner, Manager, or Admin permissions are required to install this integration.
+
+1. Navigate to **Settings > Integrations > Tembo**
+
+2. Follow the full [Tembo installation instructions](https://docs.tembo.io/integrations/sentry).

@@ -1,0 +1,85 @@
+# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/logging.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Logging and Observability
+
+> Obtaining logs and metrics from your agents and sessions
+
+<Warning>
+  This section of the documentation is currently work in progress. Please check
+  back soon for updates.
+</Warning>
+
+## Configuring log level
+
+You can control the Pipecat logging level for your deployed agents using the `PIPECAT_LOG_LEVEL` environment variable. This can be set as a [secret](/deployment/pipecat-cloud/fundamentals/secrets) or directly in your deployment configuration.
+
+Available log levels:
+
+| Level     | Description                                                          |
+| --------- | -------------------------------------------------------------------- |
+| `TRACE`   | The most detailed information for debugging (includes Frame logging) |
+| `DEBUG`   | Verbose output for debugging (default)                               |
+| `INFO`    | General operational information                                      |
+| `WARNING` | Warning messages for potential issues                                |
+| `ERROR`   | Error messages only                                                  |
+
+## Agent logs
+
+Agent logs are available via both the CLI and Dashboard. You can view logs for a specific agent by running the following command:
+
+```bash  theme={null}
+pipecat cloud agent logs my-agent
+```
+
+This command accept various filters to help you narrow down the logs you are looking for. For example, you can filter logs by severity level:
+
+```bash  theme={null}
+pipecat cloud agent logs my-agent -l ERROR
+```
+
+### Session logging
+
+We recommend using the `loguru` library for logging within your agent. This will ensure any logging within your agent associated to the session it is running in.
+
+```python  theme={null}
+from loguru import logger
+
+async def bot():
+	logger.info("Hello, world!") # will be associated with the session id
+```
+
+If you are handling logging manually, you can obtain the active session ID from the `PipecatRunnerArguments` object (or subclass alternative) passed to your `bot()` method:
+
+```python  theme={null}
+from pipecat.runner.types import PipecatRunnerArguments
+
+async def bot(args: PipecatRunnerArguments):
+	session_id = args.session_id
+```
+
+<Note>
+  See [the Session Arguments reference](../sdk-reference/session-arguments) for
+  more additional SessionArgument types.
+</Note>
+
+## CPU and memory metrics
+
+Pipecat Cloud tracks CPU and memory usage for each session, which can be helpful for troubleshooting performance issues. You can view these metrics in two ways:
+
+### Dashboard
+
+Navigate to your agent in the Pipecat Cloud dashboard, then go to **Sessions** and click on a specific **Session ID** to view CPU and memory usage graphs.
+
+### CLI
+
+Use the `sessions` command with a specific session ID to see CPU and memory usage with sparkline visualizations and percentile summaries:
+
+```bash  theme={null}
+pipecat cloud agent sessions my-agent --id <session-id>
+```
+
+See the [CLI reference](/cli/cloud/agent#sessions) for more details.

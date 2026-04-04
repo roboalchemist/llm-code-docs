@@ -1,0 +1,9 @@
+name: posthog
+primary_source: llms
+sources:
+  - type: llms
+    url: https://posthog.com/
+    last_fetched: "2026-04-03T23:10:41Z"
+description: >
+  posthog documentation
+quality_score: 0

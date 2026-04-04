@@ -1,5 +1,0 @@
-# Valgrind Command
-
-```bash
-valgrind --leak-check=full --track-origins=yes --show-reachable=yes --suppressions=/Users/rakshasa/projects/rtorrent/doc/valgrind.suppression --gen-suppressions=all --log-file=valgrind.log /usr/local/bin/rtorrent
-```

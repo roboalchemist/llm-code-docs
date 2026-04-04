@@ -1,0 +1,86 @@
+---
+---
+title: Nest.js
+description: "Learn how to set up Sentry in your Nest.js app and capture your first errors."
+---
+
+## Step 1: Install
+
+### Install the Sentry SDK
+
+Run the command for your preferred package manager to add the Sentry SDK to your application:
+
+## Step 2: Configure
+
+Choose the features you want to configure, and this guide will show you how:
+
+### Initialize the Sentry SDK
+
+To import and initialize Sentry, create a file named `instrument.ts` in the root directory of your project and add the following code:
+
+### Apply Instrumentation to Your App
+
+Make sure to import the `instrument.ts` file before any other modules:
+
+```typescript {filename: main.ts} {1-2}
+// Import this first!
+import "./instrument";
+
+// Now import other modules
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+}
+
+bootstrap();
+```
+
+Afterward, add the `SentryModule` as a root module to your main module:
+
+```typescript {filename: app.module.ts} {2, 8}
+@Module({
+  imports: [
+    SentryModule.forRoot(),
+    // ...other modules
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+```
+
+## Step 3: Capture Nest.js Errors
+
+## Step 4: Add Readable Stack Traces With Source Maps (Optional)
+
+The stack traces in your Sentry errors probably won't look like your actual code. To fix this, upload your source maps to Sentry.
+The easiest way to do this is by using the Sentry Wizard:
+
+```bash
+npx @sentry/wizard@latest -i sourcemaps
+```
+
+## Step 5: Verify Your Setup
+
+Let's test your setup and confirm that Sentry is working correctly and sending data to your Sentry project.
+
+### View Captured Data in Sentry
+
+Now, head over to your project on [Sentry.io](https://sentry.io/) to view the collected data (it takes a couple of moments for the data to appear).
+
+## Next Steps
+
+At this point, you should have integrated Sentry into your Nest.js application and should already be sending data to your Sentry project.
+
+Now's a good time to customize your setup and look into more advanced topics.
+Our next recommended steps for you are:
+
+- Extend Sentry to your frontend using one of our [frontend SDKs](/)
+- Learn how to [manually capture errors](/platforms/javascript/guides/nestjs/usage/)
+- Continue to [customize your configuration](/platforms/javascript/guides/nestjs/configuration/)
+- Get familiar with [Sentry's product features](/product) like tracing, insights, and alerts
+
+- Check out alternative installation methods
+- Find various topics in Troubleshooting
+- [Get support](https://sentry.zendesk.com/hc/en-us/)
+

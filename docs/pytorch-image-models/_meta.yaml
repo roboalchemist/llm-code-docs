@@ -1,0 +1,9 @@
+name: pytorch-image-models
+primary_source: llms
+sources:
+  - type: llms
+    url: https://huggingface.co/docs/timm/
+    last_fetched: "2026-04-03T23:10:45Z"
+description: >
+  pytorch-image-models documentation
+quality_score: 0

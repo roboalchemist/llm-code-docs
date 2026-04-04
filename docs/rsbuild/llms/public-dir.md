@@ -1,0 +1,173 @@
+# Source: https://rsbuild.dev/config/server/public-dir.md
+
+# server.publicDir
+
+* **Type:**
+
+```ts
+type PublicDirOptions = {
+  name?: string;
+  copyOnBuild?: boolean | 'auto';
+  watch?: boolean;
+};
+type PublicDir = false | PublicDirOptions | PublicDirOptions[];
+```
+
+* **Default:**
+
+```js
+const defaultValue = {
+  name: 'public',
+  copyOnBuild: 'auto',
+  watch: false,
+};
+```
+
+By default, Rsbuild uses the `public` directory for serving public assets. Files in this directory are served at [server.base](/config/server/base.md) path (default `/`).
+
+> Related document: [Public Folder](/guide/basic/static-assets.md#public-folder).
+
+## Options
+
+### name
+
+* **Type:** `string`
+* **Default:** `'public'`
+
+The name of the public directory. The value of `name` can be set to a relative path or an absolute path. Relative path will be resolved relative to the project root directory.
+
+* Relative path example:
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    publicDir: {
+      name: '../some-public',
+    },
+  },
+};
+```
+
+* Absolute path example:
+
+```ts
+import path from 'node:path';
+
+export default {
+  server: {
+    publicDir: {
+      name: path.join(__dirname, '../some-public'),
+    },
+  },
+};
+```
+
+### copyOnBuild
+
+* **Type:** `boolean | 'auto'`
+* **Default:** `'auto'`
+
+Whether to copy files from the public directory to the dist directory on production build.
+
+* `true`: copy files.
+* `false`: do not copy files.
+* `'auto'`: if [output.target](/config/output/target.md) is not `'node'`, copy files, otherwise do not copy.
+
+:::tip
+During dev builds, if you need to copy some static assets to the output directory, you can use the [output.copy](/config/output/copy.md) option instead.
+:::
+
+#### Disable
+
+For example, disable `copyOnBuild`:
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    publicDir: {
+      copyOnBuild: false,
+    },
+  },
+};
+```
+
+Note that setting the value of `copyOnBuild` to false means that when you run `rsbuild preview` for a production preview, you will not be able to access the corresponding static resources.
+
+#### Node target
+
+By default, when [output.target](/config/output/target.md) is `'node'`, Rsbuild will not copy files from the public directory.
+
+You can set `copyOnBuild` to `true` to copy files for the `node` target:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    target: 'node',
+  },
+  server: {
+    publicDir: {
+      copyOnBuild: true,
+    },
+  },
+};
+```
+
+#### Multiple environments
+
+When performing [multi-environment builds](/guide/advanced/environments.md), Rsbuild copies files from the public directory to the output directory of each environment. If there are nested output directories, files will only be copied to the root of the output directory. For example:
+
+* The distDir of the `web` environment is `dist`, and the distDir of the `web1` environment is `dist/web1`. Due to the nested relationship between `dist` and `dist/web1`, the public directory files are only copied to the `dist` directory.
+* The distDir of the `esm` environment is `dist/esm`, and the distDir of the `cjs` environment is `dist/cjs`. Since there is no nesting relationship between `dist/esm` and `dist/cjs`, the public directory files will be copied to both the `dist/esm` and `dist/cjs` directories.
+
+### watch
+
+* **Type:** `boolean`
+* **Default:** `false`
+
+Whether to watch the public directory and reload the page when the files change.
+
+Setting `watch` to `true` allows the dev server to watch changes to files in the specified public directory and reload the page when the files are changed:
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    publicDir: {
+      watch: true,
+    },
+  },
+};
+```
+
+Note that the `watch` option is only valid in development mode. If [dev.hmr](/config/dev/hmr.md) and [dev.liveReload](/config/dev/live-reload.md) are both set to false, `watch` will be ignored.
+
+## Multiple directories
+
+The `server.publicDir` can be configured as an array, allowing you to serve multiple directories as static assets folders:
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    publicDir: [
+      {
+        name: 'public',
+      },
+      {
+        name: 'assets',
+        watch: false,
+      },
+    ],
+  },
+};
+```
+
+## Disabled
+
+You can set `publicDir` to `false` to disable the static assets serving:
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    publicDir: false,
+  },
+};
+```

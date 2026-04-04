@@ -1,0 +1,82 @@
+---
+---
+title: Vite
+description: "Upload your source maps with the Sentry Vite Plugin."
+---
+
+  This guide assumes you're using a Sentry **SDK version `7.47.0` or higher**.
+  If you're on an older version and you want to upload source maps, we recommend
+  upgrading your SDK to the newest version.
+
+You can use the Sentry Vite plugin to automatically create releases and upload source maps to Sentry when bundling your app.
+
+## Automatic Setup
+
+The easiest way to configure uploading source maps with Vite is by using the Sentry Wizard:
+
+If you'd rather configure source map uploading with Vite manually, follow the steps below.
+
+## Manual Setup
+
+Install the Sentry Vite plugin:
+
+```bash {tabTitle:npm}
+npm install @sentry/vite-plugin --save-dev
+```
+
+```bash {tabTitle:yarn}
+yarn add @sentry/vite-plugin --dev
+```
+
+```bash {tabTitle:pnpm}
+pnpm add @sentry/vite-plugin --save-dev
+```
+
+### Configuration
+
+To upload source maps you have to configure an [Organization Token](https://sentry.io/orgredirect/organizations/:orgslug/settings/auth-tokens/).
+
+Alternatively, you can also use a [Personal Token](https://sentry.io/orgredirect/organizations/:orgslug/settings/account/api/auth-tokens/), with the "Project: Read & Write" and "Release: Admin" permissions.
+
+Auth tokens can be passed to the plugin explicitly with the `authToken` option, with a `SENTRY_AUTH_TOKEN` environment variable, or with an `.env.sentry-build-plugin` file (don't forget to add it to your `.gitignore` file, as this is sensitive data) in the working directory when building your project.
+We recommend you add the auth token to your CI/CD environment as an environment variable.
+
+Learn more about configuring the plugin in our [Sentry Vite Plugin documentation](https://www.npmjs.com/package/@sentry/vite-plugin).
+
+```bash {filename:.env.sentry-build-plugin}
+SENTRY_AUTH_TOKEN=___ORG_AUTH_TOKEN___
+```
+
+Example:
+
+```javascript {filename:vite.config.js}
+export default defineConfig({
+  build: {
+    sourcemap: "hidden", // Source map generation must be turned on ("hidden", true, etc.)
+  },
+  plugins: [
+    // Put the Sentry Vite plugin after all other plugins
+    sentryVitePlugin({
+      org: "___ORG_SLUG___",
+      project: "___PROJECT_SLUG___",
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+
+      sourcemaps: {
+        // As you're enabling client source maps, you probably want to delete them after they're uploaded to Sentry.
+        // Set the appropriate glob pattern for your output folder - some glob examples below:
+        filesToDeleteAfterUpload: ["./**/*.map", ".*/**/public/**/*.map", "./dist/**/client/**/*.map"]
+      }
+    }),
+  ],
+});
+```
+
+  Generating source maps **may expose them to the public**, potentially causing your
+  source code to be leaked. You can prevent this by configuring your server to
+  deny access to `.js.map` files, or by using [Sentry Vite Plugin's
+  `sourcemaps.filesToDeleteAfterUpload`](https://www.npmjs.com/package/@sentry/vite-plugin#sourcemapsfilestodeleteafterupload)
+  option to delete source maps after they've been uploaded to Sentry.
+
+The Sentry Vite plugin doesn't upload source maps in watch-mode/development-mode.
+We recommend running a production build to test your configuration.
+

@@ -1,0 +1,19 @@
+---
+---
+title: Teamwork
+description: >-
+---
+
+Teamwork needs to set up only once per organization, then it is available for _all_ projects. It is maintained and supported by the company that created it. For more details, check out our [Integration Platform documentation](/organization/integrations/integration-platform/).
+
+## Install and Configure
+
+Sentry owner, manager, or admin permissions are required to install this integration.
+
+Teamwork **won't** work with self-hosted Sentry.
+
+1. Navigate to **Settings > Integrations > Teamwork**
+
+   ![Install Teamwork integration](./img/teamwork.png)
+
+2. Follow the full [Teamwork installation instructions](https://support.teamwork.com/projects/sentry).

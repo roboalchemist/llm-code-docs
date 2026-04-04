@@ -1,0 +1,27 @@
+# Source: https://docs.salad.com/container-engine/how-to-guides/imds/imds-reallocate.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Using IMDS to reallocate a replica
+
+*Last Updated: June 3, 2025*
+
+Using the IMDS, you can reallocate a replica from within the running container. This is often done in combination with
+[performance monitoring](/container-engine/tutorials/performance/performance-monitoring) to allow applications to
+self-monitor and reject under-performing nodes. You can find code samples and the full API reference in the
+[IMDS API documentation](/reference/imds/reallocate). This endpoint requires you to provide a reason for reallocation,
+which we use to continuously improve our service.
+
+## Example Usage
+
+```bash  theme={null}
+curl --request POST \
+  --url http://169.254.169.254/v1/reallocate \
+  --header 'Content-Type: application/json' \
+  --header 'Metadata: true' \
+  --data '{
+  "reason": "Insufficient Upload Bandwidth"
+}'
+```

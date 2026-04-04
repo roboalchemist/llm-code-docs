@@ -1,0 +1,8 @@
+name: rebar3
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:50Z"
+description: >
+  rebar3 documentation
+quality_score: 0

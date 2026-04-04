@@ -1,0 +1,9 @@
+name: prisma
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.prisma.io/docs/
+    last_fetched: "2026-04-03T23:10:42Z"
+description: >
+  prisma documentation
+quality_score: 0

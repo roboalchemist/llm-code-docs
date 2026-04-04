@@ -1,0 +1,193 @@
+# Source: https://planetscale.com/docs/vitess/tutorials/prometheus-metrics-newrelic.md
+
+# Source: https://planetscale.com/docs/vitess/monitoring/prometheus-metrics-newrelic.md
+
+# Source: https://planetscale.com/docs/vitess/guides/prometheus-metrics-newrelic.md
+
+# Sending Prometheus Metrics to New Relic
+
+> If you're looking for your PlanetScale database metrics in your New Relic account, this tutorial will show how to configure a [Prometheus](https://prometheus.io/) instance to scrape PlanetScale's [Prometheus infrastructure](/docs/vitess/integrations/prometheus) automatically, allowing you to collect detailed metrics for all of your PlanetScale branches.
+
+While this tutorial is written for New Relic, using Prometheus' remote write is a common pattern for sending metrics to [AWS Managed Prometheus](https://aws.amazon.com/prometheus/), [Google Cloud Managed Service for Prometheus](https://cloud.google.com/stackdriver/docs/managed-prometheus), [Grafana hosted Prometheus](https://grafana.com/products/cloud/metrics/) and many other tools.
+
+For more information on Prometheus Remote Write and New Relic, see the [New Relic documentation on sending Prometheus metric data](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic/).
+
+## Overview
+
+In this tutorial, we will be using an instance of [Prometheus](https://prometheus.io/) running on a Linux VM to scrape metrics from PlanetScale and then forward them to New Relic using [Remote Write](https://prometheus.io/docs/specs/prw/remote_write_spec/). We will make sure that Prometheus stays running by creating a [Systemd Unit File](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files).
+
+The default configuration we will create will send all PlanetScale metrics to New Relic, and we will cover how to filter to drop certain metrics that may not be desired.
+
+In order to proceed, you'll need:
+
+* A [New Relic API Key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys), make sure it is the `Ingest - License` type.
+* PlanetScale [Service token](/docs/api/reference/service-tokens) with `read_metrics_endpoints` permissions.
+
+## Prometheus Installation
+
+First, let's download the latest release of Prometheus and create our user that is going to run it. We'll be using the latest 3.x release from the [GitHub Releases Page](https://github.com/prometheus/prometheus/releases).
+
+Create a `prometheus` user:
+
+```bash  theme={null}
+$ sudo useradd -M -U prometheus
+```
+
+```bash  theme={null}
+$ wget https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheus-3.2.1.linux-amd64.tar.gz
+$ tar xf prometheus-3.2.1.linux-amd64.tar.gz
+$ sudo mv prometheus-3.2.1.linux-amd64/ /opt/prometheus
+$ sudo chown prometheus:prometheus -R /opt/prometheus
+```
+
+This has put the Prometheus binary in `/opt/prometheus` along with the example configuration file that we can use.
+
+## Create our Systemd Unit File
+
+Now that we have the binary in place, let's setup Systemd to run Prometheus by creating a Unit File in `/etc/systemd/system/prometheus.service` with the following contents:
+
+```ini expandable theme={null}
+[Unit]
+Description=Prometheus Agent
+Documentation=https://prometheus.io/
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Restart=on-failure
+ExecStart=/opt/prometheus/prometheus \
+  --config.file=/opt/prometheus/prometheus.yml \
+  --storage.agent.path=/opt/prometheus/data \
+  --web.listen-address=0.0.0.0:9091 \
+  --agent
+
+[Install]
+WantedBy=multi-user.target
+```
+
+## Configure Prometheus
+
+Now that we've got Prometheus installed and a unit file present, let's configure Prometheus. We will be borrowing some of our configuration from the [Prometheus Guide](/docs/vitess/integrations/prometheus), and adding some New Relic specific configuration. Edit `/opt/prometheus/prometheus.yml` in your editor of choice so that it contains this, making sure to replace your org name, service token information, and New Relic API key:
+
+```yaml  theme={null}
+global:
+  scrape_interval: 1m
+scrape_configs:
+  - job_name: "${ORG}"
+    http_sd_configs:
+    - url: https://api.planetscale.com/v1/organizations/${ORG}/metrics
+      authorization:
+        type: "token"
+        credentials: "${TOKEN_ID}:${TOKEN}"
+      refresh_interval: 10m
+remote_write:
+  - url: https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=planetscale
+    authorization:
+      credentials: ${NEW_RELIC_API_TOKEN}
+```
+
+This configuration file does the following:
+
+* Configures Prometheus to discover scraping endpoints from the PlanetScale API using a service token
+* Points Prometheus to write the metrics it scrapes from PlanetScale to the New Relic API
+
+## Starting Prometheus
+
+Now that we have a Systemd unit file and a configured Prometheus, let's run it!
+
+```bash  theme={null}
+$ sudo systemctl daemon-reload
+$ sudo systemctl start prometheus.service
+```
+
+We can also tell Systemd to run Prometheus when my VM boots:
+
+```bash  theme={null}
+$ sudo systemctl enable prometheus.service
+```
+
+Now, let's check to make sure everything is running properly:
+
+```bash expandable theme={null}
+$ sudo systemctl status prometheus.service
+● prometheus.service - Prometheus Agent
+     Loaded: loaded (/etc/systemd/system/prometheus.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2025-04-04 17:36:57 UTC; 38s ago
+       Docs: https://prometheus.io/
+   Main PID: 745542 (prometheus)
+      Tasks: 9 (limit: 9486)
+     Memory: 21.2M (peak: 21.9M)
+        CPU: 264ms
+     CGroup: /system.slice/prometheus.service
+             └─745542 /opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus.yml --storage.agent.path=/opt/prometheus/data --web.listen-address=0.0.0.0:9091 --agent
+
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.804Z level=INFO source=main.go:1305 msg=EXT4_SUPER_MAGIC
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.804Z level=INFO source=main.go:1308 msg="Agent WAL storage started"
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.804Z level=INFO source=main.go:1437 msg="Loading configuration file" filename=/opt/prometheus/prometheus.yml
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.805Z level=INFO source=watcher.go:225 msg="Starting WAL watcher" component=remote remote_name=fbe64a url="https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=planetscal>
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.805Z level=INFO source=metadata_watcher.go:90 msg="Starting scraped metadata watcher" component=remote remote_name=fbe64a url="https://metric-api.newrelic.com/prometheus/v1/write?prometh>
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.805Z level=INFO source=watcher.go:277 msg="Replaying WAL" component=remote remote_name=fbe64a url="https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=planetscale" queu>
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.806Z level=INFO source=main.go:1476 msg="updated GOGC" old=100 new=75
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.806Z level=INFO source=main.go:1486 msg="Completed loading of configuration file" db_storage=791ns remote_storage=610.171µs web_handler=897ns query_engine=301ns scrape=517.175µs scrape_s>
+Apr 04 17:36:57 ubuntu prometheus[745542]: time=2025-04-04T17:36:57.806Z level=INFO source=main.go:1213 msg="Server is ready to receive web requests."
+```
+
+This reports that prometheus is `active (running)`, and I can see the logs showing that it started successfully. Great!
+
+## Querying on New Relic
+
+After a couple of minutes, head over to your New Relic dashboard and we can query for your database metrics. First, let's get a list of the database branches in the `nick` organization that I'm using to test:
+
+```bash  theme={null}
+$ pscale branch list test --org nick
+  ID             NAME         PARENT BRANCH   REGION    PRODUCTION   SAFE MIGRATIONS   READY   CREATED AT     UPDATED AT
+ -------------- ------------ --------------- --------- ------------ ----------------- ------- -------------- ----------------
+  7wxuxewx4l0p   main         n/a             us-east   Yes          No                Yes     2 years ago    50 minutes ago
+  6o0rr27785fl   partitions   main            us-east   No           No                Yes     2 months ago   7 minutes ago
+```
+
+For this, we'll use the `7wxuxewx4l0p` branch.
+
+Using New Relic's NRQL, we can visualize the memory usage of my VTTablet instances with the following query:
+
+```sql  theme={null}
+FROM Metric SELECT average(planetscale_pods_cpu_util_percentages) WHERE planetscale_database_branch_id = '7wxuxewx4l0p' AND planetscale_component='vttablet' SINCE 30 minutes AGO TIMESERIES FACET planetscale_pod
+```
+
+Because my `main` branch is production, we will see the memory usage for my primary and both my replicas over the last 30 minutes:
+
+<Frame>
+  <img src="https://mintcdn.com/planetscale-cad1a68a/PORMOvRUq48-lind/docs/vitess/tutorials/metrics-new-relic-dashboard.png?fit=max&auto=format&n=PORMOvRUq48-lind&q=85&s=8335f48aba48d9d38c5392fbe8c7bd24" alt="New Relic Memory Query" data-og-width="2758" width="2758" data-og-height="1450" height="1450" data-path="docs/vitess/tutorials/metrics-new-relic-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/planetscale-cad1a68a/PORMOvRUq48-lind/docs/vitess/tutorials/metrics-new-relic-dashboard.png?w=280&fit=max&auto=format&n=PORMOvRUq48-lind&q=85&s=3dabb0eae8d0f066945a1ad2cc5a03b4 280w, https://mintcdn.com/planetscale-cad1a68a/PORMOvRUq48-lind/docs/vitess/tutorials/metrics-new-relic-dashboard.png?w=560&fit=max&auto=format&n=PORMOvRUq48-lind&q=85&s=ef446159597e8d24a2dff6826b6bb42c 560w, https://mintcdn.com/planetscale-cad1a68a/PORMOvRUq48-lind/docs/vitess/tutorials/metrics-new-relic-dashboard.png?w=840&fit=max&auto=format&n=PORMOvRUq48-lind&q=85&s=778694ba8466edd29b7b37ab64215302 840w, https://mintcdn.com/planetscale-cad1a68a/PORMOvRUq48-lind/docs/vitess/tutorials/metrics-new-relic-dashboard.png?w=1100&fit=max&auto=format&n=PORMOvRUq48-lind&q=85&s=a16ff496cce5ce1b000c39883ca24319 1100w, https://mintcdn.com/planetscale-cad1a68a/PORMOvRUq48-lind/docs/vitess/tutorials/metrics-new-relic-dashboard.png?w=1650&fit=max&auto=format&n=PORMOvRUq48-lind&q=85&s=264e6dbe4a57d9b5f6cf7b3351cfcd64 1650w, https://mintcdn.com/planetscale-cad1a68a/PORMOvRUq48-lind/docs/vitess/tutorials/metrics-new-relic-dashboard.png?w=2500&fit=max&auto=format&n=PORMOvRUq48-lind&q=85&s=af0dc6f709b8c625765036ffbe630441 2500w" />
+</Frame>
+
+## Filtering Metrics
+
+If you don't want to ingest every metric into New Relic, you can tell Prometheus to drop certain metrics. For more information, see the [New Relic Documentation](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/#allow-deny).
+
+If we adjust our Prometheus configuration that we have in `/opt/prometheus/prometheus.yml` we can instruct Prometheus to drop all metrics unless they match a certain naming convention:
+
+```yaml  theme={null}
+remote_write:
+  - url: https://metric-api.newrelic.com/prometheus/v1/write?prometheus_server=planetscale
+    authorization:
+      credentials: ${NEW_RELIC_API_TOKEN}
+  - source_labels: [__name__]
+    regex: "planetscale_pods_(.*)"
+    action: keep
+```
+
+If you replace your `remote_write` block with what's above, Prometheus will only forward the timeseries that match the `planetscale_pods_*` name. For a full list of metrics, see our [Metric List](/docs/vitess/integrations/prometheus-metrics).
+
+## What's Next?
+
+Now that you have your branch metrics in New Relic, you can create dashboards and alerts for conditions such as high CPU or replication delay.
+
+## Need help?
+
+Get help from [the PlanetScale Support team](https://support.planetscale.com/), or join our [GitHub discussion board](https://github.com/planetscale/discussion/discussions) to see how others are using PlanetScale.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://planetscale.com/llms.txt

@@ -1,0 +1,17 @@
+---
+---
+title: AwsLambda
+description: "Adds instrumentation for AWS Lambda. (default)"
+---
+
+_Import name: `Sentry.awsLambdaIntegration`_
+
+This integration is enabled by default. If you'd like to modify your default integrations, read [this](./../#modifying-default-integrations).
+
+Adds instrumentation for AWS Lambda to automatically create spans. Powered by [`@opentelemetry/instrumentation-aws-lambda`](https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda).
+
+```JavaScript
+Sentry.init({
+  integrations: [Sentry.awsIntegration()],
+});
+```

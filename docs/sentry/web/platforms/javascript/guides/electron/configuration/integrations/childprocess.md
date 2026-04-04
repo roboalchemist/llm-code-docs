@@ -1,0 +1,39 @@
+---
+---
+title: ChildProcess
+description: "Captures breadcrumbs and events for child process exits and crashes. (default)"
+---
+
+Captures breadcrumbs and events for child process exits and crashes.
+
+```typescript
+type ExitReason =
+  | "clean-exit"
+  | "abnormal-exit"
+  | "killed"
+  | "crashed"
+  | "oom"
+  | "launch-failed"
+  | "integrity-failure";
+
+interface ChildProcessOptions {
+  /** Child process events that generate Sentry breadcrumbs */
+  breadcrumbs: ExitReason[];
+  /** Child process events that generate Sentry events */
+  events: ExitReason[];
+}
+```
+
+For example, to disable the capture of breadcrumbs and only capture events for Out-Of-Memory crashes:
+
+```javascript
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  integrations: [
+    Sentry.childProcessIntegration({
+      breadcrumbs: [],
+      events: ["oom"],
+    }),
+  ],
+});
+```

@@ -1,0 +1,59 @@
+# Source: https://posthog.com/docs/open-api-spec/environments_dataset_items_destroy.md
+
+# environments_dataset_items_destroy
+
+## OpenAPI
+
+```json DELETE /api/environments/{environment_id}/dataset_items/{id}/
+{
+  "paths": {
+    "/api/environments/{environment_id}/dataset_items/{id}/": {
+      "delete": {
+        "operationId": "environments_dataset_items_destroy",
+        "description": "Hard delete of this model is not allowed. Use a patch API call to set \"deleted\" to true",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "environment_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Deprecated. Use /api/projects/{project_id}/ instead."
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this dataset item.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "llm_analytics",
+          "dataset_items"
+        ],
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "dataset:write"
+            ]
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "No response body"
+          }
+        },
+        "deprecated": true,
+        "x-explicit-tags": [
+          "llm_analytics"
+        ]
+      }
+    }
+  }
+}
+```

@@ -1,0 +1,9 @@
+name: plex-manufacturing-cloud
+primary_source: llms
+sources:
+  - type: llms
+    url: https://plex.rockwellautomation.com/
+    last_fetched: "2026-04-03T23:10:39Z"
+description: >
+  plex-manufacturing-cloud documentation
+quality_score: 0

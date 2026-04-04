@@ -1,0 +1,75 @@
+# Source: https://planetscale.com/docs/cli/org.md
+
+# PlanetScale CLI commands: org
+
+## Getting Started
+
+Make sure to first [set up your PlanetScale developer environment](/docs/cli/planetscale-environment-setup). Once you've installed the `pscale` CLI, you can interact with PlanetScale and manage your databases straight from the command line.
+
+## The `org` command
+
+This command allows you to list, show, and switch [organizations](/docs/security/access-control#organization-member).
+
+**Usage:**
+
+```bash  theme={null}
+pscale org <SUB-COMMAND> <FLAG>
+```
+
+### Available sub-commands
+
+| **Sub-command**              | **Sub-command flags**  | **Product**      | **Description**                                         |
+| :--------------------------- | :--------------------- | :--------------- | :------------------------------------------------------ |
+| `list`                       |                        | Postgres, Vitess | List all currently active organizations with timestamps |
+| `show`                       |                        | Postgres, Vitess | Display the currently active organization               |
+| `switch <ORGANIZATION_NAME>` | `--save-config <PATH>` | Postgres, Vitess | Switch the currently active organization                |
+
+#### Sub-command flag descriptions
+
+Some of the sub-commands have additional flags unique to the sub-command. This section covers what each of those does. See the above table for which context.
+
+| **Sub-command flag**   | **Description**                                                                                                             | **Applicable sub-commands** |
+| :--------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------- |
+| `--save-config <PATH>` | Path to store the organization. By default, the configuration is automatically deduced based on where `pscale` is executed. | `switch`                    |
+
+### Available flags
+
+| **Flag**       | **Description**             |
+| -------------- | --------------------------- |
+| `-h`, `--help` | View help for `org` command |
+
+### Global flags
+
+| **Command**                     | **Description**                                                                                                                                     |
+| :------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--api-token <TOKEN>`           | The API token to use for authenticating against the PlanetScale API.                                                                                |
+| `--api-url <URL>`               | The base URL for the PlanetScale API. Default is `https://api.planetscale.com/`.                                                                    |
+| `--config <CONFIG_FILE>`        | Config file. Default is `$HOME/.config/planetscale/pscale.yml`. Local override inside a Git repository is `$CWD/.pscale.yml` in the project's root. |
+| `--debug`                       | Enable debug mode.                                                                                                                                  |
+| `-f`, `--format <FORMAT>`       | Show output in a specific format. Possible values: `human` (default), `json`, `csv`.                                                                |
+| `--no-color`                    | Disable color output.                                                                                                                               |
+| `--service-token <TOKEN>`       | The service token for authenticating.                                                                                                               |
+| `--service-token-id <TOKEN_ID>` | The service token ID for authenticating.                                                                                                            |
+
+## Examples
+
+### The `org` command with `switch` sub-command
+
+**Command:**
+
+```bash  theme={null}
+pscale org switch <ORGANIZATION_NAME>
+```
+
+**Output:**
+
+Successfully switched to organization `<ORGANIZATION_NAME>` (using file: `/Users/name/.config/planetscale/pscale.yml`)
+
+## Need help?
+
+Get help from [the PlanetScale Support team](https://support.planetscale.com/), or join our [GitHub discussion board](https://github.com/planetscale/discussion/discussions) to see how others are using PlanetScale.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://planetscale.com/llms.txt

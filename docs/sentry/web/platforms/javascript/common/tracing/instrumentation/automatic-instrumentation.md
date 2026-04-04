@@ -1,0 +1,139 @@
+---
+---
+title: Automatic Instrumentation
+description: "Learn what spans are captured after tracing is enabled."
+---
+
+Capturing spans requires that you first set up tracing in your app if you haven't already.
+
+## What Our Instrumentation Provides
+
+## Enable Instrumentation
+
+## Configuration Options
+
+Though the `BrowserTracing` integration is automatically enabled in `@sentry/nextjs`, in order to customize its options you must include it in your `Sentry.init` in `instrumentation-client.js`:
+
+```javascript
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+
+  integrations: [Sentry.browserTracingIntegration()],
+
+  tracesSampleRate: 1.0,
+  // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
+  tracePropagationTargets: [
+    "localhost",
+    /^\//,
+    /^https:\/\/yourserver\.io\/api/,
+  ],
+});
+```
+
+Supported options:
+
+' defaultValue={'[\'localhost\', /^\\\/$/]'}>
+
+The `tracingOrigins` option was renamed `tracePropagationTargets` and deprecated in [version `7.19.0`](https://github.com/getsentry/sentry-javascript/releases/tag/7.19.0) of the JavaScript SDK. `tracingOrigins` will be removed in version 8.
+
+A list of strings and regular expressions. The JavaScript SDK will attach the `sentry-trace` and `baggage` headers to all outgoing XHR/fetch requests whose destination contains a string in the list or matches a regex in the list. If your frontend is making requests to a different domain, you'll need to add it there to propagate the `sentry-trace` and `baggage` headers to the backend services, which is required to link spans together as part of a single trace.
+
+**The `tracePropagationTargets` option matches the entire request URL, not just the domain. Using stricter regex to match certain parts of the URL ensures that requests don't unnecessarily have additional headers attached.**
+
+The default value of `tracePropagationTargets` is `['localhost', /^\//]`. This means that by default, tracing headers are only attached to requests that contain `localhost` in their URL or requests whose URL starts with a `'/'` (for example `GET /api/v1/users`).
+
+You will need to configure your web server [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers) to allow the `sentry-trace` and `baggage` headers. The configuration might look like `"Access-Control-Allow-Headers: sentry-trace"` and `"Access-Control-Allow-Headers: baggage"`, but it depends on your set up. If you do not allow the two headers, the request might be blocked.
+
+ StartSpanOptions'>
+
+`beforeStartSpan` is called at the start of every `pageload` or `navigation` span, and is passed an object containing data about the span which will be started. With `beforeStartSpan` you can modify that data.
+
+  If you're using React, read our docs to learn how to set up your [React Router
+  integration](/platforms/javascript/guides/react/configuration/integrations/react-router/).
+
+ boolean'>
+
+This function can be used to filter out unwanted spans such as XHRs running
+health checks or something similar.
+
+By default, spans will be created for all requests.
+
+This callback is invoked directly after a span is started for an outgoing fetch or XHR request.
+You can use it to annotate the span with additional data or attributes, for example by setting attributes based on the passed request headers.
+
+The idle time, measured in ms, to wait until the pageload/navigation span will be finished, if there are no unfinished spans. The pageload/navigation span will use the end timestamp of the last finished span as the endtime.
+
+The maximum duration of the pageload/naivgation span, measured in ms. If the duration exceeds the `finalTimeout` value, it will be finished.
+
+The time, measured in ms, that a child span may run. If the last started child span is still running for more than this time, the pageload/navigation span will be finished.
+
+This flag enables or disables creation of `navigation` span on history changes.
+
+This flag enables or disables creation of `pageload` span on first pageload.
+
+This option determines whether the `Sentry.reportPageLoaded()` function is enabled.
+
+This option flags pageload/navigation spans when tabs are moved to the background with "cancelled". Because browser background tab timing is not suited for precise measurements of operations and can affect your statistics in nondeterministic ways, we recommend that this option be enabled.
+
+This option determines whether spans for long tasks automatically get created.
+
+This option determines whether spans for long animation frames get created automatically. If both `enableLongAnimationFrame` and [`enableLongTask`](#enableLongTask) are enabled, Sentry will send long animation frames and fallback to long tasks (if long animation frames aren't supported by the browser).
+
+This option determines whether interactions spans automatically get created when an [Interaction to Next Paint (INP)](/product/insights/web-vitals/web-vitals-concepts/#interaction-to-next-paint-inp) event is detected. Interactions are scored and surfaced in the [Web Vitals](/product/insights/web-vitals/) module.
+
+The default is `true` starting with SDK version `8.x` and `false` in `7.x`.
+
+INP samples currently incur no cost to enable at Sentry. Basic samples contain limited information such as the interaction target, latency, and user. You may wish to enrich your INP samples by setting up [Session Replays](/platforms/javascript/session-replay/) and/or setting up [Browser Profiling](/platforms/javascript/profiling/) instrumentation around your interactive elements to gain further insights into your slowest interactions.
+
+Please note that any Session Replays and Browser Profiles used this way will incur their [standard cost](/pricing/#per-category-pricing) depending on your plan and are subject to the sampling rates configured.
+
+This option determines the sample rate of INP spans. `interactionsSampleRate` is applied on top of `tracesSampleRate`, therefore if your `interactionsSampleRate` is set to `0.5` and your `tracesSampleRate` is set to `0.1`, the outcome will be `0.05`.
+
+The default is `1.0`.
+
+' defaultValue='[]' availableSince='9.23.0'>
+
+This option determines which categories or resource spans should be ignored. The resource categories are the span `op`s (for example `resource.script` or `resource.img`)
+
+```JavaScript
+Sentry.init({
+  // ...
+  integrations: [
+    Sentry.browserTracingIntegration({
+      ignoreResourceSpans: ['resource.css', 'resource.script'],
+    }),
+  ],
+});
+```
+
+By default, all resource spans are captured.
+
+' defaultValue='[]' availableSince='9.23.0'>
+
+This option allows you to ignore certain spans created from the following browser Performance APIs:
+
+  - [`performance.mark(...)`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark)
+  - [`performance.measure(...)`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure)
+
+Any mark or measure entries matching the strings or regular expressions in the passed array will not be emitted as `mark` or `measure` spans.
+
+```JavaScript
+Sentry.init({
+  integrations: [
+    Sentry.browserTracingIntegration({
+      ignorePerformanceApiSpans: ['myMeasurement', /myMark/],
+    }),
+  ],
+});
+
+// no spans will not be created for these:
+performance.mark('myMark');
+performance.measure('myMeasurement');
+
+// spans will be created for these:
+performance.mark('authenticated');
+performance.measure('input-duration', ...);
+```
+
+By default, all performance API spans are captured.
+

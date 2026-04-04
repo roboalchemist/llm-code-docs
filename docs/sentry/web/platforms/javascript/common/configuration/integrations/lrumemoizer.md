@@ -1,0 +1,23 @@
+---
+---
+title: LRU Memoizer
+description: "Adds instrumentation for LRU Memoizer. (default)"
+---
+
+This integration only works in the Node.js and Bun runtimes. Requires SDK version `8.33.0` or higher.
+
+_Import name: `Sentry.lruMemoizerIntegration`_
+
+This integration is enabled by default when performance monitoring is enabled. If you'd like to modify your default integrations, read [this](./../#modifying-default-integrations).
+
+The `lruMemoizerIntegration` adds instrumentation for the `lru-memoizer` library to capture spans using [`@opentelemetry/instrumentation-lru-memoizer`](https://www.npmjs.com/package/@opentelemetry/instrumentation-lru-memoizer).
+
+```javascript
+Sentry.init({
+  integrations: [Sentry.lruMemoizerIntegration()],
+});
+```
+
+## Supported Versions
+
+- `lru-memoizer`: `>=1.3.0 <3`

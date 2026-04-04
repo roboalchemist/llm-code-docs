@@ -1,0 +1,8 @@
+---
+---
+title: Migration Guides
+description: "Learn about migrating to a newer version of the Java SDK."
+---
+
+In the following you find a list of guides on migrating to a newer version of the Java SDK.
+

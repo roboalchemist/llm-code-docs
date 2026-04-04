@@ -1,0 +1,8 @@
+name: rivery
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:52Z"
+description: >
+  rivery documentation
+quality_score: 0

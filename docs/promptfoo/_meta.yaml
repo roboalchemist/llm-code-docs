@@ -1,0 +1,9 @@
+name: promptfoo
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.promptfoo.dev/
+    last_fetched: "2026-04-03T23:10:42Z"
+description: >
+  promptfoo documentation
+quality_score: 0

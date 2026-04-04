@@ -1,0 +1,9 @@
+name: saleor
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.saleor.io/
+    last_fetched: "2026-04-03T23:10:54Z"
+description: >
+  saleor documentation
+quality_score: 0

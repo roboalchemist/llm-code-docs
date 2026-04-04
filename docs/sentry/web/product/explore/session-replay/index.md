@@ -1,0 +1,12 @@
+---
+---
+title: "Session Replay"
+description: "Use Session Replay to get reproductions of user sessions to improve your app experience."
+---
+
+Sentry supports Session Replay for Web and Mobile. This includes browser-based applications and certain native mobile platforms, such as Android, iOS, and React Native. Both versions of Replay (Web and Mobile) are generally available and stable.
+
+For browser-based applications, this includes static websites, single-page applications, and also server-side rendered applications -- for example, platforms such as Electron, Next.js, and Remix.
+
+To learn more about which SDKs we support, please visit our docs for [Web](web/#supported-sdks) and [Mobile](mobile/#supported-sdks).
+

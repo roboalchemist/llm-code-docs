@@ -1,0 +1,38 @@
+# Source: https://rsbuild.dev/config/server/port.md
+
+# server.port
+
+* **Type:** `number`
+* **Default:** `3000`
+
+Sets the port number for the Rsbuild server.
+
+By default, the Rsbuild server listens on port `3000` and automatically increments the port when it's occupied. Enable [server.strictPort](/config/server/strict-port.md) to throw an error instead of incrementing the port when it's occupied.
+
+The Rsbuild CLI provides a [--port](/guide/basic/cli.md#rsbuild-dev) option to set the port number. The `--port` option takes priority over the `server.port` config.
+
+```bash
+npx rsbuild dev --port 8080
+```
+
+## Example
+
+Set the port to `8080`:
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    port: 8080,
+  },
+};
+```
+
+Set different port numbers for development and preview servers:
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    port: process.env.NODE_ENV === 'development' ? 3000 : 8080,
+  },
+};
+```

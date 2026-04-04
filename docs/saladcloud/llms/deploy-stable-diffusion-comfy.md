@@ -1,0 +1,926 @@
+# Source: https://docs.salad.com/container-engine/how-to-guides/ai-machine-learning/deploy-stable-diffusion-comfy.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Deploy Image and Video Generation with ComfyUI
+
+> A comprehensive guide to deploying ComfyUI-based image and video generation services on SaladCloud
+
+*Last Updated: January 8, 2026*
+
+This guide covers deploying any ComfyUI workflow as a production API on SaladCloud, including image generation models
+(Stable Diffusion 1.5, SDXL, SD 3.5, Flux) and video generation models (LTX Video, Hunyuan, CogVideoX, Mochi, Cosmos).
+
+## Overview
+
+[ComfyUI](https://github.com/comfyanonymous/ComfyUI) is a powerful, modular inference engine for diffusion models.
+[ComfyUI API](https://github.com/SaladTechnologies/comfyui-api) wraps ComfyUI to provide:
+
+* **Stateless REST API** - Horizontally scalable, returns images/videos in responses or via webhooks
+* **Multiple storage backends** - S3, Azure Blob, Hugging Face, or HTTP endpoints
+* **Dynamic model loading** - Download and cache models on-demand via URLs
+* **Custom workflow endpoints** - Create simplified APIs with TypeScript/JavaScript
+* **Production features** - Health probes, warmup workflows, execution statistics
+
+For full documentation, see the [ComfyUI API GitHub repository](https://github.com/SaladTechnologies/comfyui-api).
+
+## Choosing Your Deployment Pattern
+
+### Container Gateway (Recommended for most image generation)
+
+```mermaid  theme={null}
+flowchart LR
+    Client -->|HTTPS Request| Gateway[Container Gateway]
+    Gateway -->|Load Balance| API[ComfyUI API]
+    subgraph Container[Container Instance]
+        API --> ComfyUI[ComfyUI]
+        ComfyUI --> API
+    end
+    API -.->|Optional| Storage[(Cloud Storage)]
+    API -->|Response| Gateway
+    Gateway -->|Image/URL| Client
+```
+
+* Simple setup with synchronous HTTP responses
+* Images returned directly in the response body
+* **100-second timeout limit** (Cloudflare hard limit)
+* Best for: SD 1.5, SDXL, Flux image generation (typically 2-30 seconds)
+
+### Job Queue (Required for video and long-running tasks)
+
+* Asynchronous processing with webhooks or polling
+* **No timeout limit** - handles multi-minute generation
+* Automatic retries on node interruption
+* Built-in request buffering and autoscaling
+* Best for: Video generation, batch processing, complex multi-step workflows
+
+See the [Job Queue documentation](/container-engine/explanation/job-processing/job-queues) for setup details, or the
+[Video Generation Guide](/container-engine/how-to-guides/ai-machine-learning/deploy-video-generation-comfy) for a
+complete example.
+
+## Hardware Recommendations
+
+| Model Type     | Min VRAM | Recommended GPU | System RAM | Typical Time | Deployment |
+| -------------- | -------- | --------------- | ---------- | ------------ | ---------- |
+| SD 1.5         | 8GB      | RTX 3060 Ti     | 12GB       | 2-5s         | Gateway    |
+| SDXL           | 12GB     | RTX 4070 Ti     | 24GB       | 5-15s        | Gateway    |
+| SDXL + Refiner | 24GB     | RTX 4090        | 30GB       | 15-30s       | Gateway    |
+| Flux (fp8)     | 16GB     | RTX 4090        | 24GB       | 5-20s        | Gateway    |
+| SD 3.5         | 16GB     | RTX 4090        | 24GB       | 5-15s        | Gateway    |
+| Video (short)  | 24GB     | RTX 4090        | 30GB       | 1-5 min      | Job Queue  |
+| Video (long)   | 24GB+    | RTX 4090/5090   | 32GB+      | 5-30 min     | Job Queue  |
+
+## Base Docker Images
+
+Pre-built images are available from the GitHub Container Registry:
+
+```
+ghcr.io/saladtechnologies/comfyui-api:<tag>
+```
+
+**Tag format:** `comfy<version>-api<version>-torch<version>-cuda<version>-<runtime|devel>`
+
+| Tag                                                | Use Case                                      |
+| -------------------------------------------------- | --------------------------------------------- |
+| `comfy0.7.0-api1.16.1-torch2.8.0-cuda12.8-runtime` | Most image generation workloads               |
+| `comfy0.7.0-api1.16.1-torch2.8.0-cuda12.8-devel`   | Video generation (requires full CUDA toolkit) |
+
+Browse all available tags on the
+[GitHub Container Registry](https://github.com/SaladTechnologies/comfyui-api/pkgs/container/comfyui-api/versions).
+
+**Key directories in the image:**
+
+* Model directory: `/opt/ComfyUI/models`
+* Custom nodes: `/opt/ComfyUI/custom_nodes`
+* Workflows directory: `/workflows` (for custom endpoints)
+
+## Building Your Image
+
+We recommend using a **manifest file** to download models at container startup rather than baking them into your Docker
+image. Model registries (like Hugging Face and Civitai) are often faster than our container registry plus decompression
+time, and this approach keeps your images small and flexible.
+
+### Recommended: Manifest-Based Dockerfile
+
+Create a `manifest.yaml` file that specifies your models and custom nodes:
+
+```yaml manifest.yaml theme={null}
+# Custom nodes to install from the Comfy Registry
+custom_nodes:
+  - comfyui-impact-pack
+  - comfyui-videohelpersuite
+
+# Models to download
+models:
+  # Downloaded before the server starts accepting requests
+  before_start:
+    - url: https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors
+      local_path: /opt/ComfyUI/models/checkpoints/flux1-schnell-fp8.safetensors
+    - url: https://civitai.com/api/download/models/128713
+      local_path: /opt/ComfyUI/models/checkpoints/dreamshaper_8.safetensors
+  # Optional: Downloaded in the background after startup
+  after_start:
+    - url: https://huggingface.co/some/optional-model.safetensors
+      local_path: /opt/ComfyUI/models/checkpoints/optional-model.safetensors
+```
+
+Then create a minimal Dockerfile:
+
+```dockerfile  theme={null}
+FROM ghcr.io/saladtechnologies/comfyui-api:comfy0.7.0-api1.16.1-torch2.8.0-cuda12.8-runtime
+
+# Copy manifest for automatic model/node installation at startup
+COPY manifest.yaml .
+ENV MANIFEST=manifest.yaml
+
+# Optional: Warmup workflow to pre-load models into VRAM
+COPY warmup_workflow.json .
+ENV WARMUP_PROMPT_FILE=warmup_workflow.json
+
+CMD ["./comfyui-api"]
+```
+
+The manifest supports:
+
+* **apt packages** - System dependencies
+* **pip packages** - Python dependencies
+* **custom\_nodes** - From Comfy Registry (by name) or Git URLs
+* **models.before\_start** - Downloaded before accepting requests
+* **models.after\_start** - Downloaded in the background after startup
+
+```mermaid  theme={null}
+flowchart TB
+    Start[Container Starts] --> Manifest[Process Manifest]
+    Manifest --> Apt[Install apt packages]
+    Apt --> Pip[Install pip packages]
+    Pip --> Nodes[Install custom nodes]
+    Nodes --> Models[Download before_start models]
+    Models --> ComfyUI[Start ComfyUI]
+    ComfyUI --> Warmup{Warmup configured?}
+    Warmup -->|Yes| RunWarmup[Run warmup workflow]
+    Warmup -->|No| Ready
+    RunWarmup --> Ready["/ready returns 200"]
+    Ready --> Traffic[Accept traffic]
+    Ready -.-> Background[Download after_start models]
+```
+
+### Manifest URL Sources
+
+Models can be downloaded from multiple sources:
+
+| Source       | URL Format                                                          | Notes                                 |
+| ------------ | ------------------------------------------------------------------- | ------------------------------------- |
+| HTTP/HTTPS   | `https://example.com/model.safetensors`                             | Direct downloads                      |
+| Hugging Face | `https://huggingface.co/org/repo/resolve/main/model.safetensors`    | Supports gated models with `HF_TOKEN` |
+| Civitai      | `https://civitai.com/api/download/models/12345`                     | Use API download URLs                 |
+| S3           | `s3://bucket/path/model.safetensors`                                | Requires AWS credentials              |
+| Azure        | `https://account.blob.core.windows.net/container/model.safetensors` | Requires Azure credentials            |
+
+For authenticated sources, set the appropriate environment variables (`HF_TOKEN`, `AWS_ACCESS_KEY_ID`, etc.) or use
+[per-request credentials](#credentials-for-protected-sources).
+
+### Alternative: Baking Models Into Images
+
+If you prefer to include models in your Docker image (useful for air-gapped environments or guaranteed availability):
+
+```dockerfile  theme={null}
+FROM ghcr.io/saladtechnologies/comfyui-api:comfy0.7.0-api1.16.1-torch2.8.0-cuda12.8-runtime
+
+# Copy model into the image (increases image size significantly)
+COPY my-model.safetensors /opt/ComfyUI/models/checkpoints/
+
+# Install custom nodes at build time
+RUN comfy node registry-install comfyui-impact-pack
+
+CMD ["./comfyui-api"]
+```
+
+Note: This approach results in larger images and slower cold starts on SaladCloud.
+
+## Dynamic Model Loading
+
+In addition to the manifest, you can load models dynamically at runtime. This is useful for:
+
+* User-specified models per request
+* A/B testing different model versions
+* Multi-tenant deployments
+
+### Model URLs in Workflows
+
+Specify a URL instead of a filename in your workflow, and the model will be automatically downloaded and cached:
+
+```json  theme={null}
+{
+  "4": {
+    "inputs": {
+      "ckpt_name": "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  }
+}
+```
+
+Supported URL schemes:
+
+* `https://` - Direct HTTP downloads (including Hugging Face and Azure Blob Storage)
+* `s3://bucket/path` - S3-compatible storage
+
+### The /download Endpoint
+
+Pre-download models before they're needed:
+
+```bash  theme={null}
+# Asynchronous download (returns immediately with 202, default behavior)
+curl -X POST http://localhost:3000/download \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors",
+    "model_type": "checkpoints"
+  }'
+
+# Synchronous download (blocks until complete)
+curl -X POST http://localhost:3000/download \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors",
+    "model_type": "checkpoints",
+    "wait": true
+  }'
+```
+
+Parameters:
+
+* `url` - The URL to download from
+* `model_type` - Where to save the model (e.g., `checkpoints`, `loras`, `vae`, `controlnet`)
+* `filename` - Optional filename override (defaults to URL basename)
+* `wait` - Set to `true` to wait for download to complete (default: `false`)
+
+### Credentials for Protected Sources
+
+Credentials for model downloads and storage backends can be configured globally via environment variables, and
+optionally overridden per-request.
+
+**Global credentials (environment variables):**
+
+```dockerfile  theme={null}
+# Hugging Face (for gated models)
+ENV HF_TOKEN=hf_xxxxxxxxxxxxx
+
+# AWS S3
+ENV AWS_ACCESS_KEY_ID=your-access-key
+ENV AWS_SECRET_ACCESS_KEY=your-secret-key
+ENV AWS_REGION=us-east-1
+
+# Azure Blob Storage
+ENV AZURE_STORAGE_CONNECTION_STRING=your-connection-string
+
+# Custom HTTP auth header (for any HTTP source)
+ENV HTTP_AUTH_HEADER_NAME=Authorization
+ENV HTTP_AUTH_HEADER_VALUE=Bearer your-token
+```
+
+**Per-request credentials (override global):**
+
+You can also provide credentials in individual requests, which override any global settings:
+
+```json  theme={null}
+{
+  "prompt": { "...": "..." },
+  "credentials": [
+    {
+      "url_pattern": "https://huggingface.co/**",
+      "auth": {
+        "type": "bearer",
+        "token": "hf_xxxxxxxxxxxxx"
+      }
+    },
+    {
+      "url_pattern": "s3://my-private-bucket/**",
+      "auth": {
+        "type": "s3",
+        "access_key_id": "AKIAIOSFODNN7EXAMPLE",
+        "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+      }
+    }
+  ]
+}
+```
+
+Supported authentication types: `bearer`, `basic`, `header`, `query`, `s3`.
+
+### LRU Caching
+
+Limit local storage usage with automatic cache eviction:
+
+```dockerfile  theme={null}
+ENV LRU_CACHE_SIZE_GB=50
+```
+
+When the cache exceeds this size, least-recently-used files are automatically deleted.
+
+## Warmup Configuration
+
+The first request to a cold instance is slow because models must be loaded into VRAM. Configure a warmup workflow to
+pre-load models before accepting traffic:
+
+1. Create a warmup workflow JSON (use reduced steps/resolution for speed)
+2. Add it to your Dockerfile:
+
+```dockerfile  theme={null}
+COPY warmup_workflow.json .
+ENV WARMUP_PROMPT_FILE=warmup_workflow.json
+```
+
+The `/ready` probe will return 503 until warmup completes, ensuring the load balancer only routes to warm instances.
+
+**Tip:** Use 1-4 steps and small dimensions (256x256) for fast warmups while still loading the model.
+
+## Output Handling
+
+### Base64 Response (Default)
+
+Images are returned as base64-encoded strings in the response:
+
+```json  theme={null}
+{
+  "id": "abc123",
+  "images": ["base64encodeddata..."],
+  "filenames": ["ComfyUI_00001.png"],
+  "execution_time_ms": 2500
+}
+```
+
+Decode with CLI tools:
+
+```bash  theme={null}
+jq -r '.images[0]' response.json | base64 -d > image.png
+```
+
+### Image Format Conversion
+
+Convert output to JPEG or WebP with quality control:
+
+```json  theme={null}
+{
+  "prompt": { "...": "..." },
+  "convert_output": {
+    "format": "jpeg",
+    "options": {
+      "quality": 85,
+      "progressive": true
+    }
+  }
+}
+```
+
+### Storage Backends
+
+Upload outputs directly to cloud storage and receive URLs in the response instead of base64 data. This is especially
+important for video generation where files are large. Credentials can be configured globally via environment variables
+(see [Credentials for Protected Sources](#credentials-for-protected-sources)) or provided per-request.
+
+**S3-Compatible Storage (AWS, Cloudflare R2, etc.):**
+
+```json  theme={null}
+{
+  "prompt": { "...": "..." },
+  "s3": {
+    "bucket": "my-bucket",
+    "prefix": "outputs/",
+    "async": false
+  }
+}
+```
+
+Response returns S3 URLs instead of base64:
+
+```json  theme={null}
+{
+  "id": "abc123",
+  "images": ["s3://my-bucket/outputs/abc123_ComfyUI_0.png"],
+  "filenames": ["abc123_ComfyUI_0.png"],
+  "execution_time_ms": 2500
+}
+```
+
+**Azure Blob Storage:**
+
+```json  theme={null}
+{
+  "prompt": { "...": "..." },
+  "azure_blob_upload": {
+    "container": "my-container",
+    "blob_prefix": "outputs/",
+    "async": false
+  }
+}
+```
+
+Response returns Azure URLs:
+
+```json  theme={null}
+{
+  "id": "abc123",
+  "images": ["https://your-account.blob.core.windows.net/my-container/outputs/abc123_ComfyUI_0.png"],
+  "filenames": ["abc123_ComfyUI_0.png"]
+}
+```
+
+**Hugging Face:**
+
+```json  theme={null}
+{
+  "prompt": { "...": "..." },
+  "hf_upload": {
+    "repo": "username/my-outputs",
+    "path_prefix": "generated/"
+  }
+}
+```
+
+**Upload behavior:**
+
+* `async: false` (default) - Waits for upload to complete, returns URLs in response
+* `async: true` - Returns immediately, uploads in background (use with webhooks)
+
+See the [ComfyUI API documentation](https://github.com/SaladTechnologies/comfyui-api#modular-storage-backends) for all
+storage options.
+
+### Webhook Delivery
+
+Send results to a webhook URL for async processing:
+
+```json  theme={null}
+{
+  "prompt": { "...": "..." },
+  "webhook": "https://api.example.com/comfy-complete"
+}
+```
+
+Webhooks follow the [Standard Webhooks](https://www.standardwebhooks.com/) specification with HMAC signature
+verification. Configure a secret:
+
+```dockerfile  theme={null}
+ENV WEBHOOK_SECRET=your-secret-here
+```
+
+## Custom Workflow Endpoints
+
+Create simplified REST endpoints by adding TypeScript/JavaScript files to the `/workflows` directory. This transforms
+complex ComfyUI node graphs into clean, validated REST APIs with automatic Swagger documentation.
+
+```mermaid  theme={null}
+flowchart LR
+    subgraph Request[Simple API Request]
+        Simple["{prompt, width, height}"]
+    end
+    Simple -->|Validate & Transform| Endpoint["/workflow/txt2img"]
+    Endpoint -->|generateWorkflow| Complex
+    subgraph ComfyUI[ComfyUI Prompt]
+        Complex["Complex Node Graph<br/>(KSampler, VAE, CLIP, etc.)"]
+    end
+```
+
+**Why use custom endpoints?**
+
+* Hide ComfyUI's node-based complexity from API consumers
+* Add input validation with helpful error messages
+* Set sensible defaults for optional parameters
+* Create task-specific APIs (txt2img, img2img, upscale, etc.)
+
+### Basic Structure
+
+Each workflow file must export a `Workflow` object with:
+
+* `RequestSchema` - A [Zod](https://zod.dev/) schema defining the input parameters
+* `generateWorkflow` - A function that transforms input into a ComfyUI prompt
+* `summary` / `description` - Optional metadata for Swagger docs
+
+**Example:** Create `/workflows/txt2img.ts`:
+
+```typescript  theme={null}
+import { z } from 'zod'
+import config from '../config'
+
+const RequestSchema = z.object({
+  prompt: z.string().describe('The positive prompt for image generation'),
+  negative_prompt: z.string().optional().default('text, watermark').describe('The negative prompt'),
+  width: z.number().int().min(256).max(2048).optional().default(1024).describe('Width of the generated image'),
+  height: z.number().int().min(256).max(2048).optional().default(1024).describe('Height of the generated image'),
+  steps: z.number().int().min(1).max(100).optional().default(20).describe('Number of sampling steps'),
+  cfg_scale: z.number().min(0).max(20).optional().default(7).describe('Classifier-free guidance scale'),
+  seed: z
+    .number()
+    .int()
+    .optional()
+    .default(() => Math.floor(Math.random() * 100000000000))
+    .describe('Seed for reproducibility'),
+  // Use config to get available models, samplers, schedulers
+  sampler_name: config.samplers.optional().default('euler'),
+  scheduler: config.schedulers.optional().default('normal'),
+  checkpoint: z
+    .string()
+    .optional()
+    .default(config.warmupCkpt || config.models.checkpoints.all[0]),
+})
+
+type Input = z.infer<typeof RequestSchema>
+
+function generateWorkflow(input: Input) {
+  return {
+    '3': {
+      inputs: {
+        seed: input.seed,
+        steps: input.steps,
+        cfg: input.cfg_scale,
+        sampler_name: input.sampler_name,
+        scheduler: input.scheduler,
+        denoise: 1,
+        model: ['4', 0],
+        positive: ['6', 0],
+        negative: ['7', 0],
+        latent_image: ['5', 0],
+      },
+      class_type: 'KSampler',
+    },
+    '4': {
+      inputs: { ckpt_name: input.checkpoint },
+      class_type: 'CheckpointLoaderSimple',
+    },
+    '5': {
+      inputs: { width: input.width, height: input.height, batch_size: 1 },
+      class_type: 'EmptyLatentImage',
+    },
+    '6': {
+      inputs: { text: input.prompt, clip: ['4', 1] },
+      class_type: 'CLIPTextEncode',
+    },
+    '7': {
+      inputs: { text: input.negative_prompt, clip: ['4', 1] },
+      class_type: 'CLIPTextEncode',
+    },
+    '8': {
+      inputs: { samples: ['3', 0], vae: ['4', 2] },
+      class_type: 'VAEDecode',
+    },
+    '9': {
+      inputs: { filename_prefix: 'output', images: ['8', 0] },
+      class_type: 'SaveImage',
+    },
+  }
+}
+
+export default {
+  RequestSchema,
+  generateWorkflow,
+  summary: 'Text to Image',
+  description: 'Generate an image from a text prompt',
+}
+```
+
+### Directory Structure = URL Paths
+
+The directory structure maps directly to endpoint URLs:
+
+```
+/workflows
+├── txt2img.ts              → POST /workflow/txt2img
+├── img2img.ts              → POST /workflow/img2img
+└── sdxl/
+    ├── txt2img.ts          → POST /workflow/sdxl/txt2img
+    ├── txt2img-refiner.ts  → POST /workflow/sdxl/txt2img-refiner
+    └── img2img.ts          → POST /workflow/sdxl/img2img
+```
+
+### The Config Object
+
+Import `config` to access runtime information:
+
+```typescript  theme={null}
+import config from '../config'
+
+// Available models (scanned from /opt/ComfyUI/models at startup)
+config.models.checkpoints.all // ['model1.safetensors', 'model2.safetensors']
+config.models.loras.all // ['lora1.safetensors', ...]
+config.models.controlnet.all // [...]
+
+// Zod enums for validation
+config.samplers // z.enum(['euler', 'euler_ancestral', 'heun', ...])
+config.schedulers // z.enum(['normal', 'karras', 'exponential', ...])
+
+// Warmup checkpoint (if WARMUP_PROMPT_FILE was set)
+config.warmupCkpt // 'model-used-in-warmup.safetensors'
+```
+
+### Adding to Your Dockerfile
+
+```dockerfile  theme={null}
+COPY workflows /workflows
+```
+
+Workflow files are loaded at runtime via `eval`, so no rebuild is needed when using the pre-built binary.
+
+### Calling Custom Endpoints
+
+Custom endpoints wrap your input parameters in an `input` field, and support all the same output options as `/prompt`:
+
+```bash  theme={null}
+curl -X POST http://localhost:3000/workflow/txt2img \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "prompt": "a beautiful sunset over mountains",
+      "width": 1024,
+      "height": 768
+    },
+    "s3": {
+      "bucket": "my-bucket",
+      "prefix": "outputs/"
+    }
+  }'
+```
+
+The `input` object contains your workflow-specific parameters (defined by `RequestSchema`), while output options like
+`s3`, `webhook`, and `convert_output` remain at the root level.
+
+### AI-Assisted Workflow Generation
+
+The comfyui-api repository includes a script to automatically generate workflow endpoints from ComfyUI JSON exports
+using Claude:
+
+```bash  theme={null}
+# Requires ANTHROPIC_API_KEY environment variable
+./generate-workflow workflow_api.json /workflows/my-workflow.ts
+```
+
+See the
+[comfyui-api documentation](https://github.com/SaladTechnologies/comfyui-api/blob/main/DEVELOPING.md#automating-with-claude-4-sonnet)
+for details.
+
+### Debugging
+
+Enable debug logging to troubleshoot workflow loading:
+
+```dockerfile  theme={null}
+ENV LOG_LEVEL=debug
+```
+
+This shows which workflows are loaded, transpilation status, and any errors.
+
+For a complete real-world example with video generation, see the
+[Video Generation Guide](/container-engine/how-to-guides/ai-machine-learning/deploy-video-generation-comfy).
+
+## Local Testing
+
+1. Build your Docker image:
+
+```bash  theme={null}
+docker build -t my-comfyui .
+```
+
+2. Run locally with GPU access:
+
+```bash  theme={null}
+docker run -it --rm --gpus all \
+  -p 3000:3000 \
+  -p 8188:8188 \
+  my-comfyui
+```
+
+3. Access the interfaces:
+   * **API:** [http://localhost:3000](http://localhost:3000)
+   * **Swagger docs:** [http://localhost:3000/docs](http://localhost:3000/docs)
+   * **ComfyUI Web UI:** [http://localhost:8188](http://localhost:8188)
+
+4. Design your workflow in the Web UI, then export it:
+   * Open Settings (gear icon)
+   * Enable "Dev mode Options"
+   * Click "Save (API Format)" to download the workflow JSON
+
+5. Test the API:
+
+```bash  theme={null}
+curl -X POST http://localhost:3000/prompt \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": <your-workflow-json>}' \
+  | jq -r '.images[0]' | base64 -d > output.png
+```
+
+## Deploying to SaladCloud
+
+### Container Gateway Deployment
+
+1. Push your image to a container registry:
+
+```bash  theme={null}
+docker push your-registry/your-image:tag
+```
+
+2. Create a Container Group via the [Portal](https://portal.salad.com) or
+   [API](/reference/saladcloud-api/container-groups/create-container-group):
+   * Set appropriate hardware (see [Hardware Recommendations](#hardware-recommendations))
+   * Enable Container Gateway on port **3000**
+   * **Use least-connection load balancing** (recommended for inference workloads)
+   * Configure health probes:
+     * **Startup probe:** `GET /health`
+     * **Readiness probe:** `GET /ready`
+   * Set replicas to **3 minimum** (5+ for production)
+   * Optional: Enable authentication with `Salad-Api-Key` header
+
+3. Wait for deployment:
+   * Image caches to SaladCloud's internal registry
+   * Nodes download and start your container
+   * Warmup workflow runs (if configured)
+   * Instances become "ready"
+
+4. Submit requests to your Access Domain Name.
+
+### Job Queue Deployment
+
+For video generation or long-running tasks (anything that might exceed the 100-second gateway timeout), use the Job
+Queue system.
+
+#### How the Job Queue Works
+
+```mermaid  theme={null}
+flowchart LR
+    Client -->|Submit Job| Queue[SaladCloud Job Queue]
+    Queue -->|Distribute| Worker[Queue Worker]
+    subgraph Container[Container Instance]
+        Worker -->|Forward| API[ComfyUI API]
+        API -->|Execute| ComfyUI[ComfyUI]
+        ComfyUI -->|Output| API
+        API -->|Response| Worker
+    end
+    API -->|Upload| Storage[(Cloud Storage)]
+    Worker -->|Result| Queue
+    Queue -->|Poll or Webhook| Client
+```
+
+**Flow:**
+
+1. **Submit jobs to the queue** - Your client sends requests to the SaladCloud Job Queue API (not directly to your
+   container)
+2. **Queue buffers and distributes** - Jobs are held in the queue and distributed to available container instances
+3. **Worker fetches and processes** - The job queue worker binary running in your container fetches jobs and forwards
+   them to comfyui-api on localhost
+4. **Results returned to queue** - Outputs are sent back to the queue, where your client can fetch them or receive them
+   via webhook
+5. **Automatic retries** - If a node is interrupted (common on SaladCloud), the job is automatically retried on another
+   node (up to 3 times)
+
+#### When to Use Job Queues
+
+| Use Case                         | Gateway     | Job Queue   |
+| -------------------------------- | ----------- | ----------- |
+| Image generation (\<30s)         | Recommended | Works       |
+| Complex image workflows (30-90s) | Usually OK  | Safer       |
+| Video generation (1-30 min)      | Won't work  | Required    |
+| Batch processing                 | Not ideal   | Recommended |
+| Production with SLA requirements | Risky       | Recommended |
+
+#### Setup Steps
+
+1. **Add the job queue worker to your Dockerfile:**
+
+```dockerfile  theme={null}
+# Download and install the job queue worker
+RUN wget https://github.com/SaladTechnologies/salad-cloud-job-queue-worker/releases/download/v0.5.0/salad-http-job-queue-worker_x86_64.tar.gz && \
+    tar -xvf salad-http-job-queue-worker_x86_64.tar.gz && \
+    rm salad-http-job-queue-worker_x86_64.tar.gz && \
+    chmod +x salad-http-job-queue-worker
+
+# Run both the worker and comfyui-api
+CMD ["bash", "-c", "./salad-http-job-queue-worker & ./comfyui-api"]
+```
+
+2. **Create a Job Queue** via the [API](/reference/saladcloud-api/queues/create-queue):
+
+```bash  theme={null}
+curl -X POST "https://api.salad.com/api/public/organizations/{org}/projects/{project}/queues" \
+  -H "Salad-Api-Key: $SALAD_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "comfyui-jobs",
+    "display_name": "ComfyUI Job Queue",
+    "description": "Queue for ComfyUI image/video generation"
+  }'
+```
+
+3. **Create a Container Group** connected to the queue (do not enable Container Gateway)
+
+4. **Submit jobs** to the queue:
+
+```bash  theme={null}
+curl -X POST "https://api.salad.com/api/public/organizations/{org}/projects/{project}/queues/{queue}/jobs" \
+  -H "Salad-Api-Key: $SALAD_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "input": {
+      "prompt": {"4": {"inputs": {}, "class_type": "CheckpointLoaderSimple"}},
+      "s3": {
+        "bucket": "my-bucket",
+        "prefix": "outputs/"
+      }
+    },
+    "webhook": "https://api.example.com/job-complete"
+  }'
+```
+
+5. **Receive results** via webhook or poll the job status endpoint
+
+See the [Job Queue documentation](/container-engine/explanation/job-processing/job-queues) for full API details, and the
+[Video Generation Guide](/container-engine/how-to-guides/ai-machine-learning/deploy-video-generation-comfy) for a
+complete implementation example.
+
+## API Reference
+
+### POST /prompt
+
+Submit a ComfyUI workflow for execution.
+
+**Request:**
+
+```json  theme={null}
+{
+  "id": "optional-request-id",
+  "prompt": {},
+  "webhook": "https://example.com/callback",
+  "convert_output": {
+    "format": "jpeg",
+    "options": { "quality": 85 }
+  },
+  "credentials": [],
+  "s3": { "bucket": "my-bucket", "prefix": "outputs/" }
+}
+```
+
+The `prompt` field contains your ComfyUI workflow JSON. See [Output Handling](#output-handling) for storage options.
+
+**Response:**
+
+```json  theme={null}
+{
+  "id": "request-id",
+  "images": ["base64..."],
+  "filenames": ["output_00001.png"],
+  "execution_time_ms": 2500,
+  "execution_stats": {
+    "comfy_time_ms": 2300,
+    "preprocessing_ms": 100,
+    "upload_time_ms": 100
+  }
+}
+```
+
+### GET /health
+
+Returns 200 when the server has started. Use for startup probes.
+
+### GET /ready
+
+Returns 200 when ready to serve traffic (warmup complete, not overloaded). Returns 503 otherwise. Use for readiness
+probes.
+
+### POST /download
+
+Download a model to the local cache.
+
+### GET /models
+
+List available models by type (checkpoints, loras, etc.).
+
+### POST /interrupt
+
+Cancel a running prompt by ID.
+
+## Video Generation
+
+ComfyUI API supports video generation models including:
+
+* **LTX Video** - Fast, Apache 2.0 licensed
+* **Hunyuan Video** - High quality, open source
+* **CogVideoX** - Text and image to video
+* **Mochi Video** - Research model
+* **Cosmos 1.0** - NVIDIA's video model
+
+**Important:** For video generation, we strongly recommend uploading outputs to cloud storage (S3, Azure, Hugging Face)
+rather than returning them as base64 strings. Video files are significantly larger than images and can cause memory
+issues or timeout problems when returned in the response body.
+
+Video generation typically takes 1-30 minutes depending on length and quality, so **Job Queues are required**.
+
+For a complete video generation tutorial, see the
+[Video Generation Guide](/container-engine/how-to-guides/ai-machine-learning/deploy-video-generation-comfy).
+
+## Next Steps
+
+* [ComfyUI Recipe](/container-engine/reference/recipes/comfyui) - Deploy pre-configured images from the Portal
+* [Video Generation Guide](/container-engine/how-to-guides/ai-machine-learning/deploy-video-generation-comfy) - Complete
+  video generation tutorial
+* [Job Queue Documentation](/container-engine/explanation/job-processing/job-queues) - Async processing setup
+* [ComfyUI API GitHub](https://github.com/SaladTechnologies/comfyui-api) - Full documentation and examples
+* [Salad Recipes Repository](https://github.com/SaladTechnologies/salad-recipes) - Example Dockerfiles for popular
+  models

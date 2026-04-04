@@ -1,0 +1,71 @@
+# Source: https://docs.pipecat.ai/server/services/s2s/gemini-live-vertex.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Gemini Live Vertex AI
+
+> A real-time, multimodal conversational AI service powered by Google's Gemini via Vertex AI
+
+## Overview
+
+`GeminiLiveVertexLLMService` enables natural, real-time conversations with Google's Gemini model through Vertex AI. It provides built-in audio transcription, voice activity detection, and context management for creating interactive AI experiences with multimodal capabilities including audio, video, and text processing.
+
+<Tip>
+  Want to start building? Check out our [Gemini Live
+  Guide](/guides/features/gemini-live) for general concepts, then follow the
+  Vertex AI-specific setup below.
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Gemini Live Vertex API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.google.gemini_live.llm_vertex.html">
+    Pipecat's API methods for Gemini Live Vertex AI integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/26h-gemini-live-vertex-function-calling.py">
+    Complete Gemini Live Vertex AI function calling example
+  </Card>
+
+  <Card title="Vertex AI Gemini Documentation" icon="book" href="https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/multimodal-live">
+    Official Vertex AI Gemini Live API documentation
+  </Card>
+
+  <Card title="Gemini Live Model Card" icon="book" href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash-live-api">
+    Gemini Live available models
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Gemini Live Vertex AI services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[google]"
+```
+
+## Prerequisites
+
+### Google Cloud Setup
+
+Before using Gemini Live Vertex AI services, you need:
+
+1. **Google Cloud Project**: Set up a project in the [Google Cloud Console](https://console.cloud.google.com/)
+2. **Vertex AI API**: Enable the Vertex AI API in your project
+3. **Service Account**: Create a service account with `roles/aiplatform.user` and `roles/ml.developer` permissions
+4. **Authentication**: Set up service account credentials or Application Default Credentials
+
+### Required Environment Variables
+
+* `GOOGLE_VERTEX_TEST_CREDENTIALS`: JSON string of service account credentials (optional if using ADC)
+* `GOOGLE_CLOUD_PROJECT_ID`: Your Google Cloud project ID
+* `GOOGLE_CLOUD_LOCATION`: Vertex AI region (e.g., "us-east4")
+
+### Key Features
+
+* **Enterprise Authentication**: Secure service account-based authentication
+* **Multimodal Processing**: Handle audio, video, and text inputs simultaneously
+* **Real-time Streaming**: Low-latency audio and video processing
+* **Voice Activity Detection**: Automatic speech detection and turn management
+* **Function Calling**: Advanced tool integration and API calling capabilities
+* **Context Management**: Intelligent conversation history and system instruction handling

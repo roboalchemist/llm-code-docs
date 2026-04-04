@@ -1,0 +1,146 @@
+# Source: https://posthog.com/docs/integrations/vercel-marketplace.md
+
+# Vercel Marketplace integration - Docs
+
+The Vercel Marketplace integration adds PostHog to your Vercel projects. There are two ways to set it up:
+
+-   **Add** – Creates a new PostHog organization with billing through Vercel
+-   **Link Existing Account** – Connects an existing PostHog organization. Billing stays with PostHog.
+
+**Billing depends on how you install**
+
+New accounts created through the **Add** flow are billed through Vercel. Linked accounts keep their existing PostHog billing. You cannot migrate an existing PostHog organization to Vercel billing.
+
+## Installing the integration
+
+### Add (new account)
+
+1.  Go to the [PostHog integration page](https://vercel.com/integrations/posthog) on Vercel Marketplace
+2.  Click **Add**
+
+This creates a new PostHog organization and project, and adds environment variables to your Vercel project. Billing goes through your Vercel account.
+
+### Link Existing Account
+
+If you already have a PostHog account, you can connect it to Vercel instead:
+
+1.  Go to the [PostHog integration page](https://vercel.com/integrations/posthog) on Vercel Marketplace
+2.  Click **Link Existing Account**
+3.  Log in to your PostHog account if prompted
+4.  Select the organization you want to link
+5.  Click **Connect organization**
+
+You must have admin or owner access to the PostHog organization to link it. Billing stays with PostHog for linked accounts.
+
+## Environment variables
+
+The integration adds these environment variables to your Vercel project:
+
+-   `NEXT_PUBLIC_POSTHOG_KEY` - Your project API key, used to initialize the PostHog SDK
+-   `NEXT_PUBLIC_POSTHOG_HOST` - The PostHog API host URL (either `https://us.i.posthog.com` or `https://eu.i.posthog.com`)
+
+These `NEXT_PUBLIC_*` variable names work automatically in Next.js for both client and server environments. For other frameworks, you may need to copy the values to framework-specific variable names:
+
+| Framework | Rename to |
+| --- | --- |
+| Next.js | NEXT_PUBLIC_POSTHOG_TOKEN, NEXT_PUBLIC_POSTHOG_HOST |
+| Vite/SvelteKit | VITE_POSTHOG_TOKEN, VITE_POSTHOG_HOST |
+| Nuxt | NUXT_PUBLIC_POSTHOG_TOKEN, NUXT_PUBLIC_POSTHOG_HOST |
+
+## Installing the SDK
+
+The fastest way to add PostHog to your application is using our [installation wizard](https://app.posthog.com/project/wizard). Alternatively, follow your framework's guide:
+
+-   [Next.js](/docs/libraries/next-js.md)
+-   [React](/docs/libraries/react.md)
+-   [Svelte](/docs/libraries/svelte.md)
+-   [All frameworks](/docs/libraries.md)
+
+By default, you'll also get [session replay](/docs/session-replay.md) and [event autocapture](/docs/product-analytics/autocapture.md). If you prefer to use feature flags only, you can opt out:
+
+JavaScript
+
+PostHog AI
+
+```javascript
+posthog.init('<ph_project_token>', {
+  api_host: 'https://us.i.posthog.com',
+  autocapture: false,
+  disable_session_recording: true
+})
+```
+
+## Using feature flags
+
+To use feature flags in your application:
+
+## Web
+
+JavaScript
+
+PostHog AI
+
+```javascript
+if (posthog.isFeatureEnabled('new-checkout')) {
+    // Show new checkout
+} else {
+    // Show old checkout
+}
+```
+
+## React
+
+JavaScript
+
+PostHog AI
+
+```javascript
+import { useFeatureFlagEnabled } from '@posthog/react'
+function App() {
+  const showNewCheckout = useFeatureFlagEnabled('new-checkout')
+  return showNewCheckout ? <NewCheckout /> : <OldCheckout />
+}
+```
+
+For more examples, see our [feature flag code guide](/docs/feature-flags/adding-feature-flag-code.md).
+
+## Creating feature flags and experiments
+
+Access the PostHog dashboard from your [Vercel project's Integrations tab](https://vercel.com/dashboard) or directly at [app.posthog.com](https://app.posthog.com).
+
+Feature flags and experiments you create automatically sync with Vercel's flags dashboard.
+
+For full documentation:
+
+-   [Creating feature flags](/docs/feature-flags/creating-feature-flags.md)
+-   [Running experiments](/docs/experiments.md)
+
+## Billing
+
+Billing depends on how you installed the integration:
+
+-   **Add (new account)** – Billed through your Vercel account. View usage in Vercel under **Integrations** → **PostHog**.
+-   **Link Existing Account** – Billed through your existing PostHog account. View usage in [PostHog billing settings](https://app.posthog.com/organization/billing).
+
+See [our pricing page](/pricing.md) for more details.
+
+## Limitations
+
+-   **One organization per Vercel team** - Cannot link multiple PostHog organizations
+-   **Cloud only** - No self-hosted support (US or EU regions available)
+-   **Region cannot be changed** - US or EU is selected during installation
+-   **One-way team sync** - Vercel team changes sync to PostHog, not vice versa
+
+## Further reading
+
+-   [Feature flags documentation](/docs/feature-flags.md)
+-   [Experiments documentation](/docs/experiments.md)
+-   [PostHog on Vercel](/docs/libraries/vercel.md)
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better

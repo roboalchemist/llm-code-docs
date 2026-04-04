@@ -1,0 +1,8 @@
+name: semgrep
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:57Z"
+description: >
+  semgrep documentation
+quality_score: 0

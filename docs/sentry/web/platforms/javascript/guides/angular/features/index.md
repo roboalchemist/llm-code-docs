@@ -1,0 +1,8 @@
+---
+---
+title: Angular Features
+description: "Learn how Sentry's Angular SDK exposes features for first class integration with Angular."
+---
+
+The Sentry Angular SDK offers Angular-specific features for first class integration with the framework.
+

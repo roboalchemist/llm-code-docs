@@ -1,0 +1,453 @@
+# Source: https://rspack.dev/api/javascript-api/compiler.md
+
+# Compiler
+
+The Compiler is a core object in Rspack. A Compiler instance is created when you call Rspack's [JavaScript API](/api/javascript-api/index.md) or [CLI](/api/cli.md).
+
+It provides methods like [run](#run) and [watch](#watch) to start builds, and exposes [Compiler hooks](/api/plugin-api/compiler-hooks.md) that allow plugins to hook into different stages of the build process.
+
+## Compiler methods
+
+### run
+
+Starts a compilation and calls the callback when compilation completes or fails with an error.
+
+```ts
+function run(
+  callback: (
+    error: Error, // Only includes compiler-related errors, such as configuration errors, not compilation errors
+    stats: Stats, // Detailed information generated during compilation
+  ) => void,
+  options?: {
+    modifiedFiles?: ReadonlySet<string>; // Modified files included in this compilation
+    removedFiles?: ReadonlySet<string>; // Deleted files included in this compilation
+  },
+): void;
+```
+
+:::warning
+
+If you need to call the `run` method on the same `compiler` object multiple times, note the following:
+
+1. This API doesn't support concurrent compilation. Before starting a new compilation, call `compiler.close()` in the `compiler.run` callback and wait for it to finish before calling `compiler.run` again. Running multiple compilations simultaneously can produce unexpected output files.
+2. Rspack's cache invalidation relies on the `modifiedFiles` and `removedFiles` parameters. When caching is enabled and you're using a custom watcher, pass these values to Rspack via the `options` parameter.
+
+:::
+
+```js
+compiler.run((err, stats) => {
+  // Deal with the compiler errors
+  handleCompilerError(err);
+  // Deal with the compilation errors
+  handleModuleErrors(stats.toJson().errors);
+  // Deal with the result
+  handleBuildResult(stats);
+  // End this compilation
+  compiler.close((closeErr) => {
+    // Start a new compilation
+    compiler.run((err, stats) => {});
+  });
+});
+```
+
+Stats.ts
+### watch
+
+Watches files and directories, starting a compilation after they change. Calls the handler after each compilation completes or fails.
+
+```ts
+function watch(
+  watchOptions: WatchOptions, // Options for starting the watcher
+  handler: (error: Error, stats: Stats) => void, // Callback after each compilation
+): Watching; // Watching controller
+```
+
+:::warning Warning
+This API only supports one compilation at a time. Call `compiler.close` in the `compiler.watch` callback and wait for it to finish before calling `compiler.watch` again. Concurrent compilations will corrupt output files.
+:::
+
+```js
+const watching = compiler.watch(
+  {
+    aggregateTimeout: 300,
+    poll: undefined,
+  },
+  (err, stats) => {
+    // Deal with the result
+    handleBuildResult(stats);
+  },
+);
+```
+
+The Watching object provides the following methods:
+
+- `watch`:
+  - **Type**: `(files: string[], dirs: string[], missing: string[]): void`
+  - **Usage**: Adds files and directories to watch.
+- `invalidate`:
+  - **Type**: `(callback: () => void): void`
+  - **Usage**: Immediately ends the current watch cycle and starts a new compilation with the recorded file changes, without stopping the watcher.
+- `suspend`:
+  - **Type**: `(): void`
+  - **Usage**: Enters watch-only mode and doesn't start new compilations.
+- `resume`:
+  - **Type**: `(): void`
+  - **Usage**: Exits watch-only mode and starts a compilation with the recorded file changes.
+- `close`:
+  - **Type**: `(callback: () => void): void`
+  - **Usage**: Stops the watcher.
+
+WatchOptions.tsStats.ts
+### close
+
+Closes the compiler and handles low-priority tasks like caching.
+
+```ts
+function close(
+  callback: (err: Error) => void, // Callback after closing
+): void;
+```
+
+### getInfrastructureLogger
+
+Create a [logger object](/api/javascript-api/logger.md) that is not associated with any compilation, which is used to print global logs.
+
+```ts
+function getInfrastructureLogger(name: string): Logger;
+```
+
+Logger.ts
+### getCache
+
+Creates a cache object to share data during the build process.
+
+```ts
+function getCache(name: string): CacheFacade;
+```
+
+Cache.ts
+### purgeInputFileSystem
+
+Stops the input file system read loop, which contains an internal timer that may prevent the process from exiting after calling `compiler.close`.
+
+```ts
+function purgeInputFileSystem(): void;
+```
+
+### createChildCompiler
+
+Runs another Rspack instance inside Rspack as a child compiler with different settings. Copies all hooks and plugins from the parent (or top-level) compiler and creates a child `Compiler` instance. Returns the created `Compiler`.
+
+```ts
+function createChildCompiler(
+  compilation: Compilation,
+  compilerName: string,
+  compilerIndex: number,
+  outputOptions: OutputOptions,
+  plugins: RspackPlugin[],
+): Compiler;
+```
+
+Compilation.tsOutputOptions.tsRspackPlugin.ts
+### runAsChild
+
+Runs the child compiler, performing a complete compilation and generating assets.
+
+```ts
+function runAsChild(
+  callback(
+    err: Error, // Error related to the child compiler
+    entries: Chunk[], // Chunks generated by the child compiler
+    compilation: Compilation, // The compilation created by the child compiler
+  ): void;
+): void;
+```
+
+Chunk.tsCompilation.ts
+### isChild
+
+Whether this compiler is a child compiler.
+
+```ts
+function isChild(): boolean;
+```
+
+## Compiler properties
+
+### hooks
+
+See [compiler hooks](/api/plugin-api/compiler-hooks.md) for more details.
+
+### rspack
+
+- **Type:** `typeof rspack`
+
+Get the exports of @rspack/core to obtain the associated internal objects. This is especially useful when you cannot directly reference `@rspack/core` or there are multiple Rspack instances.
+
+A common example is accessing the [sources](/api/javascript-api/index.md#sources-object) object in a Rspack plugin:
+
+```js
+const { RawSource } = compiler.rspack.sources;
+const source = new RawSource('console.log("Hello, world!");');
+```
+
+### webpack
+
+- **Type:** `typeof rspack`
+
+Equivalent to `compiler.rspack`, this property is used for compatibility with webpack plugins.
+
+If the Rspack plugin you are developing needs to be webpack compatible, you can use this property instead of `compiler.rspack`.
+
+```js
+console.log(compiler.webpack === compiler.rspack); // true
+```
+
+### name
+
+- **Type:** `string`
+
+Get the name:
+
+- For the root compiler, it is equivalent to [`name`](/config/other-options.md#name).
+- For the child compiler, it is the value passed into `createChildCompiler`.
+- For the MultiCompiler and in the KV form, it is the key.
+
+### context
+
+Current project root directory:
+
+- Created through `new Compiler`, it is the value passed in.
+- Created through `rspack({})`, it is [context configuration](/config/context.md).
+
+### root
+
+- **Type:** `Compiler`
+
+Get the root of the child compiler tree.
+
+### options
+
+- **Type:** `RspackOptionsNormalized`
+
+Get the full options used by this compiler.
+
+### target
+
+- **Type:** `{ targets?: Record<string, string>; esVersion?: number }`
+
+Get the target information derived from the [`target`](/config/target.md) configuration. This is useful for plugin and loader authors who need to access the target environment information.
+
+- `targets`: An object of platform names and their versions (e.g., `{ 'chrome': '87', 'firefox': '78', 'node': '18' }`).
+- `esVersion`: The ECMAScript version number (e.g., `5`, `2015`, `2022`).
+
+Example of using `compiler.target` in a custom loader to set default targets:
+
+```js title="my-loader.js"
+export default function myLoader(source) {
+  const options = this.getOptions();
+  // Use user-specified targets, or fall back to Rspack's derived targets
+  const targets = options.targets ?? this._compiler.target.targets;
+  // Use targets for transformation...
+  return transform(source, { targets, ecmaVersion });
+}
+```
+
+### watchMode
+
+- **Type:** `boolean`
+
+Whether started through `compiler.watch`.
+
+### watching
+
+- **Type:** `Watching`
+
+Get the watching object, see [watch method](#watch) for more details.
+
+### running
+
+- **Type:** `boolean`
+
+Whether the compilation is currently being executed.
+
+### inputFileSystem
+
+- **Type:** `InputFileSystem`
+
+Get the proxy object used for reading from the file system, which has optimizations such as caching inside to reduce duplicate reading of the same file.
+
+InputFileSystem.ts
+### outputFileSystem
+
+- **Type:** `OutputFileSystem`
+
+Get the proxy object used for writing to the file system, `fs` by default.
+
+OutputFileSystem.ts
+### watchFileSystem
+
+- **Type:** `WatchFileSystem`
+
+Get the proxy object used for watching files or directories changes, which provides a `watch` method to start watching, and passes in the changed and removed items in the callback.
+
+WatchFileSystem.ts
+## MultiCompiler
+
+The `MultiCompiler` module allows Rspack to run multiple configurations in separate compilers. If the options parameter in the Rspack's JavaScript API is an array of options, Rspack applies separate compilers and calls the callback after all compilers have been executed.
+
+```js
+const { rspack } = require('@rspack/core');
+
+rspack(
+  [
+    { entry: './index1.js', output: { filename: 'bundle1.js' } },
+    { entry: './index2.js', output: { filename: 'bundle2.js' } },
+  ],
+  (err, stats) => {
+    process.stdout.write(stats.toString() + '\n');
+  },
+);
+```
+
+It can also be created through `new MultiCompiler`:
+
+```js
+const compiler1 = new Compiler({
+  /* */
+});
+const compiler2 = new Compiler({
+  /* */
+});
+
+new MultiCompiler([compiler1, compiler2]);
+
+new MultiCompiler([compiler1, compiler2], {
+  parallelism: 1, // the maximum number of parallel compilers
+});
+
+new MultiCompiler({
+  name1: compiler1,
+  name2: compiler2,
+});
+```
+
+`MultiCompiler` also provides some methods and attributes of the `Compiler`.
+
+### MultiCompiler methods
+
+#### setDependencies
+
+Specify the dependency relationship between the compilers, using `compiler.name` as the identifier, to ensure the execution order of the compilers.
+
+```ts
+setDependencies(compiler: Compiler, dependencies: string[]): void;
+```
+
+#### validateDependencies
+
+Check whether the dependency relationship between the compilers is legal. If there is a cycle or a missing dependency, it will trigger the callback.
+
+```ts
+validateDependencies(
+  callback: (err: Error) => void; // callback when there is an error
+): boolean
+```
+
+#### run
+
+Execute the `run` method of each compiler according to the dependency relationship to start the compilation process.
+
+```ts
+run(
+  callback: (err: Error, stats: MultiStats) => void,
+  options?: {
+    modifiedFiles?: ReadonlySet<string>; // Modified files included in this compilation
+    removedFiles?: ReadonlySet<string>; // Deleted files included in this compilation
+  },
+): void;
+```
+
+#### watch
+
+Execute the `watch` method of each compiler according to the dependency relationship to start watching, and start a compilation process after the file changes.
+
+```ts
+function watch(
+  watchOptions: WatchOptions | WatchOptions[],
+  handler: (err: Error, stats: MultiStats) => void,
+): MultiWatching;
+```
+
+#### close
+
+Execute the `close` method of each compiler to close them, and handle low-priority tasks such as caching during this period.
+
+```ts
+close(callback: (err: Error) => void): void;
+```
+
+#### purgeInputFileSystem
+
+Execute the `purgeInputFileSystem` of each compiler to stop the read loop of the file system
+
+```ts
+purgeInputFileSystem(): void;
+```
+
+#### getInfrastructureLogger
+
+Create a [logger object](/api/javascript-api/logger.md) that is not associated with any compilation, which is used to print global logs.
+
+```ts
+getInfrastructureLogger(name: string): Logger;
+```
+
+> Same with `compilers[0].getInfrastructureLogger()`
+
+Logger.ts
+### MultiCompiler properties
+
+#### compilers
+
+- **Type:** `Compiler[]`
+
+Get all included compilers.
+
+Compiler.ts
+#### options
+
+ReadOnly
+- **Type:** `RspackOptionsNormalized[]`
+
+Get all the [full options](/config/index.md) used by the compilers.
+
+#### inputFileSystem
+
+WriteOnly
+- **Type:** `InputFileSystem`
+
+Set the proxy object used for reading from the file system for each compiler.
+
+InputFileSystem.ts
+#### outputFileSystem
+
+WriteOnly
+- **Type:** `OutputFileSystem`
+
+Set the proxy object used for writing from the file system for each compiler.
+
+OutputFileSystem.ts
+#### watchFileSystem
+
+WriteOnly
+- **Type:** `WatchFileSystem`
+
+Set the proxy object used for watching files or directories changes for each compiler.
+
+WatchFileSystem.ts
+#### running
+
+- **Type:** `boolean`
+
+Whether the compilation is currently being executed.

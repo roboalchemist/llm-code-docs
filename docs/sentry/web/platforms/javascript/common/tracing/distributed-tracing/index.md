@@ -1,0 +1,67 @@
+---
+---
+title: Set Up Distributed Tracing
+description: "Learn how to connect events across applications/services."
+---
+
+## Basic Example
+
+Here's an example showing a distributed trace in Sentry:
+
+This distributed trace shows a Vue app's `pageload` making a request to a Python backend, which then calls the `/api` endpoint of a Ruby microservice.
+
+What happens in the background is that Sentry uses reads and further propagates two HTTP headers between your applications:
+
+- `sentry-trace`
+- `baggage`
+
+If you run any JavaScript applications in your distributed system, make sure that those two headers are added to your CORS allowlist and won't be blocked or stripped by your proxy servers, gateways, or firewalls.
+
+## How to Use Distributed Tracing?
+
+Remember that in order to propagate trace information through your whole distributed system, you have to use Sentry in all of the involved services and applications. Take a look at the respective SDK documentation to learn how distributed tracing can be enabled for each platform.
+
+## Trace Duration
+
+In the browser, the SDK automatically starts a new trace in the following situations:
+
+- On page load: Whenever the page is (re-)loaded, a new trace is started. At the same time, a `pageload` span is created (see Performance Monitoring). Once this span ends, the trace remains until the next navigation or page load. In case the server serving the initial page already started a trace and sent the necessary [HTML tags](./custom-instrumentation/#extract-tracing-information-from-html-meta-tags) to the browser, the SDK will continue this trace instead of starting a new one.
+- On navigation: Whenever a user navigates (for example in a single-page application), a new trace is started. At the same time, a `navigation` span is created (see Performance Monitoring). Once this span ends, the trace remains until the next navigation or page load.
+
+In both cases, this means that if you start spans after the automatic `pageload` and `navigation` spans ended, they will still be part of the same trace. This makes it easy to connect what happened before and after your span.
+
+Server-side SDKs handle traces automatically on a per-request basis. This means that SDKs will:
+
+- Continue an existing trace if the incoming request contains a trace header.
+- Start a new trace if the incoming request does not contain a trace header. This trace stays active until the response is sent.
+
+If necessary, you can override the default trace duration by [manually starting a new trace](./custom-instrumentation#starting-a-new-trace).
+
+## How Sampling Propagates in Distributed Traces
+
+Sentry uses a "head-based" sampling approach:
+
+- A sampling decision is made in the originating service (the "head")
+- This decision is propagated to all downstream services
+
+The two key headers are:
+- `sentry-trace`: Contains trace ID, span ID, and sampling decision
+- `baggage`: Contains additional trace metadata including sample rate
+
+Sentry automatically attaches these headers to outgoing HTTP requests when using the `browserTracingIntegration`. For other communication channels like WebSockets, you can manually propagate trace information:
+
+```javascript
+// Extract trace data from the current scope
+const traceData = Sentry.getTraceData();
+const sentryTraceHeader = traceData["sentry-trace"];
+const sentryBaggageHeader = traceData["baggage"];
+
+// Add to your custom request (example using WebSocket)
+webSocket.send(JSON.stringify({
+  message: "Your data here",
+  metadata: {
+    sentryTrace: sentryTraceHeader,
+    baggage: sentryBaggageHeader
+  }
+}));
+```

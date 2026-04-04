@@ -1,0 +1,8 @@
+name: protobuf-language-server
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:42Z"
+description: >
+  protobuf-language-server documentation
+quality_score: 0

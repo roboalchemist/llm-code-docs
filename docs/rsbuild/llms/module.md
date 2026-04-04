@@ -1,0 +1,77 @@
+# Source: https://rsbuild.dev/config/output/module.md
+
+# output.module
+
+* **Type:** `boolean`
+* **Default:** `false`
+
+Whether to output JavaScript files in ES modules format.
+
+:::tip
+
+* This feature is currently experimental and only available when [output.target](/config/output/target.md) is `'web'` or `'node'`.
+* If you need to build JavaScript libraries in ESM format, we recommend using [Rslib](https://rslib.rs), which is an out-of-the-box library development tool built on top of Rsbuild.
+
+:::
+
+## Web applications
+
+When building a web application, Rsbuild generates the output in the IIFE format by default.
+
+If you want to output ES Modules instead, set `output.module` to `true`:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    module: true,
+  },
+};
+```
+
+:::tip
+When `output.module` is enabled, Rsbuild automatically adds `type="module"` to the generated `<script>` tags, meaning [html.scriptLoading](/config/html/script-loading.md) is set to `module`.
+:::
+
+## Node.js applications
+
+When building Node.js applications, Rsbuild outputs CommonJS format by default. You can set `output.module` to `true` to output ES modules format:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    target: 'node',
+    module: true,
+  },
+};
+```
+
+### Running ESM bundles
+
+To properly run ESM bundles in Node.js, you can choose either of the following approaches:
+
+1. Set the `type` field in package.json to `'module'`:
+
+```json title="package.json"
+{
+  "type": "module"
+}
+```
+
+2. Change the output JavaScript file extension to `.mjs`:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    filename: {
+      js: '[name].mjs',
+    },
+  },
+};
+```
+
+## Version history
+
+| Version | Changes                     |
+| ------- | --------------------------- |
+| v1.5.0  | Added this option           |
+| v1.6.0  | Support for `target: 'web'` |

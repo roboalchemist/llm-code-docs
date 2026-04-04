@@ -1,0 +1,35 @@
+# Source: https://rspack.dev/misc/faq.md
+
+# FAQ
+
+## What will be the relationship between Rspack and webpack in the future?
+
+**We have established a partnership with the webpack team.** Rspack is an attempt to optimize webpack performance using Rust, and it has already made good progress.
+
+We will continue to explore more possibilities for optimizing webpack with the webpack team.
+
+## Will compatibility with JavaScript or webpack ecosystem cause performance loss?
+
+We place more emphasis on bringing performance improvements to existing web projects at a lower migration cost than simply chasing benchmark metrics.
+
+Compatibility with the webpack ecosystem will result in some performance loss, but according to our verification results, this loss is within an acceptable range.
+
+## How to achieve compatibility fallback compilation without using babel-loader?
+
+Rspack internally uses SWC to perform code downgrade compilation which you can configure by [builtin:swc-loader](/guide/features/builtin-swc-loader.md), so there is no need to use babel-loader to perform code downgrade compilation.
+
+## Is Rspack 100% compatible with webpack API?
+
+No, the goal of Rspack is not to be 100% compatible with 100% of the webpack API. Based on the Pareto principle, we prioritize the implementation of APIs that are commonly used in most projects and support other APIs based on user needs.
+
+## What are the advantages of Rspack compared to webpack + SWC-loader?
+
+Even if webpack + SWC-loader solves the performance problem of babel-loader, webpack itself still has many performance bottlenecks, such as the make and seal stages, which are single-threaded. However, Rspack breaks through these limitations, so Rspack has better performance than webpack + SWC-loader, especially in multi-core scenarios.
+
+## Do custom plugins and custom loaders need to be developed using Rust?
+
+You can develop plugins and loaders using JavaScript, just like developing webpack plugins and loaders. Meanwhile, Rspack also supports developing plugins and loaders using Rust. Please refer to [rspack-binding-template](https://github.com/rstackjs/rspack-binding-template).
+
+## Does Rspack plan to support React Server Components?
+
+Rspack team is working on supporting React Server Components. Relevant PR: [#12012](https://github.com/web-infra-dev/rspack/pull/12012).

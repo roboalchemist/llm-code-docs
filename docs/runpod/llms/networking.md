@@ -1,0 +1,114 @@
+# Source: https://docs.runpod.io/pods/networking.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Global networking
+
+> Connect your Pods through a secure private network for internal communication
+
+Global networking creates a secure, private network that connects all your Pods within your Runpod account. This feature enables Pod-to-Pod communication as if they were on the same local network, regardless of their physical location across different data centers.
+
+<Warning>
+  Global networking is currently only available for NVIDIA GPU Pods.
+</Warning>
+
+## How global networking works
+
+Global networking provides each Pod with a private IP address accessible only to other Pods in your account. This creates an isolated network layer separate from the public internet, which can be used for:
+
+* Distributed computing workloads.
+* Microservice architectures.
+* Secure database connections.
+* Internal API communication.
+* Multi-Pod machine learning pipelines.
+
+The network operates at 100 Mbps between Pods, providing reliable connectivity for most inter-Pod communication needs while maintaining security through complete isolation from external networks.
+
+## Enable global networking
+
+To enable global networking for your Pod:
+
+1. Navigate to the [Pods](https://www.console.runpod.io/pods) section and click **Deploy**.
+2. At the top of the page, toggle **Global Networking** to filter and show only Pods with networking support.
+3. Select your desired GPU configuration and complete the deployment process.
+
+Once deployed, your Pod receives a private IP address and DNS name visible in the Pod details card.
+
+## Connect to other Pods
+
+Each Pod with global networking enabled can be accessed by other Pods using its internal DNS name:
+
+```
+POD_ID.runpod.internal
+```
+
+Replace `POD_ID` with the target Pod's ID. For example, if your Pod ID is `abc123xyz`, other Pods can reach it at `abc123xyz.runpod.internal`.
+
+### Test connectivity
+
+Verify network connectivity between Pods by opening a web terminal in one Pod and running:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+# To install ping on your Pod, run: apt-get install -y iputils-ping
+ping POD_ID.runpod.internal
+```
+
+This confirms the private network connection is working correctly.
+
+### Run internal services
+
+Services running on networked Pods are automatically accessible to other Pods without exposing ports publicly. Simply bind your service to all interfaces (`0.0.0.0`) and connect using the internal DNS name.
+
+For example, a database on Pod `abc123xyz` listening on port 5432 would be accessible to other Pods at:
+
+```
+abc123xyz.runpod.internal:5432
+```
+
+Each service communicates privately through the internal network, reducing attack surface and improving security.
+
+## Security best practices
+
+Global networking provides network isolation, but proper security practices remain essential. Never expose ports on Pods running sensitive services like databases, cache servers, or internal APIs; instead, use global networking for these components. Even within your private Pod network, you should implement authentication between services.
+
+## Supported data centers
+
+Global networking is available in these 17 data centers worldwide:
+
+| Region ID | Geographic location |
+| --------- | ------------------- |
+| CA-MTL-3  | Canada              |
+| EU-CZ-1   | Czech Republic      |
+| EU-FR-1   | France              |
+| EU-NL-1   | Netherlands         |
+| EU-RO-1   | Romania             |
+| EU-SE-1   | Sweden              |
+| EUR-IS-2  | Iceland             |
+| OC-AU-1   | Australia           |
+| US-CA-2   | California          |
+| US-GA-1   | Georgia             |
+| US-GA-2   | Georgia             |
+| US-IL-1   | Illinois            |
+| US-KS-2   | Kansas              |
+| US-NC-1   | North Carolina      |
+| US-TX-3   | Texas               |
+| US-TX-4   | Texas               |
+| US-WA-1   | Washington          |
+
+Choose data centers strategically based on:
+
+* Geographic proximity for lower latency
+* Compliance requirements for data residency
+* Availability of specific GPU types
+
+## Next steps
+
+With global networking configured, explore these related features:
+
+* [Expose ports](/pods/configuration/expose-ports) to make specific services publicly accessible
+* Set up [network volumes](/storage/network-volumes) for shared persistent storage.
+* Set up [SSH access](/pods/configuration/use-ssh) for secure Pod management.
+
+For additional support or enterprise networking requirements, [contact our customer service team](https://contact.runpod.io/hc/en-us/requests/new).

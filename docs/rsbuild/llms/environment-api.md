@@ -1,0 +1,304 @@
+# Source: https://rsbuild.dev/api/javascript-api/environment-api.md
+
+# Environment API
+
+Here you can find all environment APIs.
+
+> See [Multi-environment builds](/guide/advanced/environments.md) for more details.
+
+## Environment context
+
+Environment context is a read-only object that provides context information about the current environment.
+
+* **Type:**
+
+```ts
+type EnvironmentContext = {
+  name: string;
+  browserslist: string[];
+  config: NormalizedEnvironmentConfig;
+  distPath: string;
+  entry: RsbuildEntry;
+  htmlPaths: Record<string, string>;
+  tsconfigPath?: string;
+  manifest?: Record<string, unknown> | ManifestData;
+};
+```
+
+You can get the environment context in the following ways:
+
+1. In Rsbuild's [Plugin hooks](/plugins/dev/hooks.md#plugin-hooks), you can get the environment context object through the `environment` or `environments` parameter.
+2. In the [Environment API](#environment-api-1), it is available via `environments.context`.
+
+### name
+
+The unique name of the current environment, used to distinguish and locate the environment. Corresponds to the key in the [environments](/config/environments.md) configuration.
+
+* **Type:** `string`
+* **Example:**
+
+```js
+api.modifyRspackConfig((config, { environment }) => {
+  if (environment.name === 'node') {
+    // modify config for node environment
+  }
+  return config;
+});
+```
+
+### browserslist
+
+The browserslist configuration of the current environment. See [Browserslist](/guide/advanced/browserslist.md) for more details.
+
+* **Type:** `string[]`
+* **Example:**
+
+```js
+api.modifyRspackConfig((config, { environment }) => {
+  console.log(environment.browserslist);
+  return config;
+});
+```
+
+### config
+
+The normalized Rsbuild config for the current environment.
+
+* **Type:**
+
+```ts
+type NormalizedEnvironmentConfig = DeepReadonly<{
+  dev: NormalizedDevConfig;
+  html: NormalizedHtmlConfig;
+  tools: NormalizedToolsConfig;
+  source: NormalizedSourceConfig;
+  server: NormalizedServerConfig;
+  output: NormalizedOutputConfig;
+  plugins?: RsbuildPlugins;
+  security: NormalizedSecurityConfig;
+  performance: NormalizedPerformanceConfig;
+  moduleFederation?: ModuleFederationConfig;
+}>;
+```
+
+* **Example:**
+
+```js
+api.modifyRspackConfig((config, { environment }) => {
+  // Rspack config
+  console.log(config);
+  // Rsbuild config for current environment
+  console.log(environment.config);
+  return config;
+});
+```
+
+### distPath
+
+The absolute path of the output directory, corresponding to the [output.distPath.root](/config/output/dist-path.md) config of Rsbuild.
+
+* **Type:** `string`
+
+```js
+api.modifyRspackConfig((config, { environment }) => {
+  console.log(environment.distPath);
+  return config;
+});
+```
+
+### entry
+
+The entry object from the [source.entry](/config/source/entry.md) option.
+
+* **Type:**
+
+```ts
+type RsbuildEntry = Record<string, string | string[] | EntryDescription>;
+```
+
+* **Example:**
+
+```js
+api.modifyRspackConfig((config, { environment }) => {
+  console.log(environment.entry);
+  return config;
+});
+```
+
+### htmlPaths
+
+The path information for all HTML assets.
+
+This value is an object, the key is the entry name and the value is the relative path of the HTML file in the dist directory.
+
+* **Type:**
+
+```ts
+type htmlPaths = Record<string, string>;
+```
+
+* **Example:**
+
+```js
+api.modifyRspackConfig((config, { environment }) => {
+  console.log(environment.htmlPaths);
+  return config;
+});
+```
+
+### tsconfigPath
+
+The absolute path of the tsconfig.json file, or `undefined` if the tsconfig.json file does not exist in current project.
+
+* **Type:**
+
+```ts
+type TsconfigPath = string | undefined;
+```
+
+* **Example:**
+
+```js
+api.modifyRspackConfig((config, { environment }) => {
+  console.log(environment.tsconfigPath);
+  return config;
+});
+```
+
+### manifest
+
+The manifest data. Only available when the [output.manifest](/config/output/manifest.md) config is enabled.
+
+* **Type:** `Record<string, unknown> | ManifestData | undefined`
+* **Example:**
+
+```js
+api.onAfterBuild(({ environments }) => {
+  // Get the manifest data of web environment
+  console.log(environments.web.manifest);
+});
+
+api.onAfterDevCompile(({ environments }) => {
+  console.log(environments.web.manifest);
+});
+
+api.onAfterEnvironmentCompile(({ environment }) => {
+  console.log(environment.manifest);
+});
+```
+
+The manifest data is only available after the build has completed, you can access it in the following hooks:
+
+* [onAfterBuild](/plugins/dev/hooks.md#onafterbuild)
+* [onAfterEnvironmentCompile](/plugins/dev/hooks.md#onafterenvironmentcompile)
+* [onCloseBuild](/plugins/dev/hooks.md#onclosebuild)
+* [onCloseDevServer](/plugins/dev/hooks.md#onclosedevserver)
+* [onAfterDevCompile](/plugins/dev/hooks.md#onafterdevcompile)
+* [onExit](/plugins/dev/hooks.md#onexit)
+
+### webSocketToken
+
+WebSocket authentication token, used to authenticate WebSocket connections and prevent unauthorized access.
+
+Only available in development mode, and is an empty string in production mode.
+
+* **Type:** `string`
+* **Version:** Added in v1.4.4
+
+When you need to establish a WebSocket connection with the Rsbuild dev server in the browser, you need to use this token as a query parameter.
+
+```js
+const { webSocketToken } = environments.web.context;
+
+const webSocketUrl = `ws://localhost:${port}${pathname}?token=${webSocketToken}`;
+```
+
+## Environment API
+
+Environment API provides some APIs related to the multi-environment build.
+
+You can use environment API via [rsbuild.createDevServer()](/api/javascript-api/instance.md#rsbuildcreatedevserver) or [dev.setupMiddlewares](/config/dev/setup-middlewares.md), which allows you to get the build outputs information for a specific environment in the server side.
+
+```ts
+type EnvironmentAPI = {
+  [name: string]: {
+    context: EnvironmentContext;
+    getStats: () => Promise<Stats>;
+    loadBundle: <T = unknown>(entryName: string) => Promise<T>;
+    getTransformedHtml: (entryName: string) => Promise<string>;
+  };
+};
+```
+
+### context
+
+You can get context information related to the current environment through the Environment API.
+
+* **Type:** [EnvironmentContext](#environment-context)
+* **Example:**
+
+```ts
+const webManifest = environments.web.context.manifest;
+
+console.log(webManifest.entries);
+```
+
+### getStats
+
+Get the build stats of current environment.
+
+* **Type:**
+
+```ts
+type GetStats = () => Promise<Stats>;
+```
+
+* **Example:**
+
+```ts
+const webStats = await environments.web.getStats();
+
+console.log(webStats.toJson({ all: false }));
+```
+
+### loadBundle
+
+Loads and executes the compiled bundle on the server. This method returns the exported content of the specified entry module and is typically used to run bundles generated by Rsbuild in a server-side environment.
+
+`loadBundle` resolves only after the build process has finished and the [onAfterDevCompile](/plugins/dev/hooks.md#onafterdevcompile) hook has completed. As a result, it cannot be called within the `onAfterDevCompile` hook.
+
+* **Type:**
+
+```ts
+/**
+ * @param entryName - Entry name, corresponding to a key in Rsbuild `source.entry`
+ * @returns The return value of the entry module
+ */
+type LoadBundle = <T = unknown>(entryName: string) => Promise<T>;
+```
+
+* **Example:**
+
+```ts
+// Load the bundle of `main` entry
+const result = await environments.node.loadBundle('main');
+```
+
+### getTransformedHtml
+
+Get the HTML template content after compilation and transformation.
+
+* **Type:**
+
+```ts
+type GetTransformedHtml = (entryName: string) => Promise<string>;
+```
+
+* **Example:**
+
+```ts
+// Get the HTML content of main entry
+const html = await environments.web.getTransformedHtml('main');
+```
+
+This method returns the complete HTML string, including all resources and content injected through HTML plugins.

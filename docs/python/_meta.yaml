@@ -1,0 +1,9 @@
+name: python
+primary_source: llms
+sources:
+  - type: llms
+    url: https://python.langchain.com/docs/
+    last_fetched: "2026-04-03T23:10:44Z"
+description: >
+  python documentation
+quality_score: 0

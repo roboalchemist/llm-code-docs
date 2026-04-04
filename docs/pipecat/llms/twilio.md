@@ -1,0 +1,67 @@
+# Source: https://docs.pipecat.ai/server/services/serializers/twilio.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# TwilioFrameSerializer
+
+> Serializer for Twilio Media Streams WebSocket protocol
+
+## Overview
+
+`TwilioFrameSerializer` enables integration with Twilio's Media Streams WebSocket protocol, allowing your Pipecat application to handle phone calls via Twilio's voice services with bidirectional audio conversion, DTMF event handling, and automatic call termination.
+
+<CardGroup cols={2}>
+  <Card title="Twilio Serializer API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.serializers.twilio.html">
+    Pipecat's API methods for Twilio Media Streams integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot">
+    Complete telephony examples with Twilio
+  </Card>
+
+  <Card title="Twilio Documentation" icon="book" href="https://www.twilio.com/docs/voice/media-streams">
+    Official Twilio Media Streams documentation
+  </Card>
+
+  <Card title="Twilio Console" icon="microphone" href="https://console.twilio.com/">
+    Manage phone numbers and Media Stream configuration
+  </Card>
+</CardGroup>
+
+## Installation
+
+The `TwilioFrameSerializer` does not require any additional dependencies beyond the core Pipecat library:
+
+```bash  theme={null}
+pip install "pipecat-ai"
+```
+
+## Prerequisites
+
+### Twilio Account Setup
+
+Before using TwilioFrameSerializer, you need:
+
+1. **Twilio Account**: Sign up at [Twilio Console](https://console.twilio.com/)
+2. **Phone Number**: Purchase a Twilio phone number with voice capabilities
+3. **Media Streams**: Configure your phone number to use Media Streams
+4. **Webhook Configuration**: Set up webhook endpoints for call handling
+
+### Required Environment Variables
+
+* `TWILIO_ACCOUNT_SID`: Your Twilio Account SID for authentication
+* `TWILIO_AUTH_TOKEN`: Your Twilio Auth Token for API operations
+
+### Required Configuration
+
+* **Stream SID**: Provided by Twilio during Media Stream connection
+* **Call SID**: Required for automatic call termination (optional)
+
+### Key Features
+
+* **Bidirectional Audio**: Convert between Pipecat and Twilio audio formats
+* **DTMF Handling**: Process touch-tone events from callers
+* **Auto Hang-up**: Terminate calls via Twilio's REST API
+* **μ-law Encoding**: Handle Twilio's standard audio encoding format

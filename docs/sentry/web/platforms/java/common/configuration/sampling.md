@@ -1,0 +1,90 @@
+---
+---
+title: Sampling
+description: "Learn how to configure the volume of error and transaction events sent to Sentry."
+---
+
+Adding Sentry to your app gives you a great deal of very valuable information about errors and performance you wouldn't otherwise get. And lots of information is good -- as long as it's the right information, at a reasonable volume.
+
+## Sampling Error Events
+
+To send a representative sample of your errors to Sentry, set the  option in your SDK configuration to a number between `0` (0% of errors sent) and `1` (100% of errors sent). This is a static rate, which will apply equally to all errors. For example, to sample 25% of your errors:
+
+The error sample rate defaults to `1`, meaning all errors are sent to Sentry.
+
+Changing the error sample rate requires re-deployment. In addition, setting an SDK sample rate limits visibility into the source of events. Setting a rate limit for your project (which only drops events when volume is high) may better suit your needs.
+
+## Sampling Transaction Events
+
+We recommend sampling your transactions for two reasons:
+
+1. Capturing a single trace involves minimal overhead, but capturing traces for _every_ page load or _every_ API request may add an undesirable load to your system.
+2. Enabling sampling allows you to better manage the number of events sent to Sentry, so you can tailor your volume to your organization's needs.
+
+Choose a sampling rate with the goal of finding a balance between performance and volume concerns with data accuracy. You don't want to collect _too_ much data, but you want to collect sufficient data from which to draw meaningful conclusions. If you’re not sure what rate to choose, start with a low value and gradually increase it as you learn more about your traffic patterns and volume.
+
+As of version 7.8.0 of the Java SDK Sentry will automatically downsample while the system is under load. Take a look at  for more details or if you would like to opt out of this behaviour.
+
+## Configuring the Transaction Sample Rate
+
+The Sentry SDKs have two configuration options to control the volume of transactions sent to Sentry, allowing you to take a representative sample:
+
+1. Uniform sample rate ():
+
+   - Provides an even cross-section of transactions, no matter where in your app or under what circumstances they occur.
+   - Uses default [inheritance](#inheritance) and [precedence](#precedence) behavior
+
+2. Sampling function () which:
+   - Samples different transactions at different rates
+   - Filters out some
+     transactions entirely
+   - Modifies default [precedence](#precedence) and [inheritance](#inheritance) behavior
+
+By default, none of these options are set, meaning no transactions will be sent to Sentry. You must set either one of the options to start sending transactions.
+
+### Setting a Uniform Sample Rate
+
+### Setting a Sampling Function
+
+## Sampling Context Data
+
+### Default Sampling Context Data
+
+The information contained in the  object passed to the  when a transaction is created varies by integration.
+
+### Custom Sampling Context Data
+
+When using custom instrumentation to create a transaction, you can add data to the  by passing it as an optional second argument to . This is useful if there's data to which you want the sampler to have access but which you don't want to attach to the transaction as `tags` or `data`, such as information that's sensitive or that’s too large to send with the transaction. For example:
+
+## Inheritance
+
+Whatever a transaction's sampling decision, that decision will be passed to its child spans and from there to any transactions they subsequently cause in other services.
+
+(See Distributed Tracing for more about how that propagation is done.)
+
+If the transaction currently being created is one of those subsequent transactions (in other words, if it has a parent transaction), the upstream (parent) sampling decision will be included in the sampling context data. Your  can use this information to choose whether to inherit that decision. In most cases, inheritance is the right choice, to avoid breaking distributed traces. A broken trace will not include all your services.
+
+In some SDKs, for convenience, the  function can return a boolean, so that a parent's decision can be returned directly if that's the desired behavior.
+
+If you're using a  rather than a , the decision will always be inherited.
+
+## Forcing a Sampling Decision
+
+If you know at transaction creation time whether or not you want the transaction sent to Sentry, you also have the option of passing a sampling decision directly to the transaction constructor (note, not in the  object). If you do that, the transaction won't be subject to the , nor will  be run, so you can count on the decision that's passed not to be overwritten.
+
+## Precedence
+
+There are multiple ways for a transaction to end up with a sampling decision.
+
+- Random sampling according to a static sample rate set in 
+- Random sampling according to a sample function rate returned by 
+- Absolute decision (100% chance or 0% chance) returned by 
+- If the transaction has a parent, inheriting its parent's sampling decision
+- Absolute decision passed to 
+
+When there's the potential for more than one of these to come into play, the following precedence rules apply:
+
+1. If a sampling decision is passed to , that decision will be used, overriding everything else.
+1. If  is defined, its decision will be used. It can choose to keep or ignore any parent sampling decision, use the sampling context data to make its own decision, or choose a sample rate for the transaction. We advise against overriding the parent sampling decision because it will break distributed traces)
+1. If  is not defined, but there's a parent sampling decision, the parent sampling decision will be used.
+1. If  is not defined and there's no parent sampling decision,  will be used.

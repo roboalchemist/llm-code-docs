@@ -1,0 +1,22 @@
+# Source: https://docs.qodo.ai/qodo-documentation/code-review/qodo-merge/feature-comparison.md
+
+# Feature Comparison
+
+{% hint style="warning" %}
+**Git Integration (formerly Qodo Merge)** – AI code review agents for pull requests.\
+This documentation describes the Qodo v1 experience. For the Qodo v2 documentation, click [here.](https://app.gitbook.com/s/yXEFCLH7CkXrROa2gOqv/)
+{% endhint %}
+
+## Main Tools
+
+<table><thead><tr><th width="271.9140625">Tool</th><th width="146.27734375">GitHub</th><th width="156.04296875">GitLab</th><th width="158.484375">Bitbucket **</th></tr></thead><tbody><tr><td><a href="tools/tools-list/describe">Describe</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/review">Review</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/compliance">Compliance</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/improve">Improve</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/ask">Ask</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td>⮑ Ask on code lines</td><td>✔</td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr></tbody></table>
+
+## Other Tools
+
+<table><thead><tr><th width="271.9140625">Tool</th><th width="146.27734375">GitHub</th><th width="156.04296875">GitLab</th><th width="158.484375">Bitbucket **</th></tr></thead><tbody><tr><td><a href="tools/tools-list/add-docs">Add Docs</a></td><td>✔</td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr><tr><td><a href="tools/tools-list/analyze">Analyze</a></td><td>✔</td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr><tr><td><a href="tools/tools-list/checks-ci-feedback">Checks (CI Feedback)</a></td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr><tr><td><a href="tools/tools-list/custom-prompt">Custom Prompt</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/generate-labels">Generate Labels</a></td><td>✔</td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr><tr><td><a href="tools/tools-list/generate-tests">Generate Tests</a></td><td>✔</td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr><tr><td><a href="tools/tools-list/help-docs">Help Docs</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/implement">Implement</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/pr-to-ticket">PR to Ticket</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/update-changelog">Update Changelog</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="tools/tools-list/scan-repo-discussions">Scan Repo Discussions</a></td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr><tr><td><a href="tools/tools-list/similar-code">Similar Code</a></td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr></tbody></table>
+
+## Features
+
+<table><thead><tr><th width="271.9140625">Tool</th><th width="146.27734375">GitHub</th><th width="156.04296875">GitLab</th><th width="158.484375">Bitbucket **</th></tr></thead><tbody><tr><td><a href="features/qodo-aware-rag">Qodo Aware (RAG)</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="features/best-practices">Best Practices</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="learn-more/tracking">Tracking</a></td><td>✔</td><td>✔</td><td>✔</td></tr><tr><td><a href="features/chat-on-code-suggestions">PR Chat</a></td><td>✔</td><td>✔</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2716">✖️</span></td></tr></tbody></table>
+
+\*\* Qodo strives to offer feature parity across all git providers, however Bitbucket API and capabilities tend to be more limited than the other main stream source control solutions. Qodo also offer code review in your local CLI environment. [Learn more about the Qodo merge CLI](https://qodo-merge-docs.qodo.ai/qodo-merge-cli/)&#x20;

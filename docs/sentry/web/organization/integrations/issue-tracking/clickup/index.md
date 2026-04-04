@@ -1,0 +1,21 @@
+---
+---
+title: ClickUp
+description: >-
+---
+
+ClickUp’s core focus is about removing frustrations, inefficiencies, and disconnect caused by current project management solutions. You can create an issue in ClickUp from a Sentry issue or link it to an existing issue.
+
+This integration is maintained and supported by the company that created it. For more details, check out our [Integration Platform documentation](/organization/integrations/integration-platform/).
+
+## Install and Configure
+
+Sentry owner, manager, or admin permissions are required to install this integration.
+
+ClickUp **won't** work with self-hosted Sentry.
+
+1. Navigate to **Settings > Integrations > ClickUp**
+
+   ![Install ClickUp integration](./img/click-up.png)
+
+2. Follow the full [ClickUp installation instructions](https://docs.clickup.com/en/articles/3420285-sentry-io).

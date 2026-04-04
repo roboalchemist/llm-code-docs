@@ -1,0 +1,8 @@
+---
+---
+title: Shutdown and Draining
+description: "Learn more about the default behavior of our SDK if the application shuts down unexpectedly."
+---
+
+By default the SDK sends out events over the network on a background thread. This means that some events might be lost if the application shuts down unexpectedly. The SDK provides mechanisms to cope with this.
+

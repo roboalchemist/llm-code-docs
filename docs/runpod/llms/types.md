@@ -1,0 +1,78 @@
+# Source: https://docs.runpod.io/pods/storage/types.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Storage options
+
+> Choose the right type of storage for your Pods.
+
+Choosing the right type of storage is crucial for optimizing your workloads, whether you need temporary storage for active computations, persistent storage for long-term data retention, or permanent, shareable storage across multiple Pods.
+
+This page describes the different types of storage options available for your Pods, and when to use each in your workflow.
+
+## Container disk
+
+A container disk houses the operating system and provides temporary storage for a Pod. It's created when a Pod is launched and is directly tied to the Pod's lifecycle.
+
+## Volume disk
+
+A volume disk provides persistent storage that remains available for the duration of the Pod's lease. It functions like a dedicated hard drive, allowing you to store data that needs to be retained even if the Pod is stopped or rebooted.
+
+The volume disk is mounted at `/workspace` by default (this will be replaced by the network volume if one is attached). This can be changed by [editing your Pod configuration](#modifying-storage-capacity).
+
+## Network volume
+
+[Network volumes](/storage/network-volumes) offer persistent storage similar to the volume disk, but with the added benefit that they can be attached to multiple Pods, and that they persist independently from the Pod's lifecycle. This allows you to share and access data across multiple instances or transfer storage between machines, and retain data even after a Pod is deleted.
+
+When attached to a Pod, a network volume replaces the volume disk, and by default they are similarly mounted at `/workspace`.
+
+<Note>
+  Network volumes must be attached during Pod creation, and cannot be unattached later.
+</Note>
+
+## Storage type comparison
+
+This table provides a comparative overview of the storage types available for your Pods:
+
+| Feature              | Container Disk                            | Volume Disk                                   | Network Volume                                         |
+| :------------------- | :---------------------------------------- | :-------------------------------------------- | :----------------------------------------------------- |
+| **Data persistence** | Volatile (lost on stop/restart)           | Persistent (retained until Pod deletion)      | Permanent (retained independently from Pod lifecycles) |
+| **Lifecycle**        | Tied directly to the Pod's active session | Tied to the Pod's lease period                | Independent, can outlive Pods                          |
+| **Performance**      | Fastest (locally attached)                | Reliable, generally slower than container     | Performance can vary (network dependent)               |
+| **Capacity**         | Determined by Pod configuration           | Selectable at creation                        | Selectable and often resizable                         |
+| **Cost**             | \$0.1/GB/month                            | \$0.1/GB/month                                | \$0.07/GB/month                                        |
+| **Best for**         | Temporary session data, cache             | Persistent application data, models, datasets | Shared data, portable storage, collaborative workflows |
+
+## Choosing the right storage
+
+Here's what you should consider when selecting storage for your Pods:
+
+* **Data persistence needs:** Does your data need to survive Pod restarts or deletions?
+* **Performance requirements:** Do your applications require very high-speed I/O, or is standard performance sufficient?
+* **Data sharing:** Do you need to share data between multiple Pods?
+
+## Modifying storage capacity
+
+To update the size of a Pod's container or volume disk:
+
+1. Navigate to the [Pod page](https://console.runpod.io/pod) in the Runpod console.
+2. Click the three dots to the right of the Pod you want to modify and select **Edit Pod**.
+3. Adjust the storage capacity for the container or volume disk. Volume disk size can be increased, but not decreased.
+4. Click **Save** to apply the changes.
+
+<Warning>
+  Editing a running Pod will cause it to reset completely, erasing all data that isn't stored in your volume disk/network volume mount directory (`/workspace` by default).
+</Warning>
+
+## Transferring data to another cloud provider
+
+You can upload data from your Pod to AWS S3, Google Cloud Storage, Azure, Dropbox, and more by clicking the **Cloud Sync** button on the Pod page. For detailed instructions on connecting to these services, see [Export data](/pods/storage/cloud-sync).
+
+## Next steps
+
+* Learn how to [create a network volume](/storage/network-volumes).
+* Learn how to [choose the right Pod](/pods/choose-a-pod) for your workload.
+* Explore options for [managing your Pods](/pods/manage-pods).
+* Understand how to create [Pod templates](/pods/templates/overview) for pre-configured environments.

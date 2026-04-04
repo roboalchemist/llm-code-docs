@@ -1,0 +1,37 @@
+# Source: https://uat.rive.app/docs/scripting/api-reference/paint/blend-mode.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://uat.rive.app/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# BlendMode
+
+Defines how the paint’s color or gradient is composited with the content
+behind it.
+
+* `srcOver`
+* `screen`
+* `overlay`
+* `darken`
+* `lighten`
+* `colorDodge`
+* `colorBurn`
+* `hardLight`
+* `softLight`
+* `difference`
+* `exclusion`
+* `multiply`
+* `hue`
+* `saturation`
+* `color`
+* `luminosity`
+
+```lua highlight={4} theme={null}
+-- Create a new paint with a color and multiply blend mode
+self.paint = Paint.with({
+  color = Color.rgb(255, 100, 50),
+  blendMode = 'multiply',
+  style = 'fill',
+})
+```

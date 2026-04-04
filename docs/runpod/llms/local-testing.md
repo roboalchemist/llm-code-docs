@@ -1,0 +1,208 @@
+# Source: https://docs.runpod.io/serverless/development/local-testing.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Local testing
+
+> Test your Serverless handlers locally before deploying to production.
+
+Testing your handler locally before deploying saves time and helps you catch issues early. The Runpod SDK provides multiple ways to test your handler function without consuming cloud resources.
+
+## Basic testing
+
+The simplest way to test your handler is by running it directly with test input.
+
+### Inline JSON
+
+Pass test input directly via the command line:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python handler.py --test_input '{"input": {"prompt": "Hello, world!"}}'
+```
+
+This runs your handler with the specified input and displays the output in your terminal.
+
+### Test file
+
+For more complex or reusable test inputs, create a `test_input.json` file in the same directory as your handler:
+
+```json test_input.json theme={"theme":{"light":"github-light","dark":"github-dark"}}
+{
+  "input": {
+    "prompt": "This is a test input from a JSON file"
+  }
+}
+```
+
+Run your handler without any arguments:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python main.py
+```
+
+The SDK automatically detects and uses the `test_input.json` file.
+
+<Note>
+  If you provide both a `test_input.json` file and the `--test_input` flag, the command-line input takes precedence.
+</Note>
+
+## Local API server
+
+For more comprehensive testing, start a local API server that simulates your Serverless endpoint. This lets you send HTTP requests to test your handler as if it were deployed.
+
+Start the local server:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python handler.py --rp_serve_api
+```
+
+This starts a FastAPI server on `http://localhost:8000`.
+
+### Send requests to the server
+
+Once your local server is running, send HTTP `POST` requests from another terminal to test your function:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+curl -X POST http://localhost:8000/runsync \
+     -H "Content-Type: application/json" \
+     -d '{"input": {"prompt": "Hello, world!"}}'
+```
+
+<Note>
+  The `/run` endpoint only returns a fake request ID without executing your code, since async mode requires communication with Runpod's system. For local testing, use `/runsync` to execute your handler and get results immediately.
+</Note>
+
+## Testing concurrency
+
+To test how your handler performs under parallel execution, use the `--rp_api_concurrency` flag to set the number of concurrent workers.
+
+This command starts your local server with 4 concurrent workers:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python main.py --rp_serve_api --rp_api_concurrency 4
+```
+
+<Warning>
+  When using `--rp_api_concurrency` with a value greater than 1, your main file must be named `main.py` for proper FastAPI integration. If your file has a different name, rename it to `main.py` before running with multiple workers.
+</Warning>
+
+### Testing concurrent requests
+
+Send multiple requests simultaneously to test concurrency:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+for i in {1..10}; do
+    curl -X POST http://localhost:8000/runsync \
+         -H "Content-Type: application/json" \
+         -d '{"input": {}}' &
+done
+```
+
+### Handling concurrency in your code
+
+If your handler uses shared state (like global variables), use proper synchronization to avoid race conditions:
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+import runpod
+from threading import Lock
+
+counter = 0
+counter_lock = Lock()
+
+
+def handler(event):
+    global counter
+    with counter_lock:
+        counter += 1
+        return {"counter": counter}
+
+
+runpod.serverless.start({"handler": handler})
+```
+
+## Debugging
+
+### Log levels
+
+Control the verbosity of console output with the `--rp_log_level` flag:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python handler.py --rp_serve_api --rp_log_level DEBUG
+```
+
+Available log levels:
+
+* `ERROR`: Only show error messages.
+* `WARN`: Show warnings and errors.
+* `INFO`: Show general information, warnings, and errors.
+* `DEBUG`: Show all messages, including detailed debug information.
+
+### Enable the debugger
+
+Use the `--rp_debugger` flag for detailed troubleshooting:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python handler.py --rp_serve_api --rp_debugger
+```
+
+This enables the Runpod debugger, which provides additional diagnostic information to help you troubleshoot issues.
+
+## Server configuration
+
+Customize the local API server with these flags:
+
+### Port
+
+Set a custom port (default is 8000):
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python handler.py --rp_serve_api --rp_api_port 8080
+```
+
+### Host
+
+Set the hostname (default is "localhost"):
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python handler.py --rp_serve_api --rp_api_host 0.0.0.0
+```
+
+<Warning>
+  Setting `--rp_api_host` to `0.0.0.0` allows connections from other devices on the network. This can be useful for testing but may have security implications.
+</Warning>
+
+## Flag reference
+
+Here's a complete reference of all available flags for local testing:
+
+| Flag                   | Description                 | Default     | Example                        |
+| ---------------------- | --------------------------- | ----------- | ------------------------------ |
+| `--rp_serve_api`       | Starts the local API server | N/A         | `--rp_serve_api`               |
+| `--rp_api_port`        | Sets the server port        | 8000        | `--rp_api_port 8080`           |
+| `--rp_api_host`        | Sets the server hostname    | "localhost" | `--rp_api_host 0.0.0.0`        |
+| `--rp_api_concurrency` | Sets concurrent workers     | 1           | `--rp_api_concurrency 4`       |
+| `--rp_log_level`       | Controls log verbosity      | INFO        | `--rp_log_level DEBUG`         |
+| `--rp_debugger`        | Enables the debugger        | Disabled    | `--rp_debugger`                |
+| `--test_input`         | Provides test input as JSON | N/A         | `--test_input '{"input": {}}'` |
+
+## Combined example
+
+You can combine multiple flags to create a customized local testing environment:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+python handler.py --rp_serve_api \
+    --rp_api_port 8080 \
+    --rp_api_concurrency 4 \
+    --rp_log_level DEBUG \
+    --rp_debugger
+```
+
+This command:
+
+* Starts the local API server on port 8080.
+* Uses 4 concurrent workers.
+* Sets the log level to `DEBUG` for maximum information.
+* Enables the debugger for troubleshooting.

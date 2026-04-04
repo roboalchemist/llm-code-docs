@@ -1,0 +1,139 @@
+# Source: https://rsbuild.dev/plugins/list/plugin-vue.md
+
+# Vue plugin
+
+import { SourceCode } from '@theme';
+
+<SourceCode href="https://github.com/web-infra-dev/rsbuild/tree/main/packages/plugin-vue" />
+
+The Vue plugin provides support for Vue 3 SFC (Single File Components). The plugin internally integrates [vue-loader](https://vue-loader.vuejs.org/) v17.
+
+:::tip
+For Vue 3 JSX / TSX syntax, please use the [Vue JSX plugin](https://github.com/rstackjs/rsbuild-plugin-vue-jsx).
+:::
+
+## Quick start
+
+### Install plugin
+
+Install the plugin with this command:
+
+import { PackageManagerTabs } from '@theme';
+
+<PackageManagerTabs command="add @rsbuild/plugin-vue -D" />
+
+### Register plugin
+
+Register the plugin in your `rsbuild.config.ts` file:
+
+```ts title="rsbuild.config.ts"
+import { pluginVue } from '@rsbuild/plugin-vue';
+
+export default {
+  plugins: [pluginVue()],
+};
+```
+
+After registering the plugin, you can import `*.vue` SFC files in your code.
+
+## Options
+
+Customize Vue compilation behavior with these options:
+
+### vueLoaderOptions
+
+Options passed to `vue-loader`. See the [vue-loader documentation](https://vue-loader.vuejs.org/) for detailed usage.
+
+* **Type:** `VueLoaderOptions`
+* **Default:**
+
+```js
+const defaultOptions = {
+  compilerOptions: {
+    preserveWhitespace: false,
+  },
+  experimentalInlineMatchResource: true,
+};
+```
+
+* **Example:**
+
+```ts
+pluginVue({
+  vueLoaderOptions: {
+    hotReload: false,
+  },
+});
+```
+
+### splitChunks
+
+When [chunkSplit.strategy](/config/performance/chunk-split.md) set to `split-by-experience`, Rsbuild will automatically split `vue` and `router` related packages into separate chunks by default:
+
+* `lib-vue.js`: includes `vue`, `vue-loader`, and their sub-dependencies (`@vue/shared`, `@vue/reactivity`, `@vue/runtime-dom`, `@vue/runtime-core`).
+* `lib-router.js`: includes `vue-router`.
+
+This option is used to control this behavior and determine whether the `vue` and `router` related packages need to be split into separate chunks.
+
+* **Type:**
+
+```ts
+type SplitVueChunkOptions = {
+  vue?: boolean;
+  router?: boolean;
+};
+```
+
+* **Default:**
+
+```ts
+const defaultOptions = {
+  vue: true,
+  router: true,
+};
+```
+
+* **Example:**
+
+```ts
+pluginVue({
+  splitChunks: {
+    vue: false,
+    router: false,
+  },
+});
+```
+
+### test
+
+Customize the matching rule for Vue Single File Components (SFC).
+
+* **Type:** [Rspack.RuleSetCondition](https://rspack.rs/config/module-rules#condition)
+* **Default:** `/\.vue$/`
+* **Version:** `>= 1.2.1`
+
+This option allows you to extend the Vue plugin to handle additional file types. For example, you can first use a plugin or loader to transform `.md` files into Vue components, then configure the `test` option in the Vue plugin to match both `.vue` and `.md` files:
+
+```ts
+pluginVue({
+  test: /\.(vue|md)$/,
+});
+```
+
+## FAQ
+
+### /deep/ selector causes compilation error
+
+`/deep/` is a deprecated usage as of Vue v2.7. Since it is not a valid CSS syntax, CSS compilation tools like Lightning CSS will fail to compile it.
+
+You can use `:deep()` instead. See [Vue - Deep Selectors](https://vuejs.org/api/sfc-css-features.html#deep-selectors) for more details.
+
+```html
+<style scoped>
+  .a :deep(.b) {
+    /* ... */
+  }
+</style>
+```
+
+> You can also refer to [Vue - RFC 0023](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md) for more details.

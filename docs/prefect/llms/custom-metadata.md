@@ -1,0 +1,79 @@
+# Source: https://docs.prefect.io/v3/how-to-guides/workflows/custom-metadata.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# How to customize a workflow's metadata
+
+### Customize a workflow's name
+
+Give your workflow a name with the `name` parameter:
+
+```python  theme={null}
+from prefect import flow
+
+
+@flow(name="My Flow")
+def my_workflow() -> str:
+    return "Hello, world!"
+```
+
+If you don't provide a name, Prefect uses the flow function name.
+
+### Customize a workflow's description
+
+Give your workflow a description with the `description` parameter:
+
+```python  theme={null}
+from prefect import flow
+
+
+@flow(name="My Flow", description="My flow with a name and description")
+def my_workflow() -> str:
+    return "Hello, world!"
+```
+
+If no description is provided, a flow function's docstring is used as the description.
+
+### Customize run names
+
+Give a custom name to each flow run for a flow with the `flow_run_name` parameter:
+
+```python  theme={null}
+import datetime
+from prefect import flow
+
+
+@flow(flow_run_name="hello-{name}-on-{date:%A}")
+def my_workflow(name: str, date: datetime.datetime):
+    return f"I said hello to {name} on {date:%A}!"
+```
+
+Inputs to the flow function are available as variables in the `flow_run_name` template string.
+
+You can also provide a `flow_run_name` as a function that returns a string:
+
+```python  theme={null}
+import datetime
+from prefect import flow
+
+
+def generate_flow_run_name():
+    date = datetime.datetime.now(datetime.timezone.utc)
+    return f"{date:%A}-is-a-nice-day"
+
+
+@flow(flow_run_name=generate_flow_run_name)
+def my_workflow(name: str):
+    return f"Hello, {name}!"
+```
+
+<Info>
+  **Custom flow run names are applied at runtime**
+
+  When a flow run is created via a schedule or the API, the `flow_run_name` defined on the flow is not immediately applied. The name is updated when the flow begins running.
+</Info>
+
+
+Built with [Mintlify](https://mintlify.com).

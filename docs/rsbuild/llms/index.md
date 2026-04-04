@@ -1,0 +1,112 @@
+# Source: https://rsbuild.dev/community/releases/index.md
+
+# Source: https://rsbuild.dev/community/index.md
+
+# Source: https://rsbuild.dev/api/start/index.md
+
+# Source: https://rsbuild.dev/plugins/dev/index.md
+
+# Source: https://rsbuild.dev/plugins/list/index.md
+
+# Source: https://rsbuild.dev/config/index.md
+
+# Source: https://rsbuild.dev/guide/start/index.md
+
+# Introduction
+
+Rsbuild is a high-performance build tool powered by Rspack. It provides carefully designed defaults for an out-of-the-box development experience while fully leveraging Rspack's performance.
+
+Rsbuild provides a [rich set of build features](/guide/start/features.md), including support for TypeScript, JSX, Sass, Less, CSS Modules, Wasm, and more. It also supports Module Federation, image compression, type checking, PostCSS, Lightning CSS, and additional features.
+
+## 🚀 Performance
+
+Powered by Rspack's Rust-based architecture, Rsbuild delivers blazing-fast performance to speed up your development workflow.
+
+⚡️ **Build 1000 React components:**
+
+import { BenchmarkGraph } from '@components/Benchmark';
+
+<BenchmarkGraph />
+
+> 📊 Benchmark results from [build-tools-performance](https://github.com/rstackjs/build-tools-performance).
+
+## 💡 Comparisons
+
+Rsbuild is comparable to [Vite](https://vitejs.dev/), [Create React App](https://github.com/facebook/create-react-app), and [Vue CLI](https://github.com/vuejs/vue-cli). Each of these tools includes a built-in dev server, command-line tools, and sensible defaults for an out-of-the-box experience.
+
+![](https://assets.rspack.rs/rsbuild/assets/rsbuild-1-0-build-tools.png)
+
+### CRA / Vue CLI
+
+You can think of Rsbuild as a modernized version of Create React App or Vue CLI, with these key differences:
+
+* The underlying bundler has been switched from webpack to Rspack, delivering 5 to 10 times better build performance.
+* It's decoupled from frontend UI frameworks and supports all frameworks via [plugins](/plugins/list/index.md), including React, Vue, Svelte, Solid, and more.
+* It is more extensible. You can extend Rsbuild through [configurations](/config/index.md), the [Plugin API](/plugins/dev/index.md), and the [JavaScript API](/api/start/index.md).
+
+### Vite
+
+Rsbuild has many similarities to Vite, as both aim to improve the frontend development experience. The main differences are:
+
+* **Production consistency**: Rsbuild uses Rspack for bundling in both development and production builds, ensuring high consistency between development and production outputs. Vite uses ESM during development for faster startup, but this approach can introduce inconsistencies between development and production outputs.
+* **Ecosystem compatibility**: Rsbuild is compatible with most webpack plugins and all Rspack plugins, while Vite is compatible with Rollup plugins. If you're using many plugins and loaders from the webpack ecosystem, migration to Rsbuild is more straightforward.
+* **Module Federation**: The Rsbuild team works closely with the [Module Federation](/guide/advanced/module-federation.md) development team, providing first-class support for Module Federation to help you develop large web applications with micro-frontend architecture.
+
+## 🔥 Features
+
+Rsbuild has the following features:
+
+* **Easy to configure**: One of Rsbuild's goals is to give Rspack users out-of-the-box build capabilities so they can start web projects with zero configuration. Rsbuild also provides a semantic build configuration API to reduce the Rspack learning curve.
+
+* **Performance-focused**: Rsbuild integrates high-performance Rust-based tools from the community, including [Rspack](https://rspack.rs), [SWC](https://swc.rs/), and [Lightning CSS](https://lightningcss.dev/), delivering first-class build speed and development experience.
+
+* **Plugin ecosystem**: Rsbuild has a lightweight plugin system and includes a range of high-quality official plugins. It is also compatible with most webpack plugins and all Rspack plugins, allowing you to use existing community or in-house plugins without rewriting code.
+
+* **Stable artifacts**: Rsbuild places a strong focus on build artifact stability. It ensures consistent artifacts in development and production builds, and automatically handles syntax downgrading and polyfill injection. Rsbuild also provides plugins for type checking and artifact syntax validation to prevent quality and compatibility issues from reaching production code.
+
+* **Framework agnostic**: Rsbuild is not coupled to any frontend UI framework. It supports frameworks like React, Vue, Svelte, Solid, and Preact through plugins, with plans to support more UI frameworks from the community in the future.
+
+## 🦀 Rstack
+
+Rstack is a unified JavaScript toolchain centered on Rspack, with high performance and consistent architecture.
+
+<img src="https://assets.rspack.rs/rstack/rstack-overview.png" alt="Rstack" width="820" />
+
+Rstack includes the following tools:
+
+| Name                                                  | Description              | Version                                                                                                                                                                          |
+| ----------------------------------------------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Rspack](https://github.com/web-infra-dev/rspack)     | Bundler                  | <a href="https://npmjs.com/package/@rspack/core"><img src="https://img.shields.io/npm/v/@rspack/core?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a>     |
+| [Rsbuild](https://github.com/web-infra-dev/rsbuild)   | Build tool               | <a href="https://npmjs.com/package/@rsbuild/core"><img src="https://img.shields.io/npm/v/@rsbuild/core?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a>   |
+| [Rslib](https://github.com/web-infra-dev/rslib)       | Library development tool | <a href="https://npmjs.com/package/@rslib/core"><img src="https://img.shields.io/npm/v/@rslib/core?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a>       |
+| [Rspress](https://github.com/web-infra-dev/rspress)   | Static site generator    | <a href="https://npmjs.com/package/@rspress/core"><img src="https://img.shields.io/npm/v/@rspress/core?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a>   |
+| [Rsdoctor](https://github.com/web-infra-dev/rsdoctor) | Build analyzer           | <a href="https://npmjs.com/package/@rsdoctor/core"><img src="https://img.shields.io/npm/v/@rsdoctor/core?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a> |
+| [Rstest](https://github.com/web-infra-dev/rstest)     | Testing framework        | <a href="https://npmjs.com/package/@rstest/core"><img src="https://img.shields.io/npm/v/@rstest/core?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a>     |
+| [Rslint](https://github.com/web-infra-dev/rslint)     | Linter                   | <a href="https://npmjs.com/package/@rslint/core"><img src="https://img.shields.io/npm/v/@rslint/core?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a>     |
+
+## 🔗 Links
+
+* [awesome-rstack](https://github.com/rstackjs/awesome-rstack): A curated list of awesome things related to Rstack.
+* [rstack-examples](https://github.com/rstackjs/rstack-examples): Examples showcasing Rstack tools.
+* [storybook-rsbuild](https://github.com/rstackjs/storybook-rsbuild): Storybook builder powered by Rsbuild.
+* [rsbuild-plugin-template](https://github.com/rstackjs/rsbuild-plugin-template): Use this template to create your own Rsbuild plugin.
+* [rstack-design-resources](https://github.com/rstackjs/rstack-design-resources): Design resources for Rstack.
+
+## 🧑‍💻 Community
+
+Come and chat with us on [Discord](https://discord.gg/XsaKEEk4mW)! The Rstack team and users are active there, and we're always looking for contributions.
+
+## ✨ Next step
+
+Next, you may want to:
+
+import NextSteps from '@components/NextSteps';
+import Step from '@components/Step';
+
+<NextSteps>
+  <Step href="/guide/start/quick-start" title="Quick start" description="Learn how to use Rsbuild" />
+
+  <Step href="/guide/start/features" title="All features" description="Learn all features of Rsbuild" />
+
+  <Step href="https://github.com/web-infra-dev/rsbuild" title="Support Rsbuild" description="Support us with a star ⭐️" />
+</NextSteps>

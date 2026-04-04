@@ -1,0 +1,11 @@
+---
+---
+title: Installation Methods
+description: "Review our alternate installation methods."
+---
+
+SolidStart uses ES Modules for server-side builds, which requires Sentry to register Node [customization hooks](https://nodejs.org/api/module.html#customization-hooks).
+Those customization hooks need to be registered before the rest of the application.
+
+To be able to run Sentry before the rest of the application and fully monitor the server-side, Sentry can be initialized using one of those two approaches:
+

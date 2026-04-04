@@ -1,0 +1,46 @@
+# Source: https://posthog.com/docs/session-replay/canvas-recording.md
+
+# Canvas recording - Docs
+
+> **Important:** Canvas support was added in v1.105.7 of the PostHog JS SDK. Make sure you are using at least that version or canvas capture will not work.
+
+PostHog can capture canvas elements from your application. It works in both 2D and WebGL environments.
+
+As canvas elements can contain sensitive information and there is **no way to mask canvas elements right now**, we do not capture these automatically. Once you are sure they are free of PII, you can enable this feature globally from your [replay settings](https://us.posthog.com/settings/project-replay#replay).
+
+Canvas elements are recorded at a rate of **4 frames per second** which may lead to some perceptual differences during playback.
+
+![Enable canvas recording in your PostHog](https://res.cloudinary.com/dmukukwp6/image/upload/posthog.com/contents/images/docs/session-replay/enable-canvas-recording-in-replay-settings.png)
+
+## Canvas recording performance
+
+Canvas recording normally has no impact on your site, but it does need to capture the canvas as an image which can have a performance impact on some sites.
+
+You can override the frequency the image is captured and the quality of the captured image when initializing PostHog on your site:
+
+PostHog AI
+
+```
+posthog.init('<ph_project_token>', {
+  api_host: 'https://us.i.posthog.com',
+  defaults: '2026-01-30',
+  session_recording: {
+    captureCanvas: {
+      // accepts a number between 0 and 12
+      // if not set locally, when canvas recording is enabled, remote config sets this to 4
+      canvasFps: 2,
+      // accepts a decimal number between 0 and 1 as a string
+      // if not set locally, when canvas recording is enabled, remote config sets this to "0.4"
+      canvasQuality: "0.2",
+    }
+  }
+})
+```
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better

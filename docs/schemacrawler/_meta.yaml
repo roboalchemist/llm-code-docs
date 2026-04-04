@@ -1,0 +1,8 @@
+name: schemacrawler
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:10:55Z"
+description: >
+  schemacrawler documentation
+quality_score: 0

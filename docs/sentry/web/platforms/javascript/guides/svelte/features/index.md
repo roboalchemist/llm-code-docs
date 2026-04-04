@@ -1,0 +1,8 @@
+---
+---
+title: Svelte Features
+description: "Learn how Sentry's Svelte SDK exposes features for first class integration with Svelte."
+---
+
+The Sentry Svelte SDK offers Svelte-specific features for first class integration with the framework.
+

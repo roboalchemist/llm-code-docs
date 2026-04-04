@@ -1,0 +1,52 @@
+# Source: https://rsbuild.dev/config/output/polyfill.md
+
+# output.polyfill
+
+* **Type:** `'entry' | 'usage' | 'off'`
+* **Default:** `'off'`
+
+Controls the polyfill injection mode.
+
+> See [Polyfill Mode](/guide/advanced/browser-compatibility.md#polyfill-mode) for more details.
+
+## Optional value
+
+### usage
+
+With `output.polyfill` set to `'usage'`, Rsbuild injects polyfills based on the APIs used in each file. This provides optimal bundle size by including only needed polyfills.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    polyfill: 'usage',
+  },
+};
+```
+
+### entry
+
+With `output.polyfill` set to `'entry'`, Rsbuild injects polyfills in each entry file. This ensures all polyfills are available but may increase bundle size.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    polyfill: 'entry',
+  },
+};
+```
+
+:::tip
+It should be noted that when you bundle page with [Web Workers](/guide/basic/web-workers.md), the `entry` mode is not applicable to Web Workers because the Web Workers thread is isolated from the main thread (page), and the `usage` mode can be used at this time.
+:::
+
+### off
+
+With `output.polyfill` set to `'off'`, Rsbuild doesn't inject polyfills. You need to handle code compatibility yourself.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    polyfill: 'off',
+  },
+};
+```

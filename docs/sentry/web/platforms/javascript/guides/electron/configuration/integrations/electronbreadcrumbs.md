@@ -1,0 +1,42 @@
+---
+---
+title: ElectronBreadcrumbs
+description: "Supports capturing events from `uncaughtException` while retaining Electrons default behaviour. (default)"
+---
+
+This integration captures breadcrumbs for many of Electron's built-in modules. The breadcrumbs captured for each module can be configured as `true` to capture all events, or `false` to capture no events. Alternatively, you can supply a function which is passed the event name and returns `true` or `false`, depending on whether the event should be captured.
+
+The defaults for this integration are effectively:
+
+```javascript
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  integrations: [
+    Sentry.electronBreadcrumbsIntegration({
+      app: (name) => !name.startsWith("remote-"),
+      autoUpdater: true,
+      webContents: (name) =>
+        ["dom-ready", "context-menu", "load-url", "destroyed"].includes(name),
+      browserWindow: (name) =>
+        [
+          "closed",
+          "close",
+          "unresponsive",
+          "responsive",
+          "show",
+          "blur",
+          "focus",
+          "hide",
+          "maximize",
+          "minimize",
+          "restore",
+          "enter-full-screen",
+          "leave-full-screen",
+        ].includes(name),
+      screen: true,
+      powerMonitor: true,
+      captureWindowTitles: false,
+    }),
+  ],
+});
+```

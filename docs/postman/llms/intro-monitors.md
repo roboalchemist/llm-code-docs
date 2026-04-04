@@ -1,0 +1,35 @@
+# intro-monitors
+
+Monitor health and performance of your APIs in Postman
+====================================================
+
+_Postman Monitors_ enable you to [continuously check the health and performance of your APIs](https://www.postman.com/api-platform/api-observability/). You can create monitors that run requests in selected collections. Requests can run API test scripts, chain together multiple requests, and more. You can also schedule how often Postman runs monitored collections.
+
+You'll be alerted to any test failures once the monitor is running, so you can identify and address issues before your API's consumers are affected.
+
+## About Postman Monitors
+
+You can [set up monitors](/docs/monitoring-your-api/setting-up-monitor/), enabling you to run a series of requests from the Postman cloud based on a schedule. When creating a monitor, you choose a [collection](/docs/sending-requests/create-requests/intro-to-collections/) with the requests you want to run. You can learn more about [use cases for monitors](#monitor-use-cases).
+
+With [Private API Monitoring](/docs/monitoring-your-api/runners/overview/), you can use runners and the Postman CLI to monitor and test your organization's APIs from your internal network, without publicly exposing your endpoints. Once set up, monitors run in your internal network and the runner sends the results to the Postman cloud. You can also [configure monitors to run from static IPs](/docs/monitoring-your-api/using-static-IPs-to-monitor/) to monitor APIs that are behind a restricted firewall.
+
+You can [view results for monitors](/docs/monitoring-your-api/viewing-monitor-results/) to learn more about the monitors you're running. You can also [manage your team's monitor usage](/docs/monitoring-your-api/monitor-usage/), enabling you to track your team's resource usage and purchase more blocks of monitoring calls.
+
+If you experience a problem with monitors, you can [troubleshoot monitors in Postman](/docs/monitoring-your-api/troubleshooting-monitors/).
+
+## Monitor use cases
+
+Monitors run Postman requests and scripts, enabling you to [monitor APIs](https://www.postman.com/api-platform/api-monitoring/) in a variety of ways. The following are examples of what you can check with monitors:
+
+* **Check API health and performance** - Ensure the API is up and running in production and other environments.
+* **Validate API response structure and data** - Ensure the API is functioning according to specifications.
+* **Test complex, multi-step workflows** - Ensure that critical API flows and edge cases are working as expected.
+* **Run tests in multiple environments and regions** - Ensure your APIs are working everywhere. (Running monitors in multiple regions requires a paid Postman plan.)
+* **Monitor the security of your endpoints** - Continuously test APIs for known security vulnerabilities.
+* **Visualize results on the monitor dashboard** - Get better visibility into API performance over time and identify trends.
+
+For more examples of monitors in action, visit the [Postman API Monitoring Examples public workspace](https://www.postman.com/postman/postman-api-monitoring-examples/overview) to find example collections for some common monitoring use cases. You can collaborate on the collections in the workspace by [creating a fork](/docs/collaborating-in-postman/using-version-control/forking-elements/#create-a-fork), or customize the collections for your team's use by [exporting and importing them into your internal workspace](/docs/getting-started/importing-and-exporting/exporting-data/#export-collections).
+
+## Monitor FAQs
+
+To learn more about configuring monitors in Postman, see the [Monitor FAQs](/docs/monitoring-your-api/faqs-monitors/).

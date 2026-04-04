@@ -1,0 +1,11 @@
+---
+---
+title: SolidStart Features
+description: "Learn how Sentry's SolidStart SDK exposes features for first class integration with Solid."
+---
+
+  This SDK is currently in **beta**. Beta features are still in progress and may have bugs. Please reach out on
+  [GitHub](https://github.com/getsentry/sentry-javascript/issues/new/choose) if you have any feedback or concerns.
+
+The Sentry SolidStart SDK offers Solid-specific features for first class integration with the framework.
+

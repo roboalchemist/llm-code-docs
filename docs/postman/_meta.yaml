@@ -1,0 +1,9 @@
+name: postman
+primary_source: llms
+sources:
+  - type: llms
+    url: https://learning.postman.com/
+    last_fetched: "2026-04-03T23:10:41Z"
+description: >
+  postman documentation
+quality_score: 0

@@ -1,0 +1,301 @@
+# Source: https://rspack.dev/config/experiments.md
+
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/experiments/](https://webpack.js.org/configuration/experiments/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
+
+
+# Experiments
+
+Enables experimental features.
+
+- **Type:** `object`
+
+:::tip
+In minor releases, Rspack may change the APIs of experimental features. If you're using experimental features, pay attention to the minor release notes for detailed explanations of changes.
+:::
+
+## experiments.asyncWebAssembly
+
+- **Type:** `boolean`
+- **Default:** `true`
+
+Supports the new WebAssembly according to the [updated specification](https://github.com/WebAssembly/esm-integration), making WebAssembly modules async.
+
+```js title="rspack.config.mjs"
+export default {
+  experiments: {
+    asyncWebAssembly: true,
+  },
+};
+```
+
+## experiments.outputModule
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+When enabled, Rspack outputs ECMAScript module syntax whenever possible. For example, `import()` to load chunks, ESM exports to expose chunk data, and more.
+
+```js title="rspack.config.mjs"
+export default {
+  experiments: {
+    outputModule: true,
+  },
+};
+```
+
+## experiments.css
+
+Stability: Deprecated
+- **Type:** `boolean`
+- **Default:** `false`
+
+:::warning Deprecated
+This option is deprecated since Rspack 2.0. Users now need to manually add CSS rules to enable CSS support. In a future version, Rspack will automatically add CSS-related default rules.
+:::
+
+When enabled, Rspack enables native CSS support and CSS-related parser and generator options.
+
+- [`module.parser["css/auto"]`](/config/module.md#moduleparsercssauto)
+- [`module.parser.css`](/config/module.md#moduleparsercss)
+- [`module.parser["css/module"]`](/config/module.md#moduleparsercssmodule)
+- [`module.generator["css/auto"]`](/config/module.md#modulegeneratorcssauto)
+- [`module.generator.css`](/config/module.md#modulegeneratorcss)
+- [`module.generator["css/module"]`](/config/module.md#modulegeneratorcssmodule)
+
+### Migration
+
+To use CSS in Rspack 2.0, you need to manually add CSS rules to your configuration:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        type: 'css/auto',
+      },
+    ],
+  },
+};
+```
+
+### Legacy usage (deprecated)
+
+```js title="rspack.config.mjs"
+export default {
+  experiments: {
+    css: true,
+  },
+};
+```
+
+## experiments.futureDefaults
+
+- **Type:** `boolean`
+- **Default:** `false`
+
+Uses defaults from the next major Rspack version and shows warnings for any problematic configuration.
+
+```js title="rspack.config.mjs"
+export default {
+  experiments: {
+    futureDefaults: true,
+  },
+};
+```
+
+## experiments.incremental
+
+Stability: Deprecated
+This option has been moved to top-level [`incremental`](/config/incremental.md).
+
+## experiments.buildHttp
+
+[Added in v1.3.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.3.0)
+- **Type:** `HttpUriOptions`
+- **Default:** `undefined`
+
+```ts
+type HttpUriOptions = {
+  /**
+   * A list of allowed URIs
+   */
+  allowedUris: (string | RegExp)[];
+  /**
+   * Define the location to store the lockfile
+   */
+  lockfileLocation?: string;
+  /**
+   * Define the location for caching remote resources
+   */
+  cacheLocation?: string | false;
+  /**
+   * Detect changes to remote resources and upgrade them automatically
+   * @default false
+   */
+  upgrade?: boolean;
+  /**
+   * Custom http client
+   */
+  httpClient?: (
+    url: string,
+    headers: Record<string, string>,
+  ) => Promise<{
+    status: number;
+    headers: Record<string, string>;
+    body: Buffer;
+  }>;
+};
+```
+
+After enabling this feature, Rspack can build remote resources that start with the `http(s):` protocol. Rspack will download the resources to the local machine and then bundle them.
+
+By default, Rspack will generate `rspack.lock` and `rspack.lock.data` in the [context](/config/context.md) folder as the locations of the Lockfile and the cache respectively. You can also configure them through `lockfileLocation` and `cacheLocation`.
+
+:::note
+You should commit the files at `lockfileLocation` and `cacheLocation` to the version control system so that no network requests will be made during the production build.
+:::
+
+For example:
+
+```js title="rspack.config.mjs"
+export default {
+  experiments: {
+    buildHttp: {
+      allowedUris: ['https://'],
+      lockfileLocation: path.join(__dirname, 'my_project.lock'),
+      cacheLocation: path.join(__dirname, 'my_project.lock.data'),
+    },
+  },
+};
+```
+
+With this feature enabled, you can import modules directly from URLs:
+
+```js
+// Import from a remote URL
+import { something } from 'https://example.com/module.js';
+
+// Or import assets
+import imageUrl from 'https://example.com/image.png';
+```
+
+## experiments.useInputFileSystem
+
+[Added in v1.3.14](https://github.com/web-infra-dev/rspack/releases/tag/v1.3.14)
+- **Type:** `false | RegExp[]`
+- **Default:** `false`
+
+By default, Rspack reads files from disk using a native file system.
+However, it is possible to change the file system using a different kind of file system.
+To accomplish this, one can change the inputFileSystem. For example, you can replace the default inputFileSystem with memfs to virtual Modules.
+
+But due to the overheads calling file system implemented in Node.js side, it will slow down Rspack a lot.
+So we make a trade off by providing the `useInputFileSystem` config, to tell rspack to read file from the native file system or from modified inputFileSystem.
+
+In below example, you can simply replace the default input file system to any file system satisfied the [`InputFileSystem`](/api/javascript-api/compiler.md#inputfilesystem-1) interface.
+
+:::info Note
+The replacing of `compiler.inputFileSystem` will only take effect before `compiler.run` called; Replacing after `compiler.run` will not take effect.
+:::
+
+More detailed case can be found [here](https://github.com/web-infra-dev/rspack/tree/main/tests/rspack-test/configCases/input-file-system/webpack.config.js)
+
+```js title="rspack.config.mjs"
+export default {
+  entry: {
+    index: './virtual_index.js',
+  },
+  plugins: [
+    {
+      apply: (compiler) => {
+        compiler.hooks.beforeCompile.tap('SimpleInputFileSystem', () => {
+          compiler.inputFileSystem = {
+            readFile(path, cb) {
+              cb(null, `// the file content`);
+            },
+            stat(p, cb) {
+              cb(null, fsState);
+            },
+          };
+        });
+      },
+    },
+  ],
+  experiments: {
+    useInputFileSystem: [/virtual_.*\.js/],
+  },
+};
+```
+
+### Work with webpack-virtual-modules
+
+```js title="rspack.config.mjs"
+import VirtualModulesPlugin from 'webpack-virtual-modules';
+
+var virtualModules = new VirtualModulesPlugin({
+  'virtual_entry.js': `
+    require("./src/another_virtual.js");
+    require("./src/disk_file.js")
+    `,
+  'src/another_virtual.js': 'module.exports = 42',
+});
+
+export default {
+  entry: './virtual_entry.js',
+  plugins: [virtualModules],
+  experiments: {
+    useInputFileSystem: [/.*virtual.*\.js$/],
+  },
+};
+```
+
+When access to `virtual_entry.js` and `src/another_virtual.js` which match the regular expressions of `experiments.useInputFileSystem`,
+Rspack will use the input file system wrapped by `VirtualModulesPlugin`; other than that, `src/disk_file.js` will be accessed by the native file system.
+
+## experiments.nativeWatcher
+
+[Added in v1.4.7](https://github.com/web-infra-dev/rspack/releases/tag/v1.4.7)
+- **Type:** `boolean`
+- **Default:** `false`
+
+By default, Rspack uses Watchpack to monitor file changes, which generally works well in most scenarios.
+However, in certain specific environments, issues may arise. For example, Watchpack may experience performance problems when there are a large number of file changes.
+More detail see: [Watchpack issue #233](https://github.com/webpack/watchpack/issues/223).
+
+If you encounter performance issues with the default watcher, you can try enabling nativeWatcher.
+
+After enabling `nativeWatcher`, Rspack will use the Rust Native file system to monitor file changes, enabling incremental file change detection, which provides better performance and stability.
+
+```js title="rspack.config.mjs"
+export default {
+  watchOptions: {
+    // Other watch options...
+  }
+  experiments: {
+    nativeWatcher: true,
+  },
+};
+```
+
+## experiments.deferImport
+
+[Added in v1.6.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.6.0)
+- **Type:** `boolean`
+- **Default:** `false`
+
+When enabled, Rspack will support bundling the [Deferred Imports Evaluation](https://github.com/tc39/proposal-defer-import-eval) proposal, which allows deferring the evaluation of a module until its first use. Currently, only `import defer * as ns from "./module"` is supported, while `import.defer()` will be supported in future versions.
+
+```js title="rspack.config.mjs"
+export default {
+  experiments: {
+    deferImport: true,
+  },
+};
+```

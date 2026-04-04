@@ -1,0 +1,72 @@
+# Source: https://docs.prefect.io/v3/api-ref/python/prefect-cli-cloud-webhook.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# webhook
+
+# `prefect.cli.cloud.webhook`
+
+Manage Prefect Cloud Webhooks.
+
+## Functions
+
+### `webhook_ls` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/cli/cloud/webhook.py#L31" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+webhook_ls()
+```
+
+Fetch and list all webhooks in your workspace.
+
+### `webhook_get` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/cli/cloud/webhook.py#L46" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+webhook_get(webhook_id: Annotated[UUID, cyclopts.Parameter(help='The webhook ID to retrieve.')])
+```
+
+Retrieve a webhook by ID.
+
+### `webhook_create` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/cli/cloud/webhook.py#L63" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+webhook_create(webhook_name: Annotated[str, cyclopts.Parameter(help='The name of the webhook.')])
+```
+
+Create a new Cloud webhook.
+
+### `webhook_rotate` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/cli/cloud/webhook.py#L107" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+webhook_rotate(webhook_id: Annotated[UUID, cyclopts.Parameter(help='The webhook ID to rotate.')])
+```
+
+Rotate url for an existing Cloud webhook, in case it has been compromised.
+
+### `webhook_toggle` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/cli/cloud/webhook.py#L130" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+webhook_toggle(webhook_id: Annotated[UUID, cyclopts.Parameter(help='The webhook ID to toggle.')])
+```
+
+Toggle the enabled status of an existing Cloud webhook.
+
+### `webhook_update` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/cli/cloud/webhook.py#L154" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+webhook_update(webhook_id: Annotated[UUID, cyclopts.Parameter(help='The webhook ID to update.')])
+```
+
+Partially update an existing Cloud webhook.
+
+### `webhook_delete` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/cli/cloud/webhook.py#L192" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+webhook_delete(webhook_id: Annotated[UUID, cyclopts.Parameter(help='The webhook ID to delete.')])
+```
+
+Delete an existing Cloud webhook.
+
+
+Built with [Mintlify](https://mintlify.com).

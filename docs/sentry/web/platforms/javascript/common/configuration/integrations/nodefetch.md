@@ -1,0 +1,54 @@
+---
+---
+title: NodeFetch
+description: "Capture spans & breadcrumbs for node fetch requests. (default)"
+---
+
+This integration only works in the Node.js and Bun runtimes.
+
+_Import name: `Sentry.nativeNodeFetchIntegration`_
+
+This integration is enabled by default starting in v8.0.0. If you'd like to modify your default integrations, read [this](./../#modifying-default-integrations).
+
+The `nativeNodeFetchIntegration` does two things:
+
+1. It captures spans for fetch requests.
+2. It captures breadcrumbs for fetch requests.
+
+```JavaScript
+Sentry.init({
+  integrations: [Sentry.nativeNodeFetchIntegration()],
+});
+```
+
+## Options
+
+### `breadcrumbs`
+
+_Type: `boolean`_
+
+If set to false, no breadcrumbs will be captured.
+
+### `ignoreOutgoingRequests`
+
+_Type: `(url: string) => boolean`_
+
+Allows you to define a method to filter out outgoing requests based on the URL. If the method returns `true`, the request will be ignored.
+
+### `spans`
+
+_Type: `boolean`_
+
+If set to false, no spans will be captured.
+
+### `requestHook`
+
+_Type: `(span: Span, request: Request) => void`_
+
+A callback function that allows you to add custom attributes or modify the span for outgoing fetch requests. The function is called with the span and the native fetch `Request` object.
+
+### `responseHook`
+
+_Type: `(span: Span, response: Response) => void`_
+
+A callback function that allows you to add custom attributes or modify the span based on the response of outgoing fetch requests. The function is called with the span and the native fetch `Response` object.

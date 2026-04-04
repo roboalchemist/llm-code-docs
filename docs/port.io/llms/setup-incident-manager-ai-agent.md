@@ -1,0 +1,179 @@
+# Source: https://docs.port.io/guides/all/setup-incident-manager-ai-agent.md
+
+# Set up the Incident Manager AI agent
+
+## Overview[â](#overview "Direct link to Overview")
+
+This guide will walk you through setting up an "Incident Manager" AI agent in Port.<br /><!-- -->By the end of this guide, your developers will be able to get information about incidents and on-call status via Port's AI chat.
+
+![](/img/ai-agents/AIAgentIncidentManagerAgentPage.png)
+
+## Common use cases[â](#common-use-cases "Direct link to Common use cases")
+
+* Get a quick overview of active incidents and their priorities.
+* Check who is currently on-call for specific services.
+* Monitor incident resolution times and trends.
+* Acknowledge or trigger incidents directly from Port.
+
+## Prerequisites[â](#prerequisites "Direct link to Prerequisites")
+
+This guide assumes you have:
+
+* A Port account with the [AI agents feature enabled](/ai-interfaces/ai-agents/overview.md#access-to-the-feature).
+* Appropriate permissions to create and configure AI agents.
+
+## Set up data model[â](#set-up-data-model "Direct link to Set up data model")
+
+To create an Incident Manager AI agent in Port, we'll need to configure two main components as described in our [Build an AI agent](/ai-interfaces/ai-agents/build-an-ai-agent.md) guide:
+
+* The data sources it will use to answer questions about incidents and on-call rotations.
+* The agent configuration that defines its capabilities and conversation starters.
+
+### Configure data source access[â](#configure-data-source-access "Direct link to Configure data source access")
+
+For this guide, we will be using **PagerDuty** as our primary data source to provide comprehensive incident management capabilities. This integration will automatically create and configure all the necessary resources needed by the Incident Manager AI agent.
+
+Install the following integration to have access to these data sources:
+
+* [Port's PagerDuty integration](/build-your-software-catalog/sync-data-to-catalog/incident-management/pagerduty/.md) for incidents, on-call schedules, and escalation policies.
+
+Optional tools
+
+While this guide uses PagerDuty, you can choose tools that best fit your organization's needs. For example, Opsgenie or Firehydrant.
+
+### Create the agent configuration[â](#create-the-agent-configuration "Direct link to Create the agent configuration")
+
+1. Go to the [AI Agents](https://app.getport.io/_ai_agents) page of your portal.
+
+2. Click on `+ AI Agent`.
+
+3. Toggle `Json mode` on.
+
+4. Copy and paste the following JSON schema:
+
+   **Incident Manager agent configuration (Click to expand)**
+
+   ```
+   {
+     "identifier": "incident_manager",
+     "title": "Incident Manager",
+     "icon": "Details",
+     "properties": {
+      "description": "Incident Manager responsible for answering questions about PagerDuty incidents, services, MTTR, escalation policies, schedules, and on-call rotations.",
+      "status": "active",
+      "prompt":"You are an agent responsible for answering questions about PagerDuty incidents, services, escalation policies, schedules, and on-call rotations. ### Guidelines \n - Provide clear information about incidents \n - Identify who is on-call for services (both primary and secondary on-call) \n - Report on incident statistics and resolution times\n\nWhen needed, you can trigger or acknowledge PagerDuty incidents by calling the appropriate actions.",
+      "execution_mode": "Approval Required",
+      "conversation_starters": [
+        "Who is on call for the payment service?",
+        "What are the active incidents right now?",
+        "What is our average incident resolution time?"
+      ],
+      "tools": [
+        "^(list|search|track|describe)_.*",
+        "run__triggerPagerdutyIncident",
+        "run__acknowledgePagerdutyIncident"
+      ]
+    }
+   }
+   ```
+
+   MCP Enhanced Capabilities
+
+   The AI agent uses MCP (Model Context Protocol) enhanced capabilities to automatically discover important and relevant blueprint entities via its tools. The `^(list|search|track|describe)_.*` pattern allows the agent to access and analyze related entities in your software catalog, such as PagerDuty incidents, services, schedules, and on-call rotations. Additionally, we explicitly add `run__triggerPagerdutyIncident` and `run__acknowledgePagerdutyIncident` to the tools, which instructs the AI agent to call these specific actions when needed to manage incidents.
+
+5. Click on `Create` to save the agent.
+
+## Interact with the Incident Manager[â](#interact-with-the-incident-manager "Direct link to Interact with the Incident Manager")
+
+You can interact with the Incident Manager AI agent in [several ways](/ai-interfaces/ai-agents/interact-with-ai-agents.md).<br /><!-- -->This guide will demonstrate the two main ways.
+
+* Port UI
+* Slack Integration
+
+The Incident Manager AI agent can be accessed through an **AI Agent widget** in your Port dashboard.<br /><!-- -->Follow the step below to set it up:
+
+1. Go to the [homepage](https://app.getport.io/organization/home) of your portal
+
+2. Click on `+ Widget`.
+
+3. Choose `AI agent`.
+
+4. Type **Incident Manager** for `Title`.
+
+5. Select **Incident Manager** from the `Agent` dropdown.
+
+   ![](/img/ai-agents/AIAgentsIncidentManagerWidget.png)
+
+6. Click on `Save`.
+
+Once the widget is set up, you can:
+
+* Use the conversation starter buttons to quickly check:
+
+  * Who is on-call for specific services.
+  * Active incidents.
+  * Average incident resolution times.
+
+* Type custom questions in the chat field about:
+
+  * Incident status and severity.
+  * On-call rotations.
+  * Historical incident data.
+
+* Engage in natural follow-up conversations to explore specific topics.
+
+![](/img/ai-agents/AIAgentIncidentManagerDashboard.png)
+
+The Slack integration provides a natural way to interact with the Incident Manager agent. Before using this method, ensure you have installed and configured the **[Port AI Assistant Slack App](/ai-interfaces/slack-app.md)**.
+
+You can interact with the Incident Manager agent in two ways:
+
+1. **Direct message** the Port AI Assistant.
+2. **Mention** the app in any channel it's invited to.
+
+When you send a message, the app will:
+
+1. Open a thread.
+2. Respond with the agent's answer.
+
+Example queries:
+
+```
+@Port incident-manager Who is on-call for the payment service?
+@Port Show me all active P1 incidents
+@Port What was our MTTR for March 2024?
+```
+
+Including the agent name
+
+While including "incident-manager" in your message can help when you have multiple agents, it's not mandatory.<br /><!-- -->The Slack app is smart enough to route your request to the appropriate agent based on the context.
+
+![](/img/ai-agents/AIAgentIncidentManagerSlack.png)
+
+## Example questions[â](#example-questions "Direct link to Example questions")
+
+Here are some questions you can ask the Incident Manager agent:
+
+* "Which team has the highest number of open incidents?".
+* "How many open incidents are there currently?".
+* "Who is currently on-call for the payment gateway service?".
+* "What is our mean time to resolution?".
+* "What services were impacted by the outage on Jan 16th 2024?".
+* "Trigger an incident for the Checkout service regarding increase in response time".
+
+## Best practices[â](#best-practices "Direct link to Best practices")
+
+To get the most out of your Incident Manager agent:
+
+1. **Try it out**: Start with simple queries and see how the agent responds.
+2. **Add context**: If the response isn't what you expected, try asking again with more details.
+3. **Troubleshoot**: If you're still not getting the right answers, check our [troubleshooting guide](/ai-interfaces/ai-agents/interact-with-ai-agents.md#troubleshooting--faq) for common issues and solutions.
+
+## Possible enhancements[â](#possible-enhancements "Direct link to Possible enhancements")
+
+You can further enhance the Incident Manager setup by:
+
+* **Integration expansion**: [Add more data sources](/ai-interfaces/ai-agents/build-an-ai-agent.md#step-2-configure-data-access-tools) like Opsgenie or ServiceNow.
+* **Automated notifications**: [Configure the agent](/ai-interfaces/ai-agents/interact-with-ai-agents.md#interaction-methods) to proactively notify about incident updates or escalations.
+* **Custom conversation starters**: Add organization-specific queries to the [conversation starters](/ai-interfaces/ai-agents/build-an-ai-agent.md#step-5-activate-your-agent).
+* **Monitor and improve**: [Check how your developers are interacting](/ai-interfaces/ai-agents/interact-with-ai-agents.md#ai-interaction-details) with the agent and improve it according to feedback.

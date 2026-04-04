@@ -1,0 +1,9 @@
+name: react
+primary_source: llms
+sources:
+  - type: llms
+    url: https://react.dev/
+    last_fetched: "2026-04-03T23:10:48Z"
+description: >
+  react documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: pydantic-ai
+primary_source: llms
+sources:
+  - type: llms
+    url: https://ai.pydantic.dev/
+    last_fetched: "2026-04-03T23:10:43Z"
+description: >
+  pydantic-ai documentation
+quality_score: 0

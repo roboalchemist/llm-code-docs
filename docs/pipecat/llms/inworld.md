@@ -1,0 +1,53 @@
+# Source: https://docs.pipecat.ai/server/services/tts/inworld.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Inworld
+
+> Text-to-speech service using Inworld AI's TTS APIs
+
+## Overview
+
+Inworld provides high-quality, low-latency speech synthesis via two implementation types: `InworldTTSService` for real-time, minimal-latency use-cases through websockets and `InworldHttpTTSService` for streaming and non-streaming use-cases over HTTP. Featuring support for 12+ languages, timestamps, custom pronunciation and instant voice cloning.
+
+<CardGroup cols={2}>
+  <Card title="Inworld TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.inworld.tts.html">
+    Pipecat's API methods for Inworld TTS integration
+  </Card>
+
+  <Card title="Example Implementation (Websockets)" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zb-interruptible-inworld.py">
+    Complete example with Inworld TTS
+  </Card>
+
+  <Card title="Inworld Documentation" icon="book" href="https://docs.inworld.ai/docs/tts/tts">
+    Official Inworld TTS API documentation
+  </Card>
+
+  <Card title="Inworld Portal" icon="microphone" href="https://platform.inworld.ai/">
+    Create and manage voice models
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Inworld services, no additional dependencies are required beyond the base installation:
+
+```bash  theme={null}
+pip install "pipecat-ai"
+```
+
+## Prerequisites
+
+### Inworld Account Setup
+
+Before using Inworld TTS services, you need:
+
+1. **Inworld Account**: Sign up at [Inworld Studio](https://studio.inworld.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Voice Selection**: Choose from available voice models
+
+### Required Environment Variables
+
+* `INWORLD_API_KEY`: Your Inworld API key for authentication

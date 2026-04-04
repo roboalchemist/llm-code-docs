@@ -1,0 +1,43 @@
+# Source: https://docs.runpod.io/get-started/connect-to-runpod.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Choose a workflow
+
+> Review the available methods for accessing and managing Runpod resources.
+
+Runpod offers multiple ways to access and manage your compute resources. Choose the method that best fits your workflow:
+
+## Runpod console
+
+The Runpod console provides an intuitive web interface to manage Pods and endpoints, access Pod terminals, send endpoint requests, monitor resource usage, and view billing and usage history.
+
+[Launch the Runpod console →](https://www.console.runpod.io)
+
+## Connect directly to Pods
+
+You can connect directly to your running Pods and execute code on them using a variety of methods, including a built-in web terminal, an SSH connection from your local machine, a JupyterLab instance, or a remote VSCode/Cursor development environment.
+
+[Learn more about Pod connection options →](/pods/connect-to-a-pod)
+
+## REST API
+
+The Runpod REST API allows you to programmatically manage and control compute resources. Use the API to manage Pod lifecycles and Serverless endpoints, monitor resource utilization, and integrate Runpod into your applications.
+
+[Explore the API reference →](/api-reference/docs/GET/openapi-json)
+
+## SDKs
+
+Runpod provides SDKs in Python, JavaScript, Go, and GraphQL to help you integrate Runpod services into your applications.
+
+[Explore the SDKs →](/sdks/python/overview)
+
+## Command-line interface (CLI)
+
+The Runpod CLI allows you to manage Pods from your terminal, execute code on Pods, transfer data between Runpod and local systems, and programmatically manage Serverless endpoints.
+
+Every Pod comes pre-installed with the `runpodctl` command and includes a Pod-scoped API key for seamless command-line management.
+
+[Learn more about runpodctl →](/runpodctl/overview)

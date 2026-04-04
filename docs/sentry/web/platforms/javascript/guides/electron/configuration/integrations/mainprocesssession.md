@@ -1,0 +1,29 @@
+---
+---
+title: MainProcessSession
+description: "Captures sessions linked to the lifetime of the Electron main process. (default)"
+---
+
+This integration captures sessions linked to the lifetime of the Electron main process. Capturing sessions makes it possible to show [release health](/product/releases/health/) statistics in Sentry.
+
+If you'd prefer to capture sessions linked to the focus of `BrowserWindow`,
+use the BrowserWindowSession
+integration in the renderer processes.
+
+To disable sending sessions, filter the `MainProcessSession` from the default integrations:
+
+```javascript
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  integrations: (defaults) => defaults.filter((i) => i.name !== "MainProcessSession"),
+});
+```
+
+The default behavior is to only send sessions on error or when the main process ends. To send sessions when the main process is created, enable the `sendOnCreate` option.
+
+```javascript
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  integrations: [Sentry.mainProcessSessionIntegration({ sendOnCreate: true })],
+});
+```

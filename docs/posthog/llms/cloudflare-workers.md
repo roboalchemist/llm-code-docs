@@ -1,0 +1,116 @@
+# Source: https://posthog.com/docs/libraries/cloudflare-workers.md
+
+# Cloudflare Workers - Docs
+
+This doc focuses on features unique to Cloudflare Workers. If you're looking for details on frameworks like [React](/docs/libraries/react.md), [Vue](/docs/libraries/vue-js.md), [Remix](/docs/libraries/remix.md), [Svelte](/docs/libraries/svelte.md), [Hono](/docs/libraries/hono.md), [Astro](/docs/libraries/astro.md), and more see their framework-specific docs.
+
+## Installation
+
+To use PostHog in Cloudflare Workers, start by installing the `posthog-node` library:
+
+Terminal
+
+PostHog AI
+
+```bash
+npm i posthog-node
+```
+
+Afterwards, set up your project token and host in your `wrangler.jsonc` (or `wrangler.toml`) file like this:
+
+JSON
+
+PostHog AI
+
+```json
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "my-posthog-worker",
+  "main": "src/index.js",
+  "compatibility_date": "2025-06-20",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "POSTHOG_TOKEN": "<ph_project_token>",
+    "POSTHOG_HOST": "https://us.i.posthog.com",
+  },
+}
+```
+
+Next, set up the PostHog helper to create a PostHog client. We set `flushAt` to `1` and `flushInterval` to `0` to send captured data without batching. Batched data is sent asynchronously and Cloudflare Workers can terminate before it's sent causing data loss.
+
+JSX
+
+PostHog AI
+
+```jsx
+// src/posthog.js
+import { PostHog } from 'posthog-node'
+export function createPostHogClient(env) {
+  const posthog = new PostHog(env.POSTHOG_TOKEN, {
+    host: env.POSTHOG_HOST,
+    flushAt: 1, // Send events immediately in edge environment
+    flushInterval: 0, // Don't wait for interval
+  })
+  return posthog
+}
+```
+
+## Usage
+
+With PostHog installed, you can add and use it in your app like this:
+
+JSX
+
+PostHog AI
+
+```jsx
+// src/index.js
+import { createPostHogClient } from './posthog.js';
+export default {
+  async fetch(request, env, ctx) {
+    const posthog = createPostHogClient(env);
+    const distinctId = 'ian@posthog.com' // replace with actual user ID
+    ctx.waitUntil(
+      posthog.captureImmediate({
+        distinctId: distinctId,
+        event: 'hello_world_request',
+        properties: {
+          $current_url: request.url
+        }
+      })
+    );
+    const flag = await posthog.isFeatureEnabled('test_flag', distinctId) || false
+    ctx.waitUntil(
+      posthog.shutdown()
+    );
+    return new Response('Hello World! ' + flag);
+  },
+};
+```
+
+You'll notice two different usage patterns here:
+
+1.  We use `ctx.waitUntil()` with `captureImmediate()` to capture an event. This doesn't block the **response**, but does ensure data is captured before the worker shuts down.
+2.  We `await` flags which blocks the response until we get the [feature flag](/docs/feature-flags.md) data we need.
+
+### Error tracking
+
+You can capture errors in Cloudflare Workers like you would in other Node applications using `posthog.captureException()`.
+
+For more details and a method for automatically capturing errors, see our [error tracking installation docs](/docs/error-tracking/installation.md).
+
+## Further reading
+
+-   [Node.js SDK reference](/docs/libraries/node.md)
+-   [Using Cloudflare as a reverse proxy](/docs/advanced/proxy/cloudflare.md)
+-   [Linking Cloudflare R2 as a source](/docs/cdp/sources/r2.md)
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better

@@ -1,0 +1,9 @@
+name: powertools-aws
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.powertools.aws.dev/
+    last_fetched: "2026-04-03T23:10:41Z"
+description: >
+  powertools-aws documentation
+quality_score: 0

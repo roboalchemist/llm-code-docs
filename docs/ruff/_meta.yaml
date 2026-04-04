@@ -1,0 +1,9 @@
+name: ruff
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.astral.sh/ruff/
+    last_fetched: "2026-04-03T23:10:53Z"
+description: >
+  ruff documentation
+quality_score: 0

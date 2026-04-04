@@ -1,0 +1,19 @@
+---
+---
+title: DenoContext
+description: "Capture context about the environment and the device that the client is running on, and add it to events. (default)"
+---
+
+This integration only works in the Deno runtime.
+
+_Import name: `Sentry.denoContextIntegration`_
+
+This integration is enabled by default. If you'd like to modify your default integrations, read [this](./../#modifying-default-integrations).
+
+Adds Deno related context to events. This includes contexts about `app`, `device`, `os`, `v8`, and `TypeScript`.
+
+```JavaScript
+Sentry.init({
+  integrations: [Sentry.denoContextIntegration()],
+});
+```

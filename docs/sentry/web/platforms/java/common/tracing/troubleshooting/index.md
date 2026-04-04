@@ -1,0 +1,27 @@
+---
+---
+title: Troubleshooting
+description: "Learn how to troubleshoot your tracing setup."
+---
+
+If you need help managing transactions, you can read more here. If you need additional help, you can ask on GitHub. Customers on a paid plan may also contact support.
+
+## Control Data Truncation
+
+Currently, every tag has a maximum character limit of 200 characters. Tags over the 200 character limit will become truncated, losing potentially important information. To retain this data, you can split data over several tags instead.
+
+For example, a 200+ character tagged request:
+
+`https://empowerplant.io/api/0/projects/ep/setup_form/?user_id=314159265358979323846264338327&tracking_id=EasyAsABC123OrSimpleAsDoReMi&product_name=PlantToHumanTranslator&product_id=161803398874989484820458683436563811772030917980576`
+
+The 200+ character request above will become truncated to:
+
+`https://empowerplant.io/api/0/projects/ep/setup_form/?user_id=314159265358979323846264338327&tracking_id=EasyAsABC123OrSimpleAsDoReMi&product_name=PlantToHumanTranslator&product_id=1618033988749894848`
+
+## Expected Spans Are Missing
+
+Our auto instrumentation, for example those instrumenting database requests or HTTP calls, require a transaction to be present on the `Scope` in order to attach a new child span. In case you're missing expected spans, please make sure `bindToScope` is set to `true` when starting a transaction. Also see Create Transaction Bound to The Current Scope.
+
+## JDBC and `spring-boot-docker-compose`
+
+When using `org.springframework.boot:spring-boot-docker-compose` mind that this extension overwrites the `spring.datasource.url` property and therefore removes the `p6spy` prefix required for using `sentry-jdbc`. Therefore if you want to test this locally you need to disable/remove spring-boot-docker-compose.

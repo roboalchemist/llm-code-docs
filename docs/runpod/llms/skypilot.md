@@ -1,0 +1,71 @@
+# Source: https://docs.runpod.io/integrations/skypilot.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Running Runpod on SkyPilot
+
+[SkyPilot](https://skypilot.readthedocs.io/en/latest/) is a framework for executing LLMs, AI, and batch jobs on any cloud, offering maximum cost savings, highest GPU availability, and managed execution.
+
+This integration leverages the Runpod CLI infrastructure, streamlining the process of spinning up on-demand pods and deploying serverless endpoints with SkyPilot.
+
+## Getting started
+
+To begin using Runpod with SkyPilot, follow these steps:
+
+1. **Obtain Your API Key**: Visit the [Runpod Settings](https://www.console.runpod.io/user/settings) page to get your API key. If you haven't created an account yet, you'll need to do so before obtaining the key.
+
+2. **Install Runpod**: Use the following command to install the latest version of Runpod:
+
+   ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   pip install "runpod>=1.6"
+   ```
+
+3. **Configure Runpod**: Enter `runpod config` in your CLI and paste your API key when prompted.
+
+4. **Install SkyPilot Runpod Cloud**: Execute the following command to install the [SkyPilot Runpod cloud](https://skypilot.readthedocs.io/en/latest/getting-started/installation.html#runpod):
+
+   ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   pip install "skypilot-nightly[runpod]"
+   ```
+
+5. **Verify Your Setup**: Run `sky check` to ensure your credentials are correctly set up and you're ready to proceed.
+
+## Running a Project
+
+After setting up your environment, you can seamlessly spin up a cluster in minutes:
+
+1. **Create a New Project Directory**: Run `mkdir hello-sky` to create a new directory for your project.
+
+2. **Navigate to Your Project Directory**: Change into your project directory with `cd hello-sky`.
+
+3. **Create a Configuration File**: Enter `cat > hello_sky.yaml` and input the following configuration details:
+
+   ```yml  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   resources:
+     cloud: runpod
+
+   # Working directory (optional) containing the project codebase.
+   # Its contents are synced to ~/sky_workdir/ on the cluster.
+   workdir: .
+
+   # Setup commands (optional).
+   # Typical use: pip install -r requirements.txt
+   # Invoked under the workdir (i.e., can use its files).
+   setup: |
+     echo "Running setup."
+
+   # Run commands.
+   # Typical use: make use of resources, such as running training.
+   # Invoked under the workdir (i.e., can use its files).
+   run: |
+     echo "Hello, SkyPilot!"
+     conda env list
+   ```
+
+4. **Launch Your Project**: With your configuration file created, launch your project on the cluster by running `sky launch -c mycluster hello_sky.yaml`.
+
+5. **Confirm Your GPU Type**: You should see the available GPU options on Secure Cloud appear in your command line. Once you confirm your GPU type, your cluster will start spinning up.
+
+With this integration, you can leverage the power of Runpod and SkyPilot to efficiently run your LLMs, AI, and batch jobs on any cloud.

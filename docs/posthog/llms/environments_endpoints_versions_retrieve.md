@@ -1,0 +1,58 @@
+# Source: https://posthog.com/docs/open-api-spec/environments_endpoints_versions_retrieve.md
+
+# environments_endpoints_versions_retrieve
+
+## OpenAPI
+
+```json GET /api/environments/{environment_id}/endpoints/{name}/versions/
+{
+  "paths": {
+    "/api/environments/{environment_id}/endpoints/{name}/versions/": {
+      "get": {
+        "operationId": "environments_endpoints_versions_retrieve",
+        "description": "List all versions for an endpoint.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "environment_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Deprecated. Use /api/projects/{project_id}/ instead."
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "schema": {
+              "type": "string",
+              "description": "URL-safe name for the endpoint"
+            },
+            "required": true
+          }
+        ],
+        "tags": [
+          "endpoints",
+          "endpoints"
+        ],
+        "security": [
+          {
+            "PersonalAPIKeyAuth": [
+              "endpoint:read"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response body"
+          }
+        },
+        "deprecated": true,
+        "x-explicit-tags": [
+          "endpoints"
+        ]
+      }
+    }
+  }
+}
+```

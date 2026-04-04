@@ -1,0 +1,243 @@
+# Source: https://posthog.com/docs/product-analytics/dashboards.md
+
+# Dashboards - Docs
+
+Dashboards are the easiest way to track all your most important product and performance metrics.
+
+Unlike [notebooks](/docs/notebooks.md), which are ideal for adhoc analysis of specific issues, dashboards are designed for tracking common metrics over time.
+
+You can create a new dashboard from scratch, but we also offer numerous [dashboard templates](/templates.md) for tracking things like [website metrics](/templates/website-dashboard.md), [product health metrics](/templates/health-dashboard.md), and [metrics for large language models](/docs/llm-analytics.md).
+
+![Example of a dashboard](https://res.cloudinary.com/dmukukwp6/image/upload/dashboard_light_61b3bab3b6.png)![Example of a dashboard](https://res.cloudinary.com/dmukukwp6/image/upload/dashboard_dark_5f2002f750.png)
+
+## Creating a new dashboard
+
+1.  Click on **Dashboards** in the left hand navigation and then **New Dashboard**.
+2.  You can create a dashboard from a list of [available templates](/templates.md), or select **Blank Dashboard** to start from scratch.
+3.  Name your dashboard, add some optional details if desired.
+4.  Your dashboard will be empty – click **+New insight** to create an insight to add. Dashboards support all the core [product analytics insights](/docs/product-analytics/insights.md).
+5.  Click **Save & add to dashboard** when you've created your insight.
+
+If you already have some insights set up, an alternative approach is to click **Add to dashboard** in any insight.
+
+> **Important:** Insights can appear on multiple dashboards at the same time, so you don't have to create multiple copies of the same insight.
+
+## Organizing dashboards into folders
+
+You can organize dashboards into folders for easier navigation. There are two ways to move a dashboard into a folder:
+
+-   **From the dashboards list page** - Click the **...** menu next to a dashboard and select **Move to another folder**.
+-   **From an individual dashboard** - Use the sidebar to move it to a folder.
+
+> **Note:** Moving a dashboard to a folder requires editor access.
+
+## Dates and filters
+
+### Date range overrides
+
+New dashboards are set to *No date range override* by default. This means all insights use the date range applied in their configuration.
+
+Changing the date range on a dashboard forces all the insights to use the same date range, but this doesn't impact the date range that's shown when viewing an individual insight.
+
+The date range can be accessed in SQL insights through the [`filters` variable](/docs/data-warehouse/sql/variables.md) like `filters.dateRange.from` and `filters.dateRange.to`.
+
+### Dashboard filters
+
+Dashboards also support most of the same [filters](/docs/product-analytics/trends/filters.md) as individual insights, including:
+
+-   **Event properties:** Properties stored on event, such as the `Current URL` when the event was triggered.
+-   **Person properties:** Properties of individual users, such as `company_name`.
+-   **Feature flags:** Filtering for users with a specific feature flag enabled.
+-   **Group properties:** Account-level properties, like `organization_id`, which are only available if you have the [group analytics](/docs/product-analytics/group-analytics.md) add-on.
+-   **Cohorts:** Filtering by [cohorts](/docs/data/cohorts.md) of users you've already created.
+
+Using filters on dashboards is a useful way to compare usage between different types of users without recreating insights over and over.
+
+You could, for example, duplicate a dashboard – click on the '...' menu and click 'Duplicate' – and apply different filters to each version of the dashboard.
+
+Filters can be accessed in SQL insights through the [`filters` variable](/docs/data-warehouse/sql/variables.md) like `filters.properties` and `filters.breakdown_filter`.
+
+## Dashboard options
+
+### Editing the layout
+
+You can move and resize all the insights on a dashboard by entering the 'Edit layout' mode.
+
+You can do this in five ways:
+
+-   Tap 'E' on your keyboard
+-   Click on the '...' icon at the top of the dashboard and click 'Edit layout'
+-   Click on the '...' icon on any insight card and click 'Edit layout'
+-   Hover near the edge of any insight card and click when the resize cursor appears
+-   Click or start dragging on any insight card or text card (outside the interactive chart area)
+
+Once in edit mode, press 'E' again to save your changes and exit edit mode, or press 'Escape' to discard changes and exit.
+
+Tapping 'F' enables fullscreen mode.
+
+> **Note:** On smaller screens, dashboard tiles are automatically stacked in a single column based on the desktop layout order. Layout editing (drag and resize) is only available on wider viewports.
+
+### Adding text cards
+
+Clicking the dropdown on the 'Add insight button' reveals the option to add a text card to your dashboards.
+
+Text cards support Markdown formatting for text. You can also drag and drop images.
+
+You can use text cards to annotate your dashboard – useful for adding context for other users of the dashboard. For more in-depth analysis, however, we recommend [creating a notebook](/docs/notebooks.md).
+
+### Sharing a dashboard
+
+By clicking 'Share' in the top right corner you can:
+
+-   Restrict edit access to certain members within a project. Dashboards can be shared either by members with administrator privileges or by the dashboard creator ([platforms add-ons](/platform-packages.md) required).
+
+-   Create a link to share your dashboard publicly, or embed your dashboard on a website. Read more about this in our [sharing and embedding docs](/docs/product-analytics/sharing.md).
+
+### Auto refresh
+
+You can manually refresh a dashboard at any time, but you can also set it to automatically refresh.
+
+To do so, click the dropdown arrow next to refresh button, turn on auto refresh and choose your refresh interval.
+
+This is useful if you have a PostHog dashboard on a TV screen for others to see.
+
+**Important:** Auto refresh only works when the browser tab is active.
+
+### AI-powered refresh analysis
+
+When you refresh a dashboard, you can also have AI analyze what changed. Click the sparkle icon on the refresh button to refresh and analyze with AI. PostHog snapshots the current dashboard data, refreshes all insights, and then compares the before and after results. You get a summary of significant changes – drops, spikes, and trend reversals – across all insights on the dashboard.
+
+After the analysis completes, you can rate it with a thumbs up or thumbs down.
+
+> **Note:** AI-powered refresh analysis isn't available when dashboard filter overrides, URL filters, or URL variables are applied.
+
+## Managing dashboards with Terraform
+
+For teams practicing infrastructure-as-code, you can manage PostHog dashboards and insights using the [PostHog Terraform Provider](https://registry.terraform.io/providers/PostHog/posthog/latest).
+
+This enables:
+
+-   **Version-controlled analytics** - Dashboard and insight definitions stored in git
+-   **Consistent environments** - Deploy the same dashboards across projects
+-   **CI/CD integration** - Automate analytics infrastructure alongside your application
+
+### Exporting existing dashboards
+
+To get started quickly, you can export your existing dashboards as Terraform code using the **Manage with Terraform** button.
+
+You'll see a **Manage with Terraform** button on:
+
+-   **Dashboard pages** - Exports the entire dashboard including all insights, dashboard layouts, alerts, and hog functions
+-   **Insight detail pages** - Exports the individual insight with its associated alerts and hog functions
+
+Click the button to generate HCL code that you can copy directly into your Terraform configuration. This makes it easy to bring existing dashboards under version control without manually recreating them.
+
+### Installation
+
+Add the provider to your Terraform configuration:
+
+hcl
+
+PostHog AI
+
+```hcl
+terraform {
+  required_providers {
+    posthog = {
+      source = "PostHog/posthog"
+    }
+  }
+}
+provider "posthog" {
+  host       = "https://us.posthog.com"  # or https://eu.posthog.com
+  api_key    = var.posthog_api_key       # Your personal API key
+  project_id = var.posthog_project_id
+}
+```
+
+For production use, we recommend pinning to a specific version. See the [Terraform Registry](https://registry.terraform.io/providers/PostHog/posthog/latest) for the latest version.
+
+### Example: Creating a dashboard
+
+hcl
+
+PostHog AI
+
+```hcl
+resource "posthog_dashboard" "team_metrics" {
+  name        = "[Team: Platform] Key Metrics"
+  description = "Key metrics for the platform team"
+  pinned      = true
+  tags        = ["managed-by:terraform"]
+}
+```
+
+### Example: Creating an insight
+
+hcl
+
+PostHog AI
+
+```hcl
+resource "posthog_insight" "pageview_count" {
+  derived_name = "Pageview count"
+  query_json = jsonencode({
+    "kind": "InsightVizNode",
+    "source": {
+      "kind": "TrendsQuery",
+      "series": [
+        {
+          "kind": "EventsNode",
+          "name": "$pageview",
+          "event": "$pageview",
+          "math": "total"
+        }
+      ],
+      "trendsFilter": {},
+      "version": 2
+    }
+  })
+  tags = ["managed-by:terraform"]
+}
+```
+
+### Example: Defining a dashboard layout
+
+The `posthog_dashboard_layout` resource controls how tiles (insights, text cards) are positioned on a dashboard. Each tile can specify layout coordinates, colors, and text content. When you export a dashboard using **Manage with Terraform**, this resource is generated automatically.
+
+hcl
+
+PostHog AI
+
+```hcl
+resource "posthog_dashboard_layout" "team_metrics" {
+  dashboard_id = posthog_dashboard.team_metrics.id
+  tiles = [
+    {
+      insight_id = posthog_insight.pageview_count.id
+      layouts_json = jsonencode({
+        "sm": {
+          "x": 0,
+          "y": 0,
+          "w": 6,
+          "h": 5
+        }
+      })
+    },
+    {
+      text_body = "Weekly metrics overview"
+      color     = "blue"
+    },
+  ]
+}
+```
+
+For the full list of supported resources and configuration options, see the [Terraform Registry documentation](https://registry.terraform.io/providers/PostHog/posthog/latest/docs).
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better
