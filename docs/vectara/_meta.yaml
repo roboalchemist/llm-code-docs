@@ -1,0 +1,8 @@
+name: vectara
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:11:18Z"
+description: >
+  vectara documentation
+quality_score: 0

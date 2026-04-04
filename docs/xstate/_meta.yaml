@@ -1,0 +1,9 @@
+name: xstate
+primary_source: llms
+sources:
+  - type: llms
+    url: https://stately.ai/
+    last_fetched: "2026-04-03T23:11:25Z"
+description: >
+  xstate documentation
+quality_score: 0

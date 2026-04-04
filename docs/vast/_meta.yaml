@@ -1,0 +1,9 @@
+name: vast
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.vast.ai/
+    last_fetched: "2026-04-03T23:11:18Z"
+description: >
+  vast documentation
+quality_score: 0

@@ -1,0 +1,8 @@
+name: wouter
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:11:24Z"
+description: >
+  wouter documentation
+quality_score: 0

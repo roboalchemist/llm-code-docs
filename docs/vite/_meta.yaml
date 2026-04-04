@@ -1,0 +1,9 @@
+name: vite
+primary_source: llms
+sources:
+  - type: llms
+    url: https://vite.dev/
+    last_fetched: "2026-04-03T23:11:20Z"
+description: >
+  vite documentation
+quality_score: 0

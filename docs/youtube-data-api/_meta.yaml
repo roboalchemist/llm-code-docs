@@ -1,0 +1,9 @@
+name: youtube-data-api
+primary_source: llms
+sources:
+  - type: llms
+    url: https://developers.google.com/youtube/v3/
+    last_fetched: "2026-04-03T23:11:26Z"
+description: >
+  youtube-data-api documentation
+quality_score: 0

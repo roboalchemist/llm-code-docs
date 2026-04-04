@@ -1,0 +1,63 @@
+# Source: https://www.zuplo.com/docs/programmable-api/custom-cors-policy.md
+
+# CORS Policy Configuration
+
+For a complete guide on configuring CORS including built-in policies, wildcard
+origin matching, environment variables, and troubleshooting, see the
+[Configuring CORS](../articles/cors.mdx) article.
+
+## CorsPolicyConfiguration
+
+Custom CORS policies are defined in the `corsPolicies` array in the
+`policies.json` file. Each policy has the following properties:
+
+| Property           | Type                   | Required | Description                                                                                                                        |
+| ------------------ | ---------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `name`             | `string`               | Yes      | A unique name used to reference this policy on routes.                                                                             |
+| `allowedOrigins`   | `string[]` or `string` | Yes      | Origins permitted to make cross-origin requests. Supports wildcards (see [Origin Matching](../articles/cors.mdx#origin-matching)). |
+| `allowedMethods`   | `string[]` or `string` | No       | HTTP methods allowed for cross-origin requests (e.g., `GET`, `POST`).                                                              |
+| `allowedHeaders`   | `string[]` or `string` | No       | Request headers the client can send. Use `*` to allow any header.                                                                  |
+| `exposeHeaders`    | `string[]` or `string` | No       | Response headers the browser can access from JavaScript.                                                                           |
+| `maxAge`           | `number`               | No       | Time in seconds the browser caches preflight results.                                                                              |
+| `allowCredentials` | `boolean`              | No       | Whether to include credentials (cookies, authorization headers) in cross-origin requests.                                          |
+
+## Built-in Policies
+
+Every route has a `corsPolicy` property in `x-zuplo-route` that can be set to
+one of the built-in values or the name of a custom policy:
+
+- **`none`** - Disables CORS. All CORS headers are stripped from responses. This
+  is the default.
+- **`anything-goes`** - Allows any origin, method, and header. Not recommended
+  for production.
+
+## Example
+
+```json title="config/policies.json"
+{
+  "corsPolicies": [
+    {
+      "name": "my-cors-policy",
+      "allowedOrigins": [
+        "https://app.example.com",
+        "https://admin.example.com"
+      ],
+      "allowedMethods": ["GET", "POST", "PUT", "DELETE"],
+      "allowedHeaders": ["Authorization", "Content-Type"],
+      "exposeHeaders": ["X-Request-Id"],
+      "maxAge": 3600,
+      "allowCredentials": true
+    }
+  ]
+}
+```
+
+```json title="config/routes.oas.json"
+"x-zuplo-route": {
+  "corsPolicy": "my-cors-policy",
+  "handler": {
+    "export": "urlForwardHandler",
+    "module": "$import(@zuplo/runtime)"
+  }
+}
+```

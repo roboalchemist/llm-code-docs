@@ -1,0 +1,9 @@
+name: zerobounce
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.zerobounce.net/
+    last_fetched: "2026-04-03T23:11:27Z"
+description: >
+  zerobounce documentation
+quality_score: 0

@@ -1,0 +1,230 @@
+# Source: https://vuepress.vuejs.org/guide/deployment
+
+Title: Deployment
+
+URL Source: https://vuepress.vuejs.org/guide/deployment
+
+Markdown Content:
+The following guides are based on some shared assumptions:
+
+*   You are placing your Markdown source files inside the `docs` directory of your project;
+*   You are using the default build output location (`.vuepress/dist`);
+*   You are using [pnpm](https://pnpm.io/) as package manager, while npm and yarn are also supported;
+*   VuePress is installed as a local dependency in your project, and you have setup the following script in `package.json`:
+
+```
+{
+  "scripts": {
+    "docs:build": "vuepress build docs"
+  }
+}
+```
+
+[GitHub Pages](https://vuepress.vuejs.org/guide/deployment#github-pages)
+------------------------------------------------------------------------
+
+1.   Set the correct [base](https://vuepress.vuejs.org/reference/config#base) config.
+
+If you are deploying to `https://<USERNAME>.github.io/`, you can omit this step as `base` defaults to `"/"`.
+
+If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+
+2.   Choose your preferred CI tools. Here we take [GitHub Actions](https://github.com/features/actions) as an example.
+
+Create `.github/workflows/docs.yml` to set up the workflow.
+
+Click to expand sample config
+
+```
+name: docs
+
+on:
+  # trigger deployment on every push to main branch
+  push:
+    branches: [main]
+  # trigger deployment manually
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # fetch all commits to get last updated time or other git log info
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # choose node.js version to use
+          node-version: 22
+          # cache deps for pnpm
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      # run build script
+      - name: Build VuePress site
+        run: pnpm docs:build
+
+      # please check out the docs of the workflow for more details
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          # deploy to gh-pages branch
+          target_branch: gh-pages
+          # deploy the default output dir of VuePress
+          build_dir: docs/.vuepress/dist
+        env:
+          # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+[GitLab Pages](https://vuepress.vuejs.org/guide/deployment#gitlab-pages)
+------------------------------------------------------------------------
+
+1.   Set the correct [base](https://vuepress.vuejs.org/reference/config#base) config.
+
+If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
+
+If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+
+2.   Create `.gitlab-ci.yml` to set up [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) workflow.
+
+Click to expand sample config
+
+```
+# choose a docker image to use
+image: node:18-buster
+
+pages:
+  # trigger deployment on every push to main branch
+  only:
+    - main
+
+  # cache node_modules
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
+
+  # Install pnpm
+  before_script:
+    - curl -fsSL https://get.pnpm.io/install.sh | sh -
+    - pnpm config set store-dir .pnpm-store
+
+  # install dependencies and run build script
+  script:
+    - pnpm i --frozen-lockfile
+    - pnpm docs:build --dest public
+
+  artifacts:
+    paths:
+      - public
+```
+
+[Google Firebase](https://vuepress.vuejs.org/guide/deployment#google-firebase)
+------------------------------------------------------------------------------
+
+1.   Make sure you have [firebase-tools](https://www.npmjs.com/package/firebase-tools) installed.
+
+2.   Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
+
+`firebase.json`:
+
+```
+{
+  "hosting": {
+    "public": "./docs/.vuepress/dist",
+    "ignore": []
+  }
+}
+```
+
+`.firebaserc`:
+
+```
+{
+  "projects": {
+    "default": "<YOUR_FIREBASE_ID>"
+  }
+}
+```
+
+1.   After running `pnpm docs:build`, deploy using the command `firebase deploy`.
+
+[Heroku](https://vuepress.vuejs.org/guide/deployment#heroku)
+------------------------------------------------------------
+
+1.   Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+2.   Create a Heroku account by [signing up](https://signup.heroku.com/).
+
+3.   Run `heroku login` and fill in your Heroku credentials:
+
+`heroku login`
+
+1.   Create a file called `static.json` in the root of your project with the below content:
+
+`static.json`:
+
+```
+{
+  "root": "./docs/.vuepress/dist"
+}
+```
+
+This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+
+[Kinsta](https://vuepress.vuejs.org/guide/deployment#kinsta)
+------------------------------------------------------------
+
+See [Set Up VuePress on Kinsta](https://kinsta.com/docs/vuepress-application/).
+
+[Edgio](https://vuepress.vuejs.org/guide/deployment#edgio)
+----------------------------------------------------------
+
+See [Edgio Documentation > Framework Guides > VuePress](https://docs.edg.io/guides/vuepress).
+
+[Netlify](https://vuepress.vuejs.org/guide/deployment#netlify)
+--------------------------------------------------------------
+
+1.   On [Netlify](https://netlify.com/), set up a new project from GitHub with the following settings:
+
+    *   **Build Command:**`pnpm docs:build`
+    *   **Publish directory:**`docs/.vuepress/dist`
+
+2.   Set [Environment variables](https://docs.netlify.com/configure-builds/environment-variables) to choose node version:
+
+    *   `NODE_VERSION`: 20
+
+3.   Hit the deploy button.
+
+Note
+
+You should disable Pretty URLs in the "Site Configuration" → "Build & Deploy" → "Post processing".
+
+[Vercel](https://vuepress.vuejs.org/guide/deployment#vercel)
+------------------------------------------------------------
+
+1.   Go to [Vercel](https://vercel.com/), set up a new project from GitHub with the following settings:
+
+    *   **FRAMEWORK PRESET:**`Other`
+    *   **BUILD COMMAND:**`pnpm docs:build`
+    *   **OUTPUT DIRECTORY:**`docs/.vuepress/dist`
+
+2.   Hit the deploy button.
+
+[CloudRay](https://vuepress.vuejs.org/guide/deployment#cloudray)
+----------------------------------------------------------------
+
+See [Deploy Your VuePress Site With CloudRay](https://cloudray.io/articles/how-to-deploy-your-vuepress-site)

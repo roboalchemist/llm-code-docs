@@ -1,0 +1,403 @@
+# Source: https://www.zuplo.com/docs/dev-portal/zudoku/configuration/navigation.md
+
+# Navigation
+
+import { Book, Code, FileText } from "zudoku/icons";
+
+Dev Portal uses a single `navigation` array to control both the top navigation tabs and the sidebar.
+Items at the root of this array appear as tabs, and nested items build the sidebar tree. Navigation
+entries can be links, document references, categories or custom pages.
+
+## Basic configuration
+
+The navigation is defined using the `navigation` array in the Dev Portal config file. Each item can be
+one of several types. At the simplest level you may only have links and categories.
+
+```tsx title="zudoku.config.tsx"
+{
+  "navigation": [
+    {
+      "type": "category",
+      "label": "Documentation",
+      "icon": "book",
+      "items": [
+        {
+          "type": "doc",
+          "file": "documentation/introduction",
+          "label": "Introduction",
+          "icon": "file-text"
+        },
+        {
+          "type": "doc",
+          "file": "documentation/getting-started",
+          "path": "/docs/quick-start",
+          "label": "Quick Start"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "to": "/api",
+      "label": "API Reference",
+      "icon": "code",
+      "description": "Complete API documentation",
+      "badge": {
+        "label": "v2.0",
+        "color": "blue"
+      },
+      "display": "always"
+    }
+  ]
+}
+```
+
+## Navigation Items
+
+Navigation items can be of these types: `category`, `doc`, `link`, or `custom-page`.
+
+- `link`: A direct link to a page or external URL.
+- `category`: A group of links that can be expanded or collapsed.
+- `doc`: A reference to a document by it's file path: `file`.
+- `custom-pages`: A custom page that is made of a React component, see
+  [Custom Pages](../guides/custom-pages.md)
+
+### `type: link`
+
+`link` is the most basic item, it directly links to a path or URL. Use this for external resources
+or standalone pages.
+
+```json
+{
+  "type": "link",
+  "label": "Support",
+  "to": "/my/api" // or: https://example.com/my-external-link
+}
+```
+
+<details>
+<summary>**TypeScript type declaration**</summary>
+```ts
+type NavigationLink = {
+  type: "link";
+  to: string;
+  label: string;
+  icon?: string; // Lucide icon name
+  description?: string;
+  badge?: {
+    label: string;
+    color: "green" | "blue" | "yellow" | "red" | "purple" | "indigo" | "gray" | "outline";
+  };
+  display?:
+    | "auth"
+    | "anon"
+    | "always"
+    | "hide"
+    | ((params: { context: ZudokuContext; auth: UseAuthReturn }) => boolean);
+  target?: "_self" | "_blank";
+};
+```
+</details>
+
+### `type: category`
+
+The `category` type groups related items under a collapsible section. The `label` is the displayed
+text, and the `items` array contains `id`s of documents, links, or other categories.
+
+```json
+{
+  "type": "category",
+  "label": "Getting Started",
+  "collapsible": true, // optional
+  "collapsed": false, // optional
+  "items": [
+    {
+      "type": "link",
+      "label": "Support",
+      "to": "https://support.example.com"
+    }
+  ]
+}
+```
+
+<details>
+<summary>**TypeScript type declaration**</summary>
+
+```ts
+type NavigationCategory = {
+  type: "category";
+  icon?: string; // Lucide icon name
+  items: Array<NavigationDoc | NavigationLink | NavigationCategory | NavigationCustomPage>;
+  label: string;
+  collapsible?: boolean;
+  collapsed?: boolean;
+  link?: string | { type: "doc"; file: string; label?: string };
+  display?:
+    | "auth"
+    | "anon"
+    | "always"
+    | "hide"
+    | ((params: { context: ZudokuContext; auth: UseAuthReturn }) => boolean);
+};
+```
+
+</details>
+
+### `type: doc`
+
+Doc is used to reference markdown files. The `label` is the text that will be displayed, and the
+`file` is the file path associated with a markdown file.
+
+```json
+{
+  "type": "doc",
+  "label": "Overview",
+  "file": "docs/overview"
+}
+```
+
+<details>
+<summary>**TypeScript type declaration**</summary>
+
+```ts
+type NavigationDoc = {
+  type: "doc";
+  file: string;
+  path?: string;
+  icon?: string;
+  label?: string;
+  badge?: {
+    label: string;
+    color: "green" | "blue" | "yellow" | "red" | "purple" | "indigo" | "gray" | "outline";
+  };
+  display?:
+    | "auth"
+    | "anon"
+    | "always"
+    | "hide"
+    | ((params: { context: ZudokuContext; auth: UseAuthReturn }) => boolean);
+};
+```
+
+</details>
+
+#### Using shorthands
+
+Documents can be referenced as strings (using their file path), which is equivalent to
+`{ "type": "doc", "file": "path" }`:
+
+```json
+{
+  "navigation": [
+    {
+      "type": "category",
+      "label": "Documentation",
+      "icon": "book",
+      "items": [
+        "documentation/introduction",
+        "documentation/getting-started",
+        "documentation/installation"
+      ]
+    },
+    {
+      "type": "link",
+      "to": "/api",
+      "label": "API Reference",
+      "icon": "code"
+    }
+  ]
+}
+```
+
+This is much more concise when you don't need custom labels, icons, or other properties for
+individual documents.
+
+Learn more in the [Markdown documentation](/dev-portal/zudoku/markdown/overview)
+
+#### Custom paths
+
+The `path` property allows you to customize the URL path for a document. By default, Dev Portal uses the
+file path to generate the URL, but you can override this behavior by specifying a custom path.
+
+### `type: custom-page`
+
+Custom pages allow you to create standalone pages that are not tied to a Markdown document. This is
+useful for creating landing pages, dashboards, or any other custom content.
+
+```tsx
+{
+  type: "custom-page",
+  path: "/a-custom-page",
+  element: <MyCustomPage />,
+  display: "always"
+}
+```
+
+<details>
+<summary>**TypeScript type declaration**</summary>
+
+```ts
+type NavigationCustomPage = {
+  type: "custom-page";
+  path: string;
+  label?: string;
+  element: any;
+  icon?: string; // Lucide icon name
+  badge?: {
+    label: string;
+    color: "green" | "blue" | "yellow" | "red" | "purple" | "indigo" | "gray" | "outline";
+    invert?: boolean;
+  };
+  display?:
+    | "auth"
+    | "anon"
+    | "always"
+    | "hide"
+    | ((params: { context: ZudokuContext; auth: UseAuthReturn }) => boolean);
+};
+```
+
+</details>
+
+## Display Control
+
+All navigation items support a `display` property that controls when the item should be visible:
+
+- `"always"` (default): Always visible
+- `"auth"`: Only visible when user is authenticated
+- `"anon"`: Only visible when user is not authenticated
+- `"hide"`: Never visible (useful for temporarily hiding items)
+- **callback function**: For custom logic, pass a function that receives `{ context, auth }` and
+  returns a boolean
+
+```json
+{
+  "type": "link",
+  "label": "Admin Panel",
+  "to": "/admin",
+  "display": "auth"
+}
+```
+
+### Custom Display Logic
+
+For more complex visibility rules, use a callback function:
+
+```tsx
+{
+  type: "link",
+  label: "Premium Features",
+  to: "/premium",
+  display: ({ auth }) => {
+    // Show only for users with premium role
+    return auth.user?.role === "premium";
+  }
+}
+```
+
+The callback receives:
+
+- `context`: The `ZudokuContext` instance
+- `auth`: The authentication state from `UseAuthReturn`, including `user`, `isAuthenticated`, etc.
+
+## Badges
+
+Navigation items can display badges with labels and colors. Badges support an optional `invert`
+property for styling:
+
+```json
+{
+  "type": "doc",
+  "file": "api/v2",
+  "badge": {
+    "label": "Beta",
+    "color": "yellow"
+  }
+}
+```
+
+## Icons
+
+Icons can be added to categories and documents by specifying an `icon` property. The value should be
+the name of a [Lucide icon](https://lucide.dev/icons) (e.g., `book` <Book size={16}
+style={{ display: 'inline' }} />, `code` <Code size={16} style={{ display: 'inline' }} />,
+`file-text` <FileText size={16} style={{ display: 'inline' }} />).
+
+```json
+{
+  "type": "category",
+  "label": "Getting Started",
+  "icon": "book"
+}
+```
+
+They can also be set on individual documents in their front matter:
+
+```md
+---
+title: My Document
+sidebar_icon: book
+---
+```
+
+## Title & Labels
+
+All navigation items can have a `label` property that determines the displayed text. For `doc`
+items, the `label` is optional; if omitted, Dev Portal uses the document's `title` from its front matter
+or the first `#` header.
+
+To override the navigation label without changing the document's `title`, use the `sidebar_label`
+property in the front matter:
+
+```md
+---
+title: My Long Title
+sidebar_label: Short Title
+---
+```
+
+In this example, the document's title remains "My Long Title," but the sidebar displays "Short
+Title."
+
+## Navigation Rules
+
+Plugins generate sidebar navigation automatically (e.g. from OpenAPI tags). Navigation rules let you
+customize that generated sidebar by inserting, modifying, sorting, moving, or removing items. To
+change the top-level tabs themselves, use the `navigation` array directly.
+
+```tsx
+navigationRules: [
+  {
+    type: "sort",
+    match: "Shipments",
+    by: (a, b) => a.label.localeCompare(b.label),
+  },
+],
+```
+
+For a practical walkthrough with more examples, see the
+[Navigation Rules](/dev-portal/zudoku/guides/navigation-rules) guide.
+
+### Rule Types
+
+Each rule has a `type` and a `match` property that targets a navigation item.
+
+| Type     | Description                                                               |
+| -------- | ------------------------------------------------------------------------- |
+| `insert` | Add items `before` or `after` a matched item                              |
+| `modify` | Change `label`, `icon`, `badge`, `collapsed`, `collapsible`, or `display` |
+| `remove` | Remove a matched item from the sidebar                                    |
+| `sort`   | Sort children of a matched category using a custom comparator             |
+| `move`   | Relocate a matched item `before` or `after` another item                  |
+
+### Match Syntax
+
+The `match` property uses slash-separated segments to target items. The first segment identifies the
+top-level tab by label, and remaining segments navigate into the sidebar tree. Label matching is
+case-insensitive.
+
+```json
+match: "Users/Get User";      // by label
+match: "Users/0";             // first item
+match: "Users/-1";            // last item
+match: "Users/Advanced/0";   // mixed nesting
+```

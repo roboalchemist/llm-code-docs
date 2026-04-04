@@ -1,0 +1,12 @@
+# Source: https://www.zuplo.com/docs/articles/source-control-setup-azure.md
+
+# Azure DevOps Setup
+
+Azure DevOps integration is available on
+[enterprise plans](https://zuplo.com/pricing). Contact
+[support@zuplo.com](mailto:support@zuplo.com) to enable Azure DevOps for your
+account.
+
+Azure DevOps provides source control integration (push/pull between portal and
+repository) but does not include automatic deployments. Use
+[Azure Pipelines](./custom-ci-cd-azure.mdx) to deploy your API.

@@ -1,0 +1,54 @@
+# Source: https://valibot.dev/api/uuid.md
+
+# uuid
+
+Creates an [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) validation action.
+
+```ts
+const Action = v.uuid<TInput, TMessage>(message);
+```
+
+## Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TMessage` <Property {...properties.TMessage} />
+
+## Parameters
+
+- `message` <Property {...properties.message} />
+
+### Explanation
+
+With `uuid` you can validate the formatting of a string. If the input is not an UUID, you can use `message` to customize the error message.
+
+## Returns
+
+- `Action` <Property {...properties.Action} />
+
+## Examples
+
+The following examples show how `uuid` can be used.
+
+### UUID schema
+
+Schema to validate an UUID.
+
+```ts
+const UuidSchema = v.pipe(v.string(), v.uuid('The UUID is badly formatted.'));
+```
+
+## Related
+
+The following APIs can be combined with `uuid`.
+
+### Schemas
+
+<ApiList items={['any', 'custom', 'string']} />
+
+### Methods
+
+<ApiList items={['pipe']} />
+
+### Utils
+
+<ApiList items={['isOfKind', 'isOfType']} />

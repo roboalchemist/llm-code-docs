@@ -1,0 +1,58 @@
+# Source: https://docs.wandb.ai/inference.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# W&B Inference
+
+> Access open-source foundation models through W&B Weave and an OpenAI-compatible API
+
+W\&B Inference gives you access to leading open-source foundation models through W\&B Weave and an OpenAI-compatible API. You can:
+
+* Build AI applications and agents without signing up for a hosting provider or self-hosting a model
+* Try [supported models](/inference/models) in the [W\&B Weave Playground](/weave/guides/tools/playground)
+
+With Weave, you can trace, evaluate, monitor, and improve your W\&B Inference-powered applications.
+
+## Quickstart
+
+Here's a simple example using Python:
+
+```python  theme={null}
+import openai
+
+client = openai.OpenAI(
+    # The custom base URL points to W&B Inference
+    base_url='https://api.inference.wandb.ai/v1',
+
+    # Create an API key at https://wandb.ai/settings
+    api_key="<your-api-key>",
+
+    # Optional: Team and project for usage tracking
+    project="<your-team>/<your-project>",
+)
+
+response = client.chat.completions.create(
+    model="meta-llama/Llama-3.1-8B-Instruct",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me a joke."}
+    ],
+)
+
+print(response.choices[0].message.content)
+```
+
+## Next steps
+
+1. Review the [available models](/inference/models) and [usage information and limits](/inference/usage-limits/)
+2. Set up your account using the [prerequisites](/inference/prerequisites/)
+3. Use the service through the [API](/inference/api-reference/) or [UI](/inference/ui-guide/)
+4. Try the [usage examples](/inference/examples/)
+
+## Usage details
+
+<Info>
+  For information about pricing, usage limits, and credits, see [Usage Information and Limits](/inference/usage-limits/).
+</Info>

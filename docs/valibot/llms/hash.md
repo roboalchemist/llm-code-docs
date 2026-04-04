@@ -1,0 +1,58 @@
+# Source: https://valibot.dev/api/hash.md
+
+# hash
+
+Creates a [hash](https://en.wikipedia.org/wiki/Hash_function) validation action.
+
+```ts
+const Action = v.hash<TInput, TMessage>(message);
+```
+
+## Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TMessage` <Property {...properties.TMessage} />
+
+## Parameters
+
+- `types` <Property {...properties.types} />
+- `message` <Property {...properties.message} />
+
+### Explanation
+
+With `hash` you can validate the formatting of a string. If the input is not a hash, you can use `message` to customize the error message.
+
+## Returns
+
+- `Action` <Property {...properties.Action} />
+
+## Examples
+
+The following examples show how `hash` can be used.
+
+### Hash schema
+
+Schema to validate a hash.
+
+```ts
+const HashSchema = v.pipe(
+  v.string(),
+  v.hash(['md5', 'sha1'], 'The specified hash is invalid.')
+);
+```
+
+## Related
+
+The following APIs can be combined with `hash`.
+
+### Schemas
+
+<ApiList items={['any', 'custom', 'string']} />
+
+### Methods
+
+<ApiList items={['pipe']} />
+
+### Utils
+
+<ApiList items={['isOfKind', 'isOfType']} />

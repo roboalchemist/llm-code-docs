@@ -1,0 +1,39 @@
+# Source: https://upstash.com/docs/devops/terraform/resources/upstash_qstash_topic.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# upstash_qstash_topic
+
+> Create and manage QStash topics
+
+<RequestExample>
+  ```hcl example.tf theme={"system"}
+  resource "upstash_qstash_topic" "exampleQStashTopic" {
+    name = "exampleQStashTopicName"
+  }
+  ```
+</RequestExample>
+
+## Schema
+
+### Required
+
+<ParamField query="name" type="string" required>
+  Name of the QStash topic
+</ParamField>
+
+### Read-Only
+
+<ResponseField name="endpoints" type="list(map(string))">
+  Endpoints for the QStash topic
+</ResponseField>
+
+<ResponseField name="id" type="string">
+  The ID of this resource.
+</ResponseField>
+
+<ResponseField name="topic_id" type="string">
+  Unique QStash topic ID for requested topic
+</ResponseField>

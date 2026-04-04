@@ -1,0 +1,9 @@
+name: windsurf
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.windsurf.com/
+    last_fetched: "2026-04-03T23:11:24Z"
+description: >
+  windsurf documentation
+quality_score: 0

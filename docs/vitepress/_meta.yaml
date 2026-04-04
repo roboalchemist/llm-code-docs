@@ -1,0 +1,9 @@
+name: vitepress
+primary_source: llms
+sources:
+  - type: llms
+    url: https://vitepress.dev/
+    last_fetched: "2026-04-03T23:11:20Z"
+description: >
+  vitepress documentation
+quality_score: 0

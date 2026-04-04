@@ -1,0 +1,42 @@
+# Source: https://upstash.com/docs/devops/terraform/data_sources/upstash_team_data.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# upstash_team_data
+
+<RequestExample>
+  ```hcl example.tf theme={"system"}
+  data "upstash_team_data" "teamData" {
+    team_id = resource.upstash_team.exampleTeam.team_id
+  }
+  ```
+</RequestExample>
+
+## Schema
+
+### Required
+
+<ParamField query="team_id" type="string" required>
+  Unique Cluster ID for created cluster
+</ParamField>
+
+### Read-Only
+
+<ResponseField name="copy_cc" type="bool">
+  Whether Credit Card is copied
+</ResponseField>
+
+<ResponseField name="id" type="number">
+  The ID of this resource.
+</ResponseField>
+
+<ResponseField name="team_members" type="map(string)">
+  Members of the team. (Owner must be specified, which is the owner of the api
+  key.)
+</ResponseField>
+
+<ResponseField name="team_name" type="string">
+  Name of the team
+</ResponseField>

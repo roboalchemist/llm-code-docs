@@ -1,0 +1,9 @@
+name: x-cmd
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.x-cmd.com/
+    last_fetched: "2026-04-03T23:11:25Z"
+description: >
+  x-cmd documentation
+quality_score: 0

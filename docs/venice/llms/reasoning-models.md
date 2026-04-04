@@ -1,0 +1,273 @@
+# Source: https://docs.venice.ai/overview/guides/reasoning-models.md
+
+# Reasoning Models
+
+> Using reasoning models with visible thinking in the Venice API
+
+Some models think out loud before answering. They work through problems step by step, then give you a final answer. This makes them stronger at math, code, and logic-heavy tasks.
+
+**Supported models:** `claude-opus-45`, `grok-41-fast`, `kimi-k2-thinking`, `gemini-3-pro-preview`, `qwen3-235b-a22b-thinking-2507`, `qwen3-4b`, `deepseek-ai-DeepSeek-R1`
+
+## Reading the output
+
+Reasoning models return their thinking in one of two ways.
+
+### The `reasoning_content` field
+
+Models like `qwen3-235b-a22b-thinking-2507` return thinking in a separate `reasoning_content` field, keeping `content` clean:
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-235b-a22b-thinking-2507",
+      messages=[{"role": "user", "content": "What is 15% of 240?"}]
+  )
+
+  thinking = response.choices[0].message.reasoning_content
+  answer = response.choices[0].message.content
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-235b-a22b-thinking-2507",
+      messages: [{ role: "user", content: "What is 15% of 240?" }]
+  });
+
+  const thinking = response.choices[0].message.reasoning_content;
+  const answer = response.choices[0].message.content;
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-235b-a22b-thinking-2507",
+      "messages": [{"role": "user", "content": "What is 15% of 240?"}]
+    }'
+  ```
+</CodeGroup>
+
+### `<think>` tags
+
+Other models (`qwen3-4b`, `deepseek-ai-DeepSeek-R1`) wrap thinking in `<think>` tags within the `content` field:
+
+```
+<think>
+The user wants 15% of 240.
+15% = 0.15
+0.15 × 240 = 36
+</think>
+
+15% of 240 is **36**.
+```
+
+Parse or strip as needed, or use `strip_thinking_response` to have Venice remove them server-side.
+
+### Streaming
+
+When streaming, `reasoning_content` arrives in the delta before the final answer:
+
+<CodeGroup>
+  ```python Python theme={null}
+  stream = client.chat.completions.create(
+      model="qwen3-235b-a22b-thinking-2507",
+      messages=[{"role": "user", "content": "Explain photosynthesis"}],
+      stream=True
+  )
+
+  for chunk in stream:
+      if chunk.choices:
+          delta = chunk.choices[0].delta
+          if delta.reasoning_content:
+              print(delta.reasoning_content, end="")
+          if delta.content:
+              print(delta.content, end="")
+  ```
+
+  ```javascript Node.js theme={null}
+  const stream = await client.chat.completions.create({
+      model: "qwen3-235b-a22b-thinking-2507",
+      messages: [{ role: "user", content: "Explain photosynthesis" }],
+      stream: true
+  });
+
+  for await (const chunk of stream) {
+      if (chunk.choices?.[0]?.delta) {
+          const delta = chunk.choices[0].delta;
+          if (delta.reasoning_content) process.stdout.write(delta.reasoning_content);
+          if (delta.content) process.stdout.write(delta.content);
+      }
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-235b-a22b-thinking-2507",
+      "messages": [{"role": "user", "content": "Explain photosynthesis"}],
+      "stream": true
+    }'
+  ```
+</CodeGroup>
+
+For models using `<think>` tags, the thinking streams before the answer. Collect the full response, then parse.
+
+## Reasoning effort
+
+Reasoning models spend tokens "thinking" before they answer. The `reasoning_effort` parameter controls how much thinking the model does.
+
+| Value    | Behavior                                                                                                                   |
+| -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `low`    | Minimal thinking. Fast and cheap. Best for simple factual questions.                                                       |
+| `medium` | Balanced thinking. The default for most tasks.                                                                             |
+| `high`   | Deep thinking. Slower and uses more tokens, but produces better answers on complex problems like math proofs or debugging. |
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-235b-a22b-thinking-2507",
+      messages=[{"role": "user", "content": "Prove that there are infinitely many primes"}],
+      extra_body={"reasoning_effort": "high"}
+  )
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-235b-a22b-thinking-2507",
+      messages: [{ role: "user", content: "Prove that there are infinitely many primes" }],
+      reasoning_effort: "high"
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-235b-a22b-thinking-2507",
+      "messages": [{"role": "user", "content": "Prove that there are infinitely many primes"}],
+      "reasoning_effort": "high"
+    }'
+  ```
+</CodeGroup>
+
+Works on: `claude-opus-45`, `grok-41-fast`, `kimi-k2-thinking`, `gemini-3-pro-preview`, `qwen3-235b-a22b-thinking-2507`
+
+<Info>
+  Venice also accepts the OpenRouter format: `"reasoning": {"effort": "high"}`. Same behavior, different syntax.
+</Info>
+
+## Disabling reasoning
+
+Skip reasoning entirely for faster, cheaper responses:
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-4b",
+      messages=[{"role": "user", "content": "What's the capital of France?"}],
+      extra_body={"venice_parameters": {"disable_thinking": True}}
+  )
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-4b",
+      messages: [{ role: "user", content: "What's the capital of France?" }],
+      venice_parameters: { disable_thinking: true }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-4b",
+      "messages": [{"role": "user", "content": "What is the capital of France?"}],
+      "venice_parameters": {"disable_thinking": true}
+    }'
+  ```
+</CodeGroup>
+
+Or use an instruct model like `qwen3-235b-a22b-instruct-2507` instead.
+
+## Stripping thinking from responses
+
+For models using `<think>` tags, have Venice remove them server-side:
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-4b",
+      messages=[{"role": "user", "content": "What is 15% of 240?"}],
+      extra_body={"venice_parameters": {"strip_thinking_response": True}}
+  )
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-4b",
+      messages: [{ role: "user", content: "What is 15% of 240?" }],
+      venice_parameters: { strip_thinking_response: true }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-4b",
+      "messages": [{"role": "user", "content": "What is 15% of 240?"}],
+      "venice_parameters": {"strip_thinking_response": true}
+    }'
+  ```
+</CodeGroup>
+
+Or use a model suffix: `qwen3-4b:strip_thinking_response=true`
+
+## Parameters
+
+| Parameter                 | Values            | Description              |
+| ------------------------- | ----------------- | ------------------------ |
+| `reasoning_effort`        | low, medium, high | Controls thinking depth  |
+| `reasoning.effort`        | low, medium, high | OpenRouter format        |
+| `disable_thinking`        | boolean           | Skips reasoning entirely |
+| `strip_thinking_response` | boolean           | Removes `<think>` tags   |
+
+Pass `disable_thinking` and `strip_thinking_response` in `venice_parameters`, or use them as [model suffixes](/api-reference/endpoint/chat/model_feature_suffix).
+
+## Deprecations
+
+<Warning>
+  **qwen3-235b → qwen3-235b-a22b-thinking-2507**
+
+  Starting **December 14, 2025**, `qwen3-235b` routes to `qwen3-235b-a22b-thinking-2507`.
+
+  **What changes:**
+
+  * `disable_thinking` gets ignored
+  * `<think>` tags no longer appear in `content`
+  * Thinking moves to `reasoning_content` instead
+
+  **What stays the same:**
+
+  * `strip_thinking_response` still works
+
+  **Action required:** If you parse `<think>` tags, switch to reading `reasoning_content`. If you use `disable_thinking=true`, switch to `qwen3-235b-a22b-instruct-2507` before December 14.
+</Warning>
+
+<Info>
+  `<think>` tags will eventually be deprecated across all models in favor of the `reasoning_content` field.
+</Info>
+
+For pricing and context limits, see [Current Models](/overview/models).
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.venice.ai/llms.txt

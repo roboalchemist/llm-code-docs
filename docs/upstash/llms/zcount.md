@@ -1,0 +1,50 @@
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcount.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zcount.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# ZCOUNT
+
+> Returns the number of elements in the sorted set stored at key filterd by score.
+
+## Arguments
+
+<ParamField body="key" type="str" required>
+  The key to get.
+</ParamField>
+
+<ParamField body="min" type="int | str" required>
+  The minimum score to filter by.
+
+  Use `-inf` to effectively ignore this filter.
+
+  Use `(number` to exclude the value.
+</ParamField>
+
+<ParamField body="max" type="int | str" required>
+  The maximum score to filter by.
+
+  Use `+inf` to effectively ignore this filter.
+
+  Use `(number` to exclude the value.
+</ParamField>
+
+## Response
+
+<ResponseField type="int" required>
+  The number of elements where score is between min and max.
+</ResponseField>
+
+<RequestExample>
+  ```py Example theme={"system"}
+  redis.zadd("key", 
+      { score: 1, member: "one"}, 
+      { score: 2, member: "two" },
+  )
+  elements = redis.zcount("key", "(1", "+inf")
+  print(elements); # 1
+  ```
+</RequestExample>

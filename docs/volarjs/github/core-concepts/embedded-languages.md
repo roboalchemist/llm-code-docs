@@ -1,0 +1,14 @@
+# Source: https://github.com/volarjs/docs/blob/main/src/content/docs/core-concepts/embedded-languages.mdx
+
+---
+title: Embedded languages
+description: VolarJS has top-notch support for embedded languages and can drastically simplify the mappings needed to get editing features working across the different parts of your files.
+---
+
+A lot of programming languages used these days are composed of other programming languages. The most famous example is HTML, in which you will find JavaScript and CSS in `<script>` and `<style>` blocks respectively. In addition to those, you can even find some inline CSS in the `style` attribute of HTML elements, and some inline JavaScript in the `onclick` (and other events) attribute of HTML elements.
+
+There is actually a remarkable number of examples of this behaviour, especially on the web: The different blocks in [Vue's Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html), the sections in [Svelte's components](https://svelte.dev/docs/svelte-components), the frontmatter syntax and JSX-based component template of [Astro's components](https://docs.astro.build/en/core-concepts/astro-components/), the different blocks in [Markdown](https://spec.commonmark.org/0.29/#fenced-code-blocks) (not to mention the common YAML frontmatter), and the list goes on.
+
+As such, Volar was built on the principle that it is fairly likely that your language will have such embedded languages and has top-notch support for them. Notably, Volar can drastically simplify the mappings needed to get editing features working across the different parts of your files.
+
+**If your language does not have embedded languages: That's completely okay!** Volar will still work for you just as well, and it will be ready if one day you do decide to add embedded languages to your language

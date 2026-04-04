@@ -1,0 +1,38 @@
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hsetnx.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hsetnx.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# HSETNX
+
+> Write a field to a hash but only if the field does not exist.
+
+## Arguments
+
+<ParamField body="key" type="str" required>
+  The key of the hash.
+</ParamField>
+
+<ParamField body="field" type="str" required>
+  The name of the field.
+</ParamField>
+
+<ParamField body="value" type="Any" required>
+  The value to set.
+</ParamField>
+
+## Response
+
+<ResponseField type="bool" required>
+  `True` if the field was set, `False` if it already existed.
+</ResponseField>
+
+<RequestExample>
+  ```py Example theme={"system"}
+  assert redis.hsetnx("myhash", "field1", "Hello") == True
+  assert redis.hsetnx("myhash", "field1", "World") == False
+  ```
+</RequestExample>

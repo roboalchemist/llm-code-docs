@@ -1,0 +1,8 @@
+name: vue-chartjs
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:11:21Z"
+description: >
+  vue-chartjs documentation
+quality_score: 0

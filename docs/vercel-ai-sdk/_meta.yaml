@@ -1,0 +1,9 @@
+name: vercel-ai-sdk
+primary_source: llms
+sources:
+  - type: llms
+    url: https://sdk.vercel.ai/
+    last_fetched: "2026-04-03T23:11:19Z"
+description: >
+  vercel-ai-sdk documentation
+quality_score: 0

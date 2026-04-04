@@ -1,0 +1,9 @@
+name: upstash
+primary_source: llms
+sources:
+  - type: llms
+    url: https://upstash.com/docs/
+    last_fetched: "2026-04-03T23:11:18Z"
+description: >
+  upstash documentation
+quality_score: 0

@@ -1,0 +1,8 @@
+name: vim-lsc
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:11:20Z"
+description: >
+  vim-lsc documentation
+quality_score: 0

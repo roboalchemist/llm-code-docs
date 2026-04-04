@@ -1,0 +1,27 @@
+# Source: https://www.zuplo.com/docs/ai-gateway/apps.md
+
+# AI Gateway Apps
+
+Apps in the Zuplo AI Gateway represent any app or integration that will call the
+AI Gateway. For example, you might have a custom support chatbot on your
+website - that chatbot would be an App in the AI Gateway. Each App has its own
+API Key so that usage is tracked independently. Apps are owned by a specific
+[team](./teams.mdx) and can access the AI Providers assigned to that team.
+
+## API Keys
+
+Each App in the AI Gateway has its own API Key. This allows you to track usage
+independently for each App. You can find the API Key for an App by navigating to
+the **Apps** tab of your AI Gateway project in the
+[Zuplo Portal](https://portal.zuplo.com). Select the App you want to view the
+API Key for. With the App open you will see the API Key section at the top of
+the app page.
+
+**Additional Resources**
+
+- [Creating & Editing Apps](./managing-apps.mdx) - How to add, remove, and set
+  roles for project members.
+- [Creating & Editing Teams](./managing-teams.mdx) - How to create and edit
+  teams.
+- [Role Permissions](../articles/accounts/roles-and-permissions.mdx) - Details
+  on the roles available at the account and project levels.

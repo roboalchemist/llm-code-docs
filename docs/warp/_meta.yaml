@@ -1,0 +1,9 @@
+name: warp
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.warp.dev/
+    last_fetched: "2026-04-03T23:11:22Z"
+description: >
+  warp documentation
+quality_score: 0

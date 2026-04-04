@@ -1,0 +1,9 @@
+name: zinc
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.zinc.com/docs/
+    last_fetched: "2026-04-03T23:11:27Z"
+description: >
+  zinc documentation
+quality_score: 0

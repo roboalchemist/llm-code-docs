@@ -1,0 +1,9 @@
+name: workato
+primary_source: llms
+sources:
+  - type: llms
+    url: https://workato.docs.buildwithfern.com/
+    last_fetched: "2026-04-03T23:11:24Z"
+description: >
+  workato documentation
+quality_score: 0

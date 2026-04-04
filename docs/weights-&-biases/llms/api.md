@@ -1,0 +1,1371 @@
+# Source: https://docs.wandb.ai/models/ref/python/public-api/api.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Api
+
+export const GitHubLink = ({url}) => <a href={url} target="_blank" rel="noopener noreferrer" className="github-source-link">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+    GitHub source
+  </a>;
+
+<GitHubLink url="https://github.com/wandb/wandb/blob/main/wandb/apis/public/api.py" />
+
+## <kbd>class</kbd> `Api`
+
+Used for querying the W\&B server.
+
+**Examples:**
+
+```python  theme={null}
+import wandb
+
+wandb.Api()
+```
+
+### <kbd>method</kbd> `Api.__init__`
+
+```python  theme={null}
+__init__(
+    overrides: 'dict[str, Any] | None' = None,
+    timeout: 'int | None' = None,
+    api_key: 'str | None' = None
+) → None
+```
+
+Initialize the API.
+
+**Args:**
+
+* `overrides`:  You can set `base_url` if you are
+* `using a W&B server other than `https`: //api.wandb.ai`. You can also set defaults for `entity`, `project`, and `run`.
+* `timeout`:  HTTP timeout in seconds for API requests. If not  specified, the default timeout will be used.
+* `api_key`:  API key to use for authentication. If not provided,  the API key from the current environment or configuration will be used.  Prompts for an API key if none is provided  or configured in the environment.
+
+***
+
+### <kbd>property</kbd> Api.client
+
+Returns the client object.
+
+**Returns:**
+
+* `RetryingClient`: The client property value.
+
+***
+
+### <kbd>property</kbd> Api.default\_entity
+
+Returns the default W\&B entity.
+
+**Returns:**
+
+* `str | None`: The default\_entity property value.
+
+***
+
+### <kbd>property</kbd> Api.user\_agent
+
+Returns W\&B public user agent.
+
+**Returns:**
+
+* `str`: The user\_agent property value.
+
+***
+
+### <kbd>property</kbd> Api.viewer
+
+Returns the viewer object.
+
+**Raises:**
+
+* `ValueError`:  If viewer data is not able to be fetched from W\&B.
+* `requests.RequestException`:  If an error occurs while making the graphql request.
+
+**Returns:**
+
+* `User`: The viewer property value.
+
+***
+
+### <kbd>method</kbd> `Api.artifact`
+
+```python  theme={null}
+artifact(name: 'str', type: 'str | None' = None)
+```
+
+Returns a single artifact.
+
+**Args:**
+
+* `name`:  The artifact's name. The name of an artifact resembles a  filepath that consists, at a minimum, the name of the project  the artifact was logged to, the name of the artifact, and the  artifact's version or alias. Optionally append the entity that  logged the artifact as a prefix followed by a forward slash.  If no entity is specified in the name, the Run or API  setting's entity is used.
+* `type`:  The type of artifact to fetch.
+
+**Returns:**
+An `Artifact` object.
+
+**Raises:**
+
+* `ValueError`:  If the artifact name is not specified.
+* `ValueError`:  If the artifact type is specified but does not  match the type of the fetched artifact.
+
+**Examples:**
+In the following code snippets "entity", "project", "artifact", "version", and "alias" are placeholders for your W\&B entity, name of the project the artifact is in, the name of the artifact, and artifact's version, respectively.
+
+```python  theme={null}
+import wandb
+
+# Specify the project, artifact's name, and the artifact's alias
+wandb.Api().artifact(name="project/artifact:alias")
+
+# Specify the project, artifact's name, and a specific artifact version
+wandb.Api().artifact(name="project/artifact:version")
+
+# Specify the entity, project, artifact's name, and the artifact's alias
+wandb.Api().artifact(name="entity/project/artifact:alias")
+
+# Specify the entity, project, artifact's name, and a specific artifact version
+wandb.Api().artifact(name="entity/project/artifact:version")
+```
+
+**Note:**
+
+> This method is intended for external use only. Do not call `api.artifact()` within the wandb repository code.
+
+***
+
+### <kbd>method</kbd> `Api.artifact_collection`
+
+```python  theme={null}
+artifact_collection(type_name: 'str', name: 'str') → ArtifactCollection
+```
+
+Returns a single artifact collection by type.
+
+You can use the returned `ArtifactCollection` object to retrieve information about specific artifacts in that collection, and more.
+
+**Args:**
+
+* `type_name`:  The type of artifact collection to fetch.
+* `name`:  An artifact collection name. Optionally append the entity  that logged the artifact as a prefix followed by a forward  slash.
+
+**Returns:**
+An `ArtifactCollection` object.
+
+**Examples:**
+In the proceeding code snippet "type", "entity", "project", and "artifact\_name" are placeholders for the collection type, your W\&B entity, name of the project the artifact is in, and the name of the artifact, respectively.
+
+```python  theme={null}
+import wandb
+
+collections = wandb.Api().artifact_collection(
+    type_name="type", name="entity/project/artifact_name"
+)
+
+# Get the first artifact in the collection
+artifact_example = collections.artifacts()[0]
+
+# Download the contents of the artifact to the specified root directory.
+artifact_example.download()
+```
+
+***
+
+### <kbd>method</kbd> `Api.artifact_collection_exists`
+
+```python  theme={null}
+artifact_collection_exists(name: 'str', type: 'str') → bool
+```
+
+Whether an artifact collection exists within a specified project and entity.
+
+**Args:**
+
+* `name`:  An artifact collection name. Optionally append the  entity that logged the artifact as a prefix followed by  a forward slash. If entity or project is not specified,  infer the collection from the override params if they exist.  Otherwise, entity is pulled from the user settings and project  will default to "uncategorized".
+* `type`:  The type of artifact collection.
+
+**Returns:**
+True if the artifact collection exists, False otherwise.
+
+**Examples:**
+In the proceeding code snippet "type", and "collection\_name" refer to the type of the artifact collection and the name of the collection, respectively.
+
+```python  theme={null}
+import wandb
+
+wandb.Api.artifact_collection_exists(type="type", name="collection_name")
+```
+
+***
+
+### <kbd>method</kbd> `Api.artifact_collections`
+
+```python  theme={null}
+artifact_collections(
+    project_name: 'str',
+    type_name: 'str',
+    per_page: 'int' = 50
+) → ArtifactCollections
+```
+
+Returns a collection of matching artifact collections.
+
+**Args:**
+
+* `project_name`:  The name of the project to filter on.
+* `type_name`:  The name of the artifact type to filter on.
+* `per_page`:  Sets the page size for query pagination.  Usually there is no reason to change this.
+
+**Returns:**
+An iterable `ArtifactCollections` object.
+
+***
+
+### <kbd>method</kbd> `Api.artifact_exists`
+
+```python  theme={null}
+artifact_exists(name: 'str', type: 'str | None' = None) → bool
+```
+
+Whether an artifact version exists within the specified project and entity.
+
+**Args:**
+
+* `name`:  The name of artifact. Add the artifact's entity and project  as a prefix. Append the version or the alias of the artifact  with a colon. If the entity or project is not specified,  W\&B uses override parameters if populated. Otherwise, the  entity is pulled from the user settings and the project is  set to "Uncategorized".
+* `type`:  The type of artifact.
+
+**Returns:**
+True if the artifact version exists, False otherwise.
+
+**Examples:**
+In the proceeding code snippets "entity", "project", "artifact", "version", and "alias" are placeholders for your W\&B entity, name of the project the artifact is in, the name of the artifact, and artifact's version, respectively.
+
+```python  theme={null}
+import wandb
+
+wandb.Api().artifact_exists("entity/project/artifact:version")
+wandb.Api().artifact_exists("entity/project/artifact:alias")
+```
+
+***
+
+### <kbd>method</kbd> `Api.artifact_type`
+
+```python  theme={null}
+artifact_type(type_name: 'str', project: 'str | None' = None) → ArtifactType
+```
+
+Returns the matching `ArtifactType`.
+
+**Args:**
+
+* `type_name`:  The name of the artifact type to retrieve.
+* `project`:  If given, a project name or path to filter on.
+
+**Returns:**
+An `ArtifactType` object.
+
+***
+
+### <kbd>method</kbd> `Api.artifact_types`
+
+```python  theme={null}
+artifact_types(project: 'str | None' = None) → ArtifactTypes
+```
+
+Returns a collection of matching artifact types.
+
+**Args:**
+
+* `project`:  The project name or path to filter on.
+
+**Returns:**
+An iterable `ArtifactTypes` object.
+
+***
+
+### <kbd>method</kbd> `Api.artifact_versions`
+
+```python  theme={null}
+artifact_versions(type_name, name, per_page=50)
+```
+
+Deprecated. Use `Api.artifacts(type_name, name)` method instead.
+
+***
+
+### <kbd>method</kbd> `Api.artifacts`
+
+```python  theme={null}
+artifacts(
+    type_name: 'str',
+    name: 'str',
+    per_page: 'int' = 50,
+    tags: 'list[str] | None' = None
+) → Artifacts
+```
+
+Return an `Artifacts` collection.
+
+**Args:**
+
+* `type_name`:  The type of artifacts to fetch.
+* `name`:  The artifact's collection name. Optionally append the  entity that logged the artifact as a prefix followed by  a forward slash.
+* `per_page`:  Sets the page size for query pagination. Usually  there is no reason to change this.
+* `tags`:  Only return artifacts with all of these tags.
+
+**Returns:**
+An iterable `Artifacts` object.
+
+**Examples:**
+In the proceeding code snippet, "type", "entity", "project", and "artifact\_name" are placeholders for the artifact type, W\&B entity, name of the project the artifact was logged to, and the name of the artifact, respectively.
+
+```python  theme={null}
+import wandb
+
+wandb.Api().artifacts(type_name="type", name="entity/project/artifact_name")
+```
+
+***
+
+### <kbd>method</kbd> `Api.automation`
+
+```python  theme={null}
+automation(name: 'str', entity: 'str | None' = None) → Automation
+```
+
+Returns the only Automation matching the parameters.
+
+**Args:**
+
+* `name`:  The name of the automation to fetch.
+* `entity`:  The entity to fetch the automation for.
+
+**Raises:**
+
+* `ValueError`:  If zero or multiple Automations match the search criteria.
+
+**Examples:**
+Get an existing automation named "my-automation":
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+automation = api.automation(name="my-automation")
+```
+
+Get an existing automation named "other-automation", from the entity "my-team":
+
+```python  theme={null}
+automation = api.automation(name="other-automation", entity="my-team")
+```
+
+***
+
+### <kbd>method</kbd> `Api.automations`
+
+```python  theme={null}
+automations(
+    entity: 'str | None' = None,
+    name: 'str | None' = None,
+    per_page: 'int' = 50
+) → Iterator[Automation]
+```
+
+Returns an iterator over all Automations that match the given parameters.
+
+If no parameters are provided, the returned iterator will contain all Automations that the user has access to.
+
+**Args:**
+
+* `entity`:  The entity to fetch the automations for.
+* `name`:  The name of the automation to fetch.
+* `per_page`:  The number of automations to fetch per page.  Defaults to 50.  Usually there is no reason to change this.
+
+**Returns:**
+A list of automations.
+
+**Examples:**
+Fetch all existing automations for the entity "my-team":
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+automations = api.automations(entity="my-team")
+```
+
+***
+
+### <kbd>method</kbd> `Api.create_automation`
+
+```python  theme={null}
+create_automation(
+    obj: 'NewAutomation',
+    fetch_existing: 'bool' = False,
+    **kwargs: 'Unpack[WriteAutomationsKwargs]'
+) → Automation
+```
+
+Create a new Automation.
+
+**Args:**
+obj:  The automation to create.  fetch\_existing:  If True, and a conflicting automation already exists, attempt  to fetch the existing automation instead of raising an error.  \*\*kwargs:  Any additional values to assign to the automation before  creating it.  If given, these will override any values that may  already be set on the automation:
+
+* `name`: The name of the automation.
+* `description`: The description of the automation.
+* `enabled`: Whether the automation is enabled.
+* `scope`: The scope of the automation.
+* `event`: The event that triggers the automation.
+* `action`: The action that is triggered by the automation.
+
+**Returns:**
+The saved Automation.
+
+**Examples:**
+Create a new automation named "my-automation" that sends a Slack notification when a run within a specific project logs a metric exceeding a custom threshold:
+
+```python  theme={null}
+import wandb
+from wandb.automations import OnRunMetric, RunEvent, SendNotification
+
+api = wandb.Api()
+
+project = api.project("my-project", entity="my-team")
+
+# Use the first Slack integration for the team
+slack_hook = next(api.slack_integrations(entity="my-team"))
+
+event = OnRunMetric(
+     scope=project,
+     filter=RunEvent.metric("custom-metric") > 10,
+)
+action = SendNotification.from_integration(slack_hook)
+
+automation = api.create_automation(
+     event >> action,
+     name="my-automation",
+     description="Send a Slack message whenever 'custom-metric' exceeds 10.",
+)
+```
+
+***
+
+### <kbd>method</kbd> `Api.create_custom_chart`
+
+```python  theme={null}
+create_custom_chart(
+    entity: 'str',
+    name: 'str',
+    display_name: 'str',
+    spec_type: "Literal['vega2']",
+    access: "Literal['private', 'public']",
+    spec: 'str | dict'
+) → str
+```
+
+Create a custom chart preset and return its id.
+
+**Args:**
+
+* `entity`:  The entity (user or team) that owns the chart
+* `name`:  Unique identifier for the chart preset
+* `display_name`:  Human-readable name shown in the UI
+* `spec_type`:  Type of specification. Must be "vega2" for Vega-Lite v2 specifications.
+* `access`:  Access level for the chart:
+  * "private": Chart is only accessible to the entity that created it
+  * "public": Chart is publicly accessible
+* `spec`:  The Vega/Vega-Lite specification as a dictionary or JSON string
+
+**Returns:**
+The ID of the created chart preset in the format "entity/name"
+
+**Raises:**
+
+* `wandb.Error`:  If chart creation fails
+* `UnsupportedError`:  If the server doesn't support custom charts
+
+**Example:**
+
+```python  theme={null}
+   import wandb
+
+   api = wandb.Api()
+
+   # Define a simple bar chart specification
+   vega_spec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+        "mark": "bar",
+        "data": {"name": "wandb"},
+        "encoding": {
+            "x": {"field": "${field:x}", "type": "ordinal"},
+            "y": {"field": "${field:y}", "type": "quantitative"},
+        },
+   }
+
+   # Create the custom chart
+   chart_id = api.create_custom_chart(
+        entity="my-team",
+        name="my-bar-chart",
+        display_name="My Custom Bar Chart",
+        spec_type="vega2",
+        access="private",
+        spec=vega_spec,
+   )
+
+   # Use with wandb.plot_table()
+   chart = wandb.plot_table(
+        vega_spec_name=chart_id,
+        data_table=my_table,
+        fields={"x": "category", "y": "value"},
+   )
+```
+
+***
+
+### <kbd>method</kbd> `Api.create_project`
+
+```python  theme={null}
+create_project(name: 'str', entity: 'str') → None
+```
+
+Create a new project.
+
+**Args:**
+
+* `name`:  The name of the new project.
+* `entity`:  The entity of the new project.
+
+***
+
+### <kbd>method</kbd> `Api.create_registry`
+
+```python  theme={null}
+create_registry(
+    name: 'str',
+    visibility: "Literal['organization', 'restricted']",
+    organization: 'str | None' = None,
+    description: 'str | None' = None,
+    artifact_types: 'list[str] | None' = None
+) → Registry
+```
+
+Create a new registry.
+
+**Args:**
+
+* `name`:  The name of the registry. Name must be unique within the organization.
+* `visibility`:  The visibility of the registry.
+* `organization`:  Anyone in the organization can view this registry. You can  edit their roles later from the settings in the UI.
+* `restricted`:  Only invited members via the UI can access this registry.  Public sharing is disabled.
+* `organization`:  The organization of the registry.  If no organization is set in the settings, the organization will be  fetched from the entity if the entity only belongs to one organization.
+* `description`:  The description of the registry.
+* `artifact_types`:  The accepted artifact types of the registry. A type is no
+* `more than 128 characters and do not include characters `/`or ``:`. If not specified, all types are accepted. Allowed types added to the registry cannot be removed later.
+
+**Returns:**
+A registry object.
+
+**Examples:**
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+registry = api.create_registry(
+   name="my-registry",
+   visibility="restricted",
+   organization="my-org",
+   description="This is a test registry",
+   artifact_types=["model"],
+)
+```
+
+***
+
+### <kbd>method</kbd> `Api.create_run`
+
+```python  theme={null}
+create_run(
+    run_id: 'str | None' = None,
+    project: 'str | None' = None,
+    entity: 'str | None' = None
+) → public.Run
+```
+
+Create a new run.
+
+**Args:**
+
+* `run_id`:  The ID to assign to the run. If not specified, W\&B  creates a random ID.
+* `project`:  The project where to log the run to. If no project is specified,  log the run to a project called "Uncategorized".
+* `entity`:  The entity that owns the project. If no entity is  specified, log the run to the default entity.
+
+**Returns:**
+The newly created `Run`.
+
+***
+
+### <kbd>method</kbd> `Api.create_run_queue`
+
+```python  theme={null}
+create_run_queue(
+    name: 'str',
+    type: 'public.RunQueueResourceType',
+    entity: 'str | None' = None,
+    prioritization_mode: 'public.RunQueuePrioritizationMode | None' = None,
+    config: 'dict | None' = None,
+    template_variables: 'dict | None' = None
+) → public.RunQueue
+```
+
+Create a new run queue in W\&B Launch.
+
+**Args:**
+
+* `name`:  Name of the queue to create
+* `type`:  Type of resource to be used for the queue. One of  "local-container", "local-process", "kubernetes","sagemaker",  or "gcp-vertex".
+* `entity`:  Name of the entity to create the queue. If `None`, use  the configured or default entity.
+* `prioritization_mode`:  Version of prioritization to use.  Either "V0" or `None`.
+* `config`:  Default resource configuration to be used for the queue.  Use handlebars (eg. `{{var}}`) to specify template variables.
+* `template_variables`:  A dictionary of template variable schemas to  use with the config.
+
+**Returns:**
+The newly created `RunQueue`.
+
+**Raises:**
+`ValueError` if any of the parameters are invalid `wandb.Error` on wandb API errors
+
+***
+
+### <kbd>method</kbd> `Api.create_team`
+
+```python  theme={null}
+create_team(team: 'str', admin_username: 'str | None' = None) → Team
+```
+
+Create a new team.
+
+**Args:**
+
+* `team`:  The name of the team
+* `admin_username`:  Username of the admin user of the team.  Defaults to the current user.
+
+**Returns:**
+A `Team` object.
+
+***
+
+### <kbd>method</kbd> `Api.create_user`
+
+```python  theme={null}
+create_user(email: 'str', admin: 'bool | None' = False) → User
+```
+
+Create a new user.
+
+**Args:**
+
+* `email`:  The email address of the user.
+* `admin`:  Set user as a global instance administrator.
+
+**Returns:**
+A `User` object.
+
+***
+
+### <kbd>method</kbd> `Api.delete_automation`
+
+```python  theme={null}
+delete_automation(obj: 'Automation | str') → Literal[True]
+```
+
+Delete an automation.
+
+**Args:**
+
+* `obj`:  The automation to delete, or its ID.
+
+**Returns:**
+True if the automation was deleted successfully.
+
+***
+
+### <kbd>method</kbd> `Api.flush`
+
+```python  theme={null}
+flush()
+```
+
+Flush the local cache.
+
+The api object keeps a local cache of runs, so if the state of the run may change while executing your script you must clear the local cache with `api.flush()` to get the latest values associated with the run.
+
+***
+
+### <kbd>method</kbd> `Api.from_path`
+
+```python  theme={null}
+from_path(path: 'str')
+```
+
+Return a run, sweep, project or report from a path.
+
+**Args:**
+
+* `path`:  The path to the project, run, sweep or report
+
+**Returns:**
+A `Project`, `Run`, `Sweep`, or `BetaReport` instance.
+
+**Raises:**
+`wandb.Error` if path is invalid or the object doesn't exist.
+
+**Examples:**
+In the proceeding code snippets "project", "team", "run\_id", "sweep\_id", and "report\_name" are placeholders for the project, team, run ID, sweep ID, and the name of a specific report, respectively.
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+
+project = api.from_path("project")
+team_project = api.from_path("team/project")
+run = api.from_path("team/project/runs/run_id")
+sweep = api.from_path("team/project/sweeps/sweep_id")
+report = api.from_path("team/project/reports/report_name")
+```
+
+***
+
+### <kbd>method</kbd> `Api.integrations`
+
+```python  theme={null}
+integrations(
+    entity: 'str | None' = None,
+    per_page: 'int' = 50
+) → Iterator[Integration]
+```
+
+Return an iterator of all integrations for an entity.
+
+**Args:**
+
+* `entity`:  The entity (e.g. team name) for which to  fetch integrations.  If not provided, the user's default entity  will be used.
+* `per_page`:  Number of integrations to fetch per page.  Defaults to 50.  Usually there is no reason to change this.
+
+**Yields:**
+
+* `Iterator[SlackIntegration | WebhookIntegration]`:  An iterator of any supported integrations.
+
+***
+
+### <kbd>method</kbd> `Api.job`
+
+```python  theme={null}
+job(name: 'str | None', path: 'str | None' = None) → public.Job
+```
+
+Return a `Job` object.
+
+**Args:**
+
+* `name`:  The name of the job.
+* `path`:  The root path to download the job artifact.
+
+**Returns:**
+A `Job` object.
+
+***
+
+### <kbd>method</kbd> `Api.list_jobs`
+
+```python  theme={null}
+list_jobs(entity: 'str', project: 'str') → list[dict[str, Any]]
+```
+
+Return a list of jobs, if any, for the given entity and project.
+
+**Args:**
+
+* `entity`:  The entity for the listed jobs.
+* `project`:  The project for the listed jobs.
+
+**Returns:**
+A list of matching jobs.
+
+***
+
+### <kbd>method</kbd> `Api.project`
+
+```python  theme={null}
+project(name: 'str', entity: 'str | None' = None) → public.Project
+```
+
+Return the `Project` with the given name (and entity, if given).
+
+**Args:**
+
+* `name`:  The project name.
+* `entity`:  Name of the entity requested.  If None, will fall back to the  default entity passed to `Api`.  If no default entity, will  raise a `ValueError`.
+
+**Returns:**
+A `Project` object.
+
+***
+
+### <kbd>method</kbd> `Api.projects`
+
+```python  theme={null}
+projects(entity: 'str | None' = None, per_page: 'int' = 200) → public.Projects
+```
+
+Get projects for a given entity.
+
+**Args:**
+
+* `entity`:  Name of the entity requested.  If None, will fall back to  the default entity passed to `Api`.  If no default entity,  will raise a `ValueError`.
+* `per_page`:  Sets the page size for query pagination.  Usually there is no reason to change this.
+
+**Returns:**
+A `Projects` object which is an iterable collection of `Project`objects.
+
+***
+
+### <kbd>method</kbd> `Api.queued_run`
+
+```python  theme={null}
+queued_run(
+    entity: 'str',
+    project: 'str',
+    queue_name: 'str',
+    run_queue_item_id: 'str',
+    project_queue=None,
+    priority=None
+)
+```
+
+Return a single queued run based on the path.
+
+Parses paths of the form `entity/project/queue_id/run_queue_item_id`.
+
+***
+
+### <kbd>method</kbd> `Api.registries`
+
+```python  theme={null}
+registries(
+    organization: 'str | None' = None,
+    filter: 'dict[str, Any] | None' = None,
+    per_page: 'int' = 100
+) → Registries
+```
+
+Returns a lazy iterator of `Registry` objects.
+
+Use the iterator to search and filter registries, collections, or artifact versions across your organization's registry.
+
+**Args:**
+
+* `organization`:  (str, optional) The organization of the registry to fetch.  If not specified, use the organization specified in the user's settings.
+* `filter`:  (dict, optional) MongoDB-style filter to apply to each object in the lazy registry iterator.  Fields available to filter for registries are  `name`, `description`, `created_at`, `updated_at`.  Fields available to filter for collections are  `name`, `tag`, `description`, `created_at`, `updated_at`  Fields available to filter for versions are  `tag`, `alias`, `created_at`, `updated_at`, `metadata`
+* `per_page`:  Sets the page size for query pagination.
+
+**Returns:**
+A lazy iterator of `Registry` objects.
+
+**Examples:**
+Find all registries with the names that contain "model"
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()  # specify an org if your entity belongs to multiple orgs
+api.registries(filter={"name": {"$regex": "model"}})
+```
+
+Find all collections in the registries with the name "my\_collection" and the tag "my\_tag"
+
+```python  theme={null}
+api.registries().collections(filter={"name": "my_collection", "tag": "my_tag"})
+```
+
+Find all artifact versions in the registries with a collection name that contains "my\_collection" and a version that has the alias "best"
+
+```python  theme={null}
+api.registries().collections(
+    filter={"name": {"$regex": "my_collection"}}
+).versions(filter={"alias": "best"})
+```
+
+Find all artifact versions in the registries that contain "model" and have the tag "prod" or alias "best"
+
+```python  theme={null}
+api.registries(filter={"name": {"$regex": "model"}}).versions(
+    filter={"$or": [{"tag": "prod"}, {"alias": "best"}]}
+)
+```
+
+***
+
+### <kbd>method</kbd> `Api.registry`
+
+```python  theme={null}
+registry(name: 'str', organization: 'str | None' = None) → Registry
+```
+
+Return a registry given a registry name.
+
+**Args:**
+
+* `name`:  The name of the registry. This is without the `wandb-registry-`  prefix.
+* `organization`:  The organization of the registry.  If no organization is set in the settings, the organization will be  fetched from the entity if the entity only belongs to one  organization.
+
+**Returns:**
+A registry object.
+
+**Examples:**
+Fetch and update a registry
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+registry = api.registry(name="my-registry", organization="my-org")
+registry.description = "This is an updated description"
+registry.save()
+```
+
+***
+
+### <kbd>method</kbd> `Api.reports`
+
+```python  theme={null}
+reports(
+    path: 'str' = '',
+    name: 'str | None' = None,
+    per_page: 'int' = 50
+) → public.Reports
+```
+
+Get reports for a given project path.
+
+Note: `wandb.Api.reports()` API is in beta and will likely change in future releases.
+
+**Args:**
+
+* `path`:  The path to the project the report resides in. Specify the  entity that created the project as a prefix followed by a  forward slash.
+* `name`:  Name of the report requested.
+* `per_page`:  Sets the page size for query pagination.  Usually there is no reason to change this.
+
+**Returns:**
+A `Reports` object which is an iterable collection of  `BetaReport` objects.
+
+**Examples:**
+
+```python  theme={null}
+import wandb
+
+wandb.Api.reports("entity/project")
+```
+
+***
+
+### <kbd>method</kbd> `Api.run`
+
+```python  theme={null}
+run(path='')
+```
+
+Return a single run by parsing path in the form `entity/project/run_id`.
+
+**Args:**
+
+* `path`:  Path to run in the form `entity/project/run_id`.  If `api.entity` is set, this can be in the form `project/run_id`  and if `api.project` is set this can just be the run\_id.
+
+**Returns:**
+A `Run` object.
+
+***
+
+### <kbd>method</kbd> `Api.run_queue`
+
+```python  theme={null}
+run_queue(entity: 'str', name: 'str')
+```
+
+Return the named `RunQueue` for entity.
+
+See `Api.create_run_queue` for more information on how to create a run queue.
+
+***
+
+### <kbd>method</kbd> `Api.runs`
+
+```python  theme={null}
+runs(
+    path: 'str | None' = None,
+    filters: 'dict[str, Any] | None' = None,
+    order: 'str' = '+created_at',
+    per_page: 'int' = 50,
+    include_sweeps: 'bool' = True,
+    lazy: 'bool' = True
+)
+```
+
+Returns a `Runs` object, which lazily iterates over `Run` objects.
+
+Fields you can filter by include:
+
+* `createdAt`: The timestamp when the run was created. (in ISO 8601 format, e.g. "2023-01-01T12:00:00Z")
+* `displayName`: The human-readable display name of the run. (e.g. "eager-fox-1")
+* `duration`: The total runtime of the run in seconds.
+* `group`: The group name used to organize related runs together.
+* `host`: The hostname where the run was executed.
+* `jobType`: The type of job or purpose of the run.
+* `name`: The unique identifier of the run. (e.g. "a1b2cdef")
+* `state`: The current state of the run.
+* `tags`: The tags associated with the run.
+* `username`: The username of the user who initiated the run
+
+Additionally, you can filter by items in the run config or summary metrics. Such as `config.experiment_name`, `summary_metrics.loss`, etc.
+
+For more complex filtering, you can use MongoDB query operators. For details, see: [https://docs.mongodb.com/manual/reference/operator/query](https://docs.mongodb.com/manual/reference/operator/query) The following operations are supported:
+
+* `$and`
+* `$or`
+* `$nor`
+* `$eq`
+* `$ne`
+* `$gt`
+* `$gte`
+* `$lt`
+* `$lte`
+* `$in`
+* `$nin`
+* `$exists`
+* `$regex`
+
+**Args:**
+
+* `path`:  (str) path to project, should be in the form: "entity/project"
+* `filters`:  (dict) queries for specific runs using the MongoDB query language.  You can filter by run properties such as config.key, summary\_metrics.key, state, entity, createdAt, etc.
+* `For example`:  `{"config.experiment_name": "foo"}` would find runs with a config entry  of experiment name set to "foo"
+* `order`:  (str) Order can be `created_at`, `heartbeat_at`, `config.*.value`, or `summary_metrics.*`.  If you prepend order with a + order is ascending (default).  If you prepend order with a - order is descending.  The default order is run.created\_at from oldest to newest.
+* `per_page`:  (int) Sets the page size for query pagination.
+* `include_sweeps`:  (bool) Whether to include the sweep runs in the results.
+* `lazy`:  (bool) Whether to use lazy loading for faster performance.  When True (default), only essential run metadata is loaded initially.  Heavy fields like config, summaryMetrics, and systemMetrics are loaded  on-demand when accessed. Set to False for full data upfront.
+
+**Returns:**
+A `Runs` object, which is an iterable collection of `Run` objects.
+
+**Examples:**
+
+```python  theme={null}
+import wandb
+from wandb.apis.public import Api
+
+# Find runs in project where config.experiment_name has been set to "foo"
+Api.runs(path="my_entity/project", filters={"config.experiment_name": "foo"})
+```
+
+```python  theme={null}
+# Find runs in project where config.experiment_name has been set to "foo" or "bar"
+Api.runs(
+    path="my_entity/project",
+    filters={
+         "$or": [
+             {"config.experiment_name": "foo"},
+             {"config.experiment_name": "bar"},
+         ]
+    },
+)
+```
+
+```python  theme={null}
+# Find runs in project where config.experiment_name matches a regex
+# (anchors are not supported)
+Api.runs(
+    path="my_entity/project",
+    filters={"config.experiment_name": {"$regex": "b.*"}},
+)
+```
+
+```python  theme={null}
+# Find runs in project where the run name matches a regex
+# (anchors are not supported)
+Api.runs(
+    path="my_entity/project", filters={"display_name": {"$regex": "^foo.*"}}
+)
+```
+
+```python  theme={null}
+# Find runs in project sorted by ascending loss
+Api.runs(path="my_entity/project", order="+summary_metrics.loss")
+```
+
+***
+
+### <kbd>method</kbd> `Api.slack_integrations`
+
+```python  theme={null}
+slack_integrations(
+    entity: 'str | None' = None,
+    per_page: 'int' = 50
+) → Iterator[SlackIntegration]
+```
+
+Returns an iterator of Slack integrations for an entity.
+
+**Args:**
+
+* `entity`:  The entity (e.g. team name) for which to  fetch integrations.  If not provided, the user's default entity  will be used.
+* `per_page`:  Number of integrations to fetch per page.  Defaults to 50.  Usually there is no reason to change this.
+
+**Yields:**
+
+* `Iterator[SlackIntegration]`:  An iterator of Slack integrations.
+
+**Examples:**
+Get all registered Slack integrations for the team "my-team":
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+slack_integrations = api.slack_integrations(entity="my-team")
+```
+
+Find only Slack integrations that post to channel names starting with "team-alerts-":
+
+```python  theme={null}
+slack_integrations = api.slack_integrations(entity="my-team")
+team_alert_integrations = [
+    ig
+    for ig in slack_integrations
+    if ig.channel_name.startswith("team-alerts-")
+]
+```
+
+***
+
+### <kbd>method</kbd> `Api.sweep`
+
+```python  theme={null}
+sweep(path='')
+```
+
+Return a sweep by parsing path in the form `entity/project/sweep_id`.
+
+**Args:**
+
+* `path`:  Path to sweep in the form entity/project/sweep\_id.  If `api.entity` is set, this can be in the form  project/sweep\_id and if `api.project` is set  this can just be the sweep\_id.
+
+**Returns:**
+A `Sweep` object.
+
+***
+
+### <kbd>method</kbd> `Api.sync_tensorboard`
+
+```python  theme={null}
+sync_tensorboard(root_dir, run_id=None, project=None, entity=None)
+```
+
+Sync a local directory containing tfevent files to wandb.
+
+***
+
+### <kbd>method</kbd> `Api.team`
+
+```python  theme={null}
+team(team: 'str') → Team
+```
+
+Return the matching `Team` with the given name.
+
+**Args:**
+
+* `team`:  The name of the team.
+
+**Returns:**
+A `Team` object.
+
+***
+
+### <kbd>method</kbd> `Api.update_automation`
+
+```python  theme={null}
+update_automation(
+    obj: 'Automation',
+    create_missing: 'bool' = False,
+    **kwargs: 'Unpack[WriteAutomationsKwargs]'
+) → Automation
+```
+
+Update an existing automation.
+
+**Args:**
+
+* `obj`:  The automation to update.  Must be an existing automation. create\_missing (bool):  If True, and the automation does not exist, create it. \*\*kwargs:  Any additional values to assign to the automation before  updating it.  If given, these will override any values that may  already be set on the automation:
+  * `name`: The name of the automation.
+  * `description`: The description of the automation.
+  * `enabled`: Whether the automation is enabled.
+  * `scope`: The scope of the automation.
+  * `event`: The event that triggers the automation.
+  * `action`: The action that is triggered by the automation.
+
+**Returns:**
+The updated automation.
+
+**Examples:**
+Disable and edit the description of an existing automation ("my-automation"):
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+
+automation = api.automation(name="my-automation")
+automation.enabled = False
+automation.description = "Kept for reference, but no longer used."
+
+updated_automation = api.update_automation(automation)
+```
+
+OR
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+
+automation = api.automation(name="my-automation")
+
+updated_automation = api.update_automation(
+    automation,
+    enabled=False,
+    description="Kept for reference, but no longer used.",
+)
+```
+
+***
+
+### <kbd>method</kbd> `Api.upsert_run_queue`
+
+```python  theme={null}
+upsert_run_queue(
+    name: 'str',
+    resource_config: 'dict',
+    resource_type: 'public.RunQueueResourceType',
+    entity: 'str | None' = None,
+    template_variables: 'dict | None' = None,
+    external_links: 'dict | None' = None,
+    prioritization_mode: 'public.RunQueuePrioritizationMode | None' = None
+)
+```
+
+Upsert a run queue in W\&B Launch.
+
+**Args:**
+
+* `name`:  Name of the queue to create
+* `entity`:  Optional name of the entity to create the queue. If `None`,  use the configured or default entity.
+* `resource_config`:  Optional default resource configuration to be used  for the queue. Use handlebars (eg. `{{var}}`) to specify  template variables.
+* `resource_type`:  Type of resource to be used for the queue. One of  "local-container", "local-process", "kubernetes", "sagemaker",  or "gcp-vertex".
+* `template_variables`:  A dictionary of template variable schemas to  be used with the config.
+* `external_links`:  Optional dictionary of external links to be used  with the queue.
+* `prioritization_mode`:  Optional version of prioritization to use.  Either "V0" or None
+
+**Returns:**
+The upserted `RunQueue`.
+
+**Raises:**
+ValueError if any of the parameters are invalid wandb.Error on wandb API errors
+
+***
+
+### <kbd>method</kbd> `Api.user`
+
+```python  theme={null}
+user(username_or_email: 'str') → User | None
+```
+
+Return a user from a username or email address.
+
+This function only works for local administrators. Use `api.viewer`  to get your own user object.
+
+**Args:**
+
+* `username_or_email`:  The username or email address of the user.
+
+**Returns:**
+A `User` object or None if a user is not found.
+
+***
+
+### <kbd>method</kbd> `Api.users`
+
+```python  theme={null}
+users(username_or_email: 'str') → list[User]
+```
+
+Return all users from a partial username or email address query.
+
+This function only works for local administrators. Use `api.viewer`  to get your own user object.
+
+**Args:**
+
+* `username_or_email`:  The prefix or suffix of the user you want to find.
+
+**Returns:**
+An array of `User` objects.
+
+***
+
+### <kbd>method</kbd> `Api.webhook_integrations`
+
+```python  theme={null}
+webhook_integrations(
+    entity: 'str | None' = None,
+    per_page: 'int' = 50
+) → Iterator[WebhookIntegration]
+```
+
+Returns an iterator of webhook integrations for an entity.
+
+**Args:**
+
+* `entity`:  The entity (e.g. team name) for which to  fetch integrations.  If not provided, the user's default entity  will be used.
+* `per_page`:  Number of integrations to fetch per page.  Defaults to 50.  Usually there is no reason to change this.
+
+**Yields:**
+
+* `Iterator[WebhookIntegration]`:  An iterator of webhook integrations.
+
+**Examples:**
+Get all registered webhook integrations for the team "my-team":
+
+```python  theme={null}
+import wandb
+
+api = wandb.Api()
+webhook_integrations = api.webhook_integrations(entity="my-team")
+```
+
+Find only webhook integrations that post requests to "[https://my-fake-url.com](https://my-fake-url.com)":
+
+```python  theme={null}
+webhook_integrations = api.webhook_integrations(entity="my-team")
+my_webhooks = [
+    ig
+    for ig in webhook_integrations
+    if ig.url_endpoint.startswith("https://my-fake-url.com")
+]
+```

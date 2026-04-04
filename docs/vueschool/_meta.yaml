@@ -1,0 +1,9 @@
+name: vueschool
+primary_source: llms
+sources:
+  - type: llms
+    url: https://vueschool.io/
+    last_fetched: "2026-04-03T23:11:21Z"
+description: >
+  vueschool documentation
+quality_score: 0

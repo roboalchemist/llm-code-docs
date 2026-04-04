@@ -1,0 +1,9 @@
+name: vale
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.vale.sh/
+    last_fetched: "2026-04-03T23:11:18Z"
+description: >
+  vale documentation
+quality_score: 0

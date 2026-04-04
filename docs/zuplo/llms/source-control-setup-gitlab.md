@@ -1,0 +1,11 @@
+# Source: https://www.zuplo.com/docs/articles/source-control-setup-gitlab.md
+
+# GitLab Setup
+
+GitLab integration is available on
+[enterprise plans](https://zuplo.com/pricing). Contact
+[support@zuplo.com](mailto:support@zuplo.com) to enable GitLab for your account.
+
+GitLab provides source control integration (push/pull between portal and
+repository) but does not include automatic deployments. Use
+[GitLab CI/CD pipelines](./custom-ci-cd-gitlab.mdx) to deploy your API.

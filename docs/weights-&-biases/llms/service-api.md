@@ -1,0 +1,91 @@
+# Source: https://docs.wandb.ai/weave/reference/service-api.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Service API overview
+
+> Use the Weave Service API, which provides REST endpoints for programmatic access to Weave functionality.
+
+## Base URL
+
+```
+https://trace.wandb.ai
+```
+
+## Authentication
+
+Include your W\&B API key in the request headers:
+
+```bash  theme={null}
+curl -H "Authorization: Bearer YOUR_API_KEY" https://trace.wandb.ai/...
+```
+
+## Available Endpoints
+
+### Calls
+
+* **[POST /call/end](https://docs.wandb.ai/weave/reference/service-api/calls/call-end)** - Call End
+* **[POST /call/read](https://docs.wandb.ai/weave/reference/service-api/calls/call-read)** - Call Read
+* **[POST /call/start](https://docs.wandb.ai/weave/reference/service-api/calls/call-start)** - Call Start
+* **[POST /call/update](https://docs.wandb.ai/weave/reference/service-api/calls/call-update)** - Call Update
+* **[POST /call/upsert\_batch](https://docs.wandb.ai/weave/reference/service-api/calls/call-start-batch)** - Call Start Batch
+* **[POST /calls/delete](https://docs.wandb.ai/weave/reference/service-api/calls/calls-delete)** - Calls Delete
+* **[POST /calls/query\_stats](https://docs.wandb.ai/weave/reference/service-api/calls/calls-query-stats)** - Calls Query Stats
+* **[POST /calls/stream\_query](https://docs.wandb.ai/weave/reference/service-api/calls/calls-query-stream)** - Calls Query Stream
+
+### Costs
+
+* **[POST /cost/create](https://docs.wandb.ai/weave/reference/service-api/costs/cost-create)** - Cost Create
+* **[POST /cost/purge](https://docs.wandb.ai/weave/reference/service-api/costs/cost-purge)** - Cost Purge
+* **[POST /cost/query](https://docs.wandb.ai/weave/reference/service-api/costs/cost-query)** - Cost Query
+
+### Feedback
+
+* **[POST /feedback/create](https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-create)** - Feedback Create
+* **[POST /feedback/purge](https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-purge)** - Feedback Purge
+* **[POST /feedback/query](https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-query)** - Feedback Query
+* **[POST /feedback/replace](https://docs.wandb.ai/weave/reference/service-api/feedback/feedback-replace)** - Feedback Replace
+
+### Files
+
+* **[POST /file/content](https://docs.wandb.ai/weave/reference/service-api/files/file-content)** - File Content
+* **[POST /file/create](https://docs.wandb.ai/weave/reference/service-api/files/file-create)** - File Create
+
+### Objects
+
+* **[POST /obj/create](https://docs.wandb.ai/weave/reference/service-api/objects/obj-create)** - Obj Create
+* **[POST /obj/delete](https://docs.wandb.ai/weave/reference/service-api/objects/obj-delete)** - Obj Delete
+* **[POST /obj/read](https://docs.wandb.ai/weave/reference/service-api/objects/obj-read)** - Obj Read
+* **[POST /objs/query](https://docs.wandb.ai/weave/reference/service-api/objects/objs-query)** - Objs Query
+
+### OpenTelemetry
+
+* **[POST /otel/v1/trace](https://docs.wandb.ai/weave/reference/service-api/opentelemetry/export-trace)** - Export Trace
+
+### Refs
+
+* **[POST /refs/read\_batch](https://docs.wandb.ai/weave/reference/service-api/refs/refs-read-batch)** - Refs Read Batch
+
+### Service
+
+* **[GET /health](https://docs.wandb.ai/weave/reference/service-api/service/read-root)** - Read Root
+* **[GET /server\_info](https://docs.wandb.ai/weave/reference/service-api/service/server-info)** - Server Info
+
+### Tables
+
+* **[POST /table/create](https://docs.wandb.ai/weave/reference/service-api/tables/table-create)** - Table Create
+* **[POST /table/query](https://docs.wandb.ai/weave/reference/service-api/tables/table-query)** - Table Query
+* **[POST /table/query\_stats](https://docs.wandb.ai/weave/reference/service-api/tables/table-query-stats)** - Table Query Stats
+* **[POST /table/update](https://docs.wandb.ai/weave/reference/service-api/tables/table-update)** - Table Update
+* **[POST /table/query\_stream](https://docs.wandb.ai/weave/reference/service-api/table-query-stream)** - Table Query Stream
+
+### Threads
+
+* **[POST /threads/stream\_query](https://docs.wandb.ai/weave/reference/service-api/threads/threads-query-stream)** - Threads Query Stream
+
+### Completions
+
+* **[POST /completions/create](https://docs.wandb.ai/weave/reference/service-api/completions/completions-create)** - Completions Create
+* **[POST /completions/create\_stream](https://docs.wandb.ai/weave/reference/service-api/completions/completions-create-stream)** - Completions Create Stream

@@ -1,0 +1,125 @@
+# Source: https://docs.wandb.ai/models/runs/resuming.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+> Resume paused, stopped, or crashed W&B runs using the resume parameter options in wandb.init().
+
+# Resume a run
+
+Specify how W\&B should respond if a run stops or crashes by setting the `resume` parameter in `wandb.init()`. When you initialize a run, W\&B checks whether the run ID already exists and applies the behavior defined by the `resume` value.
+
+The following table outlines the behavior of W\&B based on the argument passed to the `resume` parameter and whether the run ID exists or not.
+
+| Argument  | Description                                                                                                                    | Run ID exists                                                  | Run ID does not exist                             | Use case                                         |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
+| `"must"`  | W\&B must resume run specified by the run ID.                                                                                  | W\&B resumes run with the same run ID. Resumes from last step. | W\&B raises an error.                             | Resume a run that must use the same run ID.      |
+| `"allow"` | Allow W\&B to resume run if run ID exists.                                                                                     | W\&B resumes run with the same run ID. Resumes from last step. | W\&B initializes a new run with specified run ID. | Resume a run without overriding an existing run. |
+| `"never"` | Never allow W\&B to resume a run specified by the run ID.                                                                      | Raise an error if a run with the specified ID already exists.  | W\&B initializes a new run with specified run ID. |                                                  |
+| `"auto"`  | Allow W\&B to automatically try to resume run if run ID exists. Restart the run from the same directory as the failed process. | W\&B resumes run with the same run ID.                         | W\&B initializes a new run with specified run ID. | Enable runs to automatically resume.             |
+
+<Note>
+  **When to use `auto` vs `allow`**
+
+  W\&B recommends that you use `resume="allow"` and specify the specific run ID you want to resume.
+
+  The `resume="auto"` option does not require you to specify a run ID but it can lead to unexpected behavior if you have multiple runs that fail in the same directory or if the file directory structure changes. You must also ensure that you restart the run from the same directory as the failed process when you use `resume="auto"`.
+</Note>
+
+For all the examples below, replace values enclosed within `<>` with your own.
+
+## Resume a run that must use the same run ID
+
+If a run is stopped, crashes, or fails, you can resume it using the same run ID. To do so, initialize a run and specify the following:
+
+* Set the `resume` parameter to `"must"` (`resume="must"`)
+* Provide the run ID of the run that stopped or crashed
+
+The following code snippet shows how to accomplish this with the W\&B Python SDK:
+
+```python  theme={null}
+with wandb.init(entity="<entity>", project="<project>", resume="must") as run:
+        # Your training code here
+```
+
+<Warning>
+  Unexpected results will occur if multiple processes use the same `id` concurrently.
+
+  For more information on  how to manage multiple processes, see the [Log distributed training experiments](/models/track/log/distributed-training/)
+</Warning>
+
+## Resume a run without overriding the existing run
+
+Resume a run that stopped or crashed without overriding the existing run. This is especially helpful if your process doesn't exit successfully. The next time you start W\&B, W\&B will start logging from the last step.
+
+Set the `resume` parameter to `"allow"` (`resume="allow"`) when you initialize a run with W\&B. Provide the run ID of the run that stopped or crashed. The following code snippet shows how to accomplish this with the W\&B Python SDK:
+
+```python  theme={null}
+import wandb
+
+with wandb.init(entity="<entity>", project="<project>", id="<run ID>", resume="allow") as run:
+        # Your training code here
+```
+
+## Enable runs to automatically resume
+
+The following code snippet shows how to enable runs to automatically resume with the Python SDK or with environment variables.
+
+<Tabs>
+  <Tab title="W&B Python SDK">
+    Pass `auto` as an argument to the `resume` parameter when you initialize a run. Ensure that you restart the run from the same directory as the failed process.
+
+    Copy and paste the following code snippet. Replace values enclosed within `<>` with your own:
+
+    ```python  theme={null}
+    with wandb.init(entity="<entity>", project="<project>", id="<run ID>", resume="auto") as run:
+            # Your training code here
+    ```
+  </Tab>
+
+  <Tab title="Shell script">
+    The following example shows how to specify the W\&B `WANDB_RUN_ID` variable in a bash script:
+
+    ```bash title="run_experiment.sh" theme={null}
+    RUN_ID="$1"
+
+    WANDB_RESUME=auto WANDB_RUN_ID="$RUN_ID" python eval.py
+    ```
+
+    Within your terminal, you could run the shell script along with the W\&B run ID. The following code snippet passes the run ID `akj172`:
+
+    ```bash  theme={null}
+    sh run_experiment.sh akj172 
+    ```
+  </Tab>
+</Tabs>
+
+<Warning>
+  Automatic resuming only works if the process is restarted on top of the same filesystem as the failed process.
+</Warning>
+
+For example, suppose you execute a python script called `train.py` in a directory called `Users/AwesomeEmployee/Desktop/ImageClassify/training/`. Within `train.py`, the script creates a run that enables automatic resuming. Suppose next that the training script is stopped. To resume this run, you would need to restart your `train.py` script within `Users/AwesomeEmployee/Desktop/ImageClassify/training/` .
+
+<Note>
+  If you can not share a filesystem, specify the `WANDB_RUN_ID` environment variable or pass the run ID with the W\&B Python SDK. See the [Custom run IDs](./#custom-run-ids) section in the "What are runs?" page for more information on run IDs.
+</Note>
+
+## Resume preemptible Sweeps runs
+
+Automatically requeue interrupted [sweep](/models/sweeps/) runs. This is particularly useful if you run a sweep agent in a compute environment that is subject to preemption such as a SLURM job in a preemptible queue, an EC2 spot instance, or a Google Cloud preemptible VM.
+
+Use the [`mark_preempting`](/models/ref/python/experiments/run#mark_preempting) function to automatically requeue interrupted sweep runs. For example:
+
+```python  theme={null}
+with wandb.init() as run:
+    run.mark_preempting()
+```
+
+The following table outlines how W\&B handles runs based on the exit status of a sweep run.
+
+| Status         | Behavior                                                                                                                                                                                                             |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Status code 0  | Run is considered to have terminated successfully and it will not be requeued.                                                                                                                                       |
+| Nonzero status | W\&B automatically appends the run to a run queue associated with the sweep.                                                                                                                                         |
+| No status      | Run is added to the sweep run queue. Sweep agents consume runs off the run queue until the queue is empty. Once the queue is empty, the sweep queue resumes generating new runs based on the sweep search algorithm. |

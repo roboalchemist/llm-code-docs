@@ -1,0 +1,8 @@
+name: w3c-validator
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:11:22Z"
+description: >
+  w3c-validator documentation
+quality_score: 0
