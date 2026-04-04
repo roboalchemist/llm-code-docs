@@ -1,0 +1,195 @@
+# Source: https://docs.aws.amazon.com/imagebuilder/latest/APIReference/llms.txt
+
+# EC2 Image Builder API Reference
+
+> EC2 Image Builder is a fully managed AWS service that makes it easier to automate the creation, management, and deployment of customized, secure, and up-to-date "golden" server images that are pre-installed and pre-configured with software and settings to meet specific IT standards.
+
+- [Welcome](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Operations.html)
+
+- [CancelImageCreation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CancelImageCreation.html): CancelImageCreation cancels the creation of Image.
+- [CancelLifecycleExecution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CancelLifecycleExecution.html): Cancel a specific image lifecycle policy runtime instance.
+- [CreateComponent](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateComponent.html): Creates a new component that can be used to build, validate, test, and assess your image.
+- [CreateContainerRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateContainerRecipe.html): Creates a new container recipe.
+- [CreateDistributionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateDistributionConfiguration.html): Creates a new distribution configuration.
+- [CreateImage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateImage.html): Creates a new image.
+- [CreateImagePipeline](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateImagePipeline.html): Creates a new image pipeline.
+- [CreateImageRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateImageRecipe.html): Creates a new image recipe.
+- [CreateInfrastructureConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateInfrastructureConfiguration.html): Creates a new infrastructure configuration.
+- [CreateLifecyclePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateLifecyclePolicy.html): Create a lifecycle policy resource.
+- [CreateWorkflow](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CreateWorkflow.html): Create a new workflow or a new version of an existing workflow.
+- [DeleteComponent](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteComponent.html): Deletes a component build version.
+- [DeleteContainerRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteContainerRecipe.html): Deletes a container recipe.
+- [DeleteDistributionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteDistributionConfiguration.html): Deletes a distribution configuration.
+- [DeleteImage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteImage.html): Deletes an Image Builder image resource.
+- [DeleteImagePipeline](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteImagePipeline.html): Deletes an image pipeline.
+- [DeleteImageRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteImageRecipe.html): Deletes an image recipe.
+- [DeleteInfrastructureConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteInfrastructureConfiguration.html): Deletes an infrastructure configuration.
+- [DeleteLifecyclePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteLifecyclePolicy.html): Delete the specified lifecycle policy resource.
+- [DeleteWorkflow](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DeleteWorkflow.html): Deletes a specific workflow resource.
+- [DistributeImage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DistributeImage.html): DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image.
+- [GetComponent](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetComponent.html): Gets a component object.
+- [GetComponentPolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetComponentPolicy.html): Gets a component policy.
+- [GetContainerRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetContainerRecipe.html): Retrieves a container recipe.
+- [GetContainerRecipePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetContainerRecipePolicy.html): Retrieves the policy for a container recipe.
+- [GetDistributionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetDistributionConfiguration.html): Gets a distribution configuration.
+- [GetImage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetImage.html): Gets an image.
+- [GetImagePipeline](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetImagePipeline.html): Gets an image pipeline.
+- [GetImagePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetImagePolicy.html): Gets an image policy.
+- [GetImageRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetImageRecipe.html): Gets an image recipe.
+- [GetImageRecipePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetImageRecipePolicy.html): Gets an image recipe policy.
+- [GetInfrastructureConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetInfrastructureConfiguration.html): Gets an infrastructure configuration.
+- [GetLifecycleExecution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetLifecycleExecution.html): Get the runtime information that was logged for a specific runtime instance of the lifecycle policy.
+- [GetLifecyclePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetLifecyclePolicy.html): Get details for the specified image lifecycle policy.
+- [GetMarketplaceResource](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetMarketplaceResource.html): Verify the subscription and perform resource dependency checks on the requested AWS Marketplace resource.
+- [GetWorkflow](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetWorkflow.html): Get a workflow resource object.
+- [GetWorkflowExecution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetWorkflowExecution.html): Get the runtime information that was logged for a specific runtime instance of the workflow.
+- [GetWorkflowStepExecution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_GetWorkflowStepExecution.html): Get the runtime information that was logged for a specific runtime instance of the workflow step.
+- [ImportComponent](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImportComponent.html): Imports a component and transforms its data into a component document.
+- [ImportDiskImage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImportDiskImage.html): Import a Windows operating system image from a verified Microsoft ISO disk file.
+- [ImportVmImage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImportVmImage.html): When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VMâs environment, settings, and data.
+- [ListComponentBuildVersions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListComponentBuildVersions.html): Returns the list of component build versions for the specified component version Amazon Resource Name (ARN).
+- [ListComponents](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListComponents.html): Returns the list of components that can be filtered by name, or by using the listed filters to streamline results.
+- [ListContainerRecipes](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListContainerRecipes.html): Returns a list of container recipes.
+- [ListDistributionConfigurations](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListDistributionConfigurations.html): Returns a list of distribution configurations.
+- [ListImageBuildVersions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImageBuildVersions.html): Returns a list of image build versions.
+- [ListImagePackages](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImagePackages.html): List the Packages that are associated with an Image Build Version, as determined by AWS Systems Manager Inventory at build time.
+- [ListImagePipelineImages](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImagePipelineImages.html): Returns a list of images created by the specified pipeline.
+- [ListImagePipelines](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImagePipelines.html): Returns a list of image pipelines.
+- [ListImageRecipes](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImageRecipes.html): Returns a list of image recipes.
+- [ListImages](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImages.html): Returns the list of images that you have access to.
+- [ListImageScanFindingAggregations](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImageScanFindingAggregations.html): Returns a list of image scan aggregations for your account.
+- [ListImageScanFindings](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListImageScanFindings.html): Returns a list of image scan findings for your account.
+- [ListInfrastructureConfigurations](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListInfrastructureConfigurations.html): Returns a list of infrastructure configurations.
+- [ListLifecycleExecutionResources](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListLifecycleExecutionResources.html): List resources that the runtime instance of the image lifecycle identified for lifecycle actions.
+- [ListLifecycleExecutions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListLifecycleExecutions.html): Get the lifecycle runtime history for the specified resource.
+- [ListLifecyclePolicies](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListLifecyclePolicies.html): Get a list of lifecycle policies in your AWS account.
+- [ListTagsForResource](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListTagsForResource.html): Returns the list of tags for the specified resource.
+- [ListWaitingWorkflowSteps](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListWaitingWorkflowSteps.html): Get a list of workflow steps that are waiting for action for workflows in your AWS account.
+- [ListWorkflowBuildVersions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListWorkflowBuildVersions.html): Returns a list of build versions for a specific workflow resource.
+- [ListWorkflowExecutions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListWorkflowExecutions.html): Returns a list of workflow runtime instance metadata objects for a specific image build version.
+- [ListWorkflows](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListWorkflows.html): Lists workflow build versions based on filtering parameters.
+- [ListWorkflowStepExecutions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListWorkflowStepExecutions.html): Returns runtime data for each step in a runtime instance of the workflow that you specify in the request.
+- [PutComponentPolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_PutComponentPolicy.html): Applies a policy to a component.
+- [PutContainerRecipePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_PutContainerRecipePolicy.html): Applies a policy to a container image.
+- [PutImagePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_PutImagePolicy.html): Applies a policy to an image.
+- [PutImageRecipePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_PutImageRecipePolicy.html): Applies a policy to an image recipe.
+- [RetryImage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_RetryImage.html): RetryImage retries an image distribution without rebuilding the image.
+- [SendWorkflowStepAction](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_SendWorkflowStepAction.html): Pauses or resumes image creation when the associated workflow runs a WaitForAction step.
+- [StartImagePipelineExecution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_StartImagePipelineExecution.html): Manually triggers a pipeline to create an image.
+- [StartResourceStateUpdate](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_StartResourceStateUpdate.html): Begin asynchronous resource state update for lifecycle changes to the specified image resources.
+- [TagResource](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_TagResource.html): Adds a tag to a resource.
+- [UntagResource](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_UntagResource.html): Removes a tag from a resource.
+- [UpdateDistributionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_UpdateDistributionConfiguration.html): Updates a new distribution configuration.
+- [UpdateImagePipeline](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_UpdateImagePipeline.html): Updates an image pipeline.
+- [UpdateInfrastructureConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_UpdateInfrastructureConfiguration.html): Updates a new infrastructure configuration.
+- [UpdateLifecyclePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_UpdateLifecyclePolicy.html): Update the specified lifecycle policy.
+
+
+## [Data Types](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Types.html)
+
+- [AccountAggregation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_AccountAggregation.html): Contains counts of vulnerability findings from image scans that run when you create new Image Builder images, or build new versions of existing images.
+- [AdditionalInstanceConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_AdditionalInstanceConfiguration.html): In addition to your infrastructure configuration, these settings provide an extra layer of control over your build instances.
+- [Ami](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Ami.html): Details of an Amazon EC2 AMI.
+- [AmiDistributionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_AmiDistributionConfiguration.html): Define and configure the output AMIs of the pipeline.
+- [AutoDisablePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_AutoDisablePolicy.html): Defines the rules by which an image pipeline is automatically disabled when it fails.
+- [Component](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Component.html): A detailed view of a component.
+- [ComponentConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ComponentConfiguration.html): Configuration details of the component.
+- [ComponentParameter](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ComponentParameter.html): Contains a key/value pair that sets the named component parameter.
+- [ComponentParameterDetail](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ComponentParameterDetail.html): Defines a parameter that is used to provide configuration details for the component.
+- [ComponentState](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ComponentState.html): A group of fields that describe the current status of components.
+- [ComponentSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ComponentSummary.html): A high-level summary of a component.
+- [ComponentVersion](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ComponentVersion.html): The defining characteristics of a specific version of an AWSTOE component.
+- [Container](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Container.html): A container encapsulates the runtime environment for an application.
+- [ContainerDistributionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ContainerDistributionConfiguration.html): Container distribution settings for encryption, licensing, and sharing in a specific Region.
+- [ContainerRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ContainerRecipe.html): A container recipe.
+- [ContainerRecipeSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ContainerRecipeSummary.html): A summary of a container recipe
+- [CvssScore](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CvssScore.html): Amazon Inspector generates a risk score for each finding.
+- [CvssScoreAdjustment](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CvssScoreAdjustment.html): Details about an adjustment that Amazon Inspector made to the CVSS score for a finding.
+- [CvssScoreDetails](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_CvssScoreDetails.html): Details about the source of the score, and the factors that determined the adjustments to create the final score.
+- [Distribution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Distribution.html): Defines the settings for a specific Region.
+- [DistributionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DistributionConfiguration.html): A distribution configuration.
+- [DistributionConfigurationSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_DistributionConfigurationSummary.html): A high-level overview of a distribution configuration.
+- [EbsInstanceBlockDeviceSpecification](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_EbsInstanceBlockDeviceSpecification.html): Amazon EBS-specific block device mapping specifications.
+- [EcrConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_EcrConfiguration.html): Settings that Image Builder uses to configure the ECR repository and the output container images that Amazon Inspector scans.
+- [FastLaunchConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_FastLaunchConfiguration.html): Define and configure faster launching for output Windows AMIs.
+- [FastLaunchLaunchTemplateSpecification](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_FastLaunchLaunchTemplateSpecification.html): Identifies the launch template that the associated Windows AMI uses for launching an instance when faster launching is enabled.
+- [FastLaunchSnapshotConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_FastLaunchSnapshotConfiguration.html): Configuration settings for creating and managing pre-provisioned snapshots for a fast-launch enabled Windows AMI.
+- [Filter](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Filter.html): A filter name and value pair that is used to return a more specific list of results from a list operation.
+- [Image](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Image.html): An Image Builder image resource that keeps track of all of the settings used to create, configure, and distribute output for that image.
+- [ImageAggregation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageAggregation.html): Contains vulnerability counts for a specific image.
+- [ImageLoggingConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageLoggingConfiguration.html): The logging configuration that's defined for the image.
+- [ImagePackage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImagePackage.html): A software package that's installed on top of the base image to create a customized image.
+- [ImagePipeline](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImagePipeline.html): Details of an image pipeline.
+- [ImagePipelineAggregation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImagePipelineAggregation.html): Contains vulnerability counts for a specific image pipeline.
+- [ImageRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageRecipe.html): An image recipe.
+- [ImageRecipeSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageRecipeSummary.html): A summary of an image recipe.
+- [ImageScanFinding](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageScanFinding.html): Contains details about a vulnerability scan finding.
+- [ImageScanFindingAggregation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageScanFindingAggregation.html): This returns exactly one type of aggregation, based on the filter that Image Builder applies in its API action.
+- [ImageScanFindingsFilter](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageScanFindingsFilter.html): A name value pair that Image Builder applies to streamline results from the vulnerability scan findings list action.
+- [ImageScanningConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageScanningConfiguration.html): Contains settings for Image Builder image resource and container image scans.
+- [ImageScanState](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageScanState.html): Shows the vulnerability scan status for a specific image, and the reason for that status.
+- [ImageState](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageState.html): Image status and the reason for that status.
+- [ImageSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageSummary.html): An image summary.
+- [ImageTestsConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageTestsConfiguration.html): Configure image tests for your pipeline build.
+- [ImageVersion](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ImageVersion.html): The defining characteristics of a specific version of an Image Builder image.
+- [InfrastructureConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_InfrastructureConfiguration.html): Details of the infrastructure configuration.
+- [InfrastructureConfigurationSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_InfrastructureConfigurationSummary.html): The infrastructure used when building Amazon EC2 AMIs.
+- [InspectorScoreDetails](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_InspectorScoreDetails.html): Information about the factors that influenced the score that Amazon Inspector assigned for a finding.
+- [InstanceBlockDeviceMapping](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_InstanceBlockDeviceMapping.html): Defines block device mappings for the instance used to configure your image.
+- [InstanceConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_InstanceConfiguration.html): Defines a custom base AMI and block device mapping configurations of an instance used for building and testing container images.
+- [InstanceMetadataOptions](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_InstanceMetadataOptions.html): The instance metadata options that apply to the HTTP requests that pipeline builds use to launch EC2 build and test instances.
+- [LatestVersionReferences](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LatestVersionReferences.html): The resource ARNs with different wildcard variations of semantic versioning.
+- [LaunchPermissionConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LaunchPermissionConfiguration.html): Describes the configuration for a launch permission.
+- [LaunchTemplateConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LaunchTemplateConfiguration.html): Identifies an Amazon EC2 launch template to use for a specific account.
+- [LifecycleExecution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecycleExecution.html): Contains metadata from a runtime instance of a lifecycle policy.
+- [LifecycleExecutionResource](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecycleExecutionResource.html): Contains details for a resource that the runtime instance of the lifecycle policy identified for action.
+- [LifecycleExecutionResourceAction](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecycleExecutionResourceAction.html): The lifecycle policy action that was identified for the impacted resource.
+- [LifecycleExecutionResourcesImpactedSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecycleExecutionResourcesImpactedSummary.html): Contains details for an image resource that was identified for a lifecycle action.
+- [LifecycleExecutionResourceState](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecycleExecutionResourceState.html): Contains the state of an impacted resource that the runtime instance of the lifecycle policy identified for action.
+- [LifecycleExecutionSnapshotResource](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecycleExecutionSnapshotResource.html): Contains the state of an impacted snapshot resource that the runtime instance of the lifecycle policy identified for action.
+- [LifecycleExecutionState](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecycleExecutionState.html): The current state of the runtime instance of the lifecycle policy.
+- [LifecyclePolicy](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicy.html): The configuration details for a lifecycle policy resource.
+- [LifecyclePolicyDetail](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyDetail.html): The configuration details for a lifecycle policy resource.
+- [LifecyclePolicyDetailAction](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyDetailAction.html): Contains selection criteria for the lifecycle policy.
+- [LifecyclePolicyDetailActionIncludeResources](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyDetailActionIncludeResources.html): Specifies how the lifecycle policy should apply actions to selected resources.
+- [LifecyclePolicyDetailExclusionRules](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyDetailExclusionRules.html): Specifies resources that lifecycle policy actions should not apply to.
+- [LifecyclePolicyDetailExclusionRulesAmis](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyDetailExclusionRulesAmis.html): Defines criteria for AMIs that are excluded from lifecycle actions.
+- [LifecyclePolicyDetailExclusionRulesAmisLastLaunched](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyDetailExclusionRulesAmisLastLaunched.html): Defines criteria to exclude AMIs from lifecycle actions based on the last time they were used to launch an instance.
+- [LifecyclePolicyDetailFilter](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyDetailFilter.html): Defines filters that the lifecycle policy uses to determine impacted resource.
+- [LifecyclePolicyResourceSelection](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyResourceSelection.html): Resource selection criteria for the lifecycle policy.
+- [LifecyclePolicyResourceSelectionRecipe](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicyResourceSelectionRecipe.html): Specifies an Image Builder recipe that the lifecycle policy uses for resource selection.
+- [LifecyclePolicySummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_LifecyclePolicySummary.html): Contains a summary of lifecycle policy resources.
+- [Logging](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Logging.html): Logging configuration defines where Image Builder uploads your logs.
+- [OutputResources](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_OutputResources.html): The resources produced by this image.
+- [PackageVulnerabilityDetails](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_PackageVulnerabilityDetails.html): Information about package vulnerability findings.
+- [PipelineLoggingConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_PipelineLoggingConfiguration.html): The logging configuration that's defined for pipeline execution.
+- [Placement](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Placement.html): By default, EC2 instances run on shared tenancy hardware.
+- [ProductCodeListItem](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ProductCodeListItem.html): Information about a single product code.
+- [Remediation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Remediation.html): Information about how to remediate a finding.
+- [RemediationRecommendation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_RemediationRecommendation.html): Details about the recommended course of action to remediate the finding.
+- [ResourceState](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ResourceState.html): The current state of an impacted resource.
+- [ResourceStateUpdateExclusionRules](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ResourceStateUpdateExclusionRules.html): Additional rules to specify resources that should be exempt from ad-hoc lifecycle actions.
+- [ResourceStateUpdateIncludeResources](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ResourceStateUpdateIncludeResources.html): Specifies if the lifecycle policy should apply actions to selected resources.
+- [S3ExportConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_S3ExportConfiguration.html): Properties that configure export from your build instance to a compatible file format for your VM.
+- [S3Logs](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_S3Logs.html): Amazon S3 logging configuration.
+- [Schedule](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Schedule.html): A schedule configures when and how often a pipeline will automatically create a new image.
+- [SeverityCounts](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_SeverityCounts.html): Includes counts by severity level for medium severity and higher level findings, plus a total for all of the findings for the specified filter.
+- [SsmParameterConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_SsmParameterConfiguration.html): Configuration for a single Parameter in the AWS Systems Manager (SSM) Parameter Store in a given Region.
+- [SystemsManagerAgent](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_SystemsManagerAgent.html): Contains settings for the Systems Manager agent on your build instance.
+- [TargetContainerRepository](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_TargetContainerRepository.html): The container repository where the output container image is stored.
+- [VulnerabilityIdAggregation](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_VulnerabilityIdAggregation.html): Includes counts of image and pipeline resource findings by vulnerability.
+- [VulnerablePackage](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_VulnerablePackage.html): Information about a vulnerable package that Amazon Inspector identifies in a finding.
+- [Workflow](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_Workflow.html): Defines a process that Image Builder uses to build and test images during the image creation process.
+- [WorkflowConfiguration](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowConfiguration.html): Contains control settings and configurable inputs for a workflow resource.
+- [WorkflowExecutionMetadata](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowExecutionMetadata.html): Metadata that includes details and status from this runtime instance of the workflow.
+- [WorkflowParameter](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowParameter.html): Contains a key/value pair that sets the named workflow parameter.
+- [WorkflowParameterDetail](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowParameterDetail.html): Defines a parameter that's used to provide configuration details for the workflow.
+- [WorkflowState](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowState.html): A group of fields that describe the current status of workflow.
+- [WorkflowStepExecution](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowStepExecution.html): Contains runtime details for an instance of a workflow that ran for the associated image build version.
+- [WorkflowStepMetadata](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowStepMetadata.html): Runtime details and status for the workflow step.
+- [WorkflowSummary](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowSummary.html): Contains metadata about the workflow resource.
+- [WorkflowVersion](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_WorkflowVersion.html): Contains details about this version of the workflow.

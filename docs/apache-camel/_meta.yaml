@@ -1,0 +1,9 @@
+name: apache-camel
+primary_source: llms
+sources:
+  - type: llms
+    url: https://camel.apache.org/
+    last_fetched: "2026-04-03T23:08:27Z"
+description: >
+  apache-camel documentation
+quality_score: 0

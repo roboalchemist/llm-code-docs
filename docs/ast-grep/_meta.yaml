@@ -1,0 +1,9 @@
+name: ast-grep
+primary_source: llms
+sources:
+  - type: llms
+    url: https://ast-grep.github.io/
+    last_fetched: "2026-04-03T23:08:30Z"
+description: >
+  ast-grep documentation
+quality_score: 0

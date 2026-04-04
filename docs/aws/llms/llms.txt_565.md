@@ -1,0 +1,260 @@
+# Source: https://docs.aws.amazon.com/mediaconnect/latest/api/llms.txt
+
+# AWS Elemental MediaConnect API Reference
+
+> Welcome to the AWS Elemental MediaConnect API reference.
+
+- [Welcome](https://docs.aws.amazon.com/mediaconnect/latest/api/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/mediaconnect/latest/api/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/mediaconnect/latest/api/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Operations.html)
+
+- [AddBridgeOutputs](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddBridgeOutputs.html): Adds outputs to an existing bridge.
+- [AddBridgeSources](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddBridgeSources.html): Adds sources to an existing bridge.
+- [AddFlowMediaStreams](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddFlowMediaStreams.html): Adds media streams to an existing flow.
+- [AddFlowOutputs](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddFlowOutputs.html): Adds outputs to an existing flow.
+- [AddFlowSources](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddFlowSources.html): Adds sources to a flow.
+- [AddFlowVpcInterfaces](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddFlowVpcInterfaces.html): Adds VPC interfaces to a flow.
+- [BatchGetRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BatchGetRouterInput.html): Retrieves information about multiple router inputs in AWS Elemental MediaConnect.
+- [BatchGetRouterNetworkInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BatchGetRouterNetworkInterface.html): Retrieves information about multiple router network interfaces in AWS Elemental MediaConnect.
+- [BatchGetRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BatchGetRouterOutput.html): Retrieves information about multiple router outputs in AWS Elemental MediaConnect.
+- [CreateBridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_CreateBridge.html): Creates a new bridge.
+- [CreateFlow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_CreateFlow.html): Creates a new flow.
+- [CreateGateway](https://docs.aws.amazon.com/mediaconnect/latest/api/API_CreateGateway.html): Creates a new gateway.
+- [CreateRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_CreateRouterInput.html): Creates a new router input in AWS Elemental MediaConnect.
+- [CreateRouterNetworkInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_CreateRouterNetworkInterface.html): Creates a new router network interface in AWS Elemental MediaConnect.
+- [CreateRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_CreateRouterOutput.html): Creates a new router output in AWS Elemental MediaConnect.
+- [DeleteBridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DeleteBridge.html): Deletes a bridge.
+- [DeleteFlow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DeleteFlow.html): Deletes a flow.
+- [DeleteGateway](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DeleteGateway.html): Deletes a gateway.
+- [DeleteRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DeleteRouterInput.html): Deletes a router input from AWS Elemental MediaConnect.
+- [DeleteRouterNetworkInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DeleteRouterNetworkInterface.html): Deletes a router network interface from AWS Elemental MediaConnect.
+- [DeleteRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DeleteRouterOutput.html): Deletes a router output from AWS Elemental MediaConnect.
+- [DeregisterGatewayInstance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DeregisterGatewayInstance.html): Deregisters an instance.
+- [DescribeBridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeBridge.html): Displays the details of a bridge.
+- [DescribeFlow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeFlow.html): Displays the details of a flow.
+- [DescribeFlowSourceMetadata](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeFlowSourceMetadata.html): The DescribeFlowSourceMetadata API is used to view information about the flow's source transport stream and programs.
+- [DescribeFlowSourceThumbnail](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeFlowSourceThumbnail.html): Describes the thumbnail for the flow source.
+- [DescribeGateway](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeGateway.html): Displays the details of a gateway.
+- [DescribeGatewayInstance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeGatewayInstance.html): Displays the details of an instance.
+- [DescribeOffering](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeOffering.html): Displays the details of an offering.
+- [DescribeReservation](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DescribeReservation.html): Displays the details of a reservation.
+- [GetRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GetRouterInput.html): Retrieves information about a specific router input in AWS Elemental MediaConnect.
+- [GetRouterInputSourceMetadata](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GetRouterInputSourceMetadata.html): Retrieves detailed metadata information about a specific router input source, including stream details and connection state.
+- [GetRouterInputThumbnail](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GetRouterInputThumbnail.html): Retrieves the thumbnail for a router input in AWS Elemental MediaConnect.
+- [GetRouterNetworkInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GetRouterNetworkInterface.html): Retrieves information about a specific router network interface in AWS Elemental MediaConnect.
+- [GetRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GetRouterOutput.html): Retrieves information about a specific router output in AWS Elemental MediaConnect.
+- [GrantFlowEntitlements](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GrantFlowEntitlements.html): Grants entitlements to an existing flow.
+- [ListBridges](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListBridges.html): Displays a list of bridges that are associated with this account and an optionally specified Amazon Resource Name (ARN).
+- [ListEntitlements](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListEntitlements.html): Displays a list of all entitlements that have been granted to this account.
+- [ListFlows](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListFlows.html): Displays a list of flows that are associated with this account.
+- [ListGatewayInstances](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListGatewayInstances.html): Displays a list of instances associated with the AWS account.
+- [ListGateways](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListGateways.html): Displays a list of gateways that are associated with this account.
+- [ListOfferings](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListOfferings.html): Displays a list of all offerings that are available to this account in the current AWS Region.
+- [ListReservations](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListReservations.html): Displays a list of all reservations that have been purchased by this account in the current AWS Region.
+- [ListRouterInputs](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListRouterInputs.html): Retrieves a list of router inputs in AWS Elemental MediaConnect.
+- [ListRouterNetworkInterfaces](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListRouterNetworkInterfaces.html): Retrieves a list of router network interfaces in AWS Elemental MediaConnect.
+- [ListRouterOutputs](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListRouterOutputs.html): Retrieves a list of router outputs in AWS Elemental MediaConnect.
+- [ListTagsForGlobalResource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListTagsForGlobalResource.html): Lists the tags associated with a global resource in AWS Elemental MediaConnect.
+- [ListTagsForResource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListTagsForResource.html): List all tags on a MediaConnect resource in the current region.
+- [PurchaseOffering](https://docs.aws.amazon.com/mediaconnect/latest/api/API_PurchaseOffering.html): Submits a request to purchase an offering.
+- [RemoveBridgeOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RemoveBridgeOutput.html): Removes an output from a bridge.
+- [RemoveBridgeSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RemoveBridgeSource.html): Removes a source from a bridge.
+- [RemoveFlowMediaStream](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RemoveFlowMediaStream.html): Removes a media stream from a flow.
+- [RemoveFlowOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RemoveFlowOutput.html): Removes an output from an existing flow.
+- [RemoveFlowSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RemoveFlowSource.html): Removes a source from an existing flow.
+- [RemoveFlowVpcInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RemoveFlowVpcInterface.html): Removes a VPC Interface from an existing flow.
+- [RestartRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RestartRouterInput.html): Restarts a router input.
+- [RestartRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RestartRouterOutput.html): Restarts a router output.
+- [RevokeFlowEntitlement](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RevokeFlowEntitlement.html): Revokes an entitlement from a flow.
+- [StartFlow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StartFlow.html): Starts a flow.
+- [StartRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StartRouterInput.html): Starts a router input in AWS Elemental MediaConnect.
+- [StartRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StartRouterOutput.html): Starts a router output in AWS Elemental MediaConnect.
+- [StopFlow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StopFlow.html): Stops a flow.
+- [StopRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StopRouterInput.html): Stops a router input in AWS Elemental MediaConnect.
+- [StopRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StopRouterOutput.html): Stops a router output in AWS Elemental MediaConnect.
+- [TagGlobalResource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_TagGlobalResource.html): Adds tags to a global resource in AWS Elemental MediaConnect.
+- [TagResource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_TagResource.html): Associates the specified tags to a resource with the specified resourceArn in the current region.
+- [TakeRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_TakeRouterInput.html): Associates a router input with a router output in AWS Elemental MediaConnect.
+- [UntagGlobalResource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UntagGlobalResource.html): Removes tags from a global resource in AWS Elemental MediaConnect.
+- [UntagResource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UntagResource.html): Deletes specified tags from a resource in the current region.
+- [UpdateBridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateBridge.html): Updates the bridge.
+- [UpdateBridgeOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateBridgeOutput.html): Updates an existing bridge output.
+- [UpdateBridgeSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateBridgeSource.html): Updates an existing bridge source.
+- [UpdateBridgeState](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateBridgeState.html): Updates the bridge state.
+- [UpdateFlow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateFlow.html): Updates an existing flow.
+- [UpdateFlowEntitlement](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateFlowEntitlement.html): Updates an entitlement.
+- [UpdateFlowMediaStream](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateFlowMediaStream.html): Updates an existing media stream.
+- [UpdateFlowOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateFlowOutput.html): Updates an existing flow output.
+- [UpdateFlowSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateFlowSource.html): Updates the source of a flow.
+- [UpdateGatewayInstance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateGatewayInstance.html): Updates an existing gateway instance.
+- [UpdateRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateRouterInput.html): Updates the configuration of an existing router input in AWS Elemental MediaConnect.
+- [UpdateRouterNetworkInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateRouterNetworkInterface.html): Updates the configuration of an existing router network interface in AWS Elemental MediaConnect.
+- [UpdateRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateRouterOutput.html): Updates the configuration of an existing router output in AWS Elemental MediaConnect.
+
+
+## [Data Types](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Types.html)
+
+- [AddBridgeFlowSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddBridgeFlowSourceRequest.html): Add a flow source to an existing bridge.
+- [AddBridgeNetworkOutputRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddBridgeNetworkOutputRequest.html): Add a network output to an existing bridge.
+- [AddBridgeNetworkSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddBridgeNetworkSourceRequest.html): Add a network source to an existing bridge.
+- [AddBridgeOutputRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddBridgeOutputRequest.html): Add outputs to the specified bridge.
+- [AddBridgeSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddBridgeSourceRequest.html): Add an output to a bridge.
+- [AddEgressGatewayBridgeRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddEgressGatewayBridgeRequest.html): Create a bridge with the egress bridge type.
+- [AddIngressGatewayBridgeRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddIngressGatewayBridgeRequest.html): Create a bridge with the ingress bridge type.
+- [AddMaintenance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddMaintenance.html): Create a maintenance setting for a flow.
+- [AddMediaStreamRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddMediaStreamRequest.html): The media stream that you want to add to the flow.
+- [AddOutputRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AddOutputRequest.html): A request to add an output to a flow.
+- [AudioMonitoringSetting](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AudioMonitoringSetting.html): Specifies the configuration for audio stream metrics monitoring.
+- [AutomaticEncryptionKeyConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_AutomaticEncryptionKeyConfiguration.html): Configuration settings for automatic encryption key management, where MediaConnect handles key creation and rotation.
+- [BatchGetRouterInputError](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BatchGetRouterInputError.html): An error that occurred when retrieving multiple router inputs in the BatchGetRouterInput operation, including the ARN, error code, and error message.
+- [BatchGetRouterNetworkInterfaceError](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BatchGetRouterNetworkInterfaceError.html): An error that occurred when retrieving multiple router network interfaces in the BatchGetRouterNetworkInterface operation, including the ARN, error code, and error message.
+- [BatchGetRouterOutputError](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BatchGetRouterOutputError.html): An error that occurred when retrieving multiple router outputs in the BatchGetRouterOutput operation, including the ARN, error code, and error message.
+- [BlackFrames](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BlackFrames.html): Configures settings for the BlackFrames metric.
+- [Bridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Bridge.html): A Bridge is the connection between your data center's Instances and the AWS cloud.
+- [BridgeFlowOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BridgeFlowOutput.html): The output of the bridge.
+- [BridgeFlowSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BridgeFlowSource.html): The source of the bridge.
+- [BridgeNetworkOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BridgeNetworkOutput.html): The output of the bridge.
+- [BridgeNetworkSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BridgeNetworkSource.html): The source of the bridge.
+- [BridgeOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BridgeOutput.html): The output of the bridge.
+- [BridgeSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_BridgeSource.html): The bridge's source.
+- [DefaultMaintenanceConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DefaultMaintenanceConfiguration.html): Configuration settings for default maintenance scheduling.
+- [DestinationConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DestinationConfiguration.html): The transport parameters that you want to associate with an outbound media stream.
+- [DestinationConfigurationRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_DestinationConfigurationRequest.html): The definition of a media stream that you want to associate with the output.
+- [EgressGatewayBridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_EgressGatewayBridge.html): Create a bridge with the egress bridge type.
+- [EncodingConfig](https://docs.aws.amazon.com/mediaconnect/latest/api/API_EncodingConfig.html): The encoding configuration to apply to the NDIÂ® source when transcoding it to a transport stream for downstream distribution.
+- [EncodingParameters](https://docs.aws.amazon.com/mediaconnect/latest/api/API_EncodingParameters.html): A collection of parameters that determine how MediaConnect will convert the content.
+- [EncodingParametersRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_EncodingParametersRequest.html): A collection of parameters that determine how MediaConnect will convert the content.
+- [Encryption](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Encryption.html): Encryption information.
+- [Entitlement](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Entitlement.html): The settings for a flow entitlement.
+- [FailoverConfig](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FailoverConfig.html): The settings for source failover.
+- [FailoverRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FailoverRouterInputConfiguration.html): Configuration settings for a failover router input that allows switching between two input sources.
+- [FailoverRouterInputIndexedStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FailoverRouterInputIndexedStreamDetails.html): Configuration details for an indexed stream in a failover router input setup.
+- [FailoverRouterInputProtocolConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FailoverRouterInputProtocolConfiguration.html): Protocol configuration settings for failover router inputs.
+- [FailoverRouterInputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FailoverRouterInputStreamDetails.html): Configuration details for a failover router input that can automatically switch between two sources.
+- [Flow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Flow.html): The settings for a flow, including its source, outputs, and entitlements.
+- [FlowTransitEncryption](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FlowTransitEncryption.html): The configuration that defines how content is encrypted during transit between the MediaConnect router and a MediaConnect flow.
+- [FlowTransitEncryptionKeyConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FlowTransitEncryptionKeyConfiguration.html): Configuration settings for flow transit encryption keys.
+- [Fmtp](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Fmtp.html): A set of parameters that define the media stream.
+- [FmtpRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FmtpRequest.html): The settings that you want to use to define the media stream.
+- [FrameResolution](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FrameResolution.html): The frame resolution used by the video stream.
+- [FrozenFrames](https://docs.aws.amazon.com/mediaconnect/latest/api/API_FrozenFrames.html): Configures settings for the FrozenFrames metric.
+- [Gateway](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Gateway.html): The settings for a gateway, including its networks.
+- [GatewayBridgeSource](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GatewayBridgeSource.html): The source configuration for cloud flows receiving a stream from a bridge.
+- [GatewayInstance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GatewayInstance.html): The settings for an instance in a gateway.
+- [GatewayNetwork](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GatewayNetwork.html): The network settings for a gateway.
+- [GrantEntitlementRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_GrantEntitlementRequest.html): The entitlements that you want to grant on a flow.
+- [IngressGatewayBridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_IngressGatewayBridge.html): Create a bridge with the ingress bridge type.
+- [InputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_InputConfiguration.html): The transport parameters that are associated with an incoming media stream.
+- [InputConfigurationRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_InputConfigurationRequest.html): The transport parameters that you want to associate with an incoming media stream.
+- [Interface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Interface.html): The VPC interface that is used for the media stream associated with the source or output.
+- [InterfaceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_InterfaceRequest.html): The VPC interface that you want to designate where the media stream is coming from or going to.
+- [ListedBridge](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedBridge.html): Displays details of the selected bridge.
+- [ListedEntitlement](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedEntitlement.html): An entitlement that has been granted to you from other AWS accounts.
+- [ListedFlow](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedFlow.html): A summary of a flow, including its ARN, Availability Zone, and source type.
+- [ListedGateway](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedGateway.html): A summary of a gateway, including its name, ARN, and status.
+- [ListedGatewayInstance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedGatewayInstance.html): A summary of an instance.
+- [ListedRouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedRouterInput.html): A summary of a router input, including its name, type, ARN, ID, state, and other key details.
+- [ListedRouterNetworkInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedRouterNetworkInterface.html): A summary of a router network interface, including its name, type, ARN, ID, associated input/output counts, state, and other key details.
+- [ListedRouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ListedRouterOutput.html): A summary of a router output, including its name, type, ARN, ID, state, routed state, and other key details.
+- [Maintenance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Maintenance.html): The maintenance setting of a flow.
+- [MaintenanceConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MaintenanceConfiguration.html): The configuration settings for maintenance operations, including preferred maintenance windows and schedules.
+- [MaintenanceSchedule](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MaintenanceSchedule.html): The details of the maintenance schedule.
+- [MediaConnectFlowRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaConnectFlowRouterInputConfiguration.html): Configuration settings for connecting a router input to a flow output.
+- [MediaConnectFlowRouterInputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaConnectFlowRouterInputStreamDetails.html): Configuration details for a MediaConnect flow when used as a router input source.
+- [MediaConnectFlowRouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaConnectFlowRouterOutputConfiguration.html): Configuration settings for connecting a router output to a MediaConnect flow source.
+- [MediaConnectFlowRouterOutputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaConnectFlowRouterOutputStreamDetails.html): Configuration details for a MediaConnect flow when used as a router output destination.
+- [MediaLiveInputRouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaLiveInputRouterOutputConfiguration.html): Configuration settings for connecting a router output to a MediaLive input.
+- [MediaLiveInputRouterOutputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaLiveInputRouterOutputStreamDetails.html): Configuration details for a MediaLive input when used as a router output destination.
+- [MediaLiveTransitEncryption](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaLiveTransitEncryption.html): The encryption configuration that defines how content is encrypted during transit between MediaConnect Router and MediaLive.
+- [MediaLiveTransitEncryptionKeyConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaLiveTransitEncryptionKeyConfiguration.html): Configuration settings for the MediaLive transit encryption key.
+- [MediaStream](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaStream.html): A media stream represents one component of your content, such as video, audio, or ancillary data.
+- [MediaStreamAttributes](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaStreamAttributes.html): Attributes that are related to the media stream.
+- [MediaStreamAttributesRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaStreamAttributesRequest.html): Attributes that are related to the media stream.
+- [MediaStreamOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaStreamOutputConfiguration.html): The media stream that is associated with the output, and the parameters for that association.
+- [MediaStreamOutputConfigurationRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaStreamOutputConfigurationRequest.html): The media stream that you want to associate with the output, and the parameters for that association.
+- [MediaStreamSourceConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaStreamSourceConfiguration.html): The media stream that is associated with the source, and the parameters for that association.
+- [MediaStreamSourceConfigurationRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MediaStreamSourceConfigurationRequest.html): The media stream that you want to associate with the source, and the parameters for that association.
+- [MergeRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MergeRouterInputConfiguration.html): Configuration settings for a merge router input that combines two input sources.
+- [MergeRouterInputIndexedStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MergeRouterInputIndexedStreamDetails.html): Configuration details for an indexed stream in a merge router input setup.
+- [MergeRouterInputProtocolConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MergeRouterInputProtocolConfiguration.html): Protocol configuration settings for merge router inputs.
+- [MergeRouterInputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MergeRouterInputStreamDetails.html): Configuration details for a merge router input that combines two input sources.
+- [MessageDetail](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MessageDetail.html): The details of an error message.
+- [Messages](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Messages.html): Messages that provide the state of the flow.
+- [MonitoringConfig](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MonitoringConfig.html): The settings for source monitoring.
+- [MulticastSourceSettings](https://docs.aws.amazon.com/mediaconnect/latest/api/API_MulticastSourceSettings.html): The settings related to the multicast source.
+- [NdiConfig](https://docs.aws.amazon.com/mediaconnect/latest/api/API_NdiConfig.html): Specifies the configuration settings for NDI sources and outputs.
+- [NdiDiscoveryServerConfig](https://docs.aws.amazon.com/mediaconnect/latest/api/API_NdiDiscoveryServerConfig.html): Specifies the configuration settings for individual NDIÂ® discovery servers.
+- [NdiMediaInfo](https://docs.aws.amazon.com/mediaconnect/latest/api/API_NdiMediaInfo.html): Metadata about the audio and video media that is part of the NDIÂ® source content.
+- [NdiMediaStreamInfo](https://docs.aws.amazon.com/mediaconnect/latest/api/API_NdiMediaStreamInfo.html): Detailed information about a single media stream that is part of an NDIÂ® source.
+- [NdiSourceInfo](https://docs.aws.amazon.com/mediaconnect/latest/api/API_NdiSourceInfo.html): Information about a single NDIÂ® sender, including its name.
+- [NdiSourceMetadataInfo](https://docs.aws.amazon.com/mediaconnect/latest/api/API_NdiSourceMetadataInfo.html): Comprehensive information about the NDIÂ® source that's associated with a flow.
+- [NdiSourceSettings](https://docs.aws.amazon.com/mediaconnect/latest/api/API_NdiSourceSettings.html): The settings for the NDIÂ® source.
+- [Offering](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Offering.html): A savings plan that reserves a certain amount of outbound bandwidth usage at a discounted rate each month over a period of time.
+- [Output](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Output.html): The settings for an output.
+- [PreferredDayTimeMaintenanceConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_PreferredDayTimeMaintenanceConfiguration.html): Configuration for preferred day and time maintenance settings.
+- [PublicRouterNetworkInterfaceConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_PublicRouterNetworkInterfaceConfiguration.html): The configuration settings for a public router network interface, including the list of allowed CIDR blocks.
+- [PublicRouterNetworkInterfaceRule](https://docs.aws.amazon.com/mediaconnect/latest/api/API_PublicRouterNetworkInterfaceRule.html): A rule that allows a specific CIDR block to access the public router network interface.
+- [Reservation](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Reservation.html): A pricing agreement for a discounted rate for a specific outbound bandwidth that your MediaConnect account will use each month over a specific time period.
+- [ResourceSpecification](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ResourceSpecification.html): A definition of what is being billed for, including the type and amount.
+- [RistRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RistRouterInputConfiguration.html): The configuration settings for a router input using the RIST (Reliable Internet Stream Transport) protocol, including the port and recovery latency.
+- [RistRouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RistRouterOutputConfiguration.html): The configuration settings for a router output using the RIST (Reliable Internet Stream Transport) protocol, including the destination address and port.
+- [RouterInput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInput.html): A router input in AWS Elemental MediaConnect.
+- [RouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputConfiguration.html): The configuration settings for a router input.
+- [RouterInputFilter](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputFilter.html): A filter that can be used to retrieve a list of router inputs.
+- [RouterInputMessage](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputMessage.html): A message associated with a router input, including a code and a message.
+- [RouterInputMetadata](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputMetadata.html): Metadata information associated with the router input, including stream details and connection state.
+- [RouterInputProtocolConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputProtocolConfiguration.html): The protocol configuration settings for a router input.
+- [RouterInputSourceMetadataDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputSourceMetadataDetails.html): Detailed metadata information about a router input source.
+- [RouterInputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputStreamDetails.html): Configuration details for the router input stream.
+- [RouterInputThumbnailDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputThumbnailDetails.html): The details of a thumbnail associated with a router input, including the thumbnail messages, the thumbnail image, the timecode, and the timestamp.
+- [RouterInputTransitEncryption](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputTransitEncryption.html): The transit encryption settings for a router input.
+- [RouterInputTransitEncryptionKeyConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterInputTransitEncryptionKeyConfiguration.html): Defines the configuration settings for transit encryption keys.
+- [RouterNetworkInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterNetworkInterface.html): A router network interface in AWS Elemental MediaConnect.
+- [RouterNetworkInterfaceConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterNetworkInterfaceConfiguration.html): The configuration settings for a router network interface.
+- [RouterNetworkInterfaceFilter](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterNetworkInterfaceFilter.html): A filter that can be used to retrieve a list of router network interfaces.
+- [RouterOutput](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterOutput.html): A router output in AWS Elemental MediaConnect.
+- [RouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterOutputConfiguration.html): The configuration settings for a router output.
+- [RouterOutputFilter](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterOutputFilter.html): A filter that can be used to retrieve a list of router outputs.
+- [RouterOutputMessage](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterOutputMessage.html): A message associated with a router output.
+- [RouterOutputProtocolConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterOutputProtocolConfiguration.html): The protocol configuration settings for a router output.
+- [RouterOutputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RouterOutputStreamDetails.html): Information about the router output's stream, including connection state and destination details.
+- [RtpRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RtpRouterInputConfiguration.html): The configuration settings for a Router Input using the RTP (Real-Time Transport Protocol) protocol, including the port and forward error correction state.
+- [RtpRouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_RtpRouterOutputConfiguration.html): The configuration settings for a router output using the RTP (Real-Time Transport Protocol) protocol, including the destination address and port, and forward error correction state.
+- [SecretsManagerEncryptionKeyConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SecretsManagerEncryptionKeyConfiguration.html): The configuration settings for transit encryption using AWS Secrets Manager, including the secret ARN and role ARN.
+- [SetGatewayBridgeSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SetGatewayBridgeSourceRequest.html): The source configuration for cloud flows receiving a stream from a bridge.
+- [SetSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SetSourceRequest.html): The settings for the source of the flow.
+- [SilentAudio](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SilentAudio.html): Configures settings for the SilentAudio metric.
+- [Source](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Source.html): The settings for the source of the flow.
+- [SourcePriority](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SourcePriority.html): The priority you want to assign to a source.
+- [SrtCallerRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SrtCallerRouterInputConfiguration.html): The configuration settings for a router input using the SRT (Secure Reliable Transport) protocol in caller mode, including the source address and port, minimum latency, stream ID, and decryption key configuration.
+- [SrtCallerRouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SrtCallerRouterOutputConfiguration.html): The configuration settings for a router output using the SRT (Secure Reliable Transport) protocol in caller mode, including the destination address and port, minimum latency, stream ID, and encryption key configuration.
+- [SrtDecryptionConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SrtDecryptionConfiguration.html): Contains the configuration settings for decrypting SRT streams, including the encryption key details and decryption parameters.
+- [SrtEncryptionConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SrtEncryptionConfiguration.html): Contains the configuration settings for encrypting SRT streams, including the encryption key details and encryption parameters.
+- [SrtListenerRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SrtListenerRouterInputConfiguration.html): The configuration settings for a router input using the SRT (Secure Reliable Transport) protocol in listener mode, including the port, minimum latency, and decryption key configuration.
+- [SrtListenerRouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_SrtListenerRouterOutputConfiguration.html): The configuration settings for a router output using the SRT (Secure Reliable Transport) protocol in listener mode, including the port, minimum latency, and encryption key configuration.
+- [StandardRouterInputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StandardRouterInputConfiguration.html): The configuration settings for a standard router input, including the protocol, protocol-specific configuration, network interface, and availability zone.
+- [StandardRouterInputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StandardRouterInputStreamDetails.html): Configuration details for a standard router input stream type.
+- [StandardRouterOutputConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StandardRouterOutputConfiguration.html): The configuration settings for a standard router output, including the protocol, protocol-specific configuration, network interface, and availability zone.
+- [StandardRouterOutputStreamDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_StandardRouterOutputStreamDetails.html): Configuration details for a standard router output stream type.
+- [ThumbnailDetails](https://docs.aws.amazon.com/mediaconnect/latest/api/API_ThumbnailDetails.html): The details of the thumbnail, including thumbnail base64 string, timecode and the time when thumbnail was generated.
+- [Transport](https://docs.aws.amazon.com/mediaconnect/latest/api/API_Transport.html): Attributes related to the transport stream that are used in a source or output.
+- [TransportMediaInfo](https://docs.aws.amazon.com/mediaconnect/latest/api/API_TransportMediaInfo.html): The metadata of the transport stream in the current flow's source.
+- [TransportStream](https://docs.aws.amazon.com/mediaconnect/latest/api/API_TransportStream.html): The metadata of an elementary transport stream.
+- [TransportStreamProgram](https://docs.aws.amazon.com/mediaconnect/latest/api/API_TransportStreamProgram.html): The metadata of a single transport stream program.
+- [UpdateBridgeFlowSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateBridgeFlowSourceRequest.html): Update the flow source of the bridge.
+- [UpdateBridgeNetworkOutputRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateBridgeNetworkOutputRequest.html): Update an existing network output.
+- [UpdateBridgeNetworkSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateBridgeNetworkSourceRequest.html): Update the network source of the bridge.
+- [UpdateEgressGatewayBridgeRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateEgressGatewayBridgeRequest.html): Update an existing egress-type bridge.
+- [UpdateEncryption](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateEncryption.html): Information about the encryption of the flow.
+- [UpdateFailoverConfig](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateFailoverConfig.html): The settings for source failover.
+- [UpdateGatewayBridgeSourceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateGatewayBridgeSourceRequest.html): The source configuration for cloud flows receiving a stream from a bridge.
+- [UpdateIngressGatewayBridgeRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateIngressGatewayBridgeRequest.html): Update an existing ingress-type bridge.
+- [UpdateMaintenance](https://docs.aws.amazon.com/mediaconnect/latest/api/API_UpdateMaintenance.html): Update maintenance setting for a flow.
+- [VideoMonitoringSetting](https://docs.aws.amazon.com/mediaconnect/latest/api/API_VideoMonitoringSetting.html): Specifies the configuration for video stream metrics monitoring.
+- [VpcInterface](https://docs.aws.amazon.com/mediaconnect/latest/api/API_VpcInterface.html): The settings for a VPC source.
+- [VpcInterfaceAttachment](https://docs.aws.amazon.com/mediaconnect/latest/api/API_VpcInterfaceAttachment.html): The settings for attaching a VPC interface to an resource.
+- [VpcInterfaceRequest](https://docs.aws.amazon.com/mediaconnect/latest/api/API_VpcInterfaceRequest.html): The details of the VPC interfaces that you want to add to the flow.
+- [VpcRouterNetworkInterfaceConfiguration](https://docs.aws.amazon.com/mediaconnect/latest/api/API_VpcRouterNetworkInterfaceConfiguration.html): The configuration settings for a router network interface within a VPC, including the security group IDs and subnet ID.
+- [WindowMaintenanceSchedule](https://docs.aws.amazon.com/mediaconnect/latest/api/API_WindowMaintenanceSchedule.html): Defines a specific time window for maintenance operations.

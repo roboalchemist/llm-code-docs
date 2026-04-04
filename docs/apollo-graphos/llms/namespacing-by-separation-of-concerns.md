@@ -1,0 +1,149 @@
+# Source: https://www.apollographql.com/docs/graphos/schema-design/guides/namespacing-by-separation-of-concerns.md
+
+# Namespacing by Separation of Concerns
+
+Most GraphQL APIs provide their capabilities as root-level fields of the `Query` and `Mutation` types, resulting in a flat structure. For example, the GitHub GraphQL API has approximately 200 of these root-level fields! Even with tools like the Apollo Explorer, navigating and understanding larger "flat" graphs can be difficult.
+
+Make sure to read the [Caveats](https://www.apollographql.com/docs/graphos/schema-design/guides/namespacing-by-separation-of-concerns.md#caveats) section below. While the name spacing pattern works well for queries, mutations can have side-effects that may not be inline with the GraphQL spec.
+
+To improve the logical organization of our graph's capabilities, we can define *namespaces* for our root-level operation fields. These are object types that in turn define query and mutation fields that are all related to a particular concern.
+
+For example, we can define all the mutation fields related to `User` objects in a `UsersMutations` namespace object:
+
+```graphql
+type UsersMutations {
+  create(profile: UserProfileInput!): User!
+  block(id: ID!): User!
+}
+```
+
+We can then define a similar namespace for `Comment` mutations:
+
+```graphql
+type CommentsMutations {
+  create(comment: CommentInput!): Comment!
+  delete(id: ID!): Comment!
+}
+```
+
+Now, both our `User` and `Comment` types have an associated `create` mutation field, which is valid because each is defined within a separate namespace type.
+
+Finally, we can add our namespace types as the return values for root-level fields of the `Mutation` type:
+
+```graphql
+type Mutation {
+  users: UsersMutations!
+  comments: CommentsMutations!
+}
+```
+
+We can use the same pattern for queries that involve `User` and `Comment` types:
+
+```graphql
+type UsersQueries {
+  all: [User!]!
+}
+
+type CommentsQueries {
+  byUser(user: ID!): [Comment!]!
+}
+
+# Add a single root-level namespace-type which wraps other queries
+type Query {
+  users: UsersQueries!
+  comments: CommentsQueries!
+}
+```
+
+With our namespaces defined, client operations now use a nested format, which provides context on which type is being interacted with:
+
+```graphql
+mutation CreateNewUser($userProfile: UserProfileInput!) {
+  users {
+    create(profile: $userProfile) {
+      id
+      firstName
+      lastName
+    }
+  }
+}
+
+query FetchAllUsers {
+  users {
+    all {
+      id
+      firstName
+      lastName
+    }
+  }
+}
+```
+
+You don't need to repeat the text `user` in the field names of the `UsersQueries` type, because we already know all these fields apply to `User` objects.
+
+## Namespaces for serial mutations
+
+Unlike all other fields in a GraphQL operation, the root-level fields of the `Mutation` type must be resolved serially instead of in parallel. This can help prevent two mutation fields from interacting with the same data simultaneously, which might cause a race condition.
+
+```graphql
+mutation DoTwoThings {
+  one {
+    success
+  }
+  # The `two` field is not resolved until after `one` is resolved.
+  # It is not resolved at all if resolving `one` results in an error.
+  two {
+    success
+  }
+}
+```
+
+With namespaces, your mutation fields that actually modify data are no longer root-level fields (instead, your namespace objects are). Because of this, the mutation fields are resolved in parallel. In many systems, this doesn't present an issue (for example, you probably want to use another mechanism in your mutation resolvers to ensure transactional consistency, such as a saga orchestrator).
+
+```graphql
+mutation DoTwoNestedThings(
+  $createInput: CreateReviewInput!
+  $deleteInput: DeleteReviewInput!
+) {
+  reviews {
+    create(input: $createInput) {
+      success
+    }
+    # Is resolved in parallel with `create`
+    delete(input: $deleteInput) {
+      success
+    }
+  }
+}
+```
+
+If you want to guarantee serial execution in a particular operation, you can use client-side aliases to create two root fields that are resolved serially:
+
+```graphql
+mutation DoTwoNestedThingsInSerial(
+  $createInput: CreateReviewInput!
+  $deleteInput: DeleteReviewInput!
+) {
+  a: reviews {
+    create(input: $createInput) {
+      success
+    }
+  }
+  # Is resolved serially after `a` is resolved
+  b: reviews {
+    delete(input: $deleteInput) {
+      success
+    }
+  }
+}
+```
+
+## Caveats
+
+As pointed out by [members from the GraphQL Technical Steering Committee](https://benjie.dev/graphql/nested-mutations), while the above approach does execute in a GraphQL server, it does not satisfy the GraphQL spec requirement that:
+
+> resolution of fields other than top-level mutation fields must always be side effect-free and idempotent.
+
+Instead it is recommended that any GraphQL mutations be defined at the root level so they are executed serially and in accordance with the expectations of the specification.
+
+At this time the only solution the GraphQL specification provides for grouping related mutations is field naming conventions and ordering these fields carefully - there's currently no spec-compliant solution to having an overwhelming number of fields on the root mutation type. However, there are some interesting proposals to address this issue that we encourage community members to review and provide feedback on, in particular the [proposal for GraphQL Namespaces](https://github.com/graphql/graphql-spec/issues/163) and the [proposal for `serial fields`](https://github.com/graphql/graphql-spec/issues/252).

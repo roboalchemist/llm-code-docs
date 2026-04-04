@@ -1,0 +1,76 @@
+# Source: https://docs.api7.ai/ingress-controller/reference/configuration-file.md
+
+# Source: https://docs.api7.ai/enterprise/3.8.x/reference/api7-ingress-controller/configuration-file.md
+
+# Configuration File
+
+The API7 Ingress Controller uses a configuration file `config.yaml` to define core settings such as log level, leader election behavior, metrics endpoints, and sync intervals.
+
+Configurations are defined in a Kubernetes ConfigMap and mounted into the controller pod as a file at runtime. It is recommended to manage these configurations through Helm for easier updates and version control. If you modify the ConfigMap directly, you must restart the controller Deployment to apply the changes.
+
+Below are all available configuration options, including their default values and usage:
+
+config.yaml
+
+```
+log_level: "info"                               # The log level of the APISIX Ingress Controller.
+                                                # The default value is "info".
+
+controller_name: apisix.apache.org/apisix-ingress-controller  # The controller name of the APISIX Ingress Controller,
+                                                              # which is used to identify the controller in the GatewayClass.
+                                                              # The default value is "apisix.apache.org/apisix-ingress-controller".
+leader_election_id: "apisix-ingress-controller-leader"    # The leader election ID for the APISIX Ingress Controller.
+                                                          # The default value is "apisix-ingress-controller-leader".
+leader_election:
+  lease_duration: 30s                   # lease_duration is the duration that non-leader candidates will wait
+                                        # after observing a leadership renewal until attempting to acquire leadership of a
+                                        # leader election.
+  renew_deadline: 20s                   # renew_deadline is the time in seconds that the acting controller
+                                        # will retry refreshing leadership before giving up.
+  retry_period: 2s                      # retry_period is the time in seconds that the acting controller
+                                        # will wait between tries of actions with the controller.
+  disable: false                        # Whether to disable leader election.
+
+metrics_addr: ":8080"                   # The address the metrics endpoint binds to.
+                                        # The default value is ":8080".
+
+enable_server: false                    # The debug API is behind this server which is disabled by default for security reasons.
+
+server_addr: "127.0.0.1:9092"           # Available endpoints: /debug can be used to debug in-memory state of translated adc configs to be synced with data plane.
+
+enable_http2: false                     # Whether to enable HTTP/2 for the server.
+                                        # The default value is false.
+
+probe_addr: ":8081"                     # The address the probe endpoint binds to.
+                                        # The default value is ":8081".
+
+secure_metrics: false                   # The secure metrics configuration.
+                                        # The default value is "" (empty).
+
+exec_adc_timeout: 15s                   # The timeout for the ADC to execute.
+                                        # The default value is 15 seconds.
+
+disable_gateway_api: false               # Whether to disable the Gateway API support.
+                                         # The default value is false.
+
+provider:
+  type: "api7ee"                        # Provider type.
+
+  sync_period: 1h                       # The period between two consecutive syncs.
+                                        # The default value is 1 hour.
+                                        # If you want to disable the sync, set it to 0.
+  init_sync_delay: 20m                  # The initial delay before the first sync, only used when the controller is started.
+                                        # The default value is 20 minutes.
+
+webhook:
+  enable: false                         # Whether to enable the webhook server.
+                                        # The default value is false.
+  tls_cert_file: "tls.crt"              # The filename within tls_cert_dir containing the webhook server TLS certificate.
+                                        # The default value is "tls.crt".
+  tls_key_file: "tls.key"               # The filename within tls_cert_dir containing the webhook server TLS private key.
+                                        # The default value is "tls.key".
+  tls_cert_dir: "/certs"                # The directory containing the webhook server TLS certificate files.
+                                        # The default value is "/certs".
+  port: 9443                            # The port for the webhook server to listen on.
+                                        # The default value is 9443.
+```

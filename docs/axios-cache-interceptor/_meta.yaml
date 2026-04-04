@@ -1,0 +1,9 @@
+name: axios-cache-interceptor
+primary_source: llms
+sources:
+  - type: llms
+    url: https://axios-cache-interceptor.js.org/
+    last_fetched: "2026-04-03T23:08:34Z"
+description: >
+  axios-cache-interceptor documentation
+quality_score: 0

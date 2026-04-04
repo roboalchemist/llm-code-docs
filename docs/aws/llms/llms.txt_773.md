@@ -1,0 +1,238 @@
+# Source: https://docs.aws.amazon.com/ses/latest/APIReference-V2/llms.txt
+
+# Amazon Simple Email Service API v2 Reference
+
+> Welcome to the Amazon SES API v2 Reference. This guide provides information about the Amazon SES API v2, including supported operations, data types, parameters, and schemas.
+
+- [Welcome](https://docs.aws.amazon.com/ses/latest/APIReference-V2/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/ses/latest/APIReference-V2/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Operations.html)
+
+- [BatchGetMetricData](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_BatchGetMetricData.html): Retrieves batches of metric data collected based on your sending activity.
+- [CancelExportJob](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CancelExportJob.html): Cancels an export job.
+- [CreateConfigurationSet](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateConfigurationSet.html): Create a configuration set.
+- [CreateConfigurationSetEventDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateConfigurationSetEventDestination.html): Create an event destination.
+- [CreateContact](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContact.html): Creates a contact, which is an end-user who is receiving the email, and adds them to a contact list.
+- [CreateContactList](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateContactList.html): Creates a contact list.
+- [CreateCustomVerificationEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateCustomVerificationEmailTemplate.html): Creates a new custom verification email template.
+- [CreateDedicatedIpPool](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateDedicatedIpPool.html): Create a new pool of dedicated IP addresses.
+- [CreateDeliverabilityTestReport](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateDeliverabilityTestReport.html): Create a new predictive inbox placement test.
+- [CreateEmailIdentity](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateEmailIdentity.html): Starts the process of verifying an email identity.
+- [CreateEmailIdentityPolicy](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateEmailIdentityPolicy.html): Creates the specified sending authorization policy for the given identity (an email address or a domain).
+- [CreateEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateEmailTemplate.html): Creates an email template.
+- [CreateExportJob](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateExportJob.html): Creates an export job for a data source and destination.
+- [CreateImportJob](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateImportJob.html): Creates an import job for a data destination.
+- [CreateMultiRegionEndpoint](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateMultiRegionEndpoint.html): Creates a multi-region endpoint (global-endpoint).
+- [CreateTenant](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateTenant.html): Create a tenant.
+- [CreateTenantResourceAssociation](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateTenantResourceAssociation.html): Associate a resource with a tenant.
+- [DeleteConfigurationSet](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteConfigurationSet.html): Delete an existing configuration set.
+- [DeleteConfigurationSetEventDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteConfigurationSetEventDestination.html): Delete an event destination.
+- [DeleteContact](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteContact.html): Removes a contact from a contact list.
+- [DeleteContactList](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteContactList.html): Deletes a contact list and all of the contacts on that list.
+- [DeleteCustomVerificationEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteCustomVerificationEmailTemplate.html): Deletes an existing custom verification email template.
+- [DeleteDedicatedIpPool](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteDedicatedIpPool.html): Delete a dedicated IP pool.
+- [DeleteEmailIdentity](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteEmailIdentity.html): Deletes an email identity.
+- [DeleteEmailIdentityPolicy](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteEmailIdentityPolicy.html): Deletes the specified sending authorization policy for the given identity (an email address or a domain).
+- [DeleteEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteEmailTemplate.html): Deletes an email template.
+- [DeleteMultiRegionEndpoint](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteMultiRegionEndpoint.html): Deletes a multi-region endpoint (global-endpoint).
+- [DeleteSuppressedDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteSuppressedDestination.html): Removes an email address from the suppression list for your account.
+- [DeleteTenant](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteTenant.html): Delete an existing tenant.
+- [DeleteTenantResourceAssociation](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeleteTenantResourceAssociation.html): Delete an association between a tenant and a resource.
+- [GetAccount](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetAccount.html): Obtain information about the email-sending status and capabilities of your Amazon SES account in the current AWS Region.
+- [GetBlacklistReports](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetBlacklistReports.html): Retrieve a list of the blacklists that your dedicated IP addresses appear on.
+- [GetConfigurationSet](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetConfigurationSet.html): Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more.
+- [GetConfigurationSetEventDestinations](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetConfigurationSetEventDestinations.html): Retrieve a list of event destinations that are associated with a configuration set.
+- [GetContact](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetContact.html): Returns a contact from a contact list.
+- [GetContactList](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetContactList.html): Returns contact list metadata.
+- [GetCustomVerificationEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetCustomVerificationEmailTemplate.html): Returns the custom email verification template for the template name you specify.
+- [GetDedicatedIp](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetDedicatedIp.html): Get information about a dedicated IP address, including the name of the dedicated IP pool that it's associated with, as well information about the automatic warm-up process for the address.
+- [GetDedicatedIpPool](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetDedicatedIpPool.html): Retrieve information about the dedicated pool.
+- [GetDedicatedIps](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetDedicatedIps.html): List the dedicated IP addresses that are associated with your AWS account.
+- [GetDeliverabilityDashboardOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetDeliverabilityDashboardOptions.html): Retrieve information about the status of the Deliverability dashboard for your account.
+- [GetDeliverabilityTestReport](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetDeliverabilityTestReport.html): Retrieve the results of a predictive inbox placement test.
+- [GetDomainDeliverabilityCampaign](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetDomainDeliverabilityCampaign.html): Retrieve all the deliverability data for a specific campaign.
+- [GetDomainStatisticsReport](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetDomainStatisticsReport.html): Retrieve inbox placement and engagement rates for the domains that you use to send email.
+- [GetEmailAddressInsights](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetEmailAddressInsights.html): Provides validation insights about a specific email address, including syntax validation, DNS record checks, mailbox existence, and other deliverability factors.
+- [GetEmailIdentity](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetEmailIdentity.html): Provides information about a specific identity, including the identity's verification status, sending authorization policies, its DKIM authentication status, and its custom Mail-From settings.
+- [GetEmailIdentityPolicies](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetEmailIdentityPolicies.html): Returns the requested sending authorization policies for the given identity (an email address or a domain).
+- [GetEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetEmailTemplate.html): Displays the template object (which includes the subject line, HTML part and text part) for the template you specify.
+- [GetExportJob](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetExportJob.html): Provides information about an export job.
+- [GetImportJob](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetImportJob.html): Provides information about an import job.
+- [GetMessageInsights](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetMessageInsights.html): Provides information about a specific message, including the from address, the subject, the recipient address, email tags, as well as events associated with the message.
+- [GetMultiRegionEndpoint](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetMultiRegionEndpoint.html): Displays the multi-region endpoint (global-endpoint) configuration.
+- [GetReputationEntity](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetReputationEntity.html): Retrieve information about a specific reputation entity, including its reputation management policy, customer-managed status, AWS Amazon SES-managed status, and aggregate sending status.
+- [GetSuppressedDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetSuppressedDestination.html): Retrieves information about a specific email address that's on the suppression list for your account.
+- [GetTenant](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetTenant.html): Get information about a specific tenant, including the tenant's name, ID, ARN, creation timestamp, tags, and sending status.
+- [ListConfigurationSets](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListConfigurationSets.html): List all of the configuration sets associated with your account in the current region.
+- [ListContactLists](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListContactLists.html): Lists all of the contact lists available.
+- [ListContacts](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListContacts.html): Lists the contacts present in a specific contact list.
+- [ListCustomVerificationEmailTemplates](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListCustomVerificationEmailTemplates.html): Lists the existing custom verification email templates for your account in the current AWS Region.
+- [ListDedicatedIpPools](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListDedicatedIpPools.html): List all of the dedicated IP pools that exist in your AWS account in the current Region.
+- [ListDeliverabilityTestReports](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListDeliverabilityTestReports.html): Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses.
+- [ListDomainDeliverabilityCampaigns](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListDomainDeliverabilityCampaigns.html): Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range.
+- [ListEmailIdentities](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListEmailIdentities.html): Returns a list of all of the email identities that are associated with your AWS account.
+- [ListEmailTemplates](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListEmailTemplates.html): Lists the email templates present in your Amazon SES account in the current AWS Region.
+- [ListExportJobs](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListExportJobs.html): Lists all of the export jobs.
+- [ListImportJobs](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListImportJobs.html): Lists all of the import jobs.
+- [ListMultiRegionEndpoints](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListMultiRegionEndpoints.html): List the multi-region endpoints (global-endpoints).
+- [ListRecommendations](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListRecommendations.html): Lists the recommendations present in your Amazon SES account in the current AWS Region.
+- [ListReputationEntities](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListReputationEntities.html): List reputation entities in your Amazon SES account in the current AWS Region.
+- [ListResourceTenants](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListResourceTenants.html): List all tenants associated with a specific resource.
+- [ListSuppressedDestinations](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListSuppressedDestinations.html): Retrieves a list of email addresses that are on the suppression list for your account.
+- [ListTagsForResource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListTagsForResource.html): Retrieve a list of the tags (keys and values) that are associated with a specified resource.
+- [ListTenantResources](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListTenantResources.html): List all resources associated with a specific tenant.
+- [ListTenants](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListTenants.html): List all tenants associated with your account in the current AWS Region.
+- [PutAccountDedicatedIpWarmupAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutAccountDedicatedIpWarmupAttributes.html): Enable or disable the automatic warm-up feature for dedicated IP addresses.
+- [PutAccountDetails](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutAccountDetails.html): Update your Amazon SES account details.
+- [PutAccountSendingAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutAccountSendingAttributes.html): Enable or disable the ability of your account to send email.
+- [PutAccountSuppressionAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutAccountSuppressionAttributes.html): Change the settings for the account-level suppression list.
+- [PutAccountVdmAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutAccountVdmAttributes.html): Update your Amazon SES account VDM attributes.
+- [PutConfigurationSetArchivingOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutConfigurationSetArchivingOptions.html): Associate the configuration set with a MailManager archive.
+- [PutConfigurationSetDeliveryOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutConfigurationSetDeliveryOptions.html): Associate a configuration set with a dedicated IP pool.
+- [PutConfigurationSetReputationOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutConfigurationSetReputationOptions.html): Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region.
+- [PutConfigurationSetSendingOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutConfigurationSetSendingOptions.html): Enable or disable email sending for messages that use a particular configuration set in a specific AWS Region.
+- [PutConfigurationSetSuppressionOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutConfigurationSetSuppressionOptions.html): Specify the account suppression list preferences for a configuration set.
+- [PutConfigurationSetTrackingOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutConfigurationSetTrackingOptions.html): Specify a custom domain to use for open and click tracking elements in email that you send.
+- [PutConfigurationSetVdmOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutConfigurationSetVdmOptions.html): Specify VDM preferences for email that you send using the configuration set.
+- [PutDedicatedIpInPool](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutDedicatedIpInPool.html): Move a dedicated IP address to an existing dedicated IP pool.
+- [PutDedicatedIpPoolScalingAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutDedicatedIpPoolScalingAttributes.html): Used to convert a dedicated IP pool to a different scaling mode.
+- [PutDedicatedIpWarmupAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutDedicatedIpWarmupAttributes.html)
+- [PutDeliverabilityDashboardOption](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutDeliverabilityDashboardOption.html): Enable or disable the Deliverability dashboard.
+- [PutEmailIdentityConfigurationSetAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutEmailIdentityConfigurationSetAttributes.html): Used to associate a configuration set with an email identity.
+- [PutEmailIdentityDkimAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutEmailIdentityDkimAttributes.html): Used to enable or disable DKIM authentication for an email identity.
+- [PutEmailIdentityDkimSigningAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutEmailIdentityDkimSigningAttributes.html): Used to configure or change the DKIM authentication settings for an email domain identity.
+- [PutEmailIdentityFeedbackAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutEmailIdentityFeedbackAttributes.html): Used to enable or disable feedback forwarding for an identity.
+- [PutEmailIdentityMailFromAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutEmailIdentityMailFromAttributes.html): Used to enable or disable the custom Mail-From domain configuration for an email identity.
+- [PutSuppressedDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PutSuppressedDestination.html): Adds an email address to the suppression list for your account.
+- [SendBulkEmail](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendBulkEmail.html): Composes an email message to multiple destinations.
+- [SendCustomVerificationEmail](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendCustomVerificationEmail.html): Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it.
+- [SendEmail](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html): Sends an email message.
+- [TagResource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_TagResource.html): Add one or more tags (keys and values) to a specified resource.
+- [TestRenderEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_TestRenderEmailTemplate.html): Creates a preview of the MIME content of an email when provided with a template and a set of replacement data.
+- [UntagResource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UntagResource.html): Remove one or more tags (keys and values) from a specified resource.
+- [UpdateConfigurationSetEventDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateConfigurationSetEventDestination.html): Update the configuration of an event destination for a configuration set.
+- [UpdateContact](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateContact.html): Updates a contact's preferences for a list.
+- [UpdateContactList](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateContactList.html): Updates contact list metadata.
+- [UpdateCustomVerificationEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateCustomVerificationEmailTemplate.html): Updates an existing custom verification email template.
+- [UpdateEmailIdentityPolicy](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateEmailIdentityPolicy.html): Updates the specified sending authorization policy for the given identity (an email address or a domain).
+- [UpdateEmailTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateEmailTemplate.html): Updates an email template.
+- [UpdateReputationEntityCustomerManagedStatus](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateReputationEntityCustomerManagedStatus.html): Update the customer-managed sending status for a reputation entity.
+- [UpdateReputationEntityPolicy](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_UpdateReputationEntityPolicy.html): Update the reputation management policy for a reputation entity.
+
+
+## [Data Types](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Types.html)
+
+- [AccountDetails](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_AccountDetails.html): An object that contains information about your account details.
+- [ArchivingOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ArchivingOptions.html): Used to associate a configuration set with a MailManager archive.
+- [Attachment](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Attachment.html): Contains metadata and attachment raw content.
+- [BatchGetMetricDataQuery](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_BatchGetMetricDataQuery.html): Represents a single metric data query to include in a batch.
+- [BlacklistEntry](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_BlacklistEntry.html): An object that contains information about a blacklisting event that impacts one of the dedicated IP addresses that is associated with your account.
+- [Body](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Body.html): Represents the body of the email message.
+- [Bounce](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Bounce.html): Information about a Bounce event.
+- [BulkEmailContent](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_BulkEmailContent.html): An object that contains the body of the message.
+- [BulkEmailEntry](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_BulkEmailEntry.html)
+- [BulkEmailEntryResult](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_BulkEmailEntryResult.html): The result of the SendBulkEmail operation of each specified BulkEmailEntry.
+- [CloudWatchDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CloudWatchDestination.html): An object that defines an Amazon CloudWatch destination for email events.
+- [CloudWatchDimensionConfiguration](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CloudWatchDimensionConfiguration.html): An object that defines the dimension configuration to use when you send email events to Amazon CloudWatch.
+- [Complaint](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Complaint.html): Information about a Complaint event.
+- [Contact](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Contact.html): A contact is the end-user who is receiving the email.
+- [ContactList](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ContactList.html): A list that contains contacts that have subscribed to a particular topic or topics.
+- [ContactListDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ContactListDestination.html): An object that contains details about the action of a contact list.
+- [Content](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Content.html): An object that represents the content of the email, and optionally a character set specification.
+- [CustomVerificationEmailTemplateMetadata](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CustomVerificationEmailTemplateMetadata.html): Contains information about a custom verification email template.
+- [DailyVolume](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DailyVolume.html): An object that contains information about the volume of email sent on each day of the analysis period.
+- [DashboardAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DashboardAttributes.html): An object containing additional settings for your VDM configuration as applicable to the Dashboard.
+- [DashboardOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DashboardOptions.html): An object containing additional settings for your VDM configuration as applicable to the Dashboard.
+- [DedicatedIp](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DedicatedIp.html): Contains information about a dedicated IP address that is associated with your Amazon SES account.
+- [DedicatedIpPool](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DedicatedIpPool.html): Contains information about a dedicated IP pool.
+- [DeliverabilityTestReport](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeliverabilityTestReport.html): An object that contains metadata related to a predictive inbox placement test.
+- [DeliveryOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DeliveryOptions.html): Used to associate a configuration set with a dedicated IP pool.
+- [Destination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Destination.html): An object that describes the recipients for an email.
+- [Details](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Details.html): An object that contains configuration details of multi-region endpoint (global-endpoint).
+- [DkimAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DkimAttributes.html): An object that contains information about the DKIM authentication status for an email identity.
+- [DkimSigningAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DkimSigningAttributes.html): An object that contains configuration for Bring Your Own DKIM (BYODKIM), or, for Easy DKIM
+- [DomainDeliverabilityCampaign](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DomainDeliverabilityCampaign.html): An object that contains the deliverability data for a specific campaign.
+- [DomainDeliverabilityTrackingOption](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DomainDeliverabilityTrackingOption.html): An object that contains information about the Deliverability dashboard subscription for a verified domain that you use to send email and currently has an active Deliverability dashboard subscription.
+- [DomainIspPlacement](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DomainIspPlacement.html): An object that contains inbox placement data for email sent from one of your email domains to a specific email provider.
+- [EmailAddressInsightsMailboxEvaluations](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EmailAddressInsightsMailboxEvaluations.html): Contains individual validation checks performed on an email address.
+- [EmailAddressInsightsVerdict](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EmailAddressInsightsVerdict.html): Contains the overall validation verdict for an email address.
+- [EmailContent](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EmailContent.html): An object that defines the entire content of the email, including the message headers, body content, and attachments.
+- [EmailInsights](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EmailInsights.html): An email's insights contain metadata and delivery information about a specific email.
+- [EmailTemplateContent](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EmailTemplateContent.html): The content of the email, composed of a subject line, an HTML part, and a text-only part.
+- [EmailTemplateMetadata](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EmailTemplateMetadata.html): Contains information about an email template.
+- [EventBridgeDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EventBridgeDestination.html): An object that defines an Amazon EventBridge destination for email events.
+- [EventDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EventDestination.html): In the Amazon SES API v2, events include message sends, deliveries, opens, clicks, bounces, complaints and delivery delays.
+- [EventDestinationDefinition](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EventDestinationDefinition.html): An object that defines the event destination.
+- [EventDetails](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_EventDetails.html): Contains a Bounce object if the event type is BOUNCE.
+- [ExportDataSource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ExportDataSource.html): An object that contains details about the data source of the export job.
+- [ExportDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ExportDestination.html): An object that contains details about the destination of the export job.
+- [ExportJobSummary](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ExportJobSummary.html): A summary of the export job.
+- [ExportMetric](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ExportMetric.html): An object that contains a mapping between a Metric and MetricAggregation.
+- [ExportStatistics](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ExportStatistics.html): Statistics about the execution of an export job.
+- [FailureInfo](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_FailureInfo.html): An object that contains the failure details about a job.
+- [GuardianAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GuardianAttributes.html): An object containing additional settings for your VDM configuration as applicable to the Guardian.
+- [GuardianOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GuardianOptions.html): An object containing additional settings for your VDM configuration as applicable to the Guardian.
+- [IdentityInfo](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_IdentityInfo.html): Information about an email identity.
+- [ImportDataSource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ImportDataSource.html): An object that contains details about the data source of the import job.
+- [ImportDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ImportDestination.html): An object that contains details about the resource destination the import job is going to target.
+- [ImportJobSummary](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ImportJobSummary.html): A summary of the import job.
+- [InboxPlacementTrackingOption](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_InboxPlacementTrackingOption.html): An object that contains information about the inbox placement data settings for a verified domain thatâs associated with your AWS account.
+- [InsightsEvent](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_InsightsEvent.html): An object containing details about a specific event.
+- [IspPlacement](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_IspPlacement.html): An object that describes how email sent during the predictive inbox placement test was handled by a certain email provider.
+- [KinesisFirehoseDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_KinesisFirehoseDestination.html): An object that defines an Amazon Kinesis Data Firehose destination for email events.
+- [ListContactsFilter](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListContactsFilter.html): A filter that can be applied to a list of contacts.
+- [ListManagementOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ListManagementOptions.html): An object used to specify a list or topic to which an email belongs, which will be used when a contact chooses to unsubscribe.
+- [MailboxValidation](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MailboxValidation.html): Contains detailed validation information about an email address.
+- [MailFromAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MailFromAttributes.html): A list of attributes that are associated with a MAIL FROM domain.
+- [Message](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Message.html): Represents the email message that you're sending.
+- [MessageHeader](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageHeader.html): Contains the name and value of a message header that you add to an email.
+- [MessageInsightsDataSource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageInsightsDataSource.html): An object that contains filters applied when performing the Message Insights export.
+- [MessageInsightsFilters](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageInsightsFilters.html): An object containing Message Insights filters.
+- [MessageTag](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageTag.html): Contains the name and value of a tag that you apply to an email.
+- [MetricDataError](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MetricDataError.html): An error corresponding to the unsuccessful processing of a single metric data query.
+- [MetricDataResult](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MetricDataResult.html): The result of a single metric data query.
+- [MetricsDataSource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MetricsDataSource.html): An object that contains details about the data source for the metrics export.
+- [MultiRegionEndpoint](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MultiRegionEndpoint.html): An object that contains multi-region endpoint (global-endpoint) properties.
+- [OverallVolume](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_OverallVolume.html): An object that contains information about email that was sent from the selected domain.
+- [PinpointDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PinpointDestination.html): An object that defines an Amazon Pinpoint project destination for email events.
+- [PlacementStatistics](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_PlacementStatistics.html): An object that contains inbox placement data for an email provider.
+- [RawMessage](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_RawMessage.html): Represents the raw content of an email message.
+- [Recommendation](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Recommendation.html): A recommendation generated for your account.
+- [ReplacementEmailContent](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ReplacementEmailContent.html): The ReplaceEmailContent object to be used for a specific BulkEmailEntry.
+- [ReplacementTemplate](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ReplacementTemplate.html): An object which contains ReplacementTemplateData to be used for a specific BulkEmailEntry.
+- [ReputationEntity](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ReputationEntity.html): An object that contains information about a reputation entity, including its reference, type, policy, status records, and reputation impact.
+- [ReputationOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ReputationOptions.html): Enable or disable collection of reputation metrics for emails that you send using this configuration set in the current AWS Region.
+- [ResourceTenantMetadata](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ResourceTenantMetadata.html): A structure that contains information about a tenant associated with a resource.
+- [ReviewDetails](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_ReviewDetails.html): An object that contains information about your account details review.
+- [Route](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Route.html): An object which contains an AWS-Region and routing status.
+- [RouteDetails](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_RouteDetails.html): An object that contains route configuration.
+- [SendingOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendingOptions.html): Used to enable or disable email sending for messages that use this configuration set in the current AWS Region.
+- [SendQuota](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendQuota.html): An object that contains information about the per-day and per-second sending limits for your Amazon SES account in the current AWS Region.
+- [SnsDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SnsDestination.html): An object that defines an Amazon SNS destination for email events.
+- [SOARecord](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SOARecord.html): An object that contains information about the start of authority (SOA) record associated with the identity.
+- [StatusRecord](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_StatusRecord.html): An object that contains status information for a reputation entity, including the current status, cause description, and timestamp.
+- [SuppressedDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressedDestination.html): An object that contains information about an email address that is on the suppression list for your account.
+- [SuppressedDestinationAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressedDestinationAttributes.html): An object that contains additional attributes that are related an email address that is on the suppression list for your account.
+- [SuppressedDestinationSummary](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressedDestinationSummary.html): A summary that describes the suppressed email address.
+- [SuppressionAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressionAttributes.html): An object that contains information about the email address suppression preferences for your account in the current AWS Region.
+- [SuppressionConditionThreshold](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressionConditionThreshold.html): Contains Auto Validation settings, allowing you to suppress sending to specific destination(s) if they do not meet required threshold.
+- [SuppressionConfidenceThreshold](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressionConfidenceThreshold.html): Contains the confidence threshold settings for Auto Validation.
+- [SuppressionListDestination](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressionListDestination.html): An object that contains details about the action of suppression list.
+- [SuppressionOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressionOptions.html): An object that contains information about the suppression list preferences for your account.
+- [SuppressionValidationAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressionValidationAttributes.html): Structure containing validation attributes used for suppressing sending to specific destination on account level.
+- [SuppressionValidationOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SuppressionValidationOptions.html): Contains validation options for email address suppression.
+- [Tag](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Tag.html): An object that defines the tags that are associated with a resource.
+- [Template](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Template.html): An object that defines the email template to use for an email message, and the values to use for any message variables in that template.
+- [Tenant](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Tenant.html): A structure that contains details about a tenant.
+- [TenantInfo](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_TenantInfo.html): A structure that contains basic information about a tenant.
+- [TenantResource](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_TenantResource.html): A structure that contains information about a resource associated with a tenant.
+- [Topic](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Topic.html): An interest group, theme, or label within a list.
+- [TopicFilter](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_TopicFilter.html): Used for filtering by a specific topic preference.
+- [TopicPreference](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_TopicPreference.html): The contact's preference for being opted-in to or opted-out of a topic.
+- [TrackingOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_TrackingOptions.html): An object that defines the tracking options for a configuration set.
+- [VdmAttributes](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_VdmAttributes.html): The VDM attributes that apply to your Amazon SES account.
+- [VdmOptions](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_VdmOptions.html): An object that defines the VDM settings that apply to emails that you send using the configuration set.
+- [VerificationInfo](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_VerificationInfo.html): An object that contains additional information about the verification status for the identity.
+- [VolumeStatistics](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_VolumeStatistics.html): An object that contains information about the amount of email that was delivered to recipients.

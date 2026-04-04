@@ -1,0 +1,21 @@
+# Source: https://www.activepieces.com/docs/install/troubleshooting/websocket-issues.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Websocket Issues
+
+> Troubleshoot websocket connection problems
+
+If you're experiencing issues with websocket connections, it's likely due to incorrect proxy configuration. Common symptoms include:
+
+* Test Flow button not working
+* Test step in flows not working
+* Real-time updates not showing
+
+To resolve these issues:
+
+1. Ensure your reverse proxy is properly configured for websocket connections
+2. Check our [Setup HTTPS](/install/guides/setup-ssl) guide for correct configuration examples
+3. Some browsers block http websocket connections, please setup SSL to resolve this issue.

@@ -1,0 +1,9 @@
+name: bito
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.bito.ai/
+    last_fetched: "2026-04-03T23:08:42Z"
+description: >
+  bito documentation
+quality_score: 0

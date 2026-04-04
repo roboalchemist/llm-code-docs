@@ -1,0 +1,97 @@
+# Source: https://learn.adafruit.com/babel-fish.md
+
+# Babel Fish
+
+## Overview
+
+https://www.youtube.com/watch?v=l6MIZbZ27ZM
+
+Learn to make a speaking, card-reading toy! The Babel Fish helps you learn to say words and phrases on RFID flash cards by reading the card and playing an associated sound file loaded on an SD card inside. This project is very straightforward and could make a great jumping-off point for your own awesome RFID and Wave Shield project!
+
+![](https://cdn-learn.adafruit.com/assets/assets/000/001/445/medium800/rfid___nfc_babel-fish-adafruit.jpg?1396772166)
+
+For this project you will need
+
+- [Arduino Uno](http://www.adafruit.com/product/50)
+- [Adafruit NFC/RFID Shield](http://www.adafruit.com/product/789)
+- [Adafruit Wave Shield](http://www.adafruit.com/product/94) (and your own SD card & speaker) or [Wave shield starter kit](http://www.adafruit.com/product/175)
+- [MiFare cards (one per flashcard)](http://www.adafruit.com/product/359)
+- [Power adapter](http://www.adafruit.com/product/63)
+
+- [Next Page](https://learn.adafruit.com/babel-fish/make-the-nfc-slash-rfid-shield.md)
+
+## Featured Products
+
+### Adafruit METRO 328 Fully Assembled - Arduino IDE compatible
+
+[Adafruit METRO 328 Fully Assembled - Arduino IDE compatible](https://www.adafruit.com/product/50)
+We sure love the ATmega328 here at Adafruit, and we use them&nbsp;_a lot_&nbsp;for our own projects. The processor has plenty of GPIO, Analog inputs, hardware UART SPI and I2C, timers and PWM galore - just enough for most simple projects. When we need to go small, we use a <a...></a...>
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/50)
+[Related Guides to the Product](https://learn.adafruit.com/products/50/guides)
+### Adafruit PN532 NFC/RFID Controller Shield for Arduino + Extras
+
+[Adafruit PN532 NFC/RFID Controller Shield for Arduino + Extras](https://www.adafruit.com/product/789)
+We've taken our popular Adafruit PN532 breakout board and turned it into a shield - the perfect tool for any 13.56MHz RFID or NFC application. The Adafruit NFC shield uses the PN532 chip-set (the most popular NFC chip on the market) and is what is embedded in pretty much every phone or...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/789)
+[Related Guides to the Product](https://learn.adafruit.com/products/789/guides)
+### Adafruit Wave Shield for Arduino Kit
+
+[Adafruit Wave Shield for Arduino Kit](https://www.adafruit.com/product/94)
+Adding quality audio to an electronic project is surprisingly difficult. Here is a shield for Arduino 328's that solves this problem. It can play up to 22KHz 12bit uncompressed audio files of any length. It's low cost, available as an easy-to-make kit. It has an onboard DAC, filter and...
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/94)
+[Related Guides to the Product](https://learn.adafruit.com/products/94/guides)
+### Music & sound add-on pack for Arduino
+
+[Music & sound add-on pack for Arduino](https://www.adafruit.com/product/175)
+Its a Wave shield party pack! Just add an Arduino to create your own iPod-killer, audio art, sound-effects box...
+
+Comes with:
+
+- Latest [Wave shield kit](http://www.adafruit.com/products/94), works with more SD cards and with older NG Arduinos! Unassembled
+- 8 GB...
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/175)
+[Related Guides to the Product](https://learn.adafruit.com/products/175/guides)
+### 9 VDC 1000mA regulated switching power adapter - UL listed
+
+[9 VDC 1000mA regulated switching power adapter - UL listed](https://www.adafruit.com/product/63)
+This is a really nice power supply. It's a switching DC supply so it's small and light and efficient. It is thin so it fits in power strips without blocking other outlets. The output is regulated so you'll get a steady 9V up to 1000mA (1 Amp) of current draw. 5.5mm/2.1mm barrel...
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/63)
+[Related Guides to the Product](https://learn.adafruit.com/products/63/guides)
+### 13.56MHz RFID/NFC Card - Classic 1K
+
+[13.56MHz RFID/NFC Card - Classic 1K](https://www.adafruit.com/product/359)
+This is a blank 13.56MHz RFID/NFC card - often used for train/bus passes but also found in other systems where a proximity card is desired. The tag contains a small RFID chip and an antenna, and is passively powered by the reader/writer when placed a couple inches away.  
+  
+These can be...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/359)
+[Related Guides to the Product](https://learn.adafruit.com/products/359/guides)
+
+## Related Guides
+
+- [How to Find Hidden COM Ports](https://learn.adafruit.com/how-to-find-hidden-com-ports.md)
+- [Collin's Lab: RFID](https://learn.adafruit.com/collins-lab-rfid.md)
+- [Multi-tasking the Arduino - Part 2](https://learn.adafruit.com/multi-tasking-the-arduino-part-2.md)
+- [Ladyada's Learn Arduino - Lesson #2](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-2.md)
+- [Affordable HAL 9000 Replica](https://learn.adafruit.com/hal-9000-replica.md)
+- [Adafruit VS1053 MP3/AAC/Ogg/MIDI/WAV Codec Breakout Tutorial](https://learn.adafruit.com/adafruit-vs1053-mp3-aac-ogg-midi-wav-play-and-record-codec-tutorial.md)
+- [Arduino Lesson 8. Analog Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-8-analog-inputs.md)
+- [Adafruit CC3000 WiFi and Xively](https://learn.adafruit.com/adafruit-cc3000-wifi-and-xively.md)
+- [Automatic Monitor Color Temperature Adjustment](https://learn.adafruit.com/automatic-monitor-color-temperature-adjustment.md)
+- [RePaper eInk Development Board](https://learn.adafruit.com/repaper-eink-development-board.md)
+- [Using NeoPixels and Servos Together](https://learn.adafruit.com/neopixels-and-servos.md)
+- [Mini Thermal Receipt Printers](https://learn.adafruit.com/mini-thermal-receipt-printer.md)
+- [Line Following Zumo Robot Using Simulink](https://learn.adafruit.com/line-following-zumo-robot-programmed-with-simulink.md)
+- [Adafruit 2.8" TFT Touch Shield v2 - Capacitive or Resistive](https://learn.adafruit.com/adafruit-2-8-tft-touch-shield-v2.md)
+- [Adafruit INA219 Current Sensor Breakout](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout.md)

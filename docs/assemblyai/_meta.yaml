@@ -1,0 +1,9 @@
+name: assemblyai
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.assemblyai.com/docs/
+    last_fetched: "2026-04-03T23:08:30Z"
+description: >
+  assemblyai documentation
+quality_score: 0

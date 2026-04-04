@@ -1,0 +1,8 @@
+name: auth-js
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:08:31Z"
+description: >
+  auth-js documentation
+quality_score: 0

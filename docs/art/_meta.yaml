@@ -1,0 +1,9 @@
+name: art
+primary_source: llms
+sources:
+  - type: llms
+    url: https://art.openpipe.ai/
+    last_fetched: "2026-04-03T23:08:30Z"
+description: >
+  art documentation
+quality_score: 0

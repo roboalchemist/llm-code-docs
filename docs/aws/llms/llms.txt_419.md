@@ -1,0 +1,710 @@
+# Source: https://docs.aws.amazon.com/glue/latest/webapi/llms.txt
+
+# AWS Glue Web API Reference
+
+> Defines the public endpoint for the AWS Glue service.
+
+- [Welcome to the AWS Glue Web API Reference](https://docs.aws.amazon.com/glue/latest/webapi/WebAPI_Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/glue/latest/webapi/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/glue/latest/webapi/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/glue/latest/webapi/API_Operations.html)
+
+- [BatchCreatePartition](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchCreatePartition.html): Creates one or more partitions in a batch operation.
+- [BatchDeleteConnection](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchDeleteConnection.html): Deletes a list of connection definitions from the Data Catalog.
+- [BatchDeletePartition](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchDeletePartition.html): Deletes one or more partitions in a batch operation.
+- [BatchDeleteTable](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchDeleteTable.html): Deletes multiple tables at once.
+- [BatchDeleteTableVersion](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchDeleteTableVersion.html): Deletes a specified batch of versions of a table.
+- [BatchGetBlueprints](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetBlueprints.html): Retrieves information about a list of blueprints.
+- [BatchGetCrawlers](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetCrawlers.html): Returns a list of resource metadata for a given list of crawler names.
+- [BatchGetCustomEntityTypes](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetCustomEntityTypes.html): Retrieves the details for the custom patterns specified by a list of names.
+- [BatchGetDataQualityResult](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetDataQualityResult.html): Retrieves a list of data quality results for the specified result IDs.
+- [BatchGetDevEndpoints](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetDevEndpoints.html): Returns a list of resource metadata for a given list of development endpoint names.
+- [BatchGetJobs](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetJobs.html): Returns a list of resource metadata for a given list of job names.
+- [BatchGetPartition](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetPartition.html): Retrieves partitions in a batch request.
+- [BatchGetTableOptimizer](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetTableOptimizer.html): Returns the configuration for the specified table optimizers.
+- [BatchGetTriggers](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetTriggers.html): Returns a list of resource metadata for a given list of trigger names.
+- [BatchGetWorkflows](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetWorkflows.html): Returns a list of resource metadata for a given list of workflow names.
+- [BatchPutDataQualityStatisticAnnotation](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchPutDataQualityStatisticAnnotation.html): Annotate datapoints over time for a specific data quality statistic.
+- [BatchStopJobRun](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchStopJobRun.html): Stops one or more job runs for a specified job definition.
+- [BatchUpdatePartition](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchUpdatePartition.html): Updates one or more partitions in a batch operation.
+- [CancelDataQualityRuleRecommendationRun](https://docs.aws.amazon.com/glue/latest/webapi/API_CancelDataQualityRuleRecommendationRun.html): Cancels the specified recommendation run that was being used to generate rules.
+- [CancelDataQualityRulesetEvaluationRun](https://docs.aws.amazon.com/glue/latest/webapi/API_CancelDataQualityRulesetEvaluationRun.html): Cancels a run where a ruleset is being evaluated against a data source.
+- [CancelMLTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_CancelMLTaskRun.html): Cancels (stops) a task run.
+- [CancelStatement](https://docs.aws.amazon.com/glue/latest/webapi/API_CancelStatement.html): Cancels the statement.
+- [CheckSchemaVersionValidity](https://docs.aws.amazon.com/glue/latest/webapi/API_CheckSchemaVersionValidity.html): Validates the supplied schema.
+- [CreateBlueprint](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateBlueprint.html): Registers a blueprint with AWS Glue.
+- [CreateCatalog](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateCatalog.html): Creates a new catalog in the AWS Glue Data Catalog.
+- [CreateClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateClassifier.html): Creates a classifier in the user's account.
+- [CreateColumnStatisticsTaskSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateColumnStatisticsTaskSettings.html): Creates settings for a column statistics task.
+- [CreateConnection](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateConnection.html): Creates a connection definition in the Data Catalog.
+- [CreateCrawler](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateCrawler.html): Creates a new crawler with specified targets, role, configuration, and optional schedule.
+- [CreateCustomEntityType](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateCustomEntityType.html): Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data.
+- [CreateDatabase](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateDatabase.html): Creates a new database in a Data Catalog.
+- [CreateDataQualityRuleset](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateDataQualityRuleset.html): Creates a data quality ruleset with DQDL rules applied to a specified AWS Glue table.
+- [CreateDevEndpoint](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateDevEndpoint.html): Creates a new development endpoint.
+- [CreateGlueIdentityCenterConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateGlueIdentityCenterConfiguration.html): Creates a new AWS Glue Identity Center configuration to enable integration between AWS Glue and AWS IAM Identity Center for authentication and authorization.
+- [CreateIntegration](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateIntegration.html): Creates a Zero-ETL integration in the caller's account between two resources with Amazon Resource Names (ARNs): the SourceArn and TargetArn.
+- [CreateIntegrationResourceProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateIntegrationResourceProperty.html): This API can be used for setting up the ResourceProperty of the AWS Glue connection (for the source) or AWS Glue database ARN (for the target).
+- [CreateIntegrationTableProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateIntegrationTableProperties.html): This API is used to provide optional override properties for the the tables that need to be replicated.
+- [CreateJob](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateJob.html): Creates a new job definition.
+- [CreateMLTransform](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateMLTransform.html): Creates an AWS Glue machine learning transform.
+- [CreatePartition](https://docs.aws.amazon.com/glue/latest/webapi/API_CreatePartition.html): Creates a new partition.
+- [CreatePartitionIndex](https://docs.aws.amazon.com/glue/latest/webapi/API_CreatePartitionIndex.html): Creates a specified partition index in an existing table.
+- [CreateRegistry](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateRegistry.html): Creates a new registry which may be used to hold a collection of schemas.
+- [CreateSchema](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateSchema.html): Creates a new schema set and registers the schema definition.
+- [CreateScript](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateScript.html): Transforms a directed acyclic graph (DAG) into code.
+- [CreateSecurityConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateSecurityConfiguration.html): Creates a new security configuration.
+- [CreateSession](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateSession.html): Creates a new session.
+- [CreateTable](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateTable.html): Creates a new table definition in the Data Catalog.
+- [CreateTableOptimizer](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateTableOptimizer.html): Creates a new table optimizer for a specific function.
+- [CreateTrigger](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateTrigger.html): Creates a new trigger.
+- [CreateUsageProfile](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateUsageProfile.html): Creates an AWS Glue usage profile.
+- [CreateUserDefinedFunction](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateUserDefinedFunction.html): Creates a new function definition in the Data Catalog.
+- [CreateWorkflow](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateWorkflow.html): Creates a new workflow.
+- [DeleteBlueprint](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteBlueprint.html): Deletes an existing blueprint.
+- [DeleteCatalog](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteCatalog.html): Removes the specified catalog from the AWS Glue Data Catalog.
+- [DeleteClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteClassifier.html): Removes a classifier from the Data Catalog.
+- [DeleteColumnStatisticsForPartition](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteColumnStatisticsForPartition.html): Delete the partition column statistics of a column.
+- [DeleteColumnStatisticsForTable](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteColumnStatisticsForTable.html): Retrieves table statistics of columns.
+- [DeleteColumnStatisticsTaskSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteColumnStatisticsTaskSettings.html): Deletes settings for a column statistics task.
+- [DeleteConnection](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteConnection.html): Deletes a connection from the Data Catalog.
+- [DeleteConnectionType](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteConnectionType.html): Deletes a custom connection type in AWS Glue.
+- [DeleteCrawler](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteCrawler.html): Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is RUNNING.
+- [DeleteCustomEntityType](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteCustomEntityType.html): Deletes a custom pattern by specifying its name.
+- [DeleteDatabase](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteDatabase.html): Removes a specified database from a Data Catalog.
+- [DeleteDataQualityRuleset](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteDataQualityRuleset.html): Deletes a data quality ruleset.
+- [DeleteDevEndpoint](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteDevEndpoint.html): Deletes a specified development endpoint.
+- [DeleteGlueIdentityCenterConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteGlueIdentityCenterConfiguration.html): Deletes the existing AWS Glue Identity Center configuration, removing the integration between AWS Glue and AWS IAM Identity Center.
+- [DeleteIntegration](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteIntegration.html): Deletes the specified Zero-ETL integration.
+- [DeleteIntegrationResourceProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteIntegrationResourceProperty.html): This API is used for deleting the ResourceProperty of the AWS Glue connection (for the source) or AWS Glue database ARN (for the target).
+- [DeleteIntegrationTableProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteIntegrationTableProperties.html): Deletes the table properties that have been created for the tables that need to be replicated.
+- [DeleteJob](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteJob.html): Deletes a specified job definition.
+- [DeleteMLTransform](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteMLTransform.html): Deletes an AWS Glue machine learning transform.
+- [DeletePartition](https://docs.aws.amazon.com/glue/latest/webapi/API_DeletePartition.html): Deletes a specified partition.
+- [DeletePartitionIndex](https://docs.aws.amazon.com/glue/latest/webapi/API_DeletePartitionIndex.html): Deletes a specified partition index from an existing table.
+- [DeleteRegistry](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteRegistry.html): Delete the entire registry including schema and all of its versions.
+- [DeleteResourcePolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteResourcePolicy.html): Deletes a specified policy.
+- [DeleteSchema](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteSchema.html): Deletes the entire schema set, including the schema set and all of its versions.
+- [DeleteSchemaVersions](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteSchemaVersions.html): Remove versions from the specified schema.
+- [DeleteSecurityConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteSecurityConfiguration.html): Deletes a specified security configuration.
+- [DeleteSession](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteSession.html): Deletes the session.
+- [DeleteTable](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteTable.html): Removes a table definition from the Data Catalog.
+- [DeleteTableOptimizer](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteTableOptimizer.html): Deletes an optimizer and all associated metadata for a table.
+- [DeleteTableVersion](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteTableVersion.html): Deletes a specified version of a table.
+- [DeleteTrigger](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteTrigger.html): Deletes a specified trigger.
+- [DeleteUsageProfile](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteUsageProfile.html): Deletes the AWS Glue specified usage profile.
+- [DeleteUserDefinedFunction](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteUserDefinedFunction.html): Deletes an existing function definition from the Data Catalog.
+- [DeleteWorkflow](https://docs.aws.amazon.com/glue/latest/webapi/API_DeleteWorkflow.html): Deletes a workflow.
+- [DescribeConnectionType](https://docs.aws.amazon.com/glue/latest/webapi/API_DescribeConnectionType.html): The DescribeConnectionType API provides full details of the supported options for a given connection type in AWS Glue.
+- [DescribeEntity](https://docs.aws.amazon.com/glue/latest/webapi/API_DescribeEntity.html): Provides details regarding the entity used with the connection type, with a description of the data model for each field in the selected entity.
+- [DescribeInboundIntegrations](https://docs.aws.amazon.com/glue/latest/webapi/API_DescribeInboundIntegrations.html): Returns a list of inbound integrations for the specified integration.
+- [DescribeIntegrations](https://docs.aws.amazon.com/glue/latest/webapi/API_DescribeIntegrations.html): The API is used to retrieve a list of integrations.
+- [GetBlueprint](https://docs.aws.amazon.com/glue/latest/webapi/API_GetBlueprint.html): Retrieves the details of a blueprint.
+- [GetBlueprintRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetBlueprintRun.html): Retrieves the details of a blueprint run.
+- [GetBlueprintRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_GetBlueprintRuns.html): Retrieves the details of blueprint runs for a specified blueprint.
+- [GetCatalog](https://docs.aws.amazon.com/glue/latest/webapi/API_GetCatalog.html): The name of the Catalog to retrieve.
+- [GetCatalogImportStatus](https://docs.aws.amazon.com/glue/latest/webapi/API_GetCatalogImportStatus.html): Retrieves the status of a migration operation.
+- [GetCatalogs](https://docs.aws.amazon.com/glue/latest/webapi/API_GetCatalogs.html): Retrieves all catalogs defined in a catalog in the AWS Glue Data Catalog.
+- [GetClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_GetClassifier.html): Retrieve a classifier by name.
+- [GetClassifiers](https://docs.aws.amazon.com/glue/latest/webapi/API_GetClassifiers.html): Lists all classifier objects in the Data Catalog.
+- [GetColumnStatisticsForPartition](https://docs.aws.amazon.com/glue/latest/webapi/API_GetColumnStatisticsForPartition.html): Retrieves partition statistics of columns.
+- [GetColumnStatisticsForTable](https://docs.aws.amazon.com/glue/latest/webapi/API_GetColumnStatisticsForTable.html): Retrieves table statistics of columns.
+- [GetColumnStatisticsTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetColumnStatisticsTaskRun.html): Get the associated metadata/information for a task run, given a task run ID.
+- [GetColumnStatisticsTaskRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_GetColumnStatisticsTaskRuns.html): Retrieves information about all runs associated with the specified table.
+- [GetColumnStatisticsTaskSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_GetColumnStatisticsTaskSettings.html): Gets settings for a column statistics task.
+- [GetConnection](https://docs.aws.amazon.com/glue/latest/webapi/API_GetConnection.html): Retrieves a connection definition from the Data Catalog.
+- [GetConnections](https://docs.aws.amazon.com/glue/latest/webapi/API_GetConnections.html): Retrieves a list of connection definitions from the Data Catalog.
+- [GetCrawler](https://docs.aws.amazon.com/glue/latest/webapi/API_GetCrawler.html): Retrieves metadata for a specified crawler.
+- [GetCrawlerMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_GetCrawlerMetrics.html): Retrieves metrics about specified crawlers.
+- [GetCrawlers](https://docs.aws.amazon.com/glue/latest/webapi/API_GetCrawlers.html): Retrieves metadata for all crawlers defined in the customer account.
+- [GetCustomEntityType](https://docs.aws.amazon.com/glue/latest/webapi/API_GetCustomEntityType.html): Retrieves the details of a custom pattern by specifying its name.
+- [GetDatabase](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDatabase.html): Retrieves the definition of a specified database.
+- [GetDatabases](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDatabases.html): Retrieves all databases defined in a given Data Catalog.
+- [GetDataCatalogEncryptionSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataCatalogEncryptionSettings.html): Retrieves the security configuration for a specified catalog.
+- [GetDataflowGraph](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataflowGraph.html): Transforms a Python script into a directed acyclic graph (DAG).
+- [GetDataQualityModel](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataQualityModel.html): Retrieve the training status of the model along with more information (CompletedOn, StartedOn, FailureReason).
+- [GetDataQualityModelResult](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataQualityModelResult.html): Retrieve a statistic's predictions for a given Profile ID.
+- [GetDataQualityResult](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataQualityResult.html): Retrieves the result of a data quality rule evaluation.
+- [GetDataQualityRuleRecommendationRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataQualityRuleRecommendationRun.html): Gets the specified recommendation run that was used to generate rules.
+- [GetDataQualityRuleset](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataQualityRuleset.html): Returns an existing ruleset by identifier or name.
+- [GetDataQualityRulesetEvaluationRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDataQualityRulesetEvaluationRun.html): Retrieves a specific run where a ruleset is evaluated against a data source.
+- [GetDevEndpoint](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDevEndpoint.html): Retrieves information about a specified development endpoint.
+- [GetDevEndpoints](https://docs.aws.amazon.com/glue/latest/webapi/API_GetDevEndpoints.html): Retrieves all the development endpoints in this AWS account.
+- [GetEntityRecords](https://docs.aws.amazon.com/glue/latest/webapi/API_GetEntityRecords.html): This API is used to query preview data from a given connection type or from a native Amazon S3 based AWS Glue Data Catalog.
+- [GetGlueIdentityCenterConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_GetGlueIdentityCenterConfiguration.html): Retrieves the current AWS Glue Identity Center configuration details, including the associated Identity Center instance and application information.
+- [GetIntegrationResourceProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_GetIntegrationResourceProperty.html): This API is used for fetching the ResourceProperty of the AWS Glue connection (for the source) or AWS Glue database ARN (for the target)
+- [GetIntegrationTableProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_GetIntegrationTableProperties.html): This API is used to retrieve optional override properties for the tables that need to be replicated.
+- [GetJob](https://docs.aws.amazon.com/glue/latest/webapi/API_GetJob.html): Retrieves an existing job definition.
+- [GetJobBookmark](https://docs.aws.amazon.com/glue/latest/webapi/API_GetJobBookmark.html): Returns information on a job bookmark entry.
+- [GetJobRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetJobRun.html): Retrieves the metadata for a given job run.
+- [GetJobRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_GetJobRuns.html): Retrieves metadata for all runs of a given job definition.
+- [GetJobs](https://docs.aws.amazon.com/glue/latest/webapi/API_GetJobs.html): Retrieves all current job definitions.
+- [GetMapping](https://docs.aws.amazon.com/glue/latest/webapi/API_GetMapping.html): Creates mappings.
+- [GetMaterializedViewRefreshTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetMaterializedViewRefreshTaskRun.html): Get the associated metadata/information for a task run, given a task run ID.
+- [GetMLTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetMLTaskRun.html): Gets details for a specific task run on a machine learning transform.
+- [GetMLTaskRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_GetMLTaskRuns.html): Gets a list of runs for a machine learning transform.
+- [GetMLTransform](https://docs.aws.amazon.com/glue/latest/webapi/API_GetMLTransform.html): Gets an AWS Glue machine learning transform artifact and all its corresponding metadata.
+- [GetMLTransforms](https://docs.aws.amazon.com/glue/latest/webapi/API_GetMLTransforms.html): Gets a sortable, filterable list of existing AWS Glue machine learning transforms.
+- [GetPartition](https://docs.aws.amazon.com/glue/latest/webapi/API_GetPartition.html): Retrieves information about a specified partition.
+- [GetPartitionIndexes](https://docs.aws.amazon.com/glue/latest/webapi/API_GetPartitionIndexes.html): Retrieves the partition indexes associated with a table.
+- [GetPartitions](https://docs.aws.amazon.com/glue/latest/webapi/API_GetPartitions.html): Retrieves information about the partitions in a table.
+- [GetPlan](https://docs.aws.amazon.com/glue/latest/webapi/API_GetPlan.html): Gets code to perform a specified mapping.
+- [GetRegistry](https://docs.aws.amazon.com/glue/latest/webapi/API_GetRegistry.html): Describes the specified registry in detail.
+- [GetResourcePolicies](https://docs.aws.amazon.com/glue/latest/webapi/API_GetResourcePolicies.html): Retrieves the resource policies set on individual resources by AWS Resource Access Manager during cross-account permission grants.
+- [GetResourcePolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_GetResourcePolicy.html): Retrieves a specified resource policy.
+- [GetSchema](https://docs.aws.amazon.com/glue/latest/webapi/API_GetSchema.html): Describes the specified schema in detail.
+- [GetSchemaByDefinition](https://docs.aws.amazon.com/glue/latest/webapi/API_GetSchemaByDefinition.html): Retrieves a schema by the SchemaDefinition.
+- [GetSchemaVersion](https://docs.aws.amazon.com/glue/latest/webapi/API_GetSchemaVersion.html): Get the specified schema by its unique ID assigned when a version of the schema is created or registered.
+- [GetSchemaVersionsDiff](https://docs.aws.amazon.com/glue/latest/webapi/API_GetSchemaVersionsDiff.html): Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry.
+- [GetSecurityConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_GetSecurityConfiguration.html): Retrieves a specified security configuration.
+- [GetSecurityConfigurations](https://docs.aws.amazon.com/glue/latest/webapi/API_GetSecurityConfigurations.html): Retrieves a list of all security configurations.
+- [GetSession](https://docs.aws.amazon.com/glue/latest/webapi/API_GetSession.html): Retrieves the session.
+- [GetStatement](https://docs.aws.amazon.com/glue/latest/webapi/API_GetStatement.html): Retrieves the statement.
+- [GetTable](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTable.html): Retrieves the Table definition in a Data Catalog for a specified table.
+- [GetTableOptimizer](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTableOptimizer.html): Returns the configuration of all optimizers associated with a specified table.
+- [GetTables](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTables.html): Retrieves the definitions of some or all of the tables in a given Database.
+- [GetTableVersion](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTableVersion.html): Retrieves a specified version of a table.
+- [GetTableVersions](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTableVersions.html): Retrieves a list of strings that identify available versions of a specified table.
+- [GetTags](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTags.html): Retrieves a list of tags associated with a resource.
+- [GetTrigger](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTrigger.html): Retrieves the definition of a trigger.
+- [GetTriggers](https://docs.aws.amazon.com/glue/latest/webapi/API_GetTriggers.html): Gets all the triggers associated with a job.
+- [GetUnfilteredPartitionMetadata](https://docs.aws.amazon.com/glue/latest/webapi/API_GetUnfilteredPartitionMetadata.html): Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.
+- [GetUnfilteredPartitionsMetadata](https://docs.aws.amazon.com/glue/latest/webapi/API_GetUnfilteredPartitionsMetadata.html): Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.
+- [GetUnfilteredTableMetadata](https://docs.aws.amazon.com/glue/latest/webapi/API_GetUnfilteredTableMetadata.html): Allows a third-party analytical engine to retrieve unfiltered table metadata from the Data Catalog.
+- [GetUsageProfile](https://docs.aws.amazon.com/glue/latest/webapi/API_GetUsageProfile.html): Retrieves information about the specified AWS Glue usage profile.
+- [GetUserDefinedFunction](https://docs.aws.amazon.com/glue/latest/webapi/API_GetUserDefinedFunction.html): Retrieves a specified function definition from the Data Catalog.
+- [GetUserDefinedFunctions](https://docs.aws.amazon.com/glue/latest/webapi/API_GetUserDefinedFunctions.html): Retrieves multiple function definitions from the Data Catalog.
+- [GetWorkflow](https://docs.aws.amazon.com/glue/latest/webapi/API_GetWorkflow.html): Retrieves resource metadata for a workflow.
+- [GetWorkflowRun](https://docs.aws.amazon.com/glue/latest/webapi/API_GetWorkflowRun.html): Retrieves the metadata for a given workflow run.
+- [GetWorkflowRunProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_GetWorkflowRunProperties.html): Retrieves the workflow run properties which were set during the run.
+- [GetWorkflowRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_GetWorkflowRuns.html): Retrieves metadata for all runs of a given workflow.
+- [ImportCatalogToGlue](https://docs.aws.amazon.com/glue/latest/webapi/API_ImportCatalogToGlue.html): Imports an existing Amazon Athena Data Catalog to AWS Glue.
+- [ListBlueprints](https://docs.aws.amazon.com/glue/latest/webapi/API_ListBlueprints.html): Lists all the blueprint names in an account.
+- [ListColumnStatisticsTaskRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_ListColumnStatisticsTaskRuns.html): List all task runs for a particular account.
+- [ListConnectionTypes](https://docs.aws.amazon.com/glue/latest/webapi/API_ListConnectionTypes.html): The ListConnectionTypes API provides a discovery mechanism to learn available connection types in AWS Glue.
+- [ListCrawlers](https://docs.aws.amazon.com/glue/latest/webapi/API_ListCrawlers.html): Retrieves the names of all crawler resources in this AWS account, or the resources with the specified tag.
+- [ListCrawls](https://docs.aws.amazon.com/glue/latest/webapi/API_ListCrawls.html): Returns all the crawls of a specified crawler.
+- [ListCustomEntityTypes](https://docs.aws.amazon.com/glue/latest/webapi/API_ListCustomEntityTypes.html): Lists all the custom patterns that have been created.
+- [ListDataQualityResults](https://docs.aws.amazon.com/glue/latest/webapi/API_ListDataQualityResults.html): Returns all data quality execution results for your account.
+- [ListDataQualityRuleRecommendationRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_ListDataQualityRuleRecommendationRuns.html): Lists the recommendation runs meeting the filter criteria.
+- [ListDataQualityRulesetEvaluationRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_ListDataQualityRulesetEvaluationRuns.html): Lists all the runs meeting the filter criteria, where a ruleset is evaluated against a data source.
+- [ListDataQualityRulesets](https://docs.aws.amazon.com/glue/latest/webapi/API_ListDataQualityRulesets.html): Returns a paginated list of rulesets for the specified list of AWS Glue tables.
+- [ListDataQualityStatisticAnnotations](https://docs.aws.amazon.com/glue/latest/webapi/API_ListDataQualityStatisticAnnotations.html): Retrieve annotations for a data quality statistic.
+- [ListDataQualityStatistics](https://docs.aws.amazon.com/glue/latest/webapi/API_ListDataQualityStatistics.html): Retrieves a list of data quality statistics.
+- [ListDevEndpoints](https://docs.aws.amazon.com/glue/latest/webapi/API_ListDevEndpoints.html): Retrieves the names of all DevEndpoint resources in this AWS account, or the resources with the specified tag.
+- [ListEntities](https://docs.aws.amazon.com/glue/latest/webapi/API_ListEntities.html): Returns the available entities supported by the connection type.
+- [ListIntegrationResourceProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_ListIntegrationResourceProperties.html): List integration resource properties for a single customer.
+- [ListJobs](https://docs.aws.amazon.com/glue/latest/webapi/API_ListJobs.html): Retrieves the names of all job resources in this AWS account, or the resources with the specified tag.
+- [ListMaterializedViewRefreshTaskRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_ListMaterializedViewRefreshTaskRuns.html): List all task runs for a particular account.
+- [ListMLTransforms](https://docs.aws.amazon.com/glue/latest/webapi/API_ListMLTransforms.html): Retrieves a sortable, filterable list of existing AWS Glue machine learning transforms in this AWS account, or the resources with the specified tag.
+- [ListRegistries](https://docs.aws.amazon.com/glue/latest/webapi/API_ListRegistries.html): Returns a list of registries that you have created, with minimal registry information.
+- [ListSchemas](https://docs.aws.amazon.com/glue/latest/webapi/API_ListSchemas.html): Returns a list of schemas with minimal details.
+- [ListSchemaVersions](https://docs.aws.amazon.com/glue/latest/webapi/API_ListSchemaVersions.html): Returns a list of schema versions that you have created, with minimal information.
+- [ListSessions](https://docs.aws.amazon.com/glue/latest/webapi/API_ListSessions.html): Retrieve a list of sessions.
+- [ListStatements](https://docs.aws.amazon.com/glue/latest/webapi/API_ListStatements.html): Lists statements for the session.
+- [ListTableOptimizerRuns](https://docs.aws.amazon.com/glue/latest/webapi/API_ListTableOptimizerRuns.html): Lists the history of previous optimizer runs for a specific table.
+- [ListTriggers](https://docs.aws.amazon.com/glue/latest/webapi/API_ListTriggers.html): Retrieves the names of all trigger resources in this AWS account, or the resources with the specified tag.
+- [ListUsageProfiles](https://docs.aws.amazon.com/glue/latest/webapi/API_ListUsageProfiles.html): List all the AWS Glue usage profiles.
+- [ListWorkflows](https://docs.aws.amazon.com/glue/latest/webapi/API_ListWorkflows.html): Lists names of workflows created in the account.
+- [ModifyIntegration](https://docs.aws.amazon.com/glue/latest/webapi/API_ModifyIntegration.html): Modifies a Zero-ETL integration in the caller's account.
+- [PutDataCatalogEncryptionSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_PutDataCatalogEncryptionSettings.html): Sets the security configuration for a specified catalog.
+- [PutDataQualityProfileAnnotation](https://docs.aws.amazon.com/glue/latest/webapi/API_PutDataQualityProfileAnnotation.html): Annotate all datapoints for a Profile.
+- [PutResourcePolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_PutResourcePolicy.html): Sets the Data Catalog resource policy for access control.
+- [PutSchemaVersionMetadata](https://docs.aws.amazon.com/glue/latest/webapi/API_PutSchemaVersionMetadata.html): Puts the metadata key value pair for a specified schema version ID.
+- [PutWorkflowRunProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_PutWorkflowRunProperties.html): Puts the specified workflow run properties for the given workflow run.
+- [QuerySchemaVersionMetadata](https://docs.aws.amazon.com/glue/latest/webapi/API_QuerySchemaVersionMetadata.html): Queries for the schema version metadata information.
+- [RegisterConnectionType](https://docs.aws.amazon.com/glue/latest/webapi/API_RegisterConnectionType.html): Registers a custom connection type in AWS Glue based on the configuration provided.
+- [RegisterSchemaVersion](https://docs.aws.amazon.com/glue/latest/webapi/API_RegisterSchemaVersion.html): Adds a new version to the existing schema.
+- [RemoveSchemaVersionMetadata](https://docs.aws.amazon.com/glue/latest/webapi/API_RemoveSchemaVersionMetadata.html): Removes a key value pair from the schema version metadata for the specified schema version ID.
+- [ResetJobBookmark](https://docs.aws.amazon.com/glue/latest/webapi/API_ResetJobBookmark.html): Resets a bookmark entry.
+- [ResumeWorkflowRun](https://docs.aws.amazon.com/glue/latest/webapi/API_ResumeWorkflowRun.html): Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run.
+- [RunStatement](https://docs.aws.amazon.com/glue/latest/webapi/API_RunStatement.html): Executes the statement.
+- [SearchTables](https://docs.aws.amazon.com/glue/latest/webapi/API_SearchTables.html): Searches a set of tables based on properties in the table metadata as well as on the parent database.
+- [StartBlueprintRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartBlueprintRun.html): Starts a new run of the specified blueprint.
+- [StartColumnStatisticsTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartColumnStatisticsTaskRun.html): Starts a column statistics task run, for a specified table and columns.
+- [StartColumnStatisticsTaskRunSchedule](https://docs.aws.amazon.com/glue/latest/webapi/API_StartColumnStatisticsTaskRunSchedule.html): Starts a column statistics task run schedule.
+- [StartCrawler](https://docs.aws.amazon.com/glue/latest/webapi/API_StartCrawler.html): Starts a crawl using the specified crawler, regardless of what is scheduled.
+- [StartCrawlerSchedule](https://docs.aws.amazon.com/glue/latest/webapi/API_StartCrawlerSchedule.html): Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED.
+- [StartDataQualityRuleRecommendationRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartDataQualityRuleRecommendationRun.html): Starts a recommendation run that is used to generate rules when you don't know what rules to write.
+- [StartDataQualityRulesetEvaluationRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartDataQualityRulesetEvaluationRun.html): Once you have a ruleset definition (either recommended or your own), you call this operation to evaluate the ruleset against a data source (AWS Glue table).
+- [StartExportLabelsTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartExportLabelsTaskRun.html): Begins an asynchronous task to export all labeled data for a particular transform.
+- [StartImportLabelsTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartImportLabelsTaskRun.html): Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality.
+- [StartJobRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartJobRun.html): Starts a job run using a job definition.
+- [StartMaterializedViewRefreshTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartMaterializedViewRefreshTaskRun.html): Starts a materialized view refresh task run, for a specified materialized view table.
+- [StartMLEvaluationTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartMLEvaluationTaskRun.html): Starts a task to estimate the quality of the transform.
+- [StartMLLabelingSetGenerationTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartMLLabelingSetGenerationTaskRun.html): Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels.
+- [StartTrigger](https://docs.aws.amazon.com/glue/latest/webapi/API_StartTrigger.html): Starts an existing trigger.
+- [StartWorkflowRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StartWorkflowRun.html): Starts a new run of the specified workflow.
+- [StopColumnStatisticsTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StopColumnStatisticsTaskRun.html): Stops a task run for the specified table.
+- [StopColumnStatisticsTaskRunSchedule](https://docs.aws.amazon.com/glue/latest/webapi/API_StopColumnStatisticsTaskRunSchedule.html): Stops a column statistics task run schedule.
+- [StopCrawler](https://docs.aws.amazon.com/glue/latest/webapi/API_StopCrawler.html): If the specified crawler is running, stops the crawl.
+- [StopCrawlerSchedule](https://docs.aws.amazon.com/glue/latest/webapi/API_StopCrawlerSchedule.html): Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running.
+- [StopMaterializedViewRefreshTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StopMaterializedViewRefreshTaskRun.html): Stops a materialized view refresh task run for a specified materialized view table.
+- [StopSession](https://docs.aws.amazon.com/glue/latest/webapi/API_StopSession.html): Stops the session.
+- [StopTrigger](https://docs.aws.amazon.com/glue/latest/webapi/API_StopTrigger.html): Stops a specified trigger.
+- [StopWorkflowRun](https://docs.aws.amazon.com/glue/latest/webapi/API_StopWorkflowRun.html): Stops the execution of the specified workflow run.
+- [TagResource](https://docs.aws.amazon.com/glue/latest/webapi/API_TagResource.html): Adds tags to a resource.
+- [TestConnection](https://docs.aws.amazon.com/glue/latest/webapi/API_TestConnection.html): Tests a connection to a service to validate the service credentials that you provide.
+- [UntagResource](https://docs.aws.amazon.com/glue/latest/webapi/API_UntagResource.html): Removes tags from a resource.
+- [UpdateBlueprint](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateBlueprint.html): Updates a registered blueprint.
+- [UpdateCatalog](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateCatalog.html): Updates an existing catalog's properties in the AWS Glue Data Catalog.
+- [UpdateClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateClassifier.html): Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a JsonClassifier, or a CsvClassifier, depending on which field is present).
+- [UpdateColumnStatisticsForPartition](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateColumnStatisticsForPartition.html): Creates or updates partition statistics of columns.
+- [UpdateColumnStatisticsForTable](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateColumnStatisticsForTable.html): Creates or updates table statistics of columns.
+- [UpdateColumnStatisticsTaskSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateColumnStatisticsTaskSettings.html): Updates settings for a column statistics task.
+- [UpdateConnection](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateConnection.html): Updates a connection definition in the Data Catalog.
+- [UpdateCrawler](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateCrawler.html): Updates a crawler.
+- [UpdateCrawlerSchedule](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateCrawlerSchedule.html): Updates the schedule of a crawler using a cron expression.
+- [UpdateDatabase](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateDatabase.html): Updates an existing database definition in a Data Catalog.
+- [UpdateDataQualityRuleset](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateDataQualityRuleset.html): Updates the specified data quality ruleset.
+- [UpdateDevEndpoint](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateDevEndpoint.html): Updates a specified development endpoint.
+- [UpdateGlueIdentityCenterConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateGlueIdentityCenterConfiguration.html): Updates the existing AWS Glue Identity Center configuration, allowing modification of scopes and permissions for the integration.
+- [UpdateIntegrationResourceProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateIntegrationResourceProperty.html): This API can be used for updating the ResourceProperty of the AWS Glue connection (for the source) or AWS Glue database ARN (for the target).
+- [UpdateIntegrationTableProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateIntegrationTableProperties.html): This API is used to provide optional override properties for the tables that need to be replicated.
+- [UpdateJob](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateJob.html): Updates an existing job definition.
+- [UpdateJobFromSourceControl](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateJobFromSourceControl.html): Synchronizes a job from the source control repository.
+- [UpdateMLTransform](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateMLTransform.html): Updates an existing machine learning transform.
+- [UpdatePartition](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdatePartition.html): Updates a partition.
+- [UpdateRegistry](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateRegistry.html): Updates an existing registry which is used to hold a collection of schemas.
+- [UpdateSchema](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateSchema.html): Updates the description, compatibility setting, or version checkpoint for a schema set.
+- [UpdateSourceControlFromJob](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateSourceControlFromJob.html): Synchronizes a job to the source control repository.
+- [UpdateTable](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateTable.html): Updates a metadata table in the Data Catalog.
+- [UpdateTableOptimizer](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateTableOptimizer.html): Updates the configuration for an existing table optimizer.
+- [UpdateTrigger](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateTrigger.html): Updates a trigger definition.
+- [UpdateUsageProfile](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateUsageProfile.html): Update an AWS Glue usage profile.
+- [UpdateUserDefinedFunction](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateUserDefinedFunction.html): Updates an existing function definition in the Data Catalog.
+- [UpdateWorkflow](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateWorkflow.html): Updates an existing workflow.
+
+
+## [Data Types](https://docs.aws.amazon.com/glue/latest/webapi/API_Types.html)
+
+- [Action](https://docs.aws.amazon.com/glue/latest/webapi/API_Action.html): Defines an action to be initiated by a trigger.
+- [Aggregate](https://docs.aws.amazon.com/glue/latest/webapi/API_Aggregate.html): Specifies a transform that groups rows by chosen fields and computes the aggregated value by specified function.
+- [AggregateOperation](https://docs.aws.amazon.com/glue/latest/webapi/API_AggregateOperation.html): Specifies the set of parameters needed to perform aggregation in the aggregate transform.
+- [AllowedValue](https://docs.aws.amazon.com/glue/latest/webapi/API_AllowedValue.html): An object representing a value allowed for a property.
+- [AmazonRedshiftAdvancedOption](https://docs.aws.amazon.com/glue/latest/webapi/API_AmazonRedshiftAdvancedOption.html): Specifies an optional value when connecting to the Redshift cluster.
+- [AmazonRedshiftNodeData](https://docs.aws.amazon.com/glue/latest/webapi/API_AmazonRedshiftNodeData.html): Specifies an Amazon Redshift node.
+- [AmazonRedshiftSource](https://docs.aws.amazon.com/glue/latest/webapi/API_AmazonRedshiftSource.html): Specifies an Amazon Redshift source.
+- [AmazonRedshiftTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_AmazonRedshiftTarget.html): Specifies an Amazon Redshift target.
+- [AnnotationError](https://docs.aws.amazon.com/glue/latest/webapi/API_AnnotationError.html): A failed annotation.
+- [ApplyMapping](https://docs.aws.amazon.com/glue/latest/webapi/API_ApplyMapping.html): Specifies a transform that maps data property keys in the data source to data property keys in the data target.
+- [AthenaConnectorSource](https://docs.aws.amazon.com/glue/latest/webapi/API_AthenaConnectorSource.html): Specifies a connector to an Amazon Athena data source.
+- [AuditContext](https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html): A structure containing the Lake Formation audit context.
+- [AuthConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_AuthConfiguration.html): The authentication configuration for a connection returned by the DescribeConnectionType API.
+- [AuthenticationConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_AuthenticationConfiguration.html): A structure containing the authentication configuration.
+- [AuthenticationConfigurationInput](https://docs.aws.amazon.com/glue/latest/webapi/API_AuthenticationConfigurationInput.html): A structure containing the authentication configuration in the CreateConnection request.
+- [AuthorizationCodeProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_AuthorizationCodeProperties.html): The set of properties required for the the OAuth2 AUTHORIZATION_CODE grant type workflow.
+- [AutoDataQuality](https://docs.aws.amazon.com/glue/latest/webapi/API_AutoDataQuality.html): Specifies configuration options for automatic data quality evaluation in AWS Glue jobs.
+- [BackfillError](https://docs.aws.amazon.com/glue/latest/webapi/API_BackfillError.html): A list of errors that can occur when registering partition indexes for an existing table.
+- [BasicAuthenticationCredentials](https://docs.aws.amazon.com/glue/latest/webapi/API_BasicAuthenticationCredentials.html): For supplying basic auth credentials when not providing a SecretArn value.
+- [BasicAuthenticationProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_BasicAuthenticationProperties.html): Basic authentication configuration that defines the username and password properties for HTTP Basic authentication.
+- [BasicCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_BasicCatalogTarget.html): Specifies a target that uses a AWS Glue Data Catalog table.
+- [BatchGetTableOptimizerEntry](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetTableOptimizerEntry.html): Represents a table optimizer to retrieve in the BatchGetTableOptimizer operation.
+- [BatchGetTableOptimizerError](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchGetTableOptimizerError.html): Contains details on one of the errors in the error list returned by the BatchGetTableOptimizer operation.
+- [BatchStopJobRunError](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchStopJobRunError.html): Records an error that occurred when attempting to stop a specified job run.
+- [BatchStopJobRunSuccessfulSubmission](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchStopJobRunSuccessfulSubmission.html): Records a successful request to stop a specified JobRun.
+- [BatchTableOptimizer](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchTableOptimizer.html): Contains details for one of the table optimizers returned by the BatchGetTableOptimizer operation.
+- [BatchUpdatePartitionFailureEntry](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchUpdatePartitionFailureEntry.html): Contains information about a batch update partition error.
+- [BatchUpdatePartitionRequestEntry](https://docs.aws.amazon.com/glue/latest/webapi/API_BatchUpdatePartitionRequestEntry.html): A structure that contains the values and structure used to update a partition.
+- [BinaryColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_BinaryColumnStatisticsData.html): Defines column statistics supported for bit sequence data values.
+- [Blueprint](https://docs.aws.amazon.com/glue/latest/webapi/API_Blueprint.html): The details of a blueprint.
+- [BlueprintDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_BlueprintDetails.html): The details of a blueprint.
+- [BlueprintRun](https://docs.aws.amazon.com/glue/latest/webapi/API_BlueprintRun.html): The details of a blueprint run.
+- [BooleanColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_BooleanColumnStatisticsData.html): Defines column statistics supported for Boolean data columns.
+- [Capabilities](https://docs.aws.amazon.com/glue/latest/webapi/API_Capabilities.html): Specifies the supported authentication types returned by the DescribeConnectionType API.
+- [Catalog](https://docs.aws.amazon.com/glue/latest/webapi/API_Catalog.html): The catalog object represents a logical grouping of databases in the AWS Glue Data Catalog or a federated source.
+- [CatalogDeltaSource](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogDeltaSource.html): Specifies a Delta Lake data source that is registered in the AWS Glue Data Catalog.
+- [CatalogEntry](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogEntry.html): Specifies a table definition in the AWS Glue Data Catalog.
+- [CatalogHudiSource](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogHudiSource.html): Specifies a Hudi data source that is registered in the AWS Glue Data Catalog.
+- [CatalogIcebergSource](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogIcebergSource.html): Specifies an Apache Iceberg data source that is registered in the AWS Glue Data Catalog.
+- [CatalogImportStatus](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogImportStatus.html): A structure containing migration status information.
+- [CatalogInput](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogInput.html): A structure that describes catalog properties.
+- [CatalogKafkaSource](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogKafkaSource.html): Specifies an Apache Kafka data store in the Data Catalog.
+- [CatalogKinesisSource](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogKinesisSource.html): Specifies a Kinesis data source in the AWS Glue Data Catalog.
+- [CatalogProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogProperties.html): A structure that specifies data lake access properties and other custom properties.
+- [CatalogPropertiesOutput](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogPropertiesOutput.html): Property attributes that include configuration properties for the catalog resource.
+- [CatalogSchemaChangePolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogSchemaChangePolicy.html): A policy that specifies update behavior for the crawler.
+- [CatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogSource.html): Specifies a data store in the AWS Glue Data Catalog.
+- [CatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_CatalogTarget.html): Specifies an AWS Glue Data Catalog target.
+- [Classifier](https://docs.aws.amazon.com/glue/latest/webapi/API_Classifier.html): Classifiers are triggered during a crawl task.
+- [ClientCredentialsProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_ClientCredentialsProperties.html): OAuth2 client credentials configuration that defines the properties needed for the Client Credentials grant type flow.
+- [CloudWatchEncryption](https://docs.aws.amazon.com/glue/latest/webapi/API_CloudWatchEncryption.html): Specifies how Amazon CloudWatch data should be encrypted.
+- [CodeGenConfigurationNode](https://docs.aws.amazon.com/glue/latest/webapi/API_CodeGenConfigurationNode.html): CodeGenConfigurationNode enumerates all valid Node types.
+- [CodeGenEdge](https://docs.aws.amazon.com/glue/latest/webapi/API_CodeGenEdge.html): Represents a directional edge in a directed acyclic graph (DAG).
+- [CodeGenNode](https://docs.aws.amazon.com/glue/latest/webapi/API_CodeGenNode.html): Represents a node in a directed acyclic graph (DAG)
+- [CodeGenNodeArg](https://docs.aws.amazon.com/glue/latest/webapi/API_CodeGenNodeArg.html): An argument or property of a node.
+- [Column](https://docs.aws.amazon.com/glue/latest/webapi/API_Column.html): A column in a Table.
+- [ColumnError](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnError.html): Encapsulates a column name that failed and the reason for failure.
+- [ColumnImportance](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnImportance.html): A structure containing the column name and column importance score for a column.
+- [ColumnRowFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnRowFilter.html): A filter that uses both column-level and row-level filtering.
+- [ColumnStatistics](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnStatistics.html): Represents the generated column-level statistics for a table or partition.
+- [ColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnStatisticsData.html): Contains the individual types of column statistics data.
+- [ColumnStatisticsError](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnStatisticsError.html): Encapsulates a ColumnStatistics object that failed and the reason for failure.
+- [ColumnStatisticsTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnStatisticsTaskRun.html): The object that shows the details of the column stats run.
+- [ColumnStatisticsTaskSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_ColumnStatisticsTaskSettings.html): The settings for a column statistics task.
+- [CompactionConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_CompactionConfiguration.html): The configuration for a compaction optimizer.
+- [CompactionMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_CompactionMetrics.html): A structure that contains compaction metrics for the optimizer run.
+- [ComputeEnvironmentConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_ComputeEnvironmentConfiguration.html): An object containing configuration for a compute environment (such as Spark, Python or Athena) returned by the DescribeConnectionType API.
+- [Condition](https://docs.aws.amazon.com/glue/latest/webapi/API_Condition.html): Defines a condition under which a trigger fires.
+- [ConditionExpression](https://docs.aws.amazon.com/glue/latest/webapi/API_ConditionExpression.html): Condition expression defined in the AWS Glue Studio data preparation recipe node.
+- [ConfigurationObject](https://docs.aws.amazon.com/glue/latest/webapi/API_ConfigurationObject.html): Specifies the values that an admin sets for each job or session parameter configured in a AWS Glue usage profile.
+- [ConfusionMatrix](https://docs.aws.amazon.com/glue/latest/webapi/API_ConfusionMatrix.html): The confusion matrix shows you what your transform is predicting accurately and what types of errors it is making.
+- [Connection](https://docs.aws.amazon.com/glue/latest/webapi/API_Connection.html): Defines a connection to a data source.
+- [ConnectionInput](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectionInput.html): A structure that is used to specify a connection to create or update.
+- [ConnectionPasswordEncryption](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectionPasswordEncryption.html): The data structure used by the Data Catalog to encrypt the password as part of CreateConnection or UpdateConnection and store it in the ENCRYPTED_PASSWORD field in the connection properties.
+- [ConnectionPropertiesConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectionPropertiesConfiguration.html): Configuration that defines the base URL and additional request parameters needed during connection creation.
+- [ConnectionsList](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectionsList.html): Specifies the connections used by a job.
+- [ConnectionTypeBrief](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectionTypeBrief.html): Brief information about a supported connection type returned by the ListConnectionTypes API.
+- [ConnectionTypeVariant](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectionTypeVariant.html): Represents a variant of a connection type in AWS Glue.
+- [ConnectorAuthenticationConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectorAuthenticationConfiguration.html): Configuration that defines the supported authentication types and required properties for the connection type.
+- [ConnectorAuthorizationCodeProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectorAuthorizationCodeProperties.html): OAuth2 authorization code configuration that defines the properties needed for the Authorization Code grant type flow.
+- [ConnectorDataSource](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectorDataSource.html): Specifies a source generated with standard connection options.
+- [ConnectorDataTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectorDataTarget.html): Specifies a target generated with standard connection options.
+- [ConnectorOAuth2Properties](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectorOAuth2Properties.html): OAuth2 configuration container that defines the authentication properties and flow-specific configurations for OAuth2-based connections.
+- [ConnectorProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_ConnectorProperty.html): Defines a property configuration for connection types, default values, and where the property should be used in requests.
+- [Crawl](https://docs.aws.amazon.com/glue/latest/webapi/API_Crawl.html): The details of a crawl in the workflow.
+- [Crawler](https://docs.aws.amazon.com/glue/latest/webapi/API_Crawler.html): Specifies a crawler program that examines a data source and uses classifiers to try to determine its schema.
+- [CrawlerHistory](https://docs.aws.amazon.com/glue/latest/webapi/API_CrawlerHistory.html): Contains the information for a run of a crawler.
+- [CrawlerMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_CrawlerMetrics.html): Metrics for a specified crawler.
+- [CrawlerNodeDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_CrawlerNodeDetails.html): The details of a Crawler node present in the workflow.
+- [CrawlerTargets](https://docs.aws.amazon.com/glue/latest/webapi/API_CrawlerTargets.html): Specifies data stores to crawl.
+- [CrawlsFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_CrawlsFilter.html): A list of fields, comparators and value that you can use to filter the crawler runs for a specified crawler.
+- [CreateCsvClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateCsvClassifierRequest.html): Specifies a custom CSV classifier for CreateClassifier to create.
+- [CreateGrokClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateGrokClassifierRequest.html): Specifies a grok classifier for CreateClassifier to create.
+- [CreateIcebergTableInput](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateIcebergTableInput.html): The configuration parameters required to create a new Iceberg table in the AWS Glue Data Catalog, including table properties and metadata specifications.
+- [CreateJsonClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateJsonClassifierRequest.html): Specifies a JSON classifier for CreateClassifier to create.
+- [CreateXMLClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_CreateXMLClassifierRequest.html): Specifies an XML classifier for CreateClassifier to create.
+- [CsvClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_CsvClassifier.html): A classifier for custom CSV content.
+- [CursorConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_CursorConfiguration.html): Cursor-based pagination configuration that defines how to handle pagination using cursor tokens or next page identifiers.
+- [CustomAuthenticationProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_CustomAuthenticationProperties.html): Custom authentication configuration that allows for flexible authentication mechanisms beyond standard Basic and OAuth2 flows.
+- [CustomCode](https://docs.aws.amazon.com/glue/latest/webapi/API_CustomCode.html): Specifies a transform that uses custom code you provide to perform the data transformation.
+- [CustomEntityType](https://docs.aws.amazon.com/glue/latest/webapi/API_CustomEntityType.html): An object representing a custom pattern for detecting sensitive data across the columns and rows of your structured data.
+- [Database](https://docs.aws.amazon.com/glue/latest/webapi/API_Database.html): The Database object represents a logical grouping of tables that might reside in a Hive metastore or an RDBMS.
+- [DatabaseIdentifier](https://docs.aws.amazon.com/glue/latest/webapi/API_DatabaseIdentifier.html): A structure that describes a target database for resource linking.
+- [DatabaseInput](https://docs.aws.amazon.com/glue/latest/webapi/API_DatabaseInput.html): The structure used to create or update a database.
+- [DataCatalogEncryptionSettings](https://docs.aws.amazon.com/glue/latest/webapi/API_DataCatalogEncryptionSettings.html): Contains configuration information for maintaining Data Catalog security.
+- [DataLakeAccessProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_DataLakeAccessProperties.html): Input properties to configure data lake access for your catalog resource in the AWS Glue Data Catalog.
+- [DataLakeAccessPropertiesOutput](https://docs.aws.amazon.com/glue/latest/webapi/API_DataLakeAccessPropertiesOutput.html): The output properties of the data lake access configuration for your catalog resource in the AWS Glue Data Catalog.
+- [DataLakePrincipal](https://docs.aws.amazon.com/glue/latest/webapi/API_DataLakePrincipal.html): The AWS Lake Formation principal.
+- [DatapointInclusionAnnotation](https://docs.aws.amazon.com/glue/latest/webapi/API_DatapointInclusionAnnotation.html): An Inclusion Annotation.
+- [DataQualityAggregatedMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityAggregatedMetrics.html): A summary of metrics showing the total counts of processed rows and rules, including their pass/fail statistics based on row-level results.
+- [DataQualityAnalyzerResult](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityAnalyzerResult.html): Describes the result of the evaluation of a data quality analyzer.
+- [DataQualityEncryption](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityEncryption.html): Specifies how Data Quality assets in your account should be encrypted.
+- [DataQualityEvaluationRunAdditionalRunOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityEvaluationRunAdditionalRunOptions.html): Additional run options you can specify for an evaluation run.
+- [DataQualityGlueTable](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityGlueTable.html): The database and table in the AWS Glue Data Catalog that is used for input or output data for Data Quality Operations.
+- [DataQualityMetricValues](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityMetricValues.html): Describes the data quality metric value according to the analysis of historical data.
+- [DataQualityObservation](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityObservation.html): Describes the observation generated after evaluating the rules and analyzers.
+- [DataQualityResult](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityResult.html): Describes a data quality result.
+- [DataQualityResultDescription](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityResultDescription.html): Describes a data quality result.
+- [DataQualityResultFilterCriteria](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityResultFilterCriteria.html): Criteria used to return data quality results.
+- [DataQualityRuleRecommendationRunDescription](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityRuleRecommendationRunDescription.html): Describes the result of a data quality rule recommendation run.
+- [DataQualityRuleRecommendationRunFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityRuleRecommendationRunFilter.html): A filter for listing data quality recommendation runs.
+- [DataQualityRuleResult](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityRuleResult.html): Describes the result of the evaluation of a data quality rule.
+- [DataQualityRulesetEvaluationRunDescription](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityRulesetEvaluationRunDescription.html): Describes the result of a data quality ruleset evaluation run.
+- [DataQualityRulesetEvaluationRunFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityRulesetEvaluationRunFilter.html): The filter criteria.
+- [DataQualityRulesetFilterCriteria](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityRulesetFilterCriteria.html): The criteria used to filter data quality rulesets.
+- [DataQualityRulesetListDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityRulesetListDetails.html): Describes a data quality ruleset returned by GetDataQualityRuleset.
+- [DataQualityTargetTable](https://docs.aws.amazon.com/glue/latest/webapi/API_DataQualityTargetTable.html): An object representing an AWS Glue table.
+- [DataSource](https://docs.aws.amazon.com/glue/latest/webapi/API_DataSource.html): A data source (an AWS Glue table) for which you want data quality results.
+- [Datatype](https://docs.aws.amazon.com/glue/latest/webapi/API_Datatype.html): A structure representing the datatype of the value.
+- [DateColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_DateColumnStatisticsData.html): Defines column statistics supported for timestamp data columns.
+- [DDBELTCatalogAdditionalOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_DDBELTCatalogAdditionalOptions.html): Specifies additional options for DynamoDB ELT catalog operations.
+- [DDBELTConnectionOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_DDBELTConnectionOptions.html): Specifies connection options for DynamoDB ELT (Extract, Load, Transform) operations.
+- [DecimalColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_DecimalColumnStatisticsData.html): Defines column statistics supported for fixed-point number data columns.
+- [DecimalNumber](https://docs.aws.amazon.com/glue/latest/webapi/API_DecimalNumber.html): Contains a numeric value in decimal format.
+- [DeltaTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_DeltaTarget.html): Specifies a Delta data store to crawl one or more Delta tables.
+- [DevEndpoint](https://docs.aws.amazon.com/glue/latest/webapi/API_DevEndpoint.html): A development endpoint where a developer can remotely debug extract, transform, and load (ETL) scripts.
+- [DevEndpointCustomLibraries](https://docs.aws.amazon.com/glue/latest/webapi/API_DevEndpointCustomLibraries.html): Custom libraries to be loaded into a development endpoint.
+- [DirectJDBCSource](https://docs.aws.amazon.com/glue/latest/webapi/API_DirectJDBCSource.html): Specifies the direct JDBC source connection.
+- [DirectKafkaSource](https://docs.aws.amazon.com/glue/latest/webapi/API_DirectKafkaSource.html): Specifies an Apache Kafka data store.
+- [DirectKinesisSource](https://docs.aws.amazon.com/glue/latest/webapi/API_DirectKinesisSource.html): Specifies a direct Amazon Kinesis data source.
+- [DirectSchemaChangePolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_DirectSchemaChangePolicy.html): A policy that specifies update behavior for the crawler.
+- [DoubleColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_DoubleColumnStatisticsData.html): Defines column statistics supported for floating-point number data columns.
+- [DQResultsPublishingOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_DQResultsPublishingOptions.html): Options to configure how your data quality evaluation results are published.
+- [DQStopJobOnFailureOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_DQStopJobOnFailureOptions.html): Options to configure how your job will stop if your data quality evaluation fails.
+- [DropDuplicates](https://docs.aws.amazon.com/glue/latest/webapi/API_DropDuplicates.html): Specifies a transform that removes rows of repeating data from a data set.
+- [DropFields](https://docs.aws.amazon.com/glue/latest/webapi/API_DropFields.html): Specifies a transform that chooses the data property keys that you want to drop.
+- [DropNullFields](https://docs.aws.amazon.com/glue/latest/webapi/API_DropNullFields.html): Specifies a transform that removes columns from the dataset if all values in the column are 'null'.
+- [DynamicTransform](https://docs.aws.amazon.com/glue/latest/webapi/API_DynamicTransform.html): Specifies the set of parameters needed to perform the dynamic transform.
+- [DynamoDBCatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_DynamoDBCatalogSource.html): Specifies a DynamoDB data source in the AWS Glue Data Catalog.
+- [DynamoDBELTConnectorSource](https://docs.aws.amazon.com/glue/latest/webapi/API_DynamoDBELTConnectorSource.html): Specifies a DynamoDB ELT connector source for extracting data from DynamoDB tables.
+- [DynamoDBTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_DynamoDBTarget.html): Specifies an Amazon DynamoDB table to crawl.
+- [Edge](https://docs.aws.amazon.com/glue/latest/webapi/API_Edge.html): An edge represents a directed connection between two AWS Glue components that are part of the workflow the edge belongs to.
+- [EncryptionAtRest](https://docs.aws.amazon.com/glue/latest/webapi/API_EncryptionAtRest.html): Specifies the encryption-at-rest configuration for the Data Catalog.
+- [EncryptionConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_EncryptionConfiguration.html): Specifies an encryption configuration.
+- [Entity](https://docs.aws.amazon.com/glue/latest/webapi/API_Entity.html): An entity supported by a given ConnectionType.
+- [EntityConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_EntityConfiguration.html): Configuration that defines how to interact with a specific data entity through the REST API, including its access patterns and schema definition.
+- [ErrorDetail](https://docs.aws.amazon.com/glue/latest/webapi/API_ErrorDetail.html): Contains details about an error.
+- [ErrorDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_ErrorDetails.html): An object containing error details.
+- [EvaluateDataQuality](https://docs.aws.amazon.com/glue/latest/webapi/API_EvaluateDataQuality.html): Specifies your data quality evaluation criteria.
+- [EvaluateDataQualityMultiFrame](https://docs.aws.amazon.com/glue/latest/webapi/API_EvaluateDataQualityMultiFrame.html): Specifies your data quality evaluation criteria.
+- [EvaluationMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_EvaluationMetrics.html): Evaluation metrics provide an estimate of the quality of your machine learning transform.
+- [EventBatchingCondition](https://docs.aws.amazon.com/glue/latest/webapi/API_EventBatchingCondition.html): Batch condition that must be met (specified number of events received or batch time window expired) before EventBridge event trigger fires.
+- [ExecutionAttempt](https://docs.aws.amazon.com/glue/latest/webapi/API_ExecutionAttempt.html): A run attempt for a column statistics task run.
+- [ExecutionProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_ExecutionProperty.html): An execution property of a job.
+- [ExportLabelsTaskRunProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_ExportLabelsTaskRunProperties.html): Specifies configuration properties for an exporting labels task run.
+- [ExtractedParameter](https://docs.aws.amazon.com/glue/latest/webapi/API_ExtractedParameter.html): Parameter extraction configuration that defines how to extract and map values from API responses to request parameters.
+- [FederatedCatalog](https://docs.aws.amazon.com/glue/latest/webapi/API_FederatedCatalog.html): A catalog that points to an entity outside the AWS Glue Data Catalog.
+- [FederatedDatabase](https://docs.aws.amazon.com/glue/latest/webapi/API_FederatedDatabase.html): A database that points to an entity outside the AWS Glue Data Catalog.
+- [FederatedTable](https://docs.aws.amazon.com/glue/latest/webapi/API_FederatedTable.html): A table that points to an entity outside the AWS Glue Data Catalog.
+- [Field](https://docs.aws.amazon.com/glue/latest/webapi/API_Field.html): The Field object has information about the different properties associated with a field in the connector.
+- [FieldDefinition](https://docs.aws.amazon.com/glue/latest/webapi/API_FieldDefinition.html): Defines a field in an entity schema for REST connector data sources, specifying the field name and data type.
+- [FillMissingValues](https://docs.aws.amazon.com/glue/latest/webapi/API_FillMissingValues.html): Specifies a transform that locates records in the dataset that have missing values and adds a new field with a value determined by imputation.
+- [Filter](https://docs.aws.amazon.com/glue/latest/webapi/API_Filter.html): Specifies a transform that splits a dataset into two, based on a filter condition.
+- [FilterExpression](https://docs.aws.amazon.com/glue/latest/webapi/API_FilterExpression.html): Specifies a filter expression.
+- [FilterValue](https://docs.aws.amazon.com/glue/latest/webapi/API_FilterValue.html): Represents a single entry in the list of values for a FilterExpression.
+- [FindMatchesMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_FindMatchesMetrics.html): The evaluation metrics for the find matches algorithm.
+- [FindMatchesParameters](https://docs.aws.amazon.com/glue/latest/webapi/API_FindMatchesParameters.html): The parameters to configure the find matches transform.
+- [FindMatchesTaskRunProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_FindMatchesTaskRunProperties.html): Specifies configuration properties for a Find Matches task run.
+- [GetConnectionsFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_GetConnectionsFilter.html): Filters the connection definitions that are returned by the GetConnections API operation.
+- [GluePolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_GluePolicy.html): A structure for returning a resource policy.
+- [GlueSchema](https://docs.aws.amazon.com/glue/latest/webapi/API_GlueSchema.html): Specifies a user-defined schema when a schema cannot be determined by AWS Glue.
+- [GlueStudioSchemaColumn](https://docs.aws.amazon.com/glue/latest/webapi/API_GlueStudioSchemaColumn.html): Specifies a single column in a AWS Glue schema definition.
+- [GlueTable](https://docs.aws.amazon.com/glue/latest/webapi/API_GlueTable.html): The database and table in the AWS Glue Data Catalog that is used for input or output data.
+- [GovernedCatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_GovernedCatalogSource.html): Specifies the data store in the governed AWS Glue Data Catalog.
+- [GovernedCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_GovernedCatalogTarget.html): Specifies a data target that writes to Amazon S3 using the AWS Glue Data Catalog.
+- [GrokClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_GrokClassifier.html): A classifier that uses grok patterns.
+- [GroupFilters](https://docs.aws.amazon.com/glue/latest/webapi/API_GroupFilters.html): Specifies a group of filters with a logical operator that determines how the filters are combined to evaluate routing conditions.
+- [HudiTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_HudiTarget.html): Specifies an Apache Hudi data source.
+- [IcebergCompactionConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergCompactionConfiguration.html): The configuration for an Iceberg compaction optimizer.
+- [IcebergCompactionMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergCompactionMetrics.html): Compaction metrics for Iceberg for the optimizer run.
+- [IcebergEncryptedKey](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergEncryptedKey.html): Encryption key structure used for Iceberg table encryption.
+- [IcebergInput](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergInput.html): A structure that defines an Apache Iceberg metadata table to create in the catalog.
+- [IcebergOptimizationProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergOptimizationProperties.html): A structure that specifies Iceberg table optimization properties for the catalog, including configurations for compaction, retention, and orphan file deletion operations.
+- [IcebergOptimizationPropertiesOutput](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergOptimizationPropertiesOutput.html): A structure that contains the output properties of Iceberg table optimization configuration for your catalog resource in the AWS Glue Data Catalog.
+- [IcebergOrphanFileDeletionConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergOrphanFileDeletionConfiguration.html): The configuration for an Iceberg orphan file deletion optimizer.
+- [IcebergOrphanFileDeletionMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergOrphanFileDeletionMetrics.html): Orphan file deletion metrics for Iceberg for the optimizer run.
+- [IcebergPartitionField](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergPartitionField.html): Defines a single partition field within an Iceberg partition specification, including the source field, transformation function, partition name, and unique identifier.
+- [IcebergPartitionSpec](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergPartitionSpec.html): Defines the partitioning specification for an Iceberg table, determining how table data will be organized and partitioned for optimal query performance.
+- [IcebergRetentionConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergRetentionConfiguration.html): The configuration for an Iceberg snapshot retention optimizer.
+- [IcebergRetentionMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergRetentionMetrics.html): Snapshot retention metrics for Iceberg for the optimizer run.
+- [IcebergSchema](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergSchema.html): Defines the schema structure for an Iceberg table, including field definitions, data types, and schema metadata.
+- [IcebergSortField](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergSortField.html): Defines a single field within an Iceberg sort order specification, including the source field, transformation, sort direction, and null value ordering.
+- [IcebergSortOrder](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergSortOrder.html): Defines the sort order specification for an Iceberg table, determining how data should be ordered within partitions to optimize query performance.
+- [IcebergStructField](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergStructField.html): Defines a single field within an Iceberg table schema, including its identifier, name, data type, nullability, and documentation.
+- [IcebergTableUpdate](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergTableUpdate.html): Defines a complete set of updates to be applied to an Iceberg table, including schema changes, partitioning modifications, sort order adjustments, location updates, and property changes.
+- [IcebergTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_IcebergTarget.html): Specifies an Apache Iceberg data source where Iceberg tables are stored in Amazon S3.
+- [ImportLabelsTaskRunProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_ImportLabelsTaskRunProperties.html): Specifies configuration properties for an importing labels task run.
+- [InboundIntegration](https://docs.aws.amazon.com/glue/latest/webapi/API_InboundIntegration.html): A structure for an integration that writes data into a resource.
+- [Integration](https://docs.aws.amazon.com/glue/latest/webapi/API_Integration.html): Describes a zero-ETL integration.
+- [IntegrationConfig](https://docs.aws.amazon.com/glue/latest/webapi/API_IntegrationConfig.html): Properties associated with the integration.
+- [IntegrationError](https://docs.aws.amazon.com/glue/latest/webapi/API_IntegrationError.html): An error associated with a zero-ETL integration.
+- [IntegrationFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_IntegrationFilter.html): A filter that can be used when invoking a DescribeIntegrations request.
+- [IntegrationPartition](https://docs.aws.amazon.com/glue/latest/webapi/API_IntegrationPartition.html): A structure that describes how data is partitioned on the target.
+- [IntegrationResourceProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_IntegrationResourceProperty.html): A structure representing an integration resource property.
+- [IntegrationResourcePropertyFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_IntegrationResourcePropertyFilter.html): A filter for integration resource properties.
+- [JDBCConnectorOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_JDBCConnectorOptions.html): Additional connection options for the connector.
+- [JDBCConnectorSource](https://docs.aws.amazon.com/glue/latest/webapi/API_JDBCConnectorSource.html): Specifies a connector to a JDBC data source.
+- [JDBCConnectorTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_JDBCConnectorTarget.html): Specifies a data target that writes to Amazon S3 in Apache Parquet columnar storage.
+- [JdbcTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_JdbcTarget.html): Specifies a JDBC data store to crawl.
+- [Job](https://docs.aws.amazon.com/glue/latest/webapi/API_Job.html): Specifies a job definition.
+- [JobBookmarkEntry](https://docs.aws.amazon.com/glue/latest/webapi/API_JobBookmarkEntry.html): Defines a point that a job can resume processing.
+- [JobBookmarksEncryption](https://docs.aws.amazon.com/glue/latest/webapi/API_JobBookmarksEncryption.html): Specifies how job bookmark data should be encrypted.
+- [JobCommand](https://docs.aws.amazon.com/glue/latest/webapi/API_JobCommand.html): Specifies code that runs when a job is run.
+- [JobNodeDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_JobNodeDetails.html): The details of a Job node present in the workflow.
+- [JobRun](https://docs.aws.amazon.com/glue/latest/webapi/API_JobRun.html): Contains information about a job run.
+- [JobUpdate](https://docs.aws.amazon.com/glue/latest/webapi/API_JobUpdate.html): Specifies information used to update an existing job definition.
+- [Join](https://docs.aws.amazon.com/glue/latest/webapi/API_Join.html): Specifies a transform that joins two datasets into one dataset using a comparison phrase on the specified data property keys.
+- [JoinColumn](https://docs.aws.amazon.com/glue/latest/webapi/API_JoinColumn.html): Specifies a column to be joined.
+- [JsonClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_JsonClassifier.html): A classifier for JSON content.
+- [JWTBearerProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_JWTBearerProperties.html): JWT bearer token configuration that defines the properties needed for the JWT Bearer grant type flow.
+- [KafkaStreamingSourceOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_KafkaStreamingSourceOptions.html): Additional options for streaming.
+- [KeySchemaElement](https://docs.aws.amazon.com/glue/latest/webapi/API_KeySchemaElement.html): A partition key pair consisting of a name and a type.
+- [KinesisStreamingSourceOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_KinesisStreamingSourceOptions.html): Additional options for the Amazon Kinesis streaming data source.
+- [LabelingSetGenerationTaskRunProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_LabelingSetGenerationTaskRunProperties.html): Specifies configuration properties for a labeling set generation task run.
+- [LakeFormationConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_LakeFormationConfiguration.html): Specifies AWS Lake Formation configuration settings for the crawler.
+- [LastActiveDefinition](https://docs.aws.amazon.com/glue/latest/webapi/API_LastActiveDefinition.html): When there are multiple versions of a blueprint and the latest version has some errors, this attribute indicates the last successful blueprint definition that is available with the service.
+- [LastCrawlInfo](https://docs.aws.amazon.com/glue/latest/webapi/API_LastCrawlInfo.html): Status and error information about the most recent crawl.
+- [LineageConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_LineageConfiguration.html): Specifies data lineage configuration settings for the crawler.
+- [Location](https://docs.aws.amazon.com/glue/latest/webapi/API_Location.html): The location of resources.
+- [LongColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_LongColumnStatisticsData.html): Defines column statistics supported for integer data columns.
+- [Mapping](https://docs.aws.amazon.com/glue/latest/webapi/API_Mapping.html): Specifies the mapping of data property keys.
+- [MappingEntry](https://docs.aws.amazon.com/glue/latest/webapi/API_MappingEntry.html): Defines a mapping.
+- [MaterializedViewRefreshTaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_MaterializedViewRefreshTaskRun.html): The object that shows the details of the materialized view refresh task run.
+- [Merge](https://docs.aws.amazon.com/glue/latest/webapi/API_Merge.html): Specifies a transform that merges a DynamicFrame with a staging DynamicFrame based on the specified primary keys to identify records.
+- [MetadataInfo](https://docs.aws.amazon.com/glue/latest/webapi/API_MetadataInfo.html): A structure containing metadata information for a schema version.
+- [MetadataKeyValuePair](https://docs.aws.amazon.com/glue/latest/webapi/API_MetadataKeyValuePair.html): A structure containing a key value pair for metadata.
+- [MetricBasedObservation](https://docs.aws.amazon.com/glue/latest/webapi/API_MetricBasedObservation.html): Describes the metric based observation generated based on evaluated data quality metrics.
+- [MicrosoftSQLServerCatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_MicrosoftSQLServerCatalogSource.html): Specifies a Microsoft SQL server data source in the AWS Glue Data Catalog.
+- [MicrosoftSQLServerCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_MicrosoftSQLServerCatalogTarget.html): Specifies a target that uses Microsoft SQL.
+- [MLTransform](https://docs.aws.amazon.com/glue/latest/webapi/API_MLTransform.html): A structure for a machine learning transform.
+- [MLUserDataEncryption](https://docs.aws.amazon.com/glue/latest/webapi/API_MLUserDataEncryption.html): The encryption-at-rest settings of the transform that apply to accessing user data.
+- [MongoDBTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_MongoDBTarget.html): Specifies an Amazon DocumentDB or MongoDB data store to crawl.
+- [MySQLCatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_MySQLCatalogSource.html): Specifies a MySQL data source in the AWS Glue Data Catalog.
+- [MySQLCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_MySQLCatalogTarget.html): Specifies a target that uses MySQL.
+- [Node](https://docs.aws.amazon.com/glue/latest/webapi/API_Node.html): A node represents an AWS Glue component (trigger, crawler, or job) on a workflow graph.
+- [NotificationProperty](https://docs.aws.amazon.com/glue/latest/webapi/API_NotificationProperty.html): Specifies configuration properties of a notification.
+- [NullCheckBoxList](https://docs.aws.amazon.com/glue/latest/webapi/API_NullCheckBoxList.html): Represents whether certain values are recognized as null values for removal.
+- [NullValueField](https://docs.aws.amazon.com/glue/latest/webapi/API_NullValueField.html): Represents a custom null value such as a zeros or other value being used as a null placeholder unique to the dataset.
+- [OAuth2ClientApplication](https://docs.aws.amazon.com/glue/latest/webapi/API_OAuth2ClientApplication.html): The OAuth2 client app used for the connection.
+- [OAuth2Credentials](https://docs.aws.amazon.com/glue/latest/webapi/API_OAuth2Credentials.html): The credentials used when the authentication type is OAuth2 authentication.
+- [OAuth2Properties](https://docs.aws.amazon.com/glue/latest/webapi/API_OAuth2Properties.html): A structure containing properties for OAuth2 authentication.
+- [OAuth2PropertiesInput](https://docs.aws.amazon.com/glue/latest/webapi/API_OAuth2PropertiesInput.html): A structure containing properties for OAuth2 in the CreateConnection request.
+- [OffsetConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_OffsetConfiguration.html): Offset-based pagination configuration that defines how to handle pagination using numeric offsets and limits.
+- [OpenTableFormatInput](https://docs.aws.amazon.com/glue/latest/webapi/API_OpenTableFormatInput.html): A structure representing an open format table.
+- [Option](https://docs.aws.amazon.com/glue/latest/webapi/API_Option.html): Specifies an option value.
+- [OracleSQLCatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_OracleSQLCatalogSource.html): Specifies an Oracle data source in the AWS Glue Data Catalog.
+- [OracleSQLCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_OracleSQLCatalogTarget.html): Specifies a target that uses Oracle SQL.
+- [Order](https://docs.aws.amazon.com/glue/latest/webapi/API_Order.html): Specifies the sort order of a sorted column.
+- [OrphanFileDeletionConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_OrphanFileDeletionConfiguration.html): The configuration for an orphan file deletion optimizer.
+- [OrphanFileDeletionMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_OrphanFileDeletionMetrics.html): A structure that contains orphan file deletion metrics for the optimizer run.
+- [OtherMetadataValueListItem](https://docs.aws.amazon.com/glue/latest/webapi/API_OtherMetadataValueListItem.html): A structure containing other metadata for a schema version belonging to the same metadata key.
+- [PaginationConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_PaginationConfiguration.html): Configuration that defines how to handle paginated responses from REST APIs, supporting different pagination strategies used by various services.
+- [Partition](https://docs.aws.amazon.com/glue/latest/webapi/API_Partition.html): Represents a slice of table data.
+- [PartitionError](https://docs.aws.amazon.com/glue/latest/webapi/API_PartitionError.html): Contains information about a partition error.
+- [PartitionIndex](https://docs.aws.amazon.com/glue/latest/webapi/API_PartitionIndex.html): A structure for a partition index.
+- [PartitionIndexDescriptor](https://docs.aws.amazon.com/glue/latest/webapi/API_PartitionIndexDescriptor.html): A descriptor for a partition index in a table.
+- [PartitionInput](https://docs.aws.amazon.com/glue/latest/webapi/API_PartitionInput.html): The structure used to create and update a partition.
+- [PartitionValueList](https://docs.aws.amazon.com/glue/latest/webapi/API_PartitionValueList.html): Contains a list of values defining partitions.
+- [PhysicalConnectionRequirements](https://docs.aws.amazon.com/glue/latest/webapi/API_PhysicalConnectionRequirements.html): The OAuth client app in GetConnection response.
+- [PIIDetection](https://docs.aws.amazon.com/glue/latest/webapi/API_PIIDetection.html): Specifies a transform that identifies, removes or masks PII data.
+- [PostgreSQLCatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_PostgreSQLCatalogSource.html): Specifies a PostgresSQL data source in the AWS Glue Data Catalog.
+- [PostgreSQLCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_PostgreSQLCatalogTarget.html): Specifies a target that uses Postgres SQL.
+- [Predecessor](https://docs.aws.amazon.com/glue/latest/webapi/API_Predecessor.html): A job run that was used in the predicate of a conditional trigger that triggered this job run.
+- [Predicate](https://docs.aws.amazon.com/glue/latest/webapi/API_Predicate.html): Defines the predicate of the trigger, which determines when it fires.
+- [PrincipalPermissions](https://docs.aws.amazon.com/glue/latest/webapi/API_PrincipalPermissions.html): Permissions granted to a principal.
+- [ProfileConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_ProfileConfiguration.html): Specifies the job and session values that an admin configures in an AWS Glue usage profile.
+- [Property](https://docs.aws.amazon.com/glue/latest/webapi/API_Property.html): An object that defines a connection type for a compute environment.
+- [PropertyPredicate](https://docs.aws.amazon.com/glue/latest/webapi/API_PropertyPredicate.html): Defines a property predicate.
+- [QuerySessionContext](https://docs.aws.amazon.com/glue/latest/webapi/API_QuerySessionContext.html): A structure used as a protocol between query engines and Lake Formation or AWS Glue.
+- [Recipe](https://docs.aws.amazon.com/glue/latest/webapi/API_Recipe.html): A AWS Glue Studio node that uses a AWS Glue DataBrew recipe in AWS Glue jobs.
+- [RecipeAction](https://docs.aws.amazon.com/glue/latest/webapi/API_RecipeAction.html): Actions defined in the AWS Glue Studio data preparation recipe node.
+- [RecipeReference](https://docs.aws.amazon.com/glue/latest/webapi/API_RecipeReference.html): A reference to a AWS Glue DataBrew recipe.
+- [RecipeStep](https://docs.aws.amazon.com/glue/latest/webapi/API_RecipeStep.html): A recipe step used in a AWS Glue Studio data preparation recipe node.
+- [RecrawlPolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_RecrawlPolicy.html): When crawling an Amazon S3 data source after the first crawl is complete, specifies whether to crawl the entire dataset again or to crawl only folders that were added since the last crawler run.
+- [RedshiftSource](https://docs.aws.amazon.com/glue/latest/webapi/API_RedshiftSource.html): Specifies an Amazon Redshift data store.
+- [RedshiftTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_RedshiftTarget.html): Specifies a target that uses Amazon Redshift.
+- [RegistryId](https://docs.aws.amazon.com/glue/latest/webapi/API_RegistryId.html): A wrapper structure that may contain the registry name and Amazon Resource Name (ARN).
+- [RegistryListItem](https://docs.aws.amazon.com/glue/latest/webapi/API_RegistryListItem.html): A structure containing the details for a registry.
+- [RelationalCatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_RelationalCatalogSource.html): Specifies a Relational database data source in the AWS Glue Data Catalog.
+- [RenameField](https://docs.aws.amazon.com/glue/latest/webapi/API_RenameField.html): Specifies a transform that renames a single data property key.
+- [ResourceUri](https://docs.aws.amazon.com/glue/latest/webapi/API_ResourceUri.html): The URIs for function resources.
+- [ResponseConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_ResponseConfiguration.html): Configuration that defines how to parse JSON responses from REST API calls, including paths to result data and error information.
+- [ResponseExtractionMapping](https://docs.aws.amazon.com/glue/latest/webapi/API_ResponseExtractionMapping.html): Configuration that defines how to extract values from HTTP response content or headers for use in subsequent requests or parameter mapping.
+- [RestConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_RestConfiguration.html): Configuration that defines HTTP request and response handling, validation endpoints, and entity configurations for REST API interactions.
+- [RetentionConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_RetentionConfiguration.html): The configuration for a snapshot retention optimizer.
+- [RetentionMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_RetentionMetrics.html): A structure that contains retention metrics for the optimizer run.
+- [Route](https://docs.aws.amazon.com/glue/latest/webapi/API_Route.html): Specifies a route node that directs data to different output paths based on defined filtering conditions.
+- [RunIdentifier](https://docs.aws.amazon.com/glue/latest/webapi/API_RunIdentifier.html): A run identifier.
+- [RunMetrics](https://docs.aws.amazon.com/glue/latest/webapi/API_RunMetrics.html): Metrics for the optimizer run.
+- [S3CatalogDeltaSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3CatalogDeltaSource.html): Specifies a Delta Lake data source that is registered in the AWS Glue Data Catalog.
+- [S3CatalogHudiSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3CatalogHudiSource.html): Specifies a Hudi data source that is registered in the AWS Glue Data Catalog.
+- [S3CatalogIcebergSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3CatalogIcebergSource.html): Specifies an Apache Iceberg data source that is registered in the AWS Glue Data Catalog.
+- [S3CatalogSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3CatalogSource.html): Specifies an Amazon S3 data store in the AWS Glue Data Catalog.
+- [S3CatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3CatalogTarget.html): Specifies a data target that writes to Amazon S3 using the AWS Glue Data Catalog.
+- [S3CsvSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3CsvSource.html): Specifies a command-separated value (CSV) data store stored in Amazon S3.
+- [S3DeltaCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3DeltaCatalogTarget.html): Specifies a target that writes to a Delta Lake data source in the AWS Glue Data Catalog.
+- [S3DeltaDirectTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3DeltaDirectTarget.html): Specifies a target that writes to a Delta Lake data source in Amazon S3.
+- [S3DeltaSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3DeltaSource.html): Specifies a Delta Lake data source stored in Amazon S3.
+- [S3DirectSourceAdditionalOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_S3DirectSourceAdditionalOptions.html): Specifies additional connection options for the Amazon S3 data store.
+- [S3DirectTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3DirectTarget.html): Specifies a data target that writes to Amazon S3.
+- [S3Encryption](https://docs.aws.amazon.com/glue/latest/webapi/API_S3Encryption.html): Specifies how Amazon Simple Storage Service (Amazon S3) data should be encrypted.
+- [S3ExcelSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3ExcelSource.html): Specifies an S3 Excel data source.
+- [S3GlueParquetTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3GlueParquetTarget.html): Specifies a data target that writes to Amazon S3 in Apache Parquet columnar storage.
+- [S3HudiCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3HudiCatalogTarget.html): Specifies a target that writes to a Hudi data source in the AWS Glue Data Catalog.
+- [S3HudiDirectTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3HudiDirectTarget.html): Specifies a target that writes to a Hudi data source in Amazon S3.
+- [S3HudiSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3HudiSource.html): Specifies a Hudi data source stored in Amazon S3.
+- [S3HyperDirectTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3HyperDirectTarget.html): Specifies a HyperDirect data target that writes to Amazon S3.
+- [S3IcebergCatalogTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3IcebergCatalogTarget.html): Specifies an Apache Iceberg catalog target that writes data to Amazon S3 and registers the table in the AWS Glue Data Catalog.
+- [S3IcebergDirectTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_S3IcebergDirectTarget.html): Specifies a target that writes to an Iceberg data source in Amazon S3.
+- [S3JsonSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3JsonSource.html): Specifies a JSON data store stored in Amazon S3.
+- [S3ParquetSource](https://docs.aws.amazon.com/glue/latest/webapi/API_S3ParquetSource.html): Specifies an Apache Parquet data store stored in Amazon S3.
+- [S3SourceAdditionalOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_S3SourceAdditionalOptions.html): Specifies additional connection options for the Amazon S3 data store.
+- [S3Target](https://docs.aws.amazon.com/glue/latest/webapi/API_S3Target.html): Specifies a data store in Amazon Simple Storage Service (Amazon S3).
+- [Schedule](https://docs.aws.amazon.com/glue/latest/webapi/API_Schedule.html): A scheduling object using a cron statement to schedule an event.
+- [SchemaChangePolicy](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaChangePolicy.html): A policy that specifies update and deletion behaviors for the crawler.
+- [SchemaColumn](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaColumn.html): A key-value pair representing a column and data type that this transform can run against.
+- [SchemaId](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaId.html): The unique ID of the schema in the AWS Glue schema registry.
+- [SchemaListItem](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaListItem.html): An object that contains minimal details for a schema.
+- [SchemaReference](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaReference.html): An object that references a schema stored in the AWS Glue Schema Registry.
+- [SchemaVersionErrorItem](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaVersionErrorItem.html): An object that contains the error details for an operation on a schema version.
+- [SchemaVersionListItem](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaVersionListItem.html): An object containing the details about a schema version.
+- [SchemaVersionNumber](https://docs.aws.amazon.com/glue/latest/webapi/API_SchemaVersionNumber.html): A structure containing the schema version information.
+- [SecurityConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_SecurityConfiguration.html): Specifies a security configuration.
+- [Segment](https://docs.aws.amazon.com/glue/latest/webapi/API_Segment.html): Defines a non-overlapping region of a table's partitions, allowing multiple requests to be run in parallel.
+- [SelectFields](https://docs.aws.amazon.com/glue/latest/webapi/API_SelectFields.html): Specifies a transform that chooses the data property keys that you want to keep.
+- [SelectFromCollection](https://docs.aws.amazon.com/glue/latest/webapi/API_SelectFromCollection.html): Specifies a transform that chooses one DynamicFrame from a collection of DynamicFrames.
+- [SerDeInfo](https://docs.aws.amazon.com/glue/latest/webapi/API_SerDeInfo.html): Information about a serialization/deserialization program (SerDe) that serves as an extractor and loader.
+- [Session](https://docs.aws.amazon.com/glue/latest/webapi/API_Session.html): The period in which a remote Spark runtime environment is running.
+- [SessionCommand](https://docs.aws.amazon.com/glue/latest/webapi/API_SessionCommand.html): The SessionCommand that runs the job.
+- [SkewedInfo](https://docs.aws.amazon.com/glue/latest/webapi/API_SkewedInfo.html): Specifies skewed values in a table.
+- [SnowflakeNodeData](https://docs.aws.amazon.com/glue/latest/webapi/API_SnowflakeNodeData.html): Specifies configuration for Snowflake nodes in AWS Glue Studio.
+- [SnowflakeSource](https://docs.aws.amazon.com/glue/latest/webapi/API_SnowflakeSource.html): Specifies a Snowflake data source.
+- [SnowflakeTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_SnowflakeTarget.html): Specifies a Snowflake target.
+- [SortCriterion](https://docs.aws.amazon.com/glue/latest/webapi/API_SortCriterion.html): Specifies a field to sort by and a sort order.
+- [SourceConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_SourceConfiguration.html): Configuration that defines how to make requests to endpoints, including request methods, paths, parameters, and response handling.
+- [SourceControlDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_SourceControlDetails.html): The details for a source control configuration for a job, allowing synchronization of job artifacts to or from a remote repository.
+- [SourceProcessingProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_SourceProcessingProperties.html): The resource properties associated with the integration source.
+- [SourceTableConfig](https://docs.aws.amazon.com/glue/latest/webapi/API_SourceTableConfig.html): Properties used by the source leg to process data from the source.
+- [SparkConnectorSource](https://docs.aws.amazon.com/glue/latest/webapi/API_SparkConnectorSource.html): Specifies a connector to an Apache Spark data source.
+- [SparkConnectorTarget](https://docs.aws.amazon.com/glue/latest/webapi/API_SparkConnectorTarget.html): Specifies a target that uses an Apache Spark connector.
+- [SparkSQL](https://docs.aws.amazon.com/glue/latest/webapi/API_SparkSQL.html): Specifies a transform where you enter a SQL query using Spark SQL syntax to transform the data.
+- [Spigot](https://docs.aws.amazon.com/glue/latest/webapi/API_Spigot.html): Specifies a transform that writes samples of the data to an Amazon S3 bucket.
+- [SplitFields](https://docs.aws.amazon.com/glue/latest/webapi/API_SplitFields.html): Specifies a transform that splits data property keys into two DynamicFrames.
+- [SqlAlias](https://docs.aws.amazon.com/glue/latest/webapi/API_SqlAlias.html): Represents a single entry in the list of values for SqlAliases.
+- [StartingEventBatchCondition](https://docs.aws.amazon.com/glue/latest/webapi/API_StartingEventBatchCondition.html): The batch condition that started the workflow run.
+- [Statement](https://docs.aws.amazon.com/glue/latest/webapi/API_Statement.html): The statement or request for a particular action to occur in a session.
+- [StatementOutput](https://docs.aws.amazon.com/glue/latest/webapi/API_StatementOutput.html): The code execution output in JSON format.
+- [StatementOutputData](https://docs.aws.amazon.com/glue/latest/webapi/API_StatementOutputData.html): The code execution output in JSON format.
+- [StatisticAnnotation](https://docs.aws.amazon.com/glue/latest/webapi/API_StatisticAnnotation.html): A Statistic Annotation.
+- [StatisticModelResult](https://docs.aws.amazon.com/glue/latest/webapi/API_StatisticModelResult.html): The statistic model result.
+- [StatisticSummary](https://docs.aws.amazon.com/glue/latest/webapi/API_StatisticSummary.html): Summary information about a statistic.
+- [StatusDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_StatusDetails.html): A structure containing information about an asynchronous change to a table.
+- [StorageDescriptor](https://docs.aws.amazon.com/glue/latest/webapi/API_StorageDescriptor.html): Describes the physical storage of table data.
+- [StreamingDataPreviewOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_StreamingDataPreviewOptions.html): Specifies options related to data preview for viewing a sample of your data.
+- [StringColumnStatisticsData](https://docs.aws.amazon.com/glue/latest/webapi/API_StringColumnStatisticsData.html): Defines column statistics supported for character sequence data values.
+- [SupportedDialect](https://docs.aws.amazon.com/glue/latest/webapi/API_SupportedDialect.html): A structure specifying the dialect and dialect version used by the query engine.
+- [Table](https://docs.aws.amazon.com/glue/latest/webapi/API_Table.html): Represents a collection of related data organized in columns and rows.
+- [TableError](https://docs.aws.amazon.com/glue/latest/webapi/API_TableError.html): An error record for table operations.
+- [TableIdentifier](https://docs.aws.amazon.com/glue/latest/webapi/API_TableIdentifier.html): A structure that describes a target table for resource linking.
+- [TableInput](https://docs.aws.amazon.com/glue/latest/webapi/API_TableInput.html): A structure used to define a table.
+- [TableOptimizer](https://docs.aws.amazon.com/glue/latest/webapi/API_TableOptimizer.html): Contains details about an optimizer associated with a table.
+- [TableOptimizerConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_TableOptimizerConfiguration.html): Contains details on the configuration of a table optimizer.
+- [TableOptimizerRun](https://docs.aws.amazon.com/glue/latest/webapi/API_TableOptimizerRun.html): Contains details for a table optimizer run.
+- [TableOptimizerVpcConfiguration](https://docs.aws.amazon.com/glue/latest/webapi/API_TableOptimizerVpcConfiguration.html): An object that describes the VPC configuration for a table optimizer.
+- [TableStatus](https://docs.aws.amazon.com/glue/latest/webapi/API_TableStatus.html): A structure containing information about the state of an asynchronous change to a table.
+- [TableVersion](https://docs.aws.amazon.com/glue/latest/webapi/API_TableVersion.html): Specifies a version of a table.
+- [TableVersionError](https://docs.aws.amazon.com/glue/latest/webapi/API_TableVersionError.html): An error record for table-version operations.
+- [Tag](https://docs.aws.amazon.com/glue/latest/webapi/API_Tag.html): The Tag object represents a label that you can assign to an AWS resource.
+- [TargetProcessingProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_TargetProcessingProperties.html): The resource properties associated with the integration target.
+- [TargetRedshiftCatalog](https://docs.aws.amazon.com/glue/latest/webapi/API_TargetRedshiftCatalog.html): A structure that describes a target catalog for resource linking.
+- [TargetTableConfig](https://docs.aws.amazon.com/glue/latest/webapi/API_TargetTableConfig.html): Properties used by the target leg to partition the data on the target.
+- [TaskRun](https://docs.aws.amazon.com/glue/latest/webapi/API_TaskRun.html): The sampling parameters that are associated with the machine learning transform.
+- [TaskRunFilterCriteria](https://docs.aws.amazon.com/glue/latest/webapi/API_TaskRunFilterCriteria.html): The criteria that are used to filter the task runs for the machine learning transform.
+- [TaskRunProperties](https://docs.aws.amazon.com/glue/latest/webapi/API_TaskRunProperties.html): The configuration properties for the task run.
+- [TaskRunSortCriteria](https://docs.aws.amazon.com/glue/latest/webapi/API_TaskRunSortCriteria.html): The sorting criteria that are used to sort the list of task runs for the machine learning transform.
+- [TestConnectionInput](https://docs.aws.amazon.com/glue/latest/webapi/API_TestConnectionInput.html): A structure that is used to specify testing a connection to a service.
+- [TimestampedInclusionAnnotation](https://docs.aws.amazon.com/glue/latest/webapi/API_TimestampedInclusionAnnotation.html): A timestamped inclusion annotation.
+- [TimestampFilter](https://docs.aws.amazon.com/glue/latest/webapi/API_TimestampFilter.html): A timestamp filter.
+- [TransformConfigParameter](https://docs.aws.amazon.com/glue/latest/webapi/API_TransformConfigParameter.html): Specifies the parameters in the config file of the dynamic transform.
+- [TransformEncryption](https://docs.aws.amazon.com/glue/latest/webapi/API_TransformEncryption.html): The encryption-at-rest settings of the transform that apply to accessing user data.
+- [TransformFilterCriteria](https://docs.aws.amazon.com/glue/latest/webapi/API_TransformFilterCriteria.html): The criteria used to filter the machine learning transforms.
+- [TransformParameters](https://docs.aws.amazon.com/glue/latest/webapi/API_TransformParameters.html): The algorithm-specific parameters that are associated with the machine learning transform.
+- [TransformSortCriteria](https://docs.aws.amazon.com/glue/latest/webapi/API_TransformSortCriteria.html): The sorting criteria that are associated with the machine learning transform.
+- [Trigger](https://docs.aws.amazon.com/glue/latest/webapi/API_Trigger.html): Information about a specific trigger.
+- [TriggerNodeDetails](https://docs.aws.amazon.com/glue/latest/webapi/API_TriggerNodeDetails.html): The details of a Trigger node present in the workflow.
+- [TriggerUpdate](https://docs.aws.amazon.com/glue/latest/webapi/API_TriggerUpdate.html): A structure used to provide information used to update a trigger.
+- [UnfilteredPartition](https://docs.aws.amazon.com/glue/latest/webapi/API_UnfilteredPartition.html): A partition that contains unfiltered metadata.
+- [Union](https://docs.aws.amazon.com/glue/latest/webapi/API_Union.html): Specifies a transform that combines the rows from two or more datasets into a single result.
+- [UpdateCsvClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateCsvClassifierRequest.html): Specifies a custom CSV classifier to be updated.
+- [UpdateGrokClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateGrokClassifierRequest.html): Specifies a grok classifier to update when passed to UpdateClassifier.
+- [UpdateIcebergInput](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateIcebergInput.html): Input parameters specific to updating Apache Iceberg tables in AWS Glue Data Catalog, containing the update operations to be applied to an existing Iceberg table.
+- [UpdateIcebergTableInput](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateIcebergTableInput.html): Contains the update operations to be applied to an existing Iceberg table inAWS Glue Data Catalog, defining the new state of the table metadata.
+- [UpdateJsonClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateJsonClassifierRequest.html): Specifies a JSON classifier to be updated.
+- [UpdateOpenTableFormatInput](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateOpenTableFormatInput.html): Input parameters for updating open table format tables in AWS GlueData Catalog, serving as a wrapper for format-specific update operations such as Apache Iceberg.
+- [UpdateXMLClassifierRequest](https://docs.aws.amazon.com/glue/latest/webapi/API_UpdateXMLClassifierRequest.html): Specifies an XML classifier to be updated.
+- [UpsertRedshiftTargetOptions](https://docs.aws.amazon.com/glue/latest/webapi/API_UpsertRedshiftTargetOptions.html): The options to configure an upsert operation when writing to a Redshift target .
+- [UsageProfileDefinition](https://docs.aws.amazon.com/glue/latest/webapi/API_UsageProfileDefinition.html): Describes an AWS Glue usage profile.
+- [UserDefinedFunction](https://docs.aws.amazon.com/glue/latest/webapi/API_UserDefinedFunction.html): Represents the equivalent of a Hive user-defined function (UDF) definition.
+- [UserDefinedFunctionInput](https://docs.aws.amazon.com/glue/latest/webapi/API_UserDefinedFunctionInput.html): A structure used to create or update a user-defined function.
+- [ViewDefinition](https://docs.aws.amazon.com/glue/latest/webapi/API_ViewDefinition.html): A structure containing details for representations.
+- [ViewDefinitionInput](https://docs.aws.amazon.com/glue/latest/webapi/API_ViewDefinitionInput.html): A structure containing details for creating or updating an AWS Glue view.
+- [ViewRepresentation](https://docs.aws.amazon.com/glue/latest/webapi/API_ViewRepresentation.html): A structure that contains the dialect of the view, and the query that defines the view.
+- [ViewRepresentationInput](https://docs.aws.amazon.com/glue/latest/webapi/API_ViewRepresentationInput.html): A structure containing details of a representation to update or create a Lake Formation view.
+- [ViewValidation](https://docs.aws.amazon.com/glue/latest/webapi/API_ViewValidation.html): A structure that contains information for an analytical engine to validate a view, prior to persisting the view metadata.
+- [Workflow](https://docs.aws.amazon.com/glue/latest/webapi/API_Workflow.html): A workflow is a collection of multiple dependent AWS Glue jobs and crawlers that are run to complete a complex ETL task.
+- [WorkflowGraph](https://docs.aws.amazon.com/glue/latest/webapi/API_WorkflowGraph.html): A workflow graph represents the complete workflow containing all the AWS Glue components present in the workflow and all the directed connections between them.
+- [WorkflowRun](https://docs.aws.amazon.com/glue/latest/webapi/API_WorkflowRun.html): A workflow run is an execution of a workflow providing all the runtime information.
+- [WorkflowRunStatistics](https://docs.aws.amazon.com/glue/latest/webapi/API_WorkflowRunStatistics.html): Workflow run statistics provides statistics about the workflow run.
+- [XMLClassifier](https://docs.aws.amazon.com/glue/latest/webapi/API_XMLClassifier.html): A classifier for XML content.

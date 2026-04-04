@@ -1,0 +1,144 @@
+# Source: https://docs.aws.amazon.com/singlesignon/latest/APIReference/llms.txt
+
+# IAM Identity Center API Reference
+
+> AWS IAM Identity Center API Reference.
+
+- [Welcome](https://docs.aws.amazon.com/singlesignon/latest/APIReference/welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/singlesignon/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/singlesignon/latest/APIReference/CommonErrors.html)
+- [Document History](https://docs.aws.amazon.com/singlesignon/latest/APIReference/document_history.html)
+
+## [Actions](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_Operations.html)
+
+- [AddRegion](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AddRegion.html): Adds a Region to an IAM Identity Center instance.
+- [AttachCustomerManagedPolicyReferenceToPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AttachCustomerManagedPolicyReferenceToPermissionSet.html): Attaches the specified customer managed policy to the specified .
+- [AttachManagedPolicyToPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AttachManagedPolicyToPermissionSet.html): Attaches an AWS managed policy ARN to a permission set.
+- [CreateAccountAssignment](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateAccountAssignment.html): Assigns access to a principal for a specified AWS account using a specified permission set.
+- [CreateApplication](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplication.html): Creates an OAuth 2.0 customer managed application in IAM Identity Center for the given application provider.
+- [CreateApplicationAssignment](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html): Grant application access to a user or group.
+- [CreateInstance](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateInstance.html): Creates an instance of IAM Identity Center for a standalone AWS account that is not managed by AWS Organizations or a member AWS account in an organization.
+- [CreateInstanceAccessControlAttributeConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateInstanceAccessControlAttributeConfiguration.html): Enables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance.
+- [CreatePermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreatePermissionSet.html): Creates a permission set within a specified IAM Identity Center instance.
+- [CreateTrustedTokenIssuer](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateTrustedTokenIssuer.html): Creates a connection to a trusted token issuer in an instance of IAM Identity Center.
+- [DeleteAccountAssignment](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteAccountAssignment.html): Deletes a principal's access from a specified AWS account using a specified permission set.
+- [DeleteApplication](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteApplication.html): Deletes the association with the application.
+- [DeleteApplicationAccessScope](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteApplicationAccessScope.html): Deletes an IAM Identity Center access scope from an application.
+- [DeleteApplicationAssignment](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteApplicationAssignment.html): Revoke application access to an application by deleting application assignments for a user or group.
+- [DeleteApplicationAuthenticationMethod](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteApplicationAuthenticationMethod.html): Deletes an authentication method from an application.
+- [DeleteApplicationGrant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteApplicationGrant.html): Deletes a grant from an application.
+- [DeleteInlinePolicyFromPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteInlinePolicyFromPermissionSet.html): Deletes the inline policy from a specified permission set.
+- [DeleteInstance](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteInstance.html): Deletes the instance of IAM Identity Center.
+- [DeleteInstanceAccessControlAttributeConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteInstanceAccessControlAttributeConfiguration.html): Disables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance and deletes all of the attribute mappings that have been configured.
+- [DeletePermissionsBoundaryFromPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeletePermissionsBoundaryFromPermissionSet.html): Deletes the permissions boundary from a specified .
+- [DeletePermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeletePermissionSet.html): Deletes the specified permission set.
+- [DeleteTrustedTokenIssuer](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DeleteTrustedTokenIssuer.html): Deletes a trusted token issuer configuration from an instance of IAM Identity Center.
+- [DescribeAccountAssignmentCreationStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeAccountAssignmentCreationStatus.html): Describes the status of the assignment creation request.
+- [DescribeAccountAssignmentDeletionStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeAccountAssignmentDeletionStatus.html): Describes the status of the assignment deletion request.
+- [DescribeApplication](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeApplication.html): Retrieves the details of an application associated with an instance of IAM Identity Center.
+- [DescribeApplicationAssignment](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeApplicationAssignment.html): Retrieves a direct assignment of a user or group to an application.
+- [DescribeApplicationProvider](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeApplicationProvider.html): Retrieves details about a provider that can be used to connect an AWS managed application or customer managed application to IAM Identity Center.
+- [DescribeInstance](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeInstance.html): Returns the details of an instance of IAM Identity Center.
+- [DescribeInstanceAccessControlAttributeConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeInstanceAccessControlAttributeConfiguration.html): Returns the list of IAM Identity Center identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified IAM Identity Center instance.
+- [DescribePermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribePermissionSet.html): Gets the details of the permission set.
+- [DescribePermissionSetProvisioningStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribePermissionSetProvisioningStatus.html): Describes the status for the given permission set provisioning request.
+- [DescribeRegion](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeRegion.html): Retrieves details about a specific Region enabled in an IAM Identity Center instance.
+- [DescribeTrustedTokenIssuer](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DescribeTrustedTokenIssuer.html): Retrieves details about a trusted token issuer configuration stored in an instance of IAM Identity Center.
+- [DetachCustomerManagedPolicyReferenceFromPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DetachCustomerManagedPolicyReferenceFromPermissionSet.html): Detaches the specified customer managed policy from the specified .
+- [DetachManagedPolicyFromPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DetachManagedPolicyFromPermissionSet.html): Detaches the attached AWS managed policy ARN from the specified permission set.
+- [GetApplicationAccessScope](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GetApplicationAccessScope.html): Retrieves the authorized targets for an IAM Identity Center access scope for an application.
+- [GetApplicationAssignmentConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GetApplicationAssignmentConfiguration.html): Retrieves the configuration of .
+- [GetApplicationAuthenticationMethod](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GetApplicationAuthenticationMethod.html): Retrieves details about an authentication method used by an application.
+- [GetApplicationGrant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GetApplicationGrant.html): Retrieves details about an application grant.
+- [GetApplicationSessionConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GetApplicationSessionConfiguration.html): Retrieves the session configuration for an application in IAM Identity Center.
+- [GetInlinePolicyForPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GetInlinePolicyForPermissionSet.html): Obtains the inline policy assigned to the permission set.
+- [GetPermissionsBoundaryForPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GetPermissionsBoundaryForPermissionSet.html): Obtains the permissions boundary for a specified .
+- [ListAccountAssignmentCreationStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListAccountAssignmentCreationStatus.html): Lists the status of the AWS account assignment creation requests for a specified IAM Identity Center instance.
+- [ListAccountAssignmentDeletionStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListAccountAssignmentDeletionStatus.html): Lists the status of the AWS account assignment deletion requests for a specified IAM Identity Center instance.
+- [ListAccountAssignments](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListAccountAssignments.html): Lists the assignee of the specified AWS account with the specified permission set.
+- [ListAccountAssignmentsForPrincipal](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListAccountAssignmentsForPrincipal.html): Retrieves a list of the IAM Identity Center associated AWS accounts that the principal has access to.
+- [ListAccountsForProvisionedPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListAccountsForProvisionedPermissionSet.html): Lists all the AWS accounts where the specified permission set is provisioned.
+- [ListApplicationAccessScopes](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationAccessScopes.html): Lists the access scopes and authorized targets associated with an application.
+- [ListApplicationAssignments](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationAssignments.html): Lists AWS account users that are assigned to an application.
+- [ListApplicationAssignmentsForPrincipal](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationAssignmentsForPrincipal.html): Lists the applications to which a specified principal is assigned.
+- [ListApplicationAuthenticationMethods](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationAuthenticationMethods.html): Lists all of the authentication methods supported by the specified application.
+- [ListApplicationGrants](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationGrants.html): List the grants associated with an application.
+- [ListApplicationProviders](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationProviders.html): Lists the application providers configured in the IAM Identity Center identity store.
+- [ListApplications](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplications.html): Lists all applications associated with the instance of IAM Identity Center.
+- [ListCustomerManagedPolicyReferencesInPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListCustomerManagedPolicyReferencesInPermissionSet.html): Lists all customer managed policies attached to a specified .
+- [ListInstances](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListInstances.html): Lists the details of the organization and account instances of IAM Identity Center that were created in or visible to the account calling this API.
+- [ListManagedPoliciesInPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListManagedPoliciesInPermissionSet.html): Lists the AWS managed policy that is attached to a specified permission set.
+- [ListPermissionSetProvisioningStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListPermissionSetProvisioningStatus.html): Lists the status of the permission set provisioning requests for a specified IAM Identity Center instance.
+- [ListPermissionSets](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListPermissionSets.html): Lists the s in an IAM Identity Center instance.
+- [ListPermissionSetsProvisionedToAccount](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListPermissionSetsProvisionedToAccount.html): Lists all the permission sets that are provisioned to a specified AWS account.
+- [ListRegions](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListRegions.html): Lists all enabled Regions of an IAM Identity Center instance, including those that are being added or removed.
+- [ListTagsForResource](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListTagsForResource.html): Lists the tags that are attached to a specified resource.
+- [ListTrustedTokenIssuers](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListTrustedTokenIssuers.html): Lists all the trusted token issuers configured in an instance of IAM Identity Center.
+- [ProvisionPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ProvisionPermissionSet.html): The process by which a specified permission set is provisioned to the specified target.
+- [PutApplicationAccessScope](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PutApplicationAccessScope.html): Adds or updates the list of authorized targets for an IAM Identity Center access scope for an application.
+- [PutApplicationAssignmentConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PutApplicationAssignmentConfiguration.html): Configure how users gain access to an application.
+- [PutApplicationAuthenticationMethod](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PutApplicationAuthenticationMethod.html): Adds or updates an authentication method for an application.
+- [PutApplicationGrant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PutApplicationGrant.html): Creates a configuration for an application to use grants.
+- [PutApplicationSessionConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PutApplicationSessionConfiguration.html): Updates the session configuration for an application in IAM Identity Center.
+- [PutInlinePolicyToPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PutInlinePolicyToPermissionSet.html): Attaches an inline policy to a permission set.
+- [PutPermissionsBoundaryToPermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PutPermissionsBoundaryToPermissionSet.html): Attaches an AWS managed or customer managed policy to the specified as a permissions boundary.
+- [RemoveRegion](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_RemoveRegion.html): Removes an additional Region from an IAM Identity Center instance.
+- [TagResource](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_TagResource.html): Associates a set of tags with a specified resource.
+- [UntagResource](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_UntagResource.html): Disassociates a set of tags from a specified resource.
+- [UpdateApplication](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_UpdateApplication.html): Updates application properties.
+- [UpdateInstance](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_UpdateInstance.html): Update the details for the instance of IAM Identity Center that is owned by the AWS account.
+- [UpdateInstanceAccessControlAttributeConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_UpdateInstanceAccessControlAttributeConfiguration.html): Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC).
+- [UpdatePermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_UpdatePermissionSet.html): Updates an existing permission set.
+- [UpdateTrustedTokenIssuer](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_UpdateTrustedTokenIssuer.html): Updates the name of the trusted token issuer, or the path of a source attribute or destination attribute for a trusted token issuer configuration.
+
+
+## [Data Types](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_Types.html)
+
+- [AccessControlAttribute](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AccessControlAttribute.html): These are IAM Identity Center identity store attributes that you can configure for use in attributes-based access control (ABAC).
+- [AccessControlAttributeValue](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AccessControlAttributeValue.html): The value used for mapping a specified attribute to an identity source.
+- [AccountAssignment](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AccountAssignment.html): The assignment that indicates a principal's limited access to a specified AWS account with a specified permission set.
+- [AccountAssignmentForPrincipal](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AccountAssignmentForPrincipal.html): A structure that describes an assignment of an AWS account to a principal and the permissions that principal has in the account.
+- [AccountAssignmentOperationStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AccountAssignmentOperationStatus.html): The status of the creation or deletion operation of an assignment that a principal needs to access an account.
+- [AccountAssignmentOperationStatusMetadata](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AccountAssignmentOperationStatusMetadata.html): Provides information about the creation request.
+- [Application](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_Application.html): A structure that describes an application that uses IAM Identity Center for access management.
+- [ApplicationAssignment](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ApplicationAssignment.html): A structure that describes an assignment of a principal to an application.
+- [ApplicationAssignmentForPrincipal](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ApplicationAssignmentForPrincipal.html): A structure that describes an application to which a principal is assigned.
+- [ApplicationProvider](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ApplicationProvider.html): A structure that describes a provider that can be used to connect an AWS managed application or customer managed application to IAM Identity Center.
+- [AttachedManagedPolicy](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AttachedManagedPolicy.html): A structure that stores a list of managed policy ARNs that describe the associated AWS managed policy.
+- [AuthenticationMethod](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AuthenticationMethod.html): A structure that describes an authentication method that can be used by an application.
+- [AuthenticationMethodItem](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AuthenticationMethodItem.html): A structure that describes an authentication method and its type.
+- [AuthorizationCodeGrant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AuthorizationCodeGrant.html): A structure that defines configuration settings for an application that supports the OAuth 2.0 Authorization Code Grant.
+- [AuthorizedTokenIssuer](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_AuthorizedTokenIssuer.html): A structure that describes a trusted token issuer and associates it with a set of authorized audiences.
+- [CustomerManagedPolicyReference](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CustomerManagedPolicyReference.html): Specifies the name and path of a customer managed policy.
+- [DisplayData](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_DisplayData.html): A structure that describes how the portal represents an application provider.
+- [EncryptionConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_EncryptionConfiguration.html): A structure that specifies the KMS key type and KMS key ARN used to encrypt data in your IAM Identity Center instance.
+- [EncryptionConfigurationDetails](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_EncryptionConfigurationDetails.html): The encryption configuration of your IAM Identity Center instance, including the key type, KMS key ARN, and current encryption status.
+- [Grant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_Grant.html): The Grant union represents the set of possible configuration options for the selected grant type.
+- [GrantItem](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_GrantItem.html): A structure that defines a single grant and its configuration.
+- [IamAuthenticationMethod](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_IamAuthenticationMethod.html): A structure that describes details for authentication that uses IAM.
+- [InstanceAccessControlAttributeConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_InstanceAccessControlAttributeConfiguration.html): Specifies the attributes to add to your attribute-based access control (ABAC) configuration.
+- [InstanceMetadata](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_InstanceMetadata.html): Provides information about the IAM Identity Center instance.
+- [JwtBearerGrant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_JwtBearerGrant.html): A structure that defines configuration settings for an application that supports the JWT Bearer Token Authorization Grant.
+- [ListAccountAssignmentsFilter](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListAccountAssignmentsFilter.html): A structure that describes a filter for account assignments.
+- [ListApplicationAssignmentsFilter](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationAssignmentsFilter.html): A structure that describes a filter for application assignments.
+- [ListApplicationsFilter](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListApplicationsFilter.html): A structure that describes a filter for applications.
+- [OidcJwtConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_OidcJwtConfiguration.html): A structure that describes configuration settings for a trusted token issuer that supports OpenID Connect (OIDC) and JSON Web Tokens (JWTs).
+- [OidcJwtUpdateConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_OidcJwtUpdateConfiguration.html): A structure that describes updated configuration settings for a trusted token issuer that supports OpenID Connect (OIDC) and JSON Web Tokens (JWTs).
+- [OperationStatusFilter](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_OperationStatusFilter.html): Filters the operation status list based on the passed attribute value.
+- [PermissionsBoundary](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PermissionsBoundary.html): Specifies the configuration of the AWS managed or customer managed policy that you want to set as a permissions boundary.
+- [PermissionSet](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PermissionSet.html): An entity that contains IAM policies.
+- [PermissionSetProvisioningStatus](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PermissionSetProvisioningStatus.html): A structure that is used to provide the status of the provisioning operation for a specified permission set.
+- [PermissionSetProvisioningStatusMetadata](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PermissionSetProvisioningStatusMetadata.html): Provides information about the permission set provisioning status.
+- [PortalOptions](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_PortalOptions.html): A structure that describes the options for the access portal associated with an application.
+- [RefreshTokenGrant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_RefreshTokenGrant.html): A structure that defines configuration settings for an application that supports the OAuth 2.0 Refresh Token Grant.
+- [RegionMetadata](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_RegionMetadata.html): Contains information about an enabled Region of an IAM Identity Center instance, including the Region name, status, date added, and whether it is the primary Region.
+- [ResourceServerConfig](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ResourceServerConfig.html): A structure that describes the configuration of a resource server.
+- [ResourceServerScopeDetails](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ResourceServerScopeDetails.html): A structure that describes details for an IAM Identity Center access scope that is associated with a resource server.
+- [ScopeDetails](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ScopeDetails.html): A structure that describes an IAM Identity Center access scope and its authorized targets.
+- [SignInOptions](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_SignInOptions.html): A structure that describes the sign-in options for an application portal.
+- [Tag](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_Tag.html): A set of key-value pairs that are used to manage the resource.
+- [TokenExchangeGrant](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_TokenExchangeGrant.html): A structure that defines configuration settings for an application that supports the OAuth 2.0 Token Exchange Grant.
+- [TrustedTokenIssuerConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_TrustedTokenIssuerConfiguration.html): A structure that describes the configuration of a trusted token issuer.
+- [TrustedTokenIssuerMetadata](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_TrustedTokenIssuerMetadata.html): A structure that describes a trusted token issuer.
+- [TrustedTokenIssuerUpdateConfiguration](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_TrustedTokenIssuerUpdateConfiguration.html): A structure that contains details to be updated for a trusted token issuer configuration.
+- [UpdateApplicationPortalOptions](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_UpdateApplicationPortalOptions.html): A structure that describes the options for the access portal associated with an application that can be updated.

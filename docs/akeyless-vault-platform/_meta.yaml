@@ -1,0 +1,9 @@
+name: akeyless-vault-platform
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.akeyless.io/
+    last_fetched: "2026-04-03T23:08:25Z"
+description: >
+  akeyless-vault-platform documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: apache-spark
+primary_source: llms
+sources:
+  - type: llms
+    url: https://spark.apache.org/docs/
+    last_fetched: "2026-04-03T23:08:28Z"
+description: >
+  apache-spark documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: ark-ui
+primary_source: llms
+sources:
+  - type: llms
+    url: https://ark-ui.com/
+    last_fetched: "2026-04-03T23:08:30Z"
+description: >
+  ark-ui documentation
+quality_score: 0

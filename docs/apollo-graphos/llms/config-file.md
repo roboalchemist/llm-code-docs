@@ -1,0 +1,618 @@
+# Source: https://www.apollographql.com/docs/apollo-mcp-server/config-file.md
+
+# Config File Reference
+
+You can configure Apollo MCP Server using a configuration file. You can also [override configuration options using environment variables](https://www.apollographql.com/docs/apollo-mcp-server/config-file.md#override-configuration-options-using-environment-variables).
+
+See the [example config files](https://www.apollographql.com/docs/apollo-mcp-server/config-file.md#example-config-files) for an example.
+
+## Configuration options
+
+All fields are optional.
+
+### Top-level options
+
+| Option            | Type                  | Default                  | Description                                                                                        |
+| :---------------- | :-------------------- | :----------------------- | :------------------------------------------------------------------------------------------------- |
+| `cors`            | `Cors`                |                          | CORS configuration                                                                                 |
+| `custom_scalars`  | `FilePath`            |                          | Path to a [custom scalar map](https://www.apollographql.com/docs/apollo-mcp-server/custom-scalars) |
+| `endpoint`        | `URL`                 | `http://localhost:4000/` | The target GraphQL endpoint                                                                        |
+| `forward_headers` | `List<string>`        | `[]`                     | Headers to forward from MCP clients to GraphQL API                                                 |
+| `graphos`         | `GraphOS`             |                          | Apollo-specific credential overrides                                                               |
+| `headers`         | `Map<string, string>` | `{}`                     | List of hard-coded headers to include in all GraphQL requests                                      |
+| `health_check`    | `HealthCheck`         |                          | Health check configuration                                                                         |
+| `introspection`   | `Introspection`       |                          | Introspection configuration                                                                        |
+| `logging`         | `Logging`             |                          | Logging configuration                                                                              |
+| `operations`      | `OperationSource`     |                          | Operations configuration                                                                           |
+| `overrides`       | `Overrides`           |                          | Overrides for server behavior                                                                      |
+| `schema`          | `SchemaSource`        |                          | Schema configuration                                                                               |
+| `server_info`     | `ServerInfo`          |                          | Server metadata configuration                                                                      |
+| `transport`       | `Transport`           |                          | The type of server transport to use                                                                |
+| `telemetry`       | `Telemetry`           |                          | Configuration to export metrics and traces via OTLP                                                |
+
+### GraphOS
+
+These fields are under the top-level `graphos` key and define your GraphOS graph credentials and endpoints.
+
+| Option                    | Type     | Default | Description                                                                                                     |
+| :------------------------ | :------- | :------ | :-------------------------------------------------------------------------------------------------------------- |
+| `apollo_key`              | `string` |         | The Apollo GraphOS key. You can also provide this with the `APOLLO_KEY` environment variable                    |
+| `apollo_graph_ref`        | `string` |         | The Apollo GraphOS graph reference. You can also provide this with the `APOLLO_GRAPH_REF` environment variable  |
+| `apollo_registry_url`     | `URL`    |         | The URL to use for Apollo's registry                                                                            |
+| `apollo_uplink_endpoints` | `URL`    |         | List of uplink URL overrides. You can also provide this with the `APOLLO_UPLINK_ENDPOINTS` environment variable |
+
+### Static headers
+
+The `headers` option enables you to specify a list of static, hard-coded headers and values. These are included in all GraphQL requests.
+
+```yaml title=mcp.yaml
+headers: { "apollographql-client-name": "my-mcp-server" }
+```
+
+To forward dynamic header values from the client, use the [`forward_headers` option](https://www.apollographql.com/docs/apollo-mcp-server/config-file.md#forwarding-headers) instead.
+
+### Forwarding headers
+
+The `forward_headers` option allows you to forward specific headers from incoming MCP client requests to your GraphQL API.
+
+This is useful for:
+
+* Multi-tenant applications (forwarding tenant IDs)
+* A/B testing (forwarding experiment IDs)
+* Geo information (forwarding country codes)
+* Client identification (forwarding client names)
+* Internal instrumentation (forwarding correlation IDs)
+
+Header names should match exactly but are case-insensitive.
+
+Header values are forwarded as-is, according to what the MCP client provides.
+
+Hop-by-hop headers (like `connection`, `transfer-encoding`) are automatically blocked for security.
+
+```yaml title=mcp.yaml
+forward_headers:
+  - x-tenant-id
+  - x-experiment-id
+  - x-geo-country
+```
+
+Avoid header forwarding for sensitive credentials like API keys or access tokens. Apollo MCP Server logs a warning when you forward sensitive headers such as `Authorization`, `Cookie`, `Proxy-Authorization`, or `X-Api-Key` to the upstream GraphQL API.
+
+According to [MCP security best practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices#token-passthrough) and the [MCP authorization specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#access-token-privilege-restriction), token passthrough introduces serious security risks:
+
+* **Audience confusion**: If the MCP Server accepts tokens not intended for it, it can violate OAuth's trust boundaries.
+* **Confused deputy problem**: If an unvalidated token is passed downstream, a downstream API may incorrectly trust it as though it were validated by the MCP Server.
+
+Apollo MCP Server supports OAuth 2.1 authentication that follows best practices and aligns with the MCP authorization model. See our [authorization guide](https://www.apollographql.com/docs/apollo-mcp-server/auth) for implementation details and how to use the [auth configuration](https://www.apollographql.com/docs/apollo-mcp-server/config-file.md#auth).
+
+### CORS
+
+These fields are under the top-level `cors` key and configure Cross-Origin Resource Sharing (CORS) for browser-based MCP clients.
+
+| Option              | Type           | Default                                                                                   | Description                                                                                              |
+| :------------------ | :------------- | :---------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| `enabled`           | `bool`         | `false`                                                                                   | Enable CORS support                                                                                      |
+| `origins`           | `List<string>` | `[]`                                                                                      | List of allowed origins (exact matches). Use `["*"]` to allow any origin (not recommended in production) |
+| `match_origins`     | `List<string>` | `[]`                                                                                      | List of regex patterns to match allowed origins (e.g., `"^https://localhost:[0-9]+$"`)                   |
+| `allow_any_origin`  | `bool`         | `false`                                                                                   | Allow requests from any origin. Cannot be used with `allow_credentials: true`                            |
+| `allow_credentials` | `bool`         | `false`                                                                                   | Allow credentials (cookies, authorization headers) in CORS requests                                      |
+| `allow_methods`     | `List<string>` | `["GET", "POST", "OPTIONS"]`                                                              | List of allowed HTTP methods                                                                             |
+| `allow_headers`     | `List<string>` | `["content-type", "mcp-protocol-version", "mcp-session-id", "traceparent", "tracestate"]` | List of allowed request headers                                                                          |
+| `expose_headers`    | `List<string>` | `["mcp-session-id", "traceparent", "tracestate"]`                                         | List of response headers exposed to the browser (includes MCP and W3C Trace Context headers)             |
+| `max_age`           | `number`       | `86400`                                                                                   | Maximum age (in seconds) for preflight cache                                                             |
+
+### Health checks
+
+These fields are under the top-level `health_check` key. Learn more about [health checks](https://www.apollographql.com/docs/apollo-mcp-server/health-checks).
+
+| Option                        | Type       | Default     | Description                                                                        |
+| :---------------------------- | :--------- | :---------- | :--------------------------------------------------------------------------------- |
+| `enabled`                     | `bool`     | `false`     | Enable health check endpoints                                                      |
+| `path`                        | `string`   | `"/health"` | Custom health check endpoint path                                                  |
+| `readiness`                   | `object`   |             | Readiness check configuration                                                      |
+| `readiness.allowed`           | `number`   | `100`       | Maximum number of rejections allowed in a sampling interval before marking unready |
+| `readiness.interval`          | `object`   |             | Readiness check interval configuration                                             |
+| `readiness.interval.sampling` | `duration` | `"5s"`      | How often to check the rejection count                                             |
+| `readiness.interval.unready`  | `duration` | `"10s"`     | How long to wait before recovering from unready state (default: 2 \* sampling)     |
+
+Health checks are only available when using the `streamable_http` transport. The health check feature is inspired by Apollo Router's health check implementation.
+
+### Introspection
+
+These fields are under the top-level `introspection` key. Learn more about the MCP [introspection tools](https://www.apollographql.com/docs/apollo-mcp-server/define-tools#introspection-tools).
+
+| Option                      | Type     | Default    | Description                                                           |
+| :-------------------------- | :------- | :--------- | :-------------------------------------------------------------------- |
+| `execute`                   | `object` |            | Execution configuration for introspection                             |
+| `execute.enabled`           | `bool`   | `false`    | Enable introspection for execution                                    |
+| `execute.hint`              | `string` |            | Append custom instructions to the `execute` tool description          |
+| `introspect`                | `object` |            | Introspection configuration for allowing clients to run introspection |
+| `introspect.enabled`        | `bool`   | `false`    | Enable introspection requests                                         |
+| `introspect.minify`         | `bool`   | `false`    | Minify introspection results to reduce context window usage           |
+| `introspect.hint`           | `string` |            | Append custom instructions to the `introspect` tool description       |
+| `search`                    | `object` |            | Search tool configuration                                             |
+| `search.enabled`            | `bool`   | `false`    | Enable search tool                                                    |
+| `search.index_memory_bytes` | `number` | `50000000` | Amount of memory used for indexing (in bytes)                         |
+| `search.leaf_depth`         | `number` | `1`        | Depth of subtype information to include from matching types           |
+| `search.minify`             | `bool`   | `false`    | Minify search results to reduce context window usage                  |
+| `search.hint`               | `string` |            | Append custom instructions to the `search` tool description           |
+| `validate`                  | `object` |            | Validation tool configuration                                         |
+| `validate.enabled`          | `bool`   | `false`    | Enable validation tool                                                |
+| `validate.hint`             | `string` |            | Append custom instructions to the `validate` tool description         |
+
+### Logging
+
+These fields are under the top-level `logging` key.
+
+| Option     | Type                                                | Default    | Description                                                                       |
+| :--------- | :-------------------------------------------------- | :--------- | :-------------------------------------------------------------------------------- |
+| `level`    | `oneOf ["trace", "debug", "info", "warn", "error"]` | `"info"`   | The minimum log level to record                                                   |
+| `path`     | `FilePath`                                          |            | An output file path for logging. If not provided logging outputs to stdio/stderr. |
+| `rotation` | `oneOf ["minutely", "hourly", "daily", "never"]`    | `"hourly"` | The log file rotation interval (if file logging is used)                          |
+
+### Operation source
+
+These fields are under the top-level `operations` key. The available fields depend on the value of the nested `source` key.
+The default value for `source` is `"infer"`. Learn more about [defining tools as operations](https://www.apollographql.com/docs/apollo-mcp-server/define-tools).
+
+| Source             | Option   | Type             | Description                                                                                                                                                                               |
+| :----------------- | :------- | :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GraphOS Collection | `source` | `"collection"`   | Load operations from a GraphOS collection                                                                                                                                                 |
+| GraphOS Collection | `id`     | `string`         | The collection ID to use in GraphOS. Use `default` for the default collection. [Learn more](https://www.apollographql.com/docs/apollo-mcp-server/define-tools#from-operation-collection). |
+| Introspection      | `source` | `"introspect"`   | Load operations by introspecting the schema. Note: You must enable introspection to use this source                                                                                       |
+| Local              | `source` | `"local"`        | Load operations from local GraphQL files or directories                                                                                                                                   |
+| Local              | `paths`  | `List<FilePath>` | Paths to GraphQL files or directories to search. Note: These paths are relative to the location from which you are running Apollo MCP Server.                                             |
+| Manifest           | `source` | `"manifest"`     | Load operations from a persisted queries manifest file                                                                                                                                    |
+| Manifest           | `path`   | `FilePath`       | The path to the persisted query manifest                                                                                                                                                  |
+| Uplink             | `source` | `"uplink"`       | Load operations from an uplink manifest. Note: This source requires an Apollo key and graph reference                                                                                     |
+| Infer              | `source` | `"infer"`        | Infer where to load operations based on other configuration options.                                                                                                                      |
+
+When using `source: collection` or `source: uplink`, MCP Server polls GraphOS for changes periodically. Expect up to 60 seconds before new or modified operations appear as tools.
+
+Some MCP clients cache the tool list independently. If tools don't refresh after the polling interval, reconnect or restart your MCP client.
+
+### Overrides
+
+These fields are under the top-level `overrides` key.
+
+| Option                       | Type                                | Default  | Description                                                                                                                                                                                                                                                                                                                     |
+| :--------------------------- | :---------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `disable_type_description`   | `bool`                              | `false`  | Disable type descriptions to save on context-window space                                                                                                                                                                                                                                                                       |
+| `disable_schema_description` | `bool`                              | `false`  | Disable schema descriptions to save on context-window space                                                                                                                                                                                                                                                                     |
+| `enable_output_schema`       | `bool`                              | `false`  | Enable output schema generation for tools. Adds token overhead but helps LLMs understand response structure                                                                                                                                                                                                                     |
+| `enable_explorer`            | `bool`                              | `false`  | Expose a tool that returns the URL to open a GraphQL operation in Apollo Explorer. Note: This requires a GraphOS graph reference                                                                                                                                                                                                |
+| `mutation_mode`              | `oneOf ["none", "explicit", "all"]` | `"none"` | Defines the mutation access level for the MCP server                                                                                                                                                                                                                                                                            |
+| `descriptions`               | `Map<String, String>`               | `{}`     | Optional map from operation name to tool description. Overrides auto-generated descriptions for any operation source. [Learn more](https://www.apollographql.com/docs/apollo-mcp-server/define-tools#config-level-descriptions).                                                                                                |
+| `required_scopes`            | `Map<String, List<String>>`         | `{}`     | Optional map from operation name to a list of required OAuth scopes. When a token lacks the required scopes for an operation, the server returns HTTP 403 with `WWW-Authenticate: Bearer error="insufficient_scope"`. [Learn more](https://www.apollographql.com/docs/apollo-mcp-server/auth#per-operation-scope-requirements). |
+
+### Schema source
+
+These fields are under the top-level `schema` key. The available fields depend on the value of the nested `source` key.
+The default value for `source` is `"uplink"`.
+
+| Source | Option   | Type       | Description                                                                         |
+| :----- | :------- | :--------- | :---------------------------------------------------------------------------------- |
+| Local  | `source` | `"local"`  | Load schema from local file                                                         |
+| Local  | `path`   | `FilePath` | Path to the GraphQL schema                                                          |
+| Uplink | `source` | `"uplink"` | Fetch the schema from uplink. Note: This requires an Apollo key and graph reference |
+
+### Transport
+
+These fields are under the top-level `transport` key, to configure running the MCP Server in different environments - stdio or Streamable HTTP.
+
+```yaml
+transport:
+  type: streamable_http
+  address: 127.0.0.1
+  port: 5000
+  stateful_mode: true
+```
+
+##### Type
+
+The available fields depend on the value of the nested `type` key. The default type is `stdio`:
+
+| Option              | Description                                                              |
+| :------------------ | :----------------------------------------------------------------------- |
+| `"stdio"`           | Use standard IO for communication between the server and client          |
+| `"streamable_http"` | Host the MCP server on the configuration, using streamable HTTP messages |
+
+SSE transport is no longer supported by Apollo MCP Server as of v1.5.0. Use `streamable_http` for HTTP-based connections.
+
+##### Transport Type Specific options
+
+Some transport types support further configuration. For `streamable_http`, you can set `address`, `port`, `stateful_mode`, and `host_validation`.
+
+| Option            | Type             | Default     | Description                                                    |
+| :---------------- | :--------------- | :---------- | :------------------------------------------------------------- |
+| `address`         | `IpAddr`         | `127.0.0.1` | The IP address to bind to                                      |
+| `port`            | `u16`            | `8000`      | The port to bind to                                            |
+| `stateful_mode`   | `bool`           | `true`      | Flag to enable or disable stateful mode and session management |
+| `host_validation` | `HostValidation` |             | Host header validation configuration                           |
+
+For Apollo MCP Server `≤v1.0.0`, the default `port` value is `5000`. In `v1.1.0`, the default `port` option was changed to `8000` to avoid conflicts with common development tools and services that typically use port 5000 (such as macOS AirPlay, Flask development servers, and other local services).
+
+### Host Validation
+
+These fields are under the `host_validation` key within the `transport` configuration. Host validation prevents DNS rebinding attacks by rejecting requests with unexpected `Host` headers.
+
+| Option          | Type           | Default | Description                                                      |
+| :-------------- | :------------- | :------ | :--------------------------------------------------------------- |
+| `enabled`       | `bool`         | `true`  | Enable Host header validation to prevent DNS rebinding attacks   |
+| `allowed_hosts` | `List<string>` | `[]`    | Additional allowed hostnames beyond localhost (can include port) |
+
+Host validation is only available when using the `streamable_http` transport. Localhost addresses (`localhost`, `127.0.0.1`, `::1`, `0.0.0.0`) are always allowed when validation is enabled.
+
+For production deployments behind a reverse proxy, add your server's hostname:
+
+```yaml title=mcp.yaml
+transport:
+  type: streamable_http
+  host_validation:
+    allowed_hosts:
+      - mcp.example.com
+```
+
+### Auth
+
+These fields are under the top-level `transport` key, nested under the `auth` key. Learn more about [authorization and authentication](https://www.apollographql.com/docs/apollo-mcp-server/auth).
+
+| Option                            | Type                  | Default       | Description                                                                                                                                                                                                                                        |
+| :-------------------------------- | :-------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `servers`                         | `List<URL>`           |               | List of upstream delegated OAuth servers (must support RFC 8414 or OIDC metadata discovery endpoint).                                                                                                                                              |
+| `audiences`                       | `List<string>`        | `[]`          | List of accepted audiences from upstream signed JWTs (ignored if `allow_any_audience` is `true`)                                                                                                                                                   |
+| `allow_any_audience`              | `bool`                | `false`       | Set to `true` to skip audience validation entirely (use with caution)                                                                                                                                                                              |
+| `resource`                        | `string`              |               | The externally available URL pointing to this MCP server. Can be `localhost` when testing locally.                                                                                                                                                 |
+| `resource_documentation`          | `string`              |               | Optional link to more documentation relating to this MCP server                                                                                                                                                                                    |
+| `scopes`                          | `List<string>`        |               | List of queryable OAuth scopes from the upstream OAuth servers                                                                                                                                                                                     |
+| `scope_mode`                      | `string`              | `require_all` | Scope enforcement mode: `disabled`, `require_all`, or `require_any`                                                                                                                                                                                |
+| `disable_auth_token_passthrough`  | `bool`                | `false`       | Optional flag to disable passing validated Authorization header to downstream API                                                                                                                                                                  |
+| `allow_anonymous_mcp_discovery`   | `bool`                | `false`       | Allow unauthenticated access to MCP discovery methods (`initialize`, `tools/list`, `resources/list`). See [anonymous MCP discovery](https://www.apollographql.com/docs/apollo-mcp-server/auth#anonymous-mcp-discovery).                            |
+| `discovery_timeout`               | `Duration`            | `5s`          | Timeout for authorization server metadata discovery requests. Supports human-readable durations (e.g., "5s", "10s", "30s").                                                                                                                        |
+| `discovery_headers`               | `Map<string, string>` | `{}`          | Custom headers to include in OIDC discovery and JWKS requests. Useful when upstream OAuth servers or WAFs require headers like `User-Agent`. See [discovery headers](https://www.apollographql.com/docs/apollo-mcp-server/auth#discovery-headers). |
+| `tls.ca_cert`                     | `string`              |               | Path to a CA certificate to trust (PEM format).                                                                                                                                                                                                    |
+| `tls.danger_accept_invalid_certs` | `bool`                | `false`       | Accepts invalid TLS certificates. Set this to `true` for development or testing purposes only.                                                                                                                                                     |
+
+Below is an example configuration using `StreamableHTTP` transport with authentication:
+
+```yaml title=mcp.yaml
+transport:
+  type: streamable_http
+  auth:
+    # List of upstream delegated OAuth servers
+    # These must support RFC 8414 or OIDC metadata discovery.
+    servers:
+      - https://auth.example.com
+
+    # List of accepted audiences from upstream signed JWTs
+    # (Ignored if allow_any_audience is set to true)
+    # See: https://www.ory.sh/docs/hydra/guides/audiences
+    audiences:
+      - mcp.example.audience
+
+    # Set to true to skip audience validation (use with caution)
+    allow_any_audience: false
+
+    # The externally available URL pointing to this MCP server. Can be `localhost`
+    # when testing locally.
+    # Note: Subpaths must be preserved here as well. Append `/mcp` when using
+    # Streamable HTTP transport.
+    resource: https://hosted.mcp.server/mcp
+
+    # Optional link to more documentation relating to this MCP server.
+    resource_documentation: https://info.mcp.server
+
+    # List of queryable OAuth scopes from the upstream OAuth servers
+    scopes:
+      - read
+      - mcp
+      - profile
+
+    # Timeout for authorization server metadata discovery (default: 5s)
+    discovery_timeout: 5s
+
+    # Custom headers for OIDC discovery and JWKS requests
+    # Useful when upstream OAuth servers or WAFs require specific headers
+    discovery_headers:
+      User-Agent: apollo-mcp-server
+
+    # Allow unauthenticated clients to call MCP discovery methods
+    # (initialize, tools/list, resources/list). All other methods still require auth.
+    # allow_anonymous_mcp_discovery: false
+
+    # Optional TLS configuration for connecting to OAuth servers
+    tls:
+      # Path to CA certificate for private CA or self-signed OAuth server certs
+      # Use when your OAuth server uses a self-signed certificate or a certificate signed by a private CA
+      ca_cert: /path/to/ca-certificate.pem
+      # Set this to true for development or testing purposes only
+      # danger_accept_invalid_certs: false
+```
+
+### Telemetry
+
+| Option         | Type        | Default                     | Description                            |
+| :------------- | :---------- | :-------------------------- | :------------------------------------- |
+| `service_name` | `string`    | "apollo-mcp-server"         | The service name in telemetry data.    |
+| `version`      | `string`    | Current crate version       | The service version in telemetry data. |
+| `exporters`    | `Exporters` | `null` (Telemetry disabled) | Configuration for telemetry exporters. |
+
+#### Exporters
+
+| Option    | Type      | Default                   | Description                          |
+| :-------- | :-------- | :------------------------ | :----------------------------------- |
+| `metrics` | `Metrics` | `null` (Metrics disabled) | Configuration for exporting metrics. |
+| `tracing` | `Tracing` | `null` (Tracing disabled) | Configuration for exporting traces.  |
+
+#### Metrics
+
+| Option               | Type                   | Default                     | Description                                                                                               |
+| :------------------- | :--------------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| `otlp`               | `OTLP Metric Exporter` | `null` (Exporting disabled) | Configuration for exporting metrics via OTLP.                                                             |
+| `omitted_attributes` | `List<String>`         |                             | List of attributes to be omitted from metrics.                                                            |
+| `export_interval`    | `Duration`             | `30s`                       | Interval at which metrics are exported. Supports human-readable durations (e.g. `30s`, `1m`, `1h`, `1d`). |
+
+#### OTLP Metrics Exporter
+
+| Option        | Type                | Default                 | Description                                                                                                                                                |
+| :------------ | :------------------ | :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `endpoint`    | `URL`               | `http://localhost:4317` | URL to export data to. Requires full path.                                                                                                                 |
+| `protocol`    | `string`            | `grpc`                  | Specifies the export protocol. Supported values are `grpc` and `http/protobuf`.                                                                            |
+| `temporality` | `MetricTemporality` | `Cumulative`            | Specifies how additive quantities are expressed over time. `Cumulative` means reported values include previous measurements, and `Delta` means they don't. |
+| `metadata`    | Key-value pairs     |                         | Key-value pairs for metadata. This field applies only when `protocol` is `grpc`.                                                                           |
+| `headers`     | Key-value pairs     |                         | Key-value pairs for headers. This field applies only when `protocol` is `http/protobuf`.                                                                   |
+
+The following example configures metrics telemetry to use the `grpc` protocol and sends data to the `http://localhost:4317` endpoint. It includes metadata with each request.
+
+```yaml
+telemetry:
+  exporters:
+    metrics:
+      otlp:
+        endpoint: http://localhost:4317
+        protocol: grpc
+        temporality: cumulative
+        metadata:
+          key-name: some-value
+          key-two: another-value
+      export_interval: 1m # Export metrics every minute (default: 30s)
+```
+
+For observability platforms that prefer delta temporality (such as New Relic), configure the temporality and pass your API key via metadata:
+
+```yaml
+telemetry:
+  exporters:
+    metrics:
+      otlp:
+        endpoint: https://otlp.nr-data.net:4317
+        protocol: grpc
+        temporality: delta
+        metadata:
+          api-key: <YOUR_API_KEY>
+```
+
+To use environment variables for sensitive values like API keys:
+
+```sh
+export APOLLO_MCP_TELEMETRY__EXPORTERS__METRICS__OTLP__METADATA__API_KEY="${YOUR_API_KEY}"
+```
+
+#### Traces
+
+| Option               | Type                  | Default                     | Description                                   |
+| :------------------- | :-------------------- | :-------------------------- | :-------------------------------------------- |
+| `otlp`               | `OTLP Trace Exporter` | `null` (Exporting disabled) | Configuration for exporting traces via OTLP.  |
+| `sampler`            | `SamplerOption`       | `ALWAYS_ON`                 | Configuration to control sampling of traces.  |
+| `omitted_attributes` | `List<String>`        |                             | List of attributes to be omitted from traces. |
+
+#### OTLP Trace Exporter
+
+| Option     | Type            | Default                 | Description                                                                              |
+| :--------- | :-------------- | :---------------------- | :--------------------------------------------------------------------------------------- |
+| `endpoint` | `URL`           | `http://localhost:4317` | URL to export data to. Requires full path.                                               |
+| `protocol` | `string`        | `grpc`                  | Specifies the export protocol. Supported values are `grpc` and `http/protobuf`.          |
+| `metadata` | Key-value pairs |                         | Key-value pairs for metadata. This field applies only when `protocol` is `grpc`.         |
+| `headers`  | Key-value pairs |                         | Key-value pairs for headers. This field applies only when `protocol` is `http/protobuf`. |
+
+The following example section configures tracing telemetry to use the `http/protobuf` protocol and sends data to the `http://localhost:4317` endpoint. It also includes headers with each request.
+
+```yaml
+telemetry:
+  exporters:
+    tracing:
+      otlp:
+        endpoint: http://localhost:4317
+        protocol: http/protobuf
+        headers:
+          key-name: some-value
+          key-two: another-value
+```
+
+#### MetricTemporality
+
+| Option       | Type     | Description                    |
+| :----------- | :------- | :----------------------------- |
+| `cumulative` | `string` | Cumulative temporality option. |
+| `delta`      | `string` | Delta temporality option.      |
+| `lowmemory`  | `string` | Low memory temporality option. |
+
+#### SamplerOption
+
+| Option       | Type     | Description                                         |
+| :----------- | :------- | :-------------------------------------------------- |
+| `always_on`  | `string` | All traces will be exported.                        |
+| `always_off` | `string` | Sampling is turned off, no traces will be exported. |
+| `0.0-1.0`    | `f64`    | Percentage of traces to export.                     |
+
+### Server info
+
+These fields are under the top-level `server_info` key and configure the server metadata returned in the MCP `initialize` response.
+
+| Option        | Type     | Default                                                                       | Description                                                                |
+| :------------ | :------- | :---------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| `name`        | `string` | `"Apollo MCP Server"`                                                         | The name of the MCP server implementation (used as a technical identifier) |
+| `version`     | `string` | Current crate version (e.g., `"1.5.0"`)                                       | The version of the MCP server implementation                               |
+| `title`       | `string` | `"Apollo MCP Server"`                                                         | Human-readable title for the server (used for display in UIs)              |
+| `website_url` | `URL`    | `"https://www.apollographql.com/docs/apollo-mcp-server"`                      | URL to the server's website or documentation                               |
+| `description` | `string` | `"A Model Context Protocol (MCP) server for exposing GraphQL APIs as tools."` | A brief description of the server                                          |
+
+All fields are optional. If not specified, sensible defaults are used. This is useful when wrapping Apollo MCP Server or branding it for specific use cases.
+
+```yaml title=config.yaml
+server_info:
+  name: "Acme Corp GraphQL Server"
+  version: "2.0.0"
+  title: "Acme MCP Server"
+  website_url: "https://acme.com/mcp-docs"
+  description: "MCP server for Acme Corp's GraphQL API"
+```
+
+## Example config files
+
+The following example file sets your endpoint to `localhost:4001`, configures transport over Streamable HTTP, enables introspection, and provides two local MCP operations for the server to expose.
+
+```yaml title=config.yaml
+endpoint: http://localhost:4001/
+transport:
+  type: streamable_http
+introspection:
+  introspect:
+    enabled: true
+operations:
+  source: local
+  paths:
+    - relative/path/to/your/operations/userDetails.graphql
+    - relative/path/to/your/operations/listing.graphql
+```
+
+This configuration file will set up Streamable HTTP transport, enables introspection, and makes all operations derive from introspection:
+
+```yaml title=config.yaml
+transport:
+  type: streamable_http
+introspection:
+  introspect:
+    enabled: true
+operations:
+  source: introspect
+```
+
+## Override configuration options using environment variables
+
+You can override configuration options using environment variables. The environment variable name is the same as the option name, but with `APOLLO_MCP_` prefixed. You can use `__` to mark nested options.
+
+For example, to override the `introspection.execute.enabled` option, you can set the `APOLLO_MCP_INTROSPECTION__EXECUTE__ENABLED` environment variable.
+
+```sh
+APOLLO_MCP_INTROSPECTION__EXECUTE__ENABLED="true"
+```
+
+For list values, you can set the environment variable to a comma-separated list.
+
+For example, to override the `transport.auth.servers` option, you can set the `APOLLO_MCP_TRANSPORT__AUTH__SERVERS` environment variable to a comma-separated list.
+
+```sh
+APOLLO_MCP_TRANSPORT__AUTH__SERVERS='[server_url_1,server_url_2]'
+```
+
+## Environment variable expansion
+
+You can reference environment variables directly in your configuration file using the `${env.VAR_NAME}` syntax. This is useful when you have existing environment variables that don't follow the `APOLLO_MCP_*` naming convention.
+
+```yaml title=config.yaml
+telemetry:
+  exporters:
+    tracing:
+      otlp:
+        endpoint: ${env.OTEL_EXPORTER_OTLP_ENDPOINT}
+```
+
+When Apollo MCP Server loads the configuration, it expands these references to their values before parsing the YAML.
+
+### Default values
+
+You can provide a fallback value using the `${env.VAR_NAME:-default}` syntax. If the environment variable is not set, the default value is used instead:
+
+```yaml title=config.yaml
+endpoint: ${env.GRAPHQL_ENDPOINT:-http://localhost:4000}
+```
+
+The default value is used when the variable is **unset or empty**. This matches bash and Apollo Router behavior.
+
+Default values can contain special characters, including colons, balanced braces, and even `:-`:
+
+```yaml title=config.yaml
+# URLs with ports work fine
+endpoint: ${env.API_URL:-http://localhost:4000}
+
+# JSON-like defaults with balanced braces work
+metadata: '${env.DEFAULT_META:-{"version":"1.0"}}'
+
+# Multiple :- in default value (only the first one delimits)
+value: ${env.MY_VAR:-a:-b:-c} # default is "a:-b:-c"
+```
+
+**Nested references are not expanded.** Default values are treated as literal text. If your default contains `${env.OTHER}`, it will appear literally in the output, not be expanded:
+
+```yaml
+# If MISSING is unset, this becomes literally: "prefix ${env.OTHER} suffix"
+value: ${env.MISSING:-prefix ${env.OTHER} suffix}
+```
+
+**Quotes don't escape closing braces.** Brace matching in default values is purely depth-based. A `}` inside quotes will still terminate the placeholder:
+
+```yaml
+# This does NOT work as expected - the } inside quotes ends the placeholder early
+value: ${env.VAR:-"}"} # Results in: ""}  (not "}")
+```
+
+`APOLLO_MCP_*` environment variables still take precedence over expanded values in the config file. For example, if you set both `${env.MY_ENDPOINT}` in the config and `APOLLO_MCP_ENDPOINT` as an environment variable, `APOLLO_MCP_ENDPOINT` wins.
+
+### Special characters
+
+If your environment variable value contains YAML special characters (colons, brackets, quotes), wrap the expanded value in quotes:
+
+```yaml title=config.yaml
+# Safe for values that might contain special characters
+description: "${env.MY_DESCRIPTION}"
+```
+
+### Escaping
+
+To include a literal `${env.VAR}` in your configuration without expansion, escape the dollar sign by doubling it:
+
+```yaml title=config.yaml
+# Becomes: ${env.NOT_EXPANDED} after loading
+template: "$${env.NOT_EXPANDED}"
+```
+
+### Error handling
+
+If a referenced environment variable is not defined, Apollo MCP Server fails to start with a clear error message:
+
+```text
+Error: undefined environment variable 'OTEL_EXPORTER_OTLP_ENDPOINT' referenced in configuration
+```
+
+### Configuration validation
+
+Apollo MCP Server validates your configuration file at startup and rejects invalid options. This helps catch typos, misplaced fields, and other misconfigurations early — for example, placing `auth` at the top level instead of nesting it under `transport`:
+
+```yaml title=config.yaml
+# ❌ Wrong — auth is not a top-level option
+auth:
+  servers:
+    - https://auth-server.com
+transport:
+  type: streamable_http
+```
+
+The server fails to start and tells you exactly which field is invalid and what the valid options are:
+
+```text
+Error: unknown field: found `auth`, expected one of `cors`, `server_info`,
+`custom_scalars`, `endpoint`, `graphos`, `headers`, `forward_headers`,
+`health_check`, `introspection`, `logging`, `telemetry`, `operations`,
+`overrides`, `schema`, `transport`
+```

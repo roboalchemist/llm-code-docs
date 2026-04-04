@@ -1,0 +1,1315 @@
+# Source: https://docs.aws.amazon.com/quicksight/latest/APIReference/llms.txt
+
+# Amazon Quick Sight 
+
+- [Welcome](https://docs.aws.amazon.com/quicksight/latest/APIReference/Welcome.html)
+- [Overview](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-api-overview.html)
+- [Terminology and Concepts](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-developer-terminology.html)
+- [AWS Glossary](https://docs.aws.amazon.com/quicksight/latest/APIReference/glossary.html)
+
+## [Using the Amazon Quick Sight API](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-using-the-quicksight-api.html)
+
+- [Making API Requests](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-api-making-api-requests.html): Use your preferred programming language when developing applications.
+
+### [ARNs in Amazon Quick Sight](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-arns.html)
+
+Amazon Resource Names (ARNs) uniquely identify AWS resources.
+
+- [ARN Formats](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-arn-format.html): ARNs are delimited by colons, and composed of segments, which are the parts separated by colons (:).
+- [Amazon Quick Sight Resource ARNs](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-resource-arns.html): The following resource types are defined by Amazon Quick Sight: user, group, dashboard, and topic.
+- [Permissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-api-permissions.html): If you're not sure what the necessary permission is, you can attempt to make a call.
+- [Errors](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-api-errors.html): Amazon Quick Sight has two types of error codes:
+
+
+## [API Operations by Topic](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-api-operations-by-topic.html)
+
+- [Operations to Control Access](https://docs.aws.amazon.com/quicksight/latest/APIReference/controlling-access.html): The API operations in this section control Quick Sight users, Quick Sight groups, Quick Sight namespaces, and permissions to Quick Sight assets.
+- [Operations to Control Settings](https://docs.aws.amazon.com/quicksight/latest/APIReference/quicksight-settings.html): The API operations in this section control settings in Quick Sight.
+- [Embedding Operations](https://docs.aws.amazon.com/quicksight/latest/APIReference/embedding-quicksight.html): The API operations in this section control the embedded Quick Sight experiences: the embedded dashboard, the embedded authoring console, and the embedded Q search bar.
+- [Operations to Control Assets](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-assets.html)
+- [Data Resource Operations](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-data.html): The API operations in this section control Quick Sight data resources.
+
+
+## [API Reference Index](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Reference.html)
+
+### [Actions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Operations.html)
+
+The following actions are supported:
+
+- [BatchCreateTopicReviewedAnswer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BatchCreateTopicReviewedAnswer.html): Creates new reviewed answers for a Q Topic.
+- [BatchDeleteTopicReviewedAnswer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BatchDeleteTopicReviewedAnswer.html): Deletes reviewed answers for Q Topic.
+- [CancelIngestion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CancelIngestion.html): Cancels an ongoing ingestion of data into SPICE.
+- [CreateAccountCustomization](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateAccountCustomization.html): Creates Amazon Quick Sight customizations.
+- [CreateAccountSubscription](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateAccountSubscription.html): Creates an Amazon Quick Sight account, or subscribes to Amazon Quick Sight Q.
+- [CreateActionConnector](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateActionConnector.html): Creates an action connector that enables Amazon Quick Sight to connect to external services and perform actions.
+- [CreateAnalysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateAnalysis.html): Creates an analysis in Amazon Quick Sight.
+- [CreateBrand](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateBrand.html): Creates an Quick Sight brand.
+- [CreateCustomPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateCustomPermissions.html): Creates a custom permissions profile.
+- [CreateDashboard](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDashboard.html): Creates a dashboard from either a template or directly with a DashboardDefinition.
+- [CreateDataSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSet.html): Creates a dataset.
+- [CreateDataSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSource.html): Creates a data source.
+- [CreateFolder](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateFolder.html): Creates an empty shared folder.
+- [CreateFolderMembership](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateFolderMembership.html): Adds an asset, such as a dashboard, analysis, or dataset into a folder.
+- [CreateGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateGroup.html): Use the CreateGroup operation to create a group in Quick Sight.
+- [CreateGroupMembership](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateGroupMembership.html): Adds an Amazon Quick Sight user to an Amazon Quick Sight group.
+- [CreateIAMPolicyAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateIAMPolicyAssignment.html): Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN).
+- [CreateIngestion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateIngestion.html): Creates and starts a new SPICE ingestion for a dataset.
+- [CreateNamespace](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateNamespace.html): (Enterprise edition only) Creates a new namespace for you to use with Amazon Quick Sight.
+- [CreateRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateRefreshSchedule.html): Creates a refresh schedule for a dataset.
+- [CreateRoleMembership](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateRoleMembership.html): Use CreateRoleMembership to add an existing Quick Sight group to an existing role.
+- [CreateTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTemplate.html): Creates a template either from a TemplateDefinition or from an existing Quick Sight analysis or template.
+- [CreateTemplateAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTemplateAlias.html): Creates a template alias for a template.
+- [CreateTheme](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTheme.html): Creates a theme.
+- [CreateThemeAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateThemeAlias.html): Creates a theme alias for a theme.
+- [CreateTopic](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTopic.html): Creates a new Q topic.
+- [CreateTopicRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTopicRefreshSchedule.html): Creates a topic refresh schedule.
+- [CreateVPCConnection](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateVPCConnection.html): Creates a new VPC connection.
+- [DeleteAccountCustomization](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteAccountCustomization.html)
+- [DeleteAccountCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteAccountCustomPermission.html): Unapplies a custom permissions profile from an account.
+- [DeleteAccountSubscription](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteAccountSubscription.html)
+- [DeleteActionConnector](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteActionConnector.html): Hard deletes an action connector, making it unrecoverable.
+- [DeleteAnalysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteAnalysis.html): Deletes an analysis from Amazon Quick Sight.
+- [DeleteBrand](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteBrand.html)
+- [DeleteBrandAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteBrandAssignment.html): Deletes a brand assignment.
+- [DeleteCustomPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteCustomPermissions.html): Deletes a custom permissions profile.
+- [DeleteDashboard](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteDashboard.html): Deletes a dashboard.
+- [DeleteDataSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteDataSet.html): Deletes a dataset.
+- [DeleteDataSetRefreshProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteDataSetRefreshProperties.html): Deletes the dataset refresh properties of the dataset.
+- [DeleteDataSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteDataSource.html): Deletes the data source permanently.
+- [DeleteDefaultQBusinessApplication](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteDefaultQBusinessApplication.html): Deletes a linked Amazon Q Business application from an Quick Sight account
+- [DeleteFolder](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteFolder.html): Deletes an empty folder.
+- [DeleteFolderMembership](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteFolderMembership.html): Removes an asset, such as a dashboard, analysis, or dataset, from a folder.
+- [DeleteGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteGroup.html): Removes a user group from Amazon Quick Sight.
+- [DeleteGroupMembership](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteGroupMembership.html): Removes a user from a group so that the user is no longer a member of the group.
+- [DeleteIAMPolicyAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteIAMPolicyAssignment.html): Deletes an existing IAM policy assignment.
+- [DeleteIdentityPropagationConfig](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteIdentityPropagationConfig.html): Deletes all access scopes and authorized targets that are associated with a service from the Quick Sight IAM Identity Center application.
+- [DeleteNamespace](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteNamespace.html): Deletes a namespace and the users and groups that are associated with the namespace.
+- [DeleteRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteRefreshSchedule.html): Deletes a refresh schedule from a dataset.
+- [DeleteRoleCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteRoleCustomPermission.html): Removes custom permissions from the role.
+- [DeleteRoleMembership](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteRoleMembership.html): Removes a group from a role.
+- [DeleteTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteTemplate.html): Deletes a template.
+- [DeleteTemplateAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteTemplateAlias.html): Deletes the item that the specified template alias points to.
+- [DeleteTheme](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteTheme.html): Deletes a theme.
+- [DeleteThemeAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteThemeAlias.html): Deletes the version of the theme that the specified theme alias points to.
+- [DeleteTopic](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteTopic.html): Deletes a topic.
+- [DeleteTopicRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteTopicRefreshSchedule.html): Deletes a topic refresh schedule.
+- [DeleteUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteUser.html): Deletes the Amazon Quick Sight user that is associated with the identity of the IAM user or role that's making the call.
+- [DeleteUserByPrincipalId](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteUserByPrincipalId.html): Deletes a user identified by its principal ID.
+- [DeleteUserCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteUserCustomPermission.html): Deletes a custom permissions profile from a user.
+- [DeleteVPCConnection](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DeleteVPCConnection.html): Deletes a VPC connection.
+- [DescribeAccountCustomization](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAccountCustomization.html): Describes the customizations associated with the provided AWS account and Amazon Quick Sight namespace.
+- [DescribeAccountCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAccountCustomPermission.html): Describes the custom permissions profile that is applied to an account.
+- [DescribeAccountSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAccountSettings.html): Describes the settings that were used when your Quick Sight subscription was first created in this AWS account.
+- [DescribeAccountSubscription](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAccountSubscription.html): Use the DescribeAccountSubscription operation to receive a description of an Quick Sight account's subscription.
+- [DescribeActionConnector](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeActionConnector.html): Retrieves detailed information about an action connector, including its configuration, authentication settings, enabled actions, and current status.
+- [DescribeActionConnectorPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeActionConnectorPermissions.html): Retrieves the permissions configuration for an action connector, showing which users, groups, and namespaces have access and what operations they can perform.
+- [DescribeAnalysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAnalysis.html): Provides a summary of the metadata for an analysis.
+- [DescribeAnalysisDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAnalysisDefinition.html): Provides a detailed description of the definition of an analysis.
+- [DescribeAnalysisPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAnalysisPermissions.html): Provides the read and write permissions for an analysis.
+- [DescribeAssetBundleExportJob](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAssetBundleExportJob.html): Describes an existing export job.
+- [DescribeAssetBundleImportJob](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAssetBundleImportJob.html): Describes an existing import job.
+- [DescribeBrand](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeBrand.html): Describes a brand.
+- [DescribeBrandAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeBrandAssignment.html): Describes a brand assignment.
+- [DescribeBrandPublishedVersion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeBrandPublishedVersion.html): Describes the published version of the brand.
+- [DescribeCustomPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeCustomPermissions.html): Describes a custom permissions profile.
+- [DescribeDashboard](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboard.html): Provides a summary for a dashboard.
+- [DescribeDashboardDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboardDefinition.html): Provides a detailed description of the definition of a dashboard.
+- [DescribeDashboardPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboardPermissions.html): Describes read and write permissions for a dashboard.
+- [DescribeDashboardSnapshotJob](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboardSnapshotJob.html): Describes an existing snapshot job.
+- [DescribeDashboardSnapshotJobResult](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboardSnapshotJobResult.html): Describes the result of an existing snapshot job that has finished running.
+- [DescribeDashboardsQAConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboardsQAConfiguration.html): Describes an existing dashboard QA configuration.
+- [DescribeDataSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDataSet.html): Describes a dataset.
+- [DescribeDataSetPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDataSetPermissions.html): Describes the permissions on a dataset.
+- [DescribeDataSetRefreshProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDataSetRefreshProperties.html): Describes the refresh properties of a dataset.
+- [DescribeDataSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDataSource.html): Describes a data source.
+- [DescribeDataSourcePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDataSourcePermissions.html): Describes the resource permissions for a data source.
+- [DescribeDefaultQBusinessApplication](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDefaultQBusinessApplication.html): Describes a Amazon Q Business application that is linked to an Quick Sight account.
+- [DescribeFolder](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeFolder.html): Describes a folder.
+- [DescribeFolderPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeFolderPermissions.html): Describes permissions for a folder.
+- [DescribeFolderResolvedPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeFolderResolvedPermissions.html): Describes the folder resolved permissions.
+- [DescribeGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeGroup.html): Returns an Amazon Quick Sight group's description and Amazon Resource Name (ARN).
+- [DescribeGroupMembership](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeGroupMembership.html): Use the DescribeGroupMembership operation to determine if a user is a member of the specified group.
+- [DescribeIAMPolicyAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeIAMPolicyAssignment.html): Describes an existing IAM policy assignment, as specified by the assignment name.
+- [DescribeIngestion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeIngestion.html): Describes a SPICE ingestion.
+- [DescribeIpRestriction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeIpRestriction.html): Provides a summary and status of IP rules.
+- [DescribeKeyRegistration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeKeyRegistration.html): Describes all customer managed key registrations in a Quick Sight account.
+- [DescribeNamespace](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeNamespace.html): Describes the current namespace.
+- [DescribeQPersonalizationConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeQPersonalizationConfiguration.html): Describes a personalization configuration.
+- [DescribeQuickSightQSearchConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeQuickSightQSearchConfiguration.html): Describes the state of a Quick Sight Q Search configuration.
+- [DescribeRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeRefreshSchedule.html): Provides a summary of a refresh schedule.
+- [DescribeRoleCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeRoleCustomPermission.html): Describes all custom permissions that are mapped to a role.
+- [DescribeSelfUpgradeConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeSelfUpgradeConfiguration.html): Describes the self-upgrade configuration for a Quick account.
+- [DescribeTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplate.html): Describes a template's metadata.
+- [DescribeTemplateAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplateAlias.html): Describes the template alias for a template.
+- [DescribeTemplateDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplateDefinition.html): Provides a detailed description of the definition of a template.
+- [DescribeTemplatePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplatePermissions.html): Describes read and write permissions on a template.
+- [DescribeTheme](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTheme.html): Describes a theme.
+- [DescribeThemeAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeThemeAlias.html): Describes the alias for a theme.
+- [DescribeThemePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeThemePermissions.html): Describes the read and write permissions for a theme.
+- [DescribeTopic](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTopic.html): Describes a topic.
+- [DescribeTopicPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTopicPermissions.html): Describes the permissions of a topic.
+- [DescribeTopicRefresh](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTopicRefresh.html): Describes the status of a topic refresh.
+- [DescribeTopicRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTopicRefreshSchedule.html): Deletes a topic refresh schedule.
+- [DescribeUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeUser.html): Returns information about a user, given the user name.
+- [DescribeVPCConnection](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeVPCConnection.html): Describes a VPC connection.
+- [GenerateEmbedUrlForAnonymousUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForAnonymousUser.html): Generates an embed URL that you can use to embed an Amazon Quick dashboard or visual in your website, without having to register any reader users.
+- [GenerateEmbedUrlForRegisteredUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForRegisteredUser.html): Generates an embed URL that you can use to embed an Amazon Quick experience in your website.
+- [GenerateEmbedUrlForRegisteredUserWithIdentity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForRegisteredUserWithIdentity.html): Generates an embed URL that you can use to embed an Amazon Quick Sight experience in your website.
+- [GetDashboardEmbedUrl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GetDashboardEmbedUrl.html): Generates a temporary session URL and authorization code(bearer token) that you can use to embed an Amazon Quick Sight read-only dashboard in your website or application.
+- [GetFlowMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GetFlowMetadata.html): Retrieves the metadata of a flow, not including its definition specifying the steps.
+- [GetFlowPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GetFlowPermissions.html): Get permissions for a flow.
+- [GetIdentityContext](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GetIdentityContext.html): Retrieves the identity context for a Quick Sight user in a specified namespace, allowing you to obtain identity tokens that can be used with identity-enhanced IAM role sessions to call identity-aware APIs.
+- [GetSessionEmbedUrl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GetSessionEmbedUrl.html): Generates a session URL and authorization code that you can use to embed the Amazon Amazon Quick Sight console in your web server code.
+- [ListActionConnectors](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListActionConnectors.html): Lists all action connectors in the specified AWS account.
+- [ListAnalyses](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListAnalyses.html): Lists Amazon Quick Sight analyses that exist in the specified AWS account.
+- [ListAssetBundleExportJobs](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListAssetBundleExportJobs.html): Lists all asset bundle export jobs that have been taken place in the last 14 days.
+- [ListAssetBundleImportJobs](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListAssetBundleImportJobs.html): Lists all asset bundle import jobs that have taken place in the last 14 days.
+- [ListBrands](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListBrands.html): Lists all brands in an Quick Sight account.
+- [ListCustomPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListCustomPermissions.html): Returns a list of all the custom permissions profiles.
+- [ListDashboards](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListDashboards.html): Lists dashboards in an AWS account.
+- [ListDashboardVersions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListDashboardVersions.html): Lists all the versions of the dashboards in the Amazon Quick Sight subscription.
+- [ListDataSets](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListDataSets.html): Lists all of the datasets belonging to the current AWS account in an AWS Region.
+- [ListDataSources](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListDataSources.html): Lists data sources in current AWS Region that belong to this AWS account.
+- [ListFlows](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListFlows.html): Lists flows in an AWS account.
+- [ListFolderMembers](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListFolderMembers.html): List all assets (DASHBOARD, ANALYSIS, and DATASET) in a folder.
+- [ListFolders](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListFolders.html): Lists all folders in an account.
+- [ListFoldersForResource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListFoldersForResource.html): List all folders that a resource is a member of.
+- [ListGroupMemberships](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListGroupMemberships.html): Lists member users in a group.
+- [ListGroups](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListGroups.html): Lists all user groups in Amazon Quick Sight.
+- [ListIAMPolicyAssignments](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListIAMPolicyAssignments.html): Lists the IAM policy assignments in the current Amazon Quick Sight account.
+- [ListIAMPolicyAssignmentsForUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListIAMPolicyAssignmentsForUser.html): Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to.
+- [ListIdentityPropagationConfigs](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListIdentityPropagationConfigs.html): Lists all services and authorized targets that the Quick Sight IAM Identity Center application can access.
+- [ListIngestions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListIngestions.html): Lists the history of SPICE ingestions for a dataset.
+- [ListNamespaces](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListNamespaces.html): Lists the namespaces for the specified AWS account.
+- [ListRefreshSchedules](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListRefreshSchedules.html): Lists the refresh schedules of a dataset.
+- [ListRoleMemberships](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListRoleMemberships.html): Lists all groups that are associated with a role.
+- [ListSelfUpgrades](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListSelfUpgrades.html): Lists all self-upgrade requests for a Quick account.
+- [ListTagsForResource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListTagsForResource.html): Lists the tags assigned to a resource.
+- [ListTemplateAliases](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListTemplateAliases.html): Lists all the aliases of a template.
+- [ListTemplates](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListTemplates.html): Lists all the templates in the current Amazon Quick Sight account.
+- [ListTemplateVersions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListTemplateVersions.html): Lists all the versions of the templates in the current Amazon Quick Sight account.
+- [ListThemeAliases](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListThemeAliases.html): Lists all the aliases of a theme.
+- [ListThemes](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListThemes.html): Lists all the themes in the current AWS account.
+- [ListThemeVersions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListThemeVersions.html): Lists all the versions of the themes in the current AWS account.
+- [ListTopicRefreshSchedules](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListTopicRefreshSchedules.html): Lists all of the refresh schedules for a topic.
+- [ListTopicReviewedAnswers](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListTopicReviewedAnswers.html): Lists all reviewed answers for a Q Topic.
+- [ListTopics](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListTopics.html): Lists all of the topics within an account.
+- [ListUserGroups](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListUserGroups.html): Lists the Amazon Quick Sight groups that an Amazon Quick Sight user is a member of.
+- [ListUsers](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListUsers.html): Returns a list of all of the Amazon Quick Sight users belonging to this account.
+- [ListVPCConnections](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListVPCConnections.html): Lists all of the VPC connections in the current set AWS Region of an AWS account.
+- [PredictQAResults](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PredictQAResults.html): Predicts existing visuals or generates new visuals to answer a given query.
+- [PutDataSetRefreshProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PutDataSetRefreshProperties.html): Creates or updates the dataset refresh properties for the dataset.
+- [RegisterUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisterUser.html): Creates an Amazon Quick Sight user whose identity is associated with the AWS Identity and Access Management (IAM) identity or role specified in the request.
+- [RestoreAnalysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RestoreAnalysis.html): Restores an analysis.
+- [SearchActionConnectors](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchActionConnectors.html): Searches for action connectors in the specified AWS account using filters.
+- [SearchAnalyses](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchAnalyses.html): Searches for analyses that belong to the user specified in the filter.
+- [SearchDashboards](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchDashboards.html): Searches for dashboards that belong to a user.
+- [SearchDataSets](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchDataSets.html): Use the SearchDataSets operation to search for datasets that belong to an account.
+- [SearchDataSources](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchDataSources.html): Use the SearchDataSources operation to search for data sources that belong to an account.
+- [SearchFlows](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchFlows.html): Search for the flows in an AWS account.
+- [SearchFolders](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchFolders.html): Searches the subfolders in a folder.
+- [SearchGroups](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchGroups.html): Use the SearchGroups operation to search groups in a specified Quick Sight namespace using the supplied filters.
+- [SearchTopics](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchTopics.html): Searches for any Q topic that exists in an Quick account.
+- [StartAssetBundleExportJob](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StartAssetBundleExportJob.html): Starts an Asset Bundle export job.
+- [StartAssetBundleImportJob](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StartAssetBundleImportJob.html): Starts an Asset Bundle import job.
+- [StartDashboardSnapshotJob](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StartDashboardSnapshotJob.html): Starts an asynchronous job that generates a snapshot of a dashboard's output.
+- [StartDashboardSnapshotJobSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StartDashboardSnapshotJobSchedule.html): Starts an asynchronous job that runs an existing dashboard schedule and sends the dashboard snapshot through email.
+- [TagResource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TagResource.html): Assigns one or more tags (key-value pairs) to the specified Amazon Quick Sight resource.
+- [UntagResource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UntagResource.html): Removes a tag or tags from a resource.
+- [UpdateAccountCustomization](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateAccountCustomization.html): Updates Amazon Quick Sight customizations.
+- [UpdateAccountCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateAccountCustomPermission.html): Applies a custom permissions profile to an account.
+- [UpdateAccountSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateAccountSettings.html): Updates the Amazon Quick Sight settings in your AWS account.
+- [UpdateActionConnector](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateActionConnector.html): Updates an existing action connector with new configuration details, authentication settings, or enabled actions.
+- [UpdateActionConnectorPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateActionConnectorPermissions.html): Updates the permissions for an action connector by granting or revoking access for specific users and groups.
+- [UpdateAnalysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateAnalysis.html): Updates an analysis in Amazon Quick Sight
+- [UpdateAnalysisPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateAnalysisPermissions.html): Updates the read and write permissions for an analysis.
+- [UpdateApplicationWithTokenExchangeGrant](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateApplicationWithTokenExchangeGrant.html): Updates an Quick application with a token exchange grant.
+- [UpdateBrand](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateBrand.html): Updates a brand.
+- [UpdateBrandAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateBrandAssignment.html): Updates a brand assignment.
+- [UpdateBrandPublishedVersion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateBrandPublishedVersion.html): Updates the published version of a brand.
+- [UpdateCustomPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateCustomPermissions.html): Updates a custom permissions profile.
+- [UpdateDashboard](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboard.html): Updates a dashboard in an AWS account.
+- [UpdateDashboardLinks](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardLinks.html): Updates the linked analyses on a dashboard.
+- [UpdateDashboardPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardPermissions.html): Updates read and write permissions on a dashboard.
+- [UpdateDashboardPublishedVersion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardPublishedVersion.html): Updates the published version of a dashboard.
+- [UpdateDashboardsQAConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardsQAConfiguration.html): Updates a Dashboard QA configuration.
+- [UpdateDataSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDataSet.html): Updates a dataset.
+- [UpdateDataSetPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDataSetPermissions.html): Updates the permissions on a dataset.
+- [UpdateDataSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDataSource.html): Updates a data source.
+- [UpdateDataSourcePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDataSourcePermissions.html): Updates the permissions to a data source.
+- [UpdateDefaultQBusinessApplication](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDefaultQBusinessApplication.html): Updates a Amazon Q Business application that is linked to a Quick Sight account.
+- [UpdateFlowPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateFlowPermissions.html): Updates permissions against principals on a flow.
+- [UpdateFolder](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateFolder.html): Updates the name of a folder.
+- [UpdateFolderPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateFolderPermissions.html): Updates permissions of a folder.
+- [UpdateGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateGroup.html): Changes a group description.
+- [UpdateIAMPolicyAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateIAMPolicyAssignment.html): Updates an existing IAM policy assignment.
+- [UpdateIdentityPropagationConfig](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateIdentityPropagationConfig.html): Adds or updates services and authorized targets to configure what the Quick Sight IAM Identity Center application can access.
+- [UpdateIpRestriction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateIpRestriction.html): Updates the content and status of IP rules.
+- [UpdateKeyRegistration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateKeyRegistration.html): Updates a customer managed key in a Quick Sight account.
+- [UpdatePublicSharingSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdatePublicSharingSettings.html)
+- [UpdateQPersonalizationConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateQPersonalizationConfiguration.html): Updates a personalization configuration.
+- [UpdateQuickSightQSearchConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateQuickSightQSearchConfiguration.html): Updates the state of a Quick Sight Q Search configuration.
+- [UpdateRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateRefreshSchedule.html): Updates a refresh schedule for a dataset.
+- [UpdateRoleCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateRoleCustomPermission.html): Updates the custom permissions that are associated with a role.
+- [UpdateSelfUpgrade](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateSelfUpgrade.html): Updates a self-upgrade request for a Quick user by approving, denying, or verifying the request.
+- [UpdateSelfUpgradeConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateSelfUpgradeConfiguration.html): Updates the self-upgrade configuration for a Quick account.
+- [UpdateSPICECapacityConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateSPICECapacityConfiguration.html): Updates the SPICE capacity configuration for a Quick Sight account.
+- [UpdateTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateTemplate.html): Updates a template from an existing Amazon Quick Sight analysis or another template.
+- [UpdateTemplateAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateTemplateAlias.html): Updates the template alias of a template.
+- [UpdateTemplatePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateTemplatePermissions.html): Updates the resource permissions for a template.
+- [UpdateTheme](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateTheme.html): Updates a theme.
+- [UpdateThemeAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateThemeAlias.html): Updates an alias of a theme.
+- [UpdateThemePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateThemePermissions.html): Updates the resource permissions for a theme.
+- [UpdateTopic](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateTopic.html): Updates a topic.
+- [UpdateTopicPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateTopicPermissions.html): Updates the permissions of a topic.
+- [UpdateTopicRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateTopicRefreshSchedule.html): Updates a topic refresh schedule.
+- [UpdateUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateUser.html): Updates an Amazon Quick Sight user.
+- [UpdateUserCustomPermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateUserCustomPermission.html): Updates a custom permissions profile for a user.
+- [UpdateVPCConnection](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateVPCConnection.html): Updates a VPC connection.
+
+### [Data Types](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Types.html)
+
+The following data types are supported:
+
+- [AccountCustomization](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AccountCustomization.html): The Quick Sight customizations associated with your AWS account or a Quick Sight namespace in a specific AWS Region.
+- [AccountInfo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AccountInfo.html): A structure that contains the following account information elements:
+- [AccountSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AccountSettings.html): The Quick Sight settings associated with your AWS account.
+- [ActionConnector](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ActionConnector.html): Contains detailed information about an action connector, including its configuration, status, and enabled actions.
+- [ActionConnectorError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ActionConnectorError.html): Contains error information for an action connector that is in an error state.
+- [ActionConnectorSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ActionConnectorSearchFilter.html): A filter used to search for action connectors based on specific criteria.
+- [ActionConnectorSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ActionConnectorSummary.html): Contains summary information about an action connector, used in list and search operations.
+- [ActiveIAMPolicyAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ActiveIAMPolicyAssignment.html): The active AWS Identity and Access Management (IAM) policy assignment.
+- [AdHocFilteringOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AdHocFilteringOption.html): An ad hoc (one-time) filtering option.
+- [AggFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AggFunction.html): The definition of an Agg function.
+- [AggregateOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AggregateOperation.html): A transform operation that groups rows by specified columns and applies aggregation functions to calculate summary values.
+- [Aggregation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Aggregation.html): Defines an aggregation function to be applied to grouped data, creating a new column with the calculated result.
+- [AggregationFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AggregationFunction.html): An aggregation function aggregates values from a dimension or measure.
+- [AggregationPartitionBy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AggregationPartitionBy.html): The definition of an AggregationPartitionBy.
+- [AggregationSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AggregationSortConfiguration.html): The configuration options to sort aggregated values.
+- [AllSheetsFilterScopeConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AllSheetsFilterScopeConfiguration.html): An empty object that represents that the AllSheets option is the chosen value for the FilterScopeConfiguration parameter.
+- [AmazonElasticsearchParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AmazonElasticsearchParameters.html): The parameters for OpenSearch.
+- [AmazonOpenSearchParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AmazonOpenSearchParameters.html): The parameters for OpenSearch.
+- [AmazonQInQuickSightConsoleConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AmazonQInQuickSightConsoleConfigurations.html): A collection of Amazon Q feature configurations in an embedded Quick Sight console.
+- [AmazonQInQuickSightDashboardConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AmazonQInQuickSightDashboardConfigurations.html): A collection of Amazon Q feature configurations in an embedded Quick Sight dashboard.
+- [Analysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Analysis.html): Metadata structure for an analysis in Quick Sight
+- [AnalysisDefaults](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnalysisDefaults.html): The configuration for default analysis settings.
+- [AnalysisDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnalysisDefinition.html): The definition of an analysis.
+- [AnalysisError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnalysisError.html): Analysis error.
+- [AnalysisSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnalysisSearchFilter.html): A filter that you apply when searching for one or more analyses.
+- [AnalysisSourceEntity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnalysisSourceEntity.html): The source entity of an analysis.
+- [AnalysisSourceTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnalysisSourceTemplate.html): The source template of an analysis.
+- [AnalysisSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnalysisSummary.html): The summary metadata that describes an analysis.
+- [Anchor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Anchor.html): The definition of the Anchor.
+- [AnchorDateConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnchorDateConfiguration.html): The date configuration of the filter.
+- [AnonymousUserDashboardEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnonymousUserDashboardEmbeddingConfiguration.html): Information about the dashboard that you want to embed.
+- [AnonymousUserDashboardFeatureConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnonymousUserDashboardFeatureConfigurations.html): The feature configuration for an embedded dashboard.
+- [AnonymousUserDashboardVisualEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnonymousUserDashboardVisualEmbeddingConfiguration.html): The experience that you are embedding.
+- [AnonymousUserEmbeddingExperienceConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnonymousUserEmbeddingExperienceConfiguration.html): The type of experience you want to embed.
+- [AnonymousUserGenerativeQnAEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnonymousUserGenerativeQnAEmbeddingConfiguration.html): The settings that you want to use for the Generative Q&A experience.
+- [AnonymousUserQSearchBarEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnonymousUserQSearchBarEmbeddingConfiguration.html): The settings that you want to use with the Q search bar.
+- [AnonymousUserSnapshotJobResult](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AnonymousUserSnapshotJobResult.html): A structure that contains the file groups that are requested for the artifact generation in a StartDashboardSnapshotJob API call.
+- [APIKeyConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_APIKeyConnectionMetadata.html): Configuration for API key-based authentication to external services.
+- [AppendedColumn](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AppendedColumn.html): Represents a column that will be included in the result of an append operation, combining data from multiple sources.
+- [AppendOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AppendOperation.html): A transform operation that combines rows from two data sources by stacking them vertically (union operation).
+- [ApplicationTheme](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ApplicationTheme.html): The application theme.
+- [ArcAxisConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ArcAxisConfiguration.html): The arc axis configuration of a GaugeChartVisual.
+- [ArcAxisDisplayRange](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ArcAxisDisplayRange.html): The arc axis range of a GaugeChartVisual.
+- [ArcConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ArcConfiguration.html): The arc configuration of a GaugeChartVisual.
+- [ArcOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ArcOptions.html): The options that determine the arc thickness of a GaugeChartVisual.
+- [AssetBundleCloudFormationOverridePropertyConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleCloudFormationOverridePropertyConfiguration.html): An optional collection of CloudFormation property configurations that control how the export job is generated.
+- [AssetBundleExportJobAnalysisOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobAnalysisOverrideProperties.html): Controls how a specific Analysis resource is parameterized in the returned CloudFormation template.
+- [AssetBundleExportJobDashboardOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobDashboardOverrideProperties.html): Controls how a specific Dashboard resource is parameterized in the returned CloudFormation template.
+- [AssetBundleExportJobDataSetOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobDataSetOverrideProperties.html): Controls how a specific DataSet resource is parameterized in the returned CloudFormation template.
+- [AssetBundleExportJobDataSourceOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobDataSourceOverrideProperties.html): Controls how a specific DataSource resource is parameterized in the returned CloudFormation template.
+- [AssetBundleExportJobError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobError.html): Describes an error that occurred during an Asset Bundle export job.
+- [AssetBundleExportJobFolderOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobFolderOverrideProperties.html): Controls how a specific Folder resource is parameterized in the returned CloudFormation template.
+- [AssetBundleExportJobRefreshScheduleOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobRefreshScheduleOverrideProperties.html): Controls how a specific RefreshSchedule resource is parameterized in the returned CloudFormation template.
+- [AssetBundleExportJobResourceIdOverrideConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobResourceIdOverrideConfiguration.html): An optional structure that configures resource ID overrides for the export job.
+- [AssetBundleExportJobSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobSummary.html): A summary of the export job that includes details of the job's configuration and its current status.
+- [AssetBundleExportJobThemeOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobThemeOverrideProperties.html): Controls how a specific Theme resource is parameterized in the returned CloudFormation template.
+- [AssetBundleExportJobValidationStrategy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobValidationStrategy.html): The option to relax the validation that is required to export each asset.
+- [AssetBundleExportJobVPCConnectionOverrideProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobVPCConnectionOverrideProperties.html): Controls how a specific VPCConnection resource is parameterized in the outputted CloudFormation template.
+- [AssetBundleExportJobWarning](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleExportJobWarning.html): Describes a warning that occurred during an Asset Bundle export job.
+- [AssetBundleImportJobAnalysisOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobAnalysisOverrideParameters.html): The override parameters for a single analysis that is being imported.
+- [AssetBundleImportJobAnalysisOverridePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobAnalysisOverridePermissions.html): An object that contains a list of permissions to be applied to a list of analysis IDs.
+- [AssetBundleImportJobAnalysisOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobAnalysisOverrideTags.html): An object that contains a list of tags to be assigned to a list of analysis IDs.
+- [AssetBundleImportJobDashboardOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDashboardOverrideParameters.html): The override parameters for a single dashboard that is being imported.
+- [AssetBundleImportJobDashboardOverridePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDashboardOverridePermissions.html): An object that contains a list of permissions to be applied to a list of dashboard IDs.
+- [AssetBundleImportJobDashboardOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDashboardOverrideTags.html): An object that contains a list of tags to be assigned to a list of dashboard IDs.
+- [AssetBundleImportJobDataSetOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSetOverrideParameters.html): The override parameters for a single dataset that is being imported.
+- [AssetBundleImportJobDataSetOverridePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSetOverridePermissions.html): An object that contains a list of permissions to be applied to a list of dataset IDs.
+- [AssetBundleImportJobDataSetOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSetOverrideTags.html): An object that contains a list of tags to be assigned to a list of dataset IDs.
+- [AssetBundleImportJobDataSourceCredentialPair](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSourceCredentialPair.html): A username and password credential pair to use to import a data source resource.
+- [AssetBundleImportJobDataSourceCredentials](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSourceCredentials.html): The login credentials to use to import a data source resource.
+- [AssetBundleImportJobDataSourceOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSourceOverrideParameters.html): The override parameters for a single data source that is being imported.
+- [AssetBundleImportJobDataSourceOverridePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSourceOverridePermissions.html): An object that contains a list of permissions to be applied to a list of data source IDs.
+- [AssetBundleImportJobDataSourceOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobDataSourceOverrideTags.html): An object that contains a list of tags to be assigned to a list of data source IDs.
+- [AssetBundleImportJobError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobError.html): Describes an error that occurred within an Asset Bundle import execution.
+- [AssetBundleImportJobFolderOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobFolderOverrideParameters.html): The override parameters for a single folder that is being imported.
+- [AssetBundleImportJobFolderOverridePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobFolderOverridePermissions.html): An object that contains a list of permissions to be applied to a list of folder IDs.
+- [AssetBundleImportJobFolderOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobFolderOverrideTags.html): An object that contains a list of tags to be assigned to a list of folder IDs.
+- [AssetBundleImportJobOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobOverrideParameters.html): A list of overrides that modify the asset bundle resource configuration before the resource is imported.
+- [AssetBundleImportJobOverridePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobOverridePermissions.html): A structure that contains the override permission configurations that modify the permissions for specified resources before the resource is imported.
+- [AssetBundleImportJobOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobOverrideTags.html): A structure that contains the override tag configuration that modify the tags that are assigned to specified resources before the resource is imported.
+- [AssetBundleImportJobOverrideValidationStrategy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobOverrideValidationStrategy.html): An optional parameter that overrides the validation strategy for all analyses and dashboards before the resource is imported.
+- [AssetBundleImportJobRefreshScheduleOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobRefreshScheduleOverrideParameters.html): A list of overrides for a specific RefreshsSchedule resource that is present in the asset bundle that is imported.
+- [AssetBundleImportJobResourceIdOverrideConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobResourceIdOverrideConfiguration.html): An optional structure that configures resource ID overrides for the import job.
+- [AssetBundleImportJobSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobSummary.html): A summary of the import job that includes details of the requested job's configuration and its current status.
+- [AssetBundleImportJobThemeOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobThemeOverrideParameters.html): The override parameters for a single theme that is imported.
+- [AssetBundleImportJobThemeOverridePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobThemeOverridePermissions.html): An object that contains a list of permissions to be applied to a list of theme IDs.
+- [AssetBundleImportJobThemeOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobThemeOverrideTags.html): An object that contains a list of tags to be assigned to a list of theme IDs.
+- [AssetBundleImportJobVPCConnectionOverrideParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobVPCConnectionOverrideParameters.html): The override parameters for a single VPC connection that is imported.
+- [AssetBundleImportJobVPCConnectionOverrideTags](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobVPCConnectionOverrideTags.html): An object that contains a list of tags to be assigned to a list of VPC connection IDs.
+- [AssetBundleImportJobWarning](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportJobWarning.html): Describes a warning that occurred during an Asset Bundle import job.
+- [AssetBundleImportSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportSource.html): The source of the asset bundle zip file that contains the data that you want to import.
+- [AssetBundleImportSourceDescription](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleImportSourceDescription.html): A description of the import source that you provide at the start of an import job.
+- [AssetBundleResourceLinkSharingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleResourceLinkSharingConfiguration.html): A structure that contains the configuration of a shared link to an Amazon Quick Sight dashboard.
+- [AssetBundleResourcePermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetBundleResourcePermissions.html): A structure that contains the permissions for the resource that you want to override in an asset bundle import job.
+- [AssetOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AssetOptions.html): An array of analysis level configurations.
+- [AthenaParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AthenaParameters.html): Parameters for Amazon Athena.
+- [AttributeAggregationFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AttributeAggregationFunction.html): Aggregation for attributes.
+- [AuroraParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuroraParameters.html): Parameters for Amazon Aurora.
+- [AuroraPostgreSqlParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuroraPostgreSqlParameters.html): Parameters for Amazon Aurora PostgreSQL-Compatible Edition.
+- [AuthConfig](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuthConfig.html): Authentication configuration for connecting to external services.
+- [AuthenticationMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuthenticationMetadata.html): Union type containing authentication metadata for different authentication methods.
+- [AuthorizationCodeGrantCredentialsDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuthorizationCodeGrantCredentialsDetails.html): Details for OAuth 2.0 authorization code grant credentials.
+- [AuthorizationCodeGrantDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuthorizationCodeGrantDetails.html): Configuration details for OAuth 2.0 authorization code grant flow.
+- [AuthorizationCodeGrantMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuthorizationCodeGrantMetadata.html): Metadata for OAuth 2.0 authorization code grant authentication.
+- [AuthorizedTargetsByService](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AuthorizedTargetsByService.html): The authorized targets that are associated with a service.
+- [AwsIotAnalyticsParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AwsIotAnalyticsParameters.html): The parameters for AWS IoT Analytics.
+- [AxisDataOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisDataOptions.html): The data options for an axis.
+- [AxisDisplayDataDrivenRange](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisDisplayDataDrivenRange.html): The options that are saved for future extension.
+- [AxisDisplayMinMaxRange](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisDisplayMinMaxRange.html): The minimum and maximum setup for an axis display range.
+- [AxisDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisDisplayOptions.html): The display options for the axis label.
+- [AxisDisplayRange](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisDisplayRange.html): The range setup of a numeric axis display range.
+- [AxisLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisLabelOptions.html): The label options for a chart axis.
+- [AxisLabelReferenceOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisLabelReferenceOptions.html): The reference that specifies where the axis label is applied to.
+- [AxisLinearScale](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisLinearScale.html): The liner axis scale setup.
+- [AxisLogarithmicScale](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisLogarithmicScale.html): The logarithmic axis scale setup.
+- [AxisScale](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisScale.html): The scale setup options for a numeric axis display.
+- [AxisTickLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_AxisTickLabelOptions.html): The tick label options of an axis.
+- [BarChartAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarChartAggregatedFieldWells.html): The aggregated field wells of a bar chart.
+- [BarChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarChartConfiguration.html): The configuration of a BarChartVisual.
+- [BarChartDefaultSeriesSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarChartDefaultSeriesSettings.html): The options that determine the default presentation of all bar series in BarChartVisual.
+- [BarChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarChartFieldWells.html): The field wells of a BarChartVisual.
+- [BarChartSeriesSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarChartSeriesSettings.html): Options that determine the presentation of a bar series in the visual.
+- [BarChartSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarChartSortConfiguration.html): sort-configuration-description
+- [BarChartVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarChartVisual.html): A bar chart.
+- [BarSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BarSeriesItem.html): The series item configuration of a BarChartVisual.
+- [BasicAuthConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BasicAuthConnectionMetadata.html): Metadata for basic authentication using username and password.
+- [BigQueryParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BigQueryParameters.html): The parameters that are required to connect to a Google BigQuery data source.
+- [BinCountOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BinCountOptions.html): The options that determine the bin count of a histogram.
+- [BinWidthOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BinWidthOptions.html): The options that determine the bin width of a histogram.
+- [BodySectionConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BodySectionConfiguration.html): The configuration of a body section.
+- [BodySectionContent](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BodySectionContent.html): The configuration of content in a body section.
+- [BodySectionDynamicCategoryDimensionConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BodySectionDynamicCategoryDimensionConfiguration.html): Describes the Category dataset column and constraints for the dynamic values used to repeat the contents of a section.
+- [BodySectionDynamicNumericDimensionConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BodySectionDynamicNumericDimensionConfiguration.html): Describes the Numeric dataset column and constraints for the dynamic values used to repeat the contents of a section.
+- [BodySectionRepeatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BodySectionRepeatConfiguration.html): Describes the configurations that are required to declare a section as repeating.
+- [BodySectionRepeatDimensionConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BodySectionRepeatDimensionConfiguration.html): Describes the dataset column and constraints for the dynamic values used to repeat the contents of a section.
+- [BodySectionRepeatPageBreakConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BodySectionRepeatPageBreakConfiguration.html): The page break configuration to apply for each repeating instance.
+- [BookmarksConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BookmarksConfigurations.html): The bookmarks configuration of an embedded dashboard.
+- [BorderSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BorderSettings.html): Border settings configuration for visual elements, including visibility, width, and color properties.
+- [BorderStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BorderStyle.html): The display options for tile borders for visuals.
+- [BoxPlotAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BoxPlotAggregatedFieldWells.html): The aggregated field well for a box plot.
+- [BoxPlotChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BoxPlotChartConfiguration.html): The configuration of a BoxPlotVisual.
+- [BoxPlotFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BoxPlotFieldWells.html): The field wells of a BoxPlotVisual.
+- [BoxPlotOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BoxPlotOptions.html): The options of a box plot visual.
+- [BoxPlotSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BoxPlotSortConfiguration.html): The sort configuration of a BoxPlotVisual.
+- [BoxPlotStyleOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BoxPlotStyleOptions.html): The style options of the box plot.
+- [BoxPlotVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BoxPlotVisual.html): A box plot.
+- [BrandColorPalette](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BrandColorPalette.html): The color palette.
+- [BrandDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BrandDefinition.html): The definition of the brand.
+- [BrandDetail](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BrandDetail.html): The details of the brand.
+- [BrandElementStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BrandElementStyle.html): The element style.
+- [BrandSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_BrandSummary.html): A summary of the brand.
+- [CalculatedColumn](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CalculatedColumn.html): A calculated column for a dataset.
+- [CalculatedField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CalculatedField.html): The calculated field of an analysis.
+- [CalculatedMeasureField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CalculatedMeasureField.html): The table calculation measure field for pivot tables.
+- [Capabilities](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Capabilities.html): A set of actions that correspond to Amazon Quick Sight permissions.
+- [CascadingControlConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CascadingControlConfiguration.html): The values that are displayed in a control can be configured to only show values that are valid based on what's selected in other controls.
+- [CascadingControlSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CascadingControlSource.html): The source controls that are used in a CascadingControlConfiguration.
+- [CastColumnTypeOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CastColumnTypeOperation.html): A transform operation that casts a column to a different type.
+- [CastColumnTypesOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CastColumnTypesOperation.html): A transform operation that changes the data types of one or more columns in the dataset.
+- [CategoricalDimensionField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CategoricalDimensionField.html): The dimension type field with categorical type columns..
+- [CategoricalMeasureField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CategoricalMeasureField.html): The measure type field with categorical type columns.
+- [CategoryDrillDownFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CategoryDrillDownFilter.html): The category drill down filter.
+- [CategoryFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CategoryFilter.html): A CategoryFilter filters text values.
+- [CategoryFilterConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CategoryFilterConfiguration.html): The configuration for a CategoryFilter.
+- [CategoryInnerFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CategoryInnerFilter.html): A CategoryInnerFilter filters text values for the NestedFilter.
+- [CellValueSynonym](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CellValueSynonym.html): A structure that represents the cell value synonym.
+- [ChartAxisLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ChartAxisLabelOptions.html): The label options for an axis on a chart.
+- [ClientCredentialsDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ClientCredentialsDetails.html): Details for OAuth 2.0 client credentials grant authentication.
+- [ClientCredentialsGrantDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ClientCredentialsGrantDetails.html): Configuration details for OAuth2 client credentials grant flow, including client ID, client secret, token endpoint, and optional scopes.
+- [ClientCredentialsGrantMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ClientCredentialsGrantMetadata.html): Configuration for OAuth 2.0 client credentials grant authentication, including client ID, client secret, token endpoint, and optional scopes.
+- [ClusterMarker](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ClusterMarker.html): The cluster marker that is a part of the cluster marker configuration.
+- [ClusterMarkerConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ClusterMarkerConfiguration.html): The cluster marker configuration of the geospatial map selected point style.
+- [CollectiveConstant](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CollectiveConstant.html): A structure that represents a collective constant.
+- [CollectiveConstantEntry](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CollectiveConstantEntry.html): The definition for a CollectiveConstantEntry.
+- [ColorScale](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColorScale.html): Determines the color scale that is applied to the visual.
+- [ColorsConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColorsConfiguration.html): The color configurations for a column.
+- [ColumnConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnConfiguration.html): The general configuration of a column.
+- [ColumnDescription](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnDescription.html): Metadata that contains a description for a column.
+- [ColumnGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnGroup.html): Groupings of columns that work together in certain Quick Sight features.
+- [ColumnGroupColumnSchema](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnGroupColumnSchema.html): A structure describing the name, data type, and geographic role of the columns.
+- [ColumnGroupSchema](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnGroupSchema.html): The column group schema.
+- [ColumnHierarchy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnHierarchy.html): The option that determines the hierarchy of the fields for a visual element.
+- [ColumnIdentifier](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnIdentifier.html): A column of a data set.
+- [ColumnLevelPermissionRule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnLevelPermissionRule.html): A rule defined to grant access on one or more restricted columns.
+- [ColumnSchema](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnSchema.html): The column schema.
+- [ColumnSort](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnSort.html): The sort configuration for a column that is not used in a field well.
+- [ColumnTag](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnTag.html): A tag for a column in a TagColumnOperation structure.
+- [ColumnTooltipItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnTooltipItem.html): The tooltip item for the columns that are not part of a field well.
+- [ColumnToUnpivot](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ColumnToUnpivot.html): Specifies a column to be unpivoted, transforming it from a column into rows with associated values.
+- [ComboChartAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboChartAggregatedFieldWells.html): The aggregated field wells of a combo chart.
+- [ComboChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboChartConfiguration.html): The configuration of a ComboChartVisual.
+- [ComboChartDefaultSeriesSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboChartDefaultSeriesSettings.html): The options that determine the default presentation of all series in ComboChartVisual.
+- [ComboChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboChartFieldWells.html): The field wells of the visual.
+- [ComboChartSeriesSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboChartSeriesSettings.html): Options that determine the presentation of a series in the visual.
+- [ComboChartSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboChartSortConfiguration.html): The sort configuration of a ComboChartVisual.
+- [ComboChartVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboChartVisual.html): A combo chart.
+- [ComboSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComboSeriesItem.html): The series item configuration of a ComboChartVisual.
+- [ComparativeOrder](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComparativeOrder.html): A structure that represents a comparative order.
+- [ComparisonConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComparisonConfiguration.html): The comparison display configuration of a KPI or gauge chart.
+- [ComparisonFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ComparisonFormatConfiguration.html): The format of the comparison.
+- [Computation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Computation.html): The computation union that is used in an insight visual.
+- [ConditionalFormattingColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingColor.html): The formatting configuration for the color.
+- [ConditionalFormattingCustomIconCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingCustomIconCondition.html): Determines the custom condition for an icon set.
+- [ConditionalFormattingCustomIconOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingCustomIconOptions.html): Custom icon options for an icon set.
+- [ConditionalFormattingGradientColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingGradientColor.html): Formatting configuration for gradient color.
+- [ConditionalFormattingIcon](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingIcon.html): The formatting configuration for the icon.
+- [ConditionalFormattingIconDisplayConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingIconDisplayConfiguration.html): Determines the icon display configuration.
+- [ConditionalFormattingIconSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingIconSet.html): Formatting configuration for icon set.
+- [ConditionalFormattingSolidColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConditionalFormattingSolidColor.html): Formatting configuration for solid color.
+- [ConfluenceParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ConfluenceParameters.html): The parameters that are required to connect to a Confluence data source
+- [ContextMenuOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ContextMenuOption.html): The context menu options for a visual's interactions.
+- [ContextualAccentPalette](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ContextualAccentPalette.html): The contextual accent palette.
+- [ContributionAnalysisDefault](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ContributionAnalysisDefault.html): The contribution analysis visual display for a line, pie, or bar chart.
+- [ContributionAnalysisFactor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ContributionAnalysisFactor.html): The definition for the ContributionAnalysisFactor.
+- [ContributionAnalysisTimeRanges](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ContributionAnalysisTimeRanges.html): The definition for the ContributionAnalysisTimeRanges.
+- [Coordinate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Coordinate.html): The preference coordinate for the geocode preference.
+- [CreateColumnsOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateColumnsOperation.html): A transform operation that creates calculated columns.
+- [CreateTopicReviewedAnswer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTopicReviewedAnswer.html): The definition for a CreateTopicReviewedAnswer.
+- [CredentialPair](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CredentialPair.html): The combination of user name and password that are used as credentials.
+- [CurrencyDisplayFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CurrencyDisplayFormatConfiguration.html): The options that determine the currency display format configuration.
+- [CustomActionFilterOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomActionFilterOperation.html): The filter operation that filters data included in a visual or in an entire sheet.
+- [CustomActionNavigationOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomActionNavigationOperation.html): The navigation operation that navigates between different sheets in the same analysis.
+- [CustomActionSetParametersOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomActionSetParametersOperation.html): The set parameter operation that sets parameters in custom action.
+- [CustomActionURLOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomActionURLOperation.html): The URL operation that opens a link to another webpage.
+- [CustomColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomColor.html): Determines the color that's applied to a particular data value in a column.
+- [CustomConnectionParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomConnectionParameters.html): The parameters that are required to connect to a custom connection data source.
+- [CustomContentConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomContentConfiguration.html): The configuration of a CustomContentVisual.
+- [CustomContentVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomContentVisual.html): A visual that contains custom content.
+- [CustomFilterConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomFilterConfiguration.html): A custom filter that filters based on a single value.
+- [CustomFilterListConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomFilterListConfiguration.html): A list of custom filter values.
+- [CustomInstructions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomInstructions.html): Instructions that provide additional guidance and context for response generation.
+- [CustomNarrativeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomNarrativeOptions.html): The custom narrative options.
+- [CustomParameterValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomParameterValues.html): The customized parameter values.
+- [CustomPermissions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomPermissions.html): The custom permissions profile.
+- [CustomSql](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomSql.html): A physical table type built from the results of the custom SQL query.
+- [CustomValuesConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CustomValuesConfiguration.html): The configuration of custom values for the destination parameter in DestinationParameterValueConfiguration.
+- [Dashboard](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Dashboard.html): Dashboard.
+- [DashboardCustomizationVisualOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardCustomizationVisualOptions.html): The options that define customizations available to dashboard readers for a specific visual
+- [DashboardError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardError.html): Dashboard error.
+- [DashboardPublishOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardPublishOptions.html): Dashboard publish options.
+- [DashboardSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardSearchFilter.html): A filter that you apply when searching for dashboards.
+- [DashboardSourceEntity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardSourceEntity.html): Dashboard source entity.
+- [DashboardSourceTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardSourceTemplate.html): Dashboard source template.
+- [DashboardSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardSummary.html): Dashboard summary.
+- [DashboardVersion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardVersion.html): Dashboard version.
+- [DashboardVersionDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardVersionDefinition.html): The contents of a dashboard.
+- [DashboardVersionSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardVersionSummary.html): Dashboard version summary.
+- [DashboardVisualId](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardVisualId.html): A structure that contains the following elements:
+- [DashboardVisualPublishOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardVisualPublishOptions.html): The visual publish options of a visual in a dashboard
+- [DashboardVisualResult](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DashboardVisualResult.html): The QA result that is made from dashboard visual.
+- [DataAggregation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataAggregation.html): A structure that represents a data aggregation.
+- [DataBarsOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataBarsOptions.html): The options for data bars.
+- [DatabricksParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DatabricksParameters.html): The parameters that are required to connect to a Databricks data source.
+- [DataColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataColor.html): Determines the color that is applied to a particular data value.
+- [DataColorPalette](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataColorPalette.html): The theme colors that are used for data colors in charts.
+- [DataFieldBarSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataFieldBarSeriesItem.html): The data field series item configuration of a BarChartVisual.
+- [DataFieldComboSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataFieldComboSeriesItem.html): The data field series item configuration of a ComboChartVisual.
+- [DataFieldSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataFieldSeriesItem.html): The data field series item configuration of a line chart.
+- [DataLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataLabelOptions.html): The options that determine the presentation of the data labels.
+- [DataLabelType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataLabelType.html): The option that determines the data label type.
+- [DataPathColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPathColor.html): The color map that determines the color options for a particular element.
+- [DataPathLabelType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPathLabelType.html): The option that specifies individual data values for labels.
+- [DataPathSort](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPathSort.html): Allows data paths to be sorted by a specific data value.
+- [DataPathType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPathType.html): The type of the data path value.
+- [DataPathValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPathValue.html): The data path that needs to be sorted.
+- [DataPointDrillUpDownOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPointDrillUpDownOption.html): The drill down options for data points in a dashbaord.
+- [DataPointMenuLabelOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPointMenuLabelOption.html): The data point menu options of a dashboard.
+- [DataPointTooltipOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPointTooltipOption.html): The data point tooltip options.
+- [DataPrepAggregationFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPrepAggregationFunction.html): Defines the type of aggregation function to apply to data during data preparation, supporting simple and list aggregations.
+- [DataPrepConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPrepConfiguration.html): Configuration for data preparation operations, defining the complete pipeline from source tables through transformations to destination tables.
+- [DataPrepListAggregationFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPrepListAggregationFunction.html): An aggregation function that concatenates values from multiple rows into a single string with a specified separator.
+- [DataPrepSimpleAggregationFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataPrepSimpleAggregationFunction.html): A simple aggregation function that performs standard statistical operations on a column.
+- [DataQAEnabledOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataQAEnabledOption.html): Adds Q&A capabilities to a dashboard.
+- [DataQnAConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataQnAConfigurations.html): The generative Q&A settings of an embedded Quick Sight console.
+- [DataSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSet.html): Dataset.
+- [DataSetColumnIdMapping](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetColumnIdMapping.html): Maps a source column identifier to a target column identifier during transform operations.
+- [DataSetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetConfiguration.html): Dataset configuration.
+- [DataSetDateComparisonFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetDateComparisonFilterCondition.html): A filter condition that compares date values using operators like BEFORE, AFTER, or their inclusive variants.
+- [DataSetDateFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetDateFilterCondition.html): A filter condition for date columns, supporting both comparison and range-based filtering.
+- [DataSetDateFilterValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetDateFilterValue.html): Represents a date value used in filter conditions.
+- [DataSetDateRangeFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetDateRangeFilterCondition.html): A filter condition that filters date values within a specified range.
+- [DataSetIdentifierDeclaration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetIdentifierDeclaration.html): A data set.
+- [DatasetMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DatasetMetadata.html): A structure that represents a dataset.
+- [DataSetNumericComparisonFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetNumericComparisonFilterCondition.html): A filter condition that compares numeric values using operators like EQUALS, GREATER_THAN, or LESS_THAN.
+- [DataSetNumericFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetNumericFilterCondition.html): A filter condition for numeric columns, supporting both comparison and range-based filtering.
+- [DataSetNumericFilterValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetNumericFilterValue.html): Represents a numeric value used in filter conditions.
+- [DataSetNumericRangeFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetNumericRangeFilterCondition.html): A filter condition that filters numeric values within a specified range.
+- [DatasetParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DatasetParameter.html): A parameter that is created in a dataset.
+- [DataSetReference](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetReference.html): Dataset reference.
+- [DataSetRefreshProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetRefreshProperties.html): The refresh properties of a dataset.
+- [DataSetSchema](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetSchema.html): Dataset schema.
+- [DataSetSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetSearchFilter.html): A filter that you apply when searching for datasets.
+- [DataSetStringComparisonFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetStringComparisonFilterCondition.html): A filter condition that compares string values using operators like EQUALS, CONTAINS, or STARTS_WITH.
+- [DataSetStringFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetStringFilterCondition.html): A filter condition for string columns, supporting both comparison and list-based filtering.
+- [DataSetStringFilterValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetStringFilterValue.html): Represents a string value used in filter conditions.
+- [DataSetStringListFilterCondition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetStringListFilterCondition.html): A filter condition that includes or excludes string values from a specified list.
+- [DataSetStringListFilterValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetStringListFilterValue.html): Represents a list of string values used in filter conditions.
+- [DataSetSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetSummary.html): Dataset summary.
+- [DataSetUsageConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSetUsageConfiguration.html): The usage configuration to apply to child datasets that reference this dataset as a source.
+- [DataSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSource.html): The structure of a data source.
+- [DataSourceCredentials](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSourceCredentials.html): Data source credentials.
+- [DataSourceErrorInfo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSourceErrorInfo.html): Error information for the data source creation or update.
+- [DataSourceParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSourceParameters.html): The parameters that Quick Sight uses to connect to your underlying data source.
+- [DataSourceSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSourceSearchFilter.html): A filter that you apply when searching for data sources.
+- [DataSourceSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataSourceSummary.html): A DataSourceSummary object that returns a summary of a data source.
+- [DataStoriesConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataStoriesConfigurations.html): The data story settings of an embedded Quick Sight console.
+- [DataStoriesSharingOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DataStoriesSharingOption.html): Executive summary option.
+- [DateAxisOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateAxisOptions.html): The options that determine how a date axis is displayed.
+- [DateDimensionField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateDimensionField.html): The dimension type field with date type columns.
+- [DateMeasureField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateMeasureField.html): The measure type field with date type columns.
+- [DateTimeDatasetParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeDatasetParameter.html): A date time parameter for a dataset.
+- [DateTimeDatasetParameterDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeDatasetParameterDefaultValues.html): The default values of a date time parameter.
+- [DateTimeDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeDefaultValues.html): The default values of the DateTimeParameterDeclaration.
+- [DateTimeFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeFormatConfiguration.html): Formatting configuration for DateTime fields.
+- [DateTimeHierarchy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeHierarchy.html): The option that determines the hierarchy of any DateTime fields.
+- [DateTimeParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeParameter.html): A date-time parameter.
+- [DateTimeParameterDeclaration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeParameterDeclaration.html): A parameter declaration for the DateTime data type.
+- [DateTimePickerControlDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimePickerControlDisplayOptions.html): The display options of a control.
+- [DateTimeValueWhenUnsetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DateTimeValueWhenUnsetConfiguration.html): The configuration that defines the default value of a DateTime parameter when a value has not been set.
+- [DecalSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecalSettings.html): Decal settings for accessibility features that define visual patterns and styling for data elements.
+- [DecalSettingsConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecalSettingsConfiguration.html): Decal settings configuration for a column
+- [DecimalDatasetParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalDatasetParameter.html): A decimal parameter for a dataset.
+- [DecimalDatasetParameterDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalDatasetParameterDefaultValues.html): The default values of a decimal parameter.
+- [DecimalDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalDefaultValues.html): The default values of the DecimalParameterDeclaration.
+- [DecimalParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalParameter.html): A decimal parameter.
+- [DecimalParameterDeclaration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalParameterDeclaration.html): A parameter declaration for the Decimal data type.
+- [DecimalPlacesConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalPlacesConfiguration.html): The option that determines the decimal places configuration.
+- [DecimalValueWhenUnsetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DecimalValueWhenUnsetConfiguration.html): The configuration that defines the default value of a Decimal parameter when a value has not been set.
+- [DefaultDateTimePickerControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultDateTimePickerControlOptions.html): The default options that correspond to the filter control type of a DateTimePicker.
+- [DefaultFilterControlConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultFilterControlConfiguration.html): The default configuration for all dependent controls of the filter.
+- [DefaultFilterControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultFilterControlOptions.html): The option that corresponds to the control type of the filter.
+- [DefaultFilterDropDownControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultFilterDropDownControlOptions.html): The default options that correspond to the Dropdown filter control type.
+- [DefaultFilterListControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultFilterListControlOptions.html): The default options that correspond to the List filter control type.
+- [DefaultFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultFormatting.html): A structure that represents a default formatting definition.
+- [DefaultFreeFormLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultFreeFormLayoutConfiguration.html): The options that determine the default settings of a free-form layout configuration.
+- [DefaultGridLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultGridLayoutConfiguration.html): The options that determine the default settings for a grid layout configuration.
+- [DefaultInteractiveLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultInteractiveLayoutConfiguration.html): The options that determine the default settings for interactive layout configuration.
+- [DefaultNewSheetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultNewSheetConfiguration.html): The configuration for default new sheet settings.
+- [DefaultPaginatedLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultPaginatedLayoutConfiguration.html): The options that determine the default settings for a paginated layout configuration.
+- [DefaultRelativeDateTimeControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultRelativeDateTimeControlOptions.html): The default options that correspond to the RelativeDateTime filter control type.
+- [DefaultSectionBasedLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultSectionBasedLayoutConfiguration.html): The options that determine the default settings for a section-based layout configuration.
+- [DefaultSliderControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultSliderControlOptions.html): The default options that correspond to the Slider filter control type.
+- [DefaultTextAreaControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultTextAreaControlOptions.html): The default options that correspond to the TextArea filter control type.
+- [DefaultTextFieldControlOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DefaultTextFieldControlOptions.html): The default options that correspond to the TextField filter control type.
+- [DestinationParameterValueConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DestinationParameterValueConfiguration.html): The configuration of destination parameter values.
+- [DestinationTable](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DestinationTable.html): Defines a destination table in data preparation that receives the final transformed data.
+- [DestinationTableSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DestinationTableSource.html): Specifies the source of data for a destination table, including the transform operation and column mappings.
+- [DimensionField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DimensionField.html): The dimension type field.
+- [DisplayFormatOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DisplayFormatOptions.html): A structure that represents additional options for display formatting.
+- [DonutCenterOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DonutCenterOptions.html): The label options of the label that is displayed in the center of a donut chart.
+- [DonutOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DonutOptions.html): The options for configuring a donut chart or pie chart.
+- [DrillDownFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DrillDownFilter.html): The drill down filter for the column hierarchies.
+- [DropDownControlDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DropDownControlDisplayOptions.html): The display options of a control.
+- [DynamicDefaultValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DynamicDefaultValue.html): Defines different defaults to the users or groups based on mapping.
+- [EmptyVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_EmptyVisual.html): An empty visual.
+- [Entity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Entity.html): An object, structure, or sub-structure of an analysis, template, or dashboard.
+- [ErrorInfo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ErrorInfo.html): Error information for the SPICE ingestion of a dataset.
+- [ExasolParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExasolParameters.html): The required parameters for connecting to an Exasol data source.
+- [ExcludePeriodConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExcludePeriodConfiguration.html): The exclude period of TimeRangeFilter or RelativeDatesFilter.
+- [ExecutiveSummaryConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExecutiveSummaryConfigurations.html): The executive summary settings of an embedded Quick Sight console or dashboard.
+- [ExecutiveSummaryOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExecutiveSummaryOption.html): Data stories sharing option.
+- [ExplicitHierarchy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExplicitHierarchy.html): The option that determines the hierarchy of the fields that are built within a visual's field wells.
+- [ExportHiddenFieldsOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExportHiddenFieldsOption.html): Determines if hidden fields are included in an exported dashboard.
+- [ExportToCSVOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExportToCSVOption.html): Export to .csv option.
+- [ExportWithHiddenFieldsOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ExportWithHiddenFieldsOption.html): Determines whether or not hidden fields are visible on exported dashbaords.
+- [FailedKeyRegistrationEntry](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FailedKeyRegistrationEntry.html): An entry that appears when a KeyRegistration update to Quick Sight fails.
+- [FieldBarSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldBarSeriesItem.html): The field series item configuration of a BarChartVisual.
+- [FieldBasedTooltip](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldBasedTooltip.html): The setup for the detailed tooltip.
+- [FieldComboSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldComboSeriesItem.html): The field series item configuration of a ComboChartVisual.
+- [FieldFolder](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldFolder.html): A FieldFolder element is a folder that contains fields and nested subfolders.
+- [FieldLabelType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldLabelType.html): The field label type.
+- [FieldSeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldSeriesItem.html): The field series item configuration of a line chart.
+- [FieldSort](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldSort.html): The sort configuration for a field in a field well.
+- [FieldSortOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldSortOptions.html): The field sort options in a chart configuration.
+- [FieldTooltipItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FieldTooltipItem.html): The tooltip item for the fields.
+- [FilledMapAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapAggregatedFieldWells.html): The aggregated field well of the filled map.
+- [FilledMapConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapConditionalFormatting.html): The conditional formatting of a FilledMapVisual.
+- [FilledMapConditionalFormattingOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapConditionalFormattingOption.html): Conditional formatting options of a FilledMapVisual.
+- [FilledMapConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapConfiguration.html): The configuration for a FilledMapVisual.
+- [FilledMapFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapFieldWells.html): The field wells of a FilledMapVisual.
+- [FilledMapShapeConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapShapeConditionalFormatting.html): The conditional formatting that determines the shape of the filled map.
+- [FilledMapSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapSortConfiguration.html): The sort configuration of a FilledMapVisual.
+- [FilledMapVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilledMapVisual.html): A filled map.
+- [Filter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Filter.html): With a Filter, you can remove portions of data from a particular visual or view.
+- [FilterAggMetrics](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterAggMetrics.html): The definition for the FilterAggMetrics.
+- [FilterControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterControl.html): The control of a filter that is used to interact with a dashboard or an analysis.
+- [FilterCrossSheetControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterCrossSheetControl.html): A control from a filter that is scoped across more than one sheet.
+- [FilterDateTimePickerControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterDateTimePickerControl.html): A control from a date filter that is used to specify date and time.
+- [FilterDropDownControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterDropDownControl.html): A control to display a dropdown list with buttons that are used to select a single value.
+- [FilterGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterGroup.html): A grouping of individual filters.
+- [FilterListConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterListConfiguration.html): A list of filter configurations.
+- [FilterListControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterListControl.html): A control to display a list of buttons or boxes.
+- [FilterOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterOperation.html): A transform operation that filters rows based on a condition.
+- [FilterOperationSelectedFieldsConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterOperationSelectedFieldsConfiguration.html): The configuration of selected fields in theCustomActionFilterOperation.
+- [FilterOperationTargetVisualsConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterOperationTargetVisualsConfiguration.html): The configuration of target visuals that you want to be filtered.
+- [FilterRelativeDateTimeControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterRelativeDateTimeControl.html): A control from a date filter that is used to specify the relative date.
+- [FilterScopeConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterScopeConfiguration.html): The scope configuration for a FilterGroup.
+- [FilterSelectableValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterSelectableValues.html): A list of selectable values that are used in a control.
+- [FilterSliderControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterSliderControl.html): A control to display a horizontal toggle bar.
+- [FiltersOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FiltersOperation.html): A transform operation that applies one or more filter conditions.
+- [FilterTextAreaControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterTextAreaControl.html): A control to display a text box that is used to enter multiple entries.
+- [FilterTextFieldControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FilterTextFieldControl.html): A control to display a text box that is used to enter a single entry.
+- [FlowSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FlowSummary.html): The basic information of the flow exluding its definition specifying the steps.
+- [Folder](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Folder.html): A folder in Quick Sight.
+- [FolderMember](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FolderMember.html): An asset in a Quick Sight folder, such as a dashboard, analysis, or dataset.
+- [FolderSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FolderSearchFilter.html): A filter to use to search an Quick Sight folder.
+- [FolderSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FolderSummary.html): A summary of information about an existing Quick Sight folder.
+- [Font](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Font.html): Determines the font settings.
+- [FontConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FontConfiguration.html): Configures the display properties of the given text.
+- [FontSize](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FontSize.html): The option that determines the text display size.
+- [FontWeight](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FontWeight.html): The option that determines the text display weight, or boldness.
+- [ForecastComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ForecastComputation.html): The forecast computation configuration.
+- [ForecastConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ForecastConfiguration.html): The forecast configuration that is used in a line chart's display properties.
+- [ForecastScenario](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ForecastScenario.html): The forecast scenario of a forecast in the line chart.
+- [FormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FormatConfiguration.html): The formatting configuration for all types of field.
+- [FreeFormLayoutCanvasSizeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FreeFormLayoutCanvasSizeOptions.html): Configuration options for the canvas of a free-form layout.
+- [FreeFormLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FreeFormLayoutConfiguration.html): The configuration of a free-form layout.
+- [FreeFormLayoutElement](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FreeFormLayoutElement.html): An element within a free-form layout.
+- [FreeFormLayoutElementBackgroundStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FreeFormLayoutElementBackgroundStyle.html): The background style configuration of a free-form layout element.
+- [FreeFormLayoutElementBorderStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FreeFormLayoutElementBorderStyle.html): The background style configuration of a free-form layout element.
+- [FreeFormLayoutScreenCanvasSizeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FreeFormLayoutScreenCanvasSizeOptions.html): The options that determine the sizing of the canvas used in a free-form layout.
+- [FreeFormSectionLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FreeFormSectionLayoutConfiguration.html): The free-form layout configuration of a section.
+- [FunnelChartAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FunnelChartAggregatedFieldWells.html): The field well configuration of a FunnelChartVisual.
+- [FunnelChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FunnelChartConfiguration.html): The configuration of a FunnelChartVisual.
+- [FunnelChartDataLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FunnelChartDataLabelOptions.html): The options that determine the presentation of the data labels.
+- [FunnelChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FunnelChartFieldWells.html): The field well configuration of a FunnelChartVisual.
+- [FunnelChartSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FunnelChartSortConfiguration.html): The sort configuration of a FunnelChartVisual.
+- [FunnelChartVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_FunnelChartVisual.html): A funnel chart.
+- [GaugeChartArcConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartArcConditionalFormatting.html): The options that determine the presentation of the arc of a GaugeChartVisual.
+- [GaugeChartColorConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartColorConfiguration.html): The color configuration of a GaugeChartVisual.
+- [GaugeChartConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartConditionalFormatting.html): The conditional formatting of a GaugeChartVisual.
+- [GaugeChartConditionalFormattingOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartConditionalFormattingOption.html): Conditional formatting options of a GaugeChartVisual.
+- [GaugeChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartConfiguration.html): The configuration of a GaugeChartVisual.
+- [GaugeChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartFieldWells.html): The field well configuration of a GaugeChartVisual.
+- [GaugeChartOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartOptions.html): The options that determine the presentation of the GaugeChartVisual.
+- [GaugeChartPrimaryValueConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartPrimaryValueConditionalFormatting.html): The conditional formatting for the primary value of a GaugeChartVisual.
+- [GaugeChartVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GaugeChartVisual.html): A gauge chart.
+- [GeneratedAnswerResult](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeneratedAnswerResult.html): The QA result that is made from generated answer.
+- [GenerativeAuthoringConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerativeAuthoringConfigurations.html): The generative BI authoring settings of an embedded Quick Sight console.
+- [GeocodePreference](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeocodePreference.html): The geocode preference.
+- [GeocodePreferenceValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeocodePreferenceValue.html): The preference value for the geocode preference.
+- [GeocoderHierarchy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeocoderHierarchy.html): The preference hierarchy for the geocode preference.
+- [GeospatialCategoricalColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialCategoricalColor.html): The definition for a categorical color.
+- [GeospatialCategoricalDataColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialCategoricalDataColor.html): The categorical data color for a single category.
+- [GeospatialCircleRadius](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialCircleRadius.html): The geospatial radius for a circle.
+- [GeospatialCircleSymbolStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialCircleSymbolStyle.html): The properties for a circle symbol style.
+- [GeospatialColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialColor.html): The visualization properties for solid, gradient, and categorical colors.
+- [GeoSpatialColumnGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeoSpatialColumnGroup.html): Geospatial column group that denotes a hierarchy.
+- [GeospatialCoordinateBounds](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialCoordinateBounds.html): The bound options (north, south, west, east) of the geospatial window options.
+- [GeospatialDataSourceItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialDataSourceItem.html): The data source properties for the geospatial data.
+- [GeospatialGradientColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialGradientColor.html): The definition for a gradient color.
+- [GeospatialGradientStepColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialGradientStepColor.html): The gradient step color for a single step.
+- [GeospatialHeatmapColorScale](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialHeatmapColorScale.html): The color scale specification for the heatmap point style.
+- [GeospatialHeatmapConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialHeatmapConfiguration.html): The heatmap configuration of the geospatial point style.
+- [GeospatialHeatmapDataColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialHeatmapDataColor.html): The color to be used in the heatmap point style.
+- [GeospatialLayerColorField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLayerColorField.html): The color field that defines a gradient or categorical style.
+- [GeospatialLayerDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLayerDefinition.html): The definition properties for a geospatial layer.
+- [GeospatialLayerItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLayerItem.html): The properties for a single geospatial layer.
+- [GeospatialLayerJoinDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLayerJoinDefinition.html): The custom actions for a layer.
+- [GeospatialLayerMapConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLayerMapConfiguration.html): The map definition that defines map state, map style, and geospatial layers.
+- [GeospatialLineLayer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLineLayer.html): The geospatial Line layer.
+- [GeospatialLineStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLineStyle.html): The visualization style for a line layer.
+- [GeospatialLineSymbolStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLineSymbolStyle.html): The symbol style for a line layer.
+- [GeospatialLineWidth](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialLineWidth.html): The width properties for a line.
+- [GeospatialMapAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialMapAggregatedFieldWells.html): The aggregated field wells for a geospatial map.
+- [GeospatialMapConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialMapConfiguration.html): The configuration of a GeospatialMapVisual.
+- [GeospatialMapFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialMapFieldWells.html): The field wells of a GeospatialMapVisual.
+- [GeospatialMapState](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialMapState.html): The map state properties for a map.
+- [GeospatialMapStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialMapStyle.html): The map style properties for a map.
+- [GeospatialMapStyleOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialMapStyleOptions.html): The map style options of the geospatial map.
+- [GeospatialMapVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialMapVisual.html): A geospatial map or a points on map visual.
+- [GeospatialNullDataSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialNullDataSettings.html): The properties for the visualization of null data.
+- [GeospatialNullSymbolStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialNullSymbolStyle.html): The symbol style for null data.
+- [GeospatialPointLayer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialPointLayer.html): The geospatial Point layer.
+- [GeospatialPointStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialPointStyle.html): The point style for a point layer.
+- [GeospatialPointStyleOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialPointStyleOptions.html): The point style of the geospatial map.
+- [GeospatialPolygonLayer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialPolygonLayer.html): The geospatial polygon layer.
+- [GeospatialPolygonStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialPolygonStyle.html): The polygon style for a polygon layer.
+- [GeospatialPolygonSymbolStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialPolygonSymbolStyle.html): The polygon symbol style for a polygon layer.
+- [GeospatialSolidColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialSolidColor.html): The definition for a solid color.
+- [GeospatialStaticFileSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialStaticFileSource.html): The source properties for a geospatial static file.
+- [GeospatialWindowOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GeospatialWindowOptions.html): The window options of the geospatial map visual.
+- [GlobalTableBorderOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GlobalTableBorderOptions.html): Determines the border options for a table visual.
+- [GradientColor](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GradientColor.html): Determines the gradient color settings.
+- [GradientStop](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GradientStop.html): Determines the gradient stop configuration.
+- [GridLayoutCanvasSizeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GridLayoutCanvasSizeOptions.html): Configuration options for the canvas of a grid layout.
+- [GridLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GridLayoutConfiguration.html): The configuration for a grid layout.
+- [GridLayoutElement](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GridLayoutElement.html): An element within a grid layout.
+- [GridLayoutElementBackgroundStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GridLayoutElementBackgroundStyle.html): The background style configuration of a grid layout element.
+- [GridLayoutElementBorderStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GridLayoutElementBorderStyle.html): The border style configuration of a grid layout element.
+- [GridLayoutScreenCanvasSizeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GridLayoutScreenCanvasSizeOptions.html): The options that determine the sizing of the canvas used in a grid layout.
+- [Group](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Group.html): A group in Quick Sight consists of a set of users.
+- [GroupMember](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GroupMember.html): A member of an Quick Sight group.
+- [GroupSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GroupSearchFilter.html): A GroupSearchFilter object that you want to apply to your search.
+- [GrowthRateComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GrowthRateComputation.html): The growth rate computation configuration.
+- [GutterStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GutterStyle.html): The display options for gutter spacing between tiles on a sheet.
+- [HeaderFooterSectionConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HeaderFooterSectionConfiguration.html): The configuration of a header or footer section.
+- [HeatMapAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HeatMapAggregatedFieldWells.html): The aggregated field wells of a heat map.
+- [HeatMapConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HeatMapConfiguration.html): The configuration of a heat map.
+- [HeatMapFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HeatMapFieldWells.html): The field well configuration of a heat map.
+- [HeatMapSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HeatMapSortConfiguration.html): The sort configuration of a heat map.
+- [HeatMapVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HeatMapVisual.html): A heat map.
+- [HistogramAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HistogramAggregatedFieldWells.html): The field well configuration of a histogram.
+- [HistogramBinOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HistogramBinOptions.html): The options that determine the presentation of histogram bins.
+- [HistogramConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HistogramConfiguration.html): The configuration for a HistogramVisual.
+- [HistogramFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HistogramFieldWells.html): The field well configuration of a histogram.
+- [HistogramVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_HistogramVisual.html): A histogram.
+- [IAMConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IAMConnectionMetadata.html): Authentication metadata for IAM-based connections, used for first-party AWS service integrations.
+- [IAMPolicyAssignment](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IAMPolicyAssignment.html): An AWS Identity and Access Management (IAM) policy assignment.
+- [IAMPolicyAssignmentSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IAMPolicyAssignmentSummary.html): IAM policy assignment summary.
+- [Identifier](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Identifier.html): The definition for the identifier.
+- [IdentityCenterConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IdentityCenterConfiguration.html): The parameters for an IAM Identity Center configuration.
+- [Image](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Image.html): The logo image.
+- [ImageConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageConfiguration.html): The logo image configuration.
+- [ImageCustomAction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageCustomAction.html): A custom action defined on an image.
+- [ImageCustomActionOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageCustomActionOperation.html): The operation that is defined by the custom action.
+- [ImageInteractionOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageInteractionOptions.html): The general image interactions setup for image publish options.
+- [ImageMenuOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageMenuOption.html): The menu options for the interactions of an image.
+- [ImageSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageSet.html): The image set.
+- [ImageSetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageSetConfiguration.html): The image set configuration.
+- [ImageSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageSource.html): The source of the image.
+- [ImageStaticFile](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImageStaticFile.html): A static file that contains an image.
+- [ImpalaParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImpalaParameters.html): The parameters that are required to connect to a Impala data source.
+- [ImportTableOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImportTableOperation.html): A transform operation that imports data from a source table.
+- [ImportTableOperationSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ImportTableOperationSource.html): Specifies the source table and column mappings for an import table operation.
+- [IncrementalRefresh](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IncrementalRefresh.html): The incremental refresh configuration for a dataset.
+- [Ingestion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Ingestion.html): Information about the SPICE ingestion for a dataset.
+- [InnerFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_InnerFilter.html): The InnerFilter defines the subset of data to be used with the NestedFilter.
+- [InputColumn](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_InputColumn.html): Metadata for a column that is used as the input of a transform operation.
+- [InsightConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_InsightConfiguration.html): The configuration of an insight visual.
+- [InsightVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_InsightVisual.html): An insight visual.
+- [IntegerDatasetParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IntegerDatasetParameter.html): An integer parameter for a dataset.
+- [IntegerDatasetParameterDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IntegerDatasetParameterDefaultValues.html): The default values of an integer parameter.
+- [IntegerDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IntegerDefaultValues.html): The default values of the IntegerParameterDeclaration.
+- [IntegerParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IntegerParameter.html): An integer parameter.
+- [IntegerParameterDeclaration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IntegerParameterDeclaration.html): A parameter declaration for the Integer data type.
+- [IntegerValueWhenUnsetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_IntegerValueWhenUnsetConfiguration.html): A parameter declaration for the Integer data type.
+- [InvalidTopicReviewedAnswer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_InvalidTopicReviewedAnswer.html): The definition for a InvalidTopicReviewedAnswer.
+- [ItemsLimitConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ItemsLimitConfiguration.html): The limit configuration of the visual display for an axis.
+- [JiraParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_JiraParameters.html): The parameters for Jira.
+- [JoinInstruction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_JoinInstruction.html): The instructions associated with a join.
+- [JoinKeyProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_JoinKeyProperties.html): Properties associated with the columns participating in a join.
+- [JoinOperandProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_JoinOperandProperties.html): Properties that control how columns are handled for a join operand, including column name overrides.
+- [JoinOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_JoinOperation.html): A transform operation that combines data from two sources based on specified join conditions.
+- [KeyPairCredentials](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KeyPairCredentials.html): The combination of username, private key and passphrase that are used as credentials.
+- [KPIActualValueConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIActualValueConditionalFormatting.html): The conditional formatting for the actual value of a KPI visual.
+- [KPIComparisonValueConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIComparisonValueConditionalFormatting.html): The conditional formatting for the comparison value of a KPI visual.
+- [KPIConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIConditionalFormatting.html): The conditional formatting of a KPI visual.
+- [KPIConditionalFormattingOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIConditionalFormattingOption.html): The conditional formatting options of a KPI visual.
+- [KPIConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIConfiguration.html): The configuration of a KPI visual.
+- [KPIFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIFieldWells.html): The field well configuration of a KPI visual.
+- [KPIOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIOptions.html): The options that determine the presentation of a KPI visual.
+- [KPIPrimaryValueConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIPrimaryValueConditionalFormatting.html): The conditional formatting for the primary value of a KPI visual.
+- [KPIProgressBarConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIProgressBarConditionalFormatting.html): The conditional formatting for the progress bar of a KPI visual.
+- [KPISortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPISortConfiguration.html): The sort configuration of a KPI visual.
+- [KPISparklineOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPISparklineOptions.html): The options that determine the visibility, color, type, and tooltip visibility of the sparkline of a KPI visual.
+- [KPIVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIVisual.html): A key performance indicator (KPI).
+- [KPIVisualLayoutOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIVisualLayoutOptions.html): The options that determine the layout a KPI visual.
+- [KPIVisualStandardLayout](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_KPIVisualStandardLayout.html): The standard layout of the KPI visual.
+- [LabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LabelOptions.html): The share label options for the labels.
+- [LayerCustomAction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LayerCustomAction.html): A layer custom action.
+- [LayerCustomActionOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LayerCustomActionOperation.html): The operation that is defined by the custom action.
+- [LayerMapVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LayerMapVisual.html): A layer map visual.
+- [Layout](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Layout.html): A Layout defines the placement of elements within a sheet.
+- [LayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LayoutConfiguration.html): The configuration that determines what the type of layout will be used on a sheet.
+- [LegendOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LegendOptions.html): The options for the legend setup of a visual.
+- [LineChartAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartAggregatedFieldWells.html): The field well configuration of a line chart.
+- [LineChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartConfiguration.html): The configuration of a line chart.
+- [LineChartDefaultSeriesSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartDefaultSeriesSettings.html): The options that determine the default presentation of all line series in LineChartVisual.
+- [LineChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartFieldWells.html): The field well configuration of a line chart.
+- [LineChartLineStyleSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartLineStyleSettings.html): Line styles options for a line series in LineChartVisual.
+- [LineChartMarkerStyleSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartMarkerStyleSettings.html): Marker styles options for a line series in LineChartVisual.
+- [LineChartSeriesSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartSeriesSettings.html): The options that determine the presentation of a line series in the visual
+- [LineChartSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartSortConfiguration.html): The sort configuration of a line chart.
+- [LineChartVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineChartVisual.html): A line chart.
+- [LineSeriesAxisDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LineSeriesAxisDisplayOptions.html): The series axis configuration of a line chart.
+- [LinkSharingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LinkSharingConfiguration.html): A structure that contains the configuration of a shareable link to the dashboard.
+- [ListControlDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListControlDisplayOptions.html): The display options of a control.
+- [ListControlSearchOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListControlSearchOptions.html): The configuration of the search options in a list control.
+- [ListControlSelectAllOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ListControlSelectAllOptions.html): The configuration of the Select all options in a list control.
+- [LoadingAnimation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LoadingAnimation.html): The configuration of loading animation in free-form layout.
+- [LocalNavigationConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LocalNavigationConfiguration.html): The navigation configuration for CustomActionNavigationOperation.
+- [LogicalTable](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LogicalTable.html): A logical table is a unit that joins and that data transformations operate on.
+- [LogicalTableSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LogicalTableSource.html): Information about the source of a logical table.
+- [Logo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Logo.html): The logo configuration.
+- [LogoConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LogoConfiguration.html): The logo configuration.
+- [LogoSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LogoSet.html): A set of logos.
+- [LogoSetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LogoSetConfiguration.html): The logo set configuration.
+- [LongFormatText](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LongFormatText.html): The text format for a subtitle.
+- [LookbackWindow](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_LookbackWindow.html): The lookback window setup of an incremental refresh configuration.
+- [ManifestFileLocation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ManifestFileLocation.html): Amazon S3 manifest file location.
+- [MappedDataSetParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MappedDataSetParameter.html): A dataset parameter that is mapped to an analysis parameter.
+- [MarginStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MarginStyle.html): The display options for margins around the outside edge of sheets.
+- [MariaDbParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MariaDbParameters.html): The parameters for MariaDB.
+- [MaximumLabelType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MaximumLabelType.html): The maximum label of a data path label.
+- [MaximumMinimumComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MaximumMinimumComputation.html): The maximum and minimum computation configuration.
+- [MeasureField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MeasureField.html): The measure (metric) type field.
+- [MemberIdArnPair](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MemberIdArnPair.html): An object that consists of a member Amazon Resource Name (ARN) and a member ID.
+- [MetricComparisonComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MetricComparisonComputation.html): The metric comparison computation configuration.
+- [MinimumLabelType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MinimumLabelType.html): The minimum label of a data path label.
+- [MissingDataConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MissingDataConfiguration.html): The configuration options that determine how missing data is treated during the rendering of a line chart.
+- [MySqlParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_MySqlParameters.html): The parameters for MySQL.
+- [NamedEntityDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NamedEntityDefinition.html): A structure that represents a named entity.
+- [NamedEntityDefinitionMetric](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NamedEntityDefinitionMetric.html): A structure that represents a metric.
+- [NamedEntityRef](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NamedEntityRef.html): The definition for a NamedEntityRef.
+- [NamespaceError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NamespaceError.html): Errors that occur during namespace creation.
+- [NamespaceInfoV2](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NamespaceInfoV2.html): The error type.
+- [NavbarStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NavbarStyle.html): The navigation bar style.
+- [NegativeFormat](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NegativeFormat.html): A structure that represents a negative format.
+- [NegativeValueConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NegativeValueConfiguration.html): The options that determine the negative value configuration.
+- [NestedFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NestedFilter.html): A NestedFilter filters data with a subset of data that is defined by the nested inner filter.
+- [NetworkInterface](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NetworkInterface.html): The structure that contains information about a network interface.
+- [NewDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NewDefaultValues.html): The configuration that overrides the existing default values for a dataset parameter that is inherited from another dataset.
+- [NoneConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NoneConnectionMetadata.html): Authentication metadata for connections that do not require authentication credentials.
+- [NullValueFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NullValueFormatConfiguration.html): The options that determine the null value format configuration.
+- [NumberDisplayFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumberDisplayFormatConfiguration.html): The options that determine the number display format configuration.
+- [NumberFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumberFormatConfiguration.html): Formatting configuration for number fields.
+- [NumericalAggregationFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericalAggregationFunction.html): Aggregation for numerical values.
+- [NumericalDimensionField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericalDimensionField.html): The dimension type field with numerical type columns.
+- [NumericalMeasureField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericalMeasureField.html): The measure type field with numerical type columns.
+- [NumericAxisOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericAxisOptions.html): The options for an axis with a numeric field.
+- [NumericEqualityDrillDownFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericEqualityDrillDownFilter.html): The numeric equality type drill down filter.
+- [NumericEqualityFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericEqualityFilter.html): A NumericEqualityFilter filters values that are equal to the specified value.
+- [NumericFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericFormatConfiguration.html): The options that determine the numeric format configuration.
+- [NumericRangeFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericRangeFilter.html): A NumericRangeFilter filters values that are within the value range.
+- [NumericRangeFilterValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericRangeFilterValue.html): The value input pf the numeric range filter.
+- [NumericSeparatorConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_NumericSeparatorConfiguration.html): The options that determine the numeric separator configuration.
+- [OAuthParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_OAuthParameters.html): An object that contains information needed to create a data source connection that uses OAuth client credentials.
+- [OracleParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_OracleParameters.html): The parameters for Oracle.
+- [OutputColumn](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_OutputColumn.html): Output column.
+- [OutputColumnNameOverride](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_OutputColumnNameOverride.html): Specifies a mapping to override the name of an output column from a transform operation.
+- [OverrideDatasetParameterOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_OverrideDatasetParameterOperation.html): A transform operation that overrides the dataset parameter values that are defined in another dataset.
+- [PaginationConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PaginationConfiguration.html): The pagination configuration for a table visual or boxplot.
+- [Palette](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Palette.html): The color palette.
+- [PanelConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PanelConfiguration.html): A collection of options that configure how each panel displays in a small multiples chart.
+- [PanelTitleOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PanelTitleOptions.html): The options that determine the title styles for each small multiples panel.
+- [ParameterControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterControl.html): The control of a parameter that users can interact with in a dashboard or an analysis.
+- [ParameterDateTimePickerControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterDateTimePickerControl.html): A control from a date parameter that specifies date and time.
+- [ParameterDeclaration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterDeclaration.html): The declaration definition of a parameter.
+- [ParameterDropDownControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterDropDownControl.html): A control to display a dropdown list with buttons that are used to select a single value.
+- [ParameterListControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterListControl.html): A control to display a list with buttons or boxes that are used to select either a single value or multiple values.
+- [Parameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Parameters.html): A list of Quick Sight parameters and the list's override values.
+- [ParameterSelectableValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterSelectableValues.html): A list of selectable values that are used in a control.
+- [ParameterSliderControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterSliderControl.html): A control to display a horizontal toggle bar.
+- [ParameterTextAreaControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterTextAreaControl.html): A control to display a text box that is used to enter multiple entries.
+- [ParameterTextFieldControl](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParameterTextFieldControl.html): A control to display a text box that is used to enter a single entry.
+- [ParentDataSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ParentDataSet.html): References a parent dataset that serves as a data source, including its columns and metadata.
+- [PercentageDisplayFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PercentageDisplayFormatConfiguration.html): The options that determine the percentage display format configuration.
+- [PercentileAggregation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PercentileAggregation.html): An aggregation based on the percentile of values in a dimension or measure.
+- [PercentVisibleRange](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PercentVisibleRange.html): The percent range in the visible range.
+- [PerformanceConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PerformanceConfiguration.html): The configuration for the performance optimization of the dataset that contains a UniqueKey configuration.
+- [PeriodOverPeriodComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PeriodOverPeriodComputation.html): The period over period computation configuration.
+- [PeriodToDateComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PeriodToDateComputation.html): The period to date computation configuration.
+- [Permission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Permission.html): A structure that contains the permission information for one principal against one flow.
+- [PhysicalTable](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PhysicalTable.html): A view of a data source that contains information about the shape of the data in the underlying source.
+- [PieChartAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PieChartAggregatedFieldWells.html): The field well configuration of a pie chart.
+- [PieChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PieChartConfiguration.html): The configuration of a pie chart.
+- [PieChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PieChartFieldWells.html): The field well configuration of a pie chart.
+- [PieChartSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PieChartSortConfiguration.html): The sort configuration of a pie chart.
+- [PieChartVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PieChartVisual.html): A pie or donut chart.
+- [PivotConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotConfiguration.html): Configuration for a pivot operation, specifying which column contains labels and how to pivot them.
+- [PivotedLabel](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotedLabel.html): Specifies a label value to be pivoted into a separate column, including the new column name and identifier.
+- [PivotFieldSortOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotFieldSortOptions.html): The field sort options for a pivot table sort configuration.
+- [PivotOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotOperation.html): A transform operation that pivots data by converting row values into columns.
+- [PivotTableAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableAggregatedFieldWells.html): The aggregated field well for the pivot table.
+- [PivotTableCellConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableCellConditionalFormatting.html): The cell conditional formatting option for a pivot table.
+- [PivotTableConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableConditionalFormatting.html): The conditional formatting for a PivotTableVisual.
+- [PivotTableConditionalFormattingOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableConditionalFormattingOption.html): Conditional formatting options for a PivotTableVisual.
+- [PivotTableConditionalFormattingScope](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableConditionalFormattingScope.html): The scope of the cell for conditional formatting.
+- [PivotTableConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableConfiguration.html): The configuration for a PivotTableVisual.
+- [PivotTableDataPathOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableDataPathOption.html): The data path options for the pivot table field options.
+- [PivotTableFieldCollapseStateOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableFieldCollapseStateOption.html): The collapse state options for the pivot table field options.
+- [PivotTableFieldCollapseStateTarget](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableFieldCollapseStateTarget.html): The target of a pivot table field collapse state.
+- [PivotTableFieldOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableFieldOption.html): The selected field options for the pivot table field options.
+- [PivotTableFieldOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableFieldOptions.html): The field options for a pivot table visual.
+- [PivotTableFieldSubtotalOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableFieldSubtotalOptions.html): The optional configuration of subtotals cells.
+- [PivotTableFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableFieldWells.html): The field wells for a pivot table visual.
+- [PivotTableOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableOptions.html): The table options for a pivot table visual.
+- [PivotTablePaginatedReportOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTablePaginatedReportOptions.html): The paginated report options for a pivot table visual.
+- [PivotTableRowsLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableRowsLabelOptions.html): The options for the label thta is located above the row headers.
+- [PivotTableSortBy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableSortBy.html): The sort by field for the field sort options.
+- [PivotTableSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableSortConfiguration.html): The sort configuration for a PivotTableVisual.
+- [PivotTableTotalOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableTotalOptions.html): The total options for a pivot table visual.
+- [PivotTableVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTableVisual.html): A pivot table.
+- [PivotTotalOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PivotTotalOptions.html): The optional configuration of totals cells in a PivotTableVisual.
+- [PluginVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisual.html): A flexible visualization type that allows engineers to create new custom charts in Quick Sight.
+- [PluginVisualConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisualConfiguration.html): The plugin visual configuration.
+- [PluginVisualFieldWell](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisualFieldWell.html): A collection of field wells for a plugin visual.
+- [PluginVisualItemsLimitConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisualItemsLimitConfiguration.html): A query limits configuration.
+- [PluginVisualOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisualOptions.html): The options and persisted properties for the plugin visual.
+- [PluginVisualProperty](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisualProperty.html): The key value pair of the persisted property.
+- [PluginVisualSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisualSortConfiguration.html): Determines how the plugin visual sorts the data during query.
+- [PluginVisualTableQuerySort](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PluginVisualTableQuerySort.html): The table query sorting options for the plugin visual.
+- [PostgreSqlParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PostgreSqlParameters.html): The parameters for PostgreSQL.
+- [PredefinedHierarchy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PredefinedHierarchy.html): The option that determines the hierarchy of the fields that are defined during data preparation.
+- [PrestoParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_PrestoParameters.html): The parameters for Presto.
+- [ProgressBarOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ProgressBarOptions.html): The options that determine the presentation of the progress bar of a KPI visual.
+- [ProjectOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ProjectOperation.html): A transform operation that projects columns.
+- [QAResult](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_QAResult.html): The QA result that is made from the DashboardVisual or GeneratedAnswer.
+- [QBusinessParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_QBusinessParameters.html): The parameters that are required to connect to an Amazon Q Business data source.
+- [QDataKey](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_QDataKey.html): A structure that contains information about the QDataKey.
+- [QueryExecutionOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_QueryExecutionOptions.html): A structure that describes the query execution options.
+- [QueueInfo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_QueueInfo.html): Information about a queued dataset SPICE ingestion.
+- [QuickSuiteActionsOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_QuickSuiteActionsOption.html): Determines if Actions in Amazon Quick Suite are enabled in a dashboard..
+- [RadarChartAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RadarChartAggregatedFieldWells.html): The aggregated field well configuration of a RadarChartVisual.
+- [RadarChartAreaStyleSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RadarChartAreaStyleSettings.html): The configured style settings of a radar chart.
+- [RadarChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RadarChartConfiguration.html): The configuration of a RadarChartVisual.
+- [RadarChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RadarChartFieldWells.html): The field wells of a radar chart visual.
+- [RadarChartSeriesSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RadarChartSeriesSettings.html): The series settings of a radar chart.
+- [RadarChartSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RadarChartSortConfiguration.html): The sort configuration of a RadarChartVisual.
+- [RadarChartVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RadarChartVisual.html): A radar chart visual.
+- [RangeConstant](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RangeConstant.html): A structure that represents a range constant.
+- [RangeEndsLabelType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RangeEndsLabelType.html): The range ends label type of a data path label.
+- [RdsParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RdsParameters.html): The parameters for Amazon RDS.
+- [ReadAPIKeyConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadAPIKeyConnectionMetadata.html): Read-only authentication metadata for API key-based connections, containing non-sensitive configuration details.
+- [ReadAuthConfig](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadAuthConfig.html): Read-only authentication configuration containing non-sensitive authentication details for action connectors.
+- [ReadAuthenticationMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadAuthenticationMetadata.html): Read-only authentication metadata union containing non-sensitive configuration details for different authentication types.
+- [ReadAuthorizationCodeGrantCredentialsDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadAuthorizationCodeGrantCredentialsDetails.html): Read-only credentials details for OAuth2 authorization code grant flow, containing non-sensitive configuration information.
+- [ReadAuthorizationCodeGrantDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadAuthorizationCodeGrantDetails.html): Read-only configuration details for OAuth2 authorization code grant flow, including endpoints and client information.
+- [ReadAuthorizationCodeGrantMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadAuthorizationCodeGrantMetadata.html): Read-only metadata for OAuth2 authorization code grant authentication configuration.
+- [ReadBasicAuthConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadBasicAuthConnectionMetadata.html): Read-only metadata for basic authentication connections, containing non-sensitive configuration details.
+- [ReadClientCredentialsDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadClientCredentialsDetails.html): Read-only details for OAuth2 client credentials, containing non-sensitive configuration information.
+- [ReadClientCredentialsGrantDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadClientCredentialsGrantDetails.html): Read-only configuration details for OAuth2 client credentials grant flow, including client ID and token endpoint.
+- [ReadClientCredentialsGrantMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadClientCredentialsGrantMetadata.html): Read-only metadata for OAuth2 client credentials grant authentication configuration.
+- [ReadIamConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadIamConnectionMetadata.html): Read-only metadata for IAM-based connections, containing role and source ARN information.
+- [ReadNoneConnectionMetadata](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReadNoneConnectionMetadata.html): Read-only metadata for connections that do not require authentication credentials.
+- [RecentSnapshotsConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RecentSnapshotsConfigurations.html): The recent snapshots configuration for an embedded Quick Sight dashboard.
+- [RedshiftIAMParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RedshiftIAMParameters.html): A structure that grants Quick Sight access to your cluster and make a call to the redshift:GetClusterCredentials API.
+- [RedshiftParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RedshiftParameters.html): The parameters for Amazon Redshift.
+- [ReferenceLine](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLine.html): The reference line visual display options.
+- [ReferenceLineCustomLabelConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLineCustomLabelConfiguration.html): The configuration for a custom label on a ReferenceLine.
+- [ReferenceLineDataConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLineDataConfiguration.html): The data configuration of the reference line.
+- [ReferenceLineDynamicDataConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLineDynamicDataConfiguration.html): The dynamic configuration of the reference line data configuration.
+- [ReferenceLineLabelConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLineLabelConfiguration.html): The label configuration of a reference line.
+- [ReferenceLineStaticDataConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLineStaticDataConfiguration.html): The static data configuration of the reference line data configuration.
+- [ReferenceLineStyleConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLineStyleConfiguration.html): The style configuration of the reference line.
+- [ReferenceLineValueLabelConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ReferenceLineValueLabelConfiguration.html): The value label configuration of the label in a reference line.
+- [RefreshConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshConfiguration.html): The refresh configuration of a dataset.
+- [RefreshFailureConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFailureConfiguration.html): The failure configuration of a dataset.
+- [RefreshFailureEmailAlert](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFailureEmailAlert.html): The configuration settings for the email alerts that are sent when a dataset refresh fails.
+- [RefreshFrequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html): Specifies the interval between each scheduled refresh of a dataset.
+- [RefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshSchedule.html): The refresh schedule of a dataset.
+- [RegisteredCustomerManagedKey](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredCustomerManagedKey.html): A customer managed key structure that contains the information listed below:
+- [RegisteredUserConsoleFeatureConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserConsoleFeatureConfigurations.html): The feature configurations of an embedded Amazon Quick Sight console.
+- [RegisteredUserDashboardEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserDashboardEmbeddingConfiguration.html): Information about the dashboard you want to embed.
+- [RegisteredUserDashboardFeatureConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserDashboardFeatureConfigurations.html): The feature configuration for an embedded dashboard.
+- [RegisteredUserDashboardVisualEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserDashboardVisualEmbeddingConfiguration.html): The experience that you are embedding.
+- [RegisteredUserEmbeddingExperienceConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserEmbeddingExperienceConfiguration.html): The type of experience you want to embed.
+- [RegisteredUserGenerativeQnAEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserGenerativeQnAEmbeddingConfiguration.html): An object that provides information about the configuration of a Generative Q&A experience.
+- [RegisteredUserQSearchBarEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserQSearchBarEmbeddingConfiguration.html): Information about the Q search bar embedding experience.
+- [RegisteredUserQuickChatEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserQuickChatEmbeddingConfiguration.html): An object that provides information about the configuration of a chat agent.
+- [RegisteredUserQuickSightConsoleEmbeddingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserQuickSightConsoleEmbeddingConfiguration.html): Information about the Amazon Quick Sight console that you want to embed.
+- [RegisteredUserSnapshotJobResult](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisteredUserSnapshotJobResult.html): A structure that contains information about files that are requested for registered user during a StartDashboardSnapshotJob API call.
+- [RelationalTable](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RelationalTable.html): A physical table type for relational data sources.
+- [RelativeDatesFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RelativeDatesFilter.html): A RelativeDatesFilter filters relative dates values.
+- [RelativeDateTimeControlDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RelativeDateTimeControlDisplayOptions.html): The display options of a control.
+- [RenameColumnOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RenameColumnOperation.html): A transform operation that renames a column.
+- [RenameColumnsOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RenameColumnsOperation.html): A transform operation that renames one or more columns in the dataset.
+- [ResourcePermission](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ResourcePermission.html): Permission for the resource.
+- [RollingDateConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RollingDateConfiguration.html): The rolling date configuration of a date time filter.
+- [RowAlternateColorOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RowAlternateColorOptions.html): Determines the row alternate color options.
+- [RowInfo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RowInfo.html): Information about rows for a data set SPICE ingestion.
+- [RowLevelPermissionConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RowLevelPermissionConfiguration.html): Configuration for row level security.
+- [RowLevelPermissionDataSet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RowLevelPermissionDataSet.html): Information about a dataset that contains permissions for row-level security (RLS).
+- [RowLevelPermissionTagConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RowLevelPermissionTagConfiguration.html): The configuration of tags on a dataset to set row-level security.
+- [RowLevelPermissionTagRule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RowLevelPermissionTagRule.html): A set of rules associated with a tag.
+- [S3BucketConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_S3BucketConfiguration.html): An optional structure that contains the Amazon S3 bucket configuration that the generated snapshots are stored in.
+- [S3KnowledgeBaseParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_S3KnowledgeBaseParameters.html): The parameters that are required to connect to a S3 Knowledge Base data source.
+- [S3Parameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_S3Parameters.html): The parameters for S3.
+- [S3Source](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_S3Source.html): A physical table type for an S3 data source.
+- [SaaSTable](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SaaSTable.html): A table from a Software-as-a-Service (SaaS) data source, including connection details and column definitions.
+- [SameSheetTargetVisualConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SameSheetTargetVisualConfiguration.html): The configuration of the same-sheet target visuals that you want to be filtered.
+- [SankeyDiagramAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SankeyDiagramAggregatedFieldWells.html): The field well configuration of a sankey diagram.
+- [SankeyDiagramChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SankeyDiagramChartConfiguration.html): The configuration of a sankey diagram.
+- [SankeyDiagramFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SankeyDiagramFieldWells.html): The field well configuration of a sankey diagram.
+- [SankeyDiagramSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SankeyDiagramSortConfiguration.html): The sort configuration of a sankey diagram.
+- [SankeyDiagramVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SankeyDiagramVisual.html): A sankey diagram.
+- [ScatterPlotCategoricallyAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScatterPlotCategoricallyAggregatedFieldWells.html): The aggregated field well of a scatter plot.
+- [ScatterPlotConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScatterPlotConfiguration.html): The configuration of a scatter plot.
+- [ScatterPlotFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScatterPlotFieldWells.html): The field well configuration of a scatter plot.
+- [ScatterPlotSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScatterPlotSortConfiguration.html): The sort configuration of a scatter plot.
+- [ScatterPlotUnaggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScatterPlotUnaggregatedFieldWells.html): The unaggregated field wells of a scatter plot.
+- [ScatterPlotVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScatterPlotVisual.html): A scatter plot.
+- [ScheduleRefreshOnEntity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScheduleRefreshOnEntity.html): The refresh on entity for weekly or monthly schedules.
+- [SchedulesConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SchedulesConfigurations.html): The schedules configuration for an embedded Quick Sight dashboard.
+- [ScrollBarOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ScrollBarOptions.html): The visual display options for a data zoom scroll bar.
+- [SearchFlowsFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SearchFlowsFilter.html): A structure that contains the filter information when searching flows.
+- [SecondaryValueOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SecondaryValueOptions.html): The options that determine the presentation of the secondary value of a KPI visual.
+- [SectionAfterPageBreak](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SectionAfterPageBreak.html): The configuration of a page break after a section.
+- [SectionBasedLayoutCanvasSizeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SectionBasedLayoutCanvasSizeOptions.html): The options for the canvas of a section-based layout.
+- [SectionBasedLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SectionBasedLayoutConfiguration.html): The configuration for a section-based layout.
+- [SectionBasedLayoutPaperCanvasSizeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SectionBasedLayoutPaperCanvasSizeOptions.html): The options for a paper canvas of a section-based layout.
+- [SectionLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SectionLayoutConfiguration.html): The layout configuration of a section.
+- [SectionPageBreakConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SectionPageBreakConfiguration.html): The configuration of a page break for a section.
+- [SectionStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SectionStyle.html): The options that style a section.
+- [SelectedSheetsFilterScopeConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SelectedSheetsFilterScopeConfiguration.html): The configuration for applying a filter to specific sheets or visuals.
+- [SelfUpgradeConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SelfUpgradeConfiguration.html): The self-upgrade configuration for the Quick account.
+- [SelfUpgradeRequestDetail](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SelfUpgradeRequestDetail.html): Details of a self-upgrade request.
+- [SemanticEntityType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SemanticEntityType.html): A structure that represents a semantic entity type.
+- [SemanticModelConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SemanticModelConfiguration.html): Configuration for the semantic model that defines how prepared data is structured for analysis and reporting.
+- [SemanticTable](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SemanticTable.html): A semantic table that represents the final analytical structure of the data.
+- [SemanticType](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SemanticType.html): A structure that represents a semantic type.
+- [SeriesItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SeriesItem.html): The series item configuration of a line chart.
+- [ServiceNowParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ServiceNowParameters.html): The parameters for ServiceNow.
+- [SessionTag](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SessionTag.html): The key-value pair used for the row-level security tags feature.
+- [SetParameterValueConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SetParameterValueConfiguration.html): The configuration of adding parameters in action.
+- [ShapeConditionalFormat](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ShapeConditionalFormat.html): The shape conditional formatting of a filled map visual.
+- [SharedViewConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SharedViewConfigurations.html): The shared view settings of an embedded dashboard.
+- [Sheet](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Sheet.html): A sheet, which is an object that contains a set of visuals that are viewed together on one page in Quick Sight.
+- [SheetBackgroundStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetBackgroundStyle.html): The background configuration for sheets.
+- [SheetControlInfoIconLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetControlInfoIconLabelOptions.html): A control to display info icons for filters and parameters.
+- [SheetControlLayout](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetControlLayout.html): A grid layout to define the placement of sheet control.
+- [SheetControlLayoutConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetControlLayoutConfiguration.html): The configuration that determines the elements and canvas size options of sheet control.
+- [SheetControlsOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetControlsOption.html): Sheet controls option.
+- [SheetDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetDefinition.html): A sheet is an object that contains a set of visuals that are viewed together on one page in a paginated report.
+- [SheetElementConfigurationOverrides](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetElementConfigurationOverrides.html): The override configuration of the rendering rules of a sheet.
+- [SheetElementRenderingRule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetElementRenderingRule.html): The rendering rules of a sheet that uses a free-form layout.
+- [SheetImage](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetImage.html): An image that is located on a sheet.
+- [SheetImageScalingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetImageScalingConfiguration.html): Determines how the image is scaled
+- [SheetImageSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetImageSource.html): The source of the image.
+- [SheetImageStaticFileSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetImageStaticFileSource.html): The source of the static file that contains the image.
+- [SheetImageTooltipConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetImageTooltipConfiguration.html): The tooltip configuration for a sheet image.
+- [SheetImageTooltipText](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetImageTooltipText.html): The text that appears in the sheet image tooltip.
+- [SheetLayoutElementMaximizationOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetLayoutElementMaximizationOption.html): The sheet layout maximization options of a dashbaord.
+- [SheetLayoutGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetLayoutGroup.html): A group of elements within a sheet layout.
+- [SheetLayoutGroupMember](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetLayoutGroupMember.html): A member of a sheet layout group.
+- [SheetStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetStyle.html): The theme display options for sheets.
+- [SheetTextBox](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetTextBox.html): A text box.
+- [SheetVisualScopingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SheetVisualScopingConfiguration.html): The filter that is applied to the options.
+- [ShortFormatText](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ShortFormatText.html): The text format for the title.
+- [SignupResponse](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SignupResponse.html): A SignupResponse object that contains a summary of a newly created account.
+- [SimpleClusterMarker](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SimpleClusterMarker.html): The simple cluster marker of the cluster marker.
+- [SingleAxisOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SingleAxisOptions.html): The settings of a chart's single axis configuration.
+- [SliderControlDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SliderControlDisplayOptions.html): The display options of a control.
+- [Slot](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Slot.html): The definition for the slot.
+- [SmallMultiplesAxisProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SmallMultiplesAxisProperties.html): Configures the properties of a chart's axes that are used by small multiples panels.
+- [SmallMultiplesOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SmallMultiplesOptions.html): Options that determine the layout and display options of a chart's small multiples.
+- [SnapshotAnonymousUser](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotAnonymousUser.html): A structure that contains information on the anonymous user configuration.
+- [SnapshotAnonymousUserRedacted](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotAnonymousUserRedacted.html): Use this structure to redact sensitive information that you provide about an anonymous user from the snapshot.
+- [SnapshotConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotConfiguration.html): Describes the configuration of the dashboard snapshot.
+- [SnapshotDestinationConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotDestinationConfiguration.html): A structure that contains information on the Amazon S3 destinations of the generated snapshot.
+- [SnapshotFile](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotFile.html): A structure that contains the information for the snapshot that you want to generate.
+- [SnapshotFileGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotFileGroup.html): A structure that contains the information on the snapshot files.
+- [SnapshotFileSheetSelection](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotFileSheetSelection.html): A structure that contains information that identifies the snapshot that needs to be generated.
+- [SnapshotJobErrorInfo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotJobErrorInfo.html): An object that contains information on the error that caused the snapshot job to fail.
+- [SnapshotJobResult](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotJobResult.html): An object that provides information on the result of a snapshot job.
+- [SnapshotJobResultErrorInfo](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotJobResultErrorInfo.html): Information on the error that caused the snapshot job to fail.
+- [SnapshotJobResultFileGroup](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotJobResultFileGroup.html): A structure that contains information on the generated snapshot file groups.
+- [SnapshotJobS3Result](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotJobS3Result.html): The Amazon S3 result from the snapshot job.
+- [SnapshotS3DestinationConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotS3DestinationConfiguration.html): A structure that describes the Amazon S3 settings to use to save the generated dashboard snapshot.
+- [SnapshotUserConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotUserConfiguration.html): A structure that contains information about the users that the dashboard snapshot is generated for.
+- [SnapshotUserConfigurationRedacted](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnapshotUserConfigurationRedacted.html): A structure that contains information about the users that the dashboard snapshot is generated for.
+- [SnowflakeParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SnowflakeParameters.html): The parameters for Snowflake.
+- [SourceTable](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SourceTable.html): A source table that provides initial data from either a physical table or parent dataset.
+- [Spacing](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Spacing.html): The configuration of spacing (often a margin or padding).
+- [SparkParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SparkParameters.html): The parameters for Spark.
+- [SpatialStaticFile](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SpatialStaticFile.html): A static file that contains the geospatial data.
+- [SqlServerParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SqlServerParameters.html): The parameters for SQL Server.
+- [SslProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SslProperties.html): Secure Socket Layer (SSL) properties that apply when Quick Sight connects to your underlying data source.
+- [StarburstParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StarburstParameters.html): The parameters that are required to connect to a Starburst data source.
+- [StatePersistenceConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StatePersistenceConfigurations.html): The state perssitence configuration of an embedded dashboard.
+- [StaticFile](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StaticFile.html): The static file.
+- [StaticFileS3SourceOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StaticFileS3SourceOptions.html): The structure that contains the Amazon S3 location to download the static file from.
+- [StaticFileSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StaticFileSource.html): The source of the static file.
+- [StaticFileUrlSourceOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StaticFileUrlSourceOptions.html): The structure that contains the URL to download the static file from.
+- [StringDatasetParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringDatasetParameter.html): A string parameter for a dataset.
+- [StringDatasetParameterDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringDatasetParameterDefaultValues.html): The default values of a string parameter.
+- [StringDefaultValues](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringDefaultValues.html): The default values of the StringParameterDeclaration.
+- [StringFormatConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringFormatConfiguration.html): Formatting configuration for string fields.
+- [StringParameter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringParameter.html): A string parameter.
+- [StringParameterDeclaration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringParameterDeclaration.html): A parameter declaration for the String data type.
+- [StringValueWhenUnsetConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_StringValueWhenUnsetConfiguration.html): The configuration that defines the default value of a String parameter when a value has not been set.
+- [SubtotalOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SubtotalOptions.html): The subtotal options.
+- [SucceededTopicReviewedAnswer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SucceededTopicReviewedAnswer.html): The definition for a SucceededTopicReviewedAnswer.
+- [SuccessfulKeyRegistrationEntry](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_SuccessfulKeyRegistrationEntry.html): A success entry that occurs when a KeyRegistration job is successfully applied to the Quick Sight account.
+- [TableAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableAggregatedFieldWells.html): The aggregated field well for the table.
+- [TableBorderOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableBorderOptions.html): The border options for a table border.
+- [TableCellConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableCellConditionalFormatting.html): The cell conditional formatting option for a table.
+- [TableCellImageSizingConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableCellImageSizingConfiguration.html): The sizing options for the table image configuration.
+- [TableCellStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableCellStyle.html): The table cell style for a cell in pivot table or table visual.
+- [TableConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableConditionalFormatting.html): The conditional formatting for a PivotTableVisual.
+- [TableConditionalFormattingOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableConditionalFormattingOption.html): Conditional formatting options for a PivotTableVisual.
+- [TableConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableConfiguration.html): The configuration for a TableVisual.
+- [TableFieldCustomIconContent](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldCustomIconContent.html): The custom icon content for the table link content configuration.
+- [TableFieldCustomTextContent](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldCustomTextContent.html): The custom text content (value, font configuration) for the table link content configuration.
+- [TableFieldImageConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldImageConfiguration.html): The image configuration of a table field URL.
+- [TableFieldLinkConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldLinkConfiguration.html): The link configuration of a table field URL.
+- [TableFieldLinkContentConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldLinkContentConfiguration.html): The URL content (text, icon) for the table link configuration.
+- [TableFieldOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldOption.html): The options for a table field.
+- [TableFieldOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldOptions.html): The field options of a table visual.
+- [TableFieldURLConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldURLConfiguration.html): The URL configuration for a table field.
+- [TableFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableFieldWells.html): The field wells for a table visual.
+- [TableInlineVisualization](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableInlineVisualization.html): The inline visualization of a specific type to display within a chart.
+- [TableOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableOptions.html): The table options for a table visual.
+- [TablePaginatedReportOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TablePaginatedReportOptions.html): The paginated report options for a table visual.
+- [TablePathElement](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TablePathElement.html): An element in the hierarchical path to a table within a data source, containing both name and identifier.
+- [TablePinnedFieldOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TablePinnedFieldOptions.html): The settings for the pinned columns of a table visual.
+- [TableRowConditionalFormatting](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableRowConditionalFormatting.html): The conditional formatting of a table row.
+- [TableSideBorderOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableSideBorderOptions.html): The side border options for a table.
+- [TableSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableSortConfiguration.html): The sort configuration for a TableVisual.
+- [TableStyleTarget](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableStyleTarget.html): The table style target.
+- [TableUnaggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableUnaggregatedFieldWells.html): The unaggregated field well for the table.
+- [TableVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TableVisual.html): A table visual.
+- [Tag](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Tag.html): The key or keys of the key-value pairs for the resource tag or tags assigned to the resource.
+- [TagColumnOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TagColumnOperation.html): A transform operation that tags a column with additional information.
+- [Template](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Template.html): A template object.
+- [TemplateAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateAlias.html): The template alias.
+- [TemplateError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateError.html): List of errors that occurred when the template version creation failed.
+- [TemplateSourceAnalysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateSourceAnalysis.html): The source analysis of the template.
+- [TemplateSourceEntity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateSourceEntity.html): The source entity of the template.
+- [TemplateSourceTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateSourceTemplate.html): The source template of the template.
+- [TemplateSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateSummary.html): The template summary.
+- [TemplateVersion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateVersion.html): A version of a template.
+- [TemplateVersionDefinition](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateVersionDefinition.html): The detailed definition of a template.
+- [TemplateVersionSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TemplateVersionSummary.html): The template version.
+- [TeradataParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TeradataParameters.html): The parameters for Teradata.
+- [TextAreaControlDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TextAreaControlDisplayOptions.html): The display options of a control.
+- [TextBoxInteractionOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TextBoxInteractionOptions.html): The general textbox interactions setup for textbox publish options.
+- [TextBoxMenuOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TextBoxMenuOption.html): The menu options for the interactions of a textbox.
+- [TextConditionalFormat](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TextConditionalFormat.html): The conditional formatting for the text.
+- [TextControlPlaceholderOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TextControlPlaceholderOptions.html): The configuration of the placeholder options in a text control.
+- [TextFieldControlDisplayOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TextFieldControlDisplayOptions.html): The display options of a control.
+- [Theme](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Theme.html): Summary information about a theme.
+- [ThemeAlias](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThemeAlias.html): An alias for a theme.
+- [ThemeConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThemeConfiguration.html): The theme configuration.
+- [ThemeError](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThemeError.html): Theme error.
+- [ThemeSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThemeSummary.html): The theme summary.
+- [ThemeVersion](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThemeVersion.html): A version of a theme.
+- [ThemeVersionSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThemeVersionSummary.html): The theme version.
+- [ThousandSeparatorOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThousandSeparatorOptions.html): The options that determine the thousands separator configuration.
+- [ThresholdAlertsConfigurations](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ThresholdAlertsConfigurations.html): The threshold alerts configuration for an embedded Quick Sight dashboard.
+- [TileLayoutStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TileLayoutStyle.html): The display options for the layout of tiles on a sheet.
+- [TileStyle](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TileStyle.html): Display options related to tiles on a sheet.
+- [TimeBasedForecastProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TimeBasedForecastProperties.html): The forecast properties setup of a forecast in the line chart.
+- [TimeEqualityFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TimeEqualityFilter.html): A TimeEqualityFilter filters values that are equal to a given value.
+- [TimeRangeDrillDownFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TimeRangeDrillDownFilter.html): The time range drill down filter.
+- [TimeRangeFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TimeRangeFilter.html): A TimeRangeFilter filters values that are between two specified values.
+- [TimeRangeFilterValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TimeRangeFilterValue.html): The value of a time range filter.
+- [TooltipItem](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TooltipItem.html): The tooltip.
+- [TooltipOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TooltipOptions.html): The display options for the visual tooltip.
+- [TopBottomFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopBottomFilter.html): A TopBottomFilter filters values that are at the top or the bottom.
+- [TopBottomMoversComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopBottomMoversComputation.html): The top movers and bottom movers computation setup.
+- [TopBottomRankedComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopBottomRankedComputation.html): The top ranked and bottom ranked computation configuration.
+- [TopicCalculatedField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicCalculatedField.html): A structure that represents a calculated field.
+- [TopicCategoryFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicCategoryFilter.html): A structure that represents a category filter.
+- [TopicCategoryFilterConstant](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicCategoryFilterConstant.html): A constant used in a category filter.
+- [TopicColumn](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicColumn.html): Represents a column in a dataset.
+- [TopicConfigOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicConfigOptions.html): Configuration options for a Topic.
+- [TopicConstantValue](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicConstantValue.html): The definition for a TopicConstantValue.
+- [TopicDateRangeFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicDateRangeFilter.html): A filter used to restrict data based on a range of dates or times.
+- [TopicDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicDetails.html): A structure that describes the details of a topic, such as its name, description, and associated data sets.
+- [TopicFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicFilter.html): A structure that represents a filter used to select items for a topic.
+- [TopicIR](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicIR.html): The definition for a TopicIR.
+- [TopicIRComparisonMethod](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicIRComparisonMethod.html): The definition of a TopicIRComparisonMethod.
+- [TopicIRContributionAnalysis](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicIRContributionAnalysis.html): The definition for a TopicIRContributionAnalysis.
+- [TopicIRFilterOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicIRFilterOption.html): The definition for a TopicIRFilterOption.
+- [TopicIRGroupBy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicIRGroupBy.html): The definition for a TopicIRGroupBy.
+- [TopicIRMetric](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicIRMetric.html): The definition for a TopicIRMetric.
+- [TopicNamedEntity](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicNamedEntity.html): A structure that represents a named entity.
+- [TopicNullFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicNullFilter.html): The structure that represents a null filter.
+- [TopicNumericEqualityFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicNumericEqualityFilter.html): A filter that filters topics based on the value of a numeric field.
+- [TopicNumericRangeFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicNumericRangeFilter.html): A filter that filters topics based on the value of a numeric field.
+- [TopicRangeFilterConstant](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicRangeFilterConstant.html): A constant value that is used in a range filter to specify the endpoints of the range.
+- [TopicRefreshDetails](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicRefreshDetails.html): The details about the refresh of a topic.
+- [TopicRefreshSchedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicRefreshSchedule.html): A structure that represents a topic refresh schedule.
+- [TopicRefreshScheduleSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicRefreshScheduleSummary.html): A summary of the refresh schedule details for a dataset.
+- [TopicRelativeDateFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicRelativeDateFilter.html): A structure that represents a relative date filter.
+- [TopicReviewedAnswer](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicReviewedAnswer.html): The deinition for a TopicReviewedAnswer.
+- [TopicSearchFilter](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicSearchFilter.html): The filter that is used to search for a topic.
+- [TopicSingularFilterConstant](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicSingularFilterConstant.html): A structure that represents a singular filter constant, used in filters to specify a single value to match against.
+- [TopicSortClause](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicSortClause.html): The definition for a TopicSortClause.
+- [TopicSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicSummary.html): A topic summary.
+- [TopicTemplate](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicTemplate.html): The definition for a TopicTemplate.
+- [TopicVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TopicVisual.html): The definition for a TopicVisual.
+- [TotalAggregationComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TotalAggregationComputation.html): The total aggregation computation configuration.
+- [TotalAggregationFunction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TotalAggregationFunction.html): An aggregation function that aggregates the total values of a measure.
+- [TotalAggregationOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TotalAggregationOption.html): The total aggregation settings map of a field id.
+- [TotalOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TotalOptions.html): The total options for a table visual.
+- [TransformOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TransformOperation.html): A data transformation on a logical table.
+- [TransformOperationSource](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TransformOperationSource.html): Specifies the source of data for a transform operation, including the source operation and column mappings.
+- [TransformStep](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TransformStep.html): A step in data preparation that performs a specific operation on the data.
+- [TransposedTableOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TransposedTableOption.html): The column option of the transposed table.
+- [TreeMapAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TreeMapAggregatedFieldWells.html): Aggregated field wells of a tree map.
+- [TreeMapConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TreeMapConfiguration.html): The configuration of a tree map.
+- [TreeMapFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TreeMapFieldWells.html): The field wells of a tree map.
+- [TreeMapSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TreeMapSortConfiguration.html): The sort configuration of a tree map.
+- [TreeMapVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TreeMapVisual.html): A tree map.
+- [TrendArrowOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TrendArrowOptions.html): The options that determine the presentation of trend arrows in a KPI visual.
+- [TrinoParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TrinoParameters.html): The parameters that are required to connect to a Trino data source.
+- [TwitterParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_TwitterParameters.html): The parameters for Twitter.
+- [Typography](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Typography.html): Determines the typography options.
+- [UIColorPalette](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UIColorPalette.html): The theme colors that apply to UI and to charts, excluding data colors.
+- [UnaggregatedField](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UnaggregatedField.html): The unaggregated field for a table.
+- [UniqueKey](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UniqueKey.html): A UniqueKey configuration that references a dataset column.
+- [UniqueValuesComputation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UniqueValuesComputation.html): The unique values computation configuration.
+- [UnpivotOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UnpivotOperation.html): A transform operation that converts columns into rows, normalizing the data structure.
+- [UntagColumnOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UntagColumnOperation.html): A transform operation that removes tags associated with a column.
+- [UploadSettings](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UploadSettings.html): Information about the format for a source file or files.
+- [User](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_User.html): A registered user of Quick Sight.
+- [UserIdentifier](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UserIdentifier.html): A structure that contains information to identify a user.
+- [ValidationStrategy](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ValidationStrategy.html): The option to relax the validation that is required to create and update analyses, dashboards, and templates with definition objects.
+- [ValueColumnConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ValueColumnConfiguration.html): Configuration for how to handle value columns in pivot operations, including aggregation settings.
+- [VisibleRangeOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisibleRangeOptions.html): The range options for the data zoom scroll bar.
+- [Visual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_Visual.html): A visual displayed on a sheet in an analysis, dashboard, or template.
+- [VisualAxisSortOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualAxisSortOption.html): The axis sort options for a visual.
+- [VisualCustomAction](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualCustomAction.html): A custom action defined on a visual.
+- [VisualCustomActionDefaults](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualCustomActionDefaults.html): A list of custom actions applied to visuals in an analysis or sheet.
+- [VisualCustomActionOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualCustomActionOperation.html): The operation that is defined by the custom action.
+- [VisualCustomizationFieldsConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualCustomizationFieldsConfiguration.html): The configuration that controls field customization options available to dashboard readers for a visual.
+- [VisualHighlightOperation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualHighlightOperation.html): Defines what initiates a highlight operation on a visual, such as a click or hover.
+- [VisualInteractionOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualInteractionOptions.html): The general visual interactions setup for visual publish options
+- [VisualMenuOption](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualMenuOption.html): The menu options for a visual.
+- [VisualOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualOptions.html): The definition for a VisualOptions.
+- [VisualPalette](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualPalette.html): The visual display options for the visual palette.
+- [VisualSubtitleFontConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualSubtitleFontConfiguration.html): Configures the display properties of the visual sub-title.
+- [VisualSubtitleLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualSubtitleLabelOptions.html): The subtitle label options for a visual.
+- [VisualTitleFontConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualTitleFontConfiguration.html): Configures the display properties of the visual title.
+- [VisualTitleLabelOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VisualTitleLabelOptions.html): The title label options for a visual.
+- [VPCConnection](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VPCConnection.html): The structure of a VPC connection.
+- [VpcConnectionProperties](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VpcConnectionProperties.html): VPC connection properties.
+- [VPCConnectionSummary](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_VPCConnectionSummary.html): The summary metadata that describes a VPC connection.
+- [WaterfallChartAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallChartAggregatedFieldWells.html): The field well configuration of a waterfall visual.
+- [WaterfallChartColorConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallChartColorConfiguration.html): The color configuration of a waterfall visual.
+- [WaterfallChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallChartConfiguration.html): The configuration for a waterfall visual.
+- [WaterfallChartFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallChartFieldWells.html): The field well configuration of a waterfall visual.
+- [WaterfallChartGroupColorConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallChartGroupColorConfiguration.html): The color configuration for individual groups within a waterfall visual.
+- [WaterfallChartOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallChartOptions.html): The options that determine the presentation of a waterfall visual.
+- [WaterfallChartSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallChartSortConfiguration.html): The sort configuration of a waterfall visual.
+- [WaterfallVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WaterfallVisual.html): A waterfall chart.
+- [WebCrawlerParameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WebCrawlerParameters.html): The parameters for a web crawler data source.
+- [WebProxyCredentials](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WebProxyCredentials.html): The credentials for authenticating with a web proxy server.
+- [WhatIfPointScenario](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WhatIfPointScenario.html): Provides the forecast to meet the target for a particular date.
+- [WhatIfRangeScenario](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WhatIfRangeScenario.html): Provides the forecast to meet the target for a particular date range.
+- [WordCloudAggregatedFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WordCloudAggregatedFieldWells.html): The aggregated field wells of a word cloud.
+- [WordCloudChartConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WordCloudChartConfiguration.html): The configuration of a word cloud visual.
+- [WordCloudFieldWells](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WordCloudFieldWells.html): The field wells of a word cloud visual.
+- [WordCloudOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WordCloudOptions.html): The word cloud options for a word cloud visual.
+- [WordCloudSortConfiguration](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WordCloudSortConfiguration.html): The sort configuration of a word cloud visual.
+- [WordCloudVisual](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_WordCloudVisual.html): A word cloud.
+- [YAxisOptions](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_YAxisOptions.html): The options that are available for a single Y axis in a chart.
+- [Common Errors](https://docs.aws.amazon.com/quicksight/latest/APIReference/CommonErrors.html): This section lists the errors common to the API actions of all AWS services.
+- [Common Parameters](https://docs.aws.amazon.com/quicksight/latest/APIReference/CommonParameters.html): The following list contains the parameters that all actions use for signing Signature Version 4 requests with a query string.

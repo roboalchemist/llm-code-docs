@@ -1,0 +1,9 @@
+name: annoto
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.annoto.net/home/
+    last_fetched: "2026-04-03T23:08:26Z"
+description: >
+  annoto documentation
+quality_score: 0

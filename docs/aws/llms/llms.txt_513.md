@@ -1,0 +1,131 @@
+# Source: https://docs.aws.amazon.com/lake-formation/latest/APIReference/llms.txt
+
+# Lake Formation API Reference
+
+> Defines the public endpoint for the AWS Lake Formation service.
+
+- [Welcome](https://docs.aws.amazon.com/lake-formation/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/lake-formation/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/lake-formation/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_Operations.html)
+
+- [AddLFTagsToResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_AddLFTagsToResource.html): Attaches one or more LF-tags to an existing resource.
+- [AssumeDecoratedRoleWithSAML](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_AssumeDecoratedRoleWithSAML.html): Allows a caller to assume an IAM role decorated as the SAML user specified in the SAML assertion included in the request.
+- [BatchGrantPermissions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_BatchGrantPermissions.html): Batch operation to grant permissions to the principal.
+- [BatchRevokePermissions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_BatchRevokePermissions.html): Batch operation to revoke permissions from the principal.
+- [CancelTransaction](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CancelTransaction.html): Attempts to cancel the specified transaction.
+- [CommitTransaction](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CommitTransaction.html): Attempts to commit the specified transaction.
+- [CreateDataCellsFilter](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CreateDataCellsFilter.html): Creates a data cell filter to allow one to grant access to certain columns on certain rows.
+- [CreateLakeFormationIdentityCenterConfiguration](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CreateLakeFormationIdentityCenterConfiguration.html): Creates an IAM Identity Center connection with Lake Formation to allow IAM Identity Center users and groups to access Data Catalog resources.
+- [CreateLakeFormationOptIn](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CreateLakeFormationOptIn.html): Enforce Lake Formation permissions for the given databases, tables, and principals.
+- [CreateLFTag](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CreateLFTag.html): Creates an LF-tag with the specified name and values.
+- [CreateLFTagExpression](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CreateLFTagExpression.html): Creates a new LF-Tag expression with the provided name, description, catalog ID, and expression body.
+- [DeleteDataCellsFilter](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeleteDataCellsFilter.html): Deletes a data cell filter.
+- [DeleteLakeFormationIdentityCenterConfiguration](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeleteLakeFormationIdentityCenterConfiguration.html): Deletes an IAM Identity Center connection with Lake Formation.
+- [DeleteLakeFormationOptIn](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeleteLakeFormationOptIn.html): Remove the Lake Formation permissions enforcement of the given databases, tables, and principals.
+- [DeleteLFTag](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeleteLFTag.html): Deletes an LF-tag by its key name.
+- [DeleteLFTagExpression](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeleteLFTagExpression.html): Deletes the LF-Tag expression.
+- [DeleteObjectsOnCancel](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeleteObjectsOnCancel.html): For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled.
+- [DeregisterResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeregisterResource.html): Deregisters the resource as managed by the Data Catalog.
+- [DescribeLakeFormationIdentityCenterConfiguration](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DescribeLakeFormationIdentityCenterConfiguration.html): Retrieves the instance ARN and application ARN for the connection.
+- [DescribeResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DescribeResource.html): Retrieves the current data access role for the given resource registered in AWS Lake Formation.
+- [DescribeTransaction](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DescribeTransaction.html): Returns the details of a single transaction.
+- [ExtendTransaction](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ExtendTransaction.html): Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted.
+- [GetDataCellsFilter](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetDataCellsFilter.html): Returns a data cells filter.
+- [GetDataLakePrincipal](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetDataLakePrincipal.html): Returns the identity of the invoking principal.
+- [GetDataLakeSettings](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetDataLakeSettings.html): Retrieves the list of the data lake administrators of a AWS Lake Formation-managed data lake.
+- [GetEffectivePermissionsForPath](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetEffectivePermissionsForPath.html): Returns the Lake Formation permissions for a specified table or database resource located at a path in Amazon S3.
+- [GetLFTag](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetLFTag.html): Returns an LF-tag definition.
+- [GetLFTagExpression](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetLFTagExpression.html): Returns the details about the LF-Tag expression.
+- [GetQueryState](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetQueryState.html): Returns the state of a query previously submitted.
+- [GetQueryStatistics](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetQueryStatistics.html): Retrieves statistics on the planning and execution of a query.
+- [GetResourceLFTags](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetResourceLFTags.html): Returns the LF-tags applied to a resource.
+- [GetTableObjects](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetTableObjects.html): Returns the set of Amazon S3 objects that make up the specified governed table.
+- [GetTemporaryDataLocationCredentials](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetTemporaryDataLocationCredentials.html): Allows a user or application in a secure environment to access data in a specific Amazon S3 location registered with AWS Lake Formation by providing temporary scoped credentials that are limited to the requested data location and the caller's authorized access level.
+- [GetTemporaryGluePartitionCredentials](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetTemporaryGluePartitionCredentials.html): This API is identical to GetTemporaryTableCredentials except that this is used when the target Data Catalog resource is of type Partition.
+- [GetTemporaryGlueTableCredentials](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetTemporaryGlueTableCredentials.html): Allows a caller in a secure environment to assume a role with permission to access Amazon S3.
+- [GetWorkUnitResults](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetWorkUnitResults.html): Returns the work units resulting from the query.
+- [GetWorkUnits](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GetWorkUnits.html): Retrieves the work units generated by the StartQueryPlanning operation.
+- [GrantPermissions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_GrantPermissions.html): Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
+- [ListDataCellsFilter](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListDataCellsFilter.html): Lists all the data cell filters on a table.
+- [ListLakeFormationOptIns](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListLakeFormationOptIns.html): Retrieve the current list of resources and principals that are opt in to enforce Lake Formation permissions.
+- [ListLFTagExpressions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListLFTagExpressions.html): Returns the LF-Tag expressions in callerâs account filtered based on caller's permissions.
+- [ListLFTags](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListLFTags.html): Lists LF-tags that the requester has permission to view.
+- [ListPermissions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListPermissions.html): Returns a list of the principal permissions on the resource, filtered by the permissions of the caller.
+- [ListResources](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListResources.html): Lists the resources registered to be managed by the Data Catalog.
+- [ListTableStorageOptimizers](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListTableStorageOptimizers.html): Returns the configuration of all storage optimizers associated with a specified table.
+- [ListTransactions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ListTransactions.html): Returns metadata about transactions and their status.
+- [PutDataLakeSettings](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_PutDataLakeSettings.html): Sets the list of data lake administrators who have admin privileges on all resources managed by AWS Lake Formation.
+- [RegisterResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_RegisterResource.html): Registers the resource as managed by the Data Catalog.
+- [RemoveLFTagsFromResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_RemoveLFTagsFromResource.html): Removes an LF-tag from the resource.
+- [RevokePermissions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_RevokePermissions.html): Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
+- [SearchDatabasesByLFTags](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_SearchDatabasesByLFTags.html): This operation allows a search on DATABASE resources by TagCondition.
+- [SearchTablesByLFTags](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_SearchTablesByLFTags.html): This operation allows a search on TABLE resources by LFTags.
+- [StartQueryPlanning](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_StartQueryPlanning.html): Submits a request to process a query statement.
+- [StartTransaction](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_StartTransaction.html): Starts a new transaction and returns its transaction ID.
+- [UpdateDataCellsFilter](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_UpdateDataCellsFilter.html): Updates a data cell filter.
+- [UpdateLakeFormationIdentityCenterConfiguration](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_UpdateLakeFormationIdentityCenterConfiguration.html): Updates the IAM Identity Center connection parameters.
+- [UpdateLFTag](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_UpdateLFTag.html): Updates the list of possible values for the specified LF-tag key.
+- [UpdateLFTagExpression](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_UpdateLFTagExpression.html): Updates the name of the LF-Tag expression to the new description and expression body provided.
+- [UpdateResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_UpdateResource.html): Updates the data access role used for vending access to the given (registered) resource in AWS Lake Formation.
+- [UpdateTableObjects](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_UpdateTableObjects.html): Updates the manifest of Amazon S3 objects that make up the specified governed table.
+- [UpdateTableStorageOptimizer](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_UpdateTableStorageOptimizer.html): Updates the configuration of the storage optimizers for a table.
+
+
+## [Data Types](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_Types.html)
+
+- [AddObjectInput](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_AddObjectInput.html): A new object to add to the governed table.
+- [AllRowsWildcard](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_AllRowsWildcard.html): A structure that you pass to indicate you want all rows in a filter.
+- [AuditContext](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_AuditContext.html): A structure used to include auditing information on the privileged API.
+- [BatchPermissionsFailureEntry](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_BatchPermissionsFailureEntry.html): A list of failures when performing a batch grant or batch revoke operation.
+- [BatchPermissionsRequestEntry](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_BatchPermissionsRequestEntry.html): A permission to a resource granted by batch operation to the principal.
+- [CatalogResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_CatalogResource.html): A structure for the catalog object.
+- [ColumnLFTag](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ColumnLFTag.html): A structure containing the name of a column resource and the LF-tags attached to it.
+- [ColumnWildcard](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ColumnWildcard.html): A wildcard object, consisting of an optional list of excluded column names or indexes.
+- [Condition](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_Condition.html): A Lake Formation condition, which applies to permissions and opt-ins that contain an expression.
+- [DatabaseResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DatabaseResource.html): A structure for the database object.
+- [DataCellsFilter](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DataCellsFilter.html): A structure that describes certain columns on certain rows.
+- [DataCellsFilterResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DataCellsFilterResource.html): A structure for a data cells filter resource.
+- [DataLakePrincipal](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DataLakePrincipal.html): The AWS Lake Formation principal.
+- [DataLakeSettings](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DataLakeSettings.html): A structure representing a list of AWS Lake Formation principals designated as data lake administrators and lists of principal permission entries for default create database and default create table permissions.
+- [DataLocationResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DataLocationResource.html): A structure for a data location object where permissions are granted or revoked.
+- [DeleteObjectInput](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DeleteObjectInput.html): An object to delete from the governed table.
+- [DetailsMap](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_DetailsMap.html): A structure containing the additional details to be returned in the AdditionalDetails attribute of PrincipalResourcePermissions.
+- [ErrorDetail](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ErrorDetail.html): Contains details about an error.
+- [ExecutionStatistics](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ExecutionStatistics.html): Statistics related to the processing of a query statement.
+- [ExternalFilteringConfiguration](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ExternalFilteringConfiguration.html): Configuration for enabling external data filtering for third-party applications to access data managed by Lake Formation .
+- [FilterCondition](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_FilterCondition.html): This structure describes the filtering of columns in a table based on a filter condition.
+- [LakeFormationOptInsInfo](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LakeFormationOptInsInfo.html): A single principal-resource pair that has Lake Formation permissins enforced.
+- [LFTag](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LFTag.html): A structure that allows an admin to grant user permissions on certain conditions.
+- [LFTagError](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LFTagError.html): A structure containing an error related to a TagResource or UnTagResource operation.
+- [LFTagExpression](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LFTagExpression.html): A structure consists LF-Tag expression name and catalog ID.
+- [LFTagExpressionResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LFTagExpressionResource.html): A structure containing a LF-Tag expression (keys and values).
+- [LFTagKeyResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LFTagKeyResource.html): A structure containing an LF-tag key and values for a resource.
+- [LFTagPair](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LFTagPair.html): A structure containing an LF-tag key-value pair.
+- [LFTagPolicyResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_LFTagPolicyResource.html): A structure containing a list of LF-tag conditions or saved LF-Tag expressions that apply to a resource's LF-tag policy.
+- [PartitionObjects](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_PartitionObjects.html): A structure containing a list of partition values and table objects.
+- [PartitionValueList](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_PartitionValueList.html): Contains a list of values defining partitions.
+- [PlanningStatistics](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_PlanningStatistics.html): Statistics related to the processing of a query statement.
+- [PrincipalPermissions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_PrincipalPermissions.html): Permissions granted to a principal.
+- [PrincipalResourcePermissions](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_PrincipalResourcePermissions.html): The permissions granted or revoked on a resource.
+- [QueryPlanningContext](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_QueryPlanningContext.html): A structure containing information about the query plan.
+- [QuerySessionContext](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_QuerySessionContext.html): A structure used as a protocol between query engines and Lake Formation or AWS Glue.
+- [RedshiftConnect](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_RedshiftConnect.html): Configuration for enabling trusted identity propagation with Redshift Connect.
+- [RedshiftScopeUnion](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_RedshiftScopeUnion.html): A union structure representing different Redshift integration scopes.
+- [Resource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_Resource.html): A structure for the resource.
+- [ResourceInfo](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ResourceInfo.html): A structure containing information about an AWS Lake Formation resource.
+- [RowFilter](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_RowFilter.html): A PartiQL predicate.
+- [ServiceIntegrationUnion](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_ServiceIntegrationUnion.html): A union structure representing different service integration types.
+- [StorageOptimizer](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_StorageOptimizer.html): A structure describing the configuration and details of a storage optimizer.
+- [TableObject](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TableObject.html): Specifies the details of a governed table.
+- [TableResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TableResource.html): A structure for the table object.
+- [TableWildcard](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TableWildcard.html): A wildcard object representing every table under a database.
+- [TableWithColumnsResource](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TableWithColumnsResource.html): A structure for a table with columns object.
+- [TaggedDatabase](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TaggedDatabase.html): A structure describing a database resource with LF-tags.
+- [TaggedTable](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TaggedTable.html): A structure describing a table resource with LF-tags.
+- [TemporaryCredentials](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TemporaryCredentials.html): A temporary set of credentials for an AWS Lake Formation user.
+- [TransactionDescription](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_TransactionDescription.html): A structure that contains information about a transaction.
+- [VirtualObject](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_VirtualObject.html): An object that defines an Amazon S3 object to be deleted if a transaction cancels, provided that VirtualPut was called before writing the object.
+- [WorkUnitRange](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_WorkUnitRange.html): Defines the valid range of work unit IDs for querying the execution service.
+- [WriteOperation](https://docs.aws.amazon.com/lake-formation/latest/APIReference/API_WriteOperation.html): Defines an object to add to or delete from a governed table.

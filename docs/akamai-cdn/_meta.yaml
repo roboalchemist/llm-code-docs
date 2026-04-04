@@ -1,0 +1,8 @@
+name: akamai-cdn
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:08:25Z"
+description: >
+  akamai-cdn documentation
+quality_score: 0

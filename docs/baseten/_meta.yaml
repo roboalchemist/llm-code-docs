@@ -1,0 +1,9 @@
+name: baseten
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.baseten.co/
+    last_fetched: "2026-04-03T23:08:41Z"
+description: >
+  baseten documentation
+quality_score: 0

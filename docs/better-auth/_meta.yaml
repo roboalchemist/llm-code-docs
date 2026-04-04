@@ -1,0 +1,9 @@
+name: better-auth
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.better-auth.com/
+    last_fetched: "2026-04-03T23:08:42Z"
+description: >
+  better-auth documentation
+quality_score: 0

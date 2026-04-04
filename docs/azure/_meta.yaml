@@ -1,0 +1,8 @@
+name: azure
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:08:34Z"
+description: >
+  azure documentation
+quality_score: 0

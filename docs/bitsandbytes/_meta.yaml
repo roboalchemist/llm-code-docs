@@ -1,0 +1,9 @@
+name: bitsandbytes
+primary_source: llms
+sources:
+  - type: llms
+    url: https://huggingface.co/docs/bitsandbytes/
+    last_fetched: "2026-04-03T23:08:42Z"
+description: >
+  bitsandbytes documentation
+quality_score: 0

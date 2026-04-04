@@ -1,0 +1,35 @@
+# Source: https://www.apiable.io/resources/what-is-an-api-portal
+
+[Platform](#)[API Portal](/platform/api-portal)[API Developer Experience](/platform/api-developer-experience)[API Products](/platform/api-products)[API Monetization](/platform/api-monetization)[Pricing](#)[Resources](https://www.apiable.io/resources/api-portal-build-vs-buy-as-a-service)[About](/about-us)[Login](https://dashboard.apiable.io/)[Contact us](/ask-sales)[](/)Platform[API PortalBuild a branded API Portal for your partners](/platform/api-portal)[API ProductsPackage APIs into products partners will pay for](/platform/api-products)[API MonetizationCharge for API usage and prove ROI](/platform/api-monetization)[API Developer ExperienceOnboard, monitor, and manage API consumers and their usage](/platform/api-developer-experience)
+### By API Gateway
+[Apiable with Amazon API Gateway](/aws)[Apiable with Kong](/kong)
+### Compare
+[Apiable vs Kong](#)[Apiable vs Tyk](#)[Apiable vs Apigee](#)[Apiable vs Azure](#)[Pricing](/pricing)[Resources](https://www.apiable.io/resources/)[Book demo](/demo)[](#)
+# What is an API Portal?
+What exactly is an API Developer Portal? An API Portal serves as the gateway for organizations to participate in the API Economy. It enables the organization to showcase their APIs as Products, facilitating customer access and developer onboarding. In this blogpost we'll dive a little deeper and provide some examples.
+
+An API Portal allows your organization to join the API Economy by exposing your APIs as Products, allowing your customers to browse and consume API Products, and onboarding developers to get secure access to your APIs, along with instructions on how to use them. The API Portal is essentially a two-sided marketplace, with API Providers on one side, and API Consumers on the other, whereby you are the primary API provider. In many cases, the customer of the API Product is also a Developer, but this is not always the case. A customer may also be a non-technical person, in this case, they are responsible for the decision to use the API, however, a developer is always needed to work with the API on behalf of the customer. API Portals often appear on the developer. or developers. subdomain, for example, [https://developer.mercedes-benz.com/](https://developer.mercedes-benz.com/), although there is a trend toward using digital., as this is more inclusive of all user roles e.g. [https://digital.swisscom.com/](https://digital.swisscom.com/). API Portals are also known as API Developer Portals or Developer Portals.
+
+#### Example API Providers:
+YouOther teams in your organizationPartnersExternal Developers
+#### Example API Consumers:
+Existing CustomersNew CustomersOther teams within your organizationPartnersExternal Developers
+#### Example: API Consumer - User Journey
+An organization, acme inc., has many digital API products with a clear value proposition for each. These are exposed in a product catalogue on an API portal. Since these are keyword rich, they rank highly with search engines. A prospect customer organization has a pain point and they are trying to find a way to solve their problem. They find the API Product in a search and navigate to the API portal. After browsing through the acme inc. digital catalogue, the customer finds that the API Product satisfies their use case, and they decide to purchase a subscription. After choosing their preferred plan, they enter their credit card details and are subscribed to the digital product. At the end of the subscription process, the customer is prompted to either continue as a developer or to invite a developer to continue the process. In this case, the customer invites their lead developer to handle the technical integration. Upon receiving the invitation from the customer, the developer registers onto the API portal with the link they received. Upon login, they can see that the customer has already subscribed to a product. They can see which version of the API Product they need to develop against, all API documentation is tailored to this product version. The lead developer tries out the API and quickly understands the functionality, including how this fits into the use case outlined by the customer. In the next sprint, the integration is implemented, and the customer’s pain is alleviated.
+
+[API Consumer - User Journey](https://cdn.prod.website-files.com/627ca6f747706dac04ccaba1/629f41caafefa8635a48bfb5_API-Consumer-User-Journey.png)
+
+### Developer eXperience
+With any API Portal, the developer experience is critical; if a developer has a bad experience, then your reputation may be damaged. Generally speaking, the developer does not want to see too much marketing material. They prefer to quickly get access to the APIs, try them out, and if necessary, read the documentation. An API Sandbox environment is required for the developer to try out and develop against. If a developer cannot get the API to work, then they will require prompt support, either via an existing developer community like Stackoverflow, or via a community support forum from within your API Portal. The use of SDKs are strongly encouraged; these allow developers to quickly consume your APIs and reduce the risk of anything going wrong.
+
+‍
+
+## Ready to turn your APIs into products (and revenue)?
+
+Join the companies monetizing API usage, scaling partner onboarding, and proving measurable business impact—without overloading their teams.
+
+[Book Your Demo](/demo)[Product](/platform/api-portal)[API Portal](/platform/api-portal)[API Security](/platform/api-security)[API Developer Experience](/platform/api-developer-experience)[API Products](/platform/api-products)[API Monetization](/platform/api-monetization)[API Gateway Synchronization](/platform/api-gateway-synchronization)[Pricing](/pricing)[Overview](/pricing)[Resources](#)[Blog](https://www.apiable.io/resources/)[Best Practices](https://www.apiable.io/resources/api-portal-build-vs-buy-as-a-service)[Compare](#)[Apiable vs Amazon API Gateway](#)[Apiable vs Kong](#)[Apiable vs Tyk](#)[Apiable vs Apigee](#)[Apiable vs Azure](#)[By API Gateway](#)[Apiable with Amazon API Gateway](/aws)[Apiable with Kong](/kong)[Guides](#)[Build vs Buy as a Service](https://www.apiable.io/resources/api-portal-build-vs-buy-as-a-service)[API Business Plan Template](https://www.apiable.io/resources/api-business-plan-template)[About Apiable](/about-us)[Company](/about-us)[Team](/about-us)[Careers](/about-us)
+## How to Playbooks
+[Build vs Buy as a ServiceRead more](https://www.apiable.io/resources/api-portal-build-vs-buy-as-a-service)[](/unused/old-home)[Linkedin](https://www.linkedin.com/company/apiable-io)2025 © Copyright Apiable Oy — 3129965-8[Privacy Policy ](/terms/privacy-policy)[Support Policy](/terms/support-policy)[Terms of Service](/terms/terms-of-service)[Contact](/ask-sales)Kong is a registered trademark owned by Kong Inc.
+Azure is a registered trademark owned by Microsoft Corp.
+Apigee is a registered trademark owned by Google LLC.

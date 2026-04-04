@@ -1,0 +1,210 @@
+# Source: https://www.apollographql.com/docs/ios/caching/cache-key-resolution.md
+
+# Custom cache keys
+
+When working with a [normalized cache](https://www.apollographql.com/docs/ios/caching/introduction#what-is-a-normalized-cache), it is recommended that you specify a **cache ID** for each object type in your schema. If you don't, objects are assigned a *default* cache ID, but that ID can lead to undesirable duplication of data.
+
+The normalized cache computes a **cache key** for each object that is stored in the cache. With Apollo iOS, you can customize the computation of **cache keys** to improve the performance and capabilities of your cache.
+
+> To learn more, read about how the cache [normalizes objects by cache key](https://www.apollographql.com/docs/ios/caching/introduction#normalizing-objects-by-cache-key).
+
+The `@typePolicy` and `@fieldPolicy` directives are intended to be used together. The `@typePolicy` directive applies to types in your schema and derives cache keys from fields on a fetched object when writing to the cache. The `@fieldPolicy` directive applies to fields that have arguments on types in your schema and derives cache keys from the values of the field's arguments when reading an object from the cache.
+
+For most use cases, you can configure cache keys declaratively using the methods described on this page. For advanced use cases not supported by declarative cache keys, you can use [programmatic cache key configuration](https://www.apollographql.com/docs/ios/caching/programmatic-cache-keys). When executing an operation, the library first checks for programmatic cache keys, then for directive-based cache keys, and finally falls back to the default implementation.
+
+## Schema extensions
+
+Declarative cache keys work by adding directives to your backend schema types to indicate how cache keys should be resolved for those types. To do this, you can extend your backend schema by creating a schema extension file with the file extension `.graphqls`. You can add any number of schema extension files to your project.
+
+Make sure you include your schema extension files in the `schemaSearchPaths` of your code generation configuration's [`FileInput`](https://www.apollographql.com/docs/ios/code-generation/codegen-configuration#file-input).
+
+## The `@typePolicy` directive
+
+The `@typePolicy` directive lets you specify an object's cache ID using [key fields](https://www.apollographql.com/docs/ios/caching/cache-key-resolution.md#key-fields) of the object returned by your GraphQL server. You can apply `@typePolicy` to both concrete object types and interface types in your schema.
+
+To declare a type policy, extend the type with the `@typePolicy` directive in a `.graphqls` schema extension file.
+
+### Key fields
+
+The `@typePolicy` directive has a single `keyFields` argument, which takes a string indicating the fields used to determine a type's cache key.
+
+```graphql title=typePolicies.graphqls
+extend type Book @typePolicy(keyFields: "id")
+```
+
+If you add the above schema extension file , Apollo iOS resolves the cache key for all objects with a `__typename` of `"Book"` by using the value of their `id` field. The concrete type of the object is always prepended to the cache key. This means that a `Book` object with an `id` of `456` will resolve to have a cache key of `Book:456`.
+
+All of a type's `@typePolicy` key fields must return a scalar type. To use non-scalar fields in cache keys, use [programmatic cache key configuration](https://www.apollographql.com/docs/ios/caching/programmatic-cache-keys).
+
+### Multiple key fields
+
+You can specify *multiple* key fields for an object if they are all required to uniquely identify a particular cache entry. Separate multiple key fields with a single space when declaring them:
+
+```graphql title=typePolicies.graphqls
+extend type Author @typePolicy(keyFields: "firstName lastName")
+```
+
+With this extension, the resolved cache key includes all declared key fields and separates them by the `+` character. In this case, an `Author` object with a `firstName` of `"Ray"` and a last name of `"Bradbury"` would resolve to have a cache key of `Author:Ray+Bradbury`.
+
+### Type policies on interface types
+
+You can also use `@typePolicy` on interface types. Doing so specifies a default set of key fields for all types that implement that interface.
+
+```graphql title=extra.graphqls
+extend interface Node @typePolicy(keyFields: "id")
+```
+
+Overriding type policies is not currently supported. If an object type has a `@typePolicy`, it must match any type policies of any interfaces the object type implements.
+
+## Caveats and limitations
+
+Declarative cache key resolution has a few limitations you should be aware of while implementing your `@typePolicy` directives:
+
+### Conflicting Type Policies
+
+If any type implements two interfaces with conflicting type policies, Apollo iOS throws a validation error when executing code generation.
+
+### Cache Inconsistencies
+
+When an object is returned for a field of an interface type where the interface has a `@typePolicy`, Apollo iOS will first attempt to find a `@typePolicy` for the concrete type by using the `__typename` field of the returned object. If the type does not have an `@typePolicy` of its own, the interface's `@typePolicy` will be applied.
+
+If the same object is returned for multiple fields of different interface types with conflicting type policies, it is possible that the same object is resolved with two different type policies, leading to cache inconsistencies.
+
+In most circumstances, validation that is run during code generation prevents this from occurring. However, this may still occur if changes are made to the schema after code generation runs or after your application is published.
+
+This is possible if:
+
+A) A type is added to your schema after code generation is executed and that type implements two different interfaces with different type policies
+
+B) Implementation of an interface is added to an existing type which already implements an interface with a different type policy
+
+## The `@fieldPolicy` directive
+
+The `@fieldPolicy` directive enables you to specify how cache keys should be resolved when querying a field with arguments. In practice, field policies should be thought of as applied to a specific field with arguments on a type in your schema. Because directives cannot be added to fields in schema extensions, you can apply the `@fieldPolicy` directive to `Object` and `Interface` types in your schema and provide a field name for the policy to be applied to.
+
+When fetching a field with an argument, you can use a field policy to configure an expected cache key for the object that is derived from the values of the field's arguments. Field policies are designed to be used in combination with type policies. When the cache key for an object derived by the type policy is the same as the one derived by the field policy, the field can use the cached object.
+
+### Directive usage
+
+The `@fieldPolicy` directive has two arguments: `forField` and `keyArgs`. Use `forField` to provide the name of the field you're adding the policy to. Use `keyArgs` to specify which input arguments of that field to use for resolving cache keys and in what order. The format of the resolved cache key is the same as with `@typePolicy`: `{type name}:{value}`. When multiple key arguments are present, they are joined with a `+` separator.
+
+Given a type like this:
+
+```graphql
+type Query {
+  allAnimals(species: String!): Animal!
+}
+
+type Animal {
+  id: ID!
+  name: String!
+  species: String!
+}
+```
+
+Apply this field policy as follows:
+
+```graphql
+extend type Query @fieldPolicy(forField: "allAnimals", keyArgs: "species")
+```
+
+This results in resolved cache keys that look like `Animal:Lion` or `Animal:Tiger`.
+
+#### Multiple key arguments
+
+When you have multiple key arguments, provide them to the directive as a space-delimited string. For example, for a type like this:
+
+```graphql
+type Query {
+  allAnimals(species: String!, habitat: String!): Animal!
+}
+
+type Animal {
+  id: ID!
+  name: String!
+  species: String!
+  habitat: String!
+}
+```
+
+Apply this field policy as follows:
+
+```graphql
+extend type Query @fieldPolicy(forField: "allAnimals", keyArgs: "species habitat")
+```
+
+This results in resolved cache keys that look like `Animal:Lion+Savanna`.
+
+You can control the order of arguments in the cache key by changing their order in the directive, which results in a cache key of `Animal:Savanna+Lion`:
+
+```graphql
+extend type Query @fieldPolicy(forField: "allAnimals", keyArgs: "habitat species")
+```
+
+#### List arguments
+
+The `@fieldPolicy` directive supports fields that return a list. When using lists, note the following requirements:
+
+* If a field has a list return type, it must contain exactly one list input parameter.
+* Conversely, if a field has a list input parameter, it must return a list.
+* Nested lists are not supported.
+* Partial cache hits are not supported, so every cache key created from the input parameters must have a cache hit or the cache read will fail.
+
+If you need to apply a field policy to a field that is not supported by these restrictions, you can use [programmatic field policy configuration](https://www.apollographql.com/docs/ios/caching/programmatic-cache-keys#programmatic-field-policy-usage).
+
+With a field like this:
+
+```graphql
+type Query {
+  allAnimals(species: [String!], habitat: String!): [Animal!]
+}
+
+type Animal {
+  id: ID!
+  name: String!
+  species: String!
+  habitat: String!
+}
+```
+
+Apply this field policy like this:
+
+```graphql
+extend type Query @fieldPolicy(forField: "allAnimals", keyArgs: "species habitat")
+```
+
+If your inputs are `["Lion", "Elephant"]` and `Savanna`, your cache keys are `Animal:Lion+Savanna` and `Animal:Elephant+Savanna`. These
+are used to retrieve objects from the cache and populate the list to return from the field.
+
+#### Object arguments
+
+You can use an *Input Object* as the type for your input parameters on a field. In these cases, use dot notation to traverse
+the object's structure for the value to use in your cache key.
+
+With a type like this:
+
+```graphql
+type Query {
+  allAnimals(input: QueryInput!): Animal!
+}
+
+type Animal {
+  id: ID!
+  name: String!
+  species: String!
+  habitat: String!
+}
+
+input QueryInput {
+  id: ID!
+  species: String!
+}
+```
+
+Apply a field policy as follows:
+
+```graphql
+extend type Query @fieldPolicy(forField: "allAnimals", keyArgs: "input.species")
+```
+
+This results in cache keys such as `Animal:Lion` or `Animal:Elephant`.

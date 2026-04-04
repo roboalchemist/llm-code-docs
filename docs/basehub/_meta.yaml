@@ -1,0 +1,9 @@
+name: basehub
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.basehub.com/
+    last_fetched: "2026-04-03T23:08:41Z"
+description: >
+  basehub documentation
+quality_score: 0

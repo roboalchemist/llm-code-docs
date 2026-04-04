@@ -1,0 +1,9 @@
+name: aws-dynamodb
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/
+    last_fetched: "2026-04-03T23:08:32Z"
+description: >
+  aws-dynamodb documentation
+quality_score: 0

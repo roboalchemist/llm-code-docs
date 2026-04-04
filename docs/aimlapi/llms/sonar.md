@@ -1,0 +1,211 @@
+# Source: https://docs.aimlapi.com/api-references/text-models-llm/perplexity/sonar.md
+
+# sonar
+
+{% columns %}
+{% column width="66.66666666666666%" %}
+{% hint style="info" %}
+This documentation is valid for the following list of our models:
+
+* &#x20;`perplexity/sonar`
+  {% endhint %}
+  {% endcolumn %}
+
+{% column width="33.33333333333334%" %} <a href="https://aimlapi.com/app/perplexity/sonar" class="button primary">Try in Playground</a>
+{% endcolumn %}
+{% endcolumns %}
+
+## Model Overview
+
+A model built on top of Llama 3.3 70B and optimized for Perplexity search. Fast, cost-effective, everyday search and Q\&A. Ideal for simple queries, topic summaries, and fact-checking.
+
+## How to Make a Call
+
+<details>
+
+<summary>Step-by-Step Instructions</summary>
+
+:digit\_one: **Setup You Can’t Skip**
+
+:black\_small\_square: [**Create an Account**](https://aimlapi.com/app/sign-up): Visit the AI/ML API website and create an account (if you don’t have one yet).\
+:black\_small\_square: [**Generate an API Key**](https://aimlapi.com/app/keys): After logging in, navigate to your account dashboard and generate your API key. Ensure that key is enabled on UI.
+
+:digit\_two: **Copy the code example**
+
+At the bottom of this page, you'll find [a code example](#code-example) that shows how to structure the request. Choose the code snippet in your preferred programming language and copy it into your development environment.
+
+:digit\_three: **Modify the code example**
+
+:black\_small\_square: Replace `<YOUR_AIMLAPI_KEY>` with your actual AI/ML API key from your account.\
+:black\_small\_square: Insert your question or request into the `content` field—this is what the model will respond to.
+
+:digit\_four: <sup><sub><mark style="background-color:yellow;">**(Optional)**<mark style="background-color:yellow;"><sub></sup>**&#x20;Adjust other optional parameters if needed**
+
+Only `model` and `messages` are required parameters for this model (and we’ve already filled them in for you in the example), but you can include optional parameters if needed to adjust the model’s behavior. Below, you can find the corresponding [API schema](#api-schema), which lists all available parameters along with notes on how to use them.
+
+:digit\_five: **Run your modified code**
+
+Run your modified code in your development environment. Response time depends on various factors, but for simple prompts it rarely exceeds a few seconds.
+
+{% hint style="success" %}
+If you need a more detailed walkthrough for setting up your development environment and making a request step by step — feel free to use our [Quickstart guide](https://docs.aimlapi.com/quickstart/setting-up).
+{% endhint %}
+
+</details>
+
+## API Schema
+
+## POST /v1/chat/completions
+
+>
+
+```json
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v1/chat/completions":{"post":{"operationId":"_v1_chat_completions","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["perplexity/sonar"]},"messages":{"type":"array","items":{"oneOf":[{"type":"object","properties":{"role":{"type":"string","enum":["user"],"description":"The role of the author of the message — in this case, the user"},"content":{"anyOf":[{"type":"string"},{"type":"array","items":{"anyOf":[{"type":"object","properties":{"type":{"type":"string","enum":["text"],"description":"The type of the content part."},"text":{"type":"string","description":"The text content."}},"required":["type","text"]},{"type":"object","properties":{"type":{"type":"string","enum":["image_url"]},"image_url":{"type":"object","properties":{"url":{"type":"string","format":"uri","description":"Either a URL of the image or the base64 encoded image data. "},"detail":{"type":"string","enum":["low","high","auto"],"description":"Specifies the detail level of the image. Currently supports JPG/JPEG, PNG, GIF, and WEBP formats."}},"required":["url"]}},"required":["type","image_url"]}]}}],"description":"The contents of the user message."},"name":{"type":"string","description":"An optional name for the participant. Provides the model information to differentiate between participants of the same role."}},"required":["role","content"]},{"type":"object","properties":{"role":{"type":"string","enum":["system"],"description":"The role of the author of the message — in this case, the system."},"content":{"anyOf":[{"type":"string"},{"type":"array","items":{"type":"object","properties":{"type":{"type":"string","enum":["text"],"description":"The type of the content part."},"text":{"type":"string","description":"The text content."}},"required":["type","text"]}}],"description":"The contents of the system message."},"name":{"type":"string","description":"An optional name for the participant. Provides the model information to differentiate between participants of the same role."}},"required":["role","content"],"additionalProperties":false},{"type":"object","properties":{"role":{"type":"string","enum":["assistant"],"description":"The role of the author of the message — in this case, the Assistant."},"content":{"anyOf":[{"type":"string","description":"The contents of the Assistant message."},{"type":"array","items":{"type":"object","properties":{"type":{"type":"string","enum":["text"],"description":"The type of the content part."},"text":{"type":"string","description":"The text content."}},"required":["type","text"]},"description":"An array of content parts with a defined type. Can be one or more of type text, or exactly one of type refusal."}],"description":"The contents of the Assistant message. Required unless tool_calls or function_call is specified."},"name":{"type":"string","description":"An optional name for the participant. Provides the model information to differentiate between participants of the same role."}},"required":["role"]}]},"description":"A list of messages comprising the conversation so far. Depending on the model you use, different message types (modalities) are supported, like text, documents (txt, pdf), images, and audio."},"max_tokens":{"type":"number","minimum":1,"description":"The maximum number of tokens that can be generated in the chat completion. This value can be used to control costs for text generated via API."},"stream":{"type":"boolean","default":false,"description":"If set to True, the model response data will be streamed to the client as it is generated using server-sent events."},"stream_options":{"type":"object","properties":{"include_usage":{"type":"boolean"}},"required":["include_usage"]},"temperature":{"type":"number","minimum":0,"maximum":2,"description":"What sampling temperature to use. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both."},"top_p":{"type":"number","minimum":0.01,"maximum":1,"description":"An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.\n  We generally recommend altering this or temperature but not both."},"logit_bias":{"type":"object","nullable":true,"additionalProperties":{"type":"number","minimum":-100,"maximum":100},"description":"Modify the likelihood of specified tokens appearing in the completion.\n  \n  Accepts a JSON object that maps tokens (specified by their token ID in the tokenizer) to an associated bias value from -100 to 100. Mathematically, the bias is added to the logits generated by the model prior to sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the relevant token."},"frequency_penalty":{"type":"number","nullable":true,"minimum":-2,"maximum":2,"description":"Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim."},"presence_penalty":{"type":"number","nullable":true,"minimum":-2,"maximum":2,"description":"Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics."},"seed":{"type":"integer","minimum":1,"description":"This feature is in Beta. If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result."},"response_format":{"oneOf":[{"type":"object","properties":{"type":{"type":"string","enum":["text"],"description":"The type of response format being defined. Always text."}},"required":["type"],"additionalProperties":false,"description":"Default response format. Used to generate text responses."},{"type":"object","properties":{"type":{"type":"string","enum":["json_object"],"description":"The type of response format being defined. Always json_object."}},"required":["type"],"additionalProperties":false,"description":"An older method of generating JSON responses. Using json_schema is recommended for models that support it. Note that the model will not generate JSON without a system or user message instructing it to do so."},{"type":"object","properties":{"type":{"type":"string","enum":["json_schema"],"description":"The type of response format being defined. Always json_schema."},"json_schema":{"type":"object","properties":{"name":{"type":"string","description":"The name of the response format. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64."},"schema":{"type":"object","additionalProperties":{"nullable":true},"description":"The schema for the response format, described as a JSON Schema object."},"strict":{"type":"boolean","nullable":true,"description":"Whether to enable strict schema adherence when generating the output. If set to True, the model will always follow the exact schema defined in the schema field. Only a subset of JSON Schema is supported when strict is True."},"description":{"type":"string","description":"A description of what the response format is for, used by the model to determine how to respond in the format."}},"required":["name"],"additionalProperties":false,"description":"JSON Schema response format. Used to generate structured JSON responses."}},"required":["type","json_schema"],"additionalProperties":false,"description":"JSON Schema response format. Used to generate structured JSON responses."}],"description":"An object specifying the format that the model must output."},"web_search_options":{"type":"object","properties":{"search_context_size":{"type":"string","enum":["low","medium","high"],"description":"High level guidance for the amount of context window space to use for the search. One of low, medium, or high. medium is the default."},"user_location":{"type":"object","nullable":true,"properties":{"approximate":{"type":"object","properties":{"city":{"type":"string","description":"Free text input for the city of the user, e.g. San Francisco."},"country":{"type":"string","pattern":"^[A-Z]{2}$","description":"The two-letter ISO country code of the user, e.g. US."},"region":{"type":"string","description":"Free text input for the region of the user, e.g. California."},"timezone":{"type":"string","description":"The IANA timezone of the user, e.g. America/Los_Angeles."}},"description":"Approximate location parameters for the search."},"type":{"type":"string","enum":["approximate"],"description":"The type of location approximation. Always approximate."}},"required":["approximate","type"],"description":"Approximate location parameters for the search."}},"description":"This tool searches the web for relevant results to use in a response."},"top_k":{"type":"number","description":"Only sample from the top K options for each subsequent token. Used to remove \"long tail\" low probability responses. Recommended for advanced use cases only. You usually only need to use temperature."},"search_mode":{"type":"string","enum":["academic","web"],"default":"academic","description":"Controls the search mode used for the request. When set to 'academic', results will prioritize scholarly sources like peer-reviewed papers and academic journals."},"search_domain_filter":{"type":"array","items":{"type":"string"},"description":"A list of domains to limit search results to. Currently limited to 10 domains for Allowlisting and Denylisting. For Denylisting, add a - at the beginning of the domain string."},"return_images":{"type":"boolean","default":false,"description":"Determines whether search results should include images."},"return_related_questions":{"type":"boolean","default":false,"description":"Determines whether related questions should be returned."},"search_recency_filter":{"type":"string","enum":["day","week","month","year"],"description":"Filters search results based on time (e.g., 'week', 'day')."},"search_after_date_filter":{"type":"string","pattern":"^(0?[1-9]|1[0-2])\\/(0?[1-9]|[12]\\d|3[01])\\/\\d{4}$","description":"Filters search results to only include content published after this date. Format should be %m/%d/%Y (e.g. 3/1/2025)"},"search_before_date_filter":{"type":"string","pattern":"^(0?[1-9]|1[0-2])\\/(0?[1-9]|[12]\\d|3[01])\\/\\d{4}$","description":"Filters search results to only include content published before this date. Format should be %m/%d/%Y (e.g. 3/1/2025)"},"last_updated_after_filter":{"type":"string","pattern":"^(0?[1-9]|1[0-2])\\/(0?[1-9]|[12]\\d|3[01])\\/\\d{4}$","description":"Filters search results to only include content last updated after this date. Format should be %m/%d/%Y (e.g. 3/1/2025)"},"last_updated_before_filter":{"type":"string","pattern":"^(0?[1-9]|1[0-2])\\/(0?[1-9]|[12]\\d|3[01])\\/\\d{4}$","description":"Filters search results to only include content last updated before this date. Format should be %m/%d/%Y (e.g. 3/1/2025)"}},"required":["model","messages"],"title":"perplexity/sonar"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"A unique identifier for the chat completion."},"object":{"type":"string","enum":["chat.completion"],"description":"The object type."},"created":{"type":"number","description":"The Unix timestamp (in seconds) of when the chat completion was created."},"choices":{"type":"array","items":{"type":"object","properties":{"index":{"type":"number","description":"The index of the choice in the list of choices."},"message":{"type":"object","properties":{"role":{"type":"string","description":"The role of the author of this message."},"content":{"type":"string","description":"The contents of the message."},"refusal":{"type":"string","nullable":true,"description":"The refusal message generated by the model."},"annotations":{"type":"array","nullable":true,"items":{"type":"object","properties":{"type":{"type":"string","enum":["url_citation"],"description":"The type of the URL citation. Always url_citation."},"url_citation":{"type":"object","properties":{"end_index":{"type":"integer","description":"The index of the last character of the URL citation in the message."},"start_index":{"type":"integer","description":"The index of the first character of the URL citation in the message."},"title":{"type":"string","description":"The title of the web resource."},"url":{"type":"string","description":"The URL of the web resource."}},"required":["end_index","start_index","title","url"],"description":"A URL citation when using web search."}},"required":["type","url_citation"]},"description":"Annotations for the message, when applicable, as when using the web search tool."},"audio":{"type":"object","nullable":true,"properties":{"id":{"type":"string","description":"Unique identifier for this audio response."},"data":{"type":"string","description":"Base64 encoded audio bytes generated by the model, in the format specified in the request."},"transcript":{"type":"string","description":"Transcript of the audio generated by the model."},"expires_at":{"type":"integer","description":"The Unix timestamp (in seconds) for when this audio response will no longer be accessible on the server for use in multi-turn conversations."}},"required":["id","data","transcript","expires_at"],"description":"A chat completion message generated by the model."},"tool_calls":{"type":"array","nullable":true,"items":{"oneOf":[{"type":"object","properties":{"id":{"type":"string","description":"The ID of the tool call."},"type":{"type":"string","enum":["function"],"description":"The type of the tool."},"function":{"type":"object","properties":{"arguments":{"type":"string","description":"The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function."},"name":{"type":"string","description":"The name of the function to call."}},"required":["arguments","name"],"description":"The function that the model called."}},"required":["id","type","function"]},{"type":"object","properties":{"id":{"type":"string","description":"The ID of the tool call."},"type":{"type":"string","enum":["custom"],"description":"The type of the tool."},"custom":{"type":"object","properties":{"input":{"type":"string","description":"The input for the custom tool call generated by the model."},"name":{"type":"string","description":"The name of the custom tool to call."}},"required":["input","name"],"description":"The custom tool that the model called."}},"required":["id","type","custom"]}]},"description":"The tool calls generated by the model, such as function calls."}},"required":["role","content"],"description":"A chat completion message generated by the model."},"finish_reason":{"type":"string","enum":["stop","length","content_filter","tool_calls"],"description":"The reason the model stopped generating tokens. This will be stop if the model hit a natural stop point or a provided stop sequence, length if the maximum number of tokens specified in the request was reached, content_filter if content was omitted due to a flag from our content filters, tool_calls if the model called a tool"},"logprobs":{"type":"object","nullable":true,"properties":{"content":{"type":"array","items":{"type":"object","properties":{"bytes":{"type":"array","items":{"type":"integer"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."},"token":{"type":"string","description":"The token."},"top_logprobs":{"type":"array","nullable":true,"items":{"type":"object","properties":{"bytes":{"type":"array","nullable":true,"items":{"type":"integer"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."},"token":{"type":"string","description":"The token."}},"required":["logprob","token"]},"description":"List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested top_logprobs returned."}},"required":["bytes","logprob","token"]},"description":"A list of message content tokens with log probability information."},"refusal":{"type":"array","items":{"type":"object","properties":{"bytes":{"type":"array","items":{"type":"integer"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."},"token":{"type":"string","description":"The token."},"top_logprobs":{"type":"array","nullable":true,"items":{"type":"object","properties":{"bytes":{"type":"array","nullable":true,"items":{"type":"integer"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."},"token":{"type":"string","description":"The token."}},"required":["logprob","token"]},"description":"List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested top_logprobs returned."}},"required":["bytes","logprob","token"]},"description":"A list of message refusal tokens with log probability information."}},"required":["content","refusal"],"description":"Log probability information for the choice."}},"required":["index","message","finish_reason"]}},"model":{"type":"string","description":"The model used for the chat completion."},"usage":{"type":"object","properties":{"prompt_tokens":{"type":"number","description":"Number of tokens in the prompt."},"completion_tokens":{"type":"number","description":"Number of tokens in the generated completion."},"total_tokens":{"type":"number","description":"Total number of tokens used in the request (prompt + completion)."},"completion_tokens_details":{"type":"object","nullable":true,"properties":{"accepted_prediction_tokens":{"type":"integer","nullable":true,"description":"When using Predicted Outputs, the number of tokens in the prediction that appeared in the completion."},"audio_tokens":{"type":"integer","nullable":true,"description":"Audio input tokens generated by the model."},"reasoning_tokens":{"type":"integer","nullable":true,"description":"Tokens generated by the model for reasoning."},"rejected_prediction_tokens":{"type":"integer","nullable":true,"description":"When using Predicted Outputs, the number of tokens in the prediction that did not appear in the completion. However, like reasoning tokens, these tokens are still counted in the total completion tokens for purposes of billing, output, and context window limits."}},"description":"Breakdown of tokens used in a completion."},"prompt_tokens_details":{"type":"object","nullable":true,"properties":{"audio_tokens":{"type":"integer","nullable":true,"description":"Audio input tokens present in the prompt."},"cached_tokens":{"type":"integer","nullable":true,"description":"Cached tokens present in the prompt."}},"description":"Breakdown of tokens used in the prompt."}},"required":["prompt_tokens","completion_tokens","total_tokens"],"description":"Usage statistics for the completion request."}},"required":["id","object","created","choices","model","usage"]}},"text/event-stream":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"A unique identifier for the chat completion."},"choices":{"type":"array","items":{"type":"object","properties":{"delta":{"type":"object","nullable":true,"properties":{"content":{"type":"string","description":"The contents of the chunk message."},"refusal":{"type":"string","nullable":true,"description":"The refusal message generated by the model."},"role":{"type":"string","enum":["user","assistant","developer","system","tool"],"description":"The role of the author of this message."},"tool_calls":{"type":"array","nullable":true,"items":{"type":"object","properties":{"index":{"type":"number"},"id":{"type":"string","description":"The ID of the tool call."},"function":{"type":"object","properties":{"arguments":{"type":"string","description":"The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function."},"name":{"type":"string"}},"required":["arguments","name"],"description":"The function that the model called."},"type":{"type":"string","enum":["function"],"description":"The type of the tool."}},"required":["index","id","function","type"]},"description":"The tool calls generated by the model, such as function calls."}},"required":["content","role"],"description":"A chat completion delta generated by streamed model responses."},"finish_reason":{"type":"string","enum":["length","function_call","stop","tool_calls","content_filter"]},"index":{"type":"number","description":"The index of the choice in the list of choices."},"logprobs":{"type":"object","nullable":true,"properties":{"content":{"type":"array","items":{"type":"object","properties":{"token":{"type":"string","description":"The token."},"bytes":{"type":"array","items":{"type":"number"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."},"top_logprobs":{"type":"array","nullable":true,"items":{"type":"object","properties":{"token":{"type":"string","description":"The token."},"bytes":{"type":"array","items":{"type":"number"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."}},"required":["token","bytes","logprob"]},"description":"List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested top_logprobs returned."}},"required":["token","bytes","logprob"]}},"refusal":{"type":"array","items":{"type":"object","properties":{"token":{"type":"string","description":"The token."},"bytes":{"type":"array","items":{"type":"number"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."},"top_logprobs":{"type":"array","nullable":true,"items":{"type":"object","properties":{"token":{"type":"string","description":"The token."},"bytes":{"type":"array","items":{"type":"number"},"description":"A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be null if there is no bytes representation for the token."},"logprob":{"type":"number","description":"The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value -9999.0 is used to signify that the token is very unlikely."}},"required":["token","bytes","logprob"]},"description":"List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested top_logprobs returned."}},"required":["token","bytes","logprob"]}}},"required":["content","refusal"],"description":"Log probability information for the choice."}},"required":["finish_reason","index"]},"description":"A list of chat completion choices. Can be more than one if n is greater than 1."},"created":{"type":"number","description":"The Unix timestamp (in seconds) of when the chat completion was created."},"model":{"type":"string","description":"The model used for the chat completion."},"object":{"type":"string","enum":["chat.completion.chunk"],"description":"The object type."},"service_tier":{"type":"string","nullable":true,"enum":["auto","default","flex","scale","priority"],"description":"Specifies the processing type used for serving the request."},"usage":{"type":"object","nullable":true,"properties":{"prompt_tokens":{"type":"number","description":"Number of tokens in the prompt."},"completion_tokens":{"type":"number","description":"Number of tokens in the generated completion."},"total_tokens":{"type":"number","description":"Total number of tokens used in the request (prompt + completion)."},"completion_tokens_details":{"type":"object","nullable":true,"properties":{"accepted_prediction_tokens":{"type":"integer","nullable":true,"description":"When using Predicted Outputs, the number of tokens in the prediction that appeared in the completion."},"audio_tokens":{"type":"integer","nullable":true,"description":"Audio input tokens generated by the model."},"reasoning_tokens":{"type":"integer","nullable":true,"description":"Tokens generated by the model for reasoning."},"rejected_prediction_tokens":{"type":"integer","nullable":true,"description":"When using Predicted Outputs, the number of tokens in the prediction that did not appear in the completion. However, like reasoning tokens, these tokens are still counted in the total completion tokens for purposes of billing, output, and context window limits."}},"description":"Breakdown of tokens used in a completion."},"prompt_tokens_details":{"type":"object","nullable":true,"properties":{"audio_tokens":{"type":"integer","nullable":true,"description":"Audio input tokens present in the prompt."},"cached_tokens":{"type":"integer","nullable":true,"description":"Cached tokens present in the prompt."}},"description":"Breakdown of tokens used in the prompt."}},"required":["prompt_tokens","completion_tokens","total_tokens"],"description":"Usage statistics for the completion request."}},"required":["id","choices","created","model","object"]}}}}}}}}}
+```
+
+## Code Example
+
+{% tabs %}
+{% tab title="Python" %}
+{% code overflow="wrap" %}
+
+```python
+import requests
+import json  # for getting a structured output with indentation 
+
+response = requests.post(
+    "https://api.aimlapi.com/v1/chat/completions",
+    headers={
+        # Insert your AIML API Key instead of <YOUR_AIMLAPI_KEY>:
+        "Authorization":"Bearer <YOUR_AIMLAPI_KEY>",
+        "Content-Type":"application/json"
+    },
+    json={
+        "model":"perplexity/sonar",
+        "messages":[
+            {
+                "role":"user",
+                "content":"Hello"  # insert your prompt here, instead of Hello
+            }
+        ]
+    }
+)
+
+data = response.json()
+print(json.dumps(data, indent=2, ensure_ascii=False))
+```
+
+{% endcode %}
+{% endtab %}
+
+{% tab title="JavaScript" %}
+{% code overflow="wrap" %}
+
+```javascript
+async function main() {
+  const response = await fetch('https://api.aimlapi.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      // insert your AIML API Key instead of <YOUR_AIMLAPI_KEY>
+      'Authorization': 'Bearer <YOUR_AIMLAPI_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'perplexity/sonar',
+      messages:[
+          {
+              role:'user',
+              content: 'Hello'  // insert your prompt here, instead of Hello
+          }
+      ],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(JSON.stringify(data, null, 2));
+}
+
+main();
+```
+
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
+<details>
+
+<summary>Response</summary>
+
+{% code overflow="wrap" %}
+
+```json5
+{
+  "id": "541db1f4-d5ef-4e65-9474-a10843fa92ab",
+  "object": "chat.completion",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "Hello is a common English salutation or greeting, first recorded in writing in 1826 in the United States. It has since become widely used in spoken and written communication as a way to say \"hi\" or initiate conversation[1]. \n\nAdditionally, \"Hello\" is the title of well-known songs, such as Adele's 2015 hit and Lionel Richie's classic, both of which have contributed to the cultural popularity of the word[2][3]. \n\nIn other contexts, \"Hello\" is a brand name used by companies such as a vegan-friendly personal care products line and the meal kit service HelloFresh, showing its versatile use beyond just a greeting[4][5]."
+      },
+      "delta": {
+        "role": "assistant",
+        "content": ""
+      }
+    }
+  ],
+  "created": 1753461943,
+  "model": "sonar",
+  "usage": {
+    "prompt_tokens": 10502,
+    "completion_tokens": 292,
+    "total_tokens": 10794,
+    "search_context_size": "low"
+  },
+  "citations": [
+    "https://en.wikipedia.org/wiki/Hello",
+    "https://en.wikipedia.org/wiki/Hello_(Adele_song)",
+    "https://www.youtube.com/watch?v=mHONNcZbwDY",
+    "https://www.hello-products.com",
+    "https://www.hellofresh.com"
+  ],
+  "search_results": [
+    {
+      "title": "Hello - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hello",
+      "date": "2002-06-09",
+      "last_updated": "2025-07-23"
+    },
+    {
+      "title": "Hello (Adele song) - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hello_(Adele_song)",
+      "date": "2015-10-22",
+      "last_updated": "2025-06-13"
+    },
+    {
+      "title": "Lionel Richie - Hello (Official Music Video) - YouTube",
+      "url": "https://www.youtube.com/watch?v=mHONNcZbwDY",
+      "date": "2020-11-20",
+      "last_updated": "2025-07-07"
+    },
+    {
+      "title": "Hello Products",
+      "url": "https://www.hello-products.com",
+      "date": "2025-06-04",
+      "last_updated": "2025-06-16"
+    },
+    {
+      "title": "HelloFresh® Meal Kits | Get 10 Free Meals + Free Breakfast For Life",
+      "url": "https://www.hellofresh.com",
+      "date": "2024-09-19",
+      "last_updated": "2025-05-13"
+    }
+  ]
+}
+```
+
+{% endcode %}
+
+</details>

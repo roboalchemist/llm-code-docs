@@ -1,0 +1,8 @@
+name: aws-codeartifact
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:08:32Z"
+description: >
+  aws-codeartifact documentation
+quality_score: 0

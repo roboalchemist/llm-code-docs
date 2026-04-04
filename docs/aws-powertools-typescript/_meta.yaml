@@ -1,0 +1,9 @@
+name: aws-powertools-typescript
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.aws.amazon.com/powertools/typescript/latest/
+    last_fetched: "2026-04-03T23:08:33Z"
+description: >
+  aws-powertools-typescript documentation
+quality_score: 0

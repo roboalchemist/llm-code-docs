@@ -1,0 +1,127 @@
+# Source: https://www.apollographql.com/docs/kotlin/advanced/compiler-plugins.md
+
+# Apollo compiler plugins
+
+**Compiler plugins are currently [experimental](https://www.apollographql.com/docs/resources/product-launch-stages/#experimental-features) in Apollo Kotlin.** If you have feedback on them, please let us know via [GitHub issues](https://github.com/apollographql/apollo-kotlin/issues/new?assignees=\&labels=Type%3A+Bug\&template=bug_report.md) or in the [Kotlin Slack community](https://slack.kotl.in/).
+
+The Apollo compiler supports [a wide range of options](https://www.apollographql.com/docs/kotlin/advanced/plugin-configuration). For the cases where these options are not enough, you can use Apollo compiler plugins to modify the behaviour of the compiler.
+
+Apollo compiler plugins allow to:
+
+* Change the layout of the generated sources (name of the classes, package names, capitalization rules).
+* Change the ids of operation for persisted queries.
+* Transform the JavaPoet/KotlinPoet models.
+* Transform the Apollo IR.
+
+## Implementing a compiler plugin
+
+In this example we will implement a plugin that uses custom [persisted queries](https://www.apollographql.com/docs/kotlin/advanced/persisted-queries) ids registered on your backend.
+
+The Apollo compiler use the [ServiceLoader API](https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html) to load plugins at runtime. Plugins need to be implemented in a separate module that is added to the classpath.
+
+To start, create a new Gradle module and add `apollo-compiler` as a dependency to the module `build.gradle[.kts]` file. In this example, we'll use `apollo-compiler-plugin` as module name:
+
+```kotlin
+// apollo-compiler-plugin/build.gradle.kts
+plugins {
+  id("org.jetbrains.kotlin.jvm")
+}
+
+dependencies {
+  // Add apollo-compiler as a compileOnly dependency
+  compileOnly("com.apollographql.apollo:apollo-compiler:4.4.1")  
+}
+```
+
+Next create your plugin in a `src/main/kotlin/mypackage/MyPlugin` file:
+
+```kotlin
+class MyPlugin: ApolloCompilerPlugin {
+  override fun beforeCompilationStep(
+      environment: ApolloCompilerPluginEnvironment,
+      registry: ApolloCompilerRegistry,
+  ) {
+    // add your custom code here
+  }
+}
+```
+
+Make your plugin discoverable by [ServiceLoader](https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html) by adding a resource in `src/main/resources/META-INF/services/com.apollographql.apollo.compiler.ApolloCompilerPlugin`. This file contains the fully qualified name of your plugin:
+
+```text
+mypackage.MyPlugin
+```
+
+The name of the resource file is important. It must be `com.apollographql.apollo.compiler.ApolloCompilerPlugin` and be in the `META-INF/services` folder. This is how `ServiceLoader` looks up plugins at runtime.
+
+## Adding a plugin to the Apollo compiler classpath
+
+Use the `Service.plugin()` Gradle method to add the plugin to the Apollo compiler classpath:
+
+```kotlin
+// app/build.gradle.kts
+plugins {
+  id("org.jetbrains.kotlin.jvm")
+  id("com.apollographql.apollo")
+}
+
+apollo {
+  service("service") {
+    packageName.set("com.example")
+    
+    // Add your plugin to the Apollo compiler classpath
+    plugin(project(":apollo-compiler-plugin")) // highlight-line
+  }
+}
+```
+
+The plugin code will now be invoked the next time the compiler is invoked.
+
+## Passing arguments to your Apollo compiler plugin
+
+Because the compiler plugin runs in an isolated classpath, you can't use classes or data from your main build logic classpath.
+
+In order to pass build-time arguments to your Apollo compiler plugin, use the `argument()` function:
+
+```kotlin
+apollo {
+  service("service") {
+    packageName.set("com.example")
+    
+    // Add your plugin to the Apollo compiler classpath
+    plugin(project(":apollo-compiler-plugin")) {
+      argument("token", token) // highlight-line
+    }
+  }
+}
+```
+
+The arguments are available in `ApolloCompilerPluginEnvironment.arguments`:
+
+```kotlin
+class MyPlugin: ApolloCompilerPlugin {
+  override fun beforeCompilationStep(
+      environment: ApolloCompilerPluginEnvironment,
+      registry: ApolloCompilerRegistry,
+  ) {
+    val token = environment.arguments.get("token") as String
+    
+    // add your custom code here
+  }
+}
+```
+
+Arguments must be serializable and be instances of classes accessible from the bootstrap classloader. In practice, built-in types and collections are supported.
+
+## Limitations
+
+Because codegen is run in a separate classloader when using compiler plugins, it's not possible to use `packageNameGenerator`, `operationIdGenerator` or `operationOutputGenerator` at the same time as compiler plugins. If you want to use them, you'll have to:
+
+* use `ApolloCompilerRegistry.registerLayout()` instead of `packageNameGenerator`
+* use `ApolloCompilerRegistry.registerOperationIdsGenerator()` instead of `operationIdGenerator` and `operationOutputGenerator`
+
+## Other references
+
+For other plugin APIs like layout, IR, JavaPoet and KotlinPoet transforms, check out the [ApolloCompilerPlugin API docs](https://www.apollographql.com/docs/kotlin/kdoc/apollo-compiler/com.apollographql.apollo.compiler/-apollo-compiler-plugin/index.html)
+
+For more examples, check out the [integration-tests](https://github.com/apollographql/apollo-kotlin/tree/main/tests/compiler-plugins).

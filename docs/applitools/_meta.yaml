@@ -1,0 +1,9 @@
+name: applitools
+primary_source: llms
+sources:
+  - type: llms
+    url: https://applitools.gitbook.io/
+    last_fetched: "2026-04-03T23:08:29Z"
+description: >
+  applitools documentation
+quality_score: 0

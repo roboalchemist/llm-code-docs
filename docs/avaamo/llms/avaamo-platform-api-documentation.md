@@ -1,0 +1,45 @@
+# Source: https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation.md
+
+# REST APIs
+
+- [Getting started](/user-guide/ref/avaamo-platform-api-documentation/quick-overview.md): A list of all the REST API with description
+- [Agent APIs](/user-guide/ref/avaamo-platform-api-documentation/agent-api.md): Get agent details such as agent name and description, skills, intents, query insights, entity types, and dictionary values.
+- [Agent details](/user-guide/ref/avaamo-platform-api-documentation/agent-api/agent-details.md)
+- [Intents](/user-guide/ref/avaamo-platform-api-documentation/agent-api/intents.md)
+- [Dialog intents](/user-guide/ref/avaamo-platform-api-documentation/agent-api/dialog-intents.md)
+- [Q\&A intents](/user-guide/ref/avaamo-platform-api-documentation/agent-api/q-and-a-intents.md)
+- [Unhandled queries](/user-guide/ref/avaamo-platform-api-documentation/agent-api/unhandled-queries.md)
+- [Dictionary values](/user-guide/ref/avaamo-platform-api-documentation/agent-api/dictionary-values.md)
+- [Test user queries](/user-guide/ref/avaamo-platform-api-documentation/agent-api/test-user-queries.md)
+- [Query insights](/user-guide/ref/avaamo-platform-api-documentation/agent-api/query-insights.md)
+- [Message insights](/user-guide/ref/avaamo-platform-api-documentation/agent-api/message-insights.md)
+- [Custom entity type API](/user-guide/ref/avaamo-platform-api-documentation/custom-entity-type-values.md)
+- [Message API](/user-guide/ref/avaamo-platform-api-documentation/message-api.md): Post messages to the agent and fetch message from the agent.
+- [Change log APIs](/user-guide/ref/avaamo-platform-api-documentation/change-log-apis.md)
+- [Changelog API (v1)](/user-guide/ref/avaamo-platform-api-documentation/change-log-apis/changelog-api.md): Get a list of changes made to an agent
+- [Changelog API (v2)](/user-guide/ref/avaamo-platform-api-documentation/change-log-apis/changelog-api-v2.md)
+- [Clear Data API](/user-guide/ref/avaamo-platform-api-documentation/clear-data-api.md): Clear agent data - Storage, JS Errors, Conversation States
+- [Conversation API](/user-guide/ref/avaamo-platform-api-documentation/conversation-message-api.md): Get messages of a specific user conversation
+- [Feedback API](/user-guide/ref/avaamo-platform-api-documentation/feedback-api.md): Get user feedback details of an agent
+- [Analytics API](/user-guide/ref/avaamo-platform-api-documentation/analytics-api.md): Analyze top intents, channel usage, agent usage, and agent intervention
+- [Live agent intervention](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/agent-intervention.md)
+- [Usage](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/usage.md)
+- [Channel usage](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/channel-usage-api.md)
+- [Top intents](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/top-intents.md)
+- [Top tags](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/top-tags.md)
+- [Top Q\&A intents](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/top-q-and-a-intents.md)
+- [Top Smalltalk intents](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/top-smalltalk-intents.md)
+- [Top feedback intents](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/top-feedback-intents.md)
+- [Unhandled messages](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/unhandled-messages.md)
+- [Successful messages](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/successful-messages.md)
+- [User sessions](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/user-sessions.md)
+- [Messages](/user-guide/ref/avaamo-platform-api-documentation/analytics-api/messages.md)
+- [Global Storage API](/user-guide/ref/avaamo-platform-api-documentation/global-storage-api.md)
+- [User Storage API](/user-guide/ref/avaamo-platform-api-documentation/user-storage-api.md): Get or Set the storage data for a specific user session in your agent.
+- [User Property API](/user-guide/ref/avaamo-platform-api-documentation/user-property-api.md)
+- [Mask message API](/user-guide/ref/avaamo-platform-api-documentation/mask-message-api.md): Masks the user messages and agent responses in the specified user conversation as per agent masking configuration details.
+- [Custom properties API](/user-guide/ref/avaamo-platform-api-documentation/custom-properties-api.md): Get details about custom user properties from the agent
+- [SMS Send API](/user-guide/ref/avaamo-platform-api-documentation/sms-send-api.md): This API acts as a SMS Gateway to send an agent's greeting message as an SMS to the specified phone number
+- [SMS Reporting API](/user-guide/ref/avaamo-platform-api-documentation/sms-reporting-api.md): SMS report of the messages sent through the SMS Gateway of an agent.
+- [Microsoft Teams Send API](/user-guide/ref/avaamo-platform-api-documentation/microsoft-teams-send-api.md): This is an outbound API to send a message from the MS Teams channel to the user.
+- [Troubleshooting Tips](/user-guide/ref/avaamo-platform-api-documentation/troubleshooting-tips.md): Few troubleshooting tips, in cases, where you are not receiving the required response

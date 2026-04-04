@@ -1,0 +1,10 @@
+name: beanie
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:08:41Z"
+  - type: web
+    last_fetched: "2026-04-03T23:08:41Z"
+description: >
+  beanie documentation
+quality_score: 0

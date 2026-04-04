@@ -1,0 +1,9 @@
+name: aimlapi
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.aimlapi.com/
+    last_fetched: "2026-04-03T23:08:24Z"
+description: >
+  aimlapi documentation
+quality_score: 0

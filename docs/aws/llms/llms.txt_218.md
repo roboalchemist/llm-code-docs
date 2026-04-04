@@ -1,0 +1,153 @@
+# Source: https://docs.aws.amazon.com/codecommit/latest/APIReference/llms.txt
+
+# AWS CodeCommit API Reference
+
+> This is the AWS CodeCommit API Reference. This reference provides descriptions of the operations and data types for AWS CodeCommit API along with usage examples.
+
+- [Welcome](https://docs.aws.amazon.com/codecommit/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/codecommit/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/codecommit/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Operations.html)
+
+- [AssociateApprovalRuleTemplateWithRepository](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_AssociateApprovalRuleTemplateWithRepository.html): Creates an association between an approval rule template and a specified repository.
+- [BatchAssociateApprovalRuleTemplateWithRepositories](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchAssociateApprovalRuleTemplateWithRepositories.html): Creates an association between an approval rule template and one or more specified repositories.
+- [BatchDescribeMergeConflicts](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchDescribeMergeConflicts.html): Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy.
+- [BatchDisassociateApprovalRuleTemplateFromRepositories](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchDisassociateApprovalRuleTemplateFromRepositories.html): Removes the association between an approval rule template and one or more specified repositories.
+- [BatchGetCommits](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchGetCommits.html): Returns information about the contents of one or more commits in a repository.
+- [BatchGetRepositories](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchGetRepositories.html): Returns information about one or more repositories.
+- [CreateApprovalRuleTemplate](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CreateApprovalRuleTemplate.html): Creates a template for approval rules that can then be associated with one or more repositories in your AWS account.
+- [CreateBranch](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CreateBranch.html): Creates a branch in a repository and points the branch to a commit.
+- [CreateCommit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CreateCommit.html): Creates a commit for a repository on the tip of a specified branch.
+- [CreatePullRequest](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CreatePullRequest.html): Creates a pull request in the specified repository.
+- [CreatePullRequestApprovalRule](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CreatePullRequestApprovalRule.html): Creates an approval rule for a pull request.
+- [CreateRepository](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CreateRepository.html): Creates a new, empty repository.
+- [CreateUnreferencedMergeCommit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CreateUnreferencedMergeCommit.html): Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy.
+- [DeleteApprovalRuleTemplate](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DeleteApprovalRuleTemplate.html): Deletes a specified approval rule template.
+- [DeleteBranch](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DeleteBranch.html): Deletes a branch from a repository, unless that branch is the default branch for the repository.
+- [DeleteCommentContent](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DeleteCommentContent.html): Deletes the content of a comment made on a change, file, or commit in a repository.
+- [DeleteFile](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DeleteFile.html): Deletes a specified file from a specified branch.
+- [DeletePullRequestApprovalRule](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DeletePullRequestApprovalRule.html): Deletes an approval rule from a specified pull request.
+- [DeleteRepository](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DeleteRepository.html): Deletes a repository.
+- [DescribeMergeConflicts](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DescribeMergeConflicts.html): Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy.
+- [DescribePullRequestEvents](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DescribePullRequestEvents.html): Returns information about one or more pull request events.
+- [DisassociateApprovalRuleTemplateFromRepository](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DisassociateApprovalRuleTemplateFromRepository.html): Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository.
+- [EvaluatePullRequestApprovalRules](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_EvaluatePullRequestApprovalRules.html): Evaluates whether a pull request has met all the conditions specified in its associated approval rules.
+- [GetApprovalRuleTemplate](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetApprovalRuleTemplate.html): Returns information about a specified approval rule template.
+- [GetBlob](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetBlob.html): Returns the base-64 encoded content of an individual blob in a repository.
+- [GetBranch](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetBranch.html): Returns information about a repository branch, including its name and the last commit ID.
+- [GetComment](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetComment.html): Returns the content of a comment made on a change, file, or commit in a repository.
+- [GetCommentReactions](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetCommentReactions.html): Returns information about reactions to a specified comment ID.
+- [GetCommentsForComparedCommit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetCommentsForComparedCommit.html): Returns information about comments made on the comparison between two commits.
+- [GetCommentsForPullRequest](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetCommentsForPullRequest.html): Returns comments made on a pull request.
+- [GetCommit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetCommit.html): Returns information about a commit, including commit message and committer information.
+- [GetDifferences](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetDifferences.html): Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference).
+- [GetFile](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetFile.html): Returns the base-64 encoded contents of a specified file and its metadata.
+- [GetFolder](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetFolder.html): Returns the contents of a specified folder in a repository.
+- [GetMergeCommit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetMergeCommit.html): Returns information about a specified merge commit.
+- [GetMergeConflicts](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetMergeConflicts.html): Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.
+- [GetMergeOptions](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetMergeOptions.html): Returns information about the merge options available for merging two specified branches.
+- [GetPullRequest](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetPullRequest.html): Gets information about a pull request in a specified repository.
+- [GetPullRequestApprovalStates](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetPullRequestApprovalStates.html): Gets information about the approval states for a specified pull request.
+- [GetPullRequestOverrideState](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetPullRequestOverrideState.html): Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request.
+- [GetRepository](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetRepository.html): Returns information about a repository.
+- [GetRepositoryTriggers](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_GetRepositoryTriggers.html): Gets information about triggers configured for a repository.
+- [ListApprovalRuleTemplates](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListApprovalRuleTemplates.html): Lists all approval rule templates in the specified AWS Region in your AWS account.
+- [ListAssociatedApprovalRuleTemplatesForRepository](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListAssociatedApprovalRuleTemplatesForRepository.html): Lists all approval rule templates that are associated with a specified repository.
+- [ListBranches](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListBranches.html): Gets information about one or more branches in a repository.
+- [ListFileCommitHistory](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListFileCommitHistory.html): Retrieves a list of commits and changes to a specified file.
+- [ListPullRequests](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListPullRequests.html): Returns a list of pull requests for a specified repository.
+- [ListRepositories](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListRepositories.html): Gets information about one or more repositories.
+- [ListRepositoriesForApprovalRuleTemplate](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListRepositoriesForApprovalRuleTemplate.html): Lists all repositories associated with the specified approval rule template.
+- [ListTagsForResource](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ListTagsForResource.html): Gets information about AWStags for a specified Amazon Resource Name (ARN) in AWS CodeCommit.
+- [MergeBranchesByFastForward](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergeBranchesByFastForward.html): Merges two branches using the fast-forward merge strategy.
+- [MergeBranchesBySquash](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergeBranchesBySquash.html): Merges two branches using the squash merge strategy.
+- [MergeBranchesByThreeWay](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergeBranchesByThreeWay.html): Merges two specified branches using the three-way merge strategy.
+- [MergePullRequestByFastForward](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergePullRequestByFastForward.html): Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy.
+- [MergePullRequestBySquash](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergePullRequestBySquash.html): Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the squash merge strategy.
+- [MergePullRequestByThreeWay](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergePullRequestByThreeWay.html): Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy.
+- [OverridePullRequestApprovalRules](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_OverridePullRequestApprovalRules.html): Sets aside (overrides) all approval rule requirements for a specified pull request.
+- [PostCommentForComparedCommit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PostCommentForComparedCommit.html): Posts a comment on the comparison between two commits.
+- [PostCommentForPullRequest](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PostCommentForPullRequest.html): Posts a comment on a pull request.
+- [PostCommentReply](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PostCommentReply.html): Posts a comment in reply to an existing comment on a comparison between commits or a pull request.
+- [PutCommentReaction](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PutCommentReaction.html): Adds or updates a reaction to a specified comment for the user whose identity is used to make the request.
+- [PutFile](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PutFile.html): Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch.
+- [PutRepositoryTriggers](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PutRepositoryTriggers.html): Replaces all triggers for a repository.
+- [TagResource](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_TagResource.html): Adds or updates tags for a resource in AWS CodeCommit.
+- [TestRepositoryTriggers](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_TestRepositoryTriggers.html): Tests the functionality of repository triggers by sending information to the trigger target.
+- [UntagResource](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UntagResource.html): Removes tags for a resource in AWS CodeCommit.
+- [UpdateApprovalRuleTemplateContent](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateApprovalRuleTemplateContent.html): Updates the content of an approval rule template.
+- [UpdateApprovalRuleTemplateDescription](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateApprovalRuleTemplateDescription.html): Updates the description for a specified approval rule template.
+- [UpdateApprovalRuleTemplateName](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateApprovalRuleTemplateName.html): Updates the name of a specified approval rule template.
+- [UpdateComment](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateComment.html): Replaces the contents of a comment.
+- [UpdateDefaultBranch](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateDefaultBranch.html): Sets or changes the default branch name for the specified repository.
+- [UpdatePullRequestApprovalRuleContent](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdatePullRequestApprovalRuleContent.html): Updates the structure of an approval rule created specifically for a pull request.
+- [UpdatePullRequestApprovalState](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdatePullRequestApprovalState.html): Updates the state of a user's approval on a pull request.
+- [UpdatePullRequestDescription](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdatePullRequestDescription.html): Replaces the contents of the description of a pull request.
+- [UpdatePullRequestStatus](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdatePullRequestStatus.html): Updates the status of a pull request.
+- [UpdatePullRequestTitle](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdatePullRequestTitle.html): Replaces the title of a pull request.
+- [UpdateRepositoryDescription](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateRepositoryDescription.html): Sets or changes the comment or description for a repository.
+- [UpdateRepositoryEncryptionKey](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateRepositoryEncryptionKey.html): Updates the AWS Key Management Service encryption key used to encrypt and decrypt a CodeCommit repository.
+- [UpdateRepositoryName](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UpdateRepositoryName.html): Renames a repository.
+
+
+## [Data Types](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Types.html)
+
+- [Approval](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Approval.html): Returns information about a specific approval on a pull request.
+- [ApprovalRule](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ApprovalRule.html): Returns information about an approval rule.
+- [ApprovalRuleEventMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ApprovalRuleEventMetadata.html): Returns information about an event for an approval rule.
+- [ApprovalRuleOverriddenEventMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ApprovalRuleOverriddenEventMetadata.html): Returns information about an override event for approval rules for a pull request.
+- [ApprovalRuleTemplate](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ApprovalRuleTemplate.html): Returns information about an approval rule template.
+- [ApprovalStateChangedEventMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ApprovalStateChangedEventMetadata.html): Returns information about a change in the approval state for a pull request.
+- [BatchAssociateApprovalRuleTemplateWithRepositoriesError](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchAssociateApprovalRuleTemplateWithRepositoriesError.html): Returns information about errors in a BatchAssociateApprovalRuleTemplateWithRepositories operation.
+- [BatchDescribeMergeConflictsError](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchDescribeMergeConflictsError.html): Returns information about errors in a BatchDescribeMergeConflicts operation.
+- [BatchDisassociateApprovalRuleTemplateFromRepositoriesError](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchDisassociateApprovalRuleTemplateFromRepositoriesError.html): Returns information about errors in a BatchDisassociateApprovalRuleTemplateFromRepositories operation.
+- [BatchGetCommitsError](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchGetCommitsError.html): Returns information about errors in a BatchGetCommits operation.
+- [BatchGetRepositoriesError](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BatchGetRepositoriesError.html): Returns information about errors in a BatchGetRepositories operation.
+- [BlobMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BlobMetadata.html): Returns information about a specific Git blob object.
+- [BranchInfo](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_BranchInfo.html): Returns information about a branch.
+- [Comment](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Comment.html): Returns information about a specific comment.
+- [CommentsForComparedCommit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CommentsForComparedCommit.html): Returns information about comments on the comparison between two commits.
+- [CommentsForPullRequest](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_CommentsForPullRequest.html): Returns information about comments on a pull request.
+- [Commit](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Commit.html): Returns information about a specific commit.
+- [Conflict](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Conflict.html): Information about conflicts in a merge operation.
+- [ConflictMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ConflictMetadata.html): Information about the metadata for a conflict in a merge operation.
+- [ConflictResolution](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ConflictResolution.html): If AUTOMERGE is the conflict resolution strategy, a list of inputs to use when resolving conflicts during a merge.
+- [DeleteFileEntry](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_DeleteFileEntry.html): A file that is deleted as part of a commit.
+- [Difference](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Difference.html): Returns information about a set of differences for a commit specifier.
+- [Evaluation](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Evaluation.html): Returns information about the approval rules applied to a pull request and whether conditions have been met.
+- [File](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_File.html): Returns information about a file in a repository.
+- [FileMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_FileMetadata.html): A file to be added, updated, or deleted as part of a commit.
+- [FileModes](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_FileModes.html): Information about file modes in a merge or pull request.
+- [FileSizes](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_FileSizes.html): Information about the size of files in a merge or pull request.
+- [FileVersion](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_FileVersion.html): Information about a version of a file.
+- [Folder](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Folder.html): Returns information about a folder in a repository.
+- [IsBinaryFile](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_IsBinaryFile.html): Information about whether a file is binary or textual in a merge or pull request operation.
+- [Location](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Location.html): Returns information about the location of a change or comment in the comparison between two commits or a pull request.
+- [MergeHunk](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergeHunk.html): Information about merge hunks in a merge or pull request operation.
+- [MergeHunkDetail](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergeHunkDetail.html): Information about the details of a merge hunk that contains a conflict in a merge or pull request operation.
+- [MergeMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergeMetadata.html): Returns information about a merge or potential merge between a source reference and a destination reference in a pull request.
+- [MergeOperations](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_MergeOperations.html): Information about the file operation conflicts in a merge operation.
+- [ObjectTypes](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ObjectTypes.html): Information about the type of an object in a merge operation.
+- [OriginApprovalRuleTemplate](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_OriginApprovalRuleTemplate.html): Returns information about the template that created the approval rule for a pull request.
+- [PullRequest](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PullRequest.html): Returns information about a pull request.
+- [PullRequestCreatedEventMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PullRequestCreatedEventMetadata.html): Metadata about the pull request that is used when comparing the pull request source with its destination.
+- [PullRequestEvent](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PullRequestEvent.html): Returns information about a pull request event.
+- [PullRequestMergedStateChangedEventMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PullRequestMergedStateChangedEventMetadata.html): Returns information about the change in the merge state for a pull request event.
+- [PullRequestSourceReferenceUpdatedEventMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PullRequestSourceReferenceUpdatedEventMetadata.html): Information about an update to the source branch of a pull request.
+- [PullRequestStatusChangedEventMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PullRequestStatusChangedEventMetadata.html): Information about a change to the status of a pull request.
+- [PullRequestTarget](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PullRequestTarget.html): Returns information about a pull request target.
+- [PutFileEntry](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_PutFileEntry.html): Information about a file added or updated as part of a commit.
+- [ReactionForComment](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ReactionForComment.html): Information about the reaction values provided by users on a comment.
+- [ReactionValueFormats](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ReactionValueFormats.html): Information about the values for reactions to a comment.
+- [ReplaceContentEntry](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_ReplaceContentEntry.html): Information about a replacement content entry in the conflict of a merge or pull request operation.
+- [RepositoryMetadata](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_RepositoryMetadata.html): Information about a repository.
+- [RepositoryNameIdPair](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_RepositoryNameIdPair.html): Information about a repository name and ID.
+- [RepositoryTrigger](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_RepositoryTrigger.html): Information about a trigger for a repository.
+- [RepositoryTriggerExecutionFailure](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_RepositoryTriggerExecutionFailure.html): A trigger failed to run.
+- [SetFileModeEntry](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_SetFileModeEntry.html): Information about the file mode changes.
+- [SourceFileSpecifier](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_SourceFileSpecifier.html): Information about a source file that is part of changes made in a commit.
+- [SubModule](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_SubModule.html): Returns information about a submodule reference in a repository folder.
+- [SymbolicLink](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_SymbolicLink.html): Returns information about a symbolic link in a repository folder.
+- [Target](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_Target.html): Returns information about a target for a pull request.
+- [UserInfo](https://docs.aws.amazon.com/codecommit/latest/APIReference/API_UserInfo.html): Information about the user who made a specified commit.

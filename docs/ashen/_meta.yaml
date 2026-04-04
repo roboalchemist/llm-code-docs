@@ -1,0 +1,9 @@
+name: ashen
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.ashen.sh/
+    last_fetched: "2026-04-03T23:08:30Z"
+description: >
+  ashen documentation
+quality_score: 0

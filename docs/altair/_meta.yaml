@@ -1,0 +1,8 @@
+name: altair
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:25Z"
+description: >
+  altair documentation
+quality_score: 0

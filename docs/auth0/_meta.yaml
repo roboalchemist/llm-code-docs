@@ -1,0 +1,8 @@
+name: auth0
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:08:31Z"
+description: >
+  auth0 documentation
+quality_score: 0

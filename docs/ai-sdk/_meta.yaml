@@ -1,0 +1,9 @@
+name: ai-sdk
+primary_source: llms
+sources:
+  - type: llms
+    url: https://ai-sdk.dev/
+    last_fetched: "2026-04-03T23:08:24Z"
+description: >
+  ai-sdk documentation
+quality_score: 0

@@ -1,0 +1,68 @@
+# Source: https://www.apollographql.com/docs/graphos/platform/insights/client-segmentation.md
+
+# Segmenting Metrics by Client
+
+While Insights are available on all GraphOS plans, metrics retention varies by [plan](https://www.apollographql.com/pricing?referrer=docs-content).
+
+In GraphOS Studio, you can view GraphQL operation metrics broken down by the different clients—such as your web, iOS, and Android apps—that execute those operations. This feature, called *client awareness*, becomes increasingly useful as you create additional clients that consume your supergraph.
+
+To enable client awareness, your clients must identify themselves in their requests to your router. [Learn how.](https://www.apollographql.com/docs/graphos/platform/insights/client-segmentation.md#setup)
+
+[GraphOS Enterprise](https://www.apollographql.com/pricing?referrer=docs-content) organizations can segment operation metrics even further, by individual client versions (`1.0`, `1.1`, etc.). This helps you track the adoption of new versions and identify older versions you can safely deprecate or discontinue.
+
+You view client-segmented metrics from a variant's **Clients** page in Studio:
+
+If a particular client doesn't identify itself in its requests, its metrics are included in an **Unidentified client** category.
+
+## Setup
+
+Your supergraph's router checks for the presence of the following HTTP headers in every incoming operation request:
+
+* `apollographql-client-name`
+* `apollographql-client-version`
+  * Segmenting metrics by client version in Studio requires a [GraphOS Enterprise plan](https://www.apollographql.com/pricing?referrer=docs-content). You can safely include this header in requests regardless of your plan type.
+
+If one or both of these headers are present, your router automatically extracts their values and includes them in the metrics data it sends to GraphOS.
+
+If you're using Apollo Client, you can populate these headers automatically for every operation request by providing the `name` and `version` options to the `ApolloClient` constructor, like so:
+
+```js
+import { ApolloClient } from "apollo-client";
+import { HttpLink } from "apollo-link-http";
+
+const client = new ApolloClient({
+  link: new HttpLink({
+    uri: "http://localhost:4000/graphql",
+  }),
+  clientAwareness: {
+    name: "web",
+    version: "1.0",
+  },
+});
+```
+
+If you are using Apollo Client v3, pass the `name` and `version` options directly to `ApolloClient`.
+
+```ts
+const client = new ApolloClient({
+  // ...
+  name: "web",
+  version: "1.0",
+});
+```
+
+If you're using another GraphQL client, consult its documentation to learn how to add custom HTTP headers to every outgoing request.
+
+## Common use cases
+
+### Diagnose client-specific issues
+
+By filtering your graph's metrics by client (and client version with Enterprise), you can identify when a high failure rate for an operation is tied to a particular client. This helps you isolate the underlying cause and push an update for the affected client.
+
+### Deprecate, change, and remove fields safely
+
+Modifying or removing an existing field in your schema is often a breaking change for the clients that use that field. Client awareness gives you a breakdown of which clients use which fields in your schema, enabling you to determine the impact of such a change.
+
+### Backend cutover
+
+Changes to your schema often accompany changes to your backend, such as adding a new resolver, or even an entirely new data source. When you deploy a new version of your client that executes operations against these new resources, it's important to monitor operations to detect issues. Viewing metrics specific to the new client version helps you identify and resolve these issues quickly.

@@ -1,0 +1,8 @@
+name: adobe-spectrum
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:08:24Z"
+description: >
+  adobe-spectrum documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: autodesk-aps
+primary_source: llms
+sources:
+  - type: llms
+    url: https://aps.autodesk.com/
+    last_fetched: "2026-04-03T23:08:32Z"
+description: >
+  autodesk-aps documentation
+quality_score: 0

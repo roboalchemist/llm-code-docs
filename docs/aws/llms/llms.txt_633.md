@@ -1,0 +1,289 @@
+# Source: https://docs.aws.amazon.com/opensearch-service/latest/APIReference/llms.txt
+
+# Amazon OpenSearch Service API Reference
+
+## [Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/Welcome_Amazon_OpenSearch_Service.html)
+
+Use the Amazon OpenSearch Service configuration API to create, configure, and manage OpenSearch Service domains. The endpoint for configuration service requests is Region specific: es. region.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a current list of supported Regions and endpoints, see [AWS service endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#service-regions).
+
+### Actions
+
+- [AcceptInboundConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AcceptInboundConnection.html): Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request.
+- [AddDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AddDataSource.html): Creates a new direct-query data source to the specified domain.
+- [AddDirectQueryDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AddDirectQueryDataSource.html): Adds a new data source in Amazon OpenSearch Service so that you can perform direct queries on external data.
+- [AddTags](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AddTags.html): Attaches tags to an existing Amazon OpenSearch Service domain, data source, or application.
+- [AssociatePackage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AssociatePackage.html): Associates a package with an Amazon OpenSearch Service domain.
+- [AssociatePackages](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AssociatePackages.html): Operation in the Amazon OpenSearch Service API for associating multiple packages with a domain simultaneously.
+- [AuthorizeVpcEndpointAccess](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AuthorizeVpcEndpointAccess.html): Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+- [CancelDomainConfigChange](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CancelDomainConfigChange.html): Cancels a pending configuration change on an Amazon OpenSearch Service domain.
+- [CancelServiceSoftwareUpdate](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CancelServiceSoftwareUpdate.html): Cancels a scheduled service software update for an Amazon OpenSearch Service domain.
+- [CreateApplication](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CreateApplication.html): Creates an OpenSearch UI application.
+- [CreateDomain](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CreateDomain.html): Creates an Amazon OpenSearch Service domain.
+- [CreateIndex](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CreateIndex.html): Creates an OpenSearch index with optional automatic semantic enrichment for specified text fields.
+- [CreateOutboundConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CreateOutboundConnection.html): Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain.
+- [CreatePackage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CreatePackage.html): Creates a package for use with Amazon OpenSearch Service domains.
+- [CreateVpcEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CreateVpcEndpoint.html): Creates an Amazon OpenSearch Service-managed VPC endpoint.
+- [DeleteApplication](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteApplication.html): Deletes a specified OpenSearch application.
+- [DeleteDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteDataSource.html): Deletes a direct-query data source.
+- [DeleteDirectQueryDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteDirectQueryDataSource.html): Deletes a previously configured direct query data source from Amazon OpenSearch Service.
+- [DeleteDomain](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteDomain.html): Deletes an Amazon OpenSearch Service domain and all of its data.
+- [DeleteInboundConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteInboundConnection.html): Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound cross-cluster search connection.
+- [DeleteIndex](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteIndex.html): Deletes an OpenSearch index.
+- [DeleteOutboundConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteOutboundConnection.html): Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound cross-cluster search connection.
+- [DeletePackage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeletePackage.html): Deletes an Amazon OpenSearch Service package.
+- [DeleteVpcEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeleteVpcEndpoint.html): Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
+- [DescribeDomain](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDomain.html): Describes the domain configuration for the specified Amazon OpenSearch Service domain, including the domain ID, domain service endpoint, and domain ARN.
+- [DescribeDomainAutoTunes](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDomainAutoTunes.html): Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearch Service domain.
+- [DescribeDomainChangeProgress](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDomainChangeProgress.html): Returns information about the current blue/green deployment happening on an Amazon OpenSearch Service domain.
+- [DescribeDomainConfig](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDomainConfig.html): Returns the configuration of an Amazon OpenSearch Service domain.
+- [DescribeDomainHealth](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDomainHealth.html): Returns information about domain and node health, the standby Availability Zone, number of nodes per Availability Zone, and shard count per node.
+- [DescribeDomainNodes](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDomainNodes.html): Returns information about domain and nodes, including data nodes, master nodes, ultrawarm nodes, Availability Zone(s), standby nodes, node configurations, and node states.
+- [DescribeDomains](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDomains.html): Returns domain configuration information about the specified Amazon OpenSearch Service domains.
+- [DescribeDryRunProgress](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeDryRunProgress.html): Describes the progress of a pre-update dry run analysis on an Amazon OpenSearch Service domain.
+- [DescribeInboundConnections](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeInboundConnections.html): Lists all the inbound cross-cluster search connections for a destination (remote) Amazon OpenSearch Service domain.
+- [DescribeInstanceTypeLimits](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeInstanceTypeLimits.html): Describes the instance count, storage, and master node limits for a given OpenSearch or Elasticsearch version and instance type.
+- [DescribeOutboundConnections](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeOutboundConnections.html): Lists all the outbound cross-cluster connections for a local (source) Amazon OpenSearch Service domain.
+- [DescribePackages](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribePackages.html): Describes all packages available to OpenSearch Service.
+- [DescribeReservedInstanceOfferings](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeReservedInstanceOfferings.html): Describes the available Amazon OpenSearch Service Reserved Instance offerings for a given Region.
+- [DescribeReservedInstances](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeReservedInstances.html): Describes the Amazon OpenSearch Service instances that you have reserved in a given Region.
+- [DescribeVpcEndpoints](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribeVpcEndpoints.html): Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
+- [DissociatePackage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DissociatePackage.html): Removes a package from the specified Amazon OpenSearch Service domain.
+- [DissociatePackages](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DissociatePackages.html): Dissociates multiple packages from a domain simultaneously.
+- [GetApplication](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetApplication.html): Retrieves the configuration and status of an existing OpenSearch application.
+- [GetCompatibleVersions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetCompatibleVersions.html): Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.
+- [GetDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetDataSource.html): Retrieves information about a direct query data source.
+- [GetDefaultApplicationSetting](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetDefaultApplicationSetting.html): Gets the ARN of the current default application.
+- [GetDirectQueryDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetDirectQueryDataSource.html): Returns detailed configuration information for a specific direct query data source in Amazon OpenSearch Service.
+- [GetDomainMaintenanceStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetDomainMaintenanceStatus.html): The status of the maintenance action.
+- [GetIndex](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetIndex.html): Retrieves information about an OpenSearch index including its schema and semantic enrichment configuration.
+- [GetPackageVersionHistory](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetPackageVersionHistory.html): Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package).
+- [GetUpgradeHistory](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetUpgradeHistory.html): Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain.
+- [GetUpgradeStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_GetUpgradeStatus.html): Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain.
+- [ListApplications](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListApplications.html): Lists all OpenSearch applications under your account.
+- [ListDataSources](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListDataSources.html): Lists direct-query data sources for a specific domain.
+- [ListDirectQueryDataSources](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListDirectQueryDataSources.html): Lists an inventory of all the direct query data sources that you have configured within Amazon OpenSearch Service.
+- [ListDomainMaintenances](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListDomainMaintenances.html): A list of maintenance actions for the domain.
+- [ListDomainNames](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListDomainNames.html): Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region.
+- [ListDomainsForPackage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListDomainsForPackage.html): Lists all Amazon OpenSearch Service domains associated with a given package.
+- [ListInstanceTypeDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListInstanceTypeDetails.html): Lists all instance types and available features for a given OpenSearch or Elasticsearch version.
+- [ListPackagesForDomain](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListPackagesForDomain.html): Lists all packages associated with an Amazon OpenSearch Service domain.
+- [ListScheduledActions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListScheduledActions.html): Retrieves a list of configuration changes that are scheduled for a domain.
+- [ListTags](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListTags.html): Returns all resource tags for an Amazon OpenSearch Service domain, data source, or application.
+- [ListVersions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListVersions.html): Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
+- [ListVpcEndpointAccess](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListVpcEndpointAccess.html): Retrieves information about each AWS principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+- [ListVpcEndpoints](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListVpcEndpoints.html): Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current AWS account and Region.
+- [ListVpcEndpointsForDomain](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ListVpcEndpointsForDomain.html): Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
+- [PurchaseReservedInstanceOffering](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PurchaseReservedInstanceOffering.html): Allows you to purchase Amazon OpenSearch Service Reserved Instances.
+- [PutDefaultApplicationSetting](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PutDefaultApplicationSetting.html): Sets the default application to the application with the specified ARN.
+- [RejectInboundConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_RejectInboundConnection.html): Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request.
+- [RemoveTags](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_RemoveTags.html): Removes the specified set of tags from an Amazon OpenSearch Service domain, data source, or application.
+- [RevokeVpcEndpointAccess](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_RevokeVpcEndpointAccess.html): Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
+- [StartDomainMaintenance](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_StartDomainMaintenance.html): Starts the node maintenance process on the data node.
+- [StartServiceSoftwareUpdate](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_StartServiceSoftwareUpdate.html): Schedules a service software update for an Amazon OpenSearch Service domain.
+- [UpdateApplication](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdateApplication.html): Updates the configuration and settings of an existing OpenSearch application.
+- [UpdateDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdateDataSource.html): Updates a direct-query data source.
+- [UpdateDirectQueryDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdateDirectQueryDataSource.html): Updates the configuration or properties of an existing direct query data source in Amazon OpenSearch Service.
+- [UpdateDomainConfig](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdateDomainConfig.html): Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.
+- [UpdateIndex](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdateIndex.html): Updates an existing OpenSearch index schema and semantic enrichment configuration.
+- [UpdatePackage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdatePackage.html): Updates a package for use with Amazon OpenSearch Service domains.
+- [UpdatePackageScope](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdatePackageScope.html): Updates the scope of a package.
+- [UpdateScheduledAction](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdateScheduledAction.html): Reschedules a planned domain configuration change for a later time.
+- [UpdateVpcEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpdateVpcEndpoint.html): Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
+- [UpgradeDomain](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpgradeDomain.html): Allows you to either upgrade your Amazon OpenSearch Service domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch.
+
+### Data Types
+
+- [AccessPoliciesStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AccessPoliciesStatus.html): The configured access rules for the domain's search endpoint, and the current status of those rules.
+- [AdditionalLimit](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AdditionalLimit.html): List of limits that are specific to a given instance type.
+- [AdvancedOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AdvancedOptionsStatus.html): Status of the advanced options for the specified domain.
+- [AdvancedSecurityOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AdvancedSecurityOptions.html): Container for fine-grained access control settings.
+- [AdvancedSecurityOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AdvancedSecurityOptionsInput.html): Options for enabling and configuring fine-grained access control.
+- [AdvancedSecurityOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AdvancedSecurityOptionsStatus.html): The status of fine-grained access control settings for a domain.
+- [AIMLOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AIMLOptionsInput.html): Container for parameters required to enable all machine learning features.
+- [AIMLOptionsOutput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AIMLOptionsOutput.html): Container for parameters representing the state of machine learning features on the specified domain.
+- [AIMLOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AIMLOptionsStatus.html): The status of machine learning options on the specified domain.
+- [AppConfig](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AppConfig.html): Configuration settings for an OpenSearch application.
+- [ApplicationSummary](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ApplicationSummary.html): Basic details of an OpenSearch application.
+- [AuthorizedPrincipal](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AuthorizedPrincipal.html): Information about an AWS account or service that has access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+- [AutoTune](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTune.html): Information about an Auto-Tune action.
+- [AutoTuneDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTuneDetails.html): Specifies details about a scheduled Auto-Tune action.
+- [AutoTuneMaintenanceSchedule](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTuneMaintenanceSchedule.html)
+- [AutoTuneOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTuneOptions.html): Auto-Tune settings when updating a domain.
+- [AutoTuneOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTuneOptionsInput.html): Options for configuring Auto-Tune.
+- [AutoTuneOptionsOutput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTuneOptionsOutput.html): The Auto-Tune settings for a domain, displayed when enabling or disabling Auto-Tune.
+- [AutoTuneOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTuneOptionsStatus.html): The Auto-Tune status for the domain.
+- [AutoTuneStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AutoTuneStatus.html): The current status of Auto-Tune for the domain.
+- [AvailabilityZoneInfo](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AvailabilityZoneInfo.html): Information about an Availability Zone on a domain.
+- [AWSDomainInformation](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AWSDomainInformation.html): Information about an Amazon OpenSearch Service domain.
+- [CancelledChangeProperty](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CancelledChangeProperty.html): A property change that was cancelled for an Amazon OpenSearch Service domain.
+- [ChangeProgressDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ChangeProgressDetails.html): Container for information about a configuration change happening on a domain.
+- [ChangeProgressStage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ChangeProgressStage.html): Progress details for each stage of a domain update.
+- [ChangeProgressStatusDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ChangeProgressStatusDetails.html): The progress details of a specific domain configuration change.
+- [CloudWatchDirectQueryDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CloudWatchDirectQueryDataSource.html): Configuration details for a CloudWatch Logs data source that can be used for direct queries.
+- [ClusterConfig](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ClusterConfig.html): Container for the cluster configuration of an OpenSearch Service domain.
+- [ClusterConfigStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ClusterConfigStatus.html): The cluster configuration status for a domain.
+- [CognitoOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CognitoOptions.html): Container for the parameters required to enable Cognito authentication for an OpenSearch Service domain.
+- [CognitoOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CognitoOptionsStatus.html): The status of the Cognito options for the specified domain.
+- [ColdStorageOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ColdStorageOptions.html): Container for the parameters required to enable cold storage for an OpenSearch Service domain.
+- [CompatibleVersionsMap](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CompatibleVersionsMap.html): A map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.
+- [ConnectionProperties](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ConnectionProperties.html): The connection properties of an outbound connection.
+- [CrossClusterSearchConnectionProperties](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_CrossClusterSearchConnectionProperties.html): Cross-cluster search specific connection properties.
+- [DataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DataSource.html): Data sources that are associated with an OpenSearch application.
+- [DataSourceDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DataSourceDetails.html): Details about a direct-query data source.
+- [DataSourceType](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DataSourceType.html): The type of data source.
+- [DeploymentStrategyOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeploymentStrategyOptions.html): Specifies the deployment strategy options for the domain.
+- [DeploymentStrategyOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DeploymentStrategyOptionsStatus.html): The status of deployment strategy options for the domain.
+- [DescribePackagesFilter](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DescribePackagesFilter.html): A filter to apply to the DescribePackage response.
+- [DirectQueryDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DirectQueryDataSource.html): The configuration details for a data source that can be directly queried.
+- [DirectQueryDataSourceType](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DirectQueryDataSourceType.html): The type of data source that is used for direct queries.
+- [DomainConfig](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainConfig.html): Container for the configuration of an OpenSearch Service domain.
+- [DomainEndpointOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainEndpointOptions.html): Options to configure a custom endpoint for an OpenSearch Service domain.
+- [DomainEndpointOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainEndpointOptionsStatus.html): The configured endpoint options for a domain and their current status.
+- [DomainInfo](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainInfo.html): Information about an OpenSearch Service domain.
+- [DomainInformationContainer](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainInformationContainer.html): Container for information about an OpenSearch Service domain.
+- [DomainMaintenanceDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainMaintenanceDetails.html): Container for the domain maintenance details.
+- [DomainNodesStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainNodesStatus.html): Container for information about nodes on the domain.
+- [DomainPackageDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainPackageDetails.html): Information about a package that is associated with a domain.
+- [DomainStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DomainStatus.html): The current status of an OpenSearch Service domain.
+- [DryRunProgressStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DryRunProgressStatus.html): Information about the progress of a pre-upgrade dry run analysis.
+- [DryRunResults](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_DryRunResults.html): Results of a dry run performed in an update domain request.
+- [Duration](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_Duration.html): The duration of a maintenance schedule.
+- [EBSOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_EBSOptions.html): Container for the parameters required to enable EBS-based storage for an OpenSearch Service domain.
+- [EBSOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_EBSOptionsStatus.html): The status of the EBS options for the specified OpenSearch Service domain.
+- [EncryptionAtRestOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_EncryptionAtRestOptions.html): Specifies whether the domain should encrypt data at rest, and if so, the Key Management Service (KMS) key to use.
+- [EncryptionAtRestOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_EncryptionAtRestOptionsStatus.html): Status of the encryption at rest options for the specified OpenSearch Service domain.
+- [EnvironmentInfo](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_EnvironmentInfo.html): Information about the active domain environment.
+- [ErrorDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ErrorDetails.html): Additional information if the package is in an error state.
+- [Filter](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_Filter.html): A filter used to limit results when describing inbound or outbound cross-cluster connections.
+- [IAMFederationOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IAMFederationOptionsInput.html): Input parameters for configuring IAM identity federation settings.
+- [IAMFederationOptionsOutput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IAMFederationOptionsOutput.html): Output parameters showing the current IAM identity federation configuration.
+- [IamIdentityCenterOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IamIdentityCenterOptions.html): Configuration settings for IAM Identity Center in an OpenSearch application.
+- [IamIdentityCenterOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IamIdentityCenterOptionsInput.html): Configuration settings for enabling and managing IAM Identity Center.
+- [IdentityCenterOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IdentityCenterOptions.html): Settings container for integrating IAM Identity Center with OpenSearch UI applications, which enables enabling secure user authentication and access control across multiple data sources.
+- [IdentityCenterOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IdentityCenterOptionsInput.html): Configuration settings for enabling and managing IAM Identity Center.
+- [IdentityCenterOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IdentityCenterOptionsStatus.html): The status of IAM Identity Center configuration settings for a domain.
+- [InboundConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_InboundConnection.html): Describes an inbound cross-cluster connection for Amazon OpenSearch Service.
+- [InboundConnectionStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_InboundConnectionStatus.html): The status of an inbound cross-cluster connection for OpenSearch Service.
+- [InstanceCountLimits](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_InstanceCountLimits.html): Limits on the number of instances that can be created in OpenSearch Service for a given instance type.
+- [InstanceLimits](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_InstanceLimits.html): Instance-related attributes that are available for a given instance type.
+- [InstanceTypeDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_InstanceTypeDetails.html): Lists all instance types and available features for a given OpenSearch or Elasticsearch version.
+- [IPAddressTypeStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_IPAddressTypeStatus.html): The IP address type status for the domain.
+- [JWTOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_JWTOptionsInput.html): The JWT authentication and authorization configuration for an Amazon OpenSearch Service domain.
+- [JWTOptionsOutput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_JWTOptionsOutput.html): Describes the JWT options configured for the domain.
+- [KeyStoreAccessOption](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_KeyStoreAccessOption.html): The configuration parameters to enable access to the key store required by the package.
+- [Limits](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_Limits.html): Limits for a given instance type and for each of its roles.
+- [LogPublishingOption](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_LogPublishingOption.html): Specifies whether the Amazon OpenSearch Service domain publishes the OpenSearch application and slow logs to Amazon CloudWatch.
+- [LogPublishingOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_LogPublishingOptionsStatus.html): The configured log publishing options for the domain and their current status.
+- [MasterUserOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_MasterUserOptions.html): Credentials for the master user for a domain.
+- [ModifyingProperties](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ModifyingProperties.html): Information about the domain properties that are currently being modified.
+- [NaturalLanguageQueryGenerationOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_NaturalLanguageQueryGenerationOptionsInput.html): Container for parameters required to enable the natural language query generation feature.
+- [NaturalLanguageQueryGenerationOptionsOutput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_NaturalLanguageQueryGenerationOptionsOutput.html): Container for parameters representing the state of the natural language query generation feature on the specified domain.
+- [NodeConfig](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_NodeConfig.html): Configuration options for defining the setup of any node type within the cluster.
+- [NodeOption](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_NodeOption.html): Configuration settings for defining the node type within a cluster.
+- [NodeToNodeEncryptionOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_NodeToNodeEncryptionOptions.html): Enables or disables node-to-node encryption.
+- [NodeToNodeEncryptionOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_NodeToNodeEncryptionOptionsStatus.html): Status of the node-to-node encryption options for the specified domain.
+- [OffPeakWindow](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_OffPeakWindow.html): A custom 10-hour, low-traffic window during which OpenSearch Service can perform mandatory configuration changes on the domain.
+- [OffPeakWindowOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_OffPeakWindowOptions.html): Options for a domain's off-peak window, during which OpenSearch Service can perform mandatory configuration changes on the domain.
+- [OffPeakWindowOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_OffPeakWindowOptionsStatus.html): The status of off-peak window options for a domain.
+- [OptionStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_OptionStatus.html): Provides the current status of an entity.
+- [OutboundConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_OutboundConnection.html): Specifies details about an outbound cross-cluster connection.
+- [OutboundConnectionStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_OutboundConnectionStatus.html): The status of an outbound cross-cluster connection.
+- [PackageAssociationConfiguration](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageAssociationConfiguration.html): The configuration for associating a package with a domain.
+- [PackageConfiguration](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageConfiguration.html): The configuration parameters for a package.
+- [PackageDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageDetails.html): Basic information about a package.
+- [PackageDetailsForAssociation](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageDetailsForAssociation.html): Details of a package that is associated with a domain.
+- [PackageEncryptionOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageEncryptionOptions.html): Encryption options for a package.
+- [PackageSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageSource.html): The Amazon S3 location to import the package from.
+- [PackageVendingOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageVendingOptions.html): Configuration options for determining whether a package can be made available for use by other users.
+- [PackageVersionHistory](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PackageVersionHistory.html): Details about a package version.
+- [PluginProperties](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_PluginProperties.html): Basic information about the plugin.
+- [RecurringCharge](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_RecurringCharge.html): Contains the specific price and frequency of a recurring charges for an OpenSearch Reserved Instance, or for a Reserved Instance offering.
+- [ReservedInstance](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ReservedInstance.html): Details of an OpenSearch Reserved Instance.
+- [ReservedInstanceOffering](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ReservedInstanceOffering.html): Details of an OpenSearch Reserved Instance offering.
+- [S3GlueDataCatalog](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_S3GlueDataCatalog.html): Information about the Amazon S3 Glue Data Catalog.
+- [S3VectorsEngine](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_S3VectorsEngine.html): Options for enabling S3 vectors engine features on the specified domain.
+- [SAMLIdp](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SAMLIdp.html): The SAML identity povider information.
+- [SAMLOptionsInput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SAMLOptionsInput.html): The SAML authentication configuration for an Amazon OpenSearch Service domain.
+- [SAMLOptionsOutput](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SAMLOptionsOutput.html): Describes the SAML application configured for the domain.
+- [ScheduledAction](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ScheduledAction.html): Information about a scheduled configuration change for an OpenSearch Service domain.
+- [ScheduledAutoTuneDetails](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ScheduledAutoTuneDetails.html): Specifies details about a scheduled Auto-Tune action.
+- [SecurityLakeDirectQueryDataSource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SecurityLakeDirectQueryDataSource.html): Configuration details for a Security Lake data source that can be used for direct queries.
+- [ServerlessVectorAcceleration](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ServerlessVectorAcceleration.html): Configuration for serverless vector acceleration, which provides GPU-accelerated vector search capabilities for improved performance on vector workloads.
+- [ServiceSoftwareOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ServiceSoftwareOptions.html): The current status of the service software for an Amazon OpenSearch Service domain.
+- [SnapshotOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SnapshotOptions.html): The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain.
+- [SnapshotOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SnapshotOptionsStatus.html): Container for information about a daily automated snapshot for an OpenSearch Service domain.
+- [SoftwareUpdateOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SoftwareUpdateOptions.html): Options for configuring service software updates for a domain.
+- [SoftwareUpdateOptionsStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_SoftwareUpdateOptionsStatus.html): The status of the service software options for a domain.
+- [StorageType](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_StorageType.html): A list of storage types for an Amazon OpenSearch Service domain that are available for a given intance type.
+- [StorageTypeLimit](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_StorageTypeLimit.html): Limits that are applicable for the given Amazon OpenSearch Service storage type.
+- [Tag](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_Tag.html): A tag (key-value pair) for an Amazon OpenSearch Service resource.
+- [UpgradeHistory](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpgradeHistory.html): History of the last 10 upgrades and upgrade eligibility checks for an Amazon OpenSearch Service domain.
+- [UpgradeStepItem](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_UpgradeStepItem.html): Represents a single step of an upgrade or upgrade eligibility check workflow.
+- [ValidationFailure](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ValidationFailure.html): A validation failure that occurred as the result of a pre-update validation check (verbose dry run) on a domain.
+- [VersionStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_VersionStatus.html): The status of the the OpenSearch or Elasticsearch version options for the specified Amazon OpenSearch Service domain.
+- [VPCDerivedInfo](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_VPCDerivedInfo.html): Information about the subnets and security groups for an Amazon OpenSearch Service domain provisioned within a virtual private cloud (VPC).
+- [VPCDerivedInfoStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_VPCDerivedInfoStatus.html): Status of the VPC options for a specified domain.
+- [VpcEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_VpcEndpoint.html): The connection endpoint for connecting to an Amazon OpenSearch Service domain through a proxy.
+- [VpcEndpointError](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_VpcEndpointError.html): Error information when attempting to describe an Amazon OpenSearch Service-managed VPC endpoint.
+- [VpcEndpointSummary](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_VpcEndpointSummary.html): Summary information for an Amazon OpenSearch Service-managed VPC endpoint.
+- [VPCOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_VPCOptions.html): Options to specify the subnets and security groups for an Amazon OpenSearch Service VPC endpoint.
+- [WindowStartTime](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_WindowStartTime.html): The desired start time for an off-peak maintenance window.
+- [ZoneAwarenessConfig](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_ZoneAwarenessConfig.html): The zone awareness configuration for an Amazon OpenSearch Service domain.
+
+## [Amazon OpenSearch Ingestion Service](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/Welcome_Amazon_OpenSearch_Ingestion_Service.html)
+
+Use the Amazon OpenSearch Ingestion API to create and manage ingestion pipelines. OpenSearch Ingestion is a fully managed data collector that delivers real-time log and trace data to OpenSearch Service domains. For more information, see [Getting data into your cluster using OpenSearch Ingestion](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ingestion.html).
+
+### Actions
+
+- [CreatePipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_CreatePipeline.html): Creates an OpenSearch Ingestion pipeline.
+- [CreatePipelineEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_CreatePipelineEndpoint.html): Creates a VPC endpoint for an OpenSearch Ingestion pipeline.
+- [DeletePipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_DeletePipeline.html): Deletes an OpenSearch Ingestion pipeline.
+- [DeletePipelineEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_DeletePipelineEndpoint.html): Deletes a VPC endpoint for an OpenSearch Ingestion pipeline.
+- [DeleteResourcePolicy](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_DeleteResourcePolicy.html): Deletes a resource-based policy from an OpenSearch Ingestion resource.
+- [GetPipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_GetPipeline.html): Retrieves information about an OpenSearch Ingestion pipeline.
+- [GetPipelineBlueprint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_GetPipelineBlueprint.html): Retrieves information about a specific blueprint for OpenSearch Ingestion.
+- [GetPipelineChangeProgress](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_GetPipelineChangeProgress.html): Returns progress information for the current change happening on an OpenSearch Ingestion pipeline.
+- [GetResourcePolicy](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_GetResourcePolicy.html): Retrieves the resource-based policy attached to an OpenSearch Ingestion resource.
+- [ListPipelineBlueprints](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ListPipelineBlueprints.html): Retrieves a list of all available blueprints for Data Prepper.
+- [ListPipelineEndpointConnections](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ListPipelineEndpointConnections.html): Lists the pipeline endpoints connected to pipelines in your account.
+- [ListPipelineEndpoints](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ListPipelineEndpoints.html): Lists all pipeline endpoints in your account.
+- [ListPipelines](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ListPipelines.html): Lists all OpenSearch Ingestion pipelines in the current AWS account and Region.
+- [ListTagsForResource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ListTagsForResource.html): Lists all resource tags associated with an OpenSearch Ingestion pipeline.
+- [PutResourcePolicy](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PutResourcePolicy.html): Attaches a resource-based policy to an OpenSearch Ingestion resource.
+- [RevokePipelineEndpointConnections](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_RevokePipelineEndpointConnections.html): Revokes pipeline endpoints from specified endpoint IDs.
+- [StartPipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_StartPipeline.html): Starts an OpenSearch Ingestion pipeline.
+- [StopPipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_StopPipeline.html): Stops an OpenSearch Ingestion pipeline.
+- [TagResource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_TagResource.html): Tags an OpenSearch Ingestion pipeline.
+- [UntagResource](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_UntagResource.html): Removes one or more tags from an OpenSearch Ingestion pipeline.
+- [UpdatePipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_UpdatePipeline.html): Updates an OpenSearch Ingestion pipeline.
+- [ValidatePipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ValidatePipeline.html): Checks whether an OpenSearch Ingestion pipeline configuration is valid prior to creation.
+
+### Data Types
+
+- [BufferOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_BufferOptions.html): Options that specify the configuration of a persistent buffer.
+- [ChangeProgressStage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ChangeProgressStage.html): Progress details for a specific stage of a pipeline configuration change.
+- [ChangeProgressStatus](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ChangeProgressStatus.html): The progress details of a pipeline configuration change.
+- [CloudWatchLogDestination](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_CloudWatchLogDestination.html): The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch.
+- [EncryptionAtRestOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_EncryptionAtRestOptions.html): Options to control how OpenSearch encrypts buffer data.
+- [LogPublishingOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_LogPublishingOptions.html): Container for the values required to configure logging for the pipeline.
+- [Pipeline](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_Pipeline.html): Information about an existing OpenSearch Ingestion pipeline.
+- [PipelineBlueprint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineBlueprint.html): Container for information about an OpenSearch Ingestion blueprint.
+- [PipelineBlueprintSummary](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineBlueprintSummary.html): A summary of an OpenSearch Ingestion blueprint.
+- [PipelineDestination](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineDestination.html): An object representing the destination of a pipeline.
+- [PipelineEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineEndpoint.html): Represents a VPC endpoint for an OpenSearch Ingestion pipeline, enabling private connectivity between your VPC and the pipeline.
+- [PipelineEndpointConnection](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineEndpointConnection.html): Represents a connection to a pipeline endpoint, containing details about the endpoint association.
+- [PipelineEndpointVpcOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineEndpointVpcOptions.html): Configuration settings for the VPC endpoint, specifying network access controls.
+- [PipelineStatusReason](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineStatusReason.html): Information about a pipeline's current status.
+- [PipelineSummary](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_PipelineSummary.html): Summary information for an OpenSearch Ingestion pipeline.
+- [ServiceVpcEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ServiceVpcEndpoint.html): A container for information about VPC endpoints that were created to other services
+- [Tag](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_Tag.html): A tag (key-value pair) for an OpenSearch Ingestion pipeline.
+- [ValidationMessage](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_ValidationMessage.html): A validation message associated with a ValidatePipeline request in OpenSearch Ingestion.
+- [VpcAttachmentOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_VpcAttachmentOptions.html): Options for attaching a VPC to pipeline.
+- [VpcEndpoint](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_VpcEndpoint.html): An OpenSearch Ingestion-managed VPC endpoint that will access one or more pipelines.
+- [VpcOptions](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_osis_VpcOptions.html): Options that specify the subnets and security groups for an OpenSearch Ingestion VPC endpoint.
+
+## Common
+
+- [Common Parameters](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/CommonErrors.html)

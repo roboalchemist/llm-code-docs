@@ -1,0 +1,9 @@
+name: aws-cli
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.aws.amazon.com/cli/latest/userguide/
+    last_fetched: "2026-04-03T23:08:32Z"
+description: >
+  aws-cli documentation
+quality_score: 0

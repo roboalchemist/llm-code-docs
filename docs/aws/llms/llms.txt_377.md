@@ -1,0 +1,383 @@
+# Source: https://docs.aws.amazon.com/eventbridge/latest/ref/llms.txt
+
+# Amazon EventBridge Events Reference
+
+> Provides a comprehensive listing of the events that AWS services send to EventBridge.
+
+- [Document history](https://docs.aws.amazon.com/eventbridge/latest/ref/doc-history.html)
+
+## [AWS Events Reference](https://docs.aws.amazon.com/eventbridge/latest/ref/welcome.html)
+
+- [Event structure](https://docs.aws.amazon.com/eventbridge/latest/ref/overiew-event-structure.html): Events are represented as JSON objects, and they all have a similar structure, and the same top-level fields.
+- [Event metadata](https://docs.aws.amazon.com/eventbridge/latest/ref/events-structure.html): Discover reference information about the metadata fields included on all events delivered to EventBridge event buses.
+- [Event delivery level](https://docs.aws.amazon.com/eventbridge/latest/ref/event-delivery-level.html): Each AWS service that generates events sends them to EventBridge as either best effort or durable delivery attempts.
+
+
+## [Events](https://docs.aws.amazon.com/eventbridge/latest/ref/events.html)
+
+- [Amazon AI Operations](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-aiops.html): Amazon AI Operations sends service events to EventBridge via AWS CloudTrail.
+- [API Gateway](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-apigateway.html): API Gateway sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [ARC Region switch](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-arc-region-switch.html): ARC Region switch sends service events directly to EventBridge.
+- [AWS ARC - Zonal Shift](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-arc-zonal-shift.html): AWS ARC - Zonal Shift sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [IAM Access Analyzer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-access-analyzer.html): IAM Access Analyzer sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Account Management](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-account.html): Account Management sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amplify](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-amplify.html): Amplify sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amplify Admin](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-amplifybackend.html): Amplify Admin sends service events to EventBridge via AWS CloudTrail.
+- [Amplify UI Builder](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-amplifyuibuilder.html): Amplify UI Builder sends service events to EventBridge via AWS CloudTrail.
+- [App Mesh](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-appmesh.html): App Mesh sends service events to EventBridge via AWS CloudTrail.
+- [App Runner](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-apprunner.html): App Runner sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS AppConfig](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-appconfig.html): AWS AppConfig sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AppFabric](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-appfabric.html): AppFabric sends service events to EventBridge via AWS CloudTrail.
+- [AppFabric](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-fabric.html): AppFabric sends service events to EventBridge via AWS CloudTrail.
+- [Amazon App Integration Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-app-integrations.html): Amazon App Integration Service sends service events to EventBridge via AWS CloudTrail.
+- [Amazon AppStream](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-appstream.html): Amazon AppStream sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS AppSync](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-appsync.html): AWS AppSync sends service events to EventBridge via AWS CloudTrail.
+- [Amazon AppFlow](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-appflow.html): Amazon AppFlow sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Application Auto Scaling](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-application-autoscaling.html): Application Auto Scaling sends service events directly to EventBridge.
+- [Application Cost Profiler](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-application-cost-profiler.html): Application Cost Profiler sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Application Discovery Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-discovery.html): Application Discovery Service sends service events to EventBridge via AWS CloudTrail.
+- [Application Migration Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mgn.html): Application Migration Service sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Application Testing](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-apptest.html): AWS Application Testing sends service events to EventBridge via AWS CloudTrail.
+- [Application Transformation Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-application-transformation.html): Application Transformation Service sends service events to EventBridge via AWS CloudTrail.
+- [AWS Artifact](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-artifact.html): AWS Artifact sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Athena](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-athena.html): Athena sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Audit Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-auditmanager.html): Audit Manager sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Aurora DSQL](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-dsql.html): Aurora DSQL sends service events to EventBridge via AWS CloudTrail.
+- [Auto Scaling](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-autoscaling.html): Auto Scaling sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [B2B Data Interchange](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-b2bi.html): B2B Data Interchange sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Backup](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-backup.html): AWS Backup sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Backup gateway](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-backup-gateway.html): Backup gateway sends service events to EventBridge via AWS CloudTrail.
+- [AWS Batch](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-batch.html): AWS Batch sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Bedrock](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-bedrock.html): Amazon Bedrock sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Billing](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-billing.html): Billing sends service events to EventBridge via AWS CloudTrail.
+- [Billing Conductor](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-billingconductor.html): Billing Conductor sends service events to EventBridge via AWS CloudTrail.
+- [Billing and Cost Management Data Exports](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-bcm-data-exports.html): Billing and Cost Management Data Exports sends service events to EventBridge via AWS CloudTrail.
+- [Braket](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-braket.html): Braket sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Budgets](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-budgets.html): AWS Budgets sends service events to EventBridge via AWS CloudTrail.
+- [AWS BugBust](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-bugbust.html): AWS BugBust sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Keyspaces](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cassandra.html): Amazon Keyspaces sends service events to EventBridge via AWS CloudTrail.
+- [AWS Central Governance Controls Platform](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-controlcatalog.html): AWS Central Governance Controls Platform sends service events to EventBridge via AWS CloudTrail.
+- [ACM](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-acm.html): ACM sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Private CA](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-acm-pca.html): AWS Private CA sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Q Developer in chat applications](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-chatbot.html): Amazon Q Developer in chat applications sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Chime](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-chime.html): Amazon Chime sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Chime SDK Media Pipelines](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-chime-sdk-media-pipelines.html): Amazon Chime SDK Media Pipelines sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Chime SDK Telephony Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-chime-sdk-voice.html): Amazon Chime SDK Telephony Service sends service events to EventBridge via AWS CloudTrail.
+- [AWS Clean Rooms](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cleanrooms.html): AWS Clean Rooms sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Cloud Control API](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudcontrolapi.html): Cloud Control API sends service events to EventBridge via AWS CloudTrail.
+- [Cloud Directory](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-clouddirectory.html): Cloud Directory sends service events to EventBridge via AWS CloudTrail.
+- [AWS Cloud Map](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-servicediscovery.html): AWS Cloud Map sends service events to EventBridge via AWS CloudTrail.
+- [AWS Cloud9](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloud9.html): AWS Cloud9 sends service events to EventBridge via AWS CloudTrail.
+- [CloudFormation](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudformation.html): CloudFormation sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CloudFront](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudfront.html): CloudFront sends service events to EventBridge via AWS CloudTrail.
+- [CloudFront KeyValueStore](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-edgekeyvaluestore.html): CloudFront KeyValueStore sends service events to EventBridge via AWS CloudTrail.
+- [Amazon CloudSearch](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudsearch.html): Amazon CloudSearch sends service events to EventBridge via AWS CloudTrail.
+- [CloudShell](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudshell.html): CloudShell sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CloudTrail](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudtrail.html): CloudTrail sends service events to EventBridge via AWS CloudTrail.
+- [CloudTrail Data Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudtrail-data.html): CloudTrail Data Service sends service events to EventBridge via AWS CloudTrail.
+- [CloudWatch](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cloudwatch.html): CloudWatch sends service events directly to EventBridge.
+- [CloudWatch Application Insights](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-application-insights.html): CloudWatch Application Insights sends service events to EventBridge via AWS CloudTrail.
+- [CloudWatch Application Insights](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-applicationinsights.html): CloudWatch Application Insights sends service events directly to EventBridge.
+- [Amazon CloudWatch Evidently](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-evidently.html): Amazon CloudWatch Evidently sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CloudWatch Logs](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-logs.html): CloudWatch Logs sends service events to EventBridge via AWS CloudTrail.
+- [Amazon CloudWatch Network Monitor](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-networkmonitor.html): Amazon CloudWatch Network Monitor sends service events to EventBridge via AWS CloudTrail.
+- [Amazon CloudWatch Observability Access Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-oam.html): Amazon CloudWatch Observability Access Manager sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CloudWatch Observability Admin](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-observabilityadmin.html): CloudWatch Observability Admin sends service events to EventBridge via AWS CloudTrail.
+- [CloudWatch SDK Metrics](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sdkmetrics.html): CloudWatch SDK Metrics sends service events to EventBridge via AWS CloudTrail.
+- [CloudWatch Synthetics](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-synthetics.html): CloudWatch Synthetics sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeArtifact](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codeartifact.html): CodeArtifact sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeBuild](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codebuild.html): CodeBuild sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeCommit](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codecommit.html): CodeCommit sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeConnections](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codeconnections.html): CodeConnections sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeDeploy](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codedeploy.html): CodeDeploy sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeGuru Profiler](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codeguru-profiler.html): CodeGuru Profiler sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeGuru Reviewer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codeguru-reviewer.html): CodeGuru Reviewer sends service events to EventBridge via AWS CloudTrail.
+- [CodePipeline](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codepipeline.html): CodePipeline sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [CodeConnections](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codestar-connections.html): CodeConnections sends service events to EventBridge via AWS CloudTrail.
+- [AWS CodeStar Notifications](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codestar-notifications.html): AWS CodeStar Notifications sends service events to EventBridge via AWS CloudTrail.
+- [CodeWhisperer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-codewhisperer.html): CodeWhisperer sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Cognito Identity](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cognito-identity.html): Amazon Cognito Identity sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Cognito Sync](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cognito-sync.html): Amazon Cognito Sync sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Cognito user pools](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cognito-idp.html): Amazon Cognito user pools sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Comprehend Medical](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-comprehendmedical.html): Amazon Comprehend Medical sends service events to EventBridge via AWS CloudTrail.
+- [Compute Optimizer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-compute-optimizer.html): Compute Optimizer sends service events to EventBridge via AWS CloudTrail.
+- [AWS Config](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-config.html): AWS Config sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Connect](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-connect.html): Amazon Connect sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Connect Campaigns](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-connect-campaigns.html): Amazon Connect Campaigns sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Connect Cases](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cases.html): Amazon Connect Cases sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Connect Contact Lens](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-contact-lens.html): Amazon Connect Contact Lens sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Connect Customer Profiles](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-profile.html): Amazon Connect Customer Profiles sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Connect Participant Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-participant-connect.html): Amazon Connect Participant Service sends service events to EventBridge via AWS CloudTrail.
+- [Console Mobile Application](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-consoleapp.html): Console Mobile Application sends service events to EventBridge via AWS CloudTrail.
+- [AWS Control Tower](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-controltower.html): AWS Control Tower sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Cost Explorer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ce.html): Cost Explorer sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Cost Optimization Hub](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-cost-optimization-hub.html): Cost Optimization Hub sends service events to EventBridge via AWS CloudTrail.
+- [AWS Customer Verification Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-customer-verification.html): AWS Customer Verification Service sends service events to EventBridge via AWS CloudTrail.
+- [AWS Data Exchange](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-dataexchange.html): AWS Data Exchange sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Data Lifecycle Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-dlm.html): Amazon Data Lifecycle Manager sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Data Pipeline](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-datapipeline.html): AWS Data Pipeline sends service events to EventBridge via AWS CloudTrail.
+- [DataSync](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-datasync.html): DataSync sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [DataSync Discovery](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-datasync-discovery.html): DataSync Discovery sends service events directly to EventBridge.
+- [Amazon DataZone](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-datazone.html): Amazon DataZone sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS DMS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-dms.html): AWS DMS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Deadline Cloud](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-deadline.html): Deadline Cloud sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS DeepRacer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-deepracer.html): AWS DeepRacer sends service events to EventBridge via AWS CloudTrail.
+- [Detective](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-detective.html): Detective sends service events to EventBridge via AWS CloudTrail.
+- [DevOpsÂ Guru](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-devops-guru.html): DevOpsÂ Guru sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Direct Connect](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-directconnect.html): Direct Connect sends service events to EventBridge via AWS CloudTrail.
+- [Directory Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ds.html): Directory Service sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [DynamoDB](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-dynamodb.html): DynamoDB sends service events to EventBridge via AWS CloudTrail.
+- [DAX](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-dax.html): DAX sends service events to EventBridge via AWS CloudTrail.
+- [Amazon EBS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ebs.html): Amazon EBS sends service events to EventBridge via AWS CloudTrail.
+- [Amazon EC2](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ec2.html): Amazon EC2 sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Image Builder](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-imagebuilder.html): Image Builder sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon ECR Public Gallery](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ecr-public.html): Amazon ECR Public Gallery sends service events to EventBridge via AWS CloudTrail.
+- [Amazon EKS Auth](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-eks-auth.html): Amazon EKS Auth sends service events to EventBridge via AWS CloudTrail.
+- [Amazon EMR](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-emr.html): Amazon EMR sends service events directly to EventBridge.
+- [Amazon EMR Containers](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-emr-containers.html): Amazon EMR Containers sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [EMR Serverless](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-emr-serverless.html): EMR Serverless sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon EMR](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-emrwal.html): Amazon EMR sends service events to EventBridge via AWS CloudTrail.
+- [ElastiCache](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-elasticache.html): ElastiCache sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Elastic Beanstalk](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-elasticbeanstalk.html): Elastic Beanstalk sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon ECR](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ecr.html): Amazon ECR sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon ECS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ecs.html): Amazon ECS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Elastic Disaster Recovery](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-drs.html): Elastic Disaster Recovery sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon EFS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-elasticfilesystem.html): Amazon EFS sends service events to EventBridge via AWS CloudTrail.
+- [Amazon EKS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-eks.html): Amazon EKS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Elastic Load Balancing](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-elasticloadbalancing.html): Elastic Load Balancing sends service events to EventBridge via AWS CloudTrail.
+- [Elastic Load Balancing](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-elb.html): Elastic Load Balancing sends service events to EventBridge via AWS CloudTrail.
+- [Amazon EMR](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-elasticmapreduce.html): Amazon EMR sends service events to EventBridge via AWS CloudTrail.
+- [Elastic Transcoder](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-elastictranscoder.html): Elastic Transcoder sends service events to EventBridge via AWS CloudTrail.
+- [MediaPackage](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mediapackage.html): MediaPackage sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [MediaPackage](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mediapackagev2.html): MediaPackage sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS End User Messaging SMS-Voice](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sms-voice.html): AWS End User Messaging SMS-Voice sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [EnterpriseQ](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-enterpriseq.html): EnterpriseQ sends service events to EventBridge via AWS CloudTrail.
+- [AWS Entity Resolution](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-entityresolution.html): AWS Entity Resolution sends service events to EventBridge via AWS CloudTrail.
+- [EventBridge](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-events.html): EventBridge sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [EventBridge Scheduler](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-scheduler.html): EventBridge Scheduler sends service events to EventBridge via AWS CloudTrail.
+- [EventBridge Schemas](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-schemas.html): EventBridge Schemas sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [ExpertQ](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-expertq.html): ExpertQ sends service events to EventBridge via AWS CloudTrail.
+- [AWS FIS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-fis.html): AWS FIS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [FinSpace](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-finspace.html): FinSpace sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [FinSpace](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-finspace-api.html): FinSpace sends service events to EventBridge via AWS CloudTrail.
+- [Firewall Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-fms.html): Firewall Manager sends service events to EventBridge via AWS CloudTrail.
+- [Forecast](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-forecast.html): Forecast sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Fraud Detector](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-frauddetector.html): Amazon Fraud Detector sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon GameLift Servers](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-gamelift.html): Amazon GameLift Servers sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Location Maps](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-geo-maps.html): Amazon Location Maps sends service events directly to EventBridge.
+- [Amazon Location Places](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-geo-places.html): Amazon Location Places sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Location Routes](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-geo-routes.html): Amazon Location Routes sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Glacier](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-glacier.html): Amazon Glacier sends service events to EventBridge via AWS CloudTrail.
+- [Global Accelerator](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-globalaccelerator.html): Global Accelerator sends service events to EventBridge via AWS CloudTrail.
+- [AWS Glue](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-glue.html): AWS Glue sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Glue Data Quality](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-glue-dataquality.html): AWS Glue Data Quality sends service events directly to EventBridge.
+- [DataBrew](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-databrew.html): DataBrew sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS IoT Greengrass](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-greengrass.html): AWS IoT Greengrass sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Ground Station](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-groundstation.html): AWS Ground Station sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [GuardDuty](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-guardduty.html): GuardDuty sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Health](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-health.html): AWS Health sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [HealthImaging](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-medical-imaging.html): HealthImaging sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [HealthLake](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-healthlake.html): HealthLake sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [HealthOmics](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-omics.html): HealthOmics sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [IAM](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iam.html): IAM sends service events to EventBridge via AWS CloudTrail.
+- [IAM Identity Center](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sso.html): IAM Identity Center sends service events to EventBridge via AWS CloudTrail.
+- [IAM Identity Center directory](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sso-directory.html): IAM Identity Center directory sends service events to EventBridge via AWS CloudTrail.
+- [IAM Identity Center](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sso-oauth.html): IAM Identity Center sends service events to EventBridge via AWS CloudTrail.
+- [IAM Roles Anywhere](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-rolesanywhere.html): IAM Roles Anywhere sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Identity Store](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-identitystore.html): Identity Store sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Inspector Classic](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-inspector.html): Amazon Inspector Classic sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Inspector Scan](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-inspector-scan.html): Amazon Inspector Scan sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Inspector](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-inspector2.html): Amazon Inspector sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon IVS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ivs.html): Amazon IVS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon IVS Chat](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ivschat.html): Amazon IVS Chat sends service events to EventBridge via AWS CloudTrail.
+- [Internet Monitor](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-internetmonitor.html): Internet Monitor sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS IoT](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iot.html): AWS IoT sends service events to EventBridge via AWS CloudTrail.
+- [Device Advisor](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iotdeviceadvisor.html): Device Advisor sends service events to EventBridge via AWS CloudTrail.
+- [AWS IoT Fleet Hub](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iotfleethub.html): AWS IoT Fleet Hub sends service events to EventBridge via AWS CloudTrail.
+- [AWS IoT FleetWise](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iotfleetwise.html): AWS IoT FleetWise sends service events to EventBridge via AWS CloudTrail.
+- [AWS IoT Secure Tunneling](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iotsecuredtunneling.html): AWS IoT Secure Tunneling sends service events to EventBridge via AWS CloudTrail.
+- [AWS IoT SiteWise](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iotsitewise.html): AWS IoT SiteWise sends service events to EventBridge via AWS CloudTrail.
+- [AWS IoT TwinMaker](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iottwinmaker.html): AWS IoT TwinMaker sends service events to EventBridge via AWS CloudTrail.
+- [AWS IoT Wireless](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iotwireless.html): AWS IoT Wireless sends service events to EventBridge via AWS CloudTrail.
+- [AWS IoT Events](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-iotevents.html): AWS IoT Events sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Kendra](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kendra.html): Amazon Kendra sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Kendra Intelligent Ranking](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kendra-ranking.html): Amazon Kendra Intelligent Ranking sends service events to EventBridge via AWS CloudTrail.
+- [AWS KMS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kms.html): AWS KMS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Kinesis Data Streams](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kinesis.html): Kinesis Data Streams sends service events to EventBridge via AWS CloudTrail.
+- [Firehose](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-firehose.html): Firehose sends service events to EventBridge via AWS CloudTrail.
+- [Kinesis Video Streams](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kinesisvideo.html): Kinesis Video Streams sends service events to EventBridge via AWS CloudTrail.
+- [Lake Formation](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-lakeformation.html): Lake Formation sends service events to EventBridge via AWS CloudTrail.
+- [Lambda](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-lambda.html): Lambda sends service events to EventBridge via AWS CloudTrail.
+- [Launch Wizard](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-launchwizard.html): Launch Wizard sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Lex MBS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-lex.html): Amazon Lex MBS sends service events to EventBridge via AWS CloudTrail.
+- [License Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-license-manager.html): License Manager sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Linux subscriptions in License Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-license-manager-linux-subscriptions.html): Linux subscriptions in License Manager sends service events to EventBridge via AWS CloudTrail.
+- [User subscriptions in License Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-license-manager-user-subscriptions.html): User subscriptions in License Manager sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Lightsail](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-lightsail.html): Lightsail sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Location](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-geo.html): Amazon Location sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Lookout for Equipment](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-lookoutequipment.html): Lookout for Equipment sends service events to EventBridge via AWS CloudTrail.
+- [Lookout for Vision](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-lookoutvision.html): Lookout for Vision sends service events to EventBridge via AWS CloudTrail.
+- [Amazon MQ](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-amazonmq.html): Amazon MQ sends service events to EventBridge via AWS CloudTrail.
+- [Amazon ML](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-machinelearning.html): Amazon ML sends service events to EventBridge via AWS CloudTrail.
+- [Macie](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-macie.html): Macie sends service events directly to EventBridge.
+- [Macie](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-macie2.html): Macie sends service events to EventBridge via AWS CloudTrail.
+- [AWS Mainframe Modernization](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-m2.html): AWS Mainframe Modernization sends service events to EventBridge via AWS CloudTrail.
+- [Managed Blockchain](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-managedblockchain.html): Managed Blockchain sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Managed Blockchain Query](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-managedblockchain-query.html): Managed Blockchain Query sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Managed Grafana](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-grafana.html): Amazon Managed Grafana sends service events to EventBridge via AWS CloudTrail.
+- [Managed Service for Apache Flink](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kinesisanalytics.html): Managed Service for Apache Flink sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Managed Service for Prometheus](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-aps.html): Amazon Managed Service for Prometheus sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Managed Service for Prometheus workspaces](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-aps-workspaces.html): Amazon Managed Service for Prometheus workspaces sends service events to EventBridge via AWS CloudTrail.
+- [AMS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-managedservices.html): AMS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AMS for Amazon EKS Monitoring](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ams-k8s.html): AMS for Amazon EKS Monitoring sends service events to EventBridge via AWS CloudTrail.
+- [Amazon MSK](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kafka-cluster.html): Amazon MSK sends service events to EventBridge via AWS CloudTrail.
+- [Amazon MSK Connect](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-kafkaconnect.html): Amazon MSK Connect sends service events to EventBridge via AWS CloudTrail.
+- [Amazon MWAA](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-airflow.html): Amazon MWAA sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Marketplace Catalog API](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-marketplacecatalog.html): AWS Marketplace Catalog API sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Marketplace Commerce Analytics](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-marketplace-commerce-analytics.html): AWS Marketplace Commerce Analytics sends service events to EventBridge via AWS CloudTrail.
+- [AWS Marketplace Deployment Services](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-deployment-marketplace.html): AWS Marketplace Deployment Services sends service events to EventBridge via AWS CloudTrail.
+- [AWS Marketplace Discovery](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-discovery-marketplace.html): AWS Marketplace Discovery sends service events to EventBridge via AWS CloudTrail.
+- [AWS Marketplace Entitlement Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-entitlement-marketplace.html): AWS Marketplace Entitlement Service sends service events to EventBridge via AWS CloudTrail.
+- [AWS Marketplace Private Marketplace](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-private-marketplace.html): AWS Marketplace Private Marketplace sends service events directly to EventBridge.
+- [AWS Marketplace Vendor Insights](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-vendor-insights.html): AWS Marketplace Vendor Insights sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Mechanical Turk](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mturk-requester.html): Mechanical Turk sends service events to EventBridge via AWS CloudTrail.
+- [MediaConnect](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mediaconnect.html): MediaConnect sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [MediaConvert](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mediaconvert.html): MediaConvert sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [MediaLive](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-medialive.html): MediaLive sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [MediaStore](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-mediastore.html): MediaStore sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [MemoryDB](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-memorydb.html): MemoryDB sends service events to EventBridge via AWS CloudTrail.
+- [AWS Marketplace Metering Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-metering-marketplace.html): AWS Marketplace Metering Service sends service events to EventBridge via AWS CloudTrail.
+- [Migration Hub Orchestrator](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-migrationhub-orchestrator.html): Migration Hub Orchestrator sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Refactor Spaces](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-refactor-spaces.html): Refactor Spaces sends service events to EventBridge via AWS CloudTrail.
+- [Strategy Recommendations](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-migrationhub-strategy.html): Strategy Recommendations sends service events to EventBridge via AWS CloudTrail.
+- [Migration Hub](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-migrationhub.html): Migration Hub sends service events to EventBridge via AWS CloudTrail.
+- [CloudWatch Monitoring](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-monitoring.html): CloudWatch Monitoring sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Monitron](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-monitron.html): Amazon Monitron sends service events to EventBridge via AWS CloudTrail.
+- [Multi-party approval](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-multi-party-approval.html): Multi-party approval sends service events to EventBridge via AWS CloudTrail.
+- [Neptune Analytics](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-neptune-graph.html): Neptune Analytics sends service events to EventBridge via AWS CloudTrail.
+- [Network Access Analyzer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-networkaccessanalyzer.html): Network Access Analyzer sends service events directly to EventBridge.
+- [Network Firewall](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-network-firewall.html): Network Firewall sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Network Flow Monitor](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-networkflowmonitor.html): Network Flow Monitor sends service events to EventBridge via AWS CloudTrail.
+- [Network Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-networkmanager.html): Network Manager sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Network Manager Chat](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-networkmanager-chat.html): Network Manager Chat sends service events to EventBridge via AWS CloudTrail.
+- [Amazon One Enterprise](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-one.html): Amazon One Enterprise sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [OpenSearch Service Ingestion Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-osis.html): OpenSearch Service Ingestion Service sends service events to EventBridge via AWS CloudTrail.
+- [Amazon OpenSearch Serverless](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-aoss.html): Amazon OpenSearch Serverless sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [OpenSearch Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-opensearchservice.html): OpenSearch Service sends service events to EventBridge via AWS CloudTrail.
+- [OpenSearch Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-es.html): OpenSearch Service sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Oracle Database@AWS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-odb.html): Oracle Database@AWS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Organizations](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-organizations.html): Organizations sends service events to EventBridge via AWS CloudTrail.
+- [AWS Outposts](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-outposts.html): AWS Outposts sends service events to EventBridge via AWS CloudTrail.
+- [AWS Panorama](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-panorama.html): AWS Panorama sends service events to EventBridge via AWS CloudTrail.
+- [AWS PCS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-pcs.html): AWS PCS sends service events to EventBridge via AWS CloudTrail.
+- [Partner Central Selling](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-partnercentral-selling.html): Partner Central Selling sends service events directly to EventBridge.
+- [AWS Payment Cryptography Controlplane](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-payment-cryptography.html): AWS Payment Cryptography Controlplane sends service events to EventBridge via AWS CloudTrail.
+- [AWS Payment Encryption Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-aws-payment-encryption.html): AWS Payment Encryption Service sends service events to EventBridge via AWS CloudTrail.
+- [Amazon RDS Performance Insights](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-pi.html): Amazon RDS Performance Insights sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Personalize](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-personalize.html): Amazon Personalize sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Pinpoint](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-pinpoint.html): Amazon Pinpoint sends service events to EventBridge via AWS CloudTrail.
+- [EventBridge Pipes](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-pipes.html): EventBridge Pipes sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Polly](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-polly.html): Amazon Polly sends service events to EventBridge via AWS CloudTrail.
+- [AWS Price List](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-pricelist.html): AWS Price List sends service events to EventBridge via AWS CloudTrail.
+- [AWS Pricing Calculator](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-bcm-pricing-calculator.html): AWS Pricing Calculator sends service events directly to EventBridge.
+- [AWS Private CA Connector for Active Directory](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-pca-connector-ad.html): AWS Private CA Connector for Active Directory sends service events directly to EventBridge.
+- [Connector for SCEP](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-pca-connector-scep.html): Connector for SCEP sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Proton](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-proton.html): AWS Proton sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Q Apps](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-qapps.html): Amazon Q Apps sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Q Developer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-amazonq.html): Amazon Q Developer sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Q](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-qbusiness.html): Amazon Q sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Q Subscriptions](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-user-subscriptions.html): Amazon Q Subscriptions sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Q in Connect](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-qconnect.html): Amazon Q in Connect sends service events to EventBridge via AWS CloudTrail.
+- [QLDB](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-qldb.html): QLDB sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Quick](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-quicksight.html): Quick sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon RDS Data API](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-rdsdata.html): Amazon RDS Data API sends service events to EventBridge via AWS CloudTrail.
+- [Amazon RDS Data API](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-rdsdataapi.html): Amazon RDS Data API sends service events to EventBridge via AWS CloudTrail.
+- [CloudWatch RUM](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-rum.html): CloudWatch RUM sends service events to EventBridge via AWS CloudTrail.
+- [Recycle Bin Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-rbin.html): Recycle Bin Service sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Redshift](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-redshift.html): Amazon Redshift sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Redshift Data API](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-redshift-data.html): Redshift Data API sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Redshift Serverless](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-redshift-serverless.html): Redshift Serverless sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Rekognition](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-rekognition.html): Amazon Rekognition sends service events to EventBridge via AWS CloudTrail.
+- [Amazon RDS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-rds.html): Amazon RDS sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Resilience Hub](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-resiliencehub.html): Resilience Hub sends service events to EventBridge via AWS CloudTrail.
+- [AWS RAM](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ram.html): AWS RAM sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Resource Explorer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-resource-explorer-2.html): Resource Explorer sends service events to EventBridge via AWS CloudTrail.
+- [Resource Groups](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-resource-groups.html): Resource Groups sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Resource Groups Tagging API](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-tagging.html): Resource Groups Tagging API sends service events to EventBridge via AWS CloudTrail.
+- [AWS RoboMaker](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-robomaker.html): AWS RoboMaker sends service events to EventBridge via AWS CloudTrail.
+- [RouteÂ 53 Public Data Plane](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-route53.html): RouteÂ 53 Public Data Plane sends service events to EventBridge via AWS CloudTrail.
+- [ARC](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-route53-recovery-control-config.html): ARC sends service events to EventBridge via AWS CloudTrail.
+- [RouteÂ 53 domain registration](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-route53domains.html): RouteÂ 53 domain registration sends service events to EventBridge via AWS CloudTrail.
+- [Route 53 Profiles](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-route53profiles.html): Route 53 Profiles sends service events to EventBridge via AWS CloudTrail.
+- [RouteÂ 53 Resolver](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-route53resolver.html): RouteÂ 53 Resolver sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon S3 Express](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-s3express.html): Amazon S3 Express sends service events to EventBridge via AWS CloudTrail.
+- [Amazon S3 Object Lambda](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-s3-banner.html): Amazon S3 Object Lambda sends service events to EventBridge via AWS CloudTrail.
+- [S3 on Outposts](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-s3-outposts.html): S3 on Outposts sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS SQL Workbench](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sqlworkbench.html): AWS SQL Workbench sends service events to EventBridge via AWS CloudTrail.
+- [SSM Contacts](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ssm-contacts.html): SSM Contacts sends service events to EventBridge via AWS CloudTrail.
+- [Systems Manager GUI Connect](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ssm-guiconnect.html): Systems Manager GUI Connect sends service events to EventBridge via AWS CloudTrail.
+- [Incident Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ssm-incidents.html): Incident Manager sends service events to EventBridge via AWS CloudTrail.
+- [SageMaker AI](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sagemaker.html): SageMaker AI sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon SageMaker metrics](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-metrics-sagemaker.html): Amazon SageMaker metrics sends service events to EventBridge via AWS CloudTrail.
+- [Savings Plans](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-savingsplans.html): Savings Plans sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Secrets Manager](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-secretsmanager.html): Secrets Manager sends service events to EventBridge via AWS CloudTrail.
+- [Security Hub CSPM](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-securityhub.html): Security Hub CSPM sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Security Incident Response](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-security-ir.html): Security Incident Response sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Security Lake](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-securitylake.html): Security Lake sends service events to EventBridge via AWS CloudTrail.
+- [AWS STS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sts.html): AWS STS sends service events to EventBridge via AWS CloudTrail.
+- [AWS Serverless Application Repository](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-serverlessrepo.html): AWS Serverless Application Repository sends service events to EventBridge via AWS CloudTrail.
+- [Service Catalog](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-servicecatalog.html): Service Catalog sends service events to EventBridge via AWS CloudTrail.
+- [AppRegistry](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-servicecatalog-appregistry.html): AppRegistry sends service events to EventBridge via AWS CloudTrail.
+- [Service Quotas](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-servicequotas.html): Service Quotas sends service events to EventBridge via AWS CloudTrail.
+- [AWS Sign-In](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-signin.html): AWS Sign-In sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Sign Up Portal](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-signup.html): Sign Up Portal sends service events to EventBridge via AWS CloudTrail.
+- [Signer](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-signer.html): Signer sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [SimSpace Weaver](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-simspaceweaver.html): SimSpace Weaver sends service events to EventBridge via AWS CloudTrail.
+- [Amazon SES](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ses.html): Amazon SES sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon SNS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sns.html): Amazon SNS sends service events to EventBridge via AWS CloudTrail.
+- [Amazon SQS](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sqs.html): Amazon SQS sends service events to EventBridge via AWS CloudTrail.
+- [Amazon S3](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-s3.html): Amazon S3 sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon SWF](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-swf.html): Amazon SWF sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon SimpleDB](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-sdb.html): Amazon SimpleDB sends service events to EventBridge via AWS CloudTrail.
+- [Snowball Edge Device Management](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-snow-device-management.html): Snowball Edge Device Management sends service events to EventBridge via AWS CloudTrail.
+- [Snowball](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-snowball.html): Snowball sends service events to EventBridge via AWS CloudTrail.
+- [End User Messaging Social](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-social-messaging.html): End User Messaging Social sends service events directly to EventBridge.
+- [Step Functions](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-states.html): Step Functions sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Storage Gateway](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-storagegateway.html): Storage Gateway sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Supply Chain](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-scn.html): AWS Supply Chain sends service events to EventBridge via AWS CloudTrail.
+- [Support](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-support.html): Support sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS Support App](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-supportapp.html): AWS Support App sends service events to EventBridge via AWS CloudTrail.
+- [Support Center Console](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-support-console.html): Support Center Console sends service events to EventBridge via AWS CloudTrail.
+- [SSM](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ssm.html): SSM sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Quick Setup](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ssm-quicksetup.html): Quick Setup sends service events to EventBridge via AWS CloudTrail.
+- [Systems Manager for SAP](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-ssm-sap.html): Systems Manager for SAP sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Tags](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-tag.html): Tags sends service events directly to EventBridge.
+- [AWS Tax Console Routing Service](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-taxconsole.html): AWS Tax Console Routing Service sends service events to EventBridge via AWS CloudTrail.
+- [AWS TNB](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-tnb.html): AWS TNB sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Textract](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-textract.html): Amazon Textract sends service events to EventBridge via AWS CloudTrail.
+- [WorkSpaces Thin Client](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-thinclient.html): WorkSpaces Thin Client sends service events to EventBridge via AWS CloudTrail.
+- [Timestream](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-timestream.html): Timestream sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Transcribe](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-transcribe.html): Amazon Transcribe sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Transcribe Streaming](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-transcribestreaming.html): Amazon Transcribe Streaming sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Transfer Family](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-transfer.html): Transfer Family sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Amazon Translate](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-translate.html): Amazon Translate sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [Trusted Advisor](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-trustedadvisor.html): Trusted Advisor sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [User Notifications](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-notifications.html): User Notifications sends service events to EventBridge via AWS CloudTrail.
+- [User Notifications Contacts](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-notifications-contacts.html): User Notifications Contacts sends service events to EventBridge via AWS CloudTrail.
+- [VPC Lattice](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-vpc-lattice.html): VPC Lattice sends service events to EventBridge via AWS CloudTrail.
+- [Verified Permissions](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-verifiedpermissions.html): Verified Permissions sends service events to EventBridge via AWS CloudTrail.
+- [Amazon Voice ID](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-voiceid.html): Amazon Voice ID sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [AWS WAFV2](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-wafv2.html): AWS WAFV2 sends service events to EventBridge via AWS CloudTrail.
+- [AWS WAF](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-waf-regional.html): AWS WAF sends service events to EventBridge via AWS CloudTrail.
+- [AWS WAF](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-waf.html): AWS WAF sends service events to EventBridge via AWS CloudTrail.
+- [AWS Well-Architected Tool](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-wellarchitected.html): AWS Well-Architected Tool sends service events to EventBridge via AWS CloudTrail.
+- [Wickr](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-wickr.html): Wickr sends service events to EventBridge via AWS CloudTrail.
+- [WorkDocs](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-workdocs.html): WorkDocs sends service events to EventBridge via AWS CloudTrail.
+- [Amazon WorkMail](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-workmail.html): Amazon WorkMail sends service events to EventBridge via AWS CloudTrail.
+- [Amazon WorkMail Message Flow](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-workmailmessageflow.html): Amazon WorkMail Message Flow sends service events to EventBridge via AWS CloudTrail.
+- [WorkSpaces](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-workspaces.html): WorkSpaces sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [WorkSpaces Web](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-workspaces-web.html): WorkSpaces Web sends service events to EventBridge via AWS CloudTrail.
+- [X-Ray](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-xray.html): X-Ray sends service events directly to EventBridge, as well as via AWS CloudTrail.
+- [re:Post Private](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-repostspace.html): re:Post Private sends service events to EventBridge via AWS CloudTrail.
+- [AWS Transform](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-transform.html): AWS Transform sends service events to EventBridge via AWS CloudTrail.
+- [WorkSpaces Instances](https://docs.aws.amazon.com/eventbridge/latest/ref/events-ref-workspaces-instances.html): WorkSpaces Instances sends service events to EventBridge via AWS CloudTrail.

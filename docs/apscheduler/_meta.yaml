@@ -1,0 +1,8 @@
+name: apscheduler
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:29Z"
+description: >
+  apscheduler documentation
+quality_score: 0

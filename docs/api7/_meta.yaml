@@ -1,0 +1,9 @@
+name: api7
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.api7.ai/
+    last_fetched: "2026-04-03T23:08:28Z"
+description: >
+  api7 documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: better-stack
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.better-stack.ai/docs/
+    last_fetched: "2026-04-03T23:08:42Z"
+description: >
+  better-stack documentation
+quality_score: 0
