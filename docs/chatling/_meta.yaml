@@ -1,0 +1,9 @@
+name: chatling
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.chatling.ai/
+    last_fetched: "2026-04-03T23:08:45Z"
+description: >
+  chatling documentation
+quality_score: 0

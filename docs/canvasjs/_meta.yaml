@@ -1,0 +1,8 @@
+name: canvasjs
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:08:44Z"
+description: >
+  canvasjs documentation
+quality_score: 0

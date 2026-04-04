@@ -1,0 +1,9 @@
+name: cosmicjs
+primary_source: llms
+sources:
+  - type: llms
+    url: https://cosmicjs.com/
+    last_fetched: "2026-04-03T23:08:49Z"
+description: >
+  cosmicjs documentation
+quality_score: 0

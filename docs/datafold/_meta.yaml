@@ -1,0 +1,9 @@
+name: datafold
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.datafold.com/
+    last_fetched: "2026-04-03T23:08:50Z"
+description: >
+  datafold documentation
+quality_score: 0

@@ -1,0 +1,297 @@
+# Source: https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer
+
+Title: opentracer package - github.com/DataDog/dd-trace-go/ddtrace/opentracer - Go Packages
+
+URL Source: https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer
+
+Markdown Content:
+opentracer package - github.com/DataDog/dd-trace-go/ddtrace/opentracer - Go Packages
+===============
+
+[![Image 1: Go](https://pkg.go.dev/static/shared/logo/go-white.svg)](https://go.dev/)
+
+[Skip to Main Content](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#main-content)
+
+![Image 2](https://pkg.go.dev/static/shared/icon/search_gm_grey_24dp.svg)![Image 3](https://pkg.go.dev/static/shared/icon/search_gm_grey_24dp.svg)
+
+*   [Why Go ![Image 4: submenu dropdown icon](https://pkg.go.dev/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#)
+    *   [Case Studies](https://go.dev/solutions#case-studies) 
+Common problems companies solve with Go
+
+    *   [Use Cases](https://go.dev/solutions#use-cases) 
+Stories about how and why companies use Go
+
+    *   [Security](https://go.dev/security/) 
+How Go can help keep you secure by default
+
+*   [Learn](https://go.dev/learn/)
+*   [Docs ![Image 5: submenu dropdown icon](https://pkg.go.dev/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#)
+    *   [Effective Go](https://go.dev/doc/effective_go) 
+Tips for writing clear, performant, and idiomatic Go code
+
+    *   [Go User Manual](https://go.dev/doc/) 
+A complete introduction to building software with Go
+
+    *   [Standard library](https://pkg.go.dev/std) 
+Reference documentation for Go's standard library
+
+    *   [Release Notes](https://go.dev/doc/devel/release) 
+Learn what's new in each Go release
+
+*   [Packages](https://pkg.go.dev/)
+*   [Community ![Image 6: submenu dropdown icon](https://pkg.go.dev/static/shared/icon/arrow_drop_down_gm_grey_24dp.svg)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#)
+    *   [Recorded Talks](https://go.dev/talks/) 
+Videos from prior events
+
+    *   [Meetups _![Image 7](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://www.meetup.com/pro/go) 
+Meet other local Go developers
+
+    *   [Conferences _![Image 8](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://github.com/golang/go/wiki/Conferences) 
+Learn and network with Go developers from around the world
+
+    *   [Go blog](https://go.dev/blog) 
+The Go project's official blog.
+
+    *   [Go project](https://go.dev/help) 
+Get help and stay informed from Go
+
+    *    Get connected  [![Image 9](https://pkg.go.dev/static/shared/logo/social/google-groups.svg)](https://groups.google.com/g/golang-nuts "Get connected with google-groups (Opens in new window)")[![Image 10](https://pkg.go.dev/static/shared/logo/social/github.svg)](https://github.com/golang "Get connected with github (Opens in new window)")[![Image 11](https://pkg.go.dev/static/shared/logo/social/twitter.svg)](https://twitter.com/golang "Get connected with twitter (Opens in new window)")[![Image 12](https://pkg.go.dev/static/shared/logo/social/reddit.svg)](https://www.reddit.com/r/golang/ "Get connected with reddit (Opens in new window)")[![Image 13](https://pkg.go.dev/static/shared/logo/social/slack.svg)](https://invite.slack.golangbridge.org/ "Get connected with slack (Opens in new window)")[![Image 14](https://pkg.go.dev/static/shared/logo/social/stack-overflow.svg)](https://stackoverflow.com/collectives/go) 
+
+[![Image 15: Go](https://pkg.go.dev/static/shared/logo/go-blue.svg)](https://go.dev/)
+
+*   [Why Go _![Image 16](https://pkg.go.dev/static/shared/icon/navigate\_next\_gm\_grey\_24dp.svg)_](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#)
+
+[_![Image 17](https://pkg.go.dev/static/shared/icon/navigate\_before\_gm\_grey\_24dp.svg)_ Why Go](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#) 
+    *   [Case Studies](https://go.dev/solutions#case-studies)
+    *   [Use Cases](https://go.dev/solutions#use-cases)
+    *   [Security](https://go.dev/security/)
+
+*   [Learn](https://go.dev/learn/)
+*   [Docs _![Image 18](https://pkg.go.dev/static/shared/icon/navigate\_next\_gm\_grey\_24dp.svg)_](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#)
+
+[_![Image 19](https://pkg.go.dev/static/shared/icon/navigate\_before\_gm\_grey\_24dp.svg)_ Docs](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#) 
+    *   [Effective Go](https://go.dev/doc/effective_go)
+    *   [Go User Manual](https://go.dev/doc/)
+    *   [Standard library](https://pkg.go.dev/std)
+    *   [Release Notes](https://go.dev/doc/devel/release)
+
+*   [Packages](https://pkg.go.dev/)
+*   [Community _![Image 20](https://pkg.go.dev/static/shared/icon/navigate\_next\_gm\_grey\_24dp.svg)_](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#)
+
+[_![Image 21](https://pkg.go.dev/static/shared/icon/navigate\_before\_gm\_grey\_24dp.svg)_ Community](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#) 
+    *   [Recorded Talks](https://go.dev/talks/)
+    *   [Meetups _![Image 22](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://www.meetup.com/pro/go)
+    *   [Conferences _![Image 23](https://pkg.go.dev/static/shared/icon/launch\_gm\_grey\_24dp.svg)_](https://github.com/golang/go/wiki/Conferences)
+    *   [Go blog](https://go.dev/blog)
+    *   [Go project](https://go.dev/help)
+    *   Get connected [![Image 24](https://pkg.go.dev/static/shared/logo/social/google-groups.svg)](https://groups.google.com/g/golang-nuts)[![Image 25](https://pkg.go.dev/static/shared/logo/social/github.svg)](https://github.com/golang)[![Image 26](https://pkg.go.dev/static/shared/logo/social/twitter.svg)](https://twitter.com/golang)[![Image 27](https://pkg.go.dev/static/shared/logo/social/reddit.svg)](https://www.reddit.com/r/golang/)[![Image 28](https://pkg.go.dev/static/shared/logo/social/slack.svg)](https://invite.slack.golangbridge.org/)[![Image 29](https://pkg.go.dev/static/shared/logo/social/stack-overflow.svg)](https://stackoverflow.com/collectives/go) 
+
+![Image 30: Notice](https://pkg.go.dev/static/shared/icon/info_gm_grey_24dp.svg) The highest tagged major version is [v2](https://pkg.go.dev/github.com/DataDog/dd-trace-go/v2). 
+
+1.   [Discover Packages](https://pkg.go.dev/)
+2.   [github.com/DataDog/dd-trace-go](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1)
+3.   [ddtrace](https://pkg.go.dev/github.com/DataDog/dd-trace-go/ddtrace@v1.24.1)
+4.   [opentracer](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer)![Image 31](https://pkg.go.dev/static/shared/icon/content_copy_gm_grey_24dp.svg)
+
+[![Image 32: Go](https://pkg.go.dev/static/shared/logo/go-blue.svg)](https://go.dev/)
+opentracer
+==========
+
+package![Image 33](https://pkg.go.dev/static/shared/icon/content_copy_gm_grey_24dp.svg)
+
+[Version: v1.24.1](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer?tab=versions)
+
+ Opens a new window with list of versions in this module. 
+
+Latest Latest 
+
+![Image 34: Warning](https://pkg.go.dev/static/shared/icon/alert_gm_grey_24dp.svg)
+This package is not in the latest version of its module.
+
+[Go to latest](https://pkg.go.dev/github.com/DataDog/dd-trace-go/ddtrace/opentracer) Published: May 18, 2020  License: [Apache-2.0, BSD-3-Clause, Apache-2.0](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer?tab=licenses)
+
+ Opens a new window with license information. 
+
+[Imports: 7](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer?tab=imports)
+
+ Opens a new window with list of imports. 
+
+[Imported by: 0](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer?tab=importedby)
+
+ Opens a new window with list of known importers. 
+
+Details
+-------
+
+*   ![Image 35: unchecked](https://pkg.go.dev/static/shared/icon/cancel_gm_grey_24dp.svg) Valid go.mod file ![Image 36](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+The Go module system was introduced in Go 1.11 and is the official dependency management solution for Go. 
+*   ![Image 37: checked](https://pkg.go.dev/static/shared/icon/check_circle_gm_grey_24dp.svg) Redistributable license ![Image 38](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+Redistributable licenses place minimal restrictions on how software can be used, modified, and redistributed. 
+*   ![Image 39: checked](https://pkg.go.dev/static/shared/icon/check_circle_gm_grey_24dp.svg) Tagged version ![Image 40](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+Modules with tagged versions give importers more predictable builds. 
+*   ![Image 41: checked](https://pkg.go.dev/static/shared/icon/check_circle_gm_grey_24dp.svg) Stable version ![Image 42](https://pkg.go.dev/static/shared/icon/help_gm_grey_24dp.svg)
+When a project reaches major version v1 it is considered stable. 
+*   [Learn more about best practices](https://pkg.go.dev/about#best-practices)
+
+Repository
+----------
+
+[github.com/DataDog/dd-trace-go](https://github.com/DataDog/dd-trace-go "https://github.com/DataDog/dd-trace-go")
+
+Links
+-----
+
+*   [![Image 43: Open Source Insights Logo](https://pkg.go.dev/static/shared/icon/depsdev-logo.svg) Open Source Insights](https://deps.dev/go/github.com%2FDataDog%2Fdd-trace-go/v1.24.1 "View this module on Open Source Insights")
+
+ Jump to ... 
+
+*   [Documentation](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#section-documentation)
+    *   [Overview](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-overview)
+    *   [Index](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-index)
+    *   [Examples](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-examples)
+        *   [Package](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#example-package "Package")
+
+    *   [Constants](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-constants)
+    *   [Variables](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-variables)
+    *   [Functions](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-functions)
+        *   [New(opts)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#New "New(opts)")
+        *   [ResourceName(name)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#ResourceName "ResourceName(name)")
+        *   [ServiceName(name)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#ServiceName "ServiceName(name)")
+        *   [SpanName(name)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#SpanName "SpanName(name)")
+        *   [SpanType(name)](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#SpanType "SpanType(name)")
+
+    *   [Types](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-types)
+
+*   [Source Files](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#section-sourcefiles)
+
+![Image 44](https://pkg.go.dev/static/shared/icon/code_gm_grey_24dp.svg) Documentation [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#section-documentation "Go to Documentation")
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Overview [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-overview "Go to Overview")
+
+Package opentracer provides a wrapper on top of the Datadog tracer that can be used with Opentracing. It also provides a set of opentracing.StartSpanOption that are specific to Datadog's APM product. To use it, simply call "New".
+
+Note that there are currently some small incompatibilities between the Opentracing spec and the Datadog APM product, which we are in the process of addressing on the long term. When using Datadog, the Opentracing operation name is what is called resource in Datadog's terms and the Opentracing "component" tag is Datadog's operation name. Meaning that in order to define (in Opentracing terms) a span that has the operation name "/user/profile" and the component "http.request", one would do:
+
+opentracing.StartSpan("http.request", opentracer.ResourceName("/user/profile"))
+
+Some libraries and frameworks are supported out-of-the-box by using our integrations. You can see a list of supported integrations here: [https://godoc.org/gopkg.in/DataDog/dd-trace-go.v1/contrib](https://godoc.org/gopkg.in/DataDog/dd-trace-go.v1/contrib). They are fully compatible with the Opentracing implementation.
+
+Example [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#example-package "Go to Example")
+
+Share Format Run
+
+### Index [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-index "Go to Index")
+
+*   [func New(opts ...tracer.StartOption) opentracing.Tracer](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#New)
+*   [func ResourceName(name string) opentracing.StartSpanOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#ResourceName)
+*   [func ServiceName(name string) opentracing.StartSpanOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#ServiceName)
+*   [func SpanName(name string) opentracing.StartSpanOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#SpanName)
+*   [func SpanType(name string) opentracing.StartSpanOption](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#SpanType)
+
+### Examples [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-examples "Go to Examples")
+
+*   [Package](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#example-package)
+
+### Constants [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-constants "Go to Constants")
+
+This section is empty.
+
+### Variables [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-variables "Go to Variables")
+
+This section is empty.
+
+### Functions [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-functions "Go to Functions")
+
+#### func [New](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/tracer.go#L32)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#New "Go to New")
+
+func New(opts ...[tracer](https://pkg.go.dev/gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer).[StartOption](https://pkg.go.dev/gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer#StartOption)) [opentracing](https://pkg.go.dev/github.com/opentracing/opentracing-go).[Tracer](https://pkg.go.dev/github.com/opentracing/opentracing-go#Tracer)
+
+New creates, instantiates and returns an Opentracing compatible version of the Datadog tracer using the provided set of options.
+
+#### func [ResourceName](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/option.go#L22)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#ResourceName "Go to ResourceName")
+
+func ResourceName(name [string](https://pkg.go.dev/builtin#string)) [opentracing](https://pkg.go.dev/github.com/opentracing/opentracing-go).[StartSpanOption](https://pkg.go.dev/github.com/opentracing/opentracing-go#StartSpanOption)
+
+ResourceName can be used with opentracing.StartSpan to set the resource name of a span.
+
+#### func [ServiceName](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/option.go#L16)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#ServiceName "Go to ServiceName")
+
+func ServiceName(name [string](https://pkg.go.dev/builtin#string)) [opentracing](https://pkg.go.dev/github.com/opentracing/opentracing-go).[StartSpanOption](https://pkg.go.dev/github.com/opentracing/opentracing-go#StartSpanOption)
+
+ServiceName can be used with opentracing.StartSpan to set the service name of a span.
+
+#### func [SpanName](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/option.go#L27)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#SpanName "Go to SpanName")added in v1.11.0
+
+func SpanName(name [string](https://pkg.go.dev/builtin#string)) [opentracing](https://pkg.go.dev/github.com/opentracing/opentracing-go).[StartSpanOption](https://pkg.go.dev/github.com/opentracing/opentracing-go#StartSpanOption)
+
+SpanName sets the Datadog operation name for the span.
+
+#### func [SpanType](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/option.go#L32)[¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#SpanType "Go to SpanType")
+
+func SpanType(name [string](https://pkg.go.dev/builtin#string)) [opentracing](https://pkg.go.dev/github.com/opentracing/opentracing-go).[StartSpanOption](https://pkg.go.dev/github.com/opentracing/opentracing-go#StartSpanOption)
+
+SpanType can be used with opentracing.StartSpan to set the type of a span.
+
+### Types [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#pkg-types "Go to Types")
+
+This section is empty.
+
+![Image 45](https://pkg.go.dev/static/shared/icon/insert_drive_file_gm_grey_24dp.svg) Source Files [¶](https://pkg.go.dev/github.com/DataDog/dd-trace-go@v1.24.1/ddtrace/opentracer#section-sourcefiles "Go to Source Files")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[View all Source files](https://github.com/DataDog/dd-trace-go/tree/v1.24.1/ddtrace/opentracer)
+
+*   [option.go](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/option.go "option.go")
+*   [span.go](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/span.go "span.go")
+*   [tracer.go](https://github.com/DataDog/dd-trace-go/blob/v1.24.1/ddtrace/opentracer/tracer.go "tracer.go")
+
+ Click to show internal directories. 
+
+ Click to hide internal directories. 
+
+[Why Go](https://go.dev/solutions)[Use Cases](https://go.dev/solutions#use-cases)[Case Studies](https://go.dev/solutions#case-studies)
+
+[Get Started](https://learn.go.dev/)[Playground](https://play.golang.org/)[Tour](https://tour.golang.org/)[Stack Overflow](https://stackoverflow.com/questions/tagged/go?tab=Newest)[Help](https://go.dev/help)
+
+[Packages](https://pkg.go.dev/)[Standard Library](https://pkg.go.dev/std)[Sub-repositories](https://pkg.go.dev/golang.org/x)[About Go Packages](https://pkg.go.dev/about)
+
+[About](https://go.dev/project)[Download](https://go.dev/dl/)[Blog](https://go.dev/blog)[Issue Tracker](https://github.com/golang/go/issues)[Release Notes](https://go.dev/doc/devel/release.html)[Brand Guidelines](https://go.dev/brand)[Code of Conduct](https://go.dev/conduct)
+
+[Connect](https://www.twitter.com/golang)[Twitter](https://www.twitter.com/golang)[GitHub](https://github.com/golang)[Slack](https://invite.slack.golangbridge.org/)[r/golang](https://reddit.com/r/golang)[Meetup](https://www.meetup.com/pro/go)[Golang Weekly](https://golangweekly.com/)
+
+![Image 46: Gopher in flight goggles](https://pkg.go.dev/static/shared/gopher/pilot-bust-1431x901.svg)
+*   [Copyright](https://go.dev/copyright)
+*   [Terms of Service](https://go.dev/tos)
+*   [Privacy Policy](http://www.google.com/intl/en/policies/privacy/)
+*   [Report an Issue](https://go.dev/s/pkgsite-feedback)
+*   ![Image 47: System theme](https://pkg.go.dev/static/shared/icon/brightness_6_gm_grey_24dp.svg)![Image 48: Dark theme](https://pkg.go.dev/static/shared/icon/brightness_2_gm_grey_24dp.svg)![Image 49: Light theme](https://pkg.go.dev/static/shared/icon/light_mode_gm_grey_24dp.svg)
+Theme Toggle
+
+*   ![Image 50](https://pkg.go.dev/static/shared/icon/keyboard_grey_24dp.svg)
+Shortcuts Modal
+
+[![Image 51: Google logo](https://pkg.go.dev/static/shared/logo/google-white.svg)](https://google.com/)
+
+Jump to
+-------
+
+![Image 52](https://pkg.go.dev/static/shared/icon/close_gm_grey_24dp.svg)
+
+Close
+
+Keyboard shortcuts
+------------------
+
+![Image 53](https://pkg.go.dev/static/shared/icon/close_gm_grey_24dp.svg)
+
+**?**: This menu
+**/**: Search site
+**f** or **F**: Jump to
+**y** or **Y**: Canonical URL
+
+Close
+
+go.dev uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic. [Learn more.](https://policies.google.com/technologies/cookies)
+
+Okay

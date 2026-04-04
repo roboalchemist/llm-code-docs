@@ -1,0 +1,50 @@
+# Source: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkdraftattachmentview/index.md
+
+---
+
+title: RtkDraftAttachmentView · Cloudflare Realtime docs
+description: API reference for RtkDraftAttachmentView component (React Library)
+lastUpdated: 2026-02-10T17:40:43.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkdraftattachmentview/
+  md: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkdraftattachmentview/index.md
+---
+
+A component which renders the draft attachment to send
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| - | - | - | - | - |
+| `attachment` | `{ type: 'image' \| 'file'; file: File; }` | ✅ | - | Attachment to display |
+| `iconPack` | `IconPack1` | ❌ | `defaultIconPack` | Icon pack |
+| `t` | `RtkI18n1` | ❌ | `useLanguage()` | Language |
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { RtkDraftAttachmentView } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return <RtkDraftAttachmentView />;
+}
+```
+
+### With Properties
+
+```tsx
+import { RtkDraftAttachmentView } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return (
+    <RtkDraftAttachmentView
+      attachment={{}}
+    />
+  );
+}
+```

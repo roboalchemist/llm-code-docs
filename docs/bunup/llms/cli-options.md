@@ -1,0 +1,127 @@
+# Source: https://bunup.dev/docs/guide/cli-options.md
+
+---
+url: /docs/guide/cli-options.md
+---
+# CLI Options
+
+```ansi
+  [36m[...entries][39m  Entry point files to bundle
+[1mFlags:[22m
+  [36m     --entry                          [39m  [2m<val>[22m                            Entry file or glob pattern
+  [36m     --entry                          [39m  [2m<val,...>[22m                        Multiple entry files or globs
+  [36m -c, --config                         [39m  [2m<val>[22m                            Path to a custom configuration file [2mExample: ./configs/custom.bunup.config.js[22m
+  [36m     --config                         [39m[2m[22m                                   Whether to use a configuration file [2m(default: true)[22m
+  [36m     --no-config                      [39m[2m[22m                                   Explicitly disable config
+  [36m     --filter                         [39m  [2m<val,...>[22m                        Filter workspace packages or config array items by name
+  [36m     --name                           [39m  [2m<val>[22m                            Name of the build configuration (for logging and identification) [2mExample: my-library[22m
+  [36m -o, --out-dir                        [39m  [2m<val>[22m                            Output directory for bundled files [2m(default: "dist")[22m
+  [36m     --format                         [39m  [2m<esm|cjs|iife>[22m                   Single output format
+  [36m     --format                         [39m  [2m<val,...>[22m                        Multiple output formats
+  [36m     --minify                         [39m[2m[22m                                   Enable all minification options (whitespace, identifiers, syntax)
+  [36m     --no-minify                      [39m[2m[22m                                   Explicitly disable minify
+  [36m     --minify-whitespace              [39m[2m[22m                                   Minify whitespace in the output to reduce file size
+  [36m     --no-minify-whitespace           [39m[2m[22m                                   Explicitly disable minify whitespace
+  [36m     --minify-identifiers             [39m[2m[22m                                   Minify identifiers by renaming variables to shorter names
+  [36m     --no-minify-identifiers          [39m[2m[22m                                   Explicitly disable minify identifiers
+  [36m     --minify-syntax                  [39m[2m[22m                                   Minify syntax by optimizing code structure
+  [36m     --no-minify-syntax               [39m[2m[22m                                   Explicitly disable minify syntax
+  [36m     --watch                          [39m[2m[22m                                   Watch for file changes and rebuild automatically
+  [36m     --no-watch                       [39m[2m[22m                                   Explicitly disable watch
+  [36m     --clean                          [39m[2m[22m                                   Clean the output directory before building [2m(default: true)[22m
+  [36m     --no-clean                       [39m[2m[22m                                   Explicitly disable clean
+  [36m -q, --silent                         [39m[2m[22m                                   Disable logging during the build process
+  [36m     --no-silent                      [39m[2m[22m                                   Explicitly disable silent
+  [36m     --splitting                      [39m[2m[22m                                   Enable code splitting [2m(enabled by default for ESM format)[22m
+  [36m     --no-splitting                   [39m[2m[22m                                   Explicitly disable splitting
+  [36m     --conditions                     [39m  [2m<val,...>[22m                        Package.json export conditions for import resolution
+  [36m -t, --target                         [39m  [2m<bun|node|browser>[22m               Target environment for the bundle [2m(default: "node")[22m
+  [36m     --external                       [39m  [2m<val,...>[22m                        External packages that should not be bundled
+  [36m     --no-external                    [39m  [2m<val,...>[22m                        Packages that should be bundled even if listed in external
+  [36m     --packages                       [39m  [2m<bundle|external>[22m                Bundle all dependencies or externalize all dependencies. Use "bundle" to include all deps in output, or "external" to exclude all deps
+  [36m     --shims                          [39m[2m[22m                                   Enable shims for Node.js globals and ESM/CJS interoperability
+  [36m     --no-shims                       [39m[2m[22m                                   Explicitly disable shims
+  [36m     --report.gzip                    [39m[2m[22m                                   Enable gzip compression size calculation [2m(default: true)[22m
+  [36m     --no-report.gzip                 [39m[2m[22m                                   Explicitly disable report gzip
+  [36m     --report.brotli                  [39m[2m[22m                                   Enable brotli compression size calculation
+  [36m     --no-report.brotli               [39m[2m[22m                                   Explicitly disable report brotli
+  [36m     --report.max-bundle-size         [39m  [2m<n>[22m                              Maximum bundle size in bytes. Will warn if exceeded
+  [36m     --dts.entry                      [39m  [2m<val>[22m                            Single entrypoint for declaration file generation
+  [36m     --dts.entry                      [39m  [2m<val,...>[22m                        Multiple entrypoints for declaration file generation
+  [36m     --dts.resolve                    [39m[2m[22m                                   Resolve types from dependencies
+  [36m     --dts.resolve                    [39m  [2m<val,...>[22m                        Names or patterns of packages from which to resolve types
+  [36m     --no-dts.resolve                 [39m[2m[22m                                   Explicitly disable dts resolve
+  [36m     --dts.splitting                  [39m[2m[22m                                   Enable declaration file splitting
+  [36m     --no-dts.splitting               [39m[2m[22m                                   Explicitly disable dts splitting
+  [36m     --dts.minify                     [39m[2m[22m                                   Minify generated declaration files
+  [36m     --no-dts.minify                  [39m[2m[22m                                   Explicitly disable dts minify
+  [36m     --dts.infer-types                [39m[2m[22m                                   Use TypeScript compiler (tsc) for declarations generation (removes need for explicit type annotations)
+  [36m     --no-dts.infer-types             [39m[2m[22m                                   Explicitly disable dts infer types
+  [36m     --dts.tsgo                       [39m[2m[22m                                   Use TypeScript's native compiler (tsgo), 10x faster than tsc (only applicable with inferTypes enabled)
+  [36m     --no-dts.tsgo                    [39m[2m[22m                                   Explicitly disable dts tsgo
+  [36m     --dts                            [39m[2m[22m                                   Generate TypeScript declaration files (.d.ts)
+  [36m     --no-dts                         [39m[2m[22m                                   Explicitly disable dts
+  [36m     --dts-only                       [39m[2m[22m                                   Only emit TypeScript declaration files without building JavaScript output
+  [36m     --no-dts-only                    [39m[2m[22m                                   Explicitly disable dts only
+  [36m     --preferred-tsconfig             [39m  [2m<val>[22m                            Path to a custom tsconfig.json file used for path resolution during both bundling and TypeScript declaration generation. [2mExample: ./tsconfig.build.json[22m
+  [36m     --sourcemap                      [39m[2m[22m                                   Generate a sourcemap (uses the inline type by default)
+  [36m     --sourcemap                      [39m  [2m<none|linked|inline|external>[22m    Generate a sourcemap with a specific type
+  [36m     --no-sourcemap                   [39m[2m[22m                                   Explicitly disable sourcemap
+  [36m     --define.<key>                   [39m  [2m<val>[22m                            Define global constants replaced at build time [2mExample: --define.PACKAGE_VERSION='"1.0.0"'[22m
+  [36m     --env.<key>                      [39m  [2m<val>[22m                            Explicit env var mapping [2mExample: --env.NODE_ENV="production" --env.API_URL="https://api.example.com"[22m
+  [36m     --env                            [39m  [2m<inline|disable>[22m                 inline: inject all, disable: inject none
+  [36m     --env                            [39m  [2m<val>[22m                            Inject env vars with this prefix [2mExample: MYAPP_*[22m [2m(Environment prefix must end with *)[22m
+  [36m     --banner                         [39m  [2m<val>[22m                            Banner text added to the top of bundle files
+  [36m     --footer                         [39m  [2m<val>[22m                            Footer text added to the bottom of bundle files
+  [36m     --drop                           [39m  [2m<val,...>[22m                        Remove function calls from bundle [2mExample: --drop console,debugger[22m
+  [36m     --loader.<key>                   [39m  [2m<js|jsx|ts|tsx|...>[22m              File extension to loader mapping [2mExample: --loader.'.css'=text --loader.'.txt'=file[22m
+  [36m     --public-path                    [39m  [2m<val>[22m                            Public path prefix for assets and chunk files [2mExample: https://cdn.example.com/[22m
+  [36m     --source-base                    [39m  [2m<val>[22m                            Base directory for entry points to control output structure [2mExample: ./src[22m
+  [36m     --jsx.runtime                    [39m  [2m<automatic|classic>[22m              JSX runtime mode
+  [36m     --jsx.import-source              [39m  [2m<val>[22m                            Import source for JSX functions
+  [36m     --jsx.factory                    [39m  [2m<val>[22m                            JSX factory function name
+  [36m     --jsx.fragment                   [39m  [2m<val>[22m                            JSX fragment function name
+  [36m     --jsx.side-effects               [39m[2m[22m                                   Whether JSX functions have side effects
+  [36m     --no-jsx.side-effects            [39m[2m[22m                                   Explicitly disable jsx side effects
+  [36m     --jsx.development                [39m[2m[22m                                   Use jsx-dev runtime for development
+  [36m     --no-jsx.development             [39m[2m[22m                                   Explicitly disable jsx development
+  [36m     --ignore-dce-annotations         [39m[2m[22m                                   Ignore dead code elimination annotations (@__PURE__, sideEffects)
+  [36m     --no-ignore-dce-annotations      [39m[2m[22m                                   Explicitly disable ignore dce annotations
+  [36m     --emit-dce-annotations           [39m[2m[22m                                   Force emit @__PURE__ annotations even with minification
+  [36m     --no-emit-dce-annotations        [39m[2m[22m                                   Explicitly disable emit dce annotations
+  [36m     --on-success                     [39m  [2m<val>[22m                            Command to run after successful build
+  [36m     --exports.exclude                [39m  [2m<val,...>[22m                        Configure automatic package.json exports generation - Entry points to exclude from exports field
+  [36m     --exports.exclude-cli            [39m[2m[22m                                   Whether to exclude CLI entry points (cli/bin files) from exports field [2m(default: true)[22m
+  [36m     --no-exports.exclude-cli         [39m[2m[22m                                   Explicitly disable exports exclude cli
+  [36m     --exports.exclude-css            [39m[2m[22m                                   Whether to exclude CSS files from exports field
+  [36m     --no-exports.exclude-css         [39m[2m[22m                                   Explicitly disable exports exclude css
+  [36m     --exports.include-package-json   [39m[2m[22m                                   Whether to include "./package.json" in exports field [2m(default: true)[22m
+  [36m     --no-exports.include-package-json[39m[2m[22m                                   Explicitly disable exports include package json
+  [36m     --exports.all                    [39m[2m[22m                                   Whether to add wildcard export for deep imports
+  [36m     --no-exports.all                 [39m[2m[22m                                   Explicitly disable exports all
+  [36m     --exports                        [39m[2m[22m                                   
+  [36m     --no-exports                     [39m[2m[22m                                   Explicitly disable exports
+  [36m     --unused.level                   [39m  [2m<warn|error>[22m                     Detect unused or incorrectly categorized dependencies - The level of reporting for unused or incorrectly categorized dependencies [2m(default: "warn")[22m
+  [36m     --unused.ignore                  [39m  [2m<val,...>[22m                        Dependencies to ignore when checking
+  [36m     --unused                         [39m[2m[22m                                   
+  [36m     --no-unused                      [39m[2m[22m                                   Explicitly disable unused
+  [36m     --css.typed-modules              [39m[2m[22m                                   Generate TypeScript definitions for CSS modules [2m(default: true)[22m
+  [36m     --no-css.typed-modules           [39m[2m[22m                                   Explicitly disable css typed modules
+  [36m     --css.inject.minify              [39m[2m[22m                                   Inject CSS styles into document head at runtime - Whether to minify the styles being injected
+  [36m     --no-css.inject.minify           [39m[2m[22m                                   Explicitly disable css inject minify
+  [36m     --css.inject                     [39m[2m[22m                                   
+  [36m     --no-css.inject                  [39m[2m[22m                                   Explicitly disable css inject
+  [36m-h, --help                            [39m[2m[22m                                   [2mDisplay this menu and exit[22m
+[1mExamples:[22m
+  [90m[34mbunup[90m                            # Basic build[39m
+  [90m[34mbunup src/index.ts[90m               # Single entry file[39m
+  [90m[34mbunup src/**/*.ts[90m                # Glob pattern for multiple files[39m
+  [90m[34mbunup --watch[90m                    # Watch mode[39m
+  [90m[34mbunup --format cjs,esm[90m           # Multiple formats[39m
+  [90m[34mbunup --target bun[90m               # Bun target[39m
+  [90m[34mbunup src/cli.ts[90m                 # Multiple entries[39m
+  [90m[34mbunup --dts.splitting[90m            # Declaration splitting[39m
+  [90m[34mbunup --dts-only[90m                 # Only emit declaration files[39m
+  [90m[34mbunup --no-clean[90m                 # Disable cleaning output directory before build[39m
+
+```

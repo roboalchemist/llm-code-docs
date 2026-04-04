@@ -1,0 +1,10 @@
+name: date-fns
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:51Z"
+  - type: web
+    last_fetched: "2026-04-03T23:08:51Z"
+description: >
+  date-fns documentation
+quality_score: 0

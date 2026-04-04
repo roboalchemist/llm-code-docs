@@ -1,0 +1,8 @@
+name: dayjs
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-03T23:08:51Z"
+description: >
+  dayjs documentation
+quality_score: 0

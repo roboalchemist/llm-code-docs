@@ -1,0 +1,112 @@
+# Source: https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/azure/postgresql_log_disconnections_not_set.md
+
+---
+title: PostgreSQL log disconnections not set
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > Code Security > Infrastructure as Code (IaC)
+  Security > IaC Security Rules > PostgreSQL log disconnections not set
+---
+
+# PostgreSQL log disconnections not set
+
+{% callout %}
+# Important note for users on the following Datadog sites: app.ddog-gov.com
+
+{% alert level="danger" %}
+This product is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site). ().
+{% /alert %}
+
+{% /callout %}
+
+## Metadata{% #metadata %}
+
+**Id:** `07f7134f-9f37-476e-8664-670c218e4702`
+
+**Cloud Provider:** Azure
+
+**Platform:** Terraform
+
+**Severity:** Medium
+
+**Category:** Observability
+
+#### Learn More{% #learn-more %}
+
+- [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_configuration)
+
+### Description{% #description %}
+
+The PostgreSQL server parameter `log_disconnections` controls whether session disconnections are logged, which is important for auditing and monitoring database activity. If this parameter is set to `"off"`, as shown in the configuration below, database disconnect events will not be recorded, making it significantly harder to detect unauthorized access or troubleshoot potential security incidents.
+
+```
+resource "azurerm_postgresql_configuration" "example" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "off"
+}
+```
+
+To mitigate this risk, ensure that `log_disconnections` is configured to `"on"` in your Terraform code:
+
+```
+resource "azurerm_postgresql_configuration" "example" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "on"
+}
+```
+
+Leaving this parameter disabled can result in blind spots in your security monitoring and incident response processes.
+
+## Compliant Code Examples{% #compliant-code-examples %}
+
+```terraform
+resource "azurerm_postgresql_configuration" "negative1" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "on"
+}
+
+resource "azurerm_postgresql_configuration" "negative2" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "On"
+}
+
+resource "azurerm_postgresql_configuration" "negative3" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "ON"
+}
+```
+
+## Non-Compliant Code Examples{% #non-compliant-code-examples %}
+
+```terraform
+resource "azurerm_postgresql_configuration" "positive1" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "off"
+}
+
+resource "azurerm_postgresql_configuration" "positive2" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "Off"
+}
+
+resource "azurerm_postgresql_configuration" "positive3" {
+    name                = "log_disconnections"
+    resource_group_name = data.azurerm_resource_group.example.name
+    server_name         = azurerm_postgresql_server.example.name
+    value               = "OFF"
+}
+```

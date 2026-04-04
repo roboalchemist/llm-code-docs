@@ -1,0 +1,22 @@
+# Source: https://docs.debricked.com/overview/language-support/rust-cargo.md
+
+# Rust - Cargo
+
+*The support for this language is currently in beta. Vulnerability results may be less accurate than normal.*
+
+OpenText Core SCA now tracks Rust dependencies through Cargo, using its associated *Cargo.lock* files.\
+\
+This file is generated whenever one of the following commands is executed:
+
+<pre><code><strong>cargo build
+</strong>
+cargo update
+</code></pre>
+
+If the file is committed to the repository, it will be automatically scanned for dependencies when integrated with OpenText Core SCA CI/CD pipeline.
+
+### **Supported file formats and features**
+
+<table data-full-width="true"><thead><tr><th>Package manager</th><th>Supported file formats</th><th data-type="checkbox">Root dependencies </th><th data-type="checkbox">Indirect dependencies</th><th data-type="checkbox">Dependency trees</th><th data-type="checkbox">Security scanning</th><th data-type="checkbox">License scanning</th><th data-type="checkbox">Root fix</th><th data-type="checkbox">Pull Request</th><th data-type="checkbox">Reachability Analysis</th><th>High Performance Scan</th></tr></thead><tbody><tr><td>Cargo</td><td><em>Cargo.lock</em></td><td>true</td><td>true</td><td>false</td><td>true</td><td>false</td><td>false</td><td>false</td><td>false</td><td>Yes*</td></tr></tbody></table>
+
+**\***&#x54;his is a native lock file format. Native lock file formats are the fastest formats to scan.

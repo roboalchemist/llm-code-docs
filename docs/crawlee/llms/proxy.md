@@ -1,0 +1,29 @@
+# Source: https://crawlee.dev/blog/tags/proxy.md
+
+## [How Crawlee uses tiered proxies to avoid getting blocked](https://crawlee.dev/blog/proxy-management-in-crawlee.md)
+
+June 24, 2024 ·
+
+<!-- -->
+
+4 min read
+
+[![Saurav Jain](https://avatars.githubusercontent.com/u/53312820?v=4)](https://github.com/souravjain540)
+
+[Saurav Jain](https://github.com/souravjain540)
+
+Developer Community Manager
+
+Hello Crawlee community,
+
+We are back with another blog, this time explaining how Crawlee rotates proxies and prevents crawlers from getting blocked.
+
+Proxies vary in quality, speed, reliability, and cost. There are a [few types of proxies](https://blog.apify.com/types-of-proxies/), such as datacenter and residential proxies. Datacenter proxies are cheaper but, on the other hand, more prone to getting blocked, and vice versa with residential proxies.
+
+It is hard for developers to decide which proxy to use while scraping data. We might get blocked if we use [datacenter proxies](https://blog.apify.com/datacenter-proxies-when-to-use-them-and-how-to-make-the-most-of-them/) for low-cost scraping, but residential proxies are sometimes too expensive for bigger projects. Developers need a system that can manage both costs and avoid getting blocked. To manage this, we recently introduced tiered proxies in Crawlee. Let’s take a look at it.
+
+**Tags:**
+
+* [proxy](https://crawlee.dev/blog/tags/proxy.md)
+
+[**Read More**](https://crawlee.dev/blog/proxy-management-in-crawlee.md)

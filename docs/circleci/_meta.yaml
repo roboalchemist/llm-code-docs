@@ -1,0 +1,9 @@
+name: circleci
+primary_source: llms
+sources:
+  - type: llms
+    url: https://circleci.com/
+    last_fetched: "2026-04-03T23:08:46Z"
+description: >
+  circleci documentation
+quality_score: 0

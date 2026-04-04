@@ -1,0 +1,42 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/gcp/gcp.dataproc_workflow_template.dataset.md
+
+---
+title: Dataproc Workflow Template
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Dataproc Workflow Template
+---
+
+# Dataproc Workflow Template
+
+A Dataproc Workflow Template in Google Cloud is a reusable definition of a sequence of jobs to run on Dataproc clusters. It allows users to define, manage, and execute complex data processing pipelines consistently without manually configuring clusters each time. Templates can include multiple steps such as Spark, Hadoop, or PySpark jobs, and can be parameterized for flexibility.
+
+```
+gcp.dataproc_workflow_template
+```
+
+## Fields
+
+| Title                | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Description |
+| -------------------- | ---- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                 | core | string        |
+| ancestors            | core | array<string> |
+| create_time          | core | timestamp     | Output only. The time template was created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| dag_timeout          | core | string        | Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.                                          |
+| datadog_display_name | core | string        |
+| encryption_config    | core | json          | Optional. Encryption settings for encrypting workflow template job arguments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| id                   | core | string        |
+| jobs                 | core | json          | Required. The Directed Acyclic Graph of Jobs to submit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| labels               | core | array<string> | Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.                                                                                 |
+| name                 | core | string        | Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}                                                                  |
+| organization_id      | core | string        |
+| parameters           | core | json          | Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.                                                                                                                                                                                                                                                                                                                                                                                                    |
+| parent               | core | string        |
+| placement            | core | json          | Required. WorkflowTemplate scheduling information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| project_id           | core | string        |
+| project_number       | core | string        |
+| region_id            | core | string        |
+| resource_name        | core | string        |
+| tags                 | core | hstore_csv    |
+| update_time          | core | timestamp     | Output only. The time template was last updated.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| version              | core | int64         | Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request. |
+| zone_id              | core | string        |

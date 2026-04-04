@@ -1,0 +1,195 @@
+# Source: https://checklyhq.com/docs/cli/checkly-deploy.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# checkly deploy
+
+> Deploy checks and resources to your Checkly account.
+
+export const command_0 = "checkly deploy"
+
+The `checkly deploy` command deploys all your checks and associated resources like alert channels to your Checkly account. This command synchronizes your local monitoring-as-code configuration with your Checkly account.
+
+<Accordion title="Prerequisites">
+  Before using <code>{command_0}</code>, ensure you have:
+
+  * An initialized Checkly CLI project
+  * At least one check or resource defined in your project
+  * Valid Checkly account authentication (run `npx checkly login` if needed)
+  * A `checkly.config.ts` or `checkly.config.js` configuration file
+
+  For additional setup information, see [CLI overview](/cli/overview).
+</Accordion>
+
+## Usage
+
+The basic command deploys all resources to your Checkly account, synchronizing your local monitoring-as-code configuration with the Checkly monitoring infrastructure.
+
+```bash Terminal theme={null}
+npx checkly deploy [options]
+```
+
+| Option                               | Required | Description                                                                                                                                                                                                                                                                                      |
+| ------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `--config, -c`                       | -        | The Checkly CLI configuration file. If not passed, uses the `checkly.config.ts\|js` file in the current directory.                                                                                                                                                                               |
+| `--force, -f`                        | -        | Force mode. Skips the confirmation dialog.                                                                                                                                                                                                                                                       |
+| `--debug-bundle`                     | -        | Generate a JSON file containing the data sent to our servers when you deploy. **Note**: This flag is in beta. The bundle’s structure is not considered a stable format and may change without notice. It’s intended for one-off troubleshooting, and note it may contain secrets before sharing. |
+| `--output, -o`                       | -        | Show the changes made after the deploy command.                                                                                                                                                                                                                                                  |
+| `--preview, -p`                      | -        | Show a preview of the changes made by the deploy command.                                                                                                                                                                                                                                        |
+| `--[no-]schedule-on-deploy`          | -        | Enables automatic check scheduling after a deploy.                                                                                                                                                                                                                                               |
+| `--[no-]verify-runtime-dependencies` | -        | Return an error if checks import dependencies that are not supported by the selected runtime.                                                                                                                                                                                                    |
+
+## Command Options
+
+<ResponseField name="--config, -c" type="string">
+  Specify a configuration file to use instead of the `checkly.config.ts` or `checkly.config.js` in the current directory.
+
+  **Usage:**
+
+  ```bash Terminal theme={null}
+  npx checkly deploy --config="./checkly.staging.config.ts"
+  npx checkly deploy -c="./checkly.staging.config.ts"
+  ```
+</ResponseField>
+
+<ResponseField name="--force, -f" type="boolean">
+  Skip the interactive confirmation dialog and proceed with the operation.
+
+  Use `--force` to set up automated CI/CD pipelines testing preview environments and deploying monitoring changes automatically.
+
+  **Usage:**
+
+  ```bash Terminal theme={null}
+  npx checkly deploy --force
+  npx checkly deploy -f
+  ```
+
+  **Examples**
+
+  ```bash Terminal theme={null}
+  $ npx checkly deploy --force
+
+  Parsing your project... ✅
+  Validating project resources... ✅
+  Bundling project resources... ✅
+
+  Successfully deployed project "Website Monitoring" to account "Monitoring as Code".
+  ```
+</ResponseField>
+
+<ResponseField name="--output, -o" type="boolean">
+  Show applied differences after deploying, providing a summary of what was changed.
+
+  **Usage:**
+
+  ```bash Terminal theme={null}
+  npx checkly deploy --output
+  npx checkly deploy -o
+  ```
+
+  **Examples:**
+
+  ```bash Terminal theme={null}
+  $ npx checkly deploy --output --force
+
+  Parsing your project... ✅
+  Validating project resources... ✅
+  Bundling project resources... ✅
+
+  Create:
+    UrlMonitor:: homepage-uptime
+    MultiStepCheck: auth-api-flow
+
+  Delete:
+    Check: legacy-api-check
+
+  Update and Unchanged:
+    SmsAlertChannel: sms-channel-1
+
+  Successfully deployed project "Website Monitoring" to account "Monitoring as Code".
+  ```
+</ResponseField>
+
+<ResponseField name="--preview, -p" type="boolean">
+  Show a preview of the changes that would be made by the deploy command.
+
+  **Usage:**
+
+  ```bash Terminal theme={null}
+  npx checkly deploy --preview
+  npx checkly deploy -p
+  ```
+
+  **Examples**
+
+  ```bash Terminal theme={null}
+  $ npx checkly deploy --preview
+
+  Parsing your project... ✅
+  Validating project resources... ✅
+  Bundling project resources... ✅
+
+  Create:
+    UrlMonitor:: homepage-uptime
+    MultiStepCheck: auth-api-flow
+
+  Delete:
+    Check: legacy-api-check
+
+  Update and Unchanged:
+    SmsAlertChannel: sms-channel-1
+  ```
+</ResponseField>
+
+<ResponseField name="--[no-]schedule-on-deploy" type="boolean" default="true">
+  Prevent checks from running automatically when they are deployed.
+
+  **Usage:**
+
+  ```bash Terminal theme={null}
+  npx checkly deploy --schedule-on-deploy
+  npx checkly deploy --no-schedule-on-deploy
+  ```
+
+  Useful when you want to deploy changes but delay monitoring execution until later.
+</ResponseField>
+
+<ResponseField name="--[no-]verify-runtime-dependencies" type="boolean" default="true">
+  Return an error if checks import dependencies that are not supported by the selected runtime.
+
+  **Usage:**
+
+  ```bash Terminal theme={null}
+  npx checkly deploy --verify-runtime-dependencies
+  npx checkly deploy --no-verify-runtime-dependencies
+  ```
+
+  Runtime-dependent checks run in a specific runtime with a pre-defined set of dependencies. If you're using private locations and want to provide your own dependencies, disable the built-in dependency validation.
+
+  <Tip>You can provide custom dependencies in [Playwright Check Suites](/detect/synthetic-monitoring/playwright-checks/overview) because they don't rely on a specific runtime.</Tip>
+</ResponseField>
+
+## Git Integration
+
+When you deploy a project, you can attach Git-specific information so changes to any resources are displayed in the Checkly web UI with the correct commit, branch, and author information.
+
+The Checkly CLI evaluates Git information from your local or CI environment on a best effort basis. Override any automatically detected values by setting the corresponding environment variables.
+
+| Item               | Auto  | Variable                                               | Description                                 |
+| ------------------ | ----- | ------------------------------------------------------ | ------------------------------------------- |
+| **Repository**     | false | `repoUrl` in `checkly.config.ts` or `CHECKLY_REPO_URL` | The URL of your repo on GitHub, GitLab etc. |
+| **Commit hash**    | true  | `CHECKLY_REPO_SHA`                                     | The SHA of the commit.                      |
+| **Branch**         | true  | `CHECKLY_REPO_BRANCH`                                  | The branch name.                            |
+| **Commit owner**   | true  | `CHECKLY_REPO_COMMIT_OWNER`                            | The committer's name or email.              |
+| **Commit message** | true  | `CHECKLY_REPO_COMMIT_MESSAGE`                          | The commit message.                         |
+| **Environment**    | false | `CHECKLY_TEST_ENVIRONMENT`                             | The environment name, e.g. "staging"        |
+
+## Related Commands
+
+* [`checkly login`](/cli/checkly-login) - Log in to your Checkly account
+* [`checkly test`](/cli/checkly-test) - Test your setup before deployment
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,91 @@
+# Source: https://docs.cohere.com/docs/advanced-generation-hyperparameters.mdx
+
+***
+
+title: Advanced Generation Parameters
+slug: docs/advanced-generation-hyperparameters
+hidden: false
+description: This page describes advanced parameters for controlling generation.
+image:
+type: fileId
+value: 'https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8ba30b46486ea7bfab24f3e8856d7411d1b745b26e9026abff3ee62af52ce268/assets/images/f1cc130-cohere_meta_image.jpg'
+keywords: 'LLMs, Cohere'
+createdAt: 'Tue Jun 04 2024 17:05:44 GMT+0000 (Coordinated Universal Time)'
+updatedAt: 'Thu Jun 06 2024 04:32:22 GMT+0000 (Coordinated Universal Time)'
+---------------------------------------------------------------------------
+
+There are a handful of additional model parameters that impact the kinds of outputs Cohere models will generate. These include the `top-p`, `top-k`, `frequency_penalty`, and `presence_penalty`  parameters.
+
+## Top-p and Top-k
+
+The method you use to pick output tokens is an important part of successfully generating text with language models. There are several methods (also called decoding strategies) for picking the output token, with two of the leading ones being top-k sampling and top-p sampling.
+
+Let’s look at the example where the input to the model is the prompt `The name of that country is the`:
+
+<Frame caption="Example output of a generation language model.">
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/bd5529cc7b8b1a0f06639c038777ef614a867e4a5ef912422f79f471bd055f97/assets/images/d3311c2-Top-KTop-P_Visual_1.png" alt="model." />
+</Frame>
+
+The output token in this case, `United`, was picked in the last step of processing -- after the language model has processed the input and calculated a likelihood score for every token in its vocabulary. This score indicates the likelihood that it will be the next token in the sentence (based on all the text the model was trained on).
+
+<Frame caption="The model calculates a likelihood for each token in its vocabulary. The decoding strategy then picks one as the output.">
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/2cbfe2f91371ab979e4822c67937aa4cd4c89d6fe1ca3b77e412c27047d9725d/assets/images/61259d5-Top-KTop-P_Visual_2.png" alt="output." />
+</Frame>
+
+### 1. Pick the top token: greedy decoding
+
+You can see in this example that we picked the token with the highest likelihood, `United`.
+
+<Frame caption="Always picking the highest scoring token is called 'Greedy Decoding'. It's useful but has some drawbacks.">
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/6d74153ddeeb80b424735206bc3eecceb70a2de2556d5ec3e35fdbc40b4a8d23/assets/images/2a0cc2f-Top-KTop-P_Visual_3.png" alt="drawbacks." />
+</Frame>
+
+Greedy decoding is a reasonable strategy, but has some drawbacks; outputs can get stuck in repetitive loops, for example. Think of the suggestions in your smartphone's auto-suggest. When you continually pick the highest suggested word, it may devolve into repeated sentences.
+
+### 2. Pick from amongst the top tokens: top-k
+
+Another commonly-used strategy is to sample from a shortlist of the top three tokens. This approach allows the other high-scoring tokens a chance of being picked. The randomness introduced by this sampling helps the quality of generation in a lot of scenarios.
+
+<Frame caption="Adding some randomness helps make output text more natural. In top-3 decoding, we first shortlist three tokens then sample one of them by considering their likelihood scores.">
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/87ca0e8fc1a0b75f08de9b5fb7f2805af01a59a3eb624d26343057fc1811f297/assets/images/8beb940-Top-KTop-P_Visual_4.png" alt="scores." />
+</Frame>
+
+More broadly, choosing the top three tokens means setting the [top-k parameter](https://docs.cohere.com/reference/chat#request.body.k) to `3` (it defaults to `0`) with `k=3`. Changing the top-k parameter sets the size of the shortlist the model samples from as it outputs each token. Setting top-k to `1` gives us greedy decoding.
+
+<Frame caption="Adjusting to the top-k setting.">
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/f13afed336e51568f89ab6f9a132e9e1954fed813015c43bf917aa7977c54884/assets/images/1810654-Top-KTop-P_Visual_5.png" alt="setting." class="light-bg" />
+</Frame>
+
+Note that when `k` is set to `0`, the model disables k sampling and uses p instead.
+
+### 3. Pick from amongst the top tokens whose probabilities add up to 15%: top-p
+
+The difficulty of selecting the best top-k value opens the door for a popular decoding strategy that dynamically sets the size of the shortlist of tokens. This method, called *Nucleus Sampling*, creates the shortlist by selecting the top tokens whose sum of likelihoods does not exceed a certain value. A toy example with a [top-p value](https://docs.cohere.com/reference/chat#request.body.p) of `0.15` (it defaults to `0.75`) would look like this:
+
+<Frame caption="In top-p, the size of the shortlist is dynamically selected based on the sum of likelihood scores reaching some threshold.">
+  <img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/09507811be09cfe66e1a9e5abf1734806e1a46eb06a54ce28c2bb9c4e82c7ec1/assets/images/fb9c5f9-Top-KTop-P_Visual_6.png" alt="threshold." class="light-bg" />
+</Frame>
+
+Top-p is usually set to a high value (`p=0.75`, it's maximum value is `0.99`) with the purpose of limiting the long tail of low-probability tokens that may be sampled. We can use both top-k and top-p together. If both `k` and `p` are enabled, `p` acts after `k`. Here's a code snippet showing how this works:
+
+```python PYTHON 
+import cohere
+co = cohere.ClientV2(api_key=<API_KEY>)
+response = co.chat(
+    model="command-a-03-2025",
+    messages=[{"role": "user", "content": "hello world!"}],
+    k=100,
+    p=0.75
+)
+print(response)
+```
+
+## Frequency and Presence Penalties
+
+The final set of parameters worth discussing in this context are `frequency_penalty` and `presence_penalty`, both of which work on logits (which are log probabilities that haven't been normalized) in order to influence how often a given token appears in output.
+
+The frequency penalty penalizes tokens that have already appeared in the preceding text (including the prompt), and scales based on how many times that token has appeared. So a token that has already appeared 10 times gets a higher penalty (which reduces its probability of appearing) than a token that has appeared only once.
+
+The presence penalty, on the other hand, applies the penalty regardless of frequency. As long as the token has appeared once before, it will get penalized.
+
+These settings are useful if you want to get rid of repetition in your outputs.

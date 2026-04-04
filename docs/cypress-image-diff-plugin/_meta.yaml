@@ -1,0 +1,9 @@
+name: cypress-image-diff-plugin
+primary_source: llms
+sources:
+  - type: llms
+    url: https://cypress.visual-image-diff.dev/
+    last_fetched: "2026-04-03T23:08:49Z"
+description: >
+  cypress-image-diff-plugin documentation
+quality_score: 0

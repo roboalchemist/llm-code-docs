@@ -1,0 +1,9 @@
+name: clerc
+primary_source: llms
+sources:
+  - type: llms
+    url: https://clerc.so1ve.dev/
+    last_fetched: "2026-04-03T23:08:46Z"
+description: >
+  clerc documentation
+quality_score: 0

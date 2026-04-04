@@ -1,0 +1,47 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/gcp/gcp.dataproc_session.dataset.md
+
+---
+title: Dataproc Session
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Dataproc Session
+---
+
+# Dataproc Session
+
+Dataproc Session in Google Cloud is a temporary interactive environment for running Spark workloads without managing clusters directly. It allows you to submit jobs, explore data, and test code in a serverless way, with resources automatically provisioned and scaled as needed. Sessions simplify development and experimentation by reducing setup overhead.
+
+```
+gcp.dataproc_session
+```
+
+## Fields
+
+| Title                 | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                                                                                                                                             | Description |
+| --------------------- | ---- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                  | core | string        |
+| ancestors             | core | array<string> |
+| create_time           | core | timestamp     | Output only. The time when the session was created.                                                                                                                                                                                                                                                                                                                                                                   |
+| creator               | core | string        | Output only. The email address of the user who created the session.                                                                                                                                                                                                                                                                                                                                                   |
+| datadog_display_name  | core | string        |
+| environment_config    | core | json          | Optional. Environment configuration for the session execution.                                                                                                                                                                                                                                                                                                                                                        |
+| jupyter_session       | core | json          | Optional. Jupyter session config.                                                                                                                                                                                                                                                                                                                                                                                     |
+| labels                | core | array<string> | Optional. The labels to associate with the session. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a session.                                       |
+| name                  | core | string        | Identifier. The resource name of the session.                                                                                                                                                                                                                                                                                                                                                                         |
+| organization_id       | core | string        |
+| parent                | core | string        |
+| project_id            | core | string        |
+| project_number        | core | string        |
+| region_id             | core | string        |
+| resource_name         | core | string        |
+| runtime_config        | core | json          | Optional. Runtime configuration for the session execution.                                                                                                                                                                                                                                                                                                                                                            |
+| runtime_info          | core | json          | Output only. Runtime information about session execution.                                                                                                                                                                                                                                                                                                                                                             |
+| session_template      | core | string        | Optional. The session template used by the session.Only resource names, including project ID and location, are valid.Example: * https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in the same project and Dataproc region as the session. |
+| spark_connect_session | core | json          | Optional. Spark connect session config.                                                                                                                                                                                                                                                                                                                                                                               |
+| state                 | core | string        | Output only. A state of the session.                                                                                                                                                                                                                                                                                                                                                                                  |
+| state_history         | core | json          | Output only. Historical state information for the session.                                                                                                                                                                                                                                                                                                                                                            |
+| state_message         | core | string        | Output only. Session state details, such as the failure description if the state is FAILED.                                                                                                                                                                                                                                                                                                                           |
+| state_time            | core | timestamp     | Output only. The time when the session entered the current state.                                                                                                                                                                                                                                                                                                                                                     |
+| tags                  | core | hstore_csv    |
+| user                  | core | string        | Optional. The email address of the user who owns the session.                                                                                                                                                                                                                                                                                                                                                         |
+| uuid                  | core | string        | Output only. A session UUID (Unique Universal Identifier). The service generates this value when it creates the session.                                                                                                                                                                                                                                                                                              |
+| zone_id               | core | string        |

@@ -1,0 +1,8 @@
+name: deck.gl
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:51Z"
+description: >
+  deck.gl documentation
+quality_score: 0

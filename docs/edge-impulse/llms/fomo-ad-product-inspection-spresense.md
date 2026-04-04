@@ -1,0 +1,185 @@
+# Source: https://docs.edgeimpulse.com/projects/expert-network/fomo-ad-product-inspection-spresense.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.edgeimpulse.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Product Inspection with Visual Anomaly Detection - FOMO-AD - Sony Spresense
+
+Created By: Jallson Suryo
+
+Public Project Link: [https://studio.edgeimpulse.com/public/391673/live](https://studio.edgeimpulse.com/public/391673/live)
+
+GitHub Repo: [https://github.com/Jallson/FOMO\_AD-with-Sony-Spresense/](https://github.com/Jallson/FOMO_AD-with-Sony-Spresense/)
+
+<Frame caption="Anomaly_detected!">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo00.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=e12dfe92ea5922c5545b9e7244f3c98d" width="1260" height="886" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo00.png" />
+</Frame>
+
+## Problem Statement
+
+Detecting anomalies in a product necessitates a complex system, often involving the labeling of various potential issues, such as damage or missing parts in specific areas. This process presents endless possibilities for anomalies. Consequently, developing machine learning models with numerous classes or labels requires robust systems containing a CPU or GPU. This results in significant costs, high energy consumption, and latency issues.
+
+## Our Solution
+
+By using Edge Impulse's Visual Anomaly Detection (FOMO-AD), it's possible to train machine learning models using images using only "ideal" or "normal" products. If an anomaly is detected, its location can be identified, allowing for immediate determination of the damaged or missing part. The compact size of this ML model enables deployment on microcontrollers such as the Arduino Nicla Vision or Sony Spresense (as used here). Low latency, cost efficiency, accuracy, and ease of deployment are the reasons we chose FOMO-AD for this project.
+
+<Frame caption="Schematic_diagram">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo01.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=fc293cd419871e990ded3b3c14b2dd02" width="1127" height="944" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo01.png" />
+</Frame>
+
+## How it Works
+
+This project uses Edge Impulse's FOMO-AD (Faster Objects, More Objects - Anomaly Detection) learning block based on GMM (Gaussian Mixture Model) which clusters data points with similar characteristics, then will compare and provide an anomaly value for which a threshold can be determined. This can then be used to determine which parts are considered anomalies. In this ML model, the resulting anomaly value also contains the coordinates, and with some translation code we can use the coordinates to identify which parts are broken or not complete. The setting we'll use is an electronics manufacturing process, with a conveyor belt and sorting system or an LCD display for information on anomalies or missing parts.
+
+Hardware: Sony Spresense with camera and 1602 LCD display.
+
+<Frame caption="Components">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo02.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=614430ff05f90c5259c4aa4cce05dac8" width="1436" height="1000" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo02.png" />
+</Frame>
+
+## Hardware Components
+
+* Sony Spresense Main Unit
+* Sony Spresense Extension Board
+* Sony Spresense Camera
+* 3d print parts (case & mount)
+* Jumper cables
+* Aluminium extrusion/frame
+* Battery/Powerbank
+* Objects
+
+## Software & Online Services
+
+* Edge Impulse Studio (FOMO-AD learning block only available in Enterprise account)
+* Arduino IDE
+* Terminal
+
+## Steps
+
+### 1. Prepare Data / Images
+
+We will first determine the object that will serve as the standard for an ideal (normal) product. This involves taking photos at a consistent distance, with similar angles and lighting. This can be done using a tripod and a smartphone camera or by creating a stand with a mounted Sony Spresense and its camera. There will be two types of objects photographed: those used for Training data with a single classification of "no anomaly", and others photographed under conditions that would be considered "anomaly", such as a removed button or a covered LED. These "incorrect" images will later be included in the Test Data section, mixed with some "no anomaly" images.
+
+<Frame caption="Objects">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo03.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=cc1d882a51a6040ef2adeff417083866" width="471" height="709" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo03.png" />
+</Frame>
+
+### 2. Data Acquisition
+
+Open [http://studio.edgeimpulse.com](http://studio.edgeimpulse.com), login, then create a new project.
+
+In **Dashboard > Project Info**, choose **One label per data item** and Sony Spresense for the target device. Then click on the **Collect new data** icon, or in *Data acquisition*, click on the *Upload Data* tab, and choose your photo files. Besides using existing photos, you can also collect data directly by using the Sony Spresense with its camera connected to Edge Impulse Studio by uploading the Edge Impulse firmware to the Sony Spresense and running `edge-impulse-daemon`, which is explained in detail at this [link](/hardware/boards/sony-spresense).
+
+Whichever method you use, make sure to label each normal product photo as "no anomaly" for the **Train** Data category, as shown in the photo below. Ensure that the Train Data contains only "no anomaly" photos, while the Test Data contains some "no anomaly" photos as well as "anomaly" photos.
+
+<Frame caption="Collect_data">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo04.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=09520627e2f86b16fe8c9968441d9175" width="753" height="888" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo04.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Upload_data">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo05.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=4da156d2f597dfe05fbba260c34b4c23" width="570" height="897" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo05.png" />
+</Frame>
+
+### 3. Build Model using FOMO-AD
+
+Once your dataset is ready, go to **Create Impulse** and set the image width and height to **96 x 96**. Choose **Squash** as the image crop method, and select **Image** and **FOMO-AD** as the Learning and Processing blocks, then click **Save Impulse**.
+
+Next, go to the **Image** parameter section, select **Grayscale** for the color depth, and **Save Parameters**, then click on **Generate features**. In the Anomaly Detection settings, set the training processor to *CPU* with a capacity of *High*. Choose **MobileNet V2 0.35** for the neural network architecture with a 1-class output layer. Start training the model by pressing **Start Training** and monitor the progress.
+
+If everything is functioning correctly, once complete proceed to the **Live Classification** with a connected camera or test the model by going to the **Model Testing** section and clicking **Classify all**. After these steps, you can adjust the confidence thresholds to set the minimum score required before tagging as an anomaly and click **Classify all** again. If your model's test result is above 80%, you can proceed to the next step: *Deployment*.
+
+<Frame caption="Learning_blocks">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo06.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=926ab82481ab164c18a035a3db954154" width="1128" height="484" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo06.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Save_parameters">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo07.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=0fdd0279d08161519b078a489edb6b45" width="1351" height="885" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo07.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Generate_features">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo08.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=84f393fb20beef5911a11a2fdb30d731" width="1339" height="781" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo08.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Settings">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo09.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=b5f674cb6e3dc739e08a684b3ccc698a" width="1344" height="735" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo09.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Live_classification">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo10.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=369fac424fccd30d8c4af39b02100aa4" width="1500" height="936" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo10.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Set_thresholds">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo11.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=c032f59cfe60b9fb28926415d3923544" width="830" height="622" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo11.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Test_results">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo12.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=0638584e89902fb4435f67e38f7dcca4" width="1333" height="854" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo12.png" />
+</Frame>
+
+### 4. Deploy Model for Sony Spresense (or Arduino)
+
+Click on the **Deployment** tab then search for *Arduino Library* then select **Quantized (int8)** and click **Build**. This will build an Arduino library for running inferencing targeting Arduino compatible devices, such as the Sony Spresense we're using. After the .ZIP library downloads, open the Arduino IDE, click on **Sketch > Include Library > Add ZIP Library**, then follow the next step.
+
+<Frame caption="Arduino_library_deployment">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo13.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=ab45828f975dee2a25881836da34f38b" width="692" height="1000" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo13.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Instructions in Arduino download">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo14.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=183307c71ca93ea9d42aa03d5a8ae315" width="856" height="468" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo14.png" />
+</Frame>
+
+### 5. Build the Program (Arduino code)
+
+Before we start with the program, we need to install the Spresense Library using the *Board Manager* in Arduino IDE. Follow the steps from this link to complete the install: [https://developer.sony.com/spresense/development-guides/arduino\_set\_up\_en.html#\_installation\_through\_arduino\_ide\_board\_manager](https://developer.sony.com/spresense/development-guides/arduino_set_up_en.html#_installation_through_arduino_ide_board_manager)
+
+To connect the Spresense to Arduino IDE, choose **Tools > Board: "Spresense"**, then set the **Debug, Core, Memory, Upload Speed, Programmer** values setup as shown in the image below. With the Spresense connected, then we can open the program example in **File > Examples > Visual\_Anomaly\_Detection\_FOMO\_AD > Sony Spresense Camera**. Upload this code to your Spresense and now you can test the model with the physical Spresense hardware and camera setup, and one of the "normal" products. Click on **Serial Monitor** icon and check the output results.
+
+<Frame caption="Tools_setup">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo15.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=4d3e2178445195699ebaf7a67a6fcf60" width="352" height="422" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo15.png" />
+</Frame>
+
+<br />
+
+<Frame caption="Serial_monitor_output">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo16.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=31d510898662e3083e957a438096b31a" width="1168" height="1000" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo16.png" />
+</Frame>
+
+With the results being displayed on the Serial Monitor accurately, we can now modify this sample program to include more functionality. However, to display the output without a computer, we need to install a 1602 LCD as the display (follow the instructions in the diagram above). Find the specific library for your LCD and include it in your program.
+
+If we observe the output on the Serial Monitor, the detected anomalies at coordinates `x` and `y` can be mapped to specific parts or sections of the inspected product. For example, x: 57 and y: 57 correspond to the right button, so we can add a condition that, if an anomaly is detected at that location, the LCD will display **"Anomaly! Right button?"**. Apply the same approach for other anomaly conditions, and if no anomaly is detected, the LCD will display **"No Anomaly, OK"**.
+
+For more detail, you can check or download and modify my code in this GitHub repository, [https://github.com/Jallson/FOMO\_AD-with-Sony-Spresense](https://github.com/Jallson/FOMO_AD-with-Sony-Spresense)
+
+<Frame caption="Program_snippet">
+  <img src="https://mintcdn.com/edgeimpulse/d8Gv7U7BIACMOIZF/.assets/images/fomo-ad-product-inspection-spresense/photo17.png?fit=max&auto=format&n=d8Gv7U7BIACMOIZF&q=85&s=710b3a1f532d4f2d756ee8ac5fe4e59b" width="1056" height="993" data-path=".assets/images/fomo-ad-product-inspection-spresense/photo17.png" />
+</Frame>
+
+Now it's time to upload and run the program without using a computer. Set up the hardware as shown in the diagram above, connect the battery or power bank, and test your Product Inspection with the Visual Anomaly Detection program.
+
+Check our demo test video for an example of how it works:
+
+<iframe src="https://www.youtube.com/embed/nLFFdjzscZY" title="YouTube video player" className="w-full aspect-video rounded-xl" frameborder="0" allowFullScreen />
+
+## Conclusion
+
+We have successfully created a Product Inspection with Visual Anomaly Detection project by training a machine learning model with only one class label, "No Anomaly." The model has successfully detected anomalies along with their locations, making it easier for us to identify which part or section has an issue. By using FOMO-AD, the machine learning model can be deployed to a microcontroller. This enables a cost-effective and energy-efficient solution for the manufacturing industry, especially in sorting systems and visual inspection lines.
+
+
+Built with [Mintlify](https://mintlify.com).

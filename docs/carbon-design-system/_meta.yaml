@@ -1,0 +1,8 @@
+name: carbon-design-system
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:08:44Z"
+description: >
+  carbon-design-system documentation
+quality_score: 0

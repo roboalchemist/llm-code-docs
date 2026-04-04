@@ -1,0 +1,137 @@
+---
+title: E2E Visual Tests upgrade guide
+description: Steps necessary to upgrade to the beta Cypress and Playwright setup
+---
+
+import { TabItem, Tabs } from "../../components/Tabs";
+
+# E2E Visual Tests upgrade guide
+
+**Last updated: Feb 6 2024**
+
+With the launch of E2E Visual Tests in public beta, we made some changes to Chromatic's setup process for [Playwright](/docs/playwright) and [Cypress](/docs/cypress). Follow this guide to upgrade to the new release.
+
+## Uninstall old packages
+
+Chromatic now provides separate packages for Playwright and Cypress. Please remove any of the following deprecated packages (you may not have all of them, depending on your framework and the setup guide you followed):
+
+- `@chromaui/archive-storybook`
+- `@chromaui/test-archiver`
+- `chromatic-cypress`
+- `chromatic-playwright`
+
+## Uninstall Storybook related packages
+
+Previously, E2E Visual Tests required the installation of Storybook and related packages. However, these packages are no longer necessary and can now be uninstalled.
+
+Note: if your project doesn't use Storybook and React, you can remove all packages. If your project uses Storybook or React, you only need to remove the packages that were installed specifically for E2E Visual Tests.
+
+- `@storybook/addon-essentials`
+- `@storybook/cli`
+- `@storybook/server-webpack5`
+- `storybook`
+- `react`
+- `react-dom`
+
+### Install new packages
+
+Install the Chromatic dependencies for the framework you are using.
+
+<Tabs>
+  <TabItem label="Playwright">
+    ```shell
+    npm install --save-dev chromatic @chromatic-com/playwright
+    # or
+    yarn add --dev chromatic @chromatic-com/playwright
+    ```
+  </TabItem>
+
+  <TabItem label="Cypress">
+    ```shell
+    npm install --save-dev chromatic @chromatic-com/cypress
+    # or
+    yarn add --dev chromatic @chromatic-com/cypress
+    ```
+  </TabItem>
+</Tabs>
+
+## Update Scripts
+
+You can remove the `build-archive-storybook` and `archive-storybook` scripts from your project's `package.json` file, as they are no longer necessary. Instead, run your tests by utilizing the Chromatic CLI or GitHub Action. For more information on the changes related to Chromatic Build, please refer to the [Chromatic Build Changes](#chromatic-build-changes) section.
+
+## Test File Changes
+
+### Playwright
+
+Change all Chromatic imports from `@chromaui/test-archiver` or `chromatic-playwright` to `@chromatic-com/playwright`.
+
+More specifically, in your spec files, update the import for testing functions:
+
+```diff
+-import { test, expect, takeSnapshot } from "chromatic-playwright"
++import { test, expect, takeSnapshot } from "@chromatic-com/playwright"
+```
+
+And in your `playwright.config.ts` file, update the import for `ChromaticConfig`:
+
+```diff
+-import { ChromaticConfig } from "chromatic-playwright"
++import { ChromaticConfig } from "@chromatic-com/playwright"
+```
+
+### Cypress
+
+Update the imports in your `cypress/support/e2e.js` file:
+
+```diff
+-import "chromatic-cypress/support"
++import "@chromatic-com/cypress/support
+```
+
+And in your `cypress.config.js` file:
+
+```diff
+-const { installPlugin } = require("chromatic-cypress")
++const { installPlugin } = require("@chromatic-com/cypress")
+```
+
+### API Changes
+
+This update includes renaming certain parameters and function names. In addition to the changes outlined above, please make sure to update your test files if you utilize any of the following:
+
+- `takeArchive` function has been renamed to `takeSnapshot`
+- `disableAutoCapture` param has been renamed to `disableAutoSnapshot`
+- `allowedArchiveDomains` param has been renamed to `assetDomains`
+
+## Chromatic Build Changes
+
+If you're using the [Chromatic CLI](/docs/cli):
+
+- Ensure that you've installed `chromatic` package with version `10.7.0` or higher.
+- The new command to publish a Chromatic build is: `yarn chromatic --playwright -t=<TOKEN>` or `yarn chromatic --cypress -t=<TOKEN>`
+- If the Playwright or Cypress test directories are in a custom location or in a nested project from where the command is run, the env var can still be used:
+  ```sh
+  CHROMATIC_ARCHIVE_LOCATION=packages/ui/playwright/test-results yarn chromatic --playwright -t=<TOKEN>
+  ```
+
+If you're using the the GitHub Action, then you can use the following configuration:
+
+```yaml
+- name: Run Chromatic
+  uses: chromaui/action@latest
+  with:
+    playwright: true
+    projectToken: ${{ secrets.chromaticProjectToken }}
+
+# or
+
+- name: Run Chromatic
+  uses: chromaui/action@latest
+  with:
+    cypress: true
+    projectToken: ${{ secrets.chromaticProjectToken }}
+```
+
+### Re-accept baselines
+
+After upgrading to the new packages, you will be required to re-accept all baselines. That's because we have made changes to how tests are grouped, so all of your tests will appear as new.

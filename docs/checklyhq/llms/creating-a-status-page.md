@@ -1,0 +1,25 @@
+# Source: https://checklyhq.com/docs/communicate/status-pages/creating-a-status-page.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Creating a Status Page
+
+> Create a Status Page.
+
+To set up a Status Page, select ‘New status page’ on the [Status page overview](https://app.checklyhq.com/status-pages).
+
+1. Begin by entering a name for your page.
+2. Next, fill in the first **card title**. Now add or create services in it. Group several **services** on a single card to display the average uptime for all services listed in the card. For example, you can use one card per feature, and aggregate all services associated with the feature into a single card.
+3. Customize the subdomain slug for your page. Status pages use the domain `<slug>.checkly-status-pages.com` by default. See [Custom domains](/communicate/status-pages/customization#custom-domains) for more details on how to use your own domain.
+4. When you are happy with your setup, click ‘Create status page.’ You will now see a preview of your page, and a link to the public version of the page below the title.
+
+You can now share the link to your Status Page, and your users can subscribe to receive notifications when incidents are posted!
+
+<Tip>
+  You can restrict access to your status page so only authorized users can view it. See [Password Protection](/communicate/status-pages/password-protection) for details.
+</Tip>
+
+
+Built with [Mintlify](https://mintlify.com).

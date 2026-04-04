@@ -1,0 +1,9 @@
+name: daisyui
+primary_source: llms
+sources:
+  - type: llms
+    url: https://daisyui.com/
+    last_fetched: "2026-04-03T23:08:50Z"
+description: >
+  daisyui documentation
+quality_score: 0

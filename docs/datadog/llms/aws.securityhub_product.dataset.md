@@ -1,0 +1,32 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/aws/aws.securityhub_product.dataset.md
+
+---
+title: Security Hub Product
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Security Hub Product
+---
+
+# Security Hub Product
+
+Security Hub Product in AWS represents an external or integrated security service that sends findings into AWS Security Hub. It defines the product metadata, such as the provider of the findings, and enables Security Hub to aggregate, organize, and prioritize security alerts from multiple sources. This allows users to centralize security visibility and streamline compliance checks across their AWS environment.
+
+```
+aws.securityhub_product
+```
+
+## Fields
+
+| Title                                | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                                 | Description |
+| ------------------------------------ | ---- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                                 | core | string        |
+| account_id                           | core | string        |
+| activation_url                       | core | string        | The URL to the service or product documentation about the integration with Security Hub, including how to activate the integration.                                                                                                                                                                                                                                                                                                       |
+| categories                           | core | array<string> | The categories assigned to the product.                                                                                                                                                                                                                                                                                                                                                                                                   |
+| company_name                         | core | string        | The name of the company that provides the product.                                                                                                                                                                                                                                                                                                                                                                                        |
+| description                          | core | string        | A description of the product.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| integration_types                    | core | array<string> | The types of integration that the product supports. Available values are the following. SEND_FINDINGS_TO_SECURITY_HUB - The integration sends findings to Security Hub. RECEIVE_FINDINGS_FROM_SECURITY_HUB - The integration receives findings from Security Hub. UPDATE_FINDINGS_IN_SECURITY_HUB - The integration does not send new findings to Security Hub, but does make updates to the findings that it receives from Security Hub. |
+| marketplace_url                      | core | string        | For integrations with Amazon Web Services services, the Amazon Web Services Console URL from which to activate the service. For integrations with third-party products, the Amazon Web Services Marketplace URL from which to subscribe to or purchase the product.                                                                                                                                                                       |
+| product_arn                          | core | string        | The ARN assigned to the product.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| product_name                         | core | string        | The name of the product.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| product_subscription_resource_policy | core | string        | The resource policy associated with the product.                                                                                                                                                                                                                                                                                                                                                                                          |
+| tags                                 | core | hstore_csv    |

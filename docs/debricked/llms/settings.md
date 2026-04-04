@@ -1,0 +1,5 @@
+# Source: https://docs.debricked.com/product/administration/settings.md
+
+# Settings
+
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a href="settings/enable-and-disable-snoozing-vulnerabilities"><strong>Enable and disable snoozing vulnerabilities</strong></a></td><td></td><td></td><td><a href="settings/enable-and-disable-snoozing-vulnerabilities">enable-and-disable-snoozing-vulnerabilities</a></td></tr><tr><td><a href="settings/app-language"><strong>Supported language for OpenText Core SCA tool</strong></a></td><td></td><td></td><td><a href="settings/app-language">app-language</a></td></tr><tr><td><a href="settings/see-logged-events"><strong>View logged events</strong></a></td><td></td><td></td><td><a href="settings/see-logged-events">see-logged-events</a></td></tr><tr><td><a href="settings/two-factor-authentication-2fa"><strong>Two-Factor Authentication (2FA)</strong></a></td><td></td><td></td><td><a href="settings/two-factor-authentication-2fa">two-factor-authentication-2fa</a></td></tr></tbody></table>

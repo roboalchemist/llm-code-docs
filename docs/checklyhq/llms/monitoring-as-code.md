@@ -1,0 +1,50 @@
+# Source: https://checklyhq.com/docs/learn/monitoring/monitoring-as-code.md
+
+# Source: https://checklyhq.com/docs/concepts/monitoring-as-code.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Monitoring as Code
+
+> Define, version, and maintain your monitoring infrastructure alongside your application code
+
+**Monitoring as Code (MaC)** treats monitoring configurations like any other code artifactversion controlled, reviewed, tested, and deployed through automated pipelines.
+
+With MaC, you can define, version, and maintain your monitoring infrastructure alongside your application code, reusing existing tests, code, data, and other assets to create a consistent, automated, and scalable monitoring setup.
+
+<Tip>
+  To get started with Monitoring as Code, see our [Constructs](/constructs/overview) section or [CLI](/cli/overview) section.
+</Tip>
+
+## Core Principles of Monitoring as Code
+
+**Declarative Configuration**: Define your monitors, alerts, and status pages, and more in code files using structured formats (JSON, YAML, TypeScript).
+
+**Version Control**: Store monitoring configs in Git alongside application code to maintain consistency and enable collaboration.
+
+**Infrastructure Automation**: Deploy monitoring changes through CI/CD pipelines with the same rigor as application deployments.
+
+## Benefits of Monitoring as Code
+
+* **Consistency**: Standardized monitoring across environments and teams
+* **Collaboration**: Code reviews ensure monitoring best practices
+* **Reliability**: Automated deployments reduce manual errors
+* **Auditability**: Full change history and rollback capabilities
+* **Scalability**: Template-based monitor creation for similar services
+* **AI Native**: Use any LLM tooling to generate monitoring code, review code, and more.
+
+## Implementation with Checkly
+
+Checkly supports monitoring as code through multiple approaches:
+
+* **[CLI](/cli/overview)**: Write checks in TypeScript/JavaScript and deploy via `checkly deploy`
+* **[Terraform Provider](/integrations/iac/terraform/overview)**: Manage Checkly resources in your infrastructure code
+* **[Pulumi Integration](/integrations/iac/pulumi/overview)**: Define monitoring using modern IaC patterns
+* **[API](/api/authentication)**: Programmatically manage checks in custom automation
+
+This approach ensures your monitoring evolves with your applications, maintaining accuracy and reducing maintenance overhead.
+
+
+Built with [Mintlify](https://mintlify.com).

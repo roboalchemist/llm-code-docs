@@ -1,0 +1,9 @@
+name: cerbos
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.cerbos.dev/
+    last_fetched: "2026-04-03T23:08:45Z"
+description: >
+  cerbos documentation
+quality_score: 0

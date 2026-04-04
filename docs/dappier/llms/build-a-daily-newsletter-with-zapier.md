@@ -1,0 +1,116 @@
+# ⚡ Build a Daily Newsletter with Zapier
+Source: https://docs.dappier.com/cookbook/recipes/zapier-daily-news-letter
+
+
+
+Dappier’s **Real-Time Data model** allows you to fetch the latest updates on **news, weather, sports, and lifestyle topics**. With **Zapier**, you can automate this process and send a **daily newsletter** to your recipients via email.
+
+## Watch the Video Guide
+
+If you prefer a visual walkthrough, check out the accompanying video guide below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jCIN1uwfXms?si=auJmh5jIYcTJYHF3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+This guide walks you through creating a **Zap** that:
+
+* Fetches **real-time data**
+* Retrieves **sports highlights**
+* Gets **lifestyle updates**
+* Sends an **automated email newsletter**
+
+## **Prerequisites**
+
+Before starting, ensure you have:
+
+* A **[Zapier account](https://zapier.com)**
+* A **Dappier API Key** (Generate it from [Dappier Platform](https://platform.dappier.com) under **Settings > Profile > API Keys**)
+* An **email service** (Gmail, Outlook, or any Zapier-supported provider)
+
+***
+
+## **Step 1: Create a New Zap**
+
+1. **Log in to Zapier** and click **Create a Zap**.
+2. **Select a Trigger**:
+   * Search for **"Schedule by Zapier"** and set it to run **daily**.
+3. Click **Continue**, then **Test Trigger** to confirm.
+
+***
+
+## **Step 2: Fetch Real-Time Data**
+
+1. Click the **"+"** icon to add an action.
+2. Search for **Dappier** and select it.
+3. Choose the action **"Get Real-Time Data."**
+4. Configure the fields:
+   * **Query**: `"Today's weather and top events"`
+5. Click **Continue**, then **Test the Step** to fetch real-time data.
+
+***
+
+## **Step 3: Fetch Sports News**
+
+1. Click the **"+"** icon to add another action.
+2. Search for **Dappier** and select it.
+3. Choose **"Get Sports News."**
+4. Configure the fields:
+   * **Query**: `"Today's sports highlights"`
+5. Click **Continue**, then **Test the Step** to retrieve sports news.
+
+***
+
+## **Step 4: Fetch Lifestyle News**
+
+1. Click the **"+"** icon to add another action.
+2. Search for **Dappier** and select it.
+3. Choose **"Get Lifestyle News."**
+4. Configure the fields:
+   * **Query**: `"Trending lifestyle articles"`
+5. Click **Continue**, then **Test the Step** to fetch lifestyle news.
+
+***
+
+## **Step 5: Configure Email Delivery**
+
+1. Click the **"+"** icon to add the final action.
+
+2. Search for **Gmail** (or another preferred email service).
+
+3. Choose **"Send Email."**
+
+4. Configure the fields:
+
+   * **Recipient**: Enter the recipient's email address.
+   * **Subject**: `"Today's Newsletter"`
+   * **Body**:
+
+     ```plaintext  theme={null}
+     Hello,
+
+     Here’s your daily newsletter:
+
+     - Weather & Events: {{Real-Time Data Output}}
+     - Sports Highlights: {{Sports News Output}}
+     - Lifestyle Articles: {{Lifestyle News Output}}
+
+     Have a great day!
+     ```
+
+5. Click **Continue**, then **Test the Step** to ensure the email is sent successfully.
+
+***
+
+## **Step 6: Finalizing the Zap**
+
+1. Click **Publish Zap** to activate your automated newsletter.
+2. The Zap will now **run daily** at the scheduled time and send a **newsletter** with real-time data, sports highlights, and lifestyle articles.
+
+***
+
+## **Summary**
+
+✅ **Automate** fetching real-time news, sports, and lifestyle updates.\
+✅ **Schedule** a daily email using **Zapier**.\
+✅ **Personalize** content dynamically for your recipients.
+
+This **Zap** ensures your users receive up-to-date news **without manual effort**, delivering fresh content straight to their inbox daily! 🚀

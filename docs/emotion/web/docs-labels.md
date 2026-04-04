@@ -1,0 +1,48 @@
+# Emotion Documentation
+# Source: https://raw.githubusercontent.com/emotion-js/emotion/main/docs/labels.mdx
+# Path: docs/labels.mdx
+
+---
+title: 'Labels'
+---
+
+Emotion adds a CSS property called `label` which is appended to the generated class name to make it more readable. `@emotion/babel-plugin` adds these labels automatically based on the variable name and other information, so they don't need to be manually specified.
+
+```jsx
+// @live
+import { css } from '@emotion/react'
+
+let style = css`
+  color: hotpink;
+  label: some-name;
+`
+
+let anotherStyle = css({
+  color: 'lightgreen',
+  label: 'another-name'
+})
+
+let ShowClassName = ({ className }) => (
+  <div className={className}>{className}</div>
+)
+
+render(
+  <div>
+    <ShowClassName css={style} />
+    <ShowClassName css={anotherStyle} />
+  </div>
+)
+```
+
+## Automatic Labeling at Runtime
+
+If you are not using `@emotion/babel-plugin`, you can still get automatic labels in development by setting the following global flag:
+
+```js
+globalThis.EMOTION_RUNTIME_AUTO_LABEL = true
+```
+
+This feature is opt-in because:
+
+- If you use server-side rendering and test your site in Safari, you may get spurious hydration warnings because the label computed on the server does not match the label computed in Safari.
+- This feature may degrade performance if the number of elements using the `css` prop is very large.

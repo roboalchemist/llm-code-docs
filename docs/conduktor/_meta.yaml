@@ -1,0 +1,9 @@
+name: conduktor
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.conduktor.io/
+    last_fetched: "2026-04-03T23:08:48Z"
+description: >
+  conduktor documentation
+quality_score: 0

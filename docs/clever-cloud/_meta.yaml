@@ -1,0 +1,9 @@
+name: clever-cloud
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.clever.cloud/developers/
+    last_fetched: "2026-04-03T23:08:46Z"
+description: >
+  clever-cloud documentation
+quality_score: 0

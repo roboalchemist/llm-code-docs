@@ -1,0 +1,124 @@
+# Source: https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/aws/glue_data_catalog_encryption_disabled.md
+
+---
+title: Glue Data Catalog encryption disabled
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > Code Security > Infrastructure as Code (IaC)
+  Security > IaC Security Rules > Glue Data Catalog encryption disabled
+---
+
+# Glue Data Catalog encryption disabled
+
+{% callout %}
+# Important note for users on the following Datadog sites: app.ddog-gov.com
+
+{% alert level="danger" %}
+This product is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site). ().
+{% /alert %}
+
+{% /callout %}
+
+## Metadata{% #metadata %}
+
+**Id:** `01d50b14-e933-4c99-b314-6d08cd37ad35`
+
+**Cloud Provider:** AWS
+
+**Platform:** Terraform
+
+**Severity:** High
+
+**Category:** Encryption
+
+#### Learn More{% #learn-more %}
+
+- [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_data_catalog_encryption_settings#data_catalog_encryption_settings)
+
+### Description{% #description %}
+
+AWS Glue Data Catalog contains metadata about AWS resources and should be properly encrypted to protect sensitive information. When encryption is disabled for connection passwords or data at rest, it could expose sensitive connection credentials and metadata to unauthorized access, potentially leading to data breaches or unauthorized resource access. Enabling both connection password encryption (with `return_connection_password_encrypted` set to `true`) and encryption at rest with SSE-KMS ensures that all sensitive metadata is properly protected with AWS KMS keys.
+
+Example of secure configuration:
+
+```
+resource "aws_glue_data_catalog_encryption_settings" "secure_example" {
+  data_catalog_encryption_settings {
+    connection_password_encryption {
+      aws_kms_key_id                       = aws_kms_key.test.arn
+      return_connection_password_encrypted = true
+    }
+
+    encryption_at_rest {
+      catalog_encryption_mode = "SSE-KMS"
+      sse_aws_kms_key_id      = aws_kms_key.test.arn
+    }
+  }
+}
+```
+
+## Compliant Code Examples{% #compliant-code-examples %}
+
+```terraform
+resource "aws_glue_data_catalog_encryption_settings" "negative1" {
+  data_catalog_encryption_settings {
+    connection_password_encryption {
+      aws_kms_key_id                       = aws_kms_key.test.arn
+      return_connection_password_encrypted = true
+    }
+
+    encryption_at_rest {
+      catalog_encryption_mode = "SSE-KMS"
+      sse_aws_kms_key_id      = aws_kms_key.test.arn
+    }
+  }
+}
+```
+
+## Non-Compliant Code Examples{% #non-compliant-code-examples %}
+
+```terraform
+resource "aws_glue_data_catalog_encryption_settings" "positive2" {
+  data_catalog_encryption_settings {
+    connection_password_encryption {
+      return_connection_password_encrypted = true
+    }
+
+    encryption_at_rest {
+      catalog_encryption_mode = "SSE-KMS"
+      sse_aws_kms_key_id      = aws_kms_key.test.arn
+    }
+  }
+}
+```
+
+```terraform
+resource "aws_glue_data_catalog_encryption_settings" "positive3" {
+  data_catalog_encryption_settings {
+    connection_password_encryption {
+      aws_kms_key_id                       = aws_kms_key.test.arn
+      return_connection_password_encrypted = true
+    }
+
+    encryption_at_rest {
+      catalog_encryption_mode = "DISABLED"
+      sse_aws_kms_key_id      = aws_kms_key.test.arn
+    }
+  }
+}
+```
+
+```terraform
+resource "aws_glue_data_catalog_encryption_settings" "positive4" {
+  data_catalog_encryption_settings {
+    connection_password_encryption {
+      aws_kms_key_id                       = aws_kms_key.test.arn
+      return_connection_password_encrypted = true
+    }
+
+    encryption_at_rest {
+      catalog_encryption_mode = "SSE-KMS"
+    }
+  }
+}
+```

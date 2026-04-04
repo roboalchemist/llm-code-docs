@@ -1,0 +1,9 @@
+name: cursor
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.cursor.com/
+    last_fetched: "2026-04-03T23:08:49Z"
+description: >
+  cursor documentation
+quality_score: 0

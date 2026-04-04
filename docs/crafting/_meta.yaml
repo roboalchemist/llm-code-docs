@@ -1,0 +1,9 @@
+name: crafting
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.sandboxes.cloud/
+    last_fetched: "2026-04-03T23:08:49Z"
+description: >
+  crafting documentation
+quality_score: 0

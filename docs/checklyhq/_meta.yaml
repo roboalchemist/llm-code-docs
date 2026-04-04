@@ -1,0 +1,9 @@
+name: checklyhq
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.checklyhq.com/docs/
+    last_fetched: "2026-04-03T23:08:45Z"
+description: >
+  checklyhq documentation
+quality_score: 0

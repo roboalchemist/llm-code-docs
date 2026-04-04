@@ -1,0 +1,9 @@
+name: clickhouse
+primary_source: llms
+sources:
+  - type: llms
+    url: https://clickhouse.ferndocs.com/
+    last_fetched: "2026-04-03T23:08:46Z"
+description: >
+  clickhouse documentation
+quality_score: 0

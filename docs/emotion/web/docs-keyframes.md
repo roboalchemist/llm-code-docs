@@ -1,0 +1,42 @@
+# Emotion Documentation
+# Source: https://raw.githubusercontent.com/emotion-js/emotion/main/docs/keyframes.mdx
+# Path: docs/keyframes.mdx
+
+---
+title: 'Keyframes'
+---
+
+You can define animations using the `keyframes` helper from `@emotion/react`. `keyframes` takes in a css keyframe definition and returns an object you can use in styles. You can use strings or objects just like `css`.
+
+```jsx
+// @live
+import { css, keyframes } from '@emotion/react'
+
+const bounce = keyframes`
+  from, 20%, 53%, 80%, to {
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+`
+
+render(
+  <div
+    css={css`
+      animation: ${bounce} 1s ease infinite;
+    `}
+  >
+    some bouncing text!
+  </div>
+)
+```

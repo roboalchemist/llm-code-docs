@@ -1,0 +1,38 @@
+# Source: https://developers.cloudflare.com/tenant/llms.txt
+
+# Tenant
+
+Provision and manage Cloudflare accounts and services for your team or customers
+
+> Links below point directly to Markdown versions of each page. Any page can also be retrieved as Markdown by sending an `Accept: text/markdown` header to the page's URL without the `index.md` suffix (for example, `curl -H "Accept: text/markdown" https://developers.cloudflare.com/tenant/`).
+>
+> For other Cloudflare products, see the [Cloudflare documentation directory](https://developers.cloudflare.com/llms.txt).
+>
+> Use [Tenant llms-full.txt](https://developers.cloudflare.com/tenant/llms-full.txt) for the complete Tenant documentation in a single file, intended for offline indexing, bulk vectorization, or large-context models.
+
+## Overview
+
+- [Cloudflare Tenant](https://developers.cloudflare.com/tenant/index.md)
+
+## Tenant structure
+
+- [Tenant structure](https://developers.cloudflare.com/tenant/structure/index.md)
+
+## Get started
+
+- [Get started](https://developers.cloudflare.com/tenant/get-started/index.md)
+
+## Glossary
+
+- [Glossary](https://developers.cloudflare.com/tenant/glossary/index.md)
+
+## how-to
+
+- [Get account details](https://developers.cloudflare.com/tenant/how-to/get-account-details/index.md)
+- [Get tenant details](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/index.md)
+- [Manage accounts](https://developers.cloudflare.com/tenant/how-to/manage-accounts/index.md)
+- [Manage subscriptions](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/index.md)
+
+## reference
+
+- [Available subscriptions](https://developers.cloudflare.com/tenant/reference/subscriptions/index.md)

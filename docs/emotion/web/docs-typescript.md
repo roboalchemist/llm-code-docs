@@ -1,0 +1,326 @@
+# Emotion Documentation
+# Source: https://raw.githubusercontent.com/emotion-js/emotion/main/docs/typescript.mdx
+# Path: docs/typescript.mdx
+
+---
+title: 'TypeScript'
+---
+
+Emotion includes TypeScript definitions for `@emotion/react` and `@emotion/styled`. These definitions infer types for css properties with the object syntax, HTML/SVG tag names, and prop types.
+
+## @emotion/react
+
+The easiest way to use the css prop with TypeScript is with the new JSX transform and the `jsxImportSource` TSConfig option (available since TS 4.1). For this approach, your TSConfig `compilerOptions` should contain
+
+```json
+"jsx": "react-jsx",
+"jsxImportSource": "@emotion/react"
+```
+
+For most users, this is all the setup that is required. You can now define styles using the object syntax or template literal syntax and pass them to your components via the `css` prop.
+
+```tsx
+import { css } from '@emotion/react'
+
+const titleStyle = css({
+  boxSizing: 'border-box',
+  width: 300,
+  height: 200
+})
+
+const subtitleStyle = css`
+  box-sizing: border-box;
+  width: 100px;
+  height: 60px;
+`
+```
+
+Object styles are recommended since they are type checked with the help of the [csstype](https://www.npmjs.com/package/csstype) package. For example, the following code will emit an error.
+
+```tsx
+import { css } from '@emotion/react';
+
+const titleStyle = css({
+                       ^ Argument of type 'boxSizing: 'bordre-box';' is not assignable [...]
+  boxSizing: 'bordre-box', // Oops, there's a typo!
+  width: 300,
+  height: 200,
+});
+```
+
+When using our JSX factory, TypeScript only allows the `css` prop on components that accept a `className` prop. This is because `@emotion/react` resolves the value of the `css` prop to a class name and then passes this class name down to the rendered component.
+
+### With the Babel plugin
+
+[`@emotion/babel-plugin`](/docs/babel) is completely optional for TypeScript users. If you are not already using Babel, you probably shouldn't add it to your build tooling unless you truly need one of the features offered by `@emotion/babel-plugin`. On the other hand, there's no reason not to use `@emotion/babel-plugin` if you are already using Babel to transpile your TypeScript code.
+
+### With the old JSX transform
+
+If you are unable to upgrade to the `react-jsx` transform, you will need to specify the JSX factory at the top of every file:
+
+```tsx
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
+```
+
+As a result, you may be not able to use the shorthand syntax `<></>` for React fragments, but you can still use `<Fragment></Fragment>`. This is a limitation of the TypeScript compiler not being able to independently specify jsx pragma and jsxFrag pragma.
+
+You can still use the css helper and pass the className yourself (ensure you are importing from the `@emotion/css` package, not `@emotion/react`).
+
+```tsx
+import { css } from '@emotion/css'
+
+const el = <div className={css({ background: 'black' })} />
+```
+
+It's not possible to leverage `css` prop support being added conditionally based on the type of a rendered component when not using our jsx pragma or the `react-jsx` transform. If you use our pragma implicitly (for example when using our `@emotion/babel-preset-css-prop`) we have a special file that can be imported once to add support for the `css` prop globally, for all components. Use it like this:
+
+```ts
+/// <reference types="@emotion/react/types/css-prop" />
+```
+
+## @emotion/styled
+
+`@emotion/styled` works with TypeScript without any additional configuration.
+
+### HTML/SVG elements
+
+```tsx
+import styled from '@emotion/styled'
+
+const Link = styled('a')`
+  color: red;
+`
+
+const Icon = styled('svg')`
+  stroke: green;
+`
+
+const App = () => <Link href="#">Click me</Link>
+```
+
+```tsx
+import styled from '@emotion/styled';
+
+const NotALink = styled('div')`
+  color: red;
+`;
+
+const App = () => (
+  <NotALink href="#">Click me</NotALink>
+            ^^^^^^^^ Property 'href' does not exist [...]
+);
+```
+
+### `withComponent`
+
+```tsx
+import styled from '@emotion/styled'
+
+const NotALink = styled('div')`
+  color: red;
+`
+
+const Link = NotALink.withComponent('a')
+
+const App = () => <Link href="#">Click me</Link>
+
+// No errors!
+```
+
+### Passing Props
+
+You can type the props of styled components.
+
+```tsx
+import styled from '@emotion/styled'
+
+type ImageProps = {
+  src: string
+  width: number
+}
+
+// Using a css block
+const Image0 = styled.div<ImageProps>`
+  width: ${props => props.width};
+  background: url(${props => props.src}) center center;
+  background-size: contain;
+`
+const Image0 = styled('div')<ImageProps>`
+  width: ${props => props.width};
+  background: url(${props => props.src}) center center;
+  background-size: contain;
+`
+
+// Or with object styles
+const Image1 = styled('div')<ImageProps>(
+  {
+    backgroundSize: 'contain'
+  },
+  props => ({
+    width: props.width,
+    background: `url(${props.src}) center center`
+  })
+)
+```
+
+### React Components
+
+Emotion can also style React components and will infer component props as expected.
+
+```tsx
+import React, { FC } from 'react'
+import styled from '@emotion/styled'
+
+interface ComponentProps {
+  className?: string
+  label: string
+}
+
+const Component: FC<ComponentProps> = ({ label, className }) => (
+  <div className={className}>{label}</div>
+)
+
+const StyledComponent0 = styled(Component)`
+  color: ${props => (props.label === 'Important' ? 'red' : 'green')};
+`
+
+const StyledComponent1 = styled(Component)({
+  color: 'red'
+})
+
+const App = () => (
+  <div>
+    <StyledComponent0 label="Important" />
+    <StyledComponent1 label="Yea! No need to re-type this label prop." />
+  </div>
+)
+```
+
+### Forwarding props
+
+Sometimes you want to wrap an existing component and override the type of a prop. Emotion allows you to specify a `shouldForwardProp` hook to filter properties which should be passed to the wrapped component.
+
+If you make `shouldForwardProp` a [type guard](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates) then only the props from the type guard will be exposed.
+
+For example:
+
+```ts
+const Original: React.FC<{ prop1: string; prop2: string }> = () => null
+
+interface StyledOriginalExtraProps {
+  // This prop would conflict with the `prop2` on Original
+  prop2: number
+}
+const StyledOriginal = styled(Original, {
+  // Filter prop2 by only forwarding prop1
+  shouldForwardProp: (propName): propName is 'prop1' => propName === 'prop1'
+})<StyledOriginalExtraProps>(props => {
+  // props.prop2 will be `number`
+  return {}
+})
+
+// No more type conflict error
+;<StyledOriginal prop1="1" prop2={2} />
+```
+
+### Passing props when styling a React component
+
+```tsx
+import React, { FC } from 'react'
+import styled from '@emotion/styled'
+
+interface ComponentProps {
+  className?: string
+  label: string
+}
+
+const Component: FC<ComponentProps> = ({
+  label,
+  className
+}) => <div className={className}>{label}</div>
+
+interface StyledComponentProps {
+  bgColor: string
+}
+
+const StyledComponent0 = styled(Component)<StyledComponentProps>`
+  color: red;
+  background: ${props => props.label ? props.bgColor : 'white'};
+`
+// or
+const StyledComponent1 = styled(Component)<StyledComponentProps>(
+  props => ({
+    color: 'red'
+    background: props.label ? props.bgColor : 'white'
+  })
+)
+
+const App = () => (
+  <div>
+    <StyledComponent0
+      bgColor="red"
+      label="Some cool text"
+    />
+    <StyledComponent1
+      bgColor="red"
+      label="Some more cool text"
+    />
+  </div>
+)
+```
+
+### Define a Theme
+
+By default, `props.theme` is an empty object because it's the only thing that is type-safe as a default.
+You can define a theme type by extending our type declarations via your own declarations file.
+
+_emotion.d.ts_
+
+```typescript
+import '@emotion/react'
+
+declare module '@emotion/react' {
+  export interface Theme {
+    color: {
+      primary: string
+      positive: string
+      negative: string
+    }
+  }
+}
+
+// You are also able to use a 3rd party theme this way:
+import '@emotion/react'
+import { LibTheme } from 'some-lib'
+
+declare module '@emotion/react' {
+  export interface Theme extends LibTheme {}
+}
+```
+
+_Button.tsx_
+
+```tsx
+import styled from '@emotion/styled'
+
+const Button = styled('button')`
+  padding: 20px;
+  background-color: ${props => props.theme.someLibProperty};
+  border-radius: 3px;
+`
+
+export default Button
+```
+
+If you were previously relying on `theme` being an `any` type, you can restore compatibility with:
+
+_emotion.d.ts_
+
+```ts
+import '@emotion/react'
+
+declare module '@emotion/react' {
+  export interface Theme extends Record<string, any> {}
+}
+```

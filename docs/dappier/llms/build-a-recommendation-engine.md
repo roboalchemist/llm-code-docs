@@ -1,0 +1,65 @@
+# Build a Recommendation Engine
+Source: https://docs.dappier.com/cookbook/recipes/dappier-ai-recommendations
+
+
+
+Dappier's AI Recommendations API allows you to build a recommendation engine that can be used to personalize user experiences.
+This guide will walk you through the process of building a recommendation engine using Dappier's AI Recommendations API.
+
+## Prerequisites
+
+Before you begin, you'll need to sign up for a Dappier account and create an API key.
+
+1. Visit the [Dappier Platform](https://platform.dappier.com) to sign up.
+
+2. Create an API key under Settings > Profile > API Keys.
+
+## Step 1: Get Data Model ID
+
+To get started, you'll need to pick a data model from the Dappier Marketplace. The data model ID is required to make API calls to the AI Recommendations API.
+
+Once you have the data model ID, you can make API calls to:
+
+```
+POST https://api.dappier.com/app/v2/search?data_model_id={data_model_id}
+```
+
+This endpoint retrieves personalized recommendations based on the provided data model ID and query.
+
+## Step 2: Make API Call
+
+Once you have the data model ID, you can make API calls to the AI Recommendations API to get personalized recommendations.
+
+Here's an example of how you can make an API call using Python:
+
+```python Python theme={null}
+import requests
+import json
+
+url = "https://api.dappier.com/app/v2/search?data_model_id=dm_01j0pb465keqmatq9k83dthx34"
+payload = json.dumps({
+    "query": "lifestyle new articles",
+    "similarity_top_k": 3,
+    "ref": "",
+    "num_articles_ref": 0,
+    "search_algorithm": "most_recent"
+})
+headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer <YOUR_DAPPIER_API_KEY>'
+}
+
+response = requests.post(url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+## Step 3: Analyze Recommendations
+
+Once you've made the API call, you'll receive a response with personalized recommendations based on the input query.
+
+You can analyze the recommendations and use them to personalize user experiences in your application.
+
+## Conclusion
+
+Building a recommendation engine with Dappier's AI Recommendations API is a powerful way to enhance user experiences and drive engagement.

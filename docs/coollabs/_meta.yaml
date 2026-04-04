@@ -1,0 +1,9 @@
+name: coollabs
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.coollabs.io/
+    last_fetched: "2026-04-03T23:08:48Z"
+description: >
+  coollabs documentation
+quality_score: 0

@@ -1,0 +1,465 @@
+---
+title: Automate Chromatic with CircleCI
+description: Learn how to configure Chromatic with CircleCI
+sidebar: { order: 5, label: Circle CI }
+---
+
+import IntegrationSnippets from "../../components/IntegrationSnippets.astro";
+
+# Automate Chromatic with CircleCI
+
+Chromatic's automation can be included as part of your CircleCI job with relative ease.
+
+## Setup
+
+To integrate Chromatic with your existing workflow, you'll need to add the following:
+
+{/* prettier-ignore-start */}
+
+<IntegrationSnippets>
+  <Fragment slot="storybook">
+    ```yml title=".circleci/config.yml"
+    version: 2.1
+
+    executors:
+      chromatic-ui-testing:
+        docker:
+          - image: cimg/node:22.20.0
+        working_directory: ~/repo
+
+    jobs:
+      Chromatic:
+        executor: chromatic-ui-testing
+        steps:
+          - checkout
+          - restore_cache:
+              keys:
+                - v1-dependencies-{{ checksum "package-lock.json" }}
+                - v1-dependencies-
+          # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
+          - run: npm ci
+          - run: npx chromatic
+          - save_cache:
+              name: Save NPM cache
+              paths:
+                - ~/.npm
+              key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+    workflows:
+      UI_Tests:
+        jobs:
+          - Chromatic
+    ```
+  </Fragment>
+  <Fragment slot="playwright">
+    ```yml title=".circleci/config.yml"
+    version: 2.1
+
+    executors:
+      pw-noble-development:
+        docker:
+          - image: mcr.microsoft.com/playwright:v1.56.0-noble
+        working_directory: ~/repo
+      chromatic-ui-testing:
+        docker:
+          - image: cimg/node:22.20.0
+        working_directory: ~/repo
+
+    jobs:
+      Playwright:
+        executor: pw-noble-development
+        steps:
+          - checkout
+          - restore_cache:
+              name: Restore NPM cache
+              keys:
+                - v1-dependencies-{{ checksum "package-lock.json" }}
+                - v1-dependencies-
+          - run:
+              name: "Install Playwright dependencies"
+               # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
+              command: npm ci
+          - save_cache:
+              name: Save NPM cache
+              paths:
+                - ~/.npm
+              key: v1-dependencies-{{ checksum "package-lock.json" }}
+          - run:
+              name: "Run Playwright tests"
+              command: npx playwright test
+              when: always
+          - store_artifacts:
+              # Chromatic automatically defaults to the test-results directory.
+              # Replace with the path to your custom directory and adjust the CHROMATIC_ARCHIVE_LOCATION environment variable accordingly.
+              path: ./test-results
+          - persist_to_workspace:
+              root: .
+              paths:
+                - test-results
+      Chromatic:
+        executor: chromatic-ui-testing
+        steps:
+          - checkout
+          - restore_cache:
+              name: Restore NPM cache
+              keys:
+                - v1-dependencies-{{ checksum "package-lock.json" }}
+                - v1-dependencies-
+          - run: npm ci
+          - attach_workspace:
+              at: .
+          - run:
+              name: "Run Chromatic"
+              command: npx chromatic --playwright
+              environment:
+                CHROMATIC_ARCHIVE_LOCATION: "test-results"
+
+    workflows:
+      UI_Tests:
+        jobs:
+          - Playwright
+          - Chromatic:
+              requires:
+                - Playwright
+    ```
+  </Fragment>
+  <Fragment slot="cypress">
+    ```yml title=".circleci/config.yml"
+    version: 2.1
+
+    executors:
+      cypress:
+        docker:
+          - image: cypress/browsers:node-22.20.0-chrome-141.0.7390.54-1-ff-143.0.4-edge-141.0.3537.57-1
+        working_directory: ~/repo
+      chromatic-ui-testing:
+        docker:
+          - image: cimg/node:22.20.0
+        working_directory: ~/repo
+
+    jobs:
+      Cypress:
+        executor: cypress
+        steps:
+          - checkout
+          - restore_cache:
+              name: Restore NPM cache
+              keys:
+                - v1-dependencies-{{ checksum "package-lock.json" }}
+                - v1-dependencies-
+          - run:
+              name: "Install Cypress dependencies"
+              # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
+              command: npm ci
+          - save_cache:
+              name: Save NPM cache
+              paths:
+                - ~/.npm
+                - ~/.cache
+              key: v1-dependencies-{{ checksum "package-lock.json" }}
+          - run:
+              name: "Run development server"
+              command: npm run dev
+              background: true
+          - run:
+              name: "Run Cypress tests"
+              command: npx cypress run
+              environment:
+                ELECTRON_EXTRA_LAUNCH_ARGS: "--remote-debugging-port=9222"
+              when: always
+          - store_artifacts:
+              # Chromatic automatically defaults to the cypress/downloads directory.
+              # Replace with the path to your custom directory and adjust the CHROMATIC_ARCHIVE_LOCATION environment variable accordingly.
+              path: ./cypress/downloads
+          - persist_to_workspace:
+              root: .
+              paths:
+               - cypress/downloads
+      Chromatic:
+        executor: chromatic-ui-testing
+        steps:
+          - checkout
+          - restore_cache:
+              name: Restore NPM cache
+              keys:
+                - v1-dependencies-{{ checksum "package-lock.json" }}
+                - v1-dependencies-
+          - run: npm ci
+          - attach_workspace:
+              at: .
+          - run:
+              name: "Run Chromatic"
+              command: npx chromatic --cypress
+              environment:
+                CHROMATIC_ARCHIVE_LOCATION: "cypress/downloads"
+
+    workflows:
+      UI_Tests:
+        jobs:
+          - Cypress
+          - Chromatic:
+              requires:
+                - Cypress
+    ```
+  </Fragment>
+</IntegrationSnippets>
+
+{/* prettier-ignore-end */}
+
+<div class="aside">
+
+We recommend saving the project token as an environment variable named `CHROMATIC_PROJECT_TOKEN` for security reasons. When the Chromatic CLI is executed, it will read the environment variable automatically without any additional flags. Refer to the official CircleCI [environment variables documentation](https://circleci.com/docs/env-vars/) to learn more about it.
+
+</div>
+
+### Run Chromatic on specific branches
+
+If you need to customize your workflow to run Chromatic on specific branches, adjust your workflow like so:
+
+```yml title=".circleci/config.yml"
+# Other required configuration
+
+jobs:
+# Other jobs implemented in the workflow
+
+workflows:
+  # 👇 Adds Chromatic to the workflow
+  UI_Tests:
+    jobs:
+      - Chromatic:
+          filters: # 👈 Filters the execution to run only on the main branch
+            branches:
+              only: main
+```
+
+<div class="aside">
+
+Read the official CircleCI [conditional job execution documentation](https://circleci.com/docs/2.0/configuration-reference/#filters).
+
+</div>
+
+Now Chromatic will only run in the `main` branch.
+
+### Run Chromatic on large projects
+
+Chromatic is prepared to handle large file uploads (with a limit of 5000 files, including stories and assets). If your project exceeds this limit, we recommend adjusting your workflow and run the `chromatic` command with the `--zip` flag to compress your build before uploading it. For example:
+
+```yml title=".circleci/config.yml"
+# Other required configuration
+
+jobs:
+  # Other jobs
+
+  # 👇 Adds Chromatic as a job
+  Chromatic:
+    # Other configuration
+    steps:
+      # Other job steps
+
+      # 👇 Runs Chromatic with the flag to compress the build output.
+      - run: npx chromatic --zip
+# Workflows here
+```
+
+### Run Chromatic on monorepos
+
+Chromatic can be run on monorepos that have multiple subprojects. Each subproject will need it's own project token stored as an environment variable.
+
+#### Prerequisites
+
+1. Ensure that you're in the correct working directory for the subproject.
+2. Have `build-storybook` npm script in the subproject's `package.json` file OR explicitly name the script using the `--build-script-name` CLI flag and make sure the script is listed in the subproject's `package.json` file.
+
+If you've already built your Storybook in a separate CI step, you can adjust your workflow to include the `--storybook-build-dir` CLI flag to point to the build output directory.
+
+```yml title=".circleci/config.yml"
+# Other required configuration
+
+jobs:
+  # Other jobs
+
+  # 👇 Adds Chromatic as a job
+  Chromatic:
+    # Other configuration
+    steps:
+      # Other job steps
+
+      # 👇 Runs Chromatic sequentially for each monorepo subproject.
+      - run:
+          command: cd packages/project_1 && npx chromatic
+          environment:
+            CHROMATIC_PROJECT_TOKEN: $CHROMATIC_PROJECT_TOKEN_1
+      - run:
+          command: cd packages/project_2 && npx chromatic
+          environment:
+            CHROMATIC_PROJECT_TOKEN: $CHROMATIC_PROJECT_TOKEN_2
+# Workflows here
+```
+
+<div class="aside">
+
+Additional paralellization can be achieved when configuring your workflow to run Chromatic on multiple subprojects. Read the official CircleCI [documentation](https://circleci.com/docs/parallelism-faster-jobs).
+
+</div>
+
+### Enable TurboSnap
+
+TurboSnap is an advanced Chromatic feature implemented to improve the build time for large projects, disabled by default once you add Chromatic to your CI environment. To enable it, you'll need to adjust your existing workflow and run the `chromatic` command with the `--only-changed` flag as follows:
+
+```yml title=".circleci/config.yml"
+# Other required configuration
+
+jobs:
+  # Other jobs
+
+  # 👇 Adds Chromatic as a job
+  Chromatic:
+    # Other configuration
+    steps:
+      # Other job steps
+
+      # 👇 Enables Chromatic's TurboSnap feature.
+      - run: npx chromatic --only-changed
+# Workflows here
+```
+
+<div class="aside">
+
+TurboSnap is highly customizable and can be configured to fit your requirements. For more information, read our [documentation](/docs/turbosnap).
+
+</div>
+
+### External Pull Requests
+
+See this [CircleCI documentation](https://circleci.com/blog/triggering-trusted-ci-jobs-on-untrusted-forks/) for workflows related to pull requests from forked repositories.
+
+### Advanced configuration
+
+For a more complex workflow configuration, checkout this [Chromatic CircleCI Orb](https://circleci.com/orbs/registry/orb/wave/chromatic) made by a customer.
+
+In there you'll find various scenarios that you can use depending on your needs.
+
+### UI Test and UI Review
+
+[UI Tests](/docs#test-how-uis-look--function) and [UI Review](/docs/review) rely on [branch and baseline](/docs/branching-and-baselines) detection to keep track of [snapshots](/docs/snapshots). We recommend the following configuration.
+
+#### Command exit code for "required" checks
+
+If you are using pull request statuses as required checks before merging, you may not want your Circle CI job to fail if test snapshots render without errors (but with changes). To achieve this, pass the flag `--exit-zero-on-changes` to the `chromatic` command, and your job will continue in such cases. For example:
+
+```yml title=".circleci/config.yml"
+# Other required configuration
+
+jobs:
+  # Other jobs
+
+  # 👇 Adds Chromatic as a job
+  Chromatic:
+    # Other configuration
+    steps:
+      # Other job steps
+
+      # 👇 Runs Chromatic with the flag to prevent workflow failure
+      - run: npx chromatic --exit-zero-on-changes
+# Workflows here
+```
+
+<div class="aside">
+
+Read our [configuration reference documentation](/docs/configure#options).
+
+</div>
+
+When using `--exit-zero-on-changes` your job will still stop and fail if your Storybook contains stories that error. If you'd prefer Chromatic _never_ to block your job, you can use `npx chromatic || true`.
+
+#### Re-run failed builds after verifying UI test results
+
+Builds that contain visual changes need to be [verified](/docs/quickstart#4-review-changes). They will fail if you are not using `--exit-zero-on-changes`. Once you accept all the changes, re-run the workflow and the `chromatic-deployment` job will pass.
+
+If you deny any change, you will need to make the necessary code changes to fix the test (and thus start a new build) to get Chromatic to pass again.
+
+#### Maintain a clean "main" branch
+
+A clean `main` branch is a development **best practice** and **highly recommended** for Chromatic. This means testing your `main` branch to ensure builds are passing. It's important to note that baselines will not persist through branching and merging unless you test your `main` branch.
+
+If the builds are a result of direct commits to `main`, you will need to accept changes to keep the main branch clean. If they're merged from `feature-branches`, you will need to make sure those branches are passing _before_ you merge into `main`.
+
+#### Squash/rebase merge and the "main" branch
+
+We use GitHub, GitLab, and Bitbucket APIs respectively to detect squashing and rebasing so your baselines match your expectations no matter your Git workflow (see [Branching and Baselines](/docs/branching-and-baselines#how-do-baselines-get-preserved-during-squash-and-rebase-merging) for more details).
+
+If you’re using this functionality but notice the incoming changes were not accepted as baselines in Chromatic, then you'll need to adjust the `chromatic` command and include the `--auto-accept-changes` flag. For example:
+
+```shell title=".circleci/config.yml"
+# Other required configuration
+
+# 👇 Checks if the current branch is not the main and runs Chromatic
+if [ "${CIRCLE_BRANCH}" != "main" ];
+then
+  npx chromatic
+else
+  # 👇 Checks if the current branch is main and runs Chromatic with the flag to accept all changes
+  npx chromatic --auto-accept-changes
+fi
+```
+
+<div class="aside">
+
+Read our [configuration reference documentation](/docs/configure#options).
+
+</div>
+
+Including the `--auto-accept-changes` flag ensures all incoming changes will be accepted as baselines. Additionally, you'll maintain a clean `main` branch.
+
+If you want to test the changes introduced by the rebased branch, you can adjust your workflow and include a new step with the `ignore-last-build-on-branch` flag. For example:
+
+```yml title=".circleci/config.yml"
+# Other required configuration
+
+jobs:
+  # Other jobs
+
+  # 👇 Adds Chromatic as a job
+  Chromatic:
+    # Other configuration
+    steps:
+      # Other job steps
+
+      # 👇 Option to skip the last build on target branch
+      - run: npx chromatic --ignore-last-build-on-branch=my-branch
+# Workflows here
+```
+
+Including the `--ignore-last-build-on-branch` flag ensures the latest build for the specific branch is not used as a baseline.
+
+#### Run Chromatic on external forks of open source projects
+
+You can enable PR checks for external forks by sharing your project token where you configured the Chromatic command (often in `package.json` or in the pipeline step).
+
+Sharing project tokens allows contributors and others to run Chromatic builds on your project, consuming your snapshot quota. They cannot access your account, settings, or accept baselines. This can be an acceptable tradeoff for open source projects that value community contributions.
+
+#### Skipping builds for certain branches
+
+Sometimes you might want to skip running a build for a certain branch, but still have Chromatic mark the latest commit on that branch as "passed". Otherwise pull requests could be blocked due to required checks that remain pending. To avoid this issue, you can run `chromatic` with the `--skip` flag. This flag accepts a branch name or glob pattern.
+
+One use case for this feature is skipping builds for branches created by a bot. For instance, Dependabot automatically updates a projects dependencies. Although some dependencies can result in UI changes, you might not find it worthwhile to run Chromatic for every single dependency update. Instead, you could rely on Chromatic running against the `main` or `develop` branch.
+
+To skip builds for `dependabot` branches, use the following:
+
+```shell
+npx chromatic --skip 'dependabot/**'
+```
+
+<div class="aside">
+
+Read our [configuration reference documentation](/docs/configure#options).
+
+</div>
+
+To apply this to multiple branches, use an "extended glob". See the [globs guide] for details.
+
+```shell
+npx chromatic --skip '@(renovate/**|dependabot/**)'
+```
+
+[globs guide]: /docs/globs

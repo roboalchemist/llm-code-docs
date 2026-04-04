@@ -1,0 +1,42 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/gcp/gcp.compute_target_tcp_proxy.dataset.md
+
+---
+title: Target TCP Proxy
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Target TCP Proxy
+---
+
+# Target TCP Proxy
+
+A Target TCP Proxy in Google Cloud is a regional proxy resource that routes incoming TCP traffic to backend services based on TCP load balancing. It terminates client TCP connections at the proxy and establishes new connections to the selected backend instances, providing features like session affinity, health checks, and high availability for non-HTTP TCP applications.
+
+```
+gcp.compute_target_tcp_proxy
+```
+
+## Fields
+
+| Title                | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Description |
+| -------------------- | ---- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| _key                 | core | string        |
+| ancestors            | core | array<string> |
+| creation_timestamp   | core | timestamp     | Output only. [Output Only] Creation timestamp inRFC3339 text format.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| datadog_display_name | core | string        |
+| description          | core | string        | An optional description of this resource. Provide this property when you create the resource.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| id                   | core | string        | [Output Only] The unique identifier for the resource. This identifier is defined by the server.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| kind                 | core | string        | Output only. [Output Only] Type of the resource. Alwayscompute#targetTcpProxy for target TCP proxies.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| labels               | core | array<string> |
+| name                 | core | string        | Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.                                                                                                          |
+| organization_id      | core | string        |
+| parent               | core | string        |
+| project_id           | core | string        |
+| project_number       | core | string        |
+| proxy_bind           | core | bool          | This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set toINTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false. |
+| proxy_header         | core | string        | Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| region               | core | string        | Output only. [Output Only] URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| region_id            | core | string        |
+| resource_name        | core | string        |
+| self_link            | core | string        | [Output Only] Server-defined URL for the resource.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| service              | core | string        | URL to the BackendService resource.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| tags                 | core | hstore_csv    |
+| zone_id              | core | string        |

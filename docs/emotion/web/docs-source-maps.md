@@ -1,0 +1,24 @@
+# Emotion Documentation
+# Source: https://raw.githubusercontent.com/emotion-js/emotion/main/docs/source-maps.mdx
+# Path: docs/source-maps.mdx
+
+---
+title: 'Source Maps'
+---
+
+> Note:
+>
+> `@emotion/babel-plugin` is required for source maps
+
+Emotion supports source maps for styles authored in JavaScript.
+
+![Source map demo](https://user-images.githubusercontent.com/662750/30778580-78fbeae4-a096-11e7-82e1-120b6984e875.gif)
+
+Required For Source Maps:
+
+1. `@emotion/babel-plugin` must be in your Babel setup. [[documentation]](/docs/install.mdx)
+2. `process.env.NODE_ENV` must be any value except `"production"`
+
+> Note:
+>
+> Source maps are on by default in @emotion/babel-plugin but they will be removed in production builds

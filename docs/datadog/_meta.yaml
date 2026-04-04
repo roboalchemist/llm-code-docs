@@ -1,0 +1,9 @@
+name: datadog
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.datadoghq.com/
+    last_fetched: "2026-04-03T23:08:50Z"
+description: >
+  datadog documentation
+quality_score: 0

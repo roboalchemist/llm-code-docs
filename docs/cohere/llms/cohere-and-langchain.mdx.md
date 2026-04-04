@@ -1,0 +1,55 @@
+# Source: https://docs.cohere.com/docs/cohere-and-langchain.mdx
+
+***
+
+title: Cohere and LangChain (Integration Guide)
+slug: docs/cohere-and-langchain
+hidden: false
+description: >-
+Integrate Cohere with LangChain for advanced chat features, RAG, embeddings,
+and reranking; this guide includes code examples for each feature.
+image:
+type: fileId
+value: 'https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8ba30b46486ea7bfab24f3e8856d7411d1b745b26e9026abff3ee62af52ce268/assets/images/51c6a07-cohere_meta_image.jpg'
+keywords: 'LangChain, Cohere integrations, Retrieval Augmented Generation'
+createdAt: 'Tue Jan 16 2024 11:00:05 GMT+0000 (Coordinated Universal Time)'
+updatedAt: 'Tue May 28 2024 16:56:01 GMT+0000 (Coordinated Universal Time)'
+---------------------------------------------------------------------------
+
+Cohere [has support for LangChain](https://python.langchain.com/docs/integrations/providers/cohere), a framework which enables you to quickly create LLM powered applications.  This guide outlines how to use features from supported Cohere models with LangChain.
+
+### Supported Models
+
+The LangChain-Cohere integration currently supports:
+
+* Command (e.g., `command-r-08-2024`)
+* Embed (e.g., `embed-english-v3.0`, `embed-multilingual-v3.0`)
+* Rerank (e.g., `rerank-english-v3.0`, `rerank-multilingual-v3.0`)
+
+### Not Yet Supported
+
+Newer models like Command A Reasoning (`command-a-reasoning-08-2025`) and Command A Vision (`command-a-vision-07-2025`) are not supported in LangChain.
+
+### Prerequisite
+
+To use LangChain and Cohere you will need:
+
+* LangChain package. To install it, run `pip install langchain`.
+
+* LangChain Package. To install it, run:
+  * `pip install langchain`
+  * `pip install langchain-cohere` (to use the Cohere integrations in LangChain)
+  * Optional: `pip install langchain-community` (to access third-party integrations such as web search APIs)
+
+* Cohere's SDK. To install it, run `pip install cohere`. If you run into any issues or want more details on Cohere's SDK, [see this wiki](https://github.com/cohere-ai/cohere-python).
+
+* A Cohere API Key. For more details on pricing [see this page](https://cohere.com/pricing). When you create an account with Cohere, we automatically create a trial API key for you. This key will be available on the dashboard where you can copy it, and it's in the dashboard section called "API Keys" as well.
+
+### Integrating LangChain with Cohere Models
+
+The following guides contain technical details on the many ways in which Cohere and LangChain can be used in tandem:
+
+* [Chat on LangChain](/docs/chat-on-langchain)
+* [Embed on LangChain](/docs/embed-on-langchain)
+* [Rerank on LangChain](/docs/rerank-on-langchain)
+* [Tools on LangChain](/docs/tools-on-langchain)

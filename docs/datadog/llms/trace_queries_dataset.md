@@ -1,0 +1,62 @@
+# Source: https://docs.datadoghq.com/tracing/guide/trace_queries_dataset.md
+
+---
+title: Trace Queries Source Data
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > APM > Tracing Guides > Trace Queries Source Data
+---
+
+# Trace Queries Source Data
+
+## Overview{% #overview %}
+
+With Trace Queries, you can find entire traces based on the properties of multiple spans and the relationships between those spans within the structure of the trace. To learn more, read the [Trace Queries documentation](https://docs.datadoghq.com/tracing/trace_explorer/trace_queries/).
+
+{% image
+   source="https://datadog-docs.imgix.net/images/tracing/trace_queries/trace_queries.86f1cfc9c64cb7ac38c1e093575ee676.png?auto=format"
+   alt="Trace Queries UI" /%}
+
+## How Trace Queries source data{% #how-trace-queries-source-data %}
+
+Datadog uses the [Intelligent Retention Filter](https://docs.datadoghq.com/tracing/trace_pipeline/trace_retention/#datadog-intelligent-retention-filter) to index data for Trace Queries. It does so by performing:
+
+- Flat sampling: A uniform 1% sample of ingested spans.
+- Diversity sampling: A representative, diverse selection of traces to keep visibility over each environment, service, operation, and resource.
+
+These 2 sampling mechanisms capture **complete traces**, meaning that all spans of a trace are always indexed to ensure the well-functioning of Trace Queries.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/tracing/trace_queries/trace_queries_new_dataset.224d6f7b646d80afebc04730b239d75f.png?auto=format"
+   alt="1% Flat Sampling & Diversity Sampling" /%}
+
+**Note**: Spans indexed by flat sampling and diversity sampling do not count towards the usage of indexed spans, and therefore, **do not impact your bill**.
+
+### 1% flat sampling
+
+`retained_by:flat_sampled`
+
+Flat 1% sampling is applied based on the `trace_id`, meaning that all spans belonging to the same trace share the same sampling decision. To learn more, read the [one percent flat sampling documentation](https://docs.datadoghq.com/tracing/trace_pipeline/trace_retention/#one-percent-flat-sampling).
+
+### Diversity sampling{% #diversity-sampling %}
+
+`retained_by:diversity_sampling`
+
+Every 15 minutes, diversity sampling retains at least one span and the associated trace for each combination of environment, service, operation, and resource. This occurs for the `p75`, `p90`, and `p95` percentile of latencies to ensure that you can always find example traces in service and resource pages, even for low traffic endpoints. To learn more, read the [diversity sampling documentation](https://docs.datadoghq.com/tracing/trace_pipeline/trace_retention/#diversity-sampling).
+
+## Impact of enabling Trace Queries{% #impact-of-enabling-trace-queries %}
+
+From the moment Traces Queries are enabled on your account (find the exact date in the event published in the Event Stream), the Intelligent Retention filter starts to index more data as it starts capturing complete traces .
+
+You can query spans indexed by the Intelligent Retention filter in the [Trace Explorer](https://docs.datadoghq.com/tracing/trace_explorer/). As a result, you might notice a spike in the number of indexed spans in Trace Explorer queries. This change is indicated by an event overlay showing an **Intelligent Retention Filter change** event.
+
+To find spans that are sampled by the 1% flat sampling or the diversity sampling methods, add a `retained_by:(flat_sampled OR diversity_sampling)` query parameter in the Trace Explorer.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/tracing/trace_queries/intelligent_retention_filter_change.38be6c60b15d88bcd1a3a9c6373fb6a0.png?auto=format"
+   alt="Event Overlay Intelligent Retention Filter" /%}
+
+Spans indexed by the Intelligent retention filter are excluded from APM queries in [Trace Analytics monitor](https://docs.datadoghq.com/monitors/types/apm/?tab=traceanalytics) evaluations. Therefore, monitors are **not impacted** by this change.
+
+## Further reading{% #further-reading %}
+
+- [Trace Queries](https://docs.datadoghq.com/tracing/trace_explorer/trace_queries/)

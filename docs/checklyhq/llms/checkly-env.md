@@ -1,0 +1,228 @@
+# Source: https://checklyhq.com/docs/cli/checkly-env.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# checkly env
+
+> Manage the global variables of a Checkly account.
+
+export const command_0 = "checkly env"
+
+The `checkly env` command manages global environment variables in your Checkly account. Create, update, list, export, and remove variables that are available across all checks in your account.
+
+<Accordion title="Prerequisites">
+  Before using <code>{command_0}</code>, ensure you have:
+
+  * An initialized Checkly CLI project
+  * At least one check or resource defined in your project
+  * Valid Checkly account authentication (run `npx checkly login` if needed)
+  * A `checkly.config.ts` or `checkly.config.js` configuration file
+
+  For additional setup information, see [CLI overview](/cli/overview).
+</Accordion>
+
+## Usage
+
+The basic command structure uses subcommands to manage environment variables.
+
+```bash Terminal theme={null}
+npx checkly env <subcommand> [arguments] [options]
+```
+
+## Subcommands
+
+| Subcommand | Description                                |
+| ---------- | ------------------------------------------ |
+| `add`      | Create and add a new environment variable. |
+| `update`   | Update an existing environment variable.   |
+| `ls`       | List all global environment variables.     |
+| `pull`     | Export variables to a local file.          |
+| `rm`       | Remove an environment variable.            |
+
+## `checkly env add`
+
+Create a new global environment variable.
+
+**Usage:**
+
+```bash Terminal theme={null}
+npx checkly env add <key> <value> [options]
+```
+
+**Options:**
+
+| Option         | Required | Description      |
+| -------------- | -------- | ---------------- |
+| `--locked, -l` | -        | Lock variable.   |
+| `--secret, -s` | -        | Store as secret. |
+
+**Examples:**
+
+```bash Terminal theme={null}
+# Add regular variable
+npx checkly env add ENVIRONMENT "production"
+
+# Add locked variable
+npx checkly env add INTERNAL_API_URL "https://internal.api.com" --locked
+
+# Add secret variable
+npx checkly env add API_SECRET "super-secret-key" --secret
+```
+
+## `checkly env update`
+
+Update an existing global environment variable.
+
+**Usage:**
+
+```bash Terminal theme={null}
+npx checkly env update <key> <value> [options]
+```
+
+**Options:**
+
+| Option         | Required | Description      |
+| -------------- | -------- | ---------------- |
+| `--locked, -l` | -        | Lock variable.   |
+| `--secret, -s` | -        | Store as secret. |
+
+**Examples:**
+
+```bash Terminal theme={null}
+# Update regular variable
+npx checkly env update ENVIRONMENT "staging"
+
+# Update and convert to locked
+npx checkly env update API_KEY "new-secret-key" --locked
+
+# Update existing secret
+npx checkly env update DATABASE_PASSWORD "new-password" --secret
+```
+
+## `checkly env ls`
+
+List all global environment variables in your account.
+
+**Usage:**
+
+```bash Terminal theme={null}
+npx checkly env ls
+```
+
+**Examples:**
+
+```bash Terminal theme={null}
+# List all variables
+npx checkly env ls
+```
+
+Shows variable keys and their values. Secret values are hidden for security.
+
+## `checkly env pull`
+
+Export global variables from your Checkly account to a local file.
+
+**Usage:**
+
+```bash Terminal theme={null}
+npx checkly env pull [filename] [options]
+```
+
+**Options:**
+
+| Option        | Required | Description                                  |
+| ------------- | -------- | -------------------------------------------- |
+| `--force, -f` | -        | Overwrite existing file without confirmation |
+
+**Examples:**
+
+```bash Terminal theme={null}
+# Pull to default .env file
+npx checkly env pull
+
+# Pull to specific file
+npx checkly env pull .env.production
+
+# Force overwrite existing file
+npx checkly env pull .env.production --force
+```
+
+## `checkly env rm`
+
+Remove a global environment variable.
+
+**Usage:**
+
+```bash Terminal theme={null}
+npx checkly env rm <key> [options]
+```
+
+**Options:**
+
+| Option        | Required | Description              |
+| ------------- | -------- | ------------------------ |
+| `--force, -f` | -        | Skip confirmation dialog |
+
+**Examples:**
+
+```bash Terminal theme={null}
+# Remove with confirmation
+npx checkly env rm ENVIRONMENT
+
+# Remove without confirmation
+npx checkly env rm OLD_VARIABLE --force
+```
+
+## Variable Types
+
+### Regular Variables
+
+Standard key-value pairs visible to all team members:
+
+```bash Terminal theme={null}
+npx checkly env add ENVIRONMENT "production"
+```
+
+### Locked Variables
+
+Locked environment variables can only be accessed by team members with "Read & Write" access or above.
+
+```bash Terminal theme={null}
+npx checkly env add INTERNAL_API_URL "https://internal.api.com" --locked
+```
+
+### Secrets
+
+Once saved, secrets are never shown in the UI or in logs. The secret value cannot be accessed via the CLI or API.
+
+```bash Terminal theme={null}
+npx checkly env add API_SECRET "super-secret-key" --secret
+```
+
+## Variable Scope
+
+Environment variables managed by `checkly env` are **global** and available to:
+
+* All checks in your account
+* All check groups
+* All team members (unless locked)
+
+For check-specific or group-specific variables, use the web UI or configure them directly in your monitoring-as-code setup.
+
+## Best Practices
+
+1. **Use secrets for sensitive data** like API keys, passwords, and tokens
+2. **Lock internal variables** that shouldn't be visible to read-only users
+3. **Use descriptive names** following standard conventions (UPPER\_SNAKE\_CASE)
+4. **Document variables** and their purposes for team collaboration
+5. **Regular cleanup** of unused variables to maintain security
+
+## Related Commands
+
+* [`checkly test`](/cli/checkly-test) - Test your setup before deployment
+* [`checkly deploy`](/cli/checkly-deploy) - Deploy your Checkly configuration
+
+
+Built with [Mintlify](https://mintlify.com).
