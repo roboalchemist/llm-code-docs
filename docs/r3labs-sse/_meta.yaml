@@ -1,0 +1,9 @@
+name: r3labs-sse
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/r3labs/sse
+    last_fetched: "2026-04-04T00:00:00Z"
+description: >
+  r3labs/sse — Go SSE client/server library with stream management and channel-based subscriptions
+quality_score: 0

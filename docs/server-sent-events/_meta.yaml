@@ -1,0 +1,12 @@
+name: server-sent-events
+primary_source: web
+sources:
+  - type: web
+    url: https://html.spec.whatwg.org/multipage/server-sent-events.html
+    last_fetched: "2026-04-04T00:00:00Z"
+  - type: web
+    url: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+    last_fetched: "2026-04-04T00:00:00Z"
+description: >
+  Server-Sent Events (SSE) specification and usage guide — W3C/WHATWG spec and MDN developer guide
+quality_score: 0

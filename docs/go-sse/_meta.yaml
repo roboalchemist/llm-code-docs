@@ -1,0 +1,9 @@
+name: go-sse
+primary_source: github
+sources:
+  - type: github
+    url: https://github.com/tmaxmax/go-sse
+    last_fetched: "2026-04-04T00:00:00Z"
+description: >
+  tmaxmax/go-sse — spec-compliant Go SSE library with range-over-func iteration, provider pattern, and auto-reconnection
+quality_score: 0

@@ -1,0 +1,9 @@
+name: bufio
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/bufio
+    last_fetched: "2026-04-04T00:00:00Z"
+description: >
+  Go standard library bufio package — buffered I/O with Reader, Writer, and Scanner types
+quality_score: 0
