@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Conversion to NumPy and Other Frameworks
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [PyTorch](#pytorch){.reference .internal .nav-link}
@@ -182,6 +185,7 @@ and copying. For instance, a function defined as
 though no in-place operations on MLX memory are executed.
 
 :::::: {#pytorch .section}
+
 ## PyTorch[\#](#pytorch "Link to this heading"){.headerlink}
 
 ::: {.admonition .warning}
@@ -215,6 +219,7 @@ intermediate NumPy arrays with [`numpy()`{.docutils .literal
 ::::::
 
 ::::: {#jax .section}
+
 ## JAX[\#](#jax "Link to this heading"){.headerlink}
 
 JAX fully supports the buffer protocol.
@@ -232,6 +237,7 @@ JAX fully supports the buffer protocol.
 :::::
 
 ::::: {#tensorflow .section}
+
 ## TensorFlow[\#](#tensorflow "Link to this heading"){.headerlink}
 
 TensorFlow supports the buffer protocol, but it requires an explicit

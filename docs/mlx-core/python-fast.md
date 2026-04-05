@@ -37,6 +37,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 ::::: {#jb-print-docs-body .onlyprint}
+
 # Fast
 
 :::: {#print-main-content}

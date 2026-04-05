@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Exporting Functions
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Basics of Exporting](#basics-of-exporting){.reference .internal
@@ -85,6 +88,7 @@ documentation]{.std .std-ref}](../python/export.html#export){.reference
 .internal}.
 
 ::::::::::: {#basics-of-exporting .section}
+
 ## Basics of Exporting[\#](#basics-of-exporting "Link to this heading"){.headerlink}
 
 Let's start with a simple example:
@@ -197,6 +201,7 @@ function.
 :::::::::::
 
 :::::::: {#exporting-modules .section}
+
 ## Exporting Modules[\#](#exporting-modules "Link to this heading"){.headerlink}
 
 An [[`mlx.nn.Module`{.xref .py .py-obj .docutils .literal
@@ -258,6 +263,7 @@ inputs to the [`call`{.docutils .literal .notranslate}]{.pre} wrapper:
 ::::::::
 
 ::::: {#exporting-with-a-callback .section}
+
 ## Exporting with a Callback[\#](#exporting-with-a-callback "Link to this heading"){.headerlink}
 
 To inspect the exported graph, you can pass a callback instead of a file
@@ -301,6 +307,7 @@ Each type has additional fields in the [`args`{.docutils .literal
 :::::
 
 ::::: {#shapeless-exports .section}
+
 ## Shapeless Exports[\#](#shapeless-exports "Link to this heading"){.headerlink}
 
 Just like [[`compile()`{.xref .py .py-func .docutils .literal
@@ -338,6 +345,7 @@ compilation]{.std .std-ref}](compile.html#shapeless-compile){.reference
 :::::
 
 ::::: {#exporting-multiple-traces .section}
+
 ## Exporting Multiple Traces[\#](#exporting-multiple-traces "Link to this heading"){.headerlink}
 
 In some cases, functions build different computation graphs for
@@ -385,6 +393,7 @@ once.
 :::::
 
 ::::: {#transformations-with-imported-functions .section}
+
 ## Transformations with Imported Functions[\#](#transformations-with-imported-functions "Link to this heading"){.headerlink}
 
 Function transformations like [[`grad()`{.xref .py .py-func .docutils
@@ -421,6 +430,7 @@ functions:
 :::::
 
 ::::::: {#importing-functions-in-c .section}
+
 ## Importing Functions in C++[\#](#importing-functions-in-c "Link to this heading"){.headerlink}
 
 Importing and running functions in C++ is basically the same as
@@ -465,6 +475,7 @@ keyword arguments when calling imported functions in C++.
 :::::::
 
 ::: {#more-examples .section}
+
 ## More Examples[\#](#more-examples "Link to this heading"){.headerlink}
 
 Here are a few more complete examples exporting more complex functions

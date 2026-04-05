@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # mlx.core.set_memory_limit
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [[`set_memory_limit()`{.docutils .literal
@@ -58,6 +61,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 :::
 
 ::: {#mlx-core-set-memory-limit .section}
+
 # mlx.core.set_memory_limit[\#](#mlx-core-set-memory-limit "Link to this heading"){.headerlink}
 
 [[set_memory_limit]{.pre}]{.sig-name .descname}[(]{.sig-paren}*[[limit]{.pre}]{.n}[[:]{.pre}]{.p}[ ]{.w}[[[int]{.pre}](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"){.reference .external}]{.n}*[)]{.sig-paren} [[→]{.sig-return-icon} [[[int]{.pre}](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"){.reference .external}]{.sig-return-typehint}]{.sig-return}[\#](#mlx.core.set_memory_limit "Link to this definition"){.headerlink}

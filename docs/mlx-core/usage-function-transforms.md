@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Function Transforms
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Automatic Differentiation](#automatic-differentiation){.reference
@@ -120,6 +123,7 @@ any depth. See the following sections for more information on
 .std-ref}](compile.html#compile){.reference .internal}.
 
 :::::::::: {#automatic-differentiation .section}
+
 ## Automatic Differentiation[\#](#automatic-differentiation "Link to this heading"){.headerlink}
 
 Automatic differentiation in MLX works on functions rather than on
@@ -237,6 +241,7 @@ part of the function. You can use the [[`stop_gradient()`{.xref .py
 ::::::::::
 
 :::::::::: {#automatic-vectorization .section}
+
 ## Automatic Vectorization[\#](#automatic-vectorization "Link to this heading"){.headerlink}
 
 Use [[`vmap()`{.xref .py .py-func .docutils .literal

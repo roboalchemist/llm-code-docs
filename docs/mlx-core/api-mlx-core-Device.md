@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # mlx.core.Device
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [[`Device`{.docutils .literal
@@ -61,6 +64,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 :::
 
 ::: {#mlx-core-device .section}
+
 # mlx.core.Device[\#](#mlx-core-device "Link to this heading"){.headerlink}
 
 [[[class]{.pre}]{.k}[ ]{.w}]{.property}[[Device]{.pre}]{.sig-name .descname}[(]{.sig-paren}*[[\*]{.pre}]{.o}[[args]{.pre}]{.n}*, *[[\*\*]{.pre}]{.o}[[kwargs]{.pre}]{.n}*[)]{.sig-paren}[\#](#mlx.core.Device "Link to this definition"){.headerlink}
@@ -69,13 +73,13 @@ bs-placement="bottom" bs-toggle="tooltip"}
 
     [[\_\_init\_\_]{.pre}]{.sig-name .descname}[(]{.sig-paren}*[[self]{.pre}]{.n}*, *[[type]{.pre}]{.n}[[:]{.pre}]{.p}[ ]{.w}[[mlx.core.DeviceType]{.pre}]{.n}*, *[[index]{.pre}]{.n}[[:]{.pre}]{.p}[ ]{.w}[[[int]{.pre}](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"){.reference .external}]{.n}[ ]{.w}[[=]{.pre}]{.o}[ ]{.w}[[0]{.pre}]{.default_value}*[)]{.sig-paren} [[→]{.sig-return-icon} [[[None]{.pre}](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)"){.reference .external}]{.sig-return-typehint}]{.sig-return}[\#](#mlx.core.Device.__init__ "Link to this definition"){.headerlink}
 
-    :   
+    :
 
     Methods
 
     ::: pst-scrollable-table-container
       ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --
-      [[`__init__`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](#mlx.core.Device.__init__ "mlx.core.Device.__init__"){.reference .internal}(self, type\[, index\])   
+      [[`__init__`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](#mlx.core.Device.__init__ "mlx.core.Device.__init__"){.reference .internal}(self, type\[, index\])
       ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --
     :::
 

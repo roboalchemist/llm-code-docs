@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Quick Start Guide
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Basics](#basics){.reference .internal .nav-link}
@@ -59,9 +62,11 @@ bs-placement="bottom" bs-toggle="tooltip"}
 :::
 
 ::::::::::: {#quick-start-guide .section}
+
 # Quick Start Guide[\#](#quick-start-guide "Link to this heading"){.headerlink}
 
 ::::::: {#basics .section}
+
 ## Basics[\#](#basics "Link to this heading"){.headerlink}
 
 Import [`mlx.core`{.docutils .literal .notranslate}]{.pre} and make an
@@ -118,6 +123,7 @@ more details.
 :::::::
 
 ::::: {#function-and-graph-transformations .section}
+
 ## Function and Graph Transformations[\#](#function-and-graph-transformations "Link to this heading"){.headerlink}
 
 MLX has standard function transformations like [[`grad()`{.xref .py

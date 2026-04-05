@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Indexing Arrays
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Differences from NumPy](#differences-from-numpy){.reference .internal
@@ -156,6 +159,7 @@ Other functions which may be useful for indexing arrays are
 .internal}.
 
 :::: {#differences-from-numpy .section}
+
 ## Differences from NumPy[\#](#differences-from-numpy "Link to this heading"){.headerlink}
 
 ::: {.admonition .note}
@@ -188,6 +192,7 @@ types of operations which MLX does not yet support include
 ::::
 
 ::::::::::::: {#in-place-updates .section}
+
 ## In Place Updates[\#](#in-place-updates "Link to this heading"){.headerlink}
 
 In place updates to indexed arrays are possible in MLX. For example:

@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # mlx.core.array
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [[`array`{.docutils .literal
@@ -60,6 +63,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 :::
 
 ::: {#mlx-core-array .section}
+
 # mlx.core.array[\#](#mlx-core-array "Link to this heading"){.headerlink}
 
 [[[class]{.pre}]{.k}[ ]{.w}]{.property}[[array]{.pre}]{.sig-name .descname}[(]{.sig-paren}*[[\*]{.pre}]{.o}[[args]{.pre}]{.n}*, *[[\*\*]{.pre}]{.o}[[kwargs]{.pre}]{.n}*[)]{.sig-paren}[\#](#mlx.core.array "Link to this definition"){.headerlink}
@@ -68,13 +72,13 @@ bs-placement="bottom" bs-toggle="tooltip"}
 
     [[\_\_init\_\_]{.pre}]{.sig-name .descname}[(]{.sig-paren}*[[self]{.pre}]{.n}[[:]{.pre}]{.p}[ ]{.w}[[[array]{.pre}](#mlx.core.array "mlx.core.array"){.reference .internal}]{.n}*, *[[val]{.pre}]{.n}[[:]{.pre}]{.p}[ ]{.w}[[scalar]{.pre}[ ]{.w}[[\|]{.pre}]{.p}[ ]{.w}[[list]{.pre}](https://docs.python.org/3/library/stdtypes.html#list "(in Python v3.14)"){.reference .external}[ ]{.w}[[\|]{.pre}]{.p}[ ]{.w}[[tuple]{.pre}](https://docs.python.org/3/library/stdtypes.html#tuple "(in Python v3.14)"){.reference .external}[ ]{.w}[[\|]{.pre}]{.p}[ ]{.w}[[ndarray]{.pre}](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.4)"){.reference .external}[ ]{.w}[[\|]{.pre}]{.p}[ ]{.w}[[array]{.pre}](#mlx.core.array "mlx.core.array"){.reference .internal}]{.n}*, *[[dtype]{.pre}]{.n}[[:]{.pre}]{.p}[ ]{.w}[[[Dtype]{.pre}](mlx.core.Dtype.html#mlx.core.Dtype "mlx.core.Dtype"){.reference .internal}[ ]{.w}[[\|]{.pre}]{.p}[ ]{.w}[[None]{.pre}](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)"){.reference .external}]{.n}[ ]{.w}[[=]{.pre}]{.o}[ ]{.w}[[None]{.pre}]{.default_value}*[)]{.sig-paren}[\#](#mlx.core.array.__init__ "Link to this definition"){.headerlink}
 
-    :   
+    :
 
     Methods
 
     ::: pst-scrollable-table-container
       ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-      [[`__init__`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](#mlx.core.array.__init__ "mlx.core.array.__init__"){.reference .internal}(self, val\[, dtype\])                                                        
+      [[`__init__`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](#mlx.core.array.__init__ "mlx.core.array.__init__"){.reference .internal}(self, val\[, dtype\])
       [[`abs`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](mlx.core.array.abs.html#mlx.core.array.abs "mlx.core.array.abs"){.reference .internal}(self, \*\[, stream\])                                                See [[`abs()`{.xref .py .py-func .docutils .literal .notranslate}]{.pre}](mlx.core.abs.html#mlx.core.abs "mlx.core.abs"){.reference .internal}.
       [[`all`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](mlx.core.array.all.html#mlx.core.array.all "mlx.core.array.all"){.reference .internal}(self\[, axis, keepdims, stream\])                                    See [[`all()`{.xref .py .py-func .docutils .literal .notranslate}]{.pre}](mlx.core.all.html#mlx.core.all "mlx.core.all"){.reference .internal}.
       [[`any`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](mlx.core.array.any.html#mlx.core.array.any "mlx.core.array.any"){.reference .internal}(self\[, axis, keepdims, stream\])                                    See [[`any()`{.xref .py .py-func .docutils .literal .notranslate}]{.pre}](mlx.core.any.html#mlx.core.any "mlx.core.any"){.reference .internal}.

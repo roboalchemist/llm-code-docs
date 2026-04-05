@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # mlx.core.metal.device_info
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [[`device_info()`{.docutils .literal
@@ -58,11 +61,12 @@ bs-placement="bottom" bs-toggle="tooltip"}
 :::
 
 ::: {#mlx-core-metal-device-info .section}
+
 # mlx.core.metal.device_info[\#](#mlx-core-metal-device-info "Link to this heading"){.headerlink}
 
 [[device_info]{.pre}]{.sig-name .descname}[(]{.sig-paren}[)]{.sig-paren} [[→]{.sig-return-icon} [[[dict]{.pre}](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)"){.reference .external}[[\[]{.pre}]{.p}[[str]{.pre}](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"){.reference .external}[[,]{.pre}]{.p}[ ]{.w}[[str]{.pre}](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)"){.reference .external}[ ]{.w}[[\|]{.pre}]{.p}[ ]{.w}[[int]{.pre}](https://docs.python.org/3/library/functions.html#int "(in Python v3.14)"){.reference .external}[[\]]{.pre}]{.p}]{.sig-return-typehint}]{.sig-return}[\#](#mlx.core.metal.device_info "Link to this definition"){.headerlink}
 
-:   
+:
 :::
 
 ::::: prev-next-area

@@ -37,6 +37,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 ::::: {#jb-print-docs-body .onlyprint}
+
 # CUDA
 
 :::: {#print-main-content}
@@ -49,6 +50,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 :::
 
 :::: {#cuda .section}
+
 # CUDA[\#](#cuda "Link to this heading"){.headerlink}
 
 ::: pst-scrollable-table-container

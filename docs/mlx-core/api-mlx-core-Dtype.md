@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # mlx.core.Dtype
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [[`Dtype`{.docutils .literal
@@ -60,6 +63,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 :::
 
 ::: {#mlx-core-dtype .section}
+
 # mlx.core.Dtype[\#](#mlx-core-dtype "Link to this heading"){.headerlink}
 
 [[[class]{.pre}]{.k}[ ]{.w}]{.property}[[Dtype]{.pre}]{.sig-name .descname}[\#](#mlx.core.Dtype "Link to this definition"){.headerlink}
@@ -75,13 +79,13 @@ bs-placement="bottom" bs-toggle="tooltip"}
 
     [[\_\_init\_\_]{.pre}]{.sig-name .descname}[(]{.sig-paren}*[[\*]{.pre}]{.o}[[args]{.pre}]{.n}*, *[[\*\*]{.pre}]{.o}[[kwargs]{.pre}]{.n}*[)]{.sig-paren}[\#](#mlx.core.Dtype.__init__ "Link to this definition"){.headerlink}
 
-    :   
+    :
 
     Methods
 
     ::: pst-scrollable-table-container
       ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- --
-      [[`__init__`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](#mlx.core.Dtype.__init__ "mlx.core.Dtype.__init__"){.reference .internal}(\*args, \*\*kwargs)   
+      [[`__init__`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](#mlx.core.Dtype.__init__ "mlx.core.Dtype.__init__"){.reference .internal}(\*args, \*\*kwargs)
       ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- --
     :::
 

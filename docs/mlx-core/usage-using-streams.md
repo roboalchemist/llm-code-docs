@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Using Streams
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Specifying the [`Stream`{.xref .py .py-obj .docutils .literal
@@ -63,6 +66,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 # Using Streams[\#](#using-streams "Link to this heading"){.headerlink}
 
 ::: {#specifying-the-stream .section}
+
 ## Specifying the [[`Stream`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](../python/_autosummary/stream_class.html#mlx.core.Stream "mlx.core.Stream"){.reference .internal}[\#](#specifying-the-stream "Link to this heading"){.headerlink}
 
 All operations (including random number generation) take an optional

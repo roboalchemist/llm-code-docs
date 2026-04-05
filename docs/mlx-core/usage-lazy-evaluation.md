@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Lazy Evaluation
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Why Lazy Evaluation](#why-lazy-evaluation){.reference .internal
@@ -68,6 +71,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 # Lazy Evaluation[\#](#lazy-evaluation "Link to this heading"){.headerlink}
 
 ::::::::: {#why-lazy-evaluation .section}
+
 ## Why Lazy Evaluation[\#](#why-lazy-evaluation "Link to this heading"){.headerlink}
 
 When you perform operations in MLX, no computation actually happens.
@@ -80,6 +84,7 @@ MLX uses lazy evaluation because it has some nice features, some of
 which we describe below.
 
 ::: {#transforming-compute-graphs .section}
+
 ### Transforming Compute Graphs[\#](#transforming-compute-graphs "Link to this heading"){.headerlink}
 
 Lazy evaluation lets us record a compute graph without actually doing
@@ -96,6 +101,7 @@ integrate compilation for future performance enhancements.
 :::
 
 ::::::: {#only-compute-what-you-use .section}
+
 ### Only Compute What You Use[\#](#only-compute-what-you-use "Link to this heading"){.headerlink}
 
 In MLX you do not need to worry as much about computing outputs that are
@@ -147,6 +153,7 @@ This pattern is simple to do in MLX thanks to lazy computation:
 :::::::::
 
 :::::::::: {#when-to-evaluate .section}
+
 ## When to Evaluate[\#](#when-to-evaluate "Link to this heading"){.headerlink}
 
 A common question is when to use [[`eval()`{.xref .py .py-func .docutils

@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Unified Memory
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [A Simple Example](#a-simple-example){.reference .internal .nav-link}
@@ -117,6 +120,7 @@ streams so that the second [`add`{.docutils .literal
 and [`c`{.docutils .literal .notranslate}]{.pre} is available.
 
 ::::::: {#a-simple-example .section}
+
 ## A Simple Example[\#](#a-simple-example "Link to this heading"){.headerlink}
 
 Here is a more interesting (albeit slightly contrived example) of how

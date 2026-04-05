@@ -54,7 +54,7 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::: pst-scrollable-table-container
   ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------
   [[`is_available`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](_autosummary/mlx.core.metal.is_available.html#mlx.core.metal.is_available "mlx.core.metal.is_available"){.reference .internal}()           Check if the Metal back-end is available.
-  [[`device_info`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](_autosummary/mlx.core.metal.device_info.html#mlx.core.metal.device_info "mlx.core.metal.device_info"){.reference .internal}()               
+  [[`device_info`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](_autosummary/mlx.core.metal.device_info.html#mlx.core.metal.device_info "mlx.core.metal.device_info"){.reference .internal}()
   [[`start_capture`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](_autosummary/mlx.core.metal.start_capture.html#mlx.core.metal.start_capture "mlx.core.metal.start_capture"){.reference .internal}(path)   Start a Metal capture.
   [[`stop_capture`{.xref .py .py-obj .docutils .literal .notranslate}]{.pre}](_autosummary/mlx.core.metal.stop_capture.html#mlx.core.metal.stop_capture "mlx.core.metal.stop_capture"){.reference .internal}()           Stop a Metal capture.
   ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------

@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Distributed Communication
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Getting Started](#getting-started){.reference .internal .nav-link}
@@ -128,6 +131,7 @@ can be seen in the [[API docs]{.std
 .internal}.
 
 :::::::::::::::: {#getting-started .section}
+
 ## Getting Started[\#](#getting-started "Link to this heading"){.headerlink}
 
 A distributed program in MLX is as simple as:
@@ -165,6 +169,7 @@ one below:
 ::::
 
 ::::::: {#running-distributed-programs .section}
+
 ### Running Distributed Programs[\#](#running-distributed-programs "Link to this heading"){.headerlink}
 
 MLX provides [`mlx.launch`{.docutils .literal .notranslate}]{.pre} a
@@ -201,6 +206,7 @@ information on using [`mlx.launch`{.docutils .literal
 :::::::
 
 :::::: {#selecting-backend .section}
+
 ### Selecting Backend[\#](#selecting-backend "Link to this heading"){.headerlink}
 
 You can select the backend you want to use when calling [[`init()`{.xref
@@ -251,6 +257,7 @@ in MLX:
 ::::::::::::::::
 
 ::: {#distributed-program-examples .section}
+
 ## Distributed Program Examples[\#](#distributed-program-examples "Link to this heading"){.headerlink}
 
 - [[Data Parallelism]{.std
@@ -280,6 +287,7 @@ rank 2 only with rank 1 and rank 3 and so on and so forth. As a result
 ring backend.
 
 ::::: {#defining-a-ring .section}
+
 ### Defining a Ring[\#](#defining-a-ring "Link to this heading"){.headerlink}
 
 The easiest way to define and use a ring is via a JSON hostfile and the
@@ -319,6 +327,7 @@ and so on and so forth.
 :::::
 
 ::::: {#thunderbolt-ring .section}
+
 ### Thunderbolt Ring[\#](#thunderbolt-ring "Link to this heading"){.headerlink}
 
 Although the ring backend can have benefits over MPI even for Ethernet,
@@ -398,6 +407,7 @@ over Thunderbolt at Apple.
 :::
 
 ::::: {#enabling-rdma .section}
+
 ### Enabling RDMA[\#](#enabling-rdma "Link to this heading"){.headerlink}
 
 Until the feature matures, enabling RDMA over thunderbolt is slightly
@@ -436,6 +446,7 @@ produce something like the following for an M3 Ultra.
 :::::
 
 :::::::: {#defining-a-mesh .section}
+
 ### Defining a Mesh[\#](#defining-a-mesh "Link to this heading"){.headerlink}
 
 The JACCL backend supports only fully connected topologies. Namely,
@@ -522,6 +533,7 @@ helper script will
 ::::::::
 
 :::::::::: {#putting-it-all-together .section}
+
 ### Putting It All Together[\#](#putting-it-all-together "Link to this heading"){.headerlink}
 
 For example launching a distributed MLX script that uses JACCL is fairly
@@ -657,6 +669,7 @@ each other and compute the sum which is printed. Launching with
 4 etc.
 
 ::::::: {#installing-mpi .section}
+
 ### Installing MPI[\#](#installing-mpi "Link to this heading"){.headerlink}
 
 MPI can be installed with Homebrew, pip, using the Anaconda package
@@ -692,6 +705,7 @@ variable. This is automatically taken care of by [`mlx.launch`{.docutils
 :::::::
 
 ::: {#setting-up-remote-hosts .section}
+
 ### Setting up Remote Hosts[\#](#setting-up-remote-hosts "Link to this heading"){.headerlink}
 
 MPI can automatically connect to remote hosts and set up the
@@ -713,6 +727,7 @@ ssh. A good checklist to debug connectivity issues is the following:
 :::
 
 :::: {#tuning-mpi-all-reduce .section}
+
 ### Tuning MPI All Reduce[\#](#tuning-mpi-all-reduce "Link to this heading"){.headerlink}
 
 ::: {.admonition .note}
@@ -761,6 +776,7 @@ for you on machines undetermined at the time of scheduling the job.
 Below we list the environment variables required to use each backend.
 
 ::::: {#ring .section}
+
 ### Ring[\#](#ring "Link to this heading"){.headerlink}
 
 **MLX_RANK** should contain a single 0-based integer that defines the
@@ -785,6 +801,7 @@ logging from the distributed backend.
 :::::
 
 ::::: {#jaccl .section}
+
 ### JACCL[\#](#jaccl "Link to this heading"){.headerlink}
 
 **MLX_RANK** should contain a single 0-based integer that defines the
@@ -811,6 +828,7 @@ something like the following:
 :::::
 
 ::: {#id1 .section}
+
 ### NCCL[\#](#id1 "Link to this heading"){.headerlink}
 
 **MLX_RANK** should contain a single 0-based integer that defines the

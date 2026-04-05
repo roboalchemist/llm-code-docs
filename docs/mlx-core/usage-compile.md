@@ -39,12 +39,15 @@ bs-placement="bottom" bs-toggle="tooltip"}
 ::::::::::
 
 :::::: {#jb-print-docs-body .onlyprint}
+
 # Compilation
 
 ::::: {#print-main-content}
 :::: {#jb-print-toc}
 ::: {}
+
 ## Contents
+
 :::
 
 - [Basics of Compile](#basics-of-compile){.reference .internal
@@ -84,6 +87,7 @@ Getting started with [[`compile()`{.xref .py .py-func .docutils .literal
 aware of for more complex graphs and advanced usage.
 
 ::::::::: {#basics-of-compile .section}
+
 ## Basics of Compile[\#](#basics-of-compile "Link to this heading"){.headerlink}
 
 Let's start with a simple example:
@@ -168,6 +172,7 @@ an anonymous function in a loop:
 :::::::::
 
 ::::::::: {#example-speedup .section}
+
 ## Example Speedup[\#](#example-speedup "Link to this heading"){.headerlink}
 
 The [[`mlx.nn.gelu()`{.xref .py .py-func .docutils .literal
@@ -228,6 +233,7 @@ On an M1 Max the times are 15.5 and 3.1 milliseconds. The compiled
 :::::::::
 
 ::::::: {#debugging .section}
+
 ## Debugging[\#](#debugging "Link to this heading"){.headerlink}
 
 When a compiled function is first called, it is traced with placeholder
@@ -269,6 +275,7 @@ to globally disable compilation using the [[`disable_compile()`{.xref
 :::::::
 
 ::::::::::::::: {#pure-functions .section}
+
 ## Pure Functions[\#](#pure-functions "Link to this heading"){.headerlink}
 
 Compiled functions are intended to be *pure*; that is they should not
@@ -419,6 +426,7 @@ In some cases this can be pretty inconvenient. Hence,
 :::::::::::::::
 
 ::::::::: {#compiling-training-graphs .section}
+
 ## Compiling Training Graphs[\#](#compiling-training-graphs "Link to this heading"){.headerlink}
 
 This section will step through how to use [[`compile()`{.xref .py
@@ -548,6 +556,7 @@ Examples](https://github.com/ml-explore/mlx-examples){.reference
 :::::::::
 
 :::::::: {#transformations-with-compile .section}
+
 ## Transformations with Compile[\#](#transformations-with-compile "Link to this heading"){.headerlink}
 
 In MLX function transformations are composable. You can apply any
