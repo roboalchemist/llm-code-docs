@@ -1,88 +1,88 @@
+---
+source: https://github.com/itchyny/gojq
+fetched: 2026-04-04
+---
+
 # gojq
+[![CI Status](https://github.com/itchyny/gojq/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/itchyny/gojq/actions?query=branch:main)
+[![Go Report Card](https://goreportcard.com/badge/github.com/itchyny/gojq)](https://goreportcard.com/report/github.com/itchyny/gojq)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/itchyny/gojq/blob/main/LICENSE)
+[![release](https://img.shields.io/github/release/itchyny/gojq/all.svg)](https://github.com/itchyny/gojq/releases)
+[![pkg.go.dev](https://pkg.go.dev/badge/github.com/itchyny/gojq)](https://pkg.go.dev/github.com/itchyny/gojq)
 
-## Pure Go implementation of [jq](https://github.com/jqlang/jq)
-
+### Pure Go implementation of [jq](https://github.com/jqlang/jq)
 This is an implementation of jq command written in Go language.
 You can also embed gojq as a library to your Go products.
 
 ## Usage
-
 ```sh
-$ echo '{"foo": 128}' | gojq '.foo'
+ $ echo '{"foo": 128}' | gojq '.foo'
 128
-$ echo '{"a": {"b": 42}}' | gojq '.a.b'
+ $ echo '{"a": {"b": 42}}' | gojq '.a.b'
 42
-$ echo '{"id": "sample", "10": {"b": 42}}' | gojq '{(.id): .["10"].b}'
+ $ echo '{"id": "sample", "10": {"b": 42}}' | gojq '{(.id): .["10"].b}'
 {
   "sample": 42
 }
-$ echo '[{"id":1},{"id":2},{"id":3}]' | gojq '.[] | .id'
+ $ echo '[{"id":1},{"id":2},{"id":3}]' | gojq '.[] | .id'
 1
 2
 3
-$ echo '{"a":1,"b":2}' | gojq '.a += 1 | .b *= 2'
+ $ echo '{"a":1,"b":2}' | gojq '.a += 1 | .b *= 2'
 {
   "a": 2,
   "b": 4
 }
-$ echo '{"a":1} [2] 3' | gojq '. as {$a} ?// [$a] ?// $a | $a'
+ $ echo '{"a":1} [2] 3' | gojq '. as {$a} ?// [$a] ?// $a | $a'
 1
 2
 3
-$ echo '{"foo": 4722366482869645213696}' | gojq .foo
+ $ echo '{"foo": 4722366482869645213696}' | gojq .foo
 4722366482869645213696  # keeps the precision of large numbers
-$ gojq -n 'def fact($n): if $n < 1 then 1 else $n * fact($n - 1) end; fact(50)'
+ $ gojq -n 'def fact($n): if $n < 1 then 1 else $n * fact($n - 1) end; fact(50)'
 30414093201713378043612608166064768844377641568960512000000000000 # arbitrary-precision integer calculation
 ```
 
 Nice error messages.
-
 ```sh
-$ echo '[1,2,3]' | gojq '.foo & .bar'
+ $ echo '[1,2,3]' | gojq '.foo & .bar'
 gojq: invalid query: .foo & .bar
     .foo & .bar
          ^  unexpected token "&"
-$ echo '{"foo": { bar: [] } }' | gojq '.'
+ $ echo '{"foo": { bar: [] } }' | gojq '.'
 gojq: invalid json: <stdin>
     {"foo": { bar: [] } }
               ^  invalid character 'b' looking for beginning of object key string
 ```
 
 ## Installation
-
 ### Homebrew
-
 ```sh
 brew install gojq
 ```
 
 ### mise
-
 ```sh
 mise use -g gojq@latest
 ```
 
 ### Zero Install
-
 ```sh
 0install add gojq https://apps.0install.net/utils/gojq.xml
 ```
 
 ### Build from source
-
 ```sh
 go install github.com/itchyny/gojq/cmd/gojq@latest
 ```
 
 ### Docker
-
 ```sh
 docker run -i --rm itchyny/gojq
 docker run -i --rm ghcr.io/itchyny/gojq
 ```
 
 ## Difference to jq
-
 - gojq is purely implemented with Go language and is completely portable. jq depends on the C standard library so the availability of math functions depends on the library. jq also depends on the regular expression library and it makes build scripts complex.
 - gojq does not keep the order of object keys. I understand this might cause problems for some scripts but basically, we should not rely on the order of object keys. Due to this limitation, gojq does not have `keys_unsorted` function and `--sort-keys` (`-S`) option. I would implement when ordered map is implemented in the standard library of Go but I'm less motivated.
 - gojq supports arbitrary-precision integer calculation while jq does not; jq loses the precision of large integers when calculation is involved. Note that even with gojq, all mathematical functions, including `floor` and `round`, convert integers to floating-point numbers; only addition, subtraction, multiplication, modulo, and division operators (when divisible) keep the integer precision. To calculate floor division of integers without losing the precision, use `def idivide($n): (. - . % $n) / $n;`. To round down floating-point numbers to integers, use `def ifloor: floor | tostring | tonumber;`, but note that this function does not work with large floating-point numbers and also loses the precision of large integers.
@@ -91,7 +91,6 @@ docker run -i --rm ghcr.io/itchyny/gojq
 - gojq supports reading from YAML input (`--yaml-input`) while jq does not. gojq also supports YAML output (`--yaml-output`).
 
 ### Color configuration
-
 The gojq command automatically disables coloring output when the output is not a tty.
 To force coloring output, specify `--color-output` (`-C`) option.
 When [`NO_COLOR` environment variable](https://no-color.org/) is present or `--monochrome-output` (`-M`) option is specified, gojq disables coloring output.
@@ -101,39 +100,38 @@ The variable is a colon-separated list of ANSI escape sequences of `null`, `fals
 The default configuration is `90:33:33:36:32:34;1`.
 
 ## Usage as a library
-
 You can use the gojq parser and interpreter from your Go products.
 
 ```go
 package main
 
 import (
-    "fmt"
-    "log"
+	"fmt"
+	"log"
 
-    "github.com/itchyny/gojq"
+	"github.com/itchyny/gojq"
 )
 
 func main() {
-    query, err := gojq.Parse(".foo | ..")
-    if err != nil {
-        log.Fatalln(err)
-    }
-    input := map[string]any{"foo": []any{1, 2, 3}}
-    iter := query.Run(input) // or query.RunWithContext
-    for {
-        v, ok := iter.Next()
-        if !ok {
-            break
-        }
-        if err, ok := v.(error); ok {
-            if err, ok := err.(*gojq.HaltError); ok && err.Value() == nil {
-                break
-            }
-            log.Fatalln(err)
-        }
-        fmt.Printf("%#v\n", v)
-    }
+	query, err := gojq.Parse(".foo | ..")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	input := map[string]any{"foo": []any{1, 2, 3}}
+	iter := query.Run(input) // or query.RunWithContext
+	for {
+		v, ok := iter.Next()
+		if !ok {
+			break
+		}
+		if err, ok := v.(error); ok {
+			if err, ok := err.(*gojq.HaltError); ok && err.Value() == nil {
+				break
+			}
+			log.Fatalln(err)
+		}
+		fmt.Printf("%#v\n", v)
+	}
 }
 ```
 
@@ -145,7 +143,11 @@ func main() {
   - In either case, you cannot use custom type values as the query input. The type should be `[]any` for an array and `map[string]any` for a map (just like decoded to an `any` using the [encoding/json](https://golang.org/pkg/encoding/json/) package). You can't use `[]int` or `map[string]string`, for example. If you want to query your custom struct, marshal to JSON, unmarshal to `any` and use it as the query input.
 - Thirdly, iterate through the results using [`iter.Next() (any, bool)`](https://pkg.go.dev/github.com/itchyny/gojq#Iter). The iterator can emit an error so make sure to handle it. The method returns `true` with results, and `false` when the iterator terminates.
   - The return type is not `(any, error)` because the iterator may emit multiple errors. The `jq` and `gojq` commands stop the iteration on the first error, but the library user can choose to stop the iteration on errors, or to continue until it terminates.
-    - In any case, it is recommended to stop the iteration on [`gojq.HaltError`](https://pkg.go.dev/github.com/itchyny/gojq#HaltError), which is emitted by `halt` and `halt_error` functions, although these functions are rarely used. The error implements [`gojq.ValueError`](https://pkg.go.dev/github.com/itchyny/gojq#ValueError), and if the error value is `nil`, stop the iteration without handling the error. Technically speaking, we can fix the iterator to terminate on the halting error, but it does not terminate at the moment. The `halt` function in jq not only stops the iteration, but also terminates the command execution, even if there are still input values. So, gojq leaves it up to the library user how to handle the halting error.
+    - In any case, it is recommended to stop the iteration on [`gojq.HaltError`](https://pkg.go.dev/github.com/itchyny/gojq#HaltError), which is emitted by `halt` and `halt_error` functions, although these functions are rarely used.
+      The error implements [`gojq.ValueError`](https://pkg.go.dev/github.com/itchyny/gojq#ValueError), and if the error value is `nil`, stop the iteration without handling the error.
+      Technically speaking, we can fix the iterator to terminate on the halting error, but it does not terminate at the moment.
+      The `halt` function in jq not only stops the iteration, but also terminates the command execution, even if there are still input values.
+      So, gojq leaves it up to the library user how to handle the halting error.
   - Note that the result iterator may emit infinite number of values; `repeat(0)` and `range(infinite)`. It may stuck with no output value; `def f: f; f`. Use `RunWithContext` when you want to limit the execution time.
 
 [`gojq.Compile`](https://pkg.go.dev/github.com/itchyny/gojq#Compile) allows to configure the following compiler options.
@@ -158,13 +160,10 @@ func main() {
 - [`gojq.WithInputIter`](https://pkg.go.dev/github.com/itchyny/gojq#WithInputIter) allows to use `input` and `inputs` functions. By default, these functions are disabled.
 
 ## Bug Tracker
-
-Report bug at [Issues - itchyny/gojq - GitHub](https://github.com/itchyny/gojq/issues).
+Report bug at [Issues・itchyny/gojq - GitHub](https://github.com/itchyny/gojq/issues).
 
 ## Author
-
-itchyny (https://github.com/itchyny)
+itchyny (<https://github.com/itchyny>)
 
 ## License
-
 This software is released under the MIT License, see LICENSE.
