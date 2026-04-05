@@ -1,0 +1,13 @@
+name: go-toml
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com/pelletier/go-toml/v2
+    last_fetched: "2026-04-04T00:00:00Z"
+  - type: github
+    url: https://github.com/pelletier/go-toml
+    last_fetched: "2026-04-04T00:00:00Z"
+description: >
+  Go library for reading and writing TOML documents, supporting TOML v1.0.0.
+  Designed to behave similarly to encoding/json with optimized performance.
+quality_score: 0
