@@ -1,0 +1,9 @@
+name: goreleaser
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-04T00:00:00Z"
+description: >
+  GoReleaser documentation — release automation tool for Go, Rust, Zig, TypeScript, Python.
+  Config reference, builds, packaging, publishing, CI/CD integration, signing, announcements.
+quality_score: 0
