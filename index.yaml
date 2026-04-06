@@ -10,9 +10,9 @@
 #   - pending: Library registered but not yet fetched
 
 metadata:
-  last_updated: 2026-04-05 14:52
-  total_libraries: 1858
-  total_files: 579570
+  last_updated: 2026-04-06 00:06
+  total_libraries: 1859
+  total_files: 579575
   schema_version: '2'
 libraries:
 - name: 0
@@ -55,28 +55,28 @@ libraries:
   status: fetched
   file_count: 4
   size: 92.7KB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: '@types'
   description: '@types documentation'
   path: docs/@types/
   status: fetched
   file_count: 21
   size: 276.7KB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: '@typescript-eslint'
   description: '@typescript-eslint documentation'
   path: docs/@typescript-eslint/
   status: fetched
   file_count: 53
   size: 286.8KB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: '@visx'
   description: '@visx documentation'
   path: docs/@visx/
   status: fetched
   file_count: 1
   size: 1.4KB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: ably
   description: ably documentation
   path: docs/ably/
@@ -1494,6 +1494,13 @@ libraries:
   - type: llms
     url: https://docs.jfrog.com/.well-known/
     last_fetched: '2026-04-03T23:08:30Z'
+- name: arxiv
+  description: arxiv documentation
+  path: docs/arxiv/
+  status: fetched
+  file_count: 5
+  size: 14.4KB
+  last_updated: 2026-04-06 00:06
 - name: asapp
   description: asapp documentation
   path: docs/asapp/
@@ -3727,7 +3734,7 @@ libraries:
   status: fetched
   file_count: 89
   size: 773.9KB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: coolify
   description: coolify documentation
   path: docs/coolify/
@@ -4508,7 +4515,7 @@ libraries:
   status: fetched
   file_count: 1692
   size: 25.3MB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: efm-langserver
   description: efm-langserver documentation
   path: docs/efm-langserver/
@@ -5977,7 +5984,7 @@ libraries:
   status: fetched
   file_count: 428
   size: 58.4MB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: github.com
   description: github.com documentation
   path: docs/github.com/
@@ -6209,7 +6216,7 @@ libraries:
   status: fetched
   file_count: 176
   size: 4.2MB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: go-toml
   description: Go library for reading and writing TOML documents, supporting TOML v1.0.0. Designed to behave similarly to
     encoding/json with optimized performance.
@@ -11113,7 +11120,7 @@ libraries:
   status: pending
   file_count: 0
   size: 0B
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: mlx-lm
   description: mlx-lm documentation
   path: docs/mlx-lm/
@@ -18296,7 +18303,7 @@ libraries:
   status: fetched
   file_count: 7
   size: 81.8KB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: testim
   description: testim documentation
   path: docs/testim/
@@ -19672,7 +19679,7 @@ libraries:
   status: fetched
   file_count: 6
   size: 31.6KB
-  last_updated: 2026-04-05 14:52
+  last_updated: 2026-04-06 00:06
 - name: virtualenv
   description: virtualenv documentation
   path: docs/virtualenv/
