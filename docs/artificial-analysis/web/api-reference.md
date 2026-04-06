@@ -123,14 +123,14 @@ get/data/media/text-to-image
 This endpoint returns ELO ratings for text-to-image models.
 You can optionally include the `include_categories=true` parameter to get a breakdown of ELO scores by category.
 
-#### Example Request
+#### Example Request (Text-to-Image)
 
 ```bash
 curl -X GET "https://artificialanalysis.ai/api/v2/data/media/text-to-image" \
 -H "x-api-key: your_api_key_here"
 ```
 
-#### Example Response
+#### Example Response (Text-to-Image)
 
 ```bash
 {
@@ -169,14 +169,14 @@ curl -X GET "https://artificialanalysis.ai/api/v2/data/media/text-to-image" \
 get/data/media/image-editing
 This endpoint returns ELO ratings for image editing models.
 
-#### Example Request
+#### Example Request (Image Editing)
 
 ```bash
 curl -X GET "https://artificialanalysis.ai/api/v2/data/media/image-editing" \
 -H "x-api-key: your_api_key_here"
 ```
 
-#### Example Response
+#### Example Response (Image Editing)
 
 ```bash
 {
@@ -205,7 +205,7 @@ curl -X GET "https://artificialanalysis.ai/api/v2/data/media/image-editing" \
 get/data/media/text-to-speech
 This endpoint returns ELO ratings for text-to-speech models.
 
-#### Example Request
+#### Example Request (Text-to-Speech)
 
 ```bash
 curl -X GET "https://artificialanalysis.ai/api/v2/data/media/text-to-speech" \
@@ -218,14 +218,14 @@ get/data/media/text-to-video
 This endpoint returns ELO ratings for text-to-video models.
 You can optionally include the `include_categories=true` parameter to get a breakdown of ELO scores by category.
 
-#### Example Request
+#### Example Request (Text-to-Video)
 
 ```bash
 curl -X GET "https://artificialanalysis.ai/api/v2/data/media/text-to-video" \
 -H "x-api-key: your_api_key_here"
 ```
 
-#### Example Response
+#### Example Response (Text-to-Video)
 
 ```bash
 {
@@ -266,14 +266,14 @@ get/data/media/image-to-video
 This endpoint returns ELO ratings for image-to-video models.
 You can optionally include the `include_categories=true` parameter to get a breakdown of ELO scores by category.
 
-#### Example Request
+#### Example Request (Image-to-Video)
 
 ```bash
 curl -X GET "https://artificialanalysis.ai/api/v2/data/media/image-to-video" \
 -H "x-api-key: your_api_key_here"
 ```
 
-#### Example Response
+#### Example Response (Image-to-Video)
 
 ```bash
 {
