@@ -10,9 +10,9 @@
 #   - pending: Library registered but not yet fetched
 
 metadata:
-  last_updated: 2026-04-06 01:14
-  total_libraries: 1860
-  total_files: 579576
+  last_updated: 2026-04-09 00:05
+  total_libraries: 1934
+  total_files: 586841
   schema_version: '2'
 libraries:
 - name: 0
@@ -55,28 +55,28 @@ libraries:
   status: fetched
   file_count: 4
   size: 92.7KB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: '@types'
   description: '@types documentation'
   path: docs/@types/
   status: fetched
   file_count: 21
   size: 276.7KB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: '@typescript-eslint'
   description: '@typescript-eslint documentation'
   path: docs/@typescript-eslint/
   status: fetched
   file_count: 53
   size: 286.8KB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: '@visx'
   description: '@visx documentation'
   path: docs/@visx/
   status: fetched
   file_count: 1
   size: 1.4KB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: ably
   description: ably documentation
   path: docs/ably/
@@ -1499,15 +1499,15 @@ libraries:
   path: docs/artificial-analysis/
   status: fetched
   file_count: 1
-  size: 11.5KB
-  last_updated: 2026-04-06 01:14
+  size: 11.7KB
+  last_updated: 2026-04-09 00:05
 - name: arxiv
   description: arxiv documentation
   path: docs/arxiv/
   status: fetched
   file_count: 5
   size: 14.4KB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: asapp
   description: asapp documentation
   path: docs/asapp/
@@ -3728,20 +3728,91 @@ libraries:
   description: conform documentation
   path: docs/conform/
   status: fetched
-  file_count: 43
-  size: 112.1KB
+  file_count: 52
+  size: 146.3KB
   last_updated: 2026-04-03 23:08
   primary_source: web
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:48Z'
+- name: contacts
+  description: contacts documentation
+  path: docs/contacts/
+  status: fetched
+  file_count: 70
+  size: 634.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:48Z'
+- name: containerd
+  description: containerd documentation
+  path: docs/containerd/
+  status: fetched
+  file_count: 53
+  size: 395.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:48Z'
+- name: contentful
+  description: contentful documentation
+  path: docs/contentful/
+  status: fetched
+  file_count: 1
+  size: 4.1MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T23:08:48Z'
+- name: continuous-formatting
+  description: continuous-formatting documentation
+  path: docs/continuous-formatting/
+  status: fetched
+  file_count: 1
+  size: 12.6KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:48Z'
+- name: contour
+  description: contour documentation
+  path: docs/contour/
+  status: fetched
+  file_count: 72
+  size: 934.4KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:48Z'
+- name: convertkit
+  description: convertkit documentation
+  path: docs/convertkit/
+  status: fetched
+  file_count: 100
+  size: 885.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T23:08:48Z'
 - name: convex
   description: convex documentation
   path: docs/convex/
   status: fetched
-  file_count: 89
-  size: 773.9KB
-  last_updated: 2026-04-06 01:14
+  file_count: 276
+  size: 5.3MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.convex.dev/
+    last_fetched: '2026-04-03T23:08:48Z'
 - name: coolify
   description: coolify documentation
   path: docs/coolify/
@@ -4100,13 +4171,46 @@ libraries:
   description: cytoscape documentation
   path: docs/cytoscape/
   status: fetched
-  file_count: 32
-  size: 11.9KB
+  file_count: 206
+  size: 669.6KB
   last_updated: 2026-04-03 23:08
   primary_source: github
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:49Z'
+- name: cytoscape.js
+  description: cytoscape.js documentation
+  path: docs/cytoscape.js/
+  status: fetched
+  file_count: 206
+  size: 669.0KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:50Z'
+- name: d3.js
+  description: d3.js documentation
+  path: docs/d3.js/
+  status: fetched
+  file_count: 116
+  size: 946.6KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:50Z'
+- name: dagger
+  description: dagger documentation
+  path: docs/dagger/
+  status: fetched
+  file_count: 1
+  size: 778.7KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T23:08:50Z'
 - name: dagster
   description: dagster documentation
   path: docs/dagster/
@@ -4485,14 +4589,128 @@ libraries:
   description: deep-lake documentation
   path: docs/deep-lake/
   status: fetched
-  file_count: 97
-  size: 1.0MB
+  file_count: 122
+  size: 1.2MB
   last_updated: 2026-04-03 23:08
   primary_source: llms
   sources:
   - type: llms
     url: https://docs-v3.activeloop.ai/
     last_fetched: '2026-04-03T23:08:51Z'
+- name: deepchecks
+  description: deepchecks documentation
+  path: docs/deepchecks/
+  status: fetched
+  file_count: 1
+  size: 260.9KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://deepchecks.com/
+    last_fetched: '2026-04-03T23:08:51Z'
+- name: deepconverse
+  description: deepconverse documentation
+  path: docs/deepconverse/
+  status: fetched
+  file_count: 86
+  size: 352.6KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.deepconverse.com/
+    last_fetched: '2026-04-03T23:08:51Z'
+- name: deepinfra
+  description: deepinfra documentation
+  path: docs/deepinfra/
+  status: fetched
+  file_count: 32
+  size: 320.0KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:51Z'
+- name: deepscan
+  description: deepscan documentation
+  path: docs/deepscan/
+  status: fetched
+  file_count: 6
+  size: 30.9KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:51Z'
+- name: delayed-job
+  description: delayed-job documentation
+  path: docs/delayed-job/
+  status: fetched
+  file_count: 1
+  size: 8.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: delve
+  description: delve documentation
+  path: docs/delve/
+  status: fetched
+  file_count: 39
+  size: 148.9KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: deno
+  description: deno documentation
+  path: docs/deno/
+  status: fetched
+  file_count: 4
+  size: 1.9MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.deno.com/
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: dependabot
+  description: dependabot documentation
+  path: docs/dependabot/
+  status: fetched
+  file_count: 8
+  size: 35.0KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: dependency-track
+  description: dependency-track documentation
+  path: docs/dependency-track/
+  status: fetched
+  file_count: 135
+  size: 553.4KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: deployhq
+  description: deployhq documentation
+  path: docs/deployhq/
+  status: fetched
+  file_count: 1
+  size: 110.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://www.deployhq.com/
+    last_fetched: '2026-04-03T23:08:52Z'
 - name: desearch
   description: Decentralized AI-powered search API on Bittensor (web, X/Twitter, deep research)
   path: docs/desearch/
@@ -4505,24 +4723,633 @@ libraries:
   - type: llms
     url: https://desearch.ai/
     last_fetched: '2026-04-03T19:42:55Z'
+- name: detect-secrets
+  description: detect-secrets documentation
+  path: docs/detect-secrets/
+  status: fetched
+  file_count: 5
+  size: 40.0KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: detox
+  description: detox documentation
+  path: docs/detox/
+  status: fetched
+  file_count: 106
+  size: 519.7KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: dev
+  description: dev documentation
+  path: docs/dev/
+  status: fetched
+  file_count: 264
+  size: 3.8MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://dev.writer.com/
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: developers-2
+  description: developers-2 documentation
+  path: docs/developers-2/
+  status: fetched
+  file_count: 104
+  size: 2.1MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://developers.raycast.com/
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: developers-vectorize
+  description: developers-vectorize documentation
+  path: docs/developers-vectorize/
+  status: fetched
+  file_count: 31
+  size: 456.8KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://developers.cloudflare.com/vectorize/
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: devtron
+  description: devtron documentation
+  path: docs/devtron/
+  status: fetched
+  file_count: 193
+  size: 959.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: dhtmlx-gantt
+  description: dhtmlx-gantt documentation
+  path: docs/dhtmlx-gantt/
+  status: fetched
+  file_count: 753
+  size: 2.6MB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: diagnostic-languageserver
+  description: diagnostic-languageserver documentation
+  path: docs/diagnostic-languageserver/
+  status: fetched
+  file_count: 1
+  size: 12.5KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: dify
+  description: dify documentation
+  path: docs/dify/
+  status: fetched
+  file_count: 217
+  size: 2.6MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.dify.ai/
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: digikey-api
+  description: digikey-api documentation
+  path: docs/digikey-api/
+  status: fetched
+  file_count: 3
+  size: 13.5KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: diplodoc
+  description: diplodoc documentation
+  path: docs/diplodoc/
+  status: fetched
+  file_count: 152
+  size: 700.0KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://www.diplodoc.com/
+    last_fetched: '2026-04-03T23:08:52Z'
+  - type: github
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: direct2d
+  description: direct2d documentation
+  path: docs/direct2d/
+  status: fetched
+  file_count: 1
+  size: 4.6KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: directml
+  description: directml documentation
+  path: docs/directml/
+  status: fetched
+  file_count: 9
+  size: 171.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: directory
+  description: directory documentation
+  path: docs/directory/
+  status: fetched
+  file_count: 2
+  size: 13.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://directory.llmstxt.cloud/
+    last_fetched: '2026-04-03T23:08:52Z'
+- name: directus
+  description: directus documentation
+  path: docs/directus/
+  status: fetched
+  file_count: 288
+  size: 5.1MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://directus.io/docs/
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: direnv
+  description: direnv documentation
+  path: docs/direnv/
+  status: fetched
+  file_count: 5
+  size: 12.4KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: discord-api
+  description: discord-api documentation
+  path: docs/discord-api/
+  status: fetched
+  file_count: 316
+  size: 2.5MB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: django-channels
+  description: django-channels documentation
+  path: docs/django-channels/
+  status: fetched
+  file_count: 65
+  size: 206.7KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: django-json-rpc
+  description: django-json-rpc documentation
+  path: docs/django-json-rpc/
+  status: fetched
+  file_count: 1
+  size: 2.2KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: django-oauth-toolkit
+  description: django-oauth-toolkit documentation
+  path: docs/django-oauth-toolkit/
+  status: fetched
+  file_count: 31
+  size: 146.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: django-orm
+  description: django-orm documentation
+  path: docs/django-orm/
+  status: fetched
+  file_count: 147
+  size: 3.8MB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+  - type: web
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: django-rest-framework
+  description: django-rest-framework documentation
+  path: docs/django-rest-framework/
+  status: fetched
+  file_count: 70
+  size: 927.2KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: djangorestframework
+  description: djangorestframework documentation
+  path: docs/djangorestframework/
+  status: fetched
+  file_count: 70
+  size: 931.5KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: dlthub
+  description: dlthub documentation
+  path: docs/dlthub/
+  status: fetched
+  file_count: 177
+  size: 1.8MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://dlthub.com/docs/
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: dnd-kit
+  description: dnd-kit documentation
+  path: docs/dnd-kit/
+  status: fetched
+  file_count: 23
+  size: 318.5KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.dndkit.com/
+    last_fetched: '2026-04-03T23:08:53Z'
 - name: docetl
   description: docetl documentation
   path: docs/docetl/
   status: fetched
-  file_count: 81
-  size: 7.9MB
+  file_count: 84
+  size: 8.3MB
   last_updated: 2026-04-03 20:08
   primary_source: github
   sources:
   - type: github
     last_fetched: '2026-04-03T20:08:32Z'
+- name: docfx
+  description: docfx documentation
+  path: docs/docfx/
+  status: fetched
+  file_count: 47
+  size: 201.8KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: docker
+  description: docker documentation
+  path: docs/docker/
+  status: fetched
+  file_count: 1
+  size: 165.4KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.docker.com/
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: docker-mailserver
+  description: docker-mailserver documentation
+  path: docs/docker-mailserver/
+  status: fetched
+  file_count: 51
+  size: 509.7KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: docker-scout
+  description: docker-scout documentation
+  path: docs/docker-scout/
+  status: fetched
+  file_count: 1
+  size: 174.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: docling
+  description: docling documentation
+  path: docs/docling/
+  status: fetched
+  file_count: 131
+  size: 23.5MB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: docmost
+  description: docmost documentation
+  path: docs/docmost/
+  status: fetched
+  file_count: 3
+  size: 19.9KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: docopt
+  description: docopt documentation
+  path: docs/docopt/
+  status: fetched
+  file_count: 1
+  size: 16.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: docusaurus
+  description: docusaurus documentation
+  path: docs/docusaurus/
+  status: fetched
+  file_count: 102
+  size: 1.0MB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:53Z'
+- name: doris
+  description: doris documentation
+  path: docs/doris/
+  status: fetched
+  file_count: 1515
+  size: 8.7MB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dotenvx
+  description: dotenvx documentation
+  path: docs/dotenvx/
+  status: fetched
+  file_count: 1
+  size: 71.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://dotenvx.com/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dprint
+  description: dprint documentation
+  path: docs/dprint/
+  status: fetched
+  file_count: 1
+  size: 15.4KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dragonbones
+  description: dragonbones documentation
+  path: docs/dragonbones/
+  status: fetched
+  file_count: 3
+  size: 38.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dramatiq
+  description: dramatiq documentation
+  path: docs/dramatiq/
+  status: fetched
+  file_count: 12
+  size: 212.8KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: drawio
+  description: drawio documentation
+  path: docs/drawio/
+  status: fetched
+  file_count: 10
+  size: 16.2KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dreamfactory
+  description: dreamfactory documentation
+  path: docs/dreamfactory/
+  status: fetched
+  file_count: 1
+  size: 16.8KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://www.dreamfactory.com/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dredd
+  description: dredd documentation
+  path: docs/dredd/
+  status: fetched
+  file_count: 20
+  size: 152.1KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: drip
+  description: drip documentation
+  path: docs/drip/
+  status: fetched
+  file_count: 173
+  size: 1.4MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: drizzle-orm
+  description: drizzle-orm documentation
+  path: docs/drizzle-orm/
+  status: fetched
+  file_count: 7
+  size: 2.6MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://orm.drizzle.team/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: drone
+  description: drone documentation
+  path: docs/drone/
+  status: fetched
+  file_count: 17
+  size: 104.4KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dspy
+  description: dspy documentation
+  path: docs/dspy/
+  status: fetched
+  file_count: 1
+  size: 22.2KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://dspy.ai/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dub
+  description: dub documentation
+  path: docs/dub/
+  status: fetched
+  file_count: 96
+  size: 2.5MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://dub.co/docs/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: duckdb
+  description: duckdb documentation
+  path: docs/duckdb/
+  status: fetched
+  file_count: 2
+  size: 44.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://duckdb.org/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: duckduckgo-api
+  description: duckduckgo-api documentation
+  path: docs/duckduckgo-api/
+  status: fetched
+  file_count: 8
+  size: 5.4KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: dygraphs
+  description: dygraphs documentation
+  path: docs/dygraphs/
+  status: fetched
+  file_count: 2
+  size: 5.8KB
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: earthly
+  description: earthly documentation
+  path: docs/earthly/
+  status: fetched
+  file_count: 89
+  size: 1.3MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://docs.earthly.dev/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: ebean
+  description: ebean documentation
+  path: docs/ebean/
+  status: fetched
+  file_count: 30
+  size: 150.5KB
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: eclipse-ditto
+  description: eclipse-ditto documentation
+  path: docs/eclipse-ditto/
+  status: fetched
+  file_count: 92
+  size: 906.3KB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    url: https://eclipse.dev/ditto/
+    last_fetched: '2026-04-03T23:08:54Z'
+- name: eden-ai
+  description: eden-ai documentation
+  path: docs/eden-ai/
+  status: fetched
+  file_count: 79
+  size: 1.2MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T23:08:55Z'
 - name: edge-impulse
   description: edge-impulse documentation
   path: docs/edge-impulse/
   status: fetched
-  file_count: 1692
-  size: 25.3MB
-  last_updated: 2026-04-06 01:14
+  file_count: 2258
+  size: 29.3MB
+  last_updated: 2026-04-03 23:08
+  primary_source: llms
+  sources:
+  - type: llms
+    last_fetched: '2026-04-03T23:08:55Z'
 - name: efm-langserver
   description: efm-langserver documentation
   path: docs/efm-langserver/
@@ -4754,7 +5581,7 @@ libraries:
   description: env0 documentation
   path: docs/env0/
   status: fetched
-  file_count: 581
+  file_count: 582
   size: 6.1MB
   last_updated: 2026-04-03 23:08
   primary_source: llms
@@ -5080,8 +5907,8 @@ libraries:
   description: faiss documentation
   path: docs/faiss/
   status: fetched
-  file_count: 55
-  size: 2.3MB
+  file_count: 57
+  size: 2.4MB
   last_updated: 2026-04-03 23:08
   primary_source: github
   sources:
@@ -5985,13 +6812,6 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:01Z'
-- name: github-scraped
-  description: github-scraped documentation
-  path: docs/github-scraped/
-  status: fetched
-  file_count: 428
-  size: 58.4MB
-  last_updated: 2026-04-06 01:14
 - name: github.com
   description: github.com documentation
   path: docs/github.com/
@@ -6223,7 +7043,7 @@ libraries:
   status: fetched
   file_count: 176
   size: 4.2MB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: go-toml
   description: Go library for reading and writing TOML documents, supporting TOML v1.0.0. Designed to behave similarly to
     encoding/json with optimized performance.
@@ -11124,10 +11944,10 @@ libraries:
 - name: mlx-core
   description: mlx-core documentation
   path: docs/mlx-core/
-  status: pending
-  file_count: 0
-  size: 0B
-  last_updated: 2026-04-06 01:14
+  status: fetched
+  file_count: 53
+  size: 498.2KB
+  last_updated: 2026-04-09 00:05
 - name: mlx-lm
   description: mlx-lm documentation
   path: docs/mlx-lm/
@@ -18310,7 +19130,7 @@ libraries:
   status: fetched
   file_count: 7
   size: 81.8KB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: testim
   description: testim documentation
   path: docs/testim/
@@ -19686,7 +20506,7 @@ libraries:
   status: fetched
   file_count: 6
   size: 31.6KB
-  last_updated: 2026-04-06 01:14
+  last_updated: 2026-04-09 00:05
 - name: virtualenv
   description: virtualenv documentation
   path: docs/virtualenv/
@@ -20995,11 +21815,44 @@ libraries:
   description: zuplo documentation
   path: docs/zuplo/
   status: fetched
-  file_count: 372
-  size: 1.5MB
+  file_count: 453
+  size: 3.7MB
   last_updated: 2026-04-03 23:11
   primary_source: llms
   sources:
   - type: llms
     url: https://www.zuplo.com/docs/
     last_fetched: '2026-04-03T23:11:27Z'
+- name: zustand
+  description: zustand documentation
+  path: docs/zustand/
+  status: fetched
+  file_count: 39
+  size: 349.6KB
+  last_updated: 2026-04-03 23:11
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:11:27Z'
+- name: zuul
+  description: zuul documentation
+  path: docs/zuul/
+  status: fetched
+  file_count: 89
+  size: 9.0MB
+  last_updated: 2026-04-03 23:11
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:11:28Z'
+- name: zypper
+  description: zypper documentation
+  path: docs/zypper/
+  status: fetched
+  file_count: 1
+  size: 59.6KB
+  last_updated: 2026-04-03 23:11
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:11:28Z'
