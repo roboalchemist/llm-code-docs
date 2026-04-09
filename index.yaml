@@ -10,12 +10,12 @@
 #   - pending: Library registered but not yet fetched
 
 metadata:
-  last_updated: 2026-04-09 00:05
-  total_libraries: 1934
-  total_files: 586841
+  last_updated: 2026-04-09 04:56
+  total_libraries: 2272
+  total_files: 605617
   schema_version: '2'
 libraries:
-- name: 0
+- name: '0'
   description: 0 documentation
   path: docs/0/
   status: fetched
@@ -55,28 +55,28 @@ libraries:
   status: fetched
   file_count: 4
   size: 92.7KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
 - name: '@types'
   description: '@types documentation'
   path: docs/@types/
   status: fetched
   file_count: 21
   size: 276.7KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
 - name: '@typescript-eslint'
   description: '@typescript-eslint documentation'
   path: docs/@typescript-eslint/
   status: fetched
   file_count: 53
   size: 286.8KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
 - name: '@visx'
   description: '@visx documentation'
   path: docs/@visx/
   status: fetched
   file_count: 1
   size: 1.4KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
 - name: ably
   description: ably documentation
   path: docs/ably/
@@ -121,6 +121,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:23Z'
+- name: actioncable
+  description: actioncable documentation
+  path: docs/actioncable/
+  status: fetched
+  file_count: 79
+  size: 231.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/actioncable/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: active-record
   description: active-record documentation
   path: docs/active-record/
@@ -189,6 +201,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:24Z'
+- name: adjust
+  description: adjust documentation
+  path: docs/adjust/
+  status: fetched
+  file_count: 27
+  size: 5.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/adjust/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: adobe-pdf-extract
   description: adobe-pdf-extract documentation
   path: docs/adobe-pdf-extract/
@@ -222,6 +246,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:24Z'
+- name: afero
+  description: afero documentation
+  path: docs/afero/
+  status: fetched
+  file_count: 1
+  size: 133.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/afero/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: aframe-react
   description: aframe-react documentation
   path: docs/aframe-react/
@@ -893,6 +929,28 @@ libraries:
   - type: llms
     url: https://camel.apache.org/
     last_fetched: '2026-04-03T23:08:27Z'
+- name: apache-commons-validator
+  description: apache-commons-validator documentation
+  path: docs/apache-commons-validator/
+  status: fetched
+  file_count: 60
+  size: 381.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: apache-cxf
+  description: apache-cxf documentation
+  path: docs/apache-cxf/
+  status: fetched
+  file_count: 60
+  size: 48.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: apache-dolphinscheduler
   description: apache-dolphinscheduler documentation
   path: docs/apache-dolphinscheduler/
@@ -1151,6 +1209,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:28Z'
+- name: apk
+  description: apk documentation
+  path: docs/apk/
+  status: fetched
+  file_count: 42
+  size: 15.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/apk/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: apollo-federation
   description: apollo-federation documentation
   path: docs/apollo-federation/
@@ -1349,8 +1419,8 @@ libraries:
     services
   path: docs/arduino/
   status: fetched
-  file_count: 2
-  size: 0B
+  file_count: 331
+  size: 788.4MB
   last_updated: 2026-04-03 20:08
   primary_source: github
   sources:
@@ -1380,6 +1450,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:29Z'
+- name: argo-workflows
+  description: argo-workflows documentation
+  path: docs/argo-workflows/
+  status: fetched
+  file_count: 1
+  size: 1.1MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/argo-workflows/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: argocd
   description: argocd documentation
   path: docs/argocd/
@@ -1391,6 +1473,30 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:29Z'
+- name: argocd-operator
+  description: argocd-operator documentation
+  path: docs/argocd-operator/
+  status: fetched
+  file_count: 1
+  size: 526.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/argocd-operator/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: argon2
+  description: argon2 documentation
+  path: docs/argon2/
+  status: fetched
+  file_count: 14
+  size: 4.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/argon2/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ariadne
   description: ariadne documentation
   path: docs/ariadne/
@@ -1500,14 +1606,14 @@ libraries:
   status: fetched
   file_count: 1
   size: 11.7KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
 - name: arxiv
   description: arxiv documentation
   path: docs/arxiv/
   status: fetched
   file_count: 5
   size: 14.4KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
 - name: asapp
   description: asapp documentation
   path: docs/asapp/
@@ -1531,6 +1637,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:30Z'
+- name: asciinema
+  description: asciinema documentation
+  path: docs/asciinema/
+  status: fetched
+  file_count: 1
+  size: 12.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/asciinema/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ashen
   description: ashen documentation
   path: docs/ashen/
@@ -1565,6 +1683,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:30Z'
+- name: assemble
+  description: assemble documentation
+  path: docs/assemble/
+  status: fetched
+  file_count: 11
+  size: 1.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/assemble/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: assemblyai
   description: assemblyai documentation
   path: docs/assemblyai/
@@ -1612,6 +1742,18 @@ libraries:
   - type: llms
     url: https://docs.astro.build/
     last_fetched: '2026-04-03T23:08:30Z'
+- name: asyncapi
+  description: asyncapi documentation
+  path: docs/asyncapi/
+  status: fetched
+  file_count: 80
+  size: 61.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/asyncapi/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: atl
   description: atl documentation
   path: docs/atl/
@@ -1747,6 +1889,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:32Z'
+- name: autotools
+  description: autotools documentation
+  path: docs/autotools/
+  status: fetched
+  file_count: 3
+  size: 477B
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/autotools/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ava
   description: ava documentation
   path: docs/ava/
@@ -2210,6 +2364,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:36Z'
+- name: bamboo
+  description: bamboo documentation
+  path: docs/bamboo/
+  status: fetched
+  file_count: 33
+  size: 102.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://hexdocs.pm/bamboo/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: banana
   description: banana documentation
   path: docs/banana/
@@ -2221,6 +2387,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:37Z'
+- name: bandwidth
+  description: bandwidth documentation
+  path: docs/bandwidth/
+  status: fetched
+  file_count: 3
+  size: 571B
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/bandwidth/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: barba.js
   description: barba.js documentation
   path: docs/barba.js/
@@ -2291,6 +2469,18 @@ libraries:
   - type: llms
     url: https://docs.baseten.co/
     last_fetched: '2026-04-03T23:08:41Z'
+- name: bat
+  description: bat documentation
+  path: docs/bat/
+  status: fetched
+  file_count: 56
+  size: 11.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/bat/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bazel
   description: bazel documentation
   path: docs/bazel/
@@ -2302,6 +2492,17 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:41Z'
+- name: bean-validation
+  description: bean-validation documentation
+  path: docs/bean-validation/
+  status: fetched
+  file_count: 60
+  size: 121.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: beanie
   description: beanie documentation
   path: docs/beanie/
@@ -2359,6 +2560,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:42Z'
+- name: beego
+  description: beego documentation
+  path: docs/beego/
+  status: fetched
+  file_count: 1
+  size: 900.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/beego/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: beehiiv
   description: beehiiv documentation
   path: docs/beehiiv/
@@ -2370,6 +2583,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:42Z'
+- name: bellman
+  description: bellman documentation
+  path: docs/bellman/
+  status: fetched
+  file_count: 71
+  size: 18.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/bellman/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: benchstat
   description: benchstat documentation
   path: docs/benchstat/
@@ -2416,6 +2641,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T20:08:30Z'
+- name: bigcache
+  description: bigcache documentation
+  path: docs/bigcache/
+  status: fetched
+  file_count: 1
+  size: 22.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/bigcache/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bigcommerce
   description: bigcommerce documentation
   path: docs/bigcommerce/
@@ -2439,6 +2676,18 @@ libraries:
   - type: llms
     url: https://bika.ai/
     last_fetched: '2026-04-03T20:08:30Z'
+- name: bimg
+  description: bimg documentation
+  path: docs/bimg/
+  status: fetched
+  file_count: 1
+  size: 15.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/bimg/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bioconductor
   description: bioconductor documentation
   path: docs/bioconductor/
@@ -2510,6 +2759,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:43Z'
+- name: bleve
+  description: bleve documentation
+  path: docs/bleve/
+  status: fetched
+  file_count: 1
+  size: 995.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/bleve/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: blitz
   description: blitz documentation
   path: docs/blitz/
@@ -2543,6 +2804,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:43Z'
+- name: blurhash
+  description: blurhash documentation
+  path: docs/blurhash/
+  status: fetched
+  file_count: 5
+  size: 1.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/blurhash/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bokeh
   description: bokeh documentation
   path: docs/bokeh/
@@ -2565,6 +2838,17 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:43Z'
+- name: boofcv
+  description: boofcv documentation
+  path: docs/boofcv/
+  status: fetched
+  file_count: 60
+  size: 255.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bookshelf.js
   description: bookshelf.js documentation
   path: docs/bookshelf.js/
@@ -2598,6 +2882,29 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:43Z'
+- name: botan
+  description: botan documentation
+  path: docs/botan/
+  status: fetched
+  file_count: 51
+  size: 9.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/botan/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: bouncy-castle
+  description: bouncy-castle documentation
+  path: docs/bouncy-castle/
+  status: fetched
+  file_count: 60
+  size: 260.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bower
   description: bower documentation
   path: docs/bower/
@@ -2609,6 +2916,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:43Z'
+- name: box2d
+  description: box2d documentation
+  path: docs/box2d/
+  status: fetched
+  file_count: 28
+  size: 4.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/box2d/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: boxyhq
   description: boxyhq documentation
   path: docs/boxyhq/
@@ -2643,6 +2962,18 @@ libraries:
   - type: llms
     url: https://www.braintrust.dev/docs/
     last_fetched: '2026-04-03T23:08:43Z'
+- name: brakeman
+  description: brakeman documentation
+  path: docs/brakeman/
+  status: fetched
+  file_count: 79
+  size: 654.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/brakeman/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bree
   description: bree documentation
   path: docs/bree/
@@ -2665,6 +2996,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:43Z'
+- name: briandowns-spinner
+  description: briandowns-spinner documentation
+  path: docs/briandowns-spinner/
+  status: fetched
+  file_count: 1
+  size: 731.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/briandowns-spinner/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bridgecrew
   description: bridgecrew documentation
   path: docs/bridgecrew/
@@ -2676,6 +3019,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:43Z'
+- name: bright
+  description: bright documentation
+  path: docs/bright/
+  status: fetched
+  file_count: 5
+  size: 708B
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/bright/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: bright-data
   description: bright-data documentation
   path: docs/bright-data/
@@ -2721,6 +3076,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:43Z'
+- name: buf
+  description: buf documentation
+  path: docs/buf/
+  status: fetched
+  file_count: 1
+  size: 4.6MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/buf/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: buf.build
   description: buf.build documentation
   path: docs/buf.build/
@@ -2768,6 +3135,18 @@ libraries:
   - type: llms
     url: https://docs.bugbug.io/
     last_fetched: '2026-04-03T23:08:44Z'
+- name: buildah
+  description: buildah documentation
+  path: docs/buildah/
+  status: fetched
+  file_count: 1
+  size: 288.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/buildah/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: buildkit
   description: buildkit documentation
   path: docs/buildkit/
@@ -2894,6 +3273,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:44Z'
+- name: cadence
+  description: cadence documentation
+  path: docs/cadence/
+  status: fetched
+  file_count: 57
+  size: 17.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/cadence/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: caffe
   description: caffe documentation
   path: docs/caffe/
@@ -2938,6 +3329,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:44Z'
+- name: capybara
+  description: capybara documentation
+  path: docs/capybara/
+  status: fetched
+  file_count: 79
+  size: 512.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/capybara/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: carbon-design-system
   description: carbon-design-system documentation
   path: docs/carbon-design-system/
@@ -2949,6 +3352,42 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:44Z'
+- name: cargo
+  description: cargo documentation
+  path: docs/cargo/
+  status: fetched
+  file_count: 80
+  size: 42.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/cargo/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: cargo-watch
+  description: cargo-watch documentation
+  path: docs/cargo-watch/
+  status: fetched
+  file_count: 1
+  size: 28.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/cargo-watch/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: carton
+  description: carton documentation
+  path: docs/carton/
+  status: fetched
+  file_count: 39
+  size: 14.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/carton/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: carv
   description: carv documentation
   path: docs/carv/
@@ -3017,6 +3456,30 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:45Z'
+- name: cenkalti-backoff
+  description: cenkalti-backoff documentation
+  path: docs/cenkalti-backoff/
+  status: fetched
+  file_count: 1
+  size: 15.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/cenkalti-backoff/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: centrifugo
+  description: centrifugo documentation
+  path: docs/centrifugo/
+  status: fetched
+  file_count: 1
+  size: 1.1MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/centrifugo/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: cerberus
   description: cerberus documentation
   path: docs/cerberus/
@@ -3198,6 +3661,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:45Z'
+- name: chi
+  description: chi documentation
+  path: docs/chi/
+  status: fetched
+  file_count: 1
+  size: 74.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/chi/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: chocolatey
   description: chocolatey documentation
   path: docs/chocolatey/
@@ -3212,9 +3687,9 @@ libraries:
 - name: chroma
   description: Chroma - Open-source vector database for AI applications with embeddings support
   path: docs/chroma/
-  status: pending
-  file_count: 0
-  size: 0B
+  status: fetched
+  file_count: 6
+  size: 104.9KB
   last_updated: 2026-04-03 20:08
   primary_source: github
   sources:
@@ -3265,6 +3740,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:46Z'
+- name: cilium
+  description: cilium documentation
+  path: docs/cilium/
+  status: fetched
+  file_count: 1
+  size: 2.8MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/cilium/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: circleci
   description: circleci documentation
   path: docs/circleci/
@@ -3299,6 +3786,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:46Z'
+- name: clamav
+  description: clamav documentation
+  path: docs/clamav/
+  status: fetched
+  file_count: 15
+  size: 1.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/clamav/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: claude-code
   description: claude-code documentation
   path: docs/claude-code/
@@ -3564,6 +4063,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:47Z'
+- name: cocoapods
+  description: cocoapods documentation
+  path: docs/cocoapods/
+  status: fetched
+  file_count: 79
+  size: 471.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/cocoapods/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: codacy
   description: codacy documentation
   path: docs/codacy/
@@ -3621,6 +4132,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:47Z'
+- name: colored
+  description: colored documentation
+  path: docs/colored/
+  status: fetched
+  file_count: 12
+  size: 2.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/colored/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: colorist
   description: colorist documentation
   path: docs/colorist/
@@ -3882,6 +4405,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:48Z'
+- name: coredns
+  description: coredns documentation
+  path: docs/coredns/
+  status: fetched
+  file_count: 1
+  size: 355.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/coredns/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: coremotion
   description: coremotion documentation
   path: docs/coremotion/
@@ -4031,6 +4566,30 @@ libraries:
   - type: llms
     url: https://docs.crewai.com/
     last_fetched: '2026-04-03T23:08:49Z'
+- name: cross
+  description: cross documentation
+  path: docs/cross/
+  status: fetched
+  file_count: 76
+  size: 17.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/cross/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: crossterm
+  description: crossterm documentation
+  path: docs/crossterm/
+  status: fetched
+  file_count: 80
+  size: 18.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/crossterm/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: cryptography
   description: cryptography documentation
   path: docs/cryptography/
@@ -4110,6 +4669,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:49Z'
+- name: cursive
+  description: cursive documentation
+  path: docs/cursive/
+  status: fetched
+  file_count: 80
+  size: 24.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/cursive/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: cursor
   description: cursor documentation
   path: docs/cursor/
@@ -4122,6 +4693,18 @@ libraries:
   - type: llms
     url: https://docs.cursor.com/
     last_fetched: '2026-04-03T23:08:49Z'
+- name: cyberark-conjur
+  description: cyberark-conjur documentation
+  path: docs/cyberark-conjur/
+  status: fetched
+  file_count: 42
+  size: 171.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/cyberark-conjur/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: cyclonedx
   description: cyclonedx documentation
   path: docs/cyclonedx/
@@ -4189,6 +4772,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:50Z'
+- name: d2
+  description: d2 documentation
+  path: docs/d2/
+  status: fetched
+  file_count: 1
+  size: 297.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/d2/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: d3.js
   description: d3.js documentation
   path: docs/d3.js/
@@ -4585,6 +5180,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:51Z'
+- name: deduplication
+  description: deduplication documentation
+  path: docs/deduplication/
+  status: fetched
+  file_count: 1
+  size: 8.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/deduplication/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: deep-lake
   description: deep-lake documentation
   path: docs/deep-lake/
@@ -4826,6 +5433,18 @@ libraries:
   - type: llms
     url: https://docs.dify.ai/
     last_fetched: '2026-04-03T23:08:52Z'
+- name: dig
+  description: dig documentation
+  path: docs/dig/
+  status: fetched
+  file_count: 1
+  size: 62.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/dig/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: digikey-api
   description: digikey-api documentation
   path: docs/digikey-api/
@@ -5235,6 +5854,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:54Z'
+- name: druid
+  description: druid documentation
+  path: docs/druid/
+  status: fetched
+  file_count: 80
+  size: 45.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/druid/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: dry-validation
+  description: dry-validation documentation
+  path: docs/dry-validation/
+  status: fetched
+  file_count: 26
+  size: 90.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/dry-validation/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: dspy
   description: dspy documentation
   path: docs/dspy/
@@ -5282,6 +5925,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:54Z'
+- name: dune
+  description: dune documentation
+  path: docs/dune/
+  status: fetched
+  file_count: 13
+  size: 2.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/dune/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: dygraphs
   description: dygraphs documentation
   path: docs/dygraphs/
@@ -5305,6 +5960,17 @@ libraries:
   - type: llms
     url: https://docs.earthly.dev/
     last_fetched: '2026-04-03T23:08:54Z'
+- name: easymock
+  description: easymock documentation
+  path: docs/easymock/
+  status: fetched
+  file_count: 60
+  size: 255.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ebean
   description: ebean documentation
   path: docs/ebean/
@@ -5316,6 +5982,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:54Z'
+- name: echo
+  description: echo documentation
+  path: docs/echo/
+  status: fetched
+  file_count: 1
+  size: 253.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/echo/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: eclipse-ditto
   description: eclipse-ditto documentation
   path: docs/eclipse-ditto/
@@ -5454,6 +6132,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:55Z'
+- name: elvish
+  description: elvish documentation
+  path: docs/elvish/
+  status: fetched
+  file_count: 50
+  size: 118.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/elvish/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: elysia
   description: elysia documentation
   path: docs/elysia/
@@ -5465,6 +6155,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:55Z'
+- name: em-websocket
+  description: em-websocket documentation
+  path: docs/em-websocket/
+  status: fetched
+  file_count: 36
+  size: 94.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/em-websocket/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: email-on-acid
   description: email-on-acid documentation
   path: docs/email-on-acid/
@@ -5588,6 +6290,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:56Z'
+- name: env_logger
+  description: env_logger documentation
+  path: docs/env_logger/
+  status: fetched
+  file_count: 19
+  size: 6.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/env_logger/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: envoyer
   description: envoyer documentation
   path: docs/envoyer/
@@ -5800,6 +6514,18 @@ libraries:
   - type: llms
     url: https://estuary.dev/
     last_fetched: '2026-04-03T23:08:57Z'
+- name: eventsource
+  description: eventsource documentation
+  path: docs/eventsource/
+  status: fetched
+  file_count: 11
+  size: 2.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/eventsource/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: exa
   description: exa documentation
   path: docs/exa/
@@ -5845,6 +6571,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:57Z'
+- name: exmachina
+  description: exmachina documentation
+  path: docs/exmachina/
+  status: fetched
+  file_count: 9
+  size: 52.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://hexdocs.pm/exmachina/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: expo
   description: expo documentation
   path: docs/expo/
@@ -5890,6 +6628,30 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:57Z'
+- name: fabrication
+  description: fabrication documentation
+  path: docs/fabrication/
+  status: fetched
+  file_count: 34
+  size: 102.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/fabrication/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: factory_bot_rails
+  description: factory_bot_rails documentation
+  path: docs/factory_bot_rails/
+  status: fetched
+  file_count: 18
+  size: 24.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/factory_bot_rails/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: fail2ban
   description: fail2ban documentation
   path: docs/fail2ban/
@@ -5925,6 +6687,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:57Z'
+- name: faktory
+  description: faktory documentation
+  path: docs/faktory/
+  status: fetched
+  file_count: 40
+  size: 15.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/faktory/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: falcon
   description: falcon documentation
   path: docs/falcon/
@@ -6016,6 +6790,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:08:58Z'
+- name: fastwebsockets
+  description: fastwebsockets documentation
+  path: docs/fastwebsockets/
+  status: fetched
+  file_count: 18
+  size: 4.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/fastwebsockets/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: fatih-color
+  description: fatih-color documentation
+  path: docs/fatih-color/
+  status: fetched
+  file_count: 1
+  size: 30.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/fatih-color/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: fauxton
   description: fauxton documentation
   path: docs/fauxton/
@@ -6222,6 +7020,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:08:58Z'
+- name: fission
+  description: fission documentation
+  path: docs/fission/
+  status: fetched
+  file_count: 50
+  size: 98.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/fission/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: fivetran
   description: fivetran documentation
   path: docs/fivetran/
@@ -6279,6 +7089,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:08:59Z'
+- name: flamescope
+  description: flamescope documentation
+  path: docs/flamescope/
+  status: fetched
+  file_count: 12
+  size: 2.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/flamescope/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: flask
   description: flask documentation
   path: docs/flask/
@@ -6335,6 +7157,18 @@ libraries:
   - type: llms
     url: https://flatfile.com/docs/
     last_fetched: '2026-04-03T23:08:59Z'
+- name: flatpak
+  description: flatpak documentation
+  path: docs/flatpak/
+  status: fetched
+  file_count: 34
+  size: 26.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/flatpak/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: flint
   description: flint documentation
   path: docs/flint/
@@ -6549,6 +7383,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:00Z'
+- name: formtastic
+  description: formtastic documentation
+  path: docs/formtastic/
+  status: fetched
+  file_count: 75
+  size: 400.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/formtastic/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: foundry
   description: foundry documentation
   path: docs/foundry/
@@ -6595,6 +7441,30 @@ libraries:
   - type: llms
     url: https://docs.frigade.com/
     last_fetched: '2026-04-03T23:09:00Z'
+- name: fx
+  description: fx documentation
+  path: docs/fx/
+  status: fetched
+  file_count: 1
+  size: 32.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/fx/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: fzf
+  description: fzf documentation
+  path: docs/fzf/
+  status: fetched
+  file_count: 1
+  size: 118.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/fzf/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gaianet
   description: gaianet documentation
   path: docs/gaianet/
@@ -6654,6 +7524,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:00Z'
+- name: gdal
+  description: gdal documentation
+  path: docs/gdal/
+  status: fetched
+  file_count: 1
+  size: 11.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/gdal/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: geoserver
   description: geoserver documentation
   path: docs/geoserver/
@@ -6823,6 +7705,1014 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:01Z'
+- name: github.com-olekukonko-tablewriter
+  description: github.com-olekukonko-tablewriter documentation
+  path: docs/github.com-olekukonko-tablewriter/
+  status: fetched
+  file_count: 1
+  size: 257.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-olekukonko-tablewriter/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-onsi-ginkgo
+  description: github.com-onsi-ginkgo documentation
+  path: docs/github.com-onsi-ginkgo/
+  status: fetched
+  file_count: 1
+  size: 151.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-onsi-ginkgo/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-onsi-gomega
+  description: github.com-onsi-gomega documentation
+  path: docs/github.com-onsi-gomega/
+  status: fetched
+  file_count: 1
+  size: 345.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-onsi-gomega/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-open-policy-agent-frameworks
+  description: github.com-open-policy-agent-frameworks documentation
+  path: docs/github.com-open-policy-agent-frameworks/
+  status: fetched
+  file_count: 1
+  size: 333.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-open-policy-agent-frameworks/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-open-telemetry-opentelemetry-collector-contrib
+  description: github.com-open-telemetry-opentelemetry-collector-contrib documentation
+  path: docs/github.com-open-telemetry-opentelemetry-collector-contrib/
+  status: fetched
+  file_count: 1
+  size: 131.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-open-telemetry-opentelemetry-collector-contrib/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-opencontainers-image-spec
+  description: github.com-opencontainers-image-spec documentation
+  path: docs/github.com-opencontainers-image-spec/
+  status: fetched
+  file_count: 1
+  size: 24.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-opencontainers-image-spec/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-opensearch-project-opensearch-go
+  description: github.com-opensearch-project-opensearch-go documentation
+  path: docs/github.com-opensearch-project-opensearch-go/
+  status: fetched
+  file_count: 1
+  size: 760.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-opensearch-project-opensearch-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-palantir-go-githubapp
+  description: github.com-palantir-go-githubapp documentation
+  path: docs/github.com-palantir-go-githubapp/
+  status: fetched
+  file_count: 1
+  size: 52.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-palantir-go-githubapp/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pashagolub-pgxmock
+  description: github.com-pashagolub-pgxmock documentation
+  path: docs/github.com-pashagolub-pgxmock/
+  status: fetched
+  file_count: 1
+  size: 39.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pashagolub-pgxmock/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-patrickmn-go-cache
+  description: github.com-patrickmn-go-cache documentation
+  path: docs/github.com-patrickmn-go-cache/
+  status: fetched
+  file_count: 1
+  size: 3.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-patrickmn-go-cache/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pion-dtls
+  description: github.com-pion-dtls documentation
+  path: docs/github.com-pion-dtls/
+  status: fetched
+  file_count: 1
+  size: 259.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pion-dtls/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pion-interceptor
+  description: github.com-pion-interceptor documentation
+  path: docs/github.com-pion-interceptor/
+  status: fetched
+  file_count: 1
+  size: 188.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pion-interceptor/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pion-mdns
+  description: github.com-pion-mdns documentation
+  path: docs/github.com-pion-mdns/
+  status: fetched
+  file_count: 1
+  size: 11.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pion-mdns/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pion-randutil
+  description: github.com-pion-randutil documentation
+  path: docs/github.com-pion-randutil/
+  status: fetched
+  file_count: 1
+  size: 2.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pion-randutil/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pion-rtcp
+  description: github.com-pion-rtcp documentation
+  path: docs/github.com-pion-rtcp/
+  status: fetched
+  file_count: 1
+  size: 89.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pion-rtcp/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pion-rtp
+  description: github.com-pion-rtp documentation
+  path: docs/github.com-pion-rtp/
+  status: fetched
+  file_count: 1
+  size: 110.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pion-rtp/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pion-webrtc
+  description: github.com-pion-webrtc documentation
+  path: docs/github.com-pion-webrtc/
+  status: fetched
+  file_count: 1
+  size: 430.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pion-webrtc/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pkg-browser
+  description: github.com-pkg-browser documentation
+  path: docs/github.com-pkg-browser/
+  status: fetched
+  file_count: 1
+  size: 2.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pkg-browser/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pkg-errors
+  description: github.com-pkg-errors documentation
+  path: docs/github.com-pkg-errors/
+  status: fetched
+  file_count: 1
+  size: 16.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pkg-errors/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pkg-term
+  description: github.com-pkg-term documentation
+  path: docs/github.com-pkg-term/
+  status: fetched
+  file_count: 1
+  size: 16.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pkg-term/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-pkoukk-tiktoken-go
+  description: github.com-pkoukk-tiktoken-go documentation
+  path: docs/github.com-pkoukk-tiktoken-go/
+  status: fetched
+  file_count: 1
+  size: 7.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pkoukk-tiktoken-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-prometheus-client_golang
+  description: github.com-prometheus-client_golang documentation
+  path: docs/github.com-prometheus-client_golang/
+  status: fetched
+  file_count: 1
+  size: 451.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-prometheus-client_golang/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-prometheus-procfs
+  description: github.com-prometheus-procfs documentation
+  path: docs/github.com-prometheus-procfs/
+  status: fetched
+  file_count: 1
+  size: 205.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-prometheus-procfs/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-puzpuzpuz-xsync
+  description: github.com-puzpuzpuz-xsync documentation
+  path: docs/github.com-puzpuzpuz-xsync/
+  status: fetched
+  file_count: 1
+  size: 34.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-puzpuzpuz-xsync/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-qmuntal-stateless
+  description: github.com-qmuntal-stateless documentation
+  path: docs/github.com-qmuntal-stateless/
+  status: fetched
+  file_count: 1
+  size: 29.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-qmuntal-stateless/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-redis-go-redis
+  description: github.com-redis-go-redis documentation
+  path: docs/github.com-redis-go-redis/
+  status: fetched
+  file_count: 1
+  size: 871.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-redis-go-redis/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-ringsaturn-tzf
+  description: github.com-ringsaturn-tzf documentation
+  path: docs/github.com-ringsaturn-tzf/
+  status: fetched
+  file_count: 1
+  size: 54.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-ringsaturn-tzf/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-rs-cors
+  description: github.com-rs-cors documentation
+  path: docs/github.com-rs-cors/
+  status: fetched
+  file_count: 1
+  size: 11.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-rs-cors/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-sahilm-fuzzy
+  description: github.com-sahilm-fuzzy documentation
+  path: docs/github.com-sahilm-fuzzy/
+  status: fetched
+  file_count: 1
+  size: 4.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-sahilm-fuzzy/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-samber-lo
+  description: github.com-samber-lo documentation
+  path: docs/github.com-samber-lo/
+  status: fetched
+  file_count: 1
+  size: 324.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-samber-lo/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-schollz-progressbar
+  description: github.com-schollz-progressbar documentation
+  path: docs/github.com-schollz-progressbar/
+  status: fetched
+  file_count: 1
+  size: 34.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-schollz-progressbar/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-segmentio-kafka-go
+  description: github.com-segmentio-kafka-go documentation
+  path: docs/github.com-segmentio-kafka-go/
+  status: fetched
+  file_count: 1
+  size: 452.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-segmentio-kafka-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-sergi-go-diff
+  description: github.com-sergi-go-diff documentation
+  path: docs/github.com-sergi-go-diff/
+  status: fetched
+  file_count: 1
+  size: 28.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-sergi-go-diff/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-sethvargo-go-password
+  description: github.com-sethvargo-go-password documentation
+  path: docs/github.com-sethvargo-go-password/
+  status: fetched
+  file_count: 1
+  size: 7.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-sethvargo-go-password/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-shirou-gopsutil
+  description: github.com-shirou-gopsutil documentation
+  path: docs/github.com-shirou-gopsutil/
+  status: fetched
+  file_count: 1
+  size: 169.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-shirou-gopsutil/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-shopspring-decimal
+  description: github.com-shopspring-decimal documentation
+  path: docs/github.com-shopspring-decimal/
+  status: fetched
+  file_count: 1
+  size: 48.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-shopspring-decimal/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-signintech-gopdf
+  description: github.com-signintech-gopdf documentation
+  path: docs/github.com-signintech-gopdf/
+  status: fetched
+  file_count: 1
+  size: 156.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-signintech-gopdf/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-sigstore-cosign
+  description: github.com-sigstore-cosign documentation
+  path: docs/github.com-sigstore-cosign/
+  status: fetched
+  file_count: 1
+  size: 318.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-sigstore-cosign/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-sigurn-crc16
+  description: github.com-sigurn-crc16 documentation
+  path: docs/github.com-sigurn-crc16/
+  status: fetched
+  file_count: 1
+  size: 5.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-sigurn-crc16/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-sirupsen-logrus
+  description: github.com-sirupsen-logrus documentation
+  path: docs/github.com-sirupsen-logrus/
+  status: fetched
+  file_count: 1
+  size: 74.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-sirupsen-logrus/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-slack-go-slack
+  description: github.com-slack-go-slack documentation
+  path: docs/github.com-slack-go-slack/
+  status: fetched
+  file_count: 1
+  size: 830.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-slack-go-slack/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-smartystreets-goconvey
+  description: github.com-smartystreets-goconvey documentation
+  path: docs/github.com-smartystreets-goconvey/
+  status: fetched
+  file_count: 1
+  size: 53.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-smartystreets-goconvey/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-snksoft-crc
+  description: github.com-snksoft-crc documentation
+  path: docs/github.com-snksoft-crc/
+  status: fetched
+  file_count: 1
+  size: 12.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-snksoft-crc/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-sourcegraph-go-diff
+  description: github.com-sourcegraph-go-diff documentation
+  path: docs/github.com-sourcegraph-go-diff/
+  status: fetched
+  file_count: 1
+  size: 16.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-sourcegraph-go-diff/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-spaolacci-murmur3
+  description: github.com-spaolacci-murmur3 documentation
+  path: docs/github.com-spaolacci-murmur3/
+  status: fetched
+  file_count: 1
+  size: 5.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-spaolacci-murmur3/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-spf13-afero
+  description: github.com-spf13-afero documentation
+  path: docs/github.com-spf13-afero/
+  status: fetched
+  file_count: 1
+  size: 133.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-spf13-afero/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-spf13-cobra
+  description: github.com-spf13-cobra documentation
+  path: docs/github.com-spf13-cobra/
+  status: fetched
+  file_count: 1
+  size: 87.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-spf13-cobra/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-spf13-viper
+  description: github.com-spf13-viper documentation
+  path: docs/github.com-spf13-viper/
+  status: fetched
+  file_count: 1
+  size: 78.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-spf13-viper/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-stretchr-testify
+  description: github.com-stretchr-testify documentation
+  path: docs/github.com-stretchr-testify/
+  status: fetched
+  file_count: 1
+  size: 449.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-stretchr-testify/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-strongswan-govici
+  description: github.com-strongswan-govici documentation
+  path: docs/github.com-strongswan-govici/
+  status: fetched
+  file_count: 1
+  size: 23.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-strongswan-govici/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-tarm-serial
+  description: github.com-tarm-serial documentation
+  path: docs/github.com-tarm-serial/
+  status: fetched
+  file_count: 1
+  size: 5.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-tarm-serial/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-teambition-rrule-go
+  description: github.com-teambition-rrule-go documentation
+  path: docs/github.com-teambition-rrule-go/
+  status: fetched
+  file_count: 1
+  size: 26.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-teambition-rrule-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-test-go-testify
+  description: github.com-test-go-testify documentation
+  path: docs/github.com-test-go-testify/
+  status: fetched
+  file_count: 1
+  size: 390.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-test-go-testify/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-thoas-go-funk
+  description: github.com-thoas-go-funk documentation
+  path: docs/github.com-thoas-go-funk/
+  status: fetched
+  file_count: 1
+  size: 89.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-thoas-go-funk/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-tidwall-gjson
+  description: github.com-tidwall-gjson documentation
+  path: docs/github.com-tidwall-gjson/
+  status: fetched
+  file_count: 1
+  size: 15.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-tidwall-gjson/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-tj-assert
+  description: github.com-tj-assert documentation
+  path: docs/github.com-tj-assert/
+  status: fetched
+  file_count: 1
+  size: 61.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-tj-assert/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-tsenart-vegeta
+  description: github.com-tsenart-vegeta documentation
+  path: docs/github.com-tsenart-vegeta/
+  status: fetched
+  file_count: 1
+  size: 49.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-tsenart-vegeta/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-twilio-twilio-go
+  description: github.com-twilio-twilio-go documentation
+  path: docs/github.com-twilio-twilio-go/
+  status: fetched
+  file_count: 1
+  size: 7.5MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-twilio-twilio-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-u2takey-ffmpeg-go
+  description: github.com-u2takey-ffmpeg-go documentation
+  path: docs/github.com-u2takey-ffmpeg-go/
+  status: fetched
+  file_count: 1
+  size: 34.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-u2takey-ffmpeg-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-ua-parser-uap-go
+  description: github.com-ua-parser-uap-go documentation
+  path: docs/github.com-ua-parser-uap-go/
+  status: fetched
+  file_count: 1
+  size: 171.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-ua-parser-uap-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-uber-go-tally
+  description: github.com-uber-go-tally documentation
+  path: docs/github.com-uber-go-tally/
+  status: fetched
+  file_count: 1
+  size: 331.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-uber-go-tally/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-uber-h3-go
+  description: github.com-uber-h3-go documentation
+  path: docs/github.com-uber-h3-go/
+  status: fetched
+  file_count: 1
+  size: 47.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-uber-h3-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-urfave-cli
+  description: github.com-urfave-cli documentation
+  path: docs/github.com-urfave-cli/
+  status: fetched
+  file_count: 1
+  size: 141.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-urfave-cli/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-valyala-fasthttp
+  description: github.com-valyala-fasthttp documentation
+  path: docs/github.com-valyala-fasthttp/
+  status: fetched
+  file_count: 1
+  size: 394.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-valyala-fasthttp/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-go-dynamock
+  description: github.com-verkada-go-dynamock documentation
+  path: docs/github.com-verkada-go-dynamock/
+  status: fetched
+  file_count: 1
+  size: 41.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-go-dynamock/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-go-osdp
+  description: github.com-verkada-go-osdp documentation
+  path: docs/github.com-verkada-go-osdp/
+  status: fetched
+  file_count: 1
+  size: 18.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-go-osdp/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-go-prompt
+  description: github.com-verkada-go-prompt documentation
+  path: docs/github.com-verkada-go-prompt/
+  status: fetched
+  file_count: 1
+  size: 90.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-go-prompt/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-gomemcache
+  description: github.com-verkada-gomemcache documentation
+  path: docs/github.com-verkada-gomemcache/
+  status: fetched
+  file_count: 1
+  size: 14.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-gomemcache/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-lumberjack
+  description: github.com-verkada-lumberjack documentation
+  path: docs/github.com-verkada-lumberjack/
+  status: fetched
+  file_count: 1
+  size: 6.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-lumberjack/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-malgo
+  description: github.com-verkada-malgo documentation
+  path: docs/github.com-verkada-malgo/
+  status: fetched
+  file_count: 1
+  size: 29.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-malgo/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-opus
+  description: github.com-verkada-opus documentation
+  path: docs/github.com-verkada-opus/
+  status: fetched
+  file_count: 1
+  size: 21.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-opus/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-verkada-serial
+  description: github.com-verkada-serial documentation
+  path: docs/github.com-verkada-serial/
+  status: fetched
+  file_count: 1
+  size: 5.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-serial/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-vishvananda-netlink
+  description: github.com-vishvananda-netlink documentation
+  path: docs/github.com-vishvananda-netlink/
+  status: fetched
+  file_count: 1
+  size: 202.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-vishvananda-netlink/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-vmihailenco-msgpack
+  description: github.com-vmihailenco-msgpack documentation
+  path: docs/github.com-vmihailenco-msgpack/
+  status: fetched
+  file_count: 1
+  size: 51.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-vmihailenco-msgpack/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-warthog618-go-gpiocdev
+  description: github.com-warthog618-go-gpiocdev documentation
+  path: docs/github.com-warthog618-go-gpiocdev/
+  status: fetched
+  file_count: 1
+  size: 38.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-warthog618-go-gpiocdev/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-warthog618-gpiod
+  description: github.com-warthog618-gpiod documentation
+  path: docs/github.com-warthog618-gpiod/
+  status: fetched
+  file_count: 1
+  size: 38.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-warthog618-gpiod/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-x448-float16
+  description: github.com-x448-float16 documentation
+  path: docs/github.com-x448-float16/
+  status: fetched
+  file_count: 1
+  size: 8.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-x448-float16/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-xitongsys-parquet-go
+  description: github.com-xitongsys-parquet-go documentation
+  path: docs/github.com-xitongsys-parquet-go/
+  status: fetched
+  file_count: 1
+  size: 380.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-xitongsys-parquet-go/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-xitongsys-parquet-go-source
+  description: github.com-xitongsys-parquet-go-source documentation
+  path: docs/github.com-xitongsys-parquet-go-source/
+  status: fetched
+  file_count: 1
+  size: 432.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-xitongsys-parquet-go-source/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-xo-dburl
+  description: github.com-xo-dburl documentation
+  path: docs/github.com-xo-dburl/
+  status: fetched
+  file_count: 1
+  size: 30.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-xo-dburl/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-xuri-excelize
+  description: github.com-xuri-excelize documentation
+  path: docs/github.com-xuri-excelize/
+  status: fetched
+  file_count: 1
+  size: 294.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-xuri-excelize/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-xyproto-unzip
+  description: github.com-xyproto-unzip documentation
+  path: docs/github.com-xyproto-unzip/
+  status: fetched
+  file_count: 1
+  size: 325.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-xyproto-unzip/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-zclconf-go-cty
+  description: github.com-zclconf-go-cty documentation
+  path: docs/github.com-zclconf-go-cty/
+  status: fetched
+  file_count: 1
+  size: 338.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-zclconf-go-cty/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: github.com-zsefvlol-timezonemapper
+  description: github.com-zsefvlol-timezonemapper documentation
+  path: docs/github.com-zsefvlol-timezonemapper/
+  status: fetched
+  file_count: 1
+  size: 875B
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-zsefvlol-timezonemapper/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gitingest
   description: gitingest documentation
   path: docs/gitingest/
@@ -6958,6 +8848,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:02Z'
+- name: go-co-op-gocron
+  description: go-co-op-gocron documentation
+  path: docs/go-co-op-gocron/
+  status: fetched
+  file_count: 1
+  size: 102.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go-co-op-gocron/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: go-critic
   description: go-critic documentation
   path: docs/go-critic/
@@ -6972,15 +8874,39 @@ libraries:
 - name: go-docs
   description: Go Programming Language - Official documentation website
   path: docs/go-docs/
-  status: pending
-  file_count: 0
-  size: 0B
+  status: fetched
+  file_count: 11
+  size: 802.5KB
   last_updated: 2026-04-03 20:08
   primary_source: github
   sources:
   - type: github
     url: https://github.com/golang/website
     last_fetched: '2026-04-03T20:08:32Z'
+- name: go-jose
+  description: go-jose documentation
+  path: docs/go-jose/
+  status: fetched
+  file_count: 1
+  size: 114.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go-jose/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: go-kit-kit
+  description: go-kit-kit documentation
+  path: docs/go-kit-kit/
+  status: fetched
+  file_count: 1
+  size: 380.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go-kit-kit/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: go-lsp
   description: go-lsp documentation
   path: docs/go-lsp/
@@ -7003,6 +8929,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:02Z'
+- name: go-micro
+  description: go-micro documentation
+  path: docs/go-micro/
+  status: fetched
+  file_count: 1
+  size: 689.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go-micro/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: go-mod
   description: go-mod documentation
   path: docs/go-mod/
@@ -7014,6 +8952,30 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:02Z'
+- name: go-playground-validator
+  description: go-playground-validator documentation
+  path: docs/go-playground-validator/
+  status: fetched
+  file_count: 1
+  size: 104.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go-playground-validator/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: go-queue
+  description: go-queue documentation
+  path: docs/go-queue/
+  status: fetched
+  file_count: 1
+  size: 44.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go-queue/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: go-rename
   description: go-rename documentation
   path: docs/go-rename/
@@ -7043,7 +9005,19 @@ libraries:
   status: fetched
   file_count: 176
   size: 4.2MB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
+- name: go-testfixtures
+  description: go-testfixtures documentation
+  path: docs/go-testfixtures/
+  status: fetched
+  file_count: 1
+  size: 18.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go-testfixtures/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: go-toml
   description: Go library for reading and writing TOML documents, supporting TOML v1.0.0. Designed to behave similarly to
     encoding/json with optimized performance.
@@ -7071,6 +9045,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:02Z'
+- name: go.bug.st-serial
+  description: go.bug.st-serial documentation
+  path: docs/go.bug.st-serial/
+  status: fetched
+  file_count: 1
+  size: 21.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go.bug.st-serial/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: go.opentelemetry.io
   description: go.opentelemetry.io documentation
   path: docs/go.opentelemetry.io/
@@ -7082,6 +9068,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:02Z'
+- name: go.opentelemetry.io-contrib
+  description: go.opentelemetry.io-contrib documentation
+  path: docs/go.opentelemetry.io-contrib/
+  status: fetched
+  file_count: 1
+  size: 1.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go.opentelemetry.io-contrib/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: go.opentelemetry.io-otel
+  description: go.opentelemetry.io-otel documentation
+  path: docs/go.opentelemetry.io-otel/
+  status: fetched
+  file_count: 1
+  size: 8.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go.opentelemetry.io-otel/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: go.temporal.io
   description: go.temporal.io documentation
   path: docs/go.temporal.io/
@@ -7104,6 +9114,66 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:02Z'
+- name: go.uber.org-automaxprocs
+  description: go.uber.org-automaxprocs documentation
+  path: docs/go.uber.org-automaxprocs/
+  status: fetched
+  file_count: 1
+  size: 5.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go.uber.org-automaxprocs/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: go.uber.org-goleak
+  description: go.uber.org-goleak documentation
+  path: docs/go.uber.org-goleak/
+  status: fetched
+  file_count: 1
+  size: 8.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go.uber.org-goleak/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: go.uber.org-zap
+  description: go.uber.org-zap documentation
+  path: docs/go.uber.org-zap/
+  status: fetched
+  file_count: 1
+  size: 226.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/go.uber.org-zap/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: goconvey
+  description: goconvey documentation
+  path: docs/goconvey/
+  status: fetched
+  file_count: 1
+  size: 53.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/goconvey/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: gocron
+  description: gocron documentation
+  path: docs/gocron/
+  status: fetched
+  file_count: 1
+  size: 118.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gocron/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gocyclo
   description: gocyclo documentation
   path: docs/gocyclo/
@@ -7126,6 +9196,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:02Z'
+- name: godoc
+  description: godoc documentation
+  path: docs/godoc/
+  status: fetched
+  file_count: 1
+  size: 225.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/godoc/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: godot-engine
   description: godot-engine documentation
   path: docs/godot-engine/
@@ -7150,6 +9232,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:02Z'
+- name: godotenv
+  description: godotenv documentation
+  path: docs/godotenv/
+  status: fetched
+  file_count: 1
+  size: 5.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/godotenv/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: gofakeit
+  description: gofakeit documentation
+  path: docs/gofakeit/
+  status: fetched
+  file_count: 1
+  size: 773.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gofakeit/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gofastmcp
   description: gofastmcp documentation
   path: docs/gofastmcp/
@@ -7250,6 +9356,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: gomail
+  description: gomail documentation
+  path: docs/gomail/
+  status: fetched
+  file_count: 1
+  size: 22.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gomail/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gometalinter
   description: gometalinter documentation
   path: docs/gometalinter/
@@ -7261,6 +9379,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: gomock
+  description: gomock documentation
+  path: docs/gomock/
+  status: fetched
+  file_count: 1
+  size: 248.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gomock/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gomodifytags
   description: gomodifytags documentation
   path: docs/gomodifytags/
@@ -7374,6 +9504,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: google-pub-sub
+  description: google-pub-sub documentation
+  path: docs/google-pub-sub/
+  status: fetched
+  file_count: 22
+  size: 280.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/google-pub-sub/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: google-uuid
+  description: google-uuid documentation
+  path: docs/google-uuid/
+  status: fetched
+  file_count: 1
+  size: 29.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/google-uuid/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: google.golang.org
   description: google.golang.org documentation
   path: docs/google.golang.org/
@@ -7385,6 +9539,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: google.golang.org-grpc
+  description: google.golang.org-grpc documentation
+  path: docs/google.golang.org-grpc/
+  status: fetched
+  file_count: 1
+  size: 123.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/google.golang.org-grpc/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: google.golang.org-protobuf
+  description: google.golang.org-protobuf documentation
+  path: docs/google.golang.org-protobuf/
+  status: fetched
+  file_count: 1
+  size: 424.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/google.golang.org-protobuf/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: google_auth_oauthlib
   description: google_auth_oauthlib documentation
   path: docs/google_auth_oauthlib/
@@ -7418,6 +9596,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: googlemaps.github.io-maps
+  description: googlemaps.github.io-maps documentation
+  path: docs/googlemaps.github.io-maps/
+  status: fetched
+  file_count: 1
+  size: 149.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/googlemaps.github.io-maps/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gopkg.in
   description: gopkg.in documentation
   path: docs/gopkg.in/
@@ -7429,6 +9619,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: gopkg.in-yaml.v3
+  description: gopkg.in-yaml.v3 documentation
+  path: docs/gopkg.in-yaml.v3/
+  status: fetched
+  file_count: 1
+  size: 15.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gopkg.in-yaml.v3/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gopls
   description: 'gopls - Official Go language server providing IDE features (LSP) to all editors: auto-completion, diagnostics,
     go-to-definition, refactoring, and formatting'
@@ -7442,6 +9644,18 @@ libraries:
   - type: github
     url: https://github.com/golang/tools
     last_fetched: '2026-04-03T20:08:33Z'
+- name: gopter
+  description: gopter documentation
+  path: docs/gopter/
+  status: fetched
+  file_count: 1
+  size: 110.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gopter/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: goreleaser
   description: GoReleaser documentation — release automation tool for Go, Rust, Zig, TypeScript, Python. Config reference,
     builds, packaging, publishing, CI/CD integration, signing, announcements.
@@ -7465,6 +9679,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: gorilla-mux
+  description: gorilla-mux documentation
+  path: docs/gorilla-mux/
+  status: fetched
+  file_count: 1
+  size: 53.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gorilla-mux/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: gorilla-websocket
+  description: gorilla-websocket documentation
+  path: docs/gorilla-websocket/
+  status: fetched
+  file_count: 1
+  size: 42.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gorilla-websocket/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gorm
   description: gorm documentation
   path: docs/gorm/
@@ -7487,6 +9725,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:03Z'
+- name: gorm.io-gorm
+  description: gorm.io-gorm documentation
+  path: docs/gorm.io-gorm/
+  status: fetched
+  file_count: 1
+  size: 75.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gorm.io-gorm/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: gormigrate
+  description: gormigrate documentation
+  path: docs/gormigrate/
+  status: fetched
+  file_count: 1
+  size: 8.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/gormigrate/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: gosec
   description: gosec documentation
   path: docs/gosec/
@@ -7609,6 +9871,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:04Z'
+- name: grafana-pyroscope
+  description: grafana-pyroscope documentation
+  path: docs/grafana-pyroscope/
+  status: fetched
+  file_count: 1
+  size: 1.9MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/grafana-pyroscope/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: grafana-tempo
   description: grafana-tempo documentation
   path: docs/grafana-tempo/
@@ -7699,6 +9973,17 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:04Z'
+- name: graphql-java
+  description: graphql-java documentation
+  path: docs/graphql-java/
+  status: fetched
+  file_count: 60
+  size: 225.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: graphql-kotlin
   description: graphql-kotlin documentation
   path: docs/graphql-kotlin/
@@ -7844,6 +10129,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:05Z'
+- name: grpc-grpc-go
+  description: grpc-grpc-go documentation
+  path: docs/grpc-grpc-go/
+  status: fetched
+  file_count: 1
+  size: 537.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/grpc-grpc-go/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: grpc-web
   description: grpc-web documentation
   path: docs/grpc-web/
@@ -7877,6 +10174,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:05Z'
+- name: grpcmock
+  description: grpcmock documentation
+  path: docs/grpcmock/
+  status: fetched
+  file_count: 1
+  size: 168.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/grpcmock/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: grype
   description: grype documentation
   path: docs/grype/
@@ -7944,6 +10253,17 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:05Z'
+- name: h2-database
+  description: h2-database documentation
+  path: docs/h2-database/
+  status: fetched
+  file_count: 60
+  size: 66.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: h2o.ai
   description: h2o.ai documentation
   path: docs/h2o.ai/
@@ -8065,6 +10385,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:06Z'
+- name: hash-validator
+  description: hash-validator documentation
+  path: docs/hash-validator/
+  status: fetched
+  file_count: 35
+  size: 85.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/hash-validator/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: hashicorp-nomad
   description: hashicorp-nomad documentation
   path: docs/hashicorp-nomad/
@@ -8076,6 +10408,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:06Z'
+- name: hashicorp-sentinel
+  description: hashicorp-sentinel documentation
+  path: docs/hashicorp-sentinel/
+  status: fetched
+  file_count: 7
+  size: 32.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/hashicorp-sentinel/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: hatchet
   description: hatchet documentation
   path: docs/hatchet/
@@ -8272,6 +10616,17 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:07Z'
+- name: hibernate-validator
+  description: hibernate-validator documentation
+  path: docs/hibernate-validator/
+  status: fetched
+  file_count: 60
+  size: 121.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: highcharts
   description: highcharts documentation
   path: docs/highcharts/
@@ -8327,6 +10682,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:07Z'
+- name: homebrew
+  description: homebrew documentation
+  path: docs/homebrew/
+  status: fetched
+  file_count: 46
+  size: 21.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/homebrew/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: homekit
   description: homekit documentation
   path: docs/homekit/
@@ -8383,6 +10750,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:07Z'
+- name: horusec
+  description: horusec documentation
+  path: docs/horusec/
+  status: fetched
+  file_count: 50
+  size: 74.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/horusec/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: hot-chocolate
   description: hot-chocolate documentation
   path: docs/hot-chocolate/
@@ -8450,6 +10829,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:09:07Z'
+- name: httptest
+  description: httptest documentation
+  path: docs/httptest/
+  status: fetched
+  file_count: 68
+  size: 12.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/httptest/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: httpx
   description: httpx documentation
   path: docs/httpx/
@@ -8570,6 +10961,18 @@ libraries:
   - type: llms
     url: https://huggingface.co/docs/transformers/
     last_fetched: '2026-04-03T23:09:08Z'
+- name: hugo
+  description: hugo documentation
+  path: docs/hugo/
+  status: fetched
+  file_count: 1
+  size: 1.3MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/hugo/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: humanloop
   description: humanloop documentation
   path: docs/humanloop/
@@ -8683,6 +11086,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:08Z'
+- name: iced
+  description: iced documentation
+  path: docs/iced/
+  status: fetched
+  file_count: 80
+  size: 36.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/iced/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: icepanel
   description: icepanel documentation
   path: docs/icepanel/
@@ -8707,6 +11122,30 @@ libraries:
   - type: llms
     url: https://docs.ideogram.ai/
     last_fetched: '2026-04-03T23:09:08Z'
+- name: ietf-rfcs
+  description: IETF RFC standards collection - Internet Engineering Task Force Request for Comments documents
+  path: docs/ietf-rfcs/
+  status: fetched
+  file_count: 11125
+  size: 945.6MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://www.rfc-editor.org/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: image-rs
+  description: image-rs documentation
+  path: docs/image-rs/
+  status: fetched
+  file_count: 80
+  size: 29.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/image-rs/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: imagemin
   description: imagemin documentation
   path: docs/imagemin/
@@ -8835,6 +11274,30 @@ libraries:
   - type: llms
     url: https://docs.influxdata.com/
     last_fetched: '2026-04-03T23:09:09Z'
+- name: influxql
+  description: influxql documentation
+  path: docs/influxql/
+  status: fetched
+  file_count: 1
+  size: 165.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/influxql/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: infobip
+  description: infobip documentation
+  path: docs/infobip/
+  status: fetched
+  file_count: 6
+  size: 7.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://hexdocs.pm/infobip/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: infrahub
   description: infrahub documentation
   path: docs/infrahub/
@@ -8847,6 +11310,18 @@ libraries:
   - type: llms
     url: https://docs.infrahub.app/
     last_fetched: '2026-04-03T23:09:09Z'
+- name: ink
+  description: ink documentation
+  path: docs/ink/
+  status: fetched
+  file_count: 1
+  size: 17.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/ink/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: inkeep
   description: inkeep documentation
   path: docs/inkeep/
@@ -8871,6 +11346,18 @@ libraries:
   - type: llms
     url: https://www.inngest.com/
     last_fetched: '2026-04-03T23:09:09Z'
+- name: inquire
+  description: inquire documentation
+  path: docs/inquire/
+  status: fetched
+  file_count: 80
+  size: 40.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/inquire/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: inquirer
   description: inquirer documentation
   path: docs/inquirer/
@@ -8940,6 +11427,18 @@ libraries:
   - type: llms
     url: https://python.useinstructor.com/
     last_fetched: '2026-04-03T23:09:09Z'
+- name: instruments
+  description: instruments documentation
+  path: docs/instruments/
+  status: fetched
+  file_count: 21
+  size: 49.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://hexdocs.pm/instruments/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: intel-habana-synapseai
   description: intel-habana-synapseai documentation
   path: docs/intel-habana-synapseai/
@@ -9018,6 +11517,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:10Z'
+- name: iocraft
+  description: iocraft documentation
+  path: docs/iocraft/
+  status: fetched
+  file_count: 80
+  size: 34.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/iocraft/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ionet
   description: ionet documentation
   path: docs/ionet/
@@ -9166,6 +11677,29 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:10Z'
+- name: jaeger
+  description: jaeger documentation
+  path: docs/jaeger/
+  status: fetched
+  file_count: 1
+  size: 142.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/jaeger/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: jakarta-faces
+  description: jakarta-faces documentation
+  path: docs/jakarta-faces/
+  status: fetched
+  file_count: 60
+  size: 237.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: jam
   description: jam documentation
   path: docs/jam/
@@ -9178,6 +11712,39 @@ libraries:
   - type: llms
     url: https://jam.dev/docs/
     last_fetched: '2026-04-03T23:09:10Z'
+- name: java-websocket
+  description: java-websocket documentation
+  path: docs/java-websocket/
+  status: fetched
+  file_count: 60
+  size: 230.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: javafaker
+  description: javafaker documentation
+  path: docs/javafaker/
+  status: fetched
+  file_count: 60
+  size: 100.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: javamail
+  description: javamail documentation
+  path: docs/javamail/
+  status: fetched
+  file_count: 60
+  size: 301.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: javascript-typescript-langserver
   description: javascript-typescript-langserver documentation
   path: docs/javascript-typescript-langserver/
@@ -9201,6 +11768,28 @@ libraries:
   - type: llms
     url: https://jazz.tools/
     last_fetched: '2026-04-03T23:09:11Z'
+- name: jbake
+  description: jbake documentation
+  path: docs/jbake/
+  status: fetched
+  file_count: 60
+  size: 151.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: jcommander
+  description: jcommander documentation
+  path: docs/jcommander/
+  status: fetched
+  file_count: 60
+  size: 126.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: jedi
   description: jedi documentation
   path: docs/jedi/
@@ -9223,6 +11812,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:11Z'
+- name: jekyll
+  description: jekyll documentation
+  path: docs/jekyll/
+  status: fetched
+  file_count: 79
+  size: 346.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/jekyll/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: jenkins
   description: jenkins documentation
   path: docs/jenkins/
@@ -9449,6 +12050,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:12Z'
+- name: json-iterator-go
+  description: json-iterator-go documentation
+  path: docs/json-iterator-go/
+  status: fetched
+  file_count: 1
+  size: 65.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/json-iterator-go/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: json-schema-validator
   description: json-schema-validator documentation
   path: docs/json-schema-validator/
@@ -9482,6 +12095,17 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:12Z'
+- name: jsoup
+  description: jsoup documentation
+  path: docs/jsoup/
+  status: fetched
+  file_count: 60
+  size: 419.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: jsx-email
   description: jsx-email documentation
   path: docs/jsx-email/
@@ -9553,8 +12177,8 @@ libraries:
   description: k6 documentation
   path: docs/k6/
   status: fetched
-  file_count: 2000
-  size: 7.2MB
+  file_count: 2001
+  size: 7.7MB
   last_updated: 2026-04-03 23:09
   primary_source: github
   sources:
@@ -9900,6 +12524,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:14Z'
+- name: koalas
+  description: koalas documentation
+  path: docs/koalas/
+  status: fetched
+  file_count: 100
+  size: 70.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://koalas.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: kobiton
   description: kobiton documentation
   path: docs/kobiton/
@@ -9968,6 +12604,18 @@ libraries:
   - type: llms
     url: https://krakend.com/
     last_fetched: '2026-04-03T23:09:14Z'
+- name: kramdown
+  description: kramdown documentation
+  path: docs/kramdown/
+  status: fetched
+  file_count: 39
+  size: 354.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/kramdown/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: kreya
   description: kreya documentation
   path: docs/kreya/
@@ -10003,6 +12651,18 @@ libraries:
   - type: github
     url: https://github.com/aquasecurity/kube-bench
     last_fetched: '2026-04-03T20:08:33Z'
+- name: kube-ovn
+  description: kube-ovn documentation
+  path: docs/kube-ovn/
+  status: fetched
+  file_count: 1
+  size: 1.3MB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/kube-ovn/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: kubearmor
   description: kubearmor documentation
   path: docs/kubearmor/
@@ -10058,6 +12718,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:14Z'
+- name: kubesec
+  description: kubesec documentation
+  path: docs/kubesec/
+  status: fetched
+  file_count: 6
+  size: 7.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/kubesec/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: kubeval
+  description: kubeval documentation
+  path: docs/kubeval/
+  status: fetched
+  file_count: 1
+  size: 13.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/kubeval/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: kubewarden
   description: kubewarden documentation
   path: docs/kubewarden/
@@ -10102,6 +12786,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:15Z'
+- name: kurento-media-server
+  description: kurento-media-server documentation
+  path: docs/kurento-media-server/
+  status: fetched
+  file_count: 92
+  size: 123.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://kurento-media-server.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: kuzudb
   description: kuzudb documentation
   path: docs/kuzudb/
@@ -10457,6 +13153,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:16Z'
+- name: lightning-css
+  description: lightning-css documentation
+  path: docs/lightning-css/
+  status: fetched
+  file_count: 80
+  size: 34.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/lightning-css/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: lightweight-charts
   description: lightweight-charts documentation
   path: docs/lightweight-charts/
@@ -10537,6 +13245,18 @@ libraries:
   - type: llms
     url: https://lingui.dev/
     last_fetched: '2026-04-03T23:09:17Z'
+- name: linkerd
+  description: linkerd documentation
+  path: docs/linkerd/
+  status: fetched
+  file_count: 1
+  size: 370.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/linkerd/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: linkup
   description: linkup documentation
   path: docs/linkup/
@@ -10548,6 +13268,30 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:09:17Z'
+- name: lipgloss
+  description: lipgloss documentation
+  path: docs/lipgloss/
+  status: fetched
+  file_count: 80
+  size: 22.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/lipgloss/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: liquid
+  description: liquid documentation
+  path: docs/liquid/
+  status: fetched
+  file_count: 68
+  size: 15.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/liquid/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: litellm
   description: litellm documentation
   path: docs/litellm/
@@ -10673,6 +13417,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:09:17Z'
+- name: lldb
+  description: lldb documentation
+  path: docs/lldb/
+  status: fetched
+  file_count: 80
+  size: 18.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/lldb/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: llmstxt
   description: llmstxt documentation
   path: docs/llmstxt/
@@ -10869,8 +13625,8 @@ libraries:
   description: loki documentation
   path: docs/loki/
   status: fetched
-  file_count: 222
-  size: 2.7MB
+  file_count: 223
+  size: 9.2MB
   last_updated: 2026-04-03 23:09
   primary_source: github
   sources:
@@ -10899,6 +13655,18 @@ libraries:
   - type: llms
     url: https://loops.so/docs/
     last_fetched: '2026-04-03T23:09:18Z'
+- name: lopdf
+  description: lopdf documentation
+  path: docs/lopdf/
+  status: fetched
+  file_count: 57
+  size: 19.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/lopdf/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: lora
   description: lora documentation
   path: docs/lora/
@@ -11014,6 +13782,18 @@ libraries:
   - type: llms
     url: https://docs.luciq.ai/
     last_fetched: '2026-04-03T23:09:19Z'
+- name: luigi
+  description: luigi documentation
+  path: docs/luigi/
+  status: fetched
+  file_count: 100
+  size: 199.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://luigi.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: lunary
   description: lunary documentation
   path: docs/lunary/
@@ -11050,6 +13830,18 @@ libraries:
   - type: llms
     url: https://lynxjs.org/
     last_fetched: '2026-04-03T23:09:19Z'
+- name: m3db
+  description: m3db documentation
+  path: docs/m3db/
+  status: fetched
+  file_count: 1
+  size: 517.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/m3db/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: mage
   description: mage documentation
   path: docs/mage/
@@ -11151,6 +13943,18 @@ libraries:
   - type: llms
     url: https://documentation.mailgun.com/
     last_fetched: '2026-04-03T23:09:19Z'
+- name: mailru-easyjson
+  description: mailru-easyjson documentation
+  path: docs/mailru-easyjson/
+  status: fetched
+  file_count: 1
+  size: 124.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/mailru-easyjson/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: mailtrap
   description: mailtrap documentation
   path: docs/mailtrap/
@@ -11475,6 +14279,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:09:21Z'
+- name: mbedtls
+  description: mbedtls documentation
+  path: docs/mbedtls/
+  status: fetched
+  file_count: 80
+  size: 13.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/mbedtls/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: mccabe
   description: mccabe documentation
   path: docs/mccabe/
@@ -11509,6 +14325,18 @@ libraries:
   - type: llms
     url: https://modelcontextprotocol.io/
     last_fetched: '2026-04-03T23:09:21Z'
+- name: md2pdf
+  description: md2pdf documentation
+  path: docs/md2pdf/
+  status: fetched
+  file_count: 3
+  size: 354B
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/md2pdf/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: medusa
   description: medusa documentation
   path: docs/medusa/
@@ -11849,6 +14677,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:23Z'
+- name: minikube
+  description: minikube documentation
+  path: docs/minikube/
+  status: fetched
+  file_count: 1
+  size: 75.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/minikube/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: mintlify
   description: mintlify documentation
   path: docs/mintlify/
@@ -11872,6 +14712,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T20:08:33Z'
+- name: mise
+  description: mise documentation
+  path: docs/mise/
+  status: fetched
+  file_count: 1
+  size: 64.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/mise/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: misspell
   description: misspell documentation
   path: docs/misspell/
@@ -11947,7 +14799,7 @@ libraries:
   status: fetched
   file_count: 53
   size: 498.2KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:55
 - name: mlx-lm
   description: mlx-lm documentation
   path: docs/mlx-lm/
@@ -11970,6 +14822,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:24Z'
+- name: mmdetection
+  description: mmdetection documentation
+  path: docs/mmdetection/
+  status: fetched
+  file_count: 42
+  size: 74.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://mmdetection.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: mo.js
   description: mo.js documentation
   path: docs/mo.js/
@@ -12229,6 +15093,30 @@ libraries:
   - type: llms
     url: https://datacollective.mozillafoundation.org/
     last_fetched: '2026-04-03T23:09:33Z'
+- name: mozjpeg
+  description: mozjpeg documentation
+  path: docs/mozjpeg/
+  status: fetched
+  file_count: 22
+  size: 5.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/mozjpeg/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: msgpack-go
+  description: msgpack-go documentation
+  path: docs/msgpack-go/
+  status: fetched
+  file_count: 1
+  size: 325.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/msgpack-go/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: msw-(mock-service-worker)
   description: msw-(mock-service-worker) documentation
   path: docs/msw-(mock-service-worker)/
@@ -12386,6 +15274,18 @@ libraries:
   - type: llms
     url: https://docs.n8n.io/
     last_fetched: '2026-04-03T23:09:39Z'
+- name: nacl
+  description: nacl documentation
+  path: docs/nacl/
+  status: fetched
+  file_count: 40
+  size: 8.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/nacl/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: nagios
   description: nagios documentation
   path: docs/nagios/
@@ -12634,6 +15534,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:09:48Z'
+- name: nettle
+  description: nettle documentation
+  path: docs/nettle/
+  status: fetched
+  file_count: 80
+  size: 17.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/nettle/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: networkextension
   description: networkextension documentation
   path: docs/networkextension/
@@ -12828,6 +15740,17 @@ libraries:
   - type: llms
     url: https://docs.nimbleway.io/
     last_fetched: '2026-04-03T23:09:57Z'
+- name: nimbus-jose-+-jwt
+  description: nimbus-jose-+-jwt documentation
+  path: docs/nimbus-jose-+-jwt/
+  status: fetched
+  file_count: 60
+  size: 245.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: nitro
   description: nitro documentation
   path: docs/nitro/
@@ -12852,6 +15775,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:09:59Z'
+- name: nix
+  description: nix documentation
+  path: docs/nix/
+  status: fetched
+  file_count: 80
+  size: 34.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/nix/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: nix-flakes
   description: nix-flakes documentation
   path: docs/nix-flakes/
@@ -12940,6 +15875,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:04Z'
+- name: nokogiri
+  description: nokogiri documentation
+  path: docs/nokogiri/
+  status: fetched
+  file_count: 79
+  size: 695.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/nokogiri/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: nomad
   description: nomad documentation
   path: docs/nomad/
@@ -12989,8 +15936,8 @@ libraries:
   description: notion documentation
   path: docs/notion/
   status: fetched
-  file_count: 239
-  size: 6.9MB
+  file_count: 156
+  size: 4.0MB
   last_updated: 2026-04-03 20:08
   primary_source: llms
   sources:
@@ -13359,6 +16306,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:17Z'
+- name: open-policy-agent
+  description: open-policy-agent documentation
+  path: docs/open-policy-agent/
+  status: fetched
+  file_count: 1
+  size: 301.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/open-policy-agent/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: open-saas
   description: open-saas documentation
   path: docs/open-saas/
@@ -13505,6 +16464,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:22Z'
+- name: openfhe
+  description: openfhe documentation
+  path: docs/openfhe/
+  status: fetched
+  file_count: 1
+  size: 9.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/openfhe/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: openimaj
   description: openimaj documentation
   path: docs/openimaj/
@@ -13685,6 +16656,17 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:27Z'
+- name: openwakeword
+  description: openwakeword documentation
+  path: docs/openwakeword/
+  status: fetched
+  file_count: 8
+  size: 61.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: operator-framework
   description: operator-framework documentation
   path: docs/operator-framework/
@@ -13731,6 +16713,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T20:08:35Z'
+- name: optuna
+  description: optuna documentation
+  path: docs/optuna/
+  status: fetched
+  file_count: 100
+  size: 94.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://optuna.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ory-kratos
   description: ory-kratos documentation
   path: docs/ory-kratos/
@@ -13753,6 +16747,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:29Z'
+- name: oslog
+  description: oslog documentation
+  path: docs/oslog/
+  status: fetched
+  file_count: 1
+  size: 6.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/oslog/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: owasp-dependency-check
   description: OWASP Dependency-Check - Software security vulnerability scanner
   path: docs/owasp-dependency-check/
@@ -13810,6 +16816,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:10:29Z'
+- name: pacman
+  description: pacman documentation
+  path: docs/pacman/
+  status: fetched
+  file_count: 18
+  size: 3.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/pacman/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pact
   description: pact documentation
   path: docs/pact/
@@ -13888,6 +16906,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:30Z'
+- name: panjf2000-ants
+  description: panjf2000-ants documentation
+  path: docs/panjf2000-ants/
+  status: fetched
+  file_count: 1
+  size: 34.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/panjf2000-ants/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pants
   description: pants documentation
   path: docs/pants/
@@ -13966,6 +16996,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:32Z'
+- name: paru
+  description: paru documentation
+  path: docs/paru/
+  status: fetched
+  file_count: 1
+  size: 11.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/paru/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pastel
   description: pastel documentation
   path: docs/pastel/
@@ -13977,6 +17019,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:10:32Z'
+- name: patito
+  description: patito documentation
+  path: docs/patito/
+  status: fetched
+  file_count: 96
+  size: 91.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://patito.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: payload-cms
   description: payload-cms documentation
   path: docs/payload-cms/
@@ -14102,6 +17156,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:33Z'
+- name: perf
+  description: perf documentation
+  path: docs/perf/
+  status: fetched
+  file_count: 21
+  size: 5.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/perf/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: permit.io
   description: permit.io documentation
   path: docs/permit.io/
@@ -14136,6 +17202,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:10:33Z'
+- name: pgpainless
+  description: pgpainless documentation
+  path: docs/pgpainless/
+  status: fetched
+  file_count: 13
+  size: 21.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pgpainless.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pgvector
   description: pgvector documentation
   path: docs/pgvector/
@@ -14215,6 +17293,17 @@ libraries:
   - type: llms
     url: https://docs.picaos.com/
     last_fetched: '2026-04-03T23:10:34Z'
+- name: picocli
+  description: picocli documentation
+  path: docs/picocli/
+  status: fetched
+  file_count: 60
+  size: 634.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: picocss
   description: picocss documentation
   path: docs/picocss/
@@ -14545,7 +17634,7 @@ libraries:
   description: pmd documentation
   path: docs/pmd/
   status: fetched
-  file_count: 129
+  file_count: 130
   size: 2.7MB
   last_updated: 2026-04-03 23:10
   primary_source: github
@@ -14653,6 +17742,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:10:41Z'
+- name: postal
+  description: postal documentation
+  path: docs/postal/
+  status: fetched
+  file_count: 1
+  size: 8.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/postal/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: postgrest
   description: postgrest documentation
   path: docs/postgrest/
@@ -14777,6 +17878,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:42Z'
+- name: prawn
+  description: prawn documentation
+  path: docs/prawn/
+  status: fetched
+  file_count: 70
+  size: 585.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/prawn/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: preact
   description: preact documentation
   path: docs/preact/
@@ -14789,6 +17902,18 @@ libraries:
   - type: llms
     url: https://preactjs.com/
     last_fetched: '2026-04-03T23:10:42Z'
+- name: predicates
+  description: predicates documentation
+  path: docs/predicates/
+  status: fetched
+  file_count: 80
+  size: 18.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/predicates/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: prefect
   description: prefect documentation
   path: docs/prefect/
@@ -14801,6 +17926,18 @@ libraries:
   - type: llms
     url: https://docs.prefect.io/
     last_fetched: '2026-04-03T23:10:42Z'
+- name: presto
+  description: presto documentation
+  path: docs/presto/
+  status: fetched
+  file_count: 1
+  size: 7.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/presto/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: prettier
   description: prettier documentation
   path: docs/prettier/
@@ -14891,6 +18028,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:42Z'
+- name: prompt-toolkit
+  description: prompt-toolkit documentation
+  path: docs/prompt-toolkit/
+  status: fetched
+  file_count: 22
+  size: 39.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://prompt-toolkit.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: promptfoo
   description: promptfoo documentation
   path: docs/promptfoo/
@@ -14915,6 +18064,18 @@ libraries:
   - type: llms
     url: https://docs.promptlayer.com/
     last_fetched: '2026-04-03T23:10:42Z'
+- name: promptui
+  description: promptui documentation
+  path: docs/promptui/
+  status: fetched
+  file_count: 1
+  size: 42.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/promptui/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: promql-langserver
   description: promql-langserver documentation
   path: docs/promql-langserver/
@@ -14926,6 +18087,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:42Z'
+- name: proptest
+  description: proptest documentation
+  path: docs/proptest/
+  status: fetched
+  file_count: 80
+  size: 36.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/proptest/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: prospector
   description: prospector documentation
   path: docs/prospector/
@@ -14948,6 +18121,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:42Z'
+- name: protolint
+  description: protolint documentation
+  path: docs/protolint/
+  status: fetched
+  file_count: 1
+  size: 234.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/protolint/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: psalm
   description: psalm documentation
   path: docs/psalm/
@@ -14970,6 +18155,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:42Z'
+- name: pterm
+  description: pterm documentation
+  path: docs/pterm/
+  status: fetched
+  file_count: 1
+  size: 276.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/pterm/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pulumi
   description: pulumi documentation
   path: docs/pulumi/
@@ -15016,6 +18213,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:43Z'
+- name: pyautogui
+  description: pyautogui documentation
+  path: docs/pyautogui/
+  status: fetched
+  file_count: 9
+  size: 8.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pyautogui.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pycaret
   description: pycaret documentation
   path: docs/pycaret/
@@ -15074,6 +18283,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:43Z'
+- name: pyinquirer
+  description: pyinquirer documentation
+  path: docs/pyinquirer/
+  status: fetched
+  file_count: 9
+  size: 12.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pyinquirer.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pyisemail
   description: pyisemail documentation
   path: docs/pyisemail/
@@ -15129,6 +18350,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:44Z'
+- name: pymupdf
+  description: pymupdf documentation
+  path: docs/pymupdf/
+  status: fetched
+  file_count: 31
+  size: 64.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pymupdf.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pymysql
   description: pymysql documentation
   path: docs/pymysql/
@@ -15197,6 +18430,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:44Z'
+- name: pytest-cov
+  description: pytest-cov documentation
+  path: docs/pytest-cov/
+  status: fetched
+  file_count: 15
+  size: 12.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pytest-cov.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: pytest-playwright
   description: pytest-playwright documentation
   path: docs/pytest-playwright/
@@ -15331,6 +18576,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:46Z'
+- name: qcheck
+  description: qcheck documentation
+  path: docs/qcheck/
+  status: fetched
+  file_count: 10
+  size: 2.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/qcheck/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: qdrant
   description: qdrant documentation
   path: docs/qdrant/
@@ -15366,6 +18623,18 @@ libraries:
   - type: llms
     url: https://docs.qodo.ai/
     last_fetched: '2026-04-03T23:10:46Z'
+- name: qri-io-jsonschema
+  description: qri-io-jsonschema documentation
+  path: docs/qri-io-jsonschema/
+  status: fetched
+  file_count: 1
+  size: 154.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/qri-io-jsonschema/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: qt
   description: qt documentation
   path: docs/qt/
@@ -15443,6 +18712,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:47Z'
+- name: que
+  description: que documentation
+  path: docs/que/
+  status: fetched
+  file_count: 12
+  size: 47.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://hexdocs.pm/que/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: querydsl
   description: querydsl documentation
   path: docs/querydsl/
@@ -15643,6 +18924,42 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:48Z'
+- name: rantly
+  description: rantly documentation
+  path: docs/rantly/
+  status: fetched
+  file_count: 18
+  size: 56.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/rantly/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: rapid
+  description: rapid documentation
+  path: docs/rapid/
+  status: fetched
+  file_count: 58
+  size: 13.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/rapid/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: rapier
+  description: rapier documentation
+  path: docs/rapier/
+  status: fetched
+  file_count: 80
+  size: 62.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/rapier/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: raspberrypi
   description: raspberrypi documentation
   path: docs/raspberrypi/
@@ -15654,6 +18971,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:48Z'
+- name: ratchet
+  description: ratchet documentation
+  path: docs/ratchet/
+  status: fetched
+  file_count: 1
+  size: 6.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/ratchet/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ray
   description: ray documentation
   path: docs/ray/
@@ -16027,6 +19356,18 @@ libraries:
   - type: llms
     url: https://redoc.ly/
     last_fetched: '2026-04-03T23:10:50Z'
+- name: redshift
+  description: redshift documentation
+  path: docs/redshift/
+  status: fetched
+  file_count: 7
+  size: 1.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/redshift/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: redux
   description: redux documentation
   path: docs/redux/
@@ -16232,6 +19573,18 @@ libraries:
   - type: llms
     url: https://resend.com/docs/
     last_fetched: '2026-04-03T23:10:51Z'
+- name: resque
+  description: resque documentation
+  path: docs/resque/
+  status: fetched
+  file_count: 39
+  size: 262.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/resque/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: retejs
   description: retejs documentation
   path: docs/retejs/
@@ -16337,6 +19690,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:52Z'
+- name: rnp
+  description: rnp documentation
+  path: docs/rnp/
+  status: fetched
+  file_count: 50
+  size: 14.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/rnp/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: robfig-cron
+  description: robfig-cron documentation
+  path: docs/robfig-cron/
+  status: fetched
+  file_count: 1
+  size: 26.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/robfig-cron/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: roboflow
   description: roboflow documentation
   path: docs/roboflow/
@@ -16416,6 +19793,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:53Z'
+- name: rod
+  description: rod documentation
+  path: docs/rod/
+  status: fetched
+  file_count: 16
+  size: 4.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/rod/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: rollbar
   description: rollbar documentation
   path: docs/rollbar/
@@ -16449,6 +19838,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:53Z'
+- name: rome
+  description: rome documentation
+  path: docs/rome/
+  status: fetched
+  file_count: 80
+  size: 22.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/rome/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: rootly
   description: rootly documentation
   path: docs/rootly/
@@ -16472,6 +19873,42 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:53Z'
+- name: rpcx
+  description: rpcx documentation
+  path: docs/rpcx/
+  status: fetched
+  file_count: 25
+  size: 99.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/rpcx/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: rpgp
+  description: rpgp documentation
+  path: docs/rpgp/
+  status: fetched
+  file_count: 80
+  size: 27.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/rpgp/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: rpm
+  description: rpm documentation
+  path: docs/rpm/
+  status: fetched
+  file_count: 55
+  size: 13.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/rpm/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: rpyc
   description: rpyc documentation
   path: docs/rpyc/
@@ -16534,13 +19971,37 @@ libraries:
   description: rtorrent documentation
   path: docs/rtorrent/
   status: fetched
-  file_count: 7
-  size: 10.5KB
+  file_count: 4
+  size: 6.4KB
   last_updated: 2026-04-03 20:08
   primary_source: github
   sources:
   - type: github
     last_fetched: '2026-04-03T20:08:35Z'
+- name: rubocop
+  description: rubocop documentation
+  path: docs/rubocop/
+  status: fetched
+  file_count: 79
+  size: 488.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/rubocop/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: ruby-prof
+  description: ruby-prof documentation
+  path: docs/ruby-prof/
+  status: fetched
+  file_count: 28
+  size: 179.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/ruby-prof/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: ruff
   description: ruff documentation
   path: docs/ruff/
@@ -16845,6 +20306,30 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:10:55Z'
+- name: schemars
+  description: schemars documentation
+  path: docs/schemars/
+  status: fetched
+  file_count: 26
+  size: 9.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/schemars/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: schematics
+  description: schematics documentation
+  path: docs/schematics/
+  status: fetched
+  file_count: 10
+  size: 7.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://schematics.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: scikit-image
   description: scikit-image documentation
   path: docs/scikit-image/
@@ -16912,6 +20397,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:56Z'
+- name: scrapy
+  description: scrapy documentation
+  path: docs/scrapy/
+  status: fetched
+  file_count: 50
+  size: 87.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://scrapy.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: screenshotone
   description: screenshotone documentation
   path: docs/screenshotone/
@@ -16959,6 +20456,18 @@ libraries:
     last_fetched: '2026-04-03T23:10:56Z'
   - type: web
     last_fetched: '2026-04-03T23:10:56Z'
+- name: sealed-secrets
+  description: sealed-secrets documentation
+  path: docs/sealed-secrets/
+  status: fetched
+  file_count: 1
+  size: 87.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/sealed-secrets/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: seaorm
   description: seaorm documentation
   path: docs/seaorm/
@@ -17017,6 +20526,18 @@ libraries:
   - type: llms
     url: https://seed-design.io/breeze/
     last_fetched: '2026-04-03T23:10:56Z'
+- name: segmentio-kafka-go
+  description: segmentio-kafka-go documentation
+  path: docs/segmentio-kafka-go/
+  status: fetched
+  file_count: 1
+  size: 452.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/segmentio-kafka-go/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: selectdb
   description: selectdb documentation
   path: docs/selectdb/
@@ -17198,6 +20719,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:58Z'
+- name: sgqlc
+  description: sgqlc documentation
+  path: docs/sgqlc/
+  status: fetched
+  file_count: 13
+  size: 13.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://sgqlc.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: shadcn-ui
   description: shadcn-ui documentation
   path: docs/shadcn-ui/
@@ -17232,6 +20765,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:58Z'
+- name: shards
+  description: shards documentation
+  path: docs/shards/
+  status: fetched
+  file_count: 1
+  size: 14.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/shards/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: sharedb
   description: sharedb documentation
   path: docs/sharedb/
@@ -17345,6 +20890,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:59Z'
+- name: simple-form
+  description: simple-form documentation
+  path: docs/simple-form/
+  status: fetched
+  file_count: 63
+  size: 169.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/simple-form/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: simplebus
   description: simplebus documentation
   path: docs/simplebus/
@@ -17390,6 +20947,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:10:59Z'
+- name: singularity
+  description: singularity documentation
+  path: docs/singularity/
+  status: fetched
+  file_count: 1
+  size: 10.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/singularity/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: sinon
   description: sinon documentation
   path: docs/sinon/
@@ -17796,6 +21365,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:02Z'
+- name: spdx
+  description: spdx documentation
+  path: docs/spdx/
+  status: fetched
+  file_count: 46
+  size: 15.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/spdx/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: speakeasy
   description: speakeasy documentation
   path: docs/speakeasy/
@@ -17863,6 +21444,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:02Z'
+- name: spf13-afero
+  description: spf13-afero documentation
+  path: docs/spf13-afero/
+  status: fetched
+  file_count: 1
+  size: 133.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/spf13-afero/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: spiffe
   description: spiffe documentation
   path: docs/spiffe/
@@ -17918,6 +21511,17 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:03Z'
+- name: spring-boot-test
+  description: spring-boot-test documentation
+  path: docs/spring-boot-test/
+  status: fetched
+  file_count: 60
+  size: 255.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: spring-cloud-gateway
   description: spring-cloud-gateway documentation
   path: docs/spring-cloud-gateway/
@@ -17940,6 +21544,17 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:03Z'
+- name: spring-websocket
+  description: spring-websocket documentation
+  path: docs/spring-websocket/
+  status: fetched
+  file_count: 60
+  size: 195.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: spritekit
   description: spritekit documentation
   path: docs/spritekit/
@@ -18029,6 +21644,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:03Z'
+- name: stackprof
+  description: stackprof documentation
+  path: docs/stackprof/
+  status: fetched
+  file_count: 4
+  size: 41.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/stackprof/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: stackstate
   description: stackstate documentation
   path: docs/stackstate/
@@ -18086,6 +21713,30 @@ libraries:
   - type: llms
     url: https://docs.statamic.com/
     last_fetched: '2026-04-03T23:11:04Z'
+- name: stateflow
+  description: stateflow documentation
+  path: docs/stateflow/
+  status: fetched
+  file_count: 3
+  size: 859B
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/stateflow/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: statiq
+  description: statiq documentation
+  path: docs/statiq/
+  status: fetched
+  file_count: 62
+  size: 17.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/statiq/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: statsig
   description: statsig documentation
   path: docs/statsig/
@@ -18197,6 +21848,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:05Z'
+- name: stomp
+  description: stomp documentation
+  path: docs/stomp/
+  status: fetched
+  file_count: 1
+  size: 10.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/stomp/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: storybook
   description: storybook documentation
   path: docs/storybook/
@@ -18427,6 +22090,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:07Z'
+- name: supernova
+  description: supernova documentation
+  path: docs/supernova/
+  status: fetched
+  file_count: 78
+  size: 18.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/supernova/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: superstruct
   description: superstruct documentation
   path: docs/superstruct/
@@ -18683,6 +22358,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:08Z'
+- name: t-rec
+  description: t-rec documentation
+  path: docs/t-rec/
+  status: fetched
+  file_count: 1
+  size: 17.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/t-rec/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: tabnine
   description: tabnine documentation
   path: docs/tabnine/
@@ -18765,6 +22452,30 @@ libraries:
     last_fetched: '2026-04-03T23:11:09Z'
   - type: web
     last_fetched: '2026-04-03T23:11:09Z'
+- name: taos
+  description: taos documentation
+  path: docs/taos/
+  status: fetched
+  file_count: 80
+  size: 31.8KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/taos/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: tap
+  description: tap documentation
+  path: docs/tap/
+  status: fetched
+  file_count: 23
+  size: 12.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/tap/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: tart
   description: tart documentation
   path: docs/tart/
@@ -18857,6 +22568,18 @@ libraries:
   - type: llms
     url: https://docs.tavus.io/
     last_fetched: '2026-04-03T23:11:10Z'
+- name: tcell
+  description: tcell documentation
+  path: docs/tcell/
+  status: fetched
+  file_count: 1
+  size: 205.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/tcell/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: tcpdump
   description: tcpdump documentation
   path: docs/tcpdump/
@@ -18947,6 +22670,18 @@ libraries:
   - type: llms
     url: https://docs.temporal.io/
     last_fetched: '2026-04-03T23:11:10Z'
+- name: tenable
+  description: tenable documentation
+  path: docs/tenable/
+  status: fetched
+  file_count: 26
+  size: 23.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/tenable/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: tenacity
   description: tenacity documentation
   path: docs/tenacity/
@@ -19130,7 +22865,7 @@ libraries:
   status: fetched
   file_count: 7
   size: 81.8KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:56
 - name: testim
   description: testim documentation
   path: docs/testim/
@@ -19211,6 +22946,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:12Z'
+- name: tflint
+  description: tflint documentation
+  path: docs/tflint/
+  status: fetched
+  file_count: 1
+  size: 298.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/tflint/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: tfsec
   description: tfsec documentation
   path: docs/tfsec/
@@ -19380,6 +23127,18 @@ libraries:
   - type: llms
     url: https://www.tinybird.co/docs/
     last_fetched: '2026-04-03T23:11:13Z'
+- name: tinygo
+  description: tinygo documentation
+  path: docs/tinygo/
+  status: fetched
+  file_count: 1
+  size: 154.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/tinygo/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: tinymaix
   description: tinymaix documentation
   path: docs/tinymaix/
@@ -19525,6 +23284,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:13Z'
+- name: traceview
+  description: traceview documentation
+  path: docs/traceview/
+  status: fetched
+  file_count: 1
+  size: 19.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/traceview/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: trackjs
   description: trackjs documentation
   path: docs/trackjs/
@@ -19750,6 +23521,18 @@ libraries:
   - type: llms
     url: https://docs.turso.tech/
     last_fetched: '2026-04-03T23:11:15Z'
+- name: tview
+  description: tview documentation
+  path: docs/tview/
+  status: fetched
+  file_count: 1
+  size: 341.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/tview/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: tvm-microtvm
   description: tvm-microtvm documentation
   path: docs/tvm-microtvm/
@@ -19805,6 +23588,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:11:16Z'
+- name: typebox
+  description: typebox documentation
+  path: docs/typebox/
+  status: fetched
+  file_count: 67
+  size: 14.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/typebox/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: typedoc
   description: typedoc documentation
   path: docs/typedoc/
@@ -19874,6 +23669,17 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:16Z'
+- name: tyrus
+  description: tyrus documentation
+  path: docs/tyrus/
+  status: fetched
+  file_count: 60
+  size: 171.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: uipath
   description: uipath documentation
   path: docs/uipath/
@@ -19919,6 +23725,18 @@ libraries:
   - type: llms
     url: https://docs.ultravox.ai/
     last_fetched: '2026-04-03T23:11:16Z'
+- name: ulule-limiter
+  description: ulule-limiter documentation
+  path: docs/ulule-limiter/
+  status: fetched
+  file_count: 1
+  size: 46.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/ulule-limiter/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: umdf
   description: umdf documentation
   path: docs/umdf/
@@ -20180,6 +23998,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:18Z'
+- name: valcro
+  description: valcro documentation
+  path: docs/valcro/
+  status: fetched
+  file_count: 6
+  size: 15.2KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/valcro/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: vale
   description: vale documentation
   path: docs/vale/
@@ -20204,6 +24034,30 @@ libraries:
   - type: llms
     url: https://www.valibot.dev/
     last_fetched: '2026-04-03T20:08:38Z'
+- name: validator
+  description: validator documentation
+  path: docs/validator/
+  status: fetched
+  file_count: 17
+  size: 5.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/validator/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: valitron
+  description: valitron documentation
+  path: docs/valitron/
+  status: fetched
+  file_count: 62
+  size: 14.1KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/valitron/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: valkey
   description: valkey documentation
   path: docs/valkey/
@@ -20272,6 +24126,29 @@ libraries:
   - type: llms
     url: https://docs.vast.ai/
     last_fetched: '2026-04-03T23:11:18Z'
+- name: vault-operator
+  description: vault-operator documentation
+  path: docs/vault-operator/
+  status: fetched
+  file_count: 1
+  size: 118.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/vault-operator/
+    last_fetched: '2026-04-08T00:00:00Z'
+- name: vavr-validation
+  description: vavr-validation documentation
+  path: docs/vavr-validation/
+  status: fetched
+  file_count: 60
+  size: 493.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: vectara
   description: vectara documentation
   path: docs/vectara/
@@ -20316,6 +24193,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:19Z'
+- name: vegeta
+  description: vegeta documentation
+  path: docs/vegeta/
+  status: fetched
+  file_count: 1
+  size: 48.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/vegeta/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: vellum-ai
   description: vellum-ai documentation
   path: docs/vellum-ai/
@@ -20420,6 +24309,18 @@ libraries:
   - type: llms
     url: https://docs.verda.com/
     last_fetched: '2026-04-03T23:11:19Z'
+- name: verify
+  description: verify documentation
+  path: docs/verify/
+  status: fetched
+  file_count: 27
+  size: 8.7KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/verify/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: verify-dotnet
   description: verify-dotnet documentation
   path: docs/verify-dotnet/
@@ -20466,6 +24367,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:11:19Z'
+- name: victorops
+  description: victorops documentation
+  path: docs/victorops/
+  status: fetched
+  file_count: 48
+  size: 21.4KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/victorops/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: viem
   description: viem documentation
   path: docs/viem/
@@ -20506,7 +24419,7 @@ libraries:
   status: fetched
   file_count: 6
   size: 31.6KB
-  last_updated: 2026-04-09 00:05
+  last_updated: 2026-04-09 04:56
 - name: virtualenv
   description: virtualenv documentation
   path: docs/virtualenv/
@@ -20956,6 +24869,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:11:22Z'
+- name: wdm
+  description: wdm documentation
+  path: docs/wdm/
+  status: fetched
+  file_count: 1
+  size: 4.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/wdm/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: weaviate
   description: weaviate documentation
   path: docs/weaviate/
@@ -21000,6 +24925,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:22Z'
+- name: web3.py
+  description: web3.py documentation
+  path: docs/web3.py/
+  status: fetched
+  file_count: 27
+  size: 50.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://web3.py.readthedocs.io/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: webdriverio
   description: webdriverio documentation
   path: docs/webdriverio/
@@ -21056,6 +24993,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:23Z'
+- name: webrtc
+  description: webrtc documentation
+  path: docs/webrtc/
+  status: fetched
+  file_count: 80
+  size: 24.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/webrtc/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: websocket-client
   description: websocket-client documentation
   path: docs/websocket-client/
@@ -21067,6 +25016,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:23Z'
+- name: websocket-rails
+  description: websocket-rails documentation
+  path: docs/websocket-rails/
+  status: fetched
+  file_count: 47
+  size: 196.3KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://rubydoc.info/gems/websocket-rails/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: websocketsharp
   description: websocketsharp documentation
   path: docs/websocketsharp/
@@ -21256,6 +25217,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:24Z'
+- name: wire
+  description: wire documentation
+  path: docs/wire/
+  status: fetched
+  file_count: 1
+  size: 69.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/wire/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: wireit
   description: wireit documentation
   path: docs/wireit/
@@ -21302,6 +25275,18 @@ libraries:
   sources:
   - type: llms
     last_fetched: '2026-04-03T23:11:24Z'
+- name: wolfssl
+  description: wolfssl documentation
+  path: docs/wolfssl/
+  status: fetched
+  file_count: 24
+  size: 6.9KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/wolfssl/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: wordpress-developer
   description: wordpress-developer documentation
   path: docs/wordpress-developer/
@@ -21381,6 +25366,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:25Z'
+- name: wundergraph
+  description: wundergraph documentation
+  path: docs/wundergraph/
+  status: fetched
+  file_count: 80
+  size: 30.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/wundergraph/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: x-cmd
   description: x-cmd documentation
   path: docs/x-cmd/
@@ -21428,6 +25425,18 @@ libraries:
   sources:
   - type: web
     last_fetched: '2026-04-03T23:11:25Z'
+- name: xmpp
+  description: xmpp documentation
+  path: docs/xmpp/
+  status: fetched
+  file_count: 55
+  size: 8.6KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/xmpp/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: xonsh
   description: xonsh documentation
   path: docs/xonsh/
@@ -21439,6 +25448,18 @@ libraries:
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:25Z'
+- name: xsalsa20-poly1305
+  description: xsalsa20-poly1305 documentation
+  path: docs/xsalsa20-poly1305/
+  status: fetched
+  file_count: 80
+  size: 33.5KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/xsalsa20-poly1305/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: xstate
   description: xstate documentation
   path: docs/xstate/
@@ -21714,13 +25735,25 @@ libraries:
   description: zerolog documentation
   path: docs/zerolog/
   status: fetched
-  file_count: 9
-  size: 13.0KB
+  file_count: 10
+  size: 257.7KB
   last_updated: 2026-04-03 23:11
   primary_source: github
   sources:
   - type: github
     last_fetched: '2026-04-03T23:11:27Z'
+- name: zeromq
+  description: zeromq documentation
+  path: docs/zeromq/
+  status: fetched
+  file_count: 36
+  size: 9.0KB
+  last_updated: 2026-04-08 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://docs.rs/zeromq/
+    last_fetched: '2026-04-08T00:00:00Z'
 - name: zerorpc
   description: zerorpc documentation
   path: docs/zerorpc/
