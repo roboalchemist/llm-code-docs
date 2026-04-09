@@ -1,4 +1,4 @@
-name: @iconify
+name: '@iconify'
 primary_source: web
 sources:
   - type: web

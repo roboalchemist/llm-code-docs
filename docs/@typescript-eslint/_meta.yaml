@@ -1,4 +1,4 @@
-name: @typescript-eslint
+name: '@typescript-eslint'
 primary_source: github
 sources:
   - type: github

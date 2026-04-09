@@ -1,4 +1,4 @@
-name: @visx
+name: '@visx'
 primary_source: web
 sources:
   - type: web

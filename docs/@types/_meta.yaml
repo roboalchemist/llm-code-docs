@@ -1,4 +1,4 @@
-name: @types
+name: '@types'
 primary_source: web
 sources:
   - type: web
