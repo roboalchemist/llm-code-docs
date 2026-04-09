@@ -1,0 +1,9 @@
+name: dub
+primary_source: llms
+sources:
+  - type: llms
+    url: https://dub.co/docs/
+    last_fetched: "2026-04-03T23:08:54Z"
+description: >
+  dub documentation
+quality_score: 0

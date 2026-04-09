@@ -1,0 +1,9 @@
+name: lipgloss
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/lipgloss/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  lipgloss documentation
+quality_score: 0

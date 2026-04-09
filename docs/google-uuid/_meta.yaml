@@ -1,0 +1,9 @@
+name: google-uuid
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/google-uuid/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  google-uuid documentation
+quality_score: 0

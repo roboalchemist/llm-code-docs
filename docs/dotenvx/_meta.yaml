@@ -1,0 +1,9 @@
+name: dotenvx
+primary_source: llms
+sources:
+  - type: llms
+    url: https://dotenvx.com/
+    last_fetched: "2026-04-03T23:08:54Z"
+description: >
+  dotenvx documentation
+quality_score: 0

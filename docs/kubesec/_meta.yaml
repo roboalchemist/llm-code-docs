@@ -1,0 +1,9 @@
+name: kubesec
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/kubesec/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  kubesec documentation
+quality_score: 0

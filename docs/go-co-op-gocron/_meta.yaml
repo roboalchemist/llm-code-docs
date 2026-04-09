@@ -1,0 +1,9 @@
+name: go-co-op-gocron
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/go-co-op-gocron/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  go-co-op-gocron documentation
+quality_score: 0

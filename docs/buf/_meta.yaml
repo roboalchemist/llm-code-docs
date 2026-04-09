@@ -1,0 +1,9 @@
+name: buf
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/buf/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  buf documentation
+quality_score: 0

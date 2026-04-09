@@ -1,0 +1,9 @@
+name: cargo-watch
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/cargo-watch/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  cargo-watch documentation
+quality_score: 0

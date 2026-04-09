@@ -1,0 +1,16 @@
+ru:
+    - from: /index-yfm
+      to: /syntax/
+    - from: /installation
+      to: quickstart
+    - from: /static-template
+      to: quickstart
+    - from: /github-pages
+      to: quickstart
+    - from: /how-it-work
+      to: quickstart
+common:
+    - from: /project/includes
+      to: /syntax/includes
+    - from: /tools/transform/highlight
+      to: /syntax/code

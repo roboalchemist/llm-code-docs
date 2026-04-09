@@ -1,0 +1,9 @@
+name: bigcache
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/bigcache/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  bigcache documentation
+quality_score: 0

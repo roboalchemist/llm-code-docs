@@ -1,0 +1,9 @@
+name: go.opentelemetry.io-otel
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/go.opentelemetry.io-otel/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  go.opentelemetry.io-otel documentation
+quality_score: 0

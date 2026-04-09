@@ -1,0 +1,9 @@
+name: github.com-redis-go-redis
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-redis-go-redis/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-redis-go-redis documentation
+quality_score: 0

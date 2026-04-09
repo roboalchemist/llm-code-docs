@@ -1,0 +1,9 @@
+name: factory_bot_rails
+primary_source: web
+sources:
+  - type: web
+    url: https://rubydoc.info/gems/factory_bot_rails/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  factory_bot_rails documentation
+quality_score: 0

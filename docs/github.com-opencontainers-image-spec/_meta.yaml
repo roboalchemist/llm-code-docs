@@ -1,0 +1,9 @@
+name: github.com-opencontainers-image-spec
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-opencontainers-image-spec/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-opencontainers-image-spec documentation
+quality_score: 0

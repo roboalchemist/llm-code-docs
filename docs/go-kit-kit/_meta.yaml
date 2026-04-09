@@ -1,0 +1,9 @@
+name: go-kit-kit
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/go-kit-kit/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  go-kit-kit documentation
+quality_score: 0

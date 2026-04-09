@@ -1,0 +1,9 @@
+name: argocd-operator
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/argocd-operator/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  argocd-operator documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: github.com-verkada-go-prompt
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-verkada-go-prompt/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-verkada-go-prompt documentation
+quality_score: 0

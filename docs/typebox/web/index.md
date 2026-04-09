@@ -1,0 +1,8 @@
+# Crate typebox 
+Source 
+## Re-exports§
+`pub use builder::SchemaBuilder;``pub use error::CastError;``pub use error::CleanError;``pub use error::CreateError;``pub use error::Error;``pub use error::PatchError;``pub use format::FormatRegistry;``pub use format::FormatValidator;``pub use layout::Layout;``pub use registry::SchemaRegistry;``pub use schema::LiteralValue;``pub use schema::Schema;``pub use schema::SchemaKind;``pub use schema::StringFormat;``pub use validate::validate;``pub use validate::validate_with_format;``pub use validate::validate_with_registry;``pub use value::Value;``pub use value::cast;``pub use value::cast;``pub use value::check;``pub use value::check;``pub use value::check_with_errors;``pub use value::clean;``pub use value::clean;``pub use value::clone;``pub use value::clone;``pub use value::create;``pub use value::create;``pub use value::delta;``pub use value::delta;``pub use value::diff_summary;``pub use value::equal;``pub use value::equal;``pub use value::patch;``pub use value::patch;``pub use value::Delta;``pub use value::Edit;`
+## Modules§
+builderSchema builder API for constructing JSON Schema types.errorError types for schema validation and value operations.formatFormat registry for custom string format validation.layoutBinary layout calculation for schemas.registrySchema registry for `$ref` resolution and named schema lookup.schemaSchema types for JSON Schema construction.validateSchema validation for values.valueValue type and operations.
+## Constants§
+VERSIONCrate version string.

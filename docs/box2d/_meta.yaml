@@ -1,0 +1,9 @@
+name: box2d
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/box2d/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  box2d documentation
+quality_score: 0

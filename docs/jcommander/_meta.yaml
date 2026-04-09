@@ -1,0 +1,8 @@
+name: jcommander
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  jcommander documentation
+quality_score: 0

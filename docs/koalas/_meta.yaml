@@ -1,0 +1,9 @@
+name: koalas
+primary_source: web
+sources:
+  - type: web
+    url: https://koalas.readthedocs.io/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  koalas documentation
+quality_score: 0

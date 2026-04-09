@@ -1,0 +1,9 @@
+name: valcro
+primary_source: web
+sources:
+  - type: web
+    url: https://rubydoc.info/gems/valcro/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  valcro documentation
+quality_score: 0

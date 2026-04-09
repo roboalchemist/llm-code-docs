@@ -1,0 +1,9 @@
+name: capybara
+primary_source: web
+sources:
+  - type: web
+    url: https://rubydoc.info/gems/capybara/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  capybara documentation
+quality_score: 0

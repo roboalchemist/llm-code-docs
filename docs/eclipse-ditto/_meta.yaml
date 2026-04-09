@@ -1,0 +1,9 @@
+name: eclipse-ditto
+primary_source: llms
+sources:
+  - type: llms
+    url: https://eclipse.dev/ditto/
+    last_fetched: "2026-04-03T23:08:54Z"
+description: >
+  eclipse-ditto documentation
+quality_score: 0

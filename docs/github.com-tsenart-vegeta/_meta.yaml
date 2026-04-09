@@ -1,0 +1,9 @@
+name: github.com-tsenart-vegeta
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-tsenart-vegeta/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-tsenart-vegeta documentation
+quality_score: 0

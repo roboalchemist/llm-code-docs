@@ -1,0 +1,9 @@
+name: gorm.io-gorm
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/gorm.io-gorm/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  gorm.io-gorm documentation
+quality_score: 0

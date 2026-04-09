@@ -1,0 +1,9 @@
+name: github.com-ringsaturn-tzf
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-ringsaturn-tzf/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-ringsaturn-tzf documentation
+quality_score: 0

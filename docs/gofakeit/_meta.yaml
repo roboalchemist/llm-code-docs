@@ -1,0 +1,9 @@
+name: gofakeit
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/gofakeit/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  gofakeit documentation
+quality_score: 0

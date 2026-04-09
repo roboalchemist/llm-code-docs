@@ -1,0 +1,9 @@
+name: stomp
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/stomp/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  stomp documentation
+quality_score: 0

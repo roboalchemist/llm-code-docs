@@ -1,0 +1,9 @@
+name: xmpp
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/xmpp/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  xmpp documentation
+quality_score: 0

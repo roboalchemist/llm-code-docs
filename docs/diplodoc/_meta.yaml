@@ -1,0 +1,11 @@
+name: diplodoc
+primary_source: llms
+sources:
+  - type: llms
+    url: https://www.diplodoc.com/
+    last_fetched: "2026-04-03T23:08:52Z"
+  - type: github
+    last_fetched: "2026-04-03T23:08:52Z"
+description: >
+  diplodoc documentation
+quality_score: 0

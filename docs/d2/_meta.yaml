@@ -1,0 +1,9 @@
+name: d2
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/d2/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  d2 documentation
+quality_score: 0

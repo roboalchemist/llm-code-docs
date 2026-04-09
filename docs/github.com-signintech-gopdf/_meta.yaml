@@ -1,0 +1,9 @@
+name: github.com-signintech-gopdf
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-signintech-gopdf/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-signintech-gopdf documentation
+quality_score: 0

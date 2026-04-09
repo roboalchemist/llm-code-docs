@@ -1,0 +1,9 @@
+name: godotenv
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/godotenv/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  godotenv documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: go.opentelemetry.io-contrib
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/go.opentelemetry.io-contrib/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  go.opentelemetry.io-contrib documentation
+quality_score: 0

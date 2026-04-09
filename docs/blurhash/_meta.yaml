@@ -1,0 +1,9 @@
+name: blurhash
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/blurhash/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  blurhash documentation
+quality_score: 0

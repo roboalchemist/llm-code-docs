@@ -1,0 +1,9 @@
+name: developers-vectorize
+primary_source: llms
+sources:
+  - type: llms
+    url: https://developers.cloudflare.com/vectorize/
+    last_fetched: "2026-04-03T23:08:52Z"
+description: >
+  developers-vectorize documentation
+quality_score: 0

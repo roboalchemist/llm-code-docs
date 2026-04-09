@@ -1,0 +1,9 @@
+name: xsalsa20-poly1305
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/xsalsa20-poly1305/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  xsalsa20-poly1305 documentation
+quality_score: 0

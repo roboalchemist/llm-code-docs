@@ -1,0 +1,9 @@
+name: md2pdf
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/md2pdf/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  md2pdf documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: openfhe
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/openfhe/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  openfhe documentation
+quality_score: 0

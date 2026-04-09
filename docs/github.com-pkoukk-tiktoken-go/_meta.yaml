@@ -1,0 +1,9 @@
+name: github.com-pkoukk-tiktoken-go
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-pkoukk-tiktoken-go/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-pkoukk-tiktoken-go documentation
+quality_score: 0

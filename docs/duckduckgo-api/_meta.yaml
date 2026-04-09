@@ -1,0 +1,8 @@
+name: duckduckgo-api
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:54Z"
+description: >
+  duckduckgo-api documentation
+quality_score: 0

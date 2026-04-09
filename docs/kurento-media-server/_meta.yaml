@@ -1,0 +1,9 @@
+name: kurento-media-server
+primary_source: web
+sources:
+  - type: web
+    url: https://kurento-media-server.readthedocs.io/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  kurento-media-server documentation
+quality_score: 0

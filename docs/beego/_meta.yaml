@@ -1,0 +1,9 @@
+name: beego
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/beego/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  beego documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: nokogiri
+primary_source: web
+sources:
+  - type: web
+    url: https://rubydoc.info/gems/nokogiri/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  nokogiri documentation
+quality_score: 0

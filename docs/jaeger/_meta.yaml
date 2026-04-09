@@ -1,0 +1,9 @@
+name: jaeger
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/jaeger/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  jaeger documentation
+quality_score: 0

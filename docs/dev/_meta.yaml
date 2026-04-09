@@ -1,0 +1,9 @@
+name: dev
+primary_source: llms
+sources:
+  - type: llms
+    url: https://dev.writer.com/
+    last_fetched: "2026-04-03T23:08:52Z"
+description: >
+  dev documentation
+quality_score: 0

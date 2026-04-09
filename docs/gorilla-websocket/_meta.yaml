@@ -1,0 +1,9 @@
+name: gorilla-websocket
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/gorilla-websocket/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  gorilla-websocket documentation
+quality_score: 0

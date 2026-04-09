@@ -1,0 +1,9 @@
+name: gorilla-mux
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/gorilla-mux/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  gorilla-mux documentation
+quality_score: 0

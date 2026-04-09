@@ -1,0 +1,9 @@
+name: go-testfixtures
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/go-testfixtures/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  go-testfixtures documentation
+quality_score: 0

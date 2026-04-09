@@ -1,0 +1,9 @@
+name: github.com-warthog618-go-gpiocdev
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-warthog618-go-gpiocdev/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-warthog618-go-gpiocdev documentation
+quality_score: 0

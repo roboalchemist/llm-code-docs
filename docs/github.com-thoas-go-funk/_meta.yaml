@@ -1,0 +1,9 @@
+name: github.com-thoas-go-funk
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-thoas-go-funk/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-thoas-go-funk documentation
+quality_score: 0

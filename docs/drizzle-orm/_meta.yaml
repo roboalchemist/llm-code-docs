@@ -1,0 +1,9 @@
+name: drizzle-orm
+primary_source: llms
+sources:
+  - type: llms
+    url: https://orm.drizzle.team/
+    last_fetched: "2026-04-03T23:08:54Z"
+description: >
+  drizzle-orm documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: rapid
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/rapid/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  rapid documentation
+quality_score: 0

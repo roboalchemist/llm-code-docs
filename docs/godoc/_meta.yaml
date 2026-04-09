@@ -1,0 +1,9 @@
+name: godoc
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/godoc/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  godoc documentation
+quality_score: 0

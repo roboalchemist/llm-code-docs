@@ -1,0 +1,8 @@
+name: jbake
+primary_source: web
+sources:
+  - type: web
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  jbake documentation
+quality_score: 0

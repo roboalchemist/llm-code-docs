@@ -1,0 +1,9 @@
+name: adjust
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/adjust/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  adjust documentation
+quality_score: 0

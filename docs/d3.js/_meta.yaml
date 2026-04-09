@@ -1,0 +1,8 @@
+name: d3.js
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:50Z"
+description: >
+  d3.js documentation
+quality_score: 0

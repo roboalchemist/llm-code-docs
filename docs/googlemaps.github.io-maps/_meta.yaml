@@ -1,0 +1,9 @@
+name: googlemaps.github.io-maps
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/googlemaps.github.io-maps/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  googlemaps.github.io-maps documentation
+quality_score: 0

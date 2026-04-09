@@ -1,0 +1,8 @@
+name: djangorestframework
+primary_source: github
+sources:
+  - type: github
+    last_fetched: "2026-04-03T23:08:53Z"
+description: >
+  djangorestframework documentation
+quality_score: 0

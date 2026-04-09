@@ -1,0 +1,9 @@
+name: afero
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/afero/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  afero documentation
+quality_score: 0

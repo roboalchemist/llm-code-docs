@@ -1,0 +1,9 @@
+name: bleve
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/bleve/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  bleve documentation
+quality_score: 0

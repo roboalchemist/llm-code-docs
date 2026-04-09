@@ -1,0 +1,9 @@
+name: schemars
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/schemars/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  schemars documentation
+quality_score: 0

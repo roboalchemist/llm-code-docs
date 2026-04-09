@@ -1,0 +1,9 @@
+name: linkerd
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/linkerd/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  linkerd documentation
+quality_score: 0

@@ -1,0 +1,7 @@
+nettle::ed448
+# Function verify 
+Source 
+
+```
+pub fn verify(public: &[u8], msg: &[u8], signature: &[u8]) -> Result<bool>
+```

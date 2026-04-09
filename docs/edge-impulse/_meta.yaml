@@ -1,0 +1,8 @@
+name: edge-impulse
+primary_source: llms
+sources:
+  - type: llms
+    last_fetched: "2026-04-03T23:08:55Z"
+description: >
+  edge-impulse documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: singularity
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/singularity/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  singularity documentation
+quality_score: 0

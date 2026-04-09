@@ -1,0 +1,9 @@
+name: github.com-xyproto-unzip
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-xyproto-unzip/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-xyproto-unzip documentation
+quality_score: 0

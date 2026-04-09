@@ -1,0 +1,9 @@
+name: vault-operator
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/vault-operator/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  vault-operator documentation
+quality_score: 0

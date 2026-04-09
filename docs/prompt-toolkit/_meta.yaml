@@ -1,0 +1,9 @@
+name: prompt-toolkit
+primary_source: web
+sources:
+  - type: web
+    url: https://prompt-toolkit.readthedocs.io/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  prompt-toolkit documentation
+quality_score: 0

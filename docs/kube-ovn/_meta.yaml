@@ -1,0 +1,9 @@
+name: kube-ovn
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/kube-ovn/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  kube-ovn documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: github.com-twilio-twilio-go
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-twilio-twilio-go/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-twilio-twilio-go documentation
+quality_score: 0

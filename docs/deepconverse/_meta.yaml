@@ -1,0 +1,9 @@
+name: deepconverse
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.deepconverse.com/
+    last_fetched: "2026-04-03T23:08:51Z"
+description: >
+  deepconverse documentation
+quality_score: 0

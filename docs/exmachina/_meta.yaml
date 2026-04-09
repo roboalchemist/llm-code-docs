@@ -1,0 +1,9 @@
+name: exmachina
+primary_source: web
+sources:
+  - type: web
+    url: https://hexdocs.pm/exmachina/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  exmachina documentation
+quality_score: 0

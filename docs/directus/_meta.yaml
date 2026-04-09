@@ -1,0 +1,9 @@
+name: directus
+primary_source: llms
+sources:
+  - type: llms
+    url: https://directus.io/docs/
+    last_fetched: "2026-04-03T23:08:53Z"
+description: >
+  directus documentation
+quality_score: 0

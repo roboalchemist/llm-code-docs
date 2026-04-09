@@ -1,0 +1,9 @@
+name: validator
+primary_source: web
+sources:
+  - type: web
+    url: https://docs.rs/validator/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  validator documentation
+quality_score: 0

@@ -1,0 +1,9 @@
+name: github.com-patrickmn-go-cache
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/github.com-patrickmn-go-cache/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  github.com-patrickmn-go-cache documentation
+quality_score: 0

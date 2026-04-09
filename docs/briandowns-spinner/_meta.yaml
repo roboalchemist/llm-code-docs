@@ -1,0 +1,9 @@
+name: briandowns-spinner
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/briandowns-spinner/
+    last_fetched: "2026-04-08T00:00:00Z"
+description: >
+  briandowns-spinner documentation
+quality_score: 0
