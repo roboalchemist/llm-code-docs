@@ -1,0 +1,9 @@
+name: go-stdlib
+primary_source: web
+sources:
+  - type: web
+    url: https://pkg.go.dev/std
+    last_fetched: "2026-04-09T00:00:00Z"
+description: >
+  Go standard library documentation
+quality_score: 0

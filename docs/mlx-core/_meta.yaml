@@ -1,0 +1,9 @@
+name: mlx-core
+primary_source: web
+sources:
+  - type: web
+    url: https://ml-explore.github.io/mlx/
+    last_fetched: "2026-04-09T00:00:00Z"
+description: >
+  Apple MLX core framework API documentation
+quality_score: 0
