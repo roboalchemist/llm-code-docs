@@ -8,11 +8,16 @@ scripts/llms-sites.yaml. Output is written to docs/{site_name}/llms/.
 After writing files, creates or updates docs/{site_name}/_meta.yaml with
 primary_source: llms.
 
+With --expand, parses page links from the llms.txt index and fetches each
+individual page, saving them as separate .md files with # Source: headers.
+
 Usage:
     python3 scripts/llms-txt-scraper.py                 # all sites
     python3 scripts/llms-txt-scraper.py --site dspy     # single site
     python3 scripts/llms-txt-scraper.py --dry-run       # dry run (no writes)
     python3 scripts/llms-txt-scraper.py --workers 8     # parallel workers
+    python3 scripts/llms-txt-scraper.py --site shadcn-ui --expand  # fetch individual pages
+    python3 scripts/llms-txt-scraper.py --expand --dry-run         # preview page expansion
 """
 
 import argparse
@@ -36,6 +41,9 @@ SITES_FILE = SCRIPT_DIR / "llms-sites.yaml"
 DEFAULT_TIMEOUT = 30
 DEFAULT_WORKERS = 4
 DEFAULT_RATE_LIMIT = 1.0  # seconds between requests per site
+
+# Regex for markdown links in llms.txt index: - [Title](url): description
+PAGE_LINK_RE = re.compile(r'-\s+\[([^\]]+)\]\((https?://[^)]+)\)')
 
 
 def load_sites(sites_file: Path) -> list[dict]:
@@ -125,7 +133,125 @@ def write_meta_yaml(site_dir: Path, site: dict, fetched_at: str, dry_run: bool =
         yaml.dump(meta, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
 
-def scrape_site(site: dict, dry_run: bool = False) -> dict:
+def url_to_slug(url: str) -> str:
+    """Convert a URL path to a filename slug.
+
+    Uses the last 2-3 path segments for uniqueness, cleaned of unsafe chars.
+    """
+    path = urlparse(url).path.strip("/")
+    parts = path.split("/")
+    slug_parts = parts[-3:] if len(parts) > 2 else parts
+    slug = "-".join(slug_parts)
+    slug = re.sub(r"[^a-zA-Z0-9_-]", "-", slug)
+    slug = re.sub(r"-+", "-", slug).strip("-")
+    return slug[:120] or "index"
+
+
+def is_html_response(content: str) -> bool:
+    """Check if content looks like HTML rather than markdown/text."""
+    first = content[:200].strip().lower()
+    return first.startswith("<!doctype html") or first.startswith("<html")
+
+
+def parse_page_links(llms_txt_content: str) -> list[tuple[str, str]]:
+    """Extract (title, url) pairs from llms.txt index content."""
+    return PAGE_LINK_RE.findall(llms_txt_content)
+
+
+def expand_site_pages(
+    site: dict,
+    output_dir: Path,
+    rate_limit: float,
+    dry_run: bool = False,
+) -> dict:
+    """Fetch individual pages linked from a site's llms.txt index.
+
+    Reads the already-downloaded llms.txt, parses page links, and fetches each
+    one as a separate .md file with a # Source: header.
+
+    Returns a stats dict: {pages_fetched, pages_skipped, pages_failed, pages_html}.
+    """
+    name = site["name"]
+
+    # Find the llms.txt file (prefer plain llms.txt over llms-full.txt for index parsing)
+    llms_txt_path = output_dir / "llms.txt"
+    if not llms_txt_path.exists():
+        llms_txt_path = output_dir / f"{name}-llms.md"
+    if not llms_txt_path.exists():
+        print(f"    -> No llms.txt found for {name}, skipping expansion")
+        return {"pages_fetched": 0, "pages_skipped": 0, "pages_failed": 0, "pages_html": 0}
+
+    content = llms_txt_path.read_text(encoding="utf-8", errors="replace")
+    links = parse_page_links(content)
+
+    if not links:
+        print(f"    -> No page links found in {name} llms.txt")
+        return {"pages_fetched": 0, "pages_skipped": 0, "pages_failed": 0, "pages_html": 0}
+
+    total = len(links)
+    print(f"  Expanding {name}: found {total} page links")
+
+    fetched = 0
+    skipped = 0
+    failed = 0
+    html_skipped = 0
+
+    for i, (title, url) in enumerate(links, 1):
+        slug = url_to_slug(url)
+        out_path = output_dir / f"{slug}.md"
+
+        # Skip if already on disk (idempotent)
+        if out_path.exists():
+            skipped += 1
+            continue
+
+        if dry_run:
+            print(f"    [{i}/{total}] Would fetch: {url} -> {out_path.name}")
+            fetched += 1
+            continue
+
+        time.sleep(rate_limit)
+        page_content = fetch_url(url)
+
+        if page_content is None:
+            print(f"    [{i}/{total}] FAILED: {url}")
+            failed += 1
+            continue
+
+        if is_html_response(page_content):
+            print(f"    [{i}/{total}] HTML (skipped): {url}")
+            html_skipped += 1
+            continue
+
+        # Write with # Source: header
+        output_dir.mkdir(parents=True, exist_ok=True)
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(f"# Source: {url}\n\n")
+            f.write(page_content)
+
+        fetched += 1
+        if fetched % 10 == 0 or i == total:
+            print(f"    Expanding {name}: {fetched}/{total} pages fetched...")
+
+    stats = {
+        "pages_fetched": fetched,
+        "pages_skipped": skipped,
+        "pages_failed": failed,
+        "pages_html": html_skipped,
+    }
+    parts = []
+    parts.append(f"{fetched} pages fetched")
+    parts.append(f"{skipped} skipped (already on disk)")
+    if html_skipped:
+        parts.append(f"{html_skipped} skipped (HTML)")
+    if failed:
+        parts.append(f"{failed} failed")
+    print(f"    {name}: {', '.join(parts)}")
+
+    return stats
+
+
+def scrape_site(site: dict, dry_run: bool = False, expand: bool = False) -> dict:
     """
     Scrape a single site's llms.txt documentation.
 
@@ -178,7 +304,19 @@ def scrape_site(site: dict, dry_run: bool = False) -> dict:
 
     if any_fetched:
         write_meta_yaml(site_dir, site, fetched_at, dry_run=dry_run)
-        return {"name": name, "status": "ok", "files_written": files_written, "error": None}
+
+        # Expand individual pages if requested
+        expand_stats = {"pages_fetched": 0, "pages_skipped": 0, "pages_failed": 0, "pages_html": 0}
+        if expand:
+            expand_stats = expand_site_pages(site, output_dir, rate_limit, dry_run=dry_run)
+
+        return {
+            "name": name,
+            "status": "ok",
+            "files_written": files_written,
+            "error": None,
+            **expand_stats,
+        }
     else:
         return {"name": name, "status": "failed", "files_written": 0, "error": "No llms.txt found"}
 
@@ -196,6 +334,11 @@ def main() -> None:
         "--dry-run",
         action="store_true",
         help="Show what would be written without writing any files",
+    )
+    parser.add_argument(
+        "--expand",
+        action="store_true",
+        help="Fetch individual pages linked from llms.txt indexes",
     )
     parser.add_argument(
         "--workers",
@@ -224,21 +367,37 @@ def main() -> None:
     if args.workers > 1 and len(sites) > 1:
         with ThreadPoolExecutor(max_workers=args.workers) as executor:
             futures = {
-                executor.submit(scrape_site, site, args.dry_run): site
+                executor.submit(scrape_site, site, args.dry_run, args.expand): site
                 for site in sites
             }
             for future in as_completed(futures):
                 results.append(future.result())
     else:
         for site in sites:
-            results.append(scrape_site(site, dry_run=args.dry_run))
+            results.append(scrape_site(site, dry_run=args.dry_run, expand=args.expand))
 
     # Summary
     ok = [r for r in results if r["status"] == "ok"]
     failed = [r for r in results if r["status"] == "failed"]
     total_files = sum(r["files_written"] for r in results)
 
-    print(f"\nDone: {len(ok)} ok, {len(failed)} failed, {total_files} files written")
+    summary = f"\nDone: {len(ok)} ok, {len(failed)} failed, {total_files} files written"
+
+    if args.expand:
+        total_pages = sum(r.get("pages_fetched", 0) for r in results)
+        total_skipped = sum(r.get("pages_skipped", 0) for r in results)
+        total_html = sum(r.get("pages_html", 0) for r in results)
+        total_page_failed = sum(r.get("pages_failed", 0) for r in results)
+        summary += f", {total_pages} pages expanded"
+        if total_skipped:
+            summary += f", {total_skipped} pages skipped (on disk)"
+        if total_html:
+            summary += f", {total_html} pages skipped (HTML)"
+        if total_page_failed:
+            summary += f", {total_page_failed} pages failed"
+
+    print(summary)
+
     if failed:
         print("Failed sites:")
         for r in failed:
