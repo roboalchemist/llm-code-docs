@@ -1,0 +1,92 @@
+# Source: https://directus.io/docs/raw/configuration/migrations.md
+
+# Migrations
+
+> Creation of custom migration files to automate database changes.
+
+Directus allows adding custom migration files that run whenever the migration commands are run.
+
+<table>
+<thead>
+  <tr>
+    <th>
+      Variable
+    </th>
+    
+    <th>
+      Description
+    </th>
+    
+    <th>
+      Default Value
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <code>
+        MIGRATIONS_PATH
+      </code>
+    </td>
+    
+    <td>
+      Where custom migrations are located.
+    </td>
+    
+    <td>
+      <code>
+        ./migrations
+      </code>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+The file name follows the structure `[identifier]-[name].js`, where `identifier` should **not** follow the `YYYYMMDD[A-Z]` format, as this may conflict with Directus internal migrations. For example, you can name your migrations like `001-initial-migration.js`.
+
+Every file in the root of the `migrations` directory is treated as a migration. Files that don't include a `-` character are ignored. If you want to rely on shared helper functions between migrations, put them in a subdirectory so they aren't loaded in by the migrations helper.
+
+## Structure
+
+Migrations have to export an `up` and a `down` function. These functions get a [Knex](http://knexjs.org) instance that can be used to do virtually whatever.
+
+```js
+export async function up(knex) {
+    await knex.schema.createTable('test', (table) => {
+        table.increments();
+        table.string('rijk');
+    });
+}
+
+export async function down(knex) {
+    await knex.schema.dropTable('test');
+}
+```
+
+<callout color="warning" icon="material-symbols:warning-rounded">
+
+**Backup Your Database**
+Proceed at your own risk and backup your database before adding custom migrations.
+
+</callout>
+
+## Migrations and Directus Schema
+
+Migrations can be used to manage the contents of Directus collections (e.g. initial hydration). In order to do it, you must ensure that the schema is up to date before running your migrations.
+
+`directus database migrate:latest` runs the required Directus internal migrations and the migrations from the `migrations` directory. In general, you need the following flow:
+
+```sh
+# Option 1
+npx directus bootstrap
+npx directus schema apply ./path/to/snapshot.yaml
+
+# Option 2 - without bootstrap, you must ensure that you run all required `bootstrap` tasks
+npx directus database install
+npx directus database migrate:latest
+npx directus schema apply ./path/to/snapshot.yaml
+```
+
+To correctly follow this process, the `migrations` directory must not contain tasks that modify the contents of Directus system collections, because schema may not yet be created when you run `migrate:latest`.

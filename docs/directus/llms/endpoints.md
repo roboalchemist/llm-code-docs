@@ -1,0 +1,200 @@
+# Source: https://directus.io/docs/raw/guides/extensions/api-extensions/endpoints.md
+
+# API Endpoints
+
+> Endpoints allow you to register new API routes in your Directus project.
+
+Endpoints allow you to register new API routes in your Directus project.
+
+<partial content="extensions-api">
+
+
+
+</partial>
+
+## Endpoint Entrypoint
+
+The `index.js` or `index.ts` file exports a register function that is read by Directus. It contains one or more route handlers, each being a sub-route of `/<extension-name>`.
+
+### Entrypoint Example
+
+```js
+export default (router, context) => {
+    router.get('/', (req, res) => res.send('Hello, World!'));
+};
+```
+
+Alternatively, you can export a configuration object to be able to customize the root route:
+
+```js
+export default {
+    id: 'greet',
+    handler: (router, context) => {
+        router.get('/', (req, res) => res.send('Hello, World!'));
+        router.get('/intro', (req, res) => res.send('Nice to meet you.'));
+        router.get('/goodbye', (req, res) => res.send('Goodbye!'));
+    },
+};
+```
+
+The routes of this endpoint are accessible at `/greet`, `/greet/intro` and `/greet/goodbye`.
+
+## Register Function
+
+The register function receives the two parameters `router` and `context`. `router` is an Express router instance. `context` is an object with the following properties:
+
+<table>
+<thead>
+  <tr>
+    <th>
+      Property
+    </th>
+    
+    <th>
+      Description
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <code>
+        services
+      </code>
+    </td>
+    
+    <td>
+      All API internal services.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code>
+        database
+      </code>
+    </td>
+    
+    <td>
+      Knex instance that is connected to the current database.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code>
+        getSchema
+      </code>
+    </td>
+    
+    <td>
+      Async function that reads the full available schema for use in services.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code>
+        env
+      </code>
+    </td>
+    
+    <td>
+      Parsed environment variables.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code>
+        logger
+      </code>
+    </td>
+    
+    <td>
+      <a href="https://github.com/pinojs/pino" rel="nofollow">
+        Pino
+      </a>
+      
+       instance.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code>
+        emitter
+      </code>
+    </td>
+    
+    <td>
+      <a href="https://github.com/directus/directus/blob/main/api/src/emitter.ts" rel="nofollow">
+        Event emitter
+      </a>
+      
+       instance that can be used to emit custom events for other extensions.
+    </td>
+  </tr>
+</tbody>
+</table>
+
+## Sandboxed Endpoints
+
+When using the sandbox, the register function receives the `router` object only. Each handler function receives only a `request` object and must return a `response` object.
+
+```ts
+interface SandboxEndpointRequest {
+    url: string;
+    headers: Record<string, string>;
+    body: any;
+}
+
+interface SandboxEndpointResponse {
+    status: number;
+    body: string | Record<string, unknown>;
+}
+```
+
+### TypeScript
+
+You can import the `SandboxEndpointRouter` type from `directus:api` to type the `router` object:
+
+```ts
+/// <reference types="@directus/extensions/api.d.ts" />
+import type { SandboxEndpointRouter } from 'directus:api';
+
+export default (router: SandboxEndpointRouter) => {
+    router.get('/', () => {
+        return {
+      status: 200,
+      body: 'Hello World'
+    }
+    });
+};
+```
+
+<callout color="primary" icon="material-symbols:menu-book-outline" to="/guides/extensions/api-extensions/sandbox">
+
+Learn more about the Directus sandbox for API extensions.
+
+</callout>
+
+<partial content="extensions-api-internals">
+
+
+
+</partial>
+
+In a route, call `next(error)` to hand off errors to our error-handler middleware. This prevent the request from hanging and ensures a consistent error response is returned instead of crashing the server.
+
+```ts
+router.get('/my-endpoint', async (req, res, next) => {
+  if (checkForError) {
+    next(new ForbiddenError());
+    return;
+  }
+
+  // continue with request processing...
+});
+```

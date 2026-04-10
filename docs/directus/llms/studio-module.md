@@ -1,0 +1,196 @@
+# Source: https://directus.io/docs/raw/guides/content/visual-editor/studio-module.md
+
+# Studio Module
+
+> Learn how to edit your website's content in place from within the Directus Studio.
+
+The visual editor module enables content editors to render their website within the Directus Studio, navigate around within the site, and make edits to content in place.
+
+![An image of the visual editor with the drawer open on a page and an input being hovered over](/img/visual_editor_drawer_editing.png)
+
+<callout icon="material-symbols:info" color="info">
+
+Visual editing also works in the [**Live Preview**](/guides/content/live-preview#visual-editing-in-live-preview) pane on item detail pages. This gives the same editing experience without switching modules.
+
+</callout>
+
+## Configure Visual Editor URLs
+
+Navigate to **Settings → Visual Editor** and add the URL of your website that you want to visually edit. If you have multiple websites, add multiple URLs.
+
+![An image of the visual editor section of the Directus settings page with one URL entered](/img/visual_editor_settings_url.png)
+
+Be sure to enable the Visual Editor from the Modules section of the settings page so it shows up in your project's module bar.
+
+### Version Support in URLs
+
+The URL field supports a `{{$version}}` template variable. When included, the Visual Editor will pass the currently selected version key to your website, enabling version-aware previews.
+
+```text
+https://your-site.com/preview?version={{$version}}
+```
+
+- **Resolution**: When no version is selected, `{{$version}}` resolves to `main`.
+- **Flexibility**: The variable can be placed in any part of the URL (query parameters, path segments, subdomains, or hash fragments).
+
+#### Implementation Checklist
+
+To ensure version-aware editing functions correctly, verify the following configuration steps:
+
+**1. Frontend Integration**
+
+- **Template Variable**: You must include `{{$version}}` in the URL field. If omitted, the version selection dropdown will not appear in the Visual Editor toolbar.
+- **Directus Frontend Library**: Your website must be configured using our publicly available [Frontend Library](frontend-library).
+- **Version-Aware Fetching**: Your code must detect the version parameter from the URL and pass it to the Directus API (e.g., `/items/posts/42?version=draft`). Without this, the site will continue to display "Main" content regardless of your selection.
+
+**2. Environment Configuration**
+
+Update your Directus instance environment variables to authorize the connection and ensure content refreshes:
+
+<table>
+<thead>
+  <tr>
+    <th align="left">
+      Variable
+    </th>
+    
+    <th align="left">
+      Required Value
+    </th>
+    
+    <th align="left">
+      Purpose
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td align="left">
+      <code>
+        CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC
+      </code>
+    </td>
+    
+    <td align="left">
+      <code>
+        "<your-website-url>"
+      </code>
+    </td>
+    
+    <td align="left">
+      Allows your website to be embedded within the Directus Studio iframe.
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="left">
+      <code>
+        CACHE_AUTO_PURGE
+      </code>
+    </td>
+    
+    <td align="left">
+      <code>
+        true
+      </code>
+    </td>
+    
+    <td align="left">
+      Ensures the preview reflects changes immediately after saving edits.
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<callout icon="material-symbols:warning-rounded" color="warning">
+
+**Critical Setup**: Your website will be unable to communicate with Directus if the `CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC` directive is missing.<br />
+
+<br />
+
+
+Additionally, without `CACHE_AUTO_PURGE` enabled, the Visual Editor will continue to display stale data until the cache naturally expires.
+
+</callout>
+
+## Editing in the Module
+
+Once your URLs are set up, navigate to the visual editor module by selecting it from module bar. Your first entered URL will render in the module.
+
+![An image of the visual editor module open on a page](/img/visual_editor_open_page.png)
+
+Navigating between different added URLs can be done by clicking the dropdown in the top toolbar.
+
+![An image of the visual editor module open on a page with the url dropdown open](/img/visual_editor_open_url.png)
+
+Hovering over an editable item will highlight it within the module.
+
+![An image of the visual editor module open on a page with a hovered item highlighted](/img/visual_editor_open_hover.png)
+
+Click the <icon name="material-symbols:edit">
+
+
+
+</icon>
+
+ icon in the toolbar will highlight all the editable items on the page.
+
+![An image of the visual editor module open on a page with all editable items highlighted](/img/visual_editor_open_all.png)
+
+Clicking the <icon name="material-symbols:edit">
+
+
+
+</icon>
+
+ beside an editable element will open an editor in either a drawer, modal, or popover depending on which `mode` was specified in the elements `data-directus` attribute on the frontend.
+
+![An image of the visual editor with the drawer open on a page and an input being edited in a popover](/img/visual_editor_open_popover.png)
+
+Once you are done editing your item, click the save button and your website will refresh to show your changes.
+
+## Working with Versions
+
+When a URL includes the `{{$version}}` variable, a version dropdown appears in the toolbar of the Visual Editor.
+
+### Selecting a Version
+
+The dropdown lists:
+
+- **Main** — the published version (default)
+- **Draft** — the global [draft version](/guides/content/content-versioning#working-with-the-draft-version), always available for collections with versioning enabled
+
+If your website URL contains a version key that doesn't match "main" or "draft" (e.g. from a custom query parameter), it will also appear as a dynamic option in the dropdown.
+
+### Version-Aware Editing
+
+When a version other than main is selected:
+
+- **Only items on collections with versioning enabled** will show editable elements. Items on non-versioned collections are hidden from editing.
+- **Saving an edit** creates or updates the version for that specific item. If the version doesn't exist yet for the item, it's created automatically on save.
+- **Items without content in the selected version** display their main version content as a read-only fallback.
+
+<callout icon="material-symbols:info-outline">
+
+The version dropdown requires the user to have **read** permission on `directus_versions`. Editing in a version additionally requires **create** or **update** permission on `directus_versions`.
+
+</callout>
+
+## Permissions
+
+Editable elements are gated by field-level permissions. When visual editing is active, Directus validates each element against the current user's access before making it interactive:
+
+- **Admin users** can edit all elements.
+- **Non-admin users** only see editable overlays on fields they have **update** permission for.
+- When a **version is selected**, elements are additionally hidden for collections that don't have versioning enabled, and for users without the required `directus_versions` permissions.
+
+Elements that fail permission checks remain completely inert — no overlay, no hover effect, no click handler.
+
+## AI-Assisted Editing
+
+When [AI Assistant](/guides/ai/assistant) is available, you can add visual elements as context for AI conversations. Hover over an editable element and click the AI icon to select it, then open AI Assistant to send your message with the element as context.
+
+![AI icon on editable element in visual editor](/img/visual-editor-ai-icon.png)
+
+For more details on using context attachments, see [Adding Context](/guides/ai/assistant/usage#adding-context).

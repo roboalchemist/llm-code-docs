@@ -1,0 +1,50 @@
+# Source: https://docs.dify.ai/en/develop-plugin/features-and-specs/plugin-types/plugin-logging.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.dify.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Plugin Logging
+
+As a plugin developer, you may want to print arbitrary strings to logs during plugin processing for development or debugging purposes.
+
+For this purpose, the plugin SDK implements a handler for Python's standard `logging` library. By using this, you can output any string to both the **standard output during remote debugging** and the **plugin daemon container logs** (community edition only).
+
+## Sample
+
+Import `plugin_logger_handler` and add it to your logger as a handler. Below is a sample code for a tool plugin.
+
+```python  theme={null}
+from collections.abc import Generator
+from typing import Any
+from dify_plugin import Tool
+from dify_plugin.entities.tool import ToolInvokeMessage
+
+
+# Import logging and custom handler
+import logging
+from dify_plugin.config.logger_format import plugin_logger_handler
+
+# Set up logging with the custom handler
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+logger.addHandler(plugin_logger_handler)
+
+
+class LoggerDemoTool(Tool):
+    def _invoke(self, tool_parameters: dict[str, Any]) -> Generator[ToolInvokeMessage]:
+
+        # Log messages with different severity levels
+        logger.info("This is an INFO log message.")
+        logger.warning("This is a WARNING log message.")
+        logger.error("This is an ERROR log message.")
+
+        yield self.create_text_message("Hello, Dify!")
+```
+
+***
+
+[Edit this page](https://github.com/langgenius/dify-docs/edit/main/en/develop-plugin/features-and-specs/plugin-types/plugin-logging.mdx) | [Report an issue](https://github.com/langgenius/dify-docs/issues/new?template=docs.yml)
+
+
+Built with [Mintlify](https://mintlify.com).

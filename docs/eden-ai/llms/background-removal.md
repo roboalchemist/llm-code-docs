@@ -1,0 +1,76 @@
+# Source: https://docs.edenai.co/v3/features/image/background-removal.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.edenai.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Image Background removal
+
+> Background removal is a digital image processing technique designed to seamlessly eliminate the backdrop of a photo, leaving behind only the main subject.
+
+## Endpoint
+
+`POST /v3/universal-ai` (sync)
+
+Model string pattern: `image/background_removal/{provider}[/{model}]`
+
+## Input
+
+| Field | Type        | Required | Description                                      |
+| ----- | ----------- | -------- | ------------------------------------------------ |
+| file  | file\_input | Yes      | Image file ID from /v3/upload or direct file URL |
+
+## Output
+
+| Field                | Type   | Required | Description                 |
+| -------------------- | ------ | -------- | --------------------------- |
+| image\_b64           | string | Yes      | The image in base64 format. |
+| image\_resource\_url | string | Yes      | The image url.              |
+
+## Available Providers
+
+| Provider    | Model String                           | Price                  |
+| ----------- | -------------------------------------- | ---------------------- |
+| api4ai      | `image/background_removal/api4ai`      | \$50 per 1,000 files   |
+| clipdrop    | `image/background_removal/clipdrop`    | \$0.5 per request      |
+| photoroom   | `image/background_removal/photoroom`   | \$20 per 1,000 files   |
+| picsart     | `image/background_removal/picsart`     | \$0.04 per image       |
+| sentisight  | `image/background_removal/sentisight`  | \$0.75 per 1,000 files |
+| stabilityai | `image/background_removal/stabilityai` | \$0.02 per request     |
+
+## Quick Start
+
+<CodeGroup>
+  ```python Python theme={null}
+  import requests
+
+  url = "https://api.edenai.run/v3/universal-ai"
+  headers = {
+      "Authorization": "Bearer YOUR_API_KEY",
+      "Content-Type": "application/json"
+  }
+
+  payload = {
+      "model": "image/background_removal/api4ai",
+      "input": {
+          "file": "YOUR_FILE_UUID_OR_URL"
+      }
+  }
+
+  response = requests.post(url, headers=headers, json=payload)
+  print(response.json())
+  ```
+
+  ```bash cURL theme={null}
+  curl -X POST https://api.edenai.run/v3/universal-ai \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "image/background_removal/api4ai",
+      "input": {"file": "YOUR_FILE_UUID_OR_URL"}
+    }'
+  ```
+</CodeGroup>
+
+
+Built with [Mintlify](https://mintlify.com).
