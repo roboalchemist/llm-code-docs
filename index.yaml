@@ -10,9 +10,9 @@
 #   - pending: Library registered but not yet fetched
 
 metadata:
-  last_updated: 2026-04-09 04:56
-  total_libraries: 2272
-  total_files: 605617
+  last_updated: 2026-04-10 01:08
+  total_libraries: 2271
+  total_files: 605133
   schema_version: '2'
 libraries:
 - name: '0'
@@ -55,28 +55,44 @@ libraries:
   status: fetched
   file_count: 4
   size: 92.7KB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:23Z'
 - name: '@types'
   description: '@types documentation'
   path: docs/@types/
   status: fetched
   file_count: 21
   size: 276.7KB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:23Z'
 - name: '@typescript-eslint'
   description: '@typescript-eslint documentation'
   path: docs/@typescript-eslint/
   status: fetched
   file_count: 53
   size: 286.8KB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-03 23:08
+  primary_source: github
+  sources:
+  - type: github
+    last_fetched: '2026-04-03T23:08:23Z'
 - name: '@visx'
   description: '@visx documentation'
   path: docs/@visx/
   status: fetched
   file_count: 1
   size: 1.4KB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-03 23:08
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-03T23:08:23Z'
 - name: ably
   description: ably documentation
   path: docs/ably/
@@ -1591,9 +1607,9 @@ libraries:
 - name: artifactory
   description: artifactory documentation
   path: docs/artifactory/
-  status: fetched
-  file_count: 1
-  size: 1.6MB
+  status: pending
+  file_count: 0
+  size: 0B
   last_updated: 2026-04-03 23:08
   primary_source: llms
   sources:
@@ -1606,14 +1622,22 @@ libraries:
   status: fetched
   file_count: 1
   size: 11.7KB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-09 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-09T00:00:00Z'
 - name: arxiv
   description: arxiv documentation
   path: docs/arxiv/
   status: fetched
   file_count: 5
   size: 14.4KB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-09 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-09T00:00:00Z'
 - name: asapp
   description: asapp documentation
   path: docs/asapp/
@@ -2668,8 +2692,8 @@ libraries:
   description: bika documentation
   path: docs/bika/
   status: fetched
-  file_count: 9
-  size: 3.8MB
+  file_count: 3
+  size: 145.5KB
   last_updated: 2026-04-03 20:08
   primary_source: llms
   sources:
@@ -4912,8 +4936,8 @@ libraries:
   description: dat1 documentation
   path: docs/dat1/
   status: fetched
-  file_count: 3
-  size: 282.4KB
+  file_count: 2
+  size: 11.1KB
   last_updated: 2026-04-03 20:08
   primary_source: llms
   sources:
@@ -5460,8 +5484,8 @@ libraries:
   description: diplodoc documentation
   path: docs/diplodoc/
   status: fetched
-  file_count: 152
-  size: 700.0KB
+  file_count: 151
+  size: 634.8KB
   last_updated: 2026-04-03 23:08
   primary_source: llms
   sources:
@@ -6938,17 +6962,6 @@ libraries:
   sources:
   - type: llms
     url: https://firebase.google.com/docs/
-    last_fetched: '2026-04-03T23:08:58Z'
-- name: firebase-crashlytics
-  description: firebase-crashlytics documentation
-  path: docs/firebase-crashlytics/
-  status: fetched
-  file_count: 1
-  size: 1.7MB
-  last_updated: 2026-04-03 23:08
-  primary_source: llms
-  sources:
-  - type: llms
     last_fetched: '2026-04-03T23:08:58Z'
 - name: firecrawl
   description: firecrawl documentation
@@ -9000,12 +9013,17 @@ libraries:
     url: https://github.com/tmaxmax/go-sse
     last_fetched: '2026-04-04T00:00:00Z'
 - name: go-stdlib
-  description: go-stdlib documentation
+  description: Go standard library documentation
   path: docs/go-stdlib/
   status: fetched
   file_count: 176
   size: 4.2MB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-09 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://pkg.go.dev/std
+    last_fetched: '2026-04-09T00:00:00Z'
 - name: go-testfixtures
   description: go-testfixtures documentation
   path: docs/go-testfixtures/
@@ -9461,8 +9479,8 @@ libraries:
   description: google-cloud-build documentation
   path: docs/google-cloud-build/
   status: fetched
-  file_count: 6
-  size: 485.6KB
+  file_count: 5
+  size: 128.4KB
   last_updated: 2026-04-03 23:09
   primary_source: llms
   sources:
@@ -10901,8 +10919,8 @@ libraries:
   description: huggingface-accelerate documentation
   path: docs/huggingface-accelerate/
   status: fetched
-  file_count: 98
-  size: 7.1MB
+  file_count: 78
+  size: 1.1MB
   last_updated: 2026-04-03 23:09
   primary_source: llms
   sources:
@@ -11884,8 +11902,8 @@ libraries:
   description: jfrog-artifactory documentation
   path: docs/jfrog-artifactory/
   status: fetched
-  file_count: 7
-  size: 9.7MB
+  file_count: 1
+  size: 457.2KB
   last_updated: 2026-04-03 20:08
   primary_source: llms
   sources:
@@ -12448,9 +12466,9 @@ libraries:
 - name: klaviyo
   description: klaviyo documentation
   path: docs/klaviyo/
-  status: fetched
-  file_count: 1
-  size: 1.6MB
+  status: pending
+  file_count: 0
+  size: 0B
   last_updated: 2026-04-03 23:09
   primary_source: llms
   sources:
@@ -13065,7 +13083,7 @@ libraries:
   description: lettuce documentation
   path: docs/lettuce/
   status: fetched
-  file_count: 39
+  file_count: 38
   size: 7.7MB
   last_updated: 2026-04-03 23:09
   primary_source: llms
@@ -13101,8 +13119,8 @@ libraries:
   description: liam-erd documentation
   path: docs/liam-erd/
   status: fetched
-  file_count: 2
-  size: 455.1KB
+  file_count: 1
+  size: 88.3KB
   last_updated: 2026-04-03 23:09
   primary_source: llms
   sources:
@@ -13180,8 +13198,8 @@ libraries:
   description: likec4 documentation
   path: docs/likec4/
   status: fetched
-  file_count: 7
-  size: 893.4KB
+  file_count: 1
+  size: 176.3KB
   last_updated: 2026-04-03 23:09
   primary_source: llms
   sources:
@@ -13923,8 +13941,8 @@ libraries:
   description: mailerlite documentation
   path: docs/mailerlite/
   status: fetched
-  file_count: 57
-  size: 1.2MB
+  file_count: 53
+  size: 214.9KB
   last_updated: 2026-04-03 23:09
   primary_source: llms
   sources:
@@ -14794,12 +14812,17 @@ libraries:
     url: https://docs.mlrun.org/
     last_fetched: '2026-04-03T23:09:24Z'
 - name: mlx-core
-  description: mlx-core documentation
+  description: Apple MLX core framework API documentation
   path: docs/mlx-core/
   status: fetched
   file_count: 53
   size: 498.2KB
-  last_updated: 2026-04-09 04:55
+  last_updated: 2026-04-09 00:00
+  primary_source: web
+  sources:
+  - type: web
+    url: https://ml-explore.github.io/mlx/
+    last_fetched: '2026-04-09T00:00:00Z'
 - name: mlx-lm
   description: mlx-lm documentation
   path: docs/mlx-lm/
@@ -15583,8 +15606,8 @@ libraries:
   description: neverbounce documentation
   path: docs/neverbounce/
   status: fetched
-  file_count: 7
-  size: 127.0KB
+  file_count: 6
+  size: 24.1KB
   last_updated: 2026-04-03 20:08
   primary_source: llms
   sources:
@@ -21311,9 +21334,9 @@ libraries:
 - name: sonatype
   description: sonatype documentation
   path: docs/sonatype/
-  status: fetched
-  file_count: 1
-  size: 396.6KB
+  status: pending
+  file_count: 0
+  size: 0B
   last_updated: 2026-04-03 23:11
   primary_source: llms
   sources:
@@ -21785,8 +21808,8 @@ libraries:
   description: stedi documentation
   path: docs/stedi/
   status: fetched
-  file_count: 56
-  size: 66.5MB
+  file_count: 2
+  size: 2.1MB
   last_updated: 2026-04-03 20:08
   primary_source: llms
   sources:
@@ -22048,9 +22071,9 @@ libraries:
 - name: supabase-auth
   description: supabase-auth documentation
   path: docs/supabase-auth/
-  status: fetched
-  file_count: 1
-  size: 281.0KB
+  status: pending
+  file_count: 0
+  size: 0B
   last_updated: 2026-04-03 23:11
   primary_source: llms
   sources:
@@ -22616,9 +22639,9 @@ libraries:
 - name: telerik
   description: telerik documentation
   path: docs/telerik/
-  status: fetched
-  file_count: 1
-  size: 99.9KB
+  status: pending
+  file_count: 0
+  size: 0B
   last_updated: 2026-04-03 23:11
   primary_source: llms
   sources:
@@ -22865,7 +22888,11 @@ libraries:
   status: fetched
   file_count: 7
   size: 81.8KB
-  last_updated: 2026-04-09 04:56
+  last_updated: 2026-04-09 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-09T00:00:00Z'
 - name: testim
   description: testim documentation
   path: docs/testim/
@@ -23119,8 +23146,8 @@ libraries:
   description: tinybird documentation
   path: docs/tinybird/
   status: fetched
-  file_count: 365
-  size: 80.9MB
+  file_count: 1
+  size: 1.3MB
   last_updated: 2026-04-03 23:11
   primary_source: llms
   sources:
@@ -24419,7 +24446,11 @@ libraries:
   status: fetched
   file_count: 6
   size: 31.6KB
-  last_updated: 2026-04-09 04:56
+  last_updated: 2026-04-09 00:00
+  primary_source: web
+  sources:
+  - type: web
+    last_fetched: '2026-04-09T00:00:00Z'
 - name: virtualenv
   description: virtualenv documentation
   path: docs/virtualenv/
@@ -25406,14 +25437,14 @@ libraries:
   description: xata documentation
   path: docs/xata/
   status: fetched
-  file_count: 1
-  size: 1.1KB
-  last_updated: 2026-04-03 20:08
+  file_count: 2
+  size: 2.8KB
+  last_updated: 2026-04-10 01:01
   primary_source: llms
   sources:
   - type: llms
     url: https://xata.io/
-    last_fetched: '2026-04-03T20:08:38Z'
+    last_fetched: '2026-04-10T01:01:52Z'
 - name: xlrd
   description: xlrd documentation
   path: docs/xlrd/
@@ -25803,14 +25834,14 @@ libraries:
   description: zod documentation
   path: docs/zod/
   status: fetched
-  file_count: 17
-  size: 7.0MB
-  last_updated: 2026-04-03 23:11
+  file_count: 4
+  size: 547.6KB
+  last_updated: 2026-04-10 00:58
   primary_source: llms
   sources:
   - type: llms
     url: https://zod.dev/
-    last_fetched: '2026-04-03T23:11:27Z'
+    last_fetched: '2026-04-10T00:58:25Z'
 - name: zoho
   description: zoho documentation
   path: docs/zoho/
