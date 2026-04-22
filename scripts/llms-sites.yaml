@@ -650,6 +650,11 @@ sites:
 - name: netlify
   base_url: https://docs.netlify.com/
   description: Netlify web deployment platform
+- name: namespace-cloud
+  base_url: https://namespace.so/
+  description: Namespace cloud dev environments (devboxes), ephemeral Kubernetes
+    clusters, GitHub Actions runners, and remote Docker builders
+  expand: true
 - name: northflank
   base_url: https://northflank.com/docs/
   description: Northflank full-stack cloud platform with GPU orchestration, BYOC,

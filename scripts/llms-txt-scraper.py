@@ -33,6 +33,12 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import yaml
 
+try:
+    from markdownify import markdownify as _markdownify
+    _HAS_MARKDOWNIFY = True
+except ImportError:
+    _HAS_MARKDOWNIFY = False
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 DOCS_ROOT = SCRIPT_DIR.parent / "docs"
@@ -153,6 +159,34 @@ def is_html_response(content: str) -> bool:
     return first.startswith("<!doctype html") or first.startswith("<html")
 
 
+def html_to_markdown(html: str, url: str, title: str = "") -> str | None:
+    """Extract <article> content from a pre-rendered HTML page and convert to markdown.
+
+    Returns None if no article content found or markdownify not installed.
+    """
+    if not _HAS_MARKDOWNIFY:
+        return None
+
+    m = re.search(r"<article[^>]*>(.*?)</article>", html, re.DOTALL)
+    if not m:
+        return None
+
+    article_html = m.group(1)
+
+    if not title:
+        t = re.search(r"<title>([^<]+)</title>", html)
+        if t:
+            title = re.sub(r"\s*\|[^|]*$", "", t.group(1)).strip()
+
+    md = _markdownify(article_html, heading_style="ATX", bullets="-", strip=["script", "style"])
+    md = re.sub(r"\n{3,}", "\n\n", md).strip()
+
+    header = f"<!-- Source: {url} -->\n\n"
+    if title and not md.startswith("# "):
+        header += f"# {title}\n\n"
+    return header + md + "\n"
+
+
 def parse_page_links(llms_txt_content: str) -> list[tuple[str, str]]:
     """Extract (title, url) pairs from llms.txt index content."""
     return PAGE_LINK_RE.findall(llms_txt_content)
@@ -219,8 +253,17 @@ def expand_site_pages(
             continue
 
         if is_html_response(page_content):
-            print(f"    [{i}/{total}] HTML (skipped): {url}")
-            html_skipped += 1
+            md = html_to_markdown(page_content, url, title)
+            if md:
+                output_dir.mkdir(parents=True, exist_ok=True)
+                with open(out_path, "w", encoding="utf-8") as f:
+                    f.write(md)
+                fetched += 1
+                if fetched % 10 == 0 or i == total:
+                    print(f"    Expanding {name}: {fetched}/{total} pages fetched...")
+            else:
+                print(f"    [{i}/{total}] HTML (no article, skipped): {url}")
+                html_skipped += 1
             continue
 
         # Write with # Source: header
@@ -307,7 +350,7 @@ def scrape_site(site: dict, dry_run: bool = False, expand: bool = False) -> dict
 
         # Expand individual pages if requested
         expand_stats = {"pages_fetched": 0, "pages_skipped": 0, "pages_failed": 0, "pages_html": 0}
-        if expand:
+        if expand or site.get("expand", False):
             expand_stats = expand_site_pages(site, output_dir, rate_limit, dry_run=dry_run)
 
         return {

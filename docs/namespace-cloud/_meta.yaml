@@ -1,0 +1,9 @@
+name: namespace-cloud
+primary_source: llms
+sources:
+- type: llms
+  url: https://namespace.so/
+  last_fetched: '2026-04-22T01:52:06Z'
+description: Namespace cloud dev environments (devboxes), ephemeral Kubernetes clusters,
+  GitHub Actions runners, and remote Docker builders
+quality_score: 0
