@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-code-docs"
+version = "0.1.0"
+description = "Search assistant for llm-code-docs - semantic documentation search"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "roboalchemist"}
+]
+dependencies = [
+    "click>=8.0.0",
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "requests>=2.31.0",
+    "opensearch-py>=2.4.0",
+    "pydantic>=2.0.0",
+    "tqdm>=4.66.0",
+    "pandas>=2.0.0",
+    "pyyaml>=6.0.0",
+    "watchdog>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.25.0",
+]
+
+[project.scripts]
+llm-code-docs = "api.cli:cli"
+llm-code-docs-api = "api.main:main"
+
+[project.urls]
+Homepage = "https://gitea.roboalch.com/roboalchemist/llm-code-docs"
+Repository = "https://gitea.roboalch.com/roboalchemist/llm-code-docs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["api", "search"]

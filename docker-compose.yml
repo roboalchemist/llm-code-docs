@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  search:
+    build: .
+    volumes:
+      # Mount docs directory (read-only)
+      - ~/github/llm-code-docs:/docs:ro
+      # Mount database (persistent)
+      - ./lancedb:/app/lancedb
+      # Mount code for development
+      - ./search:/app/search
+      - ./search.py:/app/search.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python search.py --help
