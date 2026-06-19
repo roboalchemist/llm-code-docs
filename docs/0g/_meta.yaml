@@ -1,0 +1,11 @@
+name: 0g
+primary_source: llms
+sources:
+  - type: llms
+    url: https://docs.0g.ai/
+    last_fetched: "2026-04-03T23:08:23Z"
+description: >
+  0G is a modular decentralized AI operating system with TypeScript, Python,
+  Go, and Rust SDKs enabling low-cost blockchain, storage, data availability,
+  and GPU compute for AI applications.
+quality_score: 0

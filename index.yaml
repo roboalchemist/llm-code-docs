@@ -10,14 +10,15 @@
 #   - pending: Library registered but not yet fetched
 
 metadata:
-  last_updated: 2026-04-10 01:08
+  last_updated: 2026-06-19 04:25
   total_libraries: 2271
   total_files: 605133
   schema_version: '2'
 libraries:
-- name: '0'
-  description: 0 documentation
-  path: docs/0/
+- name: 0g
+  description: 0G is a modular decentralized AI operating system with TypeScript, Python, Go, and Rust SDKs enabling low-cost
+    blockchain, storage, data availability, and GPU compute for AI applications.
+  path: docs/0g/
   status: fetched
   file_count: 114
   size: 955.1KB
